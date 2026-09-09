@@ -1,0 +1,5349 @@
+{
+  "id": "thryv",
+  "customerName": "Thryv",
+  "websiteUrl": "https://www.thryv.com",
+  "brandDomain": "thryv.com",
+  "networkName": "Invoca for Small Business Marketing Software",
+  "industry": "Small-business marketing software and services (SaaS/martech)",
+  "bookingTerm": "Demo",
+  "customerNoun": "Client",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 12000,
+      "yTicks": [
+        0,
+        3000,
+        6000,
+        9000,
+        12000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 9214
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 10453
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 11087
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 9876
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 8385
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Demo Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Demo Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "SMB Marketing Software, Get Found",
+          "marketingSearchTerm": "small business marketing software",
+          "landingPageUrl": "https://www.thryv.com/products/get-found?utm_source=google&utm_medium=cpc&utm_campaign=smb_get_found",
+          "websiteJourney": "Home / Products / Get Found / Online Listings",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Free Trial, Small Business CRM",
+          "marketingSearchTerm": "all in one CRM for service business",
+          "landingPageUrl": "https://www.thryv.com/pricing/signature?utm_source=google&utm_medium=cpc&utm_campaign=free_trial_crm",
+          "websiteJourney": "Home / Pricing / Signature Plan",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Local SEO, Contractors",
+          "marketingSearchTerm": "local SEO service for contractors",
+          "landingPageUrl": "https://www.thryv.com/products/win-more-customers/search-boosts?utm_source=bing&utm_medium=cpc&utm_campaign=local_seo_contractors",
+          "websiteJourney": "Home / Products / Win More Customers / Search Boosts",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Reputation Management, Reviews",
+          "marketingSearchTerm": "how to get more google reviews",
+          "landingPageUrl": "https://www.thryv.com/products/get-found/reputation-management?utm_source=google&utm_medium=cpc&utm_campaign=rep_management",
+          "websiteJourney": "Home / Products / Get Found / Reputation Management",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Listings Management, Get Found",
+          "marketingSearchTerm": "business listing management software",
+          "landingPageUrl": "https://www.thryv.com/products/get-found/online-listings?utm_source=google&utm_medium=cpc&utm_campaign=listings_mgmt",
+          "websiteJourney": "Home / Products / Get Found / Online Listings",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "HVAC Marketing Software",
+          "marketingSearchTerm": "HVAC scheduling and marketing software",
+          "landingPageUrl": "https://www.thryv.com/solutions/home-services?utm_source=bing&utm_medium=cpc&utm_campaign=hvac_software",
+          "websiteJourney": "Home / Solutions / By Industry / Home Services",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Salon Booking Software",
+          "marketingSearchTerm": "salon booking and marketing software",
+          "landingPageUrl": "https://www.thryv.com/solutions/beauty-wellness?utm_source=google&utm_medium=cpc&utm_campaign=salon_booking",
+          "websiteJourney": "Home / Solutions / By Industry / Beauty & Wellness",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Thryv Pricing, Compare Plans",
+          "marketingSearchTerm": "thryv pricing",
+          "landingPageUrl": "https://www.thryv.com/pricing?utm_source=google&utm_medium=cpc&utm_campaign=pricing_compare",
+          "websiteJourney": "Home / Pricing / Amplify Plan",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Done For You Social Media",
+          "marketingSearchTerm": "done for you social media for small business",
+          "landingPageUrl": "https://www.thryv.com/products/grow-faster/social-boosts?utm_source=bing&utm_medium=cpc&utm_campaign=dfy_social",
+          "websiteJourney": "Home / Products / Grow Faster / Social Boosts",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Less Stress More Bookings",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.thryv.com/products/grow-faster?utm_source=facebook&utm_medium=paid_social&utm_campaign=less_stress_more_bookings",
+          "websiteJourney": "Home / Products / Grow Faster / AI Lead Insights",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Thryv Boosts, Done For You Marketing",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.thryv.com/products/win-more-customers/ads-boosts?utm_source=instagram&utm_medium=paid_social&utm_campaign=thryv_boosts_dfy",
+          "websiteJourney": "Home / Products / Win More Customers / Ads Boosts",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Book A Demo Retargeting",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.thryv.com/demo?utm_source=facebook&utm_medium=paid_social&utm_campaign=demo_retargeting",
+          "websiteJourney": "Home / Pricing / Signature Plan",
+          "signals": [
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Lead Generation, Home Services",
+          "marketingSearchTerm": "lead generation for home services",
+          "landingPageUrl": "https://www.thryv.com/products/win-more-customers/thryv-leads?utm_source=google&utm_medium=cpc&utm_campaign=lead_gen_home",
+          "websiteJourney": "Home / Products / Win More Customers / Thryv Leads",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Website Builder With SEO",
+          "marketingSearchTerm": "small business website builder with seo",
+          "landingPageUrl": "https://www.thryv.com/products/get-found/professional-website?utm_source=google&utm_medium=cpc&utm_campaign=website_seo",
+          "websiteJourney": "Home / Products / Get Found / Professional Website",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Brand Boosts, Stand Out",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.thryv.com/products/grow-faster/brand-boosts?utm_source=instagram&utm_medium=paid_social&utm_campaign=brand_boosts",
+          "websiteJourney": "Home / Products / Grow Faster / Brand Boosts",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic Search",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local Business Growth Tips",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.thryv.com/resources/blog/local-business-growth?utm_source=organic&utm_medium=organic",
+          "websiteJourney": "Home / Resources / Learn / Blog",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic Search",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Free Online Presence Scan",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.thryv.com/resources/free-tools/online-presence-scan?utm_source=organic&utm_medium=organic",
+          "websiteJourney": "Home / Resources / Free Tools / Online Presence Scan",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic Search",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Reputation Software SMB",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.thryv.com/products/get-found/reputation-management?utm_source=organic&utm_medium=organic",
+          "websiteJourney": "Home / Products / Get Found / Reputation Management",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Thryv vs Competitor",
+          "marketingSearchTerm": "thryv vs competitor",
+          "landingPageUrl": "https://www.thryv.com/why-thryv/customer-stories?utm_source=google&utm_medium=cpc&utm_campaign=thryv_vs",
+          "websiteJourney": "Home / Resources / Why Thryv / Customer Stories",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "How To Thryv Webinar",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.thryv.com/resources/events-webinars/how-to-thryv?utm_source=facebook&utm_medium=paid_social&utm_campaign=how_to_thryv_webinar",
+          "websiteJourney": "Home / Resources / Learn / Events & Webinars",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic Search",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Review Link Generator Tool",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.thryv.com/resources/free-tools/review-link-generator?utm_source=organic&utm_medium=organic",
+          "websiteJourney": "Home / Resources / Free Tools / Review Link Generator",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Reputation Management, Reviews",
+          "marketingSearchTerm": "reputation management software for small business",
+          "landingPageUrl": "https://www.thryv.com/products/grow-faster/automated-reviews?utm_source=bing&utm_medium=cpc&utm_campaign=auto_reviews",
+          "websiteJourney": "Home / Products / Grow Faster / Automated Reviews",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Thryv)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "38,443"
+            },
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Plan Sold (Percent)",
+              "value": "19%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$30,624,312"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "6,151"
+            },
+            {
+              "label": "Billing Question (Percent)",
+              "value": "7%"
+            },
+            {
+              "label": "Support Request (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Onboarding Help (Percent)",
+              "value": "4%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "45%"
+            },
+            {
+              "label": "Not A Fit (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Plan Sold (Percent)",
+              "value": "19%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sales Call (Count)",
+            "values": [
+              4187,
+              7041,
+              7318,
+              7262,
+              6484
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              2214,
+              3761,
+              3918,
+              3842,
+              3564
+            ]
+          },
+          {
+            "name": "Not A Fit (Count)",
+            "values": [
+              1086,
+              1842,
+              1914,
+              1873,
+              1742
+            ]
+          },
+          {
+            "name": "Plan Sold (Count)",
+            "values": [
+              938,
+              1592,
+              1654,
+              1622,
+              1498
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Plan Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38443,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "15,842",
+                "34%",
+                "15%",
+                "$10,366,956"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "9,631",
+                "37%",
+                "18%",
+                "$7,261,992"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "6,417",
+                "40%",
+                "21%",
+                "$5,645,424"
+              ]
+            },
+            {
+              "name": "LinkedIn",
+              "metrics": [
+                "4,238",
+                "43%",
+                "25%",
+                "$4,439,280"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "2,315",
+                "47%",
+                "30%",
+                "$2,910,660"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Plan Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38443,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "14,206",
+                "35%",
+                "14%",
+                "$9,029,932"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "9,884",
+                "38%",
+                "17%",
+                "$7,035,840"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "7,321",
+                "41%",
+                "20%",
+                "$6,639,032"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "4,132",
+                "44%",
+                "24%",
+                "$4,154,496"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "2,900",
+                "48%",
+                "31%",
+                "$3,765,012"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Plan Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38443,
+          "rows": [
+            {
+              "name": "Less Stress More Bookings",
+              "metrics": [
+                "7,842",
+                "36%",
+                "15%",
+                "$4,925,088"
+              ]
+            },
+            {
+              "name": "Thryv Boosts Done For You Marketing",
+              "metrics": [
+                "5,318",
+                "39%",
+                "18%",
+                "$4,007,916"
+              ]
+            },
+            {
+              "name": "Free Trial Small Business CRM",
+              "metrics": [
+                "3,961",
+                "42%",
+                "21%",
+                "$3,484,416"
+              ]
+            },
+            {
+              "name": "Book a Demo Retargeting",
+              "metrics": [
+                "2,687",
+                "45%",
+                "25%",
+                "$2,814,336"
+              ]
+            },
+            {
+              "name": "SMB Marketing Software Get Found",
+              "metrics": [
+                "1,542",
+                "49%",
+                "32%",
+                "$2,064,684"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Plan Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38443,
+          "rows": [
+            {
+              "name": "small business marketing software",
+              "metrics": [
+                "5,417",
+                "37%",
+                "16%",
+                "$3,630,996"
+              ]
+            },
+            {
+              "name": "how to get more google reviews",
+              "metrics": [
+                "3,884",
+                "40%",
+                "19%",
+                "$3,090,744"
+              ]
+            },
+            {
+              "name": "business listing management software",
+              "metrics": [
+                "2,761",
+                "43%",
+                "22%",
+                "$2,542,116"
+              ]
+            },
+            {
+              "name": "done for you social media for small business",
+              "metrics": [
+                "1,938",
+                "46%",
+                "26%",
+                "$2,110,752"
+              ]
+            },
+            {
+              "name": "local seo service for contractors",
+              "metrics": [
+                "1,142",
+                "50%",
+                "33%",
+                "$1,578,876"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Demo Set (Industry) (Percent)",
+            "Plan Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Get Found",
+              "metrics": [
+                "12,847",
+                "36%",
+                "13%",
+                "$7,281,644"
+              ]
+            },
+            {
+              "name": "Win More Customers",
+              "metrics": [
+                "9,613",
+                "38%",
+                "16%",
+                "$6,438,215"
+              ]
+            },
+            {
+              "name": "Grow Faster",
+              "metrics": [
+                "7,286",
+                "40%",
+                "19%",
+                "$5,867,932"
+              ]
+            },
+            {
+              "name": "Thryv Boosts",
+              "metrics": [
+                "5,394",
+                "44%",
+                "28%",
+                "$6,344,107"
+              ]
+            },
+            {
+              "name": "Analytics & Insights",
+              "metrics": [
+                "3,303",
+                "48%",
+                "34%",
+                "$4,692,414"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Plan Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38443,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "11,428",
+                "34%",
+                "14%",
+                "$6,714,382"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "9,247",
+                "36%",
+                "16%",
+                "$6,183,517"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "7,613",
+                "38%",
+                "19%",
+                "$6,071,224"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "6,342",
+                "42%",
+                "24%",
+                "$6,381,905"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "3,813",
+                "47%",
+                "33%",
+                "$5,273,284"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Plan Sold (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Get Found",
+            "values": [
+              254,
+              402,
+              388,
+              401,
+              286
+            ]
+          },
+          {
+            "name": "Win More Customers",
+            "values": [
+              218,
+              356,
+              348,
+              362,
+              258
+            ]
+          },
+          {
+            "name": "Grow Faster",
+            "values": [
+              197,
+              322,
+              318,
+              331,
+              230
+            ]
+          },
+          {
+            "name": "Thryv Boosts",
+            "values": [
+              214,
+              348,
+              342,
+              356,
+              250
+            ]
+          },
+          {
+            "name": "Analytics & Insights",
+            "values": [
+              158,
+              258,
+              254,
+              262,
+              191
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 38,443 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Maria Callahan, who runs an HVAC company, called about upgrading to the Signature Plan for social media management and AI reviews. Oscar reviewed the $399 monthly pricing and the waived onboarding fee, then scheduled a demo for the following week. Maria was enthusiastic and confirmed all of her details.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Derek Nguyen, owner of a beauty salon, called to add Social Boosts and automated reviews to his current plan. Lila explained how the done-for-you social campaigns work and booked a demo to finalize the package. Derek scheduled the demo and sounded eager to grow bookings.",
+          "date": "Feb 11, 1:52 PM",
+          "agent": "Lila",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 85,
+          "summary": "Trevor Okafor, a plumbing contractor, called asking about Search Boosts and local SEO to rank higher in Google. Rosey outlined the managed SEO service and scheduled a demo to map out target keywords. Trevor booked the demo and was pleased with the plan.",
+          "date": "Mar 3, 9:27 AM",
+          "agent": "Rosey",
+          "duration": "2m 18s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 10,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "James Whitfield, who is opening a new pet care business, called to schedule a demo of the Signature Plan and get set up. Lee collected his business name, phone, and email, walked through the website and listings features, and booked the demo. James was ready to move forward as a new client.",
+          "date": "Mar 24, 4:09 PM",
+          "agent": "Lee",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Angela Restrepo, an auto repair shop owner, called about Online Listings syncing across 60+ directories. Mary explained how the listings auto-update and scheduled a demo to show the dashboard. Angela booked the demo and was satisfied with the answers.",
+          "date": "Apr 8, 11:33 AM",
+          "agent": "Mary",
+          "duration": "2m 04s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Brandon Silva called to check the status of his Online Listings sync after signing up last week. Mike confirmed the listings were propagating across directories and would finish within 24-48h. Brandon was reassured but did not need a demo.",
+          "date": "Apr 22, 3:41 PM",
+          "agent": "Mike",
+          "duration": "1m 28s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 17,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Priya Anand called to dispute a charge on her Signature Plan invoice, saying she was billed the onboarding fee that should have been waived. Jennifer reviewed the account, filed a billing correction, and issued a credit. Priya remained mildly frustrated but accepted the fix.",
+          "date": "May 5, 8:57 AM",
+          "agent": "Jennifer",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Kevin Doyle called because his professional website was showing an outdated phone number and a broken contact form. Rose logged a support ticket and escalated it to the web team for a fix. Kevin was annoyed by the delay but agreed to wait for the update.",
+          "date": "May 19, 2:15 PM",
+          "agent": "Rose",
+          "duration": "1m 56s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 25,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Nadia Farouk called to cancel her Social Boosts add-on because she felt engagement had not improved. Sue reviewed the recent reports and offered to adjust the campaign, but Nadia asked to cancel anyway. Sue processed the cancellation request.",
+          "date": "Jun 2, 12:38 PM",
+          "agent": "Sue",
+          "duration": "2m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Marcus Feld called to complain that his Ads Boosts were not generating enough calls despite the monthly ad spend. Oscar reviewed the campaign metrics and promised an optimization review with the ads team. Marcus stayed skeptical and wanted results soon.",
+          "date": "Jun 16, 5:03 PM",
+          "agent": "Oscar",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Sofia Mendez called asking how the automated reviews feature requests feedback from customers. Lila explained the AI review management and booked a demo to show the reputation dashboard. Sofia scheduled the demo before ending the call.",
+          "date": "Jul 7, 10:49 AM",
+          "agent": "Lila",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Aaron Blake called to cancel his Signature Plan, citing budget cuts at his law firm. Jennifer offered the Starter Plan as a downgrade, but Aaron insisted on canceling. Jennifer logged the cancellation and the account close date.",
+          "date": "Jul 21, 3:26 PM",
+          "agent": "Jennifer",
+          "duration": "2m 09s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Rachel Kim left a voicemail asking about Search Boosts pricing for her home services company after hours. The call rolled to voicemail and no agent was available to take it. A follow-up was queued for the next business day.",
+          "date": "Aug 4, 7:52 PM",
+          "agent": "No Agent",
+          "duration": "0m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Victor Hale called upset that his website redesign was behind schedule and his listings still showed the wrong hours. Mike apologized, escalated both issues, and set expectations for a resolution timeline. Victor remained dissatisfied with the progress.",
+          "date": "Sep 9, 1:11 PM",
+          "agent": "Mike",
+          "duration": "3m 21s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Elena Rossi called furious about a duplicate charge and threatened to cancel all of her services. Sue reviewed the billing history, confirmed the duplicate, and started a refund while trying to retain the account. Elena stayed angry and undecided about staying.",
+          "date": "Oct 2, 4:47 PM",
+          "agent": "Sue",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "signature plan",
+        "boosts",
+        "listings",
+        "reviews",
+        "cancel",
+        "website"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 41s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Service Type Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area & ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Demo Availability",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Onboarding",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Document Company Industry",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Compliance & Data Privacy Check",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller mentioned losing bookings to online competitors",
+        "Caller asked about social media management",
+        "Caller expressed interest in reputation features",
+        "Caller confirmed service area coverage",
+        "Caller confirmed multi-location eligibility",
+        "Agent greeted warmly within 2 rings",
+        "Agent confirmed caller's business type early",
+        "Agent offered specific plan recommendation",
+        "Caller showed interest in Ads Boosts feature",
+        "Caller asked about pricing structure",
+        "Agent secured commitment to demo",
+        "Caller provided phone number",
+        "Caller mentioned current marketing pain point"
+      ],
+      "unmetSignals": [
+        "Email address not captured in system",
+        "Agent did not explain onboarding timeline or process",
+        "Caller did not confirm device preference for demo",
+        "Agent did not mention review management specifically during intake",
+        "Caller did not ask about trial period or risk reversal",
+        "Agent did not qualify on existing software spend",
+        "Caller did not confirm decision maker availability for demo",
+        "Caller did not specify preferred demo time window",
+        "Agent did not highlight 40 percent revenue lift metric",
+        "Agent did not mention AI Lead Insights feature",
+        "Agent missed opportunity to ask about team size for features",
+        "Caller uncertain about Signature vs Amplify plan fit"
+      ],
+      "naSignals": [
+        "Contract renewal terms not discussed",
+        "Existing invoice history not relevant",
+        "Payment method not established for intake",
+        "Refund or credit request policies not applicable",
+        "Customer support ticket history not discussed",
+        "Billing address verification not required at demo stage",
+        "Churn risk indicators not assessed at intake",
+        "Competitor contract end dates not explored",
+        "Service upgrade path not evaluated yet",
+        "Downtime impact assessment not relevant"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes, the caller runs a small HVAC contracting firm and is losing leads to larger competitors with strong Google visibility. They struggle with consistent social media updates and managing online reviews, which directly affects their ability to win more bookings in their service area."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a platform that can help them be found online across listings and Google, manage their social presence without hiring staff, and boost their reputation through review management. They want to understand pricing and see a demo before committing, especially to determine if Signature or Amplify plan best fits their two-location operation."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent built good rapport and qualified the core need effectively, but missed capturing the email address and did not set clear expectations about the demo timeline or what the caller should prepare. Adding a brief mention of onboarding support and the AI Lead Insights revenue-lift benefit would have strengthened perceived value."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Thank you for calling Thryv, this is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:08",
+          "text": "Hi Marcus. I run a small HVAC company in the Denver area, two locations, and we're losing jobs to competitors who seem to dominate Google and have active social media. I heard Thryv might help with that."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:28",
+          "text": "That's a great fit for us, and I'm glad you reached out. A lot of HVAC contractors are in the same boat. Thryv specializes in getting service businesses like yours found online and winning more bookings. Can I get your name first?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:42",
+          "text": "Yeah, it's Robert Chen."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:46",
+          "text": "Thanks, Robert. So when you say you're losing jobs to competitors, are you mostly looking to improve your Google visibility, or are social media and reviews also a concern?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:04",
+          "text": "All three, honestly. We're okay on Google Maps, but it's inconsistent. Our review count is low compared to competitors, and we do not post on social media at all. That's hurting us."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:22",
+          "text": "That makes total sense. Our platform covers all three areas. We can auto-sync your business info across 60 plus directories, manage your reviews with AI assistance, and handle social posting so you do not have to. We serve both of your locations from one dashboard. Your service area is Colorado, correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:44",
+          "text": "Yes, Denver metro area, both locations. We service parts of Boulder County too."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:56",
+          "text": "Perfect. So we have a couple of plans. Our Signature plan at 399 a month includes the website builder, all listing syncing, review management, social media management for up to five profiles, and lead insights. There's also an Ads Boosts option if you want us to manage paid search campaigns to drive even more calls. Does that sound like something worth exploring?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:26",
+          "text": "Yeah, absolutely. What's the onboarding like? And how quickly do we start seeing results?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:38",
+          "text": "Onboarding is usually just a quick setup call where we get your branding and service area details locked in. Most clients start seeing activity and lead scoring within the first week or two. You'll have a dedicated support team via phone and email 24/7. I'd love to get you booked in for a demo so we can walk through the whole platform and customize which features make most sense for your two locations. What day works best for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:11",
+          "text": "How about next Wednesday afternoon? I'm pretty flexible between 1 and 4 PM."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:24",
+          "text": "Perfect, I'll get you on the calendar for next Wednesday between 1 and 4 PM. One more thing, Robert, just to confirm your phone number we have on file is ****2847, is that still the best way to reach you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:40",
+          "text": "Yeah, that's correct."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:44",
+          "text": "Great. I'll send over a calendar invite and a quick prep guide before the demo so you know what to expect. Thanks so much for calling Thryv, Robert. We're excited to help you win more bookings. Have a great rest of your day."
+        },
+        {
+          "speaker": "caller",
+          "time": "03:58",
+          "text": "Thanks, Marcus. Talk soon."
+        }
+      ],
+      "aiSummary": "Robert Chen, owner of a two-location HVAC contracting firm in the Denver metro area, called to explore Thryv's platform after noticing that competitors with stronger Google visibility and active social media are capturing more bookings. Marcus quickly identified the core pain points: low review counts, no social media presence, and inconsistent online visibility across both locations. Marcus positioned the Signature plan at 399 per month as a fit for all three areas (listings, reviews, and social), and Robert confirmed strong interest and booked a demo for the following Wednesday afternoon. The call ended with Robert's phone number confirmed and Marcus committed to sending a prep guide before the meeting.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, nice work on this intake. You built rapport quickly, asked the right discovery questions around their pain points, and nailed the positioning of Signature plan for their two-location setup. One small coaching note: you missed capturing Robert's email address, which we'll need for the prep guide and calendar invite. Also, next time try to mention how our AI Lead Insights can help them generate 40 percent more revenue per client. It strengthens perceived value before the demo. Great structure overall."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "38,443"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$796.62"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$30,624,312"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "22,417"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "58%"
+            },
+            {
+              "label": "Demo: Scheduled (Count)",
+              "value": "14,993"
+            },
+            {
+              "label": "Demo: Scheduled (Percent)",
+              "value": "39%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "16,026"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "42%"
+            },
+            {
+              "label": "Demo: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Demos)",
+          "chart": {
+            "legend": "Demo: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Direct",
+                "value": 57,
+                "display": "57%"
+              },
+              {
+                "name": "Referral/Partner",
+                "value": 48,
+                "display": "48%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 35,
+                "display": "35%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Demos)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Demo: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "12,884",
+                  "31%",
+                  "$9,842,177"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "9,662",
+                  "35%",
+                  "$7,684,553"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "7,431",
+                  "41%",
+                  "$6,012,884"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral/Partner",
+                  "5,213",
+                  "48%",
+                  "$4,231,466"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "3,253",
+                  "57%",
+                  "$2,853,232"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 15000,
+            "axisTicks": [
+              0,
+              3000,
+              6000,
+              9000,
+              12000,
+              15000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 13442,
+                "display": "13,442"
+              },
+              {
+                "name": "paid-social",
+                "value": 8921,
+                "display": "8,921"
+              },
+              {
+                "name": "organic",
+                "value": 7662,
+                "display": "7,662"
+              },
+              {
+                "name": "email",
+                "value": 5118,
+                "display": "5,118"
+              },
+              {
+                "name": "referral",
+                "value": 3300,
+                "display": "3,300"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Demos)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Demo: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "13,442",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "paid-social",
+                  "8,921",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "7,662",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "5,118",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "3,300",
+                  "55%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "SMB Marketing Software: Get Found",
+                "value": 6882,
+                "display": "6,882"
+              },
+              {
+                "name": "Less Stress More Bookings",
+                "value": 5214,
+                "display": "5,214"
+              },
+              {
+                "name": "Thryv Boosts: Done-For-You Marketing",
+                "value": 4127,
+                "display": "4,127"
+              },
+              {
+                "name": "Free Trial: Small Business CRM",
+                "value": 3051,
+                "display": "3,051"
+              },
+              {
+                "name": "Book a Demo Retargeting",
+                "value": 2088,
+                "display": "2,088"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Demos)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Demo: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "SMB Marketing Software: Get Found",
+                  "6,882",
+                  "32%",
+                  "$2,884,551"
+                ]
+              },
+              {
+                "cells": [
+                  "Less Stress More Bookings",
+                  "5,214",
+                  "37%",
+                  "$2,231,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Thryv Boosts: Done-For-You Marketing",
+                  "4,127",
+                  "44%",
+                  "$1,764,332"
+                ]
+              },
+              {
+                "cells": [
+                  "Free Trial: Small Business CRM",
+                  "3,051",
+                  "53%",
+                  "$1,318,447"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "small business marketing software",
+                "value": 3884,
+                "display": "3,884"
+              },
+              {
+                "name": "all in one CRM for service business",
+                "value": 2662,
+                "display": "2,662"
+              },
+              {
+                "name": "how to get more google reviews",
+                "value": 2113,
+                "display": "2,113"
+              },
+              {
+                "name": "business listing management software",
+                "value": 1547,
+                "display": "1,547"
+              },
+              {
+                "name": "local SEO service for contractors",
+                "value": 1088,
+                "display": "1,088"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Demos)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Demo: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "small business marketing software",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "all in one CRM for service business",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "how to get more google reviews",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "business listing management software",
+                  "56%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Demo: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Get Found",
+              "13,662",
+              "33%",
+              "62%"
+            ]
+          },
+          {
+            "cells": [
+              "Win More Customers",
+              "10,884",
+              "38%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Grow Faster",
+              "8,213",
+              "45%",
+              "53%"
+            ]
+          },
+          {
+            "cells": [
+              "Thryv Boosts",
+              "5,684",
+              "54%",
+              "48%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Demo: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Dallas HQ",
+              "12,884",
+              "1,088",
+              "6%",
+              "34%"
+            ]
+          },
+          {
+            "cells": [
+              "Atlanta Sales Center",
+              "10,213",
+              "842",
+              "5%",
+              "38%"
+            ]
+          },
+          {
+            "cells": [
+              "Phoenix Support Center",
+              "8,662",
+              "662",
+              "4%",
+              "44%"
+            ]
+          },
+          {
+            "cells": [
+              "Chicago Sales Center",
+              "6,684",
+              "483",
+              "3%",
+              "52%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1284,
+              1362,
+              1288,
+              1240,
+              1238
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1062,
+              1108,
+              1074,
+              1042,
+              1032
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              932,
+              968,
+              944,
+              918,
+              900
+            ]
+          },
+          {
+            "name": "Needs Partner Approval",
+            "values": [
+              778,
+              802,
+              786,
+              762,
+              756
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              636,
+              658,
+              642,
+              622,
+              616
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "15,377"
+          },
+          {
+            "label": "Demo Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Plan Sold (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$17,455,858"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Plan Sold (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,891,342"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Plan Sold (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,127,654"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Plan Sold (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,624,189"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Plan Sold (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,442,718"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Plan Sold (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,892,157"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Plan Sold (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,403,798"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Plan Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 19240,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "4827",
+                "58%",
+                "29%",
+                "$4,315,892"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "3651",
+                "57%",
+                "32%",
+                "$4,127,664"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "2984",
+                "54%",
+                "31%",
+                "$3,891,457"
+              ]
+            },
+            {
+              "name": "Free Tools & Lead Magnets",
+              "metrics": [
+                "2341",
+                "56%",
+                "34%",
+                "$3,209,748"
+              ]
+            },
+            {
+              "name": "Referral & Affiliate",
+              "metrics": [
+                "1574",
+                "52%",
+                "38%",
+                "$2,010,097"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Plan Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18158,
+          "rows": [
+            {
+              "name": "Search",
+              "metrics": [
+                "5241",
+                "59%",
+                "28%",
+                "$4,612,318"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "3847",
+                "55%",
+                "30%",
+                "$3,728,941"
+              ]
+            },
+            {
+              "name": "Display & Retargeting",
+              "metrics": [
+                "2563",
+                "53%",
+                "32%",
+                "$3,124,267"
+              ]
+            },
+            {
+              "name": "Email & SMS",
+              "metrics": [
+                "1926",
+                "57%",
+                "35%",
+                "$2,891,673"
+              ]
+            },
+            {
+              "name": "Direct & Other",
+              "metrics": [
+                "1438",
+                "51%",
+                "36%",
+                "$2,198,659"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Plan Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 19784,
+          "rows": [
+            {
+              "name": "SMB Marketing Software, Get Found Online",
+              "metrics": [
+                "3692",
+                "60%",
+                "27%",
+                "$3,891,245"
+              ]
+            },
+            {
+              "name": "Less Stress More Bookings, Thryv Boosts",
+              "metrics": [
+                "2847",
+                "56%",
+                "29%",
+                "$3,127,854"
+              ]
+            },
+            {
+              "name": "Free Online Presence Scan",
+              "metrics": [
+                "2183",
+                "54%",
+                "33%",
+                "$2,824,691"
+              ]
+            },
+            {
+              "name": "Local SEO for Service Contractors",
+              "metrics": [
+                "1756",
+                "52%",
+                "35%",
+                "$2,391,847"
+              ]
+            },
+            {
+              "name": "Done For You Social Media Marketing",
+              "metrics": [
+                "1341",
+                "49%",
+                "37%",
+                "$1,847,256"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Plan Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 17652,
+          "rows": [
+            {
+              "name": "small business marketing software",
+              "metrics": [
+                "2841",
+                "57%",
+                "26%",
+                "$3,089,341"
+              ]
+            },
+            {
+              "name": "business listing management software",
+              "metrics": [
+                "2156",
+                "58%",
+                "28%",
+                "$2,534,687"
+              ]
+            },
+            {
+              "name": "all in one CRM for service business",
+              "metrics": [
+                "1873",
+                "54%",
+                "31%",
+                "$2,187,294"
+              ]
+            },
+            {
+              "name": "done for you social media for small business",
+              "metrics": [
+                "1427",
+                "52%",
+                "34%",
+                "$1,984,517"
+              ]
+            },
+            {
+              "name": "local SEO service for contractors",
+              "metrics": [
+                "1089",
+                "49%",
+                "37%",
+                "$1,401,482"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Plan Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Signature Plan",
+              "metrics": [
+                "4829",
+                "59%",
+                "26%",
+                "$4,187,294"
+              ]
+            },
+            {
+              "name": "Ads Boosts",
+              "metrics": [
+                "3641",
+                "56%",
+                "31%",
+                "$4,052,187"
+              ]
+            },
+            {
+              "name": "Search Boosts (SEO)",
+              "metrics": [
+                "2847",
+                "54%",
+                "34%",
+                "$3,284,619"
+              ]
+            },
+            {
+              "name": "Social Boosts",
+              "metrics": [
+                "2156",
+                "52%",
+                "36%",
+                "$2,751,948"
+              ]
+            },
+            {
+              "name": "Brand Boosts",
+              "metrics": [
+                "1904",
+                "48%",
+                "39%",
+                "$3,179,810"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Plan Sold (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Signature Plan",
+            "values": [
+              334,
+              312,
+              298,
+              297,
+              286
+            ]
+          },
+          {
+            "name": "Ads Boosts",
+            "values": [
+              312,
+              298,
+              284,
+              276,
+              259
+            ]
+          },
+          {
+            "name": "Search Boosts (SEO)",
+            "values": [
+              288,
+              267,
+              248,
+              231,
+              202
+            ]
+          },
+          {
+            "name": "Social Boosts",
+            "values": [
+              221,
+              198,
+              179,
+              163,
+              144
+            ]
+          },
+          {
+            "name": "Brand Boosts",
+            "values": [
+              312,
+              289,
+              261,
+              241,
+              208
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Demo Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Demo Scheduled (Percent)",
+            "value": "26%"
+          },
+          {
+            "label": "Demo Scheduled (Count)",
+            "value": "347"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "892"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Demo Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Demo Scheduled (Percent)",
+            "value": "3.2%"
+          },
+          {
+            "label": "Demo Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Demo Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Demo Scheduled",
+            "values": [
+              73,
+              79,
+              71,
+              78,
+              74,
+              72,
+              81,
+              75,
+              78,
+              76,
+              79,
+              73,
+              77,
+              80,
+              72,
+              75,
+              78,
+              74,
+              76,
+              79,
+              73,
+              77,
+              75,
+              71,
+              79,
+              74,
+              78,
+              81,
+              76,
+              75,
+              73,
+              79,
+              178,
+              192,
+              167,
+              185,
+              173,
+              189,
+              174,
+              181,
+              168,
+              186,
+              179,
+              172,
+              184,
+              177,
+              169,
+              188,
+              175
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,156"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "697"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "682"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Demo Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Free Marketing Scan Inquiry",
+            "values": [
+              8,
+              12,
+              9,
+              11,
+              10,
+              13
+            ]
+          },
+          {
+            "name": "Google Reviews and Reputation Help",
+            "values": [
+              6,
+              9,
+              11,
+              7,
+              10,
+              8
+            ]
+          },
+          {
+            "name": "Local SEO and Listing Management",
+            "values": [
+              11,
+              8,
+              12,
+              10,
+              9,
+              11
+            ]
+          },
+          {
+            "name": "Social Media and Content Boost Pricing",
+            "values": [
+              4,
+              7,
+              5,
+              8,
+              6,
+              9
+            ]
+          },
+          {
+            "name": "Done-For-You Lead Generation Service",
+            "values": [
+              3,
+              5,
+              2,
+              6,
+              4,
+              7
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "35,368"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "25,181"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Demo Booked (Count)",
+            "value": "14,993"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$30,624,312"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Hernandez",
+              "value": 247,
+              "display": "247"
+            },
+            {
+              "name": "Jennifer Liu",
+              "value": 189,
+              "display": "189"
+            },
+            {
+              "name": "David Patterson",
+              "value": 216,
+              "display": "216"
+            },
+            {
+              "name": "Amber Rodriguez",
+              "value": 174,
+              "display": "174"
+            },
+            {
+              "name": "Kevin O'Brien",
+              "value": 201,
+              "display": "201"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Demo Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Chen",
+            "values": [
+              142,
+              178,
+              201,
+              224,
+              267
+            ]
+          },
+          {
+            "name": "Michael Torres",
+            "values": [
+              118,
+              156,
+              189,
+              211,
+              248
+            ]
+          },
+          {
+            "name": "Lisa Kowalski",
+            "values": [
+              135,
+              167,
+              194,
+              219,
+              251
+            ]
+          },
+          {
+            "name": "James Martinez",
+            "values": [
+              154,
+              181,
+              205,
+              238,
+              279
+            ]
+          },
+          {
+            "name": "Angela Brooks",
+            "values": [
+              127,
+              159,
+              186,
+              216,
+              252
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Hernandez",
+              "value": 56.2,
+              "display": "56.2%"
+            },
+            {
+              "name": "Jennifer Liu",
+              "value": 58.7,
+              "display": "58.7%"
+            },
+            {
+              "name": "David Patterson",
+              "value": 57.4,
+              "display": "57.4%"
+            },
+            {
+              "name": "Amber Rodriguez",
+              "value": 55.8,
+              "display": "55.8%"
+            },
+            {
+              "name": "Kevin O'Brien",
+              "value": 59.1,
+              "display": "59.1%"
+            },
+            {
+              "name": "Robert Singh",
+              "value": 58.3,
+              "display": "58.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Demo Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Hernandez",
+                "56.2%",
+                "28%",
+                "$1,047,804",
+                "1,423"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Liu",
+                "58.7%",
+                "31%",
+                "$1,268,472",
+                "1,391"
+              ]
+            },
+            {
+              "cells": [
+                "David Patterson",
+                "57.4%",
+                "29%",
+                "$1,089,276",
+                "1,467"
+              ]
+            },
+            {
+              "cells": [
+                "Amber Rodriguez",
+                "55.8%",
+                "27%",
+                "$973,458",
+                "1,344"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin O'Brien",
+                "59.1%",
+                "32%",
+                "$1,317,648",
+                "1,412"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Singh",
+                "58.3%",
+                "30%",
+                "$1,204,266",
+                "1,459"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Chen",
+              "value": 92.4,
+              "display": "92.4%"
+            },
+            {
+              "name": "Michael Torres",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "Lisa Kowalski",
+              "value": 91.2,
+              "display": "91.2%"
+            },
+            {
+              "name": "James Martinez",
+              "value": 93.1,
+              "display": "93.1%"
+            },
+            {
+              "name": "Angela Brooks",
+              "value": 90.5,
+              "display": "90.5%"
+            },
+            {
+              "name": "Patricia Nguyen",
+              "value": 87.8,
+              "display": "87.8%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Demo Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Chen",
+                "92.4%",
+                "64%",
+                "$1,926,144",
+                "1,549"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Torres",
+                "89.7%",
+                "61%",
+                "$1,787,274",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Kowalski",
+                "91.2%",
+                "63%",
+                "$1,894,617",
+                "1,508"
+              ]
+            },
+            {
+              "cells": [
+                "James Martinez",
+                "93.1%",
+                "66%",
+                "$2,042,958",
+                "1,537"
+              ]
+            },
+            {
+              "cells": [
+                "Angela Brooks",
+                "90.5%",
+                "62%",
+                "$1,854,138",
+                "1,492"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Nguyen",
+                "87.8%",
+                "59%",
+                "$1,718,526",
+                "1,504"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Demo Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Demo Booked (Count)",
+        "rightMax": 700,
+        "rightTicks": [
+          0,
+          175,
+          350,
+          525,
+          700
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 556
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 533
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 496
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 474
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 413
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 433
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 478
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 497
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 554
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 537
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 484
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 468
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 417
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 429
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 489
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 504
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 548
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 540
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 474
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 459
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 423
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 427
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 498
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 514
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 542
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 541
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 467
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 448
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 430
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 428
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 492
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1400000,
+        "rightTicks": [
+          0,
+          466666.6666666667,
+          933333.3333333334,
+          1400000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1135216
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1088053
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1013199
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 966787
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 841766
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 883410
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 975878
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1014345
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1131000
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1096574
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 987647
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 954581
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 849416
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 875548
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 999112
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1029557
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1120469
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1103032
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 967240
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 936561
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 862166
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 871204
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1016333
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1050023
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1106235
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1104626
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 953400
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 914158
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 877116
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 872886
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1026774
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "38,443"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,075"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,307"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "85%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "412",
+                "89%",
+                "84%",
+                "83%"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Chen",
+                "389",
+                "87%",
+                "86%",
+                "86%"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Rodriguez",
+                "531",
+                "88%",
+                "85%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "38,443 calls",
+      "pagerLabel": "1 of 3,844",
+      "calls": [
+        {
+          "time": "1/6/26 9:12 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 10:41 am",
+          "id": "A21C-4E9B7730FA18"
+        },
+        {
+          "time": "1/12/26 11:27 am",
+          "id": "C93D-1AF6082B44E7"
+        },
+        {
+          "time": "1/14/26 12:53 pm",
+          "id": "7B4E-96C10D5EA372"
+        },
+        {
+          "time": "1/16/26 1:19 pm",
+          "id": "E08A-3D72F1490BC6"
+        },
+        {
+          "time": "1/20/26 2:04 pm",
+          "id": "9F17-6BE24A80D935"
+        },
+        {
+          "time": "1/22/26 3:38 pm",
+          "id": "D64B-2C09E7F15A83"
+        },
+        {
+          "time": "1/26/26 4:11 pm",
+          "id": "3A55-8D1F60B4297C"
+        },
+        {
+          "time": "1/28/26 4:47 pm",
+          "id": "B7E2-5091AC3F6D74"
+        },
+        {
+          "time": "1/30/26 5:22 pm",
+          "id": "1C89-742DB0E65F31"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Thryv, this is Danielle. How can I help your business grow today?",
+          "highlights": [
+            "Thank you for calling Thryv",
+            "this is Danielle"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Danielle. I run an HVAC company, we do heating and cooling repairs, and honestly nobody can find us online. I saw one of your ads about getting more bookings.",
+          "highlights": [
+            "HVAC company",
+            "getting more bookings"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:18",
+          "text": "You are in the right place. Can I get your name and the name of your business so I can pull up your area?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:25",
+          "text": "Sure, it's Marcus Delgado, the company is Delgado Heating and Air, we're just outside Phoenix.",
+          "highlights": [
+            "Marcus Delgado"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:33",
+          "text": "Thanks Marcus. So when someone searches for HVAC repair near you right now, are you showing up on Google at all?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:41",
+          "text": "Barely. My listing is a mess, the hours are wrong on a couple sites, and I've got maybe three reviews. Meanwhile the big guys down the street are all over the map results.",
+          "highlights": [
+            "the big guys down the street are all over the map results"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:52",
+          "text": "That is exactly what our Signature plan fixes. It syncs your business info across 60 plus directories like Google, Yelp, and Nextdoor automatically, plus it manages review requests so you build up that reputation.",
+          "highlights": [
+            "Signature plan",
+            "60 plus directories"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:04",
+          "text": "Okay, that sounds like what I need. What does something like that run per month? I'm a small shop, I want to keep it manageable.",
+          "highlights": [
+            "what does something like that run per month",
+            "I want to keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:13",
+          "text": "Totally understand. The Signature plan is 399 a month, and it includes the listings, reputation management, a professional website with SEO, and social media management. The 250 dollar onboarding fee is waived on that plan.",
+          "highlights": [
+            "Signature plan is 399 a month",
+            "onboarding fee is waived"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:26",
+          "text": "Alright. I'll be honest, I'm getting a couple of quotes this week, another company pitched me just doing my Google ads for less.",
+          "highlights": [
+            "I'm getting a couple of quotes this week"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:35",
+          "text": "That is smart to compare. The difference is ads alone stop working the day you stop paying. Signature builds your listings, reviews, and website so you keep getting found organically, and you can always add Ads Boosts on top when you are ready.",
+          "highlights": [
+            "Ads Boosts"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:48",
+          "text": "That makes sense. One thing though, I don't want to be locked into some long deal if it isn't working out.",
+          "highlights": [
+            "I don't want to be locked into some long deal"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:56",
+          "text": "I hear you, and I'd rather show you the platform before you commit to anything. Let me set up a quick demo so you can see your own listings and how we'd clean them up. No obligation.",
+          "highlights": [
+            "set up a quick demo",
+            "No obligation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:06",
+          "text": "Yeah, I could do that. Mornings are better for me, I'm out on jobs in the afternoon.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:13",
+          "text": "Perfect. I have Thursday at 10 AM open with one of our specialists. Does that work?",
+          "highlights": [
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:19",
+          "text": "Thursday at 10 works. Send it to my email, it's marcus at delgadohvac dot com.",
+          "highlights": [
+            "Thursday at 10 works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:26",
+          "text": "Got it, Marcus. You are booked for Thursday at 10 AM, and I'll email a confirmation with a link to the demo right now.",
+          "highlights": [
+            "You are booked for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:33",
+          "text": "Great, thank you Danielle. Appreciate the help.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:37",
+          "text": "My pleasure. Thanks for calling Thryv, and we'll talk Thursday. Have a great day.",
+          "highlights": [
+            "Thanks for calling Thryv",
+            "Have a great day"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Demo: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: Get Found Online",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Product: Signature Plan",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Product: Listings & Reputation",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Pricing Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Marcus Delgado, owner of Delgado Heating and Air near Phoenix, called after seeing a Thryv ad because his HVAC business is hard to find online, has inaccurate listings, and only a few reviews. Danielle recommended the Signature plan at 399 a month for its 60 plus directory listings sync, reputation management, professional website with SEO, and social media management, and noted the 250 dollar onboarding fee is waived. She addressed his budget, competitor, and contract concerns, then scheduled a no obligation demo for Thursday at 10 AM and captured his email for confirmation.",
+        "keyPoints": [
+          "New client: Marcus Delgado, Delgado Heating and Air (HVAC), Phoenix area",
+          "Need: get found online, fix inaccurate listings, build reviews",
+          "Recommended Signature plan at 399 per month with onboarding fee waived",
+          "Handled budget, competitor quote, and no lock in concerns",
+          "Demo scheduled for Thursday at 10 AM",
+          "Contact captured: marcus at delgadohvac dot com"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Demo booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "24,219 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,422",
+      "conversations": [
+        {
+          "id": "C847-3A9F5B2E1C6D",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hi there. Thanks for texting Thryv. I'm here to help local service businesses get more bookings and grow faster. Are you looking to improve your online presence or win more customers this quarter?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:49 PM",
+              "text": "Yeah we need help with our Google reviews and getting found online. We run an HVAC business in Phoenix."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Great. HVAC is perfect for our platform. Quick question: are you currently using any marketing software or listing management tools right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:53 PM",
+              "text": "No, we pretty much do everything manually. It's a mess honestly."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "I hear you. Most of our HVAC partners start exactly where you are. Our Reputation Management and Online Listings features automatically sync your business info to 60 plus directories including Google, Yelp, and Nextdoor. Plus our AI review management can monitor and respond to reviews for you. Does that sound like something that would help?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:57 PM",
+              "text": "That actually sounds really good. How much does it cost?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:59 PM",
+              "text": "We have flexible plans starting at 99 dollars a month for businesses just building their online presence. Most HVAC contractors benefit from our Signature Plan at 399 monthly, which includes everything plus social media management and AI lead insights. That helps you convert leads at 1.5 times the rate. Want to see a quick personalized demo?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:01 PM",
+              "text": "Yeah I'd be interested in a demo. What does that involve?"
+            },
+            {
+              "speaker": "agent",
+              "time": "3:03 PM",
+              "text": "Perfect. I can have one of our product experts walk you through exactly how this works for HVAC businesses. They'll show you the listings, review management, and lead scoring in action. How does Thursday at 2 PM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:05 PM",
+              "text": "Thursday at 2 is good. What's the number to call?"
+            },
+            {
+              "speaker": "agent",
+              "time": "3:07 PM",
+              "text": "Excellent. Your demo is confirmed for Thursday, January 16th at 2 PM. Our team will call you at this number. You'll also get a reminder email tomorrow. Looking forward to showing you how Thryv can help your HVAC business grow. See you Thursday."
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:09 PM",
+              "text": "Thanks. See you then."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Demo: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Business Type: HVAC",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Service Area: Phoenix",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Interest: Reputation Management and Online Listings",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Current State: No Marketing Software",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C847-3A9F5B2E1C6D",
+            "smsStartTime": "1/15/26 2:47 pm",
+            "destinationPhone": "602-448-7156",
+            "totalMessages": "14",
+            "source": "602-448-7156",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "877-936-2933",
+            "repeatCaller": "No",
+            "city": "Phoenix",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "Marcus Johnson",
+            "firstName": "Marcus",
+            "lastName": "Johnson",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C521-7D4B2E89A5F1",
+          "time": "1/18/26 9:34 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C521-7D4B2E89A5F1",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C693-1F8C5A2D7E4B",
+          "time": "1/22/26 4:12 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C693-1F8C5A2D7E4B",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C429-6B3F9A1E2C7D",
+          "time": "1/28/26 11:18 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C429-6B3F9A1E2C7D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "38,443 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,844",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/14/26 4:12 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there. Thanks for calling Thryv. This is Marcus speaking. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Yeah, hi. I'm calling because I saw your ad about the marketing platform for home service businesses. I run a plumbing company here in Phoenix and I'm trying to figure out how to get more calls."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "That's great. We help a lot of plumbing contractors get found online and book more jobs. Quick question, are you currently using any kind of online scheduling or CRM system right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "No, not really. I mean, my customers text me or call my cell phone directly. It's getting pretty messy as we grow."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Yeah, I hear that a lot. So when a customer calls in, how many of those calls do you think you're actually able to answer or follow up on?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "Honestly, probably like sixty percent. The rest just go to voicemail and I might miss them, especially during the busy season."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Okay, so there's real money being left on the table. We actually have a solution that captures those calls, routes them properly, and helps you get found higher in Google search and on maps. Before I tell you more, what's your biggest challenge right now. Is it getting found online, managing the leads you do get, or both?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "Definitely getting found. I'm competing with these bigger chains and I feel like I'm invisible online. My Google profile isn't even set up right."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "That's super common and honestly one of the fastest things to fix. Thryv actually manages all of that. Your business info automatically syncs to sixty plus directories. We handle Google, Yelp, all of it. Would it make sense to have someone walk you through exactly how this would work for your plumbing business?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Yeah, that sounds good. How long would that take?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "About thirty minutes. We'd show you your marketing score, how you compare to your competitors, and what we'd do to get you more qualified calls. Does tomorrow at ten a.m. work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Tomorrow at ten is perfect. I've got a job site but I can jump on a call."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "Perfect. I'm putting that down for tomorrow, January fifteenth at ten a.m. Pacific time. We'll send you a calendar invite and a reminder text. If anything comes up, you can call us back at eight seven seven, nine three six, twenty nine thirty three. Does that work?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:20 PM",
+              "text": "Yeah, that's great. Thanks, Marcus."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:20 PM",
+              "text": "You're welcome. We'll see you tomorrow. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Demo: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Plumbing",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Challenge: Lead Generation",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location: Phoenix Arizona",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Competitor Awareness",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate: 30 min Demo",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/14/26 4:12 pm",
+            "duration": "8:23",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "602-447-8156",
+            "repeatCaller": "No",
+            "city": "Phoenix",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "David Martinez",
+            "firstName": "David",
+            "lastName": "Martinez",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B521-7A3CD891E2F4",
+          "time": "1/18/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B521-7A3CD891E2F4",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C834-9F5B1D4A6E7C",
+          "time": "1/22/26 11:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C834-9F5B1D4A6E7C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D742-8B2E6F9A1C3D",
+          "time": "1/29/26 3:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D742-8B2E6F9A1C3D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: I'm Thryv's AI agent, and I can help you get a personalized quote and a free online presence scan. Right now Signature includes a waived $250 onboarding fee, so would you like to get started?",
+        "Qualify one question at a time: To match you with the right plan I'll ask a few quick questions one at a time, your industry (like HVAC, salon, or legal), how many locations you run, which goals matter most (getting found, winning more customers, or growing faster), your timeline to start, and your ZIP code so I can confirm availability in your area.",
+        "Estimate then book: Once I confirm we serve your area, I'll share a preliminary range based on what you shared, for example the Starter Plan starts at $99 per month and Signature at $399 per month with Amplify custom priced, then recommend a personalized demo with a specialist for an exact quote. I can book you for Thursday at 2:00 PM, and you'll get a reminder text before the demo with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Thryv_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Products & Boosts",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Pricing & Plans",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Get a Demo",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Plan upgrade\",\"question\":\"How do I upgrade from Starter to Signature?\",\"answer\":\"Your Success Manager can move you to the Signature Plan at $399 per month, which adds social media management, an SEO website, and AI Lead Insights. I can set up a quick call to walk you through the switch.\"},{\"topic\":\"Boost status\",\"question\":\"Can I check how my Ads Boosts campaign is performing?\",\"answer\":\"Yes, your marketing dashboard shows clicks, calls, and spend in real time, and your Boosts specialist reviews results with you monthly. I can schedule a check-in to go over the numbers.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What is Thryv?",
+              "answer": "Thryv is an all in one small business software and marketing platform that helps local service businesses get found, win more customers, and grow faster. The best next step is a personalized demo so we can tailor it to your business."
+            },
+            {
+              "question": "How much does Thryv cost?",
+              "answer": "Plans start at $99 per month for Starter and $399 per month for Signature, with Amplify custom priced for larger needs. A specialist can build an exact quote for you on a quick demo."
+            },
+            {
+              "question": "What is included in the Starter Plan?",
+              "answer": "Starter includes a digital marketing score, an AI website builder, posting to 60 plus listing directories, AI review management, trackable phone numbers, and 24/7 chat support. I can book a demo to show it in action."
+            },
+            {
+              "question": "What is included in the Signature Plan?",
+              "answer": "Signature includes everything in Starter plus social media management, an SEO and AEO custom website, advanced listings, competitive insights, AI Lead Insights, and 24/7 phone and email support. Let's set up a demo so a specialist can walk you through it."
+            },
+            {
+              "question": "What is the Amplify Plan?",
+              "answer": "Amplify includes everything in Signature plus a Custom Boosts Suite, and it is tailored to businesses looking to attract more leads. Pricing is custom, so a specialist can quote it on a demo."
+            },
+            {
+              "question": "What are Thryv Boosts?",
+              "answer": "Thryv Boosts are done for you marketing services where our experts manage your ads, social media, listings, and search visibility to drive more clicks and calls. A demo is the best way to see which Boosts fit your goals."
+            },
+            {
+              "question": "Do you help with Google reviews?",
+              "answer": "Yes, our Reputation Management uses AI to monitor, acknowledge, and request reviews automatically to build your online reputation. I can schedule a demo to show how it works for your business."
+            },
+            {
+              "question": "Can Thryv build me a website?",
+              "answer": "Yes, Starter includes an AI website builder and Signature includes a professionally designed website with SEO and AEO tools. Let's book a demo so a specialist can review your options."
+            },
+            {
+              "question": "Does Thryv manage my social media?",
+              "answer": "Signature includes social media management with a post calendar, content library, CaptionAI and ImageAI, and up to 5 profiles. A demo can show you the full workflow."
+            },
+            {
+              "question": "What industries do you work with?",
+              "answer": "We support automotive, beauty and salon, health and wellness, home services, HVAC, legal, pet care, plumbing, and professional services. Book a demo and we'll tailor everything to your industry."
+            },
+            {
+              "question": "How does Thryv help me get more leads?",
+              "answer": "Thryv Leads and Ads Boosts drive qualified leads while AI Lead Insights scores and prioritizes your hottest prospects. A specialist can map this out for you on a demo."
+            },
+            {
+              "question": "What is the onboarding fee?",
+              "answer": "There is a one time $250 onboarding fee, and it is waived when you choose the Signature Plan. I can book a demo to confirm current offers for you."
+            },
+            {
+              "question": "How does listing management work?",
+              "answer": "Online Listings automatically syncs your business info across 60 plus sites including Google, Yelp, Nextdoor, and Yahoo. Let's set up a demo to see it live."
+            },
+            {
+              "question": "Can I track my phone calls?",
+              "answer": "Yes, trackable phone numbers are included so you can see which marketing drives your calls. A demo will show you the full analytics dashboard."
+            },
+            {
+              "question": "How is Thryv different from competitors?",
+              "answer": "Thryv combines software and done for you marketing services in one platform, backed by over 125 years helping local businesses and trusted by 100,000 plus of them. A demo is the best way to compare it to your current tools."
+            },
+            {
+              "question": "Do you offer analytics and reporting?",
+              "answer": "Yes, you get a digital marketing score, marketing dashboard, competitor ranking, heat mapping, and website analytics so you stop guessing. I can schedule a demo to walk through the reports."
+            },
+            {
+              "question": "Is there a free trial?",
+              "answer": "Thryv offers ways to try the platform, and we can confirm the current options on your demo. Let's find a time that works for you."
+            },
+            {
+              "question": "How long does setup take?",
+              "answer": "Setup timelines vary by plan and services, and your onboarding team guides you through each step. A specialist can give you a clear timeline on a quick demo."
+            },
+            {
+              "question": "Can Thryv help me get found in AI search?",
+              "answer": "Yes, Search Boosts help you stand out in both search and AI results so more customers can find you. Book a demo and a specialist will show how it applies to your business."
+            },
+            {
+              "question": "How do I get started?",
+              "answer": "The easiest first step is a personalized demo where a specialist reviews your goals and builds an exact quote. I can find a day and time that works for you right now."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule a demo\",\"follow_up_message\":\"Great, I have you down for a personalized Thryv demo. What day and time work best, and I'll send a reminder text with a number to call before we meet?\"},{\"intent\":\"Request a quote\",\"follow_up_message\":\"Happy to help with a quote. Based on your industry and goals a specialist can build your exact pricing on a short demo, so let's pick a time that works for you today.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Thryv's AI agent. I can help you get a personalized quote and set up a quick demo. Would you like to get started?",
+        "goal": "Qualify the small business owner's industry, goals, and timeline, then book a personalized virtual demo with a specialist.",
+        "bookingType": "personalized virtual demo",
+        "offer": "Get your $250 onboarding fee waived when you start with the Signature Plan",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "What industry is your business in, for example HVAC, salon, legal, or home services?",
+          "How many locations do you operate?",
+          "Which goal matters most right now, getting found, winning more customers, or growing faster?",
+          "How soon are you looking to get started?",
+          "What's your ZIP code so I can confirm the best options for your area?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:36 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:36 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:36 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Thryv",
+      "callerName": "Marcus Chen",
+      "callerPhone": "(480) 555-0127",
+      "campaign": "AI Lead Insights, Phoenix Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Demo Lead",
+      "estimatedValue": "$3,847",
+      "googleSearch": "HVAC scheduling and marketing software",
+      "websiteSearch": "all in one CRM for service business",
+      "callingWebpage": "/products/win-more-customers/ai-lead-insights",
+      "products": "AI Lead Insights, Ads Boosts",
+      "cartId": "THR-5093K",
+      "serviceable": "Yes",
+      "email": "marcus.chen@hvacphoenix.com",
+      "street": "2847 North 16th Street",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zip": "85016",
+      "digitalJourney": "/home › /solutions/by-industry/home-services › /products/win-more-customers › /products/win-more-customers/ai-lead-insights",
+      "intent": "HVAC contractor seeking AI lead scoring and expert managed ads to convert more service calls and reduce manual lead review time.",
+      "coverage": "ZIP 85016 confirmed. Phoenix serviceable",
+      "switchIntent": "High. Currently manual lead qualification. Wants to see how 40 percent revenue lift claim works for his dispatch team.",
+      "greeting": "Hi Marcus, thanks for calling Thryv. I see you're looking to get smarter lead scoring and managed paid ads for your HVAC business. Can we schedule a demo where our team shows you how AI Lead Insights and Ads Boosts work together to bring you more high-quality service calls?"
+    },
+    "smsScreenpop": {
+      "brandName": "Thryv",
+      "callerName": "Sarah Mitchell",
+      "callerPhone": "(512) 555-0184",
+      "campaign": "Social Boosts and Online Listings, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Demo Lead",
+      "estimatedValue": "$2,156",
+      "googleSearch": "salon booking and marketing software",
+      "websiteSearch": "done for you social media for small business",
+      "callingWebpage": "/products/get-found/online-listings",
+      "products": "Social Boosts, Online Listings",
+      "cartId": "THR-7241M",
+      "serviceable": "Yes",
+      "email": "sarah.mitchell@austinsalon.com",
+      "street": "1205 South Congress Avenue",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78704",
+      "digitalJourney": "/home › /resources/free-tools › /solutions/by-industry/beauty-wellness › /products/get-found/online-listings",
+      "intent": "Salon owner needing automated social media content and 60+ directory listing sync to increase visibility and bookings across channels.",
+      "coverage": "ZIP 78704 confirmed. Austin serviceable",
+      "appointment": "Beauty salon social media and listings strategy call with marketing specialist. Thu Jul 18, 2:00 PM",
+      "greeting": "Hi Sarah, this is Jenna from Thryv. Thanks for texting. We've got you booked for Thu at 2 PM with our team to walk through social content calendars and how we sync your salon info across Google, Yelp, and 60+ directories automatically. Any quick questions I can answer before then?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Thryv",
+      "brandDomain": "www.thryv.com",
+      "brandIcon": "📱",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Austin, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Small Business Marketing Software, Get Found",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "all in one CRM for service business",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Products / Win More Customers / Search Boosts",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Online Listings, AI Lead Insights",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Austin, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "demo_new_business",
+          "name": "Demo, New Project"
+        },
+        {
+          "id": "support_existing",
+          "name": "Support, Existing Client"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi, thanks for calling Thryv. I see you're exploring our platform to grow your service business. Are you looking to book a demo today or just have a few quick questions?",
+          "sigs": [],
+          "q": [
+            35,
+            40,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, we run a home services company in Austin and we've been trying to get more leads through Google and local search. Your listing management and SEO tools caught our eye.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Home services company, local search focused"
+            },
+            {
+              "c": "blue",
+              "t": "Interest in <strong>Online Listings</strong> and SEO"
+            },
+            {
+              "c": "orange",
+              "t": "Lead generation pain point"
+            }
+          ],
+          "q": [
+            55,
+            30,
+            15
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect fit. Our Search Boosts and Online Listings help home services companies get found by high-intent customers. How many locations are you managing, and would you say you're ready to move forward with a dedicated strategy?",
+          "sigs": [],
+          "q": [
+            72,
+            18,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We have three locations in the Austin area, and honestly yes, we're ready. We've been DIY-ing our marketing and it's taking too much time. We just want to know if it's going to work for our specific service type and what the investment looks like.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Three locations</strong>, local market ready"
+            },
+            {
+              "c": "blue",
+              "t": "Budget-ready, time-constrained"
+            },
+            {
+              "c": "purple",
+              "t": "Needs <strong>personalized strategy consultation</strong>"
+            }
+          ],
+          "q": [
+            88,
+            7,
+            5
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent. I'm going to route you to our demo team who specializes in home services growth strategies. They'll walk you through how Thryv's Search Boosts, AI Lead Insights, and listing management work across your three locations and give you a clear ROI picture. Sound good?",
+          "sigs": [],
+          "q": [
+            96,
+            3,
+            1
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Demo Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get your demo scheduled (Agent)\", \"book you a demo (Agent)\", \"I'd like to see a demo (Caller)\", \"put you on the calendar with a specialist (Agent)\"])",
+          "createdAt": "03/12/25 9:14 am",
+          "updatedAt": "01/08/26 2:47 pm"
+        },
+        {
+          "name": "Competitor Comparison (Intent)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"right now I use Yelp (Caller)\", \"how do you compare to GoDaddy (Caller)\", \"we're on Housecall Pro (Caller)\", \"switching from Podium (Caller)\"])",
+          "createdAt": "02/18/25 11:02 am",
+          "updatedAt": "12/22/25 4:19 pm"
+        },
+        {
+          "name": "Demo Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"walk you through the platform (Agent)\", \"tour of the dashboard (Agent)\", \"show you how the listings sync works (Agent)\", \"see it in action (Caller)\"])",
+          "createdAt": "01/29/25 3:41 pm",
+          "updatedAt": "11/30/25 10:08 am"
+        },
+        {
+          "name": "Empathy & Rapport (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy & Rapport] < 60 and duration > 45 sec",
+          "createdAt": "12/05/24 8:55 am",
+          "updatedAt": "01/12/26 1:33 pm"
+        },
+        {
+          "name": "Listings & Reviews Interest (Intent)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"get more Google reviews (Caller)\", \"update my business listings (Caller)\", \"show up on Yelp and Nextdoor (Caller)\", \"sync my info across directories (Agent)\"])",
+          "createdAt": "11/14/24 2:20 pm",
+          "updatedAt": "12/18/25 9:47 am"
+        },
+        {
+          "name": "Needs Discovery (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Needs Discovery] < 60 and duration > 45 sec",
+          "createdAt": "12/09/24 10:31 am",
+          "updatedAt": "01/06/26 4:52 pm"
+        },
+        {
+          "name": "Next Steps Set (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Next Steps Set] < 60 and duration > 45 sec",
+          "createdAt": "01/03/25 9:18 am",
+          "updatedAt": "01/15/26 11:26 am"
+        },
+        {
+          "name": "Objection Handling (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Objection Handling] < 60 and duration > 45 sec",
+          "createdAt": "12/20/24 1:44 pm",
+          "updatedAt": "01/10/26 3:05 pm"
+        },
+        {
+          "name": "Pricing Objection (Intent)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"that's out of my budget (Caller)\", \"why is the Signature Plan so much (Caller)\", \"is the onboarding fee waived (Caller)\", \"can you do anything on price (Caller)\"])",
+          "createdAt": "02/07/25 8:39 am",
+          "updatedAt": "12/29/25 5:11 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the Signature Plan is $399 a month (Agent)\", \"Starter runs $99 per month (Agent)\", \"Ads Boosts start around $300 plus ad spend (Agent)\", \"I'll send over a custom quote (Agent)\"])",
+          "createdAt": "03/01/25 10:52 am",
+          "updatedAt": "01/09/26 12:40 pm"
+        }
+      ]
+    }
+  }
+}

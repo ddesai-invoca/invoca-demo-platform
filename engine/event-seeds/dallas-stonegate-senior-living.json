@@ -1,0 +1,5324 @@
+{
+  "id": "stonegate-senior-living",
+  "customerName": "Stonegate Senior Living",
+  "websiteUrl": "https://stonegatesl.com",
+  "brandDomain": "stonegatesl.com",
+  "networkName": "Invoca for Senior Living",
+  "industry": "Senior Living & Post-Acute Care",
+  "bookingTerm": "Tour",
+  "customerNoun": "Resident",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 10000,
+      "yTicks": [
+        2000,
+        4000,
+        6000,
+        8000,
+        10000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 5412
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 9187
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 8934
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 8721
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 8341
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Tour Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Tour Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Memory Care Dallas, Now Admitting",
+          "marketingSearchTerm": "memory care facilities near me Texas",
+          "landingPageUrl": "https://stonegatesl.com/living-options/memory-care/?utm_source=google&utm_medium=cpc&utm_campaign=memory_care_dallas",
+          "websiteJourney": "Home / Living Options / Memory Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Short-Term Rehab After Hospital",
+          "marketingSearchTerm": "short term rehab after hospital stay Plano",
+          "landingPageUrl": "https://stonegatesl.com/living-options/short-term-skilled-nursing-rehabilitation/?utm_source=google&utm_medium=cpc&utm_campaign=short_term_rehab",
+          "websiteJourney": "Home / Living Options / Short Term Skilled Nursing & Rehabilitation",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Skilled Nursing Near Me, DFW",
+          "marketingSearchTerm": "skilled nursing facility that accepts Medicaid Dallas",
+          "landingPageUrl": "https://stonegatesl.com/living-options/short-term-skilled-nursing-rehabilitation/?utm_source=google&utm_medium=cpc&utm_campaign=skilled_nursing_dfw",
+          "websiteJourney": "Home / Living Options / Short Term Skilled Nursing & Rehabilitation",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Assisted Living DFW, Medicaid Accepted",
+          "marketingSearchTerm": "assisted living Dallas Fort Worth",
+          "landingPageUrl": "https://stonegatesl.com/living-options/assisted-living/?utm_source=bing&utm_medium=cpc&utm_campaign=assisted_living_dfw",
+          "websiteJourney": "Home / Living Options / Assisted Living",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Respite Care for Elderly DFW",
+          "marketingSearchTerm": "respite care for elderly parent DFW",
+          "landingPageUrl": "https://stonegatesl.com/living-options/respite-care/?utm_source=google&utm_medium=cpc&utm_campaign=respite_care_dfw",
+          "websiteJourney": "Home / Living Options / Respite Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Outpatient Therapy for Seniors",
+          "marketingSearchTerm": "outpatient physical therapy for seniors near me",
+          "landingPageUrl": "https://stonegatesl.com/living-options/outpatient-therapies/?utm_source=google&utm_medium=cpc&utm_campaign=outpatient_therapy",
+          "websiteJourney": "Home / Living Options / Outpatient Therapies",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Texas Owned & Operated Since 2001",
+          "marketingSearchTerm": "does Medicare cover skilled nursing rehab",
+          "landingPageUrl": "https://stonegatesl.com/resources/faqs/?utm_source=google&utm_medium=organic&utm_campaign=faq_insurance",
+          "websiteJourney": "Home / Resources / FAQs",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Affordable Independent Living 55+",
+          "marketingSearchTerm": "affordable independent living seniors 55+ Dallas",
+          "landingPageUrl": "https://stonegatesl.com/living-options/independent-living/?utm_source=google&utm_medium=organic&utm_campaign=independent_living",
+          "websiteJourney": "Home / Living Options / Independent Living",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Community Finder, East Texas",
+          "marketingSearchTerm": "senior living community East Texas",
+          "landingPageUrl": "https://stonegatesl.com/supported-properties/east-texas/?utm_source=google&utm_medium=organic&utm_campaign=community_finder",
+          "websiteJourney": "Home / Supported Properties / East Texas",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Community Finder, Oklahoma",
+          "marketingSearchTerm": "skilled nursing Oklahoma near me",
+          "landingPageUrl": "https://stonegatesl.com/supported-properties/oklahoma/?utm_source=google&utm_medium=organic&utm_campaign=community_finder_ok",
+          "websiteJourney": "Home / Supported Properties / Oklahoma",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Southern Hospitality Senior Care",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://stonegatesl.com/about-us/why-choose-us/?utm_source=facebook&utm_medium=social&utm_campaign=southern_hospitality",
+          "websiteJourney": "Home / About Us / Why Choose Us",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "StoneGate Family Stories",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://stonegatesl.com/living-options/memory-care/?utm_source=facebook&utm_medium=social&utm_campaign=family_stories",
+          "websiteJourney": "Home / Living Options / Memory Care",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Southern Hospitality Senior Care",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://stonegatesl.com/living-options/assisted-living/?utm_source=instagram&utm_medium=social&utm_campaign=southern_hospitality",
+          "websiteJourney": "Home / Living Options / Assisted Living",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Long Term Care DFW",
+          "marketingSearchTerm": "long term care facility Dallas",
+          "landingPageUrl": "https://stonegatesl.com/living-options/long-term-care/?utm_source=google&utm_medium=cpc&utm_campaign=long_term_care",
+          "websiteJourney": "Home / Living Options / Long Term Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Accel Rehab Hospital of Plano",
+          "marketingSearchTerm": "acute inpatient rehabilitation Plano",
+          "landingPageUrl": "https://stonegatesl.com/living-options/short-term-skilled-nursing-rehabilitation/?utm_source=google&utm_medium=organic&utm_campaign=accel_plano",
+          "websiteJourney": "Home / Living Options / Short Term Skilled Nursing & Rehabilitation",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Google Business Profile, Lewisville",
+          "marketingSearchTerm": "StoneGate Senior Living reviews",
+          "landingPageUrl": "https://stonegatesl.com/contact-us/?utm_source=google&utm_medium=organic&utm_campaign=gbp_lewisville",
+          "websiteJourney": "Home / Contact Us",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Memory Care Dallas, Now Admitting",
+          "marketingSearchTerm": "secured memory care dementia Dallas",
+          "landingPageUrl": "https://stonegatesl.com/living-options/memory-care/?utm_source=bing&utm_medium=cpc&utm_campaign=memory_care_dallas",
+          "websiteJourney": "Home / Living Options / Memory Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Dallas Housing Authority Co-Marketing",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://stonegatesl.com/living-options/independent-living/?utm_source=facebook&utm_medium=social&utm_campaign=dha_affordable",
+          "websiteJourney": "Home / Living Options / Independent Living",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Wound Care & Sub-Acute DFW",
+          "marketingSearchTerm": "wound care skilled nursing Dallas",
+          "landingPageUrl": "https://stonegatesl.com/living-options/short-term-skilled-nursing-rehabilitation/?utm_source=google&utm_medium=cpc&utm_campaign=wound_care_dfw",
+          "websiteJourney": "Home / Living Options / Short Term Skilled Nursing & Rehabilitation",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "StoneGate Family Stories",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://stonegatesl.com/living-options/respite-care/?utm_source=instagram&utm_medium=social&utm_campaign=family_stories",
+          "websiteJourney": "Home / Living Options / Respite Care",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Community Finder, West Texas",
+          "marketingSearchTerm": "assisted living West Texas Medicaid",
+          "landingPageUrl": "https://stonegatesl.com/supported-properties/dallas-fort-worth-west-texas/?utm_source=google&utm_medium=organic&utm_campaign=community_finder_wt",
+          "websiteJourney": "Home / Supported Properties / Dallas Fort Worth West Texas",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Southern Hospitality Senior Care",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://stonegatesl.com/resources/faqs/?utm_source=facebook&utm_medium=social&utm_campaign=southern_hospitality",
+          "websiteJourney": "Home / Resources / FAQs",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Stonegate Senior Living)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "31,839"
+            },
+            {
+              "label": "Admissions Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Move-In (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$22,470,092"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "5,094"
+            },
+            {
+              "label": "Existing Resident Family Support (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing & Insurance Question (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Careers Recruiting Inquiry (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Admissions Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Admissions Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "52%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "20%"
+            },
+            {
+              "label": "Move-In (Percent)",
+              "value": "12%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Admissions Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Admissions Inquiry (Count)",
+            "values": [
+              3842,
+              5921,
+              6013,
+              5884,
+              5085
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              2314,
+              3642,
+              3701,
+              3588,
+              3183
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              918,
+              1402,
+              1431,
+              1376,
+              1191
+            ]
+          },
+          {
+            "name": "Move-In (Count)",
+            "values": [
+              547,
+              852,
+              861,
+              833,
+              728
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Move-In (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 31839,
+          "rows": [
+            {
+              "name": "Google Ads",
+              "metrics": [
+                "11,842",
+                "34.2%",
+                "9.2%",
+                "$6,397,231"
+              ]
+            },
+            {
+              "name": "Google Business Profile",
+              "metrics": [
+                "8,317",
+                "37.5%",
+                "11.2%",
+                "$5,469,118"
+              ]
+            },
+            {
+              "name": "Hospital Discharge Referral",
+              "metrics": [
+                "5,921",
+                "33.1%",
+                "13.2%",
+                "$4,594,662"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "3,468",
+                "39.8%",
+                "16.2%",
+                "$3,301,447"
+              ]
+            },
+            {
+              "name": "Email / CRM Nurture",
+              "metrics": [
+                "2,291",
+                "41.3%",
+                "20.5%",
+                "$2,707,634"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Move-In (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 31839,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "12,947",
+                "35.1%",
+                "8.8%",
+                "$6,879,412"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "7,613",
+                "38.2%",
+                "11.3%",
+                "$5,193,668"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "5,238",
+                "34.5%",
+                "13.1%",
+                "$4,142,331"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "3,562",
+                "40.1%",
+                "15.6%",
+                "$3,357,214"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "2,479",
+                "42.6%",
+                "19.4%",
+                "$2,897,467"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Move-In (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 13791,
+          "rows": [
+            {
+              "name": "Memory Care Dallas, Now Admitting",
+              "metrics": [
+                "4,318",
+                "33.4%",
+                "9.1%",
+                "$2,308,412"
+              ]
+            },
+            {
+              "name": "Skilled Nursing Near Me, DFW",
+              "metrics": [
+                "3,472",
+                "36.7%",
+                "11.6%",
+                "$2,367,891"
+              ]
+            },
+            {
+              "name": "Short-Term Rehab After Hospital",
+              "metrics": [
+                "2,691",
+                "32.9%",
+                "13.4%",
+                "$2,120,634"
+              ]
+            },
+            {
+              "name": "Southern Hospitality Senior Care",
+              "metrics": [
+                "1,984",
+                "38.5%",
+                "16.1%",
+                "$1,873,447"
+              ]
+            },
+            {
+              "name": "Texas Owned & Operated Since 2001",
+              "metrics": [
+                "1,326",
+                "41.9%",
+                "19.8%",
+                "$1,545,268"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Move-In (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8484,
+          "rows": [
+            {
+              "name": "memory care facilities near me texas",
+              "metrics": [
+                "2,714",
+                "33.8%",
+                "9.4%",
+                "$1,498,412"
+              ]
+            },
+            {
+              "name": "skilled nursing facility that accepts medicaid dallas",
+              "metrics": [
+                "2,138",
+                "37.1%",
+                "11.8%",
+                "$1,480,133"
+              ]
+            },
+            {
+              "name": "short term rehab after hospital stay plano",
+              "metrics": [
+                "1,627",
+                "34.2%",
+                "13.6%",
+                "$1,298,647"
+              ]
+            },
+            {
+              "name": "assisted living dallas fort worth",
+              "metrics": [
+                "1,193",
+                "39.3%",
+                "16.2%",
+                "$1,133,258"
+              ]
+            },
+            {
+              "name": "respite care for elderly parent dfw",
+              "metrics": [
+                "812",
+                "42.7%",
+                "20.1%",
+                "$957,819"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Tour Set (Industry) (Percent)",
+            "Move-In (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Skilled Nursing & Rehabilitation",
+              "metrics": [
+                "10,842",
+                "30.0%",
+                "8.0%",
+                "$5,094,224"
+              ]
+            },
+            {
+              "name": "Residential Senior Living",
+              "metrics": [
+                "8,437",
+                "32.0%",
+                "11.2%",
+                "$5,602,680"
+              ]
+            },
+            {
+              "name": "Rehabilitation & Therapy",
+              "metrics": [
+                "5,914",
+                "33.0%",
+                "14.0%",
+                "$4,868,640"
+              ]
+            },
+            {
+              "name": "Support & Relief Services",
+              "metrics": [
+                "4,326",
+                "34.0%",
+                "16.5%",
+                "$4,153,096"
+              ]
+            },
+            {
+              "name": "Independent Living",
+              "metrics": [
+                "2,320",
+                "35.0%",
+                "19.9%",
+                "$2,751,452"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Move-In (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 31839,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "13,428",
+                "34.0%",
+                "9.7%",
+                "$7,635,580"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "7,842",
+                "36.0%",
+                "11.6%",
+                "$5,369,000"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "5,231",
+                "37.0%",
+                "13.4%",
+                "$4,094,840"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "3,516",
+                "39.0%",
+                "15.6%",
+                "$3,194,840"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "1,822",
+                "41.0%",
+                "19.7%",
+                "$2,175,832"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Move-In (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Skilled Nursing & Rehabilitation",
+            "values": [
+              138,
+              201,
+              192,
+              196,
+              145
+            ]
+          },
+          {
+            "name": "Residential Senior Living",
+            "values": [
+              152,
+              214,
+              206,
+              218,
+              158
+            ]
+          },
+          {
+            "name": "Rehabilitation & Therapy",
+            "values": [
+              128,
+              182,
+              178,
+              192,
+              148
+            ]
+          },
+          {
+            "name": "Support & Relief Services",
+            "values": [
+              108,
+              158,
+              152,
+              162,
+              132
+            ]
+          },
+          {
+            "name": "Independent Living",
+            "values": [
+              72,
+              98,
+              96,
+              104,
+              91
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 31,839 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 91,
+          "summary": "Sarah Whitfield called about secured memory care for her mother who has advancing Alzheimer's. Agent Lila explained the specialized dementia activity programming and confirmed a supported community in Fort Worth had availability. Lila scheduled an in-person tour for Saturday and noted respite stays were also welcome. Sarah was reassured and grateful.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Lila",
+          "duration": "2m 48s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Robert Callahan wanted assisted living information for his father who needs help with bathing and medication. Agent Oscar described the ADL support, private and semi-private rooms, and the fine dining program. Oscar booked a tour at a Dallas community for Thursday afternoon. Robert appreciated the southern hospitality tone.",
+          "date": "Feb 11, 1:32 PM",
+          "agent": "Oscar",
+          "duration": "2m 21s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Diane Ferris called to check the status of the medical records and insurance information she faxed to the Intake Team for her husband's rehab referral. Agent Rosey confirmed the documents were received and that an insurance specialist was verifying Medicare coverage. Rosey promised a callback within the day. No new tour was scheduled.",
+          "date": "Mar 4, 3:47 PM",
+          "agent": "Rosey",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 78,
+          "summary": "First-time caller Marcus Delgado reached out to arrange assisted living for his aunt and asked whether Texas Medicaid was accepted. Agent Mary collected his contact details, his aunt's care needs, and current insurance information, then explained the Dallas Housing Authority subsidized option. Mary scheduled a tour and started an intake file. Marcus felt well guided through the process.",
+          "date": "Jan 19, 9:05 AM",
+          "agent": "Mary",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 73,
+          "summary": "Karen Blythe needed respite care for two weeks while she recovered from surgery and could not care for her mother. Agent Lee explained the short-term respite stay and daily rate range and checked availability in East Texas. Lee scheduled a tour so Karen could see the room first. She was relieved help was available.",
+          "date": "Apr 9, 4:20 PM",
+          "agent": "Lee",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 69,
+          "summary": "Thomas Nguyen questioned a monthly billing statement for his mother's long term care that seemed higher than quoted. Agent Sue reviewed the account and explained an ancillary charge for enteral therapy supplies. Sue opened a review ticket with the billing office and promised a corrected statement. Thomas remained somewhat frustrated but agreed to wait.",
+          "date": "May 15, 11:40 AM",
+          "agent": "Sue",
+          "duration": "2m 6s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 64,
+          "summary": "Angela Torres called about short-term skilled nursing and rehab for her father following a hospital stay in Plano. Agent Mike described the physical and occupational therapy program and the three hours of daily therapy. Mike scheduled a tour of the rehab unit and flagged the referral for the Intake nurses. Angela was cautiously optimistic.",
+          "date": "Jun 2, 2:18 PM",
+          "agent": "Mike",
+          "duration": "2m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 59,
+          "summary": "Gerald Simmons asked whether Medicare would cover his wife's skilled nursing rehab stay. Agent Jennifer explained that the insurance specialists work directly with the plan to determine coverage and asked him to send records to the confidential intake email. Gerald was confused about the paperwork and no tour was set. Jennifer offered to follow up once documents arrived.",
+          "date": "Jul 21, 10:52 AM",
+          "agent": "Jennifer",
+          "duration": "1m 49s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Patricia Lowell inquired about affordable independent living apartments for active seniors 55 and over near Dallas. Agent Rose described the Villages of Lakewest subsidized apartments and the income qualification process. Rose scheduled a tour for the following week. Patricia was pleased but wanted more detail on the waitlist.",
+          "date": "Aug 8, 3:29 PM",
+          "agent": "Rose",
+          "duration": "2m 15s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Frank Delacroix complained that his mother's laundry service in assisted living had been missed twice this week. Agent Oscar apologized and logged a service complaint with the community director. Oscar promised follow-up but could not confirm a resolution time. Frank stayed dissatisfied at the end of the call.",
+          "date": "Sep 3, 12:11 PM",
+          "agent": "Oscar",
+          "duration": "1m 37s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Helen Marsh reported a broken emergency call button in her father's memory care room. Agent Lila created a maintenance request and escalated it as a safety issue. Lila could not give a same-day repair guarantee, which upset Helen. The call ended with a pending work order and no tour involved.",
+          "date": "Sep 22, 9:48 AM",
+          "agent": "Lila",
+          "duration": "1m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "David Okonkwo called to cancel his mother's pending respite care reservation because the family decided on home care instead. Agent Lee processed the cancellation and confirmed no deposit had been charged. David was terse and declined a follow-up. No tour was scheduled.",
+          "date": "Oct 5, 4:03 PM",
+          "agent": "Lee",
+          "duration": "1m 10s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Nancy Pruett called after hours to ask about outpatient physical therapy scheduling for her disabled brother. The call rolled to voicemail and no agent picked up. She left a message requesting a callback about therapy gym visits. No tour was booked.",
+          "date": "Oct 14, 7:26 PM",
+          "agent": "No Agent",
+          "duration": "0m 46s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Walter Briggs was angry that his father's skilled nursing transfer paperwork was delayed and he had been told different things by two departments. Agent Sue tried to trace the intake file but could not locate a completed insurance verification. Sue apologized and promised escalation to a supervisor. Walter remained highly dissatisfied.",
+          "date": "Jan 27, 1:15 PM",
+          "agent": "Sue",
+          "duration": "2m 5s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Loretta Hanley disputed a wound care visit charge on her mother's long term care bill and said Medicaid should have covered it. Agent Jennifer explained she could not resolve the coverage question on the call and would route it to a billing specialist. Loretta felt dismissed and raised her voice. The call ended unresolved with no tour.",
+          "date": "Jan 31, 10:37 AM",
+          "agent": "Jennifer",
+          "duration": "1m 54s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "memory care",
+        "assisted living",
+        "rehab",
+        "respite",
+        "medicaid",
+        "tour"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Primary Care Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Tour Date and Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Caller Expectations for Visit",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Insurance Verification Initiation",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Greeted with facility name and introduction",
+        "Used caller's name during conversation",
+        "Confirmed caller is new to facility",
+        "Identified assisted living as primary need",
+        "Caller has aging parent requiring ADL support",
+        "Verified caller is in Dallas service area",
+        "Confirmed 75206 ZIP code",
+        "Captured cell phone number",
+        "Scheduled tour for specific date",
+        "Provided tour confirmation",
+        "Closed call professionally",
+        "Caller expressed satisfaction",
+        "Caller plans to bring family member"
+      ],
+      "unmetSignals": [
+        "Did not capture email address",
+        "Did not explain meal program included in pricing",
+        "Did not mention 24-hour personalized care feature",
+        "Did not discuss memory care upgrade option",
+        "Did not address medication assistance services",
+        "Did not confirm transportation assistance availability",
+        "Did not mention activity and social programs",
+        "Did not provide estimated pricing range",
+        "Did not offer respite care alternative",
+        "Caller did not inquire about insurance coverage"
+      ],
+      "naSignals": [
+        "Long-term care admission forms not sent",
+        "Payment plan adjustment request not made",
+        "Existing resident inquiry not applicable",
+        "Discharge coordination from hospital not triggered",
+        "Return visit after initial tour not confirmed",
+        "Family financial counseling not offered",
+        "Medicaid pre-qualification not discussed"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes, the caller is seeking an assisted living solution for an aging parent who needs help with activities of daily living and wants a safe, supportive community environment in the Dallas area."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects to schedule a facility tour, gather information about care services and amenities, and determine whether the community is a good fit for their parent's needs before making a care decision."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address for tour confirmation and follow-up materials, and should have set clearer expectations about what to expect during the tour, such as meeting care coordinators or viewing specific room types."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon, thank you for calling StoneGate Senior Living. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus. My name is Jennifer Torres. I'm calling because my mom is looking for an assisted living community here in Dallas and I found your website."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:42",
+          "text": "Jennifer, that's wonderful. I'm so glad you reached out to us. Let me ask you, what specific care needs is your mom looking for right now?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:56",
+          "text": "She's having trouble with daily activities like bathing and cooking, and my brother and I wanted to find a place where she could get help but also have some independence and community."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:12",
+          "text": "That sounds like a perfect fit for our assisted living program. We focus on exactly that balance of support and independence. Just to confirm, Jennifer, are you and your mom both located in the Dallas area?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:28",
+          "text": "Yes, we're in Dallas. We're actually in the 75206 ZIP code area, so your facility is pretty close to us."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:40",
+          "text": "Perfect. We serve that area well. Let me get your contact information so I can help you schedule a tour. I have your name as Jennifer Torres and we captured your phone number ending in 4782. Is that the best number to reach you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:00",
+          "text": "Yes, that's correct. And I'd really like to schedule a tour as soon as possible."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:11",
+          "text": "Great. How does this Friday at 2 PM look for you? That would be October 25th."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:22",
+          "text": "Friday at 2 PM works perfectly. Should I bring anything with me?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:34",
+          "text": "Just bring yourself and any questions you have. Our team will walk you through everything. Thank you so much for choosing StoneGate, Jennifer. We look forward to meeting you and your mom this Friday at 2 PM."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:48",
+          "text": "Thank you so much, Marcus. I really appreciate it. See you Friday."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:58",
+          "text": "You're welcome, Jennifer. Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Torres called StoneGate Senior Living to inquire about assisted living services for her mother, who needs help with activities of daily living while maintaining independence. Marcus confirmed the family is in the Dallas 75206 service area, captured essential contact information including phone number, and successfully scheduled an assisted living facility tour for Friday, October 25th at 2 PM. While the call was structured and professional with a confirmed booking, the agent did not capture the caller's email address or set clear expectations about what to expect during the tour visit.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, nice job on the structure and tone of this call. You confirmed the service area quickly, moved the conversation forward smoothly, and closed with a specific tour date and time. Two suggestions for next time: ask for an email address so we can send tour details and follow-up materials before Friday, and briefly tell Jennifer what to expect during the visit, like mentioning she'll see a sample room or meet one of our care coordinators. This sets great expectations and reduces no-shows."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "31,839"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$705.74"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$22,470,092"
+            }
+          ]
+        },
+        {
+          "title": "NEW RESIDENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Residents (Count)",
+              "value": "19,842"
+            },
+            {
+              "label": "Caller Type: New Residents (Percent)",
+              "value": "62%"
+            },
+            {
+              "label": "Tour: Scheduled (Count)",
+              "value": "10,188"
+            },
+            {
+              "label": "Tour: Scheduled (Percent)",
+              "value": "32%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING RESIDENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Resident (Count)",
+              "value": "11,997"
+            },
+            {
+              "label": "Caller Type: Existing Resident (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Tour: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Tours)",
+          "chart": {
+            "legend": "Tour: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Direct",
+                "value": 47,
+                "display": "47%"
+              },
+              {
+                "name": "Social Media",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "Referral",
+                "value": 34,
+                "display": "34%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 29,
+                "display": "29%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Tours)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Tour: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "11,842",
+                  "24%",
+                  "$8,142,377"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "8,436",
+                  "29%",
+                  "$6,038,451"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "5,318",
+                  "34%",
+                  "$3,721,884"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "3,927",
+                  "41%",
+                  "$2,884,120"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "2,316",
+                  "47%",
+                  "$1,683,260"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 12000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 10648,
+                "display": "10,648"
+              },
+              {
+                "name": "organic",
+                "value": 8214,
+                "display": "8,214"
+              },
+              {
+                "name": "referral",
+                "value": 5691,
+                "display": "5,691"
+              },
+              {
+                "name": "social",
+                "value": 4127,
+                "display": "4,127"
+              },
+              {
+                "name": "email",
+                "value": 3159,
+                "display": "3,159"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Tours)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Tour: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "10,648",
+                  "25%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "8,214",
+                  "28%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "5,691",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "4,127",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "3,159",
+                  "44%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Skilled Nursing Near Me DFW",
+                "value": 6842,
+                "display": "6,842"
+              },
+              {
+                "name": "Memory Care Dallas Now Admitting",
+                "value": 5318,
+                "display": "5,318"
+              },
+              {
+                "name": "Short-Term Rehab After Hospital",
+                "value": 4127,
+                "display": "4,127"
+              },
+              {
+                "name": "Southern Hospitality Senior Care",
+                "value": 2913,
+                "display": "2,913"
+              },
+              {
+                "name": "Texas Owned Since 2001",
+                "value": 1984,
+                "display": "1,984"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Tours)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Tour: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Skilled Nursing Near Me DFW",
+                  "6,842",
+                  "26%",
+                  "$3,984,220"
+                ]
+              },
+              {
+                "cells": [
+                  "Memory Care Dallas Now Admitting",
+                  "5,318",
+                  "30%",
+                  "$3,102,558"
+                ]
+              },
+              {
+                "cells": [
+                  "Short-Term Rehab After Hospital",
+                  "4,127",
+                  "35%",
+                  "$2,417,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Southern Hospitality Senior Care",
+                  "2,913",
+                  "42%",
+                  "$1,741,655"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "assisted living dallas fort worth",
+                "value": 3842,
+                "display": "3,842"
+              },
+              {
+                "name": "memory care facilities near me texas",
+                "value": 2917,
+                "display": "2,917"
+              },
+              {
+                "name": "short term rehab after hospital plano",
+                "value": 2138,
+                "display": "2,138"
+              },
+              {
+                "name": "skilled nursing accepts medicaid dallas",
+                "value": 1584,
+                "display": "1,584"
+              },
+              {
+                "name": "respite care for elderly parent dfw",
+                "value": 1092,
+                "display": "1,092"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Tours)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Tour: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "assisted living dallas fort worth",
+                  "27%"
+                ]
+              },
+              {
+                "cells": [
+                  "memory care facilities near me texas",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "short term rehab after hospital plano",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "skilled nursing accepts medicaid dallas",
+                  "45%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Residents",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Tour: Scheduled (Percent)",
+          "Caller Type: New Residents (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Residential Senior Living",
+              "10,842",
+              "28%",
+              "64%"
+            ]
+          },
+          {
+            "cells": [
+              "Skilled Nursing & Rehabilitation",
+              "8,317",
+              "33%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Rehabilitation & Therapy",
+              "4,928",
+              "39%",
+              "51%"
+            ]
+          },
+          {
+            "cells": [
+              "Support & Relief Services",
+              "2,741",
+              "46%",
+              "47%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Tour: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "StoneGate at Lewisville",
+              "9,842",
+              "842",
+              "6%",
+              "27%"
+            ]
+          },
+          {
+            "cells": [
+              "Villages of Lakewest Dallas",
+              "7,318",
+              "618",
+              "5%",
+              "31%"
+            ]
+          },
+          {
+            "cells": [
+              "Accel Rehabilitation Hospital of Plano",
+              "5,127",
+              "397",
+              "4%",
+              "37%"
+            ]
+          },
+          {
+            "cells": [
+              "StoneGate East Texas",
+              "3,584",
+              "246",
+              "3%",
+              "44%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1184,
+              1342,
+              1258,
+              1196,
+              1162
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1024,
+              1118,
+              1082,
+              1054,
+              1040
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              812,
+              886,
+              854,
+              838,
+              827
+            ]
+          },
+          {
+            "name": "Needs Family Approval",
+            "values": [
+              698,
+              742,
+              728,
+              712,
+              704
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              452,
+              498,
+              486,
+              482,
+              472
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "12,736"
+          },
+          {
+            "label": "Tour Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Move-In (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$12,807,952"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Move-In (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$847,392"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Move-In (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,156,840"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Move-In (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,923,568"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Move-In (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,089,644"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Move-In (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,107,288"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Move-In (Percent)",
+              "value": "39%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,683,220"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Tour Scheduled (Percent)",
+            "Move-In (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 15847,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "4,287",
+                "58%",
+                "30%",
+                "$3,821,340"
+              ]
+            },
+            {
+              "name": "Google Paid Search",
+              "metrics": [
+                "3,156",
+                "54%",
+                "32%",
+                "$3,248,992"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "2,841",
+                "59%",
+                "35%",
+                "$3,284,595"
+              ]
+            },
+            {
+              "name": "Referral Network",
+              "metrics": [
+                "1,652",
+                "53%",
+                "36%",
+                "$1,951,872"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "800",
+                "48%",
+                "28%",
+                "$647,153"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Tour Scheduled (Percent)",
+            "Move-In (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 15634,
+          "rows": [
+            {
+              "name": "Online Form",
+              "metrics": [
+                "5,428",
+                "55%",
+                "31%",
+                "$5,284,816"
+              ]
+            },
+            {
+              "name": "Inbound Phone Call",
+              "metrics": [
+                "3,914",
+                "58%",
+                "34%",
+                "$4,531,648"
+              ]
+            },
+            {
+              "name": "SMS Chat",
+              "metrics": [
+                "2,187",
+                "57%",
+                "33%",
+                "$2,048,384"
+              ]
+            },
+            {
+              "name": "Email Inquiry",
+              "metrics": [
+                "891",
+                "51%",
+                "29%",
+                "$748,228"
+              ]
+            },
+            {
+              "name": "Chat Widget",
+              "metrics": [
+                "316",
+                "44%",
+                "26%",
+                "$194,876"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Tour Scheduled (Percent)",
+            "Move-In (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16285,
+          "rows": [
+            {
+              "name": "Memory Care Awareness Campaign",
+              "metrics": [
+                "3,247",
+                "61%",
+                "36%",
+                "$3,870,252"
+              ]
+            },
+            {
+              "name": "Skilled Nursing Post Hospital Discharge",
+              "metrics": [
+                "2,891",
+                "56%",
+                "33%",
+                "$3,156,848"
+              ]
+            },
+            {
+              "name": "Assisted Living Solution Ads",
+              "metrics": [
+                "2,468",
+                "52%",
+                "30%",
+                "$2,418,960"
+              ]
+            },
+            {
+              "name": "Independent Living for Active Seniors",
+              "metrics": [
+                "2,124",
+                "54%",
+                "32%",
+                "$2,179,584"
+              ]
+            },
+            {
+              "name": "Respite Care Support Campaign",
+              "metrics": [
+                "1,606",
+                "47%",
+                "28%",
+                "$1,181,408"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Tour Scheduled (Percent)",
+            "Move-In (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 14917,
+          "rows": [
+            {
+              "name": "Memory care facilities near me Texas",
+              "metrics": [
+                "2,156",
+                "62%",
+                "37%",
+                "$2,643,276"
+              ]
+            },
+            {
+              "name": "Assisted living Dallas Fort Worth",
+              "metrics": [
+                "1,847",
+                "57%",
+                "34%",
+                "$2,134,352"
+              ]
+            },
+            {
+              "name": "Short term rehab after hospital stay Plano",
+              "metrics": [
+                "1,523",
+                "59%",
+                "36%",
+                "$2,016,084"
+              ]
+            },
+            {
+              "name": "Skilled nursing facility Medicaid Dallas",
+              "metrics": [
+                "1,284",
+                "51%",
+                "31%",
+                "$1,957,488"
+              ]
+            },
+            {
+              "name": "Affordable independent living seniors 55 plus Dallas",
+              "metrics": [
+                "1,096",
+                "48%",
+                "28%",
+                "$1,380,392"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Tour Scheduled (Percent)",
+            "Move-In (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Assisted Living",
+              "metrics": [
+                "3,624",
+                "59%",
+                "34%",
+                "$4,272,384"
+              ]
+            },
+            {
+              "name": "Skilled Nursing & Rehabilitation",
+              "metrics": [
+                "3,182",
+                "57%",
+                "35%",
+                "$3,746,928"
+              ]
+            },
+            {
+              "name": "Memory Care",
+              "metrics": [
+                "2,947",
+                "61%",
+                "37%",
+                "$3,508,452"
+              ]
+            },
+            {
+              "name": "Independent Living",
+              "metrics": [
+                "1,956",
+                "54%",
+                "30%",
+                "$1,859,520"
+              ]
+            },
+            {
+              "name": "Long Term Care",
+              "metrics": [
+                "1,027",
+                "48%",
+                "28%",
+                "$1,420,668"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Move-In (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Assisted Living",
+            "values": [
+              434,
+              486,
+              512,
+              501,
+              468
+            ]
+          },
+          {
+            "name": "Skilled Nursing & Rehabilitation",
+            "values": [
+              398,
+              421,
+              478,
+              491,
+              442
+            ]
+          },
+          {
+            "name": "Memory Care",
+            "values": [
+              406,
+              512,
+              478,
+              512,
+              490
+            ]
+          },
+          {
+            "name": "Independent Living",
+            "values": [
+              242,
+              298,
+              312,
+              324,
+              236
+            ]
+          },
+          {
+            "name": "Long Term Care",
+            "values": [
+              154,
+              174,
+              186,
+              210,
+              163
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "84%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Tour Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Tour Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Tour Scheduled (Count)",
+            "value": "347"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$2,038,475"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "18:47:32"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "31%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Tour Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Tour Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Tour Scheduled (Count)",
+            "value": "29"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$171,028"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Tour Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Tour Scheduled",
+            "values": [
+              72,
+              74,
+              71,
+              76,
+              73,
+              72,
+              75,
+              74,
+              71,
+              77,
+              73,
+              72,
+              74,
+              71,
+              75,
+              73,
+              72,
+              74,
+              76,
+              71,
+              74,
+              73,
+              75,
+              72,
+              71,
+              74,
+              73,
+              72,
+              75,
+              74,
+              73,
+              176,
+              189,
+              181,
+              187,
+              192,
+              184,
+              188,
+              185,
+              191,
+              186,
+              189,
+              183,
+              187,
+              190,
+              184,
+              188,
+              185,
+              186
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,156"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "712"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "689"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Tour Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Memory Care Availability",
+            "values": [
+              9,
+              11,
+              8,
+              12,
+              10,
+              11
+            ]
+          },
+          {
+            "name": "Skilled Nursing Pricing",
+            "values": [
+              7,
+              8,
+              10,
+              9,
+              11,
+              8
+            ]
+          },
+          {
+            "name": "Assisted Living ADL Support",
+            "values": [
+              6,
+              7,
+              5,
+              8,
+              9,
+              7
+            ]
+          },
+          {
+            "name": "Tour Scheduling",
+            "values": [
+              1,
+              2,
+              0,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "name": "Insurance & Medicare Coverage",
+            "values": [
+              8,
+              9,
+              11,
+              10,
+              8,
+              9
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "29,292"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "19,740"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Tour Booked (Count)",
+            "value": "10,188"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$22,470,092"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Brenda Hoffmann",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "David Rutherford",
+              "value": 204,
+              "display": "204"
+            },
+            {
+              "name": "Jennifer Walters",
+              "value": 161,
+              "display": "161"
+            },
+            {
+              "name": "Kevin Okonkwo",
+              "value": 242,
+              "display": "242"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Tour Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Patricia Larson",
+            "values": [
+              156,
+              189,
+              224,
+              267,
+              301
+            ]
+          },
+          {
+            "name": "Robert Vasquez",
+            "values": [
+              142,
+              168,
+              201,
+              246,
+              289
+            ]
+          },
+          {
+            "name": "Helen Montgomery",
+            "values": [
+              148,
+              173,
+              209,
+              251,
+              297
+            ]
+          },
+          {
+            "name": "Frank Diaz",
+            "values": [
+              151,
+              181,
+              218,
+              263,
+              312
+            ]
+          },
+          {
+            "name": "Susan Kirkwood",
+            "values": [
+              139,
+              165,
+              197,
+              241,
+              285
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Brenda Hoffmann",
+              "value": 55.8,
+              "display": "55.8%"
+            },
+            {
+              "name": "David Rutherford",
+              "value": 53.1,
+              "display": "53.1%"
+            },
+            {
+              "name": "Jennifer Walters",
+              "value": 56.4,
+              "display": "56.4%"
+            },
+            {
+              "name": "Kevin Okonkwo",
+              "value": 52.7,
+              "display": "52.7%"
+            },
+            {
+              "name": "Patricia O'Brien",
+              "value": 57.9,
+              "display": "57.9%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Tour Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "54.2%",
+                "28%",
+                "$1,084,647",
+                "1,387"
+              ]
+            },
+            {
+              "cells": [
+                "Brenda Hoffmann",
+                "55.8%",
+                "29%",
+                "$1,156,219",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "David Rutherford",
+                "53.1%",
+                "26%",
+                "$1,031,584",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Walters",
+                "56.4%",
+                "31%",
+                "$1,198,763",
+                "1,342"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Okonkwo",
+                "52.7%",
+                "27%",
+                "$1,063,371",
+                "1,409"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia O'Brien",
+                "57.9%",
+                "32%",
+                "$1,235,336",
+                "1,398"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Patricia Larson",
+              "value": 91.3,
+              "display": "91.3%"
+            },
+            {
+              "name": "Robert Vasquez",
+              "value": 88.7,
+              "display": "88.7%"
+            },
+            {
+              "name": "Helen Montgomery",
+              "value": 90.2,
+              "display": "90.2%"
+            },
+            {
+              "name": "Frank Diaz",
+              "value": 93.1,
+              "display": "93.1%"
+            },
+            {
+              "name": "Susan Kirkwood",
+              "value": 89.4,
+              "display": "89.4%"
+            },
+            {
+              "name": "Thomas Brennan",
+              "value": 92.6,
+              "display": "92.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Tour Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Patricia Larson",
+                "91.3%",
+                "65%",
+                "$2,087,648",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Vasquez",
+                "88.7%",
+                "61%",
+                "$1,955,419",
+                "1,501"
+              ]
+            },
+            {
+              "cells": [
+                "Helen Montgomery",
+                "90.2%",
+                "63%",
+                "$2,021,734",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Frank Diaz",
+                "93.1%",
+                "67%",
+                "$2,154,627",
+                "1,538"
+              ]
+            },
+            {
+              "cells": [
+                "Susan Kirkwood",
+                "89.4%",
+                "64%",
+                "$1,989,842",
+                "1,412"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Brennan",
+                "92.6%",
+                "66%",
+                "$2,121,096",
+                "1,523"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Tour Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Tour Booked (Count)",
+        "rightMax": 500,
+        "rightTicks": [
+          0,
+          125,
+          250,
+          375,
+          500
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 378
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 362
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 337
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 322
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 280
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 294
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 325
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 338
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 377
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 365
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 329
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 318
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 283
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 292
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 333
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 343
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 373
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 367
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 322
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 312
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 287
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 290
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 338
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 350
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 368
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 368
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 318
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 305
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 292
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 291
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 331
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1100000,
+        "rightTicks": [
+          0,
+          366666.6666666667,
+          733333.3333333334,
+          1100000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 832947
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 798342
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 743419
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 709365
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 617632
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 648188
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 716035
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 744259
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 829853
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 804594
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 724671
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 700409
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 623246
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 642419
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 733083
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 755421
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 822127
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 809332
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 709697
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 687187
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 632601
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 639233
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 745718
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 770437
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 811682
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 810502
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 699542
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 670749
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 643570
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 640466
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 753366
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "31,839"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "2,547"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "1,910"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "84%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "83%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Maria González",
+                "412",
+                "87%",
+                "86%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James Patterson",
+                "356",
+                "82%",
+                "81%",
+                "81%"
+              ]
+            },
+            {
+              "cells": [
+                "Rebecca Yates",
+                "298",
+                "86%",
+                "85%",
+                "84%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "31,839 calls",
+      "pagerLabel": "1 of 3,184",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:14 am",
+          "id": "A21C-4E9B0071AC38"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C7D4-92AF1B6640E1"
+        },
+        {
+          "time": "1/14/26 11:03 am",
+          "id": "3E88-DA71F0925C4B"
+        },
+        {
+          "time": "1/16/26 12:29 pm",
+          "id": "9B2F-6C10A48D7E52"
+        },
+        {
+          "time": "1/20/26 1:52 pm",
+          "id": "D440-71E9C3B208FA"
+        },
+        {
+          "time": "1/22/26 2:37 pm",
+          "id": "6A19-B8F204915DC7"
+        },
+        {
+          "time": "1/26/26 3:18 pm",
+          "id": "E572-1F9A6D40B833"
+        },
+        {
+          "time": "1/28/26 4:44 pm",
+          "id": "08C3-A5D7E1620F94"
+        },
+        {
+          "time": "1/30/26 5:21 pm",
+          "id": "B7EE-3C0819F5A26D"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling StoneGate Senior Living, this is Marcus with our 24/7 Intake Team. How can I help you and your family today?",
+          "highlights": [
+            "Thank you for calling StoneGate Senior Living",
+            "Intake Team"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:11",
+          "text": "Hi Marcus. My name is Karen Whitfield. My father was just discharged from the hospital and my mother has early Alzheimer's, so I'm trying to figure out our options fast.",
+          "highlights": [
+            "Karen Whitfield",
+            "early Alzheimer's"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:22",
+          "text": "I'm so sorry you're navigating both of those at once, Karen. We can absolutely help. Are you looking near the Dallas Fort Worth area, or somewhere else in Texas?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:31",
+          "text": "Dallas Fort Worth. Dad needs some rehab after the hospital, and long term I need a safe place for Mom with her memory issues.",
+          "highlights": [
+            "rehab after the hospital",
+            "memory"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:41",
+          "text": "Understood. For your father we'd look at our Short Term Skilled Nursing and Rehabilitation, which includes physical and occupational therapy after a hospital stay. For your mother, our Secured Memory Care offers a safe community with specialized dementia programming.",
+          "highlights": [
+            "Short Term Skilled Nursing and Rehabilitation",
+            "Secured Memory Care"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:56",
+          "text": "Okay. That memory care piece, what does that run per month? I'm trying to keep this manageable on a fixed income.",
+          "highlights": [
+            "what does that run per month",
+            "fixed income"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:05",
+          "text": "Great question. Secured Memory Care in this market generally falls between about $5,500 and $7,500 a month depending on the level of care. Our admissions coordinators build the exact number around your mother's needs, and we work directly with your insurance to determine coverage.",
+          "highlights": [
+            "work directly with your insurance"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:19",
+          "text": "See, that's the thing. The place down the road quoted me something similar but they felt kind of clinical. I'm getting a couple of quotes before I decide anything.",
+          "highlights": [
+            "place down the road quoted me",
+            "getting a couple of quotes"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:29",
+          "text": "That's completely fair, and I'd encourage you to compare. What sets StoneGate apart is our southern hospitality approach, Texas owned since 2001, with personalized care and specialized activity programs, not just a facility. A tour is really the best way to feel that difference.",
+          "highlights": [
+            "Texas owned since 2001"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:43",
+          "text": "And for Dad's rehab, am I signing us into some long commitment? I don't want to feel locked in if he recovers quickly.",
+          "highlights": [
+            "don't want to feel locked in"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:52",
+          "text": "Not at all. Short Term Rehab is exactly that, short term. We offer inpatient and outpatient flexibility, so once he's stronger he can step down to outpatient therapy at the gym a few times a week. No long lock in.",
+          "highlights": [
+            "inpatient and outpatient flexibility"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:05",
+          "text": "That's reassuring. Could Medicare help with his rehab stay?",
+          "highlights": [
+            "Medicare"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:11",
+          "text": "Yes, we accept most plans including Medicare and verify benefits for you. Let's get you in to see both options. I have Thursday at 10 AM open for a tour with our admissions coordinator. Does that work?",
+          "highlights": [
+            "accept most plans including Medicare",
+            "Thursday at 10 AM open for a tour"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:23",
+          "text": "Thursday at 10 works. Let me just confirm with my brother, but pencil us in.",
+          "highlights": [
+            "Thursday at 10 works",
+            "confirm with my brother"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:30",
+          "text": "Wonderful, you're scheduled for Thursday at 10 AM. What's the best cell number and email so I can send directions and the records fax line?",
+          "highlights": [
+            "scheduled for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:36",
+          "text": "It's 214-555-0182, and karen.whitfield@email.com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:40",
+          "text": "Perfect, that's all set, Karen. Thank you for trusting StoneGate Senior Living. We'll see you and your family Thursday, and call us anytime, we're here 24/7.",
+          "highlights": [
+            "Thank you for trusting StoneGate Senior Living",
+            "here 24/7"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Resident",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Tour: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: Secured Memory Care",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Short Term Skilled Nursing & Rehab",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Insurance / Medicare Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity Raised",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "New prospective family member Karen Whitfield called the 24/7 Intake Team about care for both parents in the Dallas Fort Worth area. She needs Short Term Skilled Nursing and Rehabilitation for her recently discharged father and Secured Memory Care for her mother, who has early Alzheimer's. Agent Marcus addressed her monthly cost concern, a competing community she was quoting, and her worry about being locked in, then scheduled a tour with an admissions coordinator for Thursday at 10 AM and captured her phone and email.",
+        "keyPoints": [
+          "New resident inquiry from Karen Whitfield for both parents",
+          "Father needs short term rehab after a hospital discharge",
+          "Mother needs Secured Memory Care for early Alzheimer's",
+          "Handled price, competitor, and commitment concerns; confirmed Medicare accepted",
+          "Tour scheduled for Thursday at 10 AM with admissions coordinator",
+          "Captured cell 214-555-0182 and email karen.whitfield@email.com"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Tour booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "20,059 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,006",
+      "conversations": [
+        {
+          "id": "C847-3B2F9E7A1C5D",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for reaching out to StoneGate Senior Living. This is Marcus from our admissions team. Are you looking for care options for yourself or a loved one today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:23 AM",
+              "text": "Hi Marcus. My mom is looking for assisted living. She's in Dallas and we're trying to find a good fit."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:24 AM",
+              "text": "That's wonderful. We'd love to help your mom find the right home. Can you tell me, is she currently living independently or does she need help with daily activities like bathing or dressing?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "She needs some help with that stuff. She's pretty independent otherwise but definitely could use support."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Perfect. That sounds like our Assisted Living program could be a great fit. We have wonderful communities across Dallas and the DFW area. What's most important to your mom in a community? Is it activities, proximity to family, or something else?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "Honestly she just wants to stay active and social. She gets lonely at home."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "I completely understand. Our Assisted Living communities have robust activity programs, dining experiences, and lots of social opportunities. Many residents love our fine dining program and weekly outings. Does your mom have Medicare or do you know her insurance situation?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "She has Medicare and some supplemental coverage. Is that something you accept?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Absolutely. We work with Medicare and most major supplemental plans. Our intake team can verify her coverage at no charge. We're actually running a special this month where we waive the application fee for new residents. How does that sound?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:36 AM",
+              "text": "That sounds great. What's the next step?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:37 AM",
+              "text": "I'd love to schedule a tour of one of our Dallas properties so your mom can see the community for herself. Would next Tuesday, March 18th at 10 AM work for you both, or would another day be better?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:39 AM",
+              "text": "Tuesday the 18th at 10 AM is perfect. What do we need to bring?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:40 AM",
+              "text": "Great. We have you down for Tuesday, March 18th at 10 AM. Just bring your mom's insurance card and a photo ID. We'll handle the rest. Our admissions coordinator will call you back at this number to confirm all the details. You can also call us at 1-833-TO-ADMIT if you need anything before the tour. Looking forward to meeting you both."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:42 AM",
+              "text": "Perfect. Thank you Marcus. See you Tuesday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Tour: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Resident",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Type: Assisted Living",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Insurance Verified: Medicare + Supplemental",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Promo Acceptance: Application Fee Waived",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Motivation: Social Engagement",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C847-3B2F9E7A1C5D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "13",
+            "source": "214-555-0847",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "214-555-0847",
+            "repeatCaller": "No",
+            "city": "Dallas",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C512-7A4E2D6F9B1C",
+          "time": "3/10/26 8:45 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C512-7A4E2D6F9B1C",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C629-8F3E1A7C5B2D",
+          "time": "3/10/26 11:32 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C629-8F3E1A7C5B2D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C734-9D5C2E4A7F1B",
+          "time": "3/10/26 2:17 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C734-9D5C2E4A7F1B",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "31,839 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,184",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Good afternoon, thank you for calling StoneGate Senior Living. My name is Jennifer. Are you calling about yourself or a loved one today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Hi, my mom. She's 78 and we're looking at options for her. She's becoming harder to manage at home, you know?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "I completely understand. We'd love to help. Is your mom still living independently at home, or does she need some assistance with daily activities?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "Well, she needs help with bathing and dressing. She gets confused sometimes too, so we're worried about that."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Thank you for sharing that. It sounds like she may benefit from either our assisted living or memory care programs. Has she been diagnosed with Alzheimer's or dementia?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "Yeah, the doctor said early stage dementia. We want to make sure she's safe but still has her independence."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:53 PM",
+              "text": "Our secured memory care is perfect for that. We provide a safe community with specialized activities and personalized care. Does your mom have Medicare or private insurance?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:54 PM",
+              "text": "She has Medicare and a supplemental plan. Will that cover it?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "Great question. We work directly with Medicare and most supplement plans. Our admissions team can verify coverage for you. Are you located in the Dallas, Fort Worth area?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:56 PM",
+              "text": "Yeah, we're in Arlington. Is that close to one of your facilities?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:57 PM",
+              "text": "Perfect. We have several properties throughout Dallas, Fort Worth, and West Texas. I'd like to schedule a tour of our memory care community. How about this Friday at two p.m.?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:58 PM",
+              "text": "Friday works. What's the address?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:59 PM",
+              "text": "Our admissions coordinator will send you all the details and a map. Just to confirm, we have you down for Friday at two p.m. with our Arlington community. Your mom is welcome to join. We'll have our team ready to show you around and answer any insurance questions. Is this number the best way to reach you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:00 PM",
+              "text": "Yeah, that's perfect. Thanks so much."
+            },
+            {
+              "speaker": "agent",
+              "time": "3:01 PM",
+              "text": "You're welcome. Just a reminder, that's Friday at two p.m. If you need to reschedule, call us back at eight seven seven, nine three six, twenty nine thirty three. We look forward to meeting you and your mom."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Tour: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Resident",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Memory Care",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Insurance Type: Medicare with Supplement",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area: Arlington DFW",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Need: Dementia Care",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:47 pm",
+            "duration": "14:32",
+            "destinationPhone": "877-936-2933",
+            "source": "855-TO-ADMIT",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "469-551-7742",
+            "repeatCaller": "No",
+            "city": "Arlington",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Mitchell",
+            "firstName": "Sarah",
+            "lastName": "Mitchell",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B524-3D8GH425881E",
+          "time": "1/18/26 10:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B524-3D8GH425881E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C631-4E9KI536992F",
+          "time": "1/22/26 3:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C631-4E9KI536992F",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D742-5F0LJ647AA3G",
+          "time": "1/28/26 1:44 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D742-5F0LJ647AA3G",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Introduce yourself as Stonegate Senior Living's AI agent helping match a loved one to the right supported community with a personalized care plan, mention that select communities are now admitting and offer priority tour scheduling this week, then ask if they would like to get started.",
+        "Qualify one at a time: Ask only one question per message, covering who the care is for and their relationship, the level of care needed such as assisted living, memory care, short-term rehab or long term care, the desired move-in or admission timeline, the primary insurance or payment method such as Medicare or Texas Medicaid, and finally their ZIP code to confirm a supported community serves their area.",
+        "Estimate then book: Confirm a Stonegate supported community serves their ZIP, share a general monthly or per-day range for the care type they described, note that exact costs and coverage are confirmed by an admissions coordinator, propose a specific day and time for a community tour, and let them know they will receive a reminder text before the visit with 1-833-TO-ADMIT to call with any questions."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Stonegate_Senior_Living_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Living Options and Care Services",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Supported Communities Finder",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Resources and FAQs",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"admission status\",\"question\":\"Where does my mother's admission paperwork stand after we faxed her records?\",\"answer\":\"Our 24/7 Intake Team of nurses and insurance specialists reviews faxed records and typically confirms next steps within a business day, and I can connect you with the coordinator handling her file right now.\"},{\"topic\":\"reschedule tour\",\"question\":\"I need to move our memory care tour to a different day this week.\",\"answer\":\"I can reschedule your community tour to another day and time that works for you, and you will get a reminder text before the visit with 1-833-TO-ADMIT to reach us.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What types of care does Stonegate Senior Living offer?",
+              "answer": "Our supported communities offer assisted living, secured memory care, independent living, long term care, and short-term skilled nursing and rehab. I can set up a tour so you can see the option that best fits your loved one."
+            },
+            {
+              "question": "Do you accept Medicare?",
+              "answer": "Yes, our supported communities accept most health insurance plans including Medicare, and we work directly with the insurance company to determine coverage. An admissions coordinator can confirm the details during your tour."
+            },
+            {
+              "question": "Do any of your communities accept Texas Medicaid?",
+              "answer": "Yes, our two Assisted Living communities in Texas offer subsidized payments through a partnership with the Dallas Housing Authority, so Texas Medicaid is a valid form of payment. Let's schedule a tour to review eligibility."
+            },
+            {
+              "question": "How much does assisted living cost?",
+              "answer": "Monthly costs vary by community, care level, and payment source, so an admissions coordinator provides exact figures during your visit. I would love to book a tour where they can walk you through it."
+            },
+            {
+              "question": "What is memory care and who is it for?",
+              "answer": "Our secured memory care provides a safe, home-like community with specialized activity programs and personalized care for those with Alzheimer's or other dementia. Both long-term and respite stays are welcome, and I can arrange a tour."
+            },
+            {
+              "question": "Do you offer short-term rehab after a hospital stay?",
+              "answer": "Yes, our supported communities provide comprehensive short-term skilled nursing and rehab with physical, speech, and occupational therapy following a hospitalization. Let's set up a tour or connect you with our 24/7 Intake Team."
+            },
+            {
+              "question": "Where are your communities located?",
+              "answer": "We support communities across the Dallas, Fort Worth, and West Texas markets, East Texas, and Oklahoma, with headquarters in Lewisville, Texas. Share your ZIP code and I will find the closest one for a tour."
+            },
+            {
+              "question": "How do I refer my parent for admission?",
+              "answer": "You send current health insurance information and medical records to our confidential fax or email, and our Intake Team of nurses and insurance specialists assists 24/7 at 1-833-TO-ADMIT. I can also book a tour to get things started."
+            },
+            {
+              "question": "Do you offer respite care?",
+              "answer": "Yes, we offer respite care that gives primary caregivers temporary relief with short-term care and support for their loved one. I can schedule a tour so you can see the community first."
+            },
+            {
+              "question": "What is included in assisted living?",
+              "answer": "Assisted living includes help with daily activities like eating, bathing, dressing, medication assistance, plus housekeeping, laundry, and a fine dining program with menu choices. A tour is the best way to experience it."
+            },
+            {
+              "question": "Do you have independent living options?",
+              "answer": "Yes, our Independent Living Apartments at the Villages of Lakewest in Dallas serve active adults 55 and up, subsidized through a Dallas Housing Authority partnership for affordable housing. Let's book a tour to check availability."
+            },
+            {
+              "question": "Can my loved one bring their own furniture?",
+              "answer": "Many of our units include private and semi-private options with kitchenettes at select communities, and personalization is welcome. An admissions coordinator can review the specifics during your tour."
+            },
+            {
+              "question": "How quickly can someone move in?",
+              "answer": "Timelines depend on the community, care level, and completed intake, and our team can move quickly once records are received. Let's schedule a tour and connect you with a coordinator to confirm availability."
+            },
+            {
+              "question": "Do you provide outpatient therapy?",
+              "answer": "Yes, we offer outpatient physical, occupational, and speech therapy for elderly and disabled individuals who reside at home and visit the therapy gym with customized plans. I can arrange a visit to learn more."
+            },
+            {
+              "question": "Is memory care secured?",
+              "answer": "Yes, our memory care units are secured and staffed with specially trained caregivers who provide compassionate, personalized care and specialized dementia programming. A tour will let you see the safety features firsthand."
+            },
+            {
+              "question": "What makes Stonegate different?",
+              "answer": "We are Texas owned and operated since 2001, bringing southern hospitality and a full continuum of care across our supported communities. Come see it for yourself with a scheduled tour."
+            },
+            {
+              "question": "Do you offer long term care?",
+              "answer": "Yes, our long term care provides around-the-clock support from a specially trained team in a cheerful, home-like setting for those who cannot care for themselves. Let's set up a tour so you can meet the team."
+            },
+            {
+              "question": "Can I tour a community before deciding?",
+              "answer": "Absolutely, a tour is the best way to see the community, meet caregivers, and ask questions. Tell me your ZIP code and preferred day and I will get it scheduled."
+            },
+            {
+              "question": "What wound care or medical services are available?",
+              "answer": "Our skilled nursing communities provide comprehensive wound care, pulmonary management, sub-acute care, and enteral or parenteral therapy under nursing supervision. An admissions coordinator can review clinical needs during your tour."
+            },
+            {
+              "question": "How do I get pricing and coverage details?",
+              "answer": "Because costs and coverage depend on the care level and payment source, our admissions coordinators provide exact figures and verify insurance directly. Let's book a tour where they can go over everything with you."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule a community tour\",\"follow_up_message\":\"Great news, a Stonegate supported community serves your area. I have you down for a tour on Thursday at 2 PM, and you will get a reminder text beforehand with 1-833-TO-ADMIT to reach us.\"},{\"intent\":\"request care and cost information\",\"follow_up_message\":\"Based on what you shared about assisted living for your mother, I will have an admissions coordinator confirm exact costs and insurance coverage. Let's lock in a tour this week so you can meet the team in person.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Stonegate Senior Living's AI assistant. I can help you find the right supported community for your loved one and get a tour scheduled with our care team.",
+        "goal": "Guide the family to book a community tour and connect with an admissions coordinator for care and coverage details.",
+        "bookingType": "in-person community tour",
+        "offer": "Now admitting, book a tour this week and meet our care team in person.",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Who will be receiving care, and what is your relationship to them?",
+          "What level of care are you looking for, such as assisted living, memory care, short-term rehab, or long term care?",
+          "What is your ideal move-in or admission timeline?",
+          "What is the primary insurance or payment method, such as Medicare or Texas Medicaid?",
+          "What is your ZIP code so I can confirm a supported community serves your area?"
+        ]
+      },
+      "serviceArea": "the Dallas, Fort Worth, and West Texas, East Texas, and Oklahoma markets, headquartered in Lewisville, Texas, ZIP codes starting with 750"
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:33 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:33 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:33 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Stonegate Senior Living",
+      "callerName": "Patricia Mendez",
+      "callerPhone": "(214) 555-0187",
+      "campaign": "Memory Care, Dallas Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Tour Lead",
+      "estimatedValue": "$6,240",
+      "googleSearch": "memory care facilities near me Dallas Texas",
+      "websiteSearch": "Stonegate Senior Living memory care secure units",
+      "callingWebpage": "/living-options/memory-care",
+      "products": "Secured Memory Care, 24-Hour Personalized Care",
+      "cartId": "SG-7493M",
+      "serviceable": "Yes",
+      "email": "pmendez.family@gmail.com",
+      "street": "4521 Forest Lane",
+      "city": "Dallas",
+      "state": "TX",
+      "zip": "75212",
+      "digitalJourney": "/home › /living-options › /living-options/memory-care › /supported-properties",
+      "intent": "Seeking specialized memory care placement for mother with early Alzheimer's, prefers Dallas location with family activities",
+      "coverage": "ZIP 75212 confirmed, Dallas serviceable",
+      "switchIntent": "High. Mother's condition declining rapidly, family wants to tour secured units this week before health deteriorates further",
+      "greeting": "Hi Patricia, this is James with Stonegate Senior Living. I see you're looking into memory care options for your mother in Dallas. We specialize in secured units with specialized dementia programming and personalized staff. I'd love to arrange a tour of our Dallas community with one of our admissions nurses. Would Thursday or Friday work better for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "Stonegate Senior Living",
+      "callerName": "Robert Chen",
+      "callerPhone": "(903) 555-0412",
+      "campaign": "Skilled Nursing Rehab, Plano Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Tour Lead",
+      "estimatedValue": "$4,875",
+      "googleSearch": "short term rehab after hospital stay Plano Texas",
+      "websiteSearch": "skilled nursing facility post-operative recovery near me",
+      "callingWebpage": "/living-options/short-term-skilled-nursing-rehabilitation",
+      "products": "Short-Term Skilled Nursing, Physical Therapy",
+      "cartId": "SG-5162K",
+      "serviceable": "Yes",
+      "email": "robert.chen.family@yahoo.com",
+      "street": "2847 Ridgemont Drive",
+      "city": "Plano",
+      "state": "TX",
+      "zip": "75023",
+      "digitalJourney": "/home › /living-options › /living-options/short-term-skilled-nursing-rehabilitation › /resources/insurance",
+      "intent": "Son seeking post-operative recovery placement after father's knee surgery, needs 2 to 3 weeks intensive therapy",
+      "coverage": "ZIP 75023 confirmed, Plano serviceable",
+      "appointment": "In-person tour with nurse admissions specialist, Thursday July 18, 2:00 PM",
+      "greeting": "Hi Robert, this is Maria from Stonegate Senior Living. Thanks for texting about our skilled nursing program. We've scheduled your tour for tomorrow, Thursday at 2 PM with our nurse admissions specialist. She'll walk you through our therapy gym and recovery units. Do you have any questions about what to bring or Medicare coverage before then?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Stonegate Senior Living",
+      "brandDomain": "www.stonegatesl.com",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (833) 862-2348",
+      "callerLocation": "Plano, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "Short Term Rehab After Hospital",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "skilled nursing facility that accepts Medicare Dallas",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Home / Living Options / Short Term Skilled Nursing & Rehabilitation",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Short Term Skilled Nursing & Rehabilitation, Outpatient Physical Therapy",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes. not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Plano, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "tour_skilled_nursing",
+          "name": "Tour. Skilled Nursing Intake"
+        },
+        {
+          "id": "support_existing",
+          "name": "Support. Existing Resident Care"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry. Resources"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Thank you for calling Stonegate Senior Living. This is our automated admissions assistant. I see you're interested in our skilled nursing and rehabilitation services. Are you looking for care for a family member, or is this for yourself.",
+          "sigs": [],
+          "q": [
+            15,
+            70,
+            15
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "It's for my father. He just had knee surgery and got discharged from the hospital yesterday. His doctor mentioned he needs physical therapy and skilled nursing care to recover properly.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Post-hospital recovery</strong>. orthopedic surgery"
+            },
+            {
+              "c": "blue",
+              "t": "Needs <strong>skilled nursing and therapy</strong>"
+            },
+            {
+              "c": "orange",
+              "t": "Recent <strong>hospital discharge</strong>"
+            }
+          ],
+          "q": [
+            65,
+            20,
+            15
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I'm glad we can help with his recovery. Our skilled nursing and rehabilitation team specializes in post-operative care with physical therapy available at multiple locations. Is your father looking for short term rehabilitation at one of our facilities, or would he prefer outpatient therapy while recovering at home.",
+          "sigs": [],
+          "q": [
+            72,
+            15,
+            13
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I think he'd benefit more from staying in a facility where nurses can monitor him 24 hours a day. He's on Medicare, so I need to make sure your facility accepts it.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Inpatient short term care</strong>. preference"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Medicare coverage</strong> confirmed"
+            },
+            {
+              "c": "purple",
+              "t": "24 hour <strong>nursing supervision</strong> needed"
+            }
+          ],
+          "q": [
+            86,
+            8,
+            6
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. We accept Medicare and work directly with insurance to determine coverage. We have skilled nursing facilities in Plano and throughout the Dallas Fort Worth area. I'm connecting you now to our Tour and Intake Coordinator team who can schedule a facility tour, verify Medicare benefits, and start your father's admission process. They're available 24 and 7.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Tour Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule a tour (Caller)\", \"come see the community (Agent)\", \"book your visit (Agent)\", \"set up a tour (Caller)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "01/09/26 2:41 pm"
+        },
+        {
+          "name": "Competitor Community Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Brookdale (Caller)\", \"The Legacy Senior Communities (Caller)\", \"another assisted living facility (Caller)\", \"a place we already toured (Caller)\"])",
+          "createdAt": "04/22/25 10:35 am",
+          "updatedAt": "12/18/25 4:07 pm"
+        },
+        {
+          "name": "Compassionate Care Delivered",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Compassionate Care] < 60 and duration > 45 sec",
+          "createdAt": "05/09/25 8:20 am",
+          "updatedAt": "01/15/26 11:03 am"
+        },
+        {
+          "name": "Insurance Verification Completed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Insurance Verification] < 60 and duration > 45 sec",
+          "createdAt": "02/27/25 1:48 pm",
+          "updatedAt": "01/12/26 9:55 am"
+        },
+        {
+          "name": "Intake Team Responsiveness",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Intake Responsiveness] < 60 and duration > 45 sec",
+          "createdAt": "06/03/25 3:14 pm",
+          "updatedAt": "01/07/26 10:22 am"
+        },
+        {
+          "name": "Medicaid Payment Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"do you accept Medicaid (Caller)\", \"Texas Medicaid (Caller)\", \"subsidized payment (Caller)\", \"Dallas Housing Authority (Agent)\"])",
+          "createdAt": "07/11/25 11:40 am",
+          "updatedAt": "12/29/25 1:18 pm"
+        },
+        {
+          "name": "Memory Care Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"memory care (Caller)\", \"Alzheimer's (Caller)\", \"dementia (Caller)\", \"secured unit (Agent)\"])",
+          "createdAt": "03/30/25 2:05 pm",
+          "updatedAt": "01/20/26 3:36 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"monthly rate (Agent)\", \"the cost would be (Agent)\", \"per day (Agent)\", \"price per month (Caller)\"])",
+          "createdAt": "08/16/25 9:27 am",
+          "updatedAt": "01/18/26 12:44 pm"
+        },
+        {
+          "name": "Southern Hospitality Tone",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Southern Hospitality] < 60 and duration > 45 sec",
+          "createdAt": "05/24/25 4:52 pm",
+          "updatedAt": "01/05/26 8:31 am"
+        },
+        {
+          "name": "Tour Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"visit the community (Agent)\", \"when can you come by (Agent)\", \"take a look around (Caller)\", \"walk through the property (Agent)\"])",
+          "createdAt": "04/08/25 10:11 am",
+          "updatedAt": "12/22/25 2:59 pm"
+        }
+      ]
+    }
+  }
+}

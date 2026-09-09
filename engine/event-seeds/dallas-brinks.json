@@ -1,0 +1,5328 @@
+{
+  "id": "brink-s",
+  "customerName": "Brink's",
+  "websiteUrl": "https://www.brinks.com",
+  "brandDomain": "brinks.com",
+  "networkName": "Invoca for Cash Management",
+  "industry": "Secure cash management and security logistics",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Client",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 10000,
+      "yTicks": [
+        2000,
+        4000,
+        6000,
+        8000,
+        10000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 5842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 8214
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 7631
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 7489
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 6342
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Smart Safe, Get a Quote",
+          "marketingSearchTerm": "smart safe for retail",
+          "landingPageUrl": "https://us.brinks.com/solutions/smart-safe-2?utm_source=google&utm_medium=cpc&utm_campaign=smart_safe_quote",
+          "websiteJourney": "Home / Solutions / Total Cash Management / Smart Safe 2",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Cash Management Solutions",
+          "marketingSearchTerm": "cash management services for business",
+          "landingPageUrl": "https://us.brinks.com/solutions/total-cash-management?utm_source=google&utm_medium=cpc&utm_campaign=cash_mgmt",
+          "websiteJourney": "Home / Solutions / Total Cash Management",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Armored Cash Pickup for Retail",
+          "marketingSearchTerm": "armored car service near me",
+          "landingPageUrl": "https://us.brinks.com/solutions/cash-in-transit?utm_source=google&utm_medium=cpc&utm_campaign=armored_pickup",
+          "websiteJourney": "Home / Solutions / Total Cash Management / Cash-in-Transit Services",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "ATM Cash Replenishment",
+          "marketingSearchTerm": "atm cash replenishment company",
+          "landingPageUrl": "https://us.brinks.com/solutions/atm-services?utm_source=bing&utm_medium=cpc&utm_campaign=atm_replenish",
+          "websiteJourney": "Home / Solutions / Total Cash Management / Brink's ATM Services",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Cash Vault Services",
+          "marketingSearchTerm": "cash vault services",
+          "landingPageUrl": "https://us.brinks.com/solutions/cash-vault?utm_source=google&utm_medium=cpc&utm_campaign=cash_vault",
+          "websiteJourney": "Home / Solutions / Total Cash Management / Cash Vault Services",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Smart Safe, Get a Quote",
+          "marketingSearchTerm": "brink's smart safe cost",
+          "landingPageUrl": "https://us.brinks.com/get-a-quote?utm_source=google&utm_medium=cpc&utm_campaign=smart_safe_cost",
+          "websiteJourney": "Home / Solutions / Total Cash Management / Smart Safe 2 / Get a Quote",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Cash Pickup Service",
+          "marketingSearchTerm": "cash pickup service",
+          "landingPageUrl": "https://us.brinks.com/solutions/cash-in-transit?utm_source=bing&utm_medium=cpc&utm_campaign=cash_pickup",
+          "websiteJourney": "Home / Solutions / Total Cash Management / Cash-in-Transit Services",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Secure Logistics for Valuables",
+          "marketingSearchTerm": "secure jewelry shipping",
+          "landingPageUrl": "https://us.brinks.com/global-services/secure-logistics?utm_source=google&utm_medium=cpc&utm_campaign=secure_valuables",
+          "websiteJourney": "Home / Solutions / Brink's Global Services / Secure Logistics for Valuables",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Branch Change Orders",
+          "marketingSearchTerm": "coin and currency ordering for banks",
+          "landingPageUrl": "https://us.brinks.com/solutions/branch-change-orders?utm_source=google&utm_medium=cpc&utm_campaign=change_orders",
+          "websiteJourney": "Home / Solutions / Total Cash Management / Branch Change Orders",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Reduce Cash Handling Costs",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.brinks.com/insights/reduce-cash-handling-costs?utm_source=organic&utm_medium=organic&utm_campaign=insights_hub",
+          "websiteJourney": "Home / Insights / Retail Cash Automation Guide",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Retail Cash Automation Guide",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.brinks.com/insights/retail-cash-automation?utm_source=organic&utm_medium=organic&utm_campaign=cash_automation",
+          "websiteJourney": "Home / Industries / Retail / Retailers",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Smart Safe 2, Provisional Credit",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.brinks.com/solutions/smart-safe-2?utm_source=instagram&utm_medium=social&utm_campaign=provisional_credit",
+          "websiteJourney": "Home / Solutions / Total Cash Management / Smart Safe 2",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Secure Your Cash Flow",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.brinks.com/solutions/total-cash-management?utm_source=facebook&utm_medium=social&utm_campaign=cash_flow",
+          "websiteJourney": "Home / Solutions / Total Cash Management",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Brink's Recycler Retail",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.brinks.com/solutions/brinks-recycler?utm_source=instagram&utm_medium=social&utm_campaign=recycler",
+          "websiteJourney": "Home / Solutions / Total Cash Management / Brink's Recycler",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Enterprise Retail Cash Solutions",
+          "marketingSearchTerm": "cash management for enterprise retail",
+          "landingPageUrl": "https://us.brinks.com/industries/retail/enterprise?utm_source=google&utm_medium=cpc&utm_campaign=enterprise_retail",
+          "websiteJourney": "Home / Industries / Retail / Enterprise Retailers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Prepaid Payroll Card",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.brinks.com/payment-services/paycard?utm_source=organic&utm_medium=organic&utm_campaign=paycard",
+          "websiteJourney": "Home / Solutions / Brink's Payment Services / Brink's Paycard",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Fine Art Secure Shipping",
+          "marketingSearchTerm": "fine art shipping company",
+          "landingPageUrl": "https://us.brinks.com/global-services/fine-art?utm_source=bing&utm_medium=cpc&utm_campaign=fine_art",
+          "websiteJourney": "Home / Solutions / Brink's Global Services / Brink's Fine Art",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Meet Brink's at NRF",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.brinks.com/insights/nrf-2026?utm_source=facebook&utm_medium=social&utm_campaign=nrf_event",
+          "websiteJourney": "Home / Insights / Events / NRF 2026",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "RetailBox for Small Footprints",
+          "marketingSearchTerm": "deposit device for small retail",
+          "landingPageUrl": "https://us.brinks.com/solutions/retailbox?utm_source=google&utm_medium=cpc&utm_campaign=retailbox",
+          "websiteJourney": "Home / Solutions / Total Cash Management / RetailBox",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Branch Services for Banks",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.brinks.com/industries/financial-institutions/branch-services?utm_source=organic&utm_medium=organic&utm_campaign=branch_services",
+          "websiteJourney": "Home / Industries / Financial Institutions / Branch Services",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Brink's)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "27,857"
+            },
+            {
+              "label": "Solutions Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$22,488,427"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "4,457"
+            },
+            {
+              "label": "Billing & Deposit Support (Percent)",
+              "value": "7%"
+            },
+            {
+              "label": "Service Dispatch Request (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Existing Account Support (Percent)",
+              "value": "4%"
+            }
+          ]
+        },
+        {
+          "title": "Solutions Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Solutions Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Quote Discussed (Percent)",
+              "value": "61%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "16%"
+            },
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "12%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Solutions Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Solutions Inquiry (Count)",
+            "values": [
+              4612,
+              5187,
+              4893,
+              4438,
+              4269
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              3318,
+              3712,
+              3566,
+              3241,
+              3156
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              867,
+              973,
+              934,
+              851,
+              833
+            ]
+          },
+          {
+            "name": "Contract Signed (Count)",
+            "values": [
+              651,
+              728,
+              701,
+              638,
+              625
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 27857,
+          "rows": [
+            {
+              "name": "Google Ads",
+              "metrics": [
+                "9,847",
+                "29.4%",
+                "8.9%",
+                "$5,968,197"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "7,214",
+                "32.1%",
+                "11.3%",
+                "$5,445,920"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "5,338",
+                "34.8%",
+                "13.1%",
+                "$4,667,150"
+              ]
+            },
+            {
+              "name": "LinkedIn",
+              "metrics": [
+                "3,421",
+                "37.2%",
+                "15.7%",
+                "$3,628,800"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "2,037",
+                "41.6%",
+                "20.4%",
+                "$2,778,360"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 27857,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "10,412",
+                "28.7%",
+                "8.6%",
+                "$6,214,552"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "6,894",
+                "31.5%",
+                "11.0%",
+                "$5,182,338"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "4,977",
+                "34.2%",
+                "13.3%",
+                "$4,498,201"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "3,318",
+                "37.9%",
+                "16.2%",
+                "$3,611,447"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "2,256",
+                "42.3%",
+                "19.9%",
+                "$2,981,889"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 13106,
+          "rows": [
+            {
+              "name": "Cash Management Solutions",
+              "metrics": [
+                "4,187",
+                "30.2%",
+                "9.2%",
+                "$2,594,918"
+              ]
+            },
+            {
+              "name": "Smart Safe Get a Quote",
+              "metrics": [
+                "3,241",
+                "33.1%",
+                "11.6%",
+                "$2,528,641"
+              ]
+            },
+            {
+              "name": "Armored Cash Pickup for Retail",
+              "metrics": [
+                "2,598",
+                "35.4%",
+                "13.8%",
+                "$2,409,357"
+              ]
+            },
+            {
+              "name": "Enterprise Retail Cash Solutions",
+              "metrics": [
+                "1,876",
+                "38.6%",
+                "16.7%",
+                "$2,103,382"
+              ]
+            },
+            {
+              "name": "Secure Your Cash Flow",
+              "metrics": [
+                "1,204",
+                "43.1%",
+                "21.3%",
+                "$1,730,566"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8634,
+          "rows": [
+            {
+              "name": "cash management services for business",
+              "metrics": [
+                "2,884",
+                "31.3%",
+                "9.4%",
+                "$1,826,573"
+              ]
+            },
+            {
+              "name": "smart safe for retail",
+              "metrics": [
+                "2,197",
+                "33.8%",
+                "11.9%",
+                "$1,755,241"
+              ]
+            },
+            {
+              "name": "armored car service near me",
+              "metrics": [
+                "1,673",
+                "36.5%",
+                "14.2%",
+                "$1,601,758"
+              ]
+            },
+            {
+              "name": "cash pickup service",
+              "metrics": [
+                "1,142",
+                "39.2%",
+                "17.1%",
+                "$1,310,427"
+              ]
+            },
+            {
+              "name": "atm cash replenishment company",
+              "metrics": [
+                "738",
+                "44.7%",
+                "22.4%",
+                "$1,115,412"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 27857,
+          "rows": [
+            {
+              "name": "Total Cash Management",
+              "metrics": [
+                "8,942",
+                "28.4%",
+                "8.4%",
+                "$5,182,644"
+              ]
+            },
+            {
+              "name": "Cash-in-Transit Services",
+              "metrics": [
+                "6,731",
+                "30.7%",
+                "10.2%",
+                "$4,687,215"
+              ]
+            },
+            {
+              "name": "Brink's ATM Services",
+              "metrics": [
+                "5,418",
+                "33.2%",
+                "12.6%",
+                "$4,593,188"
+              ]
+            },
+            {
+              "name": "Brink's Global Services",
+              "metrics": [
+                "4,209",
+                "35.6%",
+                "15.8%",
+                "$4,472,167"
+              ]
+            },
+            {
+              "name": "Brink's Payment Services",
+              "metrics": [
+                "2,557",
+                "38.1%",
+                "19.7%",
+                "$3,553,213"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 27857,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "8,213",
+                "27.9%",
+                "9.1%",
+                "$5,014,283"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "6,742",
+                "30.2%",
+                "10.9%",
+                "$4,931,662"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "5,529",
+                "32.6%",
+                "12.4%",
+                "$4,602,918"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "4,418",
+                "34.8%",
+                "14.7%",
+                "$4,351,447"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "2,955",
+                "37.4%",
+                "18.3%",
+                "$3,588,117"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Contract Signed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Total Cash Management",
+            "values": [
+              142,
+              151,
+              168,
+              148,
+              142
+            ]
+          },
+          {
+            "name": "Cash-in-Transit Services",
+            "values": [
+              128,
+              141,
+              152,
+              138,
+              127
+            ]
+          },
+          {
+            "name": "Brink's ATM Services",
+            "values": [
+              127,
+              140,
+              149,
+              139,
+              128
+            ]
+          },
+          {
+            "name": "Brink's Global Services",
+            "values": [
+              124,
+              137,
+              144,
+              135,
+              125
+            ]
+          },
+          {
+            "name": "Brink's Payment Services",
+            "values": [
+              94,
+              103,
+              111,
+              101,
+              95
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 27,857 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Delaney, owner of a regional convenience chain, called for a quote on the Smart Safe 2 across eleven store locations. Agent Oscar walked him through real-time deposit validation and provisional credit, then scheduled a consultation to finalize pricing. Marcus confirmed the booking and asked about a smart safe rollout timeline.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 89,
+          "summary": "Priya Anand, a restaurant group controller, requested a quote on Brink's Cash Vault Services for consolidated deposit reporting. Agent Lila explained the per-thousand processing rate and off-site verification, then booked a consultation for next week. Priya was pleased and agreed to move her cash vault volume over.",
+          "date": "Feb 12, 2:47 PM",
+          "agent": "Lila",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 9,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Devon Carter, a credit union operations lead, called for a quote on Brink's Complete ATM services covering nine machines. Agent Rosey outlined the atm replenishment, monitoring, and maintenance package, then scheduled a consultation. Devon confirmed and asked for the atm coverage map to be emailed.",
+          "date": "Mar 3, 9:22 AM",
+          "agent": "Rosey",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Nina Vasquez, a new customer opening a jewelry boutique, called to schedule a consultation about a smart safe and armored pickup setup. Agent Lee collected her business details, store address, and expected weekly cash volume, then booked her intake consultation. Nina confirmed the appointment time and provided her contact information.",
+          "date": "Apr 9, 1:35 PM",
+          "agent": "Lee",
+          "duration": "3m 18s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Gregory Poole, a grocery store manager, called to set up armored Cash-in-Transit pickups for two new locations. Agent Mary reviewed the per-stop rate and route scheduling, then booked a consultation to confirm pickup days. Gregory agreed to the armored service and scheduled the visit.",
+          "date": "May 15, 11:48 AM",
+          "agent": "Mary",
+          "duration": "2m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 15,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Tanya Brooks, a pharmacy chain finance manager, requested a quote on the Brink's Recycler to cut register handling time. Agent Mike explained how the recycler dispenses and recycles notes, then scheduled a consultation. Tanya booked the follow-up to evaluate two pilot stores.",
+          "date": "Jun 2, 3:05 PM",
+          "agent": "Mike",
+          "duration": "2m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Hector Ramos called to check the status of a scheduled armored pickup that had not arrived at his store. Agent Sue located the route and confirmed the driver was running late due to weather. Hector accepted the update but wanted future pickups more reliable.",
+          "date": "Jun 21, 8:41 AM",
+          "agent": "Sue",
+          "duration": "1m 54s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Amanda Fields reported that her new smart safe installation was delayed and the technician missed the window. Agent Jennifer apologized, checked the install ticket, and rescheduled the technician visit. Amanda was frustrated but agreed to the new date.",
+          "date": "Jul 8, 12:19 PM",
+          "agent": "Jennifer",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Roland Gibbs disputed a charge on his Cash Vault Services invoice that seemed higher than his usual volume. Agent Rose pulled the deposit records and explained a surcharge for extra processing. Roland remained unsatisfied and asked for a supervisor callback.",
+          "date": "Jul 27, 4:02 PM",
+          "agent": "Rose",
+          "duration": "2m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 48,
+          "summary": "Bethany Cole called about a malfunctioning cash recycler that kept jamming during peak hours. Agent Oscar logged a repair request and arranged a technician visit for the recycler. Bethany was annoyed at the recurring downtime.",
+          "date": "Aug 4, 10:56 AM",
+          "agent": "Oscar",
+          "duration": "2m 08s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 44,
+          "summary": "Frank Delgado called to cancel his Brink's Complete ATM service on two underperforming machines. Agent Lila reviewed the atm contract terms and processed the cancellation request. Frank declined a retention offer and ended the call quickly.",
+          "date": "Aug 22, 1:14 PM",
+          "agent": "Lila",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Denise Aguilar complained that her armored pickup schedule kept changing without notice, causing cash to sit overnight. Agent Mike apologized and escalated the routing issue to dispatch. Denise remained upset about the security risk.",
+          "date": "Sep 5, 9:33 AM",
+          "agent": "Mike",
+          "duration": "2m 19s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Carl Whitmore called after hours about a missed Cash-in-Transit stop and reached voicemail. He left a message asking for an urgent callback regarding an undeposited bag. No agent was available to take the call.",
+          "date": "Sep 19, 6:48 PM",
+          "agent": "No Agent",
+          "duration": "0m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Sylvia Monroe disputed multiple charges on her smart safe lease invoice and said she was overbilled for three months. Agent Sue reviewed the account but could not resolve it on the call. Sylvia demanded a refund and threatened to cancel.",
+          "date": "Oct 2, 11:27 AM",
+          "agent": "Sue",
+          "duration": "3m 11s",
+          "scorecards": 7,
+          "comments": 2,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Vincent Hale called furious that his cash vault deposit was miscounted and reported short. Agent Jennifer opened an investigation but Vincent felt the process was too slow. He complained about repeated errors and asked to escalate to management.",
+          "date": "Oct 14, 2:58 PM",
+          "agent": "Jennifer",
+          "duration": "2m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "smart safe",
+        "quote",
+        "atm",
+        "armored",
+        "cash vault",
+        "recycler"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 18s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Cash Management Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Date",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Site Visit",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer Product Overview",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller identified as new prospect",
+        "Retail location confirmed",
+        "High-volume cash handling mentioned",
+        "Multi-location expansion planned",
+        "Interest in secure logistics expressed",
+        "Consultation scheduled for next week",
+        "Caller provided preferred contact method",
+        "Agent clarified service area coverage",
+        "Caller asked about pricing models",
+        "Agent acknowledged caller's timeline",
+        "Professional tone maintained throughout",
+        "Caller confirmed readiness to proceed",
+        "Follow-up promised"
+      ],
+      "unmetSignals": [
+        "Email not collected",
+        "Specific cash volume not quantified",
+        "Competitor currently in use not discussed",
+        "Integration with existing POS not explored",
+        "Annual contract terms not explained",
+        "Delivery and setup timeline not clarified",
+        "ROI or cost savings framework not presented",
+        "Existing payment processing system not identified",
+        "Staff training requirements not mentioned",
+        "Emergency service availability not communicated",
+        "Backup armored service not discussed",
+        "Discount eligibility not explored"
+      ],
+      "naSignals": [
+        "Order confirmation details",
+        "Existing account status",
+        "Previous service history",
+        "Return or cancellation request",
+        "Billing dispute discussion",
+        "Delivery tracking information",
+        "Invoice or receipt issue",
+        "Service performance complaint",
+        "Warranty claim details",
+        "Product recall notification",
+        "Refund status",
+        "Contract renewal offer"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller represents a growing specialty retail operation that processes substantial daily cash volumes across three locations and needs a secure, compliant cash management solution to reduce handling costs and improve deposit speed."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a site visit within the next week to assess current cash handling procedures, explore options like a Smart Safe 2 or Recycler system, and understand pricing. They want to transition to Brink's within 60 days."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured the caller's email address and confirmed what specific cash processing services would be demonstrated during the site visit to set clearer expectations and improve follow-up communication."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Thank you for calling Brink's secure cash management. This is Marcus Bell. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:08",
+          "text": "Hi Marcus. I'm calling because we run a specialty retail operation with three locations across the metro area and we handle a lot of cash every day. We're looking for a better solution for secure deposits and cash handling."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:22",
+          "text": "That sounds like a great fit for our services. To help me understand your needs better, can I get your full name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:30",
+          "text": "Yes, it's Jennifer Martinez."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:35",
+          "text": "Thank you, Jennifer. And just to confirm, you're looking for cash management services for your retail locations. Are you currently using any armored service or cash handling equipment right now?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:48",
+          "text": "We're doing most of it manually right now. No armored service, but we do have concerns about security and also the time our staff spends on cash counts and deposits."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:02",
+          "text": "I understand. That's exactly what Brink's Total Cash Management can help with. We have solutions like Smart Safe systems and recyclers that automate the process and provide real-time reporting. What area are your locations in?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:16",
+          "text": "All three are in the northern suburbs, within the 45203 and 45204 ZIP codes."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:26",
+          "text": "Perfect. We absolutely service that area. I'll want to get your phone number so we can confirm details. What's the best number to reach you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:36",
+          "text": "It's ****-***-9847."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:42",
+          "text": "Great, thank you. And just one more thing, do you have an email address where we can send you some information and confirmation details?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:52",
+          "text": "Um, I'd rather just stick with the phone number for now."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:58",
+          "text": "That's fine, Jennifer. So what we can do is schedule a consultation visit to your locations. Our specialist can assess your current setup, talk through options like the Smart Safe 2 or Recycler, and give you a custom quote based on your volume. How does next week look for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:18",
+          "text": "Next week works. Anytime Tuesday or Wednesday afternoon would be good."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:28",
+          "text": "Excellent. I'm going to schedule that for Tuesday at 2 PM. You'll get a confirmation call the day before. Our consultant will bring product information and talk through the best fit for your three locations. Does that sound good?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:44",
+          "text": "Perfect. Thank you, Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:50",
+          "text": "Thank you, Jennifer. We look forward to helping you streamline your cash management. Goodbye."
+        }
+      ],
+      "aiSummary": "Jennifer Martinez, a retail operations manager at a three-location specialty retail business in the northern suburbs, called to explore Brink's cash management solutions for secure, efficient handling of their daily cash volumes. She confirmed high daily cash processing needs and expressed frustration with manual handling, staff time spent on counts, and security concerns. Marcus qualified the prospect, confirmed service area coverage, captured contact details, and scheduled a consultation for Tuesday afternoon. The call ended with the consultant visit confirmed, though the prospect declined to provide an email address for follow-up communication.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus Great structure and qualification on this call. You got the key details, confirmed the service area, and locked in the Tuesday visit. One thing I'd suggest: when Jennifer hesitated on the email, you accepted it right away. For a new prospect intake, I'd gently offer an email as our standard practice so we can send her the confirmation and product overview before the visit. It sets better expectations and gives her something to review. Also, consider briefly mentioning what the consultant will bring to the site so she knows what to prepare. Strong close though."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "27,857"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$807.28"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$22,488,427"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "16,891"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "61%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "8,914"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "32%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "10,966"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "39%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "LinkedIn / Social",
+                "value": 47,
+                "display": "47%"
+              },
+              {
+                "name": "Email / ABM",
+                "value": 40,
+                "display": "40%"
+              },
+              {
+                "name": "Direct",
+                "value": 34,
+                "display": "34%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 28,
+                "display": "28%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "9,847",
+                  "22%",
+                  "$7,912,644"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "7,213",
+                  "28%",
+                  "$5,834,120"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "5,126",
+                  "34%",
+                  "$4,215,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Email / ABM",
+                  "3,458",
+                  "40%",
+                  "$2,684,533"
+                ]
+              },
+              {
+                "cells": [
+                  "LinkedIn / Social",
+                  "2,213",
+                  "47%",
+                  "$1,841,250"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 9412,
+                "display": "9,412"
+              },
+              {
+                "name": "organic",
+                "value": 7006,
+                "display": "7,006"
+              },
+              {
+                "name": "referral",
+                "value": 5341,
+                "display": "5,341"
+              },
+              {
+                "name": "email",
+                "value": 3662,
+                "display": "3,662"
+              },
+              {
+                "name": "social",
+                "value": 2436,
+                "display": "2,436"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "9,412",
+                  "23%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "7,006",
+                  "27%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "5,341",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "3,662",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "2,436",
+                  "46%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 5000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Cash Management Solutions",
+                "value": 4318,
+                "display": "4,318"
+              },
+              {
+                "name": "Smart Safe Get a Quote",
+                "value": 3562,
+                "display": "3,562"
+              },
+              {
+                "name": "Armored Cash Pickup for Retail",
+                "value": 2847,
+                "display": "2,847"
+              },
+              {
+                "name": "Secure Your Cash Flow",
+                "value": 2106,
+                "display": "2,106"
+              },
+              {
+                "name": "Meet Brink's at NRF",
+                "value": 1489,
+                "display": "1,489"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Cash Management Solutions",
+                  "4,318",
+                  "24%",
+                  "$3,486,215"
+                ]
+              },
+              {
+                "cells": [
+                  "Smart Safe Get a Quote",
+                  "3,562",
+                  "30%",
+                  "$2,914,560"
+                ]
+              },
+              {
+                "cells": [
+                  "Armored Cash Pickup for Retail",
+                  "2,847",
+                  "37%",
+                  "$2,187,340"
+                ]
+              },
+              {
+                "cells": [
+                  "Secure Your Cash Flow",
+                  "2,106",
+                  "45%",
+                  "$1,642,880"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 2500,
+            "axisTicks": [
+              0,
+              500,
+              1000,
+              1500,
+              2000,
+              2500
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cash management services for business",
+                "value": 2184,
+                "display": "2,184"
+              },
+              {
+                "name": "armored car service near me",
+                "value": 1762,
+                "display": "1,762"
+              },
+              {
+                "name": "smart safe for retail",
+                "value": 1438,
+                "display": "1,438"
+              },
+              {
+                "name": "cash pickup service",
+                "value": 1103,
+                "display": "1,103"
+              },
+              {
+                "name": "atm cash replenishment company",
+                "value": 847,
+                "display": "847"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cash management services for business",
+                  "26%"
+                ]
+              },
+              {
+                "cells": [
+                  "armored car service near me",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "smart safe for retail",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "cash pickup service",
+                  "46%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Total Cash Management",
+              "10,214",
+              "27%",
+              "64%"
+            ]
+          },
+          {
+            "cells": [
+              "Brink's Global Services",
+              "7,842",
+              "31%",
+              "59%"
+            ]
+          },
+          {
+            "cells": [
+              "Brink's Payment Services",
+              "6,318",
+              "36%",
+              "55%"
+            ]
+          },
+          {
+            "cells": [
+              "Industry Solutions",
+              "3,483",
+              "43%",
+              "50%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Brink's Dallas Cash Vault",
+              "8,742",
+              "621",
+              "4%",
+              "28%"
+            ]
+          },
+          {
+            "cells": [
+              "Brink's Atlanta Branch",
+              "7,318",
+              "498",
+              "3%",
+              "32%"
+            ]
+          },
+          {
+            "cells": [
+              "Brink's Chicago Vault",
+              "6,914",
+              "431",
+              "3%",
+              "37%"
+            ]
+          },
+          {
+            "cells": [
+              "Brink's Los Angeles Terminal",
+              "4,883",
+              "289",
+              "2%",
+              "44%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1084,
+              1132,
+              1067,
+              998,
+              933
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              962,
+              1004,
+              948,
+              902,
+              846
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              812,
+              834,
+              798,
+              748,
+              689
+            ]
+          },
+          {
+            "name": "Needs Corporate Approval",
+            "values": [
+              618,
+              634,
+              601,
+              562,
+              528
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              472,
+              486,
+              458,
+              431,
+              396
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "11,143"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Contract Signed (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$12,818,403"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$847,560"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,256,840"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,089,350"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,156,280"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,847,920"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,620,453"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3847,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "2684",
+                "58%",
+                "29%",
+                "$2,135,768"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "1943",
+                "55%",
+                "31%",
+                "$1,847,293"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "1756",
+                "54%",
+                "34%",
+                "$1,654,487"
+              ]
+            },
+            {
+              "name": "Display Retargeting",
+              "metrics": [
+                "1548",
+                "57%",
+                "36%",
+                "$1,702,368"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "1214",
+                "59%",
+                "38%",
+                "$1,235,108"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3892,
+          "rows": [
+            {
+              "name": "Organic Voice",
+              "metrics": [
+                "3156",
+                "57%",
+                "30%",
+                "$2,847,156"
+              ]
+            },
+            {
+              "name": "Web Form",
+              "metrics": [
+                "2841",
+                "56%",
+                "32%",
+                "$1,956,487"
+              ]
+            },
+            {
+              "name": "SMS Inbound",
+              "metrics": [
+                "2419",
+                "54%",
+                "35%",
+                "$1,847,293"
+              ]
+            },
+            {
+              "name": "Call Center IVR",
+              "metrics": [
+                "1687",
+                "58%",
+                "33%",
+                "$1,689,024"
+              ]
+            },
+            {
+              "name": "Chat Widget",
+              "metrics": [
+                "1040",
+                "60%",
+                "36%",
+                "$1,478,443"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3754,
+          "rows": [
+            {
+              "name": "Smart Safe 2 Provisional Credit Campaign",
+              "metrics": [
+                "2847",
+                "55%",
+                "28%",
+                "$2,156,280"
+              ]
+            },
+            {
+              "name": "Brink's Recycler Cost Reduction Campaign",
+              "metrics": [
+                "1956",
+                "57%",
+                "32%",
+                "$1,654,487"
+              ]
+            },
+            {
+              "name": "Cash Vault Services for Enterprise Retailers",
+              "metrics": [
+                "1543",
+                "56%",
+                "35%",
+                "$1,847,293"
+              ]
+            },
+            {
+              "name": "Total Cash Management Summit 2026",
+              "metrics": [
+                "1287",
+                "59%",
+                "37%",
+                "$1,256,840"
+              ]
+            },
+            {
+              "name": "Secure Logistics for Valuables Campaign",
+              "metrics": [
+                "968",
+                "61%",
+                "39%",
+                "$1,256,023"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2156,
+          "rows": [
+            {
+              "name": "cash management solutions for business",
+              "metrics": [
+                "1452",
+                "54%",
+                "27%",
+                "$1,089,350"
+              ]
+            },
+            {
+              "name": "smart safe for retail near me",
+              "metrics": [
+                "987",
+                "56%",
+                "30%",
+                "$1,158,940"
+              ]
+            },
+            {
+              "name": "armored cash pickup service",
+              "metrics": [
+                "856",
+                "58%",
+                "33%",
+                "$987,654"
+              ]
+            },
+            {
+              "name": "cash vault services small business",
+              "metrics": [
+                "743",
+                "59%",
+                "36%",
+                "$847,560"
+              ]
+            },
+            {
+              "name": "ATM cash replenishment company",
+              "metrics": [
+                "612",
+                "61%",
+                "38%",
+                "$756,283"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Total Cash Management Solutions",
+              "metrics": [
+                "3847",
+                "57%",
+                "29%",
+                "$3,256,847"
+              ]
+            },
+            {
+              "name": "Cash Vault Processing Services",
+              "metrics": [
+                "2756",
+                "56%",
+                "32%",
+                "$2,148,560"
+              ]
+            },
+            {
+              "name": "Brink's Global Secure Logistics",
+              "metrics": [
+                "2143",
+                "54%",
+                "35%",
+                "$1,956,487"
+              ]
+            },
+            {
+              "name": "Cash-in-Transit and Armored Services",
+              "metrics": [
+                "1652",
+                "58%",
+                "37%",
+                "$1,847,293"
+              ]
+            },
+            {
+              "name": "Brink's Payment Services and Accounts",
+              "metrics": [
+                "745",
+                "59%",
+                "38%",
+                "$609,216"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Contract Signed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Total Cash Management Solutions",
+            "values": [
+              287,
+              312,
+              298,
+              264,
+              242
+            ]
+          },
+          {
+            "name": "Cash Vault Processing Services",
+            "values": [
+              202,
+              218,
+              227,
+              194,
+              181
+            ]
+          },
+          {
+            "name": "Brink's Global Secure Logistics",
+            "values": [
+              168,
+              182,
+              175,
+              156,
+              142
+            ]
+          },
+          {
+            "name": "Cash-in-Transit and Armored Services",
+            "values": [
+              152,
+              168,
+              161,
+              143,
+              129
+            ]
+          },
+          {
+            "name": "Brink's Payment Services and Accounts",
+            "values": [
+              68,
+              74,
+              71,
+              62,
+              55
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "349"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$2,348,651"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "824"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "36%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$187,945"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              72,
+              75,
+              73,
+              76,
+              74,
+              72,
+              75,
+              78,
+              71,
+              74,
+              77,
+              73,
+              75,
+              76,
+              72,
+              74,
+              77,
+              75,
+              73,
+              76,
+              74,
+              72,
+              75,
+              77,
+              73,
+              71,
+              76,
+              74,
+              75,
+              72,
+              73,
+              182,
+              189,
+              175,
+              187,
+              192,
+              178,
+              184,
+              191,
+              179,
+              186,
+              188,
+              176,
+              185,
+              190,
+              177,
+              183,
+              189,
+              174
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,164"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "712"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "689"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Smart Safe Pricing",
+            "values": [
+              8,
+              6,
+              1,
+              9,
+              7,
+              11
+            ]
+          },
+          {
+            "name": "Cash-In-Transit Coverage",
+            "values": [
+              6,
+              9,
+              7,
+              8,
+              4,
+              10
+            ]
+          },
+          {
+            "name": "ATM Servicing Options",
+            "values": [
+              5,
+              7,
+              9,
+              6,
+              8,
+              9
+            ]
+          },
+          {
+            "name": "Secure Logistics Inquiry",
+            "values": [
+              7,
+              8,
+              6,
+              11,
+              5,
+              7
+            ]
+          },
+          {
+            "name": "Account Setup Process",
+            "values": [
+              9,
+              5,
+              8,
+              7,
+              10,
+              6
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "25,628"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "17,271"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "8,914"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$22,488,427"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Derek Mullins",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Patricia Chen",
+              "value": 196,
+              "display": "196"
+            },
+            {
+              "name": "James Kowalski",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Sandra Rivera",
+              "value": 204,
+              "display": "204"
+            },
+            {
+              "name": "Marcus Thompson",
+              "value": 172,
+              "display": "172"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Rachel Goldstein",
+            "values": [
+              156,
+              178,
+              201,
+              234,
+              267
+            ]
+          },
+          {
+            "name": "Kevin Bradshaw",
+            "values": [
+              142,
+              164,
+              189,
+              218,
+              251
+            ]
+          },
+          {
+            "name": "Elena Vasquez",
+            "values": [
+              138,
+              159,
+              183,
+              211,
+              244
+            ]
+          },
+          {
+            "name": "David Ortiz",
+            "values": [
+              151,
+              172,
+              198,
+              227,
+              263
+            ]
+          },
+          {
+            "name": "Amber Fitzgerald",
+            "values": [
+              128,
+              147,
+              169,
+              195,
+              226
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Derek Mullins",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Patricia Chen",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "James Kowalski",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "Sandra Rivera",
+              "value": 58.3,
+              "display": "58.3%"
+            },
+            {
+              "name": "Marcus Thompson",
+              "value": 55.7,
+              "display": "55.7%"
+            },
+            {
+              "name": "Robert Castellano",
+              "value": 57.4,
+              "display": "57.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Derek Mullins",
+                "54.2%",
+                "28%",
+                "$1,068,912",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Chen",
+                "56.8%",
+                "31%",
+                "$1,189,753",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "James Kowalski",
+                "52.1%",
+                "26%",
+                "$1,002,647",
+                "1,442"
+              ]
+            },
+            {
+              "cells": [
+                "Sandra Rivera",
+                "58.3%",
+                "33%",
+                "$1,254,381",
+                "1,501"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Thompson",
+                "55.7%",
+                "29%",
+                "$1,098,034",
+                "1,468"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Castellano",
+                "57.4%",
+                "32%",
+                "$1,214,528",
+                "1,509"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Rachel Goldstein",
+              "value": 93.1,
+              "display": "93.1%"
+            },
+            {
+              "name": "Kevin Bradshaw",
+              "value": 91.4,
+              "display": "91.4%"
+            },
+            {
+              "name": "Elena Vasquez",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "David Ortiz",
+              "value": 92.3,
+              "display": "92.3%"
+            },
+            {
+              "name": "Amber Fitzgerald",
+              "value": 88.5,
+              "display": "88.5%"
+            },
+            {
+              "name": "Sophia Martinez",
+              "value": 90.8,
+              "display": "90.8%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Rachel Goldstein",
+                "93.1%",
+                "67%",
+                "$2,547,891",
+                "1,543"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Bradshaw",
+                "91.4%",
+                "64%",
+                "$2,418,376",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Elena Vasquez",
+                "89.7%",
+                "61%",
+                "$2,321,543",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "David Ortiz",
+                "92.3%",
+                "66%",
+                "$2,504,218",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Amber Fitzgerald",
+                "88.5%",
+                "58%",
+                "$2,165,897",
+                "1,444"
+              ]
+            },
+            {
+              "cells": [
+                "Sophia Martinez",
+                "90.8%",
+                "63%",
+                "$2,385,604",
+                "1,492"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Scheduled (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Scheduled (Count)",
+        "rightMax": 500,
+        "rightTicks": [
+          0,
+          125,
+          250,
+          375,
+          500
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 331
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 317
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 295
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 282
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 245
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 258
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 285
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 296
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 330
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 320
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 288
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 278
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 248
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 255
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 291
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 300
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 327
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 322
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 282
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 273
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 251
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 254
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 296
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 306
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 323
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 322
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 278
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 267
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 256
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 254
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 284
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1100000,
+        "rightTicks": [
+          0,
+          366666.6666666667,
+          733333.3333333334,
+          1100000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 833626
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 798993
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 744025
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 709943
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 618136
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 648717
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 716619
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 744866
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 830530
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 805250
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 725262
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 700980
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 623754
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 642943
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 733681
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 756037
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 822797
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 809992
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 710275
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 687747
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 633116
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 639754
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 746326
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 771066
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 812344
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 811163
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 700112
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 671296
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 644094
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 640989
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 753994
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "27857"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:18"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "2229"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "1671"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "85%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Martinez",
+                "412",
+                "91%",
+                "87%",
+                "88%"
+              ]
+            },
+            {
+              "cells": [
+                "James Chen",
+                "528",
+                "86%",
+                "84%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Gonzalez",
+                "487",
+                "87%",
+                "85%",
+                "85%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "27,857 calls",
+      "pagerLabel": "1 of 2,786",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 9:23 am",
+          "id": "A21C-4E9D77B10A3F"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C93E-2B5A61F8D004"
+        },
+        {
+          "time": "1/14/26 11:19 am",
+          "id": "7D40-90F3AC12E5B8"
+        },
+        {
+          "time": "1/16/26 12:38 pm",
+          "id": "E68A-13C7B4902FDE"
+        },
+        {
+          "time": "1/20/26 1:52 pm",
+          "id": "B4F1-7A2E5C08D391"
+        },
+        {
+          "time": "1/22/26 2:27 pm",
+          "id": "92DC-6F04A1B7E223"
+        },
+        {
+          "time": "1/27/26 3:44 pm",
+          "id": "3AE7-D8021C95F4B0"
+        },
+        {
+          "time": "1/29/26 4:31 pm",
+          "id": "5C82-EF71309AB6D2"
+        },
+        {
+          "time": "1/30/26 5:09 pm",
+          "id": "D16B-4520A9CF83E7"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling Brink's Total Cash Management, this is Marcus. How can I help your business today?",
+          "highlights": [
+            "Thank you for calling Brink's Total Cash Management",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Marcus. I run a small chain of convenience stores and we're drowning in cash handling at the register. I was looking into a smart safe.",
+          "highlights": [
+            "small chain of convenience stores",
+            "drowning in cash handling"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:18",
+          "text": "You've come to the right place. Can I get your name and how many locations you're working with?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:25",
+          "text": "Sure, it's Danielle Ortega. We've got four stores right now, hoping to open a fifth this spring.",
+          "highlights": [
+            "Danielle Ortega",
+            "four stores"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:33",
+          "text": "Great, Danielle. For that footprint the Smart Safe 2 is a strong fit. It accepts cash in real time, validates every note, and gives you provisional credit so the money hits your account before pickup.",
+          "highlights": [
+            "Smart Safe 2",
+            "provisional credit"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:46",
+          "text": "That provisional credit part sounds good. But honestly, what does something like that run per store? I want to keep it manageable while we're still growing.",
+          "highlights": [
+            "what does something like that run per store",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:57",
+          "text": "Completely understand. The Smart Safe 2 typically leases in the range of a few hundred a month per location, and we quote it based on your cash volume so you're not overpaying. Many owners find the reduced trips to the bank and shrink savings offset most of it.",
+          "highlights": [
+            "quote it based on your cash volume"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:11",
+          "text": "Okay. I'll be honest, the guys down the street quoted me on their own safe program and it looked a little cheaper up front.",
+          "highlights": [
+            "the guys down the street quoted me",
+            "a little cheaper up front"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:21",
+          "text": "That's fair, and I'd encourage you to compare closely. Where Brink's tends to pull ahead is the provisional credit and our armored pickup network, so you're not waiting days for funds and you're not driving deposits yourself. That's real cash flow and safety value.",
+          "highlights": [
+            "provisional credit and our armored pickup network"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:36",
+          "text": "Makes sense. We'd also want the actual cash pickup handled, not just the safe. Do you do that too?",
+          "highlights": [
+            "want the actual cash pickup handled"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:44",
+          "text": "Absolutely. We'd pair the Smart Safe 2 with our Cash-in-Transit Services, so an armored crew collects on a set schedule. It all rolls into one consolidated report you can see across all four stores.",
+          "highlights": [
+            "Cash-in-Transit Services",
+            "one consolidated report"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:57",
+          "text": "One thing though, I don't want to get locked into some long commitment before I know it works for us.",
+          "highlights": [
+            "don't want to get locked into some long commitment"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:05",
+          "text": "I hear you. The best next step is a consultation where a specialist reviews your volume and walks you through the terms in plain language, no obligation. We can even start with one store as a pilot if you'd like.",
+          "highlights": [
+            "consultation",
+            "no obligation",
+            "start with one store as a pilot"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:18",
+          "text": "That would actually put me at ease. Can we set that up? I'd want to loop in my business partner too.",
+          "highlights": [
+            "Can we set that up",
+            "loop in my business partner"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:25",
+          "text": "Done. I have a specialist available Thursday at 10 AM, and your partner is welcome to join. I'll send a calendar invite to your email. What's the best address?",
+          "highlights": [
+            "Thursday at 10 AM",
+            "I'll send a calendar invite"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:33",
+          "text": "Perfect, it's danielle at ortegastores dot com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:38",
+          "text": "You're all set for Thursday at 10 AM, Danielle. Thanks for calling Brink's, and we'll talk soon.",
+          "highlights": [
+            "all set for Thursday at 10 AM",
+            "Thanks for calling Brink's"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Product Interest: Smart Safe 2",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Product Interest: Cash-in-Transit",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Ortega, a new prospect who runs four convenience stores with a fifth opening this spring, called about reducing register cash handling. Agent Marcus recommended the Smart Safe 2 with provisional credit paired with Cash-in-Transit Services, and addressed her concerns about per-store cost, a cheaper competitor quote, and being locked into a long commitment. Marcus scheduled a no-obligation consultation for Thursday at 10 AM and captured her email so her business partner could join.",
+        "keyPoints": [
+          "New client with a four-store convenience chain expanding to five",
+          "Primary need is cutting register cash handling and speeding deposits",
+          "Recommended Smart Safe 2 with provisional credit plus Cash-in-Transit Services",
+          "Handled price, competitor, and commitment concerns with a pilot option",
+          "Consultation booked for Thursday at 10 AM, partner invited",
+          "Captured email danielle at ortegastores dot com for the calendar invite"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "17,550 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 1,755",
+      "conversations": [
+        {
+          "id": "C847-3F9D2A1E4B6C",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for contacting Brink's Cash Management. I'm here to help you find the right security solution for your business. Are you calling about a specific service today, or would you like to learn about our options?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi, yeah. We run a small retail shop in Portland and we're looking at getting a smart safe. We're tired of storing cash in the back."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great, the Smart Safe 2 is perfect for retail locations. It gives you real time deposit validation and provisional credit. Quick question, how many cash registers do you currently have?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "We have three registers spread across two checkout lanes."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Got it, three registers. And roughly how much cash volume do you process in an average day?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Maybe around two to three thousand dollars a day, sometimes more on weekends."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Perfect. That volume is ideal for the Smart Safe 2. We can typically get you set up with provisional credit within one business day of deposit. Are you looking to lease or own?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "We'd prefer to lease if that's an option."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Absolutely, leasing is our standard model. The Smart Safe 2 lease runs between 150 and 400 per month depending on your location and setup. Can we schedule a brief consultation with one of our retail specialists to confirm your exact location and discuss installation? How about Thursday morning at 10 AM?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "Thursday works, but I'd need to do it later like 2 PM to be honest."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Perfect. Let me lock in Thursday at 2 PM Portland time for your Smart Safe 2 consultation. You'll hear from our team lead, Janet Rodriguez, at this number. Thanks for choosing Brink's."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Sounds good. Thanks!"
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Smart Safe 2",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Service Area: Portland Oregon",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Daily Cash Volume: 2000 to 3000 dollars",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Lease Preference Confirmed",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C847-3F9D2A1E4B6C",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "503-841-7256",
+            "totalMessages": "13",
+            "source": "503-841-7256",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "503-841-7256",
+            "repeatCaller": "No",
+            "city": "Portland",
+            "region": "OR",
+            "phoneType": "Mobile",
+            "displayName": "Michael Chen",
+            "firstName": "Michael",
+            "lastName": "Chen",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C519-2E7B4F6A9C3D",
+          "time": "3/10/26 7:15 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C519-2E7B4F6A9C3D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C632-5A8C1B2F7E9A",
+          "time": "3/10/26 8:42 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C632-5A8C1B2F7E9A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C741-6D3E9F4A2B5C",
+          "time": "3/10/26 9:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C741-6D3E9F4A2B5C",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "27,857 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,786",
+      "conversations": [
+        {
+          "id": "B8F3-4A7E9C2B1D6F",
+          "time": "1/18/26 2:34 pm",
+          "active": true,
+          "date": "January 18, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:34 PM",
+              "text": "Thanks for calling Brink's secure cash management. This is Derek. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:34 PM",
+              "text": "Hi Derek. Yeah, I'm calling because we're looking at upgrading our in store deposit system. We've got a couple locations and we're getting swamped with manual cash handling."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:35 PM",
+              "text": "I totally understand. That's something we help a lot of retailers with. Are you currently using any kind of smart safe or automated deposit system?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:35 PM",
+              "text": "No, we're doing everything by hand right now. We've got three retail locations, actually."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:36 PM",
+              "text": "Okay, great. So with three locations, we can definitely set you up with a solution that works. Quick question, what's your average daily deposit volume across those three stores?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:37 PM",
+              "text": "I'd say we're probably doing about fifteen to twenty thousand a day total. Some days more during the season."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:37 PM",
+              "text": "Perfect. And is that mostly coins and bills mixed, or are you handling a lot of checks as well?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:38 PM",
+              "text": "Pretty much all cash. We don't take many checks anymore honestly."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:38 PM",
+              "text": "Got it. So based on what you're telling me, I think our Smart Safe 2 would be a really solid fit for you. It gives you real time deposit validation and you get provisional credit deposited same day. Saves a ton of manual work."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:39 PM",
+              "text": "That sounds perfect actually. What's the cost look like?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:40 PM",
+              "text": "The pricing is custom based on your volume and location, but for three stores at your volume we're typically looking at somewhere in the two hundred to four hundred range per location per month. I'd love to get you a formal quote and walk through the specifics."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:41 PM",
+              "text": "Yeah, that makes sense. Let's do it."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:41 PM",
+              "text": "Awesome. So I can get one of our cash management specialists to reach out and set up a consultation. How about Thursday of next week at ten in the morning? That work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:42 PM",
+              "text": "Thursday at ten should be good. Do I need to do anything before the call?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:43 PM",
+              "text": "Nope, just be ready to chat about your locations and we'll take it from there. I've got you down for Thursday January twenty third at ten AM. We'll call you back at this number, eight zero five, five five five, one two three four. Sound good?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:43 PM",
+              "text": "Perfect. Thanks Derek."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:44 PM",
+              "text": "You got it. Thanks for calling Brink's and have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Smart Safe 2",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Service Area: Multi Location Retail",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Deposit Volume Established: 15K to 20K Daily",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Quote Requested",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "B8F3-4A7E9C2B1D6F",
+            "callStartTime": "1/18/26 2:34 pm",
+            "duration": "10:14",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2945",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "805-555-1234",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "Michael Torres",
+            "firstName": "Michael",
+            "lastName": "Torres",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "C7G4-5B8F0D3C2E7A",
+          "time": "1/22/26 11:47 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C7G4-5B8F0D3C2E7A",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D9H5-6C9G1E4D3F8B",
+          "time": "1/25/26 3:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D9H5-6C9G1E4D3F8B",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "E1I6-7D0H2F5E4G9C",
+          "time": "1/29/26 1:56 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "E1I6-7D0H2F5E4G9C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: I'm Brink's AI agent, here to help you build a personalized quote for secure cash management, and right now new accounts can waive setup fees on a Smart Safe 2 install. Would you like to get started?",
+        "Qualify one at a time: I'll ask a few quick questions one at a time, how many locations need service, your average weekly cash volume, which solution fits best (Smart Safe 2, Recycler, Cash-in-Transit, or ATM services), your ideal start timeline, and the ZIP code of your primary location so I can confirm service availability.",
+        "Estimate then book: Once I confirm we service your ZIP, I'll share a preliminary monthly range based on what you shared, then recommend a consultation with a Brink's cash management specialist for an exact custom quote, propose a specific day and time, and confirm you'll get a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Brink_s_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Total Cash Management Solutions",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Industries We Serve",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Get a Quote",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Service Reschedule\",\"question\":\"Can I change my armored pickup schedule to twice a week?\",\"answer\":\"Yes, we can adjust your Cash-in-Transit pickup frequency. I'll connect you with your account specialist to update the route and confirm the new stop schedule.\"},{\"topic\":\"Deposit Status\",\"question\":\"When will I see provisional credit for yesterday's Smart Safe deposit?\",\"answer\":\"Provisional credit on Smart Safe 2 deposits typically posts within one business day of validation. I can have your specialist verify the exact posting time on your account.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What is a Smart Safe 2 and how does it work?",
+              "answer": "The Smart Safe 2 is an in-store cash-accepting safe that validates deposits in real time and can provide provisional credit. I can set up a consultation to size the right unit for your locations."
+            },
+            {
+              "question": "How much does a smart safe cost per month?",
+              "answer": "Pricing is custom based on your cash volume and number of locations, so a specialist prepares an exact quote. I can book a quick consultation to get you accurate numbers."
+            },
+            {
+              "question": "Do you offer armored cash pickup for retail stores?",
+              "answer": "Yes, our Cash-in-Transit service provides scheduled armored pickup and delivery for retailers. Let's set up a consultation to map your locations and pickup frequency."
+            },
+            {
+              "question": "Can Brink's replenish and service our ATMs?",
+              "answer": "Yes, Brink's Complete ATM covers cash replenishment, monitoring, and maintenance. I can arrange a consultation with an ATM specialist to review your fleet."
+            },
+            {
+              "question": "What is a cash recycler and how is it different from a smart safe?",
+              "answer": "The Brink's Recycler dispenses and recycles notes to reduce register handling, while a smart safe focuses on secure deposits. A specialist can help you compare both in a consultation."
+            },
+            {
+              "question": "Do you serve small businesses with lower cash volume?",
+              "answer": "Yes, our RetailBox is a compact deposit and change device built for smaller footprints. Let's book a consultation to confirm the best fit for your volume."
+            },
+            {
+              "question": "How do cash vault services work?",
+              "answer": "Cash Vault Services handle off-site counting, verification, and consolidated reporting so your deposits are processed centrally. I can schedule a consultation to review your reporting needs."
+            },
+            {
+              "question": "Can you ship jewelry and precious metals securely?",
+              "answer": "Yes, Brink's Global Services provides insured secure logistics for diamonds, precious metals, and other valuables. A specialist can walk you through options in a consultation."
+            },
+            {
+              "question": "Do you handle fine art shipping?",
+              "answer": "Yes, Brink's Fine Art offers specialized crating and shipping for artwork and collectibles. Let's set up a consultation to discuss your pieces and routes."
+            },
+            {
+              "question": "How quickly can you install a smart safe?",
+              "answer": "Install timelines depend on your location count and configuration, which a specialist confirms during setup. I can book a consultation to start the process."
+            },
+            {
+              "question": "Do you offer coin and currency change orders for bank branches?",
+              "answer": "Yes, we fulfill coin and currency change orders for branches through our Branch Services. A specialist can set up your ordering process in a consultation."
+            },
+            {
+              "question": "What is the Brink's Money Paycard?",
+              "answer": "It's a prepaid payroll card that lets employers pay employees without paper checks. I can arrange a consultation to review enrollment for your team."
+            },
+            {
+              "question": "Can I get provisional credit on my deposits?",
+              "answer": "Yes, Smart Safe 2 offers provisional credit so you can access funds sooner. Let's book a consultation to confirm eligibility for your account."
+            },
+            {
+              "question": "Do you serve restaurants and entertainment venues?",
+              "answer": "Yes, we support retail, restaurants, and entertainment businesses with tailored cash management. A consultation helps us match the right solution to your operation."
+            },
+            {
+              "question": "How does the Brink's Armored Account work?",
+              "answer": "It pairs a deposit account with scheduled armored pickup for merchants to streamline deposits. I can set up a consultation to explain the details for your business."
+            },
+            {
+              "question": "Do you offer solutions for enterprise retailers with many locations?",
+              "answer": "Yes, we build multi-location cash management programs with consolidated reporting for enterprise retailers. Let's schedule a consultation with an enterprise specialist."
+            },
+            {
+              "question": "Can you help reduce our cash handling costs?",
+              "answer": "Yes, automation like smart safes and recyclers cuts manual handling and trips to the bank. A consultation lets us estimate the savings for your setup."
+            },
+            {
+              "question": "Is my cash insured during transport?",
+              "answer": "Yes, our secure logistics services include insured transport for cash and valuables. A specialist can confirm coverage details during your consultation."
+            },
+            {
+              "question": "How do I get a quote?",
+              "answer": "The best way is a short consultation where a specialist reviews your volume and locations to build a custom quote. I can schedule that for you now."
+            },
+            {
+              "question": "What areas does Brink's serve?",
+              "answer": "Brink's provides cash management and secure logistics to businesses nationwide across the US. Let's book a consultation to confirm service at your specific locations."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule a consultation\",\"follow_up_message\":\"Great, I have you down for a consultation with a Brink's cash management specialist. Please confirm your preferred day and time and I'll lock it in, plus send a reminder text with a number to call.\"},{\"intent\":\"Request a custom quote\",\"follow_up_message\":\"Thanks for the details. To finalize an exact quote a specialist just needs a few minutes with you, so let's set a consultation and I'll confirm the time and send a reminder before we meet.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Brink's AI agent. I can help you build a personalized quote for secure cash management and connect you with a specialist. Would you like to get started?",
+        "goal": "Qualify the business's cash management needs and book a virtual consultation with a Brink's specialist for a custom quote.",
+        "bookingType": "virtual consultation",
+        "offer": "Waive setup fees when you book your consultation today",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "How many locations need cash management service?",
+          "What is your approximate weekly cash volume per location?",
+          "Which solution are you most interested in, Smart Safe 2, Brink's Recycler, Cash-in-Transit, or ATM services?",
+          "What is your ideal timeline to get started?",
+          "What is the ZIP code of your primary location so I can confirm service availability?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:47 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:47 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:47 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Brink's",
+      "callerName": "Marcus Chen",
+      "callerPhone": "(713) 555-0847",
+      "campaign": "Smart Safe 2, Houston Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$3,240",
+      "googleSearch": "smart safe for retail business near me",
+      "websiteSearch": "cash management solutions Houston",
+      "callingWebpage": "/solutions/total-cash-management/smart-safe-2",
+      "products": "Smart Safe 2, Cash-in-Transit Services",
+      "cartId": "BR-7429K",
+      "serviceable": "Yes",
+      "email": "marcus.chen@houstonretail.com",
+      "street": "4521 Bellaire Boulevard",
+      "city": "Houston",
+      "state": "TX",
+      "zip": "77025",
+      "digitalJourney": "/home › /solutions › /solutions/total-cash-management › /solutions/total-cash-management/smart-safe-2",
+      "intent": "Restaurant owner seeking automated cash deposit solution with provisional credit to reduce end-of-day manual handling and improve cash flow.",
+      "coverage": "ZIP 77025 confirmed, Houston serviceable",
+      "switchIntent": "High, currently using competitor system expiring next month, wants to evaluate Smart Safe 2 this week.",
+      "greeting": "Hi Marcus, thanks for calling Brink's. I see you're interested in our Smart Safe 2 for your restaurant. I'd love to walk you through how it validates deposits in real time and gets you provisional credit faster. Can we schedule a quick consultation with one of our cash management specialists?"
+    },
+    "smsScreenpop": {
+      "brandName": "Brink's",
+      "callerName": "Rebecca Kowalski",
+      "callerPhone": "(312) 555-0623",
+      "campaign": "Armored Account, Chicago Launch",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$1,875",
+      "googleSearch": "armored cash pickup service for retailers",
+      "websiteSearch": "Brink's cash vault services Chicago",
+      "callingWebpage": "/solutions/brinks-payment-services/armored-account",
+      "products": "Brink's Armored Account, Cash Vault Services",
+      "cartId": "BR-5061M",
+      "serviceable": "Yes",
+      "email": "rebecca.kowalski@chicagoretail.net",
+      "street": "1847 North Milwaukee Avenue",
+      "city": "Chicago",
+      "state": "IL",
+      "zip": "60647",
+      "digitalJourney": "/home › /industries/retail › /solutions/brinks-payment-services › /solutions/brinks-payment-services/armored-account",
+      "intent": "Multi-location retail manager looking to consolidate cash handling across three stores with secure armored pickup and centralized deposit processing.",
+      "coverage": "ZIP 60647 confirmed, Chicago serviceable",
+      "appointment": "Brink's Armored Account consultation with regional specialist, Thu Jul 18, 2:00 PM",
+      "greeting": "Hi Rebecca, this is David from Brink's. Great to confirm your Armored Account consultation this Thursday at 2 PM. We'll walk you through how we can handle secure pickups across all three of your locations and get your deposits counted and verified the same day. Looking forward to showing you how we streamline your cash operations."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Brink's",
+      "brandDomain": "www.brinks.com",
+      "brandIcon": "🛡️",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Ventura, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Smart Safe 2, Get a Quote",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "smart safe for retail cash management",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Solutions / Total Cash Management / Smart Safe 2",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Smart Safe 2, Cash-in-Transit Services",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Ventura, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_new_project",
+          "name": "Consultation, New Cash Management Project"
+        },
+        {
+          "id": "support_existing",
+          "name": "Existing Account Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry and Information"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Brink's. I'm an AI assistant here to help connect you with the right team. I see you've been looking at our Smart Safe solutions. Are you calling today about a new cash management project for your business?",
+          "sigs": [],
+          "q": [
+            25,
+            50,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, we run a retail operation with multiple locations in Southern California. We're looking to upgrade from our current manual cash handling to something more automated. The Smart Safe 2 seems like it could work for us.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Multiple locations</strong> in Southern California"
+            },
+            {
+              "c": "blue",
+              "t": "Upgrading from <strong>manual cash handling</strong>"
+            },
+            {
+              "c": "orange",
+              "t": "Interest in <strong>Smart Safe 2</strong>"
+            }
+          ],
+          "q": [
+            60,
+            25,
+            15
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's great. Multiple locations definitely benefit from our total cash management approach. Quick question, when you say multiple locations, are we talking three to five stores, or more? And do you currently have any Brink's services in place?",
+          "sigs": [],
+          "q": [
+            70,
+            15,
+            15
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We have seven stores across Ventura and Santa Barbara counties. Right now we're picking up and dropping off at our bank manually, which is costing us time and creating security concerns. We'd really like to get quotes on both Smart Safe units and your cash-in-transit pickup service to see what a complete solution looks like.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Seven retail locations</strong>"
+            },
+            {
+              "c": "orange",
+              "t": "Manual deposits and <strong>security concerns</strong>"
+            },
+            {
+              "c": "purple",
+              "t": "Interested in <strong>Smart Safe and cash pickup</strong> combination"
+            }
+          ],
+          "q": [
+            85,
+            8,
+            7
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. A multi-location setup with in-store automation and regular armored pickup is exactly what our Cash Management consultants specialize in. They'll walk you through provisioning, cost modeling, and integration with your current systems. Let me route you to our Consultation team right now so they can schedule a time that works for you.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get you scheduled (Agent)\", \"book a cash management consultation (Caller)\", \"schedule your site assessment (Agent)\"]) and answered_by_agent",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "12/08/25 2:41 pm"
+        },
+        {
+          "name": "Armored Pickup Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"cash pickup service (Caller)\", \"armored pickup (Caller)\", \"cash-in-transit (Agent)\", \"armored truck stop (Caller)\"])",
+          "createdAt": "04/02/25 11:35 am",
+          "updatedAt": "11/19/25 10:07 am"
+        },
+        {
+          "name": "Assurance and Empathy (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Assurance and Empathy] < 60 and duration > 45 sec",
+          "createdAt": "05/21/25 3:48 pm",
+          "updatedAt": "01/06/26 8:55 am"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Loomis (Caller)\", \"GardaWorld (Caller)\", \"currently with another carrier (Caller)\", \"our current armored provider (Caller)\"])",
+          "createdAt": "06/09/25 1:22 pm",
+          "updatedAt": "12/15/25 4:30 pm"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"talk to a cash specialist (Agent)\", \"set up a consultation (Caller)\", \"walk you through the solution (Agent)\"])",
+          "createdAt": "02/18/25 10:05 am",
+          "updatedAt": "11/28/25 9:18 am"
+        },
+        {
+          "name": "Needs Discovery Completed (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "2 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Needs Discovery] < 60 and duration > 45 sec",
+          "createdAt": "07/12/25 2:14 pm",
+          "updatedAt": "01/11/26 11:42 am"
+        },
+        {
+          "name": "Price Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"how much does the smart safe cost (Caller)\", \"what's the monthly lease (Caller)\", \"that's too expensive (Caller)\", \"any setup fees (Caller)\"])",
+          "createdAt": "08/03/25 4:57 pm",
+          "updatedAt": "12/22/25 1:09 pm"
+        },
+        {
+          "name": "Professional Greeting (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Professional Greeting] < 60 and duration > 45 sec",
+          "createdAt": "05/29/25 8:41 am",
+          "updatedAt": "01/09/26 3:26 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"send you a custom quote (Agent)\", \"pricing is quoted per location (Agent)\", \"get a quote (Caller)\"]) and duration > 1 min",
+          "createdAt": "09/17/25 12:33 pm",
+          "updatedAt": "01/03/26 10:52 am"
+        },
+        {
+          "name": "Smart Safe Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"smart safe (Caller)\", \"cash recycler (Caller)\", \"provisional credit (Agent)\", \"RetailBox (Caller)\"])",
+          "createdAt": "10/06/25 9:48 am",
+          "updatedAt": "01/07/26 2:15 pm"
+        }
+      ]
+    }
+  }
+}

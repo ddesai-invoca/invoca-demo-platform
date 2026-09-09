@@ -1,0 +1,5350 @@
+{
+  "id": "mutual-of-omaha",
+  "customerName": "Mutual of Omaha",
+  "websiteUrl": "https://www.mutualofomaha.com",
+  "brandDomain": "mutualofomaha.com",
+  "networkName": "Invoca for Insurance",
+  "industry": "Insurance & Financial Services",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Policyholder",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 10847
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 12983
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 11621
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 10534
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 10717
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Medicare Supplement Quote",
+          "marketingSearchTerm": "medicare supplement plan g cost",
+          "landingPageUrl": "https://www.mutualofomaha.com/medicare/medicare-supplement?utm_source=google&utm_medium=cpc&utm_campaign=medigap_planG",
+          "websiteJourney": "Home / Products / Medicare / Medicare Supplement Insurance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Guaranteed Whole Life 45-85",
+          "marketingSearchTerm": "guaranteed whole life insurance no medical exam",
+          "landingPageUrl": "https://www.mutualofomaha.com/life-insurance/whole-life?utm_source=google&utm_medium=cpc&utm_campaign=gwl_4585",
+          "websiteJourney": "Home / Products / Life Insurance / Whole Life",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Final Expense Seniors",
+          "marketingSearchTerm": "final expense insurance seniors",
+          "landingPageUrl": "https://www.mutualofomaha.com/life-insurance/final-expense?utm_source=bing&utm_medium=cpc&utm_campaign=final_expense",
+          "websiteJourney": "Home / Products / Life Insurance / Whole Life",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Term Life Quote Online",
+          "marketingSearchTerm": "term life insurance quote online",
+          "landingPageUrl": "https://www.mutualofomaha.com/life-insurance/term-life?utm_source=google&utm_medium=cpc&utm_campaign=term_quote",
+          "websiteJourney": "Home / Products / Life Insurance / Term Life",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Medigap Plans 2026",
+          "marketingSearchTerm": "medigap plans 2026",
+          "landingPageUrl": "https://www.mutualofomaha.com/medicare/medicare-supplement/plans?utm_source=google&utm_medium=cpc&utm_campaign=medigap_2026",
+          "websiteJourney": "Home / Products / Medicare / Medicare Supplement Insurance",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Long-Term Care Cost",
+          "marketingSearchTerm": "long term care insurance cost",
+          "landingPageUrl": "https://www.mutualofomaha.com/additional-insurance/long-term-care?utm_source=bing&utm_medium=cpc&utm_campaign=ltc_cost",
+          "websiteJourney": "Home / Products / Additional Insurance / Long-Term Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Burial Insurance 45-85",
+          "marketingSearchTerm": "burial insurance ages 45-85",
+          "landingPageUrl": "https://www.mutualofomaha.com/life-insurance/burial-insurance?utm_source=google&utm_medium=cpc&utm_campaign=burial_4585",
+          "websiteJourney": "Home / Products / Life Insurance / Whole Life",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Dental For Seniors",
+          "marketingSearchTerm": "dental insurance for seniors",
+          "landingPageUrl": "https://www.mutualofomaha.com/medicare/dental-insurance?utm_source=google&utm_medium=cpc&utm_campaign=senior_dental",
+          "websiteJourney": "Home / Products / Medicare / Dental Insurance",
+          "signals": [
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Protect Your Kingdom",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mutualofomaha.com/life-insurance?utm_source=facebook&utm_medium=paid_social&utm_campaign=protect_kingdom",
+          "websiteJourney": "Home / Products / Life Insurance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Peace of Mind for $1 a Day",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mutualofomaha.com/life-insurance/whole-life?utm_source=instagram&utm_medium=paid_social&utm_campaign=peace_of_mind",
+          "websiteJourney": "Home / Products / Life Insurance / Whole Life",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Hablamos Espanol Funeral Expense",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mutualofomaha.com/es/seguro-de-vida?utm_source=facebook&utm_medium=paid_social&utm_campaign=hablamos_espanol",
+          "websiteJourney": "Home / Products / Life Insurance / Whole Life",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Children's Whole Life",
+          "marketingSearchTerm": "children's whole life insurance",
+          "landingPageUrl": "https://www.mutualofomaha.com/life-insurance/childrens-whole-life?utm_source=google&utm_medium=cpc&utm_campaign=childrens_wl",
+          "websiteJourney": "Home / Products / Life Insurance / Children's Whole Life",
+          "signals": [
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Reverse Mortgage Calculator",
+          "marketingSearchTerm": "reverse mortgage calculator",
+          "landingPageUrl": "https://www.mutualofomaha.com/financial-services/reverse-mortgage?utm_source=google&utm_medium=cpc&utm_campaign=reverse_calc",
+          "websiteJourney": "Home / Products / Financial Services / Reverse Mortgage",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Wild Kingdom Protecting the Wild",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mutualofomaha.com/about?utm_source=instagram&utm_medium=paid_social&utm_campaign=wild_kingdom",
+          "websiteJourney": "Home / About Us / Wild Kingdom",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Annuity Retirement Income",
+          "marketingSearchTerm": "fixed annuity retirement income",
+          "landingPageUrl": "https://www.mutualofomaha.com/financial-services/annuities?utm_source=google&utm_medium=cpc&utm_campaign=annuity_income",
+          "websiteJourney": "Home / Products / Financial Services / Annuities",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Planning & Advice Life Insurance Cost",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mutualofomaha.com/advice/life-insurance/how-much-does-life-insurance-cost?utm_source=organic&utm_medium=seo&utm_campaign=advice_hub",
+          "websiteJourney": "Home / Planning & Advice / Life Insurance",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Medicare Advice Center Tool",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mutualofomaha.com/advice/medicare/advice-center?utm_source=organic&utm_medium=seo&utm_campaign=medicare_advice",
+          "websiteJourney": "Home / Planning & Advice / Medicare",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Cancer Heart Attack Stroke",
+          "marketingSearchTerm": "cancer heart attack stroke insurance",
+          "landingPageUrl": "https://www.mutualofomaha.com/additional-insurance/cancer-heart-attack-stroke?utm_source=bing&utm_medium=cpc&utm_campaign=chas_supplemental",
+          "websiteJourney": "Home / Products / Additional Insurance / Cancer, Heart Attack & Stroke",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Customer Sign In",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mutualofomaha.com/account/sign-in?utm_source=organic&utm_medium=seo&utm_campaign=account_login",
+          "websiteJourney": "Home / Sign In / Account",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Hospital Indemnity Seniors",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mutualofomaha.com/medicare/hospital-indemnity?utm_source=facebook&utm_medium=paid_social&utm_campaign=hospital_indemnity",
+          "websiteJourney": "Home / Products / Medicare / Hospital Indemnity Insurance",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Mutual of Omaha)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "44,472"
+            },
+            {
+              "label": "Coverage Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Policy Issued (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$13,957,495"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "7,116"
+            },
+            {
+              "label": "Existing Policy Service (Percent)",
+              "value": "7%"
+            },
+            {
+              "label": "Claims Question (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Billing & Payment Inquiry (Percent)",
+              "value": "4%"
+            }
+          ]
+        },
+        {
+          "title": "Coverage Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Coverage Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Quote Discussed (Percent)",
+              "value": "54%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Policy Issued (Percent)",
+              "value": "18%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Coverage Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Coverage Inquiry (Count)",
+            "values": [
+              5842,
+              8214,
+              7986,
+              8153,
+              7161
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              3758,
+              5287,
+              5142,
+              5246,
+              4582
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              836,
+              1174,
+              1142,
+              1166,
+              1019
+            ]
+          },
+          {
+            "name": "Policy Issued (Count)",
+            "values": [
+              1253,
+              1762,
+              1714,
+              1748,
+              1528
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Policy Issued (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 44472,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "15,238",
+                "34%",
+                "14%",
+                "$3,684,215"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "10,647",
+                "36%",
+                "16%",
+                "$2,927,640"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "8,124",
+                "38%",
+                "19%",
+                "$2,655,180"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "6,215",
+                "41%",
+                "24%",
+                "$2,561,905"
+              ]
+            },
+            {
+              "name": "YouTube",
+              "metrics": [
+                "4,248",
+                "44%",
+                "29%",
+                "$2,128,555"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Policy Issued (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 44472,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "16,842",
+                "33%",
+                "13%",
+                "$3,948,760"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "11,238",
+                "35%",
+                "15%",
+                "$3,015,225"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "7,415",
+                "37%",
+                "18%",
+                "$2,647,410"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "5,362",
+                "40%",
+                "23%",
+                "$2,318,640"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "3,615",
+                "43%",
+                "28%",
+                "$2,027,460"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Policy Issued (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 44472,
+          "rows": [
+            {
+              "name": "Medicare Supplement Quote",
+              "metrics": [
+                "8,214",
+                "34%",
+                "15%",
+                "$2,145,780"
+              ]
+            },
+            {
+              "name": "Protect Your Kingdom",
+              "metrics": [
+                "6,127",
+                "36%",
+                "17%",
+                "$1,824,150"
+              ]
+            },
+            {
+              "name": "Guaranteed Whole Life 45-85",
+              "metrics": [
+                "4,835",
+                "39%",
+                "20%",
+                "$1,686,325"
+              ]
+            },
+            {
+              "name": "Peace of Mind for $1/day",
+              "metrics": [
+                "3,562",
+                "42%",
+                "25%",
+                "$1,552,940"
+              ]
+            },
+            {
+              "name": "Final Expense Mailer",
+              "metrics": [
+                "2,418",
+                "45%",
+                "30%",
+                "$1,268,415"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Policy Issued (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 44472,
+          "rows": [
+            {
+              "name": "medicare supplement plan g cost",
+              "metrics": [
+                "5,847",
+                "35%",
+                "16%",
+                "$1,538,420"
+              ]
+            },
+            {
+              "name": "guaranteed whole life insurance no medical exam",
+              "metrics": [
+                "4,213",
+                "37%",
+                "18%",
+                "$1,285,640"
+              ]
+            },
+            {
+              "name": "final expense insurance seniors",
+              "metrics": [
+                "3,128",
+                "40%",
+                "21%",
+                "$1,142,315"
+              ]
+            },
+            {
+              "name": "term life insurance quote online",
+              "metrics": [
+                "2,415",
+                "43%",
+                "26%",
+                "$987,250"
+              ]
+            },
+            {
+              "name": "reverse mortgage calculator",
+              "metrics": [
+                "1,624",
+                "46%",
+                "31%",
+                "$842,180"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Policy Issued (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Medicare",
+              "metrics": [
+                "14,832",
+                "36%",
+                "13%",
+                "$3,361,842"
+              ]
+            },
+            {
+              "name": "Life Insurance",
+              "metrics": [
+                "12,644",
+                "39%",
+                "16%",
+                "$3,528,915"
+              ]
+            },
+            {
+              "name": "Additional/Supplemental Health Insurance",
+              "metrics": [
+                "8,217",
+                "41%",
+                "19%",
+                "$2,721,644"
+              ]
+            },
+            {
+              "name": "Financial Services",
+              "metrics": [
+                "5,438",
+                "43%",
+                "25%",
+                "$2,369,187"
+              ]
+            },
+            {
+              "name": "Employer/Group Benefits",
+              "metrics": [
+                "3,341",
+                "45%",
+                "34%",
+                "$1,975,907"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Policy Issued (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 44472,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "13,218",
+                "34%",
+                "13%",
+                "$2,997,842"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "10,647",
+                "37%",
+                "15%",
+                "$2,784,617"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "9,432",
+                "40%",
+                "18%",
+                "$2,960,538"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "7,158",
+                "43%",
+                "22%",
+                "$2,744,261"
+              ]
+            },
+            {
+              "name": "Mountain",
+              "metrics": [
+                "4,017",
+                "47%",
+                "35%",
+                "$2,470,237"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Policy Issued (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Medicare",
+            "values": [
+              312,
+              428,
+              415,
+              421,
+              352
+            ]
+          },
+          {
+            "name": "Life Insurance",
+            "values": [
+              336,
+              449,
+              441,
+              447,
+              350
+            ]
+          },
+          {
+            "name": "Additional/Supplemental Health Insurance",
+            "values": [
+              254,
+              347,
+              338,
+              342,
+              280
+            ]
+          },
+          {
+            "name": "Financial Services",
+            "values": [
+              221,
+              302,
+              294,
+              298,
+              244
+            ]
+          },
+          {
+            "name": "Employer/Group Benefits",
+            "values": [
+              184,
+              251,
+              246,
+              248,
+              205
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 44,472 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Margaret Ellison called to compare Medicare Supplement Plan G options after turning 65. Oscar walked her through monthly premiums and covered coinsurance gaps, then emailed a personalized quote. She scheduled a consultation with a licensed agent to finalize enrollment.",
+          "date": "Feb 3, 2:42 PM",
+          "agent": "Oscar",
+          "duration": "2m 51s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Harold Benning asked about Guaranteed Whole Life final expense coverage for himself and his wife. Lila confirmed the no-denial ages 45 to 85 acceptance and gave a fixed-premium quote around $38 a month. He booked a consultation to complete the application.",
+          "date": "Mar 12, 10:18 AM",
+          "agent": "Lila",
+          "duration": "2m 14s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Denise Alvarado wanted a term life insurance quote for a 20-year level policy to protect her mortgage. Rosey explained convertibility options and gathered basic health details before quoting roughly $46 a month. Denise scheduled a follow-up consultation to lock in coverage.",
+          "date": "Jan 22, 4:05 PM",
+          "agent": "Rosey",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Raymond Castillo, a new caller, phoned to set up his first appointment about whole life coverage for his family. Lee collected his full name, date of birth, address, and email, then confirmed his preferred callback time. A new consultation was scheduled with a licensed agent for the following week.",
+          "date": "Apr 8, 1:27 PM",
+          "agent": "Lee",
+          "duration": "3m 09s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Patricia Hollowell inquired about a fixed annuity to roll over part of her retirement savings. Mary explained the tax-deferred growth and the minimum premium of around $10,000. Patricia scheduled a consultation with a financial professional to review the annuity contract.",
+          "date": "May 19, 11:52 AM",
+          "agent": "Mary",
+          "duration": "2m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 15,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "George Whitfield asked about individual dental insurance covering preventive and major care. Sue outlined the provider network and a premium near $44 a month, but he wanted to think it over. He did not schedule anything on this call.",
+          "date": "Jun 6, 3:31 PM",
+          "agent": "Sue",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Eleanor Pruett called about long-term care insurance to help cover future assisted living costs. Mike reviewed in-home care benefits and quoted around $210 a month based on her age. Eleanor booked a consultation to design a plan with an agent.",
+          "date": "Jul 15, 9:44 AM",
+          "agent": "Mike",
+          "duration": "2m 22s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Frank Delgado phoned to check the status of his pending Medicare Supplement enrollment application. Jennifer confirmed it was still in underwriting review and gave an expected timeline of 24 to 48 hours. No new coverage was scheduled on this call.",
+          "date": "Aug 2, 12:09 PM",
+          "agent": "Jennifer",
+          "duration": "1m 41s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Barbara Simmons disputed a duplicate draft on her annuity premium payment this month. Rose researched the account and confirmed a billing error, then opened a refund request. The issue was logged for resolution and no new sale occurred.",
+          "date": "Sep 9, 2:55 PM",
+          "agent": "Rose",
+          "duration": "2m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Thomas Reardon called to cancel his accidental death policy because he found cheaper coverage. Oscar tried to retain him by reviewing the lump-sum benefit but ultimately processed the cancellation request. No consultation was scheduled.",
+          "date": "Oct 4, 10:37 AM",
+          "agent": "Oscar",
+          "duration": "1m 49s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Nancy Kowalski complained that her long-term care claim reimbursement was taking too long to process. Lila apologized and escalated the file to the claims team for a status update. The caller remained frustrated and no new coverage was discussed.",
+          "date": "Jan 28, 4:48 PM",
+          "agent": "Lila",
+          "duration": "2m 18s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Walter Freeman called about a denied hospital indemnity benefit for a recent stay. Lee explained the covered-day limits but the caller felt misled about his payout. The dispute was documented for review and no sale was made.",
+          "date": "Feb 17, 11:13 AM",
+          "agent": "Lee",
+          "duration": "2m 41s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Doris Vanderberg asked about a reverse mortgage but grew confused about the equity conversion terms and eligibility at age 62. Mary tried to clarify the home-equity process, yet the caller ended the call unsatisfied. No consultation was scheduled.",
+          "date": "Mar 25, 3:22 PM",
+          "agent": "Mary",
+          "duration": "3m 04s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "An unidentified caller reached the line after hours and left a brief message about a reverse mortgage payoff question. The call rolled to voicemail with no agent available. No callback details were captured and nothing was scheduled.",
+          "date": "Apr 30, 6:11 PM",
+          "agent": "No Agent",
+          "duration": "0m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Clifford Nguyen was angry that his dental insurance premium increased at renewal without clear notice. Jennifer reviewed the rate change but could not reverse it, and the caller threatened to cancel. The complaint was escalated and no new coverage was booked.",
+          "date": "May 6, 1:59 PM",
+          "agent": "Jennifer",
+          "duration": "2m 27s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "quote",
+        "medicare supplement",
+        "whole life",
+        "annuity",
+        "dental",
+        "long-term care"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 15, 10:42 AM",
+      "duration": "2m 33s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Coverage Type and Age Range",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area and State Eligibility",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Next Steps and Timeline",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer Additional Product Information",
+          "points": "10/10",
+          "status": "met"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller initiated inquiry about final expense coverage",
+        "Agent greeted caller by name within first 10 seconds",
+        "Caller confirmed age range 65 to 72",
+        "Caller owns home in Nebraska",
+        "Caller has no current life insurance",
+        "Agent offered Guaranteed Whole Life product",
+        "Caller expressed interest in locking in rate",
+        "Agent scheduled consultation within 7 days",
+        "Caller agreed to evening appointment time",
+        "Caller provided valid phone number",
+        "Agent used consultative tone throughout",
+        "Caller indicated household of 2 people",
+        "Agent confirmed caller understood coverage basics"
+      ],
+      "unmetSignals": [
+        "Email address was not captured on first request",
+        "Caller hesitated on commitment to appointment time",
+        "Agent did not proactively offer Critical Illness rider",
+        "Caller did not receive written confirmation link",
+        "Agent did not mention spouse coverage eligibility",
+        "Agent did not ask about existing Medicare status",
+        "Caller interest in monthly vs annual payment not clarified",
+        "Agent did not offer free needs analysis tool",
+        "Caller did not receive estimated premium range",
+        "Agent missed opportunity to pre-qualify for underwriting",
+        "Caller expressed mild concern about medical questions",
+        "Agent did not mention 30 day satisfaction guarantee"
+      ],
+      "naSignals": [
+        "Policy delivery method not discussed at intake stage",
+        "Billing frequency options not relevant pre-consultation",
+        "Policy cancellation or return procedures not addressed",
+        "Claims process explanation premature for new inquiry",
+        "Payment processing method not confirmed during intake",
+        "Existing policy review not applicable for new customer",
+        "Beneficiary designation form not completed at intake",
+        "Underwriting timeline expectations beyond intake scope",
+        "Premium adjustment scenarios for future consideration",
+        "Renewal or rate lock terms not applicable pre-enrollment"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The 68 year old caller wants to ensure final expenses are covered for his wife and himself without leaving a financial burden on their family. He is motivated by protecting his household and locking in a guaranteed rate now while he is still insurable."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a consultation within the next week to learn more about Guaranteed Whole Life coverage, understand the monthly premium cost for his age and household size, and move toward enrollment if the product fits his needs."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address on the first attempt and explained the timeline and documentation he will receive before the consultation appointment, setting clearer expectations for the next interaction."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good morning, this is Marcus Bell with Mutual of Omaha. May I have your name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:24",
+          "text": "Hi, yes. My name is Robert Chen. I saw your ad about final expense insurance and I'd like to learn more."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:35",
+          "text": "Thank you Robert. I'm glad you called. Just to confirm, are you looking to protect your family with coverage for funeral and final expenses?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:46",
+          "text": "Yes, that's right. My wife and I are both in our late sixties and we want to make sure we don't burden our kids."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:58",
+          "text": "That makes perfect sense. Our Guaranteed Whole Life plan is designed exactly for that peace of mind. Can you tell me your current age?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:06",
+          "text": "I'm 68. My wife is 70."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:13",
+          "text": "Perfect. Both of you fall within our coverage range, and the rates lock in for life. What state are you located in?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:23",
+          "text": "We're in Nebraska, just outside Omaha actually."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:30",
+          "text": "Excellent. You're in our service area. Now I'll need to gather a bit more information. Can I get your phone number?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:40",
+          "text": "It's ****-****-**** area code 402."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:48",
+          "text": "Great, I have that. And your email address?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:55",
+          "text": "Actually, I'm not very comfortable giving that out over the phone. Can we skip that for now?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:02",
+          "text": "I understand. We can do that at your appointment. So Robert, I'd love to schedule a brief consultation where we'll go over the coverage options, talk about your household needs, and give you a personalized quote. Does sometime next week work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:18",
+          "text": "Yeah, next week is good. I prefer evenings after 5 PM."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:27",
+          "text": "Perfect. I've scheduled you for Thursday evening at 6 PM. A specialist will call you to walk through your coverage and answer any questions. You're all set, Robert."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:39",
+          "text": "Great, thank you."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:44",
+          "text": "You're welcome. Have a great day and we look forward to speaking with you Thursday."
+        }
+      ],
+      "aiSummary": "Robert Chen, a 68 year old Nebraska resident, called seeking final expense coverage for himself and his 70 year old wife. Marcus Bell qualified him for Guaranteed Whole Life Insurance, confirmed his state eligibility, and captured his phone number. However, Robert declined to provide his email address at time of intake. Marcus successfully scheduled a consultation for Thursday at 6 PM to review coverage options and provide a personalized quote. The call followed proper greeting and closing procedures but missed the opportunity to collect email and clarify next steps timing.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus great structure on this intake. Your qualifying questions were clear and you moved smoothly to the appointment. One thing: when Robert hesitated on email, don't let it drop. Explain we need it to send his quote and appointment confirmation, and offer to collect it via text instead. Also, before you closed, a quick line about what he'll receive via email before Thursday would have set better expectations. Nice work overall on the tone and pace."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "44,472"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$313.85"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$13,957,495"
+            }
+          ]
+        },
+        {
+          "title": "NEW POLICYHOLDER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Policyholders (Count)",
+              "value": "28,647"
+            },
+            {
+              "label": "Caller Type: New Policyholders (Percent)",
+              "value": "64%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "16,899"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "38%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING POLICYHOLDERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Policyholder (Count)",
+              "value": "15,825"
+            },
+            {
+              "label": "Caller Type: Existing Policyholder (Percent)",
+              "value": "36%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "6%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Email",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Referral",
+                "value": 46,
+                "display": "46%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 40,
+                "display": "40%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 34,
+                "display": "34%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "15,842",
+                  "29%",
+                  "$4,720,155"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "11,357",
+                  "34%",
+                  "$3,612,480"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "8,216",
+                  "40%",
+                  "$2,547,830"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "5,483",
+                  "46%",
+                  "$1,842,610"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "3,574",
+                  "58%",
+                  "$1,234,420"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 18000,
+            "axisTicks": [
+              0,
+              3000,
+              6000,
+              9000,
+              12000,
+              15000,
+              18000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 16284,
+                "display": "16,284"
+              },
+              {
+                "name": "organic",
+                "value": 12047,
+                "display": "12,047"
+              },
+              {
+                "name": "social",
+                "value": 7913,
+                "display": "7,913"
+              },
+              {
+                "name": "referral",
+                "value": 4682,
+                "display": "4,682"
+              },
+              {
+                "name": "email",
+                "value": 3546,
+                "display": "3,546"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "16,284",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "12,047",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "7,913",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "4,682",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "3,546",
+                  "57%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Medicare Supplement Quote",
+                "value": 9842,
+                "display": "9,842"
+              },
+              {
+                "name": "Guaranteed Whole Life 45-85",
+                "value": 7318,
+                "display": "7,318"
+              },
+              {
+                "name": "Protect Your Kingdom",
+                "value": 5127,
+                "display": "5,127"
+              },
+              {
+                "name": "Final Expense Seniors ES",
+                "value": 3264,
+                "display": "3,264"
+              },
+              {
+                "name": "Peace of Mind $1/day",
+                "value": 2589,
+                "display": "2,589"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Medicare Supplement Quote",
+                  "9,842",
+                  "31%",
+                  "$2,934,610"
+                ]
+              },
+              {
+                "cells": [
+                  "Guaranteed Whole Life 45-85",
+                  "7,318",
+                  "37%",
+                  "$2,183,470"
+                ]
+              },
+              {
+                "cells": [
+                  "Protect Your Kingdom",
+                  "5,127",
+                  "43%",
+                  "$1,528,940"
+                ]
+              },
+              {
+                "cells": [
+                  "Final Expense Seniors ES",
+                  "3,264",
+                  "55%",
+                  "$974,320"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 6000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000,
+              6000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "medicare supplement plan g cost",
+                "value": 4872,
+                "display": "4,872"
+              },
+              {
+                "name": "guaranteed whole life no medical exam",
+                "value": 3914,
+                "display": "3,914"
+              },
+              {
+                "name": "final expense insurance seniors",
+                "value": 2986,
+                "display": "2,986"
+              },
+              {
+                "name": "term life insurance quote online",
+                "value": 2143,
+                "display": "2,143"
+              },
+              {
+                "name": "reverse mortgage calculator",
+                "value": 1507,
+                "display": "1,507"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "medicare supplement plan g cost",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "guaranteed whole life no medical exam",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "final expense insurance seniors",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "term life insurance quote online",
+                  "56%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Policyholders",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Policyholders (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Medicare",
+              "14,283",
+              "30%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Life Insurance",
+              "11,647",
+              "36%",
+              "63%"
+            ]
+          },
+          {
+            "cells": [
+              "Additional Insurance",
+              "8,214",
+              "42%",
+              "67%"
+            ]
+          },
+          {
+            "cells": [
+              "Financial Services",
+              "5,342",
+              "55%",
+              "71%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Omaha, NE Advisor Office",
+              "15,847",
+              "1,284",
+              "4%",
+              "31%"
+            ]
+          },
+          {
+            "cells": [
+              "Phoenix, AZ Sales Center",
+              "12,336",
+              "968",
+              "3%",
+              "36%"
+            ]
+          },
+          {
+            "cells": [
+              "Tampa, FL Regional Office",
+              "9,142",
+              "742",
+              "5%",
+              "43%"
+            ]
+          },
+          {
+            "cells": [
+              "Dallas, TX Advisor Office",
+              "7,147",
+              "564",
+              "3%",
+              "54%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1842,
+              1624,
+              1538,
+              1447,
+              1391
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1412,
+              1318,
+              1287,
+              1214,
+              1160
+            ]
+          },
+          {
+            "name": "Not Yet Eligible for Medicare",
+            "values": [
+              1214,
+              1132,
+              1076,
+              1043,
+              973
+            ]
+          },
+          {
+            "name": "Needs Spouse Approval",
+            "values": [
+              962,
+              894,
+              857,
+              802,
+              747
+            ]
+          },
+          {
+            "name": "Wanted Agent Follow-up",
+            "values": [
+              812,
+              762,
+              731,
+              684,
+              651
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "17,789"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Policy Issued (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$7,955,772"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Policy Issued (Percent)",
+              "value": "24%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$948,365"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Policy Issued (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,247,892"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Policy Issued (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,456,228"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Policy Issued (Percent)",
+              "value": "26%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,087,451"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Policy Issued (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,623,744"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Policy Issued (Percent)",
+              "value": "42%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,592,092"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Policy Issued (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21140,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "6247",
+                "58%",
+                "29%",
+                "$1,811,768"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "4156",
+                "57%",
+                "34%",
+                "$1,413,824"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "3842",
+                "54%",
+                "38%",
+                "$1,463,976"
+              ]
+            },
+            {
+              "name": "Email Campaign",
+              "metrics": [
+                "2187",
+                "59%",
+                "31%",
+                "$1,078,422"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "1357",
+                "63%",
+                "42%",
+                "$1,188,782"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Policy Issued (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20068,
+          "rows": [
+            {
+              "name": "Web Form",
+              "metrics": [
+                "5923",
+                "54%",
+                "28%",
+                "$1,647,944"
+              ]
+            },
+            {
+              "name": "Phone Call",
+              "metrics": [
+                "4687",
+                "59%",
+                "35%",
+                "$1,552,845"
+              ]
+            },
+            {
+              "name": "SMS Reply",
+              "metrics": [
+                "3521",
+                "57%",
+                "37%",
+                "$1,303,277"
+              ]
+            },
+            {
+              "name": "Mobile App",
+              "metrics": [
+                "2156",
+                "61%",
+                "33%",
+                "$1,127,848"
+              ]
+            },
+            {
+              "name": "Chat Widget",
+              "metrics": [
+                "1502",
+                "68%",
+                "41%",
+                "$1,323,858"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Policy Issued (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20334,
+          "rows": [
+            {
+              "name": "Protect Your Kingdom Final Expense Ages 45-85",
+              "metrics": [
+                "4318",
+                "52%",
+                "26%",
+                "$1,124,676"
+              ]
+            },
+            {
+              "name": "Guaranteed Whole Life No Medical Exam",
+              "metrics": [
+                "3725",
+                "56%",
+                "31%",
+                "$1,155,475"
+              ]
+            },
+            {
+              "name": "Medicare Supplement Plan G Quote",
+              "metrics": [
+                "3156",
+                "60%",
+                "37%",
+                "$1,168,492"
+              ]
+            },
+            {
+              "name": "Term Life Insurance Quote Online",
+              "metrics": [
+                "2847",
+                "61%",
+                "39%",
+                "$1,110,558"
+              ]
+            },
+            {
+              "name": "Long Term Care Insurance Consultation",
+              "metrics": [
+                "2013",
+                "65%",
+                "43%",
+                "$1,296,371"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Policy Issued (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 19287,
+          "rows": [
+            {
+              "name": "Mutual of Omaha life insurance quote",
+              "metrics": [
+                "3342",
+                "53%",
+                "27%",
+                "$903,234"
+              ]
+            },
+            {
+              "name": "Guaranteed whole life insurance no medical exam",
+              "metrics": [
+                "2816",
+                "57%",
+                "32%",
+                "$901,312"
+              ]
+            },
+            {
+              "name": "Final expense insurance seniors",
+              "metrics": [
+                "2104",
+                "59%",
+                "36%",
+                "$778,348"
+              ]
+            },
+            {
+              "name": "Medicare supplement plan G cost",
+              "metrics": [
+                "1687",
+                "62%",
+                "40%",
+                "$674,952"
+              ]
+            },
+            {
+              "name": "Burial insurance ages 45-85",
+              "metrics": [
+                "1456",
+                "66%",
+                "44%",
+                "$717,168"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Policy Issued (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Life Insurance",
+              "metrics": [
+                "5847",
+                "51%",
+                "28%",
+                "$1,637,156"
+              ]
+            },
+            {
+              "name": "Medicare Supplement",
+              "metrics": [
+                "4156",
+                "59%",
+                "36%",
+                "$1,497,216"
+              ]
+            },
+            {
+              "name": "Supplemental Health Insurance",
+              "metrics": [
+                "3521",
+                "60%",
+                "38%",
+                "$1,338,798"
+              ]
+            },
+            {
+              "name": "Financial Services",
+              "metrics": [
+                "2687",
+                "63%",
+                "41%",
+                "$1,804,467"
+              ]
+            },
+            {
+              "name": "Employer Group Benefits",
+              "metrics": [
+                "1578",
+                "68%",
+                "45%",
+                "$1,677,969"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Policy Issued (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Life Insurance",
+            "values": [
+              413,
+              517,
+              483,
+              409,
+              351
+            ]
+          },
+          {
+            "name": "Medicare Supplement",
+            "values": [
+              298,
+              476,
+              521,
+              467,
+              314
+            ]
+          },
+          {
+            "name": "Supplemental Health Insurance",
+            "values": [
+              402,
+              514,
+              489,
+              388,
+              298
+            ]
+          },
+          {
+            "name": "Financial Services",
+            "values": [
+              551,
+              618,
+              573,
+              392,
+              429
+            ]
+          },
+          {
+            "name": "Employer Group Benefits",
+            "values": [
+              317,
+              408,
+              445,
+              389,
+              232
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "377"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "891"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "31"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              74,
+              79,
+              72,
+              81,
+              76,
+              78,
+              75,
+              77,
+              74,
+              79,
+              73,
+              80,
+              78,
+              76,
+              77,
+              79,
+              75,
+              78,
+              74,
+              76,
+              72,
+              79,
+              75,
+              77,
+              81,
+              78,
+              76,
+              74,
+              78,
+              79,
+              72,
+              78,
+              177,
+              184,
+              172,
+              189,
+              181,
+              175,
+              183,
+              178,
+              186,
+              179,
+              182,
+              185,
+              173,
+              188,
+              176,
+              180,
+              187
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,173"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "694"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "59%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "681"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "98%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Medicare Supplement Pricing",
+            "values": [
+              8,
+              11,
+              1,
+              9,
+              12,
+              7
+            ]
+          },
+          {
+            "name": "Life Insurance Quote Request",
+            "values": [
+              6,
+              9,
+              8,
+              10,
+              7,
+              11
+            ]
+          },
+          {
+            "name": "Final Expense Coverage Ages 50+",
+            "values": [
+              9,
+              7,
+              11,
+              8,
+              10,
+              6
+            ]
+          },
+          {
+            "name": "Long-Term Care Insurance Options",
+            "values": [
+              7,
+              10,
+              6,
+              9,
+              8,
+              12
+            ]
+          },
+          {
+            "name": "Policy Verification and Claims",
+            "values": [
+              5,
+              8,
+              4,
+              7,
+              6,
+              9
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "40,914"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "28,907"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Booked (Count)",
+            "value": "16,899"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$13,957,495"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Derek Paulson",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Melissa Chen",
+              "value": 186,
+              "display": "186"
+            },
+            {
+              "name": "Brandon Kraft",
+              "value": 242,
+              "display": "242"
+            },
+            {
+              "name": "Stacey Rodriguez",
+              "value": 201,
+              "display": "201"
+            },
+            {
+              "name": "Nathan Pierce",
+              "value": 174,
+              "display": "174"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Villanueva",
+            "values": [
+              187,
+              209,
+              226,
+              248,
+              267
+            ]
+          },
+          {
+            "name": "Michael Ortega",
+            "values": [
+              172,
+              198,
+              211,
+              233,
+              251
+            ]
+          },
+          {
+            "name": "Jasmine Williams",
+            "values": [
+              165,
+              194,
+              207,
+              228,
+              244
+            ]
+          },
+          {
+            "name": "Robert Klein",
+            "values": [
+              158,
+              181,
+              195,
+              219,
+              237
+            ]
+          },
+          {
+            "name": "Angela Morrison",
+            "values": [
+              151,
+              173,
+              186,
+              208,
+              224
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Derek Paulson",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Melissa Chen",
+              "value": 56.7,
+              "display": "56.7%"
+            },
+            {
+              "name": "Brandon Kraft",
+              "value": 52.9,
+              "display": "52.9%"
+            },
+            {
+              "name": "Stacey Rodriguez",
+              "value": 58.1,
+              "display": "58.1%"
+            },
+            {
+              "name": "Nathan Pierce",
+              "value": 55.4,
+              "display": "55.4%"
+            },
+            {
+              "name": "Carla Mendez",
+              "value": 57.6,
+              "display": "57.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Derek Paulson",
+                "54.2%",
+                "28%",
+                "$1,089,814",
+                "1,447"
+              ]
+            },
+            {
+              "cells": [
+                "Melissa Chen",
+                "56.7%",
+                "29%",
+                "$1,157,398",
+                "1,522"
+              ]
+            },
+            {
+              "cells": [
+                "Brandon Kraft",
+                "52.9%",
+                "26%",
+                "$1,007,234",
+                "1,406"
+              ]
+            },
+            {
+              "cells": [
+                "Stacey Rodriguez",
+                "58.1%",
+                "31%",
+                "$1,204,782",
+                "1,488"
+              ]
+            },
+            {
+              "cells": [
+                "Nathan Pierce",
+                "55.4%",
+                "30%",
+                "$1,139,026",
+                "1,511"
+              ]
+            },
+            {
+              "cells": [
+                "Carla Mendez",
+                "57.6%",
+                "33%",
+                "$1,287,994",
+                "1,529"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Villanueva",
+              "value": 91.3,
+              "display": "91.3%"
+            },
+            {
+              "name": "Michael Ortega",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "Jasmine Williams",
+              "value": 88.4,
+              "display": "88.4%"
+            },
+            {
+              "name": "Robert Klein",
+              "value": 87.9,
+              "display": "87.9%"
+            },
+            {
+              "name": "Angela Morrison",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "David Ochoa",
+              "value": 90.5,
+              "display": "90.5%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Villanueva",
+                "91.3%",
+                "67%",
+                "$1,383,648",
+                "1,549"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Ortega",
+                "89.7%",
+                "64%",
+                "$1,298,157",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Jasmine Williams",
+                "88.4%",
+                "62%",
+                "$1,247,894",
+                "1,481"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Klein",
+                "87.9%",
+                "61%",
+                "$1,210,542",
+                "1,467"
+              ]
+            },
+            {
+              "cells": [
+                "Angela Morrison",
+                "92.1%",
+                "65%",
+                "$1,348,204",
+                "1,518"
+              ]
+            },
+            {
+              "cells": [
+                "David Ochoa",
+                "90.5%",
+                "66%",
+                "$1,369,050",
+                "1,504"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Booked (Count)",
+        "rightMax": 800,
+        "rightTicks": [
+          0,
+          200,
+          400,
+          600,
+          800
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 626
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 600
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 559
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 533
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 465
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 487
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 538
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 560
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 624
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 605
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 545
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 527
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 469
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 483
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 551
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 568
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 618
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 608
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 534
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 517
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 476
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 481
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 561
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 579
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 610
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 609
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 526
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 504
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 484
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 482
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 570
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 700000,
+        "rightTicks": [
+          0,
+          233333.33333333334,
+          466666.6666666667,
+          700000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 517392
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 495897
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 461781
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 440628
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 383648
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 402628
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 444771
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 462303
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 515471
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 499781
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 450136
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 435065
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 387135
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 399044
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 455361
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 469236
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 510671
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 502724
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 440834
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 426852
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 392946
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 397065
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 463210
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 478564
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 504184
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 503450
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 434527
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 416642
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 399759
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 397831
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 467959
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "44,472"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,558"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,668"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Martinez",
+                "412",
+                "89%",
+                "87%",
+                "88%"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Chen",
+                "508",
+                "86%",
+                "84%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Thompson",
+                "356",
+                "86%",
+                "85%",
+                "85%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "44,472 calls",
+      "pagerLabel": "1 of 4,447",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 9:23 am",
+          "id": "3A1C-92E7B4108AC6"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "D904-1B6F73C0E521"
+        },
+        {
+          "time": "1/13/26 11:16 am",
+          "id": "7E22-A50D9C3F1B84"
+        },
+        {
+          "time": "1/15/26 12:05 pm",
+          "id": "B48F-6C21E90A7D53"
+        },
+        {
+          "time": "1/19/26 1:38 pm",
+          "id": "1FA6-3D82C57E0946"
+        },
+        {
+          "time": "1/21/26 2:27 pm",
+          "id": "9C33-E71A48B0F2D5"
+        },
+        {
+          "time": "1/23/26 3:52 pm",
+          "id": "5D70-84B29F16C3A8"
+        },
+        {
+          "time": "1/27/26 4:19 pm",
+          "id": "A6E1-2F90B7D45C13"
+        },
+        {
+          "time": "1/29/26 5:04 pm",
+          "id": "C812-59A0E3F76B24"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling Mutual of Omaha, this is Denise. Who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling Mutual of Omaha",
+            "this is Denise"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:08",
+          "text": "Hi Denise, my name is Robert Hale. I saw one of your ads about the guaranteed whole life coverage and I wanted to learn a little more.",
+          "highlights": [
+            "Robert Hale",
+            "guaranteed whole life"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:16",
+          "text": "Wonderful, Robert, I would be glad to help. Is this the first time you have looked into a policy with us?",
+          "highlights": [
+            "first time you have looked into a policy"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:23",
+          "text": "Yes, first time. I am 63 and I really just want something to cover my final expenses so my kids are not stuck with the bill.",
+          "highlights": [
+            "Yes, first time",
+            "cover my final expenses"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:31",
+          "text": "That is exactly what our Guaranteed Whole Life Insurance is built for. There is no medical exam and no denials for ages 45 to 85, and your premium stays fixed for life.",
+          "highlights": [
+            "Guaranteed Whole Life Insurance",
+            "no medical exam",
+            "premium stays fixed for life"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:42",
+          "text": "Okay, that sounds good. But what does that run per month? I am on a fixed income and I want to keep it manageable.",
+          "highlights": [
+            "what does that run per month",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:50",
+          "text": "Completely understand. For a gentleman your age, a modest final expense amount often lands somewhere between thirty and fifty dollars a month, and we can shape the coverage amount to fit your budget.",
+          "highlights": [
+            "shape the coverage amount to fit your budget"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:00",
+          "text": "Alright. To be honest I am getting a couple of quotes right now, one of the other big carriers sent me something in the mail last week.",
+          "highlights": [
+            "getting a couple of quotes",
+            "one of the other big carriers"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:09",
+          "text": "That is a smart way to shop, Robert. What sets us apart is our financial strength ratings and that we were the highest scorer among large insurers in the J.D. Power 2025 life insurance study, so your coverage is backed by a company that will be there.",
+          "highlights": [
+            "highest scorer among large insurers",
+            "J.D. Power 2025"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:22",
+          "text": "That is reassuring. One thing though, I do not want to feel locked into something I cannot adjust later.",
+          "highlights": [
+            "do not want to feel locked into something"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:30",
+          "text": "You are never trapped. The policy builds cash value over time, and you can review or adjust your coverage as your needs change. There is no penalty for making it work for you.",
+          "highlights": [
+            "builds cash value",
+            "review or adjust your coverage"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:40",
+          "text": "Good. I would also want to ask about a dental plan while I have you, my coverage there is pretty thin.",
+          "highlights": [
+            "ask about a dental plan"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:48",
+          "text": "Absolutely, we offer individual Dental Insurance covering preventive, basic, and major care. We can go over that alongside the life coverage in one sitting.",
+          "highlights": [
+            "Dental Insurance",
+            "preventive, basic, and major care"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:57",
+          "text": "Perfect. I would probably want to run the numbers past my wife before I sign anything though.",
+          "highlights": [
+            "run the numbers past my wife"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:04",
+          "text": "Of course, and she is welcome to join. The best next step is a quick consultation with one of our licensed agents who can give you exact quotes for both the whole life and the dental plan.",
+          "highlights": [
+            "consultation with one of our licensed agents"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:14",
+          "text": "That works for me. Can we do something later this week?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:18",
+          "text": "I have Thursday at 10 AM open. Shall I book that consultation for you and your wife?",
+          "highlights": [
+            "Thursday at 10 AM",
+            "book that consultation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:24",
+          "text": "Yes, Thursday at 10 works great.",
+          "highlights": [
+            "Thursday at 10 works great"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:28",
+          "text": "You are all set for Thursday at 10 AM. What is the best phone number and email to send the confirmation to?",
+          "highlights": [
+            "all set for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:33",
+          "text": "My cell is 402-555-0148 and email is rhale63 at gmail dot com.",
+          "highlights": [
+            "402-555-0148"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:37",
+          "text": "Got it, confirmation is on its way. Thank you for choosing Mutual of Omaha, Robert. We look forward to helping you protect what matters most. Have a great day.",
+          "highlights": [
+            "Thank you for choosing Mutual of Omaha",
+            "protect what matters most"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Policyholder",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Product Interest: Guaranteed Whole Life",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Product Interest: Dental Insurance",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Robert Hale, a first-time caller age 63, phoned in after seeing an ad and asked about Guaranteed Whole Life Insurance to cover his final expenses. The agent explained the no-exam, fixed-premium coverage, addressed his budget and competitor concerns, and reassured him about flexibility and cash value. Robert also raised interest in a Dental plan, and the agent scheduled a consultation with a licensed agent for both products. Contact details were captured and a confirmation was sent.",
+        "keyPoints": [
+          "New policyholder, first inquiry with Mutual of Omaha",
+          "Needs final expense coverage on a fixed income",
+          "Recommended Guaranteed Whole Life plus individual Dental Insurance",
+          "Handled price, competitor, and lock-in concerns",
+          "Wants to review with his wife before signing",
+          "Consultation booked for Thursday 10 AM, cell and email captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "28,017 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,802",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. This is Sarah from Mutual of Omaha. I saw you were interested in a Medicare Supplement quote. Do you currently have Original Medicare coverage in place?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes, I have Part A and Part B. I'm trying to figure out what gaps I need to cover."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great. That's exactly what our Medicare Supplement plans do. Are you looking for coverage that includes prescription drug benefits, or are you already enrolled in a Part D plan?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "I'm already on Part D. I just want to cover coinsurance and copays."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. Plan N is an excellent choice for that. It typically runs between 120 and 180 a month depending on your age and location. What state are you currently residing in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "I'm in Florida."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Excellent. In Florida, Plan N for someone your age would likely be around 145 per month. Do you have any serious health conditions we should be aware of that might affect your eligibility?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "Nothing major. Just high blood pressure that's well controlled."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:30 AM",
+              "text": "That's helpful information. Well controlled conditions are typically not a problem for our plans. I'd like to get you scheduled for a consultation with one of our licensed agents who can review your complete health history and lock in your rate. Would Thursday, March 20th at 2 PM Eastern time work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "That should work. What do I need to prepare?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "Just have your Medicare card handy and any current insurance information. Your agent will call you at this number on Thursday, March 20th at 2 PM Eastern. You can also reach our support team at 877-936-2933 if you need to reschedule. Does that sound good?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Yes, sounds good. Thank you."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Thank you for choosing Mutual of Omaha. We're looking forward to helping you protect your healthcare costs. You'll hear from us on March 20th."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Policyholder",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Identified: Medicare Supplement Plan N",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Service Area: Florida Confirmed",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Health Qualification: High Blood Pressure Controlled",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Monthly Estimate Provided: 145 dollars",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "407-555-0147",
+            "repeatCaller": "No",
+            "city": "Tampa",
+            "region": "FL",
+            "phoneType": "Mobile",
+            "displayName": "Patricia Nelson",
+            "firstName": "Patricia",
+            "lastName": "Nelson",
+            "gender": "Female",
+            "destinationTimeZone": "Eastern Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A729-48BC39EFA5D8",
+          "time": "3/10/26 7:15 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A729-48BC39EFA5D8",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B841-5D26A91C4F2E",
+          "time": "3/10/26 8:42 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B841-5D26A91C4F2E",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D965-73ED52B6C1A9",
+          "time": "3/10/26 9:28 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D965-73ED52B6C1A9",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "44,472 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,447",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/14/26 2:34 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:34 PM",
+              "text": "Hello, thank you for calling Mutual of Omaha. My name is Sarah. How can I help you protect your kingdom today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:35 PM",
+              "text": "Hi Sarah. I saw an ad about guaranteed whole life insurance with no medical exam. I'm 58 years old and I'm interested in learning more."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:35 PM",
+              "text": "Great. That's one of our most popular products for your age group. Just to make sure I find the right coverage for you, are you looking for final expense protection or something with more coverage for your family?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:36 PM",
+              "text": "Mostly final expense. I want to make sure my kids don't have to worry about funeral costs."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:37 PM",
+              "text": "That makes perfect sense. Quick question, do you currently have any life insurance in place with us or another company?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:38 PM",
+              "text": "No, I don't have anything right now. This would be my first policy."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:38 PM",
+              "text": "Perfect. Based on your age and what you're looking for, I can quote you guaranteed whole life coverage starting at about eighteen dollars per month for fifty thousand dollars in benefit. Would that range work for your budget?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:39 PM",
+              "text": "Yeah, that sounds reasonable. What's the next step?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:40 PM",
+              "text": "Excellent. What I'd like to do is schedule a brief consultation with one of our licensed agents who can go over your options and answer any specific questions. How does Thursday, January sixteenth at ten in the morning work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:41 PM",
+              "text": "Thursday morning works great for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:41 PM",
+              "text": "Wonderful. So we have you down for Thursday, January sixteenth at ten AM. Just to confirm, we'll have an agent call you back at this number to walk through everything and get your application started. Your confirmation number is MO dash five two four seven three one. Is there anything else I can help with today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:43 PM",
+              "text": "No, that's all. Thank you, Sarah."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:43 PM",
+              "text": "You're very welcome. We look forward to helping you protect your family. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Policyholder",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Whole Life Insurance",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Coverage Need: Final Expense",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimated Premium: 18 dollars per month",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Budget Confirmed: Affirmative",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Geographic Service: Verified",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/14/26 2:34 pm",
+            "duration": "9:28",
+            "destinationPhone": "877-936-2933",
+            "source": "(877) 936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "(512) 441-7629",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Robert Martinez",
+            "firstName": "Robert",
+            "lastName": "Martinez",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B892-7F1A4E2D6C89",
+          "time": "1/15/26 11:18 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B892-7F1A4E2D6C89",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C745-9B3F8E2A5D71",
+          "time": "1/22/26 3:51 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C745-9B3F8E2A5D71",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D156-4C7F9A2B8E63",
+          "time": "1/28/26 1:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D156-4C7F9A2B8E63",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Introduce yourself as Mutual of Omaha's AI agent helping put together a personalized coverage quote, mention that guaranteed whole life coverage can start around $6 a month with no medical exam for ages 45 to 85, and ask if they would like to get started.",
+        "Qualify one at a time: Ask a single question per message to learn which coverage they want (life, Medicare Supplement, dental, long-term care, or another plan), the coverage amount or benefit level they have in mind, the age and general health of the person to be covered, their target timeline to start coverage, and their ZIP code to confirm plan availability in their state.",
+        "Estimate then book: Confirm we offer plans in their ZIP, share a preliminary monthly premium range based on what they shared, recommend a consultation with a licensed insurance specialist for an exact rate, propose a specific day and time, and let them know they will get a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Mutual_of_Omaha_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Products and Coverage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Get a Free Quote",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find an Agent",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"policy status\",\"question\":\"How do I check the status of my whole life application?\",\"answer\":\"Once you sign in to your Mutual of Omaha account you can view your application status under My Policies, and I can also connect you with a specialist who can pull it up for you.\"},{\"topic\":\"reschedule\",\"question\":\"Can I move my consultation with the agent to a different day?\",\"answer\":\"Absolutely, I can reschedule your consultation to a time that works better and send you a fresh reminder text with a number to call.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How much does guaranteed whole life insurance cost?",
+              "answer": "Premiums for guaranteed whole life often start around $6 a month and depend on your age, coverage amount, and state. Let's set up a quick consultation with a licensed specialist so you get an exact rate."
+            },
+            {
+              "question": "Do I need a medical exam to qualify?",
+              "answer": "Our guaranteed whole life plan has no medical exam and no health denials for ages 45 to 85, which is 50 to 75 in New York. I can book a specialist to walk you through eligibility."
+            },
+            {
+              "question": "What is the difference between term and whole life?",
+              "answer": "Term life covers you for a set period like 10 or 20 years, while whole life is permanent and builds cash value. A short consultation can help you decide which fits your goals best."
+            },
+            {
+              "question": "Can I get life insurance for my child?",
+              "answer": "Yes, our Children's Whole Life plan locks in a low rate for life and builds cash value for your child. I would be glad to book a consultation to review the options."
+            },
+            {
+              "question": "What Medicare Supplement plans do you offer?",
+              "answer": "We offer popular Medigap plans such as Plan G and Plan N that help cover coinsurance, copays, and deductibles left by Original Medicare. Let's schedule a consultation to compare plans for your area."
+            },
+            {
+              "question": "When can I enroll in a Medicare Supplement plan?",
+              "answer": "The best time is usually during your Medigap open enrollment window, though you can apply at other times. A specialist can review your timing on a quick consultation."
+            },
+            {
+              "question": "Do you have dental insurance for seniors?",
+              "answer": "Yes, our individual dental plans cover preventive, basic, and major care through a provider network. I can set up a consultation to find the right level of coverage."
+            },
+            {
+              "question": "What does long-term care insurance cover?",
+              "answer": "It helps pay for nursing home, assisted living, and in-home care costs. Let's book a consultation so a specialist can tailor a plan to your needs."
+            },
+            {
+              "question": "How does an annuity work?",
+              "answer": "An annuity is a contract that offers tax-deferred growth and can provide guaranteed retirement income. A consultation with a specialist can show you the numbers based on your savings."
+            },
+            {
+              "question": "Do you offer reverse mortgages?",
+              "answer": "Yes, through Mutual of Omaha Mortgage we offer home-equity conversion loans for homeowners 62 and older. I can arrange a consultation to review whether you qualify."
+            },
+            {
+              "question": "What is accidental death insurance?",
+              "answer": "It pays a lump-sum benefit to your beneficiaries in the event of a covered accidental death. Let's schedule a consultation to choose a benefit amount that fits your budget."
+            },
+            {
+              "question": "Can I get critical illness or cancer coverage?",
+              "answer": "Yes, we offer critical illness and cancer, heart attack, and stroke plans that pay a lump-sum cash benefit on a covered diagnosis. A specialist can explain the details on a consultation."
+            },
+            {
+              "question": "How much life insurance do I need?",
+              "answer": "It depends on your income, debts, and family goals, and our specialists can help you calculate the right amount. Let's set up a consultation to figure it out together."
+            },
+            {
+              "question": "Is Mutual of Omaha a reputable company?",
+              "answer": "We are a Fortune 500 mutual insurer and were the highest scorer among large providers in the J.D. Power 2025 U.S. Individual Life Insurance Study. I would be happy to book a consultation to answer any questions."
+            },
+            {
+              "question": "Do you have Spanish-speaking agents?",
+              "answer": "Yes, we have Spanish-speaking specialists available, hablamos Espanol. I can schedule your consultation with one of them."
+            },
+            {
+              "question": "Can I combine several types of coverage?",
+              "answer": "Many clients pair products like life, dental, and hospital indemnity for well-rounded protection. A consultation is the best way to build a bundle that works for you."
+            },
+            {
+              "question": "What is hospital indemnity insurance?",
+              "answer": "It pays fixed cash benefits for covered hospital stays to help offset out-of-pocket costs. Let's book a consultation to review the benefit levels."
+            },
+            {
+              "question": "How do I get a personalized quote?",
+              "answer": "I can gather a few quick details and then connect you with a licensed specialist for an exact quote. Would you like to schedule that consultation now?"
+            },
+            {
+              "question": "Will my premium increase over time?",
+              "answer": "Our guaranteed whole life plans have fixed premiums that never go up, while other products vary. A specialist can confirm the specifics on a consultation."
+            },
+            {
+              "question": "How do I speak with a licensed agent?",
+              "answer": "I can set up a consultation with a licensed insurance specialist at a day and time that works for you, and you will get a reminder text with a number to call. When are you free?"
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the consultation\",\"follow_up_message\":\"Great, I have you down for a consultation with a licensed Mutual of Omaha specialist. You will receive a reminder text before your appointment with a number to call if anything changes.\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Thanks for the details, I can share a preliminary premium range and set up a quick consultation so a specialist can lock in your exact rate. What day and time work best for you?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Mutual of Omaha's AI agent. I can help you put together a personalized coverage quote and connect you with a licensed specialist. Would you like to get started?",
+        "goal": "Qualify the person's coverage needs and book a consultation with a licensed Mutual of Omaha specialist for an exact quote.",
+        "bookingType": "virtual consultation",
+        "offer": "Guaranteed whole life coverage starting around $6 a month with no medical exam",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "Which type of coverage are you interested in, such as life insurance, Medicare Supplement, dental, or long-term care?",
+          "What coverage amount or benefit level do you have in mind?",
+          "What is the age and general health of the person to be covered?",
+          "When would you like your coverage to begin?",
+          "What is your ZIP code so I can confirm which plans are available in your state?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:22 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:22 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:22 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Mutual of Omaha",
+      "callerName": "Robert Chen",
+      "callerPhone": "(402) 555-0187",
+      "campaign": "Medicare Supplement Plan G, Omaha Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$1,848",
+      "googleSearch": "Medicare supplement plan G cost Omaha",
+      "websiteSearch": "Medigap plans 2025 coverage comparison",
+      "callingWebpage": "/products/medicare/medicare-supplement-insurance",
+      "products": "Medicare Supplement Insurance, Hospital Indemnity Insurance",
+      "cartId": "MO-7341K",
+      "serviceable": "Yes",
+      "email": "r.chen.healthcare@gmail.com",
+      "street": "2847 Maple Ridge Drive",
+      "city": "Omaha",
+      "state": "NE",
+      "zip": "68114",
+      "digitalJourney": "/home › /products/medicare › /products/medicare/medicare-supplement-insurance › /planning-and-advice/medicare-advice-center",
+      "intent": "65-year-old newly eligible for Medicare seeking comprehensive supplement coverage to eliminate out-of-pocket costs.",
+      "coverage": "ZIP 68114 confirmed, Omaha serviceable",
+      "switchIntent": "High, turning 65 next month, wants to enroll before coverage gap occurs.",
+      "greeting": "Hi Robert, this is Sarah with Mutual of Omaha. I see you're looking at our Medicare Supplement plans. I'd love to walk you through Plan G and show you how we can help protect your coverage after Medicare starts. Do you have a few minutes to discuss your options?"
+    },
+    "smsScreenpop": {
+      "brandName": "Mutual of Omaha",
+      "callerName": "Patricia Valdez",
+      "callerPhone": "(512) 555-0263",
+      "campaign": "Guaranteed Whole Life 45 to 85, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$2,156",
+      "googleSearch": "guaranteed whole life insurance no medical exam seniors",
+      "websiteSearch": "final expense insurance burial coverage ages 45 to 85",
+      "callingWebpage": "/products/life-insurance/whole-life-insurance",
+      "products": "Guaranteed Whole Life Insurance, Accidental Death Insurance",
+      "cartId": "MO-5629L",
+      "serviceable": "Yes",
+      "email": "p.valdez.family@yahoo.com",
+      "street": "1523 Oak Hill Court",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78723",
+      "digitalJourney": "/home › /products/life-insurance › /products/life-insurance/whole-life-insurance › /planning-and-advice/life-insurance",
+      "intent": "56-year-old seeking affordable final expense coverage with guaranteed acceptance and no medical underwriting.",
+      "coverage": "ZIP 78723 confirmed, Austin serviceable",
+      "appointment": "Benefit review consultation with Mutual of Omaha specialist, Friday July 18, 2:00 PM",
+      "greeting": "Hi Patricia, this is Marco from Mutual of Omaha. Thanks for reaching out about our Guaranteed Whole Life plan. We have you scheduled for a consultation this Friday at 2 PM to discuss your coverage options and answer any questions. Looking forward to helping you protect your family's future."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Mutual of Omaha",
+      "brandDomain": "www.mutualofomaha.com",
+      "brandIcon": "🛡️",
+      "callerPhone": "+1 (402) 555-0187",
+      "callerLocation": "Omaha, NE",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Guaranteed Whole Life Ages 45-85",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "guaranteed whole life insurance no medical exam",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Products / Life Insurance / Whole Life",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Medicare Supplement Insurance, Long-Term Care Insurance",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Omaha, NE",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "new_biz_consultation",
+          "name": "Consultation Booking, Life & Health Products"
+        },
+        {
+          "id": "existing_customer_support",
+          "name": "Existing Policy Support"
+        },
+        {
+          "id": "general_inquiries",
+          "name": "General Information Line"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Mutual of Omaha. I see you've been looking at our whole life and long-term care options. Are you exploring coverage for yourself or for someone in your family?",
+          "sigs": [],
+          "q": [
+            15,
+            50,
+            35
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Mainly for myself, actually. I'm 58 and I want something with no medical exam that I can lock in now. My mom's in a nursing home and it made me think about my own future.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Age 58, seeking <strong>guaranteed whole life</strong>"
+            },
+            {
+              "c": "blue",
+              "t": "Family history of <strong>long-term care</strong> need"
+            },
+            {
+              "c": "orange",
+              "t": "Interested in <strong>no medical exam</strong> option"
+            }
+          ],
+          "q": [
+            42,
+            28,
+            30
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's really smart planning, especially with what you've seen your mom go through. Our Guaranteed Whole Life covers ages 45 through 85 with no medical exam, fixed premiums, and it builds cash value. We also have Long-Term Care Insurance that can help cover nursing home and assisted living costs. Would you like to explore both options with one of our specialists?",
+          "sigs": [],
+          "q": [
+            68,
+            15,
+            17
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, I'd definitely want to look into both. How quickly could I get a personalized quote and maybe talk to someone about what makes sense for my situation?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Ready to move forward with <strong>quote and consultation</strong>"
+            },
+            {
+              "c": "purple",
+              "t": "Interest in <strong>both whole life and LTC</strong> products"
+            }
+          ],
+          "q": [
+            86,
+            8,
+            6
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm connecting you now to our Consultation Booking team who specialize in life and health products for clients in your situation. They'll give you personalized quotes on whole life, review long-term care options, and find a plan that protects your future. You're going to be in great hands. Let me transfer you over now.",
+          "sigs": [],
+          "q": [
+            95,
+            3,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's schedule your consultation (Agent)\", \"set up an appointment with a licensed agent (Agent)\", \"have an agent contact you (Caller)\", \"book a time to go over your policy (Agent)\"])",
+          "createdAt": "11/12/24 9:14 am",
+          "updatedAt": "01/09/26 2:41 pm"
+        },
+        {
+          "name": "Agent Compliance Disclosure",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Agent Compliance Disclosure] < 60 and duration > 45 sec",
+          "createdAt": "12/03/24 10:32 am",
+          "updatedAt": "01/15/26 11:08 am"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"AARP plan (Caller)\", \"Colonial Penn (Caller)\", \"cheaper with another company (Caller)\", \"State Farm quote (Caller)\"])",
+          "createdAt": "10/28/24 3:47 pm",
+          "updatedAt": "01/06/26 4:22 pm"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"talk to a licensed agent (Caller)\", \"go over your coverage options (Agent)\", \"review the policy details (Agent)\"])",
+          "createdAt": "11/05/24 8:19 am",
+          "updatedAt": "01/11/26 9:53 am"
+        },
+        {
+          "name": "Empathy and Rapport",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy and Rapport] < 60 and duration > 45 sec",
+          "createdAt": "12/12/24 1:26 pm",
+          "updatedAt": "01/18/26 3:37 pm"
+        },
+        {
+          "name": "Guaranteed Whole Life Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"guaranteed whole life (Caller)\", \"final expense coverage (Caller)\", \"no medical exam (Caller)\", \"burial insurance for seniors (Caller)\"])",
+          "createdAt": "11/20/24 11:41 am",
+          "updatedAt": "01/21/26 10:14 am"
+        },
+        {
+          "name": "Medicare Supplement Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Medicare supplement (Caller)\", \"Medigap Plan G (Caller)\", \"Plan N quote (Caller)\", \"fill the gaps in Original Medicare (Caller)\"])",
+          "createdAt": "12/01/24 2:58 pm",
+          "updatedAt": "01/23/26 1:09 pm"
+        },
+        {
+          "name": "Needs Assessment Completed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Needs Assessment Completed] < 60 and duration > 45 sec",
+          "createdAt": "12/18/24 9:05 am",
+          "updatedAt": "01/26/26 4:47 pm"
+        },
+        {
+          "name": "Price Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"too expensive (Caller)\", \"how much per month (Caller)\", \"can I get a lower premium (Caller)\", \"I'm on a fixed income (Caller)\"])",
+          "createdAt": "11/29/24 4:33 pm",
+          "updatedAt": "01/13/26 8:52 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "answered_by_agent and (signal = \"Guaranteed Whole Life Interest\" or signal = \"Medicare Supplement Interest\") and duration > 2 min",
+          "createdAt": "12/09/24 10:47 am",
+          "updatedAt": "01/28/26 11:36 am"
+        }
+      ]
+    }
+  }
+}

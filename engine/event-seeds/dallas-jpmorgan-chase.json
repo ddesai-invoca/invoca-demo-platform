@@ -1,0 +1,5357 @@
+{
+  "id": "jpmorgan-chase",
+  "customerName": "JPMorgan Chase",
+  "websiteUrl": "https://www.jpmorganchase.com",
+  "brandDomain": "jpmorganchase.com",
+  "networkName": "Invoca for Financial Services",
+  "industry": "Banking & Financial Services",
+  "bookingTerm": "Appointment",
+  "customerNoun": "Customer",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 25000,
+      "yTicks": [
+        5000,
+        10000,
+        15000,
+        20000,
+        25000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 12847
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 21483
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 20762
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 19914
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 19182
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Chase Sapphire, Apply Now",
+          "marketingSearchTerm": "best chase credit card for travel points",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/sapphire-preferred?utm_source=google&utm_medium=cpc&utm_campaign=sapphire_apply",
+          "websiteJourney": "Home / Credit Cards / Travel Cards / Sapphire Preferred",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Chase Checking $300 Bonus",
+          "marketingSearchTerm": "chase checking account bonus offer",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/total-checking?utm_source=google&utm_medium=cpc&utm_campaign=checking_bonus",
+          "websiteJourney": "Home / Checking / Total Checking / Open Account",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Home Lending, Get Prequalified",
+          "marketingSearchTerm": "chase mortgage rates today",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/mortgage-prequalify?utm_source=google&utm_medium=cpc&utm_campaign=home_lending",
+          "websiteJourney": "Home / Home Lending / Mortgage / Get Prequalified",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Chase Business Complete Banking",
+          "marketingSearchTerm": "chase business checking open account",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/business-complete?utm_source=bing&utm_medium=cpc&utm_campaign=business_checking",
+          "websiteJourney": "Home / Business / Business Checking / Business Complete Banking",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Chase Private Client Access",
+          "marketingSearchTerm": "chase private client benefits",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/private-client?utm_source=google&utm_medium=cpc&utm_campaign=private_client",
+          "websiteJourney": "Home / Wealth Management / Private Client / Book Consultation",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "J.P. Morgan Wealth Plan",
+          "marketingSearchTerm": "j.p. morgan self-directed investing review",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/self-directed?utm_source=google&utm_medium=cpc&utm_campaign=wealth_plan",
+          "websiteJourney": "Home / Wealth Management / Self-Directed Investing",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Chase HELOC Options",
+          "marketingSearchTerm": "chase heloc requirements",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/heloc?utm_source=bing&utm_medium=cpc&utm_campaign=heloc_options",
+          "websiteJourney": "Home / Home Lending / Home Equity / HELOC",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Chase Auto Prequalify",
+          "marketingSearchTerm": "chase auto loan prequalify",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/auto-finance?utm_source=google&utm_medium=cpc&utm_campaign=auto_prequalify",
+          "websiteJourney": "Home / Auto Finance / Loans / Prequalify",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Sapphire Preferred vs Reserve",
+          "marketingSearchTerm": "chase sapphire preferred vs reserve",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/sapphire-compare?utm_source=google&utm_medium=cpc&utm_campaign=sapphire_compare",
+          "websiteJourney": "Home / Credit Cards / Travel Cards / Compare",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "J.P. Morgan Personal Advisors",
+          "marketingSearchTerm": "j.p. morgan personal advisors fees",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/personal-advisors?utm_source=bing&utm_medium=cpc&utm_campaign=personal_advisors",
+          "websiteJourney": "Home / Wealth Management / Personal Advisors / Book Consultation",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Chase Premier Savings Rates",
+          "marketingSearchTerm": "chase premier savings relationship rate",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/premier-savings?utm_source=google&utm_medium=cpc&utm_campaign=premier_savings",
+          "websiteJourney": "Home / Savings / Premier Savings / Open Account",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Chase Freedom Unlimited",
+          "marketingSearchTerm": "chase freedom unlimited cash back",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/freedom-unlimited?utm_source=google&utm_medium=cpc&utm_campaign=freedom_unlimited",
+          "websiteJourney": "Home / Credit Cards / Cash Back Cards / Freedom Unlimited",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Chase Locations Near Me",
+          "marketingSearchTerm": "chase branch near me",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/find-a-branch?utm_source=bing&utm_medium=cpc&utm_campaign=near_me",
+          "websiteJourney": "Home / Locations / Branch Finder",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Chase Ink Business Preferred",
+          "marketingSearchTerm": "chase ink business preferred rewards",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/ink-preferred?utm_source=google&utm_medium=cpc&utm_campaign=ink_business",
+          "websiteJourney": "Home / Business / Business Credit Cards / Ink Preferred",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "#ChaseSapphire",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/sapphire-social?utm_source=instagram&utm_medium=social&utm_campaign=chasesapphire",
+          "websiteJourney": "Home / Credit Cards / Travel Cards / Sapphire Preferred",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Chase for Business",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/business-social?utm_source=facebook&utm_medium=social&utm_campaign=chase_for_business",
+          "websiteJourney": "Home / Business / Business Checking / Business Complete Banking",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "J.P. Morgan Wealth Plan",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.jpmorganchase.com/lp/wealth-social?utm_source=instagram&utm_medium=social&utm_campaign=wealth_plan",
+          "websiteJourney": "Home / Wealth Management / Self-Directed Investing",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "American Dream Initiative",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.jpmorganchase.com/impact/american-dream?utm_source=organic&utm_medium=seo&utm_campaign=american_dream",
+          "websiteJourney": "Home / Impact / Housing / American Dream Initiative",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Chase for Business Resources",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.jpmorganchase.com/business/resources?utm_source=organic&utm_medium=seo&utm_campaign=business_resources",
+          "websiteJourney": "Home / Business / Resources / Coaching for Impact",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Team USA Sponsorship",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.jpmorganchase.com/about-us/team-usa?utm_source=organic&utm_medium=seo&utm_campaign=team_usa",
+          "websiteJourney": "Home / About us / Sponsorships / Official Bank of Team USA",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (JPMorgan Chase)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "73,873"
+            },
+            {
+              "label": "New Account Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Account Opened (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$38,042,243"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "11,820"
+            },
+            {
+              "label": "Existing Account Servicing (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Branch or ATM Locator (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Fraud or Dispute Report (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Account Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Account Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "46%"
+            },
+            {
+              "label": "Not Qualified (Percent)",
+              "value": "16%"
+            },
+            {
+              "label": "Account Opened (Percent)",
+              "value": "22%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Account Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Account Inquiry (Count)",
+            "values": [
+              12417,
+              13842,
+              11986,
+              12653,
+              11155
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              6842,
+              7213,
+              6538,
+              7041,
+              6348
+            ]
+          },
+          {
+            "name": "Not Qualified (Count)",
+            "values": [
+              2417,
+              2538,
+              2213,
+              2394,
+              2258
+            ]
+          },
+          {
+            "name": "Account Opened (Count)",
+            "values": [
+              3242,
+              3481,
+              3153,
+              3368,
+              3008
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 73873,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "28,412",
+                "39%",
+                "16%",
+                "$10,684,215"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "18,647",
+                "44%",
+                "21%",
+                "$9,201,884"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "12,338",
+                "47%",
+                "24%",
+                "$6,957,332"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "8,956",
+                "51%",
+                "29%",
+                "$6,102,447"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "5,520",
+                "58%",
+                "38%",
+                "$5,096,365"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 73873,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "26,715",
+                "38%",
+                "16%",
+                "$10,127,884"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "17,982",
+                "43%",
+                "19%",
+                "$8,102,553"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "12,447",
+                "48%",
+                "24%",
+                "$7,083,447"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "9,338",
+                "52%",
+                "29%",
+                "$6,421,332"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "7,391",
+                "57%",
+                "36%",
+                "$6,307,027"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 29048,
+          "rows": [
+            {
+              "name": "Chase Sapphire Apply Now",
+              "metrics": [
+                "9,847",
+                "40%",
+                "18%",
+                "$4,151,332"
+              ]
+            },
+            {
+              "name": "Chase Checking $300 Bonus",
+              "metrics": [
+                "7,332",
+                "45%",
+                "22%",
+                "$3,778,447"
+              ]
+            },
+            {
+              "name": "Chase for Business",
+              "metrics": [
+                "5,218",
+                "49%",
+                "27%",
+                "$3,301,884"
+              ]
+            },
+            {
+              "name": "Chase Mortgage Rate Lock",
+              "metrics": [
+                "3,964",
+                "54%",
+                "33%",
+                "$3,064,553"
+              ]
+            },
+            {
+              "name": "J.P. Morgan Wealth Plan",
+              "metrics": [
+                "2,687",
+                "60%",
+                "41%",
+                "$2,582,027"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20528,
+          "rows": [
+            {
+              "name": "chase checking account bonus offer",
+              "metrics": [
+                "6,847",
+                "41%",
+                "19%",
+                "$3,048,447"
+              ]
+            },
+            {
+              "name": "best chase credit card for travel",
+              "metrics": [
+                "5,238",
+                "46%",
+                "23%",
+                "$2,823,332"
+              ]
+            },
+            {
+              "name": "chase mortgage rates today",
+              "metrics": [
+                "3,912",
+                "50%",
+                "28%",
+                "$2,565,884"
+              ]
+            },
+            {
+              "name": "chase business checking open account",
+              "metrics": [
+                "2,684",
+                "55%",
+                "34%",
+                "$2,139,553"
+              ]
+            },
+            {
+              "name": "chase private client benefits",
+              "metrics": [
+                "1,847",
+                "61%",
+                "42%",
+                "$1,818,027"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Set (Industry) (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Consumer & Community Banking (Chase)",
+              "metrics": [
+                "24,317",
+                "39.4%",
+                "14.3%",
+                "$7,956,370"
+              ]
+            },
+            {
+              "name": "Home Lending",
+              "metrics": [
+                "17,842",
+                "43.1%",
+                "18.9%",
+                "$7,813,978"
+              ]
+            },
+            {
+              "name": "Business Banking",
+              "metrics": [
+                "13,264",
+                "45.7%",
+                "22.8%",
+                "$7,260,624"
+              ]
+            },
+            {
+              "name": "Wealth Management (J.P. Morgan)",
+              "metrics": [
+                "10,987",
+                "48.2%",
+                "28.6%",
+                "$7,401,352"
+              ]
+            },
+            {
+              "name": "Auto Finance",
+              "metrics": [
+                "7,463",
+                "51.6%",
+                "43.3%",
+                "$7,609,919"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 73873,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "21,438",
+                "41.2%",
+                "14.9%",
+                "$7,464,732"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "17,214",
+                "44.6%",
+                "18.8%",
+                "$7,498,730"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "14,672",
+                "46.8%",
+                "21.7%",
+                "$7,503,258"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "12,089",
+                "49.3%",
+                "25.6%",
+                "$7,274,853"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "8,460",
+                "53.1%",
+                "41.9%",
+                "$8,300,670"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Account Opened (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Consumer & Community Banking (Chase)",
+            "values": [
+              543,
+              812,
+              748,
+              731,
+              648
+            ]
+          },
+          {
+            "name": "Home Lending",
+            "values": [
+              512,
+              798,
+              724,
+              701,
+              636
+            ]
+          },
+          {
+            "name": "Business Banking",
+            "values": [
+              458,
+              712,
+              648,
+              631,
+              575
+            ]
+          },
+          {
+            "name": "Wealth Management (J.P. Morgan)",
+            "values": [
+              476,
+              741,
+              672,
+              652,
+              601
+            ]
+          },
+          {
+            "name": "Auto Finance",
+            "values": [
+              489,
+              762,
+              698,
+              671,
+              613
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 73,873 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Delgado called to compare the sapphire preferred and reserve travel cards before applying. Agent Oscar walked him through the annual fee difference, the sign-up bonus, and transferable points, then booked a branch appointment to finalize the application. Marcus was thrilled and confirmed the time on the call.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "2m 45s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Priya Nair wanted to open a Chase Total Checking account and asked about the direct-deposit fee waiver and the current bonus offer. Agent Lila explained the requirements clearly and scheduled a new account appointment at the nearest branch. Priya thanked her and said the process felt easy.",
+          "date": "Feb 12, 1:38 PM",
+          "agent": "Lila",
+          "duration": "2m 10s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Daniel Okafor called about a 30-year fixed mortgage on a roughly $400K home and asked to get prequalified. Agent Rosey reviewed rate-lock options and homebuyer grant eligibility, then set up an appointment with a home lending advisor. Daniel appreciated the guidance and booked the slot.",
+          "date": "Mar 3, 9:52 AM",
+          "agent": "Rosey",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "New client Sofia Marchetti called to start with J.P. Morgan Wealth Management and schedule time with a Personal Advisor. Agent Lee collected her full contact details, goals, and approximate balances, then booked an intake appointment and confirmed the advisor would follow up. Sofia was pleased to get started.",
+          "date": "Mar 21, 4:07 PM",
+          "agent": "Lee",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Gregory Lin asked about a heloc against his home equity and wanted to understand the variable prime-based rate and draw period. Agent Mary reviewed the basics and scheduled an appointment with a lending specialist to review his numbers. Gregory confirmed the meeting before hanging up.",
+          "date": "Apr 9, 11:26 AM",
+          "agent": "Mary",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 15,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Alicia Romero called to check the status of her pending auto loan application after submitting documents online. Agent Sue confirmed the file was under review and explained the remaining verification steps. No new meeting was needed, but Alicia felt reassured about the timeline.",
+          "date": "May 2, 3:19 PM",
+          "agent": "Sue",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Thomas Bright disputed two charges on his Freedom Unlimited credit card statement that he did not recognize. Agent Mike opened a dispute case and issued a temporary credit while the transactions were investigated. Thomas was somewhat frustrated but calmer once the case number was provided.",
+          "date": "May 18, 12:41 PM",
+          "agent": "Mike",
+          "duration": "2m 21s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 59,
+          "summary": "Rachel Kim wanted to open Business Complete Banking for her new small business and asked about QuickAccept card payments. Agent Jennifer outlined the monthly fee waiver and scheduled a branch appointment to open the account. Rachel booked the time despite a few questions on documents.",
+          "date": "Jun 7, 10:03 AM",
+          "agent": "Jennifer",
+          "duration": "2m 49s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 21,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Victor Salazar called with questions about refinancing his existing mortgage and current rates. Agent Rose explained that rates vary by creditworthiness and could not quote a firm number over the phone, which frustrated him. He ended the call to think it over without booking anything.",
+          "date": "Jun 24, 2:52 PM",
+          "agent": "Rose",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Karen Whitfield called after hours about a savings transfer that had not posted and reached voicemail. She left a callback number and account details asking someone to look into the delayed transfer. No agent was available to assist at the time.",
+          "date": "Jul 5, 7:14 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Brian Foster was upset about the $95 annual fee posting on his sapphire preferred card and wanted it reversed. Agent Oscar explained the fee terms and offered a rewards review but could not waive it, which annoyed Brian. He asked to consider closing the card and hung up unhappy.",
+          "date": "Jul 22, 4:33 PM",
+          "agent": "Oscar",
+          "duration": "2m 16s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Denise Alvarez called to dispute an overdraft fee on her checking account after a deposit posted late. Agent Lila reviewed the timing and offered a one-time courtesy adjustment request, but Denise felt the policy was unfair. She remained dissatisfied when the call ended.",
+          "date": "Aug 8, 11:47 AM",
+          "agent": "Lila",
+          "duration": "2m 04s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Howard Pittman complained about a payoff quote discrepancy on his auto loan and long hold times on prior calls. Agent Mike pulled the account and explained the per-diem interest, but Howard argued the figure was wrong. The issue was escalated and he stayed frustrated.",
+          "date": "Sep 1, 1:12 PM",
+          "agent": "Mike",
+          "duration": "2m 38s",
+          "scorecards": 7,
+          "comments": 2,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Nadia Rahman called about a stalled heloc application that had been pending for weeks with no update. Agent Mary apologized and found the file was missing an appraisal document, which upset Nadia since she was not notified. She demanded a supervisor callback before ending the call.",
+          "date": "Sep 19, 3:44 PM",
+          "agent": "Mary",
+          "duration": "3m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Leonard Chase called to cancel his Ink Business Preferred credit card over dissatisfaction with recent service. Agent Sue attempted a retention offer, but Leonard insisted on closing the account immediately. The cancellation was processed and he left the call irritated.",
+          "date": "Oct 4, 10:29 AM",
+          "agent": "Sue",
+          "duration": "1m 41s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "sapphire",
+        "checking",
+        "mortgage",
+        "auto loan",
+        "credit card",
+        "heloc"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 18, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Loan Type Interest",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Schedule Appointment Date",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Callback Expectations",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Verify Existing Customer Status",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller stated mortgage interest",
+        "Caller confirmed primary residence",
+        "Caller ready to move forward",
+        "Agent offered multiple appointment times",
+        "Caller accepted offered time slot",
+        "Caller provided legal name",
+        "Caller verified phone availability",
+        "Agent confirmed service area coverage",
+        "Caller indicated budget awareness",
+        "Agent explained next steps",
+        "Caller expressed urgency",
+        "Agent maintained professional tone",
+        "Appointment successfully booked"
+      ],
+      "unmetSignals": [
+        "Email capture attempted but declined",
+        "Callback number not explicitly confirmed",
+        "Prequalification score not discussed",
+        "Down payment amount not explored",
+        "Credit profile discussion deferred",
+        "Employment verification not mentioned",
+        "Property value estimation skipped",
+        "Current mortgage balance not obtained",
+        "Interest rate expectations not set",
+        "Refinance vs purchase not clarified"
+      ],
+      "naSignals": [
+        "Account balance transfer",
+        "Payment processing setup",
+        "Billing address confirmation",
+        "Existing loan modification",
+        "Document upload completion",
+        "Online portal login credentials",
+        "Mobile app enrollment",
+        "Rate lock timeline",
+        "Appraisal scheduling",
+        "Title search initiation"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller is a new customer seeking to refinance an existing mortgage to potentially lower their interest rate. They own a primary residence and want to explore options without committing to a full application yet."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a consultative appointment where a lending specialist will review their current mortgage details, discuss available rates and terms, and explain the refinance process and timeline without pressure."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address before closing the call to enable automated appointment confirmation and follow-up documentation. Setting explicit callback expectations and timeframe for the next specialist contact would also strengthen the booking."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Chase Home Lending. My name is Marcus. May I have your name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:22",
+          "text": "Yes, it's Jennifer Stanton."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:25",
+          "text": "Thank you, Jennifer. I see you're calling about our mortgage refinance options. Is that correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:32",
+          "text": "That's right. I have a mortgage with another lender right now, and I've heard Chase has really competitive rates."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:41",
+          "text": "We absolutely do, Jennifer. To help you explore the best options, can you tell me what state your property is located in?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:48",
+          "text": "It's in California, in the San Francisco Bay Area."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:54",
+          "text": "Perfect. We definitely serve that area. And this is your primary residence, correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:00",
+          "text": "Yes, it is."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:03",
+          "text": "Excellent. I'd like to get your contact information. What's the best phone number to reach you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:09",
+          "text": "It's ****-***-****. Please use that anytime."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:15",
+          "text": "Got it, thank you. And your email address?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:19",
+          "text": "You know, I'd rather just stick with the phone number for now. I don't check email as often."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:26",
+          "text": "No problem, Jennifer. We have your phone number on file. Let me schedule you an appointment with one of our mortgage specialists. Would next Tuesday at 10 a.m. or Wednesday at 2 p.m. work better for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:37",
+          "text": "Wednesday at 2 p.m. is perfect."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:41",
+          "text": "Wonderful. So that's Wednesday, October 23rd at 2 p.m. The specialist will review your current loan details, discuss our available rates and terms, and walk you through the refinance timeline. You'll get a call at the number you provided."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:56",
+          "text": "That sounds great. I really appreciate this."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:00",
+          "text": "You're welcome, Jennifer. Thanks for choosing Chase. We look forward to helping you find the right solution. Have a great day."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:06",
+          "text": "You too, thank you."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:10",
+          "text": "Goodbye."
+        }
+      ],
+      "aiSummary": "Jennifer Stanton, a new customer from the San Francisco Bay Area, called to explore mortgage refinance options for her primary residence. Marcus Bell successfully qualified the caller, confirmed service area coverage, and scheduled a consultative appointment with a mortgage specialist for Wednesday, October 23rd at 2 p.m. The agent maintained a professional and helpful tone throughout the intake. Email address was not captured as the caller declined to provide it at this time. The appointment booking was confirmed and the caller ended the call satisfied with the next steps.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus Great job with the greeting and the flow of the call. You clearly qualified the loan type and confirmed service area without rushing. One coaching point: when Jennifer declined to provide her email, a gentle follow-up like 'I'll send appointment details to email, but I can text them to your phone instead' would have given her an alternative and ensured she has written confirmation. Also, try to set explicit callback timing expectations, like 'your specialist will reach out between 1 and 2 p.m. that day.' These small details improve the customer experience and reduce no-shows."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "73,873"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$514.97"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$38,042,243"
+            }
+          ]
+        },
+        {
+          "title": "NEW CUSTOMER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Customers (Count)",
+              "value": "41,268"
+            },
+            {
+              "label": "Caller Type: New Customers (Percent)",
+              "value": "56%"
+            },
+            {
+              "label": "Appointment: Scheduled (Count)",
+              "value": "31,027"
+            },
+            {
+              "label": "Appointment: Scheduled (Percent)",
+              "value": "42%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CUSTOMERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Customer (Count)",
+              "value": "32,605"
+            },
+            {
+              "label": "Caller Type: Existing Customer (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Appointment: Canceled (Percent)",
+              "value": "8%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Appointments)",
+          "chart": {
+            "legend": "Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Referral",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Direct",
+                "value": 52,
+                "display": "52%"
+              },
+              {
+                "name": "Social Media",
+                "value": 44,
+                "display": "44%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 36,
+                "display": "36%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "24,617",
+                  "28%",
+                  "$12,483,657"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "18,942",
+                  "36%",
+                  "$9,624,118"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "13,486",
+                  "44%",
+                  "$6,847,922"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "9,873",
+                  "52%",
+                  "$5,142,388"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "6,955",
+                  "58%",
+                  "$3,944,158"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 25000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000,
+              25000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 22143,
+                "display": "22,143"
+              },
+              {
+                "name": "organic",
+                "value": 17865,
+                "display": "17,865"
+              },
+              {
+                "name": "social",
+                "value": 14238,
+                "display": "14,238"
+              },
+              {
+                "name": "email",
+                "value": 11472,
+                "display": "11,472"
+              },
+              {
+                "name": "referral",
+                "value": 8155,
+                "display": "8,155"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "22,143",
+                  "27%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "17,865",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "14,238",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "11,472",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "8,155",
+                  "57%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 12000,
+            "axisTicks": [
+              0,
+              3000,
+              6000,
+              9000,
+              12000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Chase Sapphire Apply Now",
+                "value": 9847,
+                "display": "9,847"
+              },
+              {
+                "name": "Chase Checking $300 Bonus",
+                "value": 7653,
+                "display": "7,653"
+              },
+              {
+                "name": "Chase for Business",
+                "value": 6214,
+                "display": "6,214"
+              },
+              {
+                "name": "J.P. Morgan Wealth Plan",
+                "value": 4872,
+                "display": "4,872"
+              },
+              {
+                "name": "Chase Mortgage Rate Lock",
+                "value": 3415,
+                "display": "3,415"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Chase Sapphire Apply Now",
+                  "9,847",
+                  "30%",
+                  "$5,124,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Chase Checking $300 Bonus",
+                  "7,653",
+                  "38%",
+                  "$3,987,240"
+                ]
+              },
+              {
+                "cells": [
+                  "Chase for Business",
+                  "6,214",
+                  "46%",
+                  "$3,241,660"
+                ]
+              },
+              {
+                "cells": [
+                  "J.P. Morgan Wealth Plan",
+                  "4,872",
+                  "55%",
+                  "$2,548,990"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 6000,
+            "axisTicks": [
+              0,
+              1500,
+              3000,
+              4500,
+              6000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "chase checking account bonus offer",
+                "value": 5842,
+                "display": "5,842"
+              },
+              {
+                "name": "chase mortgage rates today",
+                "value": 4913,
+                "display": "4,913"
+              },
+              {
+                "name": "best chase credit card for travel",
+                "value": 4127,
+                "display": "4,127"
+              },
+              {
+                "name": "chase business checking open account",
+                "value": 3486,
+                "display": "3,486"
+              },
+              {
+                "name": "chase sapphire preferred vs reserve",
+                "value": 2914,
+                "display": "2,914"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "chase checking account bonus offer",
+                  "32%"
+                ]
+              },
+              {
+                "cells": [
+                  "chase mortgage rates today",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "best chase credit card for travel",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "chase business checking open account",
+                  "56%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Customers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Appointment: Scheduled (Percent)",
+          "Caller Type: New Customers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Consumer & Community Banking",
+              "28,417",
+              "31%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Home Lending",
+              "19,865",
+              "39%",
+              "54%"
+            ]
+          },
+          {
+            "cells": [
+              "Business Banking",
+              "14,238",
+              "47%",
+              "48%"
+            ]
+          },
+          {
+            "cells": [
+              "Wealth Management",
+              "11,353",
+              "56%",
+              "43%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Chase Branch, Manhattan Midtown",
+              "8,742",
+              "487",
+              "6%",
+              "38%"
+            ]
+          },
+          {
+            "cells": [
+              "Chase Branch, Chicago Loop",
+              "6,915",
+              "402",
+              "7%",
+              "43%"
+            ]
+          },
+          {
+            "cells": [
+              "Chase Branch, Los Angeles Downtown",
+              "5,834",
+              "356",
+              "8%",
+              "49%"
+            ]
+          },
+          {
+            "cells": [
+              "Chase Branch, Houston Galleria",
+              "4,517",
+              "298",
+              "9%",
+              "55%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Rate Above Expectation",
+            "values": [
+              2214,
+              2487,
+              2563,
+              2318,
+              2265
+            ]
+          },
+          {
+            "name": "Comparing Financial Institutions",
+            "values": [
+              1842,
+              2013,
+              2124,
+              1987,
+              1899
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              1587,
+              1724,
+              1812,
+              1698,
+              1651
+            ]
+          },
+          {
+            "name": "Needs Co-Applicant Approval",
+            "values": [
+              1342,
+              1468,
+              1542,
+              1451,
+              1411
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              987,
+              1124,
+              1168,
+              1098,
+              1071
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "29,549"
+          },
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Account Opened (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$21,684,079"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,821,156"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,247,389"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "36%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,684,227"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,156,418"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,892,547"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "39%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,882,342"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8847,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "7,291",
+                "58%",
+                "31%",
+                "$5,332,847"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "5,614",
+                "54%",
+                "33%",
+                "$3,948,126"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "4,829",
+                "51%",
+                "34%",
+                "$2,847,591"
+              ]
+            },
+            {
+              "name": "Email Campaign",
+              "metrics": [
+                "3,756",
+                "59%",
+                "38%",
+                "$2,654,383"
+              ]
+            },
+            {
+              "name": "Branch Referral",
+              "metrics": [
+                "2,187",
+                "62%",
+                "42%",
+                "$1,891,437"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8526,
+          "rows": [
+            {
+              "name": "Mobile Web",
+              "metrics": [
+                "6,842",
+                "56%",
+                "32%",
+                "$4,756,214"
+              ]
+            },
+            {
+              "name": "Desktop Web",
+              "metrics": [
+                "5,327",
+                "53%",
+                "30%",
+                "$3,512,847"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "4,194",
+                "58%",
+                "37%",
+                "$2,891,356"
+              ]
+            },
+            {
+              "name": "Social Display",
+              "metrics": [
+                "3,891",
+                "54%",
+                "35%",
+                "$2,348,129"
+              ]
+            },
+            {
+              "name": "Direct Call",
+              "metrics": [
+                "2,756",
+                "61%",
+                "41%",
+                "$1,914,268"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 9127,
+          "rows": [
+            {
+              "name": "Chase Sapphire Rewards Points",
+              "metrics": [
+                "6,418",
+                "52%",
+                "29%",
+                "$4,684,527"
+              ]
+            },
+            {
+              "name": "American Dream Initiative Mortgages",
+              "metrics": [
+                "5,293",
+                "59%",
+                "36%",
+                "$3,847,291"
+              ]
+            },
+            {
+              "name": "Chase Business Checking Bonus",
+              "metrics": [
+                "4,156",
+                "55%",
+                "33%",
+                "$2,756,184"
+              ]
+            },
+            {
+              "name": "JP Morgan Wealth Management",
+              "metrics": [
+                "3,247",
+                "60%",
+                "38%",
+                "$2,134,856"
+              ]
+            },
+            {
+              "name": "Chase Total Checking Welcome Offer",
+              "metrics": [
+                "2,891",
+                "63%",
+                "42%",
+                "$1,921,348"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8214,
+          "rows": [
+            {
+              "name": "Chase checking account bonus offer",
+              "metrics": [
+                "5,827",
+                "54%",
+                "31%",
+                "$4,127,863"
+              ]
+            },
+            {
+              "name": "best Chase credit card for travel points",
+              "metrics": [
+                "4,694",
+                "56%",
+                "34%",
+                "$3,214,756"
+              ]
+            },
+            {
+              "name": "Chase mortgage rates today",
+              "metrics": [
+                "3,891",
+                "61%",
+                "39%",
+                "$2,847,591"
+              ]
+            },
+            {
+              "name": "Chase business checking open account",
+              "metrics": [
+                "2,847",
+                "59%",
+                "37%",
+                "$1,756,284"
+              ]
+            },
+            {
+              "name": "J.P. Morgan self directed investing review",
+              "metrics": [
+                "1,756",
+                "64%",
+                "43%",
+                "$1,287,456"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Home Lending",
+              "metrics": [
+                "8,729",
+                "61%",
+                "38%",
+                "$6,284,139"
+              ]
+            },
+            {
+              "name": "Consumer Credit Cards",
+              "metrics": [
+                "7,156",
+                "54%",
+                "32%",
+                "$4,827,356"
+              ]
+            },
+            {
+              "name": "Wealth Management",
+              "metrics": [
+                "5,413",
+                "59%",
+                "37%",
+                "$3,891,247"
+              ]
+            },
+            {
+              "name": "Business Banking",
+              "metrics": [
+                "4,827",
+                "57%",
+                "35%",
+                "$2,947,183"
+              ]
+            },
+            {
+              "name": "Auto Finance",
+              "metrics": [
+                "3,424",
+                "52%",
+                "28%",
+                "$2,854,154"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Account Opened (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Home Lending",
+            "values": [
+              948,
+              1247,
+              1368,
+              1156,
+              895
+            ]
+          },
+          {
+            "name": "Consumer Credit Cards",
+            "values": [
+              723,
+              1048,
+              896,
+              734,
+              588
+            ]
+          },
+          {
+            "name": "Wealth Management",
+            "values": [
+              627,
+              891,
+              745,
+              612,
+              487
+            ]
+          },
+          {
+            "name": "Business Banking",
+            "values": [
+              516,
+              748,
+              621,
+              493,
+              349
+            ]
+          },
+          {
+            "name": "Auto Finance",
+            "values": [
+              287,
+              432,
+              391,
+              298,
+              191
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "8,754"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$20,518,956"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "847"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "29"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$67,934"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Appointment Scheduled",
+            "values": [
+              76,
+              74,
+              81,
+              78,
+              79,
+              75,
+              77,
+              82,
+              76,
+              80,
+              74,
+              81,
+              78,
+              79,
+              75,
+              83,
+              76,
+              81,
+              79,
+              77,
+              78,
+              82,
+              75,
+              74,
+              76,
+              81,
+              80,
+              79,
+              81,
+              78,
+              74,
+              79,
+              182,
+              188,
+              176,
+              191,
+              184,
+              189,
+              175,
+              187,
+              181,
+              186,
+              179,
+              184,
+              192,
+              177,
+              185,
+              183,
+              181
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,089"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,347"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "743"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "721"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Appointment Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Credit Card Application",
+            "values": [
+              8,
+              11,
+              9,
+              2,
+              12,
+              10
+            ]
+          },
+          {
+            "name": "Mortgage Rate Inquiry",
+            "values": [
+              6,
+              9,
+              7,
+              1,
+              10,
+              8
+            ]
+          },
+          {
+            "name": "Checking Account Bonus",
+            "values": [
+              7,
+              10,
+              8,
+              3,
+              11,
+              9
+            ]
+          },
+          {
+            "name": "Business Banking Setup",
+            "values": [
+              5,
+              8,
+              6,
+              2,
+              9,
+              7
+            ]
+          },
+          {
+            "name": "HELOC Pre-qualification",
+            "values": [
+              4,
+              7,
+              5,
+              1,
+              8,
+              6
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "67,963"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "49,495"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Account Opened (Count)",
+            "value": "31,027"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$38,042,243"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Robert Chen",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Maria Gonzalez",
+              "value": 224,
+              "display": "224"
+            },
+            {
+              "name": "James Patterson",
+              "value": 156,
+              "display": "156"
+            },
+            {
+              "name": "Sophia Williams",
+              "value": 201,
+              "display": "201"
+            },
+            {
+              "name": "David Kumar",
+              "value": 172,
+              "display": "172"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Account Opened (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Jessica Morrison",
+            "values": [
+              142,
+              158,
+              174,
+              191,
+              208
+            ]
+          },
+          {
+            "name": "Michael Torres",
+            "values": [
+              128,
+              145,
+              162,
+              179,
+              198
+            ]
+          },
+          {
+            "name": "Angela Brooks",
+            "values": [
+              135,
+              152,
+              171,
+              187,
+              206
+            ]
+          },
+          {
+            "name": "Christopher Lee",
+            "values": [
+              119,
+              138,
+              155,
+              173,
+              194
+            ]
+          },
+          {
+            "name": "Rebecca Schmidt",
+            "values": [
+              124,
+              141,
+              160,
+              176,
+              195
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Johnson",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Patricia Hoffman",
+              "value": 55.8,
+              "display": "55.8%"
+            },
+            {
+              "name": "Thomas Anderson",
+              "value": 56.4,
+              "display": "56.4%"
+            },
+            {
+              "name": "Lauren Bennett",
+              "value": 57.1,
+              "display": "57.1%"
+            },
+            {
+              "name": "Kevin Marshall",
+              "value": 58.6,
+              "display": "58.6%"
+            },
+            {
+              "name": "Susan Garrett",
+              "value": 59.3,
+              "display": "59.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Johnson",
+                "54.2%",
+                "28%",
+                "$1,184,752",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Hoffman",
+                "55.8%",
+                "29%",
+                "$1,227,886",
+                "1,418"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Anderson",
+                "56.4%",
+                "30%",
+                "$1,211,748",
+                "1,389"
+              ]
+            },
+            {
+              "cells": [
+                "Lauren Bennett",
+                "57.1%",
+                "31%",
+                "$1,245,934",
+                "1,472"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Marshall",
+                "58.6%",
+                "32%",
+                "$1,298,456",
+                "1,504"
+              ]
+            },
+            {
+              "cells": [
+                "Susan Garrett",
+                "59.3%",
+                "33%",
+                "$1,267,184",
+                "1,421"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Jessica Morrison",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Michael Torres",
+              "value": 89.4,
+              "display": "89.4%"
+            },
+            {
+              "name": "Angela Brooks",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "Christopher Lee",
+              "value": 87.8,
+              "display": "87.8%"
+            },
+            {
+              "name": "Rebecca Schmidt",
+              "value": 90.3,
+              "display": "90.3%"
+            },
+            {
+              "name": "David Whitmore",
+              "value": 93.2,
+              "display": "93.2%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jessica Morrison",
+                "91.7%",
+                "62%",
+                "$1,582,847",
+                "1,547"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Torres",
+                "89.4%",
+                "59%",
+                "$1,456,923",
+                "1,412"
+              ]
+            },
+            {
+              "cells": [
+                "Angela Brooks",
+                "92.1%",
+                "64%",
+                "$1,641,285",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Lee",
+                "87.8%",
+                "58%",
+                "$1,398,634",
+                "1,389"
+              ]
+            },
+            {
+              "cells": [
+                "Rebecca Schmidt",
+                "90.3%",
+                "61%",
+                "$1,528,742",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "David Whitmore",
+                "93.2%",
+                "67%",
+                "$1,692,518",
+                "1,461}]}"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Account Opened (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Account Opened (Count)",
+        "rightMax": 1500,
+        "rightTicks": [
+          0,
+          375,
+          750,
+          1125,
+          1500
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1150
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1102
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1027
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 980
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 853
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 895
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 989
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1028
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1146
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1111
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1001
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 967
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 861
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 887
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1012
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1043
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1135
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1118
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 980
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 949
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 874
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 883
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1030
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1064
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1121
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1119
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 966
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 926
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 889
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 885
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1036
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1800000,
+        "rightTicks": [
+          0,
+          600000,
+          1200000,
+          1800000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1410192
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1351605
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1258620
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1200966
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 1045661
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 1097393
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1212258
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1260043
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1404955
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1362191
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1226879
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1185803
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 1055165
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 1087626
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1241121
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1278940
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1391874
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1370212
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1201528
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 1163418
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 1071003
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 1082231
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1262513
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1304363
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1374191
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1372193
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 1184336
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 1135589
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 1089574
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 1084320
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1275480
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "73,873"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "5,910"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "4,432"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer M. Kowalski",
+                "412",
+                "88%",
+                "84%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus T. Richardson",
+                "638",
+                "86%",
+                "86%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah L. Chen",
+                "359",
+                "87%",
+                "85%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "73,873 calls",
+      "pagerLabel": "1 of 7,387",
+      "calls": [
+        {
+          "time": "1/6/26 9:12 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 10:41 am",
+          "id": "3A2C-91D4E7B6021F"
+        },
+        {
+          "time": "1/13/26 11:27 am",
+          "id": "7E19-C4A0F53B8D62"
+        },
+        {
+          "time": "1/15/26 1:04 pm",
+          "id": "B62D-2F81A9C70E45"
+        },
+        {
+          "time": "1/16/26 2:38 pm",
+          "id": "9C04-6D3E1B7F82A0"
+        },
+        {
+          "time": "1/20/26 8:53 am",
+          "id": "1F7A-5B92E0C4D318"
+        },
+        {
+          "time": "1/22/26 12:19 pm",
+          "id": "D48E-0A61F3927C5B"
+        },
+        {
+          "time": "1/26/26 3:47 pm",
+          "id": "6B25-8E41C09D7F3A"
+        },
+        {
+          "time": "1/28/26 4:22 pm",
+          "id": "A093-7C15B2E86D40"
+        },
+        {
+          "time": "1/30/26 5:11 pm",
+          "id": "2E68-F device9C40A17B3"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling Chase, this is Marcus. How can I help you today?",
+          "highlights": [
+            "Thank you for calling Chase, this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Marcus. I'm looking at opening a travel rewards credit card and I saw the Sapphire cards online. I'm not really a current Chase customer yet.",
+          "highlights": [
+            "travel rewards credit card",
+            "Sapphire"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "Happy to walk you through those. Can I start with your name so I can pull up the right options for you?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:23",
+          "text": "Sure, it's Danielle Foster.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:27",
+          "text": "Thanks Danielle. Are you mostly interested in travel and dining rewards, or do you want something more premium with lounge access?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:35",
+          "text": "Mostly travel and dining. I fly maybe three or four times a year, nothing crazy.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:42",
+          "text": "In that case the Chase Sapphire Preferred is usually the sweet spot. It earns strong points on travel and dining, has transferable points, and comes with a sign-up bonus.",
+          "highlights": [
+            "Chase Sapphire Preferred",
+            "sign-up bonus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:52",
+          "text": "Okay, but there's a yearly fee on that one, right? What does that run? I want to keep it manageable.",
+          "highlights": [
+            "What does that run",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:00",
+          "text": "It's a ninety five dollar annual fee. Most travelers earn that back easily through the bonus and the travel and dining points in the first few months.",
+          "highlights": [
+            "ninety five dollar annual fee"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:09",
+          "text": "Fair. Honestly I was also looking at the Capital One Venture card, the guy at work swears by it. I'm shopping a couple of them before I decide.",
+          "highlights": [
+            "also looking at the Capital One Venture card",
+            "shopping a couple of them"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:19",
+          "text": "That's a solid card too. Where Sapphire Preferred tends to stand out is the point transfers to airline and hotel partners and the travel protections. Those often stretch the value further if you book through us.",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "1:30",
+          "text": "That's good to know. The other thing is my husband and I share most of our travel spending, so I'd want to run it by him before I commit.",
+          "highlights": [
+            "run it by him before I commit"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:39",
+          "text": "Totally reasonable. You can also add him as an authorized user later so you pool points together. Nothing locks you in today, we can just get you set with the right fit.",
+          "highlights": [
+            "Nothing locks you in today"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:49",
+          "text": "Okay. If I did want to move forward, is there a way to actually sit down with someone and go through the numbers?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:57",
+          "text": "Absolutely. I can book you an appointment with a banker at your local Chase branch. They can compare the Sapphire Preferred against the Freedom Unlimited and finalize the application in person.",
+          "highlights": [
+            "book you an appointment with a banker",
+            "Chase branch"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:07",
+          "text": "That would be great. Do you have anything Thursday morning?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:12",
+          "text": "I have Thursday at 10 AM open at the branch on Market Street. Shall I lock that in for you?",
+          "highlights": [
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:19",
+          "text": "Yes, let's do Thursday at 10.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:23",
+          "text": "Done. You're booked Thursday at 10 AM. What's the best mobile number and email for the confirmation?",
+          "highlights": [
+            "You're booked Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:30",
+          "text": "It's 415-555-0182, and danielle.foster@email.com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:36",
+          "text": "Perfect, that's all set Danielle. Thanks for calling Chase, and we'll see you Thursday. Have a great day.",
+          "highlights": [
+            "Thanks for calling Chase",
+            "see you Thursday"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Customer",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Product Interest: Sapphire Preferred",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Intent: Travel Rewards Card",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Mention",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Annual Fee Concern",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Branch Visit Requested",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Foster, a prospective new Chase cardmember, called to compare travel rewards credit cards after browsing the Sapphire lineup online. Agent Marcus recommended the Chase Sapphire Preferred for her travel and dining spending, addressed her concern about the ninety five dollar annual fee, and handled her comparison against the Capital One Venture card. He reassured her that nothing locked her in today and booked an in-branch appointment with a banker to finalize the application. The call closed with contact details captured for confirmation.",
+        "keyPoints": [
+          "New customer, not yet banking with Chase",
+          "Wants a travel and dining rewards card for three to four trips a year",
+          "Recommended Chase Sapphire Preferred, with Freedom Unlimited as a comparison",
+          "Handled annual fee concern and Capital One Venture comparison",
+          "Appointment booked with a banker Thursday at 10 AM at the Market Street branch",
+          "Captured mobile number and email for confirmation"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Appointment booked, Thursday 10 AM in-branch"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "46,540 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,654",
+      "conversations": [
+        {
+          "id": "C847-3A2F9B7E14D6",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hi there. Thanks for texting Chase. This is Marcus. Are you calling about opening a new checking or savings account today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Hi Marcus. I'm interested in the Chase Sapphire Preferred card. Do I qualify?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "Great choice. The Sapphire Preferred is our premium travel rewards card with a 95 dollar annual fee and excellent transfer partners. First, what is your current annual household income?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:51 PM",
+              "text": "About 185k per year. I travel a lot for work so I need a good travel card."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:52 PM",
+              "text": "Perfect income range for approval. You mentioned travel is important. On average, how many times per year do you travel internationally?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:54 PM",
+              "text": "Maybe 4 or 5 times a year, mostly Europe and Asia."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "Excellent. With the Sapphire Preferred you'll earn three points per dollar on travel and dining, plus access to travel protections and a 500 dollar sign up bonus after 4,000 dollars in spending in three months. Does that sound appealing?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:57 PM",
+              "text": "Yeah, that sounds really good. When can I apply?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:58 PM",
+              "text": "You can apply right now via text or visit chase.com slash cards. I can also schedule a brief call with our credit card specialist on Tuesday at 3 PM or Wednesday at 10 AM. Which works better?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:00 PM",
+              "text": "Tuesday at 3 PM works great for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "3:01 PM",
+              "text": "Perfect. I have you scheduled for a specialist callback this Tuesday January 21st at 3 PM Eastern Time. They will review your application and answer any questions. You can also start your application anytime at chase.com slash sapphire. Any questions before we wrap up?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:03 PM",
+              "text": "Nope, that's all. Thanks Marcus."
+            },
+            {
+              "speaker": "agent",
+              "time": "3:04 PM",
+              "text": "You're welcome. Thanks for choosing Chase. Your confirmation code is 4827X. We'll call you Tuesday at 3 PM. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product: Chase Sapphire Preferred",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Travel Frequency: International, 4-5x annually",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Annual Income: 185k+",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Offer Presented: 500 dollar Sign Up Bonus",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C847-3A2F9B7E14D6",
+            "smsStartTime": "1/15/26 2:47 pm",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "877-936-2933",
+            "repeatCaller": "No",
+            "city": "San Francisco",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "B923-7D4E1A9C52F8",
+          "time": "1/22/26 11:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B923-7D4E1A9C52F8",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D156-8B3C6F2E79A4",
+          "time": "1/28/26 4:12 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D156-8B3C6F2E79A4",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "A642-5E9B2C1F6D31",
+          "time": "1/31/26 9:21 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A642-5E9B2C1F6D31",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "73,873 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 7,387",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hi there, thanks for calling Chase. This is Marcus with our mortgage team. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:47 PM",
+              "text": "Yeah, hi. I'm looking into getting a mortgage. I saw an ad about your thirty year fixed rate options."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:48 PM",
+              "text": "Excellent. I'd be happy to help you explore that. First, just to get started, are you looking to purchase a new home or refinance an existing property?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "We're looking to buy. We've been saving up for about two years now."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "That's great. Congratulations on that. Now, what's the approximate price range for the home you're looking to purchase?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:49 PM",
+              "text": "We're thinking somewhere between three hundred eighty and four hundred twenty thousand dollars."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:50 PM",
+              "text": "Perfect. That's a solid range. And can you tell me your approximate credit score? Are you familiar with that, or would that be a rough estimate?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "I think it's around seven twenty five or so. We've been pretty good with our payments."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "That's very solid credit. With a seven twenty five score, you'd definitely qualify for our competitive rates. Let me pull up what we're offering this week. Currently, our thirty year fixed mortgage is at around six point six percent APR for well-qualified buyers."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "Okay, that sounds pretty reasonable. What would the monthly payment look like on, say, four hundred thousand?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:52 PM",
+              "text": "On a four hundred thousand dollar loan at six point six percent over thirty years, you're looking at roughly twenty four hundred dollars per month in principal and interest. That doesn't include property taxes or homeowners insurance, which vary by location."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:53 PM",
+              "text": "That's helpful. We're in the Boise area, by the way."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:54 PM",
+              "text": "Great. Boise is a wonderful market. So what I'd like to do is get you scheduled with one of our mortgage specialists who can walk through the full prequalification and talk about down payment assistance options we have through our American Dream Initiative. Does next Thursday, the twenty third, work for you? I have an opening at ten AM Mountain Time."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:54 PM",
+              "text": "Yeah, that works. Ten AM on Thursday the twenty third."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "Perfect. I've got you down with Sarah Chen, one of our senior mortgage specialists. Just to confirm, we'll call you back at this number to do the full application walk through. And as a reminder, we can also talk about our homebuyer grants that might apply to your situation. Sound good?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:55 PM",
+              "text": "Absolutely. Thank you so much."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:56 PM",
+              "text": "You're welcome. We'll see you Thursday at ten AM. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Loan Purpose: Purchase",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product: Thirty Year Fixed Mortgage",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Credit Score Confirmed: 725",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimated Monthly Payment Provided",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area: Boise, ID",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:47 pm",
+            "duration": "8:34",
+            "destinationPhone": "877-936-2933",
+            "source": "877-551-2847",
+            "promoNumberDescription": "Voice: Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "208-555-4721",
+            "repeatCaller": "No",
+            "city": "Boise",
+            "region": "ID",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B521-3D8AE425891K",
+          "time": "1/22/26 11:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B521-3D8AE425891K",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C634-4E9BF536902L",
+          "time": "1/28/26 3:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C634-4E9BF536902L",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D745-5F0CG647A13M",
+          "time": "1/31/26 9:06 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D745-5F0CG647A13M",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro plus offer: Hi, this is JPMorgan Chase's AI banking assistant, here to help match you with the right account or loan and set up a personalized review. Right now new customers can earn a $300 bonus when they open a qualifying Chase Total Checking account, would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions, one at a time, to point you to the right specialist. What product are you interested in (checking, credit card, mortgage, auto loan, business banking, or wealth management), what amount or balance are you working with, are you a current Chase customer, what's your timeline to open or apply, and what's your ZIP code so I can confirm branch and banker availability near you?",
+        "Estimate then book: Once I confirm we have a branch and banker serving your ZIP, I'll share a preliminary range for rates or benefits based on what you told me, then recommend a consultation with a Chase banker for exact terms and approval details. I can propose Thursday at 10:00 AM, and you'll get a reminder text before your appointment with a number to call if anything changes."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "JPMorgan_Chase_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Checking & Savings Accounts",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Credit Cards",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Schedule a Meeting with a Banker",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"application status\",\"question\":\"How do I check the status of my mortgage application?\",\"answer\":\"You can track your application anytime in the Chase Mobile app or on chase.com under Home Lending, and your loan officer can walk you through the next steps at your scheduled consultation.\"},{\"topic\":\"reschedule\",\"question\":\"Can I move my banker appointment to another day?\",\"answer\":\"Absolutely, I can reschedule your consultation to a time that works better and you'll receive a new reminder text with a number to call.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What checking account is best for me?",
+              "answer": "Chase Total Checking is our most popular everyday account with a monthly fee that can be waived with direct deposit. Let's book a quick consultation with a banker to confirm it fits your needs and get you the current bonus."
+            },
+            {
+              "question": "How do I get the $300 checking bonus?",
+              "answer": "You typically open a qualifying Chase Total Checking account and set up direct deposit within the offer window. I can schedule you with a banker who will confirm the exact steps and terms."
+            },
+            {
+              "question": "Which Chase credit card is best for travel?",
+              "answer": "Many travelers choose Chase Sapphire Preferred for its transferable points and travel protections, while Sapphire Reserve adds lounge access and travel credits. A banker can compare them for your spending in a short consultation."
+            },
+            {
+              "question": "What's the difference between Sapphire Preferred and Sapphire Reserve?",
+              "answer": "Sapphire Preferred has a lower annual fee with strong travel and dining rewards, while Sapphire Reserve is a premium card with lounge access and elevated point value. Let's set up a consultation to see which fits your travel goals."
+            },
+            {
+              "question": "What are today's mortgage rates?",
+              "answer": "Rates change daily and depend on your credit, loan amount, and term, so I can't quote an exact figure here. I'd recommend a consultation with a home lending advisor who can give you personalized numbers."
+            },
+            {
+              "question": "Do you offer a HELOC?",
+              "answer": "Yes, a Chase home equity line of credit gives you revolving access to your home's equity with a flexible draw period. A lending specialist can review your eligibility during a scheduled consultation."
+            },
+            {
+              "question": "Can I prequalify for an auto loan?",
+              "answer": "Yes, Chase Auto offers prequalification for new and used vehicle financing without affecting your credit score. Let's book a quick appointment so a specialist can walk you through it."
+            },
+            {
+              "question": "How do I open a business checking account?",
+              "answer": "Chase Business Complete Banking includes card acceptance and QuickAccept payments for small businesses. I can schedule you with a business banker to open your account and review options."
+            },
+            {
+              "question": "What is Chase Private Client?",
+              "answer": "Chase Private Client offers premium banking with dedicated advisor access, higher limits, and fee waivers for qualifying balances. A banker can explain the benefits in a personalized consultation."
+            },
+            {
+              "question": "Does J.P. Morgan offer self-directed investing?",
+              "answer": "Yes, J.P. Morgan Self-Directed Investing offers commission-free online stock and ETF trades with research tools in the app. Let's set up a consultation to help you get started."
+            },
+            {
+              "question": "Can I get help from a financial advisor?",
+              "answer": "J.P. Morgan Personal Advisors provides human advisor-managed portfolios and financial planning. I can book you a consultation to match you with an advisor."
+            },
+            {
+              "question": "What savings account earns the most interest?",
+              "answer": "Chase Premier Savings offers relationship rates and autosave tools, and rates depend on your balance and linked accounts. A banker can review the current rates with you at an appointment."
+            },
+            {
+              "question": "Where is the nearest Chase branch?",
+              "answer": "We have branches nationwide, so if you share your ZIP code I can find the closest one and confirm banker availability. Then I'll help you schedule a visit."
+            },
+            {
+              "question": "How much do I need to open an account?",
+              "answer": "Many Chase accounts have no minimum to open, though some products have monthly fees that can be waived. Let's book a consultation to review the specific requirements for the account you want."
+            },
+            {
+              "question": "Can I refinance my mortgage with Chase?",
+              "answer": "Yes, Chase offers refinancing options that may lower your rate or adjust your term depending on the market and your situation. A home lending advisor can review your options in a scheduled meeting."
+            },
+            {
+              "question": "Do you offer homebuyer grants?",
+              "answer": "Chase offers homebuyer grants and programs for eligible buyers as part of our commitment to affordable homeownership. A lending specialist can confirm your eligibility during a consultation."
+            },
+            {
+              "question": "What credit card has no annual fee?",
+              "answer": "Chase Freedom Unlimited has no annual fee and earns cash back on everyday spending. Let's schedule a quick review to confirm it's the right fit and check current offers."
+            },
+            {
+              "question": "How do I accept card payments for my business?",
+              "answer": "Chase Merchant Services and QuickAccept let you accept payments online and in person. I can book you with a business banker to set up processing."
+            },
+            {
+              "question": "Am I eligible for a business credit card?",
+              "answer": "Chase Ink Business Preferred earns rewards on travel and advertising with employee cards, and eligibility depends on your business profile. A business banker can review this with you at a consultation."
+            },
+            {
+              "question": "Can I speak with someone in person?",
+              "answer": "Of course, I can schedule you with a Chase banker either at a nearby branch or by virtual appointment. Just share your ZIP code and a good day and time."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule a banker consultation\",\"follow_up_message\":\"Great, I have you down for a consultation with a Chase banker on Thursday at 10:00 AM. You'll get a reminder text beforehand with a number to call if you need to make changes.\"},{\"intent\":\"request a rate or product quote\",\"follow_up_message\":\"Thanks for the details. Rates and terms depend on your credit and balance, so I've scheduled you with a specialist who will provide exact numbers. Please confirm your ZIP code so I can match you with the nearest branch.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is JPMorgan Chase's AI banking assistant. I can help you find the right account or loan and set up a meeting with a Chase banker, would you like to get started?",
+        "goal": "Guide the customer to schedule a consultation with a Chase banker to open an account, apply for a card or loan, or start a wealth or business banking relationship.",
+        "bookingType": "virtual banking consultation",
+        "offer": "Earn a $300 bonus when you open a qualifying Chase Total Checking account",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Which product are you interested in: checking, savings, a credit card, a mortgage, an auto loan, business banking, or wealth management?",
+          "Approximately what amount or balance are you working with?",
+          "Are you a current Chase customer or new to Chase?",
+          "What's your timeline to open the account or apply?",
+          "What's your ZIP code so I can confirm branch and banker availability near you?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:12 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:12 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:12 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "JPMorgan Chase",
+      "callerName": "Michelle Rodriguez",
+      "callerPhone": "(512) 555-0847",
+      "campaign": "Chase Sapphire Preferred, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$1,245",
+      "googleSearch": "best Chase credit card for travel points",
+      "websiteSearch": "Chase Sapphire Preferred rewards program",
+      "callingWebpage": "/credit-cards/sapphire-preferred",
+      "products": "Chase Sapphire Preferred, Travel Insurance Benefits",
+      "cartId": "JP-7462M",
+      "serviceable": "Yes",
+      "email": "m.rodriguez.512@email.com",
+      "street": "2847 Barton Hills Drive",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78746",
+      "digitalJourney": "/home › /credit-cards › /travel-cards › /credit-cards/sapphire-preferred",
+      "intent": "Interested in premium travel rewards card with transferable points and airport lounge access for upcoming international trips",
+      "coverage": "ZIP 78746 confirmed, Austin serviceable",
+      "switchIntent": "High, planning two major vacations this year, wants to maximize travel rewards and needs decision within two weeks",
+      "greeting": "Hi Michelle, this is Sarah with JPMorgan Chase calling about your interest in the Sapphire Preferred card. I see you've been researching travel rewards options. I'd love to walk you through the premium benefits and get you signed up for the welcome bonus today if it's a good fit."
+    },
+    "smsScreenpop": {
+      "brandName": "JPMorgan Chase",
+      "callerName": "David Chen",
+      "callerPhone": "(206) 555-0623",
+      "campaign": "Chase Home Lending, Seattle Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$8,750",
+      "googleSearch": "Chase mortgage rates today Seattle",
+      "websiteSearch": "Chase 30-year fixed mortgage prequalification",
+      "callingWebpage": "/home-lending/mortgages",
+      "products": "Chase 30-Year Fixed Mortgage, Home Equity Line of Credit",
+      "cartId": "JP-3189K",
+      "serviceable": "Yes",
+      "email": "d.chen.seattle@email.com",
+      "street": "4521 Magnolia Boulevard West",
+      "city": "Seattle",
+      "state": "WA",
+      "zip": "98199",
+      "digitalJourney": "/home › /home-lending › /mortgages › /home-lending/mortgages",
+      "intent": "First-time homebuyer seeking pre-qualification for mortgage and exploring down payment assistance through American Dream Initiative",
+      "coverage": "ZIP 98199 confirmed, Seattle serviceable",
+      "appointment": "Virtual pre-qualification consultation with lending specialist. Thu Jul 18, 2:00 PM",
+      "greeting": "Hi David, this is Marcus from JPMorgan Chase. Thanks for texting us about your home purchase plans. I've scheduled your virtual pre-qualification call for tomorrow at 2 PM with one of our lending specialists. They'll review your options including our homebuyer grants. Feel free to text back with any questions."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "JPMorgan Chase",
+      "brandDomain": "www.jpmorganchase.com",
+      "brandIcon": "🏦",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Pasadena, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Chase Sapphire Preferred, Apply Now",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "best Chase credit card for travel rewards",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Consumer / Credit Cards / Travel Cards / Sapphire Preferred",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Chase Sapphire Preferred, Chase Sapphire Reserve",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Pasadena, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "new_card_appointment",
+          "name": "Appointment, Premium Travel Card Consultation"
+        },
+        {
+          "id": "existing_account_support",
+          "name": "Support, Existing Cardholder Services"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry, Banking Information"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hello, thanks for calling JPMorgan Chase. I see you've been looking at our premium travel cards. Are you interested in applying for the Sapphire Preferred or would you like to explore our Sapphire Reserve?",
+          "sigs": [],
+          "q": [
+            30,
+            40,
+            30
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Hi, yeah, I travel pretty frequently for work. I'm looking for something with good points and maybe some travel perks. What's the difference between those two cards?",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "Frequent business travel"
+            },
+            {
+              "c": "green",
+              "t": "Interest in travel rewards and benefits"
+            },
+            {
+              "c": "orange",
+              "t": "Comparing premium card options"
+            }
+          ],
+          "q": [
+            45,
+            35,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Great question. The Sapphire Preferred has excellent earning on travel and dining with a 95 dollar annual fee. The Reserve is our top tier at 795 dollars per year and includes things like airport lounge access and travel credits, so it really depends on your annual spend and travel frequency. How many times per year would you say you're traveling?",
+          "sigs": [],
+          "q": [
+            60,
+            20,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I'd say at least once a month, sometimes more. I spend maybe 30 to 40 thousand a year on travel and meals combined. I think I want to understand which card would make sense for someone spending that much.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "High travel spend, 30 to 40k annually"
+            },
+            {
+              "c": "blue",
+              "t": "Frequent travel, monthly trips"
+            },
+            {
+              "c": "purple",
+              "t": "<strong>New cardholder</strong> comparing tier options"
+            }
+          ],
+          "q": [
+            82,
+            12,
+            6
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. Based on your spend and travel pattern, you'd likely see strong value from either card, and I have a specialist on our premium travel card team who can walk you through the benefits and help you decide which is the best fit. They can also process your application today. Let me connect you with them for your appointment.",
+          "sigs": [],
+          "q": [
+            95,
+            3,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get you booked (Agent)\", \"schedule you with a banker (Agent)\", \"book that appointment (Caller)\", \"come into the branch (Agent)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "12/09/25 4:38 pm"
+        },
+        {
+          "name": "Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"visit a branch (Agent)\", \"meet with a banker (Caller)\", \"set up a time to come in (Agent)\"])",
+          "createdAt": "03/22/25 11:04 am",
+          "updatedAt": "11/18/25 2:15 pm"
+        },
+        {
+          "name": "Compliance Disclosure Given",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Compliance Adherence] < 60 and duration > 45 sec",
+          "createdAt": "04/02/25 8:47 am",
+          "updatedAt": "12/21/25 10:29 am"
+        },
+        {
+          "name": "Competitor Bank Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Bank of America (Caller)\", \"Wells Fargo (Caller)\", \"Capital One (Caller)\", \"my Citi account (Caller)\"])",
+          "createdAt": "04/19/25 1:33 pm",
+          "updatedAt": "11/30/25 9:51 am"
+        },
+        {
+          "name": "Credit Card Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Sapphire Preferred (Caller)\", \"Freedom Unlimited (Caller)\", \"travel rewards card (Caller)\", \"annual fee waived (Caller)\"])",
+          "createdAt": "05/06/25 10:22 am",
+          "updatedAt": "12/15/25 3:07 pm"
+        },
+        {
+          "name": "Fee Objection Raised",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"monthly maintenance fee (Caller)\", \"waive the fee (Caller)\", \"too expensive (Caller)\", \"why am I being charged (Caller)\"])",
+          "createdAt": "05/28/25 4:19 pm",
+          "updatedAt": "12/02/25 11:44 am"
+        },
+        {
+          "name": "Identity Verification Completed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Identity Verification] < 60 and duration > 45 sec",
+          "createdAt": "06/11/25 9:38 am",
+          "updatedAt": "01/07/26 1:52 pm"
+        },
+        {
+          "name": "Mortgage Rate Quoted (Lead)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"thirty year fixed (Agent)\", \"your rate would be (Agent)\", \"lock in that rate (Agent)\", \"prequalify you today (Agent)\"])",
+          "createdAt": "07/03/25 12:15 pm",
+          "updatedAt": "12/28/25 8:40 am"
+        },
+        {
+          "name": "Needs Discovery Completed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Discovery Quality] < 60 and duration > 45 sec",
+          "createdAt": "08/14/25 3:48 pm",
+          "updatedAt": "01/12/26 10:05 am"
+        },
+        {
+          "name": "Wealth Management Upsell",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Private Client (Agent)\", \"speak with an advisor (Agent)\", \"self-directed investing (Caller)\", \"build a wealth plan (Agent)\"])",
+          "createdAt": "09/09/25 11:27 am",
+          "updatedAt": "01/16/26 2:33 pm"
+        }
+      ]
+    }
+  }
+}

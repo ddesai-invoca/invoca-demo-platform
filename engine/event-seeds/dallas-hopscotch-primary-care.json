@@ -1,0 +1,5403 @@
+{
+  "id": "hopscotch-primary-care",
+  "customerName": "Hopscotch Primary Care",
+  "websiteUrl": "https://hellohopscotch.com",
+  "brandDomain": "hellohopscotch.com",
+  "networkName": "Invoca for Senior Primary Care",
+  "industry": "Value-based senior primary care (healthcare services)",
+  "bookingTerm": "Appointment",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 10000,
+      "yTicks": [
+        2000,
+        4000,
+        6000,
+        8000,
+        10000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 7842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 8531
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 8207
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 8654
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 7737
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Medicare Primary Care Near Me",
+          "marketingSearchTerm": "medicare primary care near me",
+          "landingPageUrl": "https://hellohopscotch.com/patients/become-a-patient?utm_source=google&utm_medium=cpc&utm_campaign=medicare_primary_care",
+          "websiteJourney": "Home / Patients / Become a Patient",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Senior Doctor Accepting New Patients",
+          "marketingSearchTerm": "doctor that accepts medicare advantage",
+          "landingPageUrl": "https://hellohopscotch.com/patients/insurance-medicare?utm_source=google&utm_medium=cpc&utm_campaign=senior_doctor_new_patients",
+          "websiteJourney": "Home / Patients / Insurance & Medicare",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "AEP 2025 Medicare Enrollment",
+          "marketingSearchTerm": "medicare enrollment help near me",
+          "landingPageUrl": "https://hellohopscotch.com/patients/insurance-medicare?utm_source=bing&utm_medium=cpc&utm_campaign=aep_2025_enrollment",
+          "websiteJourney": "Home / Patients / Insurance & Medicare",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Same Day Appointment",
+          "marketingSearchTerm": "same day doctor appointment near me",
+          "landingPageUrl": "https://hellohopscotch.com/patients/our-services?utm_source=google&utm_medium=cpc&utm_campaign=same_day_care",
+          "websiteJourney": "Home / Patients / Our Services",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Locations Landing Pages",
+          "marketingSearchTerm": "hopscotch primary care locations",
+          "landingPageUrl": "https://hellohopscotch.com/patients/locations?utm_source=google&utm_medium=organic&utm_campaign=locations_seo",
+          "websiteJourney": "Home / Patients / Locations",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Chronic Care Management Medicare",
+          "marketingSearchTerm": "chronic care management medicare",
+          "landingPageUrl": "https://hellohopscotch.com/patients/conditions?utm_source=google&utm_medium=cpc&utm_campaign=chronic_care_mgmt",
+          "websiteJourney": "Home / Patients / Conditions",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Care That Goes Above & Beyond",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://hellohopscotch.com/why-hopscotch?utm_source=facebook&utm_medium=paid_social&utm_campaign=above_and_beyond",
+          "websiteJourney": "Home / Patients / Why Hopscotch",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Meet Your Care Team",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://hellohopscotch.com/patients/doctors?utm_source=instagram&utm_medium=paid_social&utm_campaign=meet_your_care_team",
+          "websiteJourney": "Home / Patients / Doctors",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Become a Patient SEO",
+          "marketingSearchTerm": "become a patient hopscotch",
+          "landingPageUrl": "https://hellohopscotch.com/patients/become-a-patient?utm_source=google&utm_medium=organic&utm_campaign=become_patient_seo",
+          "websiteJourney": "Home / Patients / Become a Patient",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Rural Senior Primary Care",
+          "marketingSearchTerm": "senior primary care rural nc",
+          "landingPageUrl": "https://hellohopscotch.com/patients/our-services?utm_source=google&utm_medium=cpc&utm_campaign=rural_senior_care",
+          "websiteJourney": "Home / Patients / Our Services",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Accepting New Medicare Patients",
+          "marketingSearchTerm": "primary care accepting new medicare patients",
+          "landingPageUrl": "https://hellohopscotch.com/patients/become-a-patient?utm_source=bing&utm_medium=cpc&utm_campaign=new_medicare_patients",
+          "websiteJourney": "Home / Patients / Become a Patient",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Rural Senior Health",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://hellohopscotch.com/about?utm_source=facebook&utm_medium=paid_social&utm_campaign=rural_senior_health",
+          "websiteJourney": "Home / About",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Conditions Content Pages",
+          "marketingSearchTerm": "clinic for seniors 65+",
+          "landingPageUrl": "https://hellohopscotch.com/patients/conditions?utm_source=google&utm_medium=organic&utm_campaign=conditions_content",
+          "websiteJourney": "Home / Patients / Conditions",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Patient Stories",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://hellohopscotch.com/patients/patient-stories?utm_source=instagram&utm_medium=organic&utm_campaign=patient_stories",
+          "websiteJourney": "Home / Patients / Patient Stories",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Medicaid Doctor Near Me",
+          "marketingSearchTerm": "medicaid doctor near me",
+          "landingPageUrl": "https://hellohopscotch.com/patients/insurance-medicare?utm_source=google&utm_medium=cpc&utm_campaign=medicaid_doctor",
+          "websiteJourney": "Home / Patients / Insurance & Medicare",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "FAQ SEO",
+          "marketingSearchTerm": "how does hopscotch primary care work",
+          "landingPageUrl": "https://hellohopscotch.com/patients/faq?utm_source=google&utm_medium=organic&utm_campaign=faq_seo",
+          "websiteJourney": "Home / Patients / FAQ",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Refer a Patient",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://hellohopscotch.com/partners/refer-a-patient?utm_source=facebook&utm_medium=paid_social&utm_campaign=refer_a_patient",
+          "websiteJourney": "Home / Partners / Refer a Patient",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "The Hopscotch Difference",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://hellohopscotch.com/why-hopscotch?utm_source=instagram&utm_medium=organic&utm_campaign=hopscotch_difference",
+          "websiteJourney": "Home / Patients / Why Hopscotch",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Resources Newsletter",
+          "marketingSearchTerm": "care to stay connected newsletter",
+          "landingPageUrl": "https://hellohopscotch.com/resources?utm_source=google&utm_medium=organic&utm_campaign=resources_nurture",
+          "websiteJourney": "Home / Patients / Resources",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Day in the Clinic",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://hellohopscotch.com/patients/locations?utm_source=facebook&utm_medium=organic&utm_campaign=day_in_the_clinic",
+          "websiteJourney": "Home / Patients / Locations",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Hopscotch Primary Care)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "32,134"
+            },
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$13,539,305"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "5,141"
+            },
+            {
+              "label": "Billing & Insurance Inquiry (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Existing Patient Support (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Prescription Refill Request (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Patient Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "46%"
+            },
+            {
+              "label": "Ineligible Inquiry (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "18%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Patient Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Patient Call (Count)",
+            "values": [
+              5231,
+              6012,
+              5847,
+              5488,
+              4415
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              2847,
+              3301,
+              3112,
+              2988,
+              2534
+            ]
+          },
+          {
+            "name": "Ineligible Inquiry (Count)",
+            "values": [
+              742,
+              861,
+              812,
+              771,
+              670
+            ]
+          },
+          {
+            "name": "New Patient (Count)",
+            "values": [
+              1118,
+              1289,
+              1247,
+              1176,
+              954
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 32134,
+          "rows": [
+            {
+              "name": "google",
+              "metrics": [
+                "14,237",
+                "41%",
+                "14%",
+                "$5,012,447"
+              ]
+            },
+            {
+              "name": "facebook",
+              "metrics": [
+                "7,842",
+                "44%",
+                "16%",
+                "$3,041,882"
+              ]
+            },
+            {
+              "name": "direct",
+              "metrics": [
+                "4,918",
+                "47%",
+                "19%",
+                "$2,268,119"
+              ]
+            },
+            {
+              "name": "bing",
+              "metrics": [
+                "3,241",
+                "49%",
+                "22%",
+                "$1,733,540"
+              ]
+            },
+            {
+              "name": "instagram",
+              "metrics": [
+                "1,896",
+                "55%",
+                "31%",
+                "$1,483,317"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 32134,
+          "rows": [
+            {
+              "name": "cpc",
+              "metrics": [
+                "12,884",
+                "40%",
+                "13%",
+                "$3,984,221"
+              ]
+            },
+            {
+              "name": "organic",
+              "metrics": [
+                "8,417",
+                "43%",
+                "17%",
+                "$3,406,880"
+              ]
+            },
+            {
+              "name": "paid_social",
+              "metrics": [
+                "5,239",
+                "46%",
+                "20%",
+                "$2,498,455"
+              ]
+            },
+            {
+              "name": "referral",
+              "metrics": [
+                "3,462",
+                "50%",
+                "24%",
+                "$1,978,332"
+              ]
+            },
+            {
+              "name": "email",
+              "metrics": [
+                "2,132",
+                "56%",
+                "33%",
+                "$1,671,417"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16280,
+          "rows": [
+            {
+              "name": "Medicare Primary Care Near Me",
+              "metrics": [
+                "6,214",
+                "42%",
+                "15%",
+                "$2,214,337"
+              ]
+            },
+            {
+              "name": "AEP 2025 Medicare Enrollment",
+              "metrics": [
+                "4,182",
+                "45%",
+                "18%",
+                "$1,788,442"
+              ]
+            },
+            {
+              "name": "Care That Goes Above and Beyond",
+              "metrics": [
+                "2,917",
+                "48%",
+                "21%",
+                "$1,451,228"
+              ]
+            },
+            {
+              "name": "Meet Your Care Team",
+              "metrics": [
+                "1,843",
+                "51%",
+                "26%",
+                "$1,132,915"
+              ]
+            },
+            {
+              "name": "Senior Doctor Accepting New Patients",
+              "metrics": [
+                "1,124",
+                "57%",
+                "34%",
+                "$907,441"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 11192,
+          "rows": [
+            {
+              "name": "medicare primary care near me",
+              "metrics": [
+                "4,317",
+                "43%",
+                "16%",
+                "$1,642,118"
+              ]
+            },
+            {
+              "name": "doctor that accepts medicare advantage",
+              "metrics": [
+                "2,981",
+                "46%",
+                "19%",
+                "$1,344,772"
+              ]
+            },
+            {
+              "name": "same day doctor appointment near me",
+              "metrics": [
+                "1,914",
+                "49%",
+                "23%",
+                "$1,046,331"
+              ]
+            },
+            {
+              "name": "primary care accepting new medicare patients",
+              "metrics": [
+                "1,238",
+                "53%",
+                "28%",
+                "$823,447"
+              ]
+            },
+            {
+              "name": "senior primary care rural nc",
+              "metrics": [
+                "742",
+                "58%",
+                "36%",
+                "$634,215"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Set (Industry) (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Preventive & Wellness Visits",
+              "metrics": [
+                "9,847",
+                "36%",
+                "12%",
+                "$2,758,940"
+              ]
+            },
+            {
+              "name": "Chronic Disease Management",
+              "metrics": [
+                "7,612",
+                "39%",
+                "16%",
+                "$2,847,215"
+              ]
+            },
+            {
+              "name": "Same-Day / Acute Care",
+              "metrics": [
+                "6,428",
+                "41%",
+                "19%",
+                "$2,854,880"
+              ]
+            },
+            {
+              "name": "In-Clinic Diagnostics",
+              "metrics": [
+                "4,983",
+                "43%",
+                "24%",
+                "$2,801,655"
+              ]
+            },
+            {
+              "name": "Medicare Enrollment & Navigation",
+              "metrics": [
+                "3,264",
+                "45%",
+                "30%",
+                "$2,276,615"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 32134,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "10,428",
+                "38%",
+                "13%",
+                "$3,175,480"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "7,336",
+                "41%",
+                "16%",
+                "$2,748,915"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "6,214",
+                "43%",
+                "18%",
+                "$2,619,730"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "4,872",
+                "45%",
+                "22%",
+                "$2,509,640"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "3,284",
+                "48%",
+                "32%",
+                "$2,485,540"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Preventive & Wellness Visits",
+            "values": [
+              231,
+              238,
+              242,
+              235,
+              232
+            ]
+          },
+          {
+            "name": "Chronic Disease Management",
+            "values": [
+              237,
+              245,
+              248,
+              244,
+              242
+            ]
+          },
+          {
+            "name": "Same-Day / Acute Care",
+            "values": [
+              238,
+              246,
+              249,
+              245,
+              241
+            ]
+          },
+          {
+            "name": "In-Clinic Diagnostics",
+            "values": [
+              233,
+              241,
+              244,
+              240,
+              239
+            ]
+          },
+          {
+            "name": "Medicare Enrollment & Navigation",
+            "values": [
+              189,
+              196,
+              199,
+              197,
+              193
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 32,134 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Dorothy Mueller called to schedule her annual Medicare wellness visit at the Sylva clinic. Rosey confirmed her Medicare Advantage plan, booked the wellness visit, and walked her through the personalized prevention plan. Dorothy was delighted and the appointment was scheduled.",
+          "date": "Jan 6, 9:14 AM",
+          "agent": "Rosey",
+          "duration": "2m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 6,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Harold Jennings called to become a new patient and asked about Medicare enrollment options before choosing a provider. Lila verified his coverage, scheduled his new patient comprehensive exam, and explained the next steps. He booked and was very satisfied with the care team overview.",
+          "date": "Feb 11, 1:38 PM",
+          "agent": "Lila",
+          "duration": "2m 42s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Gloria Simmons called to set up a diabetes management follow-up for her ongoing A1c monitoring. Mary reviewed her current medications, scheduled the diabetes visit, and arranged a foot exam with the care team. Gloria was pleased with how quickly it was booked.",
+          "date": "Mar 3, 10:52 AM",
+          "agent": "Mary",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 10,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Walter Franklin called to become a new patient and schedule his first visit at the Hopscotch clinic. Oscar collected his full contact and health details, verified his Medicare coverage, and booked a new patient comprehensive exam. Walter appreciated the thorough intake and confirmed his appointment.",
+          "date": "Apr 9, 3:21 PM",
+          "agent": "Oscar",
+          "duration": "3m 04s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Betty Alvarez called for a same-day visit for a persistent cough and low fever. Lee found an opening that afternoon and scheduled the same-day acute care visit to help her avoid the ER. Betty was relieved and thanked the team for the fast response.",
+          "date": "May 14, 8:47 AM",
+          "agent": "Lee",
+          "duration": "1m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Frank Delgado called with questions about Medicare enrollment during the annual election window. Sue explained plan eligibility and the enrollment options available, but Frank wanted to compare plans before committing. No appointment was scheduled on this call.",
+          "date": "May 27, 11:19 AM",
+          "agent": "Sue",
+          "duration": "2m 18s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Ruth Coleman called asking whether a same-day visit was available for her knee pain. Mike offered a few options, but after hearing the wait she decided she would call back later. No visit was booked during the call.",
+          "date": "Jun 8, 2:56 PM",
+          "agent": "Mike",
+          "duration": "1m 27s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 21,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Edith Barnes called disputing a billing charge for recent bloodwork she believed Medicare should have covered. Jennifer reviewed the billing detail line by line and opened a claim review with the finance team. Edith remained frustrated and no appointment was made.",
+          "date": "Jun 22, 4:11 PM",
+          "agent": "Jennifer",
+          "duration": "2m 39s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 26,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Clarence Webb called about his diabetes lab results and a delayed A1c report. Rose looked into the lab status and promised a same-day callback from the care team once results posted. Clarence was uneasy about the delay but agreed to wait.",
+          "date": "Jul 7, 10:03 AM",
+          "agent": "Rose",
+          "duration": "1m 51s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 23,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Marjorie Hale called to schedule a behavioral health and wellness visit for anxiety screening. Mary booked the visit and shared community support resources. Marjorie was thankful for the help though she noted the phone hold was long.",
+          "date": "Jul 19, 1:09 PM",
+          "agent": "Mary",
+          "duration": "2m 27s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Albert Ross called to cancel his upcoming appointment and to check on his Medicare enrollment status. Oscar processed the cancellation and updated his record accordingly. No new visit was scheduled.",
+          "date": "Aug 4, 9:38 AM",
+          "agent": "Oscar",
+          "duration": "1m 14s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Doris Fletcher called upset about a repeated billing statement for a lab panel she thought was already paid. Lee escalated the billing issue to the finance team for a full review. Doris was dissatisfied with the expected resolution timeline.",
+          "date": "Aug 21, 3:44 PM",
+          "agent": "Lee",
+          "duration": "2m 12s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Raymond Hughes called to complain about long wait times at the Franklin clinic during his last chronic care visit. Sue documented the feedback and apologized for the experience. Raymond remained unhappy and did not want to rebook at this time.",
+          "date": "Sep 6, 11:57 AM",
+          "agent": "Sue",
+          "duration": "1m 41s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Vivian Porter left a voicemail asking to reschedule her hypertension management visit. The call rolled to voicemail after hours and no agent was available to take it. A callback was queued for the care team the following morning.",
+          "date": "Sep 23, 6:32 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Eugene Mercer called angry that his medication refill had not been processed and threatened to switch clinics. Mike tried to coordinate an urgent refill review, but Eugene stayed dissatisfied through the call. No resolution was reached before he hung up.",
+          "date": "Oct 2, 4:29 PM",
+          "agent": "Mike",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "medicare",
+        "wellness visit",
+        "same-day",
+        "diabetes",
+        "billing",
+        "enrollment"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 41s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Medicare Eligibility",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Appointment Date and Time Confirmed",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for New Patient Visit",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer Care Team Resources",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Warm greeting with clinic name",
+        "Identified caller as new patient",
+        "Confirmed Medicare coverage",
+        "Verified geographic service area",
+        "Secured callback phone number",
+        "Offered available appointment slot",
+        "Repeated appointment date back to caller",
+        "Thanked caller for choosing Hopscotch",
+        "Mentioned care team availability",
+        "Confirmed patient understood next steps",
+        "Used patient name during call",
+        "Offered sliding fee schedule information",
+        "Expressed enthusiasm about onboarding"
+      ],
+      "unmetSignals": [
+        "Did not capture email address",
+        "Did not send confirmation details",
+        "Did not discuss visit preparation or forms",
+        "Did not mention specific provider name availability",
+        "Did not confirm preferred appointment window",
+        "Did not offer transportation assistance information",
+        "Did not discuss chronic condition screening scope",
+        "Did not mention 24/7 care team line during intake",
+        "Did not clarify insurance plan verification process",
+        "Did not offer appointment reminder options"
+      ],
+      "naSignals": [
+        "Discussed prescription refills",
+        "Addressed billing concerns or past due balance",
+        "Processed insurance claim or authorization",
+        "Handled appointment cancellation or rescheduling",
+        "Discussed lab results or clinical findings",
+        "Addressed facility access or parking",
+        "Provided post-visit care instructions"
+      ],
+      "prompts": [
+        {
+          "question": "Is the patient trying to solve a specific problem?",
+          "answer": "The caller is a new Medicare patient seeking to establish primary care with Hopscotch. While no acute illness was mentioned, they expressed interest in comprehensive care and were ready to schedule their new patient appointment immediately."
+        },
+        {
+          "question": "What are the patient's expectations?",
+          "answer": "The caller expects to see a doctor who takes time with patients and accepts Medicare coverage in their area. They anticipated a straightforward scheduling process and seemed satisfied with the appointment availability offered."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured the patient's email address to send a confirmation and new patient information packet. He could also have briefly explained what to expect during the new patient comprehensive exam to set proper expectations for the visit."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon, thank you for calling Hopscotch Primary Care. My name is Marcus. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus, yeah, I'm looking to find a new primary care doctor. I'm on Medicare and I heard good things about Hopscotch from a friend."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:41",
+          "text": "That's wonderful to hear. I'm so glad you're reaching out to us. Let me help you get started as a new patient. Can I get your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:52",
+          "text": "Sure, it's Robert Martinez. That's Robert with an O, and Martinez spelled M-A-R-T-I-N-E-Z."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:04",
+          "text": "Perfect, Robert Martinez. Thank you. And just to confirm, you're currently enrolled in a Medicare plan?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:13",
+          "text": "Yes, I have Original Medicare Part B. My wife actually has Medicare Advantage through one of the plans, so I wanted to make sure you all take it."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:27",
+          "text": "Great news. We absolutely accept Original Medicare Part B, and we work with most Medicare Advantage plans as well. What area are you located in, Robert? What's your ZIP code?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:40",
+          "text": "I'm in the Asheville area. ZIP code is 28801."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:49",
+          "text": "Perfect. We have a clinic right there in Asheville, so you're in our service area. What's the best phone number to reach you to confirm your appointment?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:01",
+          "text": "Sure, it's ****-****-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:09",
+          "text": "Got it, thank you. Now I'm looking at our availability. We have an opening next Thursday, October 31st at 10 AM with one of our physicians. Would that work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:23",
+          "text": "That works perfectly. October 31st at 10 AM. Should I bring anything with me?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:33",
+          "text": "Yes, Robert. Bring your Medicare card and any insurance documents you have. We'll have you fill out some new patient forms when you arrive, and our care team will take great care of you."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:47",
+          "text": "Sounds good. I'm really looking forward to it."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:55",
+          "text": "Wonderful, Robert. So to confirm, you're all set for Thursday, October 31st at 10 AM at our Asheville clinic. We're excited to welcome you to the Hopscotch care team. If you have any questions before your visit, please don't hesitate to call our 24/7 care line. Thank you for choosing Hopscotch Primary Care."
+        },
+        {
+          "speaker": "caller",
+          "time": "03:17",
+          "text": "Perfect. Thank you, Marcus. See you then."
+        }
+      ],
+      "aiSummary": "Robert Martinez, a Medicare Part B patient from Asheville, NC, called to schedule his first appointment with Hopscotch Primary Care after a referral from a friend. Marcus confirmed Robert's Medicare eligibility, verified he was in the Asheville clinic's service area, and successfully booked him for a new patient comprehensive exam on October 31st at 10 AM. While the appointment details were captured accurately, the email address was not collected for confirmation materials.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great job establishing a warm tone and moving the call forward efficiently. You nailed the Medicare eligibility confirm and appointment booking. Two suggestions. First, capture the email address so we can send Robert the new patient intake packet and confirm appointment details in writing. Second, spend 20-30 seconds describing what to expect during his comprehensive exam, his visit length, and what records we'll review. This sets expectations and reduces no-shows."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "32,134"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$421.34"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$13,539,305"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "14,208"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Appointment: Scheduled (Count)",
+              "value": "12,211"
+            },
+            {
+              "label": "Appointment: Scheduled (Percent)",
+              "value": "38%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "17,926"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "56%"
+            },
+            {
+              "label": "Appointment: Canceled (Percent)",
+              "value": "9%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Appointments)",
+          "chart": {
+            "legend": "Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Community Referral",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Bing",
+                "value": 47,
+                "display": "47%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 40,
+                "display": "40%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 32,
+                "display": "32%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google (Paid Search)",
+                  "11,847",
+                  "24%",
+                  "$4,987,120"
+                ]
+              },
+              {
+                "cells": [
+                  "Facebook (Paid Social)",
+                  "8,216",
+                  "32%",
+                  "$3,461,540"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "5,932",
+                  "40%",
+                  "$2,498,760"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing",
+                  "3,641",
+                  "47%",
+                  "$1,534,225"
+                ]
+              },
+              {
+                "cells": [
+                  "Community Referral",
+                  "2,498",
+                  "58%",
+                  "$1,057,660"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 12000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search (cpc)",
+                "value": 10842,
+                "display": "10,842"
+              },
+              {
+                "name": "Organic",
+                "value": 7914,
+                "display": "7,914"
+              },
+              {
+                "name": "Social",
+                "value": 5687,
+                "display": "5,687"
+              },
+              {
+                "name": "Referral",
+                "value": 4268,
+                "display": "4,268"
+              },
+              {
+                "name": "Email",
+                "value": 3423,
+                "display": "3,423"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search (cpc)",
+                  "10,842",
+                  "27%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "7,914",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "5,687",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "4,268",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "3,423",
+                  "56%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Medicare Primary Care Near Me",
+                "value": 6241,
+                "display": "6,241"
+              },
+              {
+                "name": "AEP 2025 Medicare Enrollment",
+                "value": 5128,
+                "display": "5,128"
+              },
+              {
+                "name": "Senior Doctor Accepting New Patients",
+                "value": 3472,
+                "display": "3,472"
+              },
+              {
+                "name": "Care That Goes Above & Beyond",
+                "value": 2184,
+                "display": "2,184"
+              },
+              {
+                "name": "Meet Your Care Team",
+                "value": 1647,
+                "display": "1,647"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Medicare Primary Care Near Me",
+                  "6,241",
+                  "26%",
+                  "$1,912,340"
+                ]
+              },
+              {
+                "cells": [
+                  "AEP 2025 Medicare Enrollment",
+                  "5,128",
+                  "33%",
+                  "$1,573,210"
+                ]
+              },
+              {
+                "cells": [
+                  "Senior Doctor Accepting New Patients",
+                  "3,472",
+                  "41%",
+                  "$1,086,450"
+                ]
+              },
+              {
+                "cells": [
+                  "Care That Goes Above & Beyond",
+                  "2,184",
+                  "55%",
+                  "$742,880"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "medicare primary care near me",
+                "value": 3842,
+                "display": "3,842"
+              },
+              {
+                "name": "doctor that accepts medicare advantage",
+                "value": 2918,
+                "display": "2,918"
+              },
+              {
+                "name": "same day doctor appointment near me",
+                "value": 2241,
+                "display": "2,241"
+              },
+              {
+                "name": "senior primary care rural nc",
+                "value": 1687,
+                "display": "1,687"
+              },
+              {
+                "name": "hopscotch primary care locations",
+                "value": 1264,
+                "display": "1,264"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "medicare primary care near me",
+                  "28%"
+                ]
+              },
+              {
+                "cells": [
+                  "doctor that accepts medicare advantage",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "same day doctor appointment near me",
+                  "43%"
+                ]
+              },
+              {
+                "cells": [
+                  "senior primary care rural nc",
+                  "57%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Appointment: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Preventive & Wellness Visits",
+              "11,428",
+              "31%",
+              "48%"
+            ]
+          },
+          {
+            "cells": [
+              "Chronic Disease Management",
+              "9,214",
+              "37%",
+              "41%"
+            ]
+          },
+          {
+            "cells": [
+              "Same-Day & Acute Care",
+              "7,062",
+              "44%",
+              "52%"
+            ]
+          },
+          {
+            "cells": [
+              "Medicare Enrollment & Navigation",
+              "4,430",
+              "59%",
+              "63%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Hopscotch Primary Care, Asheville",
+              "10,247",
+              "842",
+              "6%",
+              "33%"
+            ]
+          },
+          {
+            "cells": [
+              "Hopscotch Primary Care, Hendersonville",
+              "8,916",
+              "671",
+              "5%",
+              "37%"
+            ]
+          },
+          {
+            "cells": [
+              "Hopscotch Primary Care, Marion",
+              "7,382",
+              "589",
+              "4%",
+              "42%"
+            ]
+          },
+          {
+            "cells": [
+              "Hopscotch Primary Care, Sylva",
+              "5,589",
+              "469",
+              "3%",
+              "51%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1024,
+              1147,
+              1098,
+              1086,
+              1057
+            ]
+          },
+          {
+            "name": "Insurance Not Accepted",
+            "values": [
+              942,
+              1021,
+              998,
+              987,
+              928
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              768,
+              842,
+              801,
+              812,
+              761
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              621,
+              678,
+              652,
+              648,
+              618
+            ]
+          },
+          {
+            "name": "Needs Family Member Approval",
+            "values": [
+              468,
+              512,
+              489,
+              491,
+              474
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "12,854"
+          },
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "New Patient (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$7,717,404"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$643,821"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$891,548"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,127,395"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "30%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$721,904"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,043,162"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,289,574"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 4847,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "3,342",
+                "58%",
+                "30%",
+                "$1,947,188"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "2,847",
+                "56%",
+                "34%",
+                "$1,789,455"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "2,156",
+                "54%",
+                "36%",
+                "$1,421,872"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "1,649",
+                "55%",
+                "38%",
+                "$1,089,436"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "1,218",
+                "52%",
+                "42%",
+                "$791,628"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 4923,
+          "rows": [
+            {
+              "name": "Form Fill",
+              "metrics": [
+                "3,671",
+                "57%",
+                "29%",
+                "$2,134,914"
+              ]
+            },
+            {
+              "name": "Voice IVR",
+              "metrics": [
+                "2,584",
+                "55%",
+                "35%",
+                "$1,687,392"
+              ]
+            },
+            {
+              "name": "SMS Click",
+              "metrics": [
+                "2,127",
+                "54%",
+                "38%",
+                "$1,358,768"
+              ]
+            },
+            {
+              "name": "Email Link",
+              "metrics": [
+                "1,894",
+                "53%",
+                "40%",
+                "$1,048,621"
+              ]
+            },
+            {
+              "name": "Social Message",
+              "metrics": [
+                "1,043",
+                "51%",
+                "43%",
+                "$687,709"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 4354,
+          "rows": [
+            {
+              "name": "Medicare Primary Care Near Me",
+              "metrics": [
+                "2,718",
+                "57%",
+                "28%",
+                "$1,584,276"
+              ]
+            },
+            {
+              "name": "Senior Doctor Accepting New Patients",
+              "metrics": [
+                "2,156",
+                "55%",
+                "36%",
+                "$1,421,872"
+              ]
+            },
+            {
+              "name": "AEP 2025 Medicare Enrollment",
+              "metrics": [
+                "1,847",
+                "53%",
+                "39%",
+                "$1,187,549"
+              ]
+            },
+            {
+              "name": "Care That Goes Above and Beyond",
+              "metrics": [
+                "1,342",
+                "52%",
+                "41%",
+                "$878,304"
+              ]
+            },
+            {
+              "name": "Meet Your Care Team",
+              "metrics": [
+                "1,087",
+                "50%",
+                "44%",
+                "$717,628"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 4267,
+          "rows": [
+            {
+              "name": "Medicare primary care near me",
+              "metrics": [
+                "1,942",
+                "59%",
+                "26%",
+                "$1,156,428"
+              ]
+            },
+            {
+              "name": "Senior primary care rural NC",
+              "metrics": [
+                "1,648",
+                "56%",
+                "33%",
+                "$1,082,197"
+              ]
+            },
+            {
+              "name": "Doctor accepting Medicare Advantage",
+              "metrics": [
+                "1,321",
+                "54%",
+                "37%",
+                "$859,438"
+              ]
+            },
+            {
+              "name": "Same day doctor appointment near me",
+              "metrics": [
+                "1,089",
+                "52%",
+                "41%",
+                "$714,852"
+              ]
+            },
+            {
+              "name": "Clinic for seniors 65 plus",
+              "metrics": [
+                "847",
+                "49%",
+                "46%",
+                "$544,691"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Annual Wellness Visit and Medicare AWV",
+              "metrics": [
+                "3,247",
+                "59%",
+                "31%",
+                "$1,887,526"
+              ]
+            },
+            {
+              "name": "Chronic Care Management and Diabetes Management",
+              "metrics": [
+                "2,864",
+                "56%",
+                "35%",
+                "$1,879,104"
+              ]
+            },
+            {
+              "name": "Same-Day and Acute Care Visit",
+              "metrics": [
+                "2,391",
+                "54%",
+                "36%",
+                "$1,562,429"
+              ]
+            },
+            {
+              "name": "New Patient Comprehensive Exam",
+              "metrics": [
+                "2,142",
+                "53%",
+                "39%",
+                "$1,401,618"
+              ]
+            },
+            {
+              "name": "Hypertension and Heart Health Management",
+              "metrics": [
+                "1,210",
+                "51%",
+                "44%",
+                "$786,727"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Annual Wellness Visit and Medicare AWV",
+              "metrics": [
+                "3,247",
+                "59%",
+                "31%",
+                "$1,887,526"
+              ]
+            },
+            {
+              "name": "Chronic Care Management and Diabetes Management",
+              "metrics": [
+                "2,864",
+                "56%",
+                "35%",
+                "$1,879,104"
+              ]
+            },
+            {
+              "name": "Same-Day and Acute Care Visit",
+              "metrics": [
+                "2,391",
+                "54%",
+                "36%",
+                "$1,562,429"
+              ]
+            },
+            {
+              "name": "New Patient Comprehensive Exam",
+              "metrics": [
+                "2,142",
+                "53%",
+                "39%",
+                "$1,401,618"
+              ]
+            },
+            {
+              "name": "Hypertension and Heart Health Management",
+              "metrics": [
+                "1,210",
+                "51%",
+                "44%",
+                "$786,727"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Annual Wellness Visit and Medicare AWV",
+            "values": [
+              189,
+              246,
+              315,
+              328,
+              298
+            ]
+          },
+          {
+            "name": "Chronic Care Management and Diabetes Management",
+            "values": [
+              201,
+              268,
+              304,
+              335,
+              276
+            ]
+          },
+          {
+            "name": "Same-Day and Acute Care Visit",
+            "values": [
+              169,
+              234,
+              287,
+              309,
+              281
+            ]
+          },
+          {
+            "name": "New Patient Comprehensive Exam",
+            "values": [
+              154,
+              221,
+              278,
+              326,
+              265
+            ]
+          },
+          {
+            "name": "Hypertension and Heart Health Management",
+            "values": [
+              87,
+              149,
+              188,
+              241,
+              225
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "372"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "29"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Appointment Scheduled",
+            "values": [
+              73,
+              71,
+              76,
+              72,
+              74,
+              75,
+              78,
+              73,
+              74,
+              72,
+              75,
+              79,
+              74,
+              76,
+              73,
+              77,
+              75,
+              71,
+              76,
+              73,
+              74,
+              72,
+              75,
+              76,
+              74,
+              78,
+              72,
+              74,
+              71,
+              73,
+              75,
+              181,
+              187,
+              174,
+              192,
+              178,
+              185,
+              179,
+              183,
+              177,
+              181,
+              186,
+              174,
+              188,
+              179,
+              182,
+              176,
+              184,
+              180
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,247"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "11,368"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "728"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "58%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "709"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Appointment Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Medicare Annual Wellness Visit",
+            "values": [
+              8,
+              7,
+              11,
+              9,
+              10,
+              14
+            ]
+          },
+          {
+            "name": "Chronic Disease Management",
+            "values": [
+              6,
+              8,
+              5,
+              9,
+              7,
+              12
+            ]
+          },
+          {
+            "name": "Same-Day Acute Care",
+            "values": [
+              4,
+              2,
+              8,
+              6,
+              5,
+              11
+            ]
+          },
+          {
+            "name": "Insurance Navigation",
+            "values": [
+              3,
+              5,
+              4,
+              7,
+              6,
+              9
+            ]
+          },
+          {
+            "name": "Diabetes Management Program",
+            "values": [
+              5,
+              6,
+              3,
+              8,
+              4,
+              10
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "29,563"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "20,887"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Appointment Booked (Count)",
+            "value": "12,211"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$13,539,305"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 247,
+              "display": "247"
+            },
+            {
+              "name": "Sarah Kowalski",
+              "value": 193,
+              "display": "193"
+            },
+            {
+              "name": "Derek Montoya",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Jennifer Wu",
+              "value": 174,
+              "display": "174"
+            },
+            {
+              "name": "Robert Hendricks",
+              "value": 201,
+              "display": "201"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Elena Rodriguez",
+            "values": [
+              156,
+              178,
+              201,
+              234,
+              267
+            ]
+          },
+          {
+            "name": "Michael Thompson",
+            "values": [
+              142,
+              167,
+              189,
+              215,
+              251
+            ]
+          },
+          {
+            "name": "Amanda Foster",
+            "values": [
+              168,
+              189,
+              211,
+              243,
+              281
+            ]
+          },
+          {
+            "name": "David Kim",
+            "values": [
+              134,
+              159,
+              182,
+              208,
+              246
+            ]
+          },
+          {
+            "name": "Patricia Levy",
+            "values": [
+              151,
+              173,
+              198,
+              227,
+              264
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 54.3,
+              "display": "54.3%"
+            },
+            {
+              "name": "Sarah Kowalski",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "Derek Montoya",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "Jennifer Wu",
+              "value": 57.4,
+              "display": "57.4%"
+            },
+            {
+              "name": "Robert Hendricks",
+              "value": 55.6,
+              "display": "55.6%"
+            },
+            {
+              "name": "Thomas Garrett",
+              "value": 61.2,
+              "display": "61.2%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "54.3%",
+                "28%",
+                "$414,718",
+                "1,347"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Kowalski",
+                "56.8%",
+                "31%",
+                "$462,891",
+                "1,423"
+              ]
+            },
+            {
+              "cells": [
+                "Derek Montoya",
+                "52.1%",
+                "26%",
+                "$377,654",
+                "1,289"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Wu",
+                "57.4%",
+                "33%",
+                "$483,247",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Hendricks",
+                "55.6%",
+                "29%",
+                "$428,364",
+                "1,378"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Garrett",
+                "61.2%",
+                "35%",
+                "$541,123",
+                "1,501"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Elena Rodriguez",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Michael Thompson",
+              "value": 88.3,
+              "display": "88.3%"
+            },
+            {
+              "name": "Amanda Foster",
+              "value": 93.4,
+              "display": "93.4%"
+            },
+            {
+              "name": "David Kim",
+              "value": 87.1,
+              "display": "87.1%"
+            },
+            {
+              "name": "Patricia Levy",
+              "value": 90.6,
+              "display": "90.6%"
+            },
+            {
+              "name": "Victoria Sanchez",
+              "value": 92.1,
+              "display": "92.1%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Elena Rodriguez",
+                "91.7%",
+                "64%",
+                "$963,455",
+                "1,517"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Thompson",
+                "88.3%",
+                "59%",
+                "$859,234",
+                "1,467"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Foster",
+                "93.4%",
+                "67%",
+                "$1,041,892",
+                "1,542"
+              ]
+            },
+            {
+              "cells": [
+                "David Kim",
+                "87.1%",
+                "58%",
+                "$831,847",
+                "1,489"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Levy",
+                "90.6%",
+                "63%",
+                "$936,418",
+                "1,518"
+              ]
+            },
+            {
+              "cells": [
+                "Victoria Sanchez",
+                "92.1%",
+                "65%",
+                "$988,764",
+                "1,501"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Appointment Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Appointment Booked (Count)",
+        "rightMax": 600,
+        "rightTicks": [
+          0,
+          150,
+          300,
+          450,
+          600
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 452
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 434
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 404
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 386
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 336
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 353
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 389
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 405
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 451
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 437
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 394
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 381
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 339
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 349
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 398
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 411
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 447
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 440
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 386
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 374
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 344
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 348
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 405
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 419
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 441
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 440
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 380
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 365
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 350
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 348
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 405
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 700000,
+        "rightTicks": [
+          0,
+          233333.33333333334,
+          466666.6666666667,
+          700000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 501890
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 481039
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 447945
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 427426
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 372153
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 390564
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 431445
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 448452
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 500026
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 484807
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 436649
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 422030
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 375535
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 387088
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 441718
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 455177
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 495371
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 487661
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 427626
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 414063
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 381172
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 385168
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 449331
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 464226
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 489078
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 488366
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 421508
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 404158
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 387782
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 385912
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 453939
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "32,134"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:47"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "2,571"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "1,928"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "85%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Michelle Rodriguez",
+                "412",
+                "89%",
+                "86%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James Patterson",
+                "538",
+                "87%",
+                "84%",
+                "86%"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Chen",
+                "621",
+                "88%",
+                "85%",
+                "85%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "32,134 calls",
+      "pagerLabel": "1 of 3,213",
+      "calls": [
+        {
+          "time": "1/6/26 9:12 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 10:41 am",
+          "id": "A3D2-4C81E7B0F19A"
+        },
+        {
+          "time": "1/12/26 11:03 am",
+          "id": "9E14-2B7DA0F6C381"
+        },
+        {
+          "time": "1/14/26 12:27 pm",
+          "id": "C081-6F39B2E10A7C"
+        },
+        {
+          "time": "1/16/26 1:48 pm",
+          "id": "7B5F-13E9C4A80D26"
+        },
+        {
+          "time": "1/20/26 2:15 pm",
+          "id": "D492-8A01F35CB7E0"
+        },
+        {
+          "time": "1/22/26 3:33 pm",
+          "id": "1F60-E27B94A0C5D3"
+        },
+        {
+          "time": "1/26/26 4:07 pm",
+          "id": "6C3A-095FD1B8E742"
+        },
+        {
+          "time": "1/28/26 4:52 pm",
+          "id": "B87E-3D6021AF94C1"
+        },
+        {
+          "time": "1/30/26 5:19 pm",
+          "id": "2A9D-74C0E1B5386F"
+        }
+      ],
+      "duration": "2:22",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Hopscotch Primary Care, this is Denise. How can I help you today?",
+          "highlights": [
+            "Thank you for calling Hopscotch Primary Care"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi there. My name is Walter Hendricks. I just moved out here to the county and I'm looking for a doctor who takes my Medicare plan.",
+          "highlights": [
+            "looking for a doctor who takes my Medicare plan"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:16",
+          "text": "Welcome to the area, Walter. We would love to have you. Are you on a Medicare Advantage plan, or Original Medicare?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:24",
+          "text": "It's a Medicare Advantage plan, the Humana one. Do you all take that?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:30",
+          "text": "We do, we accept most Medicare Advantage plans plus Original Medicare Part B. I can get you set up as a new patient. What's bringing you in mainly?",
+          "highlights": [
+            "we accept most Medicare Advantage plans"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:40",
+          "text": "Well, I've got the blood pressure and the diabetes, so I need somebody keeping an eye on both. My last clinic kind of rushed me through.",
+          "highlights": [
+            "blood pressure and the diabetes"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:50",
+          "text": "That's exactly what we do differently. We'd start you with a New Patient Comprehensive Exam, then enroll you in our Diabetes Management and Heart Health programs so your care team follows both closely.",
+          "highlights": [
+            "New Patient Comprehensive Exam",
+            "Diabetes Management and Heart Health programs"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:02",
+          "text": "That sounds good, but what does all that run? I'm on a fixed income and I want to keep it manageable.",
+          "highlights": [
+            "I want to keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:11",
+          "text": "Understandable. With your Medicare Advantage plan, most of these visits are covered at zero to a small copay, and your Annual Wellness Visit is fully covered. I'll verify your benefits before anything.",
+          "highlights": [
+            "fully covered"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:23",
+          "text": "Okay. The clinic over in town quoted me a bunch of self-pay stuff and it worried me, so that's a relief.",
+          "highlights": [
+            "The clinic over in town quoted me a bunch of self-pay stuff"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:32",
+          "text": "No surprises here. We check coverage up front and walk you through everything. Would you also like our care team to review your current medications at that first visit?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "1:42",
+          "text": "Yeah, actually, could you add that? I take about six pills and nobody's looked at the whole list in a while.",
+          "highlights": [
+            "could you add that"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:50",
+          "text": "Absolutely, I'll add a Medication Reconciliation to the visit. Let me get you scheduled. Does Thursday at 10 AM work for your first appointment?",
+          "highlights": [
+            "Medication Reconciliation",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:00",
+          "text": "Let me just make sure my wife can drive me that morning. Yeah, Thursday at ten is fine.",
+          "highlights": [
+            "Thursday at ten is fine"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:08",
+          "text": "Wonderful. You're booked for Thursday at 10 AM with Dr. Alvarez. What's the best phone number to send your reminder?",
+          "highlights": [
+            "You're booked for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:15",
+          "text": "It's 828 555 0173.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:19",
+          "text": "Got it, Walter. We'll see you Thursday. Thank you for choosing Hopscotch Primary Care.",
+          "highlights": [
+            "Thank you for choosing Hopscotch Primary Care"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Insurance: Medicare Advantage Verified",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: Chronic Care Management",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: New Patient Exam",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Coverage Cost Concern Raised",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Mention",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Walter Hendricks, a new-to-the-area senior on a Humana Medicare Advantage plan, called to find a primary care provider who manages both his high blood pressure and diabetes. Denise confirmed Hopscotch accepts his plan, recommended a New Patient Comprehensive Exam plus enrollment in the Diabetes Management and Heart Health programs, and added a Medication Reconciliation at his request. She reassured him on coverage after he raised cost concerns and a competing clinic's self-pay quotes. The call ended with a booked first appointment for Thursday at 10 AM with Dr. Alvarez.",
+        "keyPoints": [
+          "New patient, recently relocated senior on Humana Medicare Advantage",
+          "Needs ongoing management for hypertension and diabetes",
+          "Recommended New Patient Comprehensive Exam plus Diabetes and Heart Health programs",
+          "Added Medication Reconciliation for six current prescriptions",
+          "Coverage verified to address fixed-income cost concern",
+          "Appointment booked for Thursday 10 AM, callback number captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Appointment booked, Thursday 10 AM with Dr. Alvarez"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "20,244 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,024",
+      "conversations": [
+        {
+          "id": "C847-3A2F8B1C4E6D",
+          "time": "1/14/26 2:17 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:17 PM",
+              "text": "Hi there. This is Sarah from Hopscotch Primary Care. We help seniors get the comprehensive Medicare primary care they deserve. Are you looking to establish care with us or do you have a question about our services?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:18 PM",
+              "text": "Hi Sarah. I'm interested in becoming a patient. I'm 68 and on Medicare Advantage."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:19 PM",
+              "text": "That's great. We'd love to welcome you to our care team. Just to get started, what's your primary reason for reaching out today. Are you looking for a comprehensive wellness exam, or do you have a specific condition you'd like us to help manage?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:21 PM",
+              "text": "I have diabetes and high blood pressure. I've been managing them on my own but I'd like a doctor who can help coordinate everything."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:22 PM",
+              "text": "Perfect. Managing multiple chronic conditions is exactly what our Chronic Care Management Program is designed for. We offer monthly check-ins and coordination with a full care team. Which condition is most important to address first for you, the diabetes or the hypertension?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:24 PM",
+              "text": "The diabetes. My A1c has been running high and I'm not sure if my medication is right."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:25 PM",
+              "text": "We can absolutely help with that. Our Diabetes Management Program includes A1c monitoring, medication review, and nutrition counseling. Are you located in or near rural North Carolina or one of our other service areas?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:27 PM",
+              "text": "Yes, I'm in rural Iredell County, North Carolina."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:28 PM",
+              "text": "Excellent. We have a clinic right there serving your community. Our Diabetes Management visit is typically around 150 dollars if you're self-pay, but many Medicare plans cover it in full. Would you be available for an appointment next Tuesday, January 21st, at 10 AM with our diabetes care specialist?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:30 PM",
+              "text": "Tuesday morning works for me. What do I need to bring?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:31 PM",
+              "text": "Great. Just bring your insurance card, photo ID, and a list of any current medications you're taking. We'll also review your A1c results and go over any dietary changes that might help. Your appointment is confirmed for Tuesday, January 21st at 10 AM at our Iredell clinic. Can we get a phone number to reach you with a reminder the day before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:33 PM",
+              "text": "Yes, it's 704 555 0147."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:34 PM",
+              "text": "Perfect. We'll send you a reminder tomorrow. If you have any questions before your visit, just call our care team at 877 936 2933. We're here to support you."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:35 PM",
+              "text": "Thank you, Sarah. I'm looking forward to it."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:36 PM",
+              "text": "You're welcome. See you Tuesday, and welcome to Hopscotch Primary Care."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Diabetes Management Program",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Chronic Condition: Diabetes and Hypertension",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Insurance: Medicare Advantage",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area Confirmed: Iredell County NC",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Appointment Time: 10 AM Tuesday January 21",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C847-3A2F8B1C4E6D",
+            "smsStartTime": "1/14/26 2:17 pm",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "704-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "704-555-0147",
+            "repeatCaller": "No",
+            "city": "Statesville",
+            "region": "NC",
+            "phoneType": "Mobile",
+            "displayName": "Margaret Stevens",
+            "firstName": "Margaret",
+            "lastName": "Stevens",
+            "gender": "Female",
+            "destinationTimeZone": "Eastern Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C652-9E1F7A3B5C2A",
+          "time": "1/15/26 11:42 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C652-9E1F7A3B5C2A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C934-6D4C8F2E7B1A",
+          "time": "1/16/26 3:58 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C934-6D4C8F2E7B1A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C521-4A7E9D3F1B6C",
+          "time": "1/18/26 9:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C521-4A7E9D3F1B6C",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "32,134 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,213",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:34 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:34 PM",
+              "text": "Hi there, thanks for calling Hopscotch Primary Care. This is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:35 PM",
+              "text": "Yeah, hi. I'm looking for a primary care doctor. I'm on Medicare Advantage and I'm new to the area."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:35 PM",
+              "text": "Great, we'd love to help you. Just to confirm, are you currently seeing a primary care doctor, or are you looking to establish care with us for the first time?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:36 PM",
+              "text": "First time. I just moved here from out of state and I need someone who can manage my diabetes and high blood pressure."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:37 PM",
+              "text": "Perfect. We specialize in chronic disease management for conditions like diabetes and hypertension. Have you had your labs done recently, like an A1c or lipid panel?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:38 PM",
+              "text": "Not in about six months. I'm due for all that stuff."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:39 PM",
+              "text": "Understood. So what we'd do is schedule you for our new patient comprehensive exam, which includes a full history and medication review, plus we can do lab work right here in clinic. That's usually around two hundred to three hundred dollars if you're self-paying, but most of our patients have Medicare coverage."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:40 PM",
+              "text": "Yeah, I've got Medicare Advantage. What does that cover?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:41 PM",
+              "text": "Most Medicare Advantage plans cover the new patient visit at no cost to you, just your regular copay. After that, we can enroll you in our chronic care management program for ongoing monitoring of your diabetes and blood pressure. It's about thirty to sixty-five dollars a month depending on your coverage."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:42 PM",
+              "text": "That sounds good. When can I come in?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:43 PM",
+              "text": "Excellent. Looking at next week, we have availability on Tuesday, January twenty-first at two o'clock PM, or Thursday, January twenty-third at ten thirty AM. Which works better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:44 PM",
+              "text": "Tuesday the twenty-first at two PM is perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:45 PM",
+              "text": "Great, I've got you down for Tuesday, January twenty-first at two o'clock PM for your new patient comprehensive exam with Dr. Sarah Chen at our rural clinic location. Can you confirm your phone number for us?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:46 PM",
+              "text": "It's eight oh five, five five five, two one four seven."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Perfect. We'll send you a confirmation text and email with all the details and a reminder the day before your visit. If you need to cancel or reschedule, just call us back at eight seven seven, nine three six, twenty nine thirty three. Looking forward to seeing you, and welcome to Hopscotch."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Thanks so much. See you Tuesday."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:48 PM",
+              "text": "You're welcome. Goodbye."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Chronic Disease Management",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Condition Identified: Diabetes and Hypertension",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Insurance Verified: Medicare Advantage",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided: New Patient Exam",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:34 pm",
+            "duration": "4:28",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "805-555-9847",
+            "repeatCaller": "No",
+            "city": "Asheville",
+            "region": "NC",
+            "phoneType": "Mobile",
+            "displayName": "James Patterson",
+            "firstName": "James",
+            "lastName": "Patterson",
+            "gender": "Male",
+            "destinationTimeZone": "Eastern Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B829-5A7FD142C63E",
+          "time": "1/22/26 11:15 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B829-5A7FD142C63E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C764-8B3E9D27A91F",
+          "time": "1/28/26 3:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C764-8B3E9D27A91F",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D651-7F4A2BE58C1D",
+          "time": "1/31/26 9:22 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D651-7F4A2BE58C1D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Introduce yourself as Hopscotch Primary Care's AI scheduling assistant helping seniors become patients and find the right Medicare-covered care, mention that new patients can get a free Medicare eligibility and plan review, and ask if they would like to get started.",
+        "Qualify one question at a time: Ask only one question per message, covering whether care is for the patient or a loved one, the patient's age and Medicare or Medicare/Medicaid coverage type, the main reason for the visit such as a wellness visit, chronic condition, or same-day concern, their preferred timing, and finally their ZIP code to confirm a nearby clinic serves them.",
+        "Estimate then book: Confirm a nearby Hopscotch clinic serves their ZIP, explain that most services are covered by Medicare with little or no out-of-pocket cost and that a care team member will review specifics, recommend a new patient appointment with a provider, propose a specific day and time, and confirm they will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Hopscotch_Primary_Care_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Our Services",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Locations",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Become a Patient",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Reschedule Appointment\",\"question\":\"I need to move my appointment with my doctor to next week, can you help?\",\"answer\":\"Absolutely, I can help you reschedule your appointment at your Hopscotch clinic. Let me know your preferred day and time and I will confirm an opening with your care team.\"},{\"topic\":\"Care Team Line\",\"question\":\"I am already a patient and feel sick tonight, what do I do?\",\"answer\":\"As a Hopscotch patient you have access to our 24/7 Care Team Line for after-hours phone triage and clinical guidance. You can call anytime, and if you would like I can also help schedule a same-day acute care visit at your clinic.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you accept Medicare?",
+              "answer": "Yes, Hopscotch Primary Care specializes in serving seniors with Medicare, including most Medicare Advantage plans, Original Medicare Part B, Medicare Supplement or Medigap plans, and Medicare/Medicaid plans. I can help you book a new patient appointment to get started."
+            },
+            {
+              "question": "Do you take Medicaid?",
+              "answer": "Yes, we serve patients with Medicare/Medicaid plans and can help confirm your coverage. Would you like me to schedule an appointment so our team can review your eligibility?"
+            },
+            {
+              "question": "How do I become a patient?",
+              "answer": "Becoming a patient is easy, I just need a few details and your ZIP code to find your nearest clinic. From there I can book your new patient appointment with a provider."
+            },
+            {
+              "question": "What services do you offer?",
+              "answer": "We provide comprehensive senior primary care including annual wellness visits, chronic disease management, same-day acute care, in-clinic labs, vaccinations, and Medicare navigation. I would be glad to book a visit so a provider can build a personalized care plan for you."
+            },
+            {
+              "question": "Where are your clinics located?",
+              "answer": "Hopscotch operates clinics across rural communities and I can find the one nearest you. Share your ZIP code and I will confirm the closest location and available appointment times."
+            },
+            {
+              "question": "How much does a visit cost?",
+              "answer": "Most services are billed to Medicare or your insurance, and covered patients typically pay little or nothing out of pocket. Our care team can review the specifics with you, so let me get you scheduled for a visit."
+            },
+            {
+              "question": "Do you offer same-day appointments?",
+              "answer": "Yes, we offer same-day and acute care visits so you can avoid the ER for illness or injury. Tell me your ZIP code and I will check same-day availability at your nearest clinic."
+            },
+            {
+              "question": "Can I get help choosing a Medicare plan?",
+              "answer": "Yes, our Medicare enrollment and insurance navigation help is free, including plan eligibility and coverage questions. I can schedule a time for you to sit down with our team."
+            },
+            {
+              "question": "Do you help manage diabetes?",
+              "answer": "Yes, our Diabetes Management Program includes A1c monitoring, medication adjustments, nutrition counseling, and foot exams. Let me book you an appointment so a provider can create your plan."
+            },
+            {
+              "question": "Do you treat high blood pressure?",
+              "answer": "Yes, our Hypertension and Heart Health Management program supports blood pressure monitoring and cardiovascular risk reduction. I can get you scheduled with a provider to get started."
+            },
+            {
+              "question": "Can I get my annual wellness visit there?",
+              "answer": "Yes, we offer the Medicare Annual Wellness Visit, which includes a personalized prevention plan and screening schedule and is typically covered by Medicare. Would you like me to book yours?"
+            },
+            {
+              "question": "Do you offer flu and shingles shots?",
+              "answer": "Yes, we provide vaccinations and immunizations for seniors including flu, pneumonia, shingles, and COVID. I can schedule a visit so you can get the vaccines you need."
+            },
+            {
+              "question": "Do you do bloodwork on site?",
+              "answer": "Yes, we offer in-clinic lab and bloodwork including A1c, lipid, and metabolic panels with on-site draws. Let me book you an appointment at your nearest clinic."
+            },
+            {
+              "question": "Can you help with my medications?",
+              "answer": "Yes, our medication management and reconciliation service includes a full prescription review, interaction checks, and refill coordination. I can schedule that for you with your care team."
+            },
+            {
+              "question": "Do you offer mental health support?",
+              "answer": "Yes, we provide behavioral health and wellness support including depression and anxiety screening and integrated referrals. I would be glad to book a visit so we can support you."
+            },
+            {
+              "question": "What if I have more than one chronic condition?",
+              "answer": "Our Chronic Care Management program provides ongoing monitoring and monthly check-ins for patients with two or more chronic conditions. Let me schedule an appointment so a provider can build your care plan."
+            },
+            {
+              "question": "Do you help with transportation or other needs?",
+              "answer": "Yes, our Beyond the Clinic care coordination helps with transportation, community resources, and specialist referrals. I can book you a visit to connect you with a full care team."
+            },
+            {
+              "question": "Can I switch to Hopscotch from my current doctor?",
+              "answer": "Yes, many patients transfer to Hopscotch for more time and attention from their care team. Share your ZIP code and I will help you book a new patient appointment."
+            },
+            {
+              "question": "Do you offer virtual visits?",
+              "answer": "Our care teams focus on in-clinic relationships, and you also have 24/7 phone access to your care team. Let me get you scheduled at your nearest clinic so a provider can get to know you."
+            },
+            {
+              "question": "Do you accept new patients right now?",
+              "answer": "Yes, we are accepting new Medicare and Medicare/Medicaid patients. Give me your ZIP code and I will find openings at the clinic closest to you."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule new patient appointment\",\"follow_up_message\":\"Great, I can get you set up as a new Hopscotch patient. Please share your ZIP code and a day that works for you, and I will confirm your appointment with a provider at your nearest clinic.\"},{\"intent\":\"Request Medicare eligibility review\",\"follow_up_message\":\"I would be glad to help you review your Medicare coverage at no cost. Let me book a time with our insurance navigation team, and you will get a reminder text before your appointment with a number to call.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Hopscotch Primary Care's AI assistant. I can help you become a patient and book care with a provider who takes time to get to know you. Would you like to get started?",
+        "goal": "Guide the senior or their family member to book a new patient appointment at their nearest Hopscotch clinic and confirm their Medicare or Medicare/Medicaid coverage.",
+        "bookingType": "in-clinic new patient appointment",
+        "offer": "Free Medicare eligibility and plan review when you become a patient",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Is this appointment for you or for a loved one?",
+          "What is the patient's age, and are they enrolled in Medicare, Medicare Advantage, or a Medicare/Medicaid plan?",
+          "What is the main reason for the visit, such as a wellness visit, managing a chronic condition, or a same-day concern?",
+          "When would you prefer to come in, mornings or afternoons, and any particular day?",
+          "What is your ZIP code so I can confirm the Hopscotch clinic nearest you?"
+        ]
+      },
+      "serviceArea": "rural North Carolina communities, ZIP codes starting with 287"
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:09 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:09 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:09 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Hopscotch Primary Care",
+      "callerName": "Margaret Chen",
+      "callerPhone": "(828) 555-0174",
+      "campaign": "Chronic Care Management Program, Asheville Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$1,850",
+      "googleSearch": "chronic care management Medicare near me Asheville",
+      "websiteSearch": "senior primary care accepting new patients NC",
+      "callingWebpage": "/services/chronic-care-management",
+      "products": "Chronic Care Management Program, Diabetes Management Program",
+      "cartId": "HOP-7429R",
+      "serviceable": "Yes",
+      "email": "mchen.margaret@email.com",
+      "street": "412 Hickory Ridge Drive",
+      "city": "Asheville",
+      "state": "NC",
+      "zip": "28801",
+      "digitalJourney": "/home › /patients/our-services › /patients/conditions › /patients/insurance-and-medicare",
+      "intent": "Patient seeking comprehensive chronic disease management with integrated care team for diabetes and hypertension",
+      "coverage": "ZIP 28801 confirmed, Asheville serviceable",
+      "switchIntent": "High. Currently manages conditions independently, interested in transitioning to value-based care model with monthly check-ins and medication optimization",
+      "greeting": "Hi Margaret, this is David at Hopscotch Primary Care. Thanks for calling about our Chronic Care Management Program. I see you're looking for coordinated diabetes and hypertension support. We'd love to build your care plan and get you connected with our team. Would Thursday or Friday work better for your first comprehensive visit?"
+    },
+    "smsScreenpop": {
+      "brandName": "Hopscotch Primary Care",
+      "callerName": "Robert Hutchins",
+      "callerPhone": "(704) 555-0291",
+      "campaign": "Annual Wellness Visit, Charlotte Medicare Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$2,175",
+      "googleSearch": "Medicare Annual Wellness Visit doctor near me",
+      "websiteSearch": "primary care accepting Medicare Advantage Charlotte",
+      "callingWebpage": "/patients/become-a-patient",
+      "products": "Annual Wellness Visit, New Patient Comprehensive Exam",
+      "cartId": "HOP-3847K",
+      "serviceable": "Yes",
+      "email": "rhutchins.bob@email.com",
+      "street": "2847 Oakmont Avenue",
+      "city": "Charlotte",
+      "state": "NC",
+      "zip": "28205",
+      "digitalJourney": "/home › /patients › /patients/our-services › /patients/locations",
+      "intent": "New Medicare enrollee seeking comprehensive annual wellness visit with physician time and personalized prevention planning",
+      "coverage": "ZIP 28205 confirmed, Charlotte serviceable",
+      "appointment": "Comprehensive Annual Wellness Visit with Dr. Sarah Martinez, Thursday June 19, 2:15 PM",
+      "greeting": "Hi Robert, this is Elena from Hopscotch Primary Care. Great to meet you. We have you set up for your Annual Wellness Visit with Dr. Martinez on Thursday at 2:15. Looking forward to getting to know you and building your personalized prevention plan. Any questions before then?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Hopscotch Primary Care",
+      "brandDomain": "www.hellohopscotch.com",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (828) 555-0147",
+      "callerLocation": "Asheville, NC",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "Senior Primary Care Rural Expansion",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "Medicare primary care near me accepting new patients",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/Patients/Our-Services",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Annual Wellness Visit, Chronic Disease Management Program",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Asheville, NC",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "new_appt_diabetes",
+          "name": "Appointment Scheduling, Diabetes Management"
+        },
+        {
+          "id": "care_coord_support",
+          "name": "Care Coordination and Support Services"
+        },
+        {
+          "id": "general_intake",
+          "name": "General Patient Intake and Information"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Thanks for calling Hopscotch Primary Care. My name is Alex. I can help you find the right care path for your needs. Are you looking to become a new patient with us today.",
+          "sigs": [],
+          "q": [
+            15,
+            40,
+            45
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, I'm looking for a doctor who takes Medicare. I have diabetes and I'm not sure I'm getting good enough monitoring for my blood sugar and medications.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Medicare</strong> insurance"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Diabetes management</strong> interest"
+            },
+            {
+              "c": "orange",
+              "t": "Medication <strong>monitoring</strong> concern"
+            }
+          ],
+          "q": [
+            55,
+            25,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I'm glad you reached out. We specialize in comprehensive care for Medicare patients like you. Our Diabetes Management Program includes A1c monitoring, medication adjustments, and nutrition counseling. Have you had any recent A1c test results, and are you currently on insulin or oral medications.",
+          "sigs": [],
+          "q": [
+            75,
+            15,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I was just checked three months ago, my A1c was 8.2, and I'm on metformin and another pill. I want someone who will actually listen and work with me to get better control. I'm in Asheville and I'd prefer to start soon if possible.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Recent A1c</strong> available"
+            },
+            {
+              "c": "blue",
+              "t": "Multi-medication management needed"
+            },
+            {
+              "c": "purple",
+              "t": "<strong>Asheville clinic</strong> location confirmed"
+            }
+          ],
+          "q": [
+            90,
+            6,
+            4
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "That sounds perfect. I'm ready to schedule.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Ready for <strong>appointment</strong>"
+            },
+            {
+              "c": "blue",
+              "t": "Strong intent confirmed"
+            }
+          ],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent. I'm connecting you now to our Appointment Scheduling team for Diabetes Management. They'll get you booked with one of our physicians at our Asheville clinic and answer any questions about your first visit. Thank you for choosing Hopscotch.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get your first visit booked (Agent)\", \"schedule your appointment (Agent)\", \"I'd like to become a patient (Caller)\", \"get me on the schedule (Caller)\"])",
+          "createdAt": "11/12/24 9:15 am",
+          "updatedAt": "01/08/26 2:30 pm"
+        },
+        {
+          "name": "Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"do you have any openings (Caller)\", \"what times are available (Caller)\", \"let me check the schedule (Agent)\"])",
+          "createdAt": "12/03/24 10:20 am",
+          "updatedAt": "01/05/26 11:45 am"
+        },
+        {
+          "name": "Care Plan Explained Clearly",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Care Plan Clarity] < 60 and duration > 45 sec",
+          "createdAt": "01/20/25 8:05 am",
+          "updatedAt": "01/12/26 4:10 pm"
+        },
+        {
+          "name": "Competitor Clinic Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"my current doctor (Caller)\", \"the clinic down the road (Caller)\", \"Oak Street Health (Caller)\", \"another primary care office (Caller)\"])",
+          "createdAt": "02/14/25 1:30 pm",
+          "updatedAt": "12/28/25 9:50 am"
+        },
+        {
+          "name": "Empathy & Active Listening",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy & Listening] < 60 and duration > 45 sec",
+          "createdAt": "11/28/24 3:45 pm",
+          "updatedAt": "01/15/26 10:05 am"
+        },
+        {
+          "name": "Insurance Coverage Question",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"does Medicare cover this (Caller)\", \"is that visit covered (Caller)\", \"what will I owe (Caller)\", \"I have Medicare Advantage (Caller)\"])",
+          "createdAt": "03/09/25 11:00 am",
+          "updatedAt": "01/03/26 3:20 pm"
+        },
+        {
+          "name": "Medicare Benefits Explained",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Medicare Benefits Accuracy] < 60 and duration > 45 sec",
+          "createdAt": "12/17/24 2:15 pm",
+          "updatedAt": "01/10/26 1:40 pm"
+        },
+        {
+          "name": "New Patient Onboarding Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"are you accepting new patients (Caller)\", \"how do I become a patient (Caller)\", \"new patient exam (Agent)\", \"transfer my records (Caller)\"])",
+          "createdAt": "10/22/24 9:30 am",
+          "updatedAt": "01/07/26 8:55 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the self-pay rate is (Agent)\", \"your out-of-pocket cost (Agent)\", \"our sliding fee schedule (Agent)\", \"that would run about (Agent)\"])",
+          "createdAt": "04/02/25 4:20 pm",
+          "updatedAt": "12/30/25 2:05 pm"
+        },
+        {
+          "name": "Same-Day Visit Requested",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"can I come in today (Caller)\", \"same-day appointment (Caller)\", \"I'm not feeling well (Caller)\", \"need to be seen right away (Caller)\"])",
+          "createdAt": "01/15/25 7:50 am",
+          "updatedAt": "01/14/26 5:15 pm"
+        }
+      ]
+    }
+  }
+}

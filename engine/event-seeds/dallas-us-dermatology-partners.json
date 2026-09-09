@@ -1,0 +1,5370 @@
+{
+  "id": "u-s-dermatology-partners",
+  "customerName": "U.S. Dermatology Partners",
+  "websiteUrl": "https://www.usdermatologypartners.com",
+  "brandDomain": "usdermatologypartners.com",
+  "networkName": "Invoca for Dermatology",
+  "industry": "Dermatology & Medical Aesthetics",
+  "bookingTerm": "Appointment",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 12847
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 13952
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 14318
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 13564
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 12547
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Dermatologist Near Me, Dallas",
+          "marketingSearchTerm": "dermatologist near me",
+          "landingPageUrl": "https://www.usdermatologypartners.com/locations/dallas?utm_source=google&utm_medium=cpc&utm_campaign=derm_near_me_dallas",
+          "websiteJourney": "Home / Locations / Texas / Dallas Clinic",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Mohs Surgery, Book Today",
+          "marketingSearchTerm": "mohs surgery cost",
+          "landingPageUrl": "https://www.usdermatologypartners.com/services/skin-cancer/mohs-surgery?utm_source=google&utm_medium=cpc&utm_campaign=mohs_book_today",
+          "websiteJourney": "Home / Services / Skin Cancer / Skin Cancer Treatment (Mohs)",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Botox Specials, New Patients",
+          "marketingSearchTerm": "botox price per unit",
+          "landingPageUrl": "https://www.usdermatologypartners.com/services/cosmetic/botox?utm_source=google&utm_medium=cpc&utm_campaign=botox_new_patients",
+          "websiteJourney": "Home / Services / Cosmetic Dermatology / Botox & Injectables",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Skin Cancer Screening, Texas",
+          "marketingSearchTerm": "skin cancer screening plano",
+          "landingPageUrl": "https://www.usdermatologypartners.com/services/skin-cancer/annual-exam?utm_source=bing&utm_medium=cpc&utm_campaign=screening_tx",
+          "websiteJourney": "Home / Services / Skin Cancer / Annual Skin Examination",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Acne Treatment, City Landing",
+          "marketingSearchTerm": "how to treat acne dermatologist",
+          "landingPageUrl": "https://www.usdermatologypartners.com/services/general/acne?utm_source=google&utm_medium=cpc&utm_campaign=acne_city",
+          "websiteJourney": "Home / Services / General Dermatology / Acne Treatment",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Eczema Specialist, Kansas",
+          "marketingSearchTerm": "eczema specialist",
+          "landingPageUrl": "https://www.usdermatologypartners.com/services/general/eczema?utm_source=google&utm_medium=cpc&utm_campaign=eczema_ks",
+          "websiteJourney": "Home / Services / General Dermatology / Eczema & Dermatitis Management",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Mole Removal, Near Me",
+          "marketingSearchTerm": "mole removal near me",
+          "landingPageUrl": "https://www.usdermatologypartners.com/services/general/mole-wart-removal?utm_source=bing&utm_medium=cpc&utm_campaign=mole_removal",
+          "websiteJourney": "Home / Services / General Dermatology / Mole & Wart Removal",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Chemical Peel, Dark Spots",
+          "marketingSearchTerm": "chemical peel for dark spots",
+          "landingPageUrl": "https://www.usdermatologypartners.com/services/cosmetic/chemical-peels?utm_source=google&utm_medium=cpc&utm_campaign=peel_dark_spots",
+          "websiteJourney": "Home / Services / Cosmetic Dermatology / Chemical Peels",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Board-Certified Dermatologist, Arizona",
+          "marketingSearchTerm": "board-certified dermatologist arizona",
+          "landingPageUrl": "https://www.usdermatologypartners.com/providers?utm_source=google&utm_medium=cpc&utm_campaign=board_certified_az",
+          "websiteJourney": "Home / Providers / Arizona",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Annual Skin Exam, Missouri",
+          "marketingSearchTerm": "annual skin exam",
+          "landingPageUrl": "https://www.usdermatologypartners.com/services/skin-cancer/annual-exam?utm_source=google&utm_medium=cpc&utm_campaign=annual_exam_mo",
+          "websiteJourney": "Home / Services / Skin Cancer / Annual Skin Examination",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Dermal Fillers, Cosmetic",
+          "marketingSearchTerm": "lip filler cost near me",
+          "landingPageUrl": "https://www.usdermatologypartners.com/services/cosmetic/dermal-fillers?utm_source=bing&utm_medium=cpc&utm_campaign=fillers_cosmetic",
+          "websiteJourney": "Home / Services / Cosmetic Dermatology / Dermal Fillers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic Search",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Acne Treatment Dallas (Local SEO)",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.usdermatologypartners.com/services/general/acne-treatment-dallas?utm_source=organic&utm_medium=organic&utm_campaign=local_seo",
+          "websiteJourney": "Home / Services / General Dermatology / Acne Treatment",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic Search",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Fitzpatrick Skin Type Quiz",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.usdermatologypartners.com/resources/fitzpatrick-scale?utm_source=organic&utm_medium=organic&utm_campaign=find_your_skin_type",
+          "websiteJourney": "Home / Resources / Fitzpatrick Scale",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "SPF Season",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.usdermatologypartners.com/shop/sunscreens?utm_source=instagram&utm_medium=social&utm_campaign=spf_season",
+          "websiteJourney": "Home / Shop / Sunscreens",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Skin Cancer Awareness Month",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.usdermatologypartners.com/services/skin-cancer?utm_source=facebook&utm_medium=social&utm_campaign=skin_cancer_awareness",
+          "websiteJourney": "Home / Services / Skin Cancer",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Self-Skin-Check Reminders",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.usdermatologypartners.com/resources/care-instructions?utm_source=facebook&utm_medium=social&utm_campaign=self_check_reminder",
+          "websiteJourney": "Home / Resources / Care Instructions",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Laser Treatments, IPL",
+          "marketingSearchTerm": "ipl for sun damage",
+          "landingPageUrl": "https://www.usdermatologypartners.com/services/cosmetic/laser-ipl?utm_source=google&utm_medium=cpc&utm_campaign=laser_ipl",
+          "websiteJourney": "Home / Services / Cosmetic Dermatology / Laser Treatments",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "MD Skin Essentials, Free Shipping",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.usdermatologypartners.com/shop/anti-aging?utm_source=instagram&utm_medium=social&utm_campaign=mdse_free_shipping",
+          "websiteJourney": "Home / Shop / Anti-Aging",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic Search",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Dermatology Digest (Content)",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.usdermatologypartners.com/resources/blog?utm_source=organic&utm_medium=organic&utm_campaign=derm_digest",
+          "websiteJourney": "Home / Resources / Dermatology Digest",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Best Sunscreen, Retail",
+          "marketingSearchTerm": "best dermatologist-recommended sunscreen",
+          "landingPageUrl": "https://www.usdermatologypartners.com/shop/sunscreens?utm_source=bing&utm_medium=cpc&utm_campaign=best_sunscreen",
+          "websiteJourney": "Home / Shop / Sunscreens",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "New Location Announcements",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.usdermatologypartners.com/locations/virginia?utm_source=facebook&utm_medium=social&utm_campaign=new_location",
+          "websiteJourney": "Home / Locations / Virginia",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic Search",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Know Your Skin Cancer Risk (Quiz)",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.usdermatologypartners.com/resources/skin-cancer-risk-quiz?utm_source=organic&utm_medium=organic&utm_campaign=skin_cancer_risk",
+          "websiteJourney": "Home / Resources / Skin Cancer Risk Quiz",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (U.S. Dermatology Partners)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "52,728"
+            },
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$7,226,732"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "8,436"
+            },
+            {
+              "label": "Existing Patient Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing Inquiry Call (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Prescription Refill Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Patient Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "27%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "21%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "32%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Patient Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Patient Call (Count)",
+            "values": [
+              6142,
+              9873,
+              10214,
+              9687,
+              8376
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              1987,
+              3142,
+              3287,
+              3114,
+              2706
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              1542,
+              2487,
+              2563,
+              2414,
+              2067
+            ]
+          },
+          {
+            "name": "New Patient (Count)",
+            "values": [
+              2314,
+              3762,
+              3914,
+              3687,
+              3196
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 52728,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "24,187",
+                "54%",
+                "18%",
+                "$3,241,876"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "11,342",
+                "57%",
+                "24%",
+                "$1,562,394"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "8,619",
+                "59%",
+                "29%",
+                "$1,124,857"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "5,431",
+                "62%",
+                "35%",
+                "$748,231"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "3,149",
+                "65%",
+                "41%",
+                "$549,374"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 52728,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "22,914",
+                "53%",
+                "19%",
+                "$3,087,412"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "13,187",
+                "56%",
+                "25%",
+                "$1,742,318"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "8,342",
+                "58%",
+                "30%",
+                "$1,098,654"
+              ]
+            },
+            {
+              "name": "Email/CRM",
+              "metrics": [
+                "4,986",
+                "61%",
+                "36%",
+                "$712,489"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "3,299",
+                "64%",
+                "43%",
+                "$585,859"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25382,
+          "rows": [
+            {
+              "name": "Botox Specials New Patients",
+              "metrics": [
+                "9,124",
+                "55%",
+                "21%",
+                "$1,287,453"
+              ]
+            },
+            {
+              "name": "Mohs Surgery Book Today",
+              "metrics": [
+                "6,387",
+                "58%",
+                "27%",
+                "$894,217"
+              ]
+            },
+            {
+              "name": "Acne Treatment Dallas",
+              "metrics": [
+                "4,512",
+                "60%",
+                "32%",
+                "$631,884"
+              ]
+            },
+            {
+              "name": "Skin Cancer Awareness Month",
+              "metrics": [
+                "3,241",
+                "63%",
+                "38%",
+                "$452,318"
+              ]
+            },
+            {
+              "name": "SPF Season",
+              "metrics": [
+                "2,118",
+                "66%",
+                "44%",
+                "$298,742"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 19977,
+          "rows": [
+            {
+              "name": "dermatologist near me",
+              "metrics": [
+                "7,318",
+                "54%",
+                "22%",
+                "$1,043,872"
+              ]
+            },
+            {
+              "name": "skin cancer screening near me",
+              "metrics": [
+                "4,987",
+                "57%",
+                "28%",
+                "$712,458"
+              ]
+            },
+            {
+              "name": "botox price per unit",
+              "metrics": [
+                "3,412",
+                "59%",
+                "33%",
+                "$487,213"
+              ]
+            },
+            {
+              "name": "mole removal near me",
+              "metrics": [
+                "2,571",
+                "62%",
+                "39%",
+                "$361,894"
+              ]
+            },
+            {
+              "name": "annual skin exam cost",
+              "metrics": [
+                "1,689",
+                "65%",
+                "45%",
+                "$241,357"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Set (Industry) (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 52728,
+          "rows": [
+            {
+              "name": "General/Medical Dermatology",
+              "metrics": [
+                "17,842",
+                "49%",
+                "18%",
+                "$2,431,558"
+              ]
+            },
+            {
+              "name": "Skin Cancer",
+              "metrics": [
+                "13,529",
+                "53%",
+                "24%",
+                "$1,987,344"
+              ]
+            },
+            {
+              "name": "Cosmetic Dermatology",
+              "metrics": [
+                "10,417",
+                "55%",
+                "29%",
+                "$1,428,117"
+              ]
+            },
+            {
+              "name": "Plastic Surgery",
+              "metrics": [
+                "6,213",
+                "51%",
+                "34%",
+                "$872,469"
+              ]
+            },
+            {
+              "name": "MD Skin Essentials Retail Skincare",
+              "metrics": [
+                "4,727",
+                "47%",
+                "41%",
+                "$507,244"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 52728,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "19,214",
+                "51%",
+                "19%",
+                "$2,614,882"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "14,338",
+                "54%",
+                "23%",
+                "$1,982,451"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "9,527",
+                "52%",
+                "28%",
+                "$1,308,776"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "6,142",
+                "49%",
+                "33%",
+                "$812,338"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "3,507",
+                "47%",
+                "39%",
+                "$508,285"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "General/Medical Dermatology",
+            "values": [
+              612,
+              658,
+              671,
+              645,
+              626
+            ]
+          },
+          {
+            "name": "Skin Cancer",
+            "values": [
+              631,
+              648,
+              672,
+              659,
+              637
+            ]
+          },
+          {
+            "name": "Cosmetic Dermatology",
+            "values": [
+              587,
+              612,
+              628,
+              604,
+              590
+            ]
+          },
+          {
+            "name": "Plastic Surgery",
+            "values": [
+              402,
+              428,
+              441,
+              427,
+              414
+            ]
+          },
+          {
+            "name": "MD Skin Essentials Retail Skincare",
+            "values": [
+              371,
+              392,
+              408,
+              391,
+              376
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 52,728 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 91,
+          "summary": "Priya Nadkarni called to book her yearly annual skin examination for skin cancer screening. Rosey confirmed her insurance, found an opening at the Plano clinic, and scheduled the appointment. Priya left satisfied with the quick booking.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Rosey",
+          "duration": "2m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 86,
+          "summary": "Daniel Okafor requested a chemical peel consultation to address sun damage on his cheeks. Lila reviewed pricing and available sessions, then booked his appointment at the Overland Park clinic. He was pleased with the clear explanation.",
+          "date": "Feb 12, 1:37 PM",
+          "agent": "Lila",
+          "duration": "2m 22s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 81,
+          "summary": "Grace Whitfield called about Botox pricing for forehead lines as a new patient. Mary explained the per unit cost, checked provider availability, and scheduled her first Botox appointment. Grace confirmed and thanked the agent.",
+          "date": "Mar 3, 9:48 AM",
+          "agent": "Mary",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 10,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Marcus Delgado, a new patient, called to schedule an acne treatment visit for persistent breakouts. Sue collected his contact details, insurance, and medical history, then booked his first acne appointment at the Dallas clinic. He was happy to begin a treatment plan.",
+          "date": "Mar 18, 3:11 PM",
+          "agent": "Sue",
+          "duration": "3m 04s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Helen Vasquez called to set up eczema and dermatitis management for her worsening flare-ups. Oscar found a dermatologist opening and scheduled her appointment. She appreciated the prompt help.",
+          "date": "Apr 2, 11:26 AM",
+          "agent": "Oscar",
+          "duration": "2m 14s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 13,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Robert Kingsley, an existing patient, called with pre-op questions before his upcoming Mohs micrographic surgery. Lee reviewed the care instructions and confirmed his surgery date but did not need to book anything new. Robert felt reassured.",
+          "date": "Apr 21, 4:02 PM",
+          "agent": "Lee",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 16,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Angela Sorensen called to schedule a mole removal after noticing a changing spot. Jennifer explained the shave biopsy process and booked her appointment. She was slightly nervous but glad to be seen soon.",
+          "date": "May 7, 10:39 AM",
+          "agent": "Jennifer",
+          "duration": "1m 51s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Trevor Blanchard called to check the order status of his MD Skin Essentials sunscreen and acne cleanser from DermSkincare.com. Mike looked up the shipment and provided a tracking update. No appointment was needed.",
+          "date": "May 23, 2:18 PM",
+          "agent": "Mike",
+          "duration": "1m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Nadia Feldman called to dispute a billing charge on her recent laser treatment invoice. Rose reviewed the account and opened a billing inquiry for the finance team. Nadia remained somewhat frustrated pending resolution.",
+          "date": "Jun 4, 12:55 PM",
+          "agent": "Rose",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Owen Pratchett called to reschedule his skin cancer screening after a work conflict. Mary found an alternate slot but the earliest date did not suit him, so it stayed unresolved. He was mildly annoyed by the wait.",
+          "date": "Jun 19, 9:07 AM",
+          "agent": "Mary",
+          "duration": "1m 46s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Sandra Mbeki called upset about her acne treatment prescription not being called in correctly. Lila apologized and escalated to the provider, but Sandra felt the delay was unacceptable. The issue was left open for follow-up.",
+          "date": "Jul 8, 3:29 PM",
+          "agent": "Lila",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Kyle Ferraro called to cancel his upcoming Botox appointment due to travel. Oscar processed the cancellation and noted he may rebook later. Kyle was terse throughout the call.",
+          "date": "Jul 27, 1:12 PM",
+          "agent": "Oscar",
+          "duration": "1m 08s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Melissa Trang complained about a long wait for her dermal filler results and poor communication from the clinic. Lee tried to address the concerns but she remained dissatisfied. No resolution was reached on the call.",
+          "date": "Aug 14, 4:44 PM",
+          "agent": "Lee",
+          "duration": "2m 57s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Gregory Aldous left a voicemail asking about pricing for a chemical peel and whether new patients are accepted. The call rolled to voicemail after hours and no agent responded. A callback was flagged.",
+          "date": "Sep 2, 6:51 PM",
+          "agent": "No Agent",
+          "duration": "0m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Diane Kowalczyk called furious about a duplicate billing charge for her annual skin examination. The agent struggled to locate the account and Diane grew increasingly angry before demanding a manager. The billing dispute was unresolved.",
+          "date": "Oct 9, 11:03 AM",
+          "agent": "Rose",
+          "duration": "3m 21s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "botox",
+        "acne",
+        "chemical peel",
+        "billing",
+        "appointment",
+        "skin cancer"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 18, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Service Type",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area/ZIP",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Verify Insurance Status",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Appointment Date/Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Visit Expectations",
+          "points": "0/10",
+          "status": "unmet"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Greeted caller by name",
+        "Identified clinic location",
+        "Confirmed new patient status",
+        "Collected full legal name",
+        "Verified ZIP code in service area",
+        "Captured contact phone number",
+        "Discussed annual skin examination service",
+        "Confirmed appointment availability",
+        "Booked future appointment slot",
+        "Offered next steps",
+        "Used professional tone throughout",
+        "Thanked caller at close",
+        "Provided appointment confirmation"
+      ],
+      "unmetSignals": [
+        "Captured email address",
+        "Explained pre-visit preparation instructions",
+        "Discussed insurance coverage details",
+        "Set expectations for initial consultation length",
+        "Explained Fitzpatrick skin type assessment",
+        "Mentioned medical history form requirements",
+        "Confirmed transportation/parking information",
+        "Discussed new patient paperwork process",
+        "Offered telehealth alternative",
+        "Explained cancellation policy"
+      ],
+      "naSignals": [
+        "Discussed billing payment plan",
+        "Processed credit card payment",
+        "Addressed refund or return request",
+        "Shipped product order",
+        "Managed prescription refill request",
+        "Discussed retail skincare product recommendations",
+        "Handled existing account billing inquiry"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "The caller is requesting an annual skin examination to monitor for skin cancer risk. This is preventive care rather than treatment of an active condition, but the patient expresses concern about sun damage from years of outdoor activity."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects to schedule an appointment at a convenient time and wants to know when they can be seen. They did not ask specific questions about cost or insurance coverage during the call."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address before closing, as this is critical for sending appointment reminders and new patient intake forms. Additionally, setting clear expectations about what to bring and how long the visit will take would improve the patient experience."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Thank you for calling U.S. Dermatology Partners. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:12",
+          "text": "Hi Marcus. I'm looking to schedule a skin check. I've been in the sun a lot over the years and I'd like to get an annual examination."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:25",
+          "text": "Absolutely. I can help you set up an appointment for an annual skin examination. Have you been to our clinic before?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:35",
+          "text": "No, I haven't. This would be my first visit."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:42",
+          "text": "Great. Welcome. I'll need to collect some information from you. Can I please have your full name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:52",
+          "text": "Of course. It's Jennifer Marie Hendricks."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:00",
+          "text": "Thank you, Jennifer. And which location would be most convenient for you? We have clinics in Arizona, Colorado, Kansas, Missouri, Oklahoma, Texas, Virginia, Arkansas, and Maryland."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:18",
+          "text": "I'm in the Dallas area, so Texas would be perfect."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:25",
+          "text": "Excellent. We have several locations in the Dallas area. Can I please have your ZIP code to make sure we find the closest clinic to you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:35",
+          "text": "Sure, it's 75201."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:42",
+          "text": "Perfect. That's within our service area. Now, to confirm your appointment, I'll need a phone number. What's the best number to reach you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:58",
+          "text": "You can reach me at ****"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:05",
+          "text": "Great. And do you have any insurance coverage for dermatology services?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:15",
+          "text": "Yes, I do have health insurance through my employer."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:25",
+          "text": "Wonderful. We accept most major insurance plans. Let me check our availability. We have an opening on November 3rd at 10:00 a.m. with Dr. Sarah Chen at our Dallas North location. Does that work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:50",
+          "text": "November 3rd at 10 a.m. sounds perfect. Yes, I'll take that appointment."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:05",
+          "text": "Excellent, Jennifer. I've booked your annual skin examination appointment for November 3rd at 10:00 a.m. with Dr. Sarah Chen at our Dallas North clinic. You should receive a confirmation via text and email before your visit. Is there anything else I can help you with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:30",
+          "text": "No, that's all. Thank you so much."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:38",
+          "text": "You're very welcome, Jennifer. We look forward to seeing you on November 3rd. Take care."
+        }
+      ],
+      "aiSummary": "Jennifer Hendricks, a new patient, called U.S. Dermatology Partners to schedule an annual skin examination due to concerns about sun damage accumulated over the years. The agent Marcus successfully collected her name, confirmed her Dallas area location within the 75201 ZIP code, verified her phone number, and confirmed insurance coverage. An appointment was booked for November 3rd at 10:00 a.m. with Dr. Sarah Chen at the Dallas North clinic. The call was professional and efficient, though the agent did not capture the patient's email address or discuss expectations for the visit.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "Great job on the structure of this call, Marcus. You covered the essentials: greeting, name capture, location verification, and booking. Two things to improve next time: (1) Always capture the email address before you close. Jennifer needs to receive her intake forms and appointment reminders, and we rely on email for that. (2) Take 10 seconds to set expectations. Tell new patients what to bring, how long the visit will take, and what the doctor will examine. It helps them prepare and reduces no-shows."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "52,728"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$137.06"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$7,226,732"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "31,637"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "60%"
+            },
+            {
+              "label": "Appointment: Scheduled (Count)",
+              "value": "27,419"
+            },
+            {
+              "label": "Appointment: Scheduled (Percent)",
+              "value": "52%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "21,091"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "40%"
+            },
+            {
+              "label": "Appointment: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Appointments)",
+          "chart": {
+            "legend": "Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Direct",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Instagram",
+                "value": 52,
+                "display": "52%"
+              },
+              {
+                "name": "Bing",
+                "value": 46,
+                "display": "46%"
+              },
+              {
+                "name": "Facebook",
+                "value": 38,
+                "display": "38%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "23,417",
+                  "27%",
+                  "$3,208,417"
+                ]
+              },
+              {
+                "cells": [
+                  "Facebook",
+                  "12,864",
+                  "38%",
+                  "$1,762,864"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing",
+                  "8,142",
+                  "46%",
+                  "$1,114,142"
+                ]
+              },
+              {
+                "cells": [
+                  "Instagram",
+                  "5,318",
+                  "52%",
+                  "$728,318"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "2,987",
+                  "58%",
+                  "$412,991"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 20000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 19842,
+                "display": "19,842"
+              },
+              {
+                "name": "Organic Search",
+                "value": 14317,
+                "display": "14,317"
+              },
+              {
+                "name": "Social",
+                "value": 9864,
+                "display": "9,864"
+              },
+              {
+                "name": "Email",
+                "value": 5382,
+                "display": "5,382"
+              },
+              {
+                "name": "Referral",
+                "value": 3323,
+                "display": "3,323"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "19,842",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "14,317",
+                  "42%"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "9,864",
+                  "48%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "5,382",
+                  "54%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "3,323",
+                  "61%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Dermatologist Near Me",
+                "value": 8742,
+                "display": "8,742"
+              },
+              {
+                "name": "Mohs Surgery Book Today",
+                "value": 5318,
+                "display": "5,318"
+              },
+              {
+                "name": "Botox Specials New Patients",
+                "value": 4217,
+                "display": "4,217"
+              },
+              {
+                "name": "Skin Cancer Awareness Month",
+                "value": 3164,
+                "display": "3,164"
+              },
+              {
+                "name": "Acne Treatment Dallas",
+                "value": 2087,
+                "display": "2,087"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Dermatologist Near Me",
+                  "8,742",
+                  "31%",
+                  "$1,161,417"
+                ]
+              },
+              {
+                "cells": [
+                  "Mohs Surgery Book Today",
+                  "5,318",
+                  "40%",
+                  "$911,864"
+                ]
+              },
+              {
+                "cells": [
+                  "Botox Specials New Patients",
+                  "4,217",
+                  "49%",
+                  "$883,142"
+                ]
+              },
+              {
+                "cells": [
+                  "Skin Cancer Awareness Month",
+                  "3,164",
+                  "58%",
+                  "$784,318"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "dermatologist near me",
+                "value": 6142,
+                "display": "6,142"
+              },
+              {
+                "name": "skin cancer screening",
+                "value": 4317,
+                "display": "4,317"
+              },
+              {
+                "name": "mohs surgery cost",
+                "value": 3164,
+                "display": "3,164"
+              },
+              {
+                "name": "botox price per unit",
+                "value": 2438,
+                "display": "2,438"
+              },
+              {
+                "name": "mole removal near me",
+                "value": 1687,
+                "display": "1,687"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "dermatologist near me",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "skin cancer screening",
+                  "43%"
+                ]
+              },
+              {
+                "cells": [
+                  "mohs surgery cost",
+                  "51%"
+                ]
+              },
+              {
+                "cells": [
+                  "botox price per unit",
+                  "60%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Appointment: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Skin Cancer",
+              "14,317",
+              "34%",
+              "62%"
+            ]
+          },
+          {
+            "cells": [
+              "General Dermatology",
+              "11,864",
+              "43%",
+              "55%"
+            ]
+          },
+          {
+            "cells": [
+              "Cosmetic Dermatology",
+              "8,742",
+              "51%",
+              "68%"
+            ]
+          },
+          {
+            "cells": [
+              "Retail Skincare",
+              "4,318",
+              "59%",
+              "71%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "U.S. Dermatology Partners Dallas, TX",
+              "9,842",
+              "742",
+              "4%",
+              "38%"
+            ]
+          },
+          {
+            "cells": [
+              "U.S. Dermatology Partners Phoenix, AZ",
+              "7,317",
+              "518",
+              "5%",
+              "46%"
+            ]
+          },
+          {
+            "cells": [
+              "U.S. Dermatology Partners Kansas City, MO",
+              "5,164",
+              "384",
+              "6%",
+              "52%"
+            ]
+          },
+          {
+            "cells": [
+              "U.S. Dermatology Partners Fairfax, VA",
+              "3,218",
+              "214",
+              "7%",
+              "60%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1342,
+              1417,
+              1384,
+              1298,
+              1401
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1142,
+              1218,
+              1184,
+              1164,
+              1156
+            ]
+          },
+          {
+            "name": "Insurance Not Accepted",
+            "values": [
+              1042,
+              1087,
+              1064,
+              1058,
+              1066
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              842,
+              867,
+              834,
+              841,
+              834
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              618,
+              634,
+              602,
+              608,
+              606
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "21,091"
+          },
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "New Patient (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$4,119,237"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$387,945"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$421,876"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$456,203"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$412,589"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "33%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$487,921"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$552,703"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "8,347",
+                "58%",
+                "31%",
+                "$1,847,963"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "6,214",
+                "55%",
+                "34%",
+                "$1,412,687"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "3,892",
+                "54%",
+                "35%",
+                "$889,456"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "2,143",
+                "52%",
+                "36%",
+                "$487,921"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "495",
+                "48%",
+                "38%",
+                "$112,210"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 28,
+          "rows": [
+            {
+              "name": "Mobile Web",
+              "metrics": [
+                "9,156",
+                "57%",
+                "32%",
+                "$2,034,876"
+              ]
+            },
+            {
+              "name": "Desktop Web",
+              "metrics": [
+                "7,423",
+                "56%",
+                "33%",
+                "$1,645,932"
+              ]
+            },
+            {
+              "name": "SMS Message",
+              "metrics": [
+                "2,847",
+                "54%",
+                "35%",
+                "$642,301"
+              ]
+            },
+            {
+              "name": "Native App",
+              "metrics": [
+                "1,342",
+                "51%",
+                "36%",
+                "$305,128"
+              ]
+            },
+            {
+              "name": "Voice Call",
+              "metrics": [
+                "323",
+                "47%",
+                "38%",
+                "$73,245"
+              ]
+            },
+            {
+              "name": "Email Link",
+              "metrics": [
+                "0",
+                "0%",
+                "0%",
+                "$17,755"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 27,
+          "rows": [
+            {
+              "name": "Dermatologist Near Me Campaign",
+              "metrics": [
+                "7,682",
+                "56%",
+                "30%",
+                "$1,724,589"
+              ]
+            },
+            {
+              "name": "Skin Cancer Awareness Month",
+              "metrics": [
+                "5,341",
+                "57%",
+                "32%",
+                "$1,218,765"
+              ]
+            },
+            {
+              "name": "New Patient Special",
+              "metrics": [
+                "4,127",
+                "54%",
+                "35%",
+                "$938,456"
+              ]
+            },
+            {
+              "name": "Mohs Surgery Specialists",
+              "metrics": [
+                "2,654",
+                "52%",
+                "36%",
+                "$603,892"
+              ]
+            },
+            {
+              "name": "Botox and Injectables Promo",
+              "metrics": [
+                "1,287",
+                "48%",
+                "37%",
+                "$291,675"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 24,
+          "rows": [
+            {
+              "name": "dermatologist near me",
+              "metrics": [
+                "6,843",
+                "57%",
+                "29%",
+                "$1,543,876"
+              ]
+            },
+            {
+              "name": "skin cancer screening appointment",
+              "metrics": [
+                "4,216",
+                "56%",
+                "31%",
+                "$958,432"
+              ]
+            },
+            {
+              "name": "Mohs surgery cost treatment",
+              "metrics": [
+                "3,127",
+                "54%",
+                "34%",
+                "$712,345"
+              ]
+            },
+            {
+              "name": "acne treatment dermatologist",
+              "metrics": [
+                "2,389",
+                "51%",
+                "36%",
+                "$543,287"
+              ]
+            },
+            {
+              "name": "board certified dermatologist my area",
+              "metrics": [
+                "1,654",
+                "47%",
+                "38%",
+                "$376,456"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Skin Cancer Screening and Treatment",
+              "metrics": [
+                "7,843",
+                "59%",
+                "32%",
+                "$1,876,234"
+              ]
+            },
+            {
+              "name": "Cosmetic Dermatology",
+              "metrics": [
+                "5,627",
+                "57%",
+                "31%",
+                "$1,287,456"
+              ]
+            },
+            {
+              "name": "Medical Dermatology",
+              "metrics": [
+                "4,356",
+                "54%",
+                "34%",
+                "$987,653"
+              ]
+            },
+            {
+              "name": "Retail Skincare Products",
+              "metrics": [
+                "2,145",
+                "52%",
+                "36%",
+                "$482,167"
+              ]
+            },
+            {
+              "name": "Plastic Surgery Consultations",
+              "metrics": [
+                "1,120",
+                "48%",
+                "38%",
+                "$255,728"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Skin Cancer Screening and Treatment",
+            "values": [
+              624,
+              847,
+              951,
+              783,
+              671
+            ]
+          },
+          {
+            "name": "Cosmetic Dermatology",
+            "values": [
+              523,
+              641,
+              589,
+              478,
+              397
+            ]
+          },
+          {
+            "name": "Medical Dermatology",
+            "values": [
+              387,
+              512,
+              468,
+              391,
+              318
+            ]
+          },
+          {
+            "name": "Retail Skincare Products",
+            "values": [
+              219,
+              287,
+              294,
+              243,
+              172
+            ]
+          },
+          {
+            "name": "Plastic Surgery Consultations",
+            "values": [
+              142,
+              186,
+              154,
+              119,
+              88
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "368"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "834"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "31"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Appointment Scheduled",
+            "values": [
+              74,
+              71,
+              78,
+              75,
+              72,
+              79,
+              76,
+              73,
+              77,
+              74,
+              71,
+              78,
+              75,
+              72,
+              79,
+              76,
+              73,
+              77,
+              74,
+              71,
+              78,
+              75,
+              72,
+              79,
+              76,
+              73,
+              77,
+              74,
+              71,
+              78,
+              75,
+              82,
+              178,
+              171,
+              185,
+              179,
+              172,
+              188,
+              175,
+              169,
+              184,
+              177,
+              173,
+              189,
+              176,
+              171,
+              187,
+              174,
+              180
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,156"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "721"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "62%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "708"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Appointment Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Annual Skin Examination",
+            "values": [
+              8,
+              11,
+              9,
+              3,
+              10,
+              12
+            ]
+          },
+          {
+            "name": "Mohs Micrographic Surgery",
+            "values": [
+              4,
+              6,
+              5,
+              1,
+              7,
+              8
+            ]
+          },
+          {
+            "name": "Botox and Injectable Treatments",
+            "values": [
+              6,
+              9,
+              7,
+              2,
+              8,
+              11
+            ]
+          },
+          {
+            "name": "Acne Treatment Program",
+            "values": [
+              5,
+              7,
+              6,
+              1,
+              8,
+              9
+            ]
+          },
+          {
+            "name": "Mole and Wart Removal",
+            "values": [
+              7,
+              10,
+              8,
+              2,
+              9,
+              10
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "48,510"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "37,965"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Appointment Booked (Count)",
+            "value": "27,419"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$7,226,732"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Jennifer Hollis",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "David Okonkwo",
+              "value": 241,
+              "display": "241"
+            },
+            {
+              "name": "Patricia Nguyen",
+              "value": 156,
+              "display": "156"
+            },
+            {
+              "name": "Robert Castellanos",
+              "value": 203,
+              "display": "203"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sophia Martinez",
+            "values": [
+              142,
+              168,
+              191,
+              217,
+              243
+            ]
+          },
+          {
+            "name": "James Chen",
+            "values": [
+              135,
+              159,
+              184,
+              206,
+              228
+            ]
+          },
+          {
+            "name": "Amanda Reeves",
+            "values": [
+              127,
+              151,
+              173,
+              198,
+              219
+            ]
+          },
+          {
+            "name": "Kevin O'Brien",
+            "values": [
+              119,
+              146,
+              167,
+              189,
+              205
+            ]
+          },
+          {
+            "name": "Lisa Kowalski",
+            "values": [
+              98,
+              124,
+              148,
+              171,
+              192
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Jennifer Hollis",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "David Okonkwo",
+              "value": 52.4,
+              "display": "52.4%"
+            },
+            {
+              "name": "Patricia Nguyen",
+              "value": 58.1,
+              "display": "58.1%"
+            },
+            {
+              "name": "Robert Castellanos",
+              "value": 55.6,
+              "display": "55.6%"
+            },
+            {
+              "name": "Thomas Bradshaw",
+              "value": 61.3,
+              "display": "61.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Webb",
+                "54.2%",
+                "28%",
+                "$958,176",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Hollis",
+                "56.8%",
+                "29%",
+                "$1,043,892",
+                "1,388"
+              ]
+            },
+            {
+              "cells": [
+                "David Okonkwo",
+                "52.4%",
+                "26%",
+                "$894,654",
+                "1,437"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Nguyen",
+                "58.1%",
+                "31%",
+                "$1,127,448",
+                "1,354"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Castellanos",
+                "55.6%",
+                "27%",
+                "$1,005,384",
+                "1,469"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Bradshaw",
+                "61.3%",
+                "35%",
+                "$1,197,216",
+                "1,289"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sophia Martinez",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "James Chen",
+              "value": 89.4,
+              "display": "89.4%"
+            },
+            {
+              "name": "Amanda Reeves",
+              "value": 87.8,
+              "display": "87.8%"
+            },
+            {
+              "name": "Kevin O'Brien",
+              "value": 93.2,
+              "display": "93.2%"
+            },
+            {
+              "name": "Lisa Kowalski",
+              "value": 88.6,
+              "display": "88.6%"
+            },
+            {
+              "name": "Nina Petrov",
+              "value": 90.3,
+              "display": "90.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sophia Martinez",
+                "91.7%",
+                "64%",
+                "$1,423,584",
+                "1,542"
+              ]
+            },
+            {
+              "cells": [
+                "James Chen",
+                "89.4%",
+                "61%",
+                "$1,351,296",
+                "1,489"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Reeves",
+                "87.8%",
+                "58%",
+                "$1,298,752",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin O'Brien",
+                "93.2%",
+                "67%",
+                "$1,456,968",
+                "1,513"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Kowalski",
+                "88.6%",
+                "62%",
+                "$1,368,864",
+                "1,504"
+              ]
+            },
+            {
+              "cells": [
+                "Nina Petrov",
+                "90.3%",
+                "63%",
+                "$1,410,504",
+                "1,474"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Appointment Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Appointment Booked (Count)",
+        "rightMax": 1300,
+        "rightTicks": [
+          0,
+          325,
+          650,
+          975,
+          1300
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1016
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 974
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 907
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 865
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 753
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 790
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 873
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 908
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1013
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 982
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 884
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 854
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 760
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 783
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 894
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 921
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1003
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 988
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 865
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 838
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 771
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 779
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 910
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 940
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 990
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 989
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 853
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 818
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 784
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 781
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 933
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 400000,
+        "rightTicks": [
+          0,
+          133333.33333333334,
+          266666.6666666667,
+          400000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 267888
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 256759
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 239095
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 228142
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 198640
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 208467
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 230287
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 239365
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 266893
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 258769
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 233065
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 225262
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 200445
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 206612
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 235770
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 242955
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 264408
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 260293
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 228249
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 221009
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 203454
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 205587
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 239834
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 247784
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 261049
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 260670
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 224983
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 215723
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 206982
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 205983
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 242310
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "52,728"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "4,218"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "3,164"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "85%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Patricia M. Hendricks",
+                "412",
+                "89%",
+                "84%",
+                "83%"
+              ]
+            },
+            {
+              "cells": [
+                "David R. Chen",
+                "368",
+                "87%",
+                "86%",
+                "86%"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer L. Morales",
+                "291",
+                "88%",
+                "85%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "52,728 calls",
+      "pagerLabel": "1 of 5,273",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "A34C-9F17B2E45D01"
+        },
+        {
+          "time": "1/8/26 9:32 am",
+          "id": "C71E-42A8D9013FBE"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/14/26 11:18 am",
+          "id": "2B9A-6C3F14E7A902"
+        },
+        {
+          "time": "1/15/26 12:05 pm",
+          "id": "D48F-A1029C7E5B36"
+        },
+        {
+          "time": "1/20/26 1:23 pm",
+          "id": "6E12-B7D4390A18CF"
+        },
+        {
+          "time": "1/22/26 2:47 pm",
+          "id": "93AD-5F8021C6E74B"
+        },
+        {
+          "time": "1/26/26 3:14 pm",
+          "id": "1F7C-0E93A25D8146"
+        },
+        {
+          "time": "1/28/26 4:36 pm",
+          "id": "7B50-C41A9E2F0637"
+        },
+        {
+          "time": "1/30/26 5:09 pm",
+          "id": "E8D3-2A67F109B45C"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling U.S. Dermatology Partners, this is Marcus. How can I help you today?",
+          "highlights": [
+            "Thank you for calling U.S. Dermatology Partners"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi there. I've never been to your practice before, but I'm looking into getting some Botox done and maybe a skin check while I'm at it.",
+          "highlights": [
+            "never been to your practice before"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "Wonderful, we'd love to welcome you as a new patient. Can I start with your first and last name?",
+          "highlights": [
+            "new patient"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:23",
+          "text": "Sure, it's Jennifer Alcott.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:27",
+          "text": "Thank you, Jennifer. So you're interested in our Botox treatment and also an annual skin examination. Is there a particular area you'd like the Botox to address?",
+          "highlights": [
+            "annual skin examination"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:36",
+          "text": "Mostly the forehead lines and around my eyes. But honestly, what does that run? I've seen prices all over the place.",
+          "highlights": [
+            "what does that run"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:44",
+          "text": "Our Botox is priced per unit, typically between ten and sixteen dollars a unit, so a forehead and crow's feet treatment usually lands in the two hundred to six hundred dollar range depending on units used. Your provider confirms the exact plan at the visit.",
+          "highlights": [
+            "ten and sixteen dollars a unit"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:57",
+          "text": "Okay. There's a med spa right by my office that quoted me a flat deal, so I'm kind of weighing my options here.",
+          "highlights": [
+            "med spa right by my office that quoted me a flat deal"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:06",
+          "text": "That's completely fair to compare. The difference with us is that your injections are performed under board-certified dermatologists, so you're getting a medical eye on your skin, not just the cosmetic side. And that ties nicely into the skin exam you mentioned.",
+          "highlights": [
+            "board-certified dermatologists"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:18",
+          "text": "Right, that's actually why I wanted the skin check too. I had a mole on my shoulder that's been changing and it's been bugging me.",
+          "highlights": [
+            "mole on my shoulder that's been changing"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:26",
+          "text": "I'm glad you mentioned that. An annual skin examination is exactly the right step, and if the provider sees anything concerning they can evaluate the mole and discuss removal in the same visit. The exam is around one hundred fifty to two hundred fifty dollars self-pay, though it's often covered by insurance.",
+          "highlights": [
+            "annual skin examination",
+            "often covered by insurance"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:39",
+          "text": "That helps. I'd want to run the Botox part past my husband before I commit to anything, but the skin check I definitely want to lock in.",
+          "highlights": [
+            "run the Botox part past my husband before I commit"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:48",
+          "text": "No problem at all. We can schedule the skin examination now, and add the Botox as a cosmetic consultation on the same day so you keep the option open. Would that work?",
+          "highlights": [
+            "schedule the skin examination"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:57",
+          "text": "Yes, that's perfect. Can we do a morning sometime next week?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:03",
+          "text": "Let me check our schedule. I have Thursday, January 22nd at 10 AM with Dr. Patel at our North Dallas clinic. Does that work for you?",
+          "highlights": [
+            "Thursday, January 22nd at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:11",
+          "text": "Thursday at ten is great.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:15",
+          "text": "Perfect. I have you booked for an annual skin examination with a cosmetic consultation on Thursday, January 22nd at 10 AM. What's the best phone number and email to send your new patient forms?",
+          "highlights": [
+            "booked for an annual skin examination"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:25",
+          "text": "My cell is 214-555-0182 and my email is jen.alcott@email.com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:31",
+          "text": "Got it. You'll receive your patient forms and insurance information by email shortly. Please arrive about fifteen minutes early to complete check-in.",
+          "highlights": [
+            "patient forms and insurance information"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:37",
+          "text": "Sounds good, thank you so much for your help.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:40",
+          "text": "You're very welcome, Jennifer. We look forward to seeing you Thursday. Take care and have a great day.",
+          "highlights": [
+            "We look forward to seeing you Thursday"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Appointment: Scheduled",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: Cosmetic / Botox",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Skin Cancer Screening",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Inquiry Detected",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Insurance Question",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Jennifer Alcott, a new patient, called to inquire about Botox treatment for forehead lines and crow's feet along with an annual skin examination for a changing mole on her shoulder. The agent explained per-unit Botox pricing and the value of board-certified dermatology care, addressed her comparison to a nearby med spa, and accommodated her wish to consult her husband before committing to the cosmetic portion. The agent scheduled an annual skin examination with a cosmetic consultation with Dr. Patel at the North Dallas clinic. Contact details were captured and new patient forms were sent by email.",
+        "keyPoints": [
+          "New patient, first visit to the practice",
+          "Interested in Botox for forehead and crow's feet plus an annual skin examination",
+          "Concerned about a changing mole on her shoulder",
+          "Compared pricing against a nearby med spa",
+          "Booked skin exam with cosmetic consultation for Thursday, January 22nd at 10 AM",
+          "Captured phone number and email for patient forms"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Appointment booked, Thursday January 22nd 10 AM with Dr. Patel"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "33,219 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,322",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for texting U.S. Dermatology Partners. This is Sarah with our scheduling team. How can we help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi Sarah. I have a mole on my back that's been bothering me. I'd like to get it checked out."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "I'm glad you reached out. We can definitely help with that. Have you had a skin check with a dermatologist before, or would this be your first visit?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "First time. I'm a bit worried about it so I want a professional to look at it."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "That's smart to get it evaluated. We specialize in mole evaluation and removal. Which city are you located in? We have multiple locations across Texas and surrounding states."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:27 AM",
+              "text": "I'm in Austin, Texas."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:28 AM",
+              "text": "Perfect. We have a location in Austin. For a mole evaluation, we typically recommend starting with an annual skin examination where our dermatologist can assess the mole and discuss options. Does that sound good?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "Yes, that sounds good. What would that cost?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:30 AM",
+              "text": "An annual skin examination is typically between 150 and 250 dollars depending on your insurance coverage. Our team can verify your coverage when you book. Are you interested in scheduling that?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "Yes I want to schedule it."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "Excellent. We have an opening this Thursday, March 13th at 2 PM with Dr. Martinez at our Austin clinic. Would that time work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:34 AM",
+              "text": "That works perfectly."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:35 AM",
+              "text": "Great. Your appointment is confirmed for Thursday, March 13th at 2 PM at our Austin location for an annual skin examination. You'll receive a confirmation email shortly. Call us at 512-555-0147 if you need to reschedule. See you soon."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:36 AM",
+              "text": "Perfect. Thank you Sarah."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Identified: Mole Evaluation",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: Austin, TX",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided: 150 to 250 dollars",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Appointment Time: Thursday 2 PM",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "512-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "512-555-0147",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A823-45BC9D7E2F16",
+          "time": "3/11/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A823-45BC9D7E2F16",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B742-61ED3F5A8C29",
+          "time": "3/12/26 11:19 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B742-61ED3F5A8C29",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D965-78HG4K2B1L63",
+          "time": "3/13/26 9:33 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D965-78HG4K2B1L63",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "52,728 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 5,273",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/16/26 4:12 pm",
+          "active": true,
+          "date": "January 16, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hello, thank you for calling U.S. Dermatology Partners. This is Sarah speaking. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Hi Sarah. Yeah, I'm looking to get a skin cancer screening. I haven't had one in a couple years and I'm getting worried about a few spots on my back."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "I'm glad you reached out. We definitely want to make sure those spots get checked out. Have you seen a dermatologist before, or would this be your first visit with us?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "First time with you guys. I've been to a dermatologist before, but it's been a while."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Great, thanks for letting me know. And which location would be most convenient for you? We have clinics in nine states, including Texas, Colorado, Arizona, and Virginia."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "I'm in Austin, so Texas would be perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Perfect. Our Austin clinic is really well equipped for skin cancer screenings. Just to confirm, is this something that concerns you right now, or are you doing preventive screening?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "It's mainly preventive, but I do want those spots looked at since they've been there a while."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Absolutely, that makes sense. Our annual skin examination typically runs between one hundred fifty and two hundred fifty dollars depending on insurance, and includes a full body check. We can get you in pretty quickly. Would this coming Tuesday, January twenty-first, at two o'clock in the afternoon work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "Yeah, that should work. What do I need to bring?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Great. Just bring your insurance card if you have one, and any photo ID. If you don't have insurance, we can work with you on the cost. Your appointment is set for Tuesday, January twenty-first at two p.m. at our Austin clinic. You'll get a reminder call the day before, and if you need to reach us before then, you can call back at eight seven seven, nine three six, twenty-nine thirty-three."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Perfect, thanks so much Sarah."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "You're welcome. Looking forward to seeing you. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Annual Skin Examination",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Concern: Skin Cancer Screening",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Location: Austin, TX",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimated Price Range: 150 to 250",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/16/26 4:12 pm",
+            "duration": "6:18",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "512-445-7823",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B824-4D7AE521941C",
+          "time": "1/22/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B824-4D7AE521941C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C651-5E8BC634A2D5",
+          "time": "1/28/26 11:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C651-5E8BC634A2D5",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D739-6F9CD745B3E8",
+          "time": "1/31/26 3:51 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D739-6F9CD745B3E8",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as U.S. Dermatology Partners's AI scheduling assistant helping the patient find the right visit and lock in a convenient time, mention that new patient annual skin exams are often covered by insurance, and ask if they'd like to get started.",
+        "Qualify one question at a time: Ask only one question per text, covering the skin concern or service they need (skin cancer screening, acne, eczema, Botox, mole or wart removal), whether it is a new or returning patient, their insurance carrier or self-pay preference, their preferred timeline, and finally their ZIP code so we can confirm the nearest clinic.",
+        "Estimate then book: Confirm we have a clinic near their ZIP, explain that a board-certified dermatologist will review specifics during the visit rather than quoting an exact price over text, propose a specific day and time at the closest location, and confirm they'll receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "U_S_Dermatology_Partners_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Services & Specialties",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Locations",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Provider",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"biopsy results\",\"question\":\"When will I get my skin biopsy results back?\",\"answer\":\"Most biopsy results are ready within 7 to 10 business days, and your care team will call you or send them through the Patient Portal. If you have not heard from us, we can have your clinic follow up right away.\"},{\"topic\":\"reschedule\",\"question\":\"I need to move my dermatology appointment to another day.\",\"answer\":\"No problem, I can help you reschedule to a time that works better at your clinic. Just let me know your preferred day and I'll confirm the next available opening.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do I need a referral to see a dermatologist?",
+              "answer": "Most of our clinics welcome patients without a referral, though some insurance plans may require one. I can help you book your visit and confirm the details for your location."
+            },
+            {
+              "question": "How often should I get a skin cancer screening?",
+              "answer": "A full body skin examination is recommended at least once a year, and more often if you have a history of skin cancer or many moles. I'd be glad to schedule your annual skin exam with a nearby dermatologist."
+            },
+            {
+              "question": "How much does a skin exam cost?",
+              "answer": "Annual skin exams are often covered by insurance, and self pay pricing varies by clinic and what the dermatologist finds. The best next step is to book a visit so we can review your coverage and give you accurate information."
+            },
+            {
+              "question": "Do you treat acne?",
+              "answer": "Yes, our dermatologists create personalized acne treatment plans for all ages and skin types. Let's get you scheduled so a provider can recommend the best approach for you."
+            },
+            {
+              "question": "What is Mohs surgery?",
+              "answer": "Mohs micrographic surgery is a precise, staged removal of skin cancer with same day margin analysis to spare healthy tissue. If you have a diagnosis or a concerning spot, I can book you with a Mohs specialist for evaluation."
+            },
+            {
+              "question": "Can I get Botox at your clinics?",
+              "answer": "Yes, we offer Botox and other injectable treatments to smooth dynamic lines on the forehead, brows, and crow's feet. I can set up a cosmetic consultation so a provider can tailor a plan and discuss pricing in person."
+            },
+            {
+              "question": "Do you remove moles and warts?",
+              "answer": "Absolutely, our dermatologists evaluate and remove benign moles and warts using methods like shave excision, biopsy, or cryotherapy. Let's schedule an evaluation so a provider can take a look."
+            },
+            {
+              "question": "I have eczema that keeps flaring up. Can you help?",
+              "answer": "Yes, our providers diagnose triggers and offer topical and systemic therapies for chronic conditions like eczema and dermatitis. I'd be happy to book you a visit to get a treatment plan started."
+            },
+            {
+              "question": "Do you accept my insurance?",
+              "answer": "We work with many major insurance carriers, and coverage can vary by clinic and plan. If you share your ZIP code and carrier, I can help you book at a location that fits your needs and confirm details."
+            },
+            {
+              "question": "Where is your nearest location?",
+              "answer": "We have over 120 clinics across Arizona, Arkansas, Colorado, Kansas, Maryland, Missouri, Oklahoma, Texas, and Virginia. Share your ZIP code and I'll find the closest one to schedule your appointment."
+            },
+            {
+              "question": "Can I be seen for a suspicious spot quickly?",
+              "answer": "Yes, we prioritize concerning skin changes and can often find an early appointment. Tell me your ZIP code and I'll locate the soonest opening near you."
+            },
+            {
+              "question": "What should I bring to my first appointment?",
+              "answer": "Please bring a photo ID, your insurance card, and a list of any medications you take. I can go ahead and get your new patient visit scheduled now."
+            },
+            {
+              "question": "Do you offer chemical peels?",
+              "answer": "Yes, we offer chemical peels to help remove damaged or dull skin on the face, neck, and hands. Let's book a cosmetic consultation so a provider can recommend the right peel for your skin."
+            },
+            {
+              "question": "What are dermal fillers used for?",
+              "answer": "Dermal fillers restore lost volume to areas like the cheeks, lips, and folds using hyaluronic acid injectables. I can schedule a consultation where a provider will assess your goals and discuss options."
+            },
+            {
+              "question": "Do you treat hair loss?",
+              "answer": "Yes, our providers evaluate thinning hair and can recommend topical or supplement regimens, and we also carry MD Skin Essentials hair loss products. Let's book a visit to identify the cause and best treatment."
+            },
+            {
+              "question": "Are your dermatologists board certified?",
+              "answer": "Yes, our practice is physician led with board-certified dermatologists who truly listen. I'd be glad to match you with a provider near you and get you scheduled."
+            },
+            {
+              "question": "Can I do a virtual visit?",
+              "answer": "Some concerns can be handled through a virtual visit, while skin exams and procedures are done in office. Share what you need and your ZIP code, and I'll book the right type of appointment for you."
+            },
+            {
+              "question": "How do I get laser treatment for sun spots?",
+              "answer": "Our laser and IPL treatments target sun damage, pigmentation, redness, and texture. Let's schedule a cosmetic consultation so a provider can plan a series that fits your skin."
+            },
+            {
+              "question": "Do you see children for skin conditions?",
+              "answer": "Yes, our dermatologists care for patients of all ages, including children with conditions like acne and eczema. I can help you book a visit at a clinic near you."
+            },
+            {
+              "question": "How do I pay my bill or access my records?",
+              "answer": "You can pay your bill and view records through the Patient Portal, and our clinic staff can help if you get stuck. In the meantime, would you like me to schedule your next appointment?"
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the appointment\",\"follow_up_message\":\"Great, I found a clinic near your ZIP code with openings this week. Would Tuesday at 10:15 AM or Thursday at 2:30 PM work better for your dermatology appointment? You'll get a reminder text beforehand.\"},{\"intent\":\"request a cost estimate\",\"follow_up_message\":\"Because pricing depends on your insurance and what the dermatologist finds during the exam, the best next step is a quick visit. I can book you with a board-certified provider near you so they can review coverage and next steps in person. What day works for you?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is the U.S. Dermatology Partners scheduling assistant. I can help you find the right dermatology visit and book a convenient time at a clinic near you. Would you like to get started?",
+        "goal": "Guide the patient to book an in-office dermatology appointment with a board-certified provider at the nearest clinic.",
+        "bookingType": "in-office dermatology appointment",
+        "offer": "",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "What skin concern or service brings you in today, such as a skin cancer screening, acne, eczema, Botox, or mole removal?",
+          "Are you a new patient or a returning patient with us?",
+          "Will you be using insurance, and if so which carrier, or would you prefer self pay?",
+          "How soon are you hoping to be seen?",
+          "What is your ZIP code so I can find the closest clinic with availability?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:40 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:40 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:40 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "U.S. Dermatology Partners",
+      "callerName": "Sarah Mitchell",
+      "callerPhone": "(512) 555-0847",
+      "campaign": "Skin Cancer Screening, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$1,850",
+      "googleSearch": "skin cancer screening near me Austin",
+      "websiteSearch": "dermatologist annual skin exam",
+      "callingWebpage": "/services/skin-cancer/screening",
+      "products": "Annual Skin Examination, Skin Cancer Treatment",
+      "cartId": "USD-7234K",
+      "serviceable": "Yes",
+      "email": "sarah.mitchell@email.com",
+      "street": "2847 Barton Hills Drive",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78746",
+      "digitalJourney": "/home › /services/skin-cancer › /services/skin-cancer/screening › /locations/texas/austin",
+      "intent": "Patient seeking comprehensive annual skin examination and skin cancer screening with board-certified dermatologist in Austin area.",
+      "coverage": "ZIP 78746 confirmed, Austin serviceable",
+      "switchIntent": "High, patient has concerning mole, wants appointment within two weeks before summer travel.",
+      "greeting": "Hi Sarah, thanks for calling U.S. Dermatology Partners in Austin. I see you're interested in our annual skin examination and skin cancer screening services. I'd be happy to schedule you with one of our board-certified dermatologists. Would this week or next work better for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "U.S. Dermatology Partners",
+      "callerName": "Marcus Johnson",
+      "callerPhone": "(720) 555-0319",
+      "campaign": "Botox and Injectables, Denver Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$485",
+      "googleSearch": "Botox near me Denver Colorado",
+      "websiteSearch": "dermal fillers price cost",
+      "callingWebpage": "/services/cosmetic-dermatology/botox-injectables",
+      "products": "Botox Injectable Neurotoxins, Dermal Fillers",
+      "cartId": "USD-5891M",
+      "serviceable": "Yes",
+      "email": "marcus.johnson@email.com",
+      "street": "1420 Pearl Street",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80202",
+      "digitalJourney": "/home › /services/cosmetic-dermatology › /services/cosmetic-dermatology/botox-injectables › /locations/colorado/denver",
+      "intent": "Patient interested in cosmetic injectables including Botox and dermal fillers for facial rejuvenation and smoothing dynamic lines.",
+      "coverage": "ZIP 80202 confirmed, Denver serviceable",
+      "appointment": "Cosmetic consultation with injectable specialist, Thu Jul 18, 2:30 PM",
+      "greeting": "Hi Marcus. This is Jennifer from U.S. Dermatology Partners Denver. We have you scheduled for your cosmetic consultation with our injectables specialist this Thursday at 2:30 PM. Looking forward to discussing Botox and filler options with you. Any questions before your appointment?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "U.S. Dermatology Partners",
+      "brandDomain": "www.usdermatologypartners.com",
+      "brandIcon": "🩺",
+      "callerPhone": "+1 (512) 555-0142",
+      "callerLocation": "Austin, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Skin Cancer Screening, Book Today",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "dermatologist near me Austin",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Services / Skin Cancer / Annual Skin Examination",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Annual Skin Examination, Mohs Micrographic Surgery",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Austin, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "appt_new_screening",
+          "name": "Appointment, New Skin Cancer Screening"
+        },
+        {
+          "id": "support_existing",
+          "name": "Patient Support, Existing Care"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Dermatology Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hello and thank you for calling U.S. Dermatology Partners. This is an automated AI assistant. I see you've been looking at our skin cancer screening and Mohs surgery services. Are you calling today to schedule an annual skin examination or discuss a skin concern?",
+          "sigs": [],
+          "q": [
+            32,
+            40,
+            28
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, I've had this mole on my back that my friend said looks suspicious, and I want to get it checked out by a dermatologist. I live in Austin and need to see someone soon.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Mole evaluation</strong> concern"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>Urgent</strong> same week needed"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Austin location</strong> confirmed"
+            }
+          ],
+          "q": [
+            72,
+            18,
+            10
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I'm glad you're being proactive about that. An annual skin examination with one of our board certified dermatologists is the best way to evaluate any changes. We have several locations throughout Austin and can get you in quickly. Would you prefer a morning or afternoon appointment, and are you a new patient to our practice?",
+          "sigs": [],
+          "q": [
+            85,
+            10,
+            5
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I'm new to U.S. Dermatology Partners, and I'm pretty flexible. Next week would be great if you have anything available. Do I need to bring anything or fill out forms beforehand?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>New patient</strong> ready to book"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Next week</strong> availability requested"
+            },
+            {
+              "c": "purple",
+              "t": "Proactive about <strong>intake process</strong>"
+            }
+          ],
+          "q": [
+            94,
+            4,
+            2
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm connecting you now to our new patient scheduling team who will find the earliest appointment in Austin, get your insurance information, and send you our patient intake forms to complete online. They'll take great care of you.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"you're all scheduled (Agent)\", \"I've booked you in with the dermatologist (Agent)\", \"see you at your appointment (Agent)\", \"let's get you on the calendar (Agent)\"]) and answered_by_agent",
+          "createdAt": "10/14/25 9:12 am",
+          "updatedAt": "01/09/26 3:47 pm"
+        },
+        {
+          "name": "Acne Treatment Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"my acne won't clear up (Caller)\", \"breakouts on my face (Caller)\", \"acne treatment program (Agent)\", \"prescription for my skin (Caller)\"])",
+          "createdAt": "11/03/25 1:24 pm",
+          "updatedAt": "01/06/26 10:18 am"
+        },
+        {
+          "name": "Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"do you have any openings this week (Caller)\", \"what times are available (Caller)\", \"which provider takes new patients (Caller)\", \"how soon can I be seen (Caller)\"])",
+          "createdAt": "09/22/25 4:55 pm",
+          "updatedAt": "12/28/25 8:41 am"
+        },
+        {
+          "name": "Botox & Injectables Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"how much is Botox per unit (Caller)\", \"smooth out my forehead lines (Caller)\", \"dermal filler for my lips (Caller)\", \"any injectable specials (Caller)\"])",
+          "createdAt": "11/17/25 11:38 am",
+          "updatedAt": "01/12/26 2:09 pm"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the other dermatology clinic quoted me less (Caller)\", \"I saw a med spa nearby (Caller)\", \"my old dermatologist (Caller)\", \"another practice had a sooner opening (Caller)\"])",
+          "createdAt": "10/29/25 3:02 pm",
+          "updatedAt": "01/04/26 9:53 am"
+        },
+        {
+          "name": "Empathy & Listening (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy & Patient Listening] < 60 and duration > 45 sec",
+          "createdAt": "09/30/25 8:15 am",
+          "updatedAt": "12/19/25 4:26 pm"
+        },
+        {
+          "name": "Insurance Verification Handled (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Insurance Verification] < 60 and duration > 45 sec",
+          "createdAt": "10/07/25 2:41 pm",
+          "updatedAt": "01/08/26 11:07 am"
+        },
+        {
+          "name": "Mohs Surgery Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"I need Mohs surgery (Caller)\", \"my biopsy came back as skin cancer (Caller)\", \"remove a cancerous spot (Caller)\", \"how much does Mohs cost (Caller)\"])",
+          "createdAt": "11/25/25 10:53 am",
+          "updatedAt": "01/15/26 1:32 pm"
+        },
+        {
+          "name": "New Patient Scheduling Etiquette (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[New Patient Scheduling Etiquette] < 60 and duration > 45 sec",
+          "createdAt": "10/02/25 9:47 am",
+          "updatedAt": "12/30/25 3:14 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the self-pay price would be (Agent)\", \"that treatment runs about (Agent)\", \"per session it's around (Agent)\", \"the cost per syringe is (Agent)\"]) and duration > 1 min",
+          "createdAt": "11/10/25 12:19 pm",
+          "updatedAt": "01/11/26 4:58 pm"
+        }
+      ]
+    }
+  }
+}

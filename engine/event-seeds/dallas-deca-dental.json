@@ -1,0 +1,5339 @@
+{
+  "id": "deca-dental",
+  "customerName": "DECA Dental",
+  "websiteUrl": "https://www.decadental.com",
+  "brandDomain": "decadental.com",
+  "networkName": "Invoca for Dental",
+  "industry": "Dental support organization (DSO), multi-location dental care",
+  "bookingTerm": "Appointment",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 10234
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 11876
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 12045
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 11342
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 10255
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "$39 New Guest Special",
+          "marketingSearchTerm": "$39 dental exam special",
+          "landingPageUrl": "https://decadental.com/offers/new-guest-exam?utm_source=google&utm_medium=cpc&utm_campaign=39_new_guest_special",
+          "websiteJourney": "Home / Offers / New Guest Exam",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Same-Day Emergency Local Intent",
+          "marketingSearchTerm": "emergency dentist same day",
+          "landingPageUrl": "https://decadental.com/services/emergency-dental-care?utm_source=google&utm_medium=cpc&utm_campaign=same_day_emergency",
+          "websiteJourney": "Home / Services / Emergency & Same-Day",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Find a Location Near You",
+          "marketingSearchTerm": "dentist near me",
+          "landingPageUrl": "https://decadental.com/locations?utm_source=google&utm_medium=cpc&utm_campaign=find_a_location",
+          "websiteJourney": "Home / Locations",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Invisalign $500 Off",
+          "marketingSearchTerm": "Invisalign near me cost",
+          "landingPageUrl": "https://decadental.com/services/orthodontics/invisalign?utm_source=google&utm_medium=cpc&utm_campaign=invisalign_500_off",
+          "websiteJourney": "Home / Services / Orthodontics",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Open Saturdays",
+          "marketingSearchTerm": "dentist open Saturday",
+          "landingPageUrl": "https://decadental.com/locations?utm_source=bing&utm_medium=cpc&utm_campaign=open_saturdays",
+          "websiteJourney": "Home / Locations",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Smile More New Patient Acquisition",
+          "marketingSearchTerm": "new patient dental special",
+          "landingPageUrl": "https://decadental.com/offers/new-patient?utm_source=google&utm_medium=cpc&utm_campaign=smile_more_new_patient",
+          "websiteJourney": "Home / Offers / New Patient",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Affordable Care No Insurance",
+          "marketingSearchTerm": "affordable dentist no insurance",
+          "landingPageUrl": "https://decadental.com/insurance-financing?utm_source=google&utm_medium=cpc&utm_campaign=affordable_no_insurance",
+          "websiteJourney": "Home / Insurance & Financing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Dental Implants Local",
+          "marketingSearchTerm": "dental implants Dallas",
+          "landingPageUrl": "https://decadental.com/services/restorative-dentistry/implants?utm_source=bing&utm_medium=cpc&utm_campaign=dental_implants_local",
+          "websiteJourney": "Home / Services / Restorative Dentistry",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Wisdom Teeth Same-Day",
+          "marketingSearchTerm": "wisdom teeth removal near me",
+          "landingPageUrl": "https://decadental.com/services/oral-surgery?utm_source=google&utm_medium=cpc&utm_campaign=wisdom_teeth_same_day",
+          "websiteJourney": "Home / Services / Oral Surgery",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Whiten for the Holidays",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://decadental.com/services/cosmetic-dentistry/whitening?utm_source=instagram&utm_medium=paid_social&utm_campaign=whiten_for_the_holidays",
+          "websiteJourney": "Home / Services / Cosmetic Dentistry",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Family Dentistry Back to School",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://decadental.com/services/general-preventative?utm_source=facebook&utm_medium=paid_social&utm_campaign=family_dentistry_back_to_school",
+          "websiteJourney": "Home / Services / General & Preventative",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Invisalign $500 Off",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://decadental.com/services/orthodontics/invisalign?utm_source=instagram&utm_medium=paid_social&utm_campaign=invisalign_500_off",
+          "websiteJourney": "Home / Services / Orthodontics",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "$39 New Guest Special",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://decadental.com/offers/new-guest-exam?utm_source=facebook&utm_medium=paid_social&utm_campaign=39_new_guest_special",
+          "websiteJourney": "Home / Offers / New Guest Exam",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Google Business Profile",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://decadental.com/locations?utm_source=google&utm_medium=organic&utm_campaign=gbp_local",
+          "websiteJourney": "Home / Locations",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local SEO Service Pages",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://decadental.com/services/general-preventative?utm_source=google&utm_medium=organic&utm_campaign=local_seo_services",
+          "websiteJourney": "Home / Services / General & Preventative",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Pediatric Dentistry SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://decadental.com/services/general-preventative/pediatric?utm_source=google&utm_medium=organic&utm_campaign=pediatric_seo",
+          "websiteJourney": "Home / Services / Pediatric Dentistry",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Restorative Care SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://decadental.com/services/restorative-dentistry?utm_source=google&utm_medium=organic&utm_campaign=restorative_seo",
+          "websiteJourney": "Home / Services / Restorative Dentistry",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Teeth Whitening Local",
+          "marketingSearchTerm": "teeth whitening near me",
+          "landingPageUrl": "https://decadental.com/services/cosmetic-dentistry/whitening?utm_source=google&utm_medium=cpc&utm_campaign=teeth_whitening_local",
+          "websiteJourney": "Home / Services / Cosmetic Dentistry",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Open Saturdays",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://decadental.com/locations?utm_source=instagram&utm_medium=paid_social&utm_campaign=open_saturdays",
+          "websiteJourney": "Home / Locations",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Emergency Dental SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://decadental.com/services/emergency-dental-care?utm_source=google&utm_medium=organic&utm_campaign=emergency_seo",
+          "websiteJourney": "Home / Services / Emergency & Same-Day",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (DECA Dental)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "43,727"
+            },
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$15,742,715"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "6,996"
+            },
+            {
+              "label": "Billing & Insurance Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Existing Patient Call (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Reschedule & Cancellation Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Patient Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "46%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "17%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Patient Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Patient Call (Count)",
+            "values": [
+              5842,
+              8213,
+              7984,
+              7691,
+              7001
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              3204,
+              4521,
+              4318,
+              4213,
+              3876
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              1214,
+              1687,
+              1592,
+              1538,
+              1517
+            ]
+          },
+          {
+            "name": "New Patient (Count)",
+            "values": [
+              1943,
+              2748,
+              2641,
+              2566,
+              2346
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43727,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "15,842",
+                "44%",
+                "22%",
+                "$5,712,455"
+              ]
+            },
+            {
+              "name": "Organic & Local SEO",
+              "metrics": [
+                "11,318",
+                "47%",
+                "27%",
+                "$4,088,315"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "7,942",
+                "50%",
+                "31%",
+                "$2,861,240"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "5,461",
+                "54%",
+                "38%",
+                "$1,972,105"
+              ]
+            },
+            {
+              "name": "Referral & Reviews",
+              "metrics": [
+                "3,164",
+                "58%",
+                "46%",
+                "$1,108,600"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43727,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "16,214",
+                "43%",
+                "23%",
+                "$5,847,320"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "12,048",
+                "46%",
+                "28%",
+                "$4,352,660"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "8,132",
+                "49%",
+                "33%",
+                "$2,934,715"
+              ]
+            },
+            {
+              "name": "Email & SMS",
+              "metrics": [
+                "4,317",
+                "53%",
+                "40%",
+                "$1,556,420"
+              ]
+            },
+            {
+              "name": "Click-to-Call & Direct",
+              "metrics": [
+                "3,016",
+                "57%",
+                "49%",
+                "$1,051,600"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43727,
+          "rows": [
+            {
+              "name": "$39 New Guest Special",
+              "metrics": [
+                "9,847",
+                "45%",
+                "24%",
+                "$3,548,120"
+              ]
+            },
+            {
+              "name": "Invisalign $500 Off",
+              "metrics": [
+                "6,213",
+                "48%",
+                "29%",
+                "$2,915,640"
+              ]
+            },
+            {
+              "name": "Same-Day Emergency Local Intent",
+              "metrics": [
+                "4,892",
+                "51%",
+                "34%",
+                "$1,764,320"
+              ]
+            },
+            {
+              "name": "Smile More New Patient Acquisition",
+              "metrics": [
+                "3,564",
+                "54%",
+                "41%",
+                "$1,284,560"
+              ]
+            },
+            {
+              "name": "Open Saturdays",
+              "metrics": [
+                "2,118",
+                "59%",
+                "48%",
+                "$763,415"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43727,
+          "rows": [
+            {
+              "name": "dentist near me",
+              "metrics": [
+                "8,214",
+                "44%",
+                "25%",
+                "$2,984,210"
+              ]
+            },
+            {
+              "name": "emergency dentist same day",
+              "metrics": [
+                "5,132",
+                "48%",
+                "30%",
+                "$1,872,640"
+              ]
+            },
+            {
+              "name": "$39 dental exam special",
+              "metrics": [
+                "3,847",
+                "51%",
+                "35%",
+                "$1,345,820"
+              ]
+            },
+            {
+              "name": "invisalign near me cost",
+              "metrics": [
+                "2,916",
+                "55%",
+                "42%",
+                "$1,012,450"
+              ]
+            },
+            {
+              "name": "dentist open saturday",
+              "metrics": [
+                "1,893",
+                "60%",
+                "49%",
+                "$648,315"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Set (Industry) (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "General & Preventative",
+              "metrics": [
+                "14,382",
+                "46%",
+                "19%",
+                "$4,982,155"
+              ]
+            },
+            {
+              "name": "Emergency & Same-Day Care",
+              "metrics": [
+                "10,247",
+                "51%",
+                "24%",
+                "$3,621,447"
+              ]
+            },
+            {
+              "name": "Restorative Dentistry",
+              "metrics": [
+                "8,913",
+                "44%",
+                "27%",
+                "$3,289,712"
+              ]
+            },
+            {
+              "name": "Orthodontics",
+              "metrics": [
+                "6,428",
+                "55%",
+                "33%",
+                "$2,315,668"
+              ]
+            },
+            {
+              "name": "Cosmetic Dentistry",
+              "metrics": [
+                "3,757",
+                "49%",
+                "41%",
+                "$1,533,733"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43727,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "15,847",
+                "48%",
+                "21%",
+                "$5,712,483"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "10,213",
+                "52%",
+                "25%",
+                "$3,684,219"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "7,942",
+                "45%",
+                "29%",
+                "$2,861,547"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "5,681",
+                "50%",
+                "34%",
+                "$2,041,338"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "4,044",
+                "47%",
+                "43%",
+                "$1,443,128"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "General & Preventative",
+            "values": [
+              512,
+              571,
+              548,
+              601,
+              501
+            ]
+          },
+          {
+            "name": "Emergency & Same-Day Care",
+            "values": [
+              468,
+              502,
+              491,
+              518,
+              480
+            ]
+          },
+          {
+            "name": "Restorative Dentistry",
+            "values": [
+              458,
+              491,
+              472,
+              503,
+              483
+            ]
+          },
+          {
+            "name": "Orthodontics",
+            "values": [
+              402,
+              431,
+              418,
+              447,
+              423
+            ]
+          },
+          {
+            "name": "Cosmetic Dentistry",
+            "values": [
+              291,
+              312,
+              301,
+              324,
+              312
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 43,727 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Maria Callahan called to book a complimentary Invisalign consultation at the Frisco Ideal Dental office. Agent Oscar walked her through the clear aligner process, applied the $500 off promo, and confirmed her preferred Saturday slot. She left excited and scheduled the consult.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "2m 40s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 6,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 87,
+          "summary": "James Whitfield asked about professional teeth whitening before a wedding. Agent Lila explained both in-office and take-home whitening options and pricing, then booked him for an in-office session next week. He was pleased with the clear guidance.",
+          "date": "Feb 12, 3:22 PM",
+          "agent": "Lila",
+          "duration": "2m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 82,
+          "summary": "Priya Natarajan, a new patient with no insurance, called about the $39 new guest exam. Agent Rosey confirmed the offer included digital X-rays and added a routine cleaning to the visit. Priya booked her first appointment for Saturday morning.",
+          "date": "Mar 4, 9:48 AM",
+          "agent": "Rosey",
+          "duration": "1m 55s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 10,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Daniel Portman called as a first-time patient to schedule care for his family. Agent Mary collected his contact details, insurance information, and dental history, then explained the new guest exam and a follow-up cleaning. She booked the family's initial appointments and sent a confirmation text.",
+          "date": "Apr 9, 1:37 PM",
+          "agent": "Mary",
+          "duration": "3m 10s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Sofia Reyes called with sudden tooth pain and swelling and needed an emergency same-day visit. Agent Lee found a reserved slot at the nearby location and explained the exam fee. Sofia accepted and scheduled the same-day appointment.",
+          "date": "May 2, 8:19 AM",
+          "agent": "Lee",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Kevin Alcott, an existing Invisalign patient, phoned to check on his monthly payment plan balance. Agent Mike pulled up the account and reviewed the remaining installments. Kevin got his answer but did not book any new visit.",
+          "date": "May 21, 4:05 PM",
+          "agent": "Mike",
+          "duration": "1m 30s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Nora Beckett called to learn about dental implant options for a missing molar. Agent Jennifer explained the on-site placement process and sedation options, then scheduled an implant consultation with the surgeon. Nora booked the visit.",
+          "date": "Jun 14, 11:52 AM",
+          "agent": "Jennifer",
+          "duration": "2m 30s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 59,
+          "summary": "Robert Sandoval disputed a charge on his recent dental crown and felt the estimate did not match the bill. Agent Rose reviewed the itemized statement and the insurance adjustment with him. The billing question was escalated and no appointment was booked.",
+          "date": "Jun 30, 2:11 PM",
+          "agent": "Rose",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 22,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Angela Firth called unhappy that her teeth whitening results faded faster than expected. Agent Sue explained maintenance and touch-up options and offered a take-home kit review. Angela remained frustrated and declined to schedule a follow-up.",
+          "date": "Jul 8, 10:40 AM",
+          "agent": "Sue",
+          "duration": "2m 15s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 25,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 51,
+          "summary": "Marcus Delaney called to cancel his upcoming orthodontics appointment due to a scheduling conflict. Agent Oscar processed the cancellation and offered alternate Saturday times. Marcus declined to rebook for now.",
+          "date": "Jul 25, 5:02 PM",
+          "agent": "Oscar",
+          "duration": "1m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 47,
+          "summary": "Teresa Holloway called about a long wait for an emergency slot after a broken tooth. Agent Lila apologized and searched nearby locations but could not find an earlier opening. Teresa stayed dissatisfied and did not confirm a visit.",
+          "date": "Aug 3, 12:29 PM",
+          "agent": "Lila",
+          "duration": "2m 45s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 43,
+          "summary": "Victor Ramos reported that his dental crown came loose only weeks after placement and wanted a repair. Agent Mike documented the issue and tried to arrange a warranty recheck, but the office callback line was busy. No appointment was finalized on this call.",
+          "date": "Aug 22, 3:48 PM",
+          "agent": "Mike",
+          "duration": "2m 20s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Gloria Manning called upset about the healing timeline on her recent dental implant and felt she was not warned. Agent Jennifer listened and forwarded her concerns to the surgical team for a callback. Gloria ended the call still frustrated and unscheduled.",
+          "date": "Sep 5, 9:11 AM",
+          "agent": "Jennifer",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Brandon Keeler called after hours about a lost temporary filling and rolled to voicemail. No agent was available to take the call, and he left a message requesting an urgent callback. No appointment was scheduled.",
+          "date": "Sep 19, 7:34 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Denise Cho called angry about a duplicate charge on her denture balance and demanded a refund. Agent Rose struggled to locate the second transaction and the caller grew more upset. The billing complaint was escalated and left unresolved.",
+          "date": "Oct 1, 1:16 PM",
+          "agent": "Rose",
+          "duration": "3m 22s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "invisalign",
+        "emergency",
+        "whitening",
+        "implant",
+        "crown",
+        "cleaning"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 18s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Service Interest",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Office Location/Service Area",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Verify New Patient Status",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Appointment with Date/Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Visit Expectations",
+          "points": "0/10",
+          "status": "unmet"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Greeted caller within 3 rings",
+        "Used patient's name throughout call",
+        "Confirmed new patient status",
+        "Identified primary service need (new patient exam)",
+        "Offered promotional pricing ($39 exam special)",
+        "Confirmed preferred office location",
+        "Repeated appointment date and time back",
+        "Spoke clearly and professionally",
+        "Asked qualifying question about insurance",
+        "Offered to answer questions before visit",
+        "Used assumptive close (booking language)",
+        "Verified phone number accuracy",
+        "Provided appointment confirmation"
+      ],
+      "unmetSignals": [
+        "Did not capture email address for confirmation",
+        "Failed to set expectations about visit duration",
+        "Did not mention what to bring to appointment",
+        "No upsell of complementary services",
+        "Missed opportunity to discuss payment options",
+        "Did not ask about dental anxiety or special needs",
+        "No mention of new patient paperwork process",
+        "Unclear if caller understood no insurance required",
+        "Did not offer text message appointment reminder",
+        "No discussion of cancellation policy",
+        "Did not ask if any current dental concerns",
+        "Missed opportunity to introduce practice values"
+      ],
+      "naSignals": [
+        "Insurance claim status inquiry",
+        "Previous appointment rescheduling",
+        "Payment plan adjustment request",
+        "Complaint about prior visit",
+        "Prescription refill request",
+        "Referral to specialist outside network",
+        "Post-operative follow up care",
+        "Crown or implant financing terms",
+        "Emergency extraction availability",
+        "Denture adjustment follow up"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "The caller is a new patient seeking a comprehensive dental evaluation and wants to establish care at Ideal Dental. They are not addressing an urgent issue but are proactive about getting their first exam and cleaning done."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a professional booking process and appears attracted by the $39 new patient exam special. They want confirmation of the appointment time and location so they can plan their visit accordingly."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have captured the caller's email address for appointment confirmation and digital paperwork, and should have set clear expectations about the 60 minute appointment duration, what documents to bring (ID and insurance card if available), and the new patient intake process."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Thank you for calling Ideal Dental. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:08",
+          "text": "Hi, yes, I'm looking to schedule a new patient appointment. I haven't been to a dentist in a while and I saw your $39 exam special online."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:18",
+          "text": "That's wonderful. I'm so glad you found us. The $39 new guest exam includes a comprehensive evaluation and digital X-rays. To get you booked, I need to collect some information. What is your full name, please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:31",
+          "text": "It's Jennifer Martinez."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:34",
+          "text": "Perfect, Jennifer. And which of our office locations is most convenient for you? We have clinics in Dallas, Arlington, and Fort Worth."
+        },
+        {
+          "speaker": "caller",
+          "time": "00:45",
+          "text": "The Arlington location works best for me. I live nearby."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:50",
+          "text": "Great choice. The Arlington clinic is easily accessible and has availability throughout the week. Before I check our schedule, are you a current patient with us, or will this be your first visit to Ideal Dental?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:02",
+          "text": "First time. I'm completely new."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:05",
+          "text": "Excellent. Then you'll qualify for our $39 new guest special, which includes the full exam and digital X-rays. Do you have dental insurance, or will you be paying out of pocket?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:16",
+          "text": "I don't have insurance right now, but I'm interested in the exam without it."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:22",
+          "text": "Perfect. We accept all patients with or without insurance. Now, let me get your best contact phone number to confirm the appointment."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:31",
+          "text": "It's ****-****-**** extension 4."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:38",
+          "text": "Thank you, Jennifer. I have ****-****-**** extension 4. I'm going to schedule you for Thursday, October 24th at 3:00 PM at our Arlington location. Does that time work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:52",
+          "text": "Yes, that's perfect. I'll be there."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:56",
+          "text": "Wonderful. So to confirm, Jennifer Martinez, Thursday, October 24th at 3:00 PM for your new guest exam and X-rays at our Arlington clinic. We look forward to seeing you. Thank you for choosing Ideal Dental."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:09",
+          "text": "Great. Thanks so much."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:12",
+          "text": "You're welcome. See you soon, Jennifer."
+        }
+      ],
+      "aiSummary": "Jennifer Martinez, a new patient without dental insurance, called to book the $39 new guest promotion at Ideal Dental's Arlington clinic. Marcus successfully confirmed her full name, verified new patient status, captured her phone number, and scheduled her for Thursday, October 24th at 3:00 PM for a comprehensive exam and digital X-rays. However, Marcus did not capture an email address for digital confirmation or set expectations about the appointment duration and required documents. The call was professional and efficient, resulting in a confirmed new patient appointment.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, strong structure on this intake. You greeted quickly, used Jennifer's name naturally, confirmed the promotion offering, and locked in the appointment with clear date and time repetition. Two coaching notes for next time. First, capture the email address for appointment confirmation and digital intake forms. That step prevents no-shows. Second, set visit expectations: let her know the appointment is about 60 minutes, suggest she bring ID and any insurance documents if she gets coverage soon, and briefly explain the new patient paperwork process. These touches reduce friction and show we're organized."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "43,727"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$360.02"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$15,742,715"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "24,551"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "56%"
+            },
+            {
+              "label": "Appointment: Scheduled (Count)",
+              "value": "20,989"
+            },
+            {
+              "label": "Appointment: Scheduled (Percent)",
+              "value": "48%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "19,176"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Appointment: Canceled (Percent)",
+              "value": "6%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Appointments)",
+          "chart": {
+            "legend": "Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Local Listings / Referral",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Direct",
+                "value": 53,
+                "display": "53%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 49,
+                "display": "49%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 45,
+                "display": "45%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "15,842",
+                  "41%",
+                  "$5,412,882"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "11,318",
+                  "45%",
+                  "$4,038,564"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "8,214",
+                  "49%",
+                  "$2,884,116"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "5,127",
+                  "53%",
+                  "$1,915,338"
+                ]
+              },
+              {
+                "cells": [
+                  "Local Listings / Referral",
+                  "3,226",
+                  "58%",
+                  "$1,491,815"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 16000,
+            "axisTicks": [
+              0,
+              4000,
+              8000,
+              12000,
+              16000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 14213,
+                "display": "14,213"
+              },
+              {
+                "name": "organic",
+                "value": 11864,
+                "display": "11,864"
+              },
+              {
+                "name": "paid_social",
+                "value": 7952,
+                "display": "7,952"
+              },
+              {
+                "name": "email",
+                "value": 5431,
+                "display": "5,431"
+              },
+              {
+                "name": "referral",
+                "value": 4267,
+                "display": "4,267"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "14,213",
+                  "42%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "11,864",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "paid_social",
+                  "7,952",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "5,431",
+                  "53%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "4,267",
+                  "60%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "$39 New Guest Special",
+                "value": 8742,
+                "display": "8,742"
+              },
+              {
+                "name": "Smile More New Patient Acquisition",
+                "value": 6318,
+                "display": "6,318"
+              },
+              {
+                "name": "Invisalign $500 Off",
+                "value": 4127,
+                "display": "4,127"
+              },
+              {
+                "name": "Same-Day Emergency Local Intent",
+                "value": 3214,
+                "display": "3,214"
+              },
+              {
+                "name": "Open Saturdays Family Dentistry",
+                "value": 2086,
+                "display": "2,086"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "$39 New Guest Special",
+                  "8,742",
+                  "44%",
+                  "$2,914,255"
+                ]
+              },
+              {
+                "cells": [
+                  "Smile More New Patient Acquisition",
+                  "6,318",
+                  "48%",
+                  "$2,118,540"
+                ]
+              },
+              {
+                "cells": [
+                  "Invisalign $500 Off",
+                  "4,127",
+                  "52%",
+                  "$1,842,110"
+                ]
+              },
+              {
+                "cells": [
+                  "Same-Day Emergency Local Intent",
+                  "3,214",
+                  "58%",
+                  "$1,014,860"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "dentist near me",
+                "value": 6842,
+                "display": "6,842"
+              },
+              {
+                "name": "emergency dentist same day",
+                "value": 4218,
+                "display": "4,218"
+              },
+              {
+                "name": "$39 dental exam special",
+                "value": 3127,
+                "display": "3,127"
+              },
+              {
+                "name": "invisalign near me cost",
+                "value": 2514,
+                "display": "2,514"
+              },
+              {
+                "name": "dentist open saturday",
+                "value": 1873,
+                "display": "1,873"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "dentist near me",
+                  "43%"
+                ]
+              },
+              {
+                "cells": [
+                  "emergency dentist same day",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "$39 dental exam special",
+                  "54%"
+                ]
+              },
+              {
+                "cells": [
+                  "invisalign near me cost",
+                  "59%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Appointment: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "General & Preventative",
+              "14,218",
+              "42%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Orthodontics",
+              "9,127",
+              "47%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Restorative Dentistry",
+              "6,842",
+              "51%",
+              "54%"
+            ]
+          },
+          {
+            "cells": [
+              "Emergency & Same-Day Care",
+              "4,318",
+              "57%",
+              "66%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Ideal Dental Frisco",
+              "6,218",
+              "512",
+              "7%",
+              "44%"
+            ]
+          },
+          {
+            "cells": [
+              "Ideal Dental Las Colinas",
+              "4,842",
+              "387",
+              "6%",
+              "48%"
+            ]
+          },
+          {
+            "cells": [
+              "Ideal Dental Cedar Park",
+              "3,517",
+              "274",
+              "5%",
+              "53%"
+            ]
+          },
+          {
+            "cells": [
+              "Ideal Dental Pearland",
+              "2,614",
+              "183",
+              "4%",
+              "59%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1284,
+              1512,
+              1438,
+              1356,
+              1252
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1042,
+              1138,
+              1087,
+              1029,
+              1022
+            ]
+          },
+          {
+            "name": "Insurance Not Accepted",
+            "values": [
+              872,
+              948,
+              921,
+              908,
+              878
+            ]
+          },
+          {
+            "name": "Scheduling Conflict",
+            "values": [
+              698,
+              742,
+              731,
+              724,
+              719
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              462,
+              512,
+              498,
+              487,
+              478
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "17,491"
+          },
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "New Patient (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$8,973,348"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$847,291"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,056,847"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$723,156"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,247,803"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,431,692"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,666,559"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21347,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "6,847",
+                "58%",
+                "31%",
+                "$2,156,873"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "4,283",
+                "54%",
+                "34%",
+                "$1,487,294"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "3,612",
+                "57%",
+                "32%",
+                "$1,203,748"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "1,948",
+                "52%",
+                "29%",
+                "$587,341"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "801",
+                "48%",
+                "37%",
+                "$338,092"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20089,
+          "rows": [
+            {
+              "name": "Search",
+              "metrics": [
+                "7,294",
+                "56%",
+                "32%",
+                "$2,384,156"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "3,921",
+                "55%",
+                "31%",
+                "$1,287,445"
+              ]
+            },
+            {
+              "name": "Display",
+              "metrics": [
+                "2,847",
+                "54%",
+                "33%",
+                "$912,673"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "1,756",
+                "52%",
+                "35%",
+                "$652,837"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "673",
+                "49%",
+                "38%",
+                "$271,304"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20156,
+          "rows": [
+            {
+              "name": "$39 New Guest Special",
+              "metrics": [
+                "4,156",
+                "59%",
+                "28%",
+                "$1,328,974"
+              ]
+            },
+            {
+              "name": "Invisalign $500 Off",
+              "metrics": [
+                "3,248",
+                "56%",
+                "35%",
+                "$1,142,856"
+              ]
+            },
+            {
+              "name": "Same Day Emergency Care",
+              "metrics": [
+                "2,847",
+                "54%",
+                "32%",
+                "$847,293"
+              ]
+            },
+            {
+              "name": "Open Saturdays Family Dentistry",
+              "metrics": [
+                "1,673",
+                "51%",
+                "37%",
+                "$598,421"
+              ]
+            },
+            {
+              "name": "Smile Brighter Holiday Special",
+              "metrics": [
+                "1,567",
+                "48%",
+                "39%",
+                "$483,156"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 19834,
+          "rows": [
+            {
+              "name": "Dentist near me",
+              "metrics": [
+                "2,891",
+                "57%",
+                "29%",
+                "$956,384"
+              ]
+            },
+            {
+              "name": "Emergency dentist same day",
+              "metrics": [
+                "2,347",
+                "55%",
+                "33%",
+                "$782,945"
+              ]
+            },
+            {
+              "name": "Invisalign near me cost",
+              "metrics": [
+                "1,928",
+                "54%",
+                "36%",
+                "$673,821"
+              ]
+            },
+            {
+              "name": "Affordable dentist no insurance",
+              "metrics": [
+                "1,456",
+                "52%",
+                "38%",
+                "$518,247"
+              ]
+            },
+            {
+              "name": "Dentist open Saturday",
+              "metrics": [
+                "1,234",
+                "49%",
+                "41%",
+                "$412,738"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "General and Preventative",
+              "metrics": [
+                "5,847",
+                "58%",
+                "28%",
+                "$1,847,293"
+              ]
+            },
+            {
+              "name": "Orthodontics",
+              "metrics": [
+                "3,912",
+                "56%",
+                "35%",
+                "$1,756,428"
+              ]
+            },
+            {
+              "name": "Cosmetic Dentistry",
+              "metrics": [
+                "3,284",
+                "54%",
+                "32%",
+                "$1,203,847"
+              ]
+            },
+            {
+              "name": "Restorative Dentistry",
+              "metrics": [
+                "2,856",
+                "52%",
+                "38%",
+                "$1,283,591"
+              ]
+            },
+            {
+              "name": "Oral Surgery and Implants",
+              "metrics": [
+                "1,592",
+                "49%",
+                "41%",
+                "$882,189"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "General and Preventative",
+            "values": [
+              421,
+              498,
+              534,
+              487,
+              496
+            ]
+          },
+          {
+            "name": "Orthodontics",
+            "values": [
+              367,
+              418,
+              443,
+              381,
+              405
+            ]
+          },
+          {
+            "name": "Cosmetic Dentistry",
+            "values": [
+              289,
+              315,
+              342,
+              298,
+              307
+            ]
+          },
+          {
+            "name": "Restorative Dentistry",
+            "values": [
+              298,
+              312,
+              358,
+              327,
+              341
+            ]
+          },
+          {
+            "name": "Oral Surgery and Implants",
+            "values": [
+              167,
+              185,
+              198,
+              156,
+              172
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "11,843"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$15,234,595"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "842"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "31"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$39,847"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Appointment Scheduled",
+            "values": [
+              73,
+              77,
+              75,
+              82,
+              78,
+              71,
+              79,
+              84,
+              76,
+              80,
+              72,
+              83,
+              77,
+              75,
+              81,
+              74,
+              79,
+              76,
+              78,
+              72,
+              74,
+              77,
+              81,
+              75,
+              76,
+              79,
+              73,
+              71,
+              75,
+              78,
+              72,
+              176,
+              189,
+              174,
+              191,
+              183,
+              177,
+              185,
+              179,
+              188,
+              192,
+              175,
+              186,
+              181,
+              178,
+              190,
+              184,
+              179,
+              187
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,189"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "11,247"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "743"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "62%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "718"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "96%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Appointment Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "New Patient Exam Inquiry",
+            "values": [
+              11,
+              14,
+              8,
+              12,
+              10,
+              13
+            ]
+          },
+          {
+            "name": "Invisalign Consultation",
+            "values": [
+              7,
+              9,
+              11,
+              6,
+              10,
+              8
+            ]
+          },
+          {
+            "name": "Emergency Same-Day Care",
+            "values": [
+              2,
+              1,
+              0,
+              3,
+              1,
+              2
+            ]
+          },
+          {
+            "name": "Implant & Restorative",
+            "values": [
+              6,
+              8,
+              7,
+              9,
+              5,
+              11
+            ]
+          },
+          {
+            "name": "Teeth Whitening & Cosmetic",
+            "values": [
+              4,
+              6,
+              5,
+              8,
+              7,
+              9
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "40,229"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "30,609"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Appointment Booked (Count)",
+            "value": "20,989"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$15,742,715"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Rodriguez",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Jennifer Walsh",
+              "value": 224,
+              "display": "224"
+            },
+            {
+              "name": "Kevin Chen",
+              "value": 201,
+              "display": "201"
+            },
+            {
+              "name": "Priya Desai",
+              "value": 163,
+              "display": "163"
+            },
+            {
+              "name": "David Thompson",
+              "value": 245,
+              "display": "245"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Jessica Palmer",
+            "values": [
+              142,
+              168,
+              185,
+              201,
+              216
+            ]
+          },
+          {
+            "name": "Christopher Lee",
+            "values": [
+              138,
+              156,
+              174,
+              192,
+              218
+            ]
+          },
+          {
+            "name": "Amanda Foster",
+            "values": [
+              135,
+              151,
+              169,
+              189,
+              212
+            ]
+          },
+          {
+            "name": "Marcus Rivera",
+            "values": [
+              129,
+              147,
+              163,
+              182,
+              204
+            ]
+          },
+          {
+            "name": "Rachel Kim",
+            "values": [
+              126,
+              144,
+              158,
+              177,
+              198
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Kyle Harrison",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Natalie Woods",
+              "value": 55.8,
+              "display": "55.8%"
+            },
+            {
+              "name": "Brandon Peters",
+              "value": 56.1,
+              "display": "56.1%"
+            },
+            {
+              "name": "Monica Sanchez",
+              "value": 57.4,
+              "display": "57.4%"
+            },
+            {
+              "name": "Trevor Jackson",
+              "value": 58.9,
+              "display": "58.9%"
+            },
+            {
+              "name": "Samantha Green",
+              "value": 60.3,
+              "display": "60.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Kyle Harrison",
+                "54.2%",
+                "28%",
+                "$279,156",
+                "1,347"
+              ]
+            },
+            {
+              "cells": [
+                "Natalie Woods",
+                "55.8%",
+                "29%",
+                "$291,435",
+                "1,405"
+              ]
+            },
+            {
+              "cells": [
+                "Brandon Peters",
+                "56.1%",
+                "30%",
+                "$306,751",
+                "1,389"
+              ]
+            },
+            {
+              "cells": [
+                "Monica Sanchez",
+                "57.4%",
+                "31%",
+                "$318,263",
+                "1,423"
+              ]
+            },
+            {
+              "cells": [
+                "Trevor Jackson",
+                "58.9%",
+                "33%",
+                "$341,778",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Samantha Green",
+                "60.3%",
+                "35%",
+                "$368,419",
+                "1,512"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Jessica Palmer",
+              "value": 92.7,
+              "display": "92.7%"
+            },
+            {
+              "name": "Christopher Lee",
+              "value": 91.4,
+              "display": "91.4%"
+            },
+            {
+              "name": "Amanda Foster",
+              "value": 90.8,
+              "display": "90.8%"
+            },
+            {
+              "name": "Marcus Rivera",
+              "value": 89.3,
+              "display": "89.3%"
+            },
+            {
+              "name": "Rachel Kim",
+              "value": 88.1,
+              "display": "88.1%"
+            },
+            {
+              "name": "Daniel Torres",
+              "value": 87.6,
+              "display": "87.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jessica Palmer",
+                "92.7%",
+                "64%",
+                "$718,485",
+                "1,489"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Lee",
+                "91.4%",
+                "62%",
+                "$684,127",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Foster",
+                "90.8%",
+                "61%",
+                "$671,953",
+                "1,467"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Rivera",
+                "89.3%",
+                "59%",
+                "$630,841",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Rachel Kim",
+                "88.1%",
+                "58%",
+                "$607,284",
+                "1,398"
+              ]
+            },
+            {
+              "cells": [
+                "Daniel Torres",
+                "87.6%",
+                "57%",
+                "$590,347",
+                "1,435"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Appointment Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Appointment Booked (Count)",
+        "rightMax": 1000,
+        "rightTicks": [
+          0,
+          250,
+          500,
+          750,
+          1000
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 778
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 746
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 694
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 662
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 576
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 605
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 669
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 695
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 776
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 752
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 677
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 654
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 582
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 600
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 685
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 706
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 768
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 756
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 663
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 642
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 590
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 597
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 697
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 720
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 758
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 757
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 653
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 626
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 601
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 598
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 706
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 800000,
+        "rightTicks": [
+          0,
+          266666.6666666667,
+          533333.3333333334,
+          800000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 583569
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 559325
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 520845
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 496986
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 432718
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 454126
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 501660
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 521434
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 581402
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 563705
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 507710
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 490712
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 436651
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 450084
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 513604
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 529254
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 575989
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 567025
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 497219
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 481448
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 443205
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 447851
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 522456
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 539775
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 568671
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 567844
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 490105
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 469932
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 450890
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 448715
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 527805
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "43,727"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,498"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,624"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "83%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Margaret Chen",
+                "412",
+                "86%",
+                "84%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "David Martinez",
+                "521",
+                "84%",
+                "82%",
+                "83%"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Kapoor",
+                "384",
+                "85%",
+                "83%",
+                "84%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "43,727 calls",
+      "pagerLabel": "1 of 4,373",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:23 am",
+          "id": "A21C-4E9B7710C6F2"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C8D4-2A1F60B99E33"
+        },
+        {
+          "time": "1/14/26 11:15 am",
+          "id": "3E7A-9C0D4488F1B5"
+        },
+        {
+          "time": "1/16/26 12:38 pm",
+          "id": "B90F-7712DDA304C8"
+        },
+        {
+          "time": "1/20/26 1:52 pm",
+          "id": "6D2E-51A8F0397CB1"
+        },
+        {
+          "time": "1/22/26 2:29 pm",
+          "id": "9F4B-0C63E2718AD6"
+        },
+        {
+          "time": "1/26/26 3:44 pm",
+          "id": "1A8C-B4E907D25F63"
+        },
+        {
+          "time": "1/28/26 4:18 pm",
+          "id": "7C5D-38F1A609B4E2"
+        },
+        {
+          "time": "1/30/26 5:31 pm",
+          "id": "E62A-9D40C7135BF8"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling Ideal Dental, this is Brianna. How can I help you smile today?",
+          "highlights": [
+            "Thank you for calling Ideal Dental",
+            "How can I help you smile today"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:08",
+          "text": "Hi, yes, I just moved to the area and I'm looking for a new dentist. I need a cleaning and I think one of my back teeth has a cavity.",
+          "highlights": [
+            "just moved to the area",
+            "looking for a new dentist"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "Welcome to the neighborhood, and I'd be happy to get you set up. Can I start with your first and last name?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:23",
+          "text": "Sure, it's Marcus Delgado.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:27",
+          "text": "Thanks, Marcus. Since you're a new patient, we have a new guest exam with digital X-rays for thirty-nine dollars, and that normally runs almost three hundred. That would let the doctor check that back tooth too.",
+          "highlights": [
+            "new patient",
+            "new guest exam with digital X-rays for thirty-nine dollars"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:40",
+          "text": "Okay that's not bad. But if it really is a cavity, what does the filling run after that? I want to keep it manageable while I'm getting settled.",
+          "highlights": [
+            "what does the filling run",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:50",
+          "text": "Completely understandable. A tooth-colored filling typically ranges from about one fifty to four hundred depending on the size, and the doctor confirms exact pricing after the X-rays. We also accept most insurance and offer financing if you need to spread it out.",
+          "highlights": [
+            "tooth-colored filling",
+            "accept most insurance",
+            "financing"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:03",
+          "text": "Got it. I'll be honest, I'm calling a couple of places today. There's an office down the street that quoted me a bit less for the cleaning.",
+          "highlights": [
+            "calling a couple of places today",
+            "quoted me a bit less"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:13",
+          "text": "I appreciate you being upfront, and I think you'll find our value hard to beat. With us you get the exam, X-rays, and the doctor evaluation all in one visit, and we have every specialty under one roof, so if that tooth needs more than a filling you won't be sent elsewhere.",
+          "highlights": [
+            "every specialty under one roof"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:26",
+          "text": "That's actually a good point. My last dentist always referred me out for everything.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:32",
+          "text": "Not here, we handle it all in house. Were you also due for anything else, whitening or a night guard, while we have you in?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "1:40",
+          "text": "Actually yes, my partner mentioned I grind my teeth at night, so I might want to ask about a night guard too. But let me check with them before I commit to that part.",
+          "highlights": [
+            "ask about a night guard",
+            "check with them before I commit"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:51",
+          "text": "No problem at all, the doctor can talk you through a custom night guard at the visit and there's no obligation to decide that day. Let's start with the exam and cleaning. Are mornings or afternoons better for you?",
+          "highlights": [
+            "no obligation to decide that day"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:02",
+          "text": "Mornings are better. Do you have anything Thursday? And are you open Saturdays in case I need to reschedule?",
+          "highlights": [
+            "open Saturdays"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:11",
+          "text": "We are open Saturdays, yes. For Thursday I have a ten o'clock opening at our location on Preston Road. Shall I book that for you?",
+          "highlights": [
+            "open Saturdays",
+            "ten o'clock opening"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:20",
+          "text": "Yes, Thursday at ten works great.",
+          "highlights": [
+            "Thursday at ten works great"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:25",
+          "text": "Perfect, I've got you scheduled Thursday at ten for your new guest exam, X-rays, and cleaning. What's the best mobile number and email for your confirmation?",
+          "highlights": [
+            "I've got you scheduled Thursday at ten"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:33",
+          "text": "It's 214-555-0182, and marcus.delgado@email.com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:38",
+          "text": "Wonderful, you're all set, Marcus. We'll text a reminder and see you Thursday. Thanks for choosing Ideal Dental, have a great day!",
+          "highlights": [
+            "you're all set",
+            "Thanks for choosing Ideal Dental"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Appointment: Scheduled",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: New Guest Exam Offer",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Restorative Filling",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "New patient Marcus Delgado called after moving to the area, seeking a routine cleaning and an evaluation of a possible cavity on a back tooth. Brianna presented the thirty-nine dollar new guest exam with digital X-rays and explained tooth-colored filling pricing, insurance acceptance, and financing to address his budget concern. She differentiated Ideal Dental from a cheaper competitor by highlighting every specialty under one roof and Saturday availability, and noted the option of a custom night guard for grinding. The call closed with a booked appointment.",
+        "keyPoints": [
+          "New patient who recently relocated to the area",
+          "Needs a cleaning plus evaluation of a suspected cavity",
+          "Recommended the $39 new guest exam with X-rays and tooth-colored filling option",
+          "Addressed price concern with insurance and financing, and a competitor comparison",
+          "Raised a possible night guard for grinding, pending partner discussion",
+          "Booked Thursday 10 AM at the Preston Road location; captured phone and email"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Appointment booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "27,548 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,755",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for texting Ideal Dental. This is Marcus from our scheduling team. Are you interested in booking an appointment with us today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes, I need to get my teeth cleaned. Haven't been to a dentist in like 3 years."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great, we'd love to help you get back on track with your dental health. Are you a new patient to Ideal Dental, or have you visited one of our offices before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "New patient. I live near downtown and I'm looking for someone close by."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. We have several locations throughout the area. Just to confirm, when you say you need a cleaning, are you looking for a routine cleaning with an exam, or do you have any other concerns like pain or sensitivity?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Just a routine cleaning and exam. I want to make sure nothing is wrong."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Excellent. As a new patient, we're offering a comprehensive exam plus digital X rays for just 39 dollars. Does that work for your budget?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "That sounds great. Yeah, I can do that."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Wonderful. We have availability this Saturday at 2 PM or Monday at 10 AM. Which day works better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "Saturday at 2 PM is perfect. I work during the week."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "Perfect. I've got you scheduled for Saturday, March 15th at 2 PM at our downtown location. Your new patient exam with X rays is 39 dollars. Can you confirm your phone number ending in 7429?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Yes that's right."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Great. We'll see you Saturday at 2 PM. If you need to reschedule, just call us back at 877 936 2933. Looking forward to getting you smiling again."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:35 AM",
+              "text": "Thanks so much. See you then."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Type: General Cleaning and Exam",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "New Patient Offer Accepted: 39 Dollar Promo",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Availability Confirmed: Saturday Preferred",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Location: Downtown Office",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "15",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "512-447-8934",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Chen",
+            "firstName": "Sarah",
+            "lastName": "Chen",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "K842-5A7C309B14E8",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "K842-5A7C309B14E8",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "M764-8F2D415C9A37",
+          "time": "8/16/25 10:38 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "M764-8F2D415C9A37",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "P291-6B1E7FC42D5A",
+          "time": "8/16/25 10:29 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "P291-6B1E7FC42D5A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "43,727 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,373",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:43 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:43 PM",
+              "text": "Hi there, thanks for calling Ideal Dental. This is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:44 PM",
+              "text": "Yeah, hi. I'm looking for a dentist. I haven't been to one in like five years, and I'm pretty nervous about it."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:44 PM",
+              "text": "I totally understand. A lot of our new patients feel the same way. We're really here to make sure you're comfortable. Are you looking for a general checkup, or is there a specific tooth or area that's been bothering you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:45 PM",
+              "text": "Just a checkup, I think. Maybe some cleaning too. My teeth feel kinda grimy."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:45 PM",
+              "text": "Perfect. That's exactly what we do. We have a great offer for new patients right now. It's just thirty nine dollars for a comprehensive exam plus digital X-rays. No insurance needed. Does that sound good?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:46 PM",
+              "text": "Thirty nine bucks? Really? That's way cheaper than I expected."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:46 PM",
+              "text": "Yep, it's a real value. We want to make sure you come in and see what we're all about. By the way, do you have any insurance, or would you prefer to pay out of pocket?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:47 PM",
+              "text": "I have Delta Dental through work. Should be pretty good coverage."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Excellent. Delta covers most of what we do. Now, are you located in Dallas, or are you in one of our other service areas?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Oh, I'm in Arlington, Texas. Is there a location near me?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:48 PM",
+              "text": "Great question. We have a clinic right there in Arlington, and it's open six days a week, including Saturdays. What's your preferred day and time? We have some openings this week."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:49 PM",
+              "text": "Uh, Saturday would be perfect. Morning if you can do it."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "Excellent. We have ten a.m. available this Saturday, January eighteenth. Does that work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "Yeah, Saturday at ten works great."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:50 PM",
+              "text": "Perfect. I've got you down for Saturday, January eighteenth at ten a.m. at our Arlington location. Just bring your insurance card and a photo ID. You'll spend about thirty minutes with us. And if you need to reschedule, just give us a call at eight seven seven, nine three six, twenty nine thirty three."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:51 PM",
+              "text": "Okay, great. Thanks so much."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "You're welcome. We look forward to seeing you on Saturday. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: General Exam and Cleaning",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: Arlington",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Insurance Verification: Delta Dental",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Offer Accepted: New Patient Special 39 Dollars",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:43 pm",
+            "duration": "8:12",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "512-847-6124",
+            "repeatCaller": "No",
+            "city": "Arlington",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B529-4D7AE421963C",
+          "time": "1/22/26 10:15 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B529-4D7AE421963C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C641-5E8BF532A74D",
+          "time": "1/28/26 3:37 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C641-5E8BF532A74D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D783-6F9CG643B85E",
+          "time": "1/05/26 1:22 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D783-6F9CG643B85E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as DECA Dental's AI scheduling assistant helping build a personalized care plan and quote, mention our $39 new guest exam and X-rays offer (regularly around $289), and ask if they'd like to get started.",
+        "Qualify one at a time: Ask a single question per message, covering which service they need (cleaning, Invisalign, implant, crown, emergency care), how many teeth or areas are involved, whether they have dental insurance or need a no-insurance option, their preferred timeline, and finally their ZIP code to confirm a nearby Ideal Dental office serves them.",
+        "Estimate then book: Confirm an Ideal Dental office serves their ZIP, share a preliminary price range based on what they shared, recommend a consultation with a doctor for an exact treatment plan, propose a specific day and time (we are open Saturdays), and confirm they will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "DECA_Dental_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Services & Specialties",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Locations",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Offers & New Guest Special",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"reschedule\",\"question\":\"I need to move my cleaning to Saturday, is that possible?\",\"answer\":\"Yes, many of our Ideal Dental offices are open Saturdays. I can find the next available Saturday slot at your home office and send you a confirmation text.\"},{\"topic\":\"treatment status\",\"question\":\"Are my Invisalign aligners ready for pickup yet?\",\"answer\":\"Your care team tracks each aligner shipment for you, and I can check the status at your office. Let me confirm your location and I will have the front desk update you right away.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you accept new patients?",
+              "answer": "Yes, we welcome new guests every day and offer a $39 exam with digital X-rays. I can book your first visit at the nearest Ideal Dental office, what ZIP code are you in?"
+            },
+            {
+              "question": "Are you open on Saturdays?",
+              "answer": "Many of our Ideal Dental offices are open Saturdays for your convenience. Share your ZIP code and I will confirm Saturday hours near you and reserve a slot."
+            },
+            {
+              "question": "Do you take my insurance?",
+              "answer": "We accept most major dental insurance plans and also have options for guests without insurance. Let's get you booked and our team will verify your specific plan before the visit."
+            },
+            {
+              "question": "How much is a new patient exam?",
+              "answer": "Our new guest exam with digital X-rays is available for around $39 for a limited time, and no insurance is required. I can reserve that appointment for you now."
+            },
+            {
+              "question": "What does a cleaning cost?",
+              "answer": "Pricing depends on your mouth's needs and any insurance coverage, so an exact figure comes after your exam. Let's schedule a visit and the doctor will confirm everything for you."
+            },
+            {
+              "question": "How much is Invisalign?",
+              "answer": "Invisalign varies by case, and we currently offer $500 off treatment. The best next step is a complimentary consultation where the doctor gives you an exact quote, shall I book it?"
+            },
+            {
+              "question": "Do you offer braces for teens?",
+              "answer": "Yes, we provide traditional braces and Invisalign for teens and adults, starting with a complimentary consultation. I can set that up at the office nearest you."
+            },
+            {
+              "question": "Can you fix a chipped tooth?",
+              "answer": "Absolutely, we handle chips with bonding, veneers, or crowns depending on the tooth. Let's book an exam so the doctor can recommend the best option for you."
+            },
+            {
+              "question": "Do you do dental implants?",
+              "answer": "Yes, we place titanium implants with crowns, often on-site in one location. Costs vary by case, so I recommend a consultation, would you like me to schedule one?"
+            },
+            {
+              "question": "I have a toothache, can I be seen today?",
+              "answer": "We reserve same-day slots for pain, swelling, and broken teeth. Tell me your ZIP code and I will find the earliest emergency appointment near you."
+            },
+            {
+              "question": "Do you remove wisdom teeth?",
+              "answer": "Yes, we perform wisdom tooth and surgical extractions on-site with sedation options available. Let's book a consultation so the doctor can review your X-rays and plan."
+            },
+            {
+              "question": "How much are veneers?",
+              "answer": "Veneers are custom to each smile, so pricing is set after the doctor evaluates your teeth. Let's schedule a cosmetic consultation to get you an accurate plan."
+            },
+            {
+              "question": "Do you offer teeth whitening?",
+              "answer": "Yes, we provide in-office and take-home professional whitening for a brighter smile. I can add a whitening consult to your visit, want me to book it?"
+            },
+            {
+              "question": "Do you see children?",
+              "answer": "Yes, we offer pediatric dentistry including exams, cleanings, and sealants for kids. I can book the whole family at one location, what ZIP code should I search?"
+            },
+            {
+              "question": "Do you offer payment plans or financing?",
+              "answer": "We have flexible financing and membership options, especially helpful for guests without insurance. Let's book your visit and our team will walk you through the plans."
+            },
+            {
+              "question": "How long is a first appointment?",
+              "answer": "A new guest exam typically covers a comprehensive exam and digital X-rays with the doctor. Let's find a time that fits your schedule, we are even open Saturdays."
+            },
+            {
+              "question": "Do you make night guards?",
+              "answer": "Yes, we make custom night guards to protect against grinding. The doctor will confirm the fit and cost at your exam, shall I schedule that for you?"
+            },
+            {
+              "question": "Can you replace missing teeth?",
+              "answer": "Yes, we offer implants, bridges, and dentures to restore your smile to full function. A consultation lets the doctor recommend the right option, want me to book one?"
+            },
+            {
+              "question": "Where is the closest office?",
+              "answer": "We have many Ideal Dental locations, and I can find the closest one to you. Just share your ZIP code and I will confirm the office and available times."
+            },
+            {
+              "question": "How do I book an appointment?",
+              "answer": "I can book it for you right now over text. Tell me the service you need and your ZIP code, and I will reserve a time and send a reminder before your visit."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the booking\",\"follow_up_message\":\"Great news, an Ideal Dental office serves your area and we have a Saturday opening this week. I can lock in your new guest exam with the $39 offer, does 10:00 AM work for you? You will get a reminder text with a number to call.\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Based on what you shared, your treatment falls in a preliminary range, and the doctor will confirm an exact quote at a complimentary consultation. Want me to book that consult at the office nearest your ZIP code?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is DECA Dental's AI assistant with Ideal Dental. I can help you get a personalized care plan and book your visit, including our $39 new guest exam with X-rays. Want to get started?",
+        "goal": "Guide the patient to book an appointment at their nearest Ideal Dental office, prioritizing the $39 new guest exam or the right specialty consultation.",
+        "bookingType": "in-office appointment",
+        "offer": "$39 new guest exam with digital X-rays, regularly around $289, no insurance required",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "What brings you in today, a checkup and cleaning, Invisalign or braces, a crown or implant, or an emergency issue?",
+          "How many teeth or areas of concern are involved?",
+          "Do you have dental insurance, or would you like our no-insurance options?",
+          "When would you like to be seen, and do you prefer a weekday or Saturday?",
+          "What is your ZIP code so I can confirm the closest Ideal Dental office serves you?"
+        ]
+      },
+      "serviceArea": "select metro areas including the Dallas, Texas region and surrounding communities, ZIP codes starting with 75"
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:58 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:58 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:58 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "DECA Dental",
+      "callerName": "Jennifer Martinez",
+      "callerPhone": "(972) 555-0847",
+      "campaign": "Invisalign $500 Off, Dallas Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$5,240",
+      "googleSearch": "Invisalign near me cost Dallas",
+      "websiteSearch": "clear aligners pricing",
+      "callingWebpage": "/services/orthodontics",
+      "products": "Invisalign Clear Aligners, Complimentary Orthodontic Consultation",
+      "cartId": "DD-7614M",
+      "serviceable": "Yes",
+      "email": "jennifer.martinez@email.com",
+      "street": "4521 Oak Lawn Avenue",
+      "city": "Dallas",
+      "state": "TX",
+      "zip": "75219",
+      "digitalJourney": "/home › /offers › /services/orthodontics › /book-online",
+      "intent": "Seeking affordable Invisalign treatment for crowded teeth, interested in current promotion.",
+      "coverage": "ZIP 75219 confirmed, Dallas serviceable",
+      "switchIntent": "High. Currently researching providers, wants to schedule consultation this week to discuss $500 promotion.",
+      "greeting": "Hi Jennifer, this is Sarah with DECA Dental. Thanks for calling about Invisalign clear aligners in Dallas. I see you are interested in straightening your smile with our current $500 off promotion. Can I get you booked with one of our orthodontic specialists for a complimentary consultation?"
+    },
+    "smsScreenpop": {
+      "brandName": "DECA Dental",
+      "callerName": "Marcus Thompson",
+      "callerPhone": "(214) 555-0293",
+      "campaign": "Emergency Same-Day Care, Fort Worth Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$1,850",
+      "googleSearch": "emergency dentist same day Fort Worth",
+      "websiteSearch": "broken tooth repair urgent",
+      "callingWebpage": "/services/emergency-dental-care",
+      "products": "Emergency Same-Day Visit, Tooth-Colored Composite Filling",
+      "cartId": "DD-9482K",
+      "serviceable": "Yes",
+      "email": "marcus.thompson@email.com",
+      "street": "3847 Hulen Street",
+      "city": "Fort Worth",
+      "state": "TX",
+      "zip": "76107",
+      "digitalJourney": "/home › /services/emergency-dental-care › /locations › /book-online",
+      "intent": "Urgent need for broken molar repair, prefers same-day appointment, no insurance coverage.",
+      "coverage": "ZIP 76107 confirmed, Fort Worth serviceable",
+      "appointment": "Emergency exam and composite filling with dentist, Today at 2:30 PM",
+      "greeting": "Hi Marcus, this is David from DECA Dental. Your emergency appointment is confirmed for today at 2:30 PM for your broken tooth. We will get you taken care of quickly. Let me know if you have any questions before your visit."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "DECA Dental",
+      "brandDomain": "www.decadental.com",
+      "brandIcon": "🦷",
+      "callerPhone": "+1 (972) 555-0847",
+      "callerLocation": "Dallas, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "$39 New Guest Special",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "dentist near me affordable",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/services/general-preventative",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "New Guest Exam, Emergency Dental Care",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Dallas, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "new_exam_booking",
+          "name": "Appointment, New Guest Exam"
+        },
+        {
+          "id": "emergency_support",
+          "name": "Emergency Care Support"
+        },
+        {
+          "id": "general_info",
+          "name": "General Information"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Ideal Dental. I'm helping route your call to the right team. Are you a current patient or is this your first time visiting us?",
+          "sigs": [],
+          "q": [
+            25,
+            45,
+            30
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "First time actually. I found you guys on Google because I saw that $39 new patient exam special. I've had some tooth sensitivity and I want to get checked out.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>New patient</strong> responding to promo"
+            },
+            {
+              "c": "green",
+              "t": "<strong>Preventative care</strong> interest"
+            },
+            {
+              "c": "orange",
+              "t": "Symptom mentioned, sensitivity"
+            }
+          ],
+          "q": [
+            55,
+            20,
+            25
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect, I'm glad you found us. That exam includes digital X-rays too, which helps us catch any issues early. Quick question, are you looking to schedule that appointment soon or today?",
+          "sigs": [],
+          "q": [
+            72,
+            12,
+            16
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, I'd really like to come in this week if possible. Saturday works best for me since I usually work during the week.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>High intent</strong>, specific timeframe"
+            },
+            {
+              "c": "blue",
+              "t": "Saturday availability preference"
+            }
+          ],
+          "q": [
+            88,
+            5,
+            7
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent. I'm connecting you with our New Guest Exam team at your nearest Dallas location. They'll get you booked for Saturday and answer any insurance questions. Thanks for choosing Ideal Dental.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"get you scheduled (Agent)\", \"book that appointment (Agent)\", \"see you on (Agent)\", \"book me in (Caller)\"])",
+          "createdAt": "02/18/25 9:14 am",
+          "updatedAt": "12/09/25 3:41 pm"
+        },
+        {
+          "name": "Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"do you have any openings (Caller)\", \"what times are available (Caller)\", \"schedule a visit (Agent)\"])",
+          "createdAt": "03/05/25 11:02 am",
+          "updatedAt": "11/22/25 10:18 am"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Aspen Dental (Caller)\", \"Western Dental (Caller)\", \"my current dentist (Caller)\"])",
+          "createdAt": "04/12/25 2:47 pm",
+          "updatedAt": "12/28/25 8:53 am"
+        },
+        {
+          "name": "Emergency Same-Day Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"broken tooth (Caller)\", \"tooth pain (Caller)\", \"can you see me today (Caller)\", \"lost a crown (Caller)\"])",
+          "createdAt": "01/29/25 4:33 pm",
+          "updatedAt": "01/07/26 9:22 am"
+        },
+        {
+          "name": "Empathy & Patient Care (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Patient Empathy] < 60 and duration > 45 sec",
+          "createdAt": "05/20/25 10:09 am",
+          "updatedAt": "12/15/25 1:57 pm"
+        },
+        {
+          "name": "Financing & Insurance Question",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"do you take my insurance (Caller)\", \"payment plans (Caller)\", \"CareCredit (Caller)\", \"monthly payments (Caller)\"])",
+          "createdAt": "06/08/25 8:41 am",
+          "updatedAt": "01/12/26 11:36 am"
+        },
+        {
+          "name": "Greeting & Booking Ask (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Call Handling] < 60 and duration > 45 sec",
+          "createdAt": "07/14/25 3:26 pm",
+          "updatedAt": "12/30/25 2:05 pm"
+        },
+        {
+          "name": "Implant & Restorative Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"dental implants (Caller)\", \"need a crown (Caller)\", \"missing tooth (Caller)\", \"get a bridge (Caller)\"])",
+          "createdAt": "08/01/25 9:58 am",
+          "updatedAt": "01/09/26 4:12 pm"
+        },
+        {
+          "name": "Objection Handling (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "2 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Objection Handling] < 60 and duration > 45 sec",
+          "createdAt": "09/17/25 1:19 pm",
+          "updatedAt": "01/03/26 10:44 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the cost would be (Agent)\", \"your estimate is (Agent)\", \"out of pocket (Agent)\", \"total for the treatment (Agent)\"])",
+          "createdAt": "10/06/25 11:47 am",
+          "updatedAt": "01/14/26 3:29 pm"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,5333 @@
+{
+  "id": "three-oaks-hospice",
+  "customerName": "Three Oaks Hospice",
+  "websiteUrl": "https://www.threeoakshospice.com",
+  "brandDomain": "threeoakshospice.com",
+  "networkName": "Invoca for Hospice Care",
+  "industry": "Hospice and palliative care services",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 5000,
+      "yTicks": [
+        1000,
+        2000,
+        3000,
+        4000,
+        5000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 3892
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 4521
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 4687
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 4213
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 4210
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Hospice Care Near Me, Texas",
+          "marketingSearchTerm": "hospice care near me",
+          "landingPageUrl": "https://www.threeoakshospice.com/care-services/hospice-care?utm_source=google&utm_medium=cpc&utm_campaign=hospice_near_me_tx",
+          "websiteJourney": "Home / Care Services / Hospice Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Is It Time for Hospice, Family Guidance",
+          "marketingSearchTerm": "signs its time for hospice",
+          "landingPageUrl": "https://www.threeoakshospice.com/hospice-resources/hospice-identifiers?utm_source=google&utm_medium=cpc&utm_campaign=time_for_hospice",
+          "websiteJourney": "Home / Hospice Resources / Hospice Identifiers for Terminal Illnesses",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Palliative Care for Serious Illness",
+          "marketingSearchTerm": "what is palliative care vs hospice",
+          "landingPageUrl": "https://www.threeoakshospice.com/care-services/palliative-care?utm_source=google&utm_medium=cpc&utm_campaign=palliative_serious_illness",
+          "websiteJourney": "Home / Care Services / Palliative Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Compassionate End-of-Life Care 24/7",
+          "marketingSearchTerm": "in-home hospice care",
+          "landingPageUrl": "https://www.threeoakshospice.com/care-services/hospice-care-at-home?utm_source=bing&utm_medium=cpc&utm_campaign=end_of_life_247",
+          "websiteJourney": "Home / Care Services / Hospice Care at Home",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Hospice for Veterans, Honoring Service",
+          "marketingSearchTerm": "hospice for veterans",
+          "landingPageUrl": "https://www.threeoakshospice.com/hospice-resources/for-veterans?utm_source=google&utm_medium=cpc&utm_campaign=veterans_honoring_service",
+          "websiteJourney": "Home / Hospice Resources / For Veterans",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Hospice Care Near Me, Arizona",
+          "marketingSearchTerm": "hospice care phoenix",
+          "landingPageUrl": "https://www.threeoakshospice.com/locations/arizona?utm_source=google&utm_medium=cpc&utm_campaign=hospice_near_me_az",
+          "websiteJourney": "Home / Locations / Arizona (Sage Hospice)",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Hospice for Dementia, Neurological Care",
+          "marketingSearchTerm": "hospice for dementia",
+          "landingPageUrl": "https://www.threeoakshospice.com/hospice-eligibility/neurological-diseases?utm_source=google&utm_medium=cpc&utm_campaign=hospice_dementia",
+          "websiteJourney": "Home / Hospice Eligibility / Neurological Diseases",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Hospice for Cancer, Oncology Comfort Care",
+          "marketingSearchTerm": "hospice for cancer",
+          "landingPageUrl": "https://www.threeoakshospice.com/hospice-eligibility/oncological-diseases?utm_source=bing&utm_medium=cpc&utm_campaign=hospice_cancer",
+          "websiteJourney": "Home / Hospice Eligibility / Oncological Diseases (Hospice for Cancer)",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Coverage Options, Does Medicare Cover Hospice",
+          "marketingSearchTerm": "does medicare cover hospice",
+          "landingPageUrl": "https://www.threeoakshospice.com/hospice-resources/coverage-options?utm_source=google&utm_medium=cpc&utm_campaign=medicare_coverage",
+          "websiteJourney": "Home / Hospice Resources / Coverage Options",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Caregiver Relief & Respite",
+          "marketingSearchTerm": "respite care for caregivers",
+          "landingPageUrl": "https://www.threeoakshospice.com/hospice-resources/for-caregivers?utm_source=google&utm_medium=cpc&utm_campaign=caregiver_respite",
+          "websiteJourney": "Home / Hospice Resources / For Caregivers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local SEO, How to Qualify for Hospice",
+          "marketingSearchTerm": "how to qualify for hospice",
+          "landingPageUrl": "https://www.threeoakshospice.com/hospice-resources/admissions-process?utm_source=organic&utm_medium=organic&utm_campaign=admissions_seo",
+          "websiteJourney": "Home / Hospice Resources / Admissions Process",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local SEO, Hospice Care Colorado",
+          "marketingSearchTerm": "hospice care denver",
+          "landingPageUrl": "https://www.threeoakshospice.com/locations/colorado?utm_source=organic&utm_medium=organic&utm_campaign=colorado_seo",
+          "websiteJourney": "Home / Locations / Colorado (Elevation Hospice)",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Hospice for COPD, Pulmonary Comfort Care",
+          "marketingSearchTerm": "hospice for copd",
+          "landingPageUrl": "https://www.threeoakshospice.com/hospice-eligibility/pulmonary-diseases?utm_source=google&utm_medium=cpc&utm_campaign=hospice_copd",
+          "websiteJourney": "Home / Hospice Eligibility / Pulmonary Diseases",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Hospice for CHF, Cardiovascular Care",
+          "marketingSearchTerm": "hospice for chf",
+          "landingPageUrl": "https://www.threeoakshospice.com/hospice-eligibility/cardiovascular-diseases?utm_source=google&utm_medium=cpc&utm_campaign=hospice_chf",
+          "websiteJourney": "Home / Hospice Eligibility / Cardiovascular Diseases",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Grief & Bereavement Support",
+          "marketingSearchTerm": "grief support after loss",
+          "landingPageUrl": "https://www.threeoakshospice.com/care-services/grief-bereavement-services?utm_source=organic&utm_medium=organic&utm_campaign=grief_support",
+          "websiteJourney": "Home / Care Services / Grief & Bereavement Services",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Compassionate End-of-Life Care 24/7",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.threeoakshospice.com/care-services/hospice-care?utm_source=facebook&utm_medium=facebook&utm_campaign=end_of_life_247",
+          "websiteJourney": "Home / Care Services / Hospice Care",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Hospice for Veterans, Honoring Service",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.threeoakshospice.com/hospice-resources/for-veterans?utm_source=instagram&utm_medium=instagram&utm_campaign=veterans_honoring_service",
+          "websiteJourney": "Home / Hospice Resources / For Veterans",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Primary Care Coordination, Utah",
+          "marketingSearchTerm": "primary care coordination utah",
+          "landingPageUrl": "https://www.threeoakshospice.com/care-services/primary-care?utm_source=organic&utm_medium=organic&utm_campaign=primary_care_ut",
+          "websiteJourney": "Home / Care Services / Primary Care",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Caregiver Relief & Respite",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.threeoakshospice.com/hospice-resources/for-caregivers?utm_source=facebook&utm_medium=facebook&utm_campaign=caregiver_respite",
+          "websiteJourney": "Home / Hospice Resources / For Caregivers",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Join Our Care Team, Hospice Nurses",
+          "marketingSearchTerm": "hospice nurse jobs near me",
+          "landingPageUrl": "https://www.threeoakshospice.com/careers/job-opportunities?utm_source=google&utm_medium=cpc&utm_campaign=care_team_nurses",
+          "websiteJourney": "Home / Careers / Job Opportunities",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Blog, Signs Its Time for Hospice",
+          "marketingSearchTerm": "end of life care at home",
+          "landingPageUrl": "https://www.threeoakshospice.com/blog/signs-its-time-for-hospice?utm_source=organic&utm_medium=organic&utm_campaign=blog_signs_hospice",
+          "websiteJourney": "Home / Blog / Signs Its Time for Hospice",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Grief & Bereavement Support",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.threeoakshospice.com/care-services/grief-bereavement-services?utm_source=instagram&utm_medium=instagram&utm_campaign=grief_support",
+          "websiteJourney": "Home / Care Services / Grief & Bereavement Services",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Three Oaks Hospice)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "16,881"
+            },
+            {
+              "label": "Admissions Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Admission (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$24,105,838"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "2,701"
+            },
+            {
+              "label": "Billing & Coverage Question (Percent)",
+              "value": "7%"
+            },
+            {
+              "label": "Existing Patient & Family Support (Percent)",
+              "value": "6%"
+            },
+            {
+              "label": "Careers & Volunteer Inquiry (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Admissions Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Admissions Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Coverage Options Discussed (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Not Yet Eligible (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Admission (Percent)",
+              "value": "8%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Admissions Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Admissions Inquiry (Count)",
+            "values": [
+              2610,
+              3105,
+              2988,
+              2847,
+              2630
+            ]
+          },
+          {
+            "name": "Coverage Options Discussed (Count)",
+            "values": [
+              912,
+              1043,
+              986,
+              924,
+              862
+            ]
+          },
+          {
+            "name": "Not Yet Eligible (Count)",
+            "values": [
+              382,
+              445,
+              421,
+              401,
+              377
+            ]
+          },
+          {
+            "name": "Admission (Count)",
+            "values": [
+              248,
+              301,
+              286,
+              271,
+              244
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16881,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "6,214",
+                "26%",
+                "6.0%",
+                "$6,631,204"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "4,388",
+                "29%",
+                "7.5%",
+                "$5,873,912"
+              ]
+            },
+            {
+              "name": "Birdeye Reviews",
+              "metrics": [
+                "2,857",
+                "31%",
+                "8.6%",
+                "$4,392,118"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "2,043",
+                "34%",
+                "10.3%",
+                "$3,756,470"
+              ]
+            },
+            {
+              "name": "Provider Referral",
+              "metrics": [
+                "1,379",
+                "38%",
+                "14.1%",
+                "$3,452,134"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16881,
+          "rows": [
+            {
+              "name": "cpc",
+              "metrics": [
+                "5,842",
+                "25%",
+                "5.7%",
+                "$5,942,118"
+              ]
+            },
+            {
+              "name": "organic",
+              "metrics": [
+                "4,506",
+                "28%",
+                "7.3%",
+                "$5,878,204"
+              ]
+            },
+            {
+              "name": "referral",
+              "metrics": [
+                "2,904",
+                "32%",
+                "8.9%",
+                "$4,601,556"
+              ]
+            },
+            {
+              "name": "social",
+              "metrics": [
+                "2,187",
+                "35%",
+                "10.6%",
+                "$4,150,332"
+              ]
+            },
+            {
+              "name": "email",
+              "metrics": [
+                "1,442",
+                "39%",
+                "13.7%",
+                "$3,533,628"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 9744,
+          "rows": [
+            {
+              "name": "Hospice Care Near Me, Texas",
+              "metrics": [
+                "3,142",
+                "26%",
+                "6.1%",
+                "$3,426,880"
+              ]
+            },
+            {
+              "name": "Is It Time for Hospice? Family Guidance",
+              "metrics": [
+                "2,458",
+                "29%",
+                "7.4%",
+                "$3,251,440"
+              ]
+            },
+            {
+              "name": "Palliative Care for Serious Illness",
+              "metrics": [
+                "1,876",
+                "33%",
+                "9.0%",
+                "$3,015,720"
+              ]
+            },
+            {
+              "name": "Hospice for Veterans, Honoring Service",
+              "metrics": [
+                "1,327",
+                "36%",
+                "11.2%",
+                "$2,661,830"
+              ]
+            },
+            {
+              "name": "Caregiver Relief & Respite",
+              "metrics": [
+                "941",
+                "40%",
+                "14.3%",
+                "$2,409,350"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8173,
+          "rows": [
+            {
+              "name": "hospice care near me",
+              "metrics": [
+                "2,714",
+                "25%",
+                "6.0%",
+                "$2,910,220"
+              ]
+            },
+            {
+              "name": "does medicare cover hospice",
+              "metrics": [
+                "1,983",
+                "28%",
+                "7.5%",
+                "$2,660,480"
+              ]
+            },
+            {
+              "name": "signs it's time for hospice",
+              "metrics": [
+                "1,542",
+                "32%",
+                "9.1%",
+                "$2,498,760"
+              ]
+            },
+            {
+              "name": "in-home hospice care",
+              "metrics": [
+                "1,128",
+                "36%",
+                "11.3%",
+                "$2,270,140"
+              ]
+            },
+            {
+              "name": "hospice for veterans",
+              "metrics": [
+                "806",
+                "41%",
+                "14.6%",
+                "$2,106,330"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 16881,
+          "rows": [
+            {
+              "name": "Hospice Care",
+              "metrics": [
+                "6,842",
+                "26.4%",
+                "6.3%",
+                "$7,684,215"
+              ]
+            },
+            {
+              "name": "Palliative Care",
+              "metrics": [
+                "4,213",
+                "28.9%",
+                "8.1%",
+                "$6,072,480"
+              ]
+            },
+            {
+              "name": "Hospice Care at Home",
+              "metrics": [
+                "3,127",
+                "30.2%",
+                "8.8%",
+                "$4,911,362"
+              ]
+            },
+            {
+              "name": "Primary Care",
+              "metrics": [
+                "1,684",
+                "32.5%",
+                "10.4%",
+                "$3,118,647"
+              ]
+            },
+            {
+              "name": "Grief & Bereavement Services",
+              "metrics": [
+                "1,015",
+                "34.1%",
+                "12.8%",
+                "$2,319,134"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16881,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "5,438",
+                "27.1%",
+                "5.9%",
+                "$5,751,342"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "4,127",
+                "29.4%",
+                "7.4%",
+                "$5,448,617"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "3,564",
+                "30.8%",
+                "8.0%",
+                "$5,090,284"
+              ]
+            },
+            {
+              "name": "Mountain",
+              "metrics": [
+                "2,289",
+                "31.6%",
+                "9.6%",
+                "$3,928,451"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "1,463",
+                "33.9%",
+                "14.9%",
+                "$3,887,144"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Admission (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Hospice Care",
+            "values": [
+              79,
+              91,
+              87,
+              88,
+              85
+            ]
+          },
+          {
+            "name": "Palliative Care",
+            "values": [
+              62,
+              71,
+              69,
+              70,
+              68
+            ]
+          },
+          {
+            "name": "Hospice Care at Home",
+            "values": [
+              51,
+              56,
+              55,
+              58,
+              55
+            ]
+          },
+          {
+            "name": "Primary Care",
+            "values": [
+              32,
+              37,
+              35,
+              36,
+              35
+            ]
+          },
+          {
+            "name": "Grief & Bereavement Services",
+            "values": [
+              24,
+              27,
+              26,
+              27,
+              26
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 16,881 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 91,
+          "summary": "Margaret Ellison called about routine home hospice care for her mother, who has advanced dementia. The agent explained the Medicare Hospice Benefit and confirmed she would owe little to nothing. A new hospice consultation was scheduled for the following morning.",
+          "date": "Jan 6, 2:42 PM",
+          "agent": "Rosey",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 87,
+          "summary": "Daniel Foster asked about the palliative care program for his wife, who is still receiving curative treatment for a serious illness. The agent described how the interdisciplinary team coordinates with her existing doctors on symptom relief. Daniel booked a consultation to begin the intake process.",
+          "date": "Feb 11, 10:18 AM",
+          "agent": "Lila",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 82,
+          "summary": "Robert Hayes called about the Veterans hospice program for his father, a Vietnam veteran with end-stage heart failure. The agent walked through VA-coordinated benefits and Medicare coverage. A consultation was scheduled and a veterans recognition packet was noted for the visit.",
+          "date": "Mar 4, 4:05 PM",
+          "agent": "Lee",
+          "duration": "3m 01s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Patricia Nguyen called to schedule a hospice consultation for her husband, who has severe COPD and frequent respiratory crises. The agent collected his diagnosis, physician contact, home address, and insurance details during intake. A new consultation was confirmed for later that week and Patricia felt reassured.",
+          "date": "Apr 9, 1:33 PM",
+          "agent": "Mary",
+          "duration": "3m 22s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Susan Carter, an exhausted caregiver, asked about inpatient respite care so she could take a five-day break. The agent explained the respite benefit and availability at a nearby inpatient facility. Susan scheduled a consultation to arrange the stay.",
+          "date": "May 2, 11:50 AM",
+          "agent": "Oscar",
+          "duration": "2m 15s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "James Whitfield called seeking grief and bereavement support after losing his mother last month. The agent shared upcoming support group times and the 13-month bereavement counseling program. He asked to think it over and did not enroll on the call.",
+          "date": "May 21, 3:27 PM",
+          "agent": "Jennifer",
+          "duration": "2m 04s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Linda Barrett called with a billing question about the daily hospice per-diem charges appearing on a statement. The agent reviewed the account and explained which services fall under the Medicare benefit. No new consultation was needed and the item was flagged for the billing team.",
+          "date": "Jun 8, 9:41 AM",
+          "agent": "Mike",
+          "duration": "1m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Gary Simmons, an existing family caregiver, called with a follow-up question about his father's palliative care visit schedule. The agent confirmed the next clinician visit and updated the medication notes. No new services were booked.",
+          "date": "Jun 24, 12:16 PM",
+          "agent": "Sue",
+          "duration": "1m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 52,
+          "summary": "Nancy Coleman called about the Veterans hospice program to confirm whether her uncle's service records were on file. The agent could not locate the paperwork and asked her to resend it. Nancy was frustrated by the delay and no visit was scheduled.",
+          "date": "Jul 3, 2:58 PM",
+          "agent": "Rose",
+          "duration": "2m 29s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 48,
+          "summary": "Thomas Reed called with a complaint about a missed respite care handoff that left his family without coverage over the weekend. The agent apologized and escalated the scheduling gap to the care team lead. No consultation resulted and Thomas remained upset.",
+          "date": "Jul 19, 4:12 PM",
+          "agent": "Oscar",
+          "duration": "2m 51s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 44,
+          "summary": "Deborah Klein disputed a Medicare coverage denial for medications tied to her mother's terminal diagnosis. The agent explained the appeal steps but could not resolve it on the call. Deborah asked for a supervisor callback.",
+          "date": "Aug 5, 10:33 AM",
+          "agent": "Lila",
+          "duration": "3m 08s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Kevin Marsh called to cancel his mother's home hospice services after the family decided to relocate out of state. The agent processed the discharge request and shared transfer options. No new consultation was scheduled.",
+          "date": "Aug 22, 1:07 PM",
+          "agent": "Mary",
+          "duration": "2m 20s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Angela Ross called upset about a hospice aide who arrived late for two scheduled home visits. The agent documented the complaint and promised a staffing review. Angela demanded a call back from the branch manager.",
+          "date": "Sep 10, 3:44 PM",
+          "agent": "Mike",
+          "duration": "2m 37s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Harold Pierce called confused about the location and time of a bereavement support group he thought he had joined. The agent found no registration on record and the line quality was poor. Harold hung up frustrated without a confirmed date.",
+          "date": "Sep 27, 11:22 AM",
+          "agent": "Jennifer",
+          "duration": "1m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "An unidentified caller reached the after-hours line asking about starting hospice care for a spouse and left a brief voicemail. No agent was available and the call rolled to the mailbox. The message was queued for a morning callback.",
+          "date": "Oct 2, 8:05 PM",
+          "agent": "No Agent",
+          "duration": "0m 46s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "hospice",
+        "palliative",
+        "veterans",
+        "medicare",
+        "respite",
+        "bereavement"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 18s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Patient Diagnosis",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area Availability",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Explain Consultation Process",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Insurance/Coverage Type",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer Bereavement Resources",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller stated primary concern about patient comfort",
+        "Agent acknowledged emotional difficulty of situation",
+        "Caller confirmed patient is homebound",
+        "Agent confirmed Three Oaks service area match",
+        "Caller provided full legal name",
+        "Agent used empathetic tone throughout",
+        "Caller stated ready to move forward",
+        "Agent offered 24/7 care availability",
+        "Caller asked about team credentials",
+        "Agent addressed family caregiver needs",
+        "Consultation date offered same week",
+        "Caller confirmed availability for visit",
+        "Agent repeated callback number for confirmation"
+      ],
+      "unmetSignals": [
+        "Email address not captured in CRM",
+        "Insurance verification not completed",
+        "Secondary emergency contact not requested",
+        "Caregiver name not documented",
+        "Current medications list not discussed",
+        "Existing provider coordination not mentioned",
+        "Financial assistance options not explained",
+        "Pain management preferences not explored",
+        "Preferred visiting nurse not noted",
+        "Cultural or spiritual care preferences not asked"
+      ],
+      "naSignals": [
+        "Hospice billing codes not discussed",
+        "Equipment delivery timeline not mentioned",
+        "Medication refill process not covered",
+        "Previous hospice discharge history not applicable",
+        "Return to curative care discussion not applicable",
+        "Billing dispute resolution not relevant",
+        "Product upgrade or downgrade options not applicable"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "The caller's mother is experiencing terminal cancer with increasing pain and decline in mobility, and the daughter is overwhelmed managing care alone at home. She is seeking professional hospice support to improve her mother's comfort and quality of life while receiving trained support for herself as a family caregiver."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects an in-home consultation within the next week to assess her mother's needs, meet the clinical team, understand what daily care will look like, and learn how Three Oaks can provide 24/7 support for pain management and emotional care."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured the caller's email address before closing to enable automated confirmation and follow-up materials. He could also have briefly mentioned financial assistance pathways and verified insurance coverage type to streamline the intake visit."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Good afternoon, thank you for calling Three Oaks Hospice. My name is Marcus Bell. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:08",
+          "text": "Hi Marcus, yes, thank you. I'm calling because my mother is at home and her cancer is getting worse. We need help, and I wasn't sure who to call, so I found you online."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:18",
+          "text": "I'm so sorry to hear your mother is facing that challenge. We're really glad you reached out. Three Oaks is here to help her stay comfortable at home with our team around the clock. Can I start by getting your name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Of course. I'm Jennifer Hartley, H-A-R-T-L-E-Y."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:35",
+          "text": "Thank you, Jennifer. And what is your mother's name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:39",
+          "text": "Her name is Margaret. Margaret Hartley."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:44",
+          "text": "Margaret. Thank you. Can you tell me a bit more about what's happening with Margaret's cancer right now and what concerns you most?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:54",
+          "text": "Well, the doctors said there's nothing more they can do to treat it. She's having a lot of pain, especially at night, and she can barely get out of bed anymore. I'm with her during the day, but at night I'm so worried something will happen and I won't be able to help."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:10",
+          "text": "That sounds really difficult, Jennifer, and I want you to know you're not alone in feeling that way. Our hospice team specializes in exactly this, helping patients like Margaret manage pain and stay comfortable at home, with nurses available any time of day or night. Are you located in an area where we serve?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:28",
+          "text": "We're in Dallas, Texas. Is that somewhere you work?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:33",
+          "text": "Yes, absolutely. We serve Dallas and throughout Texas. That's wonderful. So our next step would be to have a nurse visit your home to meet Margaret and you, learn more about her symptoms, and create a care plan. We typically schedule these within the next week. Does that timeline work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:52",
+          "text": "Yes, that would be great. This week would be perfect, actually. Preferably morning or early afternoon."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:00",
+          "text": "Perfect. Let me get some details. What's the best phone number to reach you at?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:05",
+          "text": "It's ****-****-7493."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:09",
+          "text": "Got it, ending in 7493. Jennifer, I'm going to have our admissions team reach out to you by end of business tomorrow to confirm an appointment time. In the meantime, if you need anything at all, our care line is open 24 hours. You can also call me back at the main line and ask for Marcus. We're here for Margaret and for you."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:30",
+          "text": "Thank you so much, Marcus. I really appreciate this."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:35",
+          "text": "You're very welcome, Jennifer. Take care of yourself, and we'll talk soon."
+        }
+      ],
+      "aiSummary": "Jennifer Hartley called on behalf of her mother Margaret, who has terminal cancer with increasing pain and immobility at home. Jennifer expressed concerns about managing her mother's nighttime care and was seeking professional hospice support. Marcus confirmed Three Oaks serves the Dallas area, assessed Margaret's needs, and scheduled an in-home consultation within the week. The call was empathetic and action-oriented, though email confirmation and insurance verification were not completed.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, excellent call structure and empathetic tone throughout. You did a great job validating Jennifer's concerns and clearly explaining what our team can do. Two coaching notes: capture the email address before closing so we can send intake forms and prep materials automatically. Also, a quick question about insurance coverage (Medicare, Medicaid, private) helps our clinical team prioritize paperwork before the visit. Strong foundation here."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "16,881"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$1427.99"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$24,105,838"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "11,478"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "68%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "4,727"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "28%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "5,403"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "6%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Email Newsletter",
+                "value": 49,
+                "display": "49%"
+              },
+              {
+                "name": "Social Media",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "Provider Referral",
+                "value": 34,
+                "display": "34%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 27,
+                "display": "27%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "6,214",
+                  "22%",
+                  "$9,142,637"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "4,853",
+                  "27%",
+                  "$6,873,455"
+                ]
+              },
+              {
+                "cells": [
+                  "Provider Referral",
+                  "3,127",
+                  "34%",
+                  "$4,231,908"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "1,842",
+                  "41%",
+                  "$2,411,926"
+                ]
+              },
+              {
+                "cells": [
+                  "Email Newsletter",
+                  "845",
+                  "49%",
+                  "$1,445,912"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 6000,
+            "axisTicks": [
+              0,
+              1500,
+              3000,
+              4500,
+              6000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 5987,
+                "display": "5,987"
+              },
+              {
+                "name": "organic",
+                "value": 4562,
+                "display": "4,562"
+              },
+              {
+                "name": "referral",
+                "value": 3341,
+                "display": "3,341"
+              },
+              {
+                "name": "social",
+                "value": 1918,
+                "display": "1,918"
+              },
+              {
+                "name": "email",
+                "value": 1073,
+                "display": "1,073"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "5,987",
+                  "21%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "4,562",
+                  "26%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "3,341",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "1,918",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "1,073",
+                  "46%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Hospice Care Near Me, Texas",
+                "value": 3842,
+                "display": "3,842"
+              },
+              {
+                "name": "Is It Time for Hospice, Family Guidance",
+                "value": 2913,
+                "display": "2,913"
+              },
+              {
+                "name": "Palliative Care for Serious Illness",
+                "value": 2104,
+                "display": "2,104"
+              },
+              {
+                "name": "Hospice for Veterans, Honoring Service",
+                "value": 1486,
+                "display": "1,486"
+              },
+              {
+                "name": "Grief & Bereavement Support",
+                "value": 987,
+                "display": "987"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Hospice Care Near Me, Texas",
+                  "3,842",
+                  "24%",
+                  "$4,238,915"
+                ]
+              },
+              {
+                "cells": [
+                  "Is It Time for Hospice, Family Guidance",
+                  "2,913",
+                  "29%",
+                  "$3,142,608"
+                ]
+              },
+              {
+                "cells": [
+                  "Palliative Care for Serious Illness",
+                  "2,104",
+                  "35%",
+                  "$2,417,330"
+                ]
+              },
+              {
+                "cells": [
+                  "Hospice for Veterans, Honoring Service",
+                  "1,486",
+                  "44%",
+                  "$1,682,455"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 2000,
+            "axisTicks": [
+              0,
+              500,
+              1000,
+              1500,
+              2000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "hospice care near me",
+                "value": 1842,
+                "display": "1,842"
+              },
+              {
+                "name": "does medicare cover hospice",
+                "value": 1417,
+                "display": "1,417"
+              },
+              {
+                "name": "signs it's time for hospice",
+                "value": 1086,
+                "display": "1,086"
+              },
+              {
+                "name": "in-home hospice care",
+                "value": 823,
+                "display": "823"
+              },
+              {
+                "name": "hospice for veterans",
+                "value": 612,
+                "display": "612"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "hospice care near me",
+                  "25%"
+                ]
+              },
+              {
+                "cells": [
+                  "does medicare cover hospice",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "signs it's time for hospice",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "in-home hospice care",
+                  "47%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Hospice Care",
+              "7,214",
+              "23%",
+              "71%"
+            ]
+          },
+          {
+            "cells": [
+              "Palliative Care",
+              "4,318",
+              "29%",
+              "66%"
+            ]
+          },
+          {
+            "cells": [
+              "Primary Care",
+              "3,127",
+              "36%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Grief & Bereavement Services",
+              "2,222",
+              "45%",
+              "54%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Three Oaks Hospice, Dallas TX",
+              "5,642",
+              "512",
+              "5%",
+              "24%"
+            ]
+          },
+          {
+            "cells": [
+              "Sage Hospice, Phoenix AZ",
+              "4,318",
+              "368",
+              "6%",
+              "28%"
+            ]
+          },
+          {
+            "cells": [
+              "Elevation Hospice, Denver CO",
+              "3,914",
+              "289",
+              "7%",
+              "31%"
+            ]
+          },
+          {
+            "cells": [
+              "Agape Hospice Care, Columbia SC",
+              "3,007",
+              "181",
+              "8%",
+              "37%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Not Yet Eligible for Hospice",
+            "values": [
+              642,
+              698,
+              671,
+              613,
+              590
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              587,
+              612,
+              559,
+              548,
+              541
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              498,
+              512,
+              487,
+              491,
+              475
+            ]
+          },
+          {
+            "name": "Family Decision Pending",
+            "values": [
+              412,
+              428,
+              401,
+              398,
+              399
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              318,
+              332,
+              315,
+              308,
+              319
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "6,752"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Admission (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$13,740,328"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Admission (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,890,440"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Admission (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,267,580"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Admission (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,801,664"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Admission (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,112,336"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Admission (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,556,760"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Admission (Percent)",
+              "value": "39%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,111,348"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8247,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "2,847",
+                "58%",
+                "29%",
+                "$5,247,912"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "1,653",
+                "55%",
+                "32%",
+                "$3,874,256"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "1,204",
+                "54%",
+                "34%",
+                "$2,698,136"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "682",
+                "57%",
+                "38%",
+                "$1,456,680"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "366",
+                "56%",
+                "41%",
+                "$462,744"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 7841,
+          "rows": [
+            {
+              "name": "Form Fill",
+              "metrics": [
+                "3,127",
+                "57%",
+                "30%",
+                "$5,791,040"
+              ]
+            },
+            {
+              "name": "Phone Call",
+              "metrics": [
+                "1,854",
+                "55%",
+                "32%",
+                "$4,110,976"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "1,048",
+                "54%",
+                "35%",
+                "$2,355,760"
+              ]
+            },
+            {
+              "name": "Chat",
+              "metrics": [
+                "521",
+                "56%",
+                "37%",
+                "$1,047,672"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "202",
+                "58%",
+                "39%",
+                "$433,880"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8534,
+          "rows": [
+            {
+              "name": "Hospice Care Near Me. State Targeting",
+              "metrics": [
+                "2,156",
+                "59%",
+                "28%",
+                "$4,089,472"
+              ]
+            },
+            {
+              "name": "Is It Time for Hospice. Family Guidance",
+              "metrics": [
+                "1,328",
+                "56%",
+                "31%",
+                "$3,105,408"
+              ]
+            },
+            {
+              "name": "Palliative Care for Serious Illness",
+              "metrics": [
+                "945",
+                "54%",
+                "35%",
+                "$2,218,200"
+              ]
+            },
+            {
+              "name": "Caregiver Relief and Respite Care Options",
+              "metrics": [
+                "752",
+                "55%",
+                "37%",
+                "$1,670,560"
+              ]
+            },
+            {
+              "name": "Hospice for Veterans. Honoring Service",
+              "metrics": [
+                "451",
+                "57%",
+                "40%",
+                "$1,070,840"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 7915,
+          "rows": [
+            {
+              "name": "hospice care near me",
+              "metrics": [
+                "1,847",
+                "60%",
+                "27%",
+                "$3,416,952"
+              ]
+            },
+            {
+              "name": "palliative care vs hospice",
+              "metrics": [
+                "1,204",
+                "56%",
+                "31%",
+                "$2,698,136"
+              ]
+            },
+            {
+              "name": "signs it's time for hospice",
+              "metrics": [
+                "968",
+                "54%",
+                "34%",
+                "$2,157,376"
+              ]
+            },
+            {
+              "name": "in-home hospice care services",
+              "metrics": [
+                "721",
+                "55%",
+                "37%",
+                "$1,606,920"
+              ]
+            },
+            {
+              "name": "hospice for cancer patients",
+              "metrics": [
+                "512",
+                "57%",
+                "41%",
+                "$1,147,520"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Routine Home Hospice Care",
+              "metrics": [
+                "2,341",
+                "58%",
+                "29%",
+                "$4,311,848"
+              ]
+            },
+            {
+              "name": "Palliative Care Program",
+              "metrics": [
+                "1,687",
+                "56%",
+                "32%",
+                "$3,951,328"
+              ]
+            },
+            {
+              "name": "General Inpatient Hospice Care",
+              "metrics": [
+                "1,205",
+                "54%",
+                "35%",
+                "$2,817,720"
+              ]
+            },
+            {
+              "name": "Inpatient Respite Care",
+              "metrics": [
+                "889",
+                "55%",
+                "37%",
+                "$2,053,656"
+              ]
+            },
+            {
+              "name": "Primary Care Coordination",
+              "metrics": [
+                "630",
+                "57%",
+                "39%",
+                "$1,604,776"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Admission (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Routine Home Hospice Care",
+            "values": [
+              192,
+              218,
+              196,
+              213,
+              160
+            ]
+          },
+          {
+            "name": "Palliative Care Program",
+            "values": [
+              171,
+              188,
+              165,
+              179,
+              134
+            ]
+          },
+          {
+            "name": "General Inpatient Hospice Care",
+            "values": [
+              152,
+              172,
+              146,
+              167,
+              125
+            ]
+          },
+          {
+            "name": "Inpatient Respite Care",
+            "values": [
+              129,
+              147,
+              124,
+              142,
+              107
+            ]
+          },
+          {
+            "name": "Primary Care Coordination",
+            "values": [
+              115,
+              134,
+              108,
+              129,
+              87
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "352"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$6,284,128"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "847"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "18:52:17"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "29"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$517,560"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              73,
+              76,
+              74,
+              79,
+              71,
+              75,
+              72,
+              78,
+              76,
+              74,
+              71,
+              77,
+              75,
+              73,
+              72,
+              76,
+              74,
+              79,
+              71,
+              75,
+              73,
+              78,
+              72,
+              76,
+              74,
+              75,
+              73,
+              72,
+              76,
+              78,
+              74,
+              182,
+              187,
+              179,
+              191,
+              184,
+              188,
+              179,
+              186,
+              183,
+              190,
+              177,
+              184,
+              181,
+              189,
+              176,
+              185,
+              192,
+              179
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,182"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "89%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "11,247"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "743"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "724"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Hospice Eligibility Inquiry",
+            "values": [
+              8,
+              11,
+              9,
+              12,
+              10,
+              7
+            ]
+          },
+          {
+            "name": "Palliative Care Information",
+            "values": [
+              6,
+              9,
+              8,
+              11,
+              9,
+              8
+            ]
+          },
+          {
+            "name": "In-Home Care Services",
+            "values": [
+              2,
+              5,
+              8,
+              12,
+              9,
+              11
+            ]
+          },
+          {
+            "name": "Caregiver Support Resources",
+            "values": [
+              4,
+              7,
+              6,
+              9,
+              8,
+              10
+            ]
+          },
+          {
+            "name": "Pain Management Services",
+            "values": [
+              5,
+              8,
+              7,
+              10,
+              9,
+              6
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "15,531"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "10,129"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "4,727"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$24,105,838"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Jennifer Croft",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "David Olson",
+              "value": 204,
+              "display": "204"
+            },
+            {
+              "name": "Patricia Holmes",
+              "value": 162,
+              "display": "162"
+            },
+            {
+              "name": "Kevin Martinez",
+              "value": 195,
+              "display": "195"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Susan Takahashi",
+            "values": [
+              156,
+              189,
+              212,
+              238,
+              271
+            ]
+          },
+          {
+            "name": "Robert Chen",
+            "values": [
+              142,
+              167,
+              191,
+              214,
+              246
+            ]
+          },
+          {
+            "name": "Angela Morrison",
+            "values": [
+              138,
+              159,
+              184,
+              207,
+              239
+            ]
+          },
+          {
+            "name": "Thomas Bradley",
+            "values": [
+              151,
+              174,
+              198,
+              221,
+              254
+            ]
+          },
+          {
+            "name": "Michelle Garrett",
+            "values": [
+              144,
+              166,
+              189,
+              211,
+              243
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 54.3,
+              "display": "54.3%"
+            },
+            {
+              "name": "Jennifer Croft",
+              "value": 56.1,
+              "display": "56.1%"
+            },
+            {
+              "name": "David Olson",
+              "value": 55.8,
+              "display": "55.8%"
+            },
+            {
+              "name": "Patricia Holmes",
+              "value": 57.2,
+              "display": "57.2%"
+            },
+            {
+              "name": "Kevin Martinez",
+              "value": 53.7,
+              "display": "53.7%"
+            },
+            {
+              "name": "Richard Schmidt",
+              "value": 52.4,
+              "display": "52.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Webb",
+                "54.3%",
+                "28%",
+                "$1,987,344",
+                "1,447"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Croft",
+                "56.1%",
+                "29%",
+                "$2,061,627",
+                "1,382"
+              ]
+            },
+            {
+              "cells": [
+                "David Olson",
+                "55.8%",
+                "27%",
+                "$1,908,372",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Holmes",
+                "57.2%",
+                "31%",
+                "$2,144,805",
+                "1,364"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Martinez",
+                "53.7%",
+                "26%",
+                "$1,834,920",
+                "1,458"
+              ]
+            },
+            {
+              "cells": [
+                "Richard Schmidt",
+                "52.4%",
+                "28%",
+                "$2,018,688",
+                "1,411"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Susan Takahashi",
+              "value": 92.6,
+              "display": "92.6%"
+            },
+            {
+              "name": "Robert Chen",
+              "value": 89.3,
+              "display": "89.3%"
+            },
+            {
+              "name": "Angela Morrison",
+              "value": 91.8,
+              "display": "91.8%"
+            },
+            {
+              "name": "Thomas Bradley",
+              "value": 90.1,
+              "display": "90.1%"
+            },
+            {
+              "name": "Michelle Garrett",
+              "value": 88.7,
+              "display": "88.7%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Susan Takahashi",
+                "92.6%",
+                "67%",
+                "$5,187,258",
+                "1,508"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Chen",
+                "89.3%",
+                "63%",
+                "$4,842,756",
+                "1,542"
+              ]
+            },
+            {
+              "cells": [
+                "Angela Morrison",
+                "91.8%",
+                "66%",
+                "$5,113,404",
+                "1,486"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Bradley",
+                "90.1%",
+                "64%",
+                "$4,960,512",
+                "1,519"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Garrett",
+                "88.7%",
+                "61%",
+                "$4,733,598",
+                "1,523"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Scheduled (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Scheduled (Count)",
+        "rightMax": 300,
+        "rightTicks": [
+          0,
+          75,
+          150,
+          225,
+          300
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 175
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 167
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 156
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 149
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 130
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 136
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 150
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 156
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 174
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 169
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 152
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 147
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 131
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 135
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 154
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 158
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 172
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 170
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 149
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 144
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 133
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 134
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 156
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 162
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 170
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 170
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 147
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 141
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 135
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 134
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 171
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1100000,
+        "rightTicks": [
+          0,
+          366666.6666666667,
+          733333.3333333334,
+          1100000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 893582
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 856458
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 797537
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 761004
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 662594
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 695374
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 768160
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 798439
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 890264
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 863166
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 777424
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 751396
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 668616
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 689185
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 786449
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 810413
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 881975
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 868249
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 761360
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 737211
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 678652
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 685766
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 800004
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 826523
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 870770
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 869504
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 750466
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 719577
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 690419
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 687090
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 808211
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "16,881"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "1,350"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "1,013"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "412",
+                "91%",
+                "88%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "James Reeves",
+                "589",
+                "88%",
+                "85%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Torres",
+                "398",
+                "88%",
+                "86%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "16,881 calls",
+      "pagerLabel": "1 of 1,688",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:33 am",
+          "id": "A21C-4E9B7710C6F2"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "3D08-B62A19FE7C41"
+        },
+        {
+          "time": "1/14/26 11:18 am",
+          "id": "9E4F-27C0A5D31B88"
+        },
+        {
+          "time": "1/16/26 12:26 pm",
+          "id": "C7A2-58D19E043FAB"
+        },
+        {
+          "time": "1/20/26 1:54 pm",
+          "id": "1B6D-90FE3C77A215"
+        },
+        {
+          "time": "1/22/26 2:37 pm",
+          "id": "6F30-D41B82A9550E"
+        },
+        {
+          "time": "1/26/26 3:09 pm",
+          "id": "84B9-7E22C60D19FA"
+        },
+        {
+          "time": "1/28/26 4:22 pm",
+          "id": "E053-1A9C74BF3820"
+        },
+        {
+          "time": "1/30/26 5:11 pm",
+          "id": "7C1A-3F80B562D9E4"
+        }
+      ],
+      "duration": "2:38",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling Three Oaks Hospice, this is Danielle. How can I help you and your family today?",
+          "highlights": [
+            "Thank you for calling Three Oaks Hospice",
+            "this is Danielle"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Danielle. My name is Robert Hensley. My father is at home and his doctor mentioned it might be time to look into hospice, so I'm trying to understand what that looks like.",
+          "highlights": [
+            "Robert Hensley"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:19",
+          "text": "I'm so sorry you're facing this, Robert. I'd be glad to walk you through it. Can I ask what your father is dealing with?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:27",
+          "text": "He has advanced COPD. His breathing has gotten a lot worse and he's been in and out of the hospital.",
+          "highlights": [
+            "advanced COPD"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:35",
+          "text": "Thank you for sharing that. For someone with severe COPD we'd typically start with Routine Home Hospice Care, where a nurse, an aide, and a social worker come right to where he lives to manage his breathing and keep him comfortable.",
+          "highlights": [
+            "Routine Home Hospice Care"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:48",
+          "text": "Okay. And honestly I have to ask, what does something like that run? I'm on a fixed income and I want to keep it manageable.",
+          "highlights": [
+            "what does something like that run",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:58",
+          "text": "That's a very fair question. Hospice is covered under the Medicare Hospice Benefit, so when your father qualifies, the visits, his medications for the COPD, and the equipment are almost always covered. Most families pay little or nothing.",
+          "highlights": [
+            "covered under the Medicare Hospice Benefit",
+            "pay little or nothing"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:11",
+          "text": "That's a relief. I'll be honest, I also called Sage down the road and they haven't gotten back to me, so I'm comparing a little here.",
+          "highlights": [
+            "called Sage down the road",
+            "comparing a little here"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:20",
+          "text": "Completely understandable, and you should compare. What sets us apart is our team supports your family 24 hours a day, seven days a week, and if his breathing spikes we can move to Continuous Home Care with intensive nursing right there in the home.",
+          "highlights": [
+            "24 hours a day, seven days a week",
+            "Continuous Home Care"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:34",
+          "text": "That around-the-clock part matters. One more thing, my sister helps care for him and I'd want her to hear all this too before we decide anything.",
+          "highlights": [
+            "I'd want her to hear all this too"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:44",
+          "text": "Absolutely, we encourage that. There's no obligation and nothing is locked in. We can schedule a consultation where a nurse comes out, evaluates your father, and answers both of your questions together.",
+          "highlights": [
+            "no obligation and nothing is locked in",
+            "schedule a consultation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:56",
+          "text": "Okay, and would that also cover the respite side? I could use a break now and then.",
+          "highlights": [
+            "cover the respite side"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:03",
+          "text": "Yes, we offer Inpatient Respite Care for up to five days so caregivers like you can rest, and I'll have the nurse cover that at the visit. Could we set the consultation for this Thursday at 10 AM?",
+          "highlights": [
+            "Inpatient Respite Care",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:15",
+          "text": "Thursday at 10 works, and my sister can be there then.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:20",
+          "text": "Wonderful. I have you booked for Thursday at 10 AM. What's the best phone number and the home address for the visit?",
+          "highlights": [
+            "booked for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:28",
+          "text": "It's 214-555-0173, and the house is 482 Ridgeway Lane in Dallas.",
+          "highlights": [
+            "214-555-0173"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:33",
+          "text": "Perfect, you're all set, Robert. Our nurse will call ahead Thursday morning. Thank you for trusting Three Oaks Hospice, and take good care until then.",
+          "highlights": [
+            "you're all set",
+            "Thank you for trusting Three Oaks Hospice"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Coverage Question: Medicare",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Care Line: Routine Home Hospice",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Disease Program: Pulmonary / COPD",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Caregiver Respite Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Robert Hensley called on behalf of his father, who has advanced COPD and was referred to hospice by his physician. Agent Danielle explained Routine Home Hospice Care and Continuous Home Care, reassured him that services are covered under the Medicare Hospice Benefit, and addressed his interest in Inpatient Respite Care. Danielle handled a cost concern, a comparison with a competitor, and Robert's need to include his sister, then scheduled an in-home consultation for Thursday at 10 AM and captured his contact details.",
+        "keyPoints": [
+          "New patient inquiry for an elderly father with advanced COPD",
+          "Recommended Routine Home Hospice Care with 24/7 support and Continuous Home Care option",
+          "Reassured caller that Medicare Hospice Benefit covers most costs",
+          "Discussed Inpatient Respite Care for caregiver relief",
+          "Consultation booked for Thursday at 10 AM with sister present",
+          "Captured phone 214-555-0173 and Dallas home address"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "10,635 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 1,064",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "3/10/26 6:21 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hello, this is Sarah from Three Oaks Hospice. I'm here to help you learn about our compassionate care services. Is this a good time to chat for a few minutes?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi Sarah. Yes, I have a few minutes. My mother is in declining health and I'm trying to understand what options are available."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "I'm so sorry to hear that. We're here to help your family through this journey. Can I ask, does your mother currently have a terminal diagnosis that her doctor has discussed with her?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "Yes, she was diagnosed with stage 4 pancreatic cancer about 6 months ago. The doctors say treatment isn't working anymore."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Thank you for sharing that. Hospice care is designed specifically for situations like your mother's, focusing on comfort and quality of life. Is your mother currently living at home, in a facility, or somewhere else?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "She's at home right now. We have family helping, but it's becoming overwhelming for everyone."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Home care with professional support can really ease that burden on your family. Our routine home hospice care includes nursing, aides, social workers, and volunteers available 24/7. Are you located in one of our service areas? We serve Arizona, Colorado, Texas, and several other states."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "We're in the Phoenix area, so yes, that should be covered."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Wonderful. Phoenix is definitely part of our service area through Sage Hospice. One more question: does your mother have Medicare coverage?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "Yes, she's on Medicare. Will that cover the hospice care?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Medicare covers hospice care through the Medicare Hospice Benefit, so your mother and family should have minimal out of pocket costs. I'd like to schedule a consultation with one of our care coordinators to discuss your mother's specific needs and answer all your questions. Would this Thursday, March 13th at 2 p.m. work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Yes, Thursday at 2 p.m. works perfectly."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "Perfect. I've scheduled your consultation for Thursday, March 13th at 2 p.m. A care coordinator will call you at this number. We'll also send you some information about our services. Your confirmation number is HOS-031326-4891. Thank you for reaching out to Three Oaks Hospice."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:34 AM",
+              "text": "Thank you Sarah. I appreciate your help."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:35 AM",
+              "text": "You're welcome. If you have any questions before your consultation, please call us at 877-936-2933. We're here 24/7. Take care."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Line Identified: Oncology Hospice",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Primary Diagnosis: Cancer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: Phoenix, Arizona",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Insurance Identified: Medicare",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "602-554-8847",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "602-554-8847",
+            "repeatCaller": "No",
+            "city": "Phoenix",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "Michael Torres",
+            "firstName": "Michael",
+            "lastName": "Torres",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "K729-34BC891F7D2E",
+          "time": "3/10/26 4:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "K729-34BC891F7D2E",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "M445-56DEA7C9B3F1",
+          "time": "3/10/26 7:22 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "M445-56DEA7C9B3F1",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "N812-72FG045K8M6L",
+          "time": "3/10/26 9:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "N812-72FG045K8M6L",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "16,881 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 1,688",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/14/26 2:47 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Thank you for calling Three Oaks Hospice. My name is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Hi Marcus. I'm looking for hospice care for my mother. She's been diagnosed with stage four cancer and her doctors said it might be time to explore comfort care options."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "I'm so sorry to hear that. We're here to help your family through this. I'd like to ask you a few quick questions to make sure we can serve you best. First, what state is your mother currently living in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "She's in Arizona. We're in the Phoenix area."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Perfect. We have a team in Arizona. Has your mother already been referred to hospice by her physician, or is this something you're exploring for the first time?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "Her oncologist mentioned it last month, but we weren't ready. Now we think we should move forward. We just want to understand what the process looks like."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:53 PM",
+              "text": "That's completely understandable. Many families need time to process. Our Oncology Hospice Care is specifically designed for cancer patients, and we handle everything from initial assessment through 24 hour, 7 day a week support. Can I ask, is your mother currently living at home or in a facility?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:55 PM",
+              "text": "She's at home with me and my husband. We're her primary caregivers, but honestly, we're getting exhausted."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:56 PM",
+              "text": "That's something we hear often, and we're equipped to help with exactly that. Our routine home hospice care includes nurses, aides, social workers, and volunteers. The care is about 210 to 225 dollars per day under Medicare, and most families pay little to nothing. Would your mother be eligible for Medicare?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:58 PM",
+              "text": "Yes, she's on Medicare. That's a relief. What happens next?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:59 PM",
+              "text": "Great. What I'd like to do is schedule a consultation with one of our care coordinators. They'll visit your home, meet your mother, answer all your questions, and explain the admission process in detail. Does next Tuesday, January 21st, work for you in the morning around 10 am?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:01 PM",
+              "text": "Yes, Tuesday morning works. 10 am is perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "3:02 PM",
+              "text": "Wonderful. So I have you down for a consultation on Tuesday, January 21st at 10 am at your home in Phoenix. Our coordinator will call you 30 minutes before to confirm they're on the way. If you need to reach us before then, you can call back at 877 936 2933. Is that number okay for us to reach you at?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:04 PM",
+              "text": "That's my cell phone number. Yes, that's fine."
+            },
+            {
+              "speaker": "agent",
+              "time": "3:05 PM",
+              "text": "Perfect. Thank you so much for calling Three Oaks Hospice. We're looking forward to meeting you and your family on Tuesday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Line: Oncology Hospice Care",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Location Confirmed: Arizona",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caregiver Burden Identified",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Insurance: Medicare Confirmed",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/14/26 2:47 pm",
+            "duration": "18:34",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "602-445-8719",
+            "repeatCaller": "No",
+            "city": "Phoenix",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Mitchell",
+            "firstName": "Sarah",
+            "lastName": "Mitchell",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B623-4D8E527FА9C1",
+          "time": "1/19/26 1:23 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B623-4D8E527FA9C1",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C834-7F1B6D2E5A47",
+          "time": "1/22/26 10:56 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C834-7F1B6D2E5A47",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D945-8A2C9F3B1E6D",
+          "time": "1/28/26 3:14 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D945-8A2C9F3B1E6D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as Three Oaks Hospice's AI agent here to help arrange a personalized care consultation, mention that our team is available 24 hours a day, 7 days a week and that most eligible patients pay little or nothing under the Medicare Hospice Benefit, then ask if they would like to get started.",
+        "Qualify one question at a time: Ask the key questions one at a time, who the care is for and their relationship to you, the primary diagnosis or condition, the current care setting such as home, facility, or hospital, whether you are seeking hospice, palliative, or primary care, the desired timeline for support, and finally the patient's ZIP code to confirm we serve their area.",
+        "Estimate then book: Confirm we service their ZIP code, explain that hospice and palliative care are typically covered by Medicare, Medicaid, or private insurance so out-of-pocket cost is usually minimal, recommend a consultation with a care specialist to review eligibility and needs, propose a specific day and time, and confirm they will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Three_Oaks_Hospice_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Care Services & Specialties",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Locations",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Admissions & Coverage Options",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"care plan status\",\"question\":\"Can you tell me when our nurse is scheduled to visit my mother next?\",\"answer\":\"I can have your care team confirm your loved one's next scheduled home visit and coordinate any changes. Let me connect you with the assigned nurse coordinator right away.\"},{\"topic\":\"reschedule visit\",\"question\":\"I need to move this week's aide visit to another day, is that possible?\",\"answer\":\"Yes, we can adjust visit times to fit your family's needs since our team supports you 24 hours a day, 7 days a week. I will pass your preferred day and time to the care coordinator to confirm.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What is the difference between hospice and palliative care?",
+              "answer": "Palliative care supports individuals living with a serious illness who are still receiving curative or life-prolonging treatment, while hospice care focuses on comfort when curative treatment is no longer the goal. A specialist can help you decide which fits your situation during a consultation, would you like me to schedule one?"
+            },
+            {
+              "question": "Does Medicare cover hospice care?",
+              "answer": "Yes, hospice is largely covered by the Medicare Hospice Benefit, Medicaid, and most private insurance, so most eligible patients pay little or nothing. I can arrange a consultation to review your specific coverage."
+            },
+            {
+              "question": "How do I know if it is time for hospice?",
+              "answer": "Common signs include frequent hospital visits, difficulty managing symptoms at home, and a shift toward comfort-focused goals. Our care team can review eligibility with you, may I set up a consultation to talk it through?"
+            },
+            {
+              "question": "Where is hospice care provided?",
+              "answer": "We provide compassionate, personalized care wherever a patient calls home, whether that is a private residence, an assisted living community, or a nursing facility. Let me schedule a consultation so we can plan care around your loved one's setting."
+            },
+            {
+              "question": "Do you offer care for dementia or Parkinson's patients?",
+              "answer": "Yes, we provide neurological end-of-life care for conditions including dementia, Parkinson's, ALS, and MS. A specialist can assess the specific needs during a consultation, would you like to book one?"
+            },
+            {
+              "question": "Can you help with cancer patients?",
+              "answer": "Yes, our oncology hospice care supports patients when curative treatment for cancer is no longer effective and the focus shifts to comfort. I would be glad to arrange a consultation with our care team."
+            },
+            {
+              "question": "What services are included in home hospice care?",
+              "answer": "Home hospice includes in-home nursing visits, aide support, medical equipment, and medications related to the terminal diagnosis, along with emotional and spiritual support. Let me set up a consultation to build a plan for your family."
+            },
+            {
+              "question": "Do you provide support for family caregivers?",
+              "answer": "Yes, we offer inpatient respite care to give caregivers a break and up to 13 months of grief and bereavement support for families. A consultation can walk you through all the caregiver resources available."
+            },
+            {
+              "question": "Is there care available at night or on weekends?",
+              "answer": "Yes, our dedicated team supports patients and families 24 hours a day, 7 days a week. I can schedule a consultation to explain how our on-call care works."
+            },
+            {
+              "question": "What areas do you serve?",
+              "answer": "We provide care across Illinois, Kansas, Missouri, Pennsylvania, South Carolina, Arizona, Texas, Colorado, Georgia, and Utah. Share your ZIP code and I will confirm availability and set up a consultation."
+            },
+            {
+              "question": "How much does hospice cost?",
+              "answer": "Because hospice is largely covered by Medicare, Medicaid, and private insurance, most eligible patients pay little or nothing out of pocket. A specialist can review your exact coverage during a consultation, may I schedule that for you?"
+            },
+            {
+              "question": "How quickly can care start?",
+              "answer": "We work to begin care as soon as possible once eligibility is confirmed, and our team is available around the clock. Let me set up a consultation to start the admissions process."
+            },
+            {
+              "question": "What is continuous home care?",
+              "answer": "Continuous home care provides intensive nursing during acute symptom crises to keep the patient comfortable at home. A care specialist can explain when this level of care applies during a consultation."
+            },
+            {
+              "question": "Do you offer care for veterans?",
+              "answer": "Yes, our Veterans Hospice Program provides veteran-tailored end-of-life care and recognition, coordinated with the VA. I would be happy to arrange a consultation to discuss the benefits available."
+            },
+            {
+              "question": "What is general inpatient hospice care?",
+              "answer": "General inpatient care provides short-term facility-based symptom control when comfort cannot be managed at home. Our team can determine if it is appropriate during a consultation, would you like to schedule one?"
+            },
+            {
+              "question": "Can palliative care be given alongside my current treatments?",
+              "answer": "Yes, palliative care is designed for individuals still receiving curative or life-prolonging treatment, and our interdisciplinary team coordinates closely with your existing providers. Let me book a consultation to review your needs."
+            },
+            {
+              "question": "Do you help with grief after a loss?",
+              "answer": "Yes, we offer up to 13 months of family bereavement counseling and support groups, typically at no charge. I can connect you with our bereavement team or set up a consultation."
+            },
+            {
+              "question": "What conditions qualify for hospice?",
+              "answer": "We care for terminal conditions including advanced cancer, heart, lung, kidney, and liver disease, as well as progressive neurological disorders. A specialist can confirm eligibility during a consultation, may I schedule one?"
+            },
+            {
+              "question": "Who are Agape, Elevation, and Sage Hospice?",
+              "answer": "They are sister companies within our group that operate under one mission to deliver best-in-class care across our service states. A consultation can connect you with the right local team, would you like me to arrange that?"
+            },
+            {
+              "question": "How do I begin the admissions process?",
+              "answer": "The process starts with a consultation where our team reviews the patient's condition, goals, and coverage. Share your ZIP code and preferred time and I will get that scheduled for you."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule a care consultation\",\"follow_up_message\":\"Thank you for reaching out to Three Oaks Hospice. I have your details and would love to confirm your in-home consultation with a care specialist, does tomorrow at 2:00 PM work, and what ZIP code should I confirm service for?\"},{\"intent\":\"review coverage and eligibility\",\"follow_up_message\":\"I can arrange a consultation to review Medicare, Medicaid, or private insurance coverage and confirm eligibility at no cost to you. Please share your ZIP code and a good day and time, and I will schedule a specialist to walk you through everything.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Three Oaks Hospice's AI agent. I am here to help you arrange a personalized care consultation with one of our specialists, and our team is available 24 hours a day, 7 days a week. Would you like to get started?",
+        "goal": "Guide the family through a few qualifying questions, confirm we serve their area, and book an in-home consultation with a care specialist to review needs, eligibility, and coverage.",
+        "bookingType": "in-home consultation",
+        "offer": "",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Who is the care for, and what is your relationship to them?",
+          "What is the primary diagnosis or condition you are seeking support for?",
+          "Where is the patient currently receiving care, at home, in a facility, or in the hospital?",
+          "Are you looking into hospice care, palliative care, or primary care coordination?",
+          "How soon would you like care or a consultation to begin?",
+          "What is the patient's ZIP code so I can confirm we serve your area?"
+        ]
+      },
+      "serviceArea": "across Illinois, Kansas, Missouri, Pennsylvania, South Carolina, Arizona, Texas, Colorado, Georgia, and Utah, for example Texas ZIP codes starting with 75"
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:36 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:36 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:36 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Three Oaks Hospice",
+      "callerName": "Margaret Chen",
+      "callerPhone": "(602) 555-0847",
+      "campaign": "Hospice Care for Serious Illness, Phoenix Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$3,847",
+      "googleSearch": "hospice care near me Phoenix",
+      "websiteSearch": "in-home hospice care for cancer patients Arizona",
+      "callingWebpage": "/care-services/hospice-care",
+      "products": "Routine Home Hospice Care, Oncology Hospice Program",
+      "cartId": "TOH-7392M",
+      "serviceable": "Yes",
+      "email": "margaret.chen.1956@email.com",
+      "street": "4521 Desert Willow Drive",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zip": "85018",
+      "digitalJourney": "/home › /care-services › /care-services/hospice-care › /hospice-resources/admissions-process",
+      "intent": "Margaret is seeking in-home hospice care for her mother who was recently diagnosed with metastatic cancer and wishes to spend her final months at home with family",
+      "coverage": "ZIP 85018 confirmed. Phoenix serviceable",
+      "switchIntent": "High urgency. Family meeting scheduled this week. Mother's oncology team has recommended hospice transition. Wants to begin care within 10 days",
+      "greeting": "Hi Margaret, this is David with Three Oaks Hospice. I see you were looking into our Hospice Care program for your mother. We specialize in compassionate, in-home care for patients with cancer. I'd love to discuss how we can support your family during this time and answer any questions you have. Would you be available for a consultation with one of our care coordinators this week?"
+    },
+    "smsScreenpop": {
+      "brandName": "Three Oaks Hospice",
+      "callerName": "Robert Valdez",
+      "callerPhone": "(720) 555-0163",
+      "campaign": "Palliative Care for Serious Illness, Denver Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$2,156",
+      "googleSearch": "palliative care vs hospice explained",
+      "websiteSearch": "managing COPD symptoms palliative care Colorado",
+      "callingWebpage": "/care-services/palliative-care",
+      "products": "Palliative Care Program, Pulmonary COPD Hospice",
+      "cartId": "TOH-5618K",
+      "serviceable": "Yes",
+      "email": "robert.valdez.1948@email.com",
+      "street": "2847 Maple Ridge Court",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80209",
+      "digitalJourney": "/home › /care-services › /care-services/palliative-care › /hospice-resources/coverage-options",
+      "intent": "Robert is interested in palliative care for his advanced COPD diagnosis. He continues some treatment but wants to focus on symptom relief and quality of life management",
+      "coverage": "ZIP 80209 confirmed. Denver serviceable",
+      "appointment": "Initial palliative care consultation with clinical coordinator. Thursday July 18, 2:30 PM",
+      "greeting": "Hi Robert, this is Sarah from Three Oaks Hospice. Great to connect with you. We have your consultation scheduled for this Thursday at 2:30 PM with one of our palliative care specialists who can review your COPD management plan and talk through comfort-focused options. In the meantime, if you have any questions or need to reschedule, just let me know. Looking forward to meeting you."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Three Oaks Hospice",
+      "brandDomain": "www.threeoakshospice.com",
+      "brandIcon": "🤝",
+      "callerPhone": "+1 (602) 555-0847",
+      "callerLocation": "Phoenix, Arizona",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "Hospice Care Near Me, Arizona",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "hospice care for dementia near me",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Home / Care Services / Hospice Care",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Neurological End-of-Life Care, Palliative Care Program",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Phoenix, Arizona",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_new_palliative",
+          "name": "Consultation, New Patient Intake"
+        },
+        {
+          "id": "support_existing_patient",
+          "name": "Support, Existing Patient Care"
+        },
+        {
+          "id": "caregiver_resources",
+          "name": "Caregiver Resources and Support"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Thank you for calling Three Oaks Hospice. My name is Sarah. I see you're interested in care options for a family member. Can I ask who we're helping today and what brings you to us?",
+          "sigs": [],
+          "q": [
+            15,
+            65,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Hi Sarah, thank you. My mother has progressive dementia and we're at a point where we need more support at home. Her doctor mentioned hospice might be right for her now, but I'm not really sure what that means or what it would look like.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Progressive dementia</strong> diagnosis"
+            },
+            {
+              "c": "blue",
+              "t": "Seeking <strong>home-based care</strong>"
+            },
+            {
+              "c": "orange",
+              "t": "Early-stage <strong>hospice inquiry</strong>"
+            }
+          ],
+          "q": [
+            45,
+            40,
+            15
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I'm so sorry to hear what your family is going through. You're asking exactly the right questions. Hospice can be a wonderful option for dementia care. Our team provides comfort-focused care at home with nurses, aides, and emotional support all coordinated together. I want to make sure we connect you with someone who can walk you through everything and answer your specific questions. Can I ask, are you looking at care starting soon, or are you still exploring options?",
+          "sigs": [],
+          "q": [
+            72,
+            15,
+            13
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We'd like to start looking into this probably within the next two or three weeks. We live here in Phoenix and I think we'd want care at home where she's most comfortable. Do you serve our area?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Two to three week</strong> timeline"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Phoenix area</strong> confirmed"
+            },
+            {
+              "c": "purple",
+              "t": "<strong>Home-based care</strong> preference"
+            }
+          ],
+          "q": [
+            88,
+            6,
+            6
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Absolutely. We serve Phoenix and all across Arizona through Sage Hospice, which is part of our Three Oaks family. A care consultant will walk you through everything. your mother's needs, what support looks like, and can even start the qualification process if you're ready. I'm going to connect you now with our New Patient Intake team. They're incredibly compassionate and will make sure all your questions get answered. You're doing the right thing for your mom.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's schedule the visit (Agent)\", \"when can a nurse come out (Caller)\", \"book the consultation (Agent)\", \"set up an appointment (Caller)\"])",
+          "createdAt": "03/12/25 9:14 am",
+          "updatedAt": "01/09/26 2:41 pm"
+        },
+        {
+          "name": "Compassion & Empathy Demonstrated",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Compassionate Care Delivery] < 60 and duration > 45 sec",
+          "createdAt": "02/04/25 11:02 am",
+          "updatedAt": "12/18/25 4:20 pm"
+        },
+        {
+          "name": "Competitor Hospice Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"VITAS (Caller)\", \"Kindred hospice (Caller)\", \"another hospice provider (Caller)\", \"AccentCare (Caller)\"])",
+          "createdAt": "04/22/25 3:33 pm",
+          "updatedAt": "11/29/25 10:07 am"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"talk about hospice options (Agent)\", \"what does hospice involve (Caller)\", \"discuss palliative care (Agent)\"])",
+          "createdAt": "01/28/25 8:48 am",
+          "updatedAt": "01/14/26 1:15 pm"
+        },
+        {
+          "name": "Eligibility Explained Clearly",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Eligibility & Admissions] < 60 and duration > 45 sec",
+          "createdAt": "12/09/24 2:55 pm",
+          "updatedAt": "01/06/26 9:32 am"
+        },
+        {
+          "name": "Grief Support Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"grief counseling (Caller)\", \"bereavement support (Caller)\", \"support group after loss (Caller)\"])",
+          "createdAt": "05/17/25 10:41 am",
+          "updatedAt": "12/02/25 3:58 pm"
+        },
+        {
+          "name": "Medicare Coverage Reassurance",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Coverage Explanation] < 60 and duration > 45 sec",
+          "createdAt": "11/21/24 1:19 pm",
+          "updatedAt": "01/11/26 11:48 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the daily rate is (Agent)\", \"per diem cost (Agent)\", \"out of pocket you would pay (Agent)\", \"cost of respite care (Caller)\"])",
+          "createdAt": "03/30/25 4:07 pm",
+          "updatedAt": "12/22/25 8:26 am"
+        },
+        {
+          "name": "Respite Care Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"respite care (Caller)\", \"caregiver break (Caller)\", \"five days of respite (Caller)\"])",
+          "createdAt": "06/08/25 9:52 am",
+          "updatedAt": "01/03/26 5:11 pm"
+        },
+        {
+          "name": "Veterans Program Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"veteran hospice (Caller)\", \"VA benefits (Caller)\", \"he served in the military (Caller)\"])",
+          "createdAt": "02/26/25 12:37 pm",
+          "updatedAt": "01/08/26 10:23 am"
+        }
+      ]
+    }
+  }
+}

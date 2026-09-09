@@ -1,0 +1,5383 @@
+{
+  "id": "chase-merchant-services",
+  "customerName": "Chase Merchant Services",
+  "websiteUrl": "https://www.chase.com/business/payments",
+  "brandDomain": "chase.com",
+  "networkName": "Invoca for Merchant Services",
+  "industry": "Merchant Services and Payment Processing",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Merchant",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 11842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 12984
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 13105
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 12176
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 11487
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Payments + Banking In One Place",
+          "marketingSearchTerm": "chase merchant services",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions?utm_source=google&utm_medium=cpc&utm_campaign=payments_banking_one_place",
+          "websiteJourney": "Home / Business Payments / Chase Payment Solutions",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "$100 Off POS Terminal (POS100)",
+          "marketingSearchTerm": "chase pos terminal",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/pos-system?utm_source=google&utm_medium=cpc&utm_campaign=pos100_promo",
+          "websiteJourney": "Home / Business Payments / POS System",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Same-Day Deposits",
+          "marketingSearchTerm": "same day deposit credit card processing",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/quickaccept?utm_source=google&utm_medium=cpc&utm_campaign=same_day_deposits",
+          "websiteJourney": "Home / Business Payments / Accept cards in-person",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Payments for Restaurants",
+          "marketingSearchTerm": "pos system for restaurant",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/industry/restaurants?utm_source=google&utm_medium=cpc&utm_campaign=payments_restaurants",
+          "websiteJourney": "Home / Business Payments / Industry / Restaurants",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Switch to Chase Payment Solutions",
+          "marketingSearchTerm": "credit card processing for small business",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/pricing?utm_source=bing&utm_medium=cpc&utm_campaign=switch_to_chase",
+          "websiteJourney": "Home / Business Payments / Pricing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Tap to Pay, No Hardware Needed",
+          "marketingSearchTerm": "tap to pay iphone business",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/tap-to-pay?utm_source=google&utm_medium=cpc&utm_campaign=tap_to_pay",
+          "websiteJourney": "Home / Business Payments / Accept cards in-person",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Accept Cards Online",
+          "marketingSearchTerm": "payment gateway for website",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/online?utm_source=google&utm_medium=cpc&utm_campaign=accept_cards_online",
+          "websiteJourney": "Home / Business Payments / Accept cards online",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Chase QuickAccept Fees",
+          "marketingSearchTerm": "chase quickaccept fees",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/quickaccept?utm_source=bing&utm_medium=cpc&utm_campaign=quickaccept_fees",
+          "websiteJourney": "Home / Business Payments / Pricing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Payments for Retail",
+          "marketingSearchTerm": "merchant account bank",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/industry/retail?utm_source=google&utm_medium=cpc&utm_campaign=payments_retail",
+          "websiteJourney": "Home / Business Payments / Industry / Retail",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "#1 for Small Business",
+          "marketingSearchTerm": "card reader for phone",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/card-reader?utm_source=google&utm_medium=cpc&utm_campaign=number_one_small_business",
+          "websiteJourney": "Home / Business Payments / POS System",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Tap to Pay, No Hardware Needed",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/tap-to-pay?utm_source=instagram&utm_medium=paid_social&utm_campaign=tap_to_pay",
+          "websiteJourney": "Home / Business Payments / Accept cards in-person",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Same-Day Deposits",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/quickaccept?utm_source=facebook&utm_medium=paid_social&utm_campaign=same_day_deposits",
+          "websiteJourney": "Home / Business Payments / Accept cards in-person",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Payments for Restaurants",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/industry/restaurants?utm_source=facebook&utm_medium=paid_social&utm_campaign=payments_restaurants",
+          "websiteJourney": "Home / Business Payments / Industry / Restaurants",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "$100 Off POS Terminal (POS100)",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/pos-system?utm_source=instagram&utm_medium=paid_social&utm_campaign=pos100_promo",
+          "websiteJourney": "Home / Business Payments / POS System",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Resource Center",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.chase.com/business/knowledge-center/small-business-invoicing?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Business Payments / Invoicing",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Knowledge Center",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/pricing?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Business Payments / Pricing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Guide to Starting a Small Business",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/online?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Business Payments / Accept cards online",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Payments + Banking In One Place",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Business Payments / Chase Payment Solutions",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Accept Cards Online",
+          "marketingSearchTerm": "accept credit cards online",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions/payment-links?utm_source=google&utm_medium=cpc&utm_campaign=accept_cards_online",
+          "websiteJourney": "Home / Business Payments / Accept cards online",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "#1 for Small Business",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.chase.com/business/payment-solutions?utm_source=instagram&utm_medium=paid_social&utm_campaign=number_one_small_business",
+          "websiteJourney": "Home / Business Payments / Tools",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Podcast",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.chase.com/business/knowledge-center/payroll-and-payments?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Business Payments / Tools / Payroll",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Chase Merchant Services)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "48,309"
+            },
+            {
+              "label": "New Merchant Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "New Merchant (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$12,596,362"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "7,729"
+            },
+            {
+              "label": "Existing Merchant Support Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing & Statement Inquiry (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Terminal Support Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Merchant Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Merchant Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "61%"
+            },
+            {
+              "label": "Not Qualified for Account (Percent)",
+              "value": "14%"
+            },
+            {
+              "label": "New Merchant (Percent)",
+              "value": "22%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Merchant Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Merchant Call (Count)",
+            "values": [
+              8124,
+              8637,
+              8291,
+              7952,
+              7576
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              5834,
+              6217,
+              5988,
+              5743,
+              5686
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              1387,
+              1442,
+              1361,
+              1298,
+              1275
+            ]
+          },
+          {
+            "name": "New Merchant (Count)",
+            "values": [
+              2118,
+              2263,
+              2187,
+              2054,
+              2006
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Merchant (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 48309,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "17,842",
+                "38%",
+                "16%",
+                "$3,406,118"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "12,631",
+                "41%",
+                "21%",
+                "$3,151,240"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "8,247",
+                "44%",
+                "25%",
+                "$2,447,905"
+              ]
+            },
+            {
+              "name": "Branch Referral",
+              "metrics": [
+                "5,918",
+                "46%",
+                "29%",
+                "$2,039,662"
+              ]
+            },
+            {
+              "name": "Email / CRM",
+              "metrics": [
+                "3,671",
+                "49%",
+                "34%",
+                "$1,551,437"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Merchant (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 48309,
+          "rows": [
+            {
+              "name": "cpc",
+              "metrics": [
+                "16,928",
+                "37%",
+                "15%",
+                "$3,061,842"
+              ]
+            },
+            {
+              "name": "organic",
+              "metrics": [
+                "13,412",
+                "40%",
+                "20%",
+                "$3,233,715"
+              ]
+            },
+            {
+              "name": "referral",
+              "metrics": [
+                "7,835",
+                "44%",
+                "26%",
+                "$2,455,308"
+              ]
+            },
+            {
+              "name": "email",
+              "metrics": [
+                "5,624",
+                "47%",
+                "30%",
+                "$2,033,619"
+              ]
+            },
+            {
+              "name": "display",
+              "metrics": [
+                "4,510",
+                "50%",
+                "33%",
+                "$1,811,878"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Merchant (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25098,
+          "rows": [
+            {
+              "name": "Payments + Banking In One Place",
+              "metrics": [
+                "8,214",
+                "39%",
+                "17%",
+                "$1,658,412"
+              ]
+            },
+            {
+              "name": "Same-Day Deposits",
+              "metrics": [
+                "6,127",
+                "42%",
+                "22%",
+                "$1,599,357"
+              ]
+            },
+            {
+              "name": "$100 Off POS Terminal (POS100)",
+              "metrics": [
+                "4,832",
+                "45%",
+                "26%",
+                "$1,491,208"
+              ]
+            },
+            {
+              "name": "Tap to Pay, No Hardware Needed",
+              "metrics": [
+                "3,519",
+                "47%",
+                "30%",
+                "$1,253,674"
+              ]
+            },
+            {
+              "name": "Payments for Restaurants",
+              "metrics": [
+                "2,406",
+                "51%",
+                "35%",
+                "$998,631"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Merchant (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16699,
+          "rows": [
+            {
+              "name": "chase merchant services",
+              "metrics": [
+                "5,842",
+                "40%",
+                "18%",
+                "$1,248,317"
+              ]
+            },
+            {
+              "name": "credit card processing for small business",
+              "metrics": [
+                "4,318",
+                "43%",
+                "23%",
+                "$1,178,462"
+              ]
+            },
+            {
+              "name": "chase payment solutions pricing",
+              "metrics": [
+                "2,976",
+                "46%",
+                "27%",
+                "$953,681"
+              ]
+            },
+            {
+              "name": "card reader for phone",
+              "metrics": [
+                "2,104",
+                "48%",
+                "31%",
+                "$774,159"
+              ]
+            },
+            {
+              "name": "same day deposit credit card processing",
+              "metrics": [
+                "1,459",
+                "52%",
+                "36%",
+                "$622,847"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "New Merchant (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 48309,
+          "rows": [
+            {
+              "name": "In-Person Payments",
+              "metrics": [
+                "14,882",
+                "40%",
+                "16%",
+                "$2,834,551"
+              ]
+            },
+            {
+              "name": "POS Systems & Terminals",
+              "metrics": [
+                "11,947",
+                "42%",
+                "19%",
+                "$2,701,884"
+              ]
+            },
+            {
+              "name": "Online & E-commerce Payments",
+              "metrics": [
+                "9,738",
+                "44%",
+                "23%",
+                "$2,668,207"
+              ]
+            },
+            {
+              "name": "Billing & Invoicing",
+              "metrics": [
+                "6,821",
+                "46%",
+                "28%",
+                "$2,274,668"
+              ]
+            },
+            {
+              "name": "Business Tools & Payroll",
+              "metrics": [
+                "4,921",
+                "48%",
+                "36%",
+                "$2,117,052"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Merchant (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 48309,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "13,974",
+                "41%",
+                "16%",
+                "$2,641,290"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "11,286",
+                "43%",
+                "19%",
+                "$2,538,496"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "9,853",
+                "45%",
+                "23%",
+                "$2,682,944"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "8,142",
+                "47%",
+                "28%",
+                "$2,699,520"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "5,054",
+                "49%",
+                "34%",
+                "$2,034,112"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Merchant (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "In-Person Payments",
+            "values": [
+              458,
+              512,
+              489,
+              501,
+              421
+            ]
+          },
+          {
+            "name": "POS Systems & Terminals",
+            "values": [
+              441,
+              478,
+              462,
+              470,
+              419
+            ]
+          },
+          {
+            "name": "Online & E-commerce Payments",
+            "values": [
+              432,
+              461,
+              455,
+              468,
+              424
+            ]
+          },
+          {
+            "name": "Billing & Invoicing",
+            "values": [
+              368,
+              401,
+              392,
+              398,
+              351
+            ]
+          },
+          {
+            "name": "Business Tools & Payroll",
+            "values": [
+              338,
+              372,
+              361,
+              369,
+              332
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 48,309 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 91,
+          "summary": "Marcus Delgado called to open a Chase Business Complete Banking account and add a Chase POS Terminal for his retail shop. Oscar explained the POS100 promo, confirmed same-day deposit at no extra cost, and booked a consultation with a Payments Advisor. Marcus agreed to move forward and scheduled his onboarding.",
+          "date": "Jan 3, 2:42 PM",
+          "agent": "Oscar",
+          "duration": "2m 15s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 87,
+          "summary": "Priya Nadkarni wanted a Chase Card Reader to accept payments at pop-up markets. Lila walked her through turning her phone into a mobile point of sale and creating a product catalog. Priya booked a consultation to finalize her setup.",
+          "date": "Feb 11, 10:18 AM",
+          "agent": "Lila",
+          "duration": "1m 48s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 82,
+          "summary": "Devon Carmichael asked how to activate Chase QuickAccept inside his existing Chase account. Rosey confirmed the tapped and dipped rate, explained there is no monthly fee, and scheduled a consultation to complete activation. Devon was pleased with the same-day funding.",
+          "date": "Feb 24, 4:05 PM",
+          "agent": "Rosey",
+          "duration": "1m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Gabriela Fontaine called as a new client to set up online payments for her boutique website. Lee collected her business details, contact information, and monthly volume, then explained the e-commerce payment gateway alongside digital invoicing. Lee booked a consultation with a Payments Advisor and Gabriela confirmed the appointment.",
+          "date": "Mar 6, 11:52 AM",
+          "agent": "Lee",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Aaron Whitfield wanted to send professional digital invoices from his business bank account. Mary showed him how invoicing tracks payments automatically through QuickAccept and offered payment links by text. Aaron scheduled a consultation to get started.",
+          "date": "Mar 19, 9:27 AM",
+          "agent": "Mary",
+          "duration": "1m 20s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 15,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Sofia Reyes runs an online store and asked about connecting a payment gateway to her platform. Sue confirmed Chase integrates with leading e-commerce tools and reviewed per-transaction pricing. Sofia booked a consultation to plan the integration.",
+          "date": "Apr 2, 3:14 PM",
+          "agent": "Sue",
+          "duration": "2m 03s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Ronald Keeler called to check the shipping status of his Chase POS Terminal order. Mike located the order and confirmed it would arrive within 24-48h. Ronald was satisfied but did not need any new services.",
+          "date": "Apr 21, 1:39 PM",
+          "agent": "Mike",
+          "duration": "1m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 21,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Elaine Brubaker reported that her Chase Card Reader arrived without the charging cable. Jennifer apologized, opened a replacement request, and confirmed the part would ship the same week. Elaine remained mildly frustrated but accepted the resolution.",
+          "date": "May 9, 12:04 PM",
+          "agent": "Jennifer",
+          "duration": "1m 55s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Trent Halloway disputed a keyed QuickAccept transaction fee he did not expect on his statement. Rose reviewed the rate structure and filed an inquiry for the charge. Trent stayed skeptical and asked to be called back with a decision.",
+          "date": "May 27, 5:22 PM",
+          "agent": "Rose",
+          "duration": "2m 28s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 28,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Nadia Osterman said her same-day deposit had not posted to her account. Lee checked the funding timeline and explained a weekend cutoff had delayed it. Nadia was unhappy about the wait but agreed to monitor the next business day.",
+          "date": "Jun 14, 10:47 AM",
+          "agent": "Lee",
+          "duration": "1m 41s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Curtis Vanderloo called to cancel his merchant account after switching providers. Mary tried to retain him with revised pricing but he declined. She processed the cancellation and confirmed the closing statement date.",
+          "date": "Jul 8, 2:11 PM",
+          "agent": "Mary",
+          "duration": "2m 06s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Beatrice Nolan complained that a batch of settled transactions had not reconciled in her business analytics dashboard. Oscar escalated the issue to technical support and gave her a case number. Beatrice was dissatisfied with the delay.",
+          "date": "Aug 3, 4:48 PM",
+          "agent": "Oscar",
+          "duration": "1m 30s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Harold Pemberton left a voicemail asking whether his Chase POS Terminal was still under warranty after it stopped printing receipts. No agent was available and the call rolled to voicemail. No callback was scheduled on this call.",
+          "date": "Aug 22, 6:03 PM",
+          "agent": "No Agent",
+          "duration": "0m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Vivian Castellano reported a hardware fault with her wireless terminal and asked about a repair or replacement under warranty. Sue collected the serial number but could not confirm coverage during the call. Vivian was frustrated by the uncertainty.",
+          "date": "Sep 15, 11:19 AM",
+          "agent": "Sue",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Desmond Falkirk complained about repeated declined transactions and long hold times over several days. Mike apologized and opened a priority ticket but could not resolve it immediately. Desmond threatened to leave and ended the call angry.",
+          "date": "Oct 4, 3:57 PM",
+          "agent": "Mike",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "pos terminal",
+        "card reader",
+        "same-day deposit",
+        "quickaccept",
+        "invoicing",
+        "payment gateway"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 18s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Business Type and Payment Volume",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Explain Chase Payment Solutions Value Prop",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation and Set Expectations",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer Promotional Code (POS100)",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller is a new customer prospect",
+        "Caller operates a retail business",
+        "Caller processes payment volume under $2000/month",
+        "Caller owns multiple locations",
+        "Caller interested in in-person payment acceptance",
+        "Caller asked about hardware costs",
+        "Caller concerned about processing fees",
+        "Caller has existing merchant account elsewhere",
+        "Caller seeking same-day deposit capability",
+        "Caller open to consultation",
+        "Caller confirmed availability for consultation",
+        "Caller acknowledged call scheduling confirmation",
+        "Caller mentioned budget constraints"
+      ],
+      "unmetSignals": [
+        "Caller asked about integration with existing POS system",
+        "Caller requested pricing comparison details",
+        "Caller inquired about monthly service fees",
+        "Caller asked about setup timeline",
+        "Caller mentioned needing online payment capability",
+        "Caller requested information on QuickAccept rates",
+        "Caller asked about contract terms and cancellation",
+        "Caller inquired about dedicated account manager",
+        "Caller mentioned needing payroll integration",
+        "Caller asked about compliance and PCI requirements"
+      ],
+      "naSignals": [
+        "Caller discussed existing invoice payment issues",
+        "Caller mentioned return or refund processing",
+        "Caller asked about billing dispute resolution",
+        "Caller discussed payment link usage",
+        "Caller inquired about virtual terminal functionality",
+        "Caller mentioned recurring billing setup",
+        "Caller asked about customer analytics dashboard"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes, the caller operates three retail locations and wants to consolidate his payment processing with a single provider that offers same-day deposits and lower fees than his current processor."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects to learn about Chase payment solutions for in-store acceptance, understand pricing and hardware options, and schedule a consultation with a payments advisor within the next two weeks."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured the caller's email address and provided a specific consultation appointment date and time rather than just confirming availability, which would improve follow up and reduce no-show risk."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thanks for calling Chase Payment Solutions. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:25",
+          "text": "Hi Marcus. I own three retail stores in the Dallas area, and I'm looking at payment processing options. My current processor charges pretty high fees, and I heard Chase offers same-day deposits."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:42",
+          "text": "That's great. You've called the right place. We do offer same-day deposits at no extra cost when you pair our payment solutions with Chase Business Complete Banking. First, I'd like to get some information from you. What is your full name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:58",
+          "text": "My name is Robert Chandler."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:04",
+          "text": "Perfect, Robert. And tell me, what's your average monthly payment volume across your three stores?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:15",
+          "text": "Probably around 1500 to 2000 a month in transactions, so somewhere in that range."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:28",
+          "text": "Got it. That's helpful. And I assume all three locations are in the Dallas ZIP area?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:37",
+          "text": "Yes, all within the Dallas metro. Two downtown and one in Richardson."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:46",
+          "text": "Excellent. We definitely serve that area. Just to confirm, are you currently accepting payments in person at your registers?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:58",
+          "text": "Yes, we do. That's our main sales channel. We also do a little bit online, but in-store is 90 percent of our business."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:10",
+          "text": "Understood. So you're looking to streamline in-person payments and reduce your fees. I'd love to have one of our payments advisors give you a detailed walkthrough of our POS terminals, the Chase Card Reader, and our QuickAccept pricing. Would you be available for a 20-minute consultation call early next week?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:33",
+          "text": "Yeah, early next week would work. Maybe Tuesday or Wednesday afternoon?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:44",
+          "text": "Perfect, Robert. I'll have someone reach out to confirm a specific time on Tuesday or Wednesday afternoon. In the meantime, here's a heads up. We have a limited-time promotion, $100 off our Chase POS Terminal using code POS100 at checkout, which you might find valuable. Is there anything else I can help clarify before we wrap up?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:08",
+          "text": "No, that sounds good. I'm looking forward to hearing from your team."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:16",
+          "text": "Great, Robert. Thanks so much for calling Chase Payment Solutions. We'll be in touch early next week to schedule your consultation. Have a great day."
+        }
+      ],
+      "aiSummary": "Robert Chandler, owner of three retail stores in the Dallas metro area, called to explore payment processing options for his in-store business. He currently processes 1500 to 2000 transactions per month and is motivated by high fees from his existing processor and the promise of same-day deposits. Marcus captured Robert's name, business type, payment volume, and service area, then scheduled a consultation with a payments advisor for early next week. The call demonstrated good structure and qualification, though the agent did not capture the caller's email or phone number.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, well done structuring the intake and setting up the consultation. You qualified Robert's business quickly and mentioned our $100 off POS100 promo at the right moment. Two coaching points for next time. First, always capture the customer's email address and phone number before closing so the team can follow up immediately without a second call. Second, give Robert a specific day and time slot for the consultation, not just a window like Tuesday or Wednesday, so he can confirm and put it on his calendar now. Small changes like these reduce no-shows and improve the customer experience. Great work."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "48,309"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$260.75"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$12,596,362"
+            }
+          ]
+        },
+        {
+          "title": "NEW MERCHANT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Merchants (Count)",
+              "value": "26,481"
+            },
+            {
+              "label": "Caller Type: New Merchants (Percent)",
+              "value": "55%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "20,290"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "42%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING MERCHANTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Merchant (Count)",
+              "value": "21,828"
+            },
+            {
+              "label": "Caller Type: Existing Merchant (Percent)",
+              "value": "45%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Branch Referral",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 50,
+                "display": "50%"
+              },
+              {
+                "name": "Email/CRM",
+                "value": 43,
+                "display": "43%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 37,
+                "display": "37%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "17,842",
+                  "30%",
+                  "$4,612,318"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "12,318",
+                  "37%",
+                  "$3,214,655"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "8,417",
+                  "43%",
+                  "$2,187,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "5,914",
+                  "50%",
+                  "$1,564,218"
+                ]
+              },
+              {
+                "cells": [
+                  "Branch Referral",
+                  "3,818",
+                  "58%",
+                  "$1,017,729"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 18000,
+            "axisTicks": [
+              0,
+              3000,
+              6000,
+              9000,
+              12000,
+              15000,
+              18000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 16284,
+                "display": "16,284"
+              },
+              {
+                "name": "organic",
+                "value": 11927,
+                "display": "11,927"
+              },
+              {
+                "name": "email",
+                "value": 8842,
+                "display": "8,842"
+              },
+              {
+                "name": "social",
+                "value": 6713,
+                "display": "6,713"
+              },
+              {
+                "name": "referral",
+                "value": 4543,
+                "display": "4,543"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "16,284",
+                  "32%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "11,927",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "8,842",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "6,713",
+                  "51%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "4,543",
+                  "59%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Payments + Banking In One Place",
+                "value": 9847,
+                "display": "9,847"
+              },
+              {
+                "name": "Same-Day Deposits",
+                "value": 7213,
+                "display": "7,213"
+              },
+              {
+                "name": "$100 Off POS Terminal (POS100)",
+                "value": 5428,
+                "display": "5,428"
+              },
+              {
+                "name": "Tap to Pay, No Hardware Needed",
+                "value": 3914,
+                "display": "3,914"
+              },
+              {
+                "name": "Payments for Restaurants",
+                "value": 2687,
+                "display": "2,687"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Payments + Banking In One Place",
+                  "9,847",
+                  "34%",
+                  "$2,517,318"
+                ]
+              },
+              {
+                "cells": [
+                  "Same-Day Deposits",
+                  "7,213",
+                  "41%",
+                  "$1,842,655"
+                ]
+              },
+              {
+                "cells": [
+                  "$100 Off POS Terminal (POS100)",
+                  "5,428",
+                  "47%",
+                  "$1,388,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Tap to Pay, No Hardware Needed",
+                  "3,914",
+                  "55%",
+                  "$1,004,218"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 5000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "chase merchant services",
+                "value": 4218,
+                "display": "4,218"
+              },
+              {
+                "name": "credit card processing for small business",
+                "value": 3514,
+                "display": "3,514"
+              },
+              {
+                "name": "chase payment solutions pricing",
+                "value": 2687,
+                "display": "2,687"
+              },
+              {
+                "name": "POS system for restaurant",
+                "value": 1942,
+                "display": "1,942"
+              },
+              {
+                "name": "card reader for phone",
+                "value": 1384,
+                "display": "1,384"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "chase merchant services",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "credit card processing for small business",
+                  "40%"
+                ]
+              },
+              {
+                "cells": [
+                  "chase payment solutions pricing",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "POS system for restaurant",
+                  "54%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Merchants",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Merchants (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "In-person / In-store Payments",
+              "14,318",
+              "35%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Online / E-commerce Payments",
+              "10,842",
+              "42%",
+              "54%"
+            ]
+          },
+          {
+            "cells": [
+              "Billing & Invoicing",
+              "7,214",
+              "48%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Tools & Value-Adds",
+              "4,687",
+              "57%",
+              "66%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Chase Business Banking Center, New York",
+              "8,942",
+              "641",
+              "6%",
+              "37%"
+            ]
+          },
+          {
+            "cells": [
+              "Chase Business Banking Center, Chicago",
+              "6,718",
+              "512",
+              "7%",
+              "43%"
+            ]
+          },
+          {
+            "cells": [
+              "Chase Business Banking Center, Houston",
+              "5,214",
+              "428",
+              "8%",
+              "49%"
+            ]
+          },
+          {
+            "cells": [
+              "Chase Business Banking Center, Phoenix",
+              "3,847",
+              "314",
+              "9%",
+              "56%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Rate/Pricing Above Budget",
+            "values": [
+              1842,
+              1918,
+              1647,
+              1489,
+              1318
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1418,
+              1524,
+              1387,
+              1289,
+              1229
+            ]
+          },
+          {
+            "name": "Not Ready to Switch",
+            "values": [
+              1124,
+              1187,
+              1042,
+              1014,
+              951
+            ]
+          },
+          {
+            "name": "Needs Partner Approval",
+            "values": [
+              872,
+              914,
+              821,
+              814,
+              761
+            ]
+          },
+          {
+            "name": "Below Processing Volume Minimum",
+            "values": [
+              724,
+              748,
+              687,
+              671,
+              628
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "19,324"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "New Merchant (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$7,179,926"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Merchant (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$487,320"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Merchant (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$652,840"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Merchant (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$541,275"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Merchant (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$612,450"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Merchant (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$738,915"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Merchant (Percent)",
+              "value": "39%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$698,380"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Merchant (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 22487,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "7,243",
+                "58%",
+                "31%",
+                "$2,365,840"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "5,128",
+                "54%",
+                "32%",
+                "$1,628,920"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "3,847",
+                "57%",
+                "34%",
+                "$1,452,815"
+              ]
+            },
+            {
+              "name": "Email Marketing",
+              "metrics": [
+                "2,156",
+                "59%",
+                "36%",
+                "$892,340"
+              ]
+            },
+            {
+              "name": "Branch Referral",
+              "metrics": [
+                "950",
+                "62%",
+                "38%",
+                "$440,235"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Merchant (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21568,
+          "rows": [
+            {
+              "name": "Search Engine",
+              "metrics": [
+                "8,714",
+                "55%",
+                "30%",
+                "$2,358,270"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "5,392",
+                "57%",
+                "33%",
+                "$1,805,650"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "3,215",
+                "60%",
+                "35%",
+                "$1,289,480"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "1,847",
+                "61%",
+                "37%",
+                "$902,150"
+              ]
+            },
+            {
+              "name": "Affiliate",
+              "metrics": [
+                "156",
+                "64%",
+                "40%",
+                "$284,620"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Merchant (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 22841,
+          "rows": [
+            {
+              "name": "Payments Banking In One Place",
+              "metrics": [
+                "4,362",
+                "56%",
+                "29%",
+                "$1,485,930"
+              ]
+            },
+            {
+              "name": "Same Day Deposits Initiative",
+              "metrics": [
+                "3,847",
+                "57%",
+                "32%",
+                "$1,428,650"
+              ]
+            },
+            {
+              "name": "100 Off POS Terminal Promotion",
+              "metrics": [
+                "3,215",
+                "59%",
+                "35%",
+                "$1,285,740"
+              ]
+            },
+            {
+              "name": "Switch to Chase Payment Solutions",
+              "metrics": [
+                "2,847",
+                "61%",
+                "37%",
+                "$1,132,480"
+              ]
+            },
+            {
+              "name": "Payments for Restaurants Vertical",
+              "metrics": [
+                "2,093",
+                "63%",
+                "38%",
+                "$979,125"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Merchant (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20756,
+          "rows": [
+            {
+              "name": "credit card processing for small business",
+              "metrics": [
+                "3,428",
+                "54%",
+                "29%",
+                "$1,062,850"
+              ]
+            },
+            {
+              "name": "chase merchant services",
+              "metrics": [
+                "2,847",
+                "58%",
+                "31%",
+                "$945,280"
+              ]
+            },
+            {
+              "name": "POS system for restaurant",
+              "metrics": [
+                "2,156",
+                "60%",
+                "34%",
+                "$825,940"
+              ]
+            },
+            {
+              "name": "payment gateway for website",
+              "metrics": [
+                "1,847",
+                "62%",
+                "36%",
+                "$758,320"
+              ]
+            },
+            {
+              "name": "tap to pay iPhone business",
+              "metrics": [
+                "1,562",
+                "65%",
+                "39%",
+                "$689,540"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Merchant (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Point of Sale Systems",
+              "metrics": [
+                "6,847",
+                "57%",
+                "30%",
+                "$2,154,680"
+              ]
+            },
+            {
+              "name": "Payment Processing Online",
+              "metrics": [
+                "5,128",
+                "58%",
+                "32%",
+                "$1,687,420"
+              ]
+            },
+            {
+              "name": "In Person Acceptance",
+              "metrics": [
+                "4,362",
+                "59%",
+                "34%",
+                "$1,542,850"
+              ]
+            },
+            {
+              "name": "Invoicing and Billing",
+              "metrics": [
+                "2,087",
+                "61%",
+                "37%",
+                "$902,175"
+              ]
+            },
+            {
+              "name": "Business Tools and Analytics",
+              "metrics": [
+                "900",
+                "64%",
+                "40%",
+                "$392,801"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Merchant (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Point of Sale Systems",
+            "values": [
+              624,
+              589,
+              612,
+              564,
+              458
+            ]
+          },
+          {
+            "name": "Payment Processing Online",
+            "values": [
+              518,
+              487,
+              524,
+              496,
+              378
+            ]
+          },
+          {
+            "name": "In Person Acceptance",
+            "values": [
+              473,
+              421,
+              498,
+              438,
+              328
+            ]
+          },
+          {
+            "name": "Invoicing and Billing",
+            "values": [
+              256,
+              217,
+              248,
+              214,
+              159
+            ]
+          },
+          {
+            "name": "Business Tools and Analytics",
+            "values": [
+              156,
+              138,
+              162,
+              147,
+              97
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "26%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "348"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "856"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              73,
+              76,
+              74,
+              79,
+              77,
+              75,
+              78,
+              81,
+              76,
+              79,
+              73,
+              82,
+              77,
+              75,
+              80,
+              78,
+              76,
+              79,
+              74,
+              82,
+              78,
+              79,
+              81,
+              76,
+              77,
+              75,
+              81,
+              73,
+              78,
+              79,
+              76,
+              188,
+              191,
+              176,
+              184,
+              189,
+              179,
+              186,
+              182,
+              191,
+              177,
+              185,
+              188,
+              179,
+              183,
+              191,
+              186,
+              189,
+              181
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,173"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "742"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "716"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "96%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "POS Terminal Setup",
+            "values": [
+              8,
+              11,
+              9,
+              12,
+              7,
+              14
+            ]
+          },
+          {
+            "name": "Payment Processing Rates",
+            "values": [
+              5,
+              8,
+              6,
+              9,
+              7,
+              11
+            ]
+          },
+          {
+            "name": "Same Day Deposit Options",
+            "values": [
+              3,
+              7,
+              4,
+              8,
+              6,
+              13
+            ]
+          },
+          {
+            "name": "Mobile Card Reader Integration",
+            "values": [
+              6,
+              9,
+              7,
+              10,
+              8,
+              12
+            ]
+          },
+          {
+            "name": "E-commerce Payment Gateway",
+            "values": [
+              2,
+              5,
+              3,
+              6,
+              4,
+              9
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "44,444"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "32,367"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Account Activated (Count)",
+            "value": "20,290"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$12,596,362"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Derek Sutton",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Priya Kapoor",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Marcus Webb",
+              "value": 224,
+              "display": "224"
+            },
+            {
+              "name": "Jennifer Liu",
+              "value": 156,
+              "display": "156"
+            },
+            {
+              "name": "Andrew O'Neill",
+              "value": 201,
+              "display": "201"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Account Activated (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Keisha Morris",
+            "values": [
+              312,
+              374,
+              421,
+              448,
+              485
+            ]
+          },
+          {
+            "name": "Robert Castellano",
+            "values": [
+              298,
+              356,
+              398,
+              429,
+              461
+            ]
+          },
+          {
+            "name": "Yuki Tanaka",
+            "values": [
+              284,
+              341,
+              379,
+              408,
+              447
+            ]
+          },
+          {
+            "name": "Samantha Cross",
+            "values": [
+              301,
+              368,
+              407,
+              441,
+              472
+            ]
+          },
+          {
+            "name": "Carlos Mendez",
+            "values": [
+              289,
+              352,
+              388,
+              419,
+              453
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Derek Sutton",
+              "value": 53.2,
+              "display": "53.2%"
+            },
+            {
+              "name": "Priya Kapoor",
+              "value": 54.7,
+              "display": "54.7%"
+            },
+            {
+              "name": "Marcus Webb",
+              "value": 55.1,
+              "display": "55.1%"
+            },
+            {
+              "name": "Jennifer Liu",
+              "value": 52.8,
+              "display": "52.8%"
+            },
+            {
+              "name": "Andrew O'Neill",
+              "value": 56.4,
+              "display": "56.4%"
+            },
+            {
+              "name": "Miguel Torres",
+              "value": 57.9,
+              "display": "57.9%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Account Activated (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Derek Sutton",
+                "53.2%",
+                "28%",
+                "$819,456",
+                "1,485"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Kapoor",
+                "54.7%",
+                "30%",
+                "$934,524",
+                "1,402"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Webb",
+                "55.1%",
+                "29%",
+                "$887,963",
+                "1,531"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Liu",
+                "52.8%",
+                "26%",
+                "$712,584",
+                "1,419"
+              ]
+            },
+            {
+              "cells": [
+                "Andrew O'Neill",
+                "56.4%",
+                "31%",
+                "$967,297",
+                "1,494"
+              ]
+            },
+            {
+              "cells": [
+                "Miguel Torres",
+                "57.9%",
+                "33%",
+                "$1,041,258",
+                "1,437"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Keisha Morris",
+              "value": 93.4,
+              "display": "93.4%"
+            },
+            {
+              "name": "Robert Castellano",
+              "value": 91.6,
+              "display": "91.6%"
+            },
+            {
+              "name": "Yuki Tanaka",
+              "value": 89.8,
+              "display": "89.8%"
+            },
+            {
+              "name": "Samantha Cross",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "Carlos Mendez",
+              "value": 90.4,
+              "display": "90.4%"
+            },
+            {
+              "name": "Victoria Zhang",
+              "value": 88.7,
+              "display": "88.7%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Account Activated (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Keisha Morris",
+                "93.4%",
+                "66%",
+                "$1,562,847",
+                "1,532"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Castellano",
+                "91.6%",
+                "64%",
+                "$1,498,152",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Yuki Tanaka",
+                "89.8%",
+                "61%",
+                "$1,359,627",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Samantha Cross",
+                "92.1%",
+                "65%",
+                "$1,529,485",
+                "1,518"
+              ]
+            },
+            {
+              "cells": [
+                "Carlos Mendez",
+                "90.4%",
+                "62%",
+                "$1,408,936",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Victoria Zhang",
+                "88.7%",
+                "59%",
+                "$1,237,315",
+                "1,496"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Account Activated (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Account Activated (Count)",
+        "rightMax": 1000,
+        "rightTicks": [
+          0,
+          250,
+          500,
+          750,
+          1000
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 753
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 722
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 672
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 641
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 558
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 586
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 647
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 673
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 750
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 727
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 655
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 633
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 563
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 580
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 662
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 683
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 743
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 731
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 641
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 621
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 572
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 578
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 674
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 696
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 734
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 733
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 632
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 606
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 581
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 579
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 664
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 600000,
+        "rightTicks": [
+          0,
+          200000,
+          400000,
+          600000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 466936
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 447537
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 416748
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 397658
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 346234
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 363363
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 401397
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 417219
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 465202
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 451042
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 406238
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 392637
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 349381
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 360129
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 410954
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 423476
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 460870
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 453698
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 397844
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 385225
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 354625
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 358342
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 418037
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 431894
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 455016
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 454354
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 392151
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 376010
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 360774
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 359034
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 422337
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "48,309"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,865"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,899"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Patricia Chen",
+                "412",
+                "91%",
+                "88%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Rodriguez",
+                "389",
+                "87%",
+                "85%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Walsh",
+                "518",
+                "89%",
+                "86%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "48,309 calls",
+      "pagerLabel": "1 of 4,831",
+      "calls": [
+        {
+          "time": "1/6/26 9:12 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 10:41 am",
+          "id": "A23C-4E9B71D6A0F2"
+        },
+        {
+          "time": "1/13/26 11:27 am",
+          "id": "C81D-6F3A0B2E7749"
+        },
+        {
+          "time": "1/15/26 12:38 pm",
+          "id": "9E4F-2D71C8B50A63"
+        },
+        {
+          "time": "1/16/26 1:19 pm",
+          "id": "7B2A-59E0F3C41D88"
+        },
+        {
+          "time": "1/20/26 2:04 pm",
+          "id": "D16E-3C8B94A270F5"
+        },
+        {
+          "time": "1/22/26 2:53 pm",
+          "id": "5A9C-8B21E7D04F36"
+        },
+        {
+          "time": "1/26/26 3:41 pm",
+          "id": "F30B-71A6C2E895D4"
+        },
+        {
+          "time": "1/28/26 4:22 pm",
+          "id": "2C7D-9E4B60F3A118"
+        },
+        {
+          "time": "1/30/26 5:07 pm",
+          "id": "B49A-1F82D5C6703E"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Chase Payment Solutions, this is Marcus speaking. How can I help you grow your business today?",
+          "highlights": [
+            "Thank you for calling Chase Payment Solutions",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Marcus, I'm opening a coffee shop next month and I need a way to take credit cards at the counter.",
+          "highlights": [
+            "opening a coffee shop",
+            "take credit cards at the counter"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:14",
+          "text": "Congratulations on the new shop. I can absolutely set you up. May I get your name and the name of the business?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:21",
+          "text": "Sure, it's Danielle Foster, and the shop is called Copper Kettle Coffee.",
+          "highlights": [
+            "Danielle Foster",
+            "Copper Kettle Coffee"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:28",
+          "text": "Great, thank you Danielle. For a counter service coffee shop, I'd usually recommend the Chase POS Terminal so you can take payments, print receipts and track inventory in one device.",
+          "highlights": [
+            "Chase POS Terminal"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:38",
+          "text": "Okay, but what does that run? I'm trying to keep my startup costs manageable.",
+          "highlights": [
+            "what does that run",
+            "keep my startup costs manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:45",
+          "text": "Completely understand. The POS Terminal is normally around $449, but we have a promotion right now, code POS100, that takes $100 off, so it comes to about $349 one time.",
+          "highlights": [
+            "code POS100",
+            "$100 off"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:56",
+          "text": "That's better. Honestly though, the guys down the street use Square and told me it was basically free to start.",
+          "highlights": [
+            "the guys down the street use Square"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:05",
+          "text": "That's a fair point. If you'd like a no hardware option to start, Tap to Pay on your phone lets you accept cards with no device cost, and with Chase you get same-day deposits at no extra charge, which Square typically charges for.",
+          "highlights": [
+            "Tap to Pay on your phone",
+            "same-day deposits at no extra charge"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:18",
+          "text": "Same day deposits would really help my cash flow. What are the processing fees like?",
+          "highlights": [
+            "Same day deposits",
+            "cash flow"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:25",
+          "text": "With Chase QuickAccept it's about 2.6% plus 10 cents for tapped or dipped cards, and there's no monthly fee. It's built right into a Chase Business Complete Banking account.",
+          "highlights": [
+            "Chase QuickAccept",
+            "no monthly fee"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:36",
+          "text": "And am I locked into some long contract if I sign up? I don't want to be stuck.",
+          "highlights": [
+            "locked into some long contract",
+            "don't want to be stuck"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:43",
+          "text": "No long term contract at all. There's no cancellation penalty, so you can adjust as the shop grows. And if you process over $2,000 a month, we waive the banking monthly service fee.",
+          "highlights": [
+            "No long term contract",
+            "waive the banking monthly service fee"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:54",
+          "text": "That's reassuring. I'd also want to send invoices for catering orders eventually.",
+          "highlights": [
+            "send invoices for catering orders"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:01",
+          "text": "Perfect, our Invoicing tool is included with your account, so you can send digital invoices and payment links by text or email with no added monthly cost.",
+          "highlights": [
+            "Invoicing tool is included",
+            "payment links"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:10",
+          "text": "Okay, this sounds like a good fit. I'd like to go over the details with someone before I decide though.",
+          "highlights": [
+            "go over the details"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:17",
+          "text": "I'd be glad to schedule a free consultation with one of our Payments Advisors. They can finalize your setup and apply the POS100 promo. Does Thursday at 10 AM work?",
+          "highlights": [
+            "schedule a free consultation",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:26",
+          "text": "Thursday at 10 works great. Let me just confirm with my business partner but pencil us in.",
+          "highlights": [
+            "Thursday at 10 works great",
+            "confirm with my business partner"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:32",
+          "text": "Done. I've booked your consultation for Thursday at 10 AM and I'll send a confirmation to your email. What's the best number to reach you?",
+          "highlights": [
+            "booked your consultation for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:37",
+          "text": "It's 512-555-0148. Thanks so much, Marcus.",
+          "highlights": [
+            "512-555-0148"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:40",
+          "text": "You're all set, Danielle. Thank you for choosing Chase Payment Solutions, and welcome aboard. Have a great day.",
+          "highlights": [
+            "Thank you for choosing Chase Payment Solutions",
+            "Have a great day"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Merchant",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: POS System Inquiry",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Product: Chase QuickAccept",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Product: Tap to Pay",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Pricing Objection Raised",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Foster called as a new merchant opening a coffee shop named Copper Kettle Coffee and needed a way to accept credit cards at the counter. Agent Marcus recommended the Chase POS Terminal with the POS100 promo, then offered Tap to Pay and Chase QuickAccept for lower startup costs, addressing her price, competitor, and contract concerns. He highlighted same-day deposits, no long term contract, and included Invoicing for future catering orders. Marcus scheduled a free Payments Advisor consultation for Thursday at 10 AM and captured her contact number.",
+        "keyPoints": [
+          "New merchant opening Copper Kettle Coffee, needs counter card acceptance",
+          "Raised startup cost concern; agent applied POS100 promo for $100 off",
+          "Compared Chase to Square; agent countered with same-day deposits at no extra cost",
+          "Contract worry resolved with no long term contract and fee waiver over $2,000/month",
+          "Interested in Invoicing and payment links for catering orders",
+          "Consultation booked for Thursday at 10 AM, callback number 512-555-0148 captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "30,435 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,043",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi this is Chase Payments support. Are you calling about merchant services or payment processing for your business today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes hello. I own a restaurant and we are looking to upgrade our POS system. We currently use an older system and it takes forever to process cards."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great, thank you for choosing Chase. I can definitely help you explore options. What type of restaurant do you operate? Are you fast casual, fine dining, or something else?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "We are a fast casual concept with about 4 locations. We do a lot of volume especially during lunch rush."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:26 AM",
+              "text": "That's excellent. With 4 locations and high volume, you will benefit from our Chase POS Terminal which handles multiple transactions simultaneously. Do you currently accept all major card types including tap and contactless payments?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:27 AM",
+              "text": "We take credit and debit but honestly not sure about tap payments. Is that something we should offer?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:28 AM",
+              "text": "Absolutely. Tap to pay is increasingly important for customer convenience and speeds up transactions. Our Chase POS Terminal supports all payment methods plus we offer Tap to Pay on phone as a backup option at no extra hardware cost. Quick question, are you looking to upgrade all 4 locations at once or start with one?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "We would probably want to do all 4 at the same time so everything is uniform. What would that look like cost wise?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Smart approach. For 4 locations, our Chase POS Terminal is normally $449 each but we currently have a promotion using code POS100 which brings it down to $349 per unit. So for 4 terminals that is $1,396 total upfront. Plus our transaction fees for restaurants are competitive at 2.6% plus 10 cents for tapped or dipped cards. Would that fit into your budget?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "That sounds reasonable. What about same day deposits? We need cash flow and waiting days is really painful."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Perfect question. With Chase Business Complete Banking bundled with QuickAccept, you get same day deposits at no extra cost. That means funds from today's sales deposit tonight. We also include business analytics so you can track sales by location and by daypart. How does Friday of this week look for a consultation with one of our Payments Advisors to set everything up?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:36 AM",
+              "text": "Friday works. What time would be best?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:37 AM",
+              "text": "How about 2 PM Pacific Time on Friday March 14th? Our advisor will walk through the full setup, answer any remaining questions, and get your ordering process started. Can we confirm your name and best callback number?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:38 AM",
+              "text": "Yes it is Marcus Chen. You can reach me at 415-552-7834."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:39 AM",
+              "text": "Perfect Marcus. Just to recap, we have you scheduled for Friday March 14th at 2 PM PT to discuss Chase POS Terminal setup for all 4 of your locations with same day deposits and Tap to Pay support. Our advisor will call you at 415-552-7834. Thank you for choosing Chase Merchant Services."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:40 AM",
+              "text": "Great. Thanks for the help."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Merchant",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: POS Terminal",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Location Count: Multiple",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Payment Methods: Tap to Pay",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Benefit: Same Day Deposits",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "415-552-7834",
+            "totalMessages": "18",
+            "source": "415-552-7834",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "877-936-2933",
+            "repeatCaller": "No",
+            "city": "San Francisco",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Marcus Chen",
+            "firstName": "Marcus",
+            "lastName": "Chen",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A7B2-89CD45EF2B19",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A7B2-89CD45EF2B19",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D4F8-3A6E91C2F7DD",
+          "time": "8/16/25 10:28 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D4F8-3A6E91C2F7DD",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "E9K1-5F4C72B8A6E2",
+          "time": "8/16/25 10:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "E9K1-5F4C72B8A6E2",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "48,309 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,831",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:34 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:34 PM",
+              "text": "Hi there, thanks for calling Chase Merchant Services. This is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:35 PM",
+              "text": "Hey Marcus. Yeah, I'm calling because I own a small restaurant in Denver, and we're looking to upgrade our payment processing. We currently use another processor, but the fees are killing us."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:36 PM",
+              "text": "I totally understand. We work with a lot of restaurants just like yours, and many of them save money with our QuickAccept solution. Quick question, are you currently accepting credit and debit cards in your restaurant?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:37 PM",
+              "text": "Yeah, we take everything. Visa, Mastercard, American Express, even tap to pay sometimes. But we want something more reliable and with better rates."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:38 PM",
+              "text": "Great. And roughly how much in card payments do you process each month?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:39 PM",
+              "text": "Probably around eight to ten thousand a month. We're not huge, but we're steady."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:41 PM",
+              "text": "Perfect. That's exactly the range where our QuickAccept solution with same day deposits really shines. We can bundle that with your business banking at Chase and waive the monthly service fee since you're processing over two thousand a month. Plus, we offer competitive rates starting at two point six percent plus ten cents for tap and dip transactions. Does that sound interesting?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:42 PM",
+              "text": "Yeah, definitely. What's the keyed transaction rate if someone pays over the phone or online?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:43 PM",
+              "text": "Good question. Keyed transactions are three point five percent plus ten cents. Now, I'd love to get you set up with one of our Payments Advisors who can walk through your specific setup and maybe talk about a POS terminal to modernize your point of sale. Are you free for a consultation call next Wednesday afternoon, say around two pm?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:44 PM",
+              "text": "Next Wednesday works. Two pm is good for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:45 PM",
+              "text": "Excellent. So I've got you down for a consultation with one of our Payments Advisors on Wednesday, January twenty-second at two pm. We'll call you back at this number, eight seven seven, nine three six, twenty nine three three. And your name is?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:46 PM",
+              "text": "It's David. David Chen."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Perfect, David. We look forward to speaking with you on the twenty-second. Thanks so much for calling Chase Merchant Services."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Thanks Marcus. See you then."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Merchant",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Restaurant Vertical Identified",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Current Processor Mentioned",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "QuickAccept Interest Expressed",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Monthly Processing Volume Captured",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:34 pm",
+            "duration": "4:33",
+            "destinationPhone": "877-936-2933",
+            "source": "(855) 337-7282",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "(303) 555-0147",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "David Chen",
+            "firstName": "David",
+            "lastName": "Chen",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B829-5F4A8E2B1C76",
+          "time": "1/22/26 10:47 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B829-5F4A8E2B1C76",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C746-7D3E9B5F0A82",
+          "time": "1/28/26 3:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C746-7D3E9B5F0A82",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D514-2F6C1D8A9E33",
+          "time": "1/31/26 1:05 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D514-2F6C1D8A9E33",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: I'm Chase Merchant Services's AI agent, here to help you get a personalized payments quote, and right now you can get $100 off the Chase POS Terminal with code POS100. Would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, including your monthly card processing volume, how you take payments (in-person, online, or on-the-go), which industry your business is in (retail, restaurant, services, e-commerce, or healthcare), your timeline to switch or start, and your business ZIP code to confirm availability.",
+        "Estimate then book: Once I confirm we serve your ZIP, I'll share a preliminary processing rate range based on what you shared (for example roughly 2.6% plus 10 cents tapped or dipped), then recommend a consultation with a Payments Advisor for an exact quote. I'll propose a specific day and time, and you'll get a reminder text before your appointment with our number, 1-877-843-5690, to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Chase_Merchant_Services_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Chase Payment Solutions Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Point-of-Sale System & Terminals",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Accept Cards Online & Payment Gateway",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Merchant Pricing & Fees",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"deposit timing\",\"question\":\"When will my card payments hit my Chase business account?\",\"answer\":\"With QuickAccept and Chase Business Complete Banking, eligible payments deposit as soon as same day at no additional cost. A Payments Advisor can confirm your account settings on a quick consultation.\"},{\"topic\":\"terminal replacement\",\"question\":\"My Chase POS Terminal stopped printing receipts, what do I do?\",\"answer\":\"Most receipt issues are paper or connectivity related and can be resolved quickly with support. If the device needs replacement, we can arrange that and review your setup during a consultation.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How much does it cost to process credit cards with Chase?",
+              "answer": "Rates depend on your volume and how you accept payments, with common tapped or dipped pricing around a low percentage plus a small per-transaction fee. Let's book a consultation so a Payments Advisor can give you an exact quote."
+            },
+            {
+              "question": "How do I get the $100 off the POS Terminal?",
+              "answer": "You can apply code POS100 at checkout for the limited-time discount on the Chase POS Terminal. I can also set up a consultation to make sure the terminal fits your business."
+            },
+            {
+              "question": "Do you offer same-day deposits?",
+              "answer": "Yes, eligible payments through QuickAccept can deposit as soon as same day at no extra cost with a Chase business account. A quick consultation can confirm your eligibility."
+            },
+            {
+              "question": "Can I turn my phone into a card reader?",
+              "answer": "Yes, with the Chase POS app or Tap to Pay you can accept payments right on your phone, and the Chase Card Reader adds more options. Let's schedule a consultation to match the right setup to your business."
+            },
+            {
+              "question": "What POS system do you recommend for a restaurant?",
+              "answer": "For restaurants we typically pair the Chase POS Terminal or POS app with tools for tips and inventory, tailored to your service style. Booking a consultation lets an advisor recommend the best fit."
+            },
+            {
+              "question": "Do you integrate with my online store?",
+              "answer": "Yes, our e-commerce payment gateway integrates with leading platforms so you can accept payments on your website. A consultation can walk through your specific platform."
+            },
+            {
+              "question": "Do I need a Chase business bank account to use your payments?",
+              "answer": "Some tools like QuickAccept work best with Chase Business Complete Banking, but we can review your options during a consultation. Let's find a time that works for you."
+            },
+            {
+              "question": "Can you help me switch from my current processor?",
+              "answer": "Yes, we help businesses switch to Chase Payment Solutions and can review your current fees for comparison. Let's book a consultation to map out the move."
+            },
+            {
+              "question": "How do I send invoices to my customers?",
+              "answer": "You can create professional digital invoices and payment links straight from your business account, with automatic tracking. A consultation can help you get set up quickly."
+            },
+            {
+              "question": "What is QuickAccept?",
+              "answer": "QuickAccept is built into Chase Business Complete Banking and lets you accept card payments with same-day deposits at no additional cost. An advisor can activate and explain it during a consultation."
+            },
+            {
+              "question": "Do you support recurring billing?",
+              "answer": "Yes, you can set up recurring billing through our virtual terminal for subscription and repeat payments. Let's schedule a consultation to configure it for your business."
+            },
+            {
+              "question": "Can I accept tap to pay without buying hardware?",
+              "answer": "Yes, Tap to Pay lets you accept contactless payments with no extra hardware needed, easy and secure. Book a consultation and we'll get you started."
+            },
+            {
+              "question": "What industries do you work with?",
+              "answer": "We serve retail, restaurants, professional services, e-commerce, healthcare, and integrated platforms. A consultation lets us tailor a solution to your industry."
+            },
+            {
+              "question": "Is there a monthly fee?",
+              "answer": "Some products have monthly fees while others are pay-per-transaction, and fees on business banking can be waived at higher volumes. A Payments Advisor can outline your exact costs on a consultation."
+            },
+            {
+              "question": "How long does setup take?",
+              "answer": "Many businesses can be up and running quickly once your account and hardware are configured. Let's book a consultation to plan your timeline."
+            },
+            {
+              "question": "Can I manage payments and payroll in one place?",
+              "answer": "Yes, one login manages payments, banking, business analytics, and payroll to help you grow. A consultation can show you the full toolset."
+            },
+            {
+              "question": "Do you offer a wireless or standalone terminal?",
+              "answer": "Yes, the Chase Wireless Terminal is a dedicated mobile device for merchants who want a standalone option. Let's set up a consultation to compare it with the POS Terminal."
+            },
+            {
+              "question": "What are the fees for keyed-in transactions?",
+              "answer": "Keyed transactions typically carry a slightly higher rate than tapped or dipped payments. A Payments Advisor can give you exact numbers during a consultation."
+            },
+            {
+              "question": "Can I see analytics on my sales?",
+              "answer": "Yes, business analytics and customer insights are included with your account so you can track performance. A consultation can walk you through the reporting."
+            },
+            {
+              "question": "How do I get started?",
+              "answer": "The easiest way is to book a consultation with a Payments Advisor who will tailor a quote and setup to your business. What day and time works best for you?"
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the consultation\",\"follow_up_message\":\"Great, I have you down to speak with a Chase Payments Advisor. I'll confirm your business ZIP and send a reminder text before your appointment with our number, 1-877-843-5690, in case you need to reach us.\"},{\"intent\":\"request a processing quote\",\"follow_up_message\":\"Thanks for sharing your monthly volume and how you take payments. Based on that I can give a preliminary rate range, and I'll book you with a Payments Advisor for an exact quote. What day and time work best?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Chase Merchant Services's AI agent. I can help you find the right payment solution and get a personalized quote. Would you like to get started?",
+        "goal": "Qualify the business's payment processing needs and book a consultation with a Chase Payments Advisor.",
+        "bookingType": "virtual consultation",
+        "offer": "Get $100 off the Chase POS Terminal with code POS100",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "About how much do you process in card payments each month?",
+          "How do you take payments most, in-person, online, or on-the-go?",
+          "What industry is your business in (retail, restaurant, services, e-commerce, or healthcare)?",
+          "Are you starting fresh or switching from another processor, and what's your timeline?",
+          "What's your business ZIP code so I can confirm availability?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:52 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:52 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:52 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Chase Merchant Services",
+      "callerName": "Michael Rodriguez",
+      "callerPhone": "(512) 555-0187",
+      "campaign": "POS Terminal, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$3,247",
+      "googleSearch": "POS system for restaurant Austin Texas",
+      "websiteSearch": "chase payment solutions pricing point of sale",
+      "callingWebpage": "/point-of-sale-system",
+      "products": "Chase POS Terminal, Chase QuickAccept",
+      "cartId": "CMS-7394R",
+      "serviceable": "Yes",
+      "email": "michael.rodriguez@austineatery.com",
+      "street": "1425 Barton Springs Road",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78704",
+      "digitalJourney": "/home › /business › /accept-credit-cards › /point-of-sale-system",
+      "intent": "Restaurant owner seeking integrated payment processing and POS solution with same day deposits for multi-location operation.",
+      "coverage": "ZIP 78704 confirmed, Austin serviceable",
+      "switchIntent": "High, currently using competitor terminal, wants to consolidate with Chase Business Banking account this quarter.",
+      "greeting": "Hi Michael, this is Sarah from Chase Merchant Services. I saw you were interested in our POS Terminal and integrated payment solutions for restaurants. I'd love to schedule a quick consultation to show you how Chase can help streamline payments and banking in one place. Does Thursday work for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "Chase Merchant Services",
+      "callerName": "Jennifer Park",
+      "callerPhone": "(650) 555-0423",
+      "campaign": "Tap to Pay, Silicon Valley Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$1,892",
+      "googleSearch": "tap to pay iPhone business no hardware",
+      "websiteSearch": "mobile payment processing for service business",
+      "callingWebpage": "/accept-cards-on-the-go",
+      "products": "Tap to Pay on phone, Chase Card Reader",
+      "cartId": "CMS-5821P",
+      "serviceable": "Yes",
+      "email": "jennifer.park@siliconvalleyconsulting.com",
+      "street": "580 California Street",
+      "city": "Palo Alto",
+      "state": "CA",
+      "zip": "94301",
+      "digitalJourney": "/home › /business › /accept-credit-cards › /accept-cards-on-the-go › /tap-to-pay",
+      "intent": "Professional services consultant needing flexible mobile payment option for client meetings without carrying hardware equipment.",
+      "coverage": "ZIP 94301 confirmed, Palo Alto serviceable",
+      "appointment": "Mobile payments consultation with specialist, Thursday July 18, 2:00 PM",
+      "greeting": "Hi Jennifer, it's David from Chase Merchant Services. Thanks for your interest in Tap to Pay, no hardware needed. We have you down for Thursday at 2 PM to walk through how this works with your consulting business. Looking forward to showing you how to accept payments securely on your phone. Let me know if you have any questions before then."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Chase Merchant Services",
+      "brandDomain": "www.chase.com",
+      "brandIcon": "💳",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Payments for Retail Merchants",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "POS system for small business",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Accept cards in-person / Card Reader",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Chase POS Terminal, Chase Card Reader",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_new_merchant",
+          "name": "Consultation, New Merchant Setup"
+        },
+        {
+          "id": "support_existing_account",
+          "name": "Support, Existing Account"
+        },
+        {
+          "id": "general_payments_info",
+          "name": "General Information Line"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thank you for calling Chase Merchant Services. Can I ask what brought you in today?",
+          "sigs": [],
+          "q": [
+            20,
+            40,
+            40
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, I just opened a retail boutique in downtown Santa Barbara and I need a way to take card payments. I was looking at your website and saw the POS Terminal and Card Reader options.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Retail boutique</strong> - new business"
+            },
+            {
+              "c": "blue",
+              "t": "Interested in <strong>multiple payment solutions</strong>"
+            },
+            {
+              "c": "orange",
+              "t": "Early stage, <strong>setting up now</strong>"
+            }
+          ],
+          "q": [
+            65,
+            20,
+            15
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's great, congrats on the new boutique. Quick question for you. Are you looking for a full point of sale system to manage inventory and receipts, or would a mobile card reader be more what you need right now?",
+          "sigs": [],
+          "q": [
+            72,
+            15,
+            13
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I think I need the full system. I want to process payments, track my inventory, and also send invoices to some of my wholesale customers. Plus I heard about the same day deposits with Chase banking. Do you handle all of that?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Full <strong>POS system</strong> requirement"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Invoicing</strong> for B2B customers"
+            },
+            {
+              "c": "purple",
+              "t": "Interested in <strong>integrated banking and deposits</strong>"
+            }
+          ],
+          "q": [
+            88,
+            6,
+            6
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Absolutely, we do. Our POS Terminal handles all of that. You get payment processing, inventory management, invoicing, and you can bundle it with our Chase Business Complete Banking account for same day deposits at no extra cost. Right now we're also running a promotion on the POS Terminal. I'd love to connect you with one of our Payments Advisors who can walk through the setup and answer any specific questions about your boutique. How does that sound?",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "That sounds perfect. Yeah, let's do it.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Ready to proceed</strong> - qualified and engaged"
+            }
+          ],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule your consultation (Agent)\", \"book you with a Payments Advisor (Agent)\", \"set up your onboarding call (Agent)\", \"get you started with Chase (Caller)\"])",
+          "createdAt": "03/14/25 9:22 am",
+          "updatedAt": "01/12/26 2:15 pm"
+        },
+        {
+          "name": "Competitor Named (Square, Stripe, Clover)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"I'm currently with Square (Caller)\", \"switching from Stripe (Caller)\", \"using Clover right now (Caller)\", \"compared to PayPal (Caller)\"])",
+          "createdAt": "06/03/25 11:40 am",
+          "updatedAt": "12/18/25 4:05 pm"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"talk to a Payments Advisor (Agent)\", \"walk you through the setup (Agent)\", \"learn more about switching to Chase (Caller)\"])",
+          "createdAt": "04/21/25 8:15 am",
+          "updatedAt": "01/07/26 10:30 am"
+        },
+        {
+          "name": "Disclosed Processing Rates",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Rate Transparency] < 60 and duration > 45 sec",
+          "createdAt": "05/09/25 1:12 pm",
+          "updatedAt": "12/22/25 9:45 am"
+        },
+        {
+          "name": "Explained Same-Day Deposit",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Deposit Speed Explanation] < 60 and duration > 45 sec",
+          "createdAt": "07/17/25 3:33 pm",
+          "updatedAt": "01/15/26 11:05 am"
+        },
+        {
+          "name": "Online Payment Gateway Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"payment gateway for my website (Caller)\", \"accept cards online (Caller)\", \"integrate with my ecommerce store (Caller)\", \"add checkout to my site (Caller)\"])",
+          "createdAt": "08/02/25 10:20 am",
+          "updatedAt": "11/30/25 2:50 pm"
+        },
+        {
+          "name": "POS Terminal Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Chase POS terminal (Caller)\", \"card reader for my phone (Caller)\", \"point of sale system (Caller)\", \"wireless terminal (Caller)\"])",
+          "createdAt": "02/26/25 2:40 pm",
+          "updatedAt": "01/09/26 9:10 am"
+        },
+        {
+          "name": "QuickAccept Fee Objection",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"what are your transaction fees (Caller)\", \"that's too expensive (Caller)\", \"Square charges less (Caller)\", \"cost per swipe (Caller)\"])",
+          "createdAt": "09/12/25 4:18 pm",
+          "updatedAt": "01/20/26 3:22 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your rate would be (Agent)\", \"two point six percent plus ten cents (Agent)\", \"send you a pricing quote (Agent)\", \"monthly service fee (Agent)\"])",
+          "createdAt": "10/05/25 9:05 am",
+          "updatedAt": "01/18/26 1:40 pm"
+        },
+        {
+          "name": "Verified Business Banking Eligibility",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Business Banking Verification] < 60 and duration > 45 sec",
+          "createdAt": "06/28/25 12:00 pm",
+          "updatedAt": "12/29/25 4:30 pm"
+        }
+      ]
+    }
+  }
+}

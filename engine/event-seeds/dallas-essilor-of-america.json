@@ -1,0 +1,5342 @@
+{
+  "id": "essilor-of-america",
+  "customerName": "Essilor of America",
+  "websiteUrl": "https://www.essilorusa.com",
+  "brandDomain": "essilorusa.com",
+  "networkName": "Invoca for Vision Care",
+  "industry": "Ophthalmic lens manufacturing and vision care",
+  "bookingTerm": "Eye Exam",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 20000,
+      "yTicks": [
+        4000,
+        8000,
+        12000,
+        16000,
+        20000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 8214
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 15832
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 14967
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 15241
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 12987
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Eye Exam Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Eye Exam Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "See Sharper at Every Distance (Varilux XR)",
+          "marketingSearchTerm": "varilux progressive lenses price",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/varilux?utm_source=google&utm_medium=cpc&utm_campaign=varilux_xr",
+          "websiteJourney": "Home / Lenses / Varilux",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Your Choice Is Clear (Crizal Anti-Glare)",
+          "marketingSearchTerm": "anti-glare glasses lenses",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/crizal?utm_source=google&utm_medium=cpc&utm_campaign=crizal_antiglare",
+          "websiteJourney": "Home / Lenses / Crizal",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Essilor Ultimate Lens Package, Instant $100",
+          "marketingSearchTerm": "essilor eyecare professional near me",
+          "landingPageUrl": "https://www.essilorusa.com/packages/ultimate?utm_source=google&utm_medium=cpc&utm_campaign=ultimate_100",
+          "websiteJourney": "Home / Packages / Essilor Ultimate Lens Package",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Light Under Control (Transitions)",
+          "marketingSearchTerm": "transitions light-adaptive lenses",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/transitions?utm_source=bing&utm_medium=cpc&utm_campaign=light_under_control",
+          "websiteJourney": "Home / Lenses / Transitions",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Eye Strain Defense for All Ages (Eyezen)",
+          "marketingSearchTerm": "best lenses for computer eye strain",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/eyezen?utm_source=google&utm_medium=cpc&utm_campaign=eyezen_strain",
+          "websiteJourney": "Home / Lenses / Eyezen",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Best Vision Under the Sun (Xperio UV)",
+          "marketingSearchTerm": "polarized prescription sunglasses",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/xperio-uv?utm_source=google&utm_medium=cpc&utm_campaign=xperio_sun",
+          "websiteJourney": "Home / Lenses / Xperio UV",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Your Choice Is Clear (Crizal Anti-Glare)",
+          "marketingSearchTerm": "crizal vs regular lenses",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/crizal?utm_source=bing&utm_medium=cpc&utm_campaign=crizal_compare",
+          "websiteJourney": "Home / Lenses / Crizal",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "See Sharper at Every Distance (Varilux XR)",
+          "marketingSearchTerm": "progressive lenses for over 40",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/varilux?utm_source=google&utm_medium=cpc&utm_campaign=varilux_over40",
+          "websiteJourney": "Home / Lenses / Varilux",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Buy Two, See More",
+          "marketingSearchTerm": "blue light blocking lenses",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/crizal-prevencia?utm_source=google&utm_medium=cpc&utm_campaign=buy_two_see_more",
+          "websiteJourney": "Home / Lenses / Crizal",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Light Under Control (Transitions)",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/transitions?utm_source=instagram&utm_medium=social&utm_campaign=light_under_control",
+          "websiteJourney": "Home / Lenses / Transitions",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "What's Better Than Our Best Lenses",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.essilorusa.com/packages/ultimate?utm_source=facebook&utm_medium=social&utm_campaign=extra_pair",
+          "websiteJourney": "Home / Packages / Essilor Ultimate Lens Package",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Myopia Education",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.essilorusa.com/myopia?utm_source=organic&utm_medium=organic&utm_campaign=myopia_education",
+          "websiteJourney": "Home / Myopia",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Find an Eyecare Professional",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.essilorusa.com/find-eyecare-professional?utm_source=organic&utm_medium=organic&utm_campaign=locator",
+          "websiteJourney": "Home / Find an Eyecare Professional",
+          "signals": [
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Personalize Your Lenses",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.essilorusa.com/personalize?utm_source=organic&utm_medium=organic&utm_campaign=personalize",
+          "websiteJourney": "Home / Personalize Your Lenses",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Best Vision Under the Sun (Xperio UV)",
+          "marketingSearchTerm": "polarized prescription sunglasses",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/xperio-uv?utm_source=google&utm_medium=cpc&utm_campaign=xperio_polarized",
+          "websiteJourney": "Home / Lenses / Xperio UV",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Eye Strain Defense for All Ages (Eyezen)",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/eyezen?utm_source=instagram&utm_medium=social&utm_campaign=eyezen_defense",
+          "websiteJourney": "Home / Lenses / Eyezen",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Myopia Education",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.essilorusa.com/myopia/kids?utm_source=organic&utm_medium=organic&utm_campaign=kids_myopia",
+          "websiteJourney": "Home / Myopia",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Essilor Ultimate Lens Package, Instant $100",
+          "marketingSearchTerm": "essilor eyecare professional near me",
+          "landingPageUrl": "https://www.essilorusa.com/packages/ultimate?utm_source=bing&utm_medium=cpc&utm_campaign=ultimate_offer",
+          "websiteJourney": "Home / Packages / Essilor Ultimate Lens Package",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Buy Two, See More",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/crizal-prevencia?utm_source=facebook&utm_medium=social&utm_campaign=buy_two",
+          "websiteJourney": "Home / Lenses / Crizal",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Varilux Progressive Guide",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/varilux/guide?utm_source=organic&utm_medium=organic&utm_campaign=varilux_guide",
+          "websiteJourney": "Home / Lenses / Varilux",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Light Under Control (Transitions)",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/transitions/gen-s?utm_source=instagram&utm_medium=social&utm_campaign=gen_s",
+          "websiteJourney": "Home / Lenses / Transitions",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Your Choice Is Clear (Crizal Anti-Glare)",
+          "marketingSearchTerm": "crizal sapphire hr",
+          "landingPageUrl": "https://www.essilorusa.com/lenses/crizal/sapphire-hr?utm_source=google&utm_medium=cpc&utm_campaign=sapphire_hr",
+          "websiteJourney": "Home / Lenses / Crizal",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Essilor of America)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "52,738"
+            },
+            {
+              "label": "Lens Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Lens Purchase (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$7,197,323"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "8,438"
+            },
+            {
+              "label": "ECP Locator Request (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Order Status Check (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Billing Question (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Lens Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Lens Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Quote Discussed (Percent)",
+              "value": "63%"
+            },
+            {
+              "label": "Non-Qualified Inquiry (Percent)",
+              "value": "21%"
+            },
+            {
+              "label": "Lens Purchase (Percent)",
+              "value": "28%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Lens Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Lens Inquiry (Count)",
+            "values": [
+              5142,
+              10238,
+              9876,
+              10451,
+              8593
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              3847,
+              7662,
+              7391,
+              7824,
+              6428
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              1295,
+              2576,
+              2485,
+              2627,
+              2165
+            ]
+          },
+          {
+            "name": "Lens Purchase (Count)",
+            "values": [
+              1714,
+              3412,
+              3293,
+              3486,
+              2862
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Lens Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 52738,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "18,247",
+                "45%",
+                "22%",
+                "$2,001,447"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "13,562",
+                "48%",
+                "26%",
+                "$1,758,213"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "9,431",
+                "50%",
+                "29%",
+                "$1,363,982"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "6,824",
+                "52%",
+                "33%",
+                "$1,122,556"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "4,674",
+                "55%",
+                "41%",
+                "$951,125"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Lens Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 52738,
+          "rows": [
+            {
+              "name": "Paid Search (cpc)",
+              "metrics": [
+                "17,834",
+                "44%",
+                "21%",
+                "$1,954,455"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "14,219",
+                "47%",
+                "25%",
+                "$1,841,338"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "8,652",
+                "49%",
+                "28%",
+                "$1,271,674"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "7,318",
+                "51%",
+                "32%",
+                "$1,227,123"
+              ]
+            },
+            {
+              "name": "Partner Co-op",
+              "metrics": [
+                "4,715",
+                "54%",
+                "39%",
+                "$902,733"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Lens Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 29240,
+          "rows": [
+            {
+              "name": "Essilor Ultimate Lens Package Instant $100",
+              "metrics": [
+                "9,428",
+                "43%",
+                "24%",
+                "$1,127,533"
+              ]
+            },
+            {
+              "name": "See Sharper at Every Distance (Varilux XR)",
+              "metrics": [
+                "7,214",
+                "46%",
+                "27%",
+                "$971,844"
+              ]
+            },
+            {
+              "name": "Light Under Control (Transitions)",
+              "metrics": [
+                "5,632",
+                "48%",
+                "30%",
+                "$842,655"
+              ]
+            },
+            {
+              "name": "Your Choice Is Clear (Crizal Anti-Glare)",
+              "metrics": [
+                "4,119",
+                "51%",
+                "34%",
+                "$698,221"
+              ]
+            },
+            {
+              "name": "Best Vision Under the Sun (Xperio UV)",
+              "metrics": [
+                "2,847",
+                "55%",
+                "43%",
+                "$611,478"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Lens Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18994,
+          "rows": [
+            {
+              "name": "progressive lenses for over 40",
+              "metrics": [
+                "6,241",
+                "42%",
+                "23%",
+                "$714,655"
+              ]
+            },
+            {
+              "name": "anti glare glasses lenses",
+              "metrics": [
+                "4,872",
+                "45%",
+                "26%",
+                "$631,266"
+              ]
+            },
+            {
+              "name": "transitions light adaptive lenses",
+              "metrics": [
+                "3,618",
+                "47%",
+                "29%",
+                "$523,441"
+              ]
+            },
+            {
+              "name": "polarized prescription sunglasses",
+              "metrics": [
+                "2,734",
+                "50%",
+                "33%",
+                "$449,882"
+              ]
+            },
+            {
+              "name": "best lenses for computer eye strain",
+              "metrics": [
+                "1,529",
+                "54%",
+                "42%",
+                "$320,178"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Eye Exam Set (Industry) (Percent)",
+            "Lens Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Progressive Lenses (Varilux)",
+              "metrics": [
+                "15,842",
+                "44%",
+                "22%",
+                "$1,774,213"
+              ]
+            },
+            {
+              "name": "Anti-Glare Coatings (Crizal)",
+              "metrics": [
+                "12,613",
+                "47%",
+                "26%",
+                "$1,482,394"
+              ]
+            },
+            {
+              "name": "Light-Adaptive Lenses (Transitions)",
+              "metrics": [
+                "10,927",
+                "49%",
+                "29%",
+                "$1,487,086"
+              ]
+            },
+            {
+              "name": "Prescription Sun Lenses (Xperio UV)",
+              "metrics": [
+                "7,614",
+                "52%",
+                "34%",
+                "$1,304,432"
+              ]
+            },
+            {
+              "name": "Single-Vision & Digital Lenses (Eyezen)",
+              "metrics": [
+                "5,742",
+                "54%",
+                "41%",
+                "$1,149,198"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Lens Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 52738,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "16,214",
+                "45%",
+                "22%",
+                "$1,751,435"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "12,867",
+                "48%",
+                "27%",
+                "$1,660,572"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "10,342",
+                "51%",
+                "30%",
+                "$1,535,985"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "8,573",
+                "54%",
+                "33%",
+                "$1,372,065"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "4,742",
+                "57%",
+                "38%",
+                "$877,266"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Lens Purchase (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Progressive Lenses (Varilux)",
+            "values": [
+              512,
+              764,
+              738,
+              726,
+              672
+            ]
+          },
+          {
+            "name": "Anti-Glare Coatings (Crizal)",
+            "values": [
+              487,
+              728,
+              704,
+              691,
+              648
+            ]
+          },
+          {
+            "name": "Light-Adaptive Lenses (Transitions)",
+            "values": [
+              472,
+              706,
+              683,
+              671,
+              632
+            ]
+          },
+          {
+            "name": "Prescription Sun Lenses (Xperio UV)",
+            "values": [
+              384,
+              578,
+              559,
+              547,
+              515
+            ]
+          },
+          {
+            "name": "Single-Vision & Digital Lenses (Eyezen)",
+            "values": [
+              351,
+              526,
+              508,
+              498,
+              467
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 52,738 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Diane Whitaker called to book an eye exam so she could be fitted for Varilux XR progressive lenses after turning 48. Oscar confirmed her nearby partnered eyecare professional had openings and scheduled a new eye exam for the following week. Diane was thrilled with how smooth the booking went.",
+          "date": "Jan 7, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "1m 52s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Marcus Bell wanted to add a Crizal Sapphire HR anti-glare treatment to his next pair of lenses and asked where to go. Lila located a Crizal-certified eyecare professional in his ZIP code and scheduled a new eye exam for him. He appreciated the clear guidance on the coating options.",
+          "date": "Feb 3, 2:41 PM",
+          "agent": "Lila",
+          "duration": "2m 10s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Priya Nandakumar phoned to check the status of her finished Varilux Liberty 3.0 lenses that were being cut at the lab. Rosey looked up the order and confirmed the lenses would reach her optician within 24-48h. Priya was satisfied and did not need anything further.",
+          "date": "Mar 12, 9:05 AM",
+          "agent": "Rosey",
+          "duration": "1m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 78,
+          "summary": "First-time caller Gregory Aumont said he had never worn progressive lenses and wanted to explore the Varilux line before committing. Mary collected his name, phone number, and ZIP code, explained the Ultimate Lens Package promotion, and scheduled a new eye exam with a nearby eyecare professional. Gregory felt well informed and ready for his visit.",
+          "date": "Apr 9, 3:22 PM",
+          "agent": "Mary",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 74,
+          "summary": "Helen Ortega asked about Transitions GEN S light-adaptive lenses for driving and errands. Lee explained how the dye technology darkens outdoors and scheduled a new eye exam so she could be fitted. Helen was pleased with the recommendation.",
+          "date": "May 6, 11:48 AM",
+          "agent": "Lee",
+          "duration": "2m 03s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 70,
+          "summary": "Terrence Okafor wanted prescription Xperio UV polarized sunglasses for fishing trips. Sue found a partnered eyecare professional that carries Xperio and scheduled a new eye exam for him. He was happy with how quickly it was arranged.",
+          "date": "Jun 2, 4:15 PM",
+          "agent": "Sue",
+          "duration": "1m 41s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Nadia Farrell called about a scratch warranty claim on her Crizal-coated lenses that were only three months old. Mike explained that warranty handling goes through her optician and gave her the steps to file. Nadia was mildly frustrated the process was not handled directly.",
+          "date": "Jul 18, 1:09 PM",
+          "agent": "Mike",
+          "duration": "2m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Colin Reyes wanted Eyezen single-vision lenses to reduce eye strain from long screen hours. Jennifer explained the blue-light benefits and scheduled a new eye exam at a nearby eyecare professional. Colin agreed to go in that week.",
+          "date": "Aug 5, 10:37 AM",
+          "agent": "Jennifer",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Barbara Linton disputed a charge from her optician for an Xperio UV upgrade she said she never approved. Rose explained that billing is set by the independent practice and could not adjust it. Barbara remained unhappy about the confusion.",
+          "date": "Sep 14, 3:51 PM",
+          "agent": "Rose",
+          "duration": "2m 34s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 52,
+          "summary": "Frank DeSoto called because his Eyezen lenses arrived at the optician later than promised and he had a trip coming up. Oscar checked the lab shipment and apologized for the delay. Frank was annoyed but agreed to wait for the corrected delivery.",
+          "date": "Oct 1, 9:29 AM",
+          "agent": "Oscar",
+          "duration": "2m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 48,
+          "summary": "Gloria Mensah complained that her new Transitions lenses were not darkening fast enough in the car. Lila explained that in-vehicle behavior differs by product and suggested XTRActive as an alternative. Gloria felt she had not been told this beforehand.",
+          "date": "Jan 22, 2:07 PM",
+          "agent": "Lila",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 44,
+          "summary": "Howard Pratt wanted to cancel a pending lens order after deciding the quoted price at his optician was too high. Lee explained that orders are managed by the practice and provided the contact. Howard was clearly irritated by the runaround.",
+          "date": "Feb 27, 4:44 PM",
+          "agent": "Lee",
+          "duration": "1m 19s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "An unidentified caller reached the line after hours asking about the Ultimate Lens Package rebate and left no callback details. The call rolled to voicemail with no agent available. No follow-up could be attempted.",
+          "date": "Mar 30, 6:58 PM",
+          "agent": "No Agent",
+          "duration": "0m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Sandra Villanueva was upset that her Crizal anti-glare coating was peeling and felt no one would take responsibility. Mike explained the claim path through her optician but she wanted a direct replacement. The call ended with Sandra still dissatisfied.",
+          "date": "Apr 21, 11:12 AM",
+          "agent": "Mike",
+          "duration": "2m 05s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Victor Hollins demanded a refund because his Varilux progressive lenses gave him headaches and he blamed the brand. Rosey explained that adaptation and remakes are handled by the fitting practice and offered the steps. Victor grew angry and hung up unresolved.",
+          "date": "May 19, 1:33 PM",
+          "agent": "Rosey",
+          "duration": "1m 27s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "varilux",
+        "crizal",
+        "transitions",
+        "xperio",
+        "eyezen",
+        "eye exam"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 19, 2024, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Prescription History",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Lens Category Interest",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Eye Exam Appointment",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Set Expectations for Professional Fitting",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller is new to Essilor partner network",
+        "Caller interested in progressive lenses",
+        "Caller mentioned budget range",
+        "Caller confirmed local availability",
+        "Caller provided accurate ZIP code",
+        "Caller willing to visit eyecare professional",
+        "Caller asked about Varilux options",
+        "Agent properly greeted caller",
+        "Agent confirmed full name clearly",
+        "Agent asked about current vision needs",
+        "Agent discussed lens benefits",
+        "Agent offered to connect to partner professional",
+        "Caller expressed interest in scheduling"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Appointment time not confirmed",
+        "No follow-up preference discussed",
+        "Caller concerns about lens cost not addressed",
+        "Frame options not discussed",
+        "Timeline for appointment not set",
+        "Callback or SMS confirmation not offered",
+        "Insurance or pricing details not covered",
+        "Specific Varilux series not recommended",
+        "Driver lifestyle not fully explored"
+      ],
+      "naSignals": [
+        "Order status inquiry",
+        "Lens delivery timeframe",
+        "Return or warranty question",
+        "Billing issue or payment problem",
+        "Prescription refill request",
+        "Frame adjustment request",
+        "Previous order history",
+        "Insurance claim status"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "The caller is a new customer seeking progressive lenses for presbyopia and age-related vision changes. They want to understand Varilux options and need an eye exam appointment with a local eyecare professional."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects to learn about progressive lens technology, understand pricing, and schedule an appointment at a nearby partnered eyecare professional within their service area."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured the caller's email address for confirmation and appointment details. He should also have worked with the caller to schedule a specific appointment time rather than leaving it open-ended, and set clearer expectations about what to bring to the eye exam."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Good afternoon, thank you for calling Essilor of America. My name is Marcus Bell. How can I help you find the perfect lenses for your vision today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:08",
+          "text": "Hi Marcus. I'm looking for information about progressive lenses. I've heard about Varilux and wanted to know more."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Excellent question. Varilux is our premium progressive lens option. Before we dive in, may I ask your full name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:22",
+          "text": "Sure, it's Jennifer Walsh."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:26",
+          "text": "Thank you, Jennifer. Are you currently wearing glasses or contacts, and have you worn progressive lenses before?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:34",
+          "text": "I wear single vision glasses now, but my eye doctor said I need progressives soon because I'm having trouble seeing up close. I'm 46."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:44",
+          "text": "That's very common at your age. Progressive lenses like our Varilux XR series use AI technology to give you seamless vision at all distances. To help you find the right fit, what ZIP code are you in?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:56",
+          "text": "I'm in 94301 in the San Francisco Bay Area."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:02",
+          "text": "Perfect. We have excellent eyecare professionals in that area who carry Varilux lenses. Have you had an eye exam recently?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:10",
+          "text": "I had one about two years ago. My vision has changed since then, so I definitely need an updated exam."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:18",
+          "text": "I recommend scheduling an appointment with one of our partnered professionals near you. They'll do a comprehensive eye exam and can fit you properly with the right progressive lens. Can I get a phone number where we can reach you about available appointments?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:30",
+          "text": "Sure, it's ****."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:34",
+          "text": "Great, Jennifer. I'm going to connect you with a local eyecare professional in Palo Alto who specializes in fitting Varilux lenses. They'll reach out to you within 24 hours to schedule your eye exam."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:46",
+          "text": "That sounds good. Do you think progressives will be really expensive?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:52",
+          "text": "Our Varilux lenses range from around 250 dollars for our Liberty 3.0 model to 800 dollars for our premium XR series, depending on your prescription and lifestyle needs. The eyecare professional will discuss options and may have current promotions available."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:06",
+          "text": "Okay, that helps. I'm ready to move forward."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:10",
+          "text": "Wonderful, Jennifer. You'll hear from our partner professional soon. Thank you for choosing Essilor, and we look forward to helping you see your best. Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Walsh, a 46 year old new customer, called to inquire about progressive lenses and specifically Varilux options due to presbyopia concerns. Marcus provided product education on Varilux XR technology and discussed pricing ranging from 250 to 800 dollars depending on the series. Jennifer confirmed her ZIP code 94301 in the San Francisco Bay Area, and Marcus successfully connected her with a local eyecare professional partner for a comprehensive eye exam and fitting appointment within 24 hours. The call ended successfully with Jennifer ready to proceed, though no specific appointment time or email confirmation was captured.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus Great structure on this intake. You nailed the greeting, captured Jennifer's full name and prescription history, and qualified her perfectly around age and vision needs. Two quick coaching notes. First, when Jennifer asked about price in the middle of the call, you handled it well, but a touch more empathy about presbyopia concerns would have reinforced trust before diving into dollar figures. Second, you collected her phone number but didn't capture her email address for a confirmation of the appointment details and special lens offers. Next time, say something like, 'I want to email you a summary of available lenses and a time window for your appointment. What email should I use?' That sets clearer expectations and gives the partner professional two contact methods. Otherwise, smooth job."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "52,738"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$136.47"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$7,197,323"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "31,643"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "60%"
+            },
+            {
+              "label": "Eye Exam: Scheduled (Count)",
+              "value": "25,314"
+            },
+            {
+              "label": "Eye Exam: Scheduled (Percent)",
+              "value": "48%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "21,095"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "40%"
+            },
+            {
+              "label": "Eye Exam: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Eye Exams)",
+          "chart": {
+            "legend": "Eye Exam: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Direct",
+                "value": 60,
+                "display": "60%"
+              },
+              {
+                "name": "YouTube",
+                "value": 55,
+                "display": "55%"
+              },
+              {
+                "name": "Facebook",
+                "value": 51,
+                "display": "51%"
+              },
+              {
+                "name": "Bing",
+                "value": 47,
+                "display": "47%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Eye Exams)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Eye Exam: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "21,436",
+                  "42%",
+                  "$2,924,118"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing",
+                  "12,847",
+                  "47%",
+                  "$1,753,266"
+                ]
+              },
+              {
+                "cells": [
+                  "Facebook",
+                  "8,213",
+                  "51%",
+                  "$1,121,447"
+                ]
+              },
+              {
+                "cells": [
+                  "YouTube",
+                  "6,109",
+                  "55%",
+                  "$833,912"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "4,133",
+                  "60%",
+                  "$564,580"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 25000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000,
+              25000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 19842,
+                "display": "19,842"
+              },
+              {
+                "name": "Organic Search",
+                "value": 13257,
+                "display": "13,257"
+              },
+              {
+                "name": "Paid Social",
+                "value": 9614,
+                "display": "9,614"
+              },
+              {
+                "name": "Display",
+                "value": 6428,
+                "display": "6,428"
+              },
+              {
+                "name": "Referral",
+                "value": 3597,
+                "display": "3,597"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Eye Exams)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Eye Exam: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "19,842",
+                  "40%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "13,257",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "9,614",
+                  "50%"
+                ]
+              },
+              {
+                "cells": [
+                  "Display",
+                  "6,428",
+                  "54%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "3,597",
+                  "62%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 15000,
+            "axisTicks": [
+              0,
+              3000,
+              6000,
+              9000,
+              12000,
+              15000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Essilor Ultimate Lens Package, Instant $100",
+                "value": 11284,
+                "display": "11,284"
+              },
+              {
+                "name": "See Sharper at Every Distance (Varilux XR)",
+                "value": 8146,
+                "display": "8,146"
+              },
+              {
+                "name": "Light Under Control (Transitions)",
+                "value": 6733,
+                "display": "6,733"
+              },
+              {
+                "name": "Your Choice Is Clear (Crizal Anti-Glare)",
+                "value": 5417,
+                "display": "5,417"
+              },
+              {
+                "name": "Best Vision Under the Sun (Xperio UV)",
+                "value": 3928,
+                "display": "3,928"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Eye Exams)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Eye Exam: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Essilor Ultimate Lens Package, Instant $100",
+                  "11,284",
+                  "41%",
+                  "$1,538,472"
+                ]
+              },
+              {
+                "cells": [
+                  "See Sharper at Every Distance (Varilux XR)",
+                  "8,146",
+                  "47%",
+                  "$1,164,238"
+                ]
+              },
+              {
+                "cells": [
+                  "Light Under Control (Transitions)",
+                  "6,733",
+                  "53%",
+                  "$958,114"
+                ]
+              },
+              {
+                "cells": [
+                  "Your Choice Is Clear (Crizal Anti-Glare)",
+                  "5,417",
+                  "59%",
+                  "$792,336"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 6000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000,
+              6000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "varilux progressive lenses price",
+                "value": 4842,
+                "display": "4,842"
+              },
+              {
+                "name": "anti-glare glasses lenses",
+                "value": 3617,
+                "display": "3,617"
+              },
+              {
+                "name": "transitions light-adaptive lenses",
+                "value": 2908,
+                "display": "2,908"
+              },
+              {
+                "name": "blue light blocking lenses",
+                "value": 2124,
+                "display": "2,124"
+              },
+              {
+                "name": "polarized prescription sunglasses",
+                "value": 1436,
+                "display": "1,436"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Eye Exams)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Eye Exam: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "varilux progressive lenses price",
+                  "43%"
+                ]
+              },
+              {
+                "cells": [
+                  "anti-glare glasses lenses",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "transitions light-adaptive lenses",
+                  "54%"
+                ]
+              },
+              {
+                "cells": [
+                  "blue light blocking lenses",
+                  "61%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Eye Exam: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Progressive Lenses (Varilux)",
+              "14,382",
+              "42%",
+              "64%"
+            ]
+          },
+          {
+            "cells": [
+              "Anti-Glare Coatings (Crizal)",
+              "9,671",
+              "48%",
+              "59%"
+            ]
+          },
+          {
+            "cells": [
+              "Light-Adaptive Lenses (Transitions)",
+              "7,214",
+              "53%",
+              "55%"
+            ]
+          },
+          {
+            "cells": [
+              "Prescription Sun Lenses (Xperio UV)",
+              "4,528",
+              "61%",
+              "51%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Eye Exam: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Essilor Vision Center, Dallas",
+              "8,472",
+              "613",
+              "4%",
+              "44%"
+            ]
+          },
+          {
+            "cells": [
+              "Essilor Vision Center, Atlanta",
+              "6,918",
+              "497",
+              "5%",
+              "49%"
+            ]
+          },
+          {
+            "cells": [
+              "Essilor Vision Center, Phoenix",
+              "5,241",
+              "358",
+              "6%",
+              "54%"
+            ]
+          },
+          {
+            "cells": [
+              "Essilor Vision Center, Denver",
+              "3,687",
+              "241",
+              "7%",
+              "60%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1684,
+              1592,
+              1538,
+              1486,
+              1542
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1342,
+              1298,
+              1276,
+              1254,
+              1247
+            ]
+          },
+          {
+            "name": "Awaiting Insurance Approval",
+            "values": [
+              1082,
+              1058,
+              1046,
+              1032,
+              1020
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              902,
+              878,
+              864,
+              846,
+              836
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              748,
+              732,
+              724,
+              708,
+              689
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "21,095"
+          },
+          {
+            "label": "Eye Exam Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Lens Purchase (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$4,102,474"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Lens Purchase (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$387,421"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Lens Purchase (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$419,864"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Lens Purchase (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$468,105"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Lens Purchase (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$398,274"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Lens Purchase (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$443,687"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Lens Purchase (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$485,123"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Eye Exam Scheduled (Percent)",
+            "Lens Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 24887,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "8243",
+                "58%",
+                "31%",
+                "$1,289,174"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "5417",
+                "54%",
+                "32%",
+                "$878,652"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "3892",
+                "52%",
+                "34%",
+                "$637,891"
+              ]
+            },
+            {
+              "name": "Display Ads",
+              "metrics": [
+                "2156",
+                "48%",
+                "29%",
+                "$356,214"
+              ]
+            },
+            {
+              "name": "Partner Referral",
+              "metrics": [
+                "1387",
+                "44%",
+                "26%",
+                "$228,743"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Eye Exam Scheduled (Percent)",
+            "Lens Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 24156,
+          "rows": [
+            {
+              "name": "Search Engine",
+              "metrics": [
+                "9628",
+                "57%",
+                "32%",
+                "$1,523,847"
+              ]
+            },
+            {
+              "name": "Social Network",
+              "metrics": [
+                "4137",
+                "51%",
+                "33%",
+                "$680,416"
+              ]
+            },
+            {
+              "name": "Display Network",
+              "metrics": [
+                "2845",
+                "49%",
+                "30%",
+                "$462,785"
+              ]
+            },
+            {
+              "name": "Direct Traffic",
+              "metrics": [
+                "2104",
+                "46%",
+                "28%",
+                "$286,492"
+              ]
+            },
+            {
+              "name": "Email Newsletter",
+              "metrics": [
+                "1381",
+                "42%",
+                "25%",
+                "$225,834"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Eye Exam Scheduled (Percent)",
+            "Lens Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 24521,
+          "rows": [
+            {
+              "name": "Essilor Ultimate Lens Package Instant $100",
+              "metrics": [
+                "6284",
+                "59%",
+                "34%",
+                "$1,047,521"
+              ]
+            },
+            {
+              "name": "See Sharper at Every Distance Varilux XR",
+              "metrics": [
+                "4156",
+                "55%",
+                "31%",
+                "$668,843"
+              ]
+            },
+            {
+              "name": "Light Under Control Transitions",
+              "metrics": [
+                "3721",
+                "52%",
+                "32%",
+                "$609,374"
+              ]
+            },
+            {
+              "name": "Your Choice Is Clear Crizal Anti-Glare",
+              "metrics": [
+                "2847",
+                "48%",
+                "29%",
+                "$461,285"
+              ]
+            },
+            {
+              "name": "Best Vision Under the Sun Xperio UV",
+              "metrics": [
+                "2087",
+                "42%",
+                "26%",
+                "$315,651"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Eye Exam Scheduled (Percent)",
+            "Lens Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21638,
+          "rows": [
+            {
+              "name": "progressive lenses for over 40",
+              "metrics": [
+                "3641",
+                "60%",
+                "35%",
+                "$612,487"
+              ]
+            },
+            {
+              "name": "anti-glare glasses lenses",
+              "metrics": [
+                "2956",
+                "57%",
+                "33%",
+                "$493,625"
+              ]
+            },
+            {
+              "name": "best lenses for computer eye strain",
+              "metrics": [
+                "2504",
+                "54%",
+                "32%",
+                "$408,167"
+              ]
+            },
+            {
+              "name": "Varilux progressive lenses price",
+              "metrics": [
+                "1847",
+                "49%",
+                "29%",
+                "$293,847"
+              ]
+            },
+            {
+              "name": "Transitions light-adaptive lenses",
+              "metrics": [
+                "1506",
+                "45%",
+                "27%",
+                "$241,326"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Eye Exam Scheduled (Percent)",
+            "Lens Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Progressive Multifocal Lenses Varilux",
+              "metrics": [
+                "7264",
+                "58%",
+                "36%",
+                "$1,286,543"
+              ]
+            },
+            {
+              "name": "Anti-glare Coatings Crizal",
+              "metrics": [
+                "5128",
+                "54%",
+                "33%",
+                "$842,156"
+              ]
+            },
+            {
+              "name": "Photochromic Light-Adaptive Transitions",
+              "metrics": [
+                "4356",
+                "51%",
+                "31%",
+                "$713,248"
+              ]
+            },
+            {
+              "name": "Prescription Sun Polarized Xperio UV",
+              "metrics": [
+                "2847",
+                "48%",
+                "28%",
+                "$187,641"
+              ]
+            },
+            {
+              "name": "Single-Vision Digital-Strain Eyezen",
+              "metrics": [
+                "1500",
+                "42%",
+                "26%",
+                "$72,846"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Lens Purchase (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Progressive Multifocal Lenses Varilux",
+            "values": [
+              944,
+              1138,
+              987,
+              1024,
+              872
+            ]
+          },
+          {
+            "name": "Anti-glare Coatings Crizal",
+            "values": [
+              627,
+              782,
+              698,
+              621,
+              615
+            ]
+          },
+          {
+            "name": "Photochromic Light-Adaptive Transitions",
+            "values": [
+              518,
+              694,
+              641,
+              584,
+              482
+            ]
+          },
+          {
+            "name": "Prescription Sun Polarized Xperio UV",
+            "values": [
+              312,
+              401,
+              389,
+              296,
+              255
+            ]
+          },
+          {
+            "name": "Single-Vision Digital-Strain Eyezen",
+            "values": [
+              147,
+              218,
+              189,
+              172,
+              122
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Eye Exam Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Eye Exam Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Eye Exam Scheduled (Count)",
+            "value": "14,743"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$6,241,587"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "814"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "32%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Eye Exam Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Eye Exam Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Eye Exam Scheduled (Count)",
+            "value": "571"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$198,418"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Eye Exam Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Eye Exam Scheduled",
+            "values": [
+              78,
+              82,
+              75,
+              81,
+              79,
+              83,
+              76,
+              80,
+              74,
+              82,
+              81,
+              77,
+              83,
+              79,
+              80,
+              75,
+              82,
+              78,
+              81,
+              79,
+              76,
+              83,
+              77,
+              80,
+              78,
+              74,
+              82,
+              81,
+              79,
+              83,
+              76,
+              181,
+              189,
+              176,
+              187,
+              192,
+              178,
+              185,
+              179,
+              191,
+              183,
+              188,
+              177,
+              186,
+              179,
+              192,
+              184,
+              180,
+              189
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,163"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "721"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "62%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "704"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Eye Exam Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Varilux Progressive Lenses",
+            "values": [
+              8,
+              11,
+              9,
+              12,
+              10,
+              11
+            ]
+          },
+          {
+            "name": "Crizal Anti-Glare Coating",
+            "values": [
+              6,
+              7,
+              5,
+              8,
+              7,
+              6
+            ]
+          },
+          {
+            "name": "Transitions Light-Adaptive Lenses",
+            "values": [
+              9,
+              10,
+              8,
+              11,
+              9,
+              12
+            ]
+          },
+          {
+            "name": "Blue Light & Eye Strain (Eyezen)",
+            "values": [
+              2,
+              4,
+              3,
+              1,
+              5,
+              4
+            ]
+          },
+          {
+            "name": "Essilor Eyecare Professional Locator",
+            "values": [
+              7,
+              6,
+              8,
+              7,
+              6,
+              9
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "48,519"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "36,917"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Eye Exam Booked (Count)",
+            "value": "25,314"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$7,197,323"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Jennifer Castellano",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "David Kaufman",
+              "value": 241,
+              "display": "241"
+            },
+            {
+              "name": "Susan Ramirez",
+              "value": 164,
+              "display": "164"
+            },
+            {
+              "name": "Robert Chin",
+              "value": 203,
+              "display": "203"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Eye Exam Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Patricia Moreno",
+            "values": [
+              184,
+              211,
+              248,
+              287,
+              326
+            ]
+          },
+          {
+            "name": "Thomas Garrett",
+            "values": [
+              172,
+              198,
+              229,
+              264,
+              301
+            ]
+          },
+          {
+            "name": "Amanda Foster",
+            "values": [
+              161,
+              189,
+              216,
+              251,
+              284
+            ]
+          },
+          {
+            "name": "Kevin Martinez",
+            "values": [
+              155,
+              181,
+              209,
+              243,
+              271
+            ]
+          },
+          {
+            "name": "Jessica Huang",
+            "values": [
+              148,
+              174,
+              201,
+              235,
+              258
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Jennifer Castellano",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "David Kaufman",
+              "value": 55.1,
+              "display": "55.1%"
+            },
+            {
+              "name": "Susan Ramirez",
+              "value": 57.4,
+              "display": "57.4%"
+            },
+            {
+              "name": "Robert Chin",
+              "value": 52.9,
+              "display": "52.9%"
+            },
+            {
+              "name": "Christopher Lee",
+              "value": 58.6,
+              "display": "58.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Eye Exam Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Webb",
+                "54.2%",
+                "28%",
+                "$1,038,472",
+                "1,287"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Castellano",
+                "56.8%",
+                "30%",
+                "$1,101,264",
+                "1,291"
+              ]
+            },
+            {
+              "cells": [
+                "David Kaufman",
+                "55.1%",
+                "29%",
+                "$1,068,884",
+                "1,309"
+              ]
+            },
+            {
+              "cells": [
+                "Susan Ramirez",
+                "57.4%",
+                "31%",
+                "$1,149,596",
+                "1,314"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Chin",
+                "52.9%",
+                "26%",
+                "$968,152",
+                "1,243"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Lee",
+                "58.6%",
+                "32%",
+                "$1,181,152",
+                "1,297"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Patricia Moreno",
+              "value": 93.7,
+              "display": "93.7%"
+            },
+            {
+              "name": "Thomas Garrett",
+              "value": 91.4,
+              "display": "91.4%"
+            },
+            {
+              "name": "Amanda Foster",
+              "value": 89.2,
+              "display": "89.2%"
+            },
+            {
+              "name": "Kevin Martinez",
+              "value": 87.6,
+              "display": "87.6%"
+            },
+            {
+              "name": "Jessica Huang",
+              "value": 90.8,
+              "display": "90.8%"
+            },
+            {
+              "name": "Elizabeth Rodriguez",
+              "value": 92.1,
+              "display": "92.1%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Eye Exam Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Patricia Moreno",
+                "93.7%",
+                "67%",
+                "$1,834,288",
+                "1,541"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Garrett",
+                "91.4%",
+                "64%",
+                "$1,737,344",
+                "1,519"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Foster",
+                "89.2%",
+                "61%",
+                "$1,656,404",
+                "1,508"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Martinez",
+                "87.6%",
+                "59%",
+                "$1,603,972",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Jessica Huang",
+                "90.8%",
+                "63%",
+                "$1,720,812",
+                "1,504"
+              ]
+            },
+            {
+              "cells": [
+                "Elizabeth Rodriguez",
+                "92.1%",
+                "66%",
+                "$1,789,584",
+                "1,536"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Eye Exam Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Eye Exam Booked (Count)",
+        "rightMax": 1200,
+        "rightTicks": [
+          0,
+          300,
+          600,
+          900,
+          1200
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 939
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 900
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 838
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 800
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 696
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 731
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 807
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 839
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 935
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 907
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 817
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 789
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 703
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 724
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 826
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 851
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 927
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 912
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 800
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 775
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 713
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 721
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 841
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 868
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 915
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 913
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 789
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 756
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 726
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 722
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 834
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 400000,
+        "rightTicks": [
+          0,
+          133333.33333333334,
+          266666.6666666667,
+          400000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 266798
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 255714
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 238122
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 227215
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 197833
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 207620
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 229351
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 238391
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 265807
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 257717
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 232117
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 224346
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 199631
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 205772
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 234812
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 241967
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 263332
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 259234
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 227321
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 220111
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 202627
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 204751
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 238859
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 246776
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 259987
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 259609
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 224068
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 214846
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 206140
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 205146
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 241303
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "52,738"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "4,219"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "3,164"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Martinez",
+                "412",
+                "89%",
+                "88%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "356",
+                "87%",
+                "86%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "Rachel Thompson",
+                "298",
+                "88%",
+                "87%",
+                "85%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "52,738 calls",
+      "pagerLabel": "1 of 5,274",
+      "calls": [
+        {
+          "time": "1/6/26 9:14 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 10:41 am",
+          "id": "A2C4-93E1074B8A6F"
+        },
+        {
+          "time": "1/12/26 11:26 am",
+          "id": "7D9E-4C2A118F60B3"
+        },
+        {
+          "time": "1/14/26 1:03 pm",
+          "id": "3B81-D5F09217C4EE"
+        },
+        {
+          "time": "1/16/26 1:48 pm",
+          "id": "C6A2-2E71B3480D95"
+        },
+        {
+          "time": "1/20/26 2:37 pm",
+          "id": "9F44-6A82D107E3B1"
+        },
+        {
+          "time": "1/22/26 3:12 pm",
+          "id": "E1B7-58C39D024FA6"
+        },
+        {
+          "time": "1/26/26 3:55 pm",
+          "id": "48DA-71FE9C36021B"
+        },
+        {
+          "time": "1/28/26 4:29 pm",
+          "id": "BC93-0D47A28E15F7"
+        },
+        {
+          "time": "1/30/26 5:07 pm",
+          "id": "5A6F-92B41D78E0C3"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling Essilor of America, this is Danielle. How can I help you with your vision today?",
+          "highlights": [
+            "Thank you for calling Essilor of America",
+            "this is Danielle"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Danielle, my name is Robert Hensley. I've never bought from you before, and I'm turning fifty this year and starting to struggle reading my phone up close.",
+          "highlights": [
+            "my name is Robert Hensley",
+            "never bought from you before"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:19",
+          "text": "Happy to help, Robert, and welcome. That near vision change is very common at this age. It sounds like a progressive lens would keep you sharp from reading distance all the way out to the road.",
+          "highlights": [
+            "progressive lens"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:31",
+          "text": "Right, I don't want two pairs of glasses. What are you thinking, something like those Varilux ones I saw advertised?",
+          "highlights": [
+            "Varilux"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:39",
+          "text": "Exactly. Our Varilux XR series is AI-powered and predicts how you look at things, so you get instant sharpness in motion and a seamless near-to-far transition.",
+          "highlights": [
+            "Varilux XR series",
+            "seamless near-to-far transition"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:51",
+          "text": "That sounds nice, but honestly, what does that run? I want to keep this manageable, I'm not made of money.",
+          "highlights": [
+            "what does that run",
+            "keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:00",
+          "text": "Completely understand. Pricing is set by the eyecare professional, but the XR typically lands in the mid range. If you want to protect the budget, our Varilux Liberty 3.0 gives sharp vision at all distances for less, and right now the Ultimate Lens Package includes an instant hundred dollars off when you buy two pairs.",
+          "highlights": [
+            "Varilux Liberty 3.0",
+            "instant hundred dollars off"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:16",
+          "text": "Okay, that helps. The optical shop down the street quoted me on a generic progressive though, and it was cheaper. Why would I go with yours?",
+          "highlights": [
+            "quoted me on a generic progressive",
+            "cheaper"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:27",
+          "text": "A fair question. A generic progressive often has a narrow focus zone that causes swim and blur at the edges. The Varilux design widens that field so you adapt faster, and pairing it with Crizal Sapphire cuts glare on both sides of the lens. Most patients notice the difference right away.",
+          "highlights": [
+            "Crizal Sapphire",
+            "cuts glare"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:42",
+          "text": "I do a lot of computer work too, my eyes feel fried by evening.",
+          "highlights": [
+            "lot of computer work"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:49",
+          "text": "Then I'd add Crizal Prevencia, which filters up to twenty percent of harmful blue light for digital users. That directly targets the eye strain you're describing.",
+          "highlights": [
+            "Crizal Prevencia",
+            "filters up to twenty percent of harmful blue light"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:00",
+          "text": "Alright, I'm interested, but I'd want to run the final number past my wife before I commit to anything.",
+          "highlights": [
+            "run the final number past my wife"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:08",
+          "text": "Of course, there's no commitment today. The best next step is a full eye exam with a partnered eyecare professional. They confirm your prescription and let you and your wife review the exact pricing together before you decide.",
+          "highlights": [
+            "no commitment today",
+            "full eye exam"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:20",
+          "text": "That works. There's a location near me?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:24",
+          "text": "There is, right in your zip code. I can book your eye exam for Thursday at 10 AM. Can I grab the best phone number and email for the confirmation?",
+          "highlights": [
+            "book your eye exam for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:31",
+          "text": "Sure, it's Robert at hensley dot net, and my cell is 555 0148.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:37",
+          "text": "Perfect, you're all set, Robert. Thanks for calling Essilor of America and we'll see you Thursday. Take care.",
+          "highlights": [
+            "you're all set",
+            "Thanks for calling Essilor of America"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Eye Exam: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Progressive Lens Interest (Varilux)",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Anti-Glare Coating Interest (Crizal)",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Blue Light / Digital Strain Intent",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "New patient Robert Hensley called Essilor of America about near vision trouble as he turns fifty and wants a single pair of glasses that works at all distances. Agent Danielle recommended the AI-powered Varilux XR progressive, offered the budget-friendly Varilux Liberty 3.0 plus the Ultimate Lens Package instant hundred dollars off, and added Crizal Sapphire and Crizal Prevencia for glare and digital eye strain. She handled his budget concern, a competitor quote, and his need to check with his wife, then scheduled a full eye exam with a partnered eyecare professional for Thursday at 10 AM. Contact details were captured for confirmation.",
+        "keyPoints": [
+          "New patient, first time buying from Essilor",
+          "Needs progressive lenses for near-to-far vision at age fifty",
+          "Recommended Varilux XR, Varilux Liberty 3.0, Crizal Sapphire and Crizal Prevencia",
+          "Ultimate Lens Package instant hundred dollars off presented",
+          "Handled budget concern, competitor quote, and wanting to check with wife",
+          "Eye exam booked for Thursday 10 AM, phone and email captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Eye Exam booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "33,225 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,322",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for contacting Essilor of America. I'm helping customers find the perfect lenses for their vision needs today. Do you currently wear glasses or contacts?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "I wear glasses but they're pretty old. I've been having trouble with glare when I'm driving at night."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "I hear you. Glare while driving can be really frustrating. Our Crizal anti-glare coatings are designed specifically to reduce reflections and improve clarity in those situations. What prescription strength are you typically in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:25 AM",
+              "text": "I think I'm around minus 2.50 in both eyes. Maybe a little astigmatism too."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:26 AM",
+              "text": "Great. So you've got a moderate prescription with some astigmatism. Do you spend most of your time indoors at a computer or desk, or are you more active outdoors?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "Both really. I work at a desk most days but I drive a lot for work too."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Perfect. That means you could benefit from our Crizal Sapphire HR coating for screen time and driving clarity, plus maybe progressive lenses like Varilux if you need help with near and distance vision. Have you ever worn progressive lenses before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "No, I haven't. How much would that run me?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "With our current promotion, when you buy two pairs of qualifying lenses you get $100 instant savings. A Varilux progressive with Crizal Sapphire HR typically runs between $550 and $750 per pair depending on your specific prescription. Does that sound like something you'd want to explore?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:34 AM",
+              "text": "Yeah, that could work. What's the next step?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:35 AM",
+              "text": "Excellent. I'd like to schedule you for an eye exam with one of our partner eyecare professionals in your area. Are you available this Saturday the 15th at 10 AM or would Monday the 17th at 2 PM work better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:37 AM",
+              "text": "Saturday at 10 works for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:38 AM",
+              "text": "Perfect. Your eye exam is scheduled for Saturday, March 15th at 10 AM. You'll receive a confirmation text shortly. If you have any questions, you can reach us at 877-936-2933. Thanks for choosing Essilor."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:40 AM",
+              "text": "Great, thank you."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Eye Exam: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Crizal Anti-Glare",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Product Interest: Varilux Progressive",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Promotion Accepted: Buy Two Get $100",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Use Case: Night Driving and Computer Work",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "(415) 287-4569",
+            "repeatCaller": "No",
+            "city": "San Francisco",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Michael Torres",
+            "firstName": "Michael",
+            "lastName": "Torres",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A724-45CD8B091E3F",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A724-45CD8B091E3F",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B837-62DF9C4A7E52",
+          "time": "8/16/25 10:38 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B837-62DF9C4A7E52",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D951-78AB3E4C6F14",
+          "time": "8/16/25 10:29 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D951-78AB3E4C6F14",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "52,738 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 5,274",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/14/26 4:12 pm",
+          "active": true,
+          "date": "Jan 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thanks for calling Essilor of America. I'm seeing you're interested in learning more about our premium lens options. Is this your first time exploring Essilor products with us?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Yeah, it's my first time. I've been wearing the same glasses for like three years and I'm starting to get a lot of eye strain, especially when I'm on the computer all day."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "I totally understand. That sounds like digital eye strain, and we've got some great solutions for that. Are you currently wearing single vision lenses or do you already have progressive lenses?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "Just single vision. I'm forty-two, so I'm not sure if I need to go to progressives yet."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Perfect. At forty-two, a lot of our patients find that a combination of Eyezen single vision lenses with our Crizal Prevencia coating really makes a difference. The Eyezen reduces eye strain, and the Prevencia filters harmful blue light from screens. Have you heard of blue light blocking lenses before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "No, but that sounds exactly like what I need. Does it actually work?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Absolutely. The coating selectively filters up to twenty percent of harmful blue light, and combined with Eyezen's enhanced single vision design, you'll notice less strain by the end of the day. This package would run around one hundred and ninety dollars. How does that sound?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "That's reasonable. So what's the next step?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:20 PM",
+              "text": "Great. We'll need to get you in with one of our eyecare professionals to do a full exam and fit. I can schedule you for an eye exam appointment. Would Thursday, January thirty-first work for you, maybe around two o'clock PM?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:21 PM",
+              "text": "Yeah, Thursday works. Two PM is perfect for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:22 PM",
+              "text": "Excellent. So we've got you down for Thursday, January thirty-first at two PM with one of our network eyecare professionals. You'll get a full eye exam and we'll fit you with the Eyezen and Crizal Prevencia lenses. Is there a best number to reach you at the day before your appointment as a reminder?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:23 PM",
+              "text": "Yeah, it's eight oh five, five five five, two four four two."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:24 PM",
+              "text": "Perfect. We've got eight oh five, five five five, two four four two. And if you have any questions before Thursday, you can always call us back at eight seven seven, nine three six, twenty nine thirty three. We're excited to get you set up with clearer, more comfortable vision. Thanks so much for calling Essilor of America."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:25 PM",
+              "text": "Thanks, I appreciate it."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Eye Exam: Scheduled",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Eyezen with Crizal Prevencia",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Reason: Digital Eye Strain",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Estimated Price Point: $190",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Appointment Confirmed: Jan 31, 2 PM",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/14/26 4:12 pm",
+            "duration": "5:47",
+            "destinationPhone": "877-936-2933",
+            "source": "Paid Search, Eyezen",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "805-555-2442",
+            "repeatCaller": "No",
+            "city": "Portland",
+            "region": "OR",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B521-4A7D8E2F1C95",
+          "time": "1/18/26 2:37 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B521-4A7D8E2F1C95",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C643-9B2E5F7A3D06",
+          "time": "1/22/26 10:14 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C643-9B2E5F7A3D06",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D754-1F8B6C4E2A91",
+          "time": "1/27/26 3:48 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D754-1F8B6C4E2A91",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as Essilor of America's AI agent helping build a personalized lens quote, mention our current offer of $100 instantly when you buy two pairs of qualifying lenses, and ask if they would like to get started.",
+        "Qualify one question at a time: Ask, one at a time, how many pairs they need, their prescription type or lens category (progressive, single vision, or prescription sun), the specific lens brand or feature they want (Varilux, Crizal, Transitions, Xperio UV, or Eyezen), their timeline for new glasses, and finally their ZIP code so we can confirm a partnered eyecare professional near them.",
+        "Estimate then book: Confirm we have a partnered eyecare professional in their ZIP, share a preliminary price range based on the lens options they described, recommend an eye exam with a specialist for an exact quote and fitting, propose a specific day and time, and confirm they will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Essilor_of_America_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Lens Brands & Technologies",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Essilor Ultimate Lens Package",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find an Eyecare Professional",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Order status\",\"question\":\"How can I check when my Varilux lenses will be ready?\",\"answer\":\"Your lenses are crafted and delivered through your partnered eyecare professional, so we can connect you with their office to check the status. Would you like me to confirm your provider and get you an update?\"},{\"topic\":\"Warranty and remake\",\"question\":\"My Crizal coating scratched, is that covered?\",\"answer\":\"Many Essilor lenses come with a warranty against defects and coating issues through your eyecare professional. I can help you schedule a visit with your provider to have them evaluated.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What is the difference between Crizal and regular lenses?",
+              "answer": "Crizal lenses add an anti-glare, scratch, and smudge resistant treatment that helps you see more clearly and keeps lenses easier to clean. An eyecare professional can show you the difference in person, would you like me to help you book an eye exam?"
+            },
+            {
+              "question": "How much do Varilux progressive lenses cost?",
+              "answer": "Pricing varies by practice and the exact lens design, but Varilux progressives generally fall in a mid to premium range. The best way to get an exact quote is an eye exam and fitting with a specialist, may I help you schedule one?"
+            },
+            {
+              "question": "What are Transitions lenses?",
+              "answer": "Transitions are light-adaptive lenses that stay clear indoors and darken outdoors to protect your eyes from bright light. A partnered eyecare professional can help you pick the right version, would you like to book an appointment?"
+            },
+            {
+              "question": "Do you sell glasses directly online?",
+              "answer": "Essilor lenses are available through selected partnered eyecare professionals rather than direct online checkout. I can help you find a provider near you and set up an eye exam."
+            },
+            {
+              "question": "What is the Essilor Ultimate Lens Package?",
+              "answer": "It combines three innovative technologies for best-in-class vision, clarity, and protection in one lens package. An eyecare professional can walk you through it, shall I help you book an appointment?"
+            },
+            {
+              "question": "Which lenses are best for computer eye strain?",
+              "answer": "Eyezen lenses are designed to reduce eye strain and help protect from harmful blue light for digital users. A specialist can confirm the right option during an eye exam, would you like me to schedule one?"
+            },
+            {
+              "question": "Do you have blue light blocking lenses?",
+              "answer": "Yes, Crizal Prevencia selectively filters harmful blue light and Eyezen also helps protect against it. An eyecare professional can recommend the best fit, may I help you book a visit?"
+            },
+            {
+              "question": "What is the current promotion?",
+              "answer": "Right now you can get $100 instantly when you buy two pairs of qualifying lenses. I can help you schedule an eye exam with a partnered provider to take advantage of it."
+            },
+            {
+              "question": "Are polarized prescription sunglasses available?",
+              "answer": "Yes, Xperio UV polarized lenses offer high UV protection, water-repellent easy cleaning, and scratch resistance for outdoor activities. An eyecare professional can fit them for you, would you like to book?"
+            },
+            {
+              "question": "What is the difference between Varilux XR and Varilux X?",
+              "answer": "Varilux XR is an AI-powered design that predicts how you look at things for instant sharpness in motion, while Varilux X focuses on arm's-length vision challenges. A specialist can help you compare during an eye exam, shall I schedule one?"
+            },
+            {
+              "question": "Do these lenses come with UV protection?",
+              "answer": "Many Essilor lenses include UV protection, and options like Xperio UV and Crizal Easy UV emphasize it. An eyecare professional can confirm the right choice, may I help you book an appointment?"
+            },
+            {
+              "question": "Can I use my vision insurance?",
+              "answer": "Coverage depends on your plan and the partnered eyecare professional you visit, so their office can verify your benefits. Would you like me to help you find a provider and schedule an eye exam?"
+            },
+            {
+              "question": "How do progressive lenses work for people over 40?",
+              "answer": "Progressive lenses like Varilux give sharp vision at all distances with smooth transitions, and are undetectable as progressives. The best way to find your fit is an eye exam, would you like me to book one?"
+            },
+            {
+              "question": "What is myopia management?",
+              "answer": "Myopia management focuses on understanding the signs of nearsightedness and solutions such as Stellest lenses for children. An eyecare professional can evaluate this, may I help you schedule an appointment?"
+            },
+            {
+              "question": "How long does an eye exam take?",
+              "answer": "An eye exam and lens fitting typically takes under an hour, though it varies by provider. I can help you book a convenient time with a partnered eyecare professional."
+            },
+            {
+              "question": "What is the difference between Transitions GEN S and Signature Gen 8?",
+              "answer": "GEN S uses super-charged dyes for vivid colors and faster responsiveness, while Signature Gen 8 stays fully clear indoors and darkens outdoors. A specialist can help you choose, would you like to book an eye exam?"
+            },
+            {
+              "question": "Do you make lenses for kids?",
+              "answer": "Yes, Essilor offers solutions including Stellest for myopia management in children. An eyecare professional can assess your child, shall I help you schedule an appointment?"
+            },
+            {
+              "question": "Where is the nearest place to buy Essilor lenses?",
+              "answer": "You can get Essilor lenses from a partnered eyecare professional, and I can find one near you with your ZIP code. Would you like me to help you book an eye exam there?"
+            },
+            {
+              "question": "What does anti-reflective coating do?",
+              "answer": "Anti-reflective coatings like Crizal Sapphire HR reduce reflections on the front and back of the lens for clearer vision. A provider can add it to your lenses, may I help you schedule an appointment?"
+            },
+            {
+              "question": "Can I get an exact price over text?",
+              "answer": "I can share a preliminary price range, but an exact quote depends on your prescription and the practice you visit. Let me help you book an eye exam with a specialist for a precise estimate."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule an eye exam\",\"follow_up_message\":\"Great, I can get you booked with a partnered eyecare professional near you. What ZIP code should I use, and what day and time work best for your eye exam?\"},{\"intent\":\"Request a lens quote\",\"follow_up_message\":\"Happy to help with a personalized quote. Once you share your lens preference and ZIP code, I can give you a preliminary price range and set up an eye exam with a specialist for the exact figure.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Essilor of America's AI agent. I can help you build a personalized lens quote and get you booked with a partnered eyecare professional. Would you like to get started?",
+        "goal": "Guide the patient to book an eye exam and lens fitting with a partnered eyecare professional to receive an exact lens quote.",
+        "bookingType": "in-office eye exam",
+        "offer": "Get $100 instantly when you buy two pairs of qualifying lenses",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "How many pairs of glasses are you looking for?",
+          "What type of lenses do you need, progressive, single vision, or prescription sun?",
+          "Which lens brand or feature interests you most, such as Varilux, Crizal, Transitions, Xperio UV, or Eyezen?",
+          "What is your timeline for getting new glasses?",
+          "What is your ZIP code so I can confirm a partnered eyecare professional near you?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:01 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:01 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:01 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Essilor of America",
+      "callerName": "Marcus Williams",
+      "callerPhone": "(503) 555-0187",
+      "campaign": "Varilux XR Series, Portland Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Eye Exam Lead",
+      "estimatedValue": "$3,247",
+      "googleSearch": "progressive lenses for over 40 Portland Oregon",
+      "websiteSearch": "Varilux XR price near me",
+      "callingWebpage": "/lenses/varilux",
+      "products": "Varilux XR series, Crizal Sapphire HR",
+      "cartId": "EOS-7634J",
+      "serviceable": "Yes",
+      "email": "marcus.williams@email.com",
+      "street": "4821 NW Lovejoy Street",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97209",
+      "digitalJourney": "/home › /lenses/varilux › /lenses/varilux/xr-series › /find-eyecare-professional",
+      "intent": "Seeking premium progressive lenses for seamless near to far vision with advanced anti-reflective coating.",
+      "coverage": "ZIP 97209 confirmed, Portland serviceable",
+      "switchIntent": "High, currently using standard progressives, wants to upgrade to AI-powered lens technology this month.",
+      "greeting": "Hi Marcus, this is Sarah with Essilor of America. I see you're interested in our Varilux XR progressive lenses. I'd love to help you find a local eyecare professional and schedule an eye exam to get you fitted. Would this week work for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "Essilor of America",
+      "callerName": "Jennifer Chen",
+      "callerPhone": "(720) 555-0243",
+      "campaign": "Transitions GEN S, Denver Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Eye Exam Lead",
+      "estimatedValue": "$2,156",
+      "googleSearch": "light adaptive lenses Denver Colorado",
+      "websiteSearch": "Transitions photochromic lenses with anti-glare coating",
+      "callingWebpage": "/lenses/transitions",
+      "products": "Transitions GEN S, Crizal Easy UV",
+      "cartId": "EOS-5821M",
+      "serviceable": "Yes",
+      "email": "jennifer.chen@email.com",
+      "street": "2307 South Downing Street",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80210",
+      "digitalJourney": "/home › /lenses/transitions › /lenses/transitions/gen-s › /personalize-your-lenses",
+      "intent": "Looking for light-adaptive lenses with fast responsiveness and UV protection for outdoor lifestyle.",
+      "coverage": "ZIP 80210 confirmed, Denver serviceable",
+      "appointment": "In-home eye exam with specialist, Thursday July 17 at 10:00 AM",
+      "greeting": "Hi Jennifer, thanks for reaching out to Essilor of America. We've scheduled your in-home eye exam with our specialist for Thursday July 17 at 10:00 AM. Our expert will discuss Transitions GEN S lenses and other options perfect for your lifestyle. Any questions before then?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Essilor of America",
+      "brandDomain": "www.essilorusa.com",
+      "brandIcon": "👓",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "See Sharper at Every Distance, Varilux XR",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "progressive lenses for over 40",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/Lenses/Varilux",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Varilux XR Series, Essilor Ultimate Lens Package",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "exam_new_varilux",
+          "name": "Eye Exam, Progressive Lens Fitting"
+        },
+        {
+          "id": "support_existing_order",
+          "name": "Existing Order Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Lens Information"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Essilor of America. I see you were checking out our Varilux XR progressive lenses online. Are you looking to get a new pair of glasses prescribed?",
+          "sigs": [],
+          "q": [
+            45,
+            35,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, I am. I'm over 40 and I've been having trouble with my near and far vision, especially when I'm on my phone or reading. I think progressive lenses might help.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Age 40 plus</strong> with presbyopia symptoms"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Near and far vision</strong> challenges"
+            },
+            {
+              "c": "orange",
+              "t": "Digital device strain concern"
+            }
+          ],
+          "q": [
+            72,
+            18,
+            10
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's exactly what Varilux XR is designed for. The AI-powered technology gives you instant sharpness at all distances. Do you have a current eyecare professional, or would you need help finding one in Santa Barbara to get fitted?",
+          "sigs": [],
+          "q": [
+            85,
+            10,
+            5
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I don't have a regular eye doctor right now. I'd really like to find someone nearby who can do a proper eye exam and fit me for these lenses. My vision's been bothering me for a few months.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>No current ECP</strong> relationship"
+            },
+            {
+              "c": "purple",
+              "t": "<strong>Ready for eye exam</strong> booking"
+            },
+            {
+              "c": "orange",
+              "t": "Multi-month vision concern"
+            }
+          ],
+          "q": [
+            94,
+            4,
+            2
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm connecting you to our eye exam specialist team who'll help you find a qualified eyecare professional in Santa Barbara and schedule your appointment. They'll make sure you get fitted for the right Varilux lenses for your lifestyle.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Eye Exam Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"you're all set for your eye exam (Agent)\", \"book your appointment (Caller)\", \"schedule your eye exam\", \"see the doctor next week\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "01/08/26 2:30 pm"
+        },
+        {
+          "name": "Blue Light Concern",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"blue light from my screen (Caller)\", \"computer eye strain (Caller)\", \"blocks blue light (Agent)\", \"staring at the screen all day\"])",
+          "createdAt": "05/02/25 10:15 am",
+          "updatedAt": "12/19/25 4:05 pm"
+        },
+        {
+          "name": "Competitor Lens Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Zeiss lenses (Caller)\", \"Hoya progressive (Caller)\", \"cheaper at the other optical (Caller)\", \"compared to Shamir\"])",
+          "createdAt": "04/21/25 8:40 am",
+          "updatedAt": "11/30/25 1:20 pm"
+        },
+        {
+          "name": "Crizal Anti-Glare Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"anti-glare coating (Caller)\", \"Crizal Sapphire (Agent)\", \"reduce the reflections (Caller)\", \"scratch resistant lenses\"])",
+          "createdAt": "06/10/25 11:05 am",
+          "updatedAt": "12/28/25 3:15 pm"
+        },
+        {
+          "name": "Empathy & Patient Care",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Patient Care Quality] < 60 and duration > 45 sec",
+          "createdAt": "02/18/25 9:50 am",
+          "updatedAt": "01/12/26 10:40 am"
+        },
+        {
+          "name": "Eye Exam Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"find an eyecare professional (Agent)\", \"when was your last eye exam (Agent)\", \"get your prescription updated (Caller)\", \"eye doctor near me\"])",
+          "createdAt": "03/28/25 2:22 pm",
+          "updatedAt": "12/05/25 9:30 am"
+        },
+        {
+          "name": "Insurance & Pricing Objection",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"does my vision insurance cover this (Caller)\", \"how much for the lenses (Caller)\", \"that's too expensive (Caller)\", \"VSP coverage\"])",
+          "createdAt": "05/16/25 3:45 pm",
+          "updatedAt": "01/03/26 11:10 am"
+        },
+        {
+          "name": "Professional Greeting",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Call Opening Quality] < 60 and duration > 30 sec",
+          "createdAt": "02/25/25 8:15 am",
+          "updatedAt": "01/15/26 4:50 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the total for both pairs (Agent)\", \"your out of pocket cost (Agent)\", \"with the hundred dollar offer (Agent)\", \"price for the Ultimate Lens Package\"])",
+          "createdAt": "04/09/25 1:30 pm",
+          "updatedAt": "01/06/26 9:05 am"
+        },
+        {
+          "name": "Warm Call Closing",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Call Closing Quality] < 60 and duration > 45 sec",
+          "createdAt": "07/01/25 10:00 am",
+          "updatedAt": "12/22/25 2:45 pm"
+        }
+      ]
+    }
+  }
+}

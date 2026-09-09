@@ -1,0 +1,5389 @@
+{
+  "id": "christian-brothers-automotive",
+  "customerName": "Christian Brothers Automotive",
+  "websiteUrl": "https://www.cbac.com",
+  "brandDomain": "cbac.com",
+  "networkName": "Invoca for Automotive Service",
+  "industry": "Auto Repair & Maintenance",
+  "bookingTerm": "Service Appointment",
+  "customerNoun": "Customer",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 20000,
+      "yTicks": [
+        4000,
+        8000,
+        12000,
+        16000,
+        20000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 9847
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 15632
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 14918
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 14203
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 13606
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Service Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Service Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Auto Repair Near Me, Houston",
+          "marketingSearchTerm": "auto repair near me",
+          "landingPageUrl": "https://www.cbac.com/houston?utm_source=google&utm_medium=cpc&utm_campaign=auto_repair_near_me",
+          "websiteJourney": "Home / Locations / Houston Shop",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Oil Change Special",
+          "marketingSearchTerm": "oil change near me",
+          "landingPageUrl": "https://www.cbac.com/our-services/oil-filter-change?utm_source=google&utm_medium=cpc&utm_campaign=oil_change_special",
+          "websiteJourney": "Home / Our Services / Oil & Filter Change",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Brake Service, Free Inspection",
+          "marketingSearchTerm": "brake pad replacement cost",
+          "landingPageUrl": "https://www.cbac.com/our-services/brakes?utm_source=google&utm_medium=cpc&utm_campaign=brake_service_free_inspection",
+          "websiteJourney": "Home / Our Services / Brakes",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Check Engine Light Diagnostic",
+          "marketingSearchTerm": "check engine light diagnostic near me",
+          "landingPageUrl": "https://www.cbac.com/our-services/check-engine-light?utm_source=google&utm_medium=cpc&utm_campaign=check_engine_diagnostic",
+          "websiteJourney": "Home / Our Services / Engine Services / Check Engine Light",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Wheel Alignment, Austin",
+          "marketingSearchTerm": "wheel alignment near me",
+          "landingPageUrl": "https://www.cbac.com/our-services/alignment?utm_source=bing&utm_medium=cpc&utm_campaign=wheel_alignment_austin",
+          "websiteJourney": "Home / Our Services / Alignment",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Car AC Repair, Summer Readiness",
+          "marketingSearchTerm": "car ac not blowing cold repair",
+          "landingPageUrl": "https://www.cbac.com/our-services/ac-services?utm_source=google&utm_medium=cpc&utm_campaign=ac_repair_summer",
+          "websiteJourney": "Home / Our Services / AC Services",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Car Battery Replacement",
+          "marketingSearchTerm": "car battery replacement",
+          "landingPageUrl": "https://www.cbac.com/our-services/batteries?utm_source=google&utm_medium=cpc&utm_campaign=battery_replacement",
+          "websiteJourney": "Home / Our Services / Batteries",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Transmission Repair Shop",
+          "marketingSearchTerm": "transmission repair shop",
+          "landingPageUrl": "https://www.cbac.com/our-services/transmission?utm_source=bing&utm_medium=cpc&utm_campaign=transmission_repair",
+          "websiteJourney": "Home / Our Services / Transmission",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Near Me Local Pages",
+          "marketingSearchTerm": "christian brothers automotive dallas",
+          "landingPageUrl": "https://www.cbac.com/dallas?utm_source=organic&utm_medium=organic&utm_campaign=near_me_local_pages",
+          "websiteJourney": "Home / Locations / Dallas Shop",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Seasonal Car Care Blog",
+          "marketingSearchTerm": "30000 mile service cost",
+          "landingPageUrl": "https://www.cbac.com/about-us/blog/30k-service?utm_source=organic&utm_medium=organic&utm_campaign=seasonal_car_care_blog",
+          "websiteJourney": "Home / About Us / Blog / Car Tips",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Near Me Local Pages",
+          "marketingSearchTerm": "honest mechanic near me",
+          "landingPageUrl": "https://www.cbac.com/our-services/scheduled-maintenance?utm_source=organic&utm_medium=organic&utm_campaign=near_me_local_pages",
+          "websiteJourney": "Home / Our Services / Scheduled Maintenance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "FAQ Service Schema",
+          "marketingSearchTerm": "pre-purchase car inspection",
+          "landingPageUrl": "https://www.cbac.com/our-services/courtesy-inspection?utm_source=organic&utm_medium=organic&utm_campaign=faq_service_schema",
+          "websiteJourney": "Home / Our Services / Courtesy Inspection",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Seasonal Car Care Blog",
+          "marketingSearchTerm": "european car mechanic phoenix",
+          "landingPageUrl": "https://www.cbac.com/our-services/european-vehicle-services?utm_source=organic&utm_medium=organic&utm_campaign=seasonal_car_care_blog",
+          "websiteJourney": "Home / Our Services / European Vehicle Services",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "The Nice Difference",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.cbac.com/about-us/nice-difference?utm_source=facebook&utm_medium=facebook&utm_campaign=the_nice_difference",
+          "websiteJourney": "Home / About Us / Nice Difference Warranty",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Meet Your Local Owner",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.cbac.com/san-antonio?utm_source=facebook&utm_medium=facebook&utm_campaign=meet_your_local_owner",
+          "websiteJourney": "Home / Locations / San Antonio Shop",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Winter Vehicle Readiness",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.cbac.com/our-services/cooling-system?utm_source=instagram&utm_medium=instagram&utm_campaign=winter_vehicle_readiness",
+          "websiteJourney": "Home / Our Services / Cooling System",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Care+ Membership Enrollment",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.cbac.com/care-plus?utm_source=instagram&utm_medium=instagram&utm_campaign=care_plus_enrollment",
+          "websiteJourney": "Home / Care+ / Membership",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "New Location Grand Opening",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.cbac.com/frisco?utm_source=facebook&utm_medium=facebook&utm_campaign=new_location_grand_opening",
+          "websiteJourney": "Home / Locations / Frisco Shop",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Tune Up Special",
+          "marketingSearchTerm": "tune up near me",
+          "landingPageUrl": "https://www.cbac.com/our-services/tune-ups?utm_source=google&utm_medium=cpc&utm_campaign=tune_up_special",
+          "websiteJourney": "Home / Our Services / Tune Ups",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Near Me Local Pages",
+          "marketingSearchTerm": "tire rotation near me",
+          "landingPageUrl": "https://www.cbac.com/our-services/tire-rotation?utm_source=organic&utm_medium=organic&utm_campaign=near_me_local_pages",
+          "websiteJourney": "Home / Our Services / Tire Rotation",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "5-Star Neighbor Referral",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.cbac.com/about-us/testimonials?utm_source=instagram&utm_medium=instagram&utm_campaign=neighbor_referral",
+          "websiteJourney": "Home / About Us / Testimonials",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Christian Brothers Automotive)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "53,495"
+            },
+            {
+              "label": "Service Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Repair Order (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$9,903,307"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "8,559"
+            },
+            {
+              "label": "Existing Repair Order Status (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Hours & Location Inquiry (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Franchise & Careers Inquiry (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Service Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Service Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Estimate Discussed (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Non-Serviceable Lead (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "Repair Order (Percent)",
+              "value": "38%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Service Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Service Call (Count)",
+            "values": [
+              6142,
+              9847,
+              9563,
+              9721,
+              9663
+            ]
+          },
+          {
+            "name": "Estimate Discussed (Count)",
+            "values": [
+              2041,
+              3287,
+              3164,
+              3251,
+              3236
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              1318,
+              2114,
+              2043,
+              2081,
+              2073
+            ]
+          },
+          {
+            "name": "Repair Order (Count)",
+            "values": [
+              2783,
+              4456,
+              4312,
+              4398,
+              4379
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Repair Order (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 53495,
+          "rows": [
+            {
+              "name": "Google Paid Search",
+              "metrics": [
+                "21,342",
+                "54%",
+                "28%",
+                "$2,932,145"
+              ]
+            },
+            {
+              "name": "Google Organic (Local Pages)",
+              "metrics": [
+                "12,876",
+                "61%",
+                "36%",
+                "$2,268,731"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "8,431",
+                "66%",
+                "42%",
+                "$1,731,908"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "6,214",
+                "71%",
+                "51%",
+                "$1,549,662"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "4,632",
+                "78%",
+                "62%",
+                "$1,420,861"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Repair Order (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 53495,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "19,884",
+                "53%",
+                "27%",
+                "$3,012,455"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "13,542",
+                "60%",
+                "35%",
+                "$2,341,876"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "8,765",
+                "67%",
+                "44%",
+                "$1,698,442"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "6,428",
+                "73%",
+                "53%",
+                "$1,489,331"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "4,876",
+                "80%",
+                "64%",
+                "$1,361,203"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Repair Order (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 29804,
+          "rows": [
+            {
+              "name": "Auto Repair Near Me City",
+              "metrics": [
+                "9,842",
+                "55%",
+                "30%",
+                "$1,442,318"
+              ]
+            },
+            {
+              "name": "Oil Change Special",
+              "metrics": [
+                "7,215",
+                "62%",
+                "38%",
+                "$1,338,662"
+              ]
+            },
+            {
+              "name": "Brake Service Free Inspection",
+              "metrics": [
+                "5,634",
+                "68%",
+                "45%",
+                "$1,231,447"
+              ]
+            },
+            {
+              "name": "Check Engine Light Diagnostic",
+              "metrics": [
+                "4,127",
+                "74%",
+                "53%",
+                "$1,068,924"
+              ]
+            },
+            {
+              "name": "Care+ Membership Enrollment",
+              "metrics": [
+                "2,986",
+                "81%",
+                "63%",
+                "$918,236"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Repair Order (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20863,
+          "rows": [
+            {
+              "name": "auto repair near me",
+              "metrics": [
+                "6,842",
+                "52%",
+                "29%",
+                "$998,442"
+              ]
+            },
+            {
+              "name": "oil change near me",
+              "metrics": [
+                "5,213",
+                "59%",
+                "37%",
+                "$912,336"
+              ]
+            },
+            {
+              "name": "brake pad replacement cost",
+              "metrics": [
+                "3,876",
+                "66%",
+                "46%",
+                "$843,221"
+              ]
+            },
+            {
+              "name": "check engine light diagnostic near me",
+              "metrics": [
+                "2,945",
+                "73%",
+                "54%",
+                "$712,558"
+              ]
+            },
+            {
+              "name": "car battery replacement",
+              "metrics": [
+                "1,987",
+                "80%",
+                "65%",
+                "$611,447"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Set (Industry) (Percent)",
+            "Repair Order (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Maintenance & Fluids",
+              "metrics": [
+                "15,842",
+                "55%",
+                "30%",
+                "$2,284,731"
+              ]
+            },
+            {
+              "name": "Brakes & Safety",
+              "metrics": [
+                "12,613",
+                "57%",
+                "34%",
+                "$2,067,418"
+              ]
+            },
+            {
+              "name": "Engine & Diagnostics",
+              "metrics": [
+                "10,487",
+                "59%",
+                "39%",
+                "$1,973,644"
+              ]
+            },
+            {
+              "name": "Electrical & Climate",
+              "metrics": [
+                "8,394",
+                "61%",
+                "45%",
+                "$1,824,652"
+              ]
+            },
+            {
+              "name": "Drivetrain & Systems",
+              "metrics": [
+                "6,159",
+                "64%",
+                "58%",
+                "$1,752,862"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Repair Order (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 53495,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "18,742",
+                "48%",
+                "32%",
+                "$2,931,724"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "12,318",
+                "51%",
+                "36%",
+                "$2,168,913"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "9,864",
+                "54%",
+                "39%",
+                "$1,884,662"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "7,213",
+                "57%",
+                "43%",
+                "$1,527,841"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "5,358",
+                "63%",
+                "53%",
+                "$1,390,167"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Repair Order (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Maintenance & Fluids",
+            "values": [
+              742,
+              1048,
+              1012,
+              998,
+              912
+            ]
+          },
+          {
+            "name": "Brakes & Safety",
+            "values": [
+              680,
+              948,
+              912,
+              884,
+              814
+            ]
+          },
+          {
+            "name": "Engine & Diagnostics",
+            "values": [
+              642,
+              908,
+              872,
+              848,
+              778
+            ]
+          },
+          {
+            "name": "Electrical & Climate",
+            "values": [
+              598,
+              838,
+              808,
+              782,
+              716
+            ]
+          },
+          {
+            "name": "Drivetrain & Systems",
+            "values": [
+              574,
+              802,
+              776,
+              752,
+              684
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 53,495 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Delgado called the Plano shop to book a full-synthetic oil change and asked about the courtesy inspection. Agent Oscar confirmed same-week availability, explained the digital vehicle inspection with photos, and scheduled his service appointment. Marcus left happy and mentioned he would use the free shuttle to get to work.",
+          "date": "Jan 6, 9:14 AM",
+          "agent": "Oscar",
+          "duration": "2m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Priya Nair asked for a quote on front brake pads and rotors for her Honda CR-V. Agent Lila explained the free brake inspection and the 3 year, 36,000 mile warranty, then booked her service appointment for Thursday. Priya appreciated the transparent pricing and confirmed the drop-off time.",
+          "date": "Feb 11, 1:37 PM",
+          "agent": "Lila",
+          "duration": "2m 22s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 82,
+          "summary": "David Osei had a check engine light on his F-150 and wanted a computer diagnostic. Agent Rosey walked him through the process and scheduled a service appointment for the next morning. She noted the shuttle option and David booked without hesitation.",
+          "date": "Mar 3, 10:48 AM",
+          "agent": "Rosey",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "New customer Elena Marroquin called to set up her first visit after moving to the area and asked for an oil change plus a general checkup. Agent Mary collected her name, phone number, vehicle year and make, and preferred drop-off time, then explained the shuttle service and booked her service appointment. Elena said the Nice Difference reputation is why she chose the shop.",
+          "date": "Jan 22, 3:02 PM",
+          "agent": "Mary",
+          "duration": "2m 44s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Trent Bishop noticed his car pulling to the right and asked about a wheel alignment. Agent Lee explained the camber and toe adjustment and quoted a typical range, then scheduled an alignment service appointment. Trent confirmed and asked for a reminder text.",
+          "date": "Apr 9, 11:20 AM",
+          "agent": "Lee",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Sofia Reyes said her AC was not blowing cold and wanted it looked at before summer. Agent Sue described the refrigerant recharge and leak check and booked an AC service appointment. Sofia was satisfied and asked about the shuttle for the drop-off.",
+          "date": "May 14, 4:31 PM",
+          "agent": "Sue",
+          "duration": "2m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Howard Kline called to confirm coverage on a recent repair under the 3 year, 36,000 mile warranty. Agent Mike verified the invoice and reassured him the part was covered, but no new work was scheduled. Howard was reassured about the warranty terms.",
+          "date": "Feb 27, 8:52 AM",
+          "agent": "Mike",
+          "duration": "1m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Gina Fowler checked on the status of a special-order part for her oil change and filter service that had been delayed. Agent Jennifer looked up the ticket and said the part would arrive in 24-48h and would call back. Gina was mildly frustrated by the wait but agreed to hold.",
+          "date": "Mar 19, 2:15 PM",
+          "agent": "Jennifer",
+          "duration": "1m 41s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Ray Coleman asked whether the free shuttle service could pick him up from home rather than just drop off. Agent Rose explained the shuttle radius and could not guarantee home pickup that day. Ray did not schedule and said he would think it over.",
+          "date": "Jun 8, 12:04 PM",
+          "agent": "Rose",
+          "duration": "1m 19s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Bethany Cross disputed a charge on her brake service invoice, saying she expected a lower quote. Agent Oscar reviewed the digital inspection line items and offered to have the advisor call her back. Bethany remained unhappy and no resolution was reached on the call.",
+          "date": "Jul 2, 5:47 PM",
+          "agent": "Oscar",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Naomi Pruitt called about a dead battery and wanted a battery replacement quote. Agent Lila explained the load test and terminal cleaning and booked a service appointment despite some line noise. Naomi confirmed the time after a short misunderstanding.",
+          "date": "Aug 16, 10:09 AM",
+          "agent": "Lila",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Victor Aldridge complained that his transmission still slipped after a recent service. Agent Lee apologized and tried to schedule a re-inspection, but Victor grew impatient and demanded a manager. The call ended without a firm booking.",
+          "date": "Sep 5, 3:39 PM",
+          "agent": "Lee",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 32,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Carla Monroe followed up on a warranty repair for a check engine light issue that recurred after pickup. Agent Sue struggled to locate the prior ticket and put her on a long hold. Carla left annoyed and no appointment was set.",
+          "date": "Sep 21, 1:11 PM",
+          "agent": "Sue",
+          "duration": "3m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Dwight Sanderson called to cancel an existing service appointment because he found another shop. Agent Mike processed the cancellation and asked for feedback, but Dwight declined to elaborate. The call closed on a cool note.",
+          "date": "Oct 4, 9:28 AM",
+          "agent": "Mike",
+          "duration": "1m 08s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Angela Booth called after hours about an oil change price and reached voicemail. No agent was available and the message was logged for a callback. No appointment was scheduled during this call.",
+          "date": "Oct 27, 7:53 PM",
+          "agent": "No Agent",
+          "duration": "0m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "oil change",
+        "brake",
+        "check engine",
+        "warranty",
+        "shuttle",
+        "alignment"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Primary Service Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Vehicle Details",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Location/ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Appointment Date and Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Visit",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Greeted caller professionally",
+        "Thanked caller for choosing Christian Brothers",
+        "Confirmed appointment availability",
+        "Offered multiple time slots",
+        "Captured customer name correctly",
+        "Identified brake service as primary need",
+        "Confirmed service location by ZIP",
+        "Booked appointment successfully",
+        "Verified appointment in system",
+        "Provided confirmation details",
+        "Used customer name during call",
+        "Offered courtesy shuttle service information",
+        "Maintained friendly tone throughout"
+      ],
+      "unmetSignals": [
+        "Did not ask vehicle year/make/model",
+        "Did not capture vehicle mileage",
+        "Did not mention warranty coverage",
+        "Did not discuss pricing expectations",
+        "Did not confirm if this is first visit",
+        "Did not capture email for appointment confirmation",
+        "Did not mention pre-appointment digital inspection",
+        "Did not ask about current vehicle condition",
+        "Did not offer Care+ membership enrollment",
+        "Did not explain the Nice Difference guarantee",
+        "Did not mention shuttle service benefit",
+        "Did not capture preferred contact method",
+        "Did not schedule follow-up for service completion",
+        "Did not explain service duration estimate",
+        "Did not confirm brake type or symptoms"
+      ],
+      "naSignals": [
+        "Transmission fluid exchange details",
+        "Extended warranty claim process",
+        "Parts warranty registration",
+        "Service completion follow-up billing",
+        "Retail parts pricing structure",
+        "Fleet account setup",
+        "European vehicle certification details",
+        "Pre-purchase inspection findings review",
+        "Scheduled maintenance package options",
+        "Care+ membership tier selection",
+        "Service shuttle pickup confirmation",
+        "Warranty transfer documentation"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes, the caller has a brake service need and is scheduling an appointment for brake pad replacement and inspection. They mentioned needing the work done soon due to upcoming travel."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects to schedule a convenient appointment time, receive professional brake service, and potentially utilize the courtesy shuttle service for drop-off. They want reassurance that the work will be completed before their travel dates."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could strengthen the interaction by capturing the vehicle year/make/model and mileage to better scope the brake service, confirming the customer's email for appointment confirmation, and setting clearer expectations about the digital vehicle inspection report and service timeline that the customer will receive."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Thank you for calling Christian Brothers Automotive in Maple Grove. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:08",
+          "text": "Hi, yes, I need to schedule a brake service appointment. I think my brake pads are getting worn and I want to get them checked out."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Great, I can definitely help you with that. We provide honest, transparent brake service here. May I have your name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:24",
+          "text": "Sure, it is Jennifer Walsh."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:30",
+          "text": "Perfect, Jennifer. I have you down for brake service. Just to confirm, you are looking at brake pad replacement and a full brake inspection, correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:40",
+          "text": "Yes, exactly. I want to make sure everything is safe before I drive up north next week."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:48",
+          "text": "Absolutely, we can get that done for you. Just to confirm, you are in the Maple Grove area, correct? That is our current location."
+        },
+        {
+          "speaker": "caller",
+          "time": "00:58",
+          "text": "Yes, I live just off Highway 169. That location works perfectly for me."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:08",
+          "text": "Excellent. And what is the best phone number to reach you at for appointment reminders and confirmation?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:18",
+          "text": "It is ****-****-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:25",
+          "text": "Thank you. I have that on file. Now let me find you an available time slot. We have openings tomorrow at 10 a.m. or Thursday morning at 9 a.m. Which would work better for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:38",
+          "text": "Thursday at 9 a.m. works great. That gives me more time to prepare."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:48",
+          "text": "Perfect. I have you scheduled for Thursday, October 24th at 9 a.m. for brake service. Just so you know, we offer a free courtesy shuttle service if you need a ride back home while we work on your vehicle."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:02",
+          "text": "Oh, that is really helpful. I might take you up on that. How long does the brake service usually take?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:10",
+          "text": "Typically, a complete brake inspection and pad replacement takes about one to two hours, depending on what we find. We will call you if anything else comes up. Sound good?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:18",
+          "text": "Sounds good to me. Thanks, Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:26",
+          "text": "You are very welcome, Jennifer. Thank you for choosing Christian Brothers Automotive. We will see you Thursday at 9 a.m. Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Walsh called to schedule a brake service appointment at the Maple Grove location due to worn brake pads before an upcoming road trip. Marcus captured her name, confirmed the service need, verified the location, and booked her for Thursday at 9 a.m., also mentioning the free courtesy shuttle service. While the agent successfully scheduled the appointment and maintained a professional tone, he did not capture the customer's email address for confirmation or gather vehicle details such as year, make, and model to better scope the brake work. The call demonstrates solid appointment-booking fundamentals but missed opportunities to build customer context and set detailed service expectations.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, nice work structuring the intake and getting Jennifer booked for Thursday morning. You confirmed the service need clearly and offered the shuttle service as a value add. Two quick coaching points for next time. First, capture the email address so Jennifer receives a written confirmation and details about our digital vehicle inspection report. Second, ask for the vehicle year and make so our technicians have context before she arrives. These details help us set expectations about what the inspection will cover and what the customer should expect when she arrives. Great phone manner overall."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "53,495"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$185.13"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$9,903,307"
+            }
+          ]
+        },
+        {
+          "title": "NEW CUSTOMER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Customers (Count)",
+              "value": "34,772"
+            },
+            {
+              "label": "Caller Type: New Customers (Percent)",
+              "value": "65%"
+            },
+            {
+              "label": "Service Appointment: Scheduled (Count)",
+              "value": "31,027"
+            },
+            {
+              "label": "Service Appointment: Scheduled (Percent)",
+              "value": "58%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CUSTOMERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Customer (Count)",
+              "value": "18,723"
+            },
+            {
+              "label": "Caller Type: Existing Customer (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Service Appointment: Canceled (Percent)",
+              "value": "6%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Service Appointments)",
+          "chart": {
+            "legend": "Service Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Facebook",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Bing Paid Search",
+                "value": 52,
+                "display": "52%"
+              },
+              {
+                "name": "Google My Business",
+                "value": 47,
+                "display": "47%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 39,
+                "display": "39%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Service Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Service Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google Paid Search",
+                  "21,384",
+                  "34%",
+                  "$3,842,118"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "13,672",
+                  "42%",
+                  "$2,517,406"
+                ]
+              },
+              {
+                "cells": [
+                  "Google My Business",
+                  "9,841",
+                  "51%",
+                  "$1,806,229"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing Paid Search",
+                  "5,213",
+                  "60%",
+                  "$1,004,882"
+                ]
+              },
+              {
+                "cells": [
+                  "Facebook",
+                  "3,385",
+                  "69%",
+                  "$732,672"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 30000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000,
+              25000,
+              30000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 26597,
+                "display": "26,597"
+              },
+              {
+                "name": "Organic",
+                "value": 13672,
+                "display": "13,672"
+              },
+              {
+                "name": "Paid Social",
+                "value": 6214,
+                "display": "6,214"
+              },
+              {
+                "name": "Email/Loyalty",
+                "value": 4183,
+                "display": "4,183"
+              },
+              {
+                "name": "Referral",
+                "value": 2829,
+                "display": "2,829"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Service Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Service Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "26,597",
+                  "36%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "13,672",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "6,214",
+                  "53%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/Loyalty",
+                  "4,183",
+                  "62%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "2,829",
+                  "71%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 12000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Auto Repair Near Me",
+                "value": 11842,
+                "display": "11,842"
+              },
+              {
+                "name": "Oil Change Special",
+                "value": 8317,
+                "display": "8,317"
+              },
+              {
+                "name": "Brake Service Free Inspection",
+                "value": 6528,
+                "display": "6,528"
+              },
+              {
+                "name": "Check Engine Light Diagnostic",
+                "value": 4713,
+                "display": "4,713"
+              },
+              {
+                "name": "The Nice Difference",
+                "value": 3296,
+                "display": "3,296"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Service Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Service Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Auto Repair Near Me",
+                  "11,842",
+                  "37%",
+                  "$2,131,564"
+                ]
+              },
+              {
+                "cells": [
+                  "Oil Change Special",
+                  "8,317",
+                  "45%",
+                  "$1,498,227"
+                ]
+              },
+              {
+                "cells": [
+                  "Brake Service Free Inspection",
+                  "6,528",
+                  "54%",
+                  "$1,176,338"
+                ]
+              },
+              {
+                "cells": [
+                  "Check Engine Light Diagnostic",
+                  "4,713",
+                  "66%",
+                  "$849,712"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "auto repair near me",
+                "value": 7214,
+                "display": "7,214"
+              },
+              {
+                "name": "oil change near me",
+                "value": 5382,
+                "display": "5,382"
+              },
+              {
+                "name": "brake pad replacement cost",
+                "value": 3916,
+                "display": "3,916"
+              },
+              {
+                "name": "check engine light diagnostic near me",
+                "value": 2847,
+                "display": "2,847"
+              },
+              {
+                "name": "car battery replacement",
+                "value": 1938,
+                "display": "1,938"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Service Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Service Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "auto repair near me",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "oil change near me",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "brake pad replacement cost",
+                  "58%"
+                ]
+              },
+              {
+                "cells": [
+                  "check engine light diagnostic near me",
+                  "67%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Customers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Service Appointment: Scheduled (Percent)",
+          "Caller Type: New Customers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Maintenance & Fluids",
+              "16,842",
+              "39%",
+              "71%"
+            ]
+          },
+          {
+            "cells": [
+              "Brakes & Safety",
+              "11,318",
+              "47%",
+              "64%"
+            ]
+          },
+          {
+            "cells": [
+              "Engine & Diagnostics",
+              "8,214",
+              "55%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Electrical & Climate",
+              "5,127",
+              "64%",
+              "52%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Service Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Christian Brothers Automotive Katy, TX",
+              "4,382",
+              "341",
+              "5%",
+              "41%"
+            ]
+          },
+          {
+            "cells": [
+              "Christian Brothers Automotive Frisco, TX",
+              "3,617",
+              "268",
+              "4%",
+              "49%"
+            ]
+          },
+          {
+            "cells": [
+              "Christian Brothers Automotive Peachtree City, GA",
+              "2,914",
+              "187",
+              "3%",
+              "57%"
+            ]
+          },
+          {
+            "cells": [
+              "Christian Brothers Automotive Gilbert, AZ",
+              "2,138",
+              "119",
+              "2%",
+              "66%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1284,
+              1397,
+              1352,
+              1418,
+              1291
+            ]
+          },
+          {
+            "name": "Comparing Shops",
+            "values": [
+              1021,
+              1087,
+              1064,
+              1102,
+              1044
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              872,
+              918,
+              901,
+              934,
+              902
+            ]
+          },
+          {
+            "name": "Waiting on Part Availability",
+            "values": [
+              672,
+              714,
+              698,
+              721,
+              676
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              458,
+              489,
+              472,
+              501,
+              480
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "21,398"
+          },
+          {
+            "label": "Service Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Repair Order (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$5,644,885"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Repair Order (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$847,223"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Repair Order (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$982,104"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Repair Order (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,128,556"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Repair Order (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$891,445"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Repair Order (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,046,328"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Repair Order (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,279,229"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Repair Order (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 26847,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "6847",
+                "62%",
+                "34%",
+                "$2,107,828"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "5823",
+                "58%",
+                "32%",
+                "$1,844,756"
+              ]
+            },
+            {
+              "name": "Social Paid",
+              "metrics": [
+                "4156",
+                "54%",
+                "30%",
+                "$1,245,840"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "2834",
+                "51%",
+                "28%",
+                "$793,528"
+              ]
+            },
+            {
+              "name": "Email Marketing",
+              "metrics": [
+                "1738",
+                "48%",
+                "25%",
+                "$652,933"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Repair Order (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 24958,
+          "rows": [
+            {
+              "name": "Voice",
+              "metrics": [
+                "8934",
+                "59%",
+                "33%",
+                "$2,751,402"
+              ]
+            },
+            {
+              "name": "Form Fill",
+              "metrics": [
+                "7122",
+                "56%",
+                "31%",
+                "$2,107,722"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "4782",
+                "53%",
+                "29%",
+                "$1,434,761"
+              ]
+            },
+            {
+              "name": "Chat",
+              "metrics": [
+                "2604",
+                "49%",
+                "27%",
+                "$782,340"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "1556",
+                "46%",
+                "24%",
+                "$568,660"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Repair Order (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25617,
+          "rows": [
+            {
+              "name": "Oil Change Special, January",
+              "metrics": [
+                "4283",
+                "61%",
+                "35%",
+                "$1,499,205"
+              ]
+            },
+            {
+              "name": "Brake Service Free Inspection",
+              "metrics": [
+                "3756",
+                "57%",
+                "32%",
+                "$1,183,648"
+              ]
+            },
+            {
+              "name": "Check Engine Light Diagnostic",
+              "metrics": [
+                "3142",
+                "55%",
+                "30%",
+                "$942,274"
+              ]
+            },
+            {
+              "name": "Car AC Service, Winter Ready",
+              "metrics": [
+                "2684",
+                "52%",
+                "28%",
+                "$804,376"
+              ]
+            },
+            {
+              "name": "Battery Replacement Offer",
+              "metrics": [
+                "2147",
+                "49%",
+                "26%",
+                "$643,762"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Repair Order (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20374,
+          "rows": [
+            {
+              "name": "oil change near me",
+              "metrics": [
+                "3847",
+                "63%",
+                "36%",
+                "$1,385,292"
+              ]
+            },
+            {
+              "name": "auto repair near me",
+              "metrics": [
+                "3124",
+                "59%",
+                "33%",
+                "$1,045,752"
+              ]
+            },
+            {
+              "name": "brake pad replacement cost",
+              "metrics": [
+                "2756",
+                "56%",
+                "31%",
+                "$854,236"
+              ]
+            },
+            {
+              "name": "check engine light diagnostic near me",
+              "metrics": [
+                "2189",
+                "53%",
+                "29%",
+                "$659,843"
+              ]
+            },
+            {
+              "name": "car battery replacement near me",
+              "metrics": [
+                "1834",
+                "50%",
+                "27%",
+                "$549,634"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Repair Order (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Maintenance & Fluids",
+              "metrics": [
+                "5934",
+                "59%",
+                "34%",
+                "$1,941,108"
+              ]
+            },
+            {
+              "name": "Brakes & Safety",
+              "metrics": [
+                "4287",
+                "57%",
+                "32%",
+                "$1,374,624"
+              ]
+            },
+            {
+              "name": "Electrical & Climate",
+              "metrics": [
+                "3892",
+                "55%",
+                "30%",
+                "$1,156,940"
+              ]
+            },
+            {
+              "name": "Engine & Diagnostics",
+              "metrics": [
+                "4156",
+                "54%",
+                "31%",
+                "$1,285,940"
+              ]
+            },
+            {
+              "name": "Drivetrain & Systems",
+              "metrics": [
+                "3129",
+                "51%",
+                "28%",
+                "$894,273"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Repair Order (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Maintenance & Fluids",
+              "metrics": [
+                "5934",
+                "59%",
+                "34%",
+                "$1,941,108"
+              ]
+            },
+            {
+              "name": "Brakes & Safety",
+              "metrics": [
+                "4287",
+                "57%",
+                "32%",
+                "$1,374,624"
+              ]
+            },
+            {
+              "name": "Electrical & Climate",
+              "metrics": [
+                "3892",
+                "55%",
+                "30%",
+                "$1,156,940"
+              ]
+            },
+            {
+              "name": "Engine & Diagnostics",
+              "metrics": [
+                "4156",
+                "54%",
+                "31%",
+                "$1,285,940"
+              ]
+            },
+            {
+              "name": "Drivetrain & Systems",
+              "metrics": [
+                "3129",
+                "51%",
+                "28%",
+                "$894,273"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Repair Order (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Maintenance & Fluids",
+            "values": [
+              647,
+              709,
+              715,
+              678,
+              609
+            ]
+          },
+          {
+            "name": "Brakes & Safety",
+            "values": [
+              483,
+              520,
+              527,
+              501,
+              450
+            ]
+          },
+          {
+            "name": "Electrical & Climate",
+            "values": [
+              428,
+              467,
+              475,
+              449,
+              404
+            ]
+          },
+          {
+            "name": "Engine & Diagnostics",
+            "values": [
+              471,
+              524,
+              533,
+              507,
+              456
+            ]
+          },
+          {
+            "name": "Drivetrain & Systems",
+            "values": [
+              341,
+              382,
+              389,
+              368,
+              330
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Service Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Service Appointment Scheduled (Percent)",
+            "value": "26%"
+          },
+          {
+            "label": "Service Appointment Scheduled (Count)",
+            "value": "347"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Service Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Service Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Service Appointment Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Service Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Service Appointment Scheduled",
+            "values": [
+              72,
+              79,
+              75,
+              81,
+              78,
+              73,
+              82,
+              76,
+              80,
+              74,
+              77,
+              83,
+              79,
+              75,
+              81,
+              78,
+              72,
+              80,
+              76,
+              74,
+              82,
+              78,
+              75,
+              79,
+              81,
+              73,
+              77,
+              80,
+              76,
+              82,
+              74,
+              83,
+              177,
+              189,
+              172,
+              185,
+              178,
+              181,
+              174,
+              186,
+              179,
+              183,
+              175,
+              188,
+              182,
+              176,
+              184,
+              179,
+              180,
+              178,
+              185
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,264"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "11,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "714"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "59%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "698"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Service Appointment Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Oil Change & Fluid Service",
+            "values": [
+              8,
+              11,
+              9,
+              6,
+              10,
+              12
+            ]
+          },
+          {
+            "name": "Brake Service & Pad Replacement",
+            "values": [
+              6,
+              8,
+              7,
+              5,
+              9,
+              11
+            ]
+          },
+          {
+            "name": "Check Engine Light Diagnostic",
+            "values": [
+              4,
+              6,
+              5,
+              3,
+              7,
+              10
+            ]
+          },
+          {
+            "name": "Battery & Electrical System",
+            "values": [
+              5,
+              7,
+              6,
+              4,
+              8,
+              9
+            ]
+          },
+          {
+            "name": "AC Service & Refrigerant Recharge",
+            "values": [
+              2,
+              3,
+              2,
+              1,
+              4,
+              6
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "49,215"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "40,121"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Service Appointment Booked (Count)",
+            "value": "31,027"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$9,903,307"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Townsend",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Jennifer Kowalski",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "David Ramirez",
+              "value": 245,
+              "display": "245"
+            },
+            {
+              "name": "Angela Peterson",
+              "value": 172,
+              "display": "172"
+            },
+            {
+              "name": "Kevin Chen",
+              "value": 203,
+              "display": "203"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Service Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              156,
+              189,
+              211,
+              248,
+              287
+            ]
+          },
+          {
+            "name": "Robert Donnelly",
+            "values": [
+              142,
+              167,
+              198,
+              229,
+              268
+            ]
+          },
+          {
+            "name": "Maria Gutierrez",
+            "values": [
+              168,
+              194,
+              216,
+              251,
+              289
+            ]
+          },
+          {
+            "name": "James Hutchins",
+            "values": [
+              151,
+              173,
+              205,
+              238,
+              276
+            ]
+          },
+          {
+            "name": "Patricia Alvarez",
+            "values": [
+              174,
+              201,
+              223,
+              259,
+              298
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Townsend",
+              "value": 54.3,
+              "display": "54.3%"
+            },
+            {
+              "name": "Jennifer Kowalski",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "David Ramirez",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "Angela Peterson",
+              "value": 58.7,
+              "display": "58.7%"
+            },
+            {
+              "name": "Kevin Chen",
+              "value": 55.4,
+              "display": "55.4%"
+            },
+            {
+              "name": "Thomas Rivera",
+              "value": 61.2,
+              "display": "61.2%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Service Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Townsend",
+                "54.3%",
+                "28%",
+                "$1,185,640",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Kowalski",
+                "56.8%",
+                "30%",
+                "$1,396,852",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "David Ramirez",
+                "52.1%",
+                "26%",
+                "$1,087,945",
+                "1,542"
+              ]
+            },
+            {
+              "cells": [
+                "Angela Peterson",
+                "58.7%",
+                "32%",
+                "$1,522,176",
+                "1,478"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Chen",
+                "55.4%",
+                "29%",
+                "$1,254,391",
+                "1,511"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Rivera",
+                "61.2%",
+                "35%",
+                "$1,658,903",
+                "1,468"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Mitchell",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "Robert Donnelly",
+              "value": 88.7,
+              "display": "88.7%"
+            },
+            {
+              "name": "Maria Gutierrez",
+              "value": 91.4,
+              "display": "91.4%"
+            },
+            {
+              "name": "James Hutchins",
+              "value": 89.3,
+              "display": "89.3%"
+            },
+            {
+              "name": "Patricia Alvarez",
+              "value": 93.8,
+              "display": "93.8%"
+            },
+            {
+              "name": "Christopher Drake",
+              "value": 87.6,
+              "display": "87.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Service Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "92.1%",
+                "67%",
+                "$2,847,654",
+                "1,542"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Donnelly",
+                "88.7%",
+                "62%",
+                "$2,412,987",
+                "1,504"
+              ]
+            },
+            {
+              "cells": [
+                "Maria Gutierrez",
+                "91.4%",
+                "65%",
+                "$2,698,435",
+                "1,517"
+              ]
+            },
+            {
+              "cells": [
+                "James Hutchins",
+                "89.3%",
+                "63%",
+                "$2,501,248",
+                "1,488"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Alvarez",
+                "93.8%",
+                "68%",
+                "$2,951,127",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Drake",
+                "87.6%",
+                "58%",
+                "$2,238,502",
+                "1,456"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Service Appointment Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Service Appointment Booked (Count)",
+        "rightMax": 1500,
+        "rightTicks": [
+          0,
+          375,
+          750,
+          1125,
+          1500
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1150
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1102
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1027
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 980
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 853
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 895
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 989
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1028
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1146
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1111
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1001
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 967
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 861
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 887
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1012
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1043
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1135
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1118
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 980
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 949
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 874
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 883
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1030
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1064
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1121
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1119
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 966
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 926
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 889
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 885
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1036
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 500000,
+        "rightTicks": [
+          0,
+          166666.66666666666,
+          333333.3333333333,
+          500000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 367108
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 351856
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 327649
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 312641
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 272211
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 285678
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 315580
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 328020
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 365744
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 354612
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 319386
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 308693
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 274685
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 283135
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 323094
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 332939
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 362339
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 356700
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 312787
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 302866
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 278808
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 281731
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 328663
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 339558
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 357736
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 357215
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 308311
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 295621
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 283642
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 282275
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 332024
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "53,495"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "4,280"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "3,210"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Martinez",
+                "412",
+                "88%",
+                "84%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "David Richardson",
+                "538",
+                "86%",
+                "86%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Thompson",
+                "419",
+                "87%",
+                "85%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "53,495 calls",
+      "pagerLabel": "1 of 5,350",
+      "calls": [
+        {
+          "time": "1/6/26 9:14 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 10:41 am",
+          "id": "A32C-4B9E71D0C5A2"
+        },
+        {
+          "time": "1/12/26 11:05 am",
+          "id": "7D18-2F6A90BC13E4"
+        },
+        {
+          "time": "1/14/26 12:22 pm",
+          "id": "C90E-5A17D3F82B60"
+        },
+        {
+          "time": "1/16/26 1:37 pm",
+          "id": "BE45-83C2019FA7D1"
+        },
+        {
+          "time": "1/20/26 2:03 pm",
+          "id": "14FA-6D8E2C7B0951"
+        },
+        {
+          "time": "1/22/26 2:48 pm",
+          "id": "9AB3-71F0C48D2E65"
+        },
+        {
+          "time": "1/26/26 3:19 pm",
+          "id": "3C7D-908A15E6BF42"
+        },
+        {
+          "time": "1/28/26 4:26 pm",
+          "id": "E682-4F71B90C35A8"
+        },
+        {
+          "time": "1/30/26 5:11 pm",
+          "id": "5DA1-2E93C70F81B4"
+        }
+      ],
+      "duration": "2:31",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Christian Brothers Automotive, this is Marcus. How can I help you today?",
+          "highlights": [
+            "Thank you for calling Christian Brothers Automotive"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Marcus, my check engine light came on this morning and the car feels like it's shaking a little at stops. I've never been in before.",
+          "highlights": [
+            "check engine light came on"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:16",
+          "text": "I'm sorry to hear that, we can definitely take a look. Can I start with your name?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:22",
+          "text": "Sure, it's Danielle Foster.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:26",
+          "text": "Thanks Danielle. And what year and make are we working with?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:31",
+          "text": "It's a 2018 Honda Accord. The shaking is new, but the light just popped up today.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:38",
+          "text": "Got it. We'd run a computer diagnostic first, that pulls the codes so we know exactly what's going on before anyone touches a thing. Then we send you a digital inspection report with photos.",
+          "highlights": [
+            "computer diagnostic",
+            "digital inspection report with photos"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:50",
+          "text": "Okay, but what does that run? I want to keep this manageable, money's a little tight right now.",
+          "highlights": [
+            "what does that run",
+            "keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:58",
+          "text": "Completely fair. The diagnostic is typically around $110, and if you approve repairs with us that fee goes toward the work. You'll see every recommendation with pricing before you okay anything.",
+          "highlights": [
+            "around $110",
+            "goes toward the work"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:10",
+          "text": "Alright. Honestly I was going to swing by that quick-lube place down the street, they said they'd just read the code for free.",
+          "highlights": [
+            "that quick-lube place down the street",
+            "read the code for free"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:19",
+          "text": "They can read a code, but a free code read won't tell you why the light is on or why it's shaking. Our ASE-certified technicians diagnose the actual cause, and all our work is backed by a 3-year, 36,000-mile warranty.",
+          "highlights": [
+            "ASE-certified technicians",
+            "3-year, 36,000-mile warranty"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:33",
+          "text": "That warranty is reassuring. While it's in, could you also check the brakes? I hear a squeak when I stop.",
+          "highlights": [
+            "also check the brakes"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:41",
+          "text": "Absolutely, we'll include a courtesy brake inspection at no charge along with the diagnostic. If the pads or rotors need attention it'll all be on that same report.",
+          "highlights": [
+            "courtesy brake inspection at no charge"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:52",
+          "text": "Perfect. I'd need to be at work by nine though, so drop-off has to be early.",
+          "highlights": [
+            "need to be at work by nine"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:59",
+          "text": "No problem, we open at seven and offer a free shuttle to get you to work while we diagnose it. Can I get you in this Thursday morning?",
+          "highlights": [
+            "free shuttle",
+            "this Thursday morning"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:08",
+          "text": "Thursday works. Let's do it.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:12",
+          "text": "Great, I've got you booked Thursday at 7:15 AM for the diagnostic and courtesy brake inspection. What's the best cell for your inspection report?",
+          "highlights": [
+            "booked Thursday at 7:15 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:21",
+          "text": "It's 555-0142.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:25",
+          "text": "You're all set, Danielle. Thanks for choosing Christian Brothers Automotive, we'll see you Thursday and take good care of you.",
+          "highlights": [
+            "Thanks for choosing Christian Brothers Automotive",
+            "see you Thursday"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Customer",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Service Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Check Engine Light Diagnostic Intent",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Brake Service Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Warranty Reassurance Given",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Foster, a new customer, called about a check engine light and a shaking sensation on her 2018 Honda Accord. Marcus recommended a computer diagnostic with a digital inspection report and added a courtesy brake inspection after she raised a brake squeak. He addressed her cost concern by explaining the roughly $110 diagnostic applies toward repairs, countered a free-code-read offer from a nearby quick-lube shop with the ASE-certified diagnosis and 3-year, 36,000-mile warranty, and accommodated her early work schedule with a free shuttle. A service appointment was booked for Thursday at 7:15 AM.",
+        "keyPoints": [
+          "New customer with 2018 Honda Accord, check engine light and shaking at stops",
+          "Recommended computer diagnostic plus digital inspection report with photos",
+          "Added courtesy brake inspection at no charge for a reported squeak",
+          "Handled price concern: ~$110 diagnostic credited toward approved repairs",
+          "Overcame competitor free-code-read with warranty and ASE-certified diagnosis",
+          "Captured contact 555-0142 and booked Thursday 7:15 AM with free shuttle"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Service Appointment booked, Thursday 7:15 AM diagnostic and brake inspection"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "33,702 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,370",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for texting Christian Brothers Automotive. This is Marcus. I see you're looking at our brake service special this month. Do you have a specific vehicle year and model you'd like to get serviced?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yeah, it's a 2019 Honda Civic. The brakes are making a squeaking noise."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Got it, 2019 Civic with brake noise. That's something we can definitely help with. Have you had your brakes serviced before, or is this the first time you're experiencing this issue?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "First time. I'm a bit worried about the cost."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Totally understandable. Our brake service runs between 150 and 450 per axle depending on what your tech finds during the digital inspection. We back all our work with our industry leading 3 year 36,000 mile warranty. What part of town are you located in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "I'm near downtown Phoenix."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Perfect. We have a location on 16th Street that's about 10 minutes from downtown. They can get you in for a free courtesy inspection to see exactly what's going on with those brakes. Does Tuesday, March 18 at 9 AM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "That works. Should I bring anything?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Just bring your keys and your vehicle. We'll handle the rest. Your appointment is booked for Tuesday, March 18 at 9 AM at our Phoenix 16th Street location. You'll get a free shuttle service too if you need a ride. Expect a confirmation text shortly. Any other questions?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "No, that sounds great. Thanks."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "You're welcome. Looking forward to showing you the Nice Difference. See you Tuesday. If you need to reach us, our number is 877-936-2933."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Service Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Vehicle Year and Model Captured",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Category: Brake Service",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: Phoenix",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided: 150 to 450",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "15",
+            "source": "602-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "602-555-0147",
+            "repeatCaller": "No",
+            "city": "Phoenix",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Mitchell",
+            "firstName": "Sarah",
+            "lastName": "Mitchell",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C724-89AB4E2F7D13",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C724-89AB4E2F7D13",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C841-5BC6D9F3E2A7",
+          "time": "8/16/25 10:38 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C841-5BC6D9F3E2A7",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C962-71C4A6B8D5F1",
+          "time": "8/16/25 10:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C962-71C4A6B8D5F1",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "53,495 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 5,350",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Thanks for calling Christian Brothers Automotive in Scottsdale. This is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:47 PM",
+              "text": "Yeah, hi. I saw your ad about brake service and I'm getting some grinding sounds when I stop. Should I be worried?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:48 PM",
+              "text": "That grinding sound definitely needs attention. It usually means your brake pads are worn down. What's the year, make and model of your vehicle?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "It's a twenty twenty Honda Civic."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "Great, thanks. And roughly how many miles are on it?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:49 PM",
+              "text": "About sixty eight thousand."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:50 PM",
+              "text": "Perfect. So I can definitely get you scheduled for a brake inspection and service. Our brake service includes pad and rotor replacement, brake fluid check, and a full system diagnostic. That typically runs between one hundred fifty and four hundred fifty per axle, depending on what we find. Does that sound okay?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "Yeah, that makes sense. When could I come in?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "How about next Thursday, January twenty third, at ten in the morning? That works great for our techs."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:51 PM",
+              "text": "That's perfect. I can do that."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:52 PM",
+              "text": "Excellent. So to confirm, that's Thursday, January twenty third at ten AM for a Honda Civic brake service. We'll get you in and out quickly. Just bring your keys and your driver's license. And hey, if you need a ride, we offer free shuttle service. Our shop number is eight seven seven, nine three six, twenty nine thirty three. Do you have any other questions?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "No, that sounds great. See you then."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:53 PM",
+              "text": "Perfect. Thanks so much for choosing Christian Brothers Automotive. We'll see you Thursday the twenty third at ten AM. Goodbye."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Service Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Brake Service Requested",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Vehicle Details Captured: Make, Model, Mileage",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided: 150 to 450 per axle",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: Scottsdale",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Free Shuttle Service Offered",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:47 pm",
+            "duration": "6:03",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "480-555-2847",
+            "repeatCaller": "No",
+            "city": "Scottsdale",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B782-5D4AB821E9F7",
+          "time": "1/12/26 11:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B782-5D4AB821E9F7",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C653-7E2FC941A3B2",
+          "time": "1/28/26 3:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C653-7E2FC941A3B2",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D934-6B1ED764F5C8",
+          "time": "1/22/26 1:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D934-6B1ED764F5C8",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Hi, I'm Christian Brothers Automotive's AI assistant, here to help you get a personalized service quote and, right now, we're offering a free courtesy inspection with any oil change. Would you like to get started?",
+        "Qualify one at a time: I'll ask a few quick questions one at a time, such as the service you need, your vehicle's year, make and model, your current mileage, how soon you'd like to bring it in, and your ZIP code so I can confirm the nearest shop can help.",
+        "Estimate then book: Once I confirm we serve your ZIP, I'll share a preliminary price range based on what you shared, recommend a visit with an ASE-certified service advisor for an exact digital vehicle inspection quote, propose a specific day and time, and confirm you'll get a reminder text before your appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Christian_Brothers_Automotive_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Our Services",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find Your Local Shop",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Schedule Appointment",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"warranty\",\"question\":\"Is my recent brake repair still covered under warranty?\",\"answer\":\"Yes, our qualifying repairs are backed by the Nice Difference warranty of 3 years or 36,000 miles, whichever is longer. Bring your vehicle to any of our locations and we'll review your service history.\"},{\"topic\":\"reschedule\",\"question\":\"I need to move my oil change appointment to a different day, can you help?\",\"answer\":\"Absolutely, just let me know your preferred day and time and I'll update your service appointment at your local shop. You'll receive a reminder text before the new appointment.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How much does an oil change cost?",
+              "answer": "Pricing depends on your vehicle and the oil type, but most oil and filter changes fall in a typical range and include a courtesy inspection. I can book you a service appointment so a service advisor confirms the exact quote."
+            },
+            {
+              "question": "Do you work on European vehicles?",
+              "answer": "Yes, our ASE-certified technicians service European makes and use the same equipment the manufacturers use. Let's schedule a service appointment at your nearest shop."
+            },
+            {
+              "question": "My check engine light is on, what should I do?",
+              "answer": "We can run a computer diagnostic to identify the issue and recommend next steps. I'd be glad to book a service appointment so a technician can take a look."
+            },
+            {
+              "question": "How long does a brake service take?",
+              "answer": "It varies by vehicle and the parts needed, and after a digital vehicle inspection your service advisor will confirm the timing. Would you like me to schedule a service appointment?"
+            },
+            {
+              "question": "Do you offer a warranty on your work?",
+              "answer": "Yes, qualifying repairs are backed by our Nice Difference warranty of 3 years or 36,000 miles, whichever is longer. I can set up a service appointment whenever you're ready."
+            },
+            {
+              "question": "Can I get a shuttle ride while my car is being serviced?",
+              "answer": "Many of our locations offer a free shuttle to drop you off or pick you up. Let's book your service appointment and confirm shuttle availability at that shop."
+            },
+            {
+              "question": "How much is a brake job?",
+              "answer": "Brake service pricing depends on your vehicle and whether pads, rotors or drums are needed, so a service advisor will confirm after inspection. I can schedule a service appointment for you."
+            },
+            {
+              "question": "Do you do wheel alignments?",
+              "answer": "Yes, we adjust camber, caster and toe angles to reduce tire wear and steering pull. I'd be happy to book a service appointment for an alignment."
+            },
+            {
+              "question": "My AC isn't blowing cold, can you fix it?",
+              "answer": "We handle refrigerant recharge, leak checks and compressor diagnostics for AC systems. Let's schedule a service appointment so a technician can diagnose it."
+            },
+            {
+              "question": "What is a digital vehicle inspection?",
+              "answer": "After you drop off, our technicians send you a report with pictures and videos so you can review and approve recommended work. I can book your service appointment to get started."
+            },
+            {
+              "question": "How much for a battery replacement?",
+              "answer": "Battery pricing varies by vehicle and battery type, and we test the charging system before replacing it. Let me set up a service appointment for you."
+            },
+            {
+              "question": "Do you offer any current specials?",
+              "answer": "Many of our shops run local special offers, and right now a courtesy inspection is included with an oil change. Would you like me to schedule a service appointment?"
+            },
+            {
+              "question": "How often should I get scheduled maintenance?",
+              "answer": "We follow OEM intervals such as 30,000, 60,000 and 90,000 mile services to keep your vehicle in top shape. I can book a service appointment to review your maintenance schedule."
+            },
+            {
+              "question": "Can you do a pre-purchase inspection?",
+              "answer": "Yes, we offer a courtesy pre-purchase inspection to give you a clear picture before you buy. Let's schedule a service appointment at your local shop."
+            },
+            {
+              "question": "Do you service fleet vehicles?",
+              "answer": "Yes, we provide diagnostics and maintenance for commercial vehicle fleets. I'd be glad to book a service appointment to discuss your fleet needs."
+            },
+            {
+              "question": "How much does a transmission service cost?",
+              "answer": "Transmission service ranges widely depending on whether it's a fluid exchange or a repair, so a service advisor will confirm after inspection. I can schedule a service appointment for you."
+            },
+            {
+              "question": "What is Care+?",
+              "answer": "Care+ is our membership offering that adds value to your regular service and maintenance. Let's book a service appointment and I can have an advisor share the details."
+            },
+            {
+              "question": "Do I need an appointment or can I just walk in?",
+              "answer": "We recommend scheduling so we can plan for your vehicle and reduce your wait. I can book a service appointment for you right now."
+            },
+            {
+              "question": "Do you resurface rotors or replace them?",
+              "answer": "Our brake service includes rotor and drum resurfacing or replacement, along with pads, shoes and hydraulic repairs. Let's schedule a service appointment for a full inspection."
+            },
+            {
+              "question": "Where is my nearest location?",
+              "answer": "We have over 310 shops nationwide, so if you share your ZIP code I'll find the closest one. Then I can book your service appointment there."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the booking\",\"follow_up_message\":\"Great, I have your vehicle details and ZIP confirmed. I can book your service appointment at your local Christian Brothers Automotive shop for tomorrow at 9:00 AM, and you'll get a reminder text with a number to call. Does that work?\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Based on what you shared, your service should fall within a preliminary range, and an ASE-certified advisor will confirm the exact quote with a digital vehicle inspection. Would you like me to schedule a service appointment to lock in that estimate?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, I'm Christian Brothers Automotive's AI assistant, here to help you get a personalized service quote and book your appointment.",
+        "goal": "Guide the customer to schedule a service appointment at their nearest Christian Brothers Automotive shop after providing a preliminary estimate.",
+        "bookingType": "in-shop service appointment",
+        "offer": "Free courtesy inspection with any oil change",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "What service does your vehicle need today?",
+          "What is the year, make and model of your vehicle?",
+          "What is your vehicle's current mileage?",
+          "How soon would you like to bring it in?",
+          "What is your ZIP code so I can confirm the nearest shop can help you?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:51 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:51 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:51 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Christian Brothers Automotive",
+      "callerName": "Michael Torres",
+      "callerPhone": "(805) 555-0142",
+      "campaign": "Brake Service, Santa Barbara Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Service Appointment Lead",
+      "estimatedValue": "$287",
+      "googleSearch": "brake pad replacement cost near me",
+      "websiteSearch": "brake service santa barbara",
+      "callingWebpage": "/our-services/brakes",
+      "products": "Brake Service, Pre-Purchase Inspection",
+      "cartId": "CBA-7429M",
+      "serviceable": "Yes",
+      "email": "m.torres.sb@email.com",
+      "street": "1847 Olive Street",
+      "city": "Santa Barbara",
+      "state": "CA",
+      "zip": "93101",
+      "digitalJourney": "/home › /our-services › /our-services/brakes › /locations/santa-barbara",
+      "intent": "Customer needs brake pad replacement and rotor inspection for his 2019 Honda Accord before a family road trip next week",
+      "coverage": "ZIP 93101 confirmed, Santa Barbara serviceable",
+      "switchIntent": "High urgency. Customer has heard grinding noise for two days and wants appointment within 48 hours before weekend travel",
+      "greeting": "Hi Michael, thanks for calling Christian Brothers Automotive in Santa Barbara. I see you're interested in brake service today. We can get you in for a full brake inspection and pad replacement with our Nice Difference warranty. What time works best for your schedule this week?"
+    },
+    "smsScreenpop": {
+      "brandName": "Christian Brothers Automotive",
+      "callerName": "Jennifer Wu",
+      "callerPhone": "(503) 555-0187",
+      "campaign": "Oil Change Special, Portland Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Service Appointment Lead",
+      "estimatedValue": "$156",
+      "googleSearch": "synthetic oil change near me",
+      "websiteSearch": "scheduled maintenance portland oregon",
+      "callingWebpage": "/our-services/oil-filter-change",
+      "products": "Oil and Filter Change, Scheduled Maintenance",
+      "cartId": "CBA-5612R",
+      "serviceable": "Yes",
+      "email": "jen.wu.pdx@email.com",
+      "street": "3421 NW Lovejoy Street",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97209",
+      "digitalJourney": "/home › /our-services › /our-services/scheduled-maintenance › /care-plus",
+      "intent": "Customer needs 60,000 mile scheduled maintenance for her 2018 Toyota Camry and is interested in Care+ membership for ongoing service reminders",
+      "coverage": "ZIP 97209 confirmed, Portland serviceable",
+      "appointment": "Synthetic Oil and Filter Change with Scheduled Maintenance Check, Wed Jul 16, 2:00 PM",
+      "greeting": "Hi Jennifer, this is Sarah at Christian Brothers Automotive Portland. We have you booked for your 60k mile service this Wednesday at 2 PM. Our technicians will handle the full maintenance package, and I wanted to check if you'd like to discuss our Care+ membership to keep your Camry on track. Let me know if you have any questions."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Christian Brothers Automotive",
+      "brandDomain": "www.cbac.com",
+      "brandIcon": "🔧",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Brake Service, Free Inspection",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "brake pad replacement cost near me",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/our-services/brakes",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Brake Service, Oil & Filter Change",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "service_appointment_new",
+          "name": "Service Appointment, New Customer"
+        },
+        {
+          "id": "care_plus_membership",
+          "name": "Care+ Membership & Loyalty"
+        },
+        {
+          "id": "general_support",
+          "name": "General Support & Questions"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Thanks for calling Christian Brothers Automotive in Santa Barbara. My name is Alex. Are you calling about a service or repair you need for your vehicle today?",
+          "sigs": [],
+          "q": [
+            15,
+            60,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Hi, yes. My brakes are making this awful grinding noise and I'm not sure how bad it is. I saw you offer free brake inspections?",
+          "sigs": [
+            {
+              "c": "orange",
+              "t": "<strong>Brake issue</strong> with noise complaint"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Free inspection</strong> interest"
+            },
+            {
+              "c": "green",
+              "t": "Urgent concern"
+            }
+          ],
+          "q": [
+            52,
+            30,
+            18
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Absolutely, we'd be happy to help. That grinding sound definitely needs attention, and our ASE-certified technicians can diagnose it right away. Do you have an appointment window that works for you this week, or would you prefer to schedule for next week?",
+          "sigs": [],
+          "q": [
+            78,
+            12,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "This week would be better if possible. I'm in Santa Barbara and I can drop off tomorrow afternoon or Thursday morning. Also, does your warranty cover the repair if it's just pads?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Tomorrow or Thursday</strong> availability"
+            },
+            {
+              "c": "purple",
+              "t": "<strong>Warranty question</strong>"
+            }
+          ],
+          "q": [
+            91,
+            5,
+            4
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect, we can absolutely get you in tomorrow afternoon or Thursday morning. Our Nice Difference warranty covers all brake work for three years or 36,000 miles, whichever is longer. Let me route you to our Santa Barbara location's scheduling team right now so they can lock in your brake service appointment and confirm the time that works best for you.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Service Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"get you scheduled (Agent)\", \"book that appointment (Agent)\", \"we'll see you on (Agent)\", \"I'll drop it off tomorrow (Caller)\"])",
+          "createdAt": "11/14/24 9:12 am",
+          "updatedAt": "01/09/26 3:48 pm"
+        },
+        {
+          "name": "Brake Service Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"my brakes are grinding (Caller)\", \"need new brake pads (Caller)\", \"squealing when I stop (Caller)\", \"my brakes are squeaking (Caller)\"])",
+          "createdAt": "12/02/24 10:35 am",
+          "updatedAt": "01/06/26 11:20 am"
+        },
+        {
+          "name": "Check Engine Light Diagnostic Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"check engine light is on (Caller)\", \"run a diagnostic (Caller)\", \"engine light came on (Caller)\", \"pull the codes (Agent)\"])",
+          "createdAt": "10/28/24 2:41 pm",
+          "updatedAt": "12/19/25 4:05 pm"
+        },
+        {
+          "name": "Competitor Shop Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"quote from the dealership (Caller)\", \"Firestone quoted me (Caller)\", \"cheaper at the other shop (Caller)\", \"Midas said (Caller)\"])",
+          "createdAt": "09/17/24 8:53 am",
+          "updatedAt": "01/11/26 9:37 am"
+        },
+        {
+          "name": "Courtesy Inspection Explained (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Advisor Coaching] < 60 and duration > 45 sec",
+          "createdAt": "11/05/24 1:22 pm",
+          "updatedAt": "01/03/26 10:14 am"
+        },
+        {
+          "name": "Nice Difference Greeting (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Nice Difference Experience] < 60 and duration > 45 sec",
+          "createdAt": "08/22/24 3:09 pm",
+          "updatedAt": "12/28/25 2:52 pm"
+        },
+        {
+          "name": "Oil Change Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"need an oil change (Caller)\", \"full synthetic oil (Caller)\", \"time for an oil and filter (Caller)\", \"how much for an oil change (Caller)\"])",
+          "createdAt": "12/11/24 11:48 am",
+          "updatedAt": "01/12/26 8:29 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your estimate comes to (Agent)\", \"the total for that would be (Agent)\", \"that repair runs about (Agent)\", \"the labor is (Agent)\"])",
+          "createdAt": "10/09/24 9:57 am",
+          "updatedAt": "01/08/26 1:16 pm"
+        },
+        {
+          "name": "Service Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"what days are you open (Caller)\", \"anything available this week (Caller)\", \"when can you get me in (Caller)\", \"morning drop off (Caller)\"])",
+          "createdAt": "09/30/24 4:18 pm",
+          "updatedAt": "12/22/25 3:41 pm"
+        },
+        {
+          "name": "Warranty Assurance Given (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Warranty Confidence] < 60 and duration > 45 sec",
+          "createdAt": "11/26/24 10:03 am",
+          "updatedAt": "01/05/26 4:47 pm"
+        }
+      ]
+    }
+  }
+}

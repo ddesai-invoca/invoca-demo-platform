@@ -1,0 +1,5320 @@
+{
+  "id": "cec-companies",
+  "customerName": "CEC Companies",
+  "websiteUrl": "https://www.cecfg.com",
+  "brandDomain": "cecfg.com",
+  "networkName": "Invoca for Commercial Construction",
+  "industry": "Commercial and industrial specialty contracting (electrical, mechanical, low-voltage)",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Client",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 1500,
+      "yTicks": [
+        300,
+        600,
+        900,
+        1200,
+        1500
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 612
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 1147
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 1084
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 1093
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 983
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Design-Build That Moves You Forward",
+          "marketingSearchTerm": "design-build electrical mechanical contractor Texas",
+          "landingPageUrl": "https://cecfg.com/what-we-do/design-preconstruction?utm_source=google&utm_medium=cpc&utm_campaign=design_build_forward",
+          "websiteJourney": "Home / What We Do / Design & Preconstruction",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Mission-Critical Ready, Data Center Solutions",
+          "marketingSearchTerm": "data center MEP contractor",
+          "landingPageUrl": "https://cecfg.com/projects/mission-critical?utm_source=google&utm_medium=cpc&utm_campaign=mission_critical_ready",
+          "websiteJourney": "Home / Projects / Mission Critical",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Renewable Energy Solutions, Solar at Scale",
+          "marketingSearchTerm": "utility-scale solar electrical installer Texas",
+          "landingPageUrl": "https://cecfg.com/what-we-do/electrical/renewable?utm_source=google&utm_medium=cpc&utm_campaign=solar_at_scale",
+          "websiteJourney": "Home / What We Do / Electrical / Renewable Solar Solutions",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "24/7/365 Emergency Service, Never Go Dark",
+          "marketingSearchTerm": "24/7 emergency electrical service commercial",
+          "landingPageUrl": "https://cecfg.com/what-we-do/service-maintenance/emergency?utm_source=google&utm_medium=cpc&utm_campaign=never_go_dark",
+          "websiteJourney": "Home / What We Do / Service & Maintenance / Emergency Service",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Wired to Win",
+          "marketingSearchTerm": "commercial electrical contractor Dallas",
+          "landingPageUrl": "https://cecfg.com/what-we-do/electrical?utm_source=bing&utm_medium=cpc&utm_campaign=wired_to_win",
+          "websiteJourney": "Home / What We Do / Electrical / Build",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Wired to Win",
+          "marketingSearchTerm": "medium voltage installation contractor",
+          "landingPageUrl": "https://cecfg.com/what-we-do/electrical/medium-voltage?utm_source=google&utm_medium=cpc&utm_campaign=wired_to_win",
+          "websiteJourney": "Home / What We Do / Electrical / Build / Medium-Voltage Installation",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "structured cabling contractor DFW",
+          "landingPageUrl": "https://cecfg.com/what-we-do/structured-cabling?utm_source=google&utm_medium=organic",
+          "websiteJourney": "Home / What We Do / Structured Cabling / Build",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Building Great Things Together",
+          "marketingSearchTerm": "industrial HVAC build contractor",
+          "landingPageUrl": "https://cecfg.com/what-we-do/mechanical/hvac-build?utm_source=google&utm_medium=cpc&utm_campaign=building_great_things",
+          "websiteJourney": "Home / What We Do / Mechanical / HVAC Build Solutions",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Building Great Things Together",
+          "marketingSearchTerm": "preventative maintenance electrical mechanical facility",
+          "landingPageUrl": "https://cecfg.com/what-we-do/service-maintenance/preventative?utm_source=bing&utm_medium=cpc&utm_campaign=building_great_things",
+          "websiteJourney": "Home / What We Do / Service & Maintenance / Preventative Maintenance",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "tenant improvement electrical contractor",
+          "landingPageUrl": "https://cecfg.com/what-we-do/corporate-interiors?utm_source=google&utm_medium=organic",
+          "websiteJourney": "Home / What We Do / Corporate Interiors / Build",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Design-Build That Moves You Forward",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://cecfg.com/what-we-do/design-preconstruction?utm_source=facebook&utm_medium=social&utm_campaign=design_build_forward",
+          "websiteJourney": "Home / What We Do / Design & Preconstruction",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Wired to Win",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://cecfg.com/what-we-do/electrical?utm_source=instagram&utm_medium=social&utm_campaign=wired_to_win",
+          "websiteJourney": "Home / What We Do / Electrical",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Mission-Critical Ready, Data Center Solutions",
+          "marketingSearchTerm": "data center MEP contractor",
+          "landingPageUrl": "https://cecfg.com/projects/mission-critical?utm_source=google&utm_medium=cpc&utm_campaign=mission_critical_ready",
+          "websiteJourney": "Home / Projects / Mission Critical / MDN HUB",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "design-build electrical mechanical contractor Texas",
+          "landingPageUrl": "https://cecfg.com/who-we-are/operational-excellence?utm_source=google&utm_medium=organic",
+          "websiteJourney": "Home / Who We Are / Operational Excellence",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Renewable Energy Solutions, Solar at Scale",
+          "marketingSearchTerm": "utility-scale solar electrical installer Texas",
+          "landingPageUrl": "https://cecfg.com/projects/infrastructure/signal-energy?utm_source=google&utm_medium=cpc&utm_campaign=solar_at_scale",
+          "websiteJourney": "Home / Projects / Infrastructure / Signal Energy Solar",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "24/7/365 Emergency Service, Never Go Dark",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://cecfg.com/what-we-do/service-maintenance/emergency?utm_source=facebook&utm_medium=social&utm_campaign=never_go_dark",
+          "websiteJourney": "Home / What We Do / Service & Maintenance / Emergency Service",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "medium voltage installation contractor",
+          "landingPageUrl": "https://cecfg.com/what-we-do/electrical/medium-voltage?utm_source=google&utm_medium=organic",
+          "websiteJourney": "Home / What We Do / Electrical / Build / Medium-Voltage Installation / Contact",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Building Great Things Together",
+          "marketingSearchTerm": "industrial HVAC build contractor",
+          "landingPageUrl": "https://cecfg.com/what-we-do/mechanical/ec-fan-retrofit?utm_source=bing&utm_medium=cpc&utm_campaign=building_great_things",
+          "websiteJourney": "Home / What We Do / Mechanical / EC Fan Retrofit Solutions",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Join the Team That Builds the Future",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://cecfg.com/join-our-team/referral?utm_source=instagram&utm_medium=social&utm_campaign=build_the_future",
+          "websiteJourney": "Home / Join Our Team / Referral",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "structured cabling contractor DFW",
+          "landingPageUrl": "https://cecfg.com/what-we-do/infrastructure-osp-isp?utm_source=google&utm_medium=organic",
+          "websiteJourney": "Home / What We Do / Infrastructure OSP-ISP / Design",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Wired to Win",
+          "marketingSearchTerm": "commercial electrical contractor Dallas",
+          "landingPageUrl": "https://cecfg.com/what-we-do/av-solutions?utm_source=google&utm_medium=cpc&utm_campaign=wired_to_win",
+          "websiteJourney": "Home / What We Do / AV Solutions / Build",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Building Great Things Together",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://cecfg.com/projects/healthcare?utm_source=facebook&utm_medium=social&utm_campaign=building_great_things",
+          "websiteJourney": "Home / Projects / Healthcare",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (CEC Companies)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "3,858"
+            },
+            {
+              "label": "Project Inquiry (Percent)",
+              "value": "26%"
+            },
+            {
+              "label": "Project Won (Percent)",
+              "value": "6%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$32,111,363"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "617"
+            },
+            {
+              "label": "Service & Maintenance Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Recruiting Inquiry (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Vendor & Supplier Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Project Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Project Inquiry (Percent)",
+              "value": "26%"
+            },
+            {
+              "label": "Estimate Discussed (Percent)",
+              "value": "19%"
+            },
+            {
+              "label": "Out of Scope Lead (Percent)",
+              "value": "7%"
+            },
+            {
+              "label": "Project Won (Percent)",
+              "value": "6%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Project Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Project Inquiry (Count)",
+            "values": [
+              187,
+              241,
+              219,
+              203,
+              153
+            ]
+          },
+          {
+            "name": "Estimate Discussed (Count)",
+            "values": [
+              134,
+              178,
+              156,
+              142,
+              114
+            ]
+          },
+          {
+            "name": "Out of Scope Lead (Count)",
+            "values": [
+              54,
+              67,
+              61,
+              58,
+              49
+            ]
+          },
+          {
+            "name": "Project Won (Count)",
+            "values": [
+              43,
+              52,
+              49,
+              47,
+              40
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3858,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "1,412",
+                "24%",
+                "4.1%",
+                "$8,124,560"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "987",
+                "27%",
+                "4.9%",
+                "$6,842,190"
+              ]
+            },
+            {
+              "name": "LinkedIn Social",
+              "metrics": [
+                "642",
+                "31%",
+                "6.2%",
+                "$5,918,740"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "498",
+                "34%",
+                "7.8%",
+                "$5,731,205"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "319",
+                "38%",
+                "9.7%",
+                "$5,494,668"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3858,
+          "rows": [
+            {
+              "name": "organic",
+              "metrics": [
+                "1,389",
+                "23%",
+                "3.8%",
+                "$9,214,880"
+              ]
+            },
+            {
+              "name": "cpc",
+              "metrics": [
+                "1,012",
+                "26%",
+                "4.6%",
+                "$7,655,320"
+              ]
+            },
+            {
+              "name": "social",
+              "metrics": [
+                "671",
+                "30%",
+                "5.9%",
+                "$6,128,470"
+              ]
+            },
+            {
+              "name": "referral",
+              "metrics": [
+                "452",
+                "33%",
+                "7.4%",
+                "$4,982,155"
+              ]
+            },
+            {
+              "name": "email",
+              "metrics": [
+                "334",
+                "37%",
+                "9.1%",
+                "$4,130,538"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3858,
+          "rows": [
+            {
+              "name": "Wired to Win",
+              "metrics": [
+                "512",
+                "25%",
+                "4.3%",
+                "$3,142,760"
+              ]
+            },
+            {
+              "name": "Mission-Critical Ready, Data Center Solutions",
+              "metrics": [
+                "398",
+                "28%",
+                "5.5%",
+                "$2,684,190"
+              ]
+            },
+            {
+              "name": "24/7/365 Emergency Service, Never Go Dark",
+              "metrics": [
+                "341",
+                "32%",
+                "6.8%",
+                "$2,317,540"
+              ]
+            },
+            {
+              "name": "Design-Build That Moves You Forward",
+              "metrics": [
+                "276",
+                "35%",
+                "8.2%",
+                "$1,842,905"
+              ]
+            },
+            {
+              "name": "Renewable Energy Solutions, Solar at Scale",
+              "metrics": [
+                "198",
+                "40%",
+                "10.4%",
+                "$1,458,320"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3858,
+          "rows": [
+            {
+              "name": "commercial electrical contractor dallas",
+              "metrics": [
+                "342",
+                "26%",
+                "4.6%",
+                "$2,214,680"
+              ]
+            },
+            {
+              "name": "data center mep contractor",
+              "metrics": [
+                "271",
+                "29%",
+                "5.8%",
+                "$1,847,320"
+              ]
+            },
+            {
+              "name": "24/7 emergency electrical service commercial",
+              "metrics": [
+                "224",
+                "33%",
+                "7.1%",
+                "$1,542,905"
+              ]
+            },
+            {
+              "name": "utility-scale solar electrical installer texas",
+              "metrics": [
+                "176",
+                "36%",
+                "8.5%",
+                "$1,238,470"
+              ]
+            },
+            {
+              "name": "structured cabling contractor dfw",
+              "metrics": [
+                "131",
+                "41%",
+                "11.2%",
+                "$918,540"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Electrical",
+              "metrics": [
+                "1,187",
+                "22.4%",
+                "4.1%",
+                "$6,884,213"
+              ]
+            },
+            {
+              "name": "Mechanical",
+              "metrics": [
+                "942",
+                "25.1%",
+                "4.9%",
+                "$6,392,551"
+              ]
+            },
+            {
+              "name": "Structured Cabling",
+              "metrics": [
+                "731",
+                "27.3%",
+                "6.0%",
+                "$6,081,742"
+              ]
+            },
+            {
+              "name": "Design & Preconstruction",
+              "metrics": [
+                "558",
+                "29.8%",
+                "7.9%",
+                "$6,015,338"
+              ]
+            },
+            {
+              "name": "Service/Maintenance",
+              "metrics": [
+                "440",
+                "31.2%",
+                "10.9%",
+                "$6,737,519"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3858,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "1,342",
+                "21.6%",
+                "4.2%",
+                "$7,812,449"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "921",
+                "24.3%",
+                "5.2%",
+                "$6,668,213"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "704",
+                "26.8%",
+                "6.4%",
+                "$6,254,118"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "512",
+                "28.4%",
+                "7.9%",
+                "$5,528,447"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "379",
+                "30.7%",
+                "11.1%",
+                "$5,848,136"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Project Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Electrical",
+            "values": [
+              9,
+              11,
+              10,
+              8,
+              11
+            ]
+          },
+          {
+            "name": "Mechanical",
+            "values": [
+              8,
+              10,
+              9,
+              10,
+              9
+            ]
+          },
+          {
+            "name": "Structured Cabling",
+            "values": [
+              7,
+              9,
+              10,
+              9,
+              9
+            ]
+          },
+          {
+            "name": "Design & Preconstruction",
+            "values": [
+              9,
+              8,
+              9,
+              10,
+              8
+            ]
+          },
+          {
+            "name": "Service/Maintenance",
+            "values": [
+              10,
+              9,
+              10,
+              9,
+              10
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 3,858 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Reyes called about utility-scale solar electrical scope for a West Texas site and asked for a design-build quote. Oscar walked him through DC and MV collection tie-ins and booked a preconstruction consultation for the following week. Marcus confirmed the site details and left satisfied.",
+          "date": "Jan 6, 9:14 AM",
+          "agent": "Oscar",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Danielle Cho requested a structured cabling estimate for a new DFW office fit-out, including Cat6 and fiber runs. Lila reviewed drop counts and scheduled a design consultation with the low-voltage team. The call ended with a confirmed on-site walkthrough.",
+          "date": "Feb 11, 1:47 PM",
+          "agent": "Lila",
+          "duration": "2m 48s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Anthony Grubbs checked on the status of a medium voltage installation already underway at his industrial campus. Rosey pulled the project schedule and confirmed the substation tie-in date. He was reassured and no new work was booked.",
+          "date": "Mar 4, 10:22 AM",
+          "agent": "Rosey",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Priya Nandakumar called as a new prospect to schedule a consultation for a medium voltage distribution project at a data center in Midlothian. Lee collected her company name, site address, timeline, and scope details, then booked a preconstruction consultation. She confirmed the appointment and asked for a follow-up email.",
+          "date": "Apr 9, 3:31 PM",
+          "agent": "Lee",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Greg Salazar wanted a quote for an industrial HVAC build with rooftop units and controls for a manufacturing plant. Mary gathered square footage and mechanical requirements and scheduled a site consultation. He agreed to the visit and shared his facility hours.",
+          "date": "May 15, 11:09 AM",
+          "agent": "Mary",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Tania Ford reported an after-hours electrical fault and asked for emergency service at her healthcare facility. Sue confirmed the 24/7 dispatch and gave an arrival window for the on-call technician. The call was a service dispatch, not a new consultation.",
+          "date": "Jun 3, 6:42 PM",
+          "agent": "Sue",
+          "duration": "1m 41s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Roland Beck called to set up a preventative maintenance program for his mechanical systems across two buildings. Mike reviewed the inspection schedule and reporting options and booked a consultation to finalize the contract. Roland confirmed the meeting time.",
+          "date": "Jun 27, 2:18 PM",
+          "agent": "Mike",
+          "duration": "2m 55s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 21,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 59,
+          "summary": "Helen Ostrander disputed a charge on her latest invoice for completed electrical work. Jennifer reviewed the line items and opened a billing review ticket. Helen remained frustrated but agreed to wait for the adjustment.",
+          "date": "Jul 8, 4:05 PM",
+          "agent": "Jennifer",
+          "duration": "2m 21s",
+          "scorecards": 7,
+          "comments": 2,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Victor Almanza asked about a corporate interiors tenant improvement build-out including lighting and low-voltage. Rose captured the scope and booked a design consultation for his office suite. He confirmed availability for the walkthrough.",
+          "date": "Jul 30, 10:47 AM",
+          "agent": "Rose",
+          "duration": "2m 09s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 51,
+          "summary": "Karen Delgado called about a warranty issue on a recent structured cabling termination that failed testing. Oscar logged the defect and arranged a technician re-inspection. No new project was scheduled.",
+          "date": "Aug 12, 1:33 PM",
+          "agent": "Oscar",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 47,
+          "summary": "Brandon Pike raised an installation issue with inverter tie-ins on his solar collection scope that were behind schedule. Lila explained the crew reassignment and updated timeline. Brandon stayed unhappy about the delay and no consultation was booked.",
+          "date": "Aug 29, 9:38 AM",
+          "agent": "Lila",
+          "duration": "2m 44s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 43,
+          "summary": "Denise Whitaker called to cancel a scheduled maintenance visit for her mechanical equipment. Lee processed the cancellation and noted the account for follow-up. She declined to reschedule at this time.",
+          "date": "Sep 10, 3:52 PM",
+          "agent": "Lee",
+          "duration": "1m 18s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Curtis Mabry complained that an emergency repair crew arrived later than the promised window at his plant. Mary apologized and escalated the dispatch complaint to the service manager. Curtis remained dissatisfied and the call closed without new work.",
+          "date": "Sep 24, 8:11 AM",
+          "agent": "Mary",
+          "duration": "2m 37s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Sandra Pruitt left a voicemail asking someone to call her back about a pending change order on her electrical scope. The message rolled to voicemail after hours and no agent answered. A callback was queued for the next business day.",
+          "date": "Oct 2, 7:26 PM",
+          "agent": "No Agent",
+          "duration": "0m 51s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Leon Barrett angrily disputed a final invoice and threatened to withhold payment on a completed project. Jennifer tried to explain the retention terms but he refused to discuss further. The call ended unresolved with a manager escalation.",
+          "date": "Oct 19, 4:44 PM",
+          "agent": "Jennifer",
+          "duration": "1m 29s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "solar",
+        "medium voltage",
+        "structured cabling",
+        "emergency",
+        "maintenance",
+        "quote"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Service Type and Scope",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area or ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Date and Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Site Visit",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Next Steps",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller identified as new customer",
+        "Service type mentioned: electrical installation",
+        "Facility type: manufacturing plant",
+        "Service area: Dallas metro",
+        "Phone number captured",
+        "Consultation scheduled for specific date",
+        "Agent repeated back key details",
+        "Tone remained professional throughout",
+        "Call completed within target time",
+        "Caller expressed urgency",
+        "Agent offered flexibility",
+        "Next step clearly stated",
+        "Callback number confirmed"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Design-build timeline not discussed",
+        "Budget range not established",
+        "Existing electrical system age not determined",
+        "Number of buildings not clarified",
+        "Project completion deadline not set",
+        "Scope of work not fully documented",
+        "Medium-voltage requirements not explored",
+        "Maintenance contract interest not addressed",
+        "Previous contractor experience not discussed",
+        "Downtime tolerance not assessed",
+        "Site visit duration not set",
+        "Inspector credentials not mentioned",
+        "Permit timeline not covered"
+      ],
+      "naSignals": [
+        "Purchase order reference",
+        "Warranty terms",
+        "Invoice delivery method",
+        "Payment method preference",
+        "Return or credit request",
+        "Service parts inventory",
+        "Installation scheduling beyond initial consultation"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "The caller operates an advanced manufacturing facility with aging electrical distribution and wants to assess whether a full system upgrade is feasible without extended downtime. The caller mentioned potential plans for facility expansion in the next 18 months."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a professional site assessment within two weeks and a detailed design proposal with cost and timeline. They want CEC to help determine whether a phased approach or a complete replacement makes sense for their operation."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have captured the facility email address for follow-up documentation and confirmed the expected duration and scope of the initial site visit so the caller could plan accordingly."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Thank you for calling CEC Companies. This is Marcus Bell. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:07",
+          "text": "Hi Marcus. My name is Jennifer Huang. We operate an advanced manufacturing facility outside Dallas, and I think we need to look at our electrical infrastructure. We have been getting some concerns about our power distribution."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:22",
+          "text": "Jennifer, thank you for calling. I am glad you reached out to us. So you are looking at your electrical infrastructure. Can you tell me a bit more about what specifically you are concerned about?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:35",
+          "text": "We have three production lines, and over the past few months we have noticed some voltage fluctuations. Our facility manager thinks we may need medium-voltage upgrades or possibly a complete system assessment. We are not sure where to start."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:51",
+          "text": "That makes sense. Medium-voltage assessment and upgrades are something we do all the time for industrial operations. Just to confirm, you are looking for a comprehensive evaluation of your electrical distribution, correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:04",
+          "text": "Yes, exactly. We want a professional assessment. We are also planning for some expansion in the next year and a half, so we need to know if the current system can handle it."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:17",
+          "text": "Perfect. So we will want to do a design and preconstruction assessment, including load studies and recommendations for your expansion. Let me get your facility address so I can make sure we have the right service team. What is your ZIP code?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:31",
+          "text": "We are at 75243, which is south of downtown Dallas."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:38",
+          "text": "Excellent. 75243 is in our primary service area. Now let me get your direct phone number so our project coordinator can reach you."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:48",
+          "text": "It is ****-****-****. That is my direct line."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:58",
+          "text": "Perfect. I have that. And what is the best email address for us to send documentation and the site visit confirmation?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:06",
+          "text": "Actually, just use my phone number for now. I check calls more regularly than email."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:14",
+          "text": "Understood. Jennifer, I am going to get you on our calendar for a site visit on Wednesday of next week. Our engineer will bring diagnostic equipment and walk through all three production lines with your facility manager. You can expect that visit to take about two to three hours. Does Wednesday work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:29",
+          "text": "Yes, Wednesday works. Thank you."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:35",
+          "text": "Great. You will receive a confirmation text at that number. Our team is really looking forward to working with you on this project. If you have any questions before Wednesday, please do not hesitate to reach out. Thank you for choosing CEC Companies, Jennifer."
+        }
+      ],
+      "aiSummary": "Jennifer Huang, facilities manager for an advanced manufacturing operation in south Dallas, called to schedule a professional electrical infrastructure assessment. Her facility has experienced voltage fluctuations across three production lines and is planning expansion within 18 months. Marcus Bell captured her name, ZIP code, phone number, and scheduled a two-hour site visit for the following Wednesday with CEC's engineering team. The call was professional and efficient, though Marcus did not secure an email address as requested by protocol.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, you handled the qualification and scheduling really well on this new-customer intake. Your tone was confident and you clearly explained what the site visit would involve, which set good expectations. One thing: when Jennifer hesitated on the email, you accepted it without gently re-emphasizing why we need it for documentation and follow-up. Next time, try something like, \"I understand. What I will do is send a quick confirmation text with the date and time, and we can add your email to our notes for the formal proposal after the visit. That way you are covered either way.\" Also, consider asking one warm question about their current maintenance program or what contractor they have worked with before. It builds rapport and gives us intelligence for the proposal. Great call overall."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "3,858"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$8323.32"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$32,111,363"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "2,431"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "63%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "1,003"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "26%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "1,427"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "8%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Email",
+                "value": 46,
+                "display": "46%"
+              },
+              {
+                "name": "LinkedIn Social",
+                "value": 38,
+                "display": "38%"
+              },
+              {
+                "name": "Referral",
+                "value": 31,
+                "display": "31%"
+              },
+              {
+                "name": "Paid Search",
+                "value": 24,
+                "display": "24%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Organic Search",
+                  "1,486",
+                  "18%",
+                  "$11,842,655"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Search",
+                  "1,042",
+                  "24%",
+                  "$8,624,190"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "632",
+                  "31%",
+                  "$5,218,470"
+                ]
+              },
+              {
+                "cells": [
+                  "LinkedIn Social",
+                  "418",
+                  "38%",
+                  "$3,912,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "280",
+                  "46%",
+                  "$2,513,168"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 1600,
+            "axisTicks": [
+              0,
+              400,
+              800,
+              1200,
+              1600
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Organic",
+                "value": 1512,
+                "display": "1,512"
+              },
+              {
+                "name": "CPC",
+                "value": 1004,
+                "display": "1,004"
+              },
+              {
+                "name": "Referral",
+                "value": 648,
+                "display": "648"
+              },
+              {
+                "name": "Social",
+                "value": 431,
+                "display": "431"
+              },
+              {
+                "name": "Email",
+                "value": 263,
+                "display": "263"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Organic",
+                  "1,512",
+                  "17%"
+                ]
+              },
+              {
+                "cells": [
+                  "CPC",
+                  "1,004",
+                  "23%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "648",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "431",
+                  "37%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "263",
+                  "45%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 800,
+            "axisTicks": [
+              0,
+              200,
+              400,
+              600,
+              800
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Wired to Win",
+                "value": 742,
+                "display": "742"
+              },
+              {
+                "name": "Mission-Critical Ready Data Center Solutions",
+                "value": 588,
+                "display": "588"
+              },
+              {
+                "name": "Design-Build That Moves You Forward",
+                "value": 471,
+                "display": "471"
+              },
+              {
+                "name": "Renewable Energy Solutions Solar at Scale",
+                "value": 396,
+                "display": "396"
+              },
+              {
+                "name": "24/7/365 Emergency Service Never Go Dark",
+                "value": 312,
+                "display": "312"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Wired to Win",
+                  "742",
+                  "21%",
+                  "$6,842,190"
+                ]
+              },
+              {
+                "cells": [
+                  "Mission-Critical Ready Data Center Solutions",
+                  "588",
+                  "27%",
+                  "$5,218,655"
+                ]
+              },
+              {
+                "cells": [
+                  "Design-Build That Moves You Forward",
+                  "471",
+                  "34%",
+                  "$4,127,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Renewable Energy Solutions Solar at Scale",
+                  "396",
+                  "42%",
+                  "$3,512,468"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 500,
+            "axisTicks": [
+              0,
+              100,
+              200,
+              300,
+              400,
+              500
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "commercial electrical contractor dallas",
+                "value": 412,
+                "display": "412"
+              },
+              {
+                "name": "design-build electrical mechanical contractor texas",
+                "value": 336,
+                "display": "336"
+              },
+              {
+                "name": "data center MEP contractor",
+                "value": 288,
+                "display": "288"
+              },
+              {
+                "name": "24/7 emergency electrical service commercial",
+                "value": 241,
+                "display": "241"
+              },
+              {
+                "name": "medium voltage installation contractor",
+                "value": 197,
+                "display": "197"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "commercial electrical contractor dallas",
+                  "19%"
+                ]
+              },
+              {
+                "cells": [
+                  "design-build electrical mechanical contractor texas",
+                  "26%"
+                ]
+              },
+              {
+                "cells": [
+                  "data center MEP contractor",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "24/7 emergency electrical service commercial",
+                  "44%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Electrical",
+              "1,342",
+              "20%",
+              "68%"
+            ]
+          },
+          {
+            "cells": [
+              "Mechanical HVAC Build",
+              "986",
+              "27%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Structured Cabling & AV",
+              "742",
+              "34%",
+              "55%"
+            ]
+          },
+          {
+            "cells": [
+              "Service & Maintenance",
+              "512",
+              "45%",
+              "49%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Dallas Headquarters",
+              "1,684",
+              "118",
+              "4%",
+              "21%"
+            ]
+          },
+          {
+            "cells": [
+              "Houston Branch",
+              "1,024",
+              "92",
+              "5%",
+              "27%"
+            ]
+          },
+          {
+            "cells": [
+              "Austin Branch",
+              "712",
+              "63",
+              "6%",
+              "33%"
+            ]
+          },
+          {
+            "cells": [
+              "West Texas Regional Office",
+              "438",
+              "36",
+              "7%",
+              "43%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              142,
+              156,
+              168,
+              148,
+              128
+            ]
+          },
+          {
+            "name": "Comparing Contractors",
+            "values": [
+              118,
+              142,
+              148,
+              132,
+              118
+            ]
+          },
+          {
+            "name": "Project Timing Not Right",
+            "values": [
+              102,
+              118,
+              128,
+              116,
+              107
+            ]
+          },
+          {
+            "name": "Needs Partner Approval",
+            "values": [
+              88,
+              102,
+              108,
+              98,
+              90
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              72,
+              84,
+              88,
+              82,
+              72
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "1,543"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Project Won (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$18,303,477"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Project Won (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,387,651"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Project Won (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,109,447"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Project Won (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,796,218"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Project Won (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,214,876"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Project Won (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,654,320"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Project Won (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,140,965"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1893,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "487",
+                "58%",
+                "31%",
+                "$6,743,289"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "368",
+                "54%",
+                "29%",
+                "$4,721,856"
+              ]
+            },
+            {
+              "name": "LinkedIn Social",
+              "metrics": [
+                "312",
+                "52%",
+                "27%",
+                "$3,254,784"
+              ]
+            },
+            {
+              "name": "Email Referral",
+              "metrics": [
+                "251",
+                "59%",
+                "36%",
+                "$2,987,443"
+              ]
+            },
+            {
+              "name": "Direct Inquiry",
+              "metrics": [
+                "185",
+                "61%",
+                "42%",
+                "$1,596,105"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1928,
+          "rows": [
+            {
+              "name": "Website Form",
+              "metrics": [
+                "523",
+                "55%",
+                "30%",
+                "$7,412,567"
+              ]
+            },
+            {
+              "name": "Phone Call",
+              "metrics": [
+                "401",
+                "57%",
+                "32%",
+                "$5,189,234"
+              ]
+            },
+            {
+              "name": "SMS Message",
+              "metrics": [
+                "297",
+                "52%",
+                "28%",
+                "$3,876,451"
+              ]
+            },
+            {
+              "name": "Chat Widget",
+              "metrics": [
+                "218",
+                "60%",
+                "37%",
+                "$2,654,890"
+              ]
+            },
+            {
+              "name": "Social Direct Message",
+              "metrics": [
+                "164",
+                "58%",
+                "35%",
+                "$1,720,335"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1871,
+          "rows": [
+            {
+              "name": "Mission-Critical Ready. Data Center Solutions",
+              "metrics": [
+                "412",
+                "51%",
+                "26%",
+                "$5,634,821"
+              ]
+            },
+            {
+              "name": "24/7/365 Emergency Service. Never Go Dark",
+              "metrics": [
+                "356",
+                "56%",
+                "31%",
+                "$4,289,567"
+              ]
+            },
+            {
+              "name": "Design-Build That Moves You Forward",
+              "metrics": [
+                "289",
+                "59%",
+                "35%",
+                "$3,765,432"
+              ]
+            },
+            {
+              "name": "Renewable Energy Solutions. Solar at Scale",
+              "metrics": [
+                "247",
+                "54%",
+                "29%",
+                "$2,847,956"
+              ]
+            },
+            {
+              "name": "Wired to Win. Building Great Things Together",
+              "metrics": [
+                "198",
+                "62%",
+                "41%",
+                "$1,765,701"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1654,
+          "rows": [
+            {
+              "name": "commercial electrical contractor Dallas",
+              "metrics": [
+                "289",
+                "53%",
+                "28%",
+                "$3,987,654"
+              ]
+            },
+            {
+              "name": "design-build electrical mechanical contractor Texas",
+              "metrics": [
+                "234",
+                "55%",
+                "32%",
+                "$3,254,789"
+              ]
+            },
+            {
+              "name": "data center MEP contractor",
+              "metrics": [
+                "187",
+                "52%",
+                "26%",
+                "$2,456,321"
+              ]
+            },
+            {
+              "name": "24/7 emergency electrical service commercial",
+              "metrics": [
+                "156",
+                "60%",
+                "38%",
+                "$2,189,765"
+              ]
+            },
+            {
+              "name": "utility-scale solar electrical installer Texas",
+              "metrics": [
+                "128",
+                "58%",
+                "34%",
+                "$1,847,932"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Design and Preconstruction Services",
+              "metrics": [
+                "387",
+                "57%",
+                "32%",
+                "$5,743,289"
+              ]
+            },
+            {
+              "name": "Commercial Electrical Installation",
+              "metrics": [
+                "334",
+                "54%",
+                "29%",
+                "$4,621,456"
+              ]
+            },
+            {
+              "name": "HVAC and Mechanical Build Solutions",
+              "metrics": [
+                "298",
+                "59%",
+                "35%",
+                "$3,954,783"
+              ]
+            },
+            {
+              "name": "Structured Cabling and Low Voltage",
+              "metrics": [
+                "251",
+                "56%",
+                "31%",
+                "$2,876,543"
+              ]
+            },
+            {
+              "name": "24/7 Emergency Service and Maintenance",
+              "metrics": [
+                "273",
+                "61%",
+                "37%",
+                "$3,107,406"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Project Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Design and Preconstruction Services",
+            "values": [
+              39,
+              42,
+              38,
+              43,
+              41
+            ]
+          },
+          {
+            "name": "Commercial Electrical Installation",
+            "values": [
+              29,
+              35,
+              32,
+              30,
+              28
+            ]
+          },
+          {
+            "name": "HVAC and Mechanical Build Solutions",
+            "values": [
+              37,
+              41,
+              38,
+              36,
+              39
+            ]
+          },
+          {
+            "name": "Structured Cabling and Low Voltage",
+            "values": [
+              26,
+              31,
+              28,
+              29,
+              24
+            ]
+          },
+          {
+            "name": "24/7 Emergency Service and Maintenance",
+            "values": [
+              35,
+              39,
+              37,
+              38,
+              36
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "378"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$18,956,427"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "856"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "31"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$189,356"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              74,
+              78,
+              71,
+              79,
+              73,
+              76,
+              77,
+              75,
+              81,
+              72,
+              79,
+              78,
+              76,
+              81,
+              74,
+              77,
+              75,
+              79,
+              182,
+              187,
+              179,
+              184,
+              189,
+              181,
+              186,
+              183,
+              178,
+              185,
+              191,
+              179,
+              184,
+              186,
+              188,
+              177,
+              183,
+              189,
+              181,
+              187,
+              184,
+              179,
+              186,
+              189,
+              182,
+              185,
+              188,
+              180,
+              187,
+              184,
+              181
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,168"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "694"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "59%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "671"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Design Build Services",
+            "values": [
+              8,
+              11,
+              9,
+              0,
+              7,
+              12
+            ]
+          },
+          {
+            "name": "Emergency Repair Request",
+            "values": [
+              6,
+              4,
+              7,
+              3,
+              8,
+              11
+            ]
+          },
+          {
+            "name": "Preventative Maintenance",
+            "values": [
+              5,
+              9,
+              6,
+              2,
+              10,
+              9
+            ]
+          },
+          {
+            "name": "Medium Voltage Installation",
+            "values": [
+              4,
+              6,
+              8,
+              1,
+              6,
+              10
+            ]
+          },
+          {
+            "name": "Structured Cabling Install",
+            "values": [
+              7,
+              5,
+              4,
+              5,
+              9,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "3,549"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "2,276"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Booked (Count)",
+            "value": "1,003"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$32,111,363"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Brittany Walsh",
+              "value": 194,
+              "display": "194"
+            },
+            {
+              "name": "Derek Paulson",
+              "value": 237,
+              "display": "237"
+            },
+            {
+              "name": "Jennifer Okafor",
+              "value": 156,
+              "display": "156"
+            },
+            {
+              "name": "Kyle Hastings",
+              "value": 202,
+              "display": "202"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Amanda Rodriguez",
+            "values": [
+              52,
+              68,
+              81,
+              97,
+              118
+            ]
+          },
+          {
+            "name": "Trevor Jackson",
+            "values": [
+              48,
+              64,
+              76,
+              89,
+              107
+            ]
+          },
+          {
+            "name": "Sarah Hoffman",
+            "values": [
+              44,
+              61,
+              73,
+              85,
+              101
+            ]
+          },
+          {
+            "name": "Nathan Pierce",
+            "values": [
+              41,
+              58,
+              69,
+              82,
+              96
+            ]
+          },
+          {
+            "name": "Lisa Kwiatkowski",
+            "values": [
+              39,
+              55,
+              67,
+              80,
+              94
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Brittany Walsh",
+              "value": 55.8,
+              "display": "55.8%"
+            },
+            {
+              "name": "Derek Paulson",
+              "value": 56.1,
+              "display": "56.1%"
+            },
+            {
+              "name": "Jennifer Okafor",
+              "value": 57.3,
+              "display": "57.3%"
+            },
+            {
+              "name": "Kyle Hastings",
+              "value": 58.7,
+              "display": "58.7%"
+            },
+            {
+              "name": "Robert Mendez",
+              "value": 59.4,
+              "display": "59.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "54.2%",
+                "28%",
+                "$3,847,692",
+                "1,447"
+              ]
+            },
+            {
+              "cells": [
+                "Brittany Walsh",
+                "55.8%",
+                "29%",
+                "$4,156,881",
+                "1,489"
+              ]
+            },
+            {
+              "cells": [
+                "Derek Paulson",
+                "56.1%",
+                "30%",
+                "$4,042,095",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Okafor",
+                "57.3%",
+                "31%",
+                "$4,298,634",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Kyle Hastings",
+                "58.7%",
+                "32%",
+                "$4,089,923",
+                "1,468"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Mendez",
+                "59.4%",
+                "33%",
+                "$4,511,176",
+                "1,519"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Amanda Rodriguez",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Trevor Jackson",
+              "value": 90.3,
+              "display": "90.3%"
+            },
+            {
+              "name": "Sarah Hoffman",
+              "value": 89.8,
+              "display": "89.8%"
+            },
+            {
+              "name": "Nathan Pierce",
+              "value": 88.6,
+              "display": "88.6%"
+            },
+            {
+              "name": "Lisa Kwiatkowski",
+              "value": 87.4,
+              "display": "87.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Amanda Rodriguez",
+                "91.7%",
+                "66%",
+                "$5,847,129",
+                "1,537"
+              ]
+            },
+            {
+              "cells": [
+                "Trevor Jackson",
+                "90.3%",
+                "64%",
+                "$5,442,817",
+                "1,498"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Hoffman",
+                "89.8%",
+                "62%",
+                "$5,156,894",
+                "1,524"
+              ]
+            },
+            {
+              "cells": [
+                "Nathan Pierce",
+                "88.6%",
+                "60%",
+                "$4,923,651",
+                "1,483"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Kwiatkowski",
+                "87.4%",
+                "58%",
+                "$4,741,179",
+                "1,429"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Booked (Count)",
+        "rightMax": 100,
+        "rightTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 37
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 35
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 33
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 31
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 27
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 29
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 32
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 33
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 37
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 36
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 32
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 31
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 28
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 28
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 32
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 33
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 36
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 36
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 31
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 30
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 28
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 28
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 33
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 34
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 36
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 36
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 31
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 30
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 28
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 28
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 44
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1500000,
+        "rightTicks": [
+          0,
+          500000,
+          1000000,
+          1500000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1190339
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1140886
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1062398
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1013732
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 882640
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 926307
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1023264
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1063599
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1185919
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1149821
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1035605
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1000933
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 890662
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 918062
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1047627
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1079550
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1174877
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1156592
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1014206
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 982038
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 904031
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 913508
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1065684
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1101009
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1159951
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1158264
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 999695
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 958547
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 919706
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 915271
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1076640
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "3,858"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "309"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "231"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "83%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "1,247",
+                "87%",
+                "85%",
+                "86%"
+              ]
+            },
+            {
+              "cells": [
+                "James Rodriguez",
+                "1,106",
+                "84%",
+                "82%",
+                "83%"
+              ]
+            },
+            {
+              "cells": [
+                "Angela Chen",
+                "1,505",
+                "84%",
+                "82%",
+                "83%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "3,858 calls",
+      "pagerLabel": "1 of 386",
+      "calls": [
+        {
+          "time": "1/6/26 8:52 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 9:34 am",
+          "id": "A21C-4E9B7710C3A2"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C904-1D77A5E30B18"
+        },
+        {
+          "time": "1/14/26 11:17 am",
+          "id": "3E8D-92AF60155C74"
+        },
+        {
+          "time": "1/16/26 12:48 pm",
+          "id": "7B15-D3C40917EE29"
+        },
+        {
+          "time": "1/20/26 1:29 pm",
+          "id": "5F42-6A81B0D7239C"
+        },
+        {
+          "time": "1/22/26 2:06 pm",
+          "id": "9DA7-08E5C31F4462"
+        },
+        {
+          "time": "1/26/26 3:38 pm",
+          "id": "1C6E-F49D27A50B31"
+        },
+        {
+          "time": "1/28/26 4:15 pm",
+          "id": "E830-5B9271AC6F08"
+        },
+        {
+          "time": "1/30/26 5:02 pm",
+          "id": "B472-3C10E96D8517"
+        }
+      ],
+      "duration": "2:34",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling CEC Companies, this is Marcus in our commercial solutions team. How can I help you today?",
+          "highlights": [
+            "Thank you for calling CEC Companies",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Marcus, my name is Dana Whitfield. I'm the facilities director for a new distribution center we're building out near Midlothian, and I'm trying to find a contractor for the electrical and low-voltage work.",
+          "highlights": [
+            "Dana Whitfield",
+            "electrical and low-voltage work"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:19",
+          "text": "Great to meet you, Dana. Congratulations on the new facility. Can you tell me a bit about the scope? Square footage, and whether you need power distribution, structured cabling, or both?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:29",
+          "text": "It's about 180,000 square feet. We definitely need the building power distribution, and then Cat6 and fiber drops throughout the office and warehouse floor. There may be some medium-voltage tie-in too.",
+          "highlights": [
+            "180,000 square feet",
+            "medium-voltage tie-in"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:41",
+          "text": "Perfect. That's right in our wheelhouse. CEC offers a design-build approach, so we can handle the commercial electrical installation, the medium-voltage distribution, and the structured cabling all under one roof, coordinated through our BIM team.",
+          "highlights": [
+            "design-build approach",
+            "structured cabling"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:53",
+          "text": "That sounds good, but honestly I want to keep this manageable. For the cabling side, what does that usually run per drop?",
+          "highlights": [
+            "want to keep this manageable",
+            "what does that usually run per drop"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:02",
+          "text": "Completely fair question. Structured cabling typically lands between 150 and 300 dollars per drop depending on Cat6 versus fiber and the terminations. Once our estimators see the drawings we'll give you a firm bid, no surprises.",
+          "highlights": [
+            "150 and 300 dollars per drop"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:13",
+          "text": "Okay. I'll be upfront, I'm getting a couple of quotes on this. There's a smaller outfit here in town that bid the electrical, but they don't really touch the medium-voltage work.",
+          "highlights": [
+            "I'm getting a couple of quotes",
+            "they don't really touch the medium-voltage work"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:24",
+          "text": "That's a common gap, Dana. The advantage of CEC is that our medium-voltage crews, our electrical teams, and our cabling technicians are all in-house, so you're not stitching together three vendors when the schedule gets tight. That coordination usually saves time and rework.",
+          "highlights": [
+            "all in-house"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:37",
+          "text": "That matters, because we've got a hard occupancy date in September and I can't slip it. One more thing, would you also be able to handle the AV in the conference rooms?",
+          "highlights": [
+            "hard occupancy date in September",
+            "handle the AV in the conference rooms"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:48",
+          "text": "Absolutely. Our AV Solutions group does displays, conferencing, and control systems, so we can fold that right into the same design package. And a September occupancy is very achievable if we start preconstruction now.",
+          "highlights": [
+            "AV Solutions",
+            "preconstruction now"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:59",
+          "text": "Alright, that's encouraging. I don't want to get locked into anything huge before I see numbers, though.",
+          "highlights": [
+            "don't want to get locked into anything huge"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:06",
+          "text": "You won't be. The next step is just a no-obligation consultation where our preconstruction engineer reviews your drawings and walks the site. Would Thursday at 10 AM work for you?",
+          "highlights": [
+            "no-obligation consultation",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:16",
+          "text": "Thursday at 10 works. Let me give you my email so you can send the details.",
+          "highlights": [
+            "Thursday at 10 works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:22",
+          "text": "Perfect, I've got you down for Thursday at 10 AM with our preconstruction team. What's the best email and cell for you, Dana?",
+          "highlights": [
+            "got you down for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:28",
+          "text": "It's dana.whitfield@ridgelinelogistics.com, and my cell is 214-555-0148.",
+          "highlights": [
+            "dana.whitfield@ridgelinelogistics.com"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:32",
+          "text": "Got it. You'll receive a confirmation shortly. Thanks for calling CEC, Dana, we look forward to building great things with you.",
+          "highlights": [
+            "Thanks for calling CEC",
+            "building great things with you"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: Electrical Installation",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Structured Cabling",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: Medium-Voltage Scope",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Dana Whitfield, facilities director for a new 180,000 square foot distribution center near Midlothian, called seeking a contractor for commercial electrical, medium-voltage, and structured cabling work. Agent Marcus explained CEC's in-house design-build approach and recommended commercial electrical installation, structured cabling, medium-voltage tie-in, and AV Solutions for the conference rooms. He addressed Dana's per-drop pricing question, the competing local bid, and the September occupancy deadline, then scheduled a no-obligation preconstruction consultation. Contact details were captured to send confirmation.",
+        "keyPoints": [
+          "New client building a 180,000 sq ft distribution center",
+          "Needs electrical, structured cabling, and possible medium-voltage tie-in",
+          "Agent recommended design-build plus AV Solutions add-on",
+          "Caller comparing quotes and holding a hard September occupancy date",
+          "Consultation booked with preconstruction team for Thursday 10 AM",
+          "Captured email dana.whitfield@ridgelinelogistics.com and cell 214-555-0148"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "2,431 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 243",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for reaching out to CEC Companies. This is Marcus from our commercial contracting team. Are you calling about a specific project or service need today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi Marcus. Yes, we're looking at upgrading the electrical infrastructure at our manufacturing facility in the Dallas area. We've outgrown our current capacity."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great, that's exactly what we specialize in. I'd love to help you explore options. Can you tell me roughly how many square feet we're talking about for your facility?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "About 120,000 square feet. We need more power distribution and some updates to our control systems."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:26 AM",
+              "text": "Perfect. A 120k sq ft manufacturing site with power distribution and controls is definitely in our wheelhouse. Are you looking to expand capacity, upgrade to newer equipment, or both?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:27 AM",
+              "text": "Both, actually. We want to add some new production lines and modernize what we have."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Excellent. That sounds like a design-build opportunity where we can assess your current infrastructure and plan the upgrades. Have you worked with design-build contractors before, or would this be your first time?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "First time. We want to make sure everything is coordinated properly and done right."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "Smart approach. That's exactly what design-build does, best practice here in the Dallas market. I'd like to schedule a free consultation with one of our project managers to do a site walk and understand your timeline and budget range. Would next Tuesday the 18th work for you, maybe around 2 PM?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Tuesday at 2 works for me. What do I need to prepare?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:35 AM",
+              "text": "Just have your facility key available and maybe a sketch of where the new production lines will go if you have one. We'll bring a BIM specialist to take measurements and photos. Your consultation is booked for Tuesday, March 18th at 2 PM. You'll get a reminder text the day before. Any questions?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:36 AM",
+              "text": "No, sounds good. Thanks, Marcus."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:37 AM",
+              "text": "Perfect. We're excited to help. If anything comes up, call us at 877-936-2933. See you Tuesday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Commercial Electrical Installation",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Project Scope: Design-Build",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Facility Size: 120,000 sq ft",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Region: Dallas Area",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "214-555-0847",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "214-555-0847",
+            "repeatCaller": "No",
+            "city": "Dallas",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "James Hartley",
+            "firstName": "James",
+            "lastName": "Hartley",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A742-2B9C8E1F4A76",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A742-2B9C8E1F4A76",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B831-5D7C3A9E2B14",
+          "time": "8/16/25 10:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B831-5D7C3A9E2B14",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D205-7F4E1C6B8A93",
+          "time": "8/16/25 10:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D205-7F4E1C6B8A93",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "3,858 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 386",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/16/26 4:12 pm",
+          "active": true,
+          "date": "January 16, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Thanks for calling CEC Companies. This is Marcus. How can we help you build something great today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Hi Marcus. Yeah, I'm calling because we've got a data center facility in the Dallas area and we need to upgrade our electrical infrastructure. We're looking at medium voltage installation and maybe some other MEP work."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "That's fantastic. We work with a lot of mission critical facilities like data centers. Just to get a better picture, is this a new facility or an existing one that needs upgrades?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "It's an existing facility. We built it about three years ago but we're expanding and need to handle a lot more power capacity."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Got it. So you're looking at expansion work. When you think about the timeline, are you looking to get this done in the next few months or is this more of a longer term planning phase?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "We'd like to start within the next two months if possible. We've got some growth projections that are pushing us to move on this."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Perfect. That's a realistic timeline for a scope like that. Have you worked with a design build contractor before or would you need help from the design phase all the way through construction?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "We'd probably want the full design build approach. We've got some in house engineering but we'd rather have a single point of responsibility."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "That makes sense. CEC can definitely handle that end to end. Now, for a medium voltage upgrade on a facility your size, we're typically looking at somewhere in the two hundred and fifty thousand to five million dollar range depending on the scope. Does that ballpark feel right for what you're budgeting?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "Yeah, that sounds about right. We haven't nailed down exact numbers yet but we're probably looking at the lower to middle end of that range."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Excellent. Here's what I'd like to do. I want to get you connected with one of our senior project managers who can walk through the specifics of your facility and put together a detailed estimate and timeline. Would next Thursday, January twenty third at two PM work for a consultation call?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Actually, let me check my calendar. Yeah, that works. Two PM on the twenty third is good."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Great. So we've got you down for Thursday, January twenty third at two PM Central Time. One of our team members will call you at this number to go through the scope and answer any questions. You'll get an email confirmation shortly. Is this the best number to reach you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Yeah, that's the right number. Thanks Marcus."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "Perfect. We really appreciate the call and we're excited about the opportunity. Just as a reminder, we'll call you at two PM on the twenty third. Thanks for reaching out to CEC Companies."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Medium Voltage Installation",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Facility Type: Data Center",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Design Build Scope Confirmed",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Budget Range Established",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/16/26 4:12 pm",
+            "duration": "7:14",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "972-555-0847",
+            "repeatCaller": "No",
+            "city": "Arlington",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "James Patterson",
+            "firstName": "James",
+            "lastName": "Patterson",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Mission Critical Ready, Data Center Solutions",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B823-7A4D5C8B2E91",
+          "time": "1/14/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B823-7A4D5C8B2E91",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C641-9F2B3E8A6D7C",
+          "time": "1/22/26 10:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C641-9F2B3E8A6D7C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D156-4E7F8A1B9C3D",
+          "time": "1/09/26 3:56 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D156-4E7F8A1B9C3D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: I'm CEC Companies's AI agent, here to help you get a personalized quote for your commercial or industrial project, and right now we're prioritizing fast-track scoping for design-build and mission-critical work. Would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, the trade or scope you need (electrical, mechanical, structured cabling, AV, or service), the approximate square footage or unit count, the facility type and system voltage or model, your target timeline, and your project ZIP code so I can confirm we cover your site.",
+        "Estimate then book: Once I confirm we service your ZIP, I'll share a preliminary price range based on your scope, then recommend a consultation with a CEC specialist for an exact bid. Does Tuesday at 10:00 AM work? You'll get a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "CEC_Companies_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "What We Do",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Projects",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Contact",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"maintenance contract\",\"question\":\"When is my next scheduled preventative maintenance visit?\",\"answer\":\"I can pull up your service agreement and confirm your next scheduled inspection date. Let me connect you with your account coordinator to lock in the visit window.\"},{\"topic\":\"emergency status\",\"question\":\"I logged an emergency service call last night, when will a technician arrive?\",\"answer\":\"Our 24/7/365 dispatch prioritizes emergency response and a technician is typically en route within the agreed response window. I can check your ticket status and have the on-call team update you right away.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What trades does CEC self-perform?",
+              "answer": "CEC self-performs electrical, mechanical, and low-voltage technology work for commercial and industrial projects. I'd love to set up a consultation with a specialist to scope your project."
+            },
+            {
+              "question": "Do you handle design-build projects?",
+              "answer": "Yes, our Design and Preconstruction team delivers full lifecycle design-to-delivery with BIM and Trimble coordination. Let's book a consultation to review your project goals."
+            },
+            {
+              "question": "Can you install medium-voltage distribution?",
+              "answer": "Absolutely, we install medium-voltage cable, terminations, and substation tie-ins for large sites. A specialist can walk through your requirements on a consultation."
+            },
+            {
+              "question": "Do you do utility-scale solar work?",
+              "answer": "Yes, we handle DC collection, MV collection, and inverter and substation tie-ins for utility-scale solar, including 400-plus MW deployments in West Texas. I can schedule a consultation to discuss your solar scope."
+            },
+            {
+              "question": "Do you serve data centers?",
+              "answer": "We provide mission-critical MEP solutions, including work like the 260,000 square foot MDN HUB Data Center in Midlothian. Let's set up a consultation with our mission-critical team."
+            },
+            {
+              "question": "What areas do you serve?",
+              "answer": "CEC is Dallas-based and performs work throughout the nation. Share your project ZIP and I'll confirm coverage, then book a consultation."
+            },
+            {
+              "question": "Do you offer emergency service?",
+              "answer": "Yes, we provide 24/7/365 emergency service and repair with rapid dispatch. I can connect you with dispatch or schedule a consultation for ongoing needs."
+            },
+            {
+              "question": "Can you install structured cabling?",
+              "answer": "Yes, we run Cat6 and fiber, install racks, and handle terminations and testing. Let's book a consultation to size your cabling project."
+            },
+            {
+              "question": "Do you provide AV integration?",
+              "answer": "We integrate displays, conferencing, and control systems for commercial spaces. A specialist can review your AV needs on a consultation."
+            },
+            {
+              "question": "Can you handle HVAC installation?",
+              "answer": "Yes, our mechanical team installs rooftop units, chillers, ductwork, and controls. Let's schedule a consultation to scope your HVAC build."
+            },
+            {
+              "question": "Do you offer preventative maintenance programs?",
+              "answer": "We offer recurring facility maintenance with scheduled inspections and reporting. I can set up a consultation to build a program for your facility."
+            },
+            {
+              "question": "How much will my project cost?",
+              "answer": "Commercial pricing depends on scope, so I can share a preliminary range and then a specialist provides an exact bid. Let's book a consultation to get you accurate numbers."
+            },
+            {
+              "question": "Do you do tenant improvement work?",
+              "answer": "Yes, we handle corporate interior and tenant improvement build-outs including electrical, lighting, and low-voltage. A consultation is the best next step to review your space."
+            },
+            {
+              "question": "Can you do energy audits?",
+              "answer": "We provide IR thermography, load studies, and energy analysis to diagnose electrical systems. Let's schedule a consultation to plan your audit."
+            },
+            {
+              "question": "Do you install commercial plumbing?",
+              "answer": "Yes, we install supply, drainage, fixtures, and backflow prevention systems. I can book a consultation to scope your plumbing build."
+            },
+            {
+              "question": "Do you offer prefabrication?",
+              "answer": "We operate a prefabrication facility that lowers material costs, speeds product cycles, and integrates 3D drawings. Let's set up a consultation to see how prefab fits your project."
+            },
+            {
+              "question": "Are you a licensed contractor?",
+              "answer": "CEC is a specialty contractor and part of the Sterling Infrastructure family of companies. I can arrange a consultation with a specialist to discuss your project details."
+            },
+            {
+              "question": "What sectors do you work in?",
+              "answer": "We serve advanced manufacturing, infrastructure, mission-critical, healthcare, government, corporate office, retail, and athletics. Let's book a consultation tied to your sector."
+            },
+            {
+              "question": "Can you retrofit fans for energy savings?",
+              "answer": "Yes, our EC fan retrofit solutions upgrade to electronically-commutated motors with controls for energy savings. A specialist can review your units on a consultation."
+            },
+            {
+              "question": "How do I get started on a project?",
+              "answer": "The best first step is a consultation with a CEC specialist to scope your work and provide a bid. Share your ZIP and preferred time and I'll get you booked."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the booking\",\"follow_up_message\":\"Great, I have you set for a consultation with a CEC specialist. You'll receive a reminder text before the appointment with a number to call if anything changes.\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Thanks for the project details. I can share a preliminary range now, and a CEC specialist will confirm an exact bid at your consultation. What day and time works best?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is CEC Companies's AI agent. I can help you scope your commercial or industrial project and get a personalized quote. Would you like to get started?",
+        "goal": "Qualify the project scope and book a consultation with a CEC specialist to deliver an exact bid.",
+        "bookingType": "on-site consultation",
+        "offer": "",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "Which trade or scope do you need, electrical, mechanical, structured cabling, AV, or service and maintenance?",
+          "Roughly what square footage or unit count is involved?",
+          "What type of facility is it and are there specific systems, voltages, or models involved?",
+          "What is your target timeline for the project?",
+          "What is the project ZIP code so I can confirm we cover your site?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:48 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:48 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:48 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "CEC Companies",
+      "callerName": "Michael Chen",
+      "callerPhone": "(512) 555-0847",
+      "campaign": "Medium-Voltage Installation, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$187,500",
+      "googleSearch": "medium voltage installation contractor Austin Texas",
+      "websiteSearch": "commercial electrical design build Austin",
+      "callingWebpage": "/what-we-do/electrical/build/medium-voltage-installation",
+      "products": "Medium-Voltage Installation, Design and Build Services",
+      "cartId": "CEC-9342M",
+      "serviceable": "Yes",
+      "email": "m.chen@industrial-ops.com",
+      "street": "4521 Burnet Road",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78756",
+      "digitalJourney": "/home › /what-we-do › /what-we-do/electrical › /what-we-do/electrical/build/medium-voltage-installation",
+      "intent": "New industrial facility requires high capacity distribution and substation tie-ins for advanced manufacturing operation",
+      "coverage": "ZIP 78756 confirmed, Austin serviceable",
+      "switchIntent": "High, facility construction timeline is accelerating, needs qualified contractor to review MV scope within two weeks",
+      "greeting": "Hi Michael, thanks for calling CEC Companies. I see you're looking into medium voltage installation for your industrial project in Austin. I'd love to schedule a time for one of our electrical specialists to walk through your site requirements and provide a design review. Are you available for a consultation this week or next?"
+    },
+    "smsScreenpop": {
+      "brandName": "CEC Companies",
+      "callerName": "Jennifer Martinez",
+      "callerPhone": "(713) 555-2164",
+      "campaign": "24-7-365 Emergency Service, Houston Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$28,750",
+      "googleSearch": "24 7 emergency electrical service Houston commercial",
+      "websiteSearch": "preventative maintenance contractor data center Houston",
+      "callingWebpage": "/what-we-do/service-maintenance",
+      "products": "24-7-365 Emergency Service and Repair, Preventative Maintenance Program",
+      "cartId": "CEC-5671J",
+      "serviceable": "Yes",
+      "email": "j.martinez@mission-critical-ops.com",
+      "street": "12847 Space Center Boulevard",
+      "city": "Houston",
+      "state": "TX",
+      "zip": "77058",
+      "digitalJourney": "/home › /what-we-do › /what-we-do/service-maintenance › /what-we-do/service-maintenance/maintain",
+      "intent": "Mission critical data center facility needs reliable 24-7 emergency dispatch and scheduled preventative maintenance for electrical and mechanical systems",
+      "coverage": "ZIP 77058 confirmed, Houston serviceable",
+      "appointment": "In-home facility assessment with service specialist, Thu Jul 18, 2:00 PM",
+      "greeting": "Hi Jennifer, this is Marcus from CEC Companies. Thanks for reaching out about emergency and preventative service for your facility. We've got you down for a facility assessment this Thursday at 2 PM. In the meantime, if you have questions about our 24-7 response model or maintenance programs, feel free to reach out anytime. Looking forward to meeting the team."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "CEC Companies",
+      "brandDomain": "www.cecfg.com",
+      "brandIcon": "⚡",
+      "callerPhone": "+1 (972) 555-0147",
+      "callerLocation": "Arlington, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "Mission-Critical Ready, Data Center Solutions",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "data center MEP contractor Dallas",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Home / What We Do / Design & Preconstruction",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Medium-Voltage Installation, HVAC Build Solutions",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Arlington, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consult_new_project",
+          "name": "Consultation, New Project"
+        },
+        {
+          "id": "existing_service",
+          "name": "Existing Service Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling CEC Companies. I see you were looking at our design and preconstruction services. Are you exploring a new project build?",
+          "sigs": [],
+          "q": [
+            35,
+            40,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, actually. We're planning a 260,000 square foot data center facility and we need electrical and HVAC scope work. We're in Arlington and want to get started this quarter.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Data center</strong> project, large scope"
+            },
+            {
+              "c": "blue",
+              "t": "Electrical and HVAC needed"
+            },
+            {
+              "c": "orange",
+              "t": "Q1 start timeline"
+            }
+          ],
+          "q": [
+            65,
+            20,
+            15
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's excellent. A facility that size definitely qualifies for our design-build services. Do you have a general budget range in mind, and are you looking to have one team coordinate both the electrical and mechanical work?",
+          "sigs": [],
+          "q": [
+            78,
+            12,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We'd prefer a single partner, yes. Budget is flexible, probably 2 to 5 million for the full scope. We need someone who's done mission-critical work before.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Single-partner</strong> coordination"
+            },
+            {
+              "c": "purple",
+              "t": "High-value scope, 2.5M average"
+            },
+            {
+              "c": "green",
+              "t": "Mission-critical experience required"
+            }
+          ],
+          "q": [
+            92,
+            5,
+            3
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. That's exactly what we do. Let me route you to our Consultation and New Project team. They'll schedule a discovery call with one of our design engineers to discuss your facility requirements, budget, and timeline. You'll be in great hands.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"get you on the schedule (Agent)\", \"book your consultation (Agent)\", \"set up a site walk (Agent)\", \"put you down for (Agent)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "12/08/25 4:41 pm"
+        },
+        {
+          "name": "Competitor Contractor Named",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"another contractor quoted (Caller)\", \"we also called (Caller)\", \"your competitor (Caller)\", \"bid from someone else (Caller)\"])",
+          "createdAt": "04/22/25 11:03 am",
+          "updatedAt": "11/19/25 2:27 pm"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule a walkthrough (Agent)\", \"design-build consultation (Caller)\", \"talk through the scope (Agent)\"])",
+          "createdAt": "02/27/25 3:48 pm",
+          "updatedAt": "12/15/25 10:09 am"
+        },
+        {
+          "name": "Emergency Service Request",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"need someone out tonight (Caller)\", \"power is down (Caller)\", \"emergency service (Caller)\", \"24/7 dispatch (Agent)\"])",
+          "createdAt": "05/09/25 8:31 am",
+          "updatedAt": "01/06/26 1:15 pm"
+        },
+        {
+          "name": "Medium-Voltage Project Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"medium voltage installation (Caller)\", \"substation tie-in (Caller)\", \"MV cable (Agent)\", \"switchgear (Caller)\"])",
+          "createdAt": "06/18/25 10:55 am",
+          "updatedAt": "12/22/25 9:37 am"
+        },
+        {
+          "name": "Professional Greeting Delivered",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Call Handling Excellence] < 60 and duration > 45 sec",
+          "createdAt": "01/29/25 4:20 pm",
+          "updatedAt": "11/30/25 3:52 pm"
+        },
+        {
+          "name": "Project Scope Captured",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Scope Discovery] < 60 and duration > 45 sec",
+          "createdAt": "03/03/25 9:44 am",
+          "updatedAt": "01/12/26 11:28 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"send over an estimate (Agent)\", \"per square foot (Agent)\", \"ballpark the cost (Caller)\", \"budget number (Agent)\"])",
+          "createdAt": "04/07/25 2:16 pm",
+          "updatedAt": "12/29/25 10:03 am"
+        },
+        {
+          "name": "Safety Commitment Communicated",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[CEC S.A.F.E. Standards] < 60 and duration > 45 sec",
+          "createdAt": "02/11/25 8:59 am",
+          "updatedAt": "01/18/26 4:07 pm"
+        },
+        {
+          "name": "Solar Scale Upsell Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"utility scale solar (Caller)\", \"DC collection (Agent)\", \"add solar scope (Caller)\", \"inverter tie-in (Agent)\"])",
+          "createdAt": "07/25/25 1:38 pm",
+          "updatedAt": "01/09/26 9:21 am"
+        }
+      ]
+    }
+  }
+}

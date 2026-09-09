@@ -1,0 +1,5336 @@
+{
+  "id": "taskus",
+  "customerName": "TaskUs",
+  "websiteUrl": "https://www.taskus.com",
+  "brandDomain": "taskus.com",
+  "networkName": "Invoca for Business Process Outsourcing",
+  "industry": "Digital CX & AI Services Outsourcing (BPO)",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Client",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 1000,
+      "yTicks": [
+        200,
+        400,
+        600,
+        800,
+        1000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 782
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 921
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 864
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 843
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 814
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Content Moderation That Scales",
+          "marketingSearchTerm": "content moderation outsourcing companies",
+          "landingPageUrl": "https://www.taskus.com/services/trust-and-safety/?utm_source=google&utm_medium=cpc&utm_campaign=content_moderation_scales",
+          "websiteJourney": "Home / Services / Trust & Safety",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AI Data Labeling Partners",
+          "marketingSearchTerm": "ai data labeling services",
+          "landingPageUrl": "https://www.taskus.com/ai-av-robotics/ai-data-and-operations/?utm_source=google&utm_medium=cpc&utm_campaign=ai_data_labeling_partners",
+          "websiteJourney": "Home / AI, AV & Robotics / AI Data & Operations",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Human Intelligence Behind AI",
+          "marketingSearchTerm": "rlhf data annotation provider",
+          "landingPageUrl": "https://www.taskus.com/ai-av-robotics/ai-data-and-operations/data-feedback-and-evaluations/?utm_source=google&utm_medium=cpc&utm_campaign=human_intelligence_ai",
+          "websiteJourney": "Home / AI, AV & Robotics / AI Data & Operations / Data Feedback & Evaluations",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Outsource CX That Scales",
+          "marketingSearchTerm": "customer support outsourcing usa",
+          "landingPageUrl": "https://www.taskus.com/services/customer-experience-and-agentic-ai/?utm_source=google&utm_medium=cpc&utm_campaign=outsource_cx_scales",
+          "websiteJourney": "Home / Services / Customer Experience & Agentic AI",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Agentic AI Customer Service",
+          "marketingSearchTerm": "agentic ai customer service partner",
+          "landingPageUrl": "https://www.taskus.com/services/customer-experience-and-agentic-ai/agentic-ai/?utm_source=bing&utm_medium=cpc&utm_campaign=agentic_ai_service",
+          "websiteJourney": "Home / Services / Customer Experience & Agentic AI / Agentic AI",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Trust & Safety BPO Vendor",
+          "marketingSearchTerm": "trust and safety bpo vendor",
+          "landingPageUrl": "https://www.taskus.com/services/trust-and-safety/?utm_source=google&utm_medium=cpc&utm_campaign=trust_safety_bpo",
+          "websiteJourney": "Home / Services / Trust & Safety / Wellness & Resiliency",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "AML KYC Compliance Outsourcing",
+          "marketingSearchTerm": "aml kyc compliance outsourcing",
+          "landingPageUrl": "https://www.taskus.com/services/financial-crime-and-compliance/?utm_source=bing&utm_medium=cpc&utm_campaign=aml_kyc_outsourcing",
+          "websiteJourney": "Home / Services / Financial Crime & Compliance",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AV Data Annotation",
+          "marketingSearchTerm": "av data annotation company",
+          "landingPageUrl": "https://www.taskus.com/ai-av-robotics/autonomous-vehicles/?utm_source=google&utm_medium=cpc&utm_campaign=av_data_annotation",
+          "websiteJourney": "Home / AI, AV & Robotics / Autonomous Vehicles",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Competitor Conquest",
+          "marketingSearchTerm": "taskus vs concentrix teleperformance",
+          "landingPageUrl": "https://www.taskus.com/who-we-are/our-advantage/?utm_source=google&utm_medium=cpc&utm_campaign=competitor_conquest",
+          "websiteJourney": "Home / Who We Are / Our Advantage",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AI Safety Red Teaming",
+          "marketingSearchTerm": "ai model red teaming services",
+          "landingPageUrl": "https://www.taskus.com/ai-av-robotics/ai-safety-and-alignment/?utm_source=google&utm_medium=cpc&utm_campaign=ai_safety_red_teaming",
+          "websiteJourney": "Home / AI, AV & Robotics / AI Safety & Alignment",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Ridiculously Good CX",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.taskus.com/services/customer-experience-and-agentic-ai/?utm_source=instagram&utm_medium=paid_social&utm_campaign=ridiculously_good_cx",
+          "websiteJourney": "Home / Services / Customer Experience & Agentic AI",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Human Intelligence Behind AI",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.taskus.com/ai-av-robotics/?utm_source=facebook&utm_medium=paid_social&utm_campaign=human_intelligence_ai",
+          "websiteJourney": "Home / AI, AV & Robotics / Agentic AI",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Forward 26 Registration",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.taskus.com/insights/events/forward-26/?utm_source=instagram&utm_medium=paid_social&utm_campaign=forward_26_registration",
+          "websiteJourney": "Home / Insights / Events",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Speak With an Expert",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.taskus.com/contact-us/?utm_source=facebook&utm_medium=paid_social&utm_campaign=speak_with_an_expert",
+          "websiteJourney": "Home / Contact Us / Connect with Sales",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "SEO Trust & Safety",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.taskus.com/services/trust-and-safety/?utm_source=organic&utm_medium=organic&utm_campaign=seo_trust_safety",
+          "websiteJourney": "Home / Services / Trust & Safety",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Case Studies Library",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.taskus.com/insights/case-studies/?utm_source=organic&utm_medium=organic&utm_campaign=case_studies_library",
+          "websiteJourney": "Home / Insights / Case Studies",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Retail eCommerce Industry",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.taskus.com/industries/retail-and-ecommerce/?utm_source=organic&utm_medium=organic&utm_campaign=retail_ecommerce_industry",
+          "websiteJourney": "Home / Industries / Retail & eCommerce",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Sales as a Service SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.taskus.com/services/sales-as-a-service/?utm_source=organic&utm_medium=organic&utm_campaign=sales_as_a_service_seo",
+          "websiteJourney": "Home / Services / Sales as a Service",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "TaskUs Pricing",
+          "marketingSearchTerm": "taskus pricing",
+          "landingPageUrl": "https://www.taskus.com/contact-us/?utm_source=bing&utm_medium=cpc&utm_campaign=taskus_pricing",
+          "websiteJourney": "Home / Contact Us / Connect with Sales",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Learning as a Service",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.taskus.com/services/learning-as-a-service/?utm_source=instagram&utm_medium=paid_social&utm_campaign=learning_as_a_service",
+          "websiteJourney": "Home / Services / Learning as a Service",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Robotics Physical AI",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.taskus.com/ai-av-robotics/robotics/?utm_source=organic&utm_medium=organic&utm_campaign=robotics_physical_ai",
+          "websiteJourney": "Home / AI, AV & Robotics / Robotics",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (TaskUs)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "3,313"
+            },
+            {
+              "label": "Sales Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "4%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$16,550,848"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "530"
+            },
+            {
+              "label": "Existing Account Support (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Careers Inquiry (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Partner Inquiry (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "24%"
+            },
+            {
+              "label": "Not a Fit (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "4%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sales Inquiry (Count)",
+            "values": [
+              412,
+              618,
+              641,
+              597,
+              515
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              108,
+              176,
+              183,
+              171,
+              157
+            ]
+          },
+          {
+            "name": "Not a Fit (Count)",
+            "values": [
+              54,
+              88,
+              91,
+              86,
+              79
+            ]
+          },
+          {
+            "name": "Contract Signed (Count)",
+            "values": [
+              17,
+              29,
+              31,
+              28,
+              28
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3313,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "1,024",
+                "24.0%",
+                "3.0%",
+                "$3,868,540"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "847",
+                "26.5%",
+                "3.5%",
+                "$3,742,120"
+              ]
+            },
+            {
+              "name": "LinkedIn Paid Social",
+              "metrics": [
+                "638",
+                "28.0%",
+                "4.5%",
+                "$3,601,455"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "462",
+                "30.0%",
+                "5.2%",
+                "$2,988,390"
+              ]
+            },
+            {
+              "name": "Email Nurture",
+              "metrics": [
+                "342",
+                "32.0%",
+                "5.6%",
+                "$2,350,343"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3313,
+          "rows": [
+            {
+              "name": "cpc",
+              "metrics": [
+                "1,087",
+                "23.5%",
+                "2.9%",
+                "$3,858,540"
+              ]
+            },
+            {
+              "name": "organic",
+              "metrics": [
+                "792",
+                "25.5%",
+                "3.5%",
+                "$3,487,340"
+              ]
+            },
+            {
+              "name": "paid social",
+              "metrics": [
+                "611",
+                "27.5%",
+                "4.4%",
+                "$3,362,110"
+              ]
+            },
+            {
+              "name": "referral",
+              "metrics": [
+                "458",
+                "29.5%",
+                "5.5%",
+                "$3,109,505"
+              ]
+            },
+            {
+              "name": "email",
+              "metrics": [
+                "365",
+                "31.5%",
+                "6.0%",
+                "$2,733,353"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2204,
+          "rows": [
+            {
+              "name": "Ridiculously Good CX",
+              "metrics": [
+                "687",
+                "22.0%",
+                "3.1%",
+                "$2,613,180"
+              ]
+            },
+            {
+              "name": "Human Intelligence Behind AI",
+              "metrics": [
+                "542",
+                "24.5%",
+                "3.9%",
+                "$2,610,450"
+              ]
+            },
+            {
+              "name": "AI Data Labeling Partners",
+              "metrics": [
+                "421",
+                "26.5%",
+                "4.5%",
+                "$2,363,220"
+              ]
+            },
+            {
+              "name": "Outsource CX That Scales",
+              "metrics": [
+                "318",
+                "28.5%",
+                "5.3%",
+                "$2,114,460"
+              ]
+            },
+            {
+              "name": "Forward '26 Registration",
+              "metrics": [
+                "236",
+                "33.0%",
+                "6.8%",
+                "$1,990,080"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1164,
+          "rows": [
+            {
+              "name": "content moderation outsourcing companies",
+              "metrics": [
+                "342",
+                "21.5%",
+                "3.2%",
+                "$1,368,180"
+              ]
+            },
+            {
+              "name": "ai data labeling services",
+              "metrics": [
+                "287",
+                "24.0%",
+                "3.8%",
+                "$1,367,510"
+              ]
+            },
+            {
+              "name": "customer support outsourcing usa",
+              "metrics": [
+                "231",
+                "27.0%",
+                "4.8%",
+                "$1,366,840"
+              ]
+            },
+            {
+              "name": "trust and safety bpo vendor",
+              "metrics": [
+                "176",
+                "29.0%",
+                "5.7%",
+                "$1,243,800"
+              ]
+            },
+            {
+              "name": "rlhf data annotation provider",
+              "metrics": [
+                "128",
+                "34.0%",
+                "7.0%",
+                "$1,119,420"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Customer Experience & Agentic AI",
+              "metrics": [
+                "1,047",
+                "22%",
+                "2.6%",
+                "$3,361,447"
+              ]
+            },
+            {
+              "name": "Trust & Safety",
+              "metrics": [
+                "842",
+                "26%",
+                "3.6%",
+                "$3,729,882"
+              ]
+            },
+            {
+              "name": "AI Data & Operations",
+              "metrics": [
+                "631",
+                "24%",
+                "4.3%",
+                "$3,355,109"
+              ]
+            },
+            {
+              "name": "Financial Crime & Compliance",
+              "metrics": [
+                "447",
+                "28%",
+                "5.6%",
+                "$3,112,663"
+              ]
+            },
+            {
+              "name": "Autonomous Vehicles & Robotics",
+              "metrics": [
+                "346",
+                "31%",
+                "6.9%",
+                "$2,991,747"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3313,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "981",
+                "22%",
+                "3.0%",
+                "$3,611,482"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "812",
+                "25%",
+                "3.2%",
+                "$3,231,905"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "663",
+                "23%",
+                "3.8%",
+                "$3,112,664"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "502",
+                "27%",
+                "4.8%",
+                "$2,987,331"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "355",
+                "30%",
+                "8.2%",
+                "$3,607,466"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Contract Signed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Customer Experience & Agentic AI",
+            "values": [
+              5,
+              6,
+              5,
+              6,
+              5
+            ]
+          },
+          {
+            "name": "Trust & Safety",
+            "values": [
+              6,
+              6,
+              7,
+              5,
+              6
+            ]
+          },
+          {
+            "name": "AI Data & Operations",
+            "values": [
+              5,
+              5,
+              6,
+              6,
+              5
+            ]
+          },
+          {
+            "name": "Financial Crime & Compliance",
+            "values": [
+              4,
+              5,
+              6,
+              5,
+              5
+            ]
+          },
+          {
+            "name": "Autonomous Vehicles & Robotics",
+            "values": [
+              5,
+              4,
+              5,
+              5,
+              5
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 3,313 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Priya Nair, VP of CX at a retail eCommerce brand, called to explore omnichannel voice and chat outsourcing paired with agentic AI. The agent mapped her volumes to a white-glove premium tier and scheduled a scoping consultation with sales. Priya confirmed the date and asked for a case study to be emailed.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Lila",
+          "duration": "2m 48s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Marcus Feldman, an ML lead at a computer-vision startup, called about AI data labeling and annotation for model training. The agent explained dataset curation timelines and per-project pricing, then booked a technical consultation. Marcus was pleased and shared his data volumes on the call.",
+          "date": "Feb 11, 3:22 PM",
+          "agent": "Oscar",
+          "duration": "2m 31s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Elena Ross, an operations manager, called for a status update on her Learning as a Service onboarding curriculum program. The agent confirmed the current design milestone and pulled up the delivery schedule. Elena was satisfied with the progress and did not need anything further.",
+          "date": "Mar 4, 9:47 AM",
+          "agent": "Rosey",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Daniel Okafor, founder of a fintech startup, called to schedule a consultation about outsourcing his customer support team. The agent collected his company name, seat count, and target channels, then set up a new discovery consultation with the sales team. Daniel was clear on next steps before hanging up.",
+          "date": "Apr 9, 1:05 PM",
+          "agent": "Mary",
+          "duration": "3m 06s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 70,
+          "summary": "Sophia Lindqvist, a trust and safety director at a social platform, called about content moderation and policy enforcement coverage. The agent outlined moderator staffing and wellness support, then scheduled a consultation to scope the queue volumes. Sophia appreciated the clinical wellness component.",
+          "date": "Apr 22, 4:38 PM",
+          "agent": "Lee",
+          "duration": "2m 44s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Raj Patel from procurement called about an invoice discrepancy on his monthly per-FTE billing. The agent reviewed the account and flagged the line item for the finance team to correct. Raj wanted a follow-up email confirming the adjustment.",
+          "date": "May 7, 11:29 AM",
+          "agent": "Mike",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Hannah Cole, an AI researcher, called for status on her RLHF response scoring and data labeling deliverables. The agent checked the project tracker and gave an updated completion window. Hannah noted the turnaround was slower than expected.",
+          "date": "May 19, 2:16 PM",
+          "agent": "Jennifer",
+          "duration": "2m 09s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Tomas Rivera, head of support at a mobility app, called to explore agentic AI deployment with human-in-the-loop escalation. The agent explained the AI agent design workflow and scheduled a consultation with a solutions architect. Tomas asked several pricing questions before agreeing.",
+          "date": "Jun 3, 10:52 AM",
+          "agent": "Sue",
+          "duration": "2m 55s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Grace Kim, a compliance officer at a regional bank, called about outsourcing AML and KYC transaction monitoring. The agent described the analyst staffing model and regulatory coverage, then booked a consultation. Grace flagged a tight audit deadline that made her hesitant.",
+          "date": "Jun 21, 3:41 PM",
+          "agent": "Rose",
+          "duration": "2m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 21,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Victor Ambrose, an L and D manager, called frustrated about delays in an onboarding training rollout for his agents. The agent apologized and escalated the program timeline to the delivery lead. Victor wanted assurance the launch would not slip again.",
+          "date": "Jul 8, 9:33 AM",
+          "agent": "Oscar",
+          "duration": "2m 37s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Nadia Farouk, a program lead, called to complain about SLA misses and gaps in her compliance reporting. The agent logged the issues and promised a review from the account manager. Nadia remained unhappy with the lack of a firm resolution date.",
+          "date": "Jul 24, 1:58 PM",
+          "agent": "Lila",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Owen Bradley, a product manager, called to cancel a pilot engagement for AI red-teaming due to a budget freeze. The agent confirmed the cancellation terms and noted the account for potential re-engagement. Owen declined an offer to pause instead of cancel.",
+          "date": "Aug 5, 4:11 PM",
+          "agent": "Mike",
+          "duration": "1m 39s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "An inbound caller left a voicemail about a content moderation vendor RFP with a short deadline. No agent was available and the call rolled to voicemail. The message requested a same-day callback from sales.",
+          "date": "Aug 18, 8:26 AM",
+          "agent": "No Agent",
+          "duration": "0m 51s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Carla Mendez called with a billing dispute over an overage on data labeling hours she said were never approved. The agent could not locate the change order and routed the case to finance. Carla was irritated by the wait and asked to speak to a manager.",
+          "date": "Sep 9, 2:47 PM",
+          "agent": "Jennifer",
+          "duration": "2m 18s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Isaac Trent called angry about the quality of recent content moderation output on his platform. The agent tried to gather examples but Isaac talked over the questions. The call ended without a resolution and an escalation ticket was opened.",
+          "date": "Oct 2, 11:04 AM",
+          "agent": "Sue",
+          "duration": "3m 24s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "consultation",
+        "labeling",
+        "agentic",
+        "moderation",
+        "compliance",
+        "onboarding"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Service Scope",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area or ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Identify Budget or Contract Type",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Date and Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Next Steps",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer Additional Resources or FAQ",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Warm greeting with company name",
+        "Caller profile confirms new customer status",
+        "Service scope (CX outsourcing) clearly stated",
+        "Caller ZIP code captured (Austin, TX area)",
+        "Caller name verified twice",
+        "Consultation date offered and accepted",
+        "Caller phone number provided",
+        "Agent thanked caller at close",
+        "Caller confirmed next steps verbally",
+        "Service area matches our operations footprint",
+        "Caller showed genuine interest in AI augmentation",
+        "Call ended with positive tone",
+        "Callback number confirmed"
+      ],
+      "unmetSignals": [
+        "Email address not captured in system",
+        "No mention of required onboarding documents",
+        "Budget range or contract volume not discussed",
+        "No reference to TaskUs case studies or social proof",
+        "Caller's specific pain point not deeply explored",
+        "Agent did not confirm the caller's industry vertical",
+        "No mention of wellness program add-on options",
+        "No PDF or resource link sent post-call",
+        "Caller's current provider not identified",
+        "Agent did not ask about decision timeline",
+        "Competitive positioning not addressed",
+        "Caller's team size not established",
+        "Follow-up cadence not defined",
+        "Learning and training needs not assessed",
+        "No mention of TaskUs locations or language capabilities"
+      ],
+      "naSignals": [
+        "Deployment support requirements",
+        "Ongoing model monitoring expectations",
+        "RLHF feedback cycle expectations",
+        "Data annotation volume negotiations",
+        "Red teaming engagement scope",
+        "Robotics operations support",
+        "AV edge-case handling procedures",
+        "Existing vendor transition plan",
+        "Compliance certifications needed",
+        "Data residency requirements",
+        "Multi-month project roadmap",
+        "Custom pricing tier details",
+        "Retainer vs project-based fee structure",
+        "Invoice and billing contact",
+        "Service level agreement terms"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes, the caller represents a retail e-commerce company that needs omnichannel customer support scaling. They are struggling with chat response times and want AI-powered CX paired with human expertise."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a consultation within 2 weeks to discuss per-FTE pricing, agent onboarding timeline, and how TaskUs integrates with their current ticketing system."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have captured the caller's email address, asked about the caller's current support team size, and discussed expectations for the initial discovery meeting to set a clear agenda."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling TaskUs. This is Marcus Bell speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:22",
+          "text": "Hi Marcus, I found your number on your website. I run customer support operations for an e-commerce company based in Austin, and we're really stretched thin. We need help scaling."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:35",
+          "text": "Great, I'm glad you reached out. We work with retailers and e-commerce brands every day. Can I get your first and last name for my notes?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:42",
+          "text": "Sure, it's Jennifer Salazar."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:45",
+          "text": "Jennifer, perfect. And just to confirm, you're looking for support services? Are you interested in our Customer Experience offering, or something in the AI and automation space?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:58",
+          "text": "Both, honestly. We have voice, chat, and email tickets piling up. We want humans, but we also want your AI tools to route smarter. You know, like agentic AI helping us move faster."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:12",
+          "text": "Absolutely, that's our sweet spot. Our CX team combines omnichannel support with AI augmentation to handle scale without losing the human touch. What ZIP code or city should I be thinking about for your operations?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:25",
+          "text": "We're in Austin, Texas, 78704."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:29",
+          "text": "Excellent. Austin is part of our North America footprint. And just so I have this right, Jennifer Salazar, Austin. What's the best phone number to reach you at?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:38",
+          "text": "Sure, it's ****. You can also text that number."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:42",
+          "text": "Got it, ****. Just one more thing, what's your email address for follow-up materials?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:48",
+          "text": "Oh, um, I'll give you that when we actually book the call. I get a lot of spam."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:54",
+          "text": "I understand. So Jennifer, what I'd like to do is get you scheduled with one of our solutions consultants. Would next Thursday, October 31st at 10 AM work for an initial discovery call? That's about an hour."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:05",
+          "text": "Yeah, the 31st at 10 AM is perfect for me."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:09",
+          "text": "Excellent. We'll send over a calendar invite to that phone number, and on the call our team will dive into your staffing needs, pricing models, and integration with your existing systems. Does that sound good?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:18",
+          "text": "Sounds great, Marcus. Thanks for your help."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:21",
+          "text": "Thank you for calling TaskUs, Jennifer. We look forward to speaking with you on the 31st. Have a great day."
+        }
+      ],
+      "aiSummary": "Marcus Bell conducted an inbound lead qualification call with Jennifer Salazar, an e-commerce operations manager in Austin, Texas seeking omnichannel customer support and AI-augmented CX services. Marcus successfully captured the caller's name, ZIP code, phone number, and service interests, and scheduled a discovery consultation for October 31st at 10 AM. The caller did not provide an email address at intake, citing spam concerns, which represents a minor compliance gap. Overall, the call achieved its intake objectives and qualified the lead for consultative follow-up.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, strong structure on this one. You nailed the greeting, the qualification questions, and the close. The Austin ZIP code and 10 AM slot are locked in. One coaching point: next time, emphasize why we need the email for the calendar invite and onboarding materials. That small push can unlock data and improve our follow-up rate. Also consider asking Jennifer how many support agents she currently has, so we can size the proposal. Great work overall."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "3,313"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$4995.73"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$16,550,848"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "2,187"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "66%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "795"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "24%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "1,126"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "9%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Partner Referral",
+                "value": 40,
+                "display": "40%"
+              },
+              {
+                "name": "Direct",
+                "value": 32,
+                "display": "32%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 26,
+                "display": "26%"
+              },
+              {
+                "name": "LinkedIn",
+                "value": 20,
+                "display": "20%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google Ads",
+                  "1,043",
+                  "15%",
+                  "$5,204,880"
+                ]
+              },
+              {
+                "cells": [
+                  "LinkedIn",
+                  "842",
+                  "20%",
+                  "$4,180,255"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "621",
+                  "26%",
+                  "$3,102,640"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "452",
+                  "32%",
+                  "$2,301,733"
+                ]
+              },
+              {
+                "cells": [
+                  "Partner Referral",
+                  "355",
+                  "40%",
+                  "$1,761,340"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 1200,
+            "axisTicks": [
+              0,
+              200,
+              400,
+              600,
+              800,
+              1000,
+              1200
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search (cpc)",
+                "value": 1128,
+                "display": "1,128"
+              },
+              {
+                "name": "Paid Social",
+                "value": 796,
+                "display": "796"
+              },
+              {
+                "name": "Organic",
+                "value": 634,
+                "display": "634"
+              },
+              {
+                "name": "Email",
+                "value": 428,
+                "display": "428"
+              },
+              {
+                "name": "Referral",
+                "value": 327,
+                "display": "327"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search (cpc)",
+                  "1,128",
+                  "16%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "796",
+                  "21%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "634",
+                  "25%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "428",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "327",
+                  "39%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 700,
+            "axisTicks": [
+              0,
+              100,
+              200,
+              300,
+              400,
+              500,
+              600,
+              700
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Ridiculously Good CX",
+                "value": 612,
+                "display": "612"
+              },
+              {
+                "name": "Human Intelligence Behind AI",
+                "value": 498,
+                "display": "498"
+              },
+              {
+                "name": "AI Data Labeling Partners",
+                "value": 421,
+                "display": "421"
+              },
+              {
+                "name": "Outsource CX That Scales",
+                "value": 356,
+                "display": "356"
+              },
+              {
+                "name": "Forward '26 Registration",
+                "value": 287,
+                "display": "287"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Ridiculously Good CX",
+                  "612",
+                  "17%",
+                  "$2,984,120"
+                ]
+              },
+              {
+                "cells": [
+                  "Human Intelligence Behind AI",
+                  "498",
+                  "23%",
+                  "$2,441,880"
+                ]
+              },
+              {
+                "cells": [
+                  "AI Data Labeling Partners",
+                  "421",
+                  "29%",
+                  "$1,867,200"
+                ]
+              },
+              {
+                "cells": [
+                  "Outsource CX That Scales",
+                  "356",
+                  "38%",
+                  "$1,492,560"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 400,
+            "axisTicks": [
+              0,
+              50,
+              100,
+              150,
+              200,
+              250,
+              300,
+              350,
+              400
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "content moderation outsourcing companies",
+                "value": 342,
+                "display": "342"
+              },
+              {
+                "name": "AI data labeling services",
+                "value": 287,
+                "display": "287"
+              },
+              {
+                "name": "customer support outsourcing USA",
+                "value": 231,
+                "display": "231"
+              },
+              {
+                "name": "RLHF data annotation provider",
+                "value": 176,
+                "display": "176"
+              },
+              {
+                "name": "trust and safety BPO vendor",
+                "value": 128,
+                "display": "128"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "content moderation outsourcing companies",
+                  "18%"
+                ]
+              },
+              {
+                "cells": [
+                  "AI data labeling services",
+                  "24%"
+                ]
+              },
+              {
+                "cells": [
+                  "customer support outsourcing USA",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "RLHF data annotation provider",
+                  "41%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Customer Experience & Agentic AI",
+              "1,124",
+              "16%",
+              "62%"
+            ]
+          },
+          {
+            "cells": [
+              "Trust & Safety",
+              "892",
+              "22%",
+              "68%"
+            ]
+          },
+          {
+            "cells": [
+              "AI Data & Operations",
+              "743",
+              "28%",
+              "71%"
+            ]
+          },
+          {
+            "cells": [
+              "Financial Crime & Compliance",
+              "554",
+              "37%",
+              "74%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "New Braunfels HQ",
+              "1,048",
+              "96",
+              "6%",
+              "17%"
+            ]
+          },
+          {
+            "cells": [
+              "San Antonio Campus",
+              "892",
+              "71",
+              "5%",
+              "22%"
+            ]
+          },
+          {
+            "cells": [
+              "Manila Delivery Center",
+              "743",
+              "54",
+              "4%",
+              "28%"
+            ]
+          },
+          {
+            "cells": [
+              "Indore Delivery Center",
+              "630",
+              "44",
+              "3%",
+              "36%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              118,
+              142,
+              136,
+              138,
+              114
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              104,
+              122,
+              118,
+              121,
+              107
+            ]
+          },
+          {
+            "name": "Needs Executive Approval",
+            "values": [
+              92,
+              108,
+              103,
+              106,
+              89
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              78,
+              91,
+              87,
+              89,
+              76
+            ]
+          },
+          {
+            "name": "Outside Service Scope",
+            "values": [
+              68,
+              83,
+              79,
+              81,
+              68
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "1,325"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Contract Signed (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$9,433,983"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,847,294"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent and Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,156,718"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,629,885"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "30%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,542,017"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent and Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "33%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,789,265"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "36%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$468,804"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1534,
+          "rows": [
+            {
+              "name": "LinkedIn Paid Social and Account-Based Marketing",
+              "metrics": [
+                "412",
+                "58%",
+                "29%",
+                "$1,287,456"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "318",
+                "54%",
+                "31%",
+                "$1,156,892"
+              ]
+            },
+            {
+              "name": "Content and Organic",
+              "metrics": [
+                "287",
+                "57%",
+                "33%",
+                "$1,043,718"
+              ]
+            },
+            {
+              "name": "Email and Nurture",
+              "metrics": [
+                "198",
+                "52%",
+                "34%",
+                "$847,235"
+              ]
+            },
+            {
+              "name": "Events and Field Marketing",
+              "metrics": [
+                "110",
+                "48%",
+                "39%",
+                "$598,682"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1538,
+          "rows": [
+            {
+              "name": "Organic Search and SEO",
+              "metrics": [
+                "384",
+                "59%",
+                "28%",
+                "$1,094,563"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "296",
+                "55%",
+                "32%",
+                "$1,203,457"
+              ]
+            },
+            {
+              "name": "Social Media Advertising",
+              "metrics": [
+                "267",
+                "56%",
+                "30%",
+                "$952,841"
+              ]
+            },
+            {
+              "name": "Direct and Referral",
+              "metrics": [
+                "218",
+                "51%",
+                "35%",
+                "$856,192"
+              ]
+            },
+            {
+              "name": "Display and Retargeting",
+              "metrics": [
+                "160",
+                "49%",
+                "37%",
+                "$626,930"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1487,
+          "rows": [
+            {
+              "name": "AI Data Labeling Partners for Enterprise Scale",
+              "metrics": [
+                "356",
+                "56%",
+                "30%",
+                "$1,179,234"
+              ]
+            },
+            {
+              "name": "Human Intelligence Behind AI",
+              "metrics": [
+                "289",
+                "57%",
+                "31%",
+                "$1,062,847"
+              ]
+            },
+            {
+              "name": "Outsource Trust and Safety That Scales",
+              "metrics": [
+                "214",
+                "54%",
+                "33%",
+                "$945,128"
+              ]
+            },
+            {
+              "name": "Agentic AI Customer Service Solutions",
+              "metrics": [
+                "176",
+                "52%",
+                "35%",
+                "$847,563"
+              ]
+            },
+            {
+              "name": "Speak With an Expert Today",
+              "metrics": [
+                "147",
+                "48%",
+                "37%",
+                "$599,211"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1419,
+          "rows": [
+            {
+              "name": "Content moderation outsourcing companies",
+              "metrics": [
+                "298",
+                "55%",
+                "29%",
+                "$928,756"
+              ]
+            },
+            {
+              "name": "AI data labeling services",
+              "metrics": [
+                "267",
+                "57%",
+                "32%",
+                "$1,084,392"
+              ]
+            },
+            {
+              "name": "Agentic AI customer service partner",
+              "metrics": [
+                "189",
+                "58%",
+                "34%",
+                "$892,417"
+              ]
+            },
+            {
+              "name": "Trust and safety BPO vendor",
+              "metrics": [
+                "143",
+                "52%",
+                "36%",
+                "$716,845"
+              ]
+            },
+            {
+              "name": "RLHF data annotation provider",
+              "metrics": [
+                "92",
+                "49%",
+                "38%",
+                "$511,573"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Customer Experience and Agentic AI",
+              "metrics": [
+                "478",
+                "59%",
+                "30%",
+                "$2,156,394"
+              ]
+            },
+            {
+              "name": "AI Data and Operations",
+              "metrics": [
+                "327",
+                "57%",
+                "32%",
+                "$1,843,927"
+              ]
+            },
+            {
+              "name": "Trust and Safety",
+              "metrics": [
+                "289",
+                "55%",
+                "34%",
+                "$1,567,285"
+              ]
+            },
+            {
+              "name": "AI Safety and Alignment",
+              "metrics": [
+                "156",
+                "52%",
+                "36%",
+                "$1,234,617"
+              ]
+            },
+            {
+              "name": "Deployment and AI Operations",
+              "metrics": [
+                "75",
+                "48%",
+                "39%",
+                "$631,760"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Contract Signed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Customer Experience and Agentic AI",
+            "values": [
+              43,
+              51,
+              46,
+              54,
+              49
+            ]
+          },
+          {
+            "name": "AI Data and Operations",
+            "values": [
+              30,
+              38,
+              35,
+              39,
+              33
+            ]
+          },
+          {
+            "name": "Trust and Safety",
+            "values": [
+              27,
+              31,
+              29,
+              33,
+              31
+            ]
+          },
+          {
+            "name": "AI Safety and Alignment",
+            "values": [
+              18,
+              22,
+              20,
+              23,
+              17
+            ]
+          },
+          {
+            "name": "Deployment and AI Operations",
+            "values": [
+              9,
+              11,
+              10,
+              12,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "348"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$11,847,392"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "842"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "18:47:15"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "29"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$187,294"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              73,
+              76,
+              72,
+              81,
+              74,
+              78,
+              75,
+              82,
+              71,
+              79,
+              77,
+              74,
+              80,
+              73,
+              76,
+              75,
+              82,
+              78,
+              74,
+              81,
+              76,
+              79,
+              73,
+              77,
+              75,
+              72,
+              80,
+              78,
+              74,
+              183,
+              187,
+              192,
+              178,
+              186,
+              191,
+              179,
+              188,
+              184,
+              177,
+              189,
+              185,
+              182,
+              179,
+              191,
+              186,
+              178,
+              187,
+              183,
+              180
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,084"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "693"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "64%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "671"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Agentic AI Implementation",
+            "values": [
+              8,
+              11,
+              9,
+              3,
+              12,
+              10
+            ]
+          },
+          {
+            "name": "Trust & Safety Auditing",
+            "values": [
+              6,
+              8,
+              7,
+              2,
+              9,
+              7
+            ]
+          },
+          {
+            "name": "CX Transformation Scope",
+            "values": [
+              9,
+              10,
+              8,
+              4,
+              11,
+              9
+            ]
+          },
+          {
+            "name": "BPO Cost Optimization",
+            "values": [
+              7,
+              9,
+              6,
+              1,
+              8,
+              6
+            ]
+          },
+          {
+            "name": "Deployment Timeline & SLAs",
+            "values": [
+              5,
+              7,
+              6,
+              2,
+              10,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "3,048"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "1,922"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Engagement Scoped (Count)",
+            "value": "795"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$16,550,848"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 217,
+              "display": "217"
+            },
+            {
+              "name": "Priya Patel",
+              "value": 188,
+              "display": "188"
+            },
+            {
+              "name": "James Kowalski",
+              "value": 241,
+              "display": "241"
+            },
+            {
+              "name": "Sofia Reyes",
+              "value": 169,
+              "display": "169"
+            },
+            {
+              "name": "David Okonkwo",
+              "value": 203,
+              "display": "203"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Engagement Scoped (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Keisha Williams",
+            "values": [
+              94,
+              118,
+              147,
+              189,
+              234
+            ]
+          },
+          {
+            "name": "Robert Santos",
+            "values": [
+              87,
+              112,
+              141,
+              176,
+              218
+            ]
+          },
+          {
+            "name": "Amara Obi",
+            "values": [
+              92,
+              115,
+              148,
+              185,
+              231
+            ]
+          },
+          {
+            "name": "Liu Zhang",
+            "values": [
+              79,
+              103,
+              131,
+              164,
+              201
+            ]
+          },
+          {
+            "name": "Emma Johannsen",
+            "values": [
+              88,
+              109,
+              139,
+              172,
+              213
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Tyrone Vasquez",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Gisele Fontaine",
+              "value": 55.8,
+              "display": "55.8%"
+            },
+            {
+              "name": "Marcus Williamson",
+              "value": 57.1,
+              "display": "57.1%"
+            },
+            {
+              "name": "Yuki Nakamura",
+              "value": 58.9,
+              "display": "58.9%"
+            },
+            {
+              "name": "Rajesh Gupta",
+              "value": 59.4,
+              "display": "59.4%"
+            },
+            {
+              "name": "Cecilia Moreno",
+              "value": 61.3,
+              "display": "61.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Engagement Scoped (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Tyrone Vasquez",
+                "54.2%",
+                "28%",
+                "$7,589,114",
+                "1,412"
+              ]
+            },
+            {
+              "cells": [
+                "Gisele Fontaine",
+                "55.8%",
+                "29%",
+                "$8,015,623",
+                "1,489"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Williamson",
+                "57.1%",
+                "30%",
+                "$7,804,276",
+                "1,321"
+              ]
+            },
+            {
+              "cells": [
+                "Yuki Nakamura",
+                "58.9%",
+                "31%",
+                "$8,234,457",
+                "1,447"
+              ]
+            },
+            {
+              "cells": [
+                "Rajesh Gupta",
+                "59.4%",
+                "32%",
+                "$8,412,889",
+                "1,398"
+              ]
+            },
+            {
+              "cells": [
+                "Cecilia Moreno",
+                "61.3%",
+                "35%",
+                "$8,494,489",
+                "1,246}],"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Keisha Williams",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Robert Santos",
+              "value": 90.2,
+              "display": "90.2%"
+            },
+            {
+              "name": "Amara Obi",
+              "value": 89.8,
+              "display": "89.8%"
+            },
+            {
+              "name": "Liu Zhang",
+              "value": 88.5,
+              "display": "88.5%"
+            },
+            {
+              "name": "Emma Johannsen",
+              "value": 87.3,
+              "display": "87.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Engagement Scoped (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Keisha Williams",
+                "91.7%",
+                "67%",
+                "$2,148,769",
+                "1,542"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Santos",
+                "90.2%",
+                "64%",
+                "$1,987,432",
+                "1,481"
+              ]
+            },
+            {
+              "cells": [
+                "Amara Obi",
+                "89.8%",
+                "66%",
+                "$2,104,508",
+                "1,527"
+              ]
+            },
+            {
+              "cells": [
+                "Liu Zhang",
+                "88.5%",
+                "61%",
+                "$1,834,247",
+                "1,438"
+              ]
+            },
+            {
+              "cells": [
+                "Emma Johannsen",
+                "87.3%",
+                "58%",
+                "$1,641,892",
+                "1,367"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Engagement Scoped (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Engagement Scoped (Count)",
+        "rightMax": 100,
+        "rightTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 30
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 28
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 27
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 25
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 22
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 23
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 26
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 27
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 29
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 29
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 26
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 25
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 23
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 23
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 26
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 27
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 29
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 29
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 25
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 25
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 23
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 23
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 27
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 28
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 29
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 29
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 25
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 24
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 23
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 23
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 17
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 800000,
+        "rightTicks": [
+          0,
+          266666.6666666667,
+          533333.3333333334,
+          800000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 613525
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 588036
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 547581
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 522498
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 454931
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 477437
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 527411
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 548200
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 611246
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 592641
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 533772
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 515901
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 459065
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 473188
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 539968
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 556422
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 605555
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 596131
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 522743
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 506162
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 465956
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 470841
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 549275
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 567482
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 597862
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 596992
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 515263
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 494055
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 474035
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 471749
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 554925
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "3313"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:17"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "265"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "199"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Chen",
+                "412",
+                "89%",
+                "84%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Rodriguez",
+                "589",
+                "86%",
+                "85%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer O'Brien",
+                "478",
+                "87%",
+                "86%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "3,313 calls",
+      "pagerLabel": "1 of 331",
+      "calls": [
+        {
+          "time": "1/6/26 9:12 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 10:41 am",
+          "id": "A24C-90BE71440C1A"
+        },
+        {
+          "time": "1/13/26 11:03 am",
+          "id": "6D19-4F2C88A1E730"
+        },
+        {
+          "time": "1/15/26 1:22 pm",
+          "id": "B8E0-3A17CD5590F2"
+        },
+        {
+          "time": "1/16/26 2:47 pm",
+          "id": "29F4-70DA1B6634E8"
+        },
+        {
+          "time": "1/20/26 8:55 am",
+          "id": "C71A-5E9048BB2201"
+        },
+        {
+          "time": "1/22/26 12:18 pm",
+          "id": "33BD-6C21F70A9D54"
+        },
+        {
+          "time": "1/26/26 3:34 pm",
+          "id": "90AE-1D77B402E6F9"
+        },
+        {
+          "time": "1/28/26 4:09 pm",
+          "id": "5F62-8C90A3D14B77"
+        },
+        {
+          "time": "1/30/26 10:26 am",
+          "id": "E4D8-21B695C0770A"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling TaskUs, this is Marcus. How can I help you today?",
+          "highlights": [
+            "Thank you for calling TaskUs"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Marcus. My name is Priya Desai, I run trust operations at a social platform and we're looking for a content moderation partner. This is the first time we've reached out to you.",
+          "highlights": [
+            "content moderation partner",
+            "first time we've reached out"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:19",
+          "text": "Great to meet you Priya, and thanks for thinking of us. So I understand your platform's needs, can you tell me roughly the volume you're moderating and which content types?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:29",
+          "text": "Sure. We're seeing a big spike in user generated video and we need policy enforcement plus some platform integrity work. We're a growing team, maybe fifteen to twenty moderators to start.",
+          "highlights": [
+            "policy enforcement",
+            "platform integrity"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:41",
+          "text": "Understood. Our Trust and Safety service is a strong fit there. We staff specialized moderators, handle policy enforcement and escalations, and we pair it with our Wellness and Resiliency program to protect your teammates doing that difficult work.",
+          "highlights": [
+            "Trust and Safety service",
+            "Wellness and Resiliency program"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:55",
+          "text": "The wellness piece matters to us, honestly. But before we go further, what does something like that run per moderator? I want to keep this manageable while we scale.",
+          "highlights": [
+            "what does something like that run",
+            "keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:06",
+          "text": "That's fair. Moderation typically lands between twenty eight hundred and five thousand per moderator each month depending on language coverage and complexity, and wellness is a small add-on on top. We can scope a tier that matches your starting volume so you're not overpaying early.",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "1:20",
+          "text": "Okay. I'll be honest, we're also getting a quote from one of the bigger providers we already talked to, so I'm comparing a couple of options here.",
+          "highlights": [
+            "getting a quote from one of the bigger providers",
+            "comparing a couple of options"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:30",
+          "text": "That makes sense, and I'd encourage you to compare. Where we tend to stand out is the clinical rigor behind our wellness support and how fast we ramp specialized teams. I'm happy to put those specifics side by side for you.",
+          "highlights": [
+            "clinical rigor",
+            "ramp specialized teams"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:43",
+          "text": "That would help. One more thing, I don't want to get locked into some huge long term commitment before we know it works for us.",
+          "highlights": [
+            "don't want to get locked into some huge long term commitment"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:52",
+          "text": "Completely understand. We can start with a scoped pilot so you can validate quality before expanding. No need to commit to full scale up front.",
+          "highlights": [
+            "start with a scoped pilot"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:01",
+          "text": "That's reassuring. What would the next step look like?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:06",
+          "text": "I'd like to book you a consultation with one of our Trust and Safety solution leads. They'll walk through volume, language coverage, the wellness program, and pilot pricing. Does Thursday at 10 AM work?",
+          "highlights": [
+            "book you a consultation",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:19",
+          "text": "Thursday at 10 works. Let me just flag I may need to loop in our VP before we sign anything.",
+          "highlights": [
+            "may need to loop in our VP"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:27",
+          "text": "No problem at all, they're welcome to join. What's the best email to send the invite and a short prep summary to?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "2:33",
+          "text": "It's priya.desai at the company domain, I'll watch for it.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:38",
+          "text": "Perfect, you're booked for Thursday at 10 AM. Thanks so much Priya, we'll talk soon.",
+          "highlights": [
+            "booked for Thursday at 10 AM",
+            "Thanks so much"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Trust & Safety Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Wellness & Resiliency Mention",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Pricing Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Contract/Commitment Concern",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Priya Desai, a new prospect running trust operations at a social platform, called seeking a content moderation partner for a growing team of fifteen to twenty moderators. The agent recommended TaskUs Trust and Safety service with policy enforcement and platform integrity, paired with the Wellness and Resiliency program. Marcus addressed her budget, competitor, and long term commitment concerns by proposing a scoped pilot and transparent per-moderator pricing. A consultation with a Trust and Safety solution lead was scheduled for Thursday at 10 AM.",
+        "keyPoints": [
+          "New client, first time contacting TaskUs",
+          "Needs content moderation, policy enforcement, and platform integrity for user generated video",
+          "Recommended Trust and Safety plus Wellness and Resiliency add-on",
+          "Handled pricing, competitor quote, and no-lock-in concerns with a scoped pilot",
+          "Consultation booked for Thursday at 10 AM",
+          "Contact email captured, VP may join the call"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "2,087 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 209",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for reaching out to TaskUs. We help enterprise brands scale their customer experience and trust and safety operations with AI and human expertise. Are you exploring outsourcing solutions for your contact center or content moderation team?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes, we're looking at outsourcing our customer support. We get a lot of volume and our team is stretched thin."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great. That's exactly what we do best. Quick question: what industry are you in? Gaming, retail, fintech, or something else?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "We're a mid-size e-commerce platform. We sell apparel and accessories online."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. E-commerce CX is one of our core verticals. Are you looking to handle inbound support only, or do you also need proactive outreach like order follow-ups and retention?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:27 AM",
+              "text": "Both. We need someone to handle returns, shipping issues, and also call customers post-purchase to check in."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:28 AM",
+              "text": "Excellent. That's our omnichannel CX service. Based on what you've shared, we'd estimate somewhere in the range of 8 to 15 agents depending on your monthly volume. Cost runs about $2,500 to $4,500 per agent per month. Does that ballpark feel right for your budget?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "That's in the ballpark. What's the next step?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Perfect. I'd like to schedule a discovery call with one of our solutions consultants. They'll dig into your volume, channels, SLAs, and put together a custom proposal. How about Wednesday, March 19th at 2 PM Pacific time? We can do it by phone or video."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Wednesday the 19th at 2 PM works great for me. What number do I call?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "You'll receive a calendar invite and callback details shortly. Our consultant will reach out at 2 PM Pacific. Thanks for choosing TaskUs. Looking forward to partnering with you."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:35 AM",
+              "text": "Perfect. Thanks so much."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Customer Experience Omnichannel CX",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Industry: Retail and eCommerce",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Agent Range: 8 to 15 FTE",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimated Monthly Cost: $2,500 to $4,500 per Agent",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "13",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "650-387-4521",
+            "repeatCaller": "No",
+            "city": "San Francisco",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Jordan Mitchell",
+            "firstName": "Jordan",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A847-2B9C74E1D563",
+          "time": "8/16/25 10:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A847-2B9C74E1D563",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B923-5E8A41C2F78B",
+          "time": "8/16/25 10:39 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B923-5E8A41C2F78B",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D654-7F3B9A1E6C42",
+          "time": "8/16/25 10:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D654-7F3B9A1E6C42",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "3,313 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 331",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/23/26 4:12 pm",
+          "active": true,
+          "date": "January 23, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thanks for calling TaskUs. This is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Hi Marcus. Yeah, I'm calling because we're looking to outsource some of our customer experience work. We've got a retail operation that's been getting overwhelmed with support tickets."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Absolutely, that's great to hear. We work with a lot of retail and eCommerce teams on exactly that. Before we dive deeper, are you currently managing this support in house or do you already have a partner helping out?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Right now it's all in house. We've got about eight people handling chat and email, but we're just not keeping up with volume."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Got it. And when you say you're not keeping up, what's the biggest pain point for your team? Is it speed, quality, or just pure volume?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "Honestly, it's all three. We're getting backed up on tickets, our response times are slow, and we know our customers are frustrated."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Okay, that makes sense. TaskUs specializes in omnichannel customer experience, so we can definitely help you scale that across voice, chat, and email. One quick question. What's your current ticket volume looking like per week?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "We're hitting about five thousand tickets a week right now."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Five thousand a week is solid volume. We can absolutely handle that. In fact, based on your team size, outsourcing even half of that to our expert teams could free up your staff and get your response times down significantly. What time zone are you in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "We're in Denver, so Mountain Time."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Perfect. Mountain Time works great for us. We have teams across multiple time zones and we can provide white glove support for retail operations like yours. I'd love to get you connected with one of our customer experience specialists to talk through a custom proposal. Are you available for a brief consultation next Tuesday or Wednesday?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Yeah, Tuesday would be better for me. What time were you thinking?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Excellent. How about two PM Mountain Time next Tuesday, January twenty eighth? That'll give us time to put together some specifics tailored to your five thousand weekly tickets and your team's setup."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Yeah, two PM works perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "Great. So to confirm, I've got you down for Tuesday, January twenty eighth at two PM Mountain Time with one of our customer experience specialists. You'll get a confirmation email, and if anything changes, just give us a call back at eight seven seven, nine three six, twenty nine thirty three. Sound good?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Perfect. Thanks, Marcus."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "You're welcome. Looking forward to speaking with you Tuesday. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Customer Experience",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Industry: Retail and eCommerce",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Volume Mentioned: 5000 tickets per week",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Region: Mountain Time Zone",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Pain Point: Response Time and Backlog",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/23/26 4:12 pm",
+            "duration": "7:24",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "303-555-0147",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B621-4A7FD928341C",
+          "time": "1/18/26 3:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B621-4A7FD928341C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C734-5B8GE039452D",
+          "time": "1/12/26 2:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C734-5B8GE039452D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D845-6C9HF140563E",
+          "time": "1/05/26 1:22 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D845-6C9HF140563E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro plus offer: Introduce yourself as TaskUs's AI agent helping put together a personalized quote for outsourced CX, Trust and Safety, or AI data services, mention that new engagements scoped this quarter can lock in preferred FTE rates, and ask the client if they would like to get started.",
+        "Qualify one question at a time: Ask a single question per message covering the service category they need, the headcount or program volume, the language and channel mix, the target launch timeline, and finally the region or ZIP code so we can confirm delivery and account coverage.",
+        "Estimate then book: Confirm we support their region, share a preliminary rate range based on the service and volume they described, recommend a consultation with a TaskUs solutions specialist for an exact scoped quote, propose a specific day and time, and confirm they will get a reminder text before the meeting with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "TaskUs_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Services & Solutions",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "AI, AV & Robotics",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Connect With Sales",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"program status\",\"question\":\"How is my content moderation ramp progressing this month?\",\"answer\":\"Your dedicated program manager tracks staffing, QA, and CSAT in your client dashboard, and I can set up a quick review call with them to walk through the current ramp. Would you like me to schedule that check-in?\"},{\"topic\":\"scaling headcount\",\"question\":\"Can we add more agents to our existing CX team before the holiday peak?\",\"answer\":\"Yes, we can flex your FTE count up for seasonal peaks with advance notice, and your account team can confirm lead times and updated rates. I can book a scoping consultation to finalize the additional headcount.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What services does TaskUs offer?",
+              "answer": "We deliver Customer Experience, Agentic AI, Trust and Safety, AI data and operations, and specialized services like Sales and Learning as a Service. A short consultation with a specialist is the best way to map the right mix to your goals, and I can set that up."
+            },
+            {
+              "question": "How much does it cost to outsource customer support with TaskUs?",
+              "answer": "Pricing is custom-scoped and typically billed per agent per month based on channels, languages, and volume. I can arrange a consultation where a specialist gives you an exact quote for your program."
+            },
+            {
+              "question": "Do you provide content moderation and trust and safety services?",
+              "answer": "Yes, we offer content moderation, policy enforcement, platform integrity, and CSAM response backed by clinical wellness support for our teams. Let's book a consultation to scope your specific policy needs."
+            },
+            {
+              "question": "Can TaskUs help us build and deploy AI agents?",
+              "answer": "Absolutely, our Agentic AI teams handle AI agent design, deployment, human-in-the-loop escalation, and workflow automation. A specialist can walk you through an approach on a quick call, and I can schedule it."
+            },
+            {
+              "question": "Do you offer AI data labeling and annotation?",
+              "answer": "Yes, we provide data collection, labeling, annotation, and dataset curation for model training. I can set up a consultation to review your dataset volume and requirements."
+            },
+            {
+              "question": "What is RLHF and do you support it?",
+              "answer": "We support RLHF, prompt and response scoring, and output evaluation to help align and validate models. Let's book a consultation so a specialist can detail the workflow for your team."
+            },
+            {
+              "question": "Do you handle AML and KYC compliance work?",
+              "answer": "Yes, our Financial Crime and Compliance teams cover KYC, AML, transaction monitoring, and fraud investigation. I can arrange a consultation to align on your regulatory scope."
+            },
+            {
+              "question": "How many languages and countries do you support?",
+              "answer": "We operate across 14 countries and support more than 30 languages. A specialist can confirm coverage for your specific markets on a scoping call, and I can book it."
+            },
+            {
+              "question": "Can you scale a team quickly for a product launch or seasonal peak?",
+              "answer": "Yes, we ramp and flex staffing for launches and peak periods with proper lead time. Let's schedule a consultation to plan the timeline and headcount."
+            },
+            {
+              "question": "What industries do you work with?",
+              "answer": "We serve Entertainment and Gaming, Financial Services, Healthcare, Mobility and Travel, Retail and eCommerce, Social Media, and Technology. A specialist can share relevant results for your industry on a call I can set up."
+            },
+            {
+              "question": "Do you offer red teaming and AI safety testing?",
+              "answer": "Yes, we run adversarial red-teaming, model blind-spot testing, and misuse prevention across modalities. I can book a consultation to review your model and scope."
+            },
+            {
+              "question": "How is TaskUs different from Concentrix or Teleperformance?",
+              "answer": "We pair specialized talent with intelligent automation in a human-plus-AI model focused on measurable outcomes and wellness for our teams. A specialist can walk through a tailored comparison, and I can schedule that call."
+            },
+            {
+              "question": "Do you support autonomous vehicle programs?",
+              "answer": "Yes, we handle AV data annotation, sensor labeling, edge-case operations, and safety validation. Let's book a consultation to scope your program."
+            },
+            {
+              "question": "Can you provide sales outsourcing?",
+              "answer": "Yes, our Sales as a Service teams cover lead generation, SDR and BDR outsourcing, and pipeline management. I can arrange a consultation to review your revenue goals."
+            },
+            {
+              "question": "Do you offer training and onboarding programs?",
+              "answer": "Yes, our Learning as a Service builds onboarding curriculum, agent training, and knowledge management. A specialist can scope a program on a call I can set up."
+            },
+            {
+              "question": "How do you protect the wellbeing of moderators?",
+              "answer": "We provide science-backed clinical wellness, psychological support, and resilience programs as an add-on to high-stakes work. Let's book a consultation to include this in your program design."
+            },
+            {
+              "question": "How long does it take to get started?",
+              "answer": "Timelines depend on scope, staffing, and channels, and a specialist can give you a realistic launch plan. I can schedule a consultation to map your timeline."
+            },
+            {
+              "question": "Can I get a custom quote for my program?",
+              "answer": "Yes, quotes are tailored to your service mix, headcount, and volume. Share a few details and I can book a consultation where a specialist provides an exact quote."
+            },
+            {
+              "question": "Do you work with NVIDIA, AWS, or Zendesk?",
+              "answer": "Yes, we co-market and integrate with partners including NVIDIA, AWS, Zendesk, Kustomer, and Decagon. A specialist can explain how those fit your stack on a call I can schedule."
+            },
+            {
+              "question": "How do I speak with someone about starting a program?",
+              "answer": "The fastest path is a consultation with a TaskUs solutions specialist who can scope and quote your needs. Share your service interest and region and I will set up the appointment."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the consultation\",\"follow_up_message\":\"Great, I have you down to meet with a TaskUs solutions specialist. Please confirm a day and time that works and you will get a reminder text with a number to call before the consultation.\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Thanks for the details on your service and volume. Based on what you shared I can note a preliminary rate range, and a specialist will confirm an exact scoped quote on a short consultation. What day and time works best for you?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is the TaskUs AI agent. I can help put together a personalized quote for outsourced CX, Trust and Safety, or AI data services. Would you like to get started?",
+        "goal": "Qualify the prospective client's service needs and volume, then book a consultation with a TaskUs solutions specialist for an exact scoped quote.",
+        "bookingType": "virtual consultation",
+        "offer": "Lock in preferred FTE rates on new engagements scoped this quarter",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "Which service are you interested in, such as Customer Experience, Trust and Safety, Agentic AI, or AI data and annotation?",
+          "Roughly how many agents, moderators, or analysts do you need, or what program volume are you planning?",
+          "Which languages and channels do you need covered, such as voice, chat, or email?",
+          "What is your target launch timeline?",
+          "What region or ZIP code will this program support so we can confirm delivery coverage?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:35 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:35 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:35 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "TaskUs",
+      "callerName": "Sarah Chen",
+      "callerPhone": "(512) 555-0847",
+      "campaign": "Customer Experience AI Solutions, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$3,750",
+      "googleSearch": "customer support outsourcing USA AI powered",
+      "websiteSearch": "agentic AI customer service partner",
+      "callingWebpage": "/services/customer-experience-agentic-ai",
+      "products": "Customer Experience, Agentic AI",
+      "cartId": "TU-2847M",
+      "serviceable": "Yes",
+      "email": "sarah.chen@retailgroup.com",
+      "street": "1402 Barton Springs Road",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78704",
+      "digitalJourney": "/home › /services › /customer-experience-agentic-ai › /contact-us",
+      "intent": "Seeking omnichannel voice and chat support with AI augmentation to scale customer experience operations",
+      "coverage": "ZIP 78704 confirmed, Austin serviceable",
+      "switchIntent": "High. Current provider contract ending in 60 days, evaluation timeline tight, wants live demo and reference customers this week",
+      "greeting": "Hi Sarah, this is Marcus from TaskUs. Thanks for reaching out about our Customer Experience and Agentic AI solutions. I understand you're looking to scale your support operations with AI-powered teams. I'd love to set up a consultation with one of our specialists to walk through your use case and show how we handle omnichannel support. Does Thursday or Friday this week work for a 30 minute call?"
+    },
+    "smsScreenpop": {
+      "brandName": "TaskUs",
+      "callerName": "James Rodriguez",
+      "callerPhone": "(415) 555-0613",
+      "campaign": "Trust and Safety Moderation Services, San Francisco Bay Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$4,200",
+      "googleSearch": "content moderation outsourcing companies trust safety BPO",
+      "websiteSearch": "trust and safety vendor AI moderation at scale",
+      "callingWebpage": "/services/trust-and-safety",
+      "products": "Trust and Safety, Wellness and Resiliency",
+      "cartId": "TU-5931K",
+      "serviceable": "Yes",
+      "email": "jrodriguez@mediaplat.com",
+      "street": "845 Market Street Suite 600",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94103",
+      "digitalJourney": "/home › /services › /trust-and-safety › /services/wellness-and-resiliency › /contact-us",
+      "intent": "Needs specialized content moderation team with clinical wellness support for moderators handling high risk policy enforcement",
+      "coverage": "ZIP 94103 confirmed, San Francisco serviceable",
+      "appointment": "Initial consultation with Trust and Safety Specialist, Wed Jul 23, 2:00 PM PT",
+      "greeting": "Hi James, it's Amy from TaskUs. Thanks for texting us about our Trust and Safety moderation services with built in wellness support. We have your initial consultation scheduled for Wednesday July 23rd at 2 PM PT with one of our specialists. They'll walk through our clinical approach to moderator wellbeing and how we scale policy enforcement. Looking forward to connecting then. Any questions before Wednesday?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "TaskUs",
+      "brandDomain": "www.taskus.com",
+      "brandIcon": "🤖",
+      "callerPhone": "+1 (210) 555-0147",
+      "callerLocation": "Austin, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Outsource CX That Scales",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "customer support outsourcing USA",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/services/customer-experience",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Customer Experience & Agentic AI, AI Data & Operations",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Austin, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_new_project",
+          "name": "Consultation, New Project"
+        },
+        {
+          "id": "support_existing_client",
+          "name": "Support, Existing Client"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there. Thanks for reaching out to TaskUs. I can see you're interested in our customer experience and AI solutions. Are you looking to explore options for a new outsourcing project, or do you have an existing engagement with us?",
+          "sigs": [],
+          "q": [
+            15,
+            65,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, hi. We're a mid-market retail brand and our support team is completely overwhelmed. We need to scale fast, and I heard TaskUs does omnichannel support and AI-powered teams.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "<strong>Retail customer</strong>, support scale challenge"
+            },
+            {
+              "c": "green",
+              "t": "<strong>Omnichannel support</strong> interest"
+            },
+            {
+              "c": "orange",
+              "t": "Immediate need"
+            }
+          ],
+          "q": [
+            45,
+            35,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect, that's exactly our bread and butter. So you're handling voice, chat, email across channels right now? And roughly how many agents would you need to bring on board to meet demand?",
+          "sigs": [],
+          "q": [
+            62,
+            20,
+            18
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We're probably looking at twelve to fifteen full-time equivalents to start. Voice is the biggest bottleneck. We'd love to understand pricing and how your teams could integrate with our systems.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>12-15 FTE scope</strong>, voice priority"
+            },
+            {
+              "c": "blue",
+              "t": "Integration requirement"
+            },
+            {
+              "c": "purple",
+              "t": "Budget exploration"
+            }
+          ],
+          "q": [
+            85,
+            8,
+            7
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent. That's a solid starting engagement. I'm going to connect you with our Consultation team who specialize in new customer experience projects. They'll walk through our service model, pricing for your agent volume, and timeline to ramp. You'll have a custom proposal within days.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule a consultation (Agent)\", \"book a discovery call (Agent)\", \"set up a call with our team (Caller)\", \"get you connected with sales (Agent)\"])",
+          "createdAt": "11/14/24 9:02 am",
+          "updatedAt": "01/12/26 3:41 pm"
+        },
+        {
+          "name": "Agentic AI Interest (Product)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"agentic AI (Caller)\", \"AI customer service agents (Caller)\", \"automate our support (Caller)\", \"human in the loop (Agent)\"])",
+          "createdAt": "01/22/25 10:18 am",
+          "updatedAt": "01/09/26 11:27 am"
+        },
+        {
+          "name": "Competitor Named (Intent)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Concentrix (Caller)\", \"Teleperformance (Caller)\", \"we're also talking to (Caller)\", \"currently with another BPO (Caller)\"])",
+          "createdAt": "12/03/24 2:44 pm",
+          "updatedAt": "01/07/26 8:53 am"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"speak with an expert (Caller)\", \"learn more about your services (Caller)\", \"tell me about your CX solutions (Caller)\"])",
+          "createdAt": "11/29/24 4:11 pm",
+          "updatedAt": "12/28/25 1:19 pm"
+        },
+        {
+          "name": "Content Moderation Interest (Product)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"content moderation (Caller)\", \"trust and safety team (Caller)\", \"policy enforcement (Caller)\", \"platform integrity (Caller)\"])",
+          "createdAt": "02/10/25 8:36 am",
+          "updatedAt": "01/11/26 9:04 am"
+        },
+        {
+          "name": "Empathy & Rapport (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy & Rapport] < 60 and duration > 45 sec",
+          "createdAt": "12/15/24 11:52 am",
+          "updatedAt": "01/06/26 4:22 pm"
+        },
+        {
+          "name": "Needs Discovery (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Needs Discovery] < 60 and duration > 45 sec",
+          "createdAt": "01/08/25 3:27 pm",
+          "updatedAt": "01/10/26 10:48 am"
+        },
+        {
+          "name": "Pricing Objection (Intent)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"too expensive (Caller)\", \"what's the price per agent (Caller)\", \"out of our budget (Caller)\", \"cheaper options (Caller)\"])",
+          "createdAt": "11/20/24 1:09 pm",
+          "updatedAt": "01/05/26 2:37 pm"
+        },
+        {
+          "name": "Professional Greeting (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Professional Greeting] < 60 and duration > 45 sec",
+          "createdAt": "12/22/24 9:41 am",
+          "updatedAt": "01/04/26 12:15 pm"
+        },
+        {
+          "name": "Quote Provided (Lead)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"per agent per month (Agent)\", \"pricing for that project (Agent)\", \"send you a proposal (Agent)\", \"cost estimate (Agent)\"])",
+          "createdAt": "01/16/25 10:33 am",
+          "updatedAt": "01/13/26 5:08 pm"
+        }
+      ]
+    }
+  }
+}

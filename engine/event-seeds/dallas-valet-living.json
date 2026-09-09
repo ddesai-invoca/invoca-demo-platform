@@ -1,0 +1,5362 @@
+{
+  "id": "valet-living",
+  "customerName": "Valet Living",
+  "websiteUrl": "https://www.valetliving.com",
+  "brandDomain": "valetliving.com",
+  "networkName": "Invoca for Multifamily Amenity Services",
+  "industry": "Multifamily amenity services (B2B)",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Property Manager",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 3000,
+      "yTicks": [
+        0,
+        750,
+        1500,
+        2250,
+        3000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 1847
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 2634
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 2489
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 2376
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 2100
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Multifamily Doorstep Trash Service",
+          "marketingSearchTerm": "doorstep trash and recycling collection company",
+          "landingPageUrl": "https://www.valetliving.com/property-management/doorstep?utm_source=google&utm_medium=cpc&utm_campaign=doorstep_trash",
+          "websiteJourney": "Home / Property Management / Valet Living Doorstep",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "One Vendor, Every Amenity",
+          "marketingSearchTerm": "multifamily amenity services provider",
+          "landingPageUrl": "https://www.valetliving.com/amenity-services?utm_source=google&utm_medium=cpc&utm_campaign=one_vendor",
+          "websiteJourney": "Home / Amenity Services / Sustainability",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Valet Trash Pickup",
+          "marketingSearchTerm": "apartment valet trash service",
+          "landingPageUrl": "https://www.valetliving.com/property-management/doorstep?utm_source=google&utm_medium=cpc&utm_campaign=valet_pickup",
+          "websiteJourney": "Home / Property Management / Valet Living Doorstep",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Turns Done Right",
+          "marketingSearchTerm": "apartment turn services vendor",
+          "landingPageUrl": "https://www.valetliving.com/property-management/turns?utm_source=google&utm_medium=cpc&utm_campaign=turns_done_right",
+          "websiteJourney": "Home / Property Management / Turns",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Apartment Amenity Provider",
+          "marketingSearchTerm": "resident amenity app for apartments",
+          "landingPageUrl": "https://www.valetliving.com/residents/valet-living-home?utm_source=bing&utm_medium=cpc&utm_campaign=amenity_provider",
+          "websiteJourney": "Home / Residents / Valet Living Home",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Amenities That Pay for Themselves",
+          "marketingSearchTerm": "reduce resident turnover amenities",
+          "landingPageUrl": "https://www.valetliving.com/amenity-services?utm_source=google&utm_medium=cpc&utm_campaign=amenities_pay",
+          "websiteJourney": "Home / Amenity Services / Sustainability",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Valet Trash Pickup",
+          "marketingSearchTerm": "valet living pricing",
+          "landingPageUrl": "https://www.valetliving.com/contact/request-a-quote?utm_source=google&utm_medium=cpc&utm_campaign=valet_pickup",
+          "websiteJourney": "Home / Contact / Request a Quote",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "The Only Amenity Every Resident Uses",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.valetliving.com/residents/valet-living-home?utm_source=instagram&utm_medium=social&utm_campaign=only_amenity",
+          "websiteJourney": "Home / Residents / Valet Living Home / Home Cleans",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Retention Starts at the Doorstep",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.valetliving.com/property-management/doorstep?utm_source=facebook&utm_medium=social&utm_campaign=retention_doorstep",
+          "websiteJourney": "Home / Property Management / Valet Living Doorstep",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Go Full-Service",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.valetliving.com/amenity-services/valet-living-connect?utm_source=facebook&utm_medium=social&utm_campaign=go_full_service",
+          "websiteJourney": "Home / Amenity Services / Valet Living Connect",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Resident Retention Thought Leadership",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.valetliving.com/newsroom/nmhc-kingsley-amenity-report?utm_source=organic&utm_medium=organic&utm_campaign=retention_research",
+          "websiteJourney": "Home / About / Newsroom",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Doorstep SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.valetliving.com/property-management/doorstep?utm_source=organic&utm_medium=organic&utm_campaign=doorstep_seo",
+          "websiteJourney": "Home / Property Management / Valet Living Doorstep",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Pet Solutions Content",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.valetliving.com/property-management/pet-solutions?utm_source=organic&utm_medium=organic&utm_campaign=pet_solutions",
+          "websiteJourney": "Home / Property Management / Pet Solutions",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Multifamily Doorstep Trash Service",
+          "marketingSearchTerm": "apartment valet trash service",
+          "landingPageUrl": "https://www.valetliving.com/property-management/doorstep?utm_source=google&utm_medium=cpc&utm_campaign=doorstep_trash",
+          "websiteJourney": "Home / Property Management / Valet Living Doorstep",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "The Only Amenity Every Resident Uses",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.valetliving.com/residents/valet-living-home/laundry?utm_source=instagram&utm_medium=social&utm_campaign=only_amenity",
+          "websiteJourney": "Home / Residents / Valet Living Home / Laundry & Dry Cleaning",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Turns Done Right",
+          "marketingSearchTerm": "apartment turn services vendor",
+          "landingPageUrl": "https://www.valetliving.com/property-management/turns?utm_source=bing&utm_medium=cpc&utm_campaign=turns_done_right",
+          "websiteJourney": "Home / Property Management / Turns",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Torch Fitness Content",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.valetliving.com/residents/valet-living-home/fitness?utm_source=organic&utm_medium=organic&utm_campaign=torch_fitness",
+          "websiteJourney": "Home / Residents / Valet Living Home / Fitness",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Apartment Amenity Provider",
+          "marketingSearchTerm": "maintenance support for apartments",
+          "landingPageUrl": "https://www.valetliving.com/property-management/maintenance?utm_source=google&utm_medium=cpc&utm_campaign=amenity_provider",
+          "websiteJourney": "Home / Property Management / Maintenance",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Go Full-Service",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.valetliving.com/residents/valet-living-home/concierge?utm_source=facebook&utm_medium=social&utm_campaign=go_full_service",
+          "websiteJourney": "Home / Residents / Valet Living Home / Concierge",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Package Delivery Content",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.valetliving.com/residents/valet-living-home/package-delivery?utm_source=organic&utm_medium=organic&utm_campaign=package_delivery",
+          "websiteJourney": "Home / Residents / Valet Living Home / Package Delivery",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Amenities That Pay for Themselves",
+          "marketingSearchTerm": "how does apartment valet trash work",
+          "landingPageUrl": "https://www.valetliving.com/amenity-services?utm_source=google&utm_medium=cpc&utm_campaign=amenities_pay",
+          "websiteJourney": "Home / Amenity Services / Sustainability",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Retention Starts at the Doorstep",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.valetliving.com/property-management/pet-solutions?utm_source=instagram&utm_medium=social&utm_campaign=retention_doorstep",
+          "websiteJourney": "Home / Property Management / Pet Solutions",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Valet Living)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "8,977"
+            },
+            {
+              "label": "Sales Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$33,581,143"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "1,436"
+            },
+            {
+              "label": "Service Scheduling Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing Inquiry (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Resident Support Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Unqualified Property (Percent)",
+              "value": "14%"
+            },
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "8%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sales Inquiry (Count)",
+            "values": [
+              1438,
+              1672,
+              1589,
+              1534,
+              1308
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              487,
+              552,
+              531,
+              498,
+              446
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              238,
+              276,
+              264,
+              251,
+              228
+            ]
+          },
+          {
+            "name": "Contract Signed (Count)",
+            "values": [
+              132,
+              158,
+              151,
+              144,
+              133
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8977,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "3,142",
+                "26.4%",
+                "5.8%",
+                "$8,624,551"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "2,187",
+                "28.1%",
+                "6.9%",
+                "$7,142,880"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "1,564",
+                "30.2%",
+                "8.1%",
+                "$5,988,320"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "1,268",
+                "32.5%",
+                "10.4%",
+                "$6,231,470"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "816",
+                "35.8%",
+                "13.6%",
+                "$5,593,922"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8977,
+          "rows": [
+            {
+              "name": "CPC",
+              "metrics": [
+                "2,984",
+                "25.8%",
+                "6.1%",
+                "$8,913,447"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "2,241",
+                "27.9%",
+                "7.3%",
+                "$7,284,116"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "1,592",
+                "29.6%",
+                "8.8%",
+                "$6,012,558"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "1,347",
+                "31.7%",
+                "10.6%",
+                "$6,124,900"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "813",
+                "34.9%",
+                "13.9%",
+                "$5,246,122"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 5273,
+          "rows": [
+            {
+              "name": "Retention Starts at the Doorstep",
+              "metrics": [
+                "1,684",
+                "24.6%",
+                "6.4%",
+                "$5,038,412"
+              ]
+            },
+            {
+              "name": "One Vendor, Every Amenity",
+              "metrics": [
+                "1,342",
+                "27.2%",
+                "7.8%",
+                "$4,214,880"
+              ]
+            },
+            {
+              "name": "The Only Amenity Every Resident Uses",
+              "metrics": [
+                "987",
+                "29.8%",
+                "9.2%",
+                "$3,342,110"
+              ]
+            },
+            {
+              "name": "Turns Done Right",
+              "metrics": [
+                "742",
+                "32.1%",
+                "11.4%",
+                "$2,684,550"
+              ]
+            },
+            {
+              "name": "Amenities That Pay for Themselves",
+              "metrics": [
+                "518",
+                "35.4%",
+                "14.6%",
+                "$2,193,660"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 4329,
+          "rows": [
+            {
+              "name": "apartment valet trash service",
+              "metrics": [
+                "1,412",
+                "23.8%",
+                "6.0%",
+                "$4,338,240"
+              ]
+            },
+            {
+              "name": "doorstep trash and recycling collection company",
+              "metrics": [
+                "1,043",
+                "26.5%",
+                "7.5%",
+                "$3,412,760"
+              ]
+            },
+            {
+              "name": "multifamily amenity services provider",
+              "metrics": [
+                "824",
+                "29.2%",
+                "9.1%",
+                "$2,684,110"
+              ]
+            },
+            {
+              "name": "apartment turn services vendor",
+              "metrics": [
+                "612",
+                "31.9%",
+                "11.3%",
+                "$2,043,880"
+              ]
+            },
+            {
+              "name": "valet living pricing",
+              "metrics": [
+                "438",
+                "34.7%",
+                "14.9%",
+                "$1,724,290"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 8977,
+          "rows": [
+            {
+              "name": "Doorstep Waste & Recycling Collection",
+              "metrics": [
+                "3,142",
+                "24.0%",
+                "4.5%",
+                "$6,573,842"
+              ]
+            },
+            {
+              "name": "Turns & Maintenance Solutions",
+              "metrics": [
+                "2,318",
+                "27.0%",
+                "6.7%",
+                "$7,258,914"
+              ]
+            },
+            {
+              "name": "Resident Amenity Services",
+              "metrics": [
+                "1,564",
+                "30.0%",
+                "9.1%",
+                "$6,689,517"
+              ]
+            },
+            {
+              "name": "Pet Solutions",
+              "metrics": [
+                "1,047",
+                "33.0%",
+                "12.9%",
+                "$6,331,205"
+              ]
+            },
+            {
+              "name": "Fitness & Wellness",
+              "metrics": [
+                "906",
+                "36.0%",
+                "15.9%",
+                "$6,727,665"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8977,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "2,847",
+                "25.0%",
+                "4.6%",
+                "$6,071,842"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "2,213",
+                "28.0%",
+                "6.8%",
+                "$7,052,318"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "1,689",
+                "31.0%",
+                "8.9%",
+                "$7,059,204"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "1,342",
+                "34.0%",
+                "11.2%",
+                "$7,008,915"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "886",
+                "38.0%",
+                "15.3%",
+                "$6,388,864"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Contract Signed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Doorstep Waste & Recycling Collection",
+            "values": [
+              26,
+              31,
+              29,
+              28,
+              27
+            ]
+          },
+          {
+            "name": "Turns & Maintenance Solutions",
+            "values": [
+              29,
+              33,
+              32,
+              31,
+              30
+            ]
+          },
+          {
+            "name": "Resident Amenity Services",
+            "values": [
+              27,
+              30,
+              29,
+              29,
+              28
+            ]
+          },
+          {
+            "name": "Pet Solutions",
+            "values": [
+              25,
+              28,
+              27,
+              28,
+              27
+            ]
+          },
+          {
+            "name": "Fitness & Wellness",
+            "values": [
+              27,
+              30,
+              29,
+              29,
+              29
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 8,977 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Halloway, a regional property manager, called to price doorstep waste and recycling collection for a 320 unit community. Oscar walked him through the 7 night premium plan and background-checked Service Valets, then scheduled a full amenity consultation for the following week. Marcus confirmed the date and asked for a doorstep coverage map.",
+          "date": "Jan 6, 2:42 PM",
+          "agent": "Oscar",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Priya Ramnath from a mid-size ownership group asked about turns service between resident move-outs and move-ins. Lila explained the per unit turn scope and booked a consultation to scope 40 upcoming turns across two properties. Priya was pleased with the timeline and requested a written summary.",
+          "date": "Feb 11, 10:18 AM",
+          "agent": "Lila",
+          "duration": "2m 44s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Dwayne Foster, an operations director, wanted to add a pet station solution to a garden-style community. Rosey reviewed the install and ongoing service options and scheduled an on-site consultation to place the pet station. Dwayne appreciated the property value talking points.",
+          "date": "Mar 3, 4:07 PM",
+          "agent": "Rosey",
+          "duration": "2m 30s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Elena Vasquez, a new property manager onboarding three communities, called to schedule an amenity consultation covering doorstep collection and turns service. Lee collected her contact details, property counts, and unit mix, then booked the consultation and set up her account profile. Elena confirmed the appointment and asked for a follow-up email.",
+          "date": "Apr 9, 11:52 AM",
+          "agent": "Lee",
+          "duration": "3m 18s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 72,
+          "summary": "Resident Tamara Blake wanted to book a recurring home cleaning through the Valet Living Home app but hit a payment snag. Mary walked her through the booking and scheduled her first clean for Saturday. Tamara was happy and asked about adding wash and fold laundry later.",
+          "date": "May 14, 1:26 PM",
+          "agent": "Mary",
+          "duration": "2m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Resident Colin Pierce asked about Torch Fitness classes included with his community amenity package. Sue confirmed which on-demand sessions were available and how to access Valet Living Connect. Colin did not need to book anything and ended the call satisfied with the information.",
+          "date": "May 27, 9:41 AM",
+          "agent": "Sue",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Resident Nadia Okonkwo called about an in-home package delivery that never arrived. Mike checked the order status and found the delivery was rescheduled by the community office. He escalated the ticket and promised a callback within 24 hours.",
+          "date": "Jun 4, 3:55 PM",
+          "agent": "Mike",
+          "duration": "2m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 23,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 59,
+          "summary": "Property manager Greg Salinas disputed a billing charge on his monthly doorstep invoice that appeared higher than the contracted rate. Jennifer reviewed the account and found a proration from a mid-month unit count change. She opened a billing adjustment request for review.",
+          "date": "Jun 22, 12:33 PM",
+          "agent": "Jennifer",
+          "duration": "2m 51s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 27,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Resident Hana Kim reported that the community pet station was jammed and out of waste bags. Rose logged a maintenance and repair request for the pet station and gave an estimated service window. Hana was mildly frustrated by the wait time.",
+          "date": "Jul 8, 5:19 PM",
+          "agent": "Rose",
+          "duration": "1m 37s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Resident Brianna Lowe called to cancel a scheduled home cleaning because of a change in plans. Mike processed the cancellation and confirmed no fee would apply within the window. Brianna said she may rebook next month.",
+          "date": "Jul 25, 10:02 AM",
+          "agent": "Mike",
+          "duration": "1m 21s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Property manager Victor Nunes complained that doorstep trash collection was missed two nights in a row at his community. Sue apologized and filed a service escalation with the local operations team. Victor wanted a credit and a supervisor follow-up.",
+          "date": "Aug 6, 2:14 PM",
+          "agent": "Sue",
+          "duration": "2m 26s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 43,
+          "summary": "Resident Aaron Fields questioned a billing charge for wash and fold laundry that he did not recognize. Lila researched the account but could not resolve it on the first call. She promised to route it to the billing team for investigation.",
+          "date": "Aug 19, 4:48 PM",
+          "agent": "Lila",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Property manager Sandra Voss was upset about a turns service that ran past the promised completion date, delaying a move-in. Oscar acknowledged the delay and opened a priority escalation. Sandra remained dissatisfied and asked for a call from the account manager.",
+          "date": "Sep 2, 11:09 AM",
+          "agent": "Oscar",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "An unidentified property caller reached the line after hours and left a voicemail about a doorstep collection concern. No agent was available to take the call and it rolled to the after-hours mailbox. The message was queued for callback the next business day.",
+          "date": "Sep 20, 7:33 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Property manager Derek Alonzo called angry and asked to cancel his community doorstep and pet station contract over repeated service issues. Jennifer tried to retain the account and offered a service review, but Derek insisted on starting the cancellation process. The retention case was flagged for management.",
+          "date": "Oct 4, 1:44 PM",
+          "agent": "Jennifer",
+          "duration": "2m 39s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "doorstep",
+        "turns",
+        "cleaning",
+        "pet station",
+        "billing",
+        "cancel"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Service Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Date and Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Property Visit",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Compliance and Data Privacy",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller identified as new prospect",
+        "Property manager from multifamily community",
+        "Interested in doorstep trash service",
+        "Interested in resident amenity solutions",
+        "Service area confirmed",
+        "Consultation scheduled",
+        "Call-to-action clear",
+        "Positive tone maintained",
+        "Agent active listening demonstrated",
+        "ZIP code captured",
+        "Availability confirmed for visit",
+        "Follow-up needed",
+        "Contact details partially captured"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Baseline amenity package expectations not discussed",
+        "Current waste management process not documented",
+        "Competitor solutions not addressed",
+        "Budget conversation deferred",
+        "Number of units at property not confirmed",
+        "Timeline for implementation not set",
+        "Decision-making authority not qualified",
+        "Sustainability goals not explored",
+        "Resident retention metrics not discussed"
+      ],
+      "naSignals": [
+        "Service delivery schedule",
+        "Account billing setup",
+        "Payment method collected",
+        "Existing service cancellation",
+        "Equipment installation timeline",
+        "Service interruption protocol",
+        "Renewal terms discussed",
+        "Pricing comparison provided",
+        "Discount eligibility confirmed",
+        "Contract terms reviewed"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The property manager is seeking comprehensive amenity services to improve resident retention and satisfaction at their multifamily community. They appear interested in the full suite including doorstep trash and resident-facing services."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a property consultation visit to assess their community's needs and understand how Valet Living's services can integrate with their existing operations. They want to learn about pricing and implementation details."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured the email address before closing and set clear expectations about what to expect during the property consultation visit, including who from Valet Living will attend and what they will need to see at the community."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Valet Living. This is Marcus Bell speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus. Yes, I am calling because we manage an apartment community in Arlington and we're looking to improve our resident amenities. We heard about your doorstep trash and service valet options and wanted to learn more."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:52",
+          "text": "That's wonderful. I'm excited to help. Before we dive in, can I get your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:04",
+          "text": "Yes, of course. My name is Sarah Chen. I'm the community director at Brookside Apartments."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:16",
+          "text": "Perfect, Sarah. And just to confirm, you're calling on behalf of Brookside Apartments as a property manager, correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:28",
+          "text": "Yes, that's right. We currently have about 240 units and we're looking to add amenities that our residents have been asking for."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:42",
+          "text": "Excellent. So you're interested in our doorstep waste collection and our Valet Living Home app amenities. Is that what brings you in today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:58",
+          "text": "Exactly. We want to know how the doorstep service works, the pricing, and what else might be a good fit for our community."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:12",
+          "text": "Perfect. And what's the ZIP code for Brookside Apartments?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:22",
+          "text": "It's 22201."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:28",
+          "text": "Great, 22201. We absolutely service that area. Now, to move forward, I'd like to schedule a property consultation visit where our team can see your community firsthand and discuss your specific needs. Would next Tuesday or Wednesday work better for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:52",
+          "text": "Wednesday works for me. Afternoon would be best if possible."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:04",
+          "text": "Wonderful. Let me get your phone number so we can confirm the appointment."
+        },
+        {
+          "speaker": "caller",
+          "time": "03:14",
+          "text": "It's ****8472."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:22",
+          "text": "Perfect. I have Sarah Chen at Brookside Apartments, 22201, phone ****8472, scheduled for a consultation visit on Wednesday afternoon. Our team will reach out to you tomorrow to lock in the exact time. We're really looking forward to showing you how Valet Living can transform your community. Is there anything else I can help you with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:58",
+          "text": "No, that sounds great. Thanks, Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "04:06",
+          "text": "Thank you for choosing Valet Living, Sarah. Have a great day."
+        }
+      ],
+      "aiSummary": "Sarah Chen, community director at Brookside Apartments in Arlington, called to explore Valet Living's doorstep trash collection and resident amenity services for her 240-unit property. Marcus successfully qualified the opportunity, confirmed service availability in ZIP 22201, and scheduled a property consultation visit for Wednesday afternoon. The call was well-structured with clear next steps, though the agent missed capturing the caller's email address and did not set specific expectations for the consultation visit.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "Great call structure, @Marcus. You nailed the greeting, qualification, and close. For next time, always grab the email before you hang up, so our team has a backup contact method. Also, take 10 seconds to tell new prospects what to expect on the visit. For example, mention that someone from our sales team will tour the property, talk through unit layouts, and discuss custom pricing. That sets the tone and preps them for success."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "8,977"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$3740.80"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$33,581,143"
+            }
+          ]
+        },
+        {
+          "title": "NEW PROPERTY MANAGER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Property Managers (Count)",
+              "value": "3,847"
+            },
+            {
+              "label": "Caller Type: New Property Managers (Percent)",
+              "value": "43%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "2,514"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "28%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PROPERTY MANAGERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Property Manager (Count)",
+              "value": "5,130"
+            },
+            {
+              "label": "Caller Type: Existing Property Manager (Percent)",
+              "value": "57%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "6%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Email Nurture",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "Referral / PR",
+                "value": 35,
+                "display": "35%"
+              },
+              {
+                "name": "LinkedIn",
+                "value": 29,
+                "display": "29%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 24,
+                "display": "24%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google Paid Search",
+                  "3,124",
+                  "19%",
+                  "$10,847,392"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "2,287",
+                  "24%",
+                  "$8,124,655"
+                ]
+              },
+              {
+                "cells": [
+                  "LinkedIn",
+                  "1,568",
+                  "29%",
+                  "$5,872,140"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral / PR",
+                  "1,142",
+                  "35%",
+                  "$4,913,221"
+                ]
+              },
+              {
+                "cells": [
+                  "Email Nurture",
+                  "856",
+                  "41%",
+                  "$3,823,735"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 3500,
+            "axisTicks": [
+              0,
+              700,
+              1400,
+              2100,
+              2800,
+              3500
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 3124,
+                "display": "3,124"
+              },
+              {
+                "name": "organic",
+                "value": 2287,
+                "display": "2,287"
+              },
+              {
+                "name": "social",
+                "value": 1568,
+                "display": "1,568"
+              },
+              {
+                "name": "email",
+                "value": 1142,
+                "display": "1,142"
+              },
+              {
+                "name": "referral",
+                "value": 856,
+                "display": "856"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "3,124",
+                  "20%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "2,287",
+                  "25%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "1,568",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "1,142",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "856",
+                  "40%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 2000,
+            "axisTicks": [
+              0,
+              400,
+              800,
+              1200,
+              1600,
+              2000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "One Vendor, Every Amenity",
+                "value": 1842,
+                "display": "1,842"
+              },
+              {
+                "name": "Retention Starts at the Doorstep",
+                "value": 1456,
+                "display": "1,456"
+              },
+              {
+                "name": "The Only Amenity Every Resident Uses",
+                "value": 1203,
+                "display": "1,203"
+              },
+              {
+                "name": "Turns Done Right",
+                "value": 987,
+                "display": "987"
+              },
+              {
+                "name": "Amenities That Pay for Themselves",
+                "value": 742,
+                "display": "742"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "One Vendor, Every Amenity",
+                  "1,842",
+                  "21%",
+                  "$3,214,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Retention Starts at the Doorstep",
+                  "1,456",
+                  "27%",
+                  "$2,687,540"
+                ]
+              },
+              {
+                "cells": [
+                  "The Only Amenity Every Resident Uses",
+                  "1,203",
+                  "32%",
+                  "$2,145,330"
+                ]
+              },
+              {
+                "cells": [
+                  "Turns Done Right",
+                  "987",
+                  "39%",
+                  "$1,842,215"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 1200,
+            "axisTicks": [
+              0,
+              200,
+              400,
+              600,
+              800,
+              1000,
+              1200
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "apartment valet trash service",
+                "value": 1124,
+                "display": "1,124"
+              },
+              {
+                "name": "multifamily amenity services provider",
+                "value": 892,
+                "display": "892"
+              },
+              {
+                "name": "doorstep trash and recycling collection company",
+                "value": 734,
+                "display": "734"
+              },
+              {
+                "name": "apartment turn services vendor",
+                "value": 588,
+                "display": "588"
+              },
+              {
+                "name": "valet living pricing",
+                "value": 447,
+                "display": "447"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "apartment valet trash service",
+                  "18%"
+                ]
+              },
+              {
+                "cells": [
+                  "multifamily amenity services provider",
+                  "25%"
+                ]
+              },
+              {
+                "cells": [
+                  "doorstep trash and recycling collection company",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "apartment turn services vendor",
+                  "38%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Property Managers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Property Managers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Doorstep Waste & Recycling Collection",
+              "3,847",
+              "22%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Turns & Maintenance Solutions",
+              "2,156",
+              "28%",
+              "55%"
+            ]
+          },
+          {
+            "cells": [
+              "Pet Solutions",
+              "1,438",
+              "34%",
+              "48%"
+            ]
+          },
+          {
+            "cells": [
+              "Resident Amenity Services (Home App)",
+              "926",
+              "43%",
+              "44%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Tampa Operations Center",
+              "3,214",
+              "287",
+              "4%",
+              "21%"
+            ]
+          },
+          {
+            "cells": [
+              "Dallas Regional Hub",
+              "2,487",
+              "198",
+              "3%",
+              "26%"
+            ]
+          },
+          {
+            "cells": [
+              "Atlanta Service Center",
+              "1,876",
+              "134",
+              "3%",
+              "31%"
+            ]
+          },
+          {
+            "cells": [
+              "Denver Service Center",
+              "1,400",
+              "99",
+              "2%",
+              "38%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              372,
+              401,
+              388,
+              356,
+              347
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              298,
+              322,
+              310,
+              315,
+              297
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              254,
+              268,
+              249,
+              261,
+              255
+            ]
+          },
+          {
+            "name": "Needs Owner Approval",
+            "values": [
+              198,
+              212,
+              195,
+              204,
+              189
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              152,
+              161,
+              148,
+              158,
+              153
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "3,591"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Contract Signed (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$19,141,252"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,847,360"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent and Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,156,840"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,398,156"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "30%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,028,744"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent and Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "33%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,402,586"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,701,566"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3985,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "1247",
+                "58%",
+                "29%",
+                "$4,722,840"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "856",
+                "54%",
+                "32%",
+                "$3,142,560"
+              ]
+            },
+            {
+              "name": "LinkedIn Advertising",
+              "metrics": [
+                "612",
+                "57%",
+                "35%",
+                "$2,418,840"
+              ]
+            },
+            {
+              "name": "Trade Shows and Events",
+              "metrics": [
+                "487",
+                "59%",
+                "37%",
+                "$1,984,680"
+              ]
+            },
+            {
+              "name": "Email Nurture Campaign",
+              "metrics": [
+                "389",
+                "61%",
+                "39%",
+                "$1,547,260"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3920,
+          "rows": [
+            {
+              "name": "Web Form Submission",
+              "metrics": [
+                "1423",
+                "55%",
+                "28%",
+                "$5,273,840"
+              ]
+            },
+            {
+              "name": "Inbound Call",
+              "metrics": [
+                "978",
+                "57%",
+                "31%",
+                "$3,584,520"
+              ]
+            },
+            {
+              "name": "Text Message Reply",
+              "metrics": [
+                "643",
+                "59%",
+                "34%",
+                "$2,127,840"
+              ]
+            },
+            {
+              "name": "Live Chat",
+              "metrics": [
+                "512",
+                "60%",
+                "36%",
+                "$1,721,600"
+              ]
+            },
+            {
+              "name": "Social Media Direct Message",
+              "metrics": [
+                "235",
+                "63%",
+                "41%",
+                "$862,452"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3854,
+          "rows": [
+            {
+              "name": "One Vendor, Every Amenity",
+              "metrics": [
+                "1165",
+                "54%",
+                "27%",
+                "$4,358,600"
+              ]
+            },
+            {
+              "name": "Retention Starts at the Doorstep",
+              "metrics": [
+                "742",
+                "57%",
+                "32%",
+                "$2,841,840"
+              ]
+            },
+            {
+              "name": "Amenities That Pay for Themselves",
+              "metrics": [
+                "568",
+                "59%",
+                "35%",
+                "$2,106,080"
+              ]
+            },
+            {
+              "name": "The Only Amenity Every Resident Uses",
+              "metrics": [
+                "423",
+                "61%",
+                "38%",
+                "$1,584,960"
+              ]
+            },
+            {
+              "name": "Turns Done Right",
+              "metrics": [
+                "256",
+                "63%",
+                "40%",
+                "$987,520"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2748,
+          "rows": [
+            {
+              "name": "multifamily doorstep trash service",
+              "metrics": [
+                "612",
+                "53%",
+                "26%",
+                "$2,274,480"
+              ]
+            },
+            {
+              "name": "apartment amenity services provider",
+              "metrics": [
+                "487",
+                "56%",
+                "31%",
+                "$1,847,360"
+              ]
+            },
+            {
+              "name": "valet trash pickup service",
+              "metrics": [
+                "378",
+                "58%",
+                "34%",
+                "$1,412,240"
+              ]
+            },
+            {
+              "name": "apartment resident amenity app",
+              "metrics": [
+                "289",
+                "61%",
+                "37%",
+                "$1,093,520"
+              ]
+            },
+            {
+              "name": "multifamily turn services vendor",
+              "metrics": [
+                "198",
+                "64%",
+                "42%",
+                "$795,240"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Valet Living Doorstep Collection",
+              "metrics": [
+                "1424",
+                "54%",
+                "28%",
+                "$5,308,320"
+              ]
+            },
+            {
+              "name": "Valet Living Home App Services",
+              "metrics": [
+                "956",
+                "58%",
+                "33%",
+                "$3,527,840"
+              ]
+            },
+            {
+              "name": "Property Turns and Maintenance",
+              "metrics": [
+                "743",
+                "60%",
+                "36%",
+                "$2,748,120"
+              ]
+            },
+            {
+              "name": "Torch Fitness and Wellness",
+              "metrics": [
+                "321",
+                "62%",
+                "39%",
+                "$1,263,480"
+              ]
+            },
+            {
+              "name": "Concierge and Pet Solutions",
+              "metrics": [
+                "147",
+                "65%",
+                "41%",
+                "$581,092"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Contract Signed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Valet Living Doorstep Collection",
+            "values": [
+              149,
+              156,
+              171,
+              158,
+              144
+            ]
+          },
+          {
+            "name": "Valet Living Home App Services",
+            "values": [
+              105,
+              112,
+              128,
+              116,
+              104
+            ]
+          },
+          {
+            "name": "Property Turns and Maintenance",
+            "values": [
+              82,
+              94,
+              108,
+              98,
+              87
+            ]
+          },
+          {
+            "name": "Torch Fitness and Wellness",
+            "values": [
+              37,
+              48,
+              55,
+              42,
+              43
+            ]
+          },
+          {
+            "name": "Concierge and Pet Solutions",
+            "values": [
+              24,
+              31,
+              38,
+              29,
+              28
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "349"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$16,842,751"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "814"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "36%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "24"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,119,408"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              73,
+              78,
+              75,
+              72,
+              79,
+              76,
+              74,
+              77,
+              72,
+              73,
+              78,
+              71,
+              75,
+              76,
+              78,
+              72,
+              74,
+              79,
+              73,
+              75,
+              74,
+              71,
+              77,
+              76,
+              72,
+              78,
+              73,
+              74,
+              71,
+              79,
+              75,
+              76,
+              182,
+              178,
+              191,
+              185,
+              188,
+              179,
+              183,
+              187,
+              181,
+              189,
+              184,
+              180,
+              186,
+              182,
+              179,
+              185,
+              188
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,184"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "11,327"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "719"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "703"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Doorstep Trash Service Pricing",
+            "values": [
+              9,
+              8,
+              6,
+              2,
+              7,
+              11
+            ]
+          },
+          {
+            "name": "Turns and Move-In Service",
+            "values": [
+              11,
+              7,
+              8,
+              9,
+              6,
+              8
+            ]
+          },
+          {
+            "name": "Resident Amenity Features",
+            "values": [
+              7,
+              9,
+              5,
+              1,
+              8,
+              10
+            ]
+          },
+          {
+            "name": "Service Scheduling and Availability",
+            "values": [
+              8,
+              6,
+              7,
+              4,
+              9,
+              12
+            ]
+          },
+          {
+            "name": "Pet Solutions and Concierge",
+            "values": [
+              6,
+              8,
+              4,
+              3,
+              5,
+              9
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "8,259"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "5,387"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Property Consultation Booked (Count)",
+            "value": "2,514"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$33,581,143"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus DeShawn",
+              "value": 217,
+              "display": "217"
+            },
+            {
+              "name": "Priya Kapoor",
+              "value": 184,
+              "display": "184"
+            },
+            {
+              "name": "Jennifer Walsh",
+              "value": 203,
+              "display": "203"
+            },
+            {
+              "name": "David Gutierrez",
+              "value": 156,
+              "display": "156"
+            },
+            {
+              "name": "Ashley Chen",
+              "value": 238,
+              "display": "238"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Property Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Karen Stephenson",
+            "values": [
+              198,
+              215,
+              247,
+              263,
+              289
+            ]
+          },
+          {
+            "name": "Thomas Bryant",
+            "values": [
+              176,
+              201,
+              219,
+              241,
+              268
+            ]
+          },
+          {
+            "name": "Melissa Rodriguez",
+            "values": [
+              184,
+              209,
+              226,
+              251,
+              287
+            ]
+          },
+          {
+            "name": "Brandon Cole",
+            "values": [
+              167,
+              189,
+              213,
+              238,
+              264
+            ]
+          },
+          {
+            "name": "Nicole Hart",
+            "values": [
+              172,
+              198,
+              224,
+              247,
+              279
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus DeShawn",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Priya Kapoor",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "Jennifer Walsh",
+              "value": 55.1,
+              "display": "55.1%"
+            },
+            {
+              "name": "David Gutierrez",
+              "value": 57.3,
+              "display": "57.3%"
+            },
+            {
+              "name": "Ashley Chen",
+              "value": 52.9,
+              "display": "52.9%"
+            },
+            {
+              "name": "Robert Martinez",
+              "value": 58.6,
+              "display": "58.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Property Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus DeShawn",
+                "54.2%",
+                "28%",
+                "$10,402,847",
+                "1,387"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Kapoor",
+                "56.8%",
+                "29%",
+                "$10,756,592",
+                "1,423"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Walsh",
+                "55.1%",
+                "27%",
+                "$10,048,304",
+                "1,356"
+              ]
+            },
+            {
+              "cells": [
+                "David Gutierrez",
+                "57.3%",
+                "31%",
+                "$11,104,638",
+                "1,412"
+              ]
+            },
+            {
+              "cells": [
+                "Ashley Chen",
+                "52.9%",
+                "26%",
+                "$9,694,107",
+                "1,299"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Martinez",
+                "58.6%",
+                "32%",
+                "$11,452,384",
+                "1,445"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Karen Stephenson",
+              "value": 92.7,
+              "display": "92.7%"
+            },
+            {
+              "name": "Thomas Bryant",
+              "value": 89.4,
+              "display": "89.4%"
+            },
+            {
+              "name": "Melissa Rodriguez",
+              "value": 91.2,
+              "display": "91.2%"
+            },
+            {
+              "name": "Brandon Cole",
+              "value": 88.1,
+              "display": "88.1%"
+            },
+            {
+              "name": "Nicole Hart",
+              "value": 90.6,
+              "display": "90.6%"
+            },
+            {
+              "name": "Christopher Lawson",
+              "value": 93.1,
+              "display": "93.1%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Property Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Karen Stephenson",
+                "92.7%",
+                "66%",
+                "$13,947,251",
+                "1,548"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Bryant",
+                "89.4%",
+                "63%",
+                "$13,084,776",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "Melissa Rodriguez",
+                "91.2%",
+                "65%",
+                "$13,515,847",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Brandon Cole",
+                "88.1%",
+                "61%",
+                "$12,416,324",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Nicole Hart",
+                "90.6%",
+                "64%",
+                "$13,301,568",
+                "1,509"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Lawson",
+                "93.1%",
+                "67%",
+                "$14,173,482",
+                "1,562}]]}]}}],"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Property Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Property Consultation Booked (Count)",
+        "rightMax": 200,
+        "rightTicks": [
+          0,
+          50,
+          100,
+          150,
+          200
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 93
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 89
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 83
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 79
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 69
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 80
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 83
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 93
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 90
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 81
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 78
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 70
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 72
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 82
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 84
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 92
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 90
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 79
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 77
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 83
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 86
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 91
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 90
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 72
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 87
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1600000,
+        "rightTicks": [
+          0,
+          533333.3333333334,
+          1066666.6666666667,
+          1600000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1244824
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1193107
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1111026
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1060133
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 923040
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 968705
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1070101
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1112282
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1240201
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1202451
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1083007
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1046747
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 931429
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 960083
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1095579
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1128963
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1228653
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1209532
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1060629
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 1026988
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 945410
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 955321
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1114462
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1151405
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1213045
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1211280
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 1045453
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 1002422
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 961803
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 957165
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1125897
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "8,977"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "718"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "539"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Chen",
+                "412",
+                "91%",
+                "88%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Rodriguez",
+                "3,847",
+                "88%",
+                "85%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Walsh",
+                "4,718",
+                "89%",
+                "87%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "8,977 calls",
+      "pagerLabel": "1 of 898",
+      "calls": [
+        {
+          "time": "1/6/26 8:52 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:37 am",
+          "id": "A31C-6B4E90D2118A"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C904-2F71B8E3AA45"
+        },
+        {
+          "time": "1/14/26 11:18 am",
+          "id": "7E22-9D0143FCB621"
+        },
+        {
+          "time": "1/16/26 12:29 pm",
+          "id": "B58D-4A6C7710EE93"
+        },
+        {
+          "time": "1/20/26 1:04 pm",
+          "id": "1F60-88C3D520417B"
+        },
+        {
+          "time": "1/22/26 2:15 pm",
+          "id": "D47A-33E9B1650C82"
+        },
+        {
+          "time": "1/26/26 3:33 pm",
+          "id": "9C11-7F42AA08D913"
+        },
+        {
+          "time": "1/28/26 4:47 pm",
+          "id": "3AE8-16BD9042F55E"
+        },
+        {
+          "time": "1/30/26 5:21 pm",
+          "id": "6B29-C0F7148A3D70"
+        }
+      ],
+      "duration": "2:38",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Valet Living, this is Marcus. Who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling Valet Living",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Marcus, my name is Danielle Foster. I manage a property called Brookline Commons, we have about 280 units and I'm looking into doorstep trash service.",
+          "highlights": [
+            "Danielle Foster",
+            "280 units",
+            "doorstep trash service"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "Great to meet you, Danielle. Congratulations on taking that step. Are you thinking of collection five nights a week or seven?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:25",
+          "text": "Probably five nights to start. Residents keep asking for it, and honestly our current hauler situation is a mess.",
+          "highlights": [
+            "five nights to start"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:33",
+          "text": "That's exactly what we solve. Our Valet Living Doorstep service sends background-checked Service Valets right to each resident's door, so they never have to haul waste to the compactor themselves.",
+          "highlights": [
+            "Valet Living Doorstep",
+            "background-checked Service Valets"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:44",
+          "text": "Okay. And what does something like that run per unit? I want to keep it manageable for the budget I've got.",
+          "highlights": [
+            "what does that run per unit",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:52",
+          "text": "Completely fair. For a five-night program at your size it typically lands in the low twenties per unit each month, billed to the community, and it's structured so the amenity essentially pays for itself in retention. We'll build the exact number to your property.",
+          "highlights": [
+            "low twenties per unit",
+            "pays for itself in retention"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:04",
+          "text": "That's helpful. I'll be honest, I'm getting a couple of quotes right now. There's a regional outfit down the road that pitched us last week.",
+          "highlights": [
+            "getting a couple of quotes",
+            "regional outfit down the road"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:14",
+          "text": "I'd expect you to shop it, that's smart. Where we stand apart is we're the only national full-service provider, so beyond trash we can layer in Turns, pet stations, and resident amenities through one vendor. The smaller shops usually can't do that.",
+          "highlights": [
+            "only national full-service provider",
+            "one vendor"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:27",
+          "text": "The Turns piece is interesting actually. We lose a lot of time between move-outs and move-ins.",
+          "highlights": [
+            "Turns piece is interesting"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:34",
+          "text": "Then that's worth putting on the table too. Our Turns service handles the make-ready between residents so your team isn't scrambling. We can scope both together.",
+          "highlights": [
+            "Turns service",
+            "make-ready between residents"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:44",
+          "text": "Here's my one hesitation. I don't want to be locked into some long thing if it doesn't work for us.",
+          "highlights": [
+            "don't want to be locked into some long thing"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:52",
+          "text": "Understood, and we design the agreement around your community's needs. I'll have our team walk you through the terms plainly so there are no surprises before you sign anything.",
+          "highlights": [
+            "walk you through the terms plainly"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:01",
+          "text": "Okay, that eases my mind. What's the next step?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:06",
+          "text": "Let's set up a consultation with a Valet Living specialist who'll price the doorstep program and the Turns option for Brookline Commons. Does Thursday at 10 AM work?",
+          "highlights": [
+            "set up a consultation",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:15",
+          "text": "Thursday at ten works. Can you send it to danielle.foster@brooklinecommons.com?",
+          "highlights": [
+            "Thursday at ten works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:22",
+          "text": "Absolutely, I've got you booked for Thursday at 10 AM and I'll send the confirmation to that email right now.",
+          "highlights": [
+            "booked for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:29",
+          "text": "Perfect, thank you Marcus.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:32",
+          "text": "My pleasure, Danielle. You'll get a reminder beforehand. Thanks for calling Valet Living, and have a great day.",
+          "highlights": [
+            "Thanks for calling Valet Living",
+            "have a great day"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Property Manager",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Doorstep Waste Intent",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Turns Service Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Pricing Objection Raised",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Contract Hesitation",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Foster, a new property manager at the 280-unit Brookline Commons, called to explore doorstep trash and recycling collection. Agent Marcus recommended the five-night Valet Living Doorstep program and introduced the Turns make-ready service after she raised move-out timing concerns. He handled her pricing, competitor, and contract-commitment objections, then scheduled a consultation with a specialist for Thursday at 10 AM and captured her email for confirmation.",
+        "keyPoints": [
+          "New property manager at Brookline Commons, 280 units",
+          "Wants five-night doorstep waste and recycling collection",
+          "Raised interest in Turns service for move-out to move-in gaps",
+          "Objections handled: per-unit pricing, a competing regional provider, and contract lock-in",
+          "Consultation booked for Thursday at 10 AM",
+          "Contact captured: danielle.foster@brooklinecommons.com"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "5,656 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 566",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for reaching out to Valet Living. I'm here to help you learn about our doorstep trash and recycling collection service for your property. What's your name?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:23 AM",
+              "text": "Hi, this is James Patterson. We're looking at services for our 240 unit complex in Denver."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:24 AM",
+              "text": "Great to meet you James. I'm excited to learn more about your community. Are you the property manager or owner at this location?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "I'm the property manager. We've had some resident complaints about trash areas being full and messy."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "I understand. That's a common challenge we solve every day. Our doorstep collection eliminates the trip to central trash areas. Would your residents prefer five nights a week or seven nights a week service?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "Five nights would probably work best for us to start. What does that run?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Perfect. Our five night doorstep service runs approximately 24 to 32 dollars per unit per month depending on your specific property details. For your 240 unit community that would be roughly 5,760 to 7,680 monthly. Can I ask what's your current trash vendor charging?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "We're spending about 8,200 a month right now and it's not even working well."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "That's helpful context. Our service typically improves resident satisfaction while reducing your waste management costs. Would you want to include recycling pickup at the same time?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:36 AM",
+              "text": "Yes definitely. What about implementation. How quickly can you get this set up?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:38 AM",
+              "text": "We can typically get your community operational within two to four weeks of contract execution. I'd like to schedule a brief consultation call with our commercial team to discuss your property specifics, provide a formal quote, and walk through our onboarding. How does Thursday March 14th at 2 PM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:40 AM",
+              "text": "Thursday works great. Same phone number to reach me?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:42 AM",
+              "text": "Perfect. We'll call you at this number on Thursday March 14th at 2 PM. Our team will come prepared with a detailed proposal and answer any questions. Looking forward to getting Valet Living set up at your community. Have a great day James."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:44 AM",
+              "text": "Thanks so much. See you Thursday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Property Manager",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Type: Doorstep Trash and Recycling",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Frequency: Five Night Service",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Property Size: 240 Units",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area: Denver Colorado",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Budget Baseline: Current Spend 8200",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "15",
+            "source": "720-445-8847",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "720-445-8847",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "James Patterson",
+            "firstName": "James",
+            "lastName": "Patterson",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A742-28BC4F957E61",
+          "time": "3/11/26 2:17 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A742-28BC4F957E61",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B893-5D3AC6E72B44",
+          "time": "3/12/26 11:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B893-5D3AC6E72B44",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D451-7A9F1B246832",
+          "time": "3/13/26 4:52 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D451-7A9F1B246832",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "8,977 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 898",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/16/26 2:34 pm",
+          "active": true,
+          "date": "January 16, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:34 PM",
+              "text": "Thank you for calling Valet Living. This is Marcus speaking. Are you calling about our doorstep trash collection service or one of our other amenity solutions?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:35 PM",
+              "text": "Hi Marcus. Yeah, I'm interested in the trash collection. We're a property manager for a 240-unit community in Phoenix, and we're looking to improve resident satisfaction."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:36 PM",
+              "text": "Great. That's exactly what our doorstep service does. Just to clarify, are you currently using any amenity services with your residents, or would this be a new offering for your property?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:37 PM",
+              "text": "This would be new. We've never had valet service before, but our turnover is pretty high and we're hoping amenities will help us retain people."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:38 PM",
+              "text": "Perfect. That's a really common concern, and our data shows that doorstep collection is the one amenity nearly every resident uses. So let me ask you this, what service frequency were you thinking about, five nights a week or seven nights a week?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:40 PM",
+              "text": "I think we'd want to start with five nights. We want to test it before we commit to the premium level."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:41 PM",
+              "text": "Smart approach. So five night doorstep collection for a 240-unit community typically runs between twenty and thirty dollars per unit per month, depending on your specific market and building configuration. We'd also handle all the recycling as part of the service. Does that budget feel workable for your property?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:43 PM",
+              "text": "Yeah, that sounds reasonable. What's the next step?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:44 PM",
+              "text": "Excellent. I'd like to schedule a consultation with one of our property solutions specialists. They'll walk through the specifics of your community, discuss how we integrate with your existing systems, and send over a custom proposal. Would Thursday the twenty third at two o'clock pm work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:46 PM",
+              "text": "Thursday the twenty third at two works great."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Perfect. I've got you scheduled for Thursday, January twenty third at two o'clock pm. One of our team members will call you at this number to discuss your property details and get that proposal started. Your confirmation code is V-L six seven four nine two. Does that number work for follow up calls?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:49 PM",
+              "text": "Yes, that's the right number. Thanks, Marcus."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:50 PM",
+              "text": "You're welcome. Thanks for choosing Valet Living. We look forward to helping you improve resident retention."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Property Manager",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Selected: Doorstep Collection, Five Night",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Property Size: 240 Units",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Market: Phoenix, Arizona",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Budget Tier: Standard Five Night Service",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/16/26 2:34 pm",
+            "duration": "8:23",
+            "destinationPhone": "877-936-2933",
+            "source": "877-912-7744",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "602-555-0847",
+            "repeatCaller": "No",
+            "city": "Phoenix",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Marks",
+            "firstName": "Jennifer",
+            "lastName": "Marks",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B523-7D4A1E896C2F",
+          "time": "1/22/26 10:47 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B523-7D4A1E896C2F",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C681-9F3B4D527A8E",
+          "time": "1/28/26 1:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C681-9F3B4D527A8E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D794-5E6C2B741F9D",
+          "time": "1/31/26 3:52 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D794-5E6C2B741F9D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Introduce yourself as Valet Living's AI agent helping put together a personalized amenity quote for your community, mention that new communities can waive setup fees when they get started this quarter, and ask if they would like to begin.",
+        "Qualify one at a time: Ask a single question at a time to learn how many apartment homes are in the community, which services they are interested in (doorstep waste and recycling, turns, maintenance, pet solutions, or resident amenities), their desired service frequency such as five or seven nights a week, their target start timeline, and finally the property ZIP code to confirm service availability.",
+        "Estimate then book: Confirm we service their ZIP, share a preliminary per unit per month range based on the unit count and services they selected, note that final pricing is negotiated per property, recommend a consultation with an amenity specialist for an exact quote, propose a specific day and time, and confirm they will get a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Valet_Living_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Property Management Solutions",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Amenity Services & Valet Living Home",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Request a Quote",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Service Schedule\",\"question\":\"What nights does my community currently receive doorstep collection?\",\"answer\":\"Your service nights are set in your community agreement and shown in the Valet Living Connect dashboard. I can have your account manager confirm the exact schedule and adjust it if your residents need more coverage.\"},{\"topic\":\"Add a Service\",\"question\":\"How do I add turns or pet stations to my existing contract?\",\"answer\":\"Existing communities can layer on turns, maintenance, or pet solutions at any time. I can book a quick consultation with your amenity specialist to scope the addition and update your agreement.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What does Valet Living do?",
+              "answer": "Valet Living is the only nationally recognized full service amenities provider to the multifamily housing industry, offering doorstep waste and recycling collection along with turns, maintenance, pet, fitness, and concierge services. I would love to set up a consultation to tailor a program to your community."
+            },
+            {
+              "question": "How does doorstep valet trash work?",
+              "answer": "Professional, background checked Service Valets collect waste and recycling right at each resident's door up to seven nights a week, so residents never have to haul their own trash. Let's schedule a consultation to design the right frequency for your property."
+            },
+            {
+              "question": "How much does doorstep collection cost?",
+              "answer": "Pricing is negotiated per property based on unit count and service frequency, so I can share a preliminary range once I know a few details. The best next step is a consultation with a specialist for an exact quote."
+            },
+            {
+              "question": "How many nights a week is service available?",
+              "answer": "Doorstep collection is available up to seven nights a week, and many communities choose a five night plan. A consultation will help us match the schedule to your resident needs."
+            },
+            {
+              "question": "Do you serve my state?",
+              "answer": "Valet Living operates in 40 states serving roughly 1.8 million apartment homes. Share your property ZIP and I can confirm availability, then get you booked with a specialist."
+            },
+            {
+              "question": "What is Valet Living Connect?",
+              "answer": "Valet Living Connect is our digital platform offering interactive and contactless service options, including more than 75 virtual events and fitness sessions each month. I can walk you through it during a consultation."
+            },
+            {
+              "question": "What is the Valet Living Home app?",
+              "answer": "Valet Living Home lets residents order home cleans, laundry, dry cleaning, package delivery, pet visits, and fitness classes from a single app. A consultation is the best way to see how it fits your community."
+            },
+            {
+              "question": "Do you offer turn services?",
+              "answer": "Yes, our turns service makes move outs and move ins easier for property managers between residents. Let's book a consultation to scope your typical turn volume."
+            },
+            {
+              "question": "Can you handle maintenance support?",
+              "answer": "We provide maintenance support accessible through our technology platform to improve property operations efficiency. I can arrange a consultation to review your maintenance needs."
+            },
+            {
+              "question": "What pet services do you provide?",
+              "answer": "We offer pet visits, pet care, and pet station solutions that improve property values for managers and residents. A quick consultation will help us recommend the right pet program."
+            },
+            {
+              "question": "What is Torch Fitness?",
+              "answer": "Torch Fitness by Valet Living delivers group classes, personal training, and on demand sessions through Valet Living Home. I can set up a consultation to add fitness as a resident amenity."
+            },
+            {
+              "question": "Do you offer concierge services?",
+              "answer": "Yes, our concierge professionals arrange car service, source local tickets, and elevate resident hospitality on site. Let's schedule a consultation to explore a concierge program for your community."
+            },
+            {
+              "question": "How does Valet Living improve resident retention?",
+              "answer": "Amenities are a major factor for residents, with a recent NMHC and Kingsley report noting 44 percent say amenities matter when choosing a place to live. A consultation can show how our services support satisfaction and retention."
+            },
+            {
+              "question": "How many communities do you serve?",
+              "answer": "We perform more than 340 million events annually across 1.3 million plus apartment homes. I would be glad to book a consultation to bring that scale to your property."
+            },
+            {
+              "question": "Are your Service Valets vetted?",
+              "answer": "Every Service Valet is highly trained and background checked for resident safety and reliability. A consultation will cover exactly how our teams operate at your community."
+            },
+            {
+              "question": "Can I bundle multiple services?",
+              "answer": "Yes, we are the only company in multifamily to combine doorstep collection with both sustainability and premium home services. Let's book a consultation to build a bundled program."
+            },
+            {
+              "question": "How do I get a quote?",
+              "answer": "I can gather your unit count, service interests, and ZIP to give a preliminary range, then connect you with a specialist for an exact quote. Would you like to schedule that consultation now?"
+            },
+            {
+              "question": "How quickly can service start?",
+              "answer": "Start timing depends on your community and the services selected, and we can move quickly once your agreement is in place. Let's set a consultation to map out your timeline."
+            },
+            {
+              "question": "Do residents pay for doorstep collection?",
+              "answer": "Doorstep collection is typically billed to the community as an amenity, while some app based services are resident paid. A consultation will clarify billing options for your property."
+            },
+            {
+              "question": "How do I schedule a consultation?",
+              "answer": "I can book it right now if you share your unit count, services of interest, timeline, and property ZIP. What day and time work best for you?"
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule a consultation\",\"follow_up_message\":\"Great, I have your community details noted. I can lock in a virtual consultation with an amenity specialist for Thursday at 10 AM, and you will get a reminder text beforehand with a number to call. Does that time work?\"},{\"intent\":\"Request a quote\",\"follow_up_message\":\"Thanks for the unit count and services you shared. Based on that, I can give a preliminary per unit range, and a specialist will confirm exact pricing during a quick consultation. Would you like me to book that now?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Valet Living's AI agent. I can help build a personalized amenity quote for your community and get you set up with an amenity specialist. Would you like to get started?",
+        "goal": "Guide property owners and managers to book a virtual consultation with a Valet Living amenity specialist for an exact, per property quote.",
+        "bookingType": "virtual consultation",
+        "offer": "Waive your community setup fee when you book a consultation this quarter",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "How many apartment homes are in your community?",
+          "Which services are you most interested in, such as doorstep waste and recycling, turns, maintenance, pet solutions, or resident amenities?",
+          "What service frequency are you considering, for example five or seven nights a week?",
+          "What is your target start timeline?",
+          "What is the property ZIP code so I can confirm service availability?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:43 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:43 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:43 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Valet Living",
+      "callerName": "Jennifer Martinez",
+      "callerPhone": "(512) 555-0847",
+      "campaign": "Doorstep Waste Collection, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$3,240",
+      "googleSearch": "apartment valet trash service Austin Texas",
+      "websiteSearch": "doorstep waste collection multifamily",
+      "callingWebpage": "/property-management/valet-living-doorstep",
+      "products": "Valet Living Doorstep 7-night Premium, Pet Visits",
+      "cartId": "VL-7294M",
+      "serviceable": "Yes",
+      "email": "jennifer.martinez@austinproperties.com",
+      "street": "2847 Barton Springs Road",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78746",
+      "digitalJourney": "/home › /property-management › /valet-living-doorstep › /request-quote",
+      "intent": "Property manager seeking to reduce resident turnover by upgrading to premium seven night doorstep service plus pet care amenities for 120 unit complex.",
+      "coverage": "ZIP 78746 confirmed, Austin serviceable",
+      "switchIntent": "High. Currently with basic five night service. Ready to upgrade and wants pricing comparison by end of week for budget cycle.",
+      "greeting": "Hi Jennifer, this is Sarah with Valet Living. I see you were looking at our premium doorstep collection and pet services for your Austin property. Would you like to schedule a brief consultation this week to discuss how we can boost resident retention?"
+    },
+    "smsScreenpop": {
+      "brandName": "Valet Living",
+      "callerName": "Marcus Rodriguez",
+      "callerPhone": "(214) 555-0623",
+      "campaign": "Turns Service, Dallas Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$2,850",
+      "googleSearch": "apartment turn services Dallas vendor",
+      "websiteSearch": "multifamily turnover service provider",
+      "callingWebpage": "/property-management/turns",
+      "products": "Turns Service, Maintenance Support",
+      "cartId": "VL-5819K",
+      "serviceable": "Yes",
+      "email": "marcus.rodriguez@dallasmanagement.com",
+      "street": "5621 Lemmon Avenue",
+      "city": "Dallas",
+      "state": "TX",
+      "zip": "75209",
+      "digitalJourney": "/home › /property-management › /turns › /request-quote",
+      "intent": "Operations manager for 85 unit property needs reliable vendor to handle unit turns between resident move outs and move ins.",
+      "coverage": "ZIP 75209 confirmed, Dallas serviceable",
+      "appointment": "In-home consultation with Turns Specialist, Thursday July 18, 2:00 PM",
+      "greeting": "Hi Marcus, it's David from Valet Living. Thanks for texting. We have you down for a consultation with our Turns Specialist this Thursday at 2 PM to walk through your turnaround process. Feel free to text me any questions before then."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Valet Living",
+      "brandDomain": "www.valetliving.com",
+      "brandIcon": "🧹",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Phoenix, AZ",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Retention Starts at the Doorstep",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "multifamily amenity services provider",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/property-management/valet-living-doorstep",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Valet Living Doorstep, Turns Service",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Phoenix, AZ",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_new_project",
+          "name": "Consultation, New Property"
+        },
+        {
+          "id": "existing_service_support",
+          "name": "Existing Service Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there. Thanks for calling Valet Living. I see you're interested in our doorstep collection and turns services. Just to get you routed to the right team, are you calling on behalf of a property that's looking to add amenities or looking to evaluate a service switch?",
+          "sigs": [],
+          "q": [
+            25,
+            50,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, we manage three communities in the Phoenix area and we're currently using a local vendor for trash collection. We've heard great things about Valet Living and we want to see if we can move our properties over to your seven night premium service.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Property manager, <strong>three communities</strong>"
+            },
+            {
+              "c": "blue",
+              "t": "Switching from <strong>existing vendor</strong>"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>7-night premium</strong> service interest"
+            }
+          ],
+          "q": [
+            65,
+            20,
+            15
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's fantastic. Moving to our seven night premium doorstep service is a game changer for resident satisfaction. Quick question. Are these properties already in our service area and do you have a rough timeline for when you'd want to make this transition?",
+          "sigs": [],
+          "q": [
+            78,
+            12,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, they're all in Phoenix and Scottsdale. We're looking to make a change by the end of the quarter, so we'd like to get this moving pretty quickly. We'd also want to discuss the turns service for our units that turn over.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Confirmed <strong>service area</strong>"
+            },
+            {
+              "c": "blue",
+              "t": "Q4 <strong>implementation timeline</strong>"
+            },
+            {
+              "c": "purple",
+              "t": "Also interested in <strong>turns service</strong>"
+            }
+          ],
+          "q": [
+            86,
+            8,
+            6
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm going to connect you with our New Property Consultation team. They'll walk you through our seven night service, turns solutions, and put together a custom proposal for all three of your communities. You're going to be in great hands. Let me transfer you now.",
+          "sigs": [],
+          "q": [
+            95,
+            3,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"book your consultation (Agent)\", \"schedule a property walkthrough (Agent)\", \"let's get your community set up for service (Agent)\", \"sign you up for doorstep collection (Agent)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "12/19/25 4:47 pm"
+        },
+        {
+          "name": "Call Handling Excellence (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Call Handling Excellence] < 60 and duration > 45 sec",
+          "createdAt": "04/02/25 10:35 am",
+          "updatedAt": "01/09/26 11:20 am"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"we currently use WasteAway (Caller)\", \"SP Plus handles our trash (Caller)\", \"cheaper than the other amenity provider (Caller)\", \"quote from National Waste (Caller)\"])",
+          "createdAt": "05/21/25 2:08 pm",
+          "updatedAt": "12/28/25 3:15 pm"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"tell me about doorstep collection (Caller)\", \"how does the valet trash amenity work (Caller)\", \"what services do you offer for our property (Caller)\"])",
+          "createdAt": "03/28/25 8:50 am",
+          "updatedAt": "01/14/26 9:05 am"
+        },
+        {
+          "name": "Doorstep Trash Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"five nights a week service (Caller)\", \"trash and recycling pickup (Caller)\", \"valet trash for our apartments (Caller)\", \"seven night premium collection (Caller)\"])",
+          "createdAt": "06/09/25 11:42 am",
+          "updatedAt": "01/07/26 5:33 pm"
+        },
+        {
+          "name": "Empathy & Professionalism (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy & Professionalism] < 60 and duration > 45 sec",
+          "createdAt": "04/17/25 3:26 pm",
+          "updatedAt": "01/11/26 10:48 am"
+        },
+        {
+          "name": "Pet Solutions Upsell Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"pet waste stations (Caller)\", \"add pet visit service (Caller)\", \"pet care for our residents (Caller)\", \"pet station install (Caller)\"])",
+          "createdAt": "07/03/25 1:19 pm",
+          "updatedAt": "12/22/25 2:54 pm"
+        },
+        {
+          "name": "Price Sensitivity Raised",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"per unit per month (Caller)\", \"that's too expensive (Caller)\", \"what's the cost per door (Caller)\", \"has to fit our operating budget (Caller)\"])",
+          "createdAt": "05/30/25 9:44 am",
+          "updatedAt": "01/06/26 4:12 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"send you a proposal (Agent)\", \"the price per unit would be (Agent)\", \"put together a quote for your community (Agent)\"])",
+          "createdAt": "06/25/25 10:57 am",
+          "updatedAt": "01/12/26 3:39 pm"
+        },
+        {
+          "name": "Solution Positioning (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Solution Positioning] < 60 and duration > 45 sec",
+          "createdAt": "04/29/25 12:03 pm",
+          "updatedAt": "01/10/26 8:22 am"
+        }
+      ]
+    }
+  }
+}

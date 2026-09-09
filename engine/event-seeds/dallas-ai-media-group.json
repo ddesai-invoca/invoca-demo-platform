@@ -1,0 +1,5312 @@
+{
+  "id": "ai-media-group",
+  "customerName": "AI Media Group",
+  "websiteUrl": "https://www.aimediagroup.com",
+  "brandDomain": "aimediagroup.com",
+  "networkName": "Invoca for Performance Marketing",
+  "industry": "Performance Marketing Agency",
+  "bookingTerm": "Strategy Session",
+  "customerNoun": "Client",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 600,
+      "yTicks": [
+        0,
+        150,
+        300,
+        450,
+        600
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 384
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 561
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 517
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 549
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 417
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Strategy Session Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Strategy Session Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Atrilyx, Attribution Platform Demo",
+          "marketingSearchTerm": "marketing attribution platform",
+          "landingPageUrl": "https://aimediagroup.com/technology/atrilyx?utm_source=google&utm_medium=cpc&utm_campaign=atrilyx_demo",
+          "websiteJourney": "Home / Technology / Atrilyx Platform",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Attribution Truth, Brand",
+          "marketingSearchTerm": "multi-touch attribution agency",
+          "landingPageUrl": "https://aimediagroup.com/services/attribution?utm_source=google&utm_medium=cpc&utm_campaign=attribution_truth_brand",
+          "websiteJourney": "Home / Services / Phone Call Attribution",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Performance Agency, Competitor Conquest",
+          "marketingSearchTerm": "performance marketing agency",
+          "landingPageUrl": "https://aimediagroup.com/results?utm_source=google&utm_medium=cpc&utm_campaign=competitor_conquest",
+          "websiteJourney": "Home / Results / Case Studies",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Cross-Channel Attribution, Bing",
+          "marketingSearchTerm": "cross-channel attribution software",
+          "landingPageUrl": "https://aimediagroup.com/technology/atrilyx?utm_source=bing&utm_medium=cpc&utm_campaign=crosschannel_bing",
+          "websiteJourney": "Home / Technology / Atrilyx Platform",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Paid Search Management, Brand",
+          "marketingSearchTerm": "paid search management agency",
+          "landingPageUrl": "https://aimediagroup.com/services/paid-search?utm_source=google&utm_medium=cpc&utm_campaign=paidsearch_brand",
+          "websiteJourney": "Home / Services / Paid Search",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Enterprise Demand Gen, CTV",
+          "marketingSearchTerm": "CTV advertising agency",
+          "landingPageUrl": "https://aimediagroup.com/services/ctv-ott?utm_source=google&utm_medium=cpc&utm_campaign=enterprise_ctv",
+          "websiteJourney": "Home / Services / CTV + OTT",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Programmatic, Brand",
+          "marketingSearchTerm": "programmatic advertising agency",
+          "landingPageUrl": "https://aimediagroup.com/services/programmatic?utm_source=bing&utm_medium=cpc&utm_campaign=programmatic_brand",
+          "websiteJourney": "Home / Services / Programmatic",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Blackstone-Backed Credibility",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://aimediagroup.com/about?utm_source=instagram&utm_medium=paid_social&utm_campaign=blackstone_credibility",
+          "websiteJourney": "Home / About / Team",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Don't Cut That Channel, Retargeting",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://aimediagroup.com/services/attribution?utm_source=facebook&utm_medium=paid_social&utm_campaign=retargeting_channel",
+          "websiteJourney": "Home / Services / Phone Call Attribution",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "LinkedIn",
+          "marketingCampaign": "CMO Attribution Gap",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://aimediagroup.com/perspectives/attribution-gap?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cmo_gap",
+          "websiteJourney": "Home / Perspectives / Attribution Gap",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "LinkedIn",
+          "marketingCampaign": "CMO Attribution Gap",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://aimediagroup.com/technology/ai?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cmo_gap",
+          "websiteJourney": "Home / Technology / AI Story",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Attribution Thought Leadership",
+          "marketingSearchTerm": "which marketing channel actually works",
+          "landingPageUrl": "https://aimediagroup.com/perspectives/network-reported-vs-reconciled?utm_source=google&utm_medium=organic&utm_campaign=thought_leadership",
+          "websiteJourney": "Home / Perspectives / Reconciled Attribution",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "AI Answer Visibility, Agency",
+          "marketingSearchTerm": "Google Premier Partner agency",
+          "landingPageUrl": "https://aimediagroup.com/services/ai-search?utm_source=google&utm_medium=organic&utm_campaign=ai_visibility",
+          "websiteJourney": "Home / Services / AI Search Optimization",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Healthcare Performance Media",
+          "marketingSearchTerm": "healthcare marketing agency",
+          "landingPageUrl": "https://aimediagroup.com/industries/healthcare?utm_source=google&utm_medium=organic&utm_campaign=healthcare_solutions",
+          "websiteJourney": "Home / Industries / Healthcare",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Real Estate Luxury Performance Media",
+          "marketingSearchTerm": "luxury real estate marketing agency",
+          "landingPageUrl": "https://aimediagroup.com/industries/real-estate?utm_source=google&utm_medium=cpc&utm_campaign=luxury_realestate",
+          "websiteJourney": "Home / Industries / Real Estate",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Blackstone-Backed Credibility",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://aimediagroup.com/results/oscar-de-la-renta?utm_source=instagram&utm_medium=paid_social&utm_campaign=blackstone_credibility",
+          "websiteJourney": "Home / Results / Oscar de la Renta",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Call Tracking, Attribution",
+          "marketingSearchTerm": "call tracking attribution",
+          "landingPageUrl": "https://aimediagroup.com/services/phone-call-attribution?utm_source=google&utm_medium=cpc&utm_campaign=call_tracking",
+          "websiteJourney": "Home / Services / Phone Call Attribution",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Financial Services Performance Media",
+          "marketingSearchTerm": "financial services marketing agency",
+          "landingPageUrl": "https://aimediagroup.com/industries/financial-services?utm_source=google&utm_medium=organic&utm_campaign=finserv_solutions",
+          "websiteJourney": "Home / Industries / Financial Services",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Don't Cut That Channel, Retargeting",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://aimediagroup.com/services/paid-social?utm_source=facebook&utm_medium=paid_social&utm_campaign=retargeting_channel",
+          "websiteJourney": "Home / Services / Paid Social",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "SEO Attributed Organic, Bing",
+          "marketingSearchTerm": "media mix attribution",
+          "landingPageUrl": "https://aimediagroup.com/services/seo?utm_source=bing&utm_medium=cpc&utm_campaign=seo_attributed",
+          "websiteJourney": "Home / Services / SEO",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (AI Media Group)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "1,904"
+            },
+            {
+              "label": "New Business Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Retainer Signed (Percent)",
+              "value": "4%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,962,296"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "305"
+            },
+            {
+              "label": "Existing Client Support Call (Percent)",
+              "value": "7%"
+            },
+            {
+              "label": "Billing Inquiry Call (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Partner/Vendor Call (Percent)",
+              "value": "4%"
+            }
+          ]
+        },
+        {
+          "title": "New Business Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Business Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Proposal Discussed (Percent)",
+              "value": "30%"
+            },
+            {
+              "label": "Not a Fit (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Retainer Signed (Percent)",
+              "value": "4%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Business Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Business Call (Count)",
+            "values": [
+              259,
+              361,
+              372,
+              358,
+              249
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              89,
+              128,
+              131,
+              129,
+              94
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              34,
+              52,
+              53,
+              51,
+              39
+            ]
+          },
+          {
+            "name": "Retainer Signed (Count)",
+            "values": [
+              11,
+              17,
+              19,
+              16,
+              13
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Retainer Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1904,
+          "rows": [
+            {
+              "name": "Google Ads",
+              "metrics": [
+                "742",
+                "22.1%",
+                "2.6%",
+                "$1,491,347"
+              ]
+            },
+            {
+              "name": "LinkedIn",
+              "metrics": [
+                "468",
+                "26.4%",
+                "3.4%",
+                "$1,258,904"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "331",
+                "29.3%",
+                "4.5%",
+                "$1,176,553"
+              ]
+            },
+            {
+              "name": "Meta",
+              "metrics": [
+                "214",
+                "33.2%",
+                "5.6%",
+                "$938,216"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "149",
+                "41.6%",
+                "9.4%",
+                "$1,097,276"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Retainer Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1904,
+          "rows": [
+            {
+              "name": "Paid Search (cpc)",
+              "metrics": [
+                "688",
+                "21.7%",
+                "2.5%",
+                "$1,334,120"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "452",
+                "25.8%",
+                "3.3%",
+                "$1,177,842"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "386",
+                "28.9%",
+                "4.4%",
+                "$1,332,905"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "218",
+                "34.1%",
+                "6.0%",
+                "$1,018,433"
+              ]
+            },
+            {
+              "name": "Display / CTV",
+              "metrics": [
+                "160",
+                "39.7%",
+                "8.8%",
+                "$1,098,996"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Retainer Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1156,
+          "rows": [
+            {
+              "name": "Attribution Truth Brand",
+              "metrics": [
+                "384",
+                "22.4%",
+                "2.6%",
+                "$785,412"
+              ]
+            },
+            {
+              "name": "Atrilyx Platform Demo",
+              "metrics": [
+                "291",
+                "26.1%",
+                "3.4%",
+                "$783,166"
+              ]
+            },
+            {
+              "name": "Performance Agency Competitor Conquest",
+              "metrics": [
+                "236",
+                "29.7%",
+                "4.7%",
+                "$862,905"
+              ]
+            },
+            {
+              "name": "CMO Attribution Gap",
+              "metrics": [
+                "158",
+                "34.6%",
+                "6.3%",
+                "$784,003"
+              ]
+            },
+            {
+              "name": "Enterprise Demand Gen CTV",
+              "metrics": [
+                "87",
+                "40.8%",
+                "9.2%",
+                "$627,882"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Retainer Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 892,
+          "rows": [
+            {
+              "name": "marketing attribution platform",
+              "metrics": [
+                "274",
+                "23.1%",
+                "2.9%",
+                "$627,914"
+              ]
+            },
+            {
+              "name": "performance marketing agency",
+              "metrics": [
+                "231",
+                "26.8%",
+                "3.9%",
+                "$705,882"
+              ]
+            },
+            {
+              "name": "cross-channel attribution software",
+              "metrics": [
+                "178",
+                "30.2%",
+                "5.1%",
+                "$706,331"
+              ]
+            },
+            {
+              "name": "call tracking attribution",
+              "metrics": [
+                "124",
+                "35.4%",
+                "6.5%",
+                "$627,120"
+              ]
+            },
+            {
+              "name": "ctv advertising agency",
+              "metrics": [
+                "85",
+                "41.1%",
+                "9.4%",
+                "$628,003"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Strategy Session Set (Industry) (Percent)",
+            "Retainer Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Media Buying & Channel Management",
+              "metrics": [
+                "612",
+                "22.1%",
+                "2.9%",
+                "$1,413,282"
+              ]
+            },
+            {
+              "name": "Attribution & Measurement",
+              "metrics": [
+                "487",
+                "24.0%",
+                "3.5%",
+                "$1,331,657"
+              ]
+            },
+            {
+              "name": "Search & Discovery",
+              "metrics": [
+                "391",
+                "25.1%",
+                "4.1%",
+                "$1,255,914"
+              ]
+            },
+            {
+              "name": "Performance Creative",
+              "metrics": [
+                "246",
+                "26.0%",
+                "5.3%",
+                "$1,018,449"
+              ]
+            },
+            {
+              "name": "Industry Solution Packages",
+              "metrics": [
+                "168",
+                "25.6%",
+                "7.1%",
+                "$942,994"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Retainer Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1904,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "578",
+                "31.2%",
+                "2.8%",
+                "$1,256,118"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "464",
+                "33.5%",
+                "3.4%",
+                "$1,251,984"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "402",
+                "34.1%",
+                "4.0%",
+                "$1,255,733"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "289",
+                "35.8%",
+                "5.2%",
+                "$1,177,308"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "171",
+                "37.2%",
+                "7.6%",
+                "$1,021,153"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Retainer Signed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Media Buying & Channel Management",
+            "values": [
+              4,
+              3,
+              4,
+              3,
+              4
+            ]
+          },
+          {
+            "name": "Attribution & Measurement",
+            "values": [
+              3,
+              4,
+              3,
+              4,
+              3
+            ]
+          },
+          {
+            "name": "Search & Discovery",
+            "values": [
+              3,
+              3,
+              4,
+              3,
+              3
+            ]
+          },
+          {
+            "name": "Performance Creative",
+            "values": [
+              2,
+              3,
+              2,
+              3,
+              3
+            ]
+          },
+          {
+            "name": "Industry Solution Packages",
+            "values": [
+              2,
+              2,
+              3,
+              2,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 1,904 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marissa Calloway, VP of Marketing at a healthcare brand, called to see a demo of the Atrilyx attribution platform after network-reported numbers stopped matching revenue. Oscar walked her through cross-channel attribution and booked a strategy session for the following week. She was enthusiastic and asked to loop in her CFO.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 87,
+          "summary": "Devin Marsh, a marketing director at a home services company, wanted paid search management and asked how spend is measured against real conversions. Lila explained the retainer model and scheduled a strategy session. He confirmed budget was already approved.",
+          "date": "Feb 11, 2:48 PM",
+          "agent": "Lila",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 81,
+          "summary": "Priya Anand, an ecommerce growth lead, asked about programmatic advertising and upper-funnel exposure tied to downstream sales. Rosey reviewed her current media mix and booked a strategy session. She wanted a proposal ready before the call.",
+          "date": "Mar 3, 9:26 AM",
+          "agent": "Rosey",
+          "duration": "2m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Jared Whitfield, a new prospect and marketing director at a financial services firm, called to schedule a strategy session and get started. Lee collected his company details, monthly media spend, and attribution goals, then booked the session and set expectations for the discovery call. Jared was ready to move forward.",
+          "date": "Mar 19, 1:05 PM",
+          "agent": "Lee",
+          "duration": "3m 24s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 70,
+          "summary": "Elena Vasquez, a brand manager at a hospitality group, asked about CTV and OTT advertising for a new resort launch. Mary explained the streaming minimums and how CTV exposure is attributed to bookings, then scheduled a strategy session for her team.",
+          "date": "Apr 8, 4:33 PM",
+          "agent": "Mary",
+          "duration": "2m 19s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Tom Bradshaw, an automotive dealer group marketer, called about SEO and AI Search Optimization visibility. Sue explained how organic search is properly credited and booked a strategy session for his marketing lead. He asked for a case study to review first.",
+          "date": "Apr 22, 11:47 AM",
+          "agent": "Sue",
+          "duration": "2m 07s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Nathan Cole, an existing client, called for help accessing his Atrilyx dashboard login and a paid search report. Mike reset his credentials and walked him to the reporting view. No new work was scheduled.",
+          "date": "May 5, 3:52 PM",
+          "agent": "Mike",
+          "duration": "1m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Nora Bennett questioned a platform license charge on her latest invoice for the Atrilyx AI operating layer. Jennifer reviewed the billing and explained the media-volume tier. Nora stayed unhappy and asked for a supervisor callback.",
+          "date": "May 27, 10:31 AM",
+          "agent": "Jennifer",
+          "duration": "2m 36s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 28,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Grant Feldman, an existing client, reported that phone call attribution was not tagging inbound leads correctly. Rose logged a ticket and explained the per-minute tracking setup. The issue remained open at the end of the call.",
+          "date": "Jun 9, 1:18 PM",
+          "agent": "Rose",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Sasha Lin complained that performance creative revisions were running slow and asked why turnaround had slipped. Mike apologized and escalated to the creative team. She was frustrated and wanted a firm timeline.",
+          "date": "Jun 24, 9:09 AM",
+          "agent": "Mike",
+          "duration": "1m 32s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Brian Okafor called to cancel his paid social management retainer, citing internal budget cuts. Lila tried to retain him with a scaled-down plan but he declined. The cancellation was processed on the call.",
+          "date": "Jul 14, 4:07 PM",
+          "agent": "Lila",
+          "duration": "2m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Denise Harper disputed her programmatic media report, saying the numbers did not match her network dashboard. Jennifer explained reconciled attribution versus network-reported figures. She stayed skeptical and asked for the raw data.",
+          "date": "Aug 1, 11:53 AM",
+          "agent": "Jennifer",
+          "duration": "2m 49s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 32,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Kyle Ramsey reported that the Atrilyx tracking tag was not firing on his checkout pages. Oscar tried several troubleshooting steps and escalated to engineering. The tag remained broken when the call ended.",
+          "date": "Aug 20, 3:16 PM",
+          "agent": "Oscar",
+          "duration": "1m 51s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Priscilla Dawes was angry that her attribution results credited a different channel than she expected and demanded a refund. Mary explained the methodology but could not calm her. She threatened to leave the agency.",
+          "date": "Sep 12, 10:44 AM",
+          "agent": "Mary",
+          "duration": "1m 27s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "An unidentified caller reached voicemail after hours and left a brief message asking about CTV advertising rates for a retail campaign. No agent was available and the message was routed for follow-up.",
+          "date": "Oct 2, 6:58 PM",
+          "agent": "No Agent",
+          "duration": "0m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "atrilyx",
+        "attribution",
+        "strategy session",
+        "paid search",
+        "programmatic",
+        "ctv"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Business Type and Scale",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area and Marketing Channels",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Budget Range",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Strategy Session",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Next Steps",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Compliance Review",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Multi-touch attribution interest",
+        "Cross-channel measurement gap identified",
+        "Budget authority confirmed",
+        "Direct response marketing focus",
+        "Programmatic advertising question posed",
+        "Call tracking attribution relevant",
+        "Timeline alignment on demo",
+        "Warmth and rapport established",
+        "Needs discovery completed",
+        "Qualified lead status",
+        "Follow-up session booked",
+        "Contact information verified",
+        "Positive tone throughout"
+      ],
+      "unmetSignals": [
+        "Email capture incomplete",
+        "Budget increase potential not explored",
+        "Competitor agency names not mentioned",
+        "Atrilyx platform familiarity unknown",
+        "Industry vertical not specified",
+        "ROI metric expectations unclear",
+        "Current attribution tools not documented",
+        "Ad spend volume not quantified",
+        "Attribution pain points not detailed",
+        "Timeline for implementation unclear"
+      ],
+      "naSignals": [
+        "Order status tracking",
+        "Billing reconciliation",
+        "Campaign cancellation request",
+        "Performance audit completion",
+        "Invoice dispute",
+        "Platform migration timeline",
+        "Account management transition",
+        "Refund eligibility",
+        "Contract renewal cycle"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller is a marketing director at a mid-market e-commerce brand struggling with multi-channel attribution. They are running paid search, paid social, and programmatic but cannot reconcile which channel actually drives conversions. They need a single source of truth for their media spend."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a 30-minute strategy session within two weeks to review their current attribution gaps, see how Atrilyx could consolidate their data, and understand the cost of a platform license plus media management services for their current ad spend level."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured the caller's email address before ending the call to confirm the session details and send pre-call prep materials. He also could have set clearer expectations about what happens between now and the strategy session, such as sending a pre-qualification survey or sharing relevant case studies."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Hi there, thank you for calling AI Media Group. This is Marcus Bell. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus. Yeah, I'm Jennifer Chen, marketing director at Stella Apparel. We're an online fashion brand doing about two million in annual ad spend across Google, Meta, and programmatic. We saw your case study on the Atrilyx platform and wanted to explore it."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:52",
+          "text": "Great, Jennifer. Stella Apparel, that's fantastic. So you're running paid search, paid social, and programmatic across those channels. What's the main challenge you're hitting right now with your media mix?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:08",
+          "text": "Honestly, the networks tell us different stories. Google says one channel is driving conversions, Meta reports something completely different, and we have no idea what programmatic is actually contributing. We need one source of truth."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:24",
+          "text": "That's a perfect fit for what we do. Our Atrilyx platform connects every touchpoint into one reconciled attribution view. So every conversion gets credited to the network that actually drove it, not what the network is reporting. Have you looked at any other attribution tools?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:45",
+          "text": "We looked at one other vendor, but they're still relying on pixel data and network reporting. Your approach sounded different, which is why we reached out."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:58",
+          "text": "Good decision. Our attribution is proprietary and patented. We use cross-channel reconciliation, not biased network data. Let me ask, where's your team based, and what's your service area right now?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:12",
+          "text": "We're in Los Angeles, but we ship nationwide. So any customer in the US is a potential order."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:26",
+          "text": "Perfect. And what's a rough range for your monthly marketing budget right now?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:38",
+          "text": "Right now we're at about 180k a month. We're looking to scale though if we can prove channel contribution."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:52",
+          "text": "That's solid. I'd like to schedule a 30-minute strategy session where we can review your current media mix, show you how Atrilyx consolidates that data, and walk you through service options and pricing at your spend level. Does next Tuesday or Wednesday work better for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:14",
+          "text": "Wednesday works. Morning would be ideal."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:24",
+          "text": "Excellent. Let me block off 9 AM Wednesday, October 30th. Before we go, can I get a phone number to confirm the session?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:38",
+          "text": "Sure, it's ****-***-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:48",
+          "text": "Perfect, Jennifer. We'll send a calendar invite and a brief prep form so you can share a bit about your current stack. Looking forward to chatting on the 30th. Thanks for calling."
+        },
+        {
+          "speaker": "caller",
+          "time": "04:02",
+          "text": "Great, thanks Marcus. See you then."
+        },
+        {
+          "speaker": "agent",
+          "time": "04:09",
+          "text": "Take care."
+        }
+      ],
+      "aiSummary": "Jennifer Chen, marketing director at Stella Apparel, an e-commerce fashion brand, called to explore Atrilyx attribution following a case study review. The company runs approximately 180k per month across paid search, paid social, and programmatic advertising but cannot reconcile which channels drive actual conversions due to conflicting network-reported data. Marcus qualified the opportunity, confirmed the service area (nationwide shipping from Los Angeles), and scheduled a 30-minute strategy session for Wednesday, October 30th at 9 AM to review Stella's media mix and present Atrilyx's cross-channel attribution platform and service options. The call was well-structured with good rapport and needs discovery, though the agent did not capture an email address for follow-up confirmation.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great intake call with Jennifer. Your needs discovery and qualification were solid, especially pinpointing the attribution conflict across networks. Two small refinements for next time, One, grab the email before closing so you can send calendar details and pre-session materials without relying on phone confirmations alone. Two, take 30 seconds to set clear expectations about what she should prepare or expect between now and the strategy session, like a quick pre-qualification form or a relevant case study to review. These small touches reduce friction and boost show-up rate."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "1,904"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$3131.46"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,962,296"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "1,187"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "62%"
+            },
+            {
+              "label": "Strategy Session: Scheduled (Count)",
+              "value": "457"
+            },
+            {
+              "label": "Strategy Session: Scheduled (Percent)",
+              "value": "24%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "717"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Strategy Session: Canceled (Percent)",
+              "value": "9%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Strategy Sessions)",
+          "chart": {
+            "legend": "Strategy Session: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Reddit",
+                "value": 38,
+                "display": "38%"
+              },
+              {
+                "name": "Meta",
+                "value": 31,
+                "display": "31%"
+              },
+              {
+                "name": "Bing",
+                "value": 26,
+                "display": "26%"
+              },
+              {
+                "name": "LinkedIn",
+                "value": 22,
+                "display": "22%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Strategy Sessions)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Strategy Session: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google Ads",
+                  "641",
+                  "17%",
+                  "$1,847,232"
+                ]
+              },
+              {
+                "cells": [
+                  "LinkedIn",
+                  "478",
+                  "22%",
+                  "$1,486,915"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing",
+                  "372",
+                  "26%",
+                  "$1,142,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Meta",
+                  "251",
+                  "31%",
+                  "$894,320"
+                ]
+              },
+              {
+                "cells": [
+                  "Reddit",
+                  "162",
+                  "38%",
+                  "$590,949"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 800,
+            "axisTicks": [
+              0,
+              200,
+              400,
+              600,
+              800
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "paid-search",
+                "value": 728,
+                "display": "728"
+              },
+              {
+                "name": "paid-social",
+                "value": 512,
+                "display": "512"
+              },
+              {
+                "name": "organic",
+                "value": 334,
+                "display": "334"
+              },
+              {
+                "name": "display",
+                "value": 201,
+                "display": "201"
+              },
+              {
+                "name": "email",
+                "value": 129,
+                "display": "129"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Strategy Sessions)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Strategy Session: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "paid-search",
+                  "728",
+                  "18%"
+                ]
+              },
+              {
+                "cells": [
+                  "paid-social",
+                  "512",
+                  "23%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "334",
+                  "27%"
+                ]
+              },
+              {
+                "cells": [
+                  "display",
+                  "201",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "129",
+                  "41%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 400,
+            "axisTicks": [
+              0,
+              100,
+              200,
+              300,
+              400
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Attribution Truth Brand",
+                "value": 312,
+                "display": "312"
+              },
+              {
+                "name": "Atrilyx Platform Demo",
+                "value": 268,
+                "display": "268"
+              },
+              {
+                "name": "CMO Attribution Gap",
+                "value": 214,
+                "display": "214"
+              },
+              {
+                "name": "Performance Agency Conquest",
+                "value": 176,
+                "display": "176"
+              },
+              {
+                "name": "Enterprise Demand Gen CTV",
+                "value": 141,
+                "display": "141"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Strategy Sessions)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Strategy Session: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Attribution Truth Brand",
+                  "312",
+                  "19%",
+                  "$962,304"
+                ]
+              },
+              {
+                "cells": [
+                  "Atrilyx Platform Demo",
+                  "268",
+                  "24%",
+                  "$823,760"
+                ]
+              },
+              {
+                "cells": [
+                  "CMO Attribution Gap",
+                  "214",
+                  "29%",
+                  "$651,280"
+                ]
+              },
+              {
+                "cells": [
+                  "Enterprise Demand Gen CTV",
+                  "141",
+                  "37%",
+                  "$447,120"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 200,
+            "axisTicks": [
+              0,
+              50,
+              100,
+              150,
+              200
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "marketing attribution platform",
+                "value": 178,
+                "display": "178"
+              },
+              {
+                "name": "performance marketing agency",
+                "value": 152,
+                "display": "152"
+              },
+              {
+                "name": "multi-touch attribution agency",
+                "value": 131,
+                "display": "131"
+              },
+              {
+                "name": "call tracking attribution",
+                "value": 108,
+                "display": "108"
+              },
+              {
+                "name": "cross-channel attribution software",
+                "value": 87,
+                "display": "87"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Strategy Sessions)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Strategy Session: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "marketing attribution platform",
+                  "20%"
+                ]
+              },
+              {
+                "cells": [
+                  "performance marketing agency",
+                  "25%"
+                ]
+              },
+              {
+                "cells": [
+                  "multi-touch attribution agency",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "cross-channel attribution software",
+                  "39%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Strategy Session: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Media Buying / Channel Management",
+              "587",
+              "18%",
+              "71%"
+            ]
+          },
+          {
+            "cells": [
+              "Attribution & Measurement",
+              "432",
+              "24%",
+              "66%"
+            ]
+          },
+          {
+            "cells": [
+              "Search & Discovery",
+              "298",
+              "29%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Performance Creative",
+              "187",
+              "35%",
+              "55%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Strategy Session: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "New York HQ",
+              "684",
+              "48",
+              "4%",
+              "19%"
+            ]
+          },
+          {
+            "cells": [
+              "Miami Office",
+              "512",
+              "41",
+              "5%",
+              "23%"
+            ]
+          },
+          {
+            "cells": [
+              "Los Angeles Office",
+              "431",
+              "37",
+              "3%",
+              "28%"
+            ]
+          },
+          {
+            "cells": [
+              "Chicago Office",
+              "277",
+              "26",
+              "6%",
+              "34%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Budget Above Range",
+            "values": [
+              78,
+              84,
+              89,
+              86,
+              75
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              68,
+              72,
+              75,
+              76,
+              67
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              57,
+              61,
+              63,
+              62,
+              58
+            ]
+          },
+          {
+            "name": "Needs Executive Approval",
+            "values": [
+              42,
+              45,
+              47,
+              46,
+              44
+            ]
+          },
+          {
+            "name": "Wants Custom Attribution Proof",
+            "values": [
+              28,
+              31,
+              32,
+              31,
+              30
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "762"
+          },
+          {
+            "label": "Strategy Session Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Retainer Signed (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$3,398,509"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Retainer Signed (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$187,440"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Retainer Signed (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$221,680"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Retainer Signed (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$264,825"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Retainer Signed (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$203,360"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Retainer Signed (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$238,144"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Retainer Signed (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$283,060"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Strategy Session Scheduled (Percent)",
+            "Retainer Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 915,
+          "rows": [
+            {
+              "name": "Paid Search Google",
+              "metrics": [
+                "287",
+                "58%",
+                "27%",
+                "$618,912"
+              ]
+            },
+            {
+              "name": "Paid Social LinkedIn",
+              "metrics": [
+                "198",
+                "55%",
+                "31%",
+                "$484,398"
+              ]
+            },
+            {
+              "name": "Programmatic Display",
+              "metrics": [
+                "156",
+                "53%",
+                "34%",
+                "$412,656"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "91",
+                "61%",
+                "38%",
+                "$268,528"
+              ]
+            },
+            {
+              "name": "Direct Traffic",
+              "metrics": [
+                "30",
+                "52%",
+                "41%",
+                "$97,116"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Strategy Session Scheduled (Percent)",
+            "Retainer Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 864,
+          "rows": [
+            {
+              "name": "Search",
+              "metrics": [
+                "314",
+                "57%",
+                "28%",
+                "$688,384"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "223",
+                "54%",
+                "32%",
+                "$518,476"
+              ]
+            },
+            {
+              "name": "Display",
+              "metrics": [
+                "142",
+                "52%",
+                "35%",
+                "$366,880"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "67",
+                "59%",
+                "39%",
+                "$204,756"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "16",
+                "48%",
+                "42%",
+                "$41,712"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Strategy Session Scheduled (Percent)",
+            "Retainer Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 948,
+          "rows": [
+            {
+              "name": "Attribution Truth Brand",
+              "metrics": [
+                "267",
+                "56%",
+                "26%",
+                "$542,568"
+              ]
+            },
+            {
+              "name": "Performance Agency Conquest",
+              "metrics": [
+                "189",
+                "54%",
+                "30%",
+                "$440,920"
+              ]
+            },
+            {
+              "name": "Atrilyx Platform Demo Free Trial",
+              "metrics": [
+                "148",
+                "57%",
+                "34%",
+                "$391,344"
+              ]
+            },
+            {
+              "name": "CMO Attribution Gap Awareness",
+              "metrics": [
+                "103",
+                "59%",
+                "37%",
+                "$297,816"
+              ]
+            },
+            {
+              "name": "Cross Channel Attribution Solution",
+              "metrics": [
+                "55",
+                "52%",
+                "41%",
+                "$178,420"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Strategy Session Scheduled (Percent)",
+            "Retainer Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 831,
+          "rows": [
+            {
+              "name": "Performance marketing agency",
+              "metrics": [
+                "218",
+                "55%",
+                "27%",
+                "$458,376"
+              ]
+            },
+            {
+              "name": "Cross channel attribution software",
+              "metrics": [
+                "156",
+                "54%",
+                "31%",
+                "$376,816"
+              ]
+            },
+            {
+              "name": "Marketing attribution platform",
+              "metrics": [
+                "124",
+                "57%",
+                "35%",
+                "$337,760"
+              ]
+            },
+            {
+              "name": "Multi touch attribution agency",
+              "metrics": [
+                "89",
+                "58%",
+                "37%",
+                "$256,728"
+              ]
+            },
+            {
+              "name": "Which marketing channel actually works",
+              "metrics": [
+                "44",
+                "61%",
+                "41%",
+                "$142,472"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Strategy Session Scheduled (Percent)",
+            "Retainer Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Paid Search Management",
+              "metrics": [
+                "247",
+                "57%",
+                "26%",
+                "$509,864"
+              ]
+            },
+            {
+              "name": "Atrilyx Attribution Platform",
+              "metrics": [
+                "188",
+                "56%",
+                "32%",
+                "$469,504"
+              ]
+            },
+            {
+              "name": "Performance Creative Services",
+              "metrics": [
+                "134",
+                "53%",
+                "34%",
+                "$355,408"
+              ]
+            },
+            {
+              "name": "Phone Call Attribution",
+              "metrics": [
+                "106",
+                "59%",
+                "38%",
+                "$312,464"
+              ]
+            },
+            {
+              "name": "AI Search Optimization",
+              "metrics": [
+                "87",
+                "54%",
+                "36%",
+                "$250,848"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Retainer Signed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Paid Search Management",
+            "values": [
+              17,
+              16,
+              15,
+              16,
+              17
+            ]
+          },
+          {
+            "name": "Atrilyx Attribution Platform",
+            "values": [
+              15,
+              15,
+              16,
+              16,
+              16
+            ]
+          },
+          {
+            "name": "Performance Creative Services",
+            "values": [
+              12,
+              12,
+              11,
+              12,
+              12
+            ]
+          },
+          {
+            "name": "Phone Call Attribution",
+            "values": [
+              10,
+              10,
+              11,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "AI Search Optimization",
+            "values": [
+              7,
+              7,
+              8,
+              7,
+              7
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Strategy Session Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Strategy Session Scheduled (Percent)",
+            "value": "26%"
+          },
+          {
+            "label": "Strategy Session Scheduled (Count)",
+            "value": "352"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$4,876,551"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "856"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "18:47:33"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Strategy Session Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Strategy Session Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Strategy Session Scheduled (Count)",
+            "value": "32"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$187,402"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Strategy Session Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Strategy Session Scheduled",
+            "values": [
+              74,
+              71,
+              78,
+              75,
+              72,
+              76,
+              73,
+              77,
+              74,
+              75,
+              71,
+              74,
+              78,
+              76,
+              72,
+              75,
+              73,
+              77,
+              74,
+              76,
+              72,
+              78,
+              75,
+              73,
+              76,
+              74,
+              2,
+              3,
+              4,
+              5,
+              6,
+              8,
+              172,
+              168,
+              175,
+              171,
+              174,
+              169,
+              176,
+              173,
+              178,
+              171,
+              175,
+              172,
+              174,
+              169,
+              176,
+              173,
+              175
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,173"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "742"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "63%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "717"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "96.6%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Strategy Session Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Atrilyx Platform Demo Request",
+            "values": [
+              8,
+              11,
+              9,
+              2,
+              10,
+              12
+            ]
+          },
+          {
+            "name": "Attribution Audit Consultation",
+            "values": [
+              7,
+              9,
+              6,
+              1,
+              8,
+              11
+            ]
+          },
+          {
+            "name": "Multi-Channel Media Proposal",
+            "values": [
+              6,
+              8,
+              7,
+              3,
+              9,
+              10
+            ]
+          },
+          {
+            "name": "AI Search Optimization Setup",
+            "values": [
+              5,
+              7,
+              6,
+              2,
+              7,
+              9
+            ]
+          },
+          {
+            "name": "Call Tracking Implementation",
+            "values": [
+              4,
+              6,
+              5,
+              1,
+              6,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "1,752"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "1,105"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Strategy Session Booked (Count)",
+            "value": "457"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$5,962,296"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Priya Desai",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "James Whitfield",
+              "value": 201,
+              "display": "201"
+            },
+            {
+              "name": "Elena Rodriguez",
+              "value": 156,
+              "display": "156"
+            },
+            {
+              "name": "David Kumar",
+              "value": 242,
+              "display": "242"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Strategy Session Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              34,
+              47,
+              56,
+              68,
+              79
+            ]
+          },
+          {
+            "name": "Aarav Patel",
+            "values": [
+              31,
+              44,
+              53,
+              66,
+              77
+            ]
+          },
+          {
+            "name": "Nicole Bennett",
+            "values": [
+              29,
+              41,
+              51,
+              63,
+              74
+            ]
+          },
+          {
+            "name": "Thomas Cross",
+            "values": [
+              32,
+              45,
+              54,
+              67,
+              78
+            ]
+          },
+          {
+            "name": "Jessica Lang",
+            "values": [
+              28,
+              39,
+              49,
+              61,
+              72
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Priya Desai",
+              "value": 57.8,
+              "display": "57.8%"
+            },
+            {
+              "name": "James Whitfield",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "Elena Rodriguez",
+              "value": 59.3,
+              "display": "59.3%"
+            },
+            {
+              "name": "David Kumar",
+              "value": 55.7,
+              "display": "55.7%"
+            },
+            {
+              "name": "Robert Hayes",
+              "value": 61.4,
+              "display": "61.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Strategy Session Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "54.2%",
+                "28%",
+                "$1,057,294",
+                "1,387"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Desai",
+                "57.8%",
+                "31%",
+                "$1,247,813",
+                "1,412"
+              ]
+            },
+            {
+              "cells": [
+                "James Whitfield",
+                "52.1%",
+                "26%",
+                "$948,726",
+                "1,395"
+              ]
+            },
+            {
+              "cells": [
+                "Elena Rodriguez",
+                "59.3%",
+                "33%",
+                "$1,358,482",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "David Kumar",
+                "55.7%",
+                "29%",
+                "$1,104,567",
+                "1,403"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Hayes",
+                "61.4%",
+                "35%",
+                "$1,489,384",
+                "1,389"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Mitchell",
+              "value": 92.6,
+              "display": "92.6%"
+            },
+            {
+              "name": "Aarav Patel",
+              "value": 89.3,
+              "display": "89.3%"
+            },
+            {
+              "name": "Nicole Bennett",
+              "value": 91.8,
+              "display": "91.8%"
+            },
+            {
+              "name": "Thomas Cross",
+              "value": 88.7,
+              "display": "88.7%"
+            },
+            {
+              "name": "Jessica Lang",
+              "value": 90.4,
+              "display": "90.4%"
+            },
+            {
+              "name": "Michael Torres",
+              "value": 93.1,
+              "display": "93.1%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Strategy Session Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "92.6%",
+                "64%",
+                "$1,456,218",
+                "1,548"
+              ]
+            },
+            {
+              "cells": [
+                "Aarav Patel",
+                "89.3%",
+                "61%",
+                "$1,317,492",
+                "1,524"
+              ]
+            },
+            {
+              "cells": [
+                "Nicole Bennett",
+                "91.8%",
+                "63%",
+                "$1,398,654",
+                "1,537"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Cross",
+                "88.7%",
+                "60%",
+                "$1,273,845",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "Jessica Lang",
+                "90.4%",
+                "62%",
+                "$1,359,761",
+                "1,533"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Torres",
+                "93.1%",
+                "67%",
+                "$1,556,326",
+                "1,541"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Strategy Session Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Strategy Session Booked (Count)",
+        "rightMax": 100,
+        "rightTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 17
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 17
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 15
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 15
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 13
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 13
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 15
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 15
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 17
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 17
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 15
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 14
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 13
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 13
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 15
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 16
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 17
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 17
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 15
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 14
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 13
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 13
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 15
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 16
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 17
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 17
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 14
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 14
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 13
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 13
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 9
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 300000,
+        "rightTicks": [
+          0,
+          100000,
+          200000,
+          300000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 221017
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 211835
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 197261
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 188225
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 163884
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 171992
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 189995
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 197484
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 220197
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 213494
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 192287
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 185849
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 165374
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 170461
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 194519
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 200446
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 218146
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 214751
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 188313
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 182340
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 167856
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 169616
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 197872
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 204431
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 215375
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 215062
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 185619
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 177978
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 170766
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 169943
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 199908
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "1,904"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "152"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "114"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Chen",
+                "412",
+                "89%",
+                "87%",
+                "88%"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Rodriguez",
+                "521",
+                "86%",
+                "84%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Walsh",
+                "391",
+                "86%",
+                "84%",
+                "85%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "1,904 calls",
+      "pagerLabel": "1 of 190",
+      "calls": [
+        {
+          "time": "1/6/26 9:12 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 10:41 am",
+          "id": "A3C1-9D24EF7B0155"
+        },
+        {
+          "time": "1/12/26 11:03 am",
+          "id": "7E90-3B18AC55D204"
+        },
+        {
+          "time": "1/14/26 12:27 pm",
+          "id": "C204-6F91B3720E8A"
+        },
+        {
+          "time": "1/16/26 1:15 pm",
+          "id": "9B4D-27A0F1568C33"
+        },
+        {
+          "time": "1/20/26 2:38 pm",
+          "id": "D8E2-14B7C9038F61"
+        },
+        {
+          "time": "1/22/26 3:04 pm",
+          "id": "5A6F-8E23D471B902"
+        },
+        {
+          "time": "1/26/26 3:49 pm",
+          "id": "1F73-C05D9A62E748"
+        },
+        {
+          "time": "1/28/26 4:22 pm",
+          "id": "6C08-B932E1470DA5"
+        },
+        {
+          "time": "1/30/26 5:07 pm",
+          "id": "E491-7A65B208F3C1"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling AI Media Group, this is Marcus on the performance team. How can I help you today?",
+          "highlights": [
+            "Thank you for calling AI Media Group",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Marcus, my name is Danielle Prescott. I run marketing for a regional home services brand and I keep getting different conversion numbers from every ad platform. I need to figure out what's actually driving revenue.",
+          "highlights": [
+            "Danielle Prescott"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:19",
+          "text": "That is exactly the problem we solve. When each network reports its own conversions, they all take credit for the same customer. Are you running mostly paid search and social right now?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:30",
+          "text": "Yes, Google and Meta, plus we just started testing some connected TV. Honestly the numbers never reconcile and my CEO wants one source of truth.",
+          "highlights": [
+            "one source of truth"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:41",
+          "text": "Then our Atrilyx attribution platform is the right foundation. It connects every touchpoint, so credit goes to the network that actually drove the conversion, not whichever platform claims it first.",
+          "highlights": [
+            "Atrilyx attribution platform"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:53",
+          "text": "Okay, that sounds good, but what does something like that run? I want to keep the monthly manageable while we prove it out.",
+          "highlights": [
+            "what does something like that run",
+            "keep the monthly manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:03",
+          "text": "Completely fair. The Atrilyx license scales with your media volume, and most brands your size start in a right-sized tier and add our Paid Search Management once the data confirms where the wins are. We build the plan around your spend, not the other way around.",
+          "highlights": [
+            "Paid Search Management"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:16",
+          "text": "That helps. I'll be honest, we're getting a couple of proposals right now. The agency we use today just sends us their own dashboard and tells us everything is working.",
+          "highlights": [
+            "we're getting a couple of proposals"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:28",
+          "text": "That is the core difference. Our AI runs on our own Atrilyx data, not on biased network-reported numbers. So instead of a dashboard that flatters the agency, you see reconciled contribution across every channel, including your inbound phone calls.",
+          "highlights": [
+            "not on biased network-reported numbers"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:41",
+          "text": "Phone calls too? A lot of our home services leads call in, so that matters.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:48",
+          "text": "Yes, our Phone Call Attribution captures, transcribes, and attributes every inbound call back to the journey that drove it. For home services that usually surfaces revenue people were crediting to the wrong source entirely.",
+          "highlights": [
+            "Phone Call Attribution"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:00",
+          "text": "Alright. One thing though, I don't want to be locked into a long commitment before I see it work.",
+          "highlights": [
+            "I don't want to be locked into a long commitment"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:08",
+          "text": "Understood, and we design the first phase to prove value quickly rather than trap you. The best next step is a Strategy Session where our team reviews your current channels and shows you where the attribution gaps are. Would Thursday at 10 AM work?",
+          "highlights": [
+            "Strategy Session",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:21",
+          "text": "Thursday at 10 works. I may need to loop in my analytics lead too.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:28",
+          "text": "Perfect, bring them along. What's the best email to send the invite and prep questions to?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "2:34",
+          "text": "It's danielle.prescott@ridgelinehome.com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:38",
+          "text": "Got it, Danielle. You're booked for the Strategy Session Thursday at 10 AM. Thanks for calling AI Media Group, we'll talk soon.",
+          "highlights": [
+            "booked for the Strategy Session Thursday at 10 AM",
+            "Thanks for calling AI Media Group"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Strategy Session: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: Attribution Platform",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Product Interest: Phone Call Attribution",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Product Interest: Paid Search Management",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Contract / Commitment Concern",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Prescott, a marketing lead for a regional home services brand, called because her ad platforms report conflicting conversion numbers and her CEO wants one source of truth. Marcus recommended the Atrilyx attribution platform as the foundation, with Paid Search Management and Phone Call Attribution layered in once the data confirms where the revenue is coming from. He addressed her budget, competitor proposals, and concern about being locked into a long commitment, then scheduled a Strategy Session for Thursday at 10 AM. Danielle shared her email and plans to include her analytics lead.",
+        "keyPoints": [
+          "New client inquiry from Danielle Prescott, regional home services marketing lead",
+          "Core need: reconcile conflicting network-reported conversions into one source of truth",
+          "Recommended Atrilyx platform, plus Paid Search Management and Phone Call Attribution",
+          "Handled budget concern, competing proposals, and commitment worry",
+          "Contact captured: danielle.prescott@ridgelinehome.com",
+          "Strategy Session booked for Thursday at 10 AM"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Strategy Session booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "1,200 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 120",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. This is Sarah from AI Media Group. We help performance marketing agencies optimize their digital media spend across all channels. Do you have a few minutes to chat about your current attribution challenges?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:23 AM",
+              "text": "Yeah sure. We're spending a lot on paid search and social but honestly can't figure out which channels are actually driving conversions."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:24 AM",
+              "text": "That's a really common challenge. What's your approximate monthly digital media budget across all channels right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "We're probably around 200k a month across Google Ads, Facebook, LinkedIn, and some programmatic display."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Got it. And are you currently using any multi touch attribution platform to track those conversions back to the actual touchpoint that drove them?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "No, not really. We just use what Google and Facebook tell us, but I'm pretty sure that's inflated."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Exactly. Network reported numbers often give credit to the wrong channel. That's why we built Atrilyx, our proprietary attribution platform. It reconciles all your touchpoints into one source of truth. Would you be open to a strategy session where we walk through how your current spend is actually performing?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Yeah absolutely. That would be really helpful."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Perfect. How does this Tuesday, March 18th at 2 PM Pacific work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:36 AM",
+              "text": "Tuesday works. 2 PM is good."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:37 AM",
+              "text": "Excellent. We've scheduled your Strategy Session for Tuesday March 18th at 2 PM Pacific Time. You'll get a calendar invite and a reminder email. If you need to reach us, just call back to 877-936-2933. Looking forward to talking with you."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:39 AM",
+              "text": "Thanks Sarah. See you Tuesday."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:40 AM",
+              "text": "Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Strategy Session: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Monthly Budget Identified: 200k",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Attribution Pain Point Confirmed",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Multi Channel Spend: Google, Facebook, LinkedIn, Programmatic",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Solution Interest: Atrilyx Platform",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "15",
+            "source": "415-782-3941",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "415-782-3941",
+            "repeatCaller": "No",
+            "city": "San Francisco",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Michael Chen",
+            "firstName": "Michael",
+            "lastName": "Chen",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C742-289FB461A8D7",
+          "time": "8/16/25 10:51 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C742-289FB461A8D7",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C834-527CE691F4B9",
+          "time": "8/16/25 10:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C834-527CE691F4B9",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C951-614AD782C3E6",
+          "time": "8/16/25 10:43 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C951-614AD782C3E6",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "1,904 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 190",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/14/26 4:12 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thanks for calling Ai Media Group. This is Marcus. Are you looking to learn more about how we can help scale your digital media performance?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Yeah, hi. I saw your ad on Google about attribution and honestly, we're spending a lot on paid search but we don't really know which channels are actually driving sales."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "That's super common. So right now, are you primarily running campaigns through Google Ads, or are you across multiple channels like Facebook and programmatic as well?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "We're doing Google and Facebook mostly. Some YouTube too. But like, Facebook tells us one number and Google tells us something different, and we just don't know what's real."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Yeah, network reported numbers can definitely be misleading. That's exactly what our Atrilyx platform solves. It connects every touchpoint into one source of truth so you know which channel actually drove the conversion. What's your approximate monthly ad spend across those channels?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Probably around 80 grand a month, maybe a little more in peak seasons."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "Got it. And are you guys currently working with an agency, or managing this in house?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:20 PM",
+              "text": "We're doing it in house but honestly it's becoming too much. We need someone who really understands attribution because we're making budget decisions based on bad data."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:21 PM",
+              "text": "That makes total sense. I'd love to get you scheduled with one of our strategy experts. They'll walk through your current setup and show you exactly how much budget you might be reallocating once you have true attribution. Would Thursday afternoon work, or would you prefer next week sometime?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:22 PM",
+              "text": "Thursday this week? Like tomorrow? That could work. What time?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:23 PM",
+              "text": "How about two PM Pacific time? That'll give our strategist time to pull some sample data based on your channel mix."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:24 PM",
+              "text": "Two PM works for me. Should I have anything ready?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:25 PM",
+              "text": "Just have your account IDs handy for Google and Facebook if you can grab them. And I'll send you a confirmation email right after this with a callback number in case you need to reschedule. Your callback number is 877-936-2933. Thanks so much for calling, and we'll talk to you Thursday."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:26 PM",
+              "text": "Perfect, thanks Marcus."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Strategy Session: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Monthly Ad Spend Captured",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Multi-Channel Setup Identified",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "In-House Management Confirmed",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Attribution Pain Point Expressed",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/14/26 4:12 pm",
+            "duration": "5:47",
+            "destinationPhone": "877-936-2933",
+            "source": "8055550147",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "4155551248",
+            "repeatCaller": "No",
+            "city": "San Francisco",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "James Chen",
+            "firstName": "James",
+            "lastName": "Chen",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B523-7D8AF621E94C",
+          "time": "1/18/26 3:52 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B523-7D8AF621E94C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C741-9B2EF803D65A",
+          "time": "1/22/26 2:34 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C741-9B2EF803D65A",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D834-5C4F7B1A9E2D",
+          "time": "1/27/26 5:18 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D834-5C4F7B1A9E2D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as AI Media Group's AI agent helping put together a personalized strategy plan and complimentary attribution audit, and ask if they would like to get started.",
+        "Qualify one question at a time: Ask, one question at a time, about their monthly media spend, which channels they run today (paid search, paid social, programmatic, CTV/OTT), their primary industry, their attribution goals or timeline, and their business location to confirm we can support their market.",
+        "Estimate then book: Confirm we support their region, share that engagements typically run as a monthly retainer or a percentage of media spend based on what they shared, recommend a strategy session with an attribution specialist for an exact scope, propose a specific day and time, and confirm they will receive a reminder text before the session with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "AI_Media_Group_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Services & Specialties",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Atrilyx Technology",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Book a Strategy Session",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"reporting access\",\"question\":\"How do I log in to see my attribution dashboard?\",\"answer\":\"You can access your Atrilyx dashboard anytime at dashboard.atrilyx.com using the credentials from your onboarding email. If you need a reset, I can flag it for your account team right away.\"},{\"topic\":\"campaign changes\",\"question\":\"Can you shift more budget into my paid social channel this month?\",\"answer\":\"Yes, budget reallocations are handled by your dedicated media team and reconciled through Atrilyx before going live. I can set up a quick check-in with your strategist to confirm the shift.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What does AI Media Group actually do?",
+              "answer": "We are a performance marketing agency that runs and scales paid media for brands, with every channel measured through Atrilyx, our patented cross-channel attribution platform. The best next step is a strategy session so a specialist can map it to your goals."
+            },
+            {
+              "question": "What is Atrilyx?",
+              "answer": "Atrilyx is our patented attribution infrastructure that connects every touchpoint into one source of truth, so credit goes to the channel that actually drove the conversion. I can book you a strategy session to see it applied to your business."
+            },
+            {
+              "question": "How is your attribution different from what my ad networks report?",
+              "answer": "Network-reported numbers are biased toward each network, while Atrilyx reconciles every touchpoint so you see true contribution. A strategy session is the easiest way to see the difference on your own data."
+            },
+            {
+              "question": "What channels do you manage?",
+              "answer": "We run paid search, paid social, programmatic, CTV and OTT, SEO, AI search optimization, and performance creative, all held to one attribution truth. Let's set up a strategy session to build the right mix for you."
+            },
+            {
+              "question": "Do you work with my industry?",
+              "answer": "We serve healthcare, financial services, education, hospitality, automotive, home services, e-commerce, B2B, travel, retail, and real estate. A strategy session with a specialist will cover exactly how we approach your vertical."
+            },
+            {
+              "question": "How much does it cost to work with you?",
+              "answer": "Engagements are custom, typically structured as a monthly retainer or a percentage of media spend based on your channels and scope. A strategy session is where we scope this precisely for you."
+            },
+            {
+              "question": "Do you have a minimum spend?",
+              "answer": "Scope depends on your channels and goals rather than a single fixed number, so we tailor engagements to your situation. Let's book a strategy session so we can align on the right fit."
+            },
+            {
+              "question": "Can you handle just paid search or just one channel?",
+              "answer": "Yes, we can manage a single channel or run full cross-channel media, all measured through Atrilyx. A strategy session will help us recommend the best starting point."
+            },
+            {
+              "question": "What is phone call attribution?",
+              "answer": "We capture, transcribe, and attribute every inbound call to the journey that drove it, so phone conversions are credited correctly. I can schedule a strategy session to show how it fits your funnel."
+            },
+            {
+              "question": "Do you do CTV and streaming ads?",
+              "answer": "Yes, we run connected TV and OTT tied directly to downstream conversion attribution, so upper-funnel exposure is connected to what follows. A strategy session is the best way to plan a CTV approach."
+            },
+            {
+              "question": "What is AI Search Optimization?",
+              "answer": "It is visibility across the AI search environments reshaping how buyers find answers and how brands get discovered inside them. Let's set up a strategy session to review your current visibility."
+            },
+            {
+              "question": "How does your AI work?",
+              "answer": "Our AI runs on our own Atrilyx data, not on biased network-reported data, so it surfaces opportunities, detects performance shifts, and speeds up decisions. A strategy session will show it working on real attribution data."
+            },
+            {
+              "question": "Are you a Google Partner?",
+              "answer": "Yes, we are a Google Premier Partner, a Microsoft Advertising Partner, and a Meta Business Partner, and a two-time Google Agency Cup winner. A strategy session is a great way to see what those partnerships mean for your account."
+            },
+            {
+              "question": "How long have you been in business?",
+              "answer": "We were founded in 2008, have driven over one billion dollars in attributed media decisions, and are backed by Blackstone. I would be glad to book you a strategy session with a specialist."
+            },
+            {
+              "question": "How quickly can we get started?",
+              "answer": "Timelines depend on your channels and onboarding needs, but we can move quickly once scope is set. The fastest path is a strategy session to lock in the plan."
+            },
+            {
+              "question": "Do you offer SEO?",
+              "answer": "Yes, we handle organic search with proper attribution, since many conversions credited to brand search were actually driven by paid media earlier in the journey. A strategy session will show what Atrilyx uncovers for you."
+            },
+            {
+              "question": "Can you improve my creative?",
+              "answer": "Yes, our performance creative is developed and optimized against what actually drove the conversion. Let's book a strategy session to review your current creative approach."
+            },
+            {
+              "question": "Do you have case studies?",
+              "answer": "Yes, our results include work with brands like Oscar de la Renta, Turtle Bay Resort, and Amrit Residences. A specialist can walk you through relevant examples in a strategy session."
+            },
+            {
+              "question": "Will I own my data and accounts?",
+              "answer": "We work transparently through Atrilyx so you have a clear, reconciled view of what drives performance. A strategy session is the best place to review how access and reporting work."
+            },
+            {
+              "question": "How do I get a proposal?",
+              "answer": "The first step is a strategy session where a specialist scopes your goals, channels, and attribution needs, then builds a tailored recommendation. I can find a time that works for you now."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the strategy session\",\"follow_up_message\":\"Great, I can get your strategy session booked with an attribution specialist. Does Tuesday at 10:00 AM or Wednesday at 2:00 PM work better, and you will get a reminder text with a number to call beforehand.\"},{\"intent\":\"request a scope and pricing overview\",\"follow_up_message\":\"Happy to help scope this out. Engagements are typically a monthly retainer or a percentage of media spend, and a specialist will give you exact numbers on a quick strategy session. What day this week works to connect?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is AI Media Group's AI agent. I can help put together a personalized strategy plan and a complimentary attribution audit. Would you like to get started?",
+        "goal": "Qualify the brand's media spend, channels, industry, and goals, then book a virtual strategy session with an attribution specialist.",
+        "bookingType": "virtual strategy session",
+        "offer": "Get a complimentary cross-channel attribution audit when you book this week",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Roughly what is your current monthly media spend?",
+          "Which channels are you running today, such as paid search, paid social, programmatic, or CTV and OTT?",
+          "What industry is your business in?",
+          "What is your main goal, for example better attribution, scaling spend, or lowering cost per conversion?",
+          "What is your business location or ZIP code so we can confirm we support your market?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:41 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:41 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:41 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "AI Media Group",
+      "callerName": "Sarah Mitchell",
+      "callerPhone": "(415) 555-0187",
+      "campaign": "Paid Search Management, San Francisco Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Strategy Session Lead",
+      "estimatedValue": "$4,750",
+      "googleSearch": "performance marketing agency san francisco",
+      "websiteSearch": "paid search management for startups",
+      "callingWebpage": "/services/paid-search",
+      "products": "Paid Search Management, Atrilyx Attribution Platform",
+      "cartId": "AIM-7392K",
+      "serviceable": "Yes",
+      "email": "sarah.mitchell@techventures.com",
+      "street": "742 Market Street Suite 400",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94102",
+      "digitalJourney": "/home › /services › /services/paid-search › /technology/atrilyx",
+      "intent": "VP of Marketing at SaaS startup seeking professional paid search management with transparent attribution to replace in-house efforts.",
+      "coverage": "ZIP 94102 confirmed, San Francisco serviceable",
+      "switchIntent": "High, currently losing budget to channel leakage, wants attribution audit and strategy session this month.",
+      "greeting": "Hi Sarah, thanks for calling AI Media Group. I see you were just looking at our Paid Search Management service. We help companies like yours stop wasting budget on channels that don't actually drive conversions. Can I book you a quick strategy session with one of our attribution experts to show you where your marketing is leaking?"
+    },
+    "smsScreenpop": {
+      "brandName": "AI Media Group",
+      "callerName": "Marcus Chen",
+      "callerPhone": "(512) 555-0263",
+      "campaign": "Programmatic Advertising, Austin Demand Gen",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Strategy Session Lead",
+      "estimatedValue": "$8,920",
+      "googleSearch": "programmatic advertising agency austin texas",
+      "websiteSearch": "CTV advertising with attribution tracking",
+      "callingWebpage": "/services/programmatic",
+      "products": "Programmatic Advertising, CTV + OTT Advertising",
+      "cartId": "AIM-5614J",
+      "serviceable": "Yes",
+      "email": "m.chen@austinretail.co",
+      "street": "1201 Congress Avenue Suite 500",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78701",
+      "digitalJourney": "/home › /industries/retail › /services/programmatic › /services/ctv-ott",
+      "intent": "Director of Performance Marketing at regional retail chain wanting to launch programmatic and streaming campaigns with measurable ROI across upper and lower funnel.",
+      "coverage": "ZIP 78701 confirmed, Austin serviceable",
+      "appointment": "Strategy Session with Programmatic Specialist, Thu Jul 18, 2:00 PM",
+      "greeting": "Hi Marcus, this is Jade from AI Media Group. Great to connect. We have you set for a strategy session this Thursday at 2 PM to walk through how we tie your programmatic and CTV spend directly to store visits and online sales. Looking forward to showing you attribution that actually works. Any questions before then?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "AI Media Group",
+      "brandDomain": "www.aimediagroup.com",
+      "brandIcon": "📊",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Monica, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Attribution Platform Demo",
+          "highlight": false
+        },
+        {
+          "label": "Search Term",
+          "value": "cross-channel attribution software",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/technology/atrilyx",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Paid Search Management, Atrilyx Attribution Platform",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Monica, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "strategy_new_project",
+          "name": "Strategy Session, New Project"
+        },
+        {
+          "id": "existing_support",
+          "name": "Existing Account Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry Queue"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling AI Media Group. I see you were checking out our Atrilyx platform. Are you looking to improve attribution across your paid media channels?",
+          "sigs": [],
+          "q": [
+            35,
+            40,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, exactly. We're running campaigns across Google, Facebook, and LinkedIn right now, but we can't figure out which channels are actually driving conversions. We're spending about half a million a month and getting conflicting data from each platform.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Half million monthly spend</strong> across channels"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Attribution confusion</strong> - platform reporting conflicts"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>Multiple channels</strong> - Paid Search, Social, LinkedIn"
+            }
+          ],
+          "q": [
+            55,
+            25,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's exactly what Atrilyx solves. One source of truth across all your channels so you know which network actually drove each conversion. Given your spend level, are you looking to improve performance on current campaigns or planning to scale into new channels like programmatic or CTV?",
+          "sigs": [],
+          "q": [
+            70,
+            15,
+            15
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We want to do both. We're thinking about adding CTV and programmatic, but first we need to get our current media mix right. We haven't really done SEO either, so there's a lot of potential. We're hoping to get guidance on the whole strategy.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Multi-channel expansion</strong> - CTV, programmatic, SEO planned"
+            },
+            {
+              "c": "purple",
+              "t": "<strong>Strategy-focused</strong> - wants holistic media guidance"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Existing optimization first</strong> - current channels underperforming"
+            }
+          ],
+          "q": [
+            85,
+            8,
+            7
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "How soon could we talk to someone about setting that up?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Ready to engage</strong> - wants strategy session soon"
+            }
+          ],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm routing you to our Strategy Session team who handles exactly this type of growth planning. They'll map out your full attribution baseline and show you where the biggest opportunities are across paid search, social, programmatic, and SEO. You should expect a call within 24 hours. Does that work?",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Strategy Session Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get that strategy session booked (Agent)\", \"put you on the calendar with our team (Agent)\", \"yes book me in (Caller)\", \"schedule the call (Caller)\"])",
+          "createdAt": "03/12/25 9:14 am",
+          "updatedAt": "12/18/25 2:30 pm"
+        },
+        {
+          "name": "Atrilyx Platform Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"tell me about Atrilyx (Caller)\", \"how does your attribution platform work (Caller)\", \"one source of truth (Agent)\", \"cross-channel attribution (Caller)\"])",
+          "createdAt": "05/22/25 10:05 am",
+          "updatedAt": "11/09/25 4:12 pm"
+        },
+        {
+          "name": "Attribution Truth Explained",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Attribution Consultation Quality] < 60 and duration > 45 sec",
+          "createdAt": "02/18/25 8:40 am",
+          "updatedAt": "12/02/25 1:15 pm"
+        },
+        {
+          "name": "Budget & Pricing Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"what's the monthly retainer (Caller)\", \"percent of ad spend (Caller)\", \"that's out of our budget (Caller)\", \"too expensive for us (Caller)\"])",
+          "createdAt": "06/14/25 11:20 am",
+          "updatedAt": "12/20/25 9:45 am"
+        },
+        {
+          "name": "Competitor Named",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"we're using another agency (Caller)\", \"currently with our attribution vendor (Caller)\", \"network-reported numbers (Agent)\", \"our current media buyer (Caller)\"])",
+          "createdAt": "04/03/25 3:33 pm",
+          "updatedAt": "10/28/25 10:10 am"
+        },
+        {
+          "name": "Discovery Questions Asked",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Discovery Call Scorecard] < 60 and duration > 45 sec",
+          "createdAt": "01/09/25 9:00 am",
+          "updatedAt": "12/15/25 3:50 pm"
+        },
+        {
+          "name": "Next Steps Confirmed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Consult Close Scorecard] < 60 and duration > 45 sec",
+          "createdAt": "07/19/25 2:22 pm",
+          "updatedAt": "12/22/25 11:05 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"send you a proposal (Agent)\", \"the retainer would be around (Agent)\", \"here's the estimated monthly (Agent)\", \"put together a quote (Agent)\"])",
+          "createdAt": "08/05/25 1:10 pm",
+          "updatedAt": "12/30/25 4:40 pm"
+        },
+        {
+          "name": "Strategy Session Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"walk you through a strategy session (Agent)\", \"we could set up a consultation (Agent)\", \"let me think about it (Caller)\", \"not ready to schedule yet (Caller)\"])",
+          "createdAt": "03/27/25 4:15 pm",
+          "updatedAt": "11/30/25 8:20 am"
+        },
+        {
+          "name": "Upsell CTV Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"add connected TV (Caller)\", \"interested in CTV and OTT (Caller)\", \"streaming advertising (Caller)\", \"run programmatic as well (Caller)\"])",
+          "createdAt": "09/11/25 10:45 am",
+          "updatedAt": "12/12/25 2:05 pm"
+        }
+      ]
+    }
+  }
+}

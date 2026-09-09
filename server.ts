@@ -42,6 +42,7 @@ import { deployStatus } from "./engine/status.ts";
 import { runCanary, recordRun, toPublic as canaryPublic, BUDGET_SECONDS } from "./engine/canary.ts";
 import { migrateDemoDashes } from "./engine/dashSweep.ts";
 import { applyDemoPatches } from "./engine/demoPatches.ts";
+import { importEventSeeds } from "./engine/eventSeeds.ts";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, "dist");
@@ -342,6 +343,14 @@ const server = app.listen(PORT, () => {
      someone else cannot be updated from the browser. Content only, never
      ownership. */
   applyDemoPatches(DATA_DIR);
+  /* Event rosters committed under engine/event-seeds/ (see eventSeeds.ts for why
+     they cannot live in src/data/generated). Never overwrites an existing demo,
+     so this is a no-op on every boot after the first. */
+  const seeded = importEventSeeds();
+  if (seeded.added.length || seeded.failed.length) {
+    console.log(`🎟  Event seeds: ${seeded.added.length} added, ${seeded.skipped} already present`);
+    for (const f of seeded.failed) console.error(`   ⚠ skipped ${f}`);
+  }
   if (!apiKey) console.warn("⚠  ANTHROPIC_API_KEY not set — the AI features will return errors. Set it in the server environment (.env or host config).");
   scheduleCanary();
 });

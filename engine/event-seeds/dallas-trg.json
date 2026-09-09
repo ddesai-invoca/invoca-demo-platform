@@ -1,0 +1,5302 @@
+{
+  "id": "trg",
+  "customerName": "TRG",
+  "websiteUrl": "https://trg.agency",
+  "brandDomain": "trg.agency",
+  "networkName": "Invoca for Advertising Agencies",
+  "industry": "Advertising & Marketing Services",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Client",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 600,
+      "yTicks": [
+        0,
+        150,
+        300,
+        450,
+        600
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 312
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 528
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 547
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 561
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 416
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Unlock Potential",
+          "marketingSearchTerm": "Dallas advertising agency",
+          "landingPageUrl": "https://trg.agency/capabilities?utm_source=google&utm_medium=cpc&utm_campaign=unlock_potential",
+          "websiteJourney": "Home / Capabilities / Strategy Collective",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Independent by Design",
+          "marketingSearchTerm": "full-service independent ad agency",
+          "landingPageUrl": "https://trg.agency/about?utm_source=google&utm_medium=cpc&utm_campaign=independent_by_design",
+          "websiteJourney": "Home / About / Culture",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "The Smartest Artists",
+          "marketingSearchTerm": "brand strategy agency Texas",
+          "landingPageUrl": "https://trg.agency/capabilities/strategy?utm_source=google&utm_medium=cpc&utm_campaign=smartest_artists",
+          "websiteJourney": "Home / Capabilities / Strategy Collective / Brand Strategy",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Media Buying Reach",
+          "marketingSearchTerm": "media buying agency",
+          "landingPageUrl": "https://trg.agency/capabilities/media?utm_source=bing&utm_medium=cpc&utm_campaign=media_buying_reach",
+          "websiteJourney": "Home / Capabilities / Strategy Collective / Media Strategy & Buying",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Collaboration by Collision",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://trg.agency/capabilities/experiential?utm_source=instagram&utm_medium=social&utm_campaign=collaboration_collision",
+          "websiteJourney": "Home / Capabilities / Additional Specialties / Experiential Marketing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "News & Thought Leadership",
+          "marketingSearchTerm": "top ad agencies Dallas",
+          "landingPageUrl": "https://trg.agency/news?utm_source=organic&utm_medium=organic&utm_campaign=thought_leadership",
+          "websiteJourney": "Home / News",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Who Saw That Coming",
+          "marketingSearchTerm": "creative agency for retail brands",
+          "landingPageUrl": "https://trg.agency/work?utm_source=google&utm_medium=cpc&utm_campaign=who_saw_that_coming",
+          "websiteJourney": "Home / Work / Featured Work",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Five Decades New Shop",
+          "marketingSearchTerm": "advertising agency for financial services",
+          "landingPageUrl": "https://trg.agency/work/featured?utm_source=google&utm_medium=cpc&utm_campaign=five_decades",
+          "websiteJourney": "Home / Work / Featured Work / Charles Schwab",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Unlock Potential",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://trg.agency/capabilities/creative?utm_source=facebook&utm_medium=social&utm_campaign=unlock_potential",
+          "websiteJourney": "Home / Capabilities / Creative Services / Campaign Creative",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Naming & Identity Push",
+          "marketingSearchTerm": "brand naming and identity firm",
+          "landingPageUrl": "https://trg.agency/capabilities/naming?utm_source=bing&utm_medium=cpc&utm_campaign=naming_identity",
+          "websiteJourney": "Home / Capabilities / Creative Services / Naming & Identity",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "The Smartest Artists",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://trg.agency/capabilities/experience?utm_source=instagram&utm_medium=social&utm_campaign=smartest_artists",
+          "websiteJourney": "Home / Capabilities / Creative Services / Experience Design",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "SEO Capabilities",
+          "marketingSearchTerm": "experiential marketing agency Dallas",
+          "landingPageUrl": "https://trg.agency/capabilities?utm_source=organic&utm_medium=organic&utm_campaign=seo_capabilities",
+          "websiteJourney": "Home / Capabilities / Additional Specialties",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Independent by Design",
+          "marketingSearchTerm": "independent agency vs holding company",
+          "landingPageUrl": "https://trg.agency/about?utm_source=google&utm_medium=cpc&utm_campaign=independent_by_design",
+          "websiteJourney": "Home / About / Leadership",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Who Saw That Coming",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://trg.agency/contact?utm_source=facebook&utm_medium=social&utm_campaign=who_saw_that_coming",
+          "websiteJourney": "Home / Contact / Prospective Clients",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "News & Thought Leadership",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://trg.agency/news/analytics?utm_source=organic&utm_medium=organic&utm_campaign=thought_leadership",
+          "websiteJourney": "Home / Capabilities / Additional Specialties / Analytics & Measurement",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Media Buying Reach",
+          "marketingSearchTerm": "connections strategy agency",
+          "landingPageUrl": "https://trg.agency/capabilities/connections?utm_source=google&utm_medium=cpc&utm_campaign=media_buying_reach",
+          "websiteJourney": "Home / Capabilities / Strategy Collective / Connections Strategy",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Collaboration by Collision",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://trg.agency/capabilities/digital?utm_source=instagram&utm_medium=social&utm_campaign=collaboration_collision",
+          "websiteJourney": "Home / Capabilities / Additional Specialties / Digital Development",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Five Decades New Shop",
+          "marketingSearchTerm": "content production agency",
+          "landingPageUrl": "https://trg.agency/capabilities/content?utm_source=bing&utm_medium=cpc&utm_campaign=five_decades",
+          "websiteJourney": "Home / Capabilities / Creative Services / Content Production",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "SEO Capabilities",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://trg.agency/capabilities/research?utm_source=organic&utm_medium=organic&utm_campaign=seo_capabilities",
+          "websiteJourney": "Home / Capabilities / Strategy Collective / Audience Research",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Unlock Potential",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://trg.agency/work/recent?utm_source=facebook&utm_medium=social&utm_campaign=unlock_potential",
+          "websiteJourney": "Home / Work / Recent Work",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (TRG)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "1,854"
+            },
+            {
+              "label": "New Business Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Account Won (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$7,303,498"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "297"
+            },
+            {
+              "label": "Existing Account Support (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Careers Inquiry (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Vendor/Partner Inquiry (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Business Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Business Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "25%"
+            },
+            {
+              "label": "Unqualified Inquiry (Percent)",
+              "value": "11%"
+            },
+            {
+              "label": "Account Won (Percent)",
+              "value": "5%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Business Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Business Inquiry (Count)",
+            "values": [
+              187,
+              356,
+              372,
+              341,
+              301
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              54,
+              108,
+              111,
+              101,
+              90
+            ]
+          },
+          {
+            "name": "Unqualified Inquiry (Count)",
+            "values": [
+              24,
+              47,
+              49,
+              45,
+              39
+            ]
+          },
+          {
+            "name": "Account Won (Count)",
+            "values": [
+              11,
+              22,
+              23,
+              20,
+              17
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1854,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "612",
+                "22.4%",
+                "3.1%",
+                "$2,148,663"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "458",
+                "25.1%",
+                "4.2%",
+                "$1,671,205"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "371",
+                "27.3%",
+                "5.3%",
+                "$1,532,847"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "247",
+                "29.8%",
+                "6.5%",
+                "$1,094,326"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "166",
+                "33.6%",
+                "8.4%",
+                "$856,457"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1854,
+          "rows": [
+            {
+              "name": "cpc",
+              "metrics": [
+                "588",
+                "23.1%",
+                "3.4%",
+                "$2,087,412"
+              ]
+            },
+            {
+              "name": "organic",
+              "metrics": [
+                "502",
+                "25.6%",
+                "4.5%",
+                "$1,824,663"
+              ]
+            },
+            {
+              "name": "social",
+              "metrics": [
+                "344",
+                "28.2%",
+                "5.6%",
+                "$1,347,209"
+              ]
+            },
+            {
+              "name": "email",
+              "metrics": [
+                "243",
+                "30.4%",
+                "6.9%",
+                "$1,043,857"
+              ]
+            },
+            {
+              "name": "direct",
+              "metrics": [
+                "177",
+                "34.1%",
+                "8.7%",
+                "$1,000,357"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 981,
+          "rows": [
+            {
+              "name": "Unlock Potential",
+              "metrics": [
+                "312",
+                "22.8%",
+                "3.2%",
+                "$758,214"
+              ]
+            },
+            {
+              "name": "Collaboration by Collision",
+              "metrics": [
+                "241",
+                "25.3%",
+                "4.4%",
+                "$612,477"
+              ]
+            },
+            {
+              "name": "Who Saw That Coming",
+              "metrics": [
+                "187",
+                "27.9%",
+                "5.5%",
+                "$471,338"
+              ]
+            },
+            {
+              "name": "Independent by Design",
+              "metrics": [
+                "143",
+                "30.1%",
+                "6.7%",
+                "$356,192"
+              ]
+            },
+            {
+              "name": "Five Decades, New Shop",
+              "metrics": [
+                "98",
+                "34.7%",
+                "8.9%",
+                "$241,663"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 674,
+          "rows": [
+            {
+              "name": "dallas advertising agency",
+              "metrics": [
+                "214",
+                "23.4%",
+                "3.3%",
+                "$512,447"
+              ]
+            },
+            {
+              "name": "full service independent ad agency",
+              "metrics": [
+                "168",
+                "25.8%",
+                "4.5%",
+                "$398,216"
+              ]
+            },
+            {
+              "name": "media buying agency",
+              "metrics": [
+                "131",
+                "28.3%",
+                "5.6%",
+                "$307,663"
+              ]
+            },
+            {
+              "name": "experiential marketing agency dallas",
+              "metrics": [
+                "97",
+                "30.6%",
+                "6.8%",
+                "$224,158"
+              ]
+            },
+            {
+              "name": "brand naming and identity firm",
+              "metrics": [
+                "64",
+                "35.2%",
+                "9.1%",
+                "$148,772"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Account Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Media Strategy & Buying",
+              "metrics": [
+                "612",
+                "22.4%",
+                "3.1%",
+                "$1,492,317"
+              ]
+            },
+            {
+              "name": "Campaign Creative",
+              "metrics": [
+                "458",
+                "24.8%",
+                "4.5%",
+                "$1,648,905"
+              ]
+            },
+            {
+              "name": "Brand Strategy",
+              "metrics": [
+                "371",
+                "26.1%",
+                "5.3%",
+                "$1,571,244"
+              ]
+            },
+            {
+              "name": "Content Production",
+              "metrics": [
+                "243",
+                "28.3%",
+                "7.0%",
+                "$1,334,761"
+              ]
+            },
+            {
+              "name": "Experiential Marketing",
+              "metrics": [
+                "170",
+                "30.6%",
+                "9.4%",
+                "$1,256,271"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1854,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "578",
+                "21.5%",
+                "3.1%",
+                "$1,398,442"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "447",
+                "23.8%",
+                "4.3%",
+                "$1,502,873"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "358",
+                "25.7%",
+                "5.3%",
+                "$1,489,204"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "271",
+                "27.9%",
+                "7.0%",
+                "$1,521,655"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "200",
+                "30.2%",
+                "9.0%",
+                "$1,391,324"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Account Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Media Strategy & Buying",
+            "values": [
+              4,
+              5,
+              3,
+              4,
+              3
+            ]
+          },
+          {
+            "name": "Campaign Creative",
+            "values": [
+              5,
+              4,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "name": "Brand Strategy",
+            "values": [
+              3,
+              5,
+              4,
+              4,
+              4
+            ]
+          },
+          {
+            "name": "Content Production",
+            "values": [
+              4,
+              3,
+              4,
+              3,
+              3
+            ]
+          },
+          {
+            "name": "Experiential Marketing",
+            "values": [
+              3,
+              3,
+              4,
+              3,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 1,854 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Delgado, VP of marketing at a regional retail chain, called to explore a brand strategy engagement including a competitive audit and positioning refresh. Oscar walked him through the Strategy Collective approach and scheduled a discovery consultation with the brand team. Marcus confirmed the date and shared his budget range.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Priya Nathan, a founder launching a consumer beverage brand, called about a full campaign creative concept for a spring launch. Lila outlined the big-idea concepting and multi-channel execution process and booked a consultation with a creative director. Priya was thrilled and asked for a mood board sample ahead of the meeting.",
+          "date": "Feb 11, 1:38 PM",
+          "agent": "Lila",
+          "duration": "2m 55s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 8,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Trevor Okafor from a home improvement retailer called to discuss a media buying and channel planning retainer across broadcast and streaming. Rosey explained the media strategy fee structure and scheduled a planning consultation with the media team. Trevor appreciated the clarity on placement and negotiation.",
+          "date": "Mar 4, 9:22 AM",
+          "agent": "Rosey",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Danielle Brooks, a new prospective client opening a specialty coffee franchise, called to schedule a naming and identity project through Flying Start. Lee collected her company details, timeline, and contact information and booked her first consultation with the naming team. Danielle confirmed she wanted a logo system and brand guidelines included.",
+          "date": "Apr 9, 3:47 PM",
+          "agent": "Lee",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Gregory Sims, an events lead at a financial services firm, called about an experiential marketing activation for an upcoming conference. Mary described Latitude's pop-up and sponsorship capabilities and scheduled a scoping consultation. Gregory was pleased with the sample activations she referenced.",
+          "date": "May 2, 11:05 AM",
+          "agent": "Mary",
+          "duration": "2m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 13,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Anita Reyes, an existing client, called with a question about her monthly media buying retainer and how programmatic spend was being allocated. Sue reviewed the current channel breakdown and promised a detailed report by end of week. Anita was satisfied but wanted more frequent updates.",
+          "date": "May 20, 2:30 PM",
+          "agent": "Sue",
+          "duration": "2m 10s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Paul Whitman called to check the status of a content production shoot for a broadcast spot already in progress. Mike confirmed the edit was in post and gave a revised delivery date. Paul was a little concerned about the timeline but accepted the update.",
+          "date": "Jun 3, 4:12 PM",
+          "agent": "Mike",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 59,
+          "summary": "Karen Mulligan called with a billing dispute over an invoice she felt double-charged design hours on. Jennifer pulled the account and opened a review with the finance team, promising a callback within 48 hours. Karen remained frustrated that it was not resolved on the call.",
+          "date": "Jun 24, 10:48 AM",
+          "agent": "Jennifer",
+          "duration": "3m 18s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 27,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Steven Ortiz called upset that his campaign creative deliverables were running behind the agreed schedule. Rose apologized and escalated the timeline concern to the account director for a status call. Steven said he needed firm dates before signing off on the next phase.",
+          "date": "Jul 8, 1:15 PM",
+          "agent": "Rose",
+          "duration": "2m 37s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Nina Caldwell, a nonprofit director, called to revisit a paused brand strategy proposal and restart the messaging framework work. Oscar reviewed the earlier scope and scheduled a fresh consultation to update the plan. Nina agreed to move forward with a revised budget.",
+          "date": "Jul 27, 9:40 AM",
+          "agent": "Oscar",
+          "duration": "2m 26s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Brian Foster called about a delay in his naming project deliverables and unclear next steps. Lila looked into the assignment and found it stuck awaiting his brand input. Brian was annoyed the holdup had not been flagged sooner.",
+          "date": "Aug 5, 3:02 PM",
+          "agent": "Lila",
+          "duration": "2m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Teresa Lang called disputing a billing charge for analytics dashboard hours she did not recognize. Mary explained the retainer line items but could not fully reconcile it on the call and logged a finance ticket. Teresa asked for a manager to follow up.",
+          "date": "Aug 22, 11:33 AM",
+          "agent": "Mary",
+          "duration": "2m 44s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Douglas Perry called to cancel an ongoing brand performance retainer citing internal budget cuts. Mike processed the cancellation request and explained the notice period in the contract. Douglas was curt and wanted confirmation in writing.",
+          "date": "Sep 10, 4:55 PM",
+          "agent": "Mike",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Rachel Kim called to complain that an experiential activation at her retail event had setup problems and understaffing. Jennifer apologized, documented the issues, and escalated to the Latitude events lead. Rachel was very dissatisfied and demanded a partial credit.",
+          "date": "Sep 28, 10:19 AM",
+          "agent": "Jennifer",
+          "duration": "3m 21s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "An unidentified caller left a voicemail asking about pricing for a campaign project but did not leave clear contact details. The message rolled to voicemail after hours and no agent was available. No follow-up could be completed without a callback number.",
+          "date": "Oct 4, 6:47 PM",
+          "agent": "No Agent",
+          "duration": "0m 46s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "brand strategy",
+        "media buying",
+        "naming",
+        "campaign",
+        "experiential",
+        "billing"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 41s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Service Requirements",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area / ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Date & Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Initial Strategy Call",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Compliance and Privacy Notice",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Introduced agency name clearly",
+        "Confirmed caller name multiple times",
+        "Asked about brand challenge area",
+        "Identified audience research need",
+        "Confirmed service territory match",
+        "Verified phone number",
+        "Offered specific consultation date",
+        "Professional tone maintained",
+        "Caller expressed interest in strategy work",
+        "Closed with next steps",
+        "Verified 75001 ZIP code",
+        "Offered morning availability",
+        "Captured company name"
+      ],
+      "unmetSignals": [
+        "Did not probe budget range",
+        "Did not mention retainer vs project structure",
+        "Did not discuss timeline expectations",
+        "Did not ask about competitor analysis needs",
+        "Did not mention Flying Start subsidiary",
+        "Did not capture email for confirmation",
+        "Did not discuss content production needs",
+        "Did not outline strategy process steps",
+        "Did not mention brand positioning framework",
+        "Failed to set follow-up reminder tone",
+        "Did not discuss media strategy capabilities",
+        "Did not ask about current agencies",
+        "Did not mention analytics offerings",
+        "Did not probe decision timeline",
+        "Did not discuss experience design services"
+      ],
+      "naSignals": [
+        "Delivery timeline not relevant",
+        "Website build scope not discussed",
+        "Campaign performance reporting not applicable",
+        "Influencer marketing not mentioned",
+        "Existing campaign optimization not applicable",
+        "Media buying budget allocation not discussed",
+        "Experiential event activation budget not relevant",
+        "Existing brand identity refresh needs not explored",
+        "Video production timeline not discussed",
+        "Broadcast media costs not addressed",
+        "AI-generated content capabilities not discussed"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller is a marketing manager at a mid-market fintech startup that is rebranding and needs a full brand strategy refresh, including positioning, messaging framework, and audience research to compete against larger players in the financial services space."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a consultative intake call to explore whether TRG has experience with fintech brands and whether they can deliver a strategy project within 6 to 8 weeks. They mentioned budget consciousness but did not commit to a specific range."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have captured the caller's email address for a confirmation message and set clearer expectations about the first strategy call duration and the discovery process that typically precedes positioning work."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Good afternoon, thank you for calling TRG. This is Marcus Bell. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:06",
+          "text": "Hi Marcus, thanks for picking up. My name is Sarah Chen and I am the marketing director at Prism Financial, a fintech startup based in Arlington. We are looking to rebrand and we need strategic support."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:18",
+          "text": "Sarah, it is great to meet you. Welcome to TRG. Can you tell me a bit more about what you mean by rebrand? Are you looking at a complete identity refresh or are you focusing on messaging and positioning?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Both, really. We launched two years ago with a very generic identity and now that we have traction we want to stand out against competitors like Wise and Square. We need a brand strategy foundation first."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:41",
+          "text": "That makes complete sense. Brand strategy is exactly where we excel. Just so I can route this correctly, Sarah, are you located in the Arlington area and looking for an agency local to Dallas, or are you open to remote collaboration?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:53",
+          "text": "We are in Arlington, so yes, Dallas area works perfectly. We actually prefer local because we want to work closely on the strategy side."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:03",
+          "text": "Perfect. Arlington is in our service area. Now, when you think about the strategy work you need, beyond positioning and messaging, are you also looking at audience research and segmentation? That is usually where we start."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:16",
+          "text": "Yes, absolutely. We need to understand which customer segments to pursue and how to position ourselves differently. Our product is strong but our messaging is not resonating."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:27",
+          "text": "Understood. Sarah, let me grab your contact information. Can you confirm your last name spelling and give me a phone number where we can reach you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:36",
+          "text": "Yes, it is C-H-E-N, and you can reach me at ****. That is my cell."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:44",
+          "text": "Great, thank you. And Sarah, what is the best email to send you a confirmation and next steps?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:50",
+          "text": "Oh, you know what, I am between email systems right now. Just use the phone for now and we can exchange emails when we meet."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:58",
+          "text": "No problem. So Sarah, I would like to schedule an initial consultation call with our strategy director, Jennifer Okonkwo. She works with brands in fintech and will dive deep into your positioning challenge. Does next Tuesday at 10 AM work, or would you prefer Wednesday afternoon?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:14",
+          "text": "Next Tuesday at 10 AM is perfect. That gives me time to pull together some background on our current brand perception. Thanks, Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:27",
+          "text": "Excellent, Sarah. We will send a calendar invite and a brief discovery brief to prepare for the call. Thanks so much for choosing TRG and we look forward to unlocking your brand potential. Have a great day."
+        }
+      ],
+      "aiSummary": "Sarah Chen, marketing director at Prism Financial, called to initiate a brand strategy project for a fintech startup rebrand. She is seeking positioning, messaging, and audience research support to compete against larger players and has a local presence in Arlington. Marcus successfully qualified the opportunity, confirmed service area coverage, and scheduled a consultation with the strategy director for next Tuesday at 10 AM. The main gap was failure to capture an email address for confirmation, which Sarah deferred. Overall a well-structured intake that identified a clear strategic need and moved toward next steps.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "Great work on this one, @Marcus. You nailed the greeting, identified the actual need within the first minute, and got to the calendar hold quickly. Two coaching notes: First, the email capture felt rushed when Sarah said she was between systems. A softer approach like 'I totally understand, and I will grab it from the meeting confirmation' would have locked it in without friction. Second, on your close, you could have briefly set expectations for what Jennifer will cover in the strategy call so Sarah arrives prepared and confident. Nice professionalism throughout though."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "1,854"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$3939.32"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$7,303,498"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "1,187"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "64%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "464"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "25%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "667"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "36%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "8%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Direct",
+                "value": 42,
+                "display": "42%"
+              },
+              {
+                "name": "Referral",
+                "value": 33,
+                "display": "33%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 27,
+                "display": "27%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 21,
+                "display": "21%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "612",
+                  "16%",
+                  "$2,410,155"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "458",
+                  "21%",
+                  "$1,881,240"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "371",
+                  "27%",
+                  "$1,458,320"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "243",
+                  "33%",
+                  "$961,530"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "170",
+                  "42%",
+                  "$592,253"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 700,
+            "axisTicks": [
+              0,
+              100,
+              200,
+              300,
+              400,
+              500,
+              600,
+              700
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 588,
+                "display": "588"
+              },
+              {
+                "name": "social",
+                "value": 442,
+                "display": "442"
+              },
+              {
+                "name": "organic",
+                "value": 361,
+                "display": "361"
+              },
+              {
+                "name": "email",
+                "value": 268,
+                "display": "268"
+              },
+              {
+                "name": "direct",
+                "value": 195,
+                "display": "195"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "588",
+                  "17%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "442",
+                  "22%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "361",
+                  "28%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "268",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "direct",
+                  "195",
+                  "44%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 500,
+            "axisTicks": [
+              0,
+              100,
+              200,
+              300,
+              400,
+              500
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Unlock Potential",
+                "value": 421,
+                "display": "421"
+              },
+              {
+                "name": "Collaboration by Collision",
+                "value": 338,
+                "display": "338"
+              },
+              {
+                "name": "Who Saw That Coming",
+                "value": 276,
+                "display": "276"
+              },
+              {
+                "name": "The Smartest Artists",
+                "value": 214,
+                "display": "214"
+              },
+              {
+                "name": "Independent by Design",
+                "value": 168,
+                "display": "168"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Unlock Potential",
+                  "421",
+                  "18%",
+                  "$1,655,320"
+                ]
+              },
+              {
+                "cells": [
+                  "Collaboration by Collision",
+                  "338",
+                  "24%",
+                  "$1,332,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Who Saw That Coming",
+                  "276",
+                  "31%",
+                  "$1,086,450"
+                ]
+              },
+              {
+                "cells": [
+                  "The Smartest Artists",
+                  "214",
+                  "39%",
+                  "$842,150"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 250,
+            "axisTicks": [
+              0,
+              50,
+              100,
+              150,
+              200,
+              250
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "dallas advertising agency",
+                "value": 236,
+                "display": "236"
+              },
+              {
+                "name": "full-service independent ad agency",
+                "value": 188,
+                "display": "188"
+              },
+              {
+                "name": "brand strategy agency texas",
+                "value": 154,
+                "display": "154"
+              },
+              {
+                "name": "media buying agency",
+                "value": 121,
+                "display": "121"
+              },
+              {
+                "name": "experiential marketing agency dallas",
+                "value": 94,
+                "display": "94"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "dallas advertising agency",
+                  "19%"
+                ]
+              },
+              {
+                "cells": [
+                  "full-service independent ad agency",
+                  "25%"
+                ]
+              },
+              {
+                "cells": [
+                  "brand strategy agency texas",
+                  "32%"
+                ]
+              },
+              {
+                "cells": [
+                  "media buying agency",
+                  "41%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Campaign Creative",
+              "542",
+              "20%",
+              "68%"
+            ]
+          },
+          {
+            "cells": [
+              "Media Strategy & Buying",
+              "438",
+              "26%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Brand Strategy",
+              "351",
+              "33%",
+              "57%"
+            ]
+          },
+          {
+            "cells": [
+              "Experiential Marketing",
+              "247",
+              "44%",
+              "52%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Dallas Flagship",
+              "724",
+              "61",
+              "4%",
+              "18%"
+            ]
+          },
+          {
+            "cells": [
+              "Fort Worth Studio",
+              "512",
+              "42",
+              "5%",
+              "24%"
+            ]
+          },
+          {
+            "cells": [
+              "Austin Office",
+              "371",
+              "28",
+              "6%",
+              "31%"
+            ]
+          },
+          {
+            "cells": [
+              "Denver Office",
+              "247",
+              "17",
+              "7%",
+              "40%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              78,
+              82,
+              74,
+              71,
+              67
+            ]
+          },
+          {
+            "name": "Comparing Agencies",
+            "values": [
+              68,
+              64,
+              66,
+              61,
+              59
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              58,
+              55,
+              54,
+              53,
+              51
+            ]
+          },
+          {
+            "name": "Needs Executive Approval",
+            "values": [
+              49,
+              47,
+              46,
+              44,
+              42
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              44,
+              42,
+              40,
+              39,
+              36
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "742"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Account Won (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$4,162,994"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Won (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$287,445"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Won (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$356,982"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Account Won (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$421,658"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Won (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$312,776"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Won (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$892,651"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Account Won (Percent)",
+              "value": "42%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$891,482"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Account Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 862,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "247",
+                "58%",
+                "31%",
+                "$1,205,439"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "186",
+                "54%",
+                "29%",
+                "$1,062,844"
+              ]
+            },
+            {
+              "name": "Organic Social",
+              "metrics": [
+                "142",
+                "57%",
+                "34%",
+                "$758,291"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "103",
+                "52%",
+                "28%",
+                "$596,374"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "64",
+                "48%",
+                "22%",
+                "$328,518"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Account Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 855,
+          "rows": [
+            {
+              "name": "Google Search",
+              "metrics": [
+                "219",
+                "56%",
+                "32%",
+                "$1,289,751"
+              ]
+            },
+            {
+              "name": "LinkedIn Ads",
+              "metrics": [
+                "168",
+                "55%",
+                "31%",
+                "$987,654"
+              ]
+            },
+            {
+              "name": "Instagram Feed",
+              "metrics": [
+                "127",
+                "59%",
+                "35%",
+                "$756,234"
+              ]
+            },
+            {
+              "name": "Facebook Ads",
+              "metrics": [
+                "98",
+                "51%",
+                "27%",
+                "$567,892"
+              ]
+            },
+            {
+              "name": "Direct Call",
+              "metrics": [
+                "67",
+                "49%",
+                "24%",
+                "$379,841"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Account Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 857,
+          "rows": [
+            {
+              "name": "Unlock Potential Q1 2026",
+              "metrics": [
+                "189",
+                "57%",
+                "33%",
+                "$1,187,643"
+              ]
+            },
+            {
+              "name": "Collaboration by Collision",
+              "metrics": [
+                "154",
+                "55%",
+                "30%",
+                "$912,567"
+              ]
+            },
+            {
+              "name": "The Smartest Artists Initiative",
+              "metrics": [
+                "117",
+                "52%",
+                "28%",
+                "$654,982"
+              ]
+            },
+            {
+              "name": "Five Decades, New Shop",
+              "metrics": [
+                "96",
+                "51%",
+                "26%",
+                "$592,148"
+              ]
+            },
+            {
+              "name": "Independent by Design",
+              "metrics": [
+                "72",
+                "48%",
+                "22%",
+                "$412,356"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Account Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 823,
+          "rows": [
+            {
+              "name": "Dallas advertising agency",
+              "metrics": [
+                "143",
+                "56%",
+                "30%",
+                "$856,734"
+              ]
+            },
+            {
+              "name": "Brand strategy services",
+              "metrics": [
+                "106",
+                "58%",
+                "34%",
+                "$687,291"
+              ]
+            },
+            {
+              "name": "Full service ad agency",
+              "metrics": [
+                "89",
+                "54%",
+                "29%",
+                "$567,438"
+              ]
+            },
+            {
+              "name": "Creative agency Texas",
+              "metrics": [
+                "74",
+                "52%",
+                "27%",
+                "$421,856"
+              ]
+            },
+            {
+              "name": "Media buying services",
+              "metrics": [
+                "63",
+                "49%",
+                "23%",
+                "$329,847"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Account Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Brand Strategy",
+              "metrics": [
+                "218",
+                "57%",
+                "35%",
+                "$1,428,756"
+              ]
+            },
+            {
+              "name": "Campaign Creative",
+              "metrics": [
+                "187",
+                "56%",
+                "32%",
+                "$1,165,834"
+              ]
+            },
+            {
+              "name": "Media Strategy & Buying",
+              "metrics": [
+                "156",
+                "54%",
+                "29%",
+                "$897,456"
+              ]
+            },
+            {
+              "name": "Digital Development",
+              "metrics": [
+                "109",
+                "52%",
+                "26%",
+                "$521,347"
+              ]
+            },
+            {
+              "name": "Analytics & Measurement",
+              "metrics": [
+                "72",
+                "48%",
+                "21%",
+                "$315,601"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Account Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Brand Strategy",
+            "values": [
+              24,
+              28,
+              23,
+              31,
+              20
+            ]
+          },
+          {
+            "name": "Campaign Creative",
+            "values": [
+              20,
+              21,
+              19,
+              26,
+              18
+            ]
+          },
+          {
+            "name": "Media Strategy & Buying",
+            "values": [
+              15,
+              17,
+              14,
+              20,
+              17
+            ]
+          },
+          {
+            "name": "Digital Development",
+            "values": [
+              8,
+              9,
+              7,
+              11,
+              9
+            ]
+          },
+          {
+            "name": "Analytics & Measurement",
+            "values": [
+              4,
+              5,
+              4,
+              6,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "348"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$5,847,926"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "814"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "31"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$193,652"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              71,
+              74,
+              72,
+              79,
+              76,
+              73,
+              77,
+              75,
+              78,
+              72,
+              76,
+              74,
+              79,
+              73,
+              75,
+              77,
+              76,
+              74,
+              72,
+              78,
+              75,
+              76,
+              73,
+              77,
+              74,
+              79,
+              72,
+              75,
+              71,
+              76,
+              78,
+              78,
+              181,
+              187,
+              183,
+              191,
+              185,
+              189,
+              176,
+              188,
+              182,
+              186,
+              179,
+              187,
+              184,
+              190,
+              183,
+              188,
+              185
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,183"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "721"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "703"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Brand Strategy Services",
+            "values": [
+              8,
+              11,
+              9,
+              3,
+              12,
+              10
+            ]
+          },
+          {
+            "name": "Campaign Creative Inquiries",
+            "values": [
+              6,
+              9,
+              7,
+              1,
+              11,
+              8
+            ]
+          },
+          {
+            "name": "Media Planning Questions",
+            "values": [
+              7,
+              8,
+              6,
+              2,
+              10,
+              9
+            ]
+          },
+          {
+            "name": "Digital Development Projects",
+            "values": [
+              5,
+              7,
+              8,
+              4,
+              9,
+              7
+            ]
+          },
+          {
+            "name": "Experiential Marketing Events",
+            "values": [
+              4,
+              6,
+              5,
+              2,
+              8,
+              6
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "1,706"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "1,085"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Booked (Count)",
+            "value": "464"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$7,303,498"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Rebecca Okonkwo",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "David Hartley",
+              "value": 201,
+              "display": "201"
+            },
+            {
+              "name": "Sasha Volkov",
+              "value": 164,
+              "display": "164"
+            },
+            {
+              "name": "James Whitfield",
+              "value": 229,
+              "display": "229"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Alexandra Santos",
+            "values": [
+              52,
+              58,
+              68,
+              74,
+              81
+            ]
+          },
+          {
+            "name": "Priya Kapoor",
+            "values": [
+              48,
+              54,
+              62,
+              71,
+              79
+            ]
+          },
+          {
+            "name": "Thomas Mueller",
+            "values": [
+              45,
+              51,
+              59,
+              68,
+              76
+            ]
+          },
+          {
+            "name": "Yuki Tanaka",
+            "values": [
+              51,
+              57,
+              66,
+              72,
+              80
+            ]
+          },
+          {
+            "name": "Carla Mendez",
+            "values": [
+              49,
+              55,
+              63,
+              70,
+              77
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 53.2,
+              "display": "53.2%"
+            },
+            {
+              "name": "Rebecca Okonkwo",
+              "value": 54.8,
+              "display": "54.8%"
+            },
+            {
+              "name": "David Hartley",
+              "value": 55.1,
+              "display": "55.1%"
+            },
+            {
+              "name": "Sasha Volkov",
+              "value": 56.4,
+              "display": "56.4%"
+            },
+            {
+              "name": "James Whitfield",
+              "value": 57.9,
+              "display": "57.9%"
+            },
+            {
+              "name": "Frank Deluca",
+              "value": 59.6,
+              "display": "59.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "53.2%",
+                "28%",
+                "$5,847,392",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Rebecca Okonkwo",
+                "54.8%",
+                "29%",
+                "$6,124,156",
+                "1,503"
+              ]
+            },
+            {
+              "cells": [
+                "David Hartley",
+                "55.1%",
+                "30%",
+                "$6,341,218",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Sasha Volkov",
+                "56.4%",
+                "31%",
+                "$6,512,874",
+                "1,398"
+              ]
+            },
+            {
+              "cells": [
+                "James Whitfield",
+                "57.9%",
+                "32%",
+                "$6,784,448",
+                "1,467"
+              ]
+            },
+            {
+              "cells": [
+                "Frank Deluca",
+                "59.6%",
+                "33%",
+                "$6,987,662",
+                "1,449"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Alexandra Santos",
+              "value": 92.3,
+              "display": "92.3%"
+            },
+            {
+              "name": "Priya Kapoor",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Thomas Mueller",
+              "value": 90.2,
+              "display": "90.2%"
+            },
+            {
+              "name": "Yuki Tanaka",
+              "value": 89.8,
+              "display": "89.8%"
+            },
+            {
+              "name": "Carla Mendez",
+              "value": 88.6,
+              "display": "88.6%"
+            },
+            {
+              "name": "Gabriel Foster",
+              "value": 87.4,
+              "display": "87.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Alexandra Santos",
+                "92.3%",
+                "64%",
+                "$8,254,376",
+                "1,547"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Kapoor",
+                "91.7%",
+                "63%",
+                "$8,102,845",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Mueller",
+                "90.2%",
+                "61%",
+                "$7,856,924",
+                "1,483"
+              ]
+            },
+            {
+              "cells": [
+                "Yuki Tanaka",
+                "89.8%",
+                "60%",
+                "$7,634,512",
+                "1,511"
+              ]
+            },
+            {
+              "cells": [
+                "Carla Mendez",
+                "88.6%",
+                "59%",
+                "$7,421,388",
+                "1,529"
+              ]
+            },
+            {
+              "cells": [
+                "Gabriel Foster",
+                "87.4%",
+                "58%",
+                "$7,185,461",
+                "1,493"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Booked (Count)",
+        "rightMax": 100,
+        "rightTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 17
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 17
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 15
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 15
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 13
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 13
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 15
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 15
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 17
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 17
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 15
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 14
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 13
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 13
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 15
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 16
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 17
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 17
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 15
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 14
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 13
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 13
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 15
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 16
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 17
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 17
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 14
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 14
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 13
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 13
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 16
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 400000,
+        "rightTicks": [
+          0,
+          133333.33333333334,
+          266666.6666666667,
+          400000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 270735
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 259487
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 241635
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 230566
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 200750
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 210682
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 232734
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 241908
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 269730
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 261519
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 235541
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 227655
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 202575
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 208807
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 238276
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 245536
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 267218
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 263059
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 230674
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 223358
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 205615
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 207771
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 242383
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 250417
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 263823
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 263440
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 227374
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 218015
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 209181
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 208172
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 244862
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "1,854"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:32"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "148"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "111"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "612",
+                "91%",
+                "88%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James Rodriguez",
+                "548",
+                "88%",
+                "85%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Chen",
+                "694",
+                "88%",
+                "86%",
+                "87%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "1,854 calls",
+      "pagerLabel": "1 of 185",
+      "calls": [
+        {
+          "time": "1/6/26 9:14 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 11:02 am",
+          "id": "A3C1-6B9E4477D218"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "D920-14CA88F0E637"
+        },
+        {
+          "time": "1/14/26 1:27 pm",
+          "id": "7E44-9032BB1CD5A0"
+        },
+        {
+          "time": "1/16/26 3:55 pm",
+          "id": "C18B-2FA7710E4499"
+        },
+        {
+          "time": "1/20/26 8:48 am",
+          "id": "B6F2-55D1A0C3E812"
+        },
+        {
+          "time": "1/22/26 12:19 pm",
+          "id": "48AD-EE0917C4B6F3"
+        },
+        {
+          "time": "1/26/26 2:33 pm",
+          "id": "91C7-3D8B62F05AA1"
+        },
+        {
+          "time": "1/28/26 4:07 pm",
+          "id": "2FDE-7C41905BA3D6"
+        },
+        {
+          "time": "1/30/26 10:58 am",
+          "id": "5A0E-B4F213C7E098"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling TRG, this is Marcus in our new business team. How can I help you today?",
+          "highlights": [
+            "Thank you for calling TRG",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Marcus. My name is Danielle Foster, I run marketing for a regional coffee chain and we're looking to rebuild our brand from the ground up.",
+          "highlights": [
+            "Danielle Foster",
+            "rebuild our brand"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:18",
+          "text": "Great to meet you, Danielle. A full rebrand is right in our wheelhouse. Are you thinking positioning and strategy first, or do you already know you need a new name and identity?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:28",
+          "text": "Honestly both. The name feels tired and our whole look is dated. But I want to make sure we start with the right strategy before we touch the logo.",
+          "highlights": [
+            "name feels tired"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:38",
+          "text": "That is exactly the right instinct. I'd pair our Brand Strategy work, which covers positioning and messaging, with our Naming and Identity practice through Flying Start for the new name and visual system.",
+          "highlights": [
+            "Brand Strategy",
+            "Naming and Identity"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:50",
+          "text": "Okay. And what does something like that run? I want to keep it manageable, we're not a giant national account.",
+          "highlights": [
+            "what does something like that run",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:59",
+          "text": "Completely fair. Brand Strategy projects typically land between forty and one hundred fifty thousand depending on depth, and a naming and identity engagement usually starts around twenty-five thousand. We scope to your size, so we can phase it.",
+          "highlights": [
+            "we can phase it"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:12",
+          "text": "That helps. I'll be honest, I'm getting a couple of quotes right now. There's a shop here in town that pitched us a flat package that looked cheaper on paper.",
+          "highlights": [
+            "getting a couple of quotes",
+            "looked cheaper on paper"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:23",
+          "text": "That is smart to compare. The difference you'll usually see is the strategy layer underneath. A flat logo package skips the audience research, so the identity is a guess. We anchor everything to real customer insight before we design a thing.",
+          "highlights": [
+            "anchor everything to real customer insight"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:36",
+          "text": "That's the part I'm worried about, actually. The last agency we used just handed us files and disappeared. I don't want to be locked into something rigid.",
+          "highlights": [
+            "don't want to be locked into something rigid"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:46",
+          "text": "Understood. We work in defined phases, so you approve each stage before we move forward. You are never committed to the whole scope on day one, and we stay with you through rollout.",
+          "highlights": [
+            "approve each stage",
+            "never committed to the whole scope"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:58",
+          "text": "Good. One more thing, we're hoping to launch the new look before our spring store openings, so there's a real deadline. Is that even realistic?",
+          "highlights": [
+            "real deadline",
+            "spring store openings"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:07",
+          "text": "It can be if we start soon. Let me set you up with a consultation with one of our brand strategists so we can map the timeline against your spring launch. Would Thursday at 10 AM work?",
+          "highlights": [
+            "set you up with a consultation",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:18",
+          "text": "Thursday at 10 works. Let me just confirm with my co-founder, but pencil us in.",
+          "highlights": [
+            "Thursday at 10 works",
+            "confirm with my co-founder"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:25",
+          "text": "Perfect, I've got you booked. What's the best email to send the invite and a short prep questionnaire?",
+          "highlights": [
+            "I've got you booked"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:31",
+          "text": "It's danielle at brightroastcoffee dot com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:36",
+          "text": "Got it. You're all set for Thursday at 10 AM, Danielle. Thanks so much for calling TRG, and we look forward to unlocking your brand's potential.",
+          "highlights": [
+            "all set for Thursday at 10 AM",
+            "Thanks so much for calling TRG"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: Brand Strategy",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Intent: Naming & Identity",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Comparison Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Budget Concern Raised",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Deadline / Launch Window",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Foster, marketing lead for a regional coffee chain, called TRG about a full rebrand and was routed to Marcus in new business. Marcus recommended pairing Brand Strategy with Naming and Identity through Flying Start, and addressed her budget, a competing flat-package quote, a worry about being locked in, and a spring launch deadline. He scheduled a consultation with a brand strategist for Thursday at 10 AM and captured her email. The call closed positively with the booking pending a quick check with her co-founder.",
+        "keyPoints": [
+          "New client: Danielle Foster, regional coffee chain",
+          "Need: full rebrand starting with strategy, then new name and identity",
+          "Recommended Brand Strategy plus Naming & Identity via Flying Start",
+          "Handled budget concern, competitor quote, and lock-in worry",
+          "Spring store openings create a firm deadline",
+          "Consultation booked for Thursday 10 AM, email captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "1,168 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 117",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for reaching out to TRG. This is Marcus with our new business team. Are you calling about advertising or marketing services for your brand?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes, hi. We're a mid-size retail brand and we're looking to rebrand. We've been around for 12 years but we need a fresh look."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "That's exciting. Rebranding is one of our core strengths. Quick question, are you looking primarily at logo and visual identity, or are you thinking about a full brand strategy overhaul?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "Definitely the full strategy. We need positioning work, new messaging, the whole nine yards. Plus maybe some naming input."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. We can absolutely help with that through our Strategy Collective and our Flying Start naming and identity team. What industry are you in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "We're in the home and garden space. Kind of like a lifestyle brand for outdoor living."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Got it. Home and garden has huge creative potential. One more thing, what's your timeline? Are you hoping to launch this rebrand in the next few months or is this more of a six to twelve month play?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "We're thinking six to nine months. We want to do it right but also move at a decent pace."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "That's a solid runway. Based on what you've described, a full brand strategy plus naming engagement would typically be in the 60 to 150K range depending on scope and complexity. Does that ballpark feel right for your budget?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "Yeah, that's in the right zone. We'd need to discuss it internally but that's realistic for us."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Excellent. I'd love to get you connected with our Strategy lead to explore this further. How does next Wednesday, March 19th at 2 PM Pacific look for a consultation call?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "That works for me. What's the call-in info?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "Perfect. We'll send you a calendar invite with the link and our direct callback number is 877-936-2933. Your consultation is booked for March 19th at 2 PM. Thanks for choosing TRG, and we look forward to unlocking your brand's potential."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:34 AM",
+              "text": "Great, thanks Marcus. See you then."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Brand Strategy and Naming",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Industry: Home and Garden Retail",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Budget Range: 60K to 150K",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Timeline: Six to Nine Months",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "13",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "415-629-3847",
+            "repeatCaller": "No",
+            "city": "Portland",
+            "region": "OR",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Walsh",
+            "firstName": "Jennifer",
+            "lastName": "Walsh",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A742-84BC5F1E2A9D",
+          "time": "8/16/25 10:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A742-84BC5F1E2A9D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B893-6D7E34FCA1B5",
+          "time": "8/16/25 10:39 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B893-6D7E34FCA1B5",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D125-9C3F7B6EE8D2",
+          "time": "8/16/25 10:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D125-9C3F7B6EE8D2",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "1,854 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 185",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/14/26 4:12 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thanks for calling TRG. This is Marcus. How can we help unlock your brand's potential today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Hey Marcus. Yeah, we're looking for help with a brand strategy project. We're a retail brand based in Austin and we're trying to figure out our positioning."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "That's great. Brand strategy is definitely one of our core strengths. Quick question for you, are you currently working with another agency on this, or is this a fresh start?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "Fresh start. We did some work with another firm a few years back, but we want to go in a different direction."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Perfect. And just to get a sense of scope, how many product lines or brands do you need to position right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Well, we've got our main brand and then a sub-brand we're launching. So two positioning frameworks."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Got it. Two positioning frameworks. That's really helpful. Based on what you're describing, a comprehensive brand strategy engagement typically runs between forty thousand and one hundred fifty thousand dollars depending on the depth of research and competitive analysis. Does that budget range feel workable for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "That sounds in the ballpark. Yeah, I think that makes sense."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:20 PM",
+              "text": "Excellent. Here's what I'd like to do. I want to get you connected with our head of strategy so you two can dive deeper into what you're trying to accomplish. How does next Tuesday, January twenty-first, at two p.m. Pacific time work for an initial consultation?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:21 PM",
+              "text": "Yeah, that works. Two p.m. on the twenty-first is good."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:22 PM",
+              "text": "Perfect. So we've got you down for a consultation on Tuesday, January twenty-first at two p.m. Pacific time. We'll send you a calendar invite and you can expect a call from our team. Is the best callback number the one you're calling from right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:23 PM",
+              "text": "Yeah, that's it. Thanks, Marcus."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:24 PM",
+              "text": "Great. We really appreciate the call and we're excited to work with you. You'll hear from us soon. Thanks so much."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Brand Strategy",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Budget Range Confirmed",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Two Positioning Frameworks",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Sub-Brand Launch",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/14/26 4:12 pm",
+            "duration": "5:47",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice. Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "512-764-4218",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Mitchell",
+            "firstName": "Sarah",
+            "lastName": "Mitchell",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B521-3D7KL429M1P",
+          "time": "1/18/26 2:45 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B521-3D7KL429M1P",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C634-8H9JK537Q5R",
+          "time": "1/23/26 1:08 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C634-8H9JK537Q5R",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D745-9N8WX641Z2S",
+          "time": "1/27/26 3:22 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D745-9N8WX641Z2S",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as TRG's AI agent here to build a personalized engagement quote, mention our complimentary brand opportunity audit for new clients this quarter, and ask if they would like to get started.",
+        "Qualify one question at a time: Ask, one at a time, which capability they need (brand strategy, campaign creative, media buying, experiential, or digital), their industry and current brand stage, their estimated budget or media spend, their launch or campaign timeline, and their company location so we route the right team.",
+        "Estimate then book: Confirm we can support their market, share a preliminary project range based on the scope they described, recommend a consultation with a TRG strategist for an exact scope and quote, propose a specific day and time, and confirm they will get a reminder text before the meeting with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "TRG_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Capabilities & Practice Areas",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Featured Work",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Contact Prospective Clients",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"campaign status\",\"question\":\"Where does my current campaign creative stand?\",\"answer\":\"Your account lead can walk you through the latest concepts and production milestones on a quick call. I can set up a check-in with your TRG team so you see the current status and next steps.\"},{\"topic\":\"reschedule\",\"question\":\"Can I move our strategy review to next week?\",\"answer\":\"Absolutely, we can shift your strategy review to a day that works better. Let me know your preferred day and time and I will confirm the new slot with your strategist.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What does TRG do?",
+              "answer": "TRG is a Dallas-based full-service independent advertising agency offering brand strategy, creative, media, experiential, and digital work. The best next step is a consultation where a strategist maps our capabilities to your goals."
+            },
+            {
+              "question": "Are you a full-service agency?",
+              "answer": "Yes, we cover strategy, creative services, and additional specialties like experiential and immersive tech under one roof. A quick consultation lets us scope exactly what your brand needs."
+            },
+            {
+              "question": "How much does a brand strategy engagement cost?",
+              "answer": "Every engagement is scoped to your goals, so pricing varies by depth and timeline. Let us set up a consultation so a strategist can give you an accurate range."
+            },
+            {
+              "question": "Do you handle media buying?",
+              "answer": "Yes, we offer channel planning, budget allocation, negotiation, and placement across paid channels. A consultation is the best way to review your media goals and budget."
+            },
+            {
+              "question": "Can you help name a new brand?",
+              "answer": "Yes, our naming and identity work is delivered through our Flying Start practice, covering naming, logo, and visual guidelines. Let us book a consultation to talk through your project."
+            },
+            {
+              "question": "Do you produce video and content?",
+              "answer": "Yes, our content production team handles video, photography, broadcast spots, and social content from concept through post. A consultation will help us scope your production needs."
+            },
+            {
+              "question": "What industries do you work with?",
+              "answer": "We have built iconic brands across retail, financial services, food, and travel, with clients like Charles Schwab and Love's Travel Stops. A consultation lets us show relevant work for your category."
+            },
+            {
+              "question": "Do you do experiential and event marketing?",
+              "answer": "Yes, our Latitude practice creates activations, pop-ups, sponsorships, and live brand experiences. Let us set up a consultation to plan your activation."
+            },
+            {
+              "question": "Can you build our website or app?",
+              "answer": "Yes, our Click Here Labs practice designs and engineers websites, apps, and platforms. A consultation is the best way to scope the build."
+            },
+            {
+              "question": "Do you offer AI or immersive experiences?",
+              "answer": "Yes, we create AI, AR, XR, and VR experiences, generative content, and interactive installations. Let us book a consultation to explore what fits your brand."
+            },
+            {
+              "question": "How do you measure results?",
+              "answer": "We offer analytics, attribution modeling, brand tracking, and ROI reporting to keep campaigns optimized. A consultation lets us align on the metrics that matter to you."
+            },
+            {
+              "question": "Where are you located?",
+              "answer": "We are headquartered in Dallas and work with clients across the country. We can meet virtually, so let us schedule a consultation that fits your calendar."
+            },
+            {
+              "question": "Do you work with clients outside Texas?",
+              "answer": "Yes, we partner with brands nationwide and collaborate virtually or on-site as needed. A consultation is the easiest way to get started."
+            },
+            {
+              "question": "How long does a typical project take?",
+              "answer": "Timelines depend on scope, from a focused sprint to a multi-phase campaign. Let us book a consultation so a strategist can map a realistic schedule."
+            },
+            {
+              "question": "Do you offer retainers or project work?",
+              "answer": "We do both, with retainers for ongoing work and project-based scopes for defined initiatives. A consultation helps us recommend the right structure for you."
+            },
+            {
+              "question": "What makes TRG different from a holding company agency?",
+              "answer": "We are one of the largest full-service independent agencies in America, which keeps us nimble and senior-led. A consultation is a great way to feel that difference firsthand."
+            },
+            {
+              "question": "Can you help with a rebrand?",
+              "answer": "Yes, we handle positioning, brand architecture, identity, and messaging for full rebrands. Let us set up a consultation to talk through your rebrand goals."
+            },
+            {
+              "question": "Do you do audience research?",
+              "answer": "Yes, we run qualitative and quantitative research, segmentation, and persona building. A consultation lets us align research to your business questions."
+            },
+            {
+              "question": "How do we start working with TRG?",
+              "answer": "The first step is a consultation with a strategist to understand your goals and scope the right engagement. Share your details and I will find a time that works."
+            },
+            {
+              "question": "Can I see examples of your work?",
+              "answer": "Yes, we have a five-decade record building brands like Ram, Chick-fil-A, and The Home Depot. Let us book a consultation where your team can review relevant case work."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the consultation\",\"follow_up_message\":\"Great, I can get your consultation with a TRG strategist on the calendar. What day and time work best, and I will send a confirmation and a reminder text before we meet.\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Happy to help with a scope and range. Tell me the capability you need and your timeline, and I will set up a consultation so a strategist can share an accurate quote.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is TRG's AI agent. I can help scope your project and set up a consultation with one of our strategists. Want to get started?",
+        "goal": "Qualify the prospective client's needs and book a consultation with a TRG strategist to scope the engagement and provide an accurate quote.",
+        "bookingType": "virtual consultation",
+        "offer": "Complimentary brand opportunity audit when you book this quarter",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Which capability are you exploring: brand strategy, campaign creative, media buying, experiential, or digital?",
+          "What industry is your brand in, and what stage is it at right now?",
+          "Do you have an estimated budget or media spend in mind?",
+          "What launch or campaign timeline are you working toward?",
+          "What city and state is your company based in so we can route the right team?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:38 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:38 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:38 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "TRG",
+      "callerName": "Marcus Chen",
+      "callerPhone": "(214) 555-0187",
+      "campaign": "Brand Strategy, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$87,500",
+      "googleSearch": "brand strategy agency Austin Texas",
+      "websiteSearch": "positioning and messaging framework development",
+      "callingWebpage": "/capabilities/strategy-collective/brand-strategy",
+      "products": "Brand Strategy, Audience Research",
+      "cartId": "TRG-5293M",
+      "serviceable": "Yes",
+      "email": "marcus.chen@austintech.com",
+      "street": "1847 Barton Springs Road",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78704",
+      "digitalJourney": "/home › /capabilities › /strategy-collective › /capabilities/strategy-collective/brand-strategy",
+      "intent": "Needs comprehensive brand positioning and competitive audit for retail technology startup launching Q4 2025",
+      "coverage": "ZIP 78704 confirmed, Austin serviceable",
+      "switchIntent": "High, planning brand refresh now, wants discovery call this week to discuss research timeline",
+      "greeting": "Hi Marcus, this is [Agent Name] with TRG. I see you're exploring brand strategy services for your Austin company. We specialize in positioning, competitive audits, and messaging frameworks. Would you like to schedule a consultation with our Strategy Collective to discuss your launch timeline?"
+    },
+    "smsScreenpop": {
+      "brandName": "TRG",
+      "callerName": "Jennifer Rodriguez",
+      "callerPhone": "(972) 555-0341",
+      "campaign": "Experiential Marketing, Dallas Activation",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$156,200",
+      "googleSearch": "experiential marketing agency Dallas event activation",
+      "websiteSearch": "live brand experiences pop-up sponsorships",
+      "callingWebpage": "/capabilities/additional-specialties/experiential-marketing",
+      "products": "Experiential Marketing, Campaign Creative",
+      "cartId": "TRG-7841K",
+      "serviceable": "Yes",
+      "email": "jrodriguez@dallasfashion.com",
+      "street": "3421 McKinney Avenue",
+      "city": "Dallas",
+      "state": "TX",
+      "zip": "75204",
+      "digitalJourney": "/home › /capabilities › /additional-specialties › /capabilities/additional-specialties/experiential-marketing",
+      "intent": "Planning major brand activation for luxury retail launch at Dallas Design District, seeking full-service event production and creative execution",
+      "coverage": "ZIP 75204 confirmed, Dallas serviceable",
+      "appointment": "Brand Activation Planning Session w/ Latitude Team, Thu Jul 18, 2:00 PM",
+      "greeting": "Hi Jennifer, great to connect. This is [Rep Name] from TRG. We have you down for a Brand Activation Planning Session with our Latitude experiential team on Thursday at 2pm. Looking forward to exploring your Design District launch. Any questions before then?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "TRG",
+      "brandDomain": "www.trg.agency",
+      "brandIcon": "🎨",
+      "callerPhone": "+1 (214) 555-0127",
+      "callerLocation": "Austin, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Brand Strategy for Growth",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "brand strategy agency Texas",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Capabilities / Strategy Collective",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Brand Strategy, Audience Research",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Austin, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_new_project",
+          "name": "Consultation, New Project"
+        },
+        {
+          "id": "support_existing_client",
+          "name": "Support, Existing Client"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there. Thanks for calling TRG. I see you've been looking at our brand strategy services. Are you exploring a new project for your organization?",
+          "sigs": [],
+          "q": [
+            35,
+            40,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, we're a mid-size tech company and we're rebranding. We need help with positioning and messaging strategy, pretty much from the ground up.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Rebranding project</strong>"
+            },
+            {
+              "c": "blue",
+              "t": "Positioning and messaging focus"
+            }
+          ],
+          "q": [
+            68,
+            18,
+            14
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's great. So you're looking at brand positioning, architecture, and a messaging framework. Do you already have a timeline in mind, or is this something you'd like to explore first?",
+          "sigs": [],
+          "q": [
+            72,
+            15,
+            13
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We're hoping to kick off in the next month or so. This is pretty urgent for us because we're launching a new product line alongside the rebrand.",
+          "sigs": [
+            {
+              "c": "orange",
+              "t": "<strong>Timeline</strong> within 30 days"
+            },
+            {
+              "c": "green",
+              "t": "High priority, product launch tied"
+            }
+          ],
+          "q": [
+            89,
+            6,
+            5
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm going to connect you with our Strategy Collective team who specialize in exactly this kind of work. They'll walk through your timeline, scope, and what a brand strategy engagement looks like. One moment.",
+          "sigs": [],
+          "q": [
+            95,
+            3,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"get you on the calendar (Agent)\", \"book the strategy session (Agent)\", \"set up your consultation (Agent)\", \"let's schedule that kickoff (Caller)\"])",
+          "createdAt": "11/14/24 9:32 am",
+          "updatedAt": "01/09/26 2:47 pm"
+        },
+        {
+          "name": "Brand Strategy Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"reposition our brand (Caller)\", \"brand architecture (Caller)\", \"messaging framework (Agent)\", \"competitive audit (Agent)\"])",
+          "createdAt": "12/02/24 10:18 am",
+          "updatedAt": "01/06/26 11:05 am"
+        },
+        {
+          "name": "Competitor Agency Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"we talked to another agency (Caller)\", \"compared to a holding company (Caller)\", \"getting a quote from (Caller)\", \"our current agency (Caller)\"])",
+          "createdAt": "01/21/25 3:44 pm",
+          "updatedAt": "01/12/26 9:22 am"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"free consultation (Agent)\", \"discuss your goals (Agent)\", \"meet with our strategy team (Agent)\", \"talk through your objectives (Caller)\"])",
+          "createdAt": "11/28/24 8:07 am",
+          "updatedAt": "01/04/26 4:19 pm"
+        },
+        {
+          "name": "Empathy & Rapport (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy & Rapport] < 60 and duration > 45 sec",
+          "createdAt": "02/09/25 1:26 pm",
+          "updatedAt": "01/08/26 10:41 am"
+        },
+        {
+          "name": "Media Buying Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"plan our media buy (Caller)\", \"programmatic and streaming (Agent)\", \"channel planning (Agent)\", \"negotiate placements (Caller)\"])",
+          "createdAt": "12/16/24 4:53 pm",
+          "updatedAt": "01/11/26 3:33 pm"
+        },
+        {
+          "name": "Needs Discovery (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Needs Discovery] < 70 and duration > 60 sec",
+          "createdAt": "01/30/25 11:12 am",
+          "updatedAt": "01/14/26 1:58 pm"
+        },
+        {
+          "name": "Price Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"out of our budget (Caller)\", \"how much does it cost (Caller)\", \"retainer is too expensive (Caller)\", \"what are your rates (Caller)\"])",
+          "createdAt": "02/18/25 9:47 am",
+          "updatedAt": "01/07/26 12:14 pm"
+        },
+        {
+          "name": "Professional Greeting (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Professional Greeting] < 80 and duration > 20 sec",
+          "createdAt": "03/04/25 2:31 pm",
+          "updatedAt": "01/10/26 10:08 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Signal",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"send over a proposal (Agent)\", \"put together an estimate (Agent)\", \"scope of work and pricing (Agent)\", \"email you the statement of work (Agent)\"])",
+          "createdAt": "01/06/25 3:19 pm",
+          "updatedAt": "01/13/26 4:02 pm"
+        }
+      ]
+    }
+  }
+}

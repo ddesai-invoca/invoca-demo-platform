@@ -1,0 +1,5318 @@
+{
+  "id": "inogen",
+  "customerName": "Inogen",
+  "websiteUrl": "https://www.inogen.com",
+  "brandDomain": "inogen.com",
+  "networkName": "Invoca for Medical Devices",
+  "industry": "Durable medical equipment and respiratory oxygen therapy",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 10000,
+      "yTicks": [
+        2000,
+        4000,
+        6000,
+        8000,
+        10000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 7420
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 8630
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 8210
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 8940
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 7312
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "POC, COPD Oxygen",
+          "marketingSearchTerm": "best portable oxygen concentrator for COPD",
+          "landingPageUrl": "https://www.inogen.com/products/portable-concentrators/rove-6?utm_source=google&utm_medium=cpc&utm_campaign=poc_copd_oxygen",
+          "websiteJourney": "Home / Products / Portable Concentrators",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Portable Oxygen Concentrator, Exact Match",
+          "marketingSearchTerm": "portable oxygen concentrator",
+          "landingPageUrl": "https://www.inogen.com/products/portable-concentrators?utm_source=google&utm_medium=cpc&utm_campaign=poc_exact_match",
+          "websiteJourney": "Home / Products / Portable Concentrators",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Medicare Oxygen Coverage",
+          "marketingSearchTerm": "does Medicare cover portable oxygen concentrators",
+          "landingPageUrl": "https://www.inogen.com/patients/medicare-oxygen?utm_source=google&utm_medium=cpc&utm_campaign=medicare_oxygen_coverage",
+          "websiteJourney": "Home / Patients / Medicare Coverage",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Rove 6 Price",
+          "marketingSearchTerm": "Inogen Rove 6 price",
+          "landingPageUrl": "https://www.inogen.com/products/portable-concentrators/rove-6?utm_source=bing&utm_medium=cpc&utm_campaign=rove_6_price",
+          "websiteJourney": "Home / Products / Portable Concentrators / Inogen Rove 6",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "FAA Approved Travel Oxygen",
+          "marketingSearchTerm": "FAA approved oxygen concentrator for flying",
+          "landingPageUrl": "https://www.inogen.com/products/portable-concentrators/rove-6?utm_source=google&utm_medium=cpc&utm_campaign=faa_travel_oxygen",
+          "websiteJourney": "Home / Products / Portable Concentrators / Inogen Rove 6",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Competitor Conquesting",
+          "marketingSearchTerm": "Inogen vs competitor",
+          "landingPageUrl": "https://www.inogen.com/products/all-oxygen-concentrators?utm_source=google&utm_medium=cpc&utm_campaign=competitor_conquesting",
+          "websiteJourney": "Home / Products / All Oxygen Concentrators",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Home Oxygen Cost",
+          "marketingSearchTerm": "home oxygen concentrator cost",
+          "landingPageUrl": "https://www.inogen.com/products/home-stationary-concentrators/voxi-5?utm_source=bing&utm_medium=cpc&utm_campaign=home_oxygen_cost",
+          "websiteJourney": "Home / Products / Home & Stationary Concentrators / Inogen Voxi 5",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Lightweight Travel Oxygen",
+          "marketingSearchTerm": "lightweight oxygen machine for travel",
+          "landingPageUrl": "https://www.inogen.com/products/portable-concentrators/rove-4?utm_source=google&utm_medium=cpc&utm_campaign=lightweight_travel_oxygen",
+          "websiteJourney": "Home / Products / Portable Concentrators / Inogen Rove 4",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Freedom to Travel",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.inogen.com/products/portable-concentrators/rove-6?utm_source=facebook&utm_medium=paid_social&utm_campaign=freedom_to_travel",
+          "websiteJourney": "Home / Products / Portable Concentrators",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Veterans Day Salute",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.inogen.com/?utm_source=facebook&utm_medium=paid_social&utm_campaign=veterans_day_salute",
+          "websiteJourney": "Home / Patients / What is Oxygen Therapy",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Caregiver Stories",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.inogen.com/patients/blog/caregiver-stories?utm_source=instagram&utm_medium=paid_social&utm_campaign=caregiver_stories",
+          "websiteJourney": "Home / Patients / Blog",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Oxygen Therapy 101",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.inogen.com/patients/what-is-oxygen-therapy?utm_source=google&utm_medium=organic&utm_campaign=oxygen_therapy_101",
+          "websiteJourney": "Home / Patients / What is Oxygen Therapy",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Doctor Discussion Guide",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.inogen.com/patients/doctor-discussion-guide?utm_source=google&utm_medium=organic&utm_campaign=doctor_discussion_guide",
+          "websiteJourney": "Home / Patients / Doctor Discussion Guide",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Free Info Guide Download",
+          "marketingSearchTerm": "oxygen concentrator vs oxygen tank",
+          "landingPageUrl": "https://www.inogen.com/free-info-guide?utm_source=google&utm_medium=cpc&utm_campaign=free_info_guide_download",
+          "websiteJourney": "Home / Patients / Free Info Guide",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Battery Replacement FAQ",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.inogen.com/products/parts-accessories/batteries?utm_source=google&utm_medium=organic&utm_campaign=battery_replacement_faq",
+          "websiteJourney": "Home / Products / Parts & Accessories / Batteries",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Freedom to Travel",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.inogen.com/products/portable-concentrators/rove-4?utm_source=instagram&utm_medium=paid_social&utm_campaign=freedom_to_travel",
+          "websiteJourney": "Home / Products / Portable Concentrators / Inogen Rove 4",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Affirm Financing, Easy Monthly Payments",
+          "marketingSearchTerm": "Inogen Rove 6 price",
+          "landingPageUrl": "https://www.inogen.com/financing/affirm?utm_source=bing&utm_medium=cpc&utm_campaign=affirm_financing",
+          "websiteJourney": "Home / Products / Portable Concentrators / Inogen Rove 6",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Reimbursement Resources",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.inogen.com/healthcare-professionals/reimbursement-resources?utm_source=google&utm_medium=organic&utm_campaign=reimbursement_resources",
+          "websiteJourney": "Home / Healthcare Professionals / Clinician Resources",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Caregiver Stories",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.inogen.com/products/home-stationary-concentrators/inogen-at-home?utm_source=facebook&utm_medium=paid_social&utm_campaign=caregiver_stories",
+          "websiteJourney": "Home / Products / Home & Stationary Concentrators / Inogen At Home",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Free Doctor Discussion Guide",
+          "marketingSearchTerm": "lightweight oxygen machine for travel",
+          "landingPageUrl": "https://www.inogen.com/free-doctor-discussion-guide?utm_source=google&utm_medium=cpc&utm_campaign=free_doctor_discussion_guide",
+          "websiteJourney": "Home / Patients / Doctor Discussion Guide",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Inogen)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "31,774"
+            },
+            {
+              "label": "Oxygen Consultation (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "System Sold (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$13,644,045"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "5,084"
+            },
+            {
+              "label": "Battery & Accessory Support (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Reimbursement & Medicare Inquiry (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Equipment Return & Service (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Oxygen Consultation Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Oxygen Consultation (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Quote Discussed (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "11%"
+            },
+            {
+              "label": "System Sold (Percent)",
+              "value": "18%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Oxygen Consultation (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Oxygen Consultation (Count)",
+            "values": [
+              2014,
+              2687,
+              2512,
+              2438,
+              2423
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              1542,
+              2047,
+              1918,
+              1861,
+              1846
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              587,
+              778,
+              728,
+              706,
+              696
+            ]
+          },
+          {
+            "name": "System Sold (Count)",
+            "values": [
+              954,
+              1273,
+              1191,
+              1155,
+              1146
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "System Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 31774,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "12,847",
+                "34%",
+                "13%",
+                "$4,192,455"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "8,213",
+                "37%",
+                "16%",
+                "$3,318,760"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "5,164",
+                "40%",
+                "19%",
+                "$2,466,190"
+              ]
+            },
+            {
+              "name": "Direct Mail",
+              "metrics": [
+                "3,352",
+                "44%",
+                "24%",
+                "$2,015,530"
+              ]
+            },
+            {
+              "name": "Clinician Referral",
+              "metrics": [
+                "2,198",
+                "48%",
+                "29%",
+                "$1,651,110"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "System Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 31774,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "13,921",
+                "33%",
+                "12%",
+                "$4,321,880"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "7,842",
+                "36%",
+                "15%",
+                "$3,102,450"
+              ]
+            },
+            {
+              "name": "Organic / SEO",
+              "metrics": [
+                "4,617",
+                "41%",
+                "20%",
+                "$2,588,720"
+              ]
+            },
+            {
+              "name": "Email / CRM",
+              "metrics": [
+                "3,168",
+                "45%",
+                "25%",
+                "$2,015,995"
+              ]
+            },
+            {
+              "name": "Referral / B2B",
+              "metrics": [
+                "2,226",
+                "49%",
+                "30%",
+                "$1,615,000"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "System Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16992,
+          "rows": [
+            {
+              "name": "Portable Oxygen Concentrator Exact Match",
+              "metrics": [
+                "6,214",
+                "35%",
+                "14%",
+                "$2,074,650"
+              ]
+            },
+            {
+              "name": "Medicare Oxygen Coverage",
+              "metrics": [
+                "4,102",
+                "38%",
+                "17%",
+                "$1,751,845"
+              ]
+            },
+            {
+              "name": "Freedom to Travel",
+              "metrics": [
+                "3,048",
+                "42%",
+                "20%",
+                "$1,532,410"
+              ]
+            },
+            {
+              "name": "Competitor Conquesting",
+              "metrics": [
+                "2,156",
+                "46%",
+                "25%",
+                "$1,354,215"
+              ]
+            },
+            {
+              "name": "Free Info Guide Download",
+              "metrics": [
+                "1,472",
+                "50%",
+                "31%",
+                "$1,147,320"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "System Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 12766,
+          "rows": [
+            {
+              "name": "portable oxygen concentrator",
+              "metrics": [
+                "4,821",
+                "34%",
+                "13%",
+                "$1,495,395"
+              ]
+            },
+            {
+              "name": "best portable oxygen concentrator for copd",
+              "metrics": [
+                "3,102",
+                "37%",
+                "16%",
+                "$1,182,960"
+              ]
+            },
+            {
+              "name": "does medicare cover portable oxygen concentrators",
+              "metrics": [
+                "2,214",
+                "43%",
+                "21%",
+                "$1,108,725"
+              ]
+            },
+            {
+              "name": "faa approved oxygen concentrator for flying",
+              "metrics": [
+                "1,586",
+                "47%",
+                "26%",
+                "$982,620"
+              ]
+            },
+            {
+              "name": "lightweight oxygen machine for travel",
+              "metrics": [
+                "1,043",
+                "51%",
+                "32%",
+                "$796,590"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "System Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Portable Oxygen Concentrators",
+              "metrics": [
+                "12,847",
+                "35%",
+                "13%",
+                "$4,249,470"
+              ]
+            },
+            {
+              "name": "Bundles / Systems",
+              "metrics": [
+                "7,942",
+                "38%",
+                "16%",
+                "$3,234,131"
+              ]
+            },
+            {
+              "name": "Home / Stationary Oxygen Concentrators",
+              "metrics": [
+                "6,318",
+                "40%",
+                "19%",
+                "$3,053,468"
+              ]
+            },
+            {
+              "name": "Parts & Accessories",
+              "metrics": [
+                "3,214",
+                "33%",
+                "24%",
+                "$1,961,844"
+              ]
+            },
+            {
+              "name": "Connectivity / Software",
+              "metrics": [
+                "1,453",
+                "44%",
+                "31%",
+                "$1,145,132"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "System Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 31774,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "9,847",
+                "33%",
+                "14%",
+                "$3,229,171"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "7,632",
+                "36%",
+                "17%",
+                "$3,039,916"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "6,218",
+                "38%",
+                "19%",
+                "$2,765,902"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "5,341",
+                "40%",
+                "22%",
+                "$2,751,850"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "2,736",
+                "45%",
+                "29%",
+                "$1,857,206"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "System Sold (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Portable Oxygen Concentrators",
+            "values": [
+              214,
+              402,
+              385,
+              371,
+              298
+            ]
+          },
+          {
+            "name": "Bundles / Systems",
+            "values": [
+              158,
+              312,
+              301,
+              289,
+              211
+            ]
+          },
+          {
+            "name": "Home / Stationary Oxygen Concentrators",
+            "values": [
+              149,
+              298,
+              285,
+              271,
+              197
+            ]
+          },
+          {
+            "name": "Parts & Accessories",
+            "values": [
+              96,
+              192,
+              183,
+              175,
+              125
+            ]
+          },
+          {
+            "name": "Connectivity / Software",
+            "values": [
+              54,
+              112,
+              108,
+              101,
+              75
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 31,774 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Barbara Whitfield called about the Inogen Rove 6 system for upcoming air travel. Agent Lila explained the six pulse settings, the 12.75-hour battery life, and FAA approval, then scheduled a consultation to review her prescription. Barbara was thrilled and confirmed the appointment before hanging up.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Lila",
+          "duration": "2m 40s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Harold Simmons asked whether Medicare covers portable oxygen concentrators. Agent Oscar walked him through eligibility, the physician-approval process, and financing through Affirm, then booked a consultation to verify coverage. Harold thanked him warmly for the clear explanation.",
+          "date": "Feb 12, 1:37 PM",
+          "agent": "Oscar",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 10,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Gloria Bennett wanted to compare the Rove 4 and the Rove 6 before buying. Agent Mary reviewed the weight difference, battery run time, and oxygen output for each, and set up a consultation to finalize her choice. Gloria left the call feeling confident about the Rove 6.",
+          "date": "Mar 3, 9:22 AM",
+          "agent": "Mary",
+          "duration": "2m 18s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Frank Delgado called to schedule a consultation for a new Rove 6 system. Agent Rosey collected his contact details, physician information, and Medicare coverage notes, then booked his intake appointment. Frank confirmed he was ready to move forward with prescribed oxygen therapy.",
+          "date": "Apr 9, 3:48 PM",
+          "agent": "Rosey",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Nancy Coleman called to check the status of her replacement battery order for the Rove 6. Agent Lee located the shipment and confirmed a delivery date within 24-48h. Nancy was satisfied and did not need anything further.",
+          "date": "May 15, 11:05 AM",
+          "agent": "Lee",
+          "duration": "1m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Raymond Foster asked about the warranty on his Rove 4 column kit after a purity alert. Agent Sue explained the coverage terms and how to request replacement columns. Raymond appreciated the help but wanted to think it over.",
+          "date": "May 28, 2:53 PM",
+          "agent": "Sue",
+          "duration": "2m 07s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 62,
+          "summary": "Doris Hammond wanted to learn about the Inogen At Home stationary unit for continuous overnight use. Agent Mike described the lightweight design and quiet operation, then scheduled a consultation to confirm her prescription. Doris booked the appointment before ending the call.",
+          "date": "Jun 4, 4:31 PM",
+          "agent": "Mike",
+          "duration": "2m 26s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Walter Pierce called about a cannula barb kit that would not seat on his tubing. Agent Jennifer identified the correct connector and placed a replacement order. Walter was mildly frustrated but accepted the fix.",
+          "date": "Jun 21, 12:19 PM",
+          "agent": "Jennifer",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Evelyn Ross disputed a charge on her Affirm financing plan for a Freedom Bundle. Agent Rose reviewed the payment schedule and opened a billing ticket for review. Evelyn remained uneasy about the amount owed.",
+          "date": "Jul 8, 10:47 AM",
+          "agent": "Rose",
+          "duration": "2m 51s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "George Mueller complained that his Freedom Bundle delivery was several days late. Agent Oscar tracked the carrier and apologized for the delay. George was annoyed and asked for a follow-up call.",
+          "date": "Jul 24, 3:09 PM",
+          "agent": "Oscar",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Sandra Willis reported that her Rove 6 battery would no longer hold a charge and wanted a warranty repair. Agent Lila started a service claim and arranged a diagnostic. Sandra was upset that her unit failed so soon.",
+          "date": "Aug 11, 1:14 PM",
+          "agent": "Lila",
+          "duration": "3m 21s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 32,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Thomas Grant rolled to voicemail after hours and left a message requesting a consultation callback about a portable unit. No agent was available to take the call. His message was logged for a return call the next business day.",
+          "date": "Aug 27, 6:42 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Patricia Nolan called to cancel her pending order after finding a lower price elsewhere. Agent Lee processed the cancellation and confirmed the refund timeline. Patricia was curt and declined further offers.",
+          "date": "Sep 6, 9:58 AM",
+          "agent": "Lee",
+          "duration": "1m 37s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Kenneth Boyd complained about repeated delays in his Medicare paperwork approval. Agent Sue explained the pending documentation and escalated the case. Kenneth was frustrated by how long the process was taking.",
+          "date": "Sep 22, 2:05 PM",
+          "agent": "Sue",
+          "duration": "2m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Marjorie Stein was angry that her replacement cannula did not fit and that a prior callback never came. Agent Mike apologized, shipped the correct part, and flagged the account for supervisor follow-up. Marjorie remained dissatisfied at the end of the call.",
+          "date": "Oct 3, 11:29 AM",
+          "agent": "Mike",
+          "duration": "3m 02s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "rove 6",
+        "battery",
+        "medicare",
+        "cannula",
+        "warranty",
+        "consultation"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 41s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Oxygen Therapy Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Insurance and Coverage Type",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Offer Free Information Guide",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller mentions COPD diagnosis",
+        "Caller seeking portable oxygen solution",
+        "Caller interested in travel capability",
+        "Caller confirmed Medicare coverage",
+        "Caller confirmed active prescription",
+        "Caller interested in Rove 6 model",
+        "Caller asked about FAA approval for flights",
+        "Caller confirmed ZIP code 94102",
+        "Caller scheduled consultation date",
+        "Caller confirmed availability window",
+        "Caller expressed mobility concerns",
+        "Caller asked about battery life",
+        "Caller demonstrated purchase intent"
+      ],
+      "unmetSignals": [
+        "Phone number not captured",
+        "Email address not captured",
+        "Caller's date of birth not verified",
+        "Preferred contact method not established",
+        "Backup contact number not obtained",
+        "Refill history not discussed",
+        "Current oxygen equipment not specified",
+        "Caregiver or emergency contact not captured",
+        "Financing options not presented",
+        "Delivery address confirmation not obtained"
+      ],
+      "naSignals": [
+        "Equipment return or exchange request",
+        "Order shipment status inquiry",
+        "Accessory reorder from previous purchase",
+        "Warranty claim or repair request",
+        "Billing dispute or payment issue",
+        "Product defect or malfunction report",
+        "Customer complaint about service",
+        "Request for product return authorization"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller has been recently diagnosed with COPD and needs a portable oxygen concentrator that is lightweight, FAA approved for air travel, and has long battery life to maintain an active lifestyle. They are looking for specific recommendations on the Rove 6 model."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects the concentrator to support frequent travel, work with their Medicare coverage, and be available for consultation within the week. They want to understand the equipment options before committing to a purchase."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address and phone number before ending the call to ensure proper follow up and reduce the need for a callback. This would enable faster delivery of the free information guide and appointment confirmations."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Inogen, America's leading oxygen concentrator company. This is Marcus speaking. May I have your name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus, my name is David Chen."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:35",
+          "text": "Great to meet you David. Are you calling today because you or a loved one are looking for a portable or home oxygen concentrator?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:45",
+          "text": "Yes, I was recently diagnosed with COPD and my doctor prescribed supplemental oxygen therapy. I travel a lot for work and I need something lightweight and portable that I can take on flights."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:02",
+          "text": "I completely understand David. We specialize in exactly that. The Inogen Rove 6 is our flagship portable oxygen concentrator. It weighs just 4.8 pounds, provides up to 12.75 hours of battery life, and it is FAA approved for air travel. Do you have an active prescription for oxygen therapy from your physician?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:22",
+          "text": "Yes, I do. My pulmonologist prescribed it last month. I am also on Medicare, so I want to make sure it is covered."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:35",
+          "text": "Excellent, David. Medicare does cover portable oxygen concentrators when prescribed by your physician. We handle all the Medicare paperwork and reimbursement details for you. What is your ZIP code so I can confirm we service your area?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:50",
+          "text": "I am in San Francisco. The ZIP code is 94102."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:00",
+          "text": "Perfect. We absolutely service the San Francisco area. I would love to schedule a free consultation with you. You can see the equipment in person, ask any questions, and discuss financing options like our Affirm payment plan. What day works best for you this week?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:18",
+          "text": "Would Thursday afternoon work? Maybe around 2 or 3 PM?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:28",
+          "text": "Thursday at 2 PM is perfect, David. I have you down for a consultation at that time. A specialist will call you Thursday morning to confirm the appointment. Thank you for choosing Inogen, and we look forward to helping you get back to the activities you love."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:41",
+          "text": "Have a great day David."
+        }
+      ],
+      "aiSummary": "David Chen, a newly diagnosed COPD patient on Medicare, called Inogen seeking a portable oxygen concentrator for frequent business travel. Marcus qualified David's need for an FAA approved, lightweight unit and recommended the Rove 6 based on its 4.8 lb weight, 12.75 hour battery life, and travel approval. After confirming David's active prescription, Medicare coverage, and San Francisco service area (94102), Marcus successfully scheduled a Thursday 2 PM in person consultation. The call demonstrated good product knowledge and qualifying questions, though contact information was not fully captured for follow up.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "Great work on the consultation flow, @Marcus. You nailed the greeting, qualified David's oxygen therapy need, confirmed insurance, and booked the appointment smoothly. Two coaching points for next time. First, ask for David's email and phone number earlier in the call, ideally after capturing his name. This ensures you have confirmed contact details for the Thursday reminder and reduces the risk of a no show. Second, when David mentioned traveling for work, you could have asked a follow up question about his expected usage patterns or current limitations with oxygen, which would help the consultation specialist tailor their pitch to his lifestyle. Keep up the solid intake work."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "31,774"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$429.41"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$13,644,045"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "19,847"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "62%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "12,074"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "38%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "11,927"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Email & Retargeting",
+                "value": 55,
+                "display": "55%"
+              },
+              {
+                "name": "Lead-Gen / Direct Response",
+                "value": 45,
+                "display": "45%"
+              },
+              {
+                "name": "Organic / SEO",
+                "value": 39,
+                "display": "39%"
+              },
+              {
+                "name": "Social Media",
+                "value": 34,
+                "display": "34%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "11,842",
+                  "28%",
+                  "$5,081,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "8,317",
+                  "34%",
+                  "$3,564,118"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic / SEO",
+                  "5,946",
+                  "39%",
+                  "$2,552,309"
+                ]
+              },
+              {
+                "cells": [
+                  "Lead-Gen / Direct Response",
+                  "3,472",
+                  "45%",
+                  "$1,489,760"
+                ]
+              },
+              {
+                "cells": [
+                  "Email & Retargeting",
+                  "2,197",
+                  "55%",
+                  "$956,416"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 14000,
+            "axisTicks": [
+              0,
+              3500,
+              7000,
+              10500,
+              14000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search (CPC)",
+                "value": 12318,
+                "display": "12,318"
+              },
+              {
+                "name": "Paid Social",
+                "value": 7942,
+                "display": "7,942"
+              },
+              {
+                "name": "Organic",
+                "value": 5614,
+                "display": "5,614"
+              },
+              {
+                "name": "Email",
+                "value": 3486,
+                "display": "3,486"
+              },
+              {
+                "name": "Referral",
+                "value": 2414,
+                "display": "2,414"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search (CPC)",
+                  "12,318",
+                  "27%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "7,942",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "5,614",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "3,486",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "2,414",
+                  "56%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Portable Oxygen Concentrator Exact Match",
+                "value": 9214,
+                "display": "9,214"
+              },
+              {
+                "name": "POC COPD Oxygen",
+                "value": 6852,
+                "display": "6,852"
+              },
+              {
+                "name": "Medicare Oxygen Coverage",
+                "value": 4918,
+                "display": "4,918"
+              },
+              {
+                "name": "Competitor Conquesting",
+                "value": 3241,
+                "display": "3,241"
+              },
+              {
+                "name": "Freedom to Travel",
+                "value": 2087,
+                "display": "2,087"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Portable Oxygen Concentrator Exact Match",
+                  "9,214",
+                  "29%",
+                  "$3,842,118"
+                ]
+              },
+              {
+                "cells": [
+                  "POC COPD Oxygen",
+                  "6,852",
+                  "35%",
+                  "$2,761,904"
+                ]
+              },
+              {
+                "cells": [
+                  "Medicare Oxygen Coverage",
+                  "4,918",
+                  "41%",
+                  "$1,984,552"
+                ]
+              },
+              {
+                "cells": [
+                  "Competitor Conquesting",
+                  "3,241",
+                  "58%",
+                  "$1,314,087"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 5000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "portable oxygen concentrator",
+                "value": 3842,
+                "display": "3,842"
+              },
+              {
+                "name": "best portable oxygen concentrator for COPD",
+                "value": 2731,
+                "display": "2,731"
+              },
+              {
+                "name": "Inogen Rove 6 price",
+                "value": 1948,
+                "display": "1,948"
+              },
+              {
+                "name": "does Medicare cover portable oxygen concentrators",
+                "value": 1412,
+                "display": "1,412"
+              },
+              {
+                "name": "FAA approved oxygen concentrator for flying",
+                "value": 1057,
+                "display": "1,057"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "portable oxygen concentrator",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "best portable oxygen concentrator for COPD",
+                  "37%"
+                ]
+              },
+              {
+                "cells": [
+                  "Inogen Rove 6 price",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "does Medicare cover portable oxygen concentrators",
+                  "57%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Portable Oxygen Concentrators",
+              "14,821",
+              "31%",
+              "72%"
+            ]
+          },
+          {
+            "cells": [
+              "Home / Stationary Concentrators",
+              "8,342",
+              "37%",
+              "64%"
+            ]
+          },
+          {
+            "cells": [
+              "Parts & Accessories",
+              "5,438",
+              "43%",
+              "41%"
+            ]
+          },
+          {
+            "cells": [
+              "Bundles / Systems",
+              "3,173",
+              "56%",
+              "68%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Cleveland, OH Contact Center",
+              "11,428",
+              "918",
+              "5%",
+              "32%"
+            ]
+          },
+          {
+            "cells": [
+              "Plano, TX Contact Center",
+              "9,214",
+              "742",
+              "4%",
+              "37%"
+            ]
+          },
+          {
+            "cells": [
+              "Richardson, TX Sales Center",
+              "6,842",
+              "512",
+              "3%",
+              "42%"
+            ]
+          },
+          {
+            "cells": [
+              "Goleta, CA Headquarters",
+              "4,290",
+              "370",
+              "2%",
+              "55%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1124,
+              1286,
+              1192,
+              1148,
+              1092
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              892,
+              978,
+              948,
+              921,
+              879
+            ]
+          },
+          {
+            "name": "Awaiting Physician Approval",
+            "values": [
+              742,
+              824,
+              812,
+              778,
+              758
+            ]
+          },
+          {
+            "name": "Insurance / Medicare Verification Pending",
+            "values": [
+              598,
+              662,
+              648,
+              631,
+              603
+            ]
+          },
+          {
+            "name": "Researching Only",
+            "values": [
+              412,
+              458,
+              448,
+              441,
+              425
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "12,710"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "System Sold (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$7,777,106"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "System Sold (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$847,230"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "System Sold (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,156,480"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "System Sold (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$923,652"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "System Sold (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,289,745"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "System Sold (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,742,318"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "System Sold (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$817,681"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "System Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 15847,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "4,328",
+                "58%",
+                "31%",
+                "$3,187,480"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "2,847",
+                "51%",
+                "29%",
+                "$1,896,532"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "2,156",
+                "57%",
+                "34%",
+                "$1,523,864"
+              ]
+            },
+            {
+              "name": "Direct Mail",
+              "metrics": [
+                "1,783",
+                "49%",
+                "27%",
+                "$651,291"
+              ]
+            },
+            {
+              "name": "Email Marketing",
+              "metrics": [
+                "1,596",
+                "61%",
+                "38%",
+                "$518,449"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "System Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 14891,
+          "rows": [
+            {
+              "name": "Form Fill",
+              "metrics": [
+                "3,572",
+                "54%",
+                "29%",
+                "$2,419,508"
+              ]
+            },
+            {
+              "name": "Voice Call",
+              "metrics": [
+                "3,284",
+                "59%",
+                "36%",
+                "$2,738,976"
+              ]
+            },
+            {
+              "name": "SMS Message",
+              "metrics": [
+                "2,041",
+                "52%",
+                "30%",
+                "$1,364,682"
+              ]
+            },
+            {
+              "name": "Organic Landing Page",
+              "metrics": [
+                "1,847",
+                "55%",
+                "31%",
+                "$869,104"
+              ]
+            },
+            {
+              "name": "Video Engagement",
+              "metrics": [
+                "1,336",
+                "58%",
+                "37%",
+                "$605,185"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "System Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 15263,
+          "rows": [
+            {
+              "name": "POC: COPD Oxygen",
+              "metrics": [
+                "2,684",
+                "54%",
+                "30%",
+                "$1,945,728"
+              ]
+            },
+            {
+              "name": "Medicare Oxygen Coverage",
+              "metrics": [
+                "1,923",
+                "57%",
+                "35%",
+                "$1,387,845"
+              ]
+            },
+            {
+              "name": "Freedom to Travel",
+              "metrics": [
+                "1,547",
+                "59%",
+                "37%",
+                "$1,156,214"
+              ]
+            },
+            {
+              "name": "Portable Oxygen Concentrator: Exact Match",
+              "metrics": [
+                "1,304",
+                "52%",
+                "28%",
+                "$762,048"
+              ]
+            },
+            {
+              "name": "Competitor Conquesting",
+              "metrics": [
+                "1,089",
+                "61%",
+                "39%",
+                "$525,271"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "System Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 15089,
+          "rows": [
+            {
+              "name": "portable oxygen concentrator",
+              "metrics": [
+                "1,847",
+                "53%",
+                "29%",
+                "$1,312,678"
+              ]
+            },
+            {
+              "name": "best portable oxygen concentrator for COPD",
+              "metrics": [
+                "1,356",
+                "58%",
+                "34%",
+                "$1,104,384"
+              ]
+            },
+            {
+              "name": "Inogen Rove 6 price",
+              "metrics": [
+                "1,128",
+                "60%",
+                "37%",
+                "$897,264"
+              ]
+            },
+            {
+              "name": "FAA approved oxygen concentrator for flying",
+              "metrics": [
+                "945",
+                "55%",
+                "31%",
+                "$652,035"
+              ]
+            },
+            {
+              "name": "lightweight oxygen machine for travel",
+              "metrics": [
+                "814",
+                "62%",
+                "39%",
+                "$521,847"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "System Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Portable Oxygen Concentrators",
+              "metrics": [
+                "5,239",
+                "57%",
+                "35%",
+                "$3,952,655"
+              ]
+            },
+            {
+              "name": "Home Stationary Concentrators",
+              "metrics": [
+                "3,184",
+                "54%",
+                "31%",
+                "$2,047,936"
+              ]
+            },
+            {
+              "name": "Bundles Systems",
+              "metrics": [
+                "2,156",
+                "58%",
+                "33%",
+                "$1,286,448"
+              ]
+            },
+            {
+              "name": "Parts Accessories",
+              "metrics": [
+                "1,423",
+                "51%",
+                "28%",
+                "$314,962"
+              ]
+            },
+            {
+              "name": "Connectivity Software",
+              "metrics": [
+                "708",
+                "53%",
+                "30%",
+                "$174,105"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "System Sold (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Portable Oxygen Concentrators",
+            "values": [
+              618,
+              724,
+              651,
+              689,
+              597
+            ]
+          },
+          {
+            "name": "Home Stationary Concentrators",
+            "values": [
+              487,
+              521,
+              446,
+              389,
+              456
+            ]
+          },
+          {
+            "name": "Bundles Systems",
+            "values": [
+              389,
+              425,
+              358,
+              367,
+              291
+            ]
+          },
+          {
+            "name": "Parts Accessories",
+            "values": [
+              218,
+              247,
+              189,
+              156,
+              190
+            ]
+          },
+          {
+            "name": "Connectivity Software",
+            "values": [
+              136,
+              164,
+              128,
+              94,
+              112
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "26%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "323"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "782"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "27"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              73,
+              76,
+              71,
+              78,
+              74,
+              75,
+              72,
+              79,
+              74,
+              73,
+              76,
+              75,
+              78,
+              72,
+              74,
+              77,
+              73,
+              76,
+              75,
+              74,
+              73,
+              78,
+              76,
+              74,
+              75,
+              77,
+              73,
+              76,
+              72,
+              74,
+              73,
+              178,
+              184,
+              177,
+              189,
+              181,
+              186,
+              179,
+              187,
+              183,
+              178,
+              185,
+              181,
+              179,
+              186,
+              174,
+              188,
+              182,
+              180
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,163"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "718"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "62%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "696"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Portable Oxygen Concentrator Pricing",
+            "values": [
+              8,
+              11,
+              3,
+              9,
+              12,
+              7
+            ]
+          },
+          {
+            "name": "Medicare Coverage and Reimbursement",
+            "values": [
+              6,
+              9,
+              8,
+              10,
+              7,
+              11
+            ]
+          },
+          {
+            "name": "Battery Life and Runtime Questions",
+            "values": [
+              7,
+              8,
+              10,
+              6,
+              9,
+              8
+            ]
+          },
+          {
+            "name": "FAA Approval for Air Travel",
+            "values": [
+              5,
+              7,
+              6,
+              9,
+              8,
+              10
+            ]
+          },
+          {
+            "name": "Accessories and Parts Replacement",
+            "values": [
+              4,
+              6,
+              5,
+              7,
+              6,
+              9
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "29,232"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "20,653"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Booked (Count)",
+            "value": "12,074"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$13,644,045"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 300,
+          "axisTicks": [
+            0,
+            75,
+            150,
+            225,
+            300
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 217,
+              "display": "217"
+            },
+            {
+              "name": "Diane Foster",
+              "value": 184,
+              "display": "184"
+            },
+            {
+              "name": "James Horton",
+              "value": 259,
+              "display": "259"
+            },
+            {
+              "name": "Patricia Vance",
+              "value": 201,
+              "display": "201"
+            },
+            {
+              "name": "Kevin Nash",
+              "value": 168,
+              "display": "168"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Chen",
+            "values": [
+              142,
+              168,
+              191,
+              224,
+              287
+            ]
+          },
+          {
+            "name": "Robert Martinez",
+            "values": [
+              156,
+              179,
+              203,
+              241,
+              309
+            ]
+          },
+          {
+            "name": "Lisa Kowalski",
+            "values": [
+              138,
+              161,
+              184,
+              218,
+              276
+            ]
+          },
+          {
+            "name": "David Brennan",
+            "values": [
+              149,
+              171,
+              197,
+              233,
+              298
+            ]
+          },
+          {
+            "name": "Angela Torres",
+            "values": [
+              165,
+              188,
+              215,
+              251,
+              317
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Diane Foster",
+              "value": 55.1,
+              "display": "55.1%"
+            },
+            {
+              "name": "James Horton",
+              "value": 52.8,
+              "display": "52.8%"
+            },
+            {
+              "name": "Patricia Vance",
+              "value": 56.3,
+              "display": "56.3%"
+            },
+            {
+              "name": "Kevin Nash",
+              "value": 53.7,
+              "display": "53.7%"
+            },
+            {
+              "name": "Thomas Riley",
+              "value": 55.9,
+              "display": "55.9%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Webb",
+                "54.2%",
+                "28%",
+                "$443,856",
+                "1,387"
+              ]
+            },
+            {
+              "cells": [
+                "Diane Foster",
+                "55.1%",
+                "29%",
+                "$461,923",
+                "1,414"
+              ]
+            },
+            {
+              "cells": [
+                "James Horton",
+                "52.8%",
+                "26%",
+                "$382,954",
+                "1,298"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Vance",
+                "56.3%",
+                "31%",
+                "$506,178",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Nash",
+                "53.7%",
+                "27%",
+                "$419,832",
+                "1,342"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Riley",
+                "55.9%",
+                "30%",
+                "$485,910",
+                "1,405"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Chen",
+              "value": 91.4,
+              "display": "91.4%"
+            },
+            {
+              "name": "Robert Martinez",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "Lisa Kowalski",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "David Brennan",
+              "value": 90.8,
+              "display": "90.8%"
+            },
+            {
+              "name": "Angela Torres",
+              "value": 93.2,
+              "display": "93.2%"
+            },
+            {
+              "name": "Jennifer Hayes",
+              "value": 88.6,
+              "display": "88.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Chen",
+                "91.4%",
+                "64%",
+                "$1,019,744",
+                "1,486"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Martinez",
+                "92.1%",
+                "66%",
+                "$1,088,562",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Kowalski",
+                "89.7%",
+                "61%",
+                "$933,586",
+                "1,438"
+              ]
+            },
+            {
+              "cells": [
+                "David Brennan",
+                "90.8%",
+                "63%",
+                "$1,003,956",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Angela Torres",
+                "93.2%",
+                "67%",
+                "$1,141,294",
+                "1,547"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Hayes",
+                "88.6%",
+                "58%",
+                "$880,324",
+                "1,432"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Booked (Count)",
+        "rightMax": 600,
+        "rightTicks": [
+          0,
+          150,
+          300,
+          450,
+          600
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 447
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 429
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 399
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 381
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 331
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 348
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 384
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 400
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 446
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 432
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 389
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 376
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 334
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 344
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 393
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 406
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 442
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 435
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 381
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 369
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 339
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 343
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 400
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 414
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 436
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 435
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 375
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 360
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 345
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 343
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 418
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 700000,
+        "rightTicks": [
+          0,
+          233333.33333333334,
+          466666.6666666667,
+          700000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 505772
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 484759
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 451410
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 430732
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 375032
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 393585
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 434782
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 451920
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 503894
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 488556
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 440026
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 425294
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 378440
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 390082
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 445134
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 458698
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 499202
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 491433
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 430934
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 417265
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 384120
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 388147
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 452806
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 467816
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 492860
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 492143
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 424768
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 407284
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 390781
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 388897
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 457473
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "31,774"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:47"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "2,542"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "1,906"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Martinez",
+                "412",
+                "91%",
+                "88%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "528",
+                "88%",
+                "85%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Goldstein",
+                "489",
+                "88%",
+                "86%",
+                "87%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "31,774 calls",
+      "pagerLabel": "1 of 3,177",
+      "calls": [
+        {
+          "time": "1/3/26 9:14 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/7/26 10:41 am",
+          "id": "A3C1-6D4E88B10FA2"
+        },
+        {
+          "time": "1/9/26 11:23 am",
+          "id": "9E02-4B7C1D5590E3"
+        },
+        {
+          "time": "1/12/26 1:05 pm",
+          "id": "C48D-2F9A70B3E611"
+        },
+        {
+          "time": "1/15/26 2:18 pm",
+          "id": "7B16-5C8E33D9A204"
+        },
+        {
+          "time": "1/19/26 9:52 am",
+          "id": "D2F4-91A70E6C4B58"
+        },
+        {
+          "time": "1/22/26 3:47 pm",
+          "id": "1A8C-E0B34F72D915"
+        },
+        {
+          "time": "1/26/26 10:09 am",
+          "id": "6F30-B15D8A2E47C0"
+        },
+        {
+          "time": "1/28/26 4:31 pm",
+          "id": "E94A-3C0F62D817B5"
+        },
+        {
+          "time": "1/30/26 11:56 am",
+          "id": "58BD-7A2E409C61F3"
+        }
+      ],
+      "duration": "2:34",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Inogen, the number one portable oxygen concentrator brand. My name is Daniel. Who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling Inogen",
+            "number one portable oxygen concentrator brand"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Daniel, this is Margaret Ellison. My doctor just started me on oxygen therapy and I'm trying to figure out my options.",
+          "highlights": [
+            "Margaret Ellison",
+            "started me on oxygen therapy"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:15",
+          "text": "Welcome, Margaret, and congratulations on taking that step. Is this your first time looking into a portable unit?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:22",
+          "text": "Yes, first time. I have COPD and I still like to travel to see the grandkids, so I need something I can actually carry and take on a plane.",
+          "highlights": [
+            "COPD",
+            "take on a plane"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:31",
+          "text": "That is exactly what our portable concentrators are built for. Our Inogen Rove 6 is FAA approved for air travel, weighs about 4.8 pounds, and gives you up to 12.75 hours on the extended battery. It would let you fly without worrying about tanks.",
+          "highlights": [
+            "Inogen Rove 6",
+            "FAA approved for air travel"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:44",
+          "text": "That sounds nice, but honestly, what does something like that run? I'm on a fixed income and I want to keep this manageable.",
+          "highlights": [
+            "what does something like that run",
+            "keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:52",
+          "text": "Completely understand, Margaret. The Rove 6 system lands around 2,795 dollars, and we also offer monthly payments through Affirm so you are not paying it all at once. We can also check your Medicare and insurance eligibility to bring that down.",
+          "highlights": [
+            "monthly payments through Affirm",
+            "check your Medicare and insurance eligibility"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:04",
+          "text": "Okay. I'll be honest, the folks over at another supplier quoted me on a different machine and I'm getting a couple of comparisons before I decide.",
+          "highlights": [
+            "getting a couple of comparisons"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:13",
+          "text": "That is a smart thing to do, and I want you to feel confident. What sets the Rove 6 apart is the 1,260 milliliter per minute oxygen output across six pulse settings, so it grows with you if your doctor raises your prescription. Many patients find other units run short at the higher settings.",
+          "highlights": [
+            "six pulse settings"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:26",
+          "text": "That's good to know. If my needs change I don't want to be stuck with something I can't use.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:32",
+          "text": "Exactly, and there is no long-term commitment on your end. You own the unit outright, and it comes with a warranty and lifetime support from our team here.",
+          "highlights": [
+            "no long-term commitment"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:40",
+          "text": "Alright. One more thing, I'd really want to run this by my husband before I put money down. He handles the medical bills.",
+          "highlights": [
+            "run this by my husband"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:48",
+          "text": "Absolutely, that makes sense. What I would suggest is a free consultation with one of our oxygen specialists. They will confirm your prescription details, verify your insurance, and walk both of you through the Rove 6 with no pressure to buy.",
+          "highlights": [
+            "free consultation",
+            "oxygen specialists"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:00",
+          "text": "That would help a lot, especially having my husband on the call.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:05",
+          "text": "Wonderful. I have Thursday at 10 AM open, or Friday afternoon. Which works better for you both?",
+          "highlights": [
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:11",
+          "text": "Thursday at 10 works for us.",
+          "highlights": [
+            "Thursday at 10 works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:15",
+          "text": "Perfect. I have you booked for Thursday at 10 AM. What is the best phone number and email to send the confirmation to?",
+          "highlights": [
+            "booked for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:21",
+          "text": "My cell is 805-555-0172 and my email is margaret.ellison@email.com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:27",
+          "text": "Got it. I am sending your confirmation and a free info guide now so you can review the Rove 6 before Thursday.",
+          "highlights": [
+            "free info guide"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:31",
+          "text": "Thank you, Daniel, you've been very helpful.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:34",
+          "text": "My pleasure, Margaret. We look forward to helping you breathe easier and keep traveling. Take care and we will talk Thursday.",
+          "highlights": [
+            "breathe easier",
+            "talk Thursday"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Product Interest: Rove 6 System",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "FAA Travel Intent",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Insurance / Medicare Eligibility Raised",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price / Financing Discussion",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Margaret Ellison, a new patient recently prescribed oxygen therapy for COPD, called to explore a portable concentrator she could carry and fly with to visit family. Agent Daniel recommended the FAA approved Inogen Rove 6 system, addressed her cost concern with Affirm financing and Medicare eligibility, and eased her worry about being locked in by explaining she owns the unit outright. He booked a free consultation with an oxygen specialist for Thursday at 10 AM so she could review it with her husband. Contact details were captured and a confirmation with a free info guide was sent.",
+        "keyPoints": [
+          "New patient, first-time oxygen therapy user with COPD",
+          "Needs a lightweight, FAA approved unit for air travel",
+          "Recommended the Inogen Rove 6 system with extended battery",
+          "Handled price concern via Affirm financing and Medicare eligibility check",
+          "Consultation scheduled for Thursday at 10 AM with husband present",
+          "Captured phone and email, confirmation and info guide sent"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "20,018 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,002",
+      "conversations": [
+        {
+          "id": "C847-3F2E1B9C4A6D",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. This is Sarah from Inogen. I saw you were interested in our portable oxygen concentrators. Do you have a few minutes to chat?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yeah, sure. I've been looking at the Rove 6 but I'm not sure if it's right for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great, the Rove 6 is our most popular model. Quick question, are you currently using oxygen therapy or is this for someone else?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "It's for me. My doctor prescribed supplemental oxygen about six months ago."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Thanks for letting me know. And are you looking for something portable so you can travel, or mainly for home use?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Both really. I want to be able to go out and travel but also have something reliable at home."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Perfect. The Rove 6 is FAA approved for air travel and has a 12.75 hour battery life, so it's ideal for that. One more thing, does your insurance cover oxygen equipment?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "I have Medicare. Will that work with the Rove 6?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:30 AM",
+              "text": "Excellent question. Most Medicare plans do cover portable oxygen concentrators. We can help you navigate that process. I'd like to schedule a consultation with one of our specialists to review your coverage and get you set up. Does Tuesday at 2 PM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Tuesday at 2 PM sounds good. What's my confirmation number?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "Perfect. Your consultation is confirmed for Tuesday, March 11th at 2 PM Pacific Time. You'll receive a call from our specialist at this number. If you have any questions before then, call us at 855-MY-INOGEN. Thanks for choosing Inogen."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:34 AM",
+              "text": "Thanks, I appreciate the help."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Rove 6",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Insurance Verified: Medicare",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Use Case: Travel and Home",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimated Value: $2,795",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C847-3F2E1B9C4A6D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "(503) 555-0147",
+            "repeatCaller": "No",
+            "city": "Portland",
+            "region": "OR",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Moore",
+            "firstName": "Jennifer",
+            "lastName": "Moore",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C602-7A4E2D1F8B5C",
+          "time": "3/9/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C602-7A4E2D1F8B5C",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C934-5B1C9E2A6F3D",
+          "time": "3/8/26 11:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C934-5B1C9E2A6F3D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C715-8D3F4A2E1C6B",
+          "time": "3/7/26 4:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C715-8D3F4A2E1C6B",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "31,774 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,177",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/14/26 2:47 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hello, thank you for calling Inogen. This is Marcus. Are you calling about a portable oxygen concentrator today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Yeah, hi. I saw an ad for the Rove 6 and I'm interested in learning more about it."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:48 PM",
+              "text": "Great. I'm glad you found us. Just to help me point you in the right direction, are you currently using oxygen therapy, or would this be your first concentrator?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:49 PM",
+              "text": "I've been on oxygen for about three years. My tank is really heavy though, so I wanted something lighter."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:50 PM",
+              "text": "I completely understand. The Rove 6 is our top choice for that reason. It weighs only four point eight pounds and delivers up to twelve hundred and sixty milliliters per minute of oxygen. Have you checked with your doctor yet to see if they'd approve switching to a portable concentrator?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:51 PM",
+              "text": "Not yet. I wanted to call and ask questions first before I ask him."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Perfect. That's exactly what I'm here for. The Rove 6 comes with six pulse settings, so your doctor can adjust it to your exact oxygen needs. Are you hoping to travel or take it on the go regularly?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "Oh yeah, I want to visit my grandson in Colorado next month. I need something I can take on the airplane."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:53 PM",
+              "text": "Excellent news. The Rove 6 is FAA approved for air travel, so you'll be able to take it in your carry on bag. We also offer an extended battery that gives you up to twelve point seven five hours of runtime on a single charge, which is perfect for a long flight. Have you thought about which payment option works best for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:54 PM",
+              "text": "I was wondering if there's a payment plan. I can't pay all upfront right now."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "Yes, we do offer financing through Affirm. You can spread the payment out into monthly installments with no interest if you qualify. The Rove 6 system runs twenty-nine ninety five to thirty-two ninety five depending on your battery setup. How does that sound?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:56 PM",
+              "text": "That helps a lot. So when can I get it?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:57 PM",
+              "text": "I'd like to schedule a consultation with one of our patient specialists so they can walk you through the setup, answer any remaining questions, and get you started. How about Thursday, January sixteenth at ten o'clock in the morning? We can also email you a link to our Doctor Discussion Guide so you have talking points ready when you call your physician."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:58 PM",
+              "text": "Thursday works great for me. That's perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:59 PM",
+              "text": "Wonderful. I have you down for Thursday, January sixteenth at ten AM. A specialist will call you at this number to confirm, and you'll receive an email with resources including our equipment setup video and the Doctor Discussion Guide. If you need anything before then, just call us back at eight seven seven, my Inogen. That's eight seven seven, six nine four, six three six four. Does that sound good?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:00 PM",
+              "text": "Perfect. Thank you so much, Marcus."
+            },
+            {
+              "speaker": "agent",
+              "time": "3:01 PM",
+              "text": "You're welcome. We're excited to help you get mobile again. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Rove 6",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Use Case: Air Travel",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Financing: Affirm Interest",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Objection Handling: Cost Concern",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/14/26 2:47 pm",
+            "duration": "5:47",
+            "destinationPhone": "877-MY-INOGEN",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "720-558-4417",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "Robert Chen",
+            "firstName": "Robert",
+            "lastName": "Chen",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "POC, Portable Oxygen Concentrator, Exact Match",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B821-7D4AC295E6F2",
+          "time": "1/18/26 11:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B821-7D4AC295E6F2",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C634-9E1FB847D5A8",
+          "time": "1/22/26 3:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C634-9E1FB847D5A8",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D945-3F2C81A7B6E4",
+          "time": "1/29/26 9:42 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D945-3F2C81A7B6E4",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as Inogen's AI agent here to help build a personalized oxygen therapy quote, mention that qualifying patients may use Affirm financing for easy monthly payments, and ask if they'd like to get started.",
+        "Qualify one at a time: Ask only one question per message, covering whether they need a portable or home concentrator, their prescribed oxygen flow setting, how they plan to use it (travel, daily mobility, or continuous home use), whether they have a physician's oxygen prescription plus Medicare or insurance, and their ZIP code to confirm shipping and coverage options.",
+        "Estimate then book: Confirm you can ship to their ZIP, share a preliminary price range based on the model and battery configuration they described, recommend a consultation with an Inogen oxygen specialist for an exact quote and insurance review, propose a specific day and time, and confirm they'll get a reminder text before the appointment with a number to call at 855-MY-INOGEN."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Inogen_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Portable Oxygen Concentrators",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "What is Oxygen Therapy?",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Request a Free Info Guide",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"warranty\",\"question\":\"Is my Inogen Rove 6 still under warranty and does that cover the sieve columns?\",\"answer\":\"Your Rove 6 concentrator carries a manufacturer warranty, though sieve columns and batteries are considered routine replacement parts with their own coverage terms. I can connect you with an oxygen specialist to review your exact warranty status.\"},{\"topic\":\"order status\",\"question\":\"When will my replacement extended battery ship?\",\"answer\":\"Replacement batteries typically ship within a few business days once your order is confirmed. I can have a specialist pull up your order and give you a tracking update.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How much does the Inogen Rove 6 cost?",
+              "answer": "Pricing for the Rove 6 System varies with battery configuration and any insurance or Medicare coverage you may qualify for. Let's set up a quick consultation with an oxygen specialist for an exact quote."
+            },
+            {
+              "question": "Does Medicare cover portable oxygen concentrators?",
+              "answer": "Medicare may cover portable oxygen for patients who meet the medical criteria and have a physician's prescription. A specialist can review your eligibility during a consultation."
+            },
+            {
+              "question": "How much does the Rove 6 weigh?",
+              "answer": "The Inogen Rove 6 weighs about 4.8 pounds and is FAA-approved for air travel. I'd be glad to book a consultation so a specialist can confirm the right model for your needs."
+            },
+            {
+              "question": "What is the difference between the Rove 6 and the Rove 4?",
+              "answer": "The Rove 6 offers up to 6 pulse settings and longer battery life, while the Rove 4 is lighter and more compact for shorter-duration mobility. A consultation can help match the best fit to your prescription."
+            },
+            {
+              "question": "Can I use an Inogen concentrator on an airplane?",
+              "answer": "Yes, Inogen portable concentrators like the Rove 6 are FAA-approved for air travel. Let's schedule a consultation to confirm the model and battery setup for your trips."
+            },
+            {
+              "question": "Do I need a prescription to buy an oxygen concentrator?",
+              "answer": "Supplemental oxygen therapy requires a physician's prescription, and our team can help coordinate physician approval. A specialist can walk you through this on a consultation."
+            },
+            {
+              "question": "How long does the battery last on the Rove 6?",
+              "answer": "The Rove 6 offers up to about 12.75 hours of battery life with the extended battery. A specialist can review battery options with you during a consultation."
+            },
+            {
+              "question": "What is the difference between a portable and a home concentrator?",
+              "answer": "Portable units are lightweight for travel and daily mobility, while home or stationary units support continuous use at home. A consultation can help you decide which fits your lifestyle."
+            },
+            {
+              "question": "How does an oxygen concentrator work?",
+              "answer": "It pulls nitrogen from the air and delivers 85 to 95 percent pure oxygen, running on a battery, wall outlet, or car charger. A specialist can explain how it fits your therapy during a consultation."
+            },
+            {
+              "question": "Can I finance my purchase?",
+              "answer": "Yes, financing is available through Affirm for easy monthly payments on qualifying purchases. Let's book a consultation so a specialist can review your options and pricing."
+            },
+            {
+              "question": "Is the Inogen At Home unit good for travel?",
+              "answer": "The Inogen At Home is a lightweight, travel-friendly stationary concentrator, though for active mobility a portable model may suit you better. A consultation can help you compare."
+            },
+            {
+              "question": "Do you offer a bundle with extra batteries?",
+              "answer": "Yes, the Inogen Freedom Bundle includes an extra battery, carry bag, and accessories for out-of-box readiness. A specialist can go over the bundle details on a consultation."
+            },
+            {
+              "question": "How pure is the oxygen from an Inogen concentrator?",
+              "answer": "Inogen concentrators deliver 85 to 95 percent pure oxygen to support your prescribed therapy. Let's schedule a consultation to confirm the right settings for your prescription."
+            },
+            {
+              "question": "Is a concentrator better than an oxygen tank?",
+              "answer": "A concentrator produces oxygen continuously from the air, so there are no tanks to refill and it supports greater independence. A specialist can walk you through the benefits on a consultation."
+            },
+            {
+              "question": "What flow settings does the Rove 6 have?",
+              "answer": "The Rove 6 offers 6 pulse settings with up to 1,260 ml/min oxygen output. A consultation with a specialist can help match a setting to your prescription."
+            },
+            {
+              "question": "How do I get a free info guide?",
+              "answer": "You can request a free info guide, and I can also set you up with a specialist consultation to answer your questions directly. Would you like to book a time?"
+            },
+            {
+              "question": "Can I use my insurance to buy an Inogen unit?",
+              "answer": "We support insurance and Medicare claims for eligible patients with a physician's prescription. A specialist can review your coverage during a consultation."
+            },
+            {
+              "question": "How compact is the Voxi 5?",
+              "answer": "The Inogen Voxi 5 is a compact and transportable home oxygen concentrator built for continuous home use. Let's book a consultation to see if it fits your needs."
+            },
+            {
+              "question": "How often do I replace the filters and columns?",
+              "answer": "Particle filters and sieve columns are routine replacement parts that keep your concentrator running at proper purity. A specialist can review a maintenance schedule with you on a consultation."
+            },
+            {
+              "question": "Which Inogen model is best for COPD?",
+              "answer": "The right model depends on your prescribed oxygen flow and how you plan to use it day to day. A consultation with an oxygen specialist can identify the best match for you."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule a consultation\",\"follow_up_message\":\"Great, I can get you on the calendar with an Inogen oxygen specialist. Does tomorrow at 10:30 AM work, and you'll receive a reminder text before your appointment with a number to call if anything changes.\"},{\"intent\":\"request a personalized quote\",\"follow_up_message\":\"Happy to help with a personalized quote. Based on the Rove 6 System you mentioned, pricing falls in a preliminary range, and a specialist can confirm your exact price with insurance during a quick consultation. What day this week works best?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Inogen's AI agent. I can help you build a personalized quote for the right oxygen concentrator, and qualifying patients may use Affirm for easy monthly payments. Would you like to get started?",
+        "goal": "Qualify the patient's oxygen therapy needs and book a virtual consultation with an Inogen oxygen specialist for an exact quote and insurance review.",
+        "bookingType": "virtual consultation with an oxygen specialist",
+        "offer": "Ask about Affirm financing with easy monthly payments when you book today",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "Are you looking for a portable concentrator for travel and mobility, or a home unit for continuous use?",
+          "What is your prescribed oxygen flow setting, if you know it?",
+          "How do you plan to use it most, air travel, daily errands, or at-home therapy?",
+          "Do you have a physician's oxygen prescription, and will you be using Medicare or private insurance?",
+          "What is your ZIP code so I can confirm shipping and coverage options in your area?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:10 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:10 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:10 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Inogen",
+      "callerName": "Margaret Chen",
+      "callerPhone": "(505) 555-0147",
+      "campaign": "Portable Oxygen Concentrator, Albuquerque Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$2,847",
+      "googleSearch": "best portable oxygen concentrator for COPD travel",
+      "websiteSearch": "Inogen Rove 6 price Medicare coverage",
+      "callingWebpage": "/products/portable-concentrators/rove-6",
+      "products": "Inogen Rove 6 System, Rove 6 Extended Battery",
+      "cartId": "IG-7294M",
+      "serviceable": "Yes",
+      "email": "margaret.chen.505@email.com",
+      "street": "2847 San Pedro Drive Northeast",
+      "city": "Albuquerque",
+      "state": "NM",
+      "zip": "87110",
+      "digitalJourney": "/home › /patients/what-is-oxygen-therapy › /products/portable-concentrators › /products/portable-concentrators/rove-6",
+      "intent": "Seeking lightweight portable oxygen concentrator approved for air travel with extended battery life for active retirement travel.",
+      "coverage": "ZIP 87110 confirmed, Albuquerque serviceable",
+      "switchIntent": "High. Recently diagnosed with mild COPD, wants to maintain travel independence, comparing to competitors, ready to purchase this month with insurance verification.",
+      "greeting": "Hi Margaret, this is Sarah from Inogen. I see you were looking at the Rove 6 for travel with your oxygen therapy needs. I'd love to walk you through how our lightweight, FAA-approved concentrator works and get you set up with a free in-home consultation with one of our respiratory specialists. When would work best for you this week?"
+    },
+    "smsScreenpop": {
+      "brandName": "Inogen",
+      "callerName": "David Kowalski",
+      "callerPhone": "(407) 555-0183",
+      "campaign": "Home Oxygen Concentrator, Orlando Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$1,623",
+      "googleSearch": "home oxygen concentrator cost stationary",
+      "websiteSearch": "Inogen At Home vs Voxi 5 which is better",
+      "callingWebpage": "/products/home-stationary-concentrators",
+      "products": "Inogen At Home, Inogen Voxi 5",
+      "cartId": "IG-5821K",
+      "serviceable": "Yes",
+      "email": "david.kowalski.407@email.com",
+      "street": "1256 Magnolia Park Boulevard",
+      "city": "Orlando",
+      "state": "FL",
+      "zip": "32806",
+      "digitalJourney": "/home › /products › /products/home-stationary-concentrators › /products/home-stationary-concentrators/at-home",
+      "intent": "Looking for a stationary home oxygen concentrator with travel-friendly features for continuous prescribed therapy use.",
+      "coverage": "ZIP 32806 confirmed, Orlando serviceable",
+      "appointment": "In-home consultation with oxygen therapy specialist, Thursday July 18, 2:00 PM",
+      "greeting": "Hi David. This is Tom from Inogen. Great news, we've got you scheduled for an in-home consultation this Thursday at 2 PM with our respiratory specialist. They'll help you find the best stationary concentrator for your needs and answer any questions about Medicare coverage and financing options. Looking forward to meeting you."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Inogen",
+      "brandDomain": "www.inogen.com",
+      "brandIcon": "💨",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Phoenix, AZ",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "POC, COPD Oxygen",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "best portable oxygen concentrator for COPD",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/products/portable-concentrators/rove-6",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Inogen Rove 6, Inogen Rove 4",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Phoenix, AZ",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_new_patient",
+          "name": "Consultation, New Patient"
+        },
+        {
+          "id": "support_existing_order",
+          "name": "Support, Existing Order"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Inogen. I can see you've been looking at our Rove models today. Are you currently using supplemental oxygen or exploring options for the first time?",
+          "sigs": [],
+          "q": [
+            35,
+            40,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, I have COPD and my doctor said I need something portable for when I travel. I saw your Rove 6 gets like 12 hours on a battery, which sounds amazing.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "COPD patient, <strong>travel mobility</strong>"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Rove 6</strong> interest"
+            },
+            {
+              "c": "orange",
+              "t": "Battery life important"
+            }
+          ],
+          "q": [
+            62,
+            18,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's perfect. The Rove 6 is our top choice for travel. Do you have Medicare coverage or private insurance that we can check reimbursement eligibility on today?",
+          "sigs": [],
+          "q": [
+            78,
+            12,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, I'm on Medicare. And I want to make sure it works with my prescribing doctor's setup. Can someone walk me through all that?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Medicare coverage"
+            },
+            {
+              "c": "blue",
+              "t": "Physician approval ready"
+            },
+            {
+              "c": "purple",
+              "t": "<strong>Full setup support</strong> needed"
+            }
+          ],
+          "q": [
+            94,
+            3,
+            3
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Absolutely. I'm routing you now to our New Patient Consultation team. They'll verify your Medicare coverage, coordinate with your doctor, and get you set up with the right device and accessories. Someone will be right with you.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule your consultation (Agent)\", \"book me an appointment (Caller)\", \"set up a call with an oxygen specialist\", \"get you started today (Agent)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "01/06/26 2:41 pm"
+        },
+        {
+          "name": "Battery and Accessory Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"extended battery (Caller)\", \"double battery pack\", \"how long does the battery last (Caller)\", \"external battery charger (Agent)\"])",
+          "createdAt": "05/02/25 10:24 am",
+          "updatedAt": "12/18/25 4:07 pm"
+        },
+        {
+          "name": "Compliance Disclosure",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Compliance Disclosure] < 60 and duration > 45 sec",
+          "createdAt": "04/09/25 8:53 am",
+          "updatedAt": "01/11/26 11:36 am"
+        },
+        {
+          "name": "Competitor Comparison",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"how does it compare to (Caller)\", \"I saw another brand (Caller)\", \"versus the other concentrator\", \"cheaper option somewhere else (Caller)\"])",
+          "createdAt": "06/21/25 1:15 pm",
+          "updatedAt": "12/29/25 9:48 am"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"talk to an oxygen specialist (Agent)\", \"free consultation (Agent)\", \"discuss your oxygen therapy (Agent)\", \"speak with a representative (Caller)\"])",
+          "createdAt": "02/27/25 3:41 pm",
+          "updatedAt": "01/03/26 10:22 am"
+        },
+        {
+          "name": "Empathy and Patient Care",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Patient Empathy] < 60 and duration > 45 sec",
+          "createdAt": "03/30/25 11:07 am",
+          "updatedAt": "01/09/26 3:52 pm"
+        },
+        {
+          "name": "FAA Approved Travel Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"approved for flying (Caller)\", \"can I take it on a plane (Caller)\", \"FAA approved (Agent)\", \"travel with oxygen (Caller)\"])",
+          "createdAt": "07/14/25 9:33 am",
+          "updatedAt": "12/22/25 2:19 pm"
+        },
+        {
+          "name": "Insurance and Medicare Coverage",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"does Medicare cover this (Caller)\", \"is it covered by insurance (Caller)\", \"physician prescription (Agent)\", \"reimbursement (Caller)\"])",
+          "createdAt": "04/18/25 12:48 pm",
+          "updatedAt": "01/07/26 8:14 am"
+        },
+        {
+          "name": "Objection Handling",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Objection Handling] < 60 and duration > 45 sec",
+          "createdAt": "05/26/25 2:36 pm",
+          "updatedAt": "01/12/26 4:45 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the price would be (Agent)\", \"with Affirm financing (Agent)\", \"easy monthly payments (Agent)\", \"total cost of the system (Agent)\"])",
+          "createdAt": "06/03/25 10:58 am",
+          "updatedAt": "01/05/26 1:27 pm"
+        }
+      ]
+    }
+  }
+}

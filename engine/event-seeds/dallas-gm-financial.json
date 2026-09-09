@@ -1,0 +1,5317 @@
+{
+  "id": "gm-financial",
+  "customerName": "GM Financial",
+  "websiteUrl": "https://www.gmfinancial.com",
+  "brandDomain": "gmfinancial.com",
+  "networkName": "Invoca for Auto Finance",
+  "industry": "Captive auto lending and leasing",
+  "bookingTerm": "Prequalification",
+  "customerNoun": "Customer",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 16000,
+      "yTicks": [
+        0,
+        4000,
+        8000,
+        12000,
+        16000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 13842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 15127
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 14986
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 13508
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 11962
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Prequalification Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Prequalification Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "GMF, Auto Loan Prequalify",
+          "marketingSearchTerm": "gm financial prequalify auto loan",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/apply-to-prequalify.html?utm_source=google&utm_medium=cpc&utm_campaign=gmf_prequalify",
+          "websiteJourney": "Home / Lease or Buy / Auto Financing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "GMF, 0% APR Current Offers",
+          "marketingSearchTerm": "0% apr gm vehicles",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/current-offers.html?utm_source=google&utm_medium=cpc&utm_campaign=gmf_zero_apr",
+          "websiteJourney": "Home / Lease or Buy / Current Offers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "GMF, EV Financing",
+          "marketingSearchTerm": "silverado ev lease",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/ev-financing.html?utm_source=bing&utm_medium=cpc&utm_campaign=gmf_ev_financing",
+          "websiteJourney": "Home / Lease or Buy / Auto Financing / EV Financing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "GMF, Lease Deals",
+          "marketingSearchTerm": "chevy lease deals current offers",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/current-offers.html?utm_source=google&utm_medium=cpc&utm_campaign=gmf_lease_deals",
+          "websiteJourney": "Home / Lease or Buy / Current Offers / Additional Deals",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "GMF, Refinance",
+          "marketingSearchTerm": "gm financial refinance my car",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/auto-refinancing.html?utm_source=google&utm_medium=cpc&utm_campaign=gmf_refinance",
+          "websiteJourney": "Home / Lease or Buy / Auto Financing",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "GMF, Cadillac Lease",
+          "marketingSearchTerm": "cadillac lease payment",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/current-offers.html?utm_source=bing&utm_medium=cpc&utm_campaign=gmf_cadillac_lease",
+          "websiteJourney": "Home / Lease or Buy / Current Offers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "GMF, GMC Financing Rates",
+          "marketingSearchTerm": "gmc financing rates",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/auto-financing.html?utm_source=google&utm_medium=cpc&utm_campaign=gmf_gmc_rates",
+          "websiteJourney": "Home / Lease or Buy / Auto Financing",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Financial Resources Content Series",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/financial-articles/closer-look-zero-auto-financing.html?utm_source=organic&utm_medium=seo&utm_campaign=gmf_content_series",
+          "websiteJourney": "Home / Resources / Financial Articles",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Financial Resources Content Series",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/financial-articles/how-to-prequalify-auto-financing.html?utm_source=organic&utm_medium=seo&utm_campaign=gmf_prequalify_guide",
+          "websiteJourney": "Home / Resources / Financial Articles",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "GMF, Fleet Financing",
+          "marketingSearchTerm": "gm financial fleet financing",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/commercial/financing.html?utm_source=google&utm_medium=cpc&utm_campaign=gmf_fleet",
+          "websiteJourney": "Home / Commercial Financing / Financing",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "GMF, Lease End Options",
+          "marketingSearchTerm": "gm financial lease-end options",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/lease-end.html?utm_source=google&utm_medium=cpc&utm_campaign=gmf_lease_end",
+          "websiteJourney": "Home / Lease or Buy / Lease End",
+          "signals": [
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "MyAccount Login",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/myaccount.html?utm_source=organic&utm_medium=seo&utm_campaign=gmf_myaccount",
+          "websiteJourney": "Home / Log In / MyAccount",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "EV Switch",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/ev-financing.html?utm_source=instagram&utm_medium=social&utm_campaign=gmf_ev_switch",
+          "websiteJourney": "Home / Lease or Buy / Auto Financing / EV Financing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Lease-End Reminders",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/lease-end.html?utm_source=facebook&utm_medium=social&utm_campaign=gmf_lease_reminders",
+          "websiteJourney": "Home / Lease or Buy / Lease End",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "#DriveConfident",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/current-offers.html?utm_source=facebook&utm_medium=social&utm_campaign=gmf_driveconfident",
+          "websiteJourney": "Home / Lease or Buy / Current Offers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "GMF, Extended Protection",
+          "marketingSearchTerm": "gm extended protection plan",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/extended-protection.html?utm_source=bing&utm_medium=cpc&utm_campaign=gmf_protection",
+          "websiteJourney": "Home / Lease or Buy / Extended Protection",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Calculators Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/resources/calculators.html?utm_source=organic&utm_medium=seo&utm_campaign=gmf_calculators",
+          "websiteJourney": "Home / Resources / Calculators",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "MyAccount Rewards",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/gm-rewards.html?utm_source=instagram&utm_medium=social&utm_campaign=gmf_rewards",
+          "websiteJourney": "Home / Log In / MyAccount",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "GMF, Municipal Lease",
+          "marketingSearchTerm": "municipal lease financing",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/commercial/municipal-lease.html?utm_source=google&utm_medium=cpc&utm_campaign=gmf_municipal",
+          "websiteJourney": "Home / Commercial Financing / Lease / Municipal Lease",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Go Paperless",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.gmfinancial.com/en-us/payment-options.html?utm_source=facebook&utm_medium=social&utm_campaign=gmf_paperless",
+          "websiteJourney": "Home / Resources / Payment Options",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (GM Financial)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "54,451"
+            },
+            {
+              "label": "Financing Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Loan Funded (Percent)",
+              "value": "19%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$388,218,524"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "8,712"
+            },
+            {
+              "label": "Billing & Payment Support (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "MyAccount Login Help (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Title Release Request (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Financing Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Financing Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "58%"
+            },
+            {
+              "label": "Ineligible Applicant (Percent)",
+              "value": "11%"
+            },
+            {
+              "label": "Loan Funded (Percent)",
+              "value": "19%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Financing Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Financing Inquiry (Count)",
+            "values": [
+              9142,
+              9678,
+              9455,
+              9231,
+              8233
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              6341,
+              6678,
+              6512,
+              6289,
+              5762
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              1214,
+              1268,
+              1231,
+              1187,
+              1090
+            ]
+          },
+          {
+            "name": "Loan Funded (Count)",
+            "values": [
+              2071,
+              2193,
+              2142,
+              2088,
+              1852
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Loan Funded (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 54451,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "21,342",
+                "46%",
+                "14%",
+                "$114,090,719"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "10,127",
+                "52%",
+                "18%",
+                "$68,335,155"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "9,238",
+                "55%",
+                "21%",
+                "$72,720,900"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "8,714",
+                "58%",
+                "24%",
+                "$78,381,135"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "5,030",
+                "61%",
+                "29%",
+                "$54,690,615"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Loan Funded (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 54451,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "19,847",
+                "44%",
+                "13%",
+                "$117,726,764"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "12,338",
+                "50%",
+                "17%",
+                "$78,606,045"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "9,652",
+                "54%",
+                "20%",
+                "$72,346,050"
+              ]
+            },
+            {
+              "name": "Email/CRM",
+              "metrics": [
+                "7,214",
+                "57%",
+                "24%",
+                "$64,886,535"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "5,400",
+                "60%",
+                "27%",
+                "$54,653,130"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Loan Funded (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25272,
+          "rows": [
+            {
+              "name": "GMF, Auto Loan Prequalify",
+              "metrics": [
+                "8,214",
+                "43%",
+                "15%",
+                "$46,181,520"
+              ]
+            },
+            {
+              "name": "GMF, 0% APR Current Offers",
+              "metrics": [
+                "6,127",
+                "49%",
+                "18%",
+                "$41,345,955"
+              ]
+            },
+            {
+              "name": "GMF, EV Financing",
+              "metrics": [
+                "4,938",
+                "53%",
+                "21%",
+                "$38,871,945"
+              ]
+            },
+            {
+              "name": "Lease-End Reminders",
+              "metrics": [
+                "3,652",
+                "56%",
+                "24%",
+                "$32,836,860"
+              ]
+            },
+            {
+              "name": "MyAccount Rewards",
+              "metrics": [
+                "2,341",
+                "59%",
+                "28%",
+                "$24,552,675"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Loan Funded (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21752,
+          "rows": [
+            {
+              "name": "gm financial prequalify auto loan",
+              "metrics": [
+                "6,842",
+                "42%",
+                "14%",
+                "$35,910,630"
+              ]
+            },
+            {
+              "name": "gm financial login myaccount",
+              "metrics": [
+                "5,431",
+                "48%",
+                "17%",
+                "$34,598,655"
+              ]
+            },
+            {
+              "name": "chevy lease deals current offers",
+              "metrics": [
+                "4,127",
+                "52%",
+                "20%",
+                "$30,925,125"
+              ]
+            },
+            {
+              "name": "0% apr gm vehicles",
+              "metrics": [
+                "3,214",
+                "55%",
+                "24%",
+                "$28,900,935"
+              ]
+            },
+            {
+              "name": "silverado ev lease",
+              "metrics": [
+                "2,138",
+                "58%",
+                "29%",
+                "$23,240,700"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Prequalification Set (Industry) (Percent)",
+            "Loan Funded (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 54451,
+          "rows": [
+            {
+              "name": "Retail Auto Financing",
+              "metrics": [
+                "19,847",
+                "34%",
+                "14%",
+                "$104,982,617"
+              ]
+            },
+            {
+              "name": "Vehicle Leasing",
+              "metrics": [
+                "14,236",
+                "37%",
+                "17%",
+                "$91,436,204"
+              ]
+            },
+            {
+              "name": "EV Financing",
+              "metrics": [
+                "9,682",
+                "41%",
+                "21%",
+                "$76,884,932"
+              ]
+            },
+            {
+              "name": "Commercial/Fleet Financing",
+              "metrics": [
+                "6,914",
+                "44%",
+                "26%",
+                "$67,905,318"
+              ]
+            },
+            {
+              "name": "Extended Protection & Insurance",
+              "metrics": [
+                "3,772",
+                "48%",
+                "33%",
+                "$47,009,453"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Loan Funded (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 54451,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "17,342",
+                "35%",
+                "14%",
+                "$92,417,338"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "13,128",
+                "38%",
+                "16%",
+                "$82,506,214"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "10,916",
+                "41%",
+                "19%",
+                "$78,331,905"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "8,247",
+                "45%",
+                "24%",
+                "$76,148,552"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "4,818",
+                "49%",
+                "31%",
+                "$58,814,515"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Loan Funded (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Retail Auto Financing",
+            "values": [
+              412,
+              638,
+              605,
+              621,
+              503
+            ]
+          },
+          {
+            "name": "Vehicle Leasing",
+            "values": [
+              358,
+              552,
+              528,
+              541,
+              441
+            ]
+          },
+          {
+            "name": "EV Financing",
+            "values": [
+              301,
+              462,
+              448,
+              451,
+              371
+            ]
+          },
+          {
+            "name": "Commercial/Fleet Financing",
+            "values": [
+              264,
+              408,
+              397,
+              401,
+              328
+            ]
+          },
+          {
+            "name": "Extended Protection & Insurance",
+            "values": [
+              183,
+              284,
+              273,
+              279,
+              226
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 54,451 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Bell called to prequalify for a new Silverado 1500 after seeing the current offers online. Oscar walked him through the soft-pull prequalify process with no impact to his credit and confirmed his terms. Marcus scheduled his prequalification and planned a dealer visit that week.",
+          "date": "Jan 6, 2:42 PM",
+          "agent": "Oscar",
+          "duration": "2m 10s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 89,
+          "summary": "Priya Nandakumar asked about a lease on an Equinox and referenced the current offers promotion for a low monthly payment. Lila explained the mileage allowance and lease-end options, then set up her prequalification. Priya was pleased and booked her appointment to move forward.",
+          "date": "Feb 11, 10:18 AM",
+          "agent": "Lila",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 85,
+          "summary": "Devon Carter wanted to refinance an existing non-GMF auto loan to lower his rate. Rosey reviewed the refinance guide with him and started a prequalify request to see his new terms. Devon scheduled the prequalification and thanked her for the clear explanation.",
+          "date": "Mar 4, 4:05 PM",
+          "agent": "Rosey",
+          "duration": "2m 48s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Angela Ruiz, a first-time GM Financial customer, called to prequalify for a new Buick Envista and asked for help getting started. Lee collected her full details including income and contact information and walked her through the prequalify steps. Angela scheduled her prequalification and confirmed a follow-up with her local dealer.",
+          "date": "Jan 22, 11:47 AM",
+          "agent": "Lee",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Grant Foley asked whether he could add gap coverage to his existing lease contract. Mary explained the gap coverage cost and how it protects against a total loss, but he decided to review it before committing. No new prequalification was booked on this call.",
+          "date": "Apr 9, 1:29 PM",
+          "agent": "Mary",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Sofia Marquez called about her lease-end options as her Malibu lease approaches maturity. Sue outlined the return, purchase, and re-lease paths and emailed the details. Sofia said she would decide later, so no prequalification was scheduled.",
+          "date": "May 15, 9:12 AM",
+          "agent": "Sue",
+          "duration": "2m 04s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Henry Okafor requested the correct payoff address to send his final loan check. Mike verified his account and provided the payoff mailing details and current balance. It was a service request only with no new prequalification.",
+          "date": "Jun 3, 3:51 PM",
+          "agent": "Mike",
+          "duration": "1m 38s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Tasha Green called to prequalify for a Certified Pre-Owned GMC Terrain through the dealer network. Jennifer confirmed the used vehicle terms and started her prequalify request. Tasha scheduled her prequalification despite a slow start clarifying her trade-in.",
+          "date": "Jul 19, 12:26 PM",
+          "agent": "Jennifer",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 52,
+          "summary": "Roberto Silva disputed a late fee on his monthly statement and questioned a gap coverage charge he did not recognize. Rose reviewed the account and explained both charges but he remained unsatisfied. The dispute was escalated and no prequalification was booked.",
+          "date": "Aug 8, 5:14 PM",
+          "agent": "Rose",
+          "duration": "2m 57s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 48,
+          "summary": "Emily Dawson asked about an electric vehicle lease on the Equinox and whether incentives were available. Oscar reviewed the lease terms and started a prequalify request so she could see her payment. Emily scheduled her prequalification but wanted more time on the mileage cap.",
+          "date": "Sep 2, 10:44 AM",
+          "agent": "Oscar",
+          "duration": "2m 19s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 44,
+          "summary": "Nathan Brooks called with questions about his extended protection plan coverage after a mechanical issue. Lila explained what the plan covered but he felt the terms were unclear. No prequalification resulted from the call.",
+          "date": "Sep 21, 2:33 PM",
+          "agent": "Lila",
+          "duration": "2m 26s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 32,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Carla Jimenez complained that her scheduled payment posted twice and asked for the payoff amount to close the account. Mary confirmed a duplicate charge and opened a reversal request. The call was purely servicing with no new prequalification.",
+          "date": "Oct 6, 4:48 PM",
+          "agent": "Mary",
+          "duration": "3m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Victor Hale called to cancel his autopay enrollment after a billing mix-up. Lee processed the cancellation request but Victor was frustrated by the wait. No prequalification was scheduled.",
+          "date": "Oct 14, 11:09 AM",
+          "agent": "Lee",
+          "duration": "1m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 35,
+          "summary": "Denise Park reached the line after hours and left a voicemail about her lease-end return date. The call rolled to voicemail with no agent available to assist. No prequalification was booked.",
+          "date": "Oct 27, 7:03 PM",
+          "agent": "No Agent",
+          "duration": "0m 46s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Aaron Whitfield tried to refinance his current loan but grew upset when told his account did not yet qualify. Rosey explained the refinance criteria but he ended the call dissatisfied. No prequalification was scheduled.",
+          "date": "Oct 30, 1:57 PM",
+          "agent": "Rosey",
+          "duration": "2m 08s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "prequalify",
+        "lease",
+        "refinance",
+        "payoff",
+        "gap",
+        "current offers"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Financing Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Vehicle Interest or Trade In Status",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Prequalification Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Next Steps",
+          "points": "0/10",
+          "status": "unmet"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Greeted caller warmly",
+        "Introduced self and company clearly",
+        "Asked open ended question about financing needs",
+        "Captured complete first and last name",
+        "Identified new vehicle purchase intent",
+        "Confirmed interest in EV financing",
+        "Verified current ZIP code",
+        "Obtained phone number",
+        "Scheduled prequalification appointment",
+        "Confirmed appointment date and time",
+        "Used positive closing language",
+        "Thanked caller for choosing GM Financial",
+        "Offered follow up support"
+      ],
+      "unmetSignals": [
+        "Did not confirm email address",
+        "Failed to explain prequalification timeline",
+        "Did not mention credit impact disclosure",
+        "Missed opportunity to discuss available incentives",
+        "Did not confirm preferred contact method",
+        "Failed to capture trade in information",
+        "Did not ask about current vehicle status",
+        "Missed discussing lease versus purchase preference",
+        "Did not offer payment plan options overview",
+        "Did not provide appointment confirmation number"
+      ],
+      "naSignals": [
+        "Discuss existing payment status",
+        "Review current loan balance",
+        "Process vehicle return",
+        "Handle billing dispute",
+        "Confirm service appointment details",
+        "Discuss extended protection plan",
+        "Arrange vehicle pickup"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "The caller is a new customer interested in financing or leasing a new Silverado EV and wants to understand their financing options before visiting a dealership. They are seeking clarity on rates and terms that would work for their budget."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a straightforward prequalification process that confirms their eligibility for financing and provides them with an estimated rate range so they can make an informed dealership visit. They want to know what to expect next and when someone will follow up."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the email address for the prequalification appointment confirmation and explicitly explained the timeline for credit review and when the customer can expect rates and terms before their dealership visit. Adding a brief overview of available EV incentives would also strengthen trust."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon, and thank you for calling GM Financial. My name is Marcus Bell. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus. I am interested in financing a new vehicle. I have been looking at the Silverado EV and would like to know more about financing options."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:42",
+          "text": "That is a fantastic choice. The Silverado EV is one of our most popular electric vehicles. To get you started, may I have your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:52",
+          "text": "Of course. It is Jennifer Michelle Rosewood."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:02",
+          "text": "Perfect, Jennifer. Thank you. Are you looking to purchase a new Silverado EV, or would you be interested in exploring our lease options?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:15",
+          "text": "I think I would prefer to purchase, but I want to understand the financing rates first."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:25",
+          "text": "That makes perfect sense. Do you currently own a vehicle that you might want to trade in, or will this be an addition to your current vehicle?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:37",
+          "text": "I have an older Honda Civic that I am looking to trade in."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:46",
+          "text": "Great. We can definitely work with that. Let me confirm your location to make sure we have dealership options near you. What is your ZIP code?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:58",
+          "text": "I am in the Charlotte area. It is 28202."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:08",
+          "text": "Excellent. Charlotte is definitely in our service area, and we have several dealerships that can help you. Now, I need to collect your contact information. What is the best phone number to reach you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:19",
+          "text": "It is ****-***-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:26",
+          "text": "Thank you. And what about your email address so we can send you your prequalification details?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:37",
+          "text": "Oh, actually I would prefer to just keep it to phone for now."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:45",
+          "text": "I understand. Let me schedule your prequalification appointment. How does Thursday, October 24th at 10 AM work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:57",
+          "text": "Thursday at 10 AM is perfect. That works great for my schedule."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:08",
+          "text": "Wonderful. Your prequalification appointment is confirmed for Thursday, October 24th at 10 AM. A representative will be in touch with you within one business day to go over your financing options and rate estimates. Thank you so much for choosing GM Financial, Jennifer. Have a great day."
+        },
+        {
+          "speaker": "caller",
+          "time": "03:26",
+          "text": "Thank you, Marcus. I really appreciate it. See you soon."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:35",
+          "text": "You are welcome. Take care."
+        }
+      ],
+      "aiSummary": "Jennifer Rosewood called to inquire about financing options for a new Silverado EV. Marcus successfully captured her name, confirmed her purchase intent, identified her trade in vehicle (Honda Civic), and verified her service area in Charlotte, NC (ZIP 28202). A prequalification appointment was scheduled for Thursday, October 24th at 10 AM. The call was well structured and professional, though the agent did not secure the customer's email address for confirmation and did not explain the prequalification timeline or next steps in detail.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great job keeping the call on track and building rapport with Jennifer. Your greeting was warm, and you moved through the key information smoothly. Two suggestions for next time: (1) when a customer hesitates on email, acknowledge their preference but gently explain that email confirmation helps prevent missed appointments, then ask again; and (2) take 15 extra seconds to set clear expectations, such as 'You should hear from us by tomorrow, and we will have estimated rates ready for your Thursday visit.' These small touches reduce no-shows and customer anxiety."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "54,451"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$7129.69"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$388,218,524"
+            }
+          ]
+        },
+        {
+          "title": "NEW CUSTOMER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Customers (Count)",
+              "value": "34,218"
+            },
+            {
+              "label": "Caller Type: New Customers (Percent)",
+              "value": "63%"
+            },
+            {
+              "label": "Prequalification: Scheduled (Count)",
+              "value": "21,236"
+            },
+            {
+              "label": "Prequalification: Scheduled (Percent)",
+              "value": "39%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CUSTOMERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Customer (Count)",
+              "value": "20,233"
+            },
+            {
+              "label": "Caller Type: Existing Customer (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Prequalification: Canceled (Percent)",
+              "value": "6%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Prequalifications)",
+          "chart": {
+            "legend": "Prequalification: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Email/CRM",
+                "value": 57,
+                "display": "57%"
+              },
+              {
+                "name": "Social Media",
+                "value": 48,
+                "display": "48%"
+              },
+              {
+                "name": "Direct",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 36,
+                "display": "36%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Prequalifications)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Prequalification: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "18,742",
+                  "31%",
+                  "$131,847,215"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "14,318",
+                  "36%",
+                  "$101,284,318"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "9,864",
+                  "41%",
+                  "$71,432,864"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "7,215",
+                  "48%",
+                  "$52,318,742"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "4,312",
+                  "57%",
+                  "$31,335,385"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 24000,
+            "axisTicks": [
+              0,
+              4000,
+              8000,
+              12000,
+              16000,
+              20000,
+              24000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Cost Per Click",
+                "value": 19847,
+                "display": "19,847"
+              },
+              {
+                "name": "Organic",
+                "value": 14062,
+                "display": "14,062"
+              },
+              {
+                "name": "Referral",
+                "value": 9318,
+                "display": "9,318"
+              },
+              {
+                "name": "Email",
+                "value": 6912,
+                "display": "6,912"
+              },
+              {
+                "name": "Social",
+                "value": 4312,
+                "display": "4,312"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Prequalifications)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Prequalification: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Cost Per Click",
+                  "19,847",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "14,062",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "9,318",
+                  "40%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "6,912",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "4,312",
+                  "55%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 14000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000,
+              14000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "GMF, Auto Loan Prequalify",
+                "value": 12318,
+                "display": "12,318"
+              },
+              {
+                "name": "GMF, 0% APR Current Offers",
+                "value": 9742,
+                "display": "9,742"
+              },
+              {
+                "name": "GMF, EV Financing",
+                "value": 7215,
+                "display": "7,215"
+              },
+              {
+                "name": "#1 in Manufacturer Loyalty",
+                "value": 5318,
+                "display": "5,318"
+              },
+              {
+                "name": "Lease-End Reminders",
+                "value": 3864,
+                "display": "3,864"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Prequalifications)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Prequalification: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "GMF, Auto Loan Prequalify",
+                  "12,318",
+                  "32%",
+                  "$48,215,318"
+                ]
+              },
+              {
+                "cells": [
+                  "GMF, 0% APR Current Offers",
+                  "9,742",
+                  "37%",
+                  "$38,142,864"
+                ]
+              },
+              {
+                "cells": [
+                  "GMF, EV Financing",
+                  "7,215",
+                  "43%",
+                  "$28,318,742"
+                ]
+              },
+              {
+                "cells": [
+                  "#1 in Manufacturer Loyalty",
+                  "5,318",
+                  "51%",
+                  "$21,215,447"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "gm financial prequalify auto loan",
+                "value": 8742,
+                "display": "8,742"
+              },
+              {
+                "name": "chevy lease deals current offers",
+                "value": 6318,
+                "display": "6,318"
+              },
+              {
+                "name": "0% apr gm vehicles",
+                "value": 4912,
+                "display": "4,912"
+              },
+              {
+                "name": "silverado ev lease",
+                "value": 3215,
+                "display": "3,215"
+              },
+              {
+                "name": "gm financial refinance my car",
+                "value": 2318,
+                "display": "2,318"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Prequalifications)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Prequalification: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "gm financial prequalify auto loan",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "chevy lease deals current offers",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "0% apr gm vehicles",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "silverado ev lease",
+                  "53%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Customers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Prequalification: Scheduled (Percent)",
+          "Caller Type: New Customers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Retail Auto Financing",
+              "16,318",
+              "33%",
+              "68%"
+            ]
+          },
+          {
+            "cells": [
+              "Vehicle Leasing",
+              "11,742",
+              "38%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "EV Financing",
+              "7,215",
+              "44%",
+              "57%"
+            ]
+          },
+          {
+            "cells": [
+              "Commercial Fleet Financing",
+              "4,318",
+              "52%",
+              "49%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Prequalification: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Arlington, TX Servicing Center",
+              "18,742",
+              "1,318",
+              "4%",
+              "34%"
+            ]
+          },
+          {
+            "cells": [
+              "Fort Worth Operations Center",
+              "14,318",
+              "962",
+              "5%",
+              "38%"
+            ]
+          },
+          {
+            "cells": [
+              "Chandler, AZ Regional Center",
+              "12,215",
+              "742",
+              "6%",
+              "43%"
+            ]
+          },
+          {
+            "cells": [
+              "Charlotte, NC Business Center",
+              "9,176",
+              "512",
+              "7%",
+              "51%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Rate Above Budget",
+            "values": [
+              1842,
+              1918,
+              2015,
+              1764,
+              1679
+            ]
+          },
+          {
+            "name": "Comparing Lenders",
+            "values": [
+              1518,
+              1642,
+              1715,
+              1498,
+              1491
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              1318,
+              1415,
+              1462,
+              1285,
+              1262
+            ]
+          },
+          {
+            "name": "Credit Not Approved",
+            "values": [
+              1042,
+              1118,
+              1142,
+              1015,
+              1001
+            ]
+          },
+          {
+            "name": "Prefers Dealer Financing",
+            "values": [
+              792,
+              842,
+              865,
+              812,
+              762
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "21,780"
+          },
+          {
+            "label": "Prequalification Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Loan Funded (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$221,284,559"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Loan Funded (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$31,445,892"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Loan Funded (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$38,762,714"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Loan Funded (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$44,283,169"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Loan Funded (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$33,874,551"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Loan Funded (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$42,156,328"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Loan Funded (Percent)",
+              "value": "36%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$30,761,905"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Prequalification Scheduled (Percent)",
+            "Loan Funded (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25847,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "7,284",
+                "58%",
+                "29%",
+                "$63,458,796"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "5,163",
+                "55%",
+                "32%",
+                "$54,127,248"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "4,892",
+                "54%",
+                "34%",
+                "$56,384,661"
+              ]
+            },
+            {
+              "name": "Email Marketing",
+              "metrics": [
+                "2,847",
+                "60%",
+                "38%",
+                "$32,654,893"
+              ]
+            },
+            {
+              "name": "Direct Traffic",
+              "metrics": [
+                "1,594",
+                "62%",
+                "41%",
+                "$14,658,961"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Prequalification Scheduled (Percent)",
+            "Loan Funded (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 24156,
+          "rows": [
+            {
+              "name": "Mobile Web",
+              "metrics": [
+                "6,847",
+                "56%",
+                "31%",
+                "$59,384,527"
+              ]
+            },
+            {
+              "name": "Desktop Web",
+              "metrics": [
+                "5,429",
+                "54%",
+                "33%",
+                "$55,762,349"
+              ]
+            },
+            {
+              "name": "Mobile App",
+              "metrics": [
+                "4,156",
+                "58%",
+                "35%",
+                "$48,927,384"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "2,683",
+                "61%",
+                "37%",
+                "$32,487,615"
+              ]
+            },
+            {
+              "name": "Voice",
+              "metrics": [
+                "2,065",
+                "63%",
+                "42%",
+                "$24,742,684"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Prequalification Scheduled (Percent)",
+            "Loan Funded (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25498,
+          "rows": [
+            {
+              "name": "GMF 0% APR Current Offers",
+              "metrics": [
+                "5,847",
+                "54%",
+                "28%",
+                "$51,274,893"
+              ]
+            },
+            {
+              "name": "GMF Auto Loan Prequalify",
+              "metrics": [
+                "4,293",
+                "57%",
+                "32%",
+                "$47,865,741"
+              ]
+            },
+            {
+              "name": "GM Rewards Loyalty Program",
+              "metrics": [
+                "3,685",
+                "59%",
+                "36%",
+                "$43,127,654"
+              ]
+            },
+            {
+              "name": "EV Financing Switch Campaign",
+              "metrics": [
+                "2,156",
+                "61%",
+                "39%",
+                "$28,945,387"
+              ]
+            },
+            {
+              "name": "Lease End Options Reminder",
+              "metrics": [
+                "1,799",
+                "64%",
+                "43%",
+                "$19,074,884"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Prequalification Scheduled (Percent)",
+            "Loan Funded (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 17293,
+          "rows": [
+            {
+              "name": "GM Financial prequalify auto loan",
+              "metrics": [
+                "3,847",
+                "56%",
+                "31%",
+                "$42,658,947"
+              ]
+            },
+            {
+              "name": "Chevy lease deals current offers",
+              "metrics": [
+                "2,694",
+                "57%",
+                "34%",
+                "$31,384,761"
+              ]
+            },
+            {
+              "name": "0% APR GM vehicles",
+              "metrics": [
+                "1,856",
+                "59%",
+                "37%",
+                "$25,847,392"
+              ]
+            },
+            {
+              "name": "GMC financing rates",
+              "metrics": [
+                "1,243",
+                "61%",
+                "40%",
+                "$18,756,284"
+              ]
+            },
+            {
+              "name": "Silverado EV lease payment",
+              "metrics": [
+                "847",
+                "63%",
+                "44%",
+                "$13,457,815"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Prequalification Scheduled (Percent)",
+            "Loan Funded (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Retail Auto Loan (New Vehicle)",
+              "metrics": [
+                "8,647",
+                "55%",
+                "29%",
+                "$74,563,294"
+              ]
+            },
+            {
+              "name": "Vehicle Lease (Standard)",
+              "metrics": [
+                "5,284",
+                "58%",
+                "35%",
+                "$64,275,831"
+              ]
+            },
+            {
+              "name": "EV Financing and Lease",
+              "metrics": [
+                "3,956",
+                "60%",
+                "38%",
+                "$51,847,365"
+              ]
+            },
+            {
+              "name": "Auto Loan Refinance",
+              "metrics": [
+                "2,347",
+                "62%",
+                "41%",
+                "$34,218,756"
+              ]
+            },
+            {
+              "name": "Extended Protection and Insurance",
+              "metrics": [
+                "1,546",
+                "64%",
+                "44%",
+                "$21,383,913"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Loan Funded (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Retail Auto Loan (New Vehicle)",
+            "values": [
+              703,
+              654,
+              689,
+              742,
+              718
+            ]
+          },
+          {
+            "name": "Vehicle Lease (Standard)",
+            "values": [
+              572,
+              618,
+              595,
+              634,
+              649
+            ]
+          },
+          {
+            "name": "EV Financing and Lease",
+            "values": [
+              451,
+              487,
+              523,
+              518,
+              504
+            ]
+          },
+          {
+            "name": "Auto Loan Refinance",
+            "values": [
+              289,
+              334,
+              298,
+              342,
+              321
+            ]
+          },
+          {
+            "name": "Extended Protection and Insurance",
+            "values": [
+              227,
+              268,
+              254,
+              289,
+              280
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Prequalification Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Prequalification Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Prequalification Scheduled (Count)",
+            "value": "347"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "862"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "36%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Prequalification Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Prequalification Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Prequalification Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Prequalification Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Prequalification Scheduled",
+            "values": [
+              73,
+              77,
+              71,
+              79,
+              74,
+              81,
+              76,
+              72,
+              78,
+              75,
+              80,
+              73,
+              79,
+              74,
+              77,
+              81,
+              75,
+              73,
+              79,
+              76,
+              74,
+              78,
+              72,
+              77,
+              81,
+              3,
+              74,
+              78,
+              72,
+              76,
+              79,
+              181,
+              186,
+              178,
+              189,
+              184,
+              191,
+              177,
+              185,
+              180,
+              188,
+              179,
+              183,
+              186,
+              178,
+              184,
+              189,
+              175,
+              187
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,156"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "721"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "59%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "703"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Prequalification Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Auto Loan Prequalification",
+            "values": [
+              11,
+              9,
+              8,
+              12,
+              10,
+              11
+            ]
+          },
+          {
+            "name": "Lease-End Options",
+            "values": [
+              7,
+              8,
+              6,
+              9,
+              5,
+              8
+            ]
+          },
+          {
+            "name": "EV Financing Inquiry",
+            "values": [
+              4,
+              6,
+              5,
+              7,
+              6,
+              4
+            ]
+          },
+          {
+            "name": "Refinance Rates",
+            "values": [
+              9,
+              7,
+              10,
+              6,
+              11,
+              9
+            ]
+          },
+          {
+            "name": "Current Promotional Offers",
+            "values": [
+              3,
+              5,
+              1,
+              8,
+              4,
+              6
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "50,095"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "35,666"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Prequalification Booked (Count)",
+            "value": "21,236"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$388,218,524"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Rivera",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Jennifer Wu",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "David Kowalski",
+              "value": 243,
+              "display": "243"
+            },
+            {
+              "name": "Priya Patel",
+              "value": 156,
+              "display": "156"
+            },
+            {
+              "name": "Christopher Hayes",
+              "value": 201,
+              "display": "201"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Prequalification Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Martindale",
+            "values": [
+              287,
+              301,
+              318,
+              342,
+              368
+            ]
+          },
+          {
+            "name": "Robert Chen",
+            "values": [
+              264,
+              289,
+              307,
+              331,
+              349
+            ]
+          },
+          {
+            "name": "Angela Morrison",
+            "values": [
+              251,
+              273,
+              291,
+              315,
+              337
+            ]
+          },
+          {
+            "name": "Michael Garrett",
+            "values": [
+              243,
+              268,
+              286,
+              308,
+              329
+            ]
+          },
+          {
+            "name": "Lisa Cordova",
+            "values": [
+              229,
+              251,
+              267,
+              288,
+              305
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Rivera",
+              "value": 52.4,
+              "display": "52.4%"
+            },
+            {
+              "name": "Jennifer Wu",
+              "value": 54.1,
+              "display": "54.1%"
+            },
+            {
+              "name": "David Kowalski",
+              "value": 55.8,
+              "display": "55.8%"
+            },
+            {
+              "name": "Priya Patel",
+              "value": 56.3,
+              "display": "56.3%"
+            },
+            {
+              "name": "Christopher Hayes",
+              "value": 57.6,
+              "display": "57.6%"
+            },
+            {
+              "name": "Thomas Patterson",
+              "value": 58.9,
+              "display": "58.9%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Prequalification Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Rivera",
+                "52.4%",
+                "27%",
+                "$659,834,216",
+                "1,339"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Wu",
+                "54.1%",
+                "28%",
+                "$684,297,552",
+                "1,327"
+              ]
+            },
+            {
+              "cells": [
+                "David Kowalski",
+                "55.8%",
+                "29%",
+                "$707,419,881",
+                "1,355"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Patel",
+                "56.3%",
+                "30%",
+                "$709,847,100",
+                "1,293"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Hayes",
+                "57.6%",
+                "31%",
+                "$714,563,744",
+                "1,264"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Patterson",
+                "58.9%",
+                "32%",
+                "$742,015,328",
+                "1,278"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Martindale",
+              "value": 93.2,
+              "display": "93.2%"
+            },
+            {
+              "name": "Robert Chen",
+              "value": 91.8,
+              "display": "91.8%"
+            },
+            {
+              "name": "Angela Morrison",
+              "value": 90.5,
+              "display": "90.5%"
+            },
+            {
+              "name": "Michael Garrett",
+              "value": 89.1,
+              "display": "89.1%"
+            },
+            {
+              "name": "Lisa Cordova",
+              "value": 87.4,
+              "display": "87.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Prequalification Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Martindale",
+                "93.2%",
+                "66%",
+                "$1,912,465,284",
+                "1,576"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Chen",
+                "91.8%",
+                "64%",
+                "$1,866,234,912",
+                "1,549"
+              ]
+            },
+            {
+              "cells": [
+                "Angela Morrison",
+                "90.5%",
+                "62%",
+                "$1,804,758,736",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Garrett",
+                "89.1%",
+                "60%",
+                "$1,754,187,640",
+                "1,507"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Cordova",
+                "87.4%",
+                "58%",
+                "$1,689,453,264",
+                "1,484"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Prequalification Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Prequalification Booked (Count)",
+        "rightMax": 1000,
+        "rightTicks": [
+          0,
+          250,
+          500,
+          750,
+          1000
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 788
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 755
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 703
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 670
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 583
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 612
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 677
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 703
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 785
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 761
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 685
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 662
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 589
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 607
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 693
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 714
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 777
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 765
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 671
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 649
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 597
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 604
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 705
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 728
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 767
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 766
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 661
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 634
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 608
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 605
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 712
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 17600000,
+        "rightTicks": [
+          0,
+          5866666.666666667,
+          11733333.333333334,
+          17600000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 14390917
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 13793042
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 12844132
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 12255776
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 10670902
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 11198822
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 12371015
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 12858654
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 14337473
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 13901065
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 12520218
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 12101037
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 10767888
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 11099147
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 12665556
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 13051496
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 14203978
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 13982926
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 12261513
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 11872603
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 10929511
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 11044090
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 12883862
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 13310938
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 14023532
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 14003134
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 12086067
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 11588607
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 11119026
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 11065408
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 13016189
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "54,451"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:47"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "4,356"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "3,267"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "81%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "84%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "79%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "80%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Michelle Patterson",
+                "412",
+                "86%",
+                "78%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen Rodriguez",
+                "538",
+                "83%",
+                "80%",
+                "78%"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Blake Morrison",
+                "389",
+                "84%",
+                "78%",
+                "81%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "54,451 calls",
+      "pagerLabel": "1 of 5,445",
+      "calls": [
+        {
+          "time": "1/5/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 9:32 am",
+          "id": "A21C-4E90BB13774A"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C93D-6F1A0E552B18"
+        },
+        {
+          "time": "1/14/26 11:19 am",
+          "id": "D40E-72B4C1908F63"
+        },
+        {
+          "time": "1/16/26 12:58 pm",
+          "id": "B18A-90C3F521DA47"
+        },
+        {
+          "time": "1/20/26 1:26 pm",
+          "id": "E62F-3D71A8046C29"
+        },
+        {
+          "time": "1/22/26 2:44 pm",
+          "id": "7A5B-1CE9034FB852"
+        },
+        {
+          "time": "1/26/26 3:37 pm",
+          "id": "9C4D-58AF71260E93"
+        },
+        {
+          "time": "1/28/26 4:15 pm",
+          "id": "2F81-6BD4093A17CE"
+        },
+        {
+          "time": "1/30/26 5:22 pm",
+          "id": "5D3E-4C820FB9617A"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling GM Financial, this is Marcus. How can I help you today?",
+          "highlights": [
+            "Thank you for calling GM Financial, this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:08",
+          "text": "Hi Marcus, my name is Danielle Reyes. I'm looking at leasing an Equinox EV and I wanted to understand my financing options before I head to the dealership.",
+          "highlights": [
+            "Danielle Reyes",
+            "leasing an Equinox EV"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "Great choice, Danielle. The Equinox EV is one of our most popular electric models. Are you currently financing another vehicle with us, or would this be your first time with GM Financial?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:27",
+          "text": "First time. I've always paid cash before, so the whole lease thing is new to me.",
+          "highlights": [
+            "First time"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:33",
+          "text": "No problem at all, I'll walk you through it. Our standard EV lease terms typically run 24 to 39 months with a set mileage allowance, and at the end you can buy it, return it, or lease something new.",
+          "highlights": [
+            "EV lease terms typically run 24 to 39 months"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:45",
+          "text": "Okay. So what does that run per month? I want to keep it manageable, I'm not trying to stretch myself thin.",
+          "highlights": [
+            "what does that run per month",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:53",
+          "text": "Completely understandable. Equinox EV leases generally land between $399 and $599 a month depending on your term, down payment, and current incentives. There are also EV-specific offers running right now that can bring that down.",
+          "highlights": [
+            "$399 and $599 a month"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:05",
+          "text": "That's not bad. Honestly the guys over at the other dealer quoted me something a little higher for a similar setup, so I'm shopping around a bit.",
+          "highlights": [
+            "the guys over at the other dealer quoted me something a little higher",
+            "shopping around"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:15",
+          "text": "I appreciate you being upfront. What I'd suggest is getting you prequalified first, that way you'll see real terms with no impact to your credit and you can compare apples to apples before you commit anywhere.",
+          "highlights": [
+            "prequalified",
+            "no impact to your credit"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:26",
+          "text": "That part I like. But I don't want to feel locked into anything just because I asked for numbers.",
+          "highlights": [
+            "I don't want to feel locked into anything"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:33",
+          "text": "You won't be. Prequalification is just a soft pull to show your estimated rate and payment. There's zero obligation, and nothing is signed until you're at the dealership and ready.",
+          "highlights": [
+            "zero obligation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:43",
+          "text": "Good. One more thing, I might also want to add that GAP coverage since it's a lease. Is that something you handle too?",
+          "highlights": [
+            "add that GAP coverage"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:51",
+          "text": "Absolutely. GAP coverage runs roughly $500 to $900 and can be built right into your lease, so we can review that once we see your prequalified terms.",
+          "highlights": [
+            "GAP coverage runs roughly $500 to $900"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:00",
+          "text": "Perfect. Let's get that prequalification going then.",
+          "highlights": [
+            "Let's get that prequalification going"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:05",
+          "text": "Wonderful. I have you as Danielle Reyes, can I grab the best phone number and email to send your prequalification details?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "2:12",
+          "text": "Sure, it's 214-555-0182 and danielle.reyes@email.com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:19",
+          "text": "Got it. I've scheduled your prequalification review for Thursday at 10 AM, and I'll send the secure link so you can start the soft pull beforehand.",
+          "highlights": [
+            "scheduled your prequalification review for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:28",
+          "text": "That sounds great, thank you so much Marcus.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:32",
+          "text": "My pleasure, Danielle. You'll get a confirmation shortly. Thanks again for choosing GM Financial and enjoy the rest of your day.",
+          "highlights": [
+            "Thanks again for choosing GM Financial",
+            "enjoy the rest of your day"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Customer",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Prequalification: Scheduled",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "EV Lease Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "GAP Coverage Inquiry",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Shopping Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "No Credit Impact Explained",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Reyes, a first-time GM Financial customer, called to explore lease financing for an Equinox EV before visiting a dealership. Agent Marcus explained the 24 to 39 month EV lease terms and the $399 to $599 monthly range, addressed her budget and competitor concerns, and reassured her the prequalification carries no credit impact and no obligation. He also covered adding GAP coverage to the lease and scheduled her prequalification review for Thursday at 10 AM after capturing her phone and email.",
+        "keyPoints": [
+          "New customer, first time financing with GM Financial",
+          "Interested in leasing an Equinox EV with a manageable monthly payment",
+          "Comparing quotes from another dealer",
+          "Agent recommended prequalification with no credit impact and no obligation",
+          "Discussed adding GAP coverage into the lease",
+          "Contact info captured and prequalification scheduled"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Prequalification booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "34,304 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,430",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for texting GM Financial. I'm here to help you explore financing options for your next vehicle. Are you looking to purchase a new GM vehicle or refinance an existing auto loan?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:23 AM",
+              "text": "Hi, I'm interested in a new Chevy truck. Want to know what kind of financing I could get."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:24 AM",
+              "text": "Great choice. The new Chevrolet trucks are fantastic. To get you the best financing offer, I need to ask a few quick questions. What's your approximate annual household income?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Around 85k per year."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Perfect. And do you currently have any outstanding auto loans or financing that we should know about?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "No, this would be my first new vehicle purchase."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:30 AM",
+              "text": "Excellent. Based on your income and credit profile, you qualify for financing between 5.9 and 7.2 percent APR on a new Chevrolet. That puts a monthly payment around 485 dollars for a 60 month term. Does that work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Yeah that sounds good. How do I move forward?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "Great. I'd like to schedule a prequalification appointment with one of our specialists. They'll confirm all the details and get you pre approved. How about Thursday, March 13th at 2 PM? They'll call you back at this number."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:35 AM",
+              "text": "Thursday works perfect for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:36 AM",
+              "text": "Wonderful. Your prequalification is scheduled for Thursday, March 13th at 2 PM. A GM Financial specialist will call you at 916-447-2851. If you have any questions before then, just text us back. Thanks for choosing GM Financial."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:38 AM",
+              "text": "Great, thanks so much."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Prequalification: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product: New Vehicle Financing",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Income Confirmed",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "APR Estimate Provided",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area: California",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "13",
+            "source": "916-447-2851",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "916-447-2851",
+            "repeatCaller": "No",
+            "city": "Sacramento",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Marcus Chen",
+            "firstName": "Marcus",
+            "lastName": "Chen",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A729-84BC5F3E291A",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A729-84BC5F3E291A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B841-6D2FE74A9BC5",
+          "time": "8/16/25 10:38 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B841-6D2FE74A9BC5",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D305-F1AE926C7B34",
+          "time": "8/16/25 10:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D305-F1AE926C7B34",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "54,451 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 5,445",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hello, thanks for calling GM Financial. My name is Marcus. Are you calling about financing or leasing a vehicle today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Yeah, hi. I'm interested in leasing a new Chevy Equinox, maybe the EV version."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "That's great. The Equinox EV is a fantastic choice. Just to help me point you in the right direction, are you looking to lease a vehicle for the first time, or have you leased with us before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "No, this would be my first lease. I'm kind of new to the whole electric vehicle thing."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Perfect. We specialize in EV leasing and I can walk you through all the options. Quick question, what state are you located in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "I'm in California, Los Angeles area."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Excellent. We have some great lease offers in California right now. Do you have an idea of what your monthly budget would be for the lease payment?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "Um, I was thinking maybe four to five hundred a month? Is that doable?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Absolutely. With a qualified credit profile, we can get you into an Equinox EV lease around four hundred ninety nine dollars per month for a thirty six month term. Does that sound like something you'd like to explore?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Yeah, that sounds pretty good, actually."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Wonderful. I'd like to schedule a prequalification appointment so we can check your credit and lock in your rate. How does Thursday morning, January sixteenth at ten AM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Thursday at ten, yeah, that works for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Perfect. We've got you scheduled for a prequalification on Thursday, January sixteenth at ten AM Pacific Time. You'll hear from us with a confirmation call at this number. Is there anything else I can help you with?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "No, that's it. Thanks a lot."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "You're welcome. Thanks for choosing GM Financial, and we'll see you Thursday. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Prequalification: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: EV Lease",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Price Anchor: $499 Monthly",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area Confirmed: California",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Credit Check Initiated",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "7:23",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "310-555-0847",
+            "repeatCaller": "No",
+            "city": "Los Angeles",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "GMF, EV Financing Campaigns",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B823-5D7AA21E4C6F",
+          "time": "1/22/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B823-5D7AA21E4C6F",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C541-8B4F2E9D1A7B",
+          "time": "1/09/26 11:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C541-8B4F2E9D1A7B",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D756-3E6C9A4F2B8D",
+          "time": "1/28/26 5:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D756-3E6C9A4F2B8D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Hi, I'm GM Financial's AI agent, and I can help you get a personalized auto financing quote and prequalify with no impact to your credit, including current 0% APR offers on select Chevrolet, Buick, GMC and Cadillac models. Would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, which vehicle brand and model you're interested in, whether you'd like to finance or lease, new, used or Certified Pre-Owned, your ideal monthly payment and timeline to purchase, and finally your ZIP code so I can confirm dealer availability near you.",
+        "Estimate then book: Once I confirm we serve your ZIP, I'll share a preliminary APR and monthly payment range based on what you shared, then recommend a virtual prequalification with a GM Financial specialist for exact terms, propose a specific day and time, and confirm you'll get a reminder text before your appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "GM_Financial_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Auto Financing & EV Financing",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Current Offers",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Apply to Prequalify",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Payment status\",\"question\":\"Can I check my current auto loan balance and next payment due date?\",\"answer\":\"Yes, you can view your balance, next due date and payment history anytime in MyAccount or the GM Financial Mobile app. I can also connect you with a specialist if you'd like to review payment options.\"},{\"topic\":\"Lease end\",\"question\":\"My lease is almost up, what are my options?\",\"answer\":\"At lease end you can purchase your vehicle, lease or finance a new GM model, or return it after inspection. I can schedule a virtual prequalification so a specialist walks you through the best next step.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How do I prequalify for auto financing?",
+              "answer": "Prequalification is free with no impact to your credit and takes just a few minutes. I can set you up with a virtual prequalification so a specialist confirms your personalized terms."
+            },
+            {
+              "question": "Does prequalifying hurt my credit score?",
+              "answer": "No, prequalification uses a soft credit pull, so it has no impact on your credit score. Let's book a quick prequalification session to see your terms."
+            },
+            {
+              "question": "What APR can I expect on a new vehicle loan?",
+              "answer": "Rates vary by credit, term, model and region, and select models qualify for special promotional financing. A specialist can confirm your exact rate during a virtual prequalification, would you like me to schedule one?"
+            },
+            {
+              "question": "Do you offer 0% APR financing?",
+              "answer": "We do offer promotional low-rate and 0% APR financing on select models for qualified buyers, subject to current offers. I can book a prequalification so a specialist confirms which offers you qualify for."
+            },
+            {
+              "question": "Can I finance a used or Certified Pre-Owned GM vehicle?",
+              "answer": "Yes, we finance both used and Certified Pre-Owned GM vehicles through our dealer network. Let's schedule a virtual prequalification to review your options."
+            },
+            {
+              "question": "What's the difference between leasing and financing?",
+              "answer": "Leasing offers lower monthly payments with a mileage allowance and end-of-term options, while financing builds ownership over the loan term. A specialist can compare both for your situation during a prequalification, shall I set that up?"
+            },
+            {
+              "question": "How much is a typical monthly lease payment?",
+              "answer": "Lease payments vary by model, term, mileage and region, and current incentives can lower them. I can arrange a virtual prequalification for an exact quote, would you like to book?"
+            },
+            {
+              "question": "Do you finance electric vehicles like the Equinox EV or Silverado EV?",
+              "answer": "Yes, we offer EV-specific financing and lease terms with available incentives on models like the Equinox EV and Silverado EV. Let's book a prequalification to review current EV offers."
+            },
+            {
+              "question": "Can I refinance my current auto loan?",
+              "answer": "Yes, we can help you refinance an existing non-GM Financial auto loan to adjust your rate or payment. I can schedule a specialist consultation to review your refinance options."
+            },
+            {
+              "question": "What credit score do I need to qualify?",
+              "answer": "We work with a wide range of credit profiles, and prequalification lets you see potential terms with no credit impact. Let's book a virtual prequalification to check where you stand."
+            },
+            {
+              "question": "How long are your loan terms?",
+              "answer": "Retail auto loan terms typically range from 24 to 84 months depending on the vehicle and your credit. A specialist can confirm the best term for your budget during a prequalification, want me to schedule one?"
+            },
+            {
+              "question": "What is GAP coverage and do I need it?",
+              "answer": "GAP coverage helps cover the difference between your insurance payout and remaining loan balance if your vehicle is totaled. A specialist can explain pricing and options during your prequalification appointment."
+            },
+            {
+              "question": "What is an Extended Protection Plan?",
+              "answer": "An Extended Protection Plan covers mechanical breakdowns beyond your factory warranty and can be bundled into your financing. Let's book a consultation so a specialist reviews coverage and cost with you."
+            },
+            {
+              "question": "Do you offer commercial or fleet financing?",
+              "answer": "Yes, GM Financial Fleet offers financing, leasing, lines of credit and municipal lease options for businesses. I can connect you with a commercial specialist to schedule a consultation."
+            },
+            {
+              "question": "Can I get insurance through GM Financial?",
+              "answer": "Yes, General Motors Insurance is available and integrated with GM ownership, with quote-based premiums. A specialist can review a personalized quote during your appointment."
+            },
+            {
+              "question": "Where do I find current offers and deals?",
+              "answer": "Current offers vary by model, region and buyer qualification, and change regularly. Let's book a virtual prequalification so a specialist confirms the offers you qualify for."
+            },
+            {
+              "question": "How do I make a payment or set up autopay?",
+              "answer": "You can pay your bill and set up autopay anytime through MyAccount or the GM Financial Mobile app. If you'd like help, I can connect you with a specialist."
+            },
+            {
+              "question": "Can I get prequalified before visiting a dealership?",
+              "answer": "Absolutely, prequalifying first lets you shop with confidence and see your terms before the dealer visit. I can schedule your virtual prequalification right now."
+            },
+            {
+              "question": "What documents do I need to prequalify?",
+              "answer": "Prequalification is quick and typically just needs basic information about you and your income. A specialist will confirm any details needed during your scheduled prequalification."
+            },
+            {
+              "question": "How soon can I speak with a specialist?",
+              "answer": "I can often book a virtual prequalification for the same or next day based on availability. What day and time works best for you?"
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule a prequalification\",\"follow_up_message\":\"Great, I've got you set for a virtual prequalification with a GM Financial specialist. You'll receive a reminder text before your appointment with a number to call if anything changes.\"},{\"intent\":\"Request a financing quote\",\"follow_up_message\":\"Thanks for the details. Based on what you shared I can give a preliminary rate and payment range, and I'll book a virtual prequalification so a specialist confirms your exact, no-credit-impact terms.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, I'm GM Financial's AI agent. I can help you get a personalized, no-credit-impact quote and prequalify for financing or a lease on a Chevrolet, Buick, GMC or Cadillac. Would you like to get started?",
+        "goal": "Guide the customer to book a virtual prequalification with a GM Financial specialist to confirm personalized financing or lease terms.",
+        "bookingType": "virtual prequalification",
+        "offer": "Prequalify today with no impact to your credit, plus check current 0% APR offers on select models",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "Which GM brand and model are you interested in, Chevrolet, Buick, GMC or Cadillac?",
+          "Are you looking to finance or lease, and is the vehicle new, used or Certified Pre-Owned?",
+          "What monthly payment range are you comfortable with?",
+          "How soon are you looking to get into your next vehicle?",
+          "What's your ZIP code so I can confirm dealer availability near you?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:02 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:02 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:02 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "GM Financial",
+      "callerName": "Sarah Mitchell",
+      "callerPhone": "(512) 555-0847",
+      "campaign": "EV Financing, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Prequalification Lead",
+      "estimatedValue": "$38,450",
+      "googleSearch": "Silverado EV lease payment Austin TX",
+      "websiteSearch": "GM Financial EV financing rates",
+      "callingWebpage": "/lease-or-buy/ev-financing",
+      "products": "EV Lease, Extended Protection Plan",
+      "cartId": "GMF-7291K",
+      "serviceable": "Yes",
+      "email": "sarah.mitchell@email.com",
+      "street": "3428 Barton Hills Drive",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78704",
+      "digitalJourney": "/home › /lease-or-buy › /ev-financing › /current-offers",
+      "intent": "Interested in leasing a new Silverado EV with low monthly payment and extended coverage options",
+      "coverage": "ZIP 78704 confirmed, Austin serviceable",
+      "switchIntent": "High. Currently driving a gas vehicle and wants to switch to electric. Researching lease terms and incentives this week",
+      "greeting": "Hi Sarah, thanks for calling GM Financial. I see you're interested in our EV leasing options for the Silverado. I'd love to help you explore current lease rates and get you prequalified in just a few minutes so you can move forward with confidence. Do you have time for a quick qualification call right now?"
+    },
+    "smsScreenpop": {
+      "brandName": "GM Financial",
+      "callerName": "Marcus Johnson",
+      "callerPhone": "(404) 555-0623",
+      "campaign": "Auto Loan Refinance, Atlanta Retention",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Prequalification Lead",
+      "estimatedValue": "$24,180",
+      "googleSearch": "refinance my car loan Atlanta lower rate",
+      "websiteSearch": "GM Financial auto refinance APR",
+      "callingWebpage": "/resources/auto-loan-refinancing-guide",
+      "products": "Auto Loan Refinance, GAP Coverage",
+      "cartId": "GMF-5834P",
+      "serviceable": "Yes",
+      "email": "marcus.johnson@email.com",
+      "street": "1847 Peachtree Road NE",
+      "city": "Atlanta",
+      "state": "GA",
+      "zip": "30309",
+      "digitalJourney": "/home › /resources › /auto-loan-refinancing-guide › /lease-or-buy/auto-financing",
+      "intent": "Seeking to refinance existing auto loan to lower current APR and reduce monthly payment",
+      "coverage": "ZIP 30309 confirmed, Atlanta serviceable",
+      "appointment": "Phone prequalification with financing specialist, Thu Jul 18, 2:00 PM",
+      "greeting": "Hi Marcus. This is David Chen with GM Financial. We've scheduled your prequalification call for Thursday at 2 PM to review your refinance options and see how much you could save. Feel free to text me any questions before then. Looking forward to helping you get a better rate."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "GM Financial",
+      "brandDomain": "www.gmfinancial.com",
+      "brandIcon": "🚗",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Ventura, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "GMF, Auto Loan Prequalify",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "GM Financial prequalify auto loan",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Lease or Buy / Auto Financing / Prequalification",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "EV Financing, Current Offers",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Ventura, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "preq_new_auto",
+          "name": "Prequalification, New Auto Loan"
+        },
+        {
+          "id": "lease_end_support",
+          "name": "Lease End Transition"
+        },
+        {
+          "id": "general_support",
+          "name": "General Customer Service"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there. Thanks for calling GM Financial. I see you were checking out our EV financing options online. Are you looking to finance a new vehicle today?",
+          "sigs": [],
+          "q": [
+            25,
+            50,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, I'm interested in the Silverado EV. I currently have a Chevy lease that ends in about four months, and I want to see what kind of rates I might qualify for.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>EV purchase</strong> intent"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Lease ending</strong> soon"
+            },
+            {
+              "c": "orange",
+              "t": "Silverado EV model"
+            }
+          ],
+          "q": [
+            45,
+            40,
+            15
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's great. The Silverado EV is an excellent choice, and it sounds like you're planning ahead. To get you a prequalification, I'll just need a few quick details. Are you looking to finance the full purchase, or do you have a down payment in mind from your lease equity?",
+          "sigs": [],
+          "q": [
+            65,
+            20,
+            15
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I'm planning to put down about eight thousand from my lease payoff. I have pretty good credit, so I'm hoping for a rate around five to six percent if possible.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Down payment</strong> confirmed"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Good credit</strong> profile"
+            },
+            {
+              "c": "purple",
+              "t": "Rate expectation 5 to 6 percent"
+            }
+          ],
+          "q": [
+            88,
+            8,
+            4
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. That's exactly the profile we love to see. Let me get you connected with our prequalification team right now. They'll pull your credit, show you the exact terms for the Silverado EV, and you'll have an offer you can take straight to the dealership. Connecting you now to our Prequalification team for New Auto Loans.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Prequalification Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"you're prequalified (Agent)\", \"approved for financing (Agent)\", \"let's get you prequalified (Agent)\", \"no impact to your credit (Agent)\"])",
+          "createdAt": "08/14/25 9:12 am",
+          "updatedAt": "01/06/26 3:44 pm"
+        },
+        {
+          "name": "0% APR Offer Requested",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"zero percent financing (Caller)\", \"0% APR (Caller)\", \"any special offers (Caller)\", \"current offers (Caller)\"])",
+          "createdAt": "09/02/25 10:20 am",
+          "updatedAt": "12/18/25 2:15 pm"
+        },
+        {
+          "name": "Competitor Rate Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Capital One quoted me (Caller)\", \"my credit union rate (Caller)\", \"Ally offered (Caller)\", \"better rate elsewhere (Caller)\"])",
+          "createdAt": "07/22/25 11:05 am",
+          "updatedAt": "11/30/25 4:50 pm"
+        },
+        {
+          "name": "Compliance Disclosure Given",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Compliance Adherence] < 60 and duration > 45 sec",
+          "createdAt": "10/03/25 8:30 am",
+          "updatedAt": "01/09/26 1:20 pm"
+        },
+        {
+          "name": "Empathy and Rapport Score",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy and Rapport] < 60 and duration > 45 sec",
+          "createdAt": "06/18/25 2:45 pm",
+          "updatedAt": "12/22/25 9:10 am"
+        },
+        {
+          "name": "EV Financing Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Equinox EV (Caller)\", \"Silverado EV lease (Caller)\", \"electric vehicle financing (Caller)\", \"EV incentives (Caller)\"])",
+          "createdAt": "09/15/25 1:30 pm",
+          "updatedAt": "01/12/26 10:05 am"
+        },
+        {
+          "name": "Identity Verification Complete",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Identity Verification] < 60 and duration > 45 sec",
+          "createdAt": "10/10/25 9:00 am",
+          "updatedAt": "01/04/26 11:40 am"
+        },
+        {
+          "name": "Lease-End Options Discussed",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"my lease is ending (Caller)\", \"lease-end options (Caller)\", \"turn in my lease (Caller)\", \"buy out my lease (Caller)\"])",
+          "createdAt": "08/28/25 3:15 pm",
+          "updatedAt": "12/05/25 4:22 pm"
+        },
+        {
+          "name": "Prequalification Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"get prequalified (Caller)\", \"check my rate (Caller)\", \"soft credit pull (Agent)\", \"see your terms (Agent)\"])",
+          "createdAt": "07/09/25 10:50 am",
+          "updatedAt": "11/25/25 2:35 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your monthly payment would be (Agent)\", \"your APR is (Agent)\", \"estimated payment (Agent)\", \"term of 60 months (Agent)\"])",
+          "createdAt": "09/20/25 11:15 am",
+          "updatedAt": "01/08/26 3:05 pm"
+        }
+      ]
+    }
+  }
+}

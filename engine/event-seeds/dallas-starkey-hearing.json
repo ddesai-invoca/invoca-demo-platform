@@ -1,0 +1,5317 @@
+{
+  "id": "starkey-hearing",
+  "customerName": "Starkey Hearing",
+  "websiteUrl": "https://www.starkey.com",
+  "brandDomain": "starkey.com",
+  "networkName": "Invoca for Hearing Healthcare",
+  "industry": "Hearing aids and hearing healthcare",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 12000,
+      "yTicks": [
+        0,
+        3000,
+        6000,
+        9000,
+        12000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 9214
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 10347
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 9876
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 10512
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 8722
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Find a Provider Near You",
+          "marketingSearchTerm": "hearing aids near me",
+          "landingPageUrl": "https://www.starkey.com/find-a-provider?utm_source=google&utm_medium=cpc&utm_campaign=find_a_provider",
+          "websiteJourney": "Home / Find a Provider / Where to Buy",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Introducing Edge AI",
+          "marketingSearchTerm": "starkey edge ai review",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids/edge-ai?utm_source=google&utm_medium=cpc&utm_campaign=introducing_edge_ai",
+          "websiteJourney": "Home / Hearing Aids / Bluetooth",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Genesis AI Rechargeable Freedom",
+          "marketingSearchTerm": "rechargeable bluetooth hearing aids",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids/rechargeable?utm_source=google&utm_medium=cpc&utm_campaign=genesis_rechargeable",
+          "websiteJourney": "Home / Hearing Aids / Rechargeable",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Genesis AI Rechargeable Freedom",
+          "marketingSearchTerm": "starkey genesis ai price",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids/costs-and-financing?utm_source=bing&utm_medium=cpc&utm_campaign=genesis_rechargeable",
+          "websiteJourney": "Home / Hearing Aids / Costs and Financing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Free Online Hearing Test",
+          "marketingSearchTerm": "free online hearing test",
+          "landingPageUrl": "https://www.starkey.com/online-hearing-test?utm_source=organic&utm_medium=organic&utm_campaign=online_hearing_test",
+          "websiteJourney": "Home / Online Hearing Test / Find a Provider",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Invisible Confidence (Signature Series)",
+          "marketingSearchTerm": "smallest invisible hearing aids",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids/signature-series?utm_source=google&utm_medium=cpc&utm_campaign=invisible_confidence",
+          "websiteJourney": "Home / Hearing Aids / Custom Invisible",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Hear Better, Live Better",
+          "marketingSearchTerm": "best hearing aids 2025",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids?utm_source=google&utm_medium=cpc&utm_campaign=hear_better_live_better",
+          "websiteJourney": "Home / Hearing Aids / Genesis AI",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Made in the USA",
+          "marketingSearchTerm": "made in usa hearing aids",
+          "landingPageUrl": "https://www.starkey.com/about/made-in-usa?utm_source=organic&utm_medium=organic&utm_campaign=made_in_usa",
+          "websiteJourney": "Home / About / Made in the USA",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Find a Provider Near You",
+          "marketingSearchTerm": "hearing aids for seniors cost",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids/costs-and-financing?utm_source=bing&utm_medium=cpc&utm_campaign=find_a_provider",
+          "websiteJourney": "Home / Hearing Aids / Costs and Financing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "AI That Moves With You",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids/edge-ai?utm_source=facebook&utm_medium=social&utm_campaign=ai_that_moves_with_you",
+          "websiteJourney": "Home / Hearing Aids / Edge AI",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Invisible Confidence (Signature Series)",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids/signature-series?utm_source=instagram&utm_medium=social&utm_campaign=invisible_confidence",
+          "websiteJourney": "Home / Hearing Aids / Custom Invisible",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Hear Better, Live Better",
+          "marketingSearchTerm": "tinnitus relief hearing aids",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids/tinnitus?utm_source=google&utm_medium=cpc&utm_campaign=hear_better_live_better",
+          "websiteJourney": "Home / Hearing Aids / Tinnitus",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Genesis AI Rechargeable Freedom",
+          "marketingSearchTerm": "hearing aid financing",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids/costs-and-financing?utm_source=organic&utm_medium=organic&utm_campaign=genesis_rechargeable",
+          "websiteJourney": "Home / Hearing Aids / Costs and Financing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Introducing Edge AI",
+          "marketingSearchTerm": "bluetooth hearing aids",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids/bluetooth?utm_source=google&utm_medium=cpc&utm_campaign=introducing_edge_ai",
+          "websiteJourney": "Home / Hearing Aids / Bluetooth",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Made in the USA",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.starkey.com/about/made-in-usa?utm_source=facebook&utm_medium=social&utm_campaign=made_in_usa",
+          "websiteJourney": "Home / About / Made in the USA",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Free Online Hearing Test",
+          "marketingSearchTerm": "custom hearing aids",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids/custom?utm_source=organic&utm_medium=organic&utm_campaign=online_hearing_test",
+          "websiteJourney": "Home / Hearing Aids / Custom Invisible",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "AI That Moves With You",
+          "marketingSearchTerm": "award winning hearing aids",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids/genesis-ai?utm_source=bing&utm_medium=cpc&utm_campaign=ai_that_moves_with_you",
+          "websiteJourney": "Home / Hearing Aids / Genesis AI",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Hear Better, Live Better",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids?utm_source=instagram&utm_medium=social&utm_campaign=hear_better_live_better",
+          "websiteJourney": "Home / Hearing Aids / Genesis AI",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Genesis AI Rechargeable Freedom",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids/rechargeable?utm_source=facebook&utm_medium=social&utm_campaign=genesis_rechargeable",
+          "websiteJourney": "Home / Hearing Aids / Rechargeable",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Find a Provider Near You",
+          "marketingSearchTerm": "waterproof hearing aids",
+          "landingPageUrl": "https://www.starkey.com/hearing-aids/waterproof?utm_source=organic&utm_medium=organic&utm_campaign=find_a_provider",
+          "websiteJourney": "Home / Hearing Aids / Waterproof",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Starkey Hearing)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "38,173"
+            },
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Hearing Aid Fitting (Percent)",
+              "value": "21%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$38,399,485"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "6,108"
+            },
+            {
+              "label": "Repair & Adjustment Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Battery & Accessory Order (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Provider Locator Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Patient Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Quote Discussed (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "11%"
+            },
+            {
+              "label": "Hearing Aid Fitting (Percent)",
+              "value": "21%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Patient Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Patient Call (Count)",
+            "values": [
+              4127,
+              7438,
+              7109,
+              7286,
+              6105
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              1983,
+              3612,
+              3489,
+              3547,
+              3020
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              542,
+              968,
+              921,
+              944,
+              856
+            ]
+          },
+          {
+            "name": "Hearing Aid Fitting (Count)",
+            "values": [
+              1024,
+              1853,
+              1796,
+              1821,
+              1522
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Hearing Aid Fitting (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38173,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "15,842",
+                "34%",
+                "16%",
+                "$12,393,010"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "8,914",
+                "38%",
+                "20%",
+                "$8,531,655"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "6,127",
+                "42%",
+                "23%",
+                "$6,742,065"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "4,398",
+                "47%",
+                "28%",
+                "$5,890,335"
+              ]
+            },
+            {
+              "name": "YouTube",
+              "metrics": [
+                "2,892",
+                "55%",
+                "35%",
+                "$4,842,420"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Hearing Aid Fitting (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38173,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "14,206",
+                "35%",
+                "16%",
+                "$10,182,340"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "9,338",
+                "39%",
+                "20%",
+                "$8,938,380"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "6,742",
+                "43%",
+                "24%",
+                "$7,742,130"
+              ]
+            },
+            {
+              "name": "Provider Referral",
+              "metrics": [
+                "4,987",
+                "48%",
+                "28%",
+                "$6,679,860"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "2,900",
+                "55%",
+                "35%",
+                "$4,856,775"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Hearing Aid Fitting (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 23212,
+          "rows": [
+            {
+              "name": "Hear Better, Live Better",
+              "metrics": [
+                "7,842",
+                "35%",
+                "16%",
+                "$6,005,175"
+              ]
+            },
+            {
+              "name": "Introducing Edge AI",
+              "metrics": [
+                "5,913",
+                "38%",
+                "19%",
+                "$5,373,555"
+              ]
+            },
+            {
+              "name": "Made in the USA",
+              "metrics": [
+                "4,287",
+                "43%",
+                "23%",
+                "$4,718,010"
+              ]
+            },
+            {
+              "name": "Find a Provider Near You",
+              "metrics": [
+                "3,156",
+                "49%",
+                "28%",
+                "$4,230,140"
+              ]
+            },
+            {
+              "name": "Genesis AI Rechargeable Freedom",
+              "metrics": [
+                "2,014",
+                "56%",
+                "35%",
+                "$3,373,425"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Hearing Aid Fitting (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16908,
+          "rows": [
+            {
+              "name": "hearing aids near me",
+              "metrics": [
+                "6,238",
+                "35%",
+                "16%",
+                "$4,775,430"
+              ]
+            },
+            {
+              "name": "rechargeable bluetooth hearing aids",
+              "metrics": [
+                "4,127",
+                "39%",
+                "20%",
+                "$3,947,625"
+              ]
+            },
+            {
+              "name": "starkey genesis ai price",
+              "metrics": [
+                "3,015",
+                "44%",
+                "24%",
+                "$3,464,340"
+              ]
+            },
+            {
+              "name": "invisible hearing aids",
+              "metrics": [
+                "2,186",
+                "50%",
+                "29%",
+                "$3,033,690"
+              ]
+            },
+            {
+              "name": "free online hearing test",
+              "metrics": [
+                "1,342",
+                "57%",
+                "36%",
+                "$2,311,155"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Hearing Aid Fitting (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Genesis AI",
+              "metrics": [
+                "12,847",
+                "38%",
+                "15%",
+                "$10,250,163"
+              ]
+            },
+            {
+              "name": "Edge AI",
+              "metrics": [
+                "9,634",
+                "40%",
+                "19%",
+                "$10,693,847"
+              ]
+            },
+            {
+              "name": "Signature Series",
+              "metrics": [
+                "7,218",
+                "42%",
+                "23%",
+                "$7,645,229"
+              ]
+            },
+            {
+              "name": "Evolv AI",
+              "metrics": [
+                "5,462",
+                "44%",
+                "28%",
+                "$5,994,201"
+              ]
+            },
+            {
+              "name": "Accessories & Batteries",
+              "metrics": [
+                "3,012",
+                "47%",
+                "34%",
+                "$3,816,045"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Hearing Aid Fitting (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38173,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "11,428",
+                "42%",
+                "16%",
+                "$11,289,347"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "9,342",
+                "44%",
+                "19%",
+                "$9,842,156"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "8,214",
+                "46%",
+                "22%",
+                "$8,617,428"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "6,127",
+                "48%",
+                "26%",
+                "$5,738,229"
+              ]
+            },
+            {
+              "name": "Mountain",
+              "metrics": [
+                "3,062",
+                "52%",
+                "33%",
+                "$2,912,325"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Hearing Aid Fitting (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Genesis AI",
+            "values": [
+              372,
+              389,
+              405,
+              398,
+              370
+            ]
+          },
+          {
+            "name": "Edge AI",
+            "values": [
+              351,
+              368,
+              382,
+              375,
+              352
+            ]
+          },
+          {
+            "name": "Signature Series",
+            "values": [
+              318,
+              332,
+              348,
+              340,
+              324
+            ]
+          },
+          {
+            "name": "Evolv AI",
+            "values": [
+              294,
+              308,
+              318,
+              312,
+              300
+            ]
+          },
+          {
+            "name": "Accessories & Batteries",
+            "values": [
+              202,
+              214,
+              222,
+              218,
+              204
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 38,173 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Margaret Ellison called after reading about Genesis AI rechargeable aids and mentioned lifelong tinnitus that keeps her up at night. Agent Oscar explained the platform's tinnitus relief features and Edge Mode+, then booked her for an in-clinic consultation and online hearing test. Margaret confirmed the appointment and asked for directions to the Eden Prairie provider.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 89,
+          "summary": "Robert Hensley wanted a second opinion after reading an Edge AI review online and asked whether the new platform was truly made in the USA. Agent Lila confirmed the Minnesota manufacturing and walked him through fall detection and Bluetooth streaming. She scheduled a consultation with a nearby provider and Robert agreed to bring his current aids for comparison.",
+          "date": "Feb 11, 2:38 PM",
+          "agent": "Lila",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 85,
+          "summary": "Dr. Susan Alvarez called on behalf of her father seeking tinnitus relief and asked about financing options for a premium pair. Agent Rosey outlined monthly financing plans and the one year of follow-up care included with each fitting. She booked a consultation and emailed the provider location details.",
+          "date": "Mar 4, 11:52 AM",
+          "agent": "Rosey",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Dorothy Chambers, a new patient, called to schedule her first hearing evaluation after struggling to follow conversations at family dinners. Agent Lee collected her name, date of birth, phone number, and preferred clinic, then explained what to expect at the consultation and the 30-day trial. He booked her Genesis AI fitting consultation for the following week and confirmed her insurance details.",
+          "date": "Apr 18, 9:26 AM",
+          "agent": "Lee",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 72,
+          "summary": "Frank Delgado asked whether the Genesis AI rechargeable models could get him through a full day of golf without swapping batteries. Agent Mary confirmed the lithium-ion charge life and the included standard charger, then answered questions about waterproofing. She scheduled a consultation so he could demo the rechargeable aids in person.",
+          "date": "May 9, 1:05 PM",
+          "agent": "Mary",
+          "duration": "2m 21s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 15,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Helen Whitcomb called to check the status of her custom Signature Series order placed three weeks earlier. Agent Sue looked up the order, confirmed it was still in fabrication, and gave an estimated fitting date. Helen was reassured but wanted a follow-up call once the aids arrived.",
+          "date": "Jun 2, 3:44 PM",
+          "agent": "Sue",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 64,
+          "summary": "George Pruitt called about a warranty repair after one of his aids stopped charging. Agent Mike verified the device was still under the 3-year manufacturer warranty and started a repair ticket with a prepaid shipping label. George asked how long he would be without his aids during the repair.",
+          "date": "Jun 27, 10:33 AM",
+          "agent": "Mike",
+          "duration": "2m 09s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 21,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 60,
+          "summary": "Nancy Foster asked about financing before committing to a premium pair for her husband. Agent Jennifer explained the monthly payment plans and the bundled care package, easing her budget concerns. Nancy decided to move forward and Jennifer scheduled a consultation at their local clinic.",
+          "date": "Jul 14, 4:11 PM",
+          "agent": "Jennifer",
+          "duration": "2m 34s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Arthur Benson called frustrated that his TV streamer accessory arrived but would not pair with his aids. Agent Rose walked him through the reset steps but the device still failed to connect. She escalated to technical support and arranged a replacement shipment.",
+          "date": "Jul 30, 12:19 PM",
+          "agent": "Rose",
+          "duration": "2m 52s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 51,
+          "summary": "Patricia Nguyen disputed a charge on her invoice that she believed was for a cleaning already covered by her one year of care. Agent Oscar reviewed the itemized bill and found the visit fell just outside the covered window. Patricia remained unhappy and asked to speak with the billing manager.",
+          "date": "Aug 8, 9:47 AM",
+          "agent": "Oscar",
+          "duration": "2m 40s",
+          "scorecards": 7,
+          "comments": 2,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 47,
+          "summary": "Walter Simmons called to cancel his upcoming fitting because he found a lower price at another provider. Agent Lila offered to match the financing terms but he had already decided. She processed the cancellation and noted his feedback about pricing.",
+          "date": "Aug 22, 1:58 PM",
+          "agent": "Lila",
+          "duration": "1m 37s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 44,
+          "summary": "Barbara Cline called upset that her warranty claim was taking longer than promised and she had been without her aids for two weeks. Agent Lee apologized, tracked the repair, and confirmed it had shipped back that morning. Barbara said the delay had made daily life very difficult.",
+          "date": "Sep 3, 3:22 PM",
+          "agent": "Lee",
+          "duration": "2m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Donald Ferris complained that his new Edge AI aids kept dropping the Bluetooth connection during phone calls. Agent Mary tried several troubleshooting steps but the issue persisted, so she booked a follow-up service visit rather than a new fitting. Donald was clearly annoyed and questioned the reliability of the technology.",
+          "date": "Sep 19, 11:08 AM",
+          "agent": "Mary",
+          "duration": "3m 18s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "An unidentified caller reached the line after hours and left a brief voicemail asking someone to call back about a repair. No name or callback number was clearly recorded. The message rolled to voicemail with no agent available.",
+          "date": "Oct 1, 6:41 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Eleanor Hoyt called angry about a billing statement she did not recognize and demanded an immediate refund. Agent Sue could not locate a matching account under the number provided and asked for more details, which further upset the caller. Eleanor hung up before the issue could be resolved.",
+          "date": "Oct 12, 2:15 PM",
+          "agent": "Sue",
+          "duration": "1m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "genesis ai",
+        "edge ai",
+        "rechargeable",
+        "warranty",
+        "financing",
+        "tinnitus"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Hearing Need Type",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area by ZIP",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Starkey Hearing Aid Platform",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Schedule Consultation Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Appointment Details",
+          "points": "10/10",
+          "status": "met"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller identified new customer need",
+        "Caller expressed interest in hearing aid trial",
+        "Caller confirmed ZIP code in service area",
+        "Caller agreed to appointment time",
+        "Caller provided full legal name",
+        "Caller described specific hearing loss scenario",
+        "Caller mentioned communication difficulty in background noise",
+        "Caller accepted appointment confirmation",
+        "Caller expressed interest in Genesis AI platform",
+        "Caller asked about insurance coverage",
+        "Caller requested morning appointment slot",
+        "Caller mentioned workplace hearing challenges",
+        "Caller confirmed hearing in one ear"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "No mention of hearing aid type preference",
+        "Caller did not receive product education on Edge AI",
+        "Caller budget not discussed",
+        "Caller did not express interest in rechargeable option",
+        "Caller did not receive information on My Starkey App",
+        "Caller did not ask about financing options",
+        "Caller did not receive tinnitus assessment",
+        "Caller did not learn about trial period benefits",
+        "Caller warranty coverage not explained",
+        "Caller did not receive Starkey Made in USA messaging",
+        "Caller financing information not provided",
+        "Caller did not ask about wireless accessories",
+        "Caller bimodal solution not discussed"
+      ],
+      "naSignals": [
+        "No order to process",
+        "No delivery logistics discussed",
+        "No billing questions raised",
+        "No product return concerns",
+        "No warranty claim discussion",
+        "No refund scenario",
+        "No payment method issue"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller is experiencing difficulty hearing conversations at work and in group settings, and wants to explore hearing aid options to improve their communication at the office and social events."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects to learn about Starkey hearing aids, schedule a consultation with a local provider, and potentially trial a device before making a purchase commitment."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address for appointment confirmation and follow up materials, and briefly explained which Starkey platform (Genesis AI or Edge AI) would be most suitable for the caller's specific hearing loss pattern."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Starkey Hearing. This is Marcus. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:24",
+          "text": "Hi Marcus. I'm calling because I've been having a hard time hearing conversations at work and with friends. I think it might be time to look into hearing aids."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:35",
+          "text": "I'm glad you reached out. We'd love to help you. To get started, can I get your first and last name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:43",
+          "text": "Sure. It's Patricia. Patricia Mendez."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:48",
+          "text": "Patricia, thank you. And just to confirm, you're looking at hearing aids for yourself, correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:55",
+          "text": "Yes, that's right. I've noticed it mostly in group settings and meetings. It's frustrating."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:04",
+          "text": "I understand. That's actually very common, especially in noisy environments. Are you located in the United States, and what's your ZIP code so I can confirm we serve your area?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:16",
+          "text": "I'm in Minnesota. My ZIP is 55401. I'm in Minneapolis."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:24",
+          "text": "Perfect. Minneapolis is in our service area. We have excellent providers there. I'd like to get your phone number so we can reach you. Can you share that?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:35",
+          "text": "Of course. It's ****7842."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:42",
+          "text": "Great, thank you. And what email should I use to send appointment details and next steps?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:50",
+          "text": "Oh, um, I'd rather just get a call. Is that okay?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:56",
+          "text": "Absolutely, we can do that. Now, let's get you scheduled for a consultation. We have availability this Thursday at 10 AM or Friday at 2 PM. Which works better for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:08",
+          "text": "Thursday at 10 AM sounds perfect."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:14",
+          "text": "Excellent, Patricia. So I have you down for a consultation appointment this Thursday, October 24th at 10 AM with one of our local providers in Minneapolis. You'll be able to explore Starkey hearing aid options and ask any questions. We'll call you at ****7842 the day before as a reminder. Sound good?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:35",
+          "text": "Yes, that's great. Thank you so much."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:41",
+          "text": "You're very welcome, Patricia. Thank you for choosing Starkey Hearing. We look forward to seeing you Thursday morning. Take care."
+        }
+      ],
+      "aiSummary": "Patricia Mendez, a new customer in Minneapolis, called Starkey Hearing to explore hearing aid options due to difficulty hearing in group settings and work conversations. Agent Marcus Bell successfully qualified her hearing need, confirmed her service area by ZIP code, and scheduled a consultation appointment for Thursday at 10 AM with a local provider. The call did not capture Patricia's email address, and no product education on Starkey's hearing aid platforms (Genesis AI or Edge AI) was provided during the intake.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great job maintaining a warm tone and moving Patricia through the scheduling process efficiently. Two coaching points for next time. One, when a caller declines to share an email, follow up with something like, 'I'll send a text with the appointment details and any pre-visit forms to ****7842 instead.' This ensures she has written confirmation. Two, use those few seconds before closing to mention one relevant Starkey platform, for example, 'We offer Genesis AI hearing aids with advanced noise management, which really shine in group settings like the ones you mentioned.' This plants a seed and shows we heard her specific need."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "38,173"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$1005.93"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$38,399,485"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "23,847"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "62%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "15,651"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "41%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "14,326"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Email/CRM",
+                "value": 57,
+                "display": "57%"
+              },
+              {
+                "name": "Local Provider Co-op",
+                "value": 48,
+                "display": "48%"
+              },
+              {
+                "name": "Social Media",
+                "value": 42,
+                "display": "42%"
+              },
+              {
+                "name": "Paid Search",
+                "value": 36,
+                "display": "36%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Organic Search",
+                  "13,842",
+                  "30%",
+                  "$13,681,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Search",
+                  "10,271",
+                  "36%",
+                  "$10,584,733"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "6,948",
+                  "42%",
+                  "$7,142,318"
+                ]
+              },
+              {
+                "cells": [
+                  "Local Provider Co-op",
+                  "4,517",
+                  "48%",
+                  "$4,558,206"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "2,595",
+                  "57%",
+                  "$2,432,786"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 14000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000,
+              14000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "organic",
+                "value": 12743,
+                "display": "12,743"
+              },
+              {
+                "name": "cpc",
+                "value": 9846,
+                "display": "9,846"
+              },
+              {
+                "name": "paid_social",
+                "value": 7251,
+                "display": "7,251"
+              },
+              {
+                "name": "referral",
+                "value": 5138,
+                "display": "5,138"
+              },
+              {
+                "name": "email",
+                "value": 3195,
+                "display": "3,195"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "organic",
+                  "12,743",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "cpc",
+                  "9,846",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "paid_social",
+                  "7,251",
+                  "40%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "5,138",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "3,195",
+                  "55%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 7000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000,
+              6000,
+              7000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Hear Better, Live Better",
+                "value": 6842,
+                "display": "6,842"
+              },
+              {
+                "name": "Introducing Edge AI",
+                "value": 5317,
+                "display": "5,317"
+              },
+              {
+                "name": "Find a Provider Near You",
+                "value": 4196,
+                "display": "4,196"
+              },
+              {
+                "name": "Made in the USA",
+                "value": 3051,
+                "display": "3,051"
+              },
+              {
+                "name": "Free Online Hearing Test",
+                "value": 2138,
+                "display": "2,138"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Hear Better, Live Better",
+                  "6,842",
+                  "33%",
+                  "$6,758,241"
+                ]
+              },
+              {
+                "cells": [
+                  "Introducing Edge AI",
+                  "5,317",
+                  "38%",
+                  "$5,412,663"
+                ]
+              },
+              {
+                "cells": [
+                  "Find a Provider Near You",
+                  "4,196",
+                  "44%",
+                  "$4,238,905"
+                ]
+              },
+              {
+                "cells": [
+                  "Made in the USA",
+                  "3,051",
+                  "51%",
+                  "$3,127,558"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 5000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "hearing aids near me",
+                "value": 4271,
+                "display": "4,271"
+              },
+              {
+                "name": "rechargeable bluetooth hearing aids",
+                "value": 3148,
+                "display": "3,148"
+              },
+              {
+                "name": "starkey genesis ai price",
+                "value": 2516,
+                "display": "2,516"
+              },
+              {
+                "name": "invisible hearing aids",
+                "value": 1893,
+                "display": "1,893"
+              },
+              {
+                "name": "free online hearing test",
+                "value": 1247,
+                "display": "1,247"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "hearing aids near me",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "rechargeable bluetooth hearing aids",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "starkey genesis ai price",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "invisible hearing aids",
+                  "54%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Rechargeable Hearing Aids",
+              "11,847",
+              "34%",
+              "65%"
+            ]
+          },
+          {
+            "cells": [
+              "Bluetooth Hearing Aids",
+              "9,264",
+              "39%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Custom & Invisible Hearing Aids",
+              "6,538",
+              "45%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Costs and Financing",
+              "4,215",
+              "52%",
+              "54%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Starkey Hearing Eden Prairie Clinic",
+              "8,472",
+              "512",
+              "4%",
+              "36%"
+            ]
+          },
+          {
+            "cells": [
+              "Starkey Hearing Minneapolis Clinic",
+              "6,931",
+              "438",
+              "5%",
+              "41%"
+            ]
+          },
+          {
+            "cells": [
+              "Starkey Hearing Phoenix Clinic",
+              "5,247",
+              "361",
+              "6%",
+              "47%"
+            ]
+          },
+          {
+            "cells": [
+              "Starkey Hearing Naples Clinic",
+              "3,619",
+              "214",
+              "3%",
+              "53%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1024,
+              1587,
+              1493,
+              1382,
+              828
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              892,
+              1341,
+              1287,
+              1163,
+              789
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              713,
+              1054,
+              998,
+              912,
+              641
+            ]
+          },
+          {
+            "name": "Needs Family Approval",
+            "values": [
+              587,
+              862,
+              819,
+              741,
+              552
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              471,
+              693,
+              658,
+              601,
+              434
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "15,269"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Hearing Aid Fitting (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$21,887,706"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Hearing Aid Fitting (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,847,350"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Hearing Aid Fitting (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,521,408"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Hearing Aid Fitting (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,163,847"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Hearing Aid Fitting (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,176,520"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Hearing Aid Fitting (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,142,968"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Hearing Aid Fitting (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,035,613"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Hearing Aid Fitting (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18500,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "6,847",
+                "58%",
+                "29%",
+                "$6,894,387"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "3,921",
+                "54%",
+                "31%",
+                "$4,617,283"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "2,634",
+                "59%",
+                "36%",
+                "$3,508,721"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "1,218",
+                "52%",
+                "27%",
+                "$1,847,306"
+              ]
+            },
+            {
+              "name": "Local Provider Network",
+              "metrics": [
+                "649",
+                "48%",
+                "38%",
+                "$2,019,928"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Hearing Aid Fitting (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18200,
+          "rows": [
+            {
+              "name": "Voice Call",
+              "metrics": [
+                "7,463",
+                "57%",
+                "30%",
+                "$7,154,862"
+              ]
+            },
+            {
+              "name": "Online Form",
+              "metrics": [
+                "4,586",
+                "55%",
+                "32%",
+                "$4,721,934"
+              ]
+            },
+            {
+              "name": "Chat Bot",
+              "metrics": [
+                "2,147",
+                "54%",
+                "36%",
+                "$2,614,485"
+              ]
+            },
+            {
+              "name": "SMS Text",
+              "metrics": [
+                "863",
+                "52%",
+                "35%",
+                "$1,563,747"
+              ]
+            },
+            {
+              "name": "Social Media Direct Message",
+              "metrics": [
+                "610",
+                "49%",
+                "39%",
+                "$1,832,678"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Hearing Aid Fitting (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18800,
+          "rows": [
+            {
+              "name": "Hear Better, Live Better",
+              "metrics": [
+                "4,127",
+                "56%",
+                "28%",
+                "$4,126,493"
+              ]
+            },
+            {
+              "name": "Introducing Edge AI",
+              "metrics": [
+                "3,214",
+                "55%",
+                "31%",
+                "$3,847,562"
+              ]
+            },
+            {
+              "name": "Free Online Hearing Test",
+              "metrics": [
+                "2,891",
+                "57%",
+                "35%",
+                "$3,421,287"
+              ]
+            },
+            {
+              "name": "Find a Provider Near You",
+              "metrics": [
+                "2,418",
+                "54%",
+                "33%",
+                "$2,756,914"
+              ]
+            },
+            {
+              "name": "Invisible Confidence: Signature Series",
+              "metrics": [
+                "1,703",
+                "50%",
+                "38%",
+                "$2,221,450"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Hearing Aid Fitting (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 17600,
+          "rows": [
+            {
+              "name": "hearing aids near me",
+              "metrics": [
+                "4,562",
+                "55%",
+                "27%",
+                "$4,285,361"
+              ]
+            },
+            {
+              "name": "best hearing aids 2025",
+              "metrics": [
+                "2,847",
+                "58%",
+                "32%",
+                "$3,156,784"
+              ]
+            },
+            {
+              "name": "rechargeable Bluetooth hearing aids",
+              "metrics": [
+                "2,134",
+                "57%",
+                "36%",
+                "$2,947,621"
+              ]
+            },
+            {
+              "name": "Starkey Genesis AI price",
+              "metrics": [
+                "1,656",
+                "56%",
+                "34%",
+                "$2,189,744"
+              ]
+            },
+            {
+              "name": "hearing aid financing options",
+              "metrics": [
+                "1,218",
+                "53%",
+                "39%",
+                "$1,852,307"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Hearing Aid Fitting (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Genesis AI RIC",
+              "metrics": [
+                "4,753",
+                "59%",
+                "31%",
+                "$6,947,385"
+              ]
+            },
+            {
+              "name": "Edge AI RIC RT",
+              "metrics": [
+                "3,827",
+                "57%",
+                "35%",
+                "$5,821,734"
+              ]
+            },
+            {
+              "name": "Signature Series Invisible",
+              "metrics": [
+                "2,914",
+                "55%",
+                "38%",
+                "$3,684,521"
+              ]
+            },
+            {
+              "name": "Evolv AI Economy",
+              "metrics": [
+                "2,156",
+                "54%",
+                "29%",
+                "$2,148,693"
+              ]
+            },
+            {
+              "name": "Bimodal and Accessories",
+              "metrics": [
+                "1,619",
+                "52%",
+                "28%",
+                "$2,685,373"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Hearing Aid Fitting (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Genesis AI RIC",
+            "values": [
+              458,
+              489,
+              502,
+              471,
+              455
+            ]
+          },
+          {
+            "name": "Edge AI RIC RT",
+            "values": [
+              401,
+              425,
+              448,
+              389,
+              372
+            ]
+          },
+          {
+            "name": "Signature Series Invisible",
+            "values": [
+              355,
+              380,
+              406,
+              371,
+              308
+            ]
+          },
+          {
+            "name": "Evolv AI Economy",
+            "values": [
+              248,
+              267,
+              289,
+              241,
+              200
+            ]
+          },
+          {
+            "name": "Bimodal and Accessories",
+            "values": [
+              186,
+              202,
+              219,
+              175,
+              152
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "86%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "348"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,668,932"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "842"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$134,456"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              74,
+              79,
+              76,
+              82,
+              71,
+              77,
+              75,
+              80,
+              78,
+              73,
+              81,
+              76,
+              79,
+              75,
+              82,
+              74,
+              78,
+              80,
+              77,
+              75,
+              79,
+              76,
+              81,
+              78,
+              75,
+              72,
+              79,
+              76,
+              74,
+              78,
+              75,
+              79,
+              168,
+              182,
+              175,
+              191,
+              179,
+              185,
+              188,
+              181,
+              176,
+              189,
+              183,
+              177,
+              186,
+              179,
+              182,
+              185,
+              180
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,156"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "714"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "62%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "691"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Hearing Aid Pricing and Financing",
+            "values": [
+              8,
+              11,
+              9,
+              2,
+              10,
+              12
+            ]
+          },
+          {
+            "name": "Rechargeable vs Disposable Models",
+            "values": [
+              6,
+              8,
+              5,
+              1,
+              7,
+              9
+            ]
+          },
+          {
+            "name": "Invisible and Custom Fit Options",
+            "values": [
+              7,
+              9,
+              6,
+              3,
+              8,
+              10
+            ]
+          },
+          {
+            "name": "Provider Location and Availability",
+            "values": [
+              9,
+              10,
+              7,
+              2,
+              9,
+              11
+            ]
+          },
+          {
+            "name": "Online Hearing Test and Assessment",
+            "values": [
+              5,
+              7,
+              4,
+              1,
+              6,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "35,119"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "25,385"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Booked (Count)",
+            "value": "15,651"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$38,399,485"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Jessica Volkov",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "David Ramirez",
+              "value": 242,
+              "display": "242"
+            },
+            {
+              "name": "Patricia O'Brien",
+              "value": 165,
+              "display": "165"
+            },
+            {
+              "name": "Thomas Keller",
+              "value": 203,
+              "display": "203"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              156,
+              189,
+              201,
+              218,
+              245
+            ]
+          },
+          {
+            "name": "James Richardson",
+            "values": [
+              142,
+              167,
+              189,
+              214,
+              238
+            ]
+          },
+          {
+            "name": "Amanda Torres",
+            "values": [
+              138,
+              161,
+              184,
+              209,
+              231
+            ]
+          },
+          {
+            "name": "Robert Chen",
+            "values": [
+              147,
+              173,
+              198,
+              221,
+              252
+            ]
+          },
+          {
+            "name": "Elena Vasquez",
+            "values": [
+              151,
+              179,
+              205,
+              228,
+              267
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Jessica Volkov",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "David Ramirez",
+              "value": 55.1,
+              "display": "55.1%"
+            },
+            {
+              "name": "Patricia O'Brien",
+              "value": 57.3,
+              "display": "57.3%"
+            },
+            {
+              "name": "Thomas Keller",
+              "value": 52.9,
+              "display": "52.9%"
+            },
+            {
+              "name": "Monica Shelton",
+              "value": 58.6,
+              "display": "58.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "54.2%",
+                "28%",
+                "$961,485",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Jessica Volkov",
+                "56.8%",
+                "30%",
+                "$1,094,627",
+                "1,501"
+              ]
+            },
+            {
+              "cells": [
+                "David Ramirez",
+                "55.1%",
+                "29%",
+                "$1,027,156",
+                "1,445"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia O'Brien",
+                "57.3%",
+                "31%",
+                "$1,128,893",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Keller",
+                "52.9%",
+                "26%",
+                "$912,751",
+                "1,389"
+              ]
+            },
+            {
+              "cells": [
+                "Monica Shelton",
+                "58.6%",
+                "32%",
+                "$1,162,418",
+                "1,478"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Mitchell",
+              "value": 92.4,
+              "display": "92.4%"
+            },
+            {
+              "name": "James Richardson",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "Amanda Torres",
+              "value": 91.2,
+              "display": "91.2%"
+            },
+            {
+              "name": "Robert Chen",
+              "value": 93.8,
+              "display": "93.8%"
+            },
+            {
+              "name": "Elena Vasquez",
+              "value": 90.6,
+              "display": "90.6%"
+            },
+            {
+              "name": "Daniel Hoffmann",
+              "value": 87.3,
+              "display": "87.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "92.4%",
+                "66%",
+                "$2,156,847",
+                "1,548"
+              ]
+            },
+            {
+              "cells": [
+                "James Richardson",
+                "89.7%",
+                "62%",
+                "$1,876,523",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Torres",
+                "91.2%",
+                "65%",
+                "$2,034,691",
+                "1,501"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Chen",
+                "93.8%",
+                "67%",
+                "$2,198,154",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "Elena Vasquez",
+                "90.6%",
+                "64%",
+                "$2,012,387",
+                "1,445"
+              ]
+            },
+            {
+              "cells": [
+                "Daniel Hoffmann",
+                "87.3%",
+                "59%",
+                "$1,757,814",
+                "1,523"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Booked (Count)",
+        "rightMax": 800,
+        "rightTicks": [
+          0,
+          200,
+          400,
+          600,
+          800
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 580
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 556
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 518
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 494
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 430
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 452
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 499
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 519
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 578
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 560
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 505
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 488
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 434
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 448
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 511
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 526
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 573
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 564
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 494
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 479
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 441
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 445
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 520
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 537
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 565
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 565
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 487
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 467
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 448
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 446
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 522
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1800000,
+        "rightTicks": [
+          0,
+          600000,
+          1200000,
+          1800000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1423435
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1364298
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1270439
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1212244
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 1055480
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 1107698
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1223642
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1271876
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1418149
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1374983
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1238400
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1196938
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 1065073
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 1097839
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1252776
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1290950
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1404945
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1383080
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1212811
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 1174343
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 1081060
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 1092393
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1274369
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1316612
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1387096
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1385079
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 1195457
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 1146252
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 1099805
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 1094502
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1287461
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "38,173"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:47"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,054"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,290"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "82%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "81%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "80%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Martinez",
+                "412",
+                "87%",
+                "83%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "589",
+                "84%",
+                "80%",
+                "79%"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Thompson",
+                "418",
+                "85%",
+                "81%",
+                "79%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "38,173 calls",
+      "pagerLabel": "1 of 3,817",
+      "calls": [
+        {
+          "time": "1/6/26 9:14 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 11:32 am",
+          "id": "A21C-4E9B0176AC38"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C93D-2F7A5510BE64"
+        },
+        {
+          "time": "1/14/26 1:07 pm",
+          "id": "D48E-6C1900A2FF71"
+        },
+        {
+          "time": "1/16/26 8:52 am",
+          "id": "B72F-93AD00417C55"
+        },
+        {
+          "time": "1/20/26 3:26 pm",
+          "id": "E15A-70DC00B98F22"
+        },
+        {
+          "time": "1/22/26 12:19 pm",
+          "id": "9F60-18BE00539D47"
+        },
+        {
+          "time": "1/26/26 2:48 pm",
+          "id": "7A34-C50200E61B93"
+        },
+        {
+          "time": "1/28/26 4:33 pm",
+          "id": "84C1-2ADF009075E0"
+        },
+        {
+          "time": "1/30/26 10:05 am",
+          "id": "6D29-B41700F3C88A"
+        }
+      ],
+      "duration": "2:31",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling Starkey Hearing, this is Danielle. How can I help you hear better today?",
+          "highlights": [
+            "Thank you for calling Starkey Hearing",
+            "hear better today"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Danielle. My name is Robert Callahan and I think it's finally time I looked into hearing aids. I keep missing what my grandkids say.",
+          "highlights": [
+            "Robert Callahan"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "I'm glad you reached out, Robert. That's exactly what we help with. Is this the first time you've looked into hearing aids?",
+          "highlights": [
+            "first time you've looked into hearing aids"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:25",
+          "text": "Yes, first time. I've never worn them before. I mostly struggle in noisy places, restaurants, family dinners, that kind of thing.",
+          "highlights": [
+            "first time",
+            "noisy places"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:34",
+          "text": "That's very common. For busy, noisy settings our Genesis AI and the newer Edge AI platforms do a great job separating speech from background noise. Are you looking for something discreet, or is that less of a concern?",
+          "highlights": [
+            "Genesis AI",
+            "Edge AI"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:47",
+          "text": "Discreet would be nice, but honestly what does something like that run? I want to keep it manageable, I'm on a fixed income.",
+          "highlights": [
+            "what does something like that run",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:57",
+          "text": "Absolutely, and I want to be upfront with you. Depending on the technology level, a pair can range from around $2,500 up to $7,000. The Genesis AI 16 is a wonderful mid-tier option, and we also have financing so you can spread the cost monthly.",
+          "highlights": [
+            "Genesis AI 16",
+            "financing"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:11",
+          "text": "Okay. See, the place across town quoted me on some off-brand pair for a lot less, but I've heard mixed things about them.",
+          "highlights": [
+            "place across town quoted me",
+            "off-brand pair for a lot less"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:21",
+          "text": "I understand shopping around, and I'd encourage it. One thing I'll mention is Starkey is the only major brand designed and built here in America, in Minnesota, and our aids come with a full year of follow-up care, cleanings, and adjustments included. That service piece is where a lot of the value lives.",
+          "highlights": [
+            "designed and built here in America",
+            "full year of follow-up care"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:37",
+          "text": "That's good to know. I'd want to talk it over with my wife before I commit to anything, though.",
+          "highlights": [
+            "talk it over with my wife before I commit"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:44",
+          "text": "Of course, and there's no pressure at all. Every fitting includes a 30-day trial, so nothing is locked in. The best next step is a consultation with a provider near you, which includes a full hearing evaluation at no cost.",
+          "highlights": [
+            "30-day trial",
+            "consultation with a provider",
+            "no cost"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:58",
+          "text": "That sounds fair. Can you set that up? I'm over in the Eden Prairie area.",
+          "highlights": [
+            "set that up"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:04",
+          "text": "I sure can. We have a provider right in Eden Prairie with an opening this Thursday at 10 AM. Shall I book that for you and your wife?",
+          "highlights": [
+            "Thursday at 10 AM",
+            "book that for you"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:13",
+          "text": "Thursday at 10 works great. Let me give you my number, it's 952-555-0143.",
+          "highlights": [
+            "Thursday at 10 works",
+            "952-555-0143"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:21",
+          "text": "Perfect, I've got you and your wife booked Thursday at 10 AM in Eden Prairie, and you'll get a reminder text. Anything else I can help with, Robert?",
+          "highlights": [
+            "booked Thursday at 10 AM",
+            "reminder text"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:28",
+          "text": "No, that covers it. Thank you, Danielle.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:31",
+          "text": "My pleasure. We look forward to helping you hear your grandkids again. Take care and see you Thursday.",
+          "highlights": [
+            "look forward to helping you hear",
+            "see you Thursday"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Product Interest: Genesis AI",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Product Interest: Edge AI",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Financing Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity Raised",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Robert Callahan, a first-time hearing aid shopper, called Starkey Hearing because he struggles to hear his grandchildren and conversations in noisy restaurants. Agent Danielle recommended the Genesis AI 16 as a mid-tier option and mentioned the flagship Edge AI platform for noisy environments, addressing his budget concerns with financing and the value of included follow-up care. She handled his competitor comparison and his need to consult his wife by highlighting the no-cost evaluation and 30-day trial. A consultation with an Eden Prairie provider was scheduled for Thursday at 10 AM for Robert and his wife.",
+        "keyPoints": [
+          "New patient, first time considering hearing aids",
+          "Primary need is speech clarity in noisy restaurants and family gatherings",
+          "Recommended Genesis AI 16 with Edge AI mentioned for noisy settings",
+          "Price and fixed-income concerns addressed with financing and included care",
+          "Consultation booked Thursday at 10 AM in Eden Prairie for caller and his wife",
+          "Captured contact number 952-555-0143"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM Eden Prairie"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "24,049 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,405",
+      "conversations": [
+        {
+          "id": "C8A2-7F14E6B92C3A",
+          "time": "1/17/26 2:43 pm",
+          "active": true,
+          "date": "January 17, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:43 PM",
+              "text": "Hi, this is Sarah from Starkey Hearing. We have a special offer on Genesis AI hearing aids this month. Are you interested in learning more about hearing solutions?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:44 PM",
+              "text": "Yes, I've been thinking about getting hearing aids for a while now."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:45 PM",
+              "text": "Great. Just to help me find the right fit for you, have you ever worn hearing aids before or would this be your first pair?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:46 PM",
+              "text": "First time. I'm not sure what to expect."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "No problem, we'll walk you through everything. What's the main reason you're considering hearing aids today? Is it trouble hearing conversations, background noise, or something else?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "I struggle most in noisy places like restaurants. My family says I turn the TV up too loud too."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "That's really common and our Genesis AI platform is excellent for exactly that. It has advanced noise reduction. Are you looking for something discreet, or do you prefer a style that's easier to handle?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:51 PM",
+              "text": "Discreet would be nice, but I also want something reliable."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:52 PM",
+              "text": "Perfect. I'd recommend our Genesis AI 20 in a RIC style. It balances performance and discretion beautifully. We have an opening with our provider in your area this Thursday at 10 AM for a free consultation and hearing test. Does that work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:53 PM",
+              "text": "This Thursday? Let me check my calendar. Yes, 10 AM works."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:54 PM",
+              "text": "Excellent. We've scheduled your consultation for Thursday, January 23rd at 10 AM at our clinic in Portland. You'll get a complete hearing evaluation and see how the Genesis AI performs for you. Your confirmation code is HE77429. Is the best callback number 503 555 0147?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:55 PM",
+              "text": "Yes, that's correct."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:56 PM",
+              "text": "Perfect. We'll call you at 503 555 0147 the morning of your appointment as a reminder. Looking forward to helping you hear better. Any questions?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:57 PM",
+              "text": "No, I think I'm all set. Thanks."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product: Genesis AI 20",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Environment: Noisy Situations",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Style Preference: Discreet",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Provider Location: Portland, OR",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C8A2-7F14E6B92C3A",
+            "smsStartTime": "1/17/26 2:43 pm",
+            "destinationPhone": "503-555-0147",
+            "totalMessages": "15",
+            "source": "503-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "877-936-2933",
+            "repeatCaller": "No",
+            "city": "Portland",
+            "region": "OR",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C5D7-2A9BC8F14E62",
+          "time": "1/18/26 11:22 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C5D7-2A9BC8F14E62",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C4F6-1D8E7A3B9C51",
+          "time": "1/22/26 4:17 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C4F6-1D8E7A3B9C51",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C9B3-5E2C6F7A1D84",
+          "time": "1/28/26 9:31 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C9B3-5E2C6F7A1D84",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "38,173 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,817",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thank you for calling Starkey Hearing. My name is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Hi Marcus. Yeah, I'm interested in learning more about your hearing aids. I've been having trouble hearing conversations at work."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "I'm sorry to hear that. We'd love to help you get back to hearing clearly. Can I ask, have you had a hearing test done before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "No, I haven't. This is all pretty new to me actually."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "No problem at all. That's exactly what we're here for. Our audiologists can do a complete hearing evaluation for you. Are you looking for something discreet, or would you prefer a more traditional style?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Discreet would be great. I don't want people to notice I'm wearing them."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Perfect. We have some amazing invisible options, including our Signature Series, which is our tiniest hearing aid. Many patients absolutely love them. What area are you located in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "I'm in Denver, Colorado."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:20 PM",
+              "text": "Wonderful. We have excellent providers in Denver who can help you try on our invisible models and find exactly what works for you. Our hearing aids typically run between two thousand and seven thousand per pair, depending on the technology level. Does that sound like something you'd want to explore?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:21 PM",
+              "text": "Yeah, that sounds reasonable. How soon could I get in?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:22 PM",
+              "text": "Great question. I can get you scheduled for a consultation with one of our Denver providers. How about Tuesday, January twenty-first at two o'clock PM?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:23 PM",
+              "text": "That works perfectly for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:24 PM",
+              "text": "Excellent. Your consultation is scheduled for Tuesday, January twenty-first at two PM with one of our audiologists in Denver. They'll do your hearing test and show you all our invisible options. Just a reminder, you can reach us back at eight seven seven, nine three six, twenty-nine thirty-three if you need to reschedule. Does that sound good?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:25 PM",
+              "text": "Perfect. Thank you so much, Marcus."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:26 PM",
+              "text": "You're very welcome. We look forward to helping you hear better and live better. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Signature Series IIC",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Service Area Confirmed: Denver, CO",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Budget Discussed: $2K-$7K Range",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "5:47",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "720-555-0847",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B823-4D7AE821B5C6",
+          "time": "1/18/26 3:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B823-4D7AE821B5C6",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C956-5F8BD923C7D8",
+          "time": "1/22/26 2:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C956-5F8BD923C7D8",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D184-6G9CE034D8E9",
+          "time": "1/28/26 1:32 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D184-6G9CE034D8E9",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Introduce yourself as Starkey Hearing's AI agent here to help build a personalized hearing aid quote, mention that many providers currently include a free online hearing test plus a 30-day risk-free trial, and ask if they would like to get started.",
+        "Qualify one question at a time: Ask the key questions one at a time, covering whether they need one aid or a pair, the preferred style (RIC, BTE, or invisible custom IIC), the technology platform or features of interest (Edge AI, Genesis AI, Signature Series, rechargeable, or Bluetooth), their timeline for treatment, and finally their ZIP code so we can confirm a provider near them.",
+        "Estimate then book: Confirm we have a provider serving their ZIP, share a preliminary price range based on the platform and style they chose, explain that a hearing specialist provides an exact quote after evaluation, propose a specific day and time for a consultation, and confirm they will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Starkey_Hearing_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Hearing Aids & Technology",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Provider",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Free Online Hearing Test",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"warranty\",\"question\":\"How long is the warranty on my Genesis AI hearing aids?\",\"answer\":\"Genesis AI 2400, 2000, and 1600 level devices come with a 3-year manufacturer warranty, while 1200 level devices carry a 2-year warranty. Your provider can confirm your exact coverage during a follow-up visit.\"},{\"topic\":\"reschedule\",\"question\":\"I need to move my follow-up care appointment, can you help?\",\"answer\":\"Absolutely, I can help you reschedule your follow-up care visit with your provider. Let me know a day and time that works and I will get it set up.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How much do Starkey hearing aids cost?",
+              "answer": "Starkey hearing aids generally range from about $2,000 to $7,000 per pair depending on the platform and features you choose. A specialist gives you an exact quote at your consultation, so let's get one scheduled near you."
+            },
+            {
+              "question": "What is the newest Starkey hearing aid?",
+              "answer": "Edge AI RIC RT, launched in October 2024, is the newest platform with Deep Neural Network sound processing and Edge Mode+. I can book you a consultation to try it in person."
+            },
+            {
+              "question": "Do you have invisible hearing aids?",
+              "answer": "Yes, the Signature Series IIC is Starkey's tiniest hearing aid built on the Genesis AI platform for a truly discreet fit. Let's schedule a consultation so a specialist can confirm the right fit for your ears."
+            },
+            {
+              "question": "Are Starkey hearing aids made in America?",
+              "answer": "Yes, Starkey is the only major brand designed and built in America at its facility in Eden Prairie, Minnesota. I would be glad to book a consultation so you can learn more."
+            },
+            {
+              "question": "Do Starkey hearing aids connect to my phone?",
+              "answer": "Many models, including Edge AI and Genesis AI, offer Bluetooth streaming and work with the free My Starkey App. A specialist can show you the streaming features during a consultation."
+            },
+            {
+              "question": "Are there rechargeable options?",
+              "answer": "Yes, Genesis AI and Edge AI offer lithium-ion rechargeable models that come with one standard charger. Let's set up a consultation to find the best rechargeable option for you."
+            },
+            {
+              "question": "Can Starkey hearing aids help with tinnitus?",
+              "answer": "Starkey offers hearing solutions designed to help manage tinnitus, and a specialist can recommend the right approach after an evaluation. I can book that consultation for you now."
+            },
+            {
+              "question": "What is included in the price?",
+              "answer": "Provider pricing typically bundles your consultation, fitting and orientation, real-ear measurements, a 30-day trial, and one year of follow-up care for adjustments, cleanings, and repairs. A specialist confirms the full details at your appointment."
+            },
+            {
+              "question": "Is there a free hearing test?",
+              "answer": "Yes, you can take a free online hearing test, and your provider can perform a complete evaluation in person. Let's schedule that visit near you."
+            },
+            {
+              "question": "Do you offer financing?",
+              "answer": "Many providers offer financing options to make hearing aids more affordable. A specialist can walk you through the plans available in your area at your consultation."
+            },
+            {
+              "question": "What is the difference between Genesis AI 24 and Genesis AI 16?",
+              "answer": "Genesis AI 24 is the top tier with the most advanced AI-powered processing, while Genesis AI 16 is a mid-tier option with 16 channels and Edge Mode+. A specialist can help you compare them during a consultation."
+            },
+            {
+              "question": "How long does a battery last on the Signature Series?",
+              "answer": "The Signature Series IIC uses a size 10 battery that lasts up to 7 days. I can book a consultation so a specialist can confirm what fits your lifestyle."
+            },
+            {
+              "question": "Do you sell hearing aid batteries?",
+              "answer": "Yes, disposable zinc-air batteries in sizes 10, 13, 312, and 675 are available for non-rechargeable models. Your provider can supply them and recommend the right size at your visit."
+            },
+            {
+              "question": "What accessories are available?",
+              "answer": "Starkey offers wireless accessories like a remote microphone and a TV streamer that send audio directly to your hearing aids. A specialist can demonstrate them at your consultation."
+            },
+            {
+              "question": "Are the hearing aids waterproof?",
+              "answer": "Several models, including all Signature Series aids, are IP68 rated for water and dust resistance. Let's schedule a consultation to review the best option for you."
+            },
+            {
+              "question": "Can I use a Starkey aid with my cochlear implant?",
+              "answer": "Yes, the Bimodal Hearing Solution pairs a Starkey aid with a cochlear implant on the opposite ear. A specialist can quote and fit this for you during a consultation."
+            },
+            {
+              "question": "What is Edge Mode+?",
+              "answer": "Edge Mode+ uses AI to make speech clearer at the press of a button in challenging environments. A specialist can demonstrate it during your consultation."
+            },
+            {
+              "question": "Do you have hearing aids for seniors?",
+              "answer": "Yes, Starkey offers a full range of platforms and styles suited for active listeners and quieter lifestyles alike. Let's book a consultation so a specialist can recommend the right fit."
+            },
+            {
+              "question": "How do I find a provider near me?",
+              "answer": "I can help you find a Starkey provider in your area right now. Just share your ZIP code and I will get a consultation scheduled for you."
+            },
+            {
+              "question": "What is the My Starkey App?",
+              "answer": "The My Starkey App is a free control center for Genesis and Edge AI hearing aids that goes beyond the onboard push-buttons. A specialist can help you set it up at your appointment."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the consultation\",\"follow_up_message\":\"Great, I have a Starkey provider near you with openings this week. Would Wednesday at 10:00 AM or Thursday at 2:00 PM work better for your hearing consultation? You will get a reminder text with a number to call before your visit.\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Based on the rechargeable Genesis AI pair you mentioned, a preliminary range is roughly $4,800 to $7,500, though a specialist confirms the exact price after your evaluation. Let's book a consultation so you can get a precise quote, does tomorrow afternoon work?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Starkey Hearing's AI agent. I can help you build a personalized hearing aid quote and get you in with a specialist near you. Would you like to get started?",
+        "goal": "Qualify the patient's hearing needs and book an in-office hearing consultation with a local Starkey provider.",
+        "bookingType": "in-office hearing consultation",
+        "offer": "Free online hearing test plus a 30-day risk-free trial when you book today",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "Are you looking for one hearing aid or a pair?",
+          "Which style interests you most: behind-the-ear RIC, BTE, or an invisible custom IIC?",
+          "Are you interested in a specific platform or feature like Edge AI, Genesis AI, Signature Series, rechargeable, or Bluetooth?",
+          "What is your timeline for getting fitted with new hearing aids?",
+          "What is your ZIP code so I can confirm a Starkey provider serving your area?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:32 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:32 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:32 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Starkey Hearing",
+      "callerName": "Margaret Chen",
+      "callerPhone": "(651) 555-0187",
+      "campaign": "Genesis AI Rechargeable, Eden Prairie Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$5,240",
+      "googleSearch": "rechargeable hearing aids near me",
+      "websiteSearch": "Genesis AI 20 price Eden Prairie",
+      "callingWebpage": "/hearing-aids/rechargeable",
+      "products": "Genesis AI 20, My Starkey App",
+      "cartId": "SH-7392R",
+      "serviceable": "Yes",
+      "email": "margaret.chen@email.com",
+      "street": "4521 Westwood Lane",
+      "city": "Eden Prairie",
+      "state": "MN",
+      "zip": "55346",
+      "digitalJourney": "/home › /hearing-aids › /hearing-aids/rechargeable › /hearing-aids/rechargeable/genesis-ai-20",
+      "intent": "Patient seeking rechargeable hearing aids with advanced noise reduction and wants to schedule in-home fitting.",
+      "coverage": "ZIP 55346 confirmed, Eden Prairie serviceable",
+      "switchIntent": "High, currently using outdated analog aids and frustrated with battery changes, ready to upgrade this month.",
+      "greeting": "Hi Margaret, this is Sarah from Starkey Hearing. I see you were looking at our Genesis AI 20 rechargeable models. I'd love to book you for a free consultation with one of our audiologists. Can we set something up this week for an in-home fitting?"
+    },
+    "smsScreenpop": {
+      "brandName": "Starkey Hearing",
+      "callerName": "James Rodriguez",
+      "callerPhone": "(720) 555-0243",
+      "campaign": "Signature Series Invisible, Denver Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$3,875",
+      "googleSearch": "smallest invisible hearing aids Denver",
+      "websiteSearch": "Signature Series IIC custom hearing aids cost",
+      "callingWebpage": "/hearing-aids/custom",
+      "products": "Signature Series IIC, Wireless Accessories",
+      "cartId": "SH-5621T",
+      "serviceable": "Yes",
+      "email": "james.rodriguez@email.com",
+      "street": "2847 Speer Boulevard",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80211",
+      "digitalJourney": "/home › /hearing-aids › /hearing-aids/custom › /find-a-provider",
+      "intent": "Patient seeking discreet custom invisible hearing aids for professional appearance and wants same-day provider referral.",
+      "coverage": "ZIP 80211 confirmed, Denver serviceable",
+      "appointment": "In-home consultation with audiologist specialist, Thursday July 17, 2:00 PM",
+      "greeting": "Hi James, it's Tom from Starkey Hearing. Great news, we've booked your in-home consultation for Thursday at 2 PM with our local specialist. They'll fit you for our Signature Series invisible aids. Do you have any questions before then, or need directions to your provider?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Starkey Hearing",
+      "brandDomain": "www.starkey.com",
+      "brandIcon": "👂",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Hear Better, Live Better",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "best rechargeable hearing aids",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/hearing-aids/rechargeable",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Genesis AI 24, Edge AI RIC RT",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consult_new_fit",
+          "name": "Consultation, New Fitting"
+        },
+        {
+          "id": "existing_support",
+          "name": "Existing Patient Support"
+        },
+        {
+          "id": "provider_inquiry",
+          "name": "Provider Locator Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there. Thanks for calling Starkey Hearing. I see you've been looking at our rechargeable options. Are you interested in exploring a new hearing aid fitting today?",
+          "sigs": [],
+          "q": [
+            0.3,
+            0.45,
+            0.25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, I'm really interested in the Genesis AI models. I currently have an older Starkey pair, and I want something with better battery life and Bluetooth streaming.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "<strong>Genesis AI</strong> upgrade interest"
+            },
+            {
+              "c": "green",
+              "t": "<strong>Existing patient</strong> seeking rechargeable"
+            }
+          ],
+          "q": [
+            0.55,
+            0.25,
+            0.2
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's great. The Genesis AI 24 and Genesis AI 20 are both excellent rechargeable platforms with the latest AI sound processing. Are you looking to get fitted soon, and do you have a preferred Starkey provider in the Santa Barbara area?",
+          "sigs": [],
+          "q": [
+            0.72,
+            0.12,
+            0.16
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I want to schedule a fitting as soon as possible. I haven't used a provider in a while, so I'll need help finding one nearby.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Ready to book <strong>consultation and fitting</strong>"
+            },
+            {
+              "c": "orange",
+              "t": "Needs <strong>local provider referral</strong>"
+            }
+          ],
+          "q": [
+            0.88,
+            0.07,
+            0.05
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm connecting you with our consultation team. They'll help you find an authorized Starkey provider in Santa Barbara, schedule your fitting appointment, and walk you through the Genesis AI models to find the right fit for your lifestyle.",
+          "sigs": [],
+          "q": [
+            0.96,
+            0.02,
+            0.02
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get you scheduled (Agent)\", \"book your hearing consultation (Agent)\", \"come in for a hearing test (Agent)\", \"I'll set the appointment with your provider (Agent)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "01/08/26 2:47 pm"
+        },
+        {
+          "name": "Bluetooth Streaming Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"stream from my phone (Caller)\", \"connect to Bluetooth (Caller)\", \"hands-free calling (Caller)\", \"pair with my iPhone (Caller)\"])",
+          "createdAt": "05/02/25 11:38 am",
+          "updatedAt": "12/19/25 4:05 pm"
+        },
+        {
+          "name": "Call Wrap-Up Quality",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Call Wrap-Up Quality] < 60 and duration > 45 sec",
+          "createdAt": "04/09/25 8:20 am",
+          "updatedAt": "01/11/26 10:15 am"
+        },
+        {
+          "name": "Competitor Comparison",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"compare to Phonak (Caller)\", \"I looked at Oticon (Caller)\", \"how does this beat Widex (Caller)\", \"Costco hearing aids (Caller)\"])",
+          "createdAt": "06/17/25 1:44 pm",
+          "updatedAt": "12/28/25 9:33 am"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"free online hearing test (Agent)\", \"find a provider near you (Agent)\", \"schedule a fitting (Caller)\", \"talk to an audiologist (Caller)\"])",
+          "createdAt": "03/28/25 3:56 pm",
+          "updatedAt": "01/06/26 11:52 am"
+        },
+        {
+          "name": "Empathy and Rapport",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy and Rapport] < 60 and duration > 45 sec",
+          "createdAt": "04/22/25 10:09 am",
+          "updatedAt": "01/09/26 3:21 pm"
+        },
+        {
+          "name": "Financing Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"payment plan (Caller)\", \"monthly financing (Caller)\", \"does insurance cover this (Caller)\", \"break up the cost (Caller)\"])",
+          "createdAt": "07/05/25 2:30 pm",
+          "updatedAt": "12/22/25 1:18 pm"
+        },
+        {
+          "name": "Needs Assessment Completed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Needs Assessment Completed] < 60 and duration > 45 sec",
+          "createdAt": "05/19/25 9:47 am",
+          "updatedAt": "01/12/26 8:40 am"
+        },
+        {
+          "name": "Price Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"too expensive (Caller)\", \"cheaper option (Caller)\", \"what's the price per pair (Caller)\", \"entry-level model (Caller)\"])",
+          "createdAt": "08/11/25 12:05 pm",
+          "updatedAt": "01/03/26 5:29 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the Genesis AI 24 runs about (Agent)\", \"Edge AI is priced around (Agent)\", \"your estimate for the pair (Agent)\", \"Signature Series would be (Agent)\"])",
+          "createdAt": "09/02/25 10:52 am",
+          "updatedAt": "01/07/26 4:14 pm"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,5388 @@
+{
+  "id": "aire-serv",
+  "customerName": "Aire Serv",
+  "websiteUrl": "https://www.aireserv.com",
+  "brandDomain": "aireserv.com",
+  "networkName": "Invoca for HVAC",
+  "industry": "Residential & Commercial HVAC Services",
+  "bookingTerm": "Service Appointment",
+  "customerNoun": "Customer",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 20000,
+      "yTicks": [
+        4000,
+        8000,
+        12000,
+        16000,
+        20000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 14231
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 15842
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 13977
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 12568
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 13460
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Service Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Service Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AC Repair, Near Me [Geo]",
+          "marketingSearchTerm": "ac repair near me",
+          "landingPageUrl": "https://www.aireserv.com/ac-and-heating/air-conditioner-repair/?utm_source=google&utm_medium=cpc&utm_campaign=ac_repair_near_me",
+          "websiteJourney": "Home / Residential / AC and Heating / Air Conditioner Repair",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Emergency HVAC 24/7",
+          "marketingSearchTerm": "emergency hvac service 24 hour",
+          "landingPageUrl": "https://www.aireserv.com/emergency-hvac-services/?utm_source=google&utm_medium=cpc&utm_campaign=emergency_hvac_247",
+          "websiteJourney": "Home / Residential / Emergency HVAC Services",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Furnace Replacement Quote",
+          "marketingSearchTerm": "furnace repair cost",
+          "landingPageUrl": "https://www.aireserv.com/ac-and-heating/furnace/?utm_source=google&utm_medium=cpc&utm_campaign=furnace_replacement_quote",
+          "websiteJourney": "Home / Residential / AC and Heating / Furnace",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "AC Repair, Near Me [Geo]",
+          "marketingSearchTerm": "air conditioner not cooling",
+          "landingPageUrl": "https://www.aireserv.com/ac-and-heating/air-conditioner-repair/?utm_source=bing&utm_medium=cpc&utm_campaign=ac_repair_near_me",
+          "websiteJourney": "Home / Residential / AC and Heating / Air Conditioner Repair",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Heat Pump Install Financing",
+          "marketingSearchTerm": "heat pump replacement near me",
+          "landingPageUrl": "https://www.aireserv.com/ac-and-heating/heat-pump/?utm_source=google&utm_medium=cpc&utm_campaign=heat_pump_financing",
+          "websiteJourney": "Home / Residential / AC and Heating / Heat Pump Repair & Install",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Google Guaranteed HVAC [City]",
+          "marketingSearchTerm": "aire serv near me",
+          "landingPageUrl": "https://www.aireserv.com/locate/?utm_source=google&utm_medium=lsa&utm_campaign=google_guaranteed_hvac",
+          "websiteJourney": "Home / Find My Local Aire Serv",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Furnace Replacement Quote",
+          "marketingSearchTerm": "furnace won't turn on",
+          "landingPageUrl": "https://www.aireserv.com/ac-and-heating/furnace/?utm_source=bing&utm_medium=cpc&utm_campaign=furnace_replacement_quote",
+          "websiteJourney": "Home / Residential / AC and Heating / Furnace",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Mini-Split Install Quote",
+          "marketingSearchTerm": "mini split installation quote",
+          "landingPageUrl": "https://www.aireserv.com/ac-and-heating/mini-split/?utm_source=google&utm_medium=cpc&utm_campaign=mini_split_quote",
+          "websiteJourney": "Home / Residential / AC and Heating / Mini-Split Repair & Install",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Seasonal HVAC Maintenance Tips",
+          "marketingSearchTerm": "ac tune up special",
+          "landingPageUrl": "https://www.aireserv.com/maintenance/tune-ups-maintenance/?utm_source=organic&utm_medium=seo&utm_campaign=seasonal_maintenance_tips",
+          "websiteJourney": "Home / Residential / Maintenance / Tune-ups & Maintenance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Advantage Plan Membership",
+          "marketingSearchTerm": "hvac maintenance plan",
+          "landingPageUrl": "https://www.aireserv.com/maintenance/advantage-plan/?utm_source=google&utm_medium=cpc&utm_campaign=advantage_plan",
+          "websiteJourney": "Home / Residential / Maintenance / Advantage Plan Membership",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Improve Your Indoor Air Quality",
+          "marketingSearchTerm": "air duct cleaning near me",
+          "landingPageUrl": "https://www.aireserv.com/air-purification/air-filters/?utm_source=organic&utm_medium=seo&utm_campaign=improve_indoor_air_quality",
+          "websiteJourney": "Home / Residential / AC and Heating / Air Ducts / Air Duct Cleaning",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Smart Thermostat Offer",
+          "marketingSearchTerm": "smart thermostat installation",
+          "landingPageUrl": "https://www.aireserv.com/air-purification/thermostat/?utm_source=google&utm_medium=cpc&utm_campaign=smart_thermostat_offer",
+          "websiteJourney": "Home / Residential / Air Purification and Indoor Air Quality / Thermostat",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Buy Now, Pay Over Time on New Systems",
+          "marketingSearchTerm": "hvac financing bad credit",
+          "landingPageUrl": "https://www.aireserv.com/financing/?utm_source=bing&utm_medium=cpc&utm_campaign=financing_new_systems",
+          "websiteJourney": "Home / Financing",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Water Heater Resource Hub",
+          "marketingSearchTerm": "water heater replacement",
+          "landingPageUrl": "https://www.aireserv.com/other-services/water-heaters/?utm_source=organic&utm_medium=seo&utm_campaign=water_heater_hub",
+          "websiteJourney": "Home / Residential / Other Services / Water Heaters",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Winter Furnace Ready",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.aireserv.com/ac-and-heating/furnace/?utm_source=facebook&utm_medium=social&utm_campaign=winter_furnace_ready",
+          "websiteJourney": "Home / Residential / AC and Heating / Furnace",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Meet Your Local Aire Serv",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.aireserv.com/locate/?utm_source=instagram&utm_medium=social&utm_campaign=meet_your_local_aire_serv",
+          "websiteJourney": "Home / Find My Local Aire Serv",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Tax Credits & Rebates (IRA)",
+          "marketingSearchTerm": "hvac tax credit rebate",
+          "landingPageUrl": "https://www.aireserv.com/special-offers/?utm_source=google&utm_medium=cpc&utm_campaign=ira_tax_credits",
+          "websiteJourney": "Home / Special Offers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Expert Tips Blog Hub",
+          "marketingSearchTerm": "dryer vent cleaning",
+          "landingPageUrl": "https://www.aireserv.com/other-services/dryer-vent-cleaning/?utm_source=organic&utm_medium=seo&utm_campaign=expert_tips_blog",
+          "websiteJourney": "Home / Residential / Other Services / Dryer Vent Cleaning",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Beat the Summer Heat",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.aireserv.com/ac-and-heating/air-conditioner-repair/?utm_source=facebook&utm_medium=social&utm_campaign=beat_the_summer_heat",
+          "websiteJourney": "Home / Residential / AC and Heating / Air Conditioner Repair",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Indoor Air Quality Packages",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.aireserv.com/air-purification/air-filters/?utm_source=instagram&utm_medium=social&utm_campaign=indoor_air_quality_packages",
+          "websiteJourney": "Home / Residential / Air Purification and Indoor Air Quality / Air Filters",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Commercial HVAC Resource Hub",
+          "marketingSearchTerm": "commercial hvac property managers",
+          "landingPageUrl": "https://www.aireserv.com/commercial/ac-and-heating/?utm_source=organic&utm_medium=seo&utm_campaign=commercial_hvac_hub",
+          "websiteJourney": "Home / Commercial / AC and Heating / Air Conditioner",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Boiler Replacement Quote",
+          "marketingSearchTerm": "boiler replacement near me",
+          "landingPageUrl": "https://www.aireserv.com/ac-and-heating/boiler/?utm_source=bing&utm_medium=cpc&utm_campaign=boiler_replacement_quote",
+          "websiteJourney": "Home / Residential / AC and Heating / Boiler",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Aire Serv)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "54,963"
+            },
+            {
+              "label": "Service Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Job Booked (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$35,559,363"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "8,794"
+            },
+            {
+              "label": "Billing Question (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Existing Appointment Change (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Careers Inquiry (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Service Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Service Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Quote Discussed (Percent)",
+              "value": "60%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Job Booked (Percent)",
+              "value": "35%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Service Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Service Call (Count)",
+            "values": [
+              6842,
+              10187,
+              9764,
+              10538,
+              8838
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              4913,
+              7284,
+              6951,
+              7502,
+              6391
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              978,
+              1452,
+              1389,
+              1501,
+              1276
+            ]
+          },
+          {
+            "name": "Job Booked (Count)",
+            "values": [
+              2847,
+              4238,
+              4067,
+              4391,
+              3694
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Job Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 54963,
+          "rows": [
+            {
+              "name": "Google Paid Search",
+              "metrics": [
+                "21,847",
+                "48%",
+                "28%",
+                "$11,195,586"
+              ]
+            },
+            {
+              "name": "Bing Paid Search",
+              "metrics": [
+                "13,204",
+                "52%",
+                "33%",
+                "$8,047,379"
+              ]
+            },
+            {
+              "name": "Local Services Ads",
+              "metrics": [
+                "9,458",
+                "56%",
+                "39%",
+                "$6,813,583"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "6,721",
+                "61%",
+                "46%",
+                "$5,710,924"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "3,733",
+                "67%",
+                "55%",
+                "$3,791,891"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Job Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 54963,
+          "rows": [
+            {
+              "name": "cpc",
+              "metrics": [
+                "24,918",
+                "47%",
+                "28%",
+                "$13,028,907"
+              ]
+            },
+            {
+              "name": "organic",
+              "metrics": [
+                "12,743",
+                "51%",
+                "33%",
+                "$7,905,635"
+              ]
+            },
+            {
+              "name": "lsa",
+              "metrics": [
+                "8,109",
+                "56%",
+                "39%",
+                "$5,981,061"
+              ]
+            },
+            {
+              "name": "email",
+              "metrics": [
+                "5,417",
+                "62%",
+                "46%",
+                "$4,740,724"
+              ]
+            },
+            {
+              "name": "social",
+              "metrics": [
+                "3,776",
+                "66%",
+                "54%",
+                "$3,903,036"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Job Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25742,
+          "rows": [
+            {
+              "name": "AC Repair Near Me [Geo]",
+              "metrics": [
+                "8,742",
+                "48%",
+                "29%",
+                "$4,682,145"
+              ]
+            },
+            {
+              "name": "Emergency HVAC 24/7",
+              "metrics": [
+                "6,318",
+                "52%",
+                "33%",
+                "$3,850,995"
+              ]
+            },
+            {
+              "name": "Furnace Replacement Quote",
+              "metrics": [
+                "4,987",
+                "57%",
+                "38%",
+                "$3,500,065"
+              ]
+            },
+            {
+              "name": "Heat Pump Install Financing",
+              "metrics": [
+                "3,564",
+                "62%",
+                "45%",
+                "$2,962,588"
+              ]
+            },
+            {
+              "name": "Beat the Summer Heat",
+              "metrics": [
+                "2,131",
+                "68%",
+                "56%",
+                "$2,203,471"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Job Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16871,
+          "rows": [
+            {
+              "name": "ac repair near me",
+              "metrics": [
+                "5,847",
+                "49%",
+                "30%",
+                "$3,239,638"
+              ]
+            },
+            {
+              "name": "emergency hvac service 24 hour",
+              "metrics": [
+                "4,213",
+                "53%",
+                "34%",
+                "$2,644,904"
+              ]
+            },
+            {
+              "name": "furnace repair cost",
+              "metrics": [
+                "3,156",
+                "58%",
+                "39%",
+                "$2,273,657"
+              ]
+            },
+            {
+              "name": "heat pump replacement near me",
+              "metrics": [
+                "2,271",
+                "63%",
+                "46%",
+                "$1,930,115"
+              ]
+            },
+            {
+              "name": "air duct cleaning near me",
+              "metrics": [
+                "1,384",
+                "69%",
+                "57%",
+                "$1,457,283"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Set (Industry) (Percent)",
+            "Job Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 54963,
+          "rows": [
+            {
+              "name": "Cooling (AC Repair & Install)",
+              "metrics": [
+                "18,472",
+                "52%",
+                "27.0%",
+                "$10,223,417"
+              ]
+            },
+            {
+              "name": "Heating (Furnace, Heat Pump & Boiler)",
+              "metrics": [
+                "15,731",
+                "56%",
+                "32.1%",
+                "$10,701,684"
+              ]
+            },
+            {
+              "name": "Maintenance & Other Services",
+              "metrics": [
+                "9,104",
+                "61%",
+                "39.0%",
+                "$5,610,542"
+              ]
+            },
+            {
+              "name": "Indoor Air Quality & Purification",
+              "metrics": [
+                "6,428",
+                "64%",
+                "44.3%",
+                "$4,901,955"
+              ]
+            },
+            {
+              "name": "Air Ducts (Cleaning & Sealing)",
+              "metrics": [
+                "5,228",
+                "68%",
+                "53.6%",
+                "$4,121,765"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Job Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 54963,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "17,284",
+                "58%",
+                "30.0%",
+                "$9,695,912"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "13,921",
+                "61%",
+                "33.0%",
+                "$8,774,588"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "10,547",
+                "64%",
+                "37.0%",
+                "$7,121,183"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "8,116",
+                "66%",
+                "40.0%",
+                "$5,875,244"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "5,095",
+                "70%",
+                "45.3%",
+                "$4,092,436"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Job Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Cooling (AC Repair & Install)",
+            "values": [
+              941,
+              1003,
+              1047,
+              1022,
+              974
+            ]
+          },
+          {
+            "name": "Heating (Furnace, Heat Pump & Boiler)",
+            "values": [
+              1072,
+              1038,
+              1001,
+              987,
+              950
+            ]
+          },
+          {
+            "name": "Maintenance & Other Services",
+            "values": [
+              682,
+              719,
+              741,
+              728,
+              681
+            ]
+          },
+          {
+            "name": "Indoor Air Quality & Purification",
+            "values": [
+              548,
+              571,
+              592,
+              578,
+              561
+            ]
+          },
+          {
+            "name": "Air Ducts (Cleaning & Sealing)",
+            "values": [
+              531,
+              559,
+              582,
+              571,
+              558
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 54,963 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Delgado called for a quote on a full central AC installation after his 14-year-old unit failed. Oscar reviewed sizing, financing options, and the upfront pricing guarantee, then locked in a Service Appointment for the in-home assessment. Marcus was thrilled with the clear no hidden fees explanation.",
+          "date": "Jan 6, 2:42 PM",
+          "agent": "Oscar",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 87,
+          "summary": "Brenda Callahan phoned to book a seasonal furnace tune-up before a cold snap. Lila confirmed her address, explained the multi-point inspection, and scheduled a Service Appointment for the following morning. Brenda also asked about the Advantage Plan and appreciated the priority scheduling perk.",
+          "date": "Feb 11, 9:18 AM",
+          "agent": "Lila",
+          "duration": "2m 34s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 9,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 82,
+          "summary": "Anthony Reyes wanted a smart thermostat installation tied into his existing system. Rosey walked him through compatible models and app integration, then booked the Service Appointment. Anthony was pleased the installation could be bundled with his upcoming tune-up.",
+          "date": "Mar 4, 4:05 PM",
+          "agent": "Rosey",
+          "duration": "2m 07s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Priya Nair was a first-time caller interested in a ductless mini-split installation for a new home office addition. Lee collected her full contact details, ZIP code, and home layout notes, explained zoned room-by-room control, and scheduled the in-home consultation. Priya confirmed the Service Appointment and asked about financing.",
+          "date": "Apr 9, 11:47 AM",
+          "agent": "Lee",
+          "duration": "3m 21s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Gregory Foster called about air duct cleaning after noticing dust buildup and allergy flare-ups. Mary explained the debris removal process and airflow benefits, then set a Service Appointment for Thursday. Gregory was satisfied with the transparent pricing.",
+          "date": "Apr 22, 1:33 PM",
+          "agent": "Mary",
+          "duration": "2m 18s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Denise Hollum wanted to schedule an AC tune-up special she saw advertised. Sue verified the promotion still applied, confirmed availability, and booked her Service Appointment. Denise had a few questions about coil cleaning that Sue answered clearly.",
+          "date": "May 3, 10:12 AM",
+          "agent": "Sue",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Victor Osei called to check the status of his scheduled AC installation and confirm the arrival window. Mike looked up the work order and gave an updated two-hour window. Victor was reassured but no new booking was made.",
+          "date": "May 18, 3:29 PM",
+          "agent": "Mike",
+          "duration": "1m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Karen Whitfield called about a furnace that stopped heating just weeks after a repair, asking whether it fell under warranty coverage. Jennifer opened a service ticket and arranged a technician revisit. Karen was frustrated by the recurring issue but appreciated the quick response.",
+          "date": "Jun 7, 8:51 AM",
+          "agent": "Jennifer",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 23,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Robert Ainsley disputed a charge on his invoice for a water heater install, saying the amount differed from his quote. Rose reviewed the itemized breakdown and escalated the billing discrepancy to a supervisor. Robert remained unhappy pending resolution.",
+          "date": "Jun 24, 12:16 PM",
+          "agent": "Rose",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 26,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Sandra Kim reported her newly installed thermostat kept losing connection to the app. Mike ran through basic troubleshooting and logged a follow-up service call. Sandra was annoyed the thermostat was already acting up.",
+          "date": "Jul 2, 5:22 PM",
+          "agent": "Mike",
+          "duration": "2m 29s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Thomas Beckett complained that a recent air duct cleaning left debris behind and airflow felt unchanged. Lila apologized and scheduled a no-charge crew return to reinspect. Thomas expressed clear dissatisfaction with the first visit.",
+          "date": "Jul 19, 9:37 AM",
+          "agent": "Lila",
+          "duration": "2m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Nadia Freeman called to cancel her upcoming maintenance visit due to a scheduling conflict and possibly rebook later. Oscar processed the cancel request and noted she would call back. No appointment was rescheduled on this call.",
+          "date": "Aug 5, 1:09 PM",
+          "agent": "Oscar",
+          "duration": "1m 21s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Elliot Marsh was upset that his water heater replacement was delayed for a second time. Rosey checked the parts backorder status and offered a firm reschedule date. Elliot voiced strong frustration about the repeated delays.",
+          "date": "Aug 21, 4:48 PM",
+          "agent": "Rosey",
+          "duration": "2m 15s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Gloria Santos called to cancel her Advantage Plan membership, citing cost concerns. Sue explained the discount benefits and seasonal visits, but Gloria insisted on canceling. The membership cancellation was processed.",
+          "date": "Sep 9, 11:03 AM",
+          "agent": "Sue",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Derek Malone called after hours about scheduling a furnace tune-up and reached voicemail. He left a brief message requesting a callback with pricing. No agent handled the call and no appointment was booked.",
+          "date": "Oct 1, 7:26 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "furnace",
+        "installation",
+        "thermostat",
+        "tune-up",
+        "duct",
+        "cancel"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Primary Service Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Schedule Service Appointment Date",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Visit and Pricing Expectations",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Appointment via Callback",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Greeted caller by name",
+        "Confirmed HVAC emergency status",
+        "Verified service location in area",
+        "Confirmed residential property type",
+        "Captured mobile phone number",
+        "Confirmed appointment time slot available",
+        "Offered same day diagnostic visit",
+        "Mentioned upfront pricing guarantee",
+        "Confirmed caller availability window",
+        "Thanked caller for choosing Aire Serv",
+        "Used natural speaking tone",
+        "Verified ZIP code match",
+        "Closed with next steps confirmation"
+      ],
+      "unmetSignals": [
+        "Did not capture email address",
+        "Did not explain average diagnostic fee range",
+        "Did not mention Advantage Plan membership option",
+        "Did not ask about current HVAC system age or model",
+        "Did not inquire about previous service history with Aire Serv",
+        "Did not confirm preferred communication method for appointment reminder",
+        "Did not mention 24/7 service availability option",
+        "Did not offer after hours callback for scheduling",
+        "Did not ask about any ongoing comfort concerns beyond stated issue",
+        "Did not capture best time window for service visit"
+      ],
+      "naSignals": [
+        "System installation financing options not discussed",
+        "Service warranty details not covered",
+        "Equipment replacement quotes not provided",
+        "Maintenance plan pricing not mentioned",
+        "Water heater or other services not applicable to this call",
+        "Parts inventory or wait time not relevant",
+        "Commercial HVAC services not applicable",
+        "Contractor licensing verification not needed during intake"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller's air conditioner is not cooling properly on a warm October afternoon and they need a diagnostic visit to determine if it requires repair or a refrigerant charge."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects to schedule a same day or next day diagnostic visit. They want to know the cost upfront before any work is done, consistent with Aire Serv's pricing guarantee."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address for appointment confirmations and reminded them of the typical diagnostic fee range so they are not surprised when the technician arrives. Mentioning the Advantage Plan membership as an option for future maintenance would also strengthen retention."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Aire Serv. This is Marcus speaking. How can we help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:24",
+          "text": "Hi Marcus. My air conditioning is not cooling the house like it should. It's been running all morning and it's still 78 degrees inside."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:35",
+          "text": "I'm sorry to hear that. We'll get you back to comfort quickly. Can I start with your first and last name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:42",
+          "text": "It's Jennifer Chen."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:45",
+          "text": "Jennifer, thanks. And just to confirm, you're calling about your home air conditioning unit, correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:51",
+          "text": "Yes, the central AC system in my house. I'm not sure if it's broken or just needs to be serviced or something."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:01",
+          "text": "Got it. We can absolutely help with that. First thing we'd do is send out one of our technicians for a diagnostic visit to see what's going on. What city or ZIP code is your home in?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:11",
+          "text": "I'm in Naperville. That's 60540."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:16",
+          "text": "Perfect. Naperville is definitely in our service area. Now I'll need a phone number to reach you. What's the best number?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:24",
+          "text": "You can reach me at ****-****-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:31",
+          "text": "Great, I have that recorded. Jennifer, would you be available for a technician visit tomorrow between 8 a.m. and 12 p.m., or would afternoon work better for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:42",
+          "text": "Afternoon would be much better. Can you do like 2 to 4 p.m.?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:48",
+          "text": "Absolutely. I can schedule you for tomorrow afternoon between 2 and 4 p.m. One of our certified technicians will come out, run a full diagnostic on your AC system, and give you an upfront price for any repair before we do any work."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:01",
+          "text": "That sounds great. And I won't have any surprise charges, right?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:07",
+          "text": "Exactly. That's the Aire Serv promise. No hidden fees. Our technician will give you the exact price upfront. You'll know exactly what you're paying for before anything happens."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:15",
+          "text": "Awesome. I really appreciate it."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:19",
+          "text": "You're welcome, Jennifer. We'll see you tomorrow afternoon. Thanks for choosing Aire Serv."
+        }
+      ],
+      "aiSummary": "Jennifer Chen called to schedule an air conditioning diagnostic visit for her Naperville home because her central AC system is not cooling properly. Marcus Bell captured her name, ZIP code, and phone number, confirming service availability in the area and scheduling a technician visit for the following day between 2 and 4 p.m. Marcus emphasized Aire Serv's upfront pricing guarantee and no hidden fees promise. The agent did not capture Jennifer's email address for appointment reminders or provide an estimated diagnostic fee range.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great job on this intake. Your greeting was warm, you moved through the qualifying steps efficiently, and you closed with confidence and clarity. Two coaching notes for next time: ask for the caller's email address so we can send them a text and email reminder about tomorrow's appointment window. Also, when you confirm the upfront pricing promise, mention the typical AC diagnostic fee range, usually $50 to $99 depending on the location, so Jennifer knows what to expect when the tech pulls up. That builds even more trust. Nice work overall."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "54,963"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$646.97"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$35,559,363"
+            }
+          ]
+        },
+        {
+          "title": "NEW CUSTOMER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Customers (Count)",
+              "value": "32,978"
+            },
+            {
+              "label": "Caller Type: New Customers (Percent)",
+              "value": "60%"
+            },
+            {
+              "label": "Service Appointment: Scheduled (Count)",
+              "value": "30,230"
+            },
+            {
+              "label": "Service Appointment: Scheduled (Percent)",
+              "value": "55%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CUSTOMERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Customer (Count)",
+              "value": "21,985"
+            },
+            {
+              "label": "Caller Type: Existing Customer (Percent)",
+              "value": "40%"
+            },
+            {
+              "label": "Service Appointment: Canceled (Percent)",
+              "value": "8.4%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Service Appointments)",
+          "chart": {
+            "legend": "Service Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Email/SMS CRM",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Social Media",
+                "value": 53,
+                "display": "53%"
+              },
+              {
+                "name": "Local Services Ads",
+                "value": 47,
+                "display": "47%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 39,
+                "display": "39%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Service Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Service Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "21,847",
+                  "28%",
+                  "$13,912,455"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "13,564",
+                  "39%",
+                  "$8,745,320"
+                ]
+              },
+              {
+                "cells": [
+                  "Local Services Ads",
+                  "9,218",
+                  "47%",
+                  "$6,142,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "6,452",
+                  "53%",
+                  "$4,215,600"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/SMS CRM",
+                  "3,882",
+                  "58%",
+                  "$2,543,108"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 24000,
+            "axisTicks": [
+              0,
+              4000,
+              8000,
+              12000,
+              16000,
+              20000,
+              24000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "CPC",
+                "value": 20417,
+                "display": "20,417"
+              },
+              {
+                "name": "Organic",
+                "value": 14338,
+                "display": "14,338"
+              },
+              {
+                "name": "Local Services",
+                "value": 8952,
+                "display": "8,952"
+              },
+              {
+                "name": "Paid Social",
+                "value": 6914,
+                "display": "6,914"
+              },
+              {
+                "name": "Email",
+                "value": 4342,
+                "display": "4,342"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Service Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Service Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "CPC",
+                  "20,417",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "14,338",
+                  "42%"
+                ]
+              },
+              {
+                "cells": [
+                  "Local Services",
+                  "8,952",
+                  "50%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "6,914",
+                  "56%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "4,342",
+                  "64%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 12000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "AC Repair Near Me",
+                "value": 9847,
+                "display": "9,847"
+              },
+              {
+                "name": "Emergency HVAC 24/7",
+                "value": 7632,
+                "display": "7,632"
+              },
+              {
+                "name": "Furnace Replacement Quote",
+                "value": 5914,
+                "display": "5,914"
+              },
+              {
+                "name": "Heat Pump Install Financing",
+                "value": 4218,
+                "display": "4,218"
+              },
+              {
+                "name": "Beat the Summer Heat",
+                "value": 2976,
+                "display": "2,976"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Service Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Service Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "AC Repair Near Me",
+                  "9,847",
+                  "33%",
+                  "$6,278,415"
+                ]
+              },
+              {
+                "cells": [
+                  "Emergency HVAC 24/7",
+                  "7,632",
+                  "45%",
+                  "$4,866,180"
+                ]
+              },
+              {
+                "cells": [
+                  "Furnace Replacement Quote",
+                  "5,914",
+                  "54%",
+                  "$3,772,190"
+                ]
+              },
+              {
+                "cells": [
+                  "Heat Pump Install Financing",
+                  "4,218",
+                  "63%",
+                  "$2,690,460"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 6000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000,
+              6000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "ac repair near me",
+                "value": 4918,
+                "display": "4,918"
+              },
+              {
+                "name": "emergency hvac service 24 hour",
+                "value": 3647,
+                "display": "3,647"
+              },
+              {
+                "name": "furnace repair cost",
+                "value": 2914,
+                "display": "2,914"
+              },
+              {
+                "name": "ac tune up special",
+                "value": 2183,
+                "display": "2,183"
+              },
+              {
+                "name": "air duct cleaning near me",
+                "value": 1562,
+                "display": "1,562"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Service Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Service Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "ac repair near me",
+                  "36%"
+                ]
+              },
+              {
+                "cells": [
+                  "emergency hvac service 24 hour",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "furnace repair cost",
+                  "55%"
+                ]
+              },
+              {
+                "cells": [
+                  "ac tune up special",
+                  "64%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Customers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Service Appointment: Scheduled (Percent)",
+          "Caller Type: New Customers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "AC and Heating",
+              "24,918",
+              "38%",
+              "64%"
+            ]
+          },
+          {
+            "cells": [
+              "Emergency HVAC Services",
+              "14,332",
+              "47%",
+              "71%"
+            ]
+          },
+          {
+            "cells": [
+              "Air Purification and Indoor Air Quality",
+              "9,214",
+              "54%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Maintenance",
+              "6,499",
+              "61%",
+              "49%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Service Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Aire Serv of North Dallas",
+              "8,914",
+              "612",
+              "5.2%",
+              "41%"
+            ]
+          },
+          {
+            "cells": [
+              "Aire Serv of Phoenix Metro",
+              "6,732",
+              "438",
+              "4.6%",
+              "49%"
+            ]
+          },
+          {
+            "cells": [
+              "Aire Serv of Greater Atlanta",
+              "5,218",
+              "287",
+              "3.9%",
+              "55%"
+            ]
+          },
+          {
+            "cells": [
+              "Aire Serv of Denver West",
+              "3,847",
+              "164",
+              "3.1%",
+              "62%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1412,
+              1538,
+              1487,
+              1392,
+              1389
+            ]
+          },
+          {
+            "name": "Comparing HVAC Providers",
+            "values": [
+              1182,
+              1247,
+              1198,
+              1156,
+              1131
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              964,
+              1012,
+              978,
+              942,
+              936
+            ]
+          },
+          {
+            "name": "Needs Spouse Approval",
+            "values": [
+              768,
+              812,
+              784,
+              752,
+              731
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              584,
+              618,
+              597,
+              568,
+              555
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "21,985"
+          },
+          {
+            "label": "Service Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Job Booked (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$20,268,837"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Job Booked (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,847,504"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Job Booked (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,156,268"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Job Booked (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,264,885"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Job Booked (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,127,642"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Job Booked (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,872,538"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Job Booked (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,000,000"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Job Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 24816,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "8,634",
+                "58%",
+                "29%",
+                "$5,702,481"
+              ]
+            },
+            {
+              "name": "Local Services Ads",
+              "metrics": [
+                "6,247",
+                "57%",
+                "32%",
+                "$4,814,653"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "4,182",
+                "54%",
+                "35%",
+                "$3,948,274"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "2,143",
+                "52%",
+                "37%",
+                "$2,617,891"
+              ]
+            },
+            {
+              "name": "Email and SMS",
+              "metrics": [
+                "779",
+                "48%",
+                "41%",
+                "$1,185,538"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Job Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 24520,
+          "rows": [
+            {
+              "name": "Google Ads",
+              "metrics": [
+                "7,953",
+                "59%",
+                "28%",
+                "$5,184,637"
+              ]
+            },
+            {
+              "name": "Bing Ads",
+              "metrics": [
+                "4,421",
+                "56%",
+                "31%",
+                "$3,847,269"
+              ]
+            },
+            {
+              "name": "Google Business Profile",
+              "metrics": [
+                "3,814",
+                "55%",
+                "33%",
+                "$3,521,482"
+              ]
+            },
+            {
+              "name": "Facebook and Instagram",
+              "metrics": [
+                "3,267",
+                "53%",
+                "36%",
+                "$3,012,748"
+              ]
+            },
+            {
+              "name": "Direct and Other",
+              "metrics": [
+                "2,530",
+                "49%",
+                "38%",
+                "$1,702,701"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Job Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25218,
+          "rows": [
+            {
+              "name": "Emergency HVAC 24 Hour Service",
+              "metrics": [
+                "5,847",
+                "59%",
+                "27%",
+                "$3,982,518"
+              ]
+            },
+            {
+              "name": "AC Repair Near Me Geo Campaign",
+              "metrics": [
+                "4,628",
+                "57%",
+                "30%",
+                "$3,427,864"
+              ]
+            },
+            {
+              "name": "Furnace Replacement Quote",
+              "metrics": [
+                "3,952",
+                "55%",
+                "32%",
+                "$2,814,293"
+              ]
+            },
+            {
+              "name": "Heat Pump Install Financing",
+              "metrics": [
+                "2,841",
+                "52%",
+                "35%",
+                "$2,184,605"
+              ]
+            },
+            {
+              "name": "Beat the Summer Heat Seasonal",
+              "metrics": [
+                "1,619",
+                "48%",
+                "39%",
+                "$1,241,582"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Job Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 23847,
+          "rows": [
+            {
+              "name": "AC repair near me",
+              "metrics": [
+                "3,784",
+                "60%",
+                "26%",
+                "$2,647,839"
+              ]
+            },
+            {
+              "name": "emergency HVAC service 24 hour",
+              "metrics": [
+                "2,946",
+                "57%",
+                "29%",
+                "$2,104,287"
+              ]
+            },
+            {
+              "name": "furnace repair cost",
+              "metrics": [
+                "2,418",
+                "55%",
+                "32%",
+                "$1,847,562"
+              ]
+            },
+            {
+              "name": "heat pump replacement near me",
+              "metrics": [
+                "1,827",
+                "53%",
+                "35%",
+                "$1,517,348"
+              ]
+            },
+            {
+              "name": "air conditioner not cooling",
+              "metrics": [
+                "1,263",
+                "49%",
+                "38%",
+                "$1,084,629"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Job Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Air Conditioner Repair and Installation",
+              "metrics": [
+                "6,847",
+                "59%",
+                "28%",
+                "$4,821,456"
+              ]
+            },
+            {
+              "name": "Furnace Repair and Replacement",
+              "metrics": [
+                "5,234",
+                "57%",
+                "31%",
+                "$3,514,827"
+              ]
+            },
+            {
+              "name": "Maintenance and Tune-ups",
+              "metrics": [
+                "4,126",
+                "54%",
+                "34%",
+                "$2,847,364"
+              ]
+            },
+            {
+              "name": "Heat Pump Services",
+              "metrics": [
+                "3,418",
+                "52%",
+                "36%",
+                "$2,314,892"
+              ]
+            },
+            {
+              "name": "Air Quality and Ductwork",
+              "metrics": [
+                "2,360",
+                "49%",
+                "37%",
+                "$1,770,298"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Job Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Air Conditioner Repair and Installation",
+            "values": [
+              516,
+              612,
+              487,
+              398,
+              325
+            ]
+          },
+          {
+            "name": "Furnace Repair and Replacement",
+            "values": [
+              408,
+              486,
+              371,
+              294,
+              243
+            ]
+          },
+          {
+            "name": "Maintenance and Tune-ups",
+            "values": [
+              319,
+              421,
+              358,
+              267,
+              235
+            ]
+          },
+          {
+            "name": "Heat Pump Services",
+            "values": [
+              288,
+              397,
+              312,
+              248,
+              175
+            ]
+          },
+          {
+            "name": "Air Quality and Ductwork",
+            "values": [
+              196,
+              278,
+              241,
+              198,
+              147
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Service Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Service Appointment Scheduled (Percent)",
+            "value": "24%"
+          },
+          {
+            "label": "Service Appointment Scheduled (Count)",
+            "value": "323"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "849"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Service Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Service Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Service Appointment Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Service Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Service Appointment Scheduled",
+            "values": [
+              72,
+              74,
+              71,
+              75,
+              73,
+              74,
+              72,
+              76,
+              71,
+              73,
+              75,
+              74,
+              72,
+              73,
+              76,
+              71,
+              74,
+              73,
+              75,
+              74,
+              72,
+              71,
+              76,
+              73,
+              74,
+              75,
+              72,
+              71,
+              73,
+              74,
+              75,
+              176,
+              181,
+              178,
+              185,
+              179,
+              182,
+              174,
+              187,
+              180,
+              178,
+              184,
+              179,
+              186,
+              175,
+              180,
+              183,
+              177,
+              181
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,248"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "11,347"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "738"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "59%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "714"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Service Appointment Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "AC Repair and Troubleshooting",
+            "values": [
+              8,
+              11,
+              2,
+              9,
+              12,
+              10
+            ]
+          },
+          {
+            "name": "Furnace Maintenance and Service",
+            "values": [
+              6,
+              3,
+              1,
+              5,
+              8,
+              6
+            ]
+          },
+          {
+            "name": "Heat Pump Install Quotes",
+            "values": [
+              4,
+              7,
+              3,
+              6,
+              9,
+              7
+            ]
+          },
+          {
+            "name": "Air Duct Cleaning and Sealing",
+            "values": [
+              5,
+              4,
+              2,
+              7,
+              6,
+              5
+            ]
+          },
+          {
+            "name": "Thermostat and Smart Control Setup",
+            "values": [
+              3,
+              6,
+              0,
+              4,
+              5,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "50,566"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "40,398"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Service Appointment Booked (Count)",
+            "value": "30,230"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$35,559,363"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Wellington",
+              "value": 217,
+              "display": "217"
+            },
+            {
+              "name": "Tanya Reeves",
+              "value": 189,
+              "display": "189"
+            },
+            {
+              "name": "Derek Paulson",
+              "value": 241,
+              "display": "241"
+            },
+            {
+              "name": "Briana Costa",
+              "value": 203,
+              "display": "203"
+            },
+            {
+              "name": "James Hopper",
+              "value": 226,
+              "display": "226"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Service Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Jennifer Liu",
+            "values": [
+              84,
+              92,
+              101,
+              118,
+              134
+            ]
+          },
+          {
+            "name": "Robert Chen",
+            "values": [
+              76,
+              88,
+              97,
+              109,
+              127
+            ]
+          },
+          {
+            "name": "Amber Vasquez",
+            "values": [
+              71,
+              82,
+              94,
+              103,
+              119
+            ]
+          },
+          {
+            "name": "David Thornton",
+            "values": [
+              68,
+              79,
+              91,
+              104,
+              121
+            ]
+          },
+          {
+            "name": "Monica Graves",
+            "values": [
+              62,
+              74,
+              86,
+              98,
+              112
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Derek Paulson",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "James Hopper",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "Tanya Reeves",
+              "value": 57.1,
+              "display": "57.1%"
+            },
+            {
+              "name": "Marcus Wellington",
+              "value": 58.5,
+              "display": "58.5%"
+            },
+            {
+              "name": "Briana Costa",
+              "value": 59.3,
+              "display": "59.3%"
+            },
+            {
+              "name": "Patricia Okonkwo",
+              "value": 61.1,
+              "display": "61.1%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Service Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Derek Paulson",
+                "54.2%",
+                "28%",
+                "$461,952",
+                "1,411"
+              ]
+            },
+            {
+              "cells": [
+                "James Hopper",
+                "56.8%",
+                "29%",
+                "$476,448",
+                "1,389"
+              ]
+            },
+            {
+              "cells": [
+                "Tanya Reeves",
+                "57.1%",
+                "31%",
+                "$508,176",
+                "1,424"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Wellington",
+                "58.5%",
+                "32%",
+                "$521,856",
+                "1,399"
+              ]
+            },
+            {
+              "cells": [
+                "Briana Costa",
+                "59.3%",
+                "33%",
+                "$535,464",
+                "1,382"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Okonkwo",
+                "61.1%",
+                "34%",
+                "$547,200",
+                "1,367"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Jennifer Liu",
+              "value": 93.7,
+              "display": "93.7%"
+            },
+            {
+              "name": "Robert Chen",
+              "value": 91.2,
+              "display": "91.2%"
+            },
+            {
+              "name": "Amber Vasquez",
+              "value": 89.8,
+              "display": "89.8%"
+            },
+            {
+              "name": "David Thornton",
+              "value": 88.4,
+              "display": "88.4%"
+            },
+            {
+              "name": "Monica Graves",
+              "value": 87.1,
+              "display": "87.1%"
+            },
+            {
+              "name": "Keith Morrison",
+              "value": 86.5,
+              "display": "86.5%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Service Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Liu",
+                "93.7%",
+                "66%",
+                "$1,068,552",
+                "1,549"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Chen",
+                "91.2%",
+                "64%",
+                "$1,024,896",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Amber Vasquez",
+                "89.8%",
+                "62%",
+                "$974,832",
+                "1,489"
+              ]
+            },
+            {
+              "cells": [
+                "David Thornton",
+                "88.4%",
+                "60%",
+                "$925,440",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Monica Graves",
+                "87.1%",
+                "59%",
+                "$901,536",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Keith Morrison",
+                "86.5%",
+                "58%",
+                "$884,016",
+                "1,504"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Service Appointment Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Service Appointment Booked (Count)",
+        "rightMax": 1400,
+        "rightTicks": [
+          0,
+          350,
+          700,
+          1050,
+          1400
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1121
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1074
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1000
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 954
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 831
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 872
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 963
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1001
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1116
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1082
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 975
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 942
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 838
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 864
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 986
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1016
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1106
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1089
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 955
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 924
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 851
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 860
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1003
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1036
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1092
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1090
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 941
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 902
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 866
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 861
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1019
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1700000,
+        "rightTicks": [
+          0,
+          566666.6666666666,
+          1133333.3333333333,
+          1700000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1318154
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1263391
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1176474
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1122583
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 977414
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 1025770
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1133138
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1177804
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1313259
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1273286
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1146805
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1108409
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 986297
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 1016640
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1160117
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1195468
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1301032
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1280784
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1123108
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 1087486
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 1001102
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 1011597
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1180113
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1219232
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1284503
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1282635
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 1107038
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 1061472
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 1018461
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 1013549
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1192242
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "54,963"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "4,397"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "3,298"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "412",
+                "91%",
+                "88%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James Rodriguez",
+                "389",
+                "87%",
+                "85%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Chen",
+                "398",
+                "89%",
+                "85%",
+                "87%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "54,963 calls",
+      "pagerLabel": "1 of 5,496",
+      "calls": [
+        {
+          "time": "1/12/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/12/26 9:23 am",
+          "id": "A24C-3B91E7F4A0D2"
+        },
+        {
+          "time": "1/12/26 10:11 am",
+          "id": "9D3E-6C82A15F73B9"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "7B18-5E24D9C081AF"
+        },
+        {
+          "time": "1/12/26 11:36 am",
+          "id": "C905-4F71B238E6DA"
+        },
+        {
+          "time": "1/12/26 12:29 pm",
+          "id": "E4A7-92D5C3170B8F"
+        },
+        {
+          "time": "1/12/26 1:14 pm",
+          "id": "3F62-8A19E45D2C70"
+        },
+        {
+          "time": "1/12/26 2:52 pm",
+          "id": "B81D-27C6F09A34E5"
+        },
+        {
+          "time": "1/12/26 4:07 pm",
+          "id": "6C4A-1D83B75E9F20"
+        },
+        {
+          "time": "1/12/26 5:38 pm",
+          "id": "D290-5B47A16C82E3"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling Aire Serv, this is Denise. How can I help you stay comfortable today?",
+          "highlights": [
+            "Thank you for calling Aire Serv",
+            "How can I help you stay comfortable today?"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi, yeah, my furnace is barely putting out any heat and the house is freezing. I've never called you folks before.",
+          "highlights": [
+            "my furnace is barely putting out any heat",
+            "never called you folks before"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "I'm sorry you're dealing with that in this cold. I can absolutely get one of our service professionals out to you. Can I start with your name?",
+          "highlights": [
+            "get one of our service professionals out to you"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:25",
+          "text": "It's Marcus Feld. The blower runs but the air coming out is cold, and sometimes it just shuts off after a minute.",
+          "highlights": [
+            "Marcus Feld"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:33",
+          "text": "Thanks, Marcus. That short cycling and cold air often points to a flame sensor or igniter issue. Our tech will run a full diagnostic to pin it down.",
+          "highlights": [
+            "flame sensor or igniter",
+            "full diagnostic"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:42",
+          "text": "Okay. Before we go further, what's a visit like that going to run me? I want to keep this manageable.",
+          "highlights": [
+            "what's a visit like that going to run me",
+            "keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:50",
+          "text": "Totally fair. We quote by the job, not the hour, so you get an upfront price before any work starts and it won't change. The diagnostic fee gets applied toward the repair if you move forward.",
+          "highlights": [
+            "quote by the job, not the hour",
+            "upfront price before any work starts"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:00",
+          "text": "See, that helps, because I got a quote from another outfit down the road and they were kind of vague about the whole thing.",
+          "highlights": [
+            "got a quote from another outfit down the road",
+            "vague about the whole thing"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:09",
+          "text": "I understand. With us there are no hidden fees, and everything is backed by the Neighborly Done Right Promise. You'll know the number before you say yes.",
+          "highlights": [
+            "no hidden fees",
+            "Neighborly Done Right Promise"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:18",
+          "text": "That's reassuring. Most furnace repairs, ballpark, what range are we talking?",
+          "highlights": [
+            "what range are we talking"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:24",
+          "text": "Common furnace repairs like an igniter or flame sensor typically land between $150 and $700 depending on the part, but the tech confirms the exact price on site before doing anything.",
+          "highlights": [
+            "$150 and $700",
+            "confirms the exact price on site"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:34",
+          "text": "Alright. One more thing, while somebody's here, could they look at the thermostat too? It's an old dial one.",
+          "highlights": [
+            "look at the thermostat too"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:42",
+          "text": "Absolutely. The tech can quote a smart or programmable thermostat installation right there, usually in the $150 to $450 range with app setup included.",
+          "highlights": [
+            "thermostat installation",
+            "$150 to $450"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:51",
+          "text": "Good. I'd just want to run the thermostat piece by my wife before committing to that part.",
+          "highlights": [
+            "run the thermostat piece by my wife before committing"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:58",
+          "text": "No problem at all, there's no obligation on the thermostat. We'll get the heat sorted first and you decide on the rest later. When works for you?",
+          "highlights": [
+            "no obligation",
+            "When works for you?"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:06",
+          "text": "Honestly the sooner the better, the house is really cold. Anything today or tomorrow?",
+          "highlights": [
+            "sooner the better"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:13",
+          "text": "I have a service appointment open this afternoon between 2 and 4, or tomorrow morning at 9. Which do you prefer?",
+          "highlights": [
+            "service appointment open this afternoon between 2 and 4"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:20",
+          "text": "Let's do this afternoon, 2 to 4. I'll be home.",
+          "highlights": [
+            "Let's do this afternoon"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:26",
+          "text": "Perfect, I've booked your service appointment for today, 2 to 4 PM, for a furnace diagnostic and repair. Can I grab the best callback number and address?",
+          "highlights": [
+            "I've booked your service appointment for today, 2 to 4 PM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:33",
+          "text": "Sure, it's 555-0142, and I'm at 68 Larkspur Lane.",
+          "highlights": [
+            "555-0142"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:38",
+          "text": "Got it, Marcus. You're all set and the tech will call before arrival. Thanks for choosing Aire Serv, stay warm and we'll see you soon.",
+          "highlights": [
+            "You're all set",
+            "Thanks for choosing Aire Serv",
+            "stay warm and we'll see you soon"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Customer",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Service Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Furnace Repair Intent",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Thermostat Installation Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Upfront Pricing Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "New customer Marcus Feld called Aire Serv reporting a furnace that was short cycling and blowing cold air. Agent Denise diagnosed a likely flame sensor or igniter issue, explained upfront by-the-job pricing with a $150 to $700 furnace repair range, and addressed his cost concern and a competing quote he had received. She also offered a smart thermostat installation for later and booked a same-day service appointment for a furnace diagnostic and repair.",
+        "keyPoints": [
+          "New customer, first time calling Aire Serv",
+          "Primary need: furnace blowing cold air and short cycling",
+          "Recommended furnace diagnostic plus flame sensor or igniter repair",
+          "Offered smart thermostat installation with no obligation",
+          "Handled price concern with upfront no-hidden-fees pricing and Neighborly Done Right Promise",
+          "Captured callback number 555-0142 and address, booked same-day 2 to 4 PM appointment"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Service Appointment booked, today 2 to 4 PM furnace diagnostic and repair"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "34,627 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,463",
+      "conversations": [
+        {
+          "id": "C847-3A9F5E1B2C64",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hi there, this is Aire Serv HVAC. Thanks for reaching out. Can I help you with a heating or cooling issue today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Yeah, my air conditioner stopped working yesterday. It's hot in here."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "Sorry to hear that. We specialize in AC repair and can get a technician out quickly. Are you in a home or a commercial property?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "Home. Single story."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Got it. Just to confirm, when you say it stopped working, is the unit not turning on at all, or is it running but not blowing cold air?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "It's running but no cold air. The fan works though."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:53 PM",
+              "text": "That sounds like it could be a refrigerant issue or a compressor problem. We offer upfront pricing with no hidden fees. What's your ZIP code so I can get you connected with your local Aire Serv?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:54 PM",
+              "text": "It's 85001 in Phoenix."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "Perfect. For an AC repair diagnostic and repair, we typically charge between 150 and 650 dollars depending on what we find. Can we schedule a technician to come out this Saturday around 10 AM?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:56 PM",
+              "text": "Saturday works. Do you need my phone number?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:57 PM",
+              "text": "We already have it from your text. Just to recap, we'll send a technician on Saturday, January 18th at 10 AM to diagnose your AC unit. You'll get upfront pricing before any work starts. Sound good?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:58 PM",
+              "text": "Sounds good. Thanks."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:59 PM",
+              "text": "You're all set. We'll see you Saturday at 10 AM. If you have any questions, call us at 602-555-0147. Thanks for choosing Aire Serv."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Service Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Type: AC Repair",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Property Type: Residential Home",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Issue: No Cold Air Output",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided: 150 to 650 Dollars",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C847-3A9F5E1B2C64",
+            "smsStartTime": "1/15/26 2:47 pm",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "602-555-9847",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "602-555-9847",
+            "repeatCaller": "No",
+            "city": "Phoenix",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "Marcus Thompson",
+            "firstName": "Marcus",
+            "lastName": "Thompson",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C521-7D2E4A9B1F53",
+          "time": "1/22/26 11:34 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C521-7D2E4A9B1F53",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C936-8C5B2F7A6E19",
+          "time": "1/28/26 5:12 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C936-8C5B2F7A6E19",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C614-9E3D1C5A8B27",
+          "time": "1/31/26 9:41 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C614-9E3D1C5A8B27",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "54,963 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 5,496",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:43 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:43 PM",
+              "text": "Hi there, thanks for calling Aire Serv. This is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:43 PM",
+              "text": "Yeah, hi. My air conditioner is making this weird noise and it's not cooling like it used to. I'm in the Phoenix area."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:44 PM",
+              "text": "Oh, that's not fun. Okay, so you're getting noise and reduced cooling. Let me ask you this: is your AC system running right now, and if so, what kind of noise are we talking about? Like a grinding sound or more of a hissing?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:45 PM",
+              "text": "It's kind of a grinding noise when it kicks on. And yeah, it's running. It's been like this for maybe three days now."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:45 PM",
+              "text": "Got it. A grinding sound when it starts up usually means the compressor is struggling. That's something we can diagnose pretty quickly. What's your home's square footage, roughly? That'll help me estimate how long the service call might take."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:46 PM",
+              "text": "It's about two thousand square feet. Single story, ranch style."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:46 PM",
+              "text": "Perfect. And have you had any service done on this unit recently, or is this the first time you're hearing this noise?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:47 PM",
+              "text": "Never had it serviced. I think it's the original system from when we bought the house five years ago."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Okay, so no maintenance yet. That's actually pretty common. Well, here's the good news: we offer upfront pricing, so there's no guessing on the cost. Our technician will do a full diagnostic, and we'll quote you exactly what the repair will be before we do any work. Sound good?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Yeah, that's great. I like that. When can someone come out?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:48 PM",
+              "text": "I can get you scheduled tomorrow, January sixteenth, between one and three p.m. Does that work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:49 PM",
+              "text": "Tomorrow at one to three? Yeah, that works. Should I prepare anything?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "Just make sure the system is accessible, and let me confirm your details. What's your address and phone number?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "It's two four one five Desert Wind Lane, Phoenix eighty-five zero one six. And you can reach me at six oh two, five five five, one two three four."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:50 PM",
+              "text": "Perfect. So that's two four one five Desert Wind Lane, Phoenix, Arizona eighty-five zero one six, and we'll call you at six oh two, five five five, one two three four. Your appointment is tomorrow, January sixteenth, one to three p.m. Our tech will do the diagnostic and give you an upfront quote. We'll also call you a few minutes before we arrive. Thanks for calling Aire Serv."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:51 PM",
+              "text": "Great, thanks so much."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Service Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: AC Repair Diagnostic",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "System Age Established",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Upfront Pricing Mentioned",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area: Phoenix Metro",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:43 pm",
+            "duration": "8:12",
+            "destinationPhone": "877-936-2933",
+            "source": "602-555-0177",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "602-555-1234",
+            "repeatCaller": "No",
+            "city": "Phoenix",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B523-7A1DE486B2C5",
+          "time": "1/22/26 10:18 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B523-7A1DE486B2C5",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C847-9F3BD652E1A8",
+          "time": "1/28/26 3:37 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C847-9F3BD652E1A8",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D716-4C8AE923F7D2",
+          "time": "1/09/26 11:52 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D716-4C8AE923F7D2",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Hi, I'm Aire Serv's AI assistant, here to help you get a personalized quote on your heating or cooling service, and right now we're offering a seasonal tune-up special plus financing on new systems. Would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, including what type of system you have (AC, furnace, heat pump, mini-split, or water heater), the approximate age or size of the unit, whether you need a repair, replacement, or maintenance, your ideal timeline, and your ZIP code so I can confirm your local Aire Serv services your area.",
+        "Estimate then book: Once I confirm we service your ZIP, I'll share a preliminary price range based on what you told me, recommend a consultation with a service professional for an exact upfront quote, propose a specific day and time, and confirm you'll receive a reminder text before your appointment with a number to call if anything changes."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Aire_Serv_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Heating & Cooling Services",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find My Local Aire Serv",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Schedule Online",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Warranty\",\"question\":\"Is my recent AC installation still covered under warranty?\",\"answer\":\"Yes, new system installations are backed by the manufacturer warranty plus the Neighborly Done Right Promise, and I can pull up your service record when we schedule a visit. Let me connect you with your local Aire Serv to review the specifics.\"},{\"topic\":\"Reschedule\",\"question\":\"I need to move my maintenance visit to a different day, can you help?\",\"answer\":\"Absolutely, I can help you reschedule your tune-up appointment to a day and time that works better for you. What day were you hoping to switch to?\"}]}",
+          "qaPairs": [
+            {
+              "question": "My AC isn't cooling, can someone come out today?",
+              "answer": "I'm sorry your AC isn't cooling, and yes, we offer service 24 hours a day, seven days a week. Let me confirm your ZIP and get you the soonest available appointment with a service professional."
+            },
+            {
+              "question": "How much does an AC repair cost?",
+              "answer": "Repair costs vary based on the issue and your system, and we quote by the job with guaranteed upfront pricing so the final price won't change. The best next step is a diagnostic visit, so let's get one scheduled."
+            },
+            {
+              "question": "Do you offer emergency HVAC service?",
+              "answer": "Yes, our professionals are like EMTs for your HVAC and are available 24/7 for emergencies. Share your ZIP and I'll book the earliest visit for you."
+            },
+            {
+              "question": "How much is a new furnace installation?",
+              "answer": "Furnace replacement pricing depends on the size and type of unit your home needs, and we provide an exact upfront quote after an in-home assessment. Let's schedule a consultation with a specialist to size it correctly."
+            },
+            {
+              "question": "Do you provide free estimates on new systems?",
+              "answer": "We provide upfront, by-the-job pricing after a professional evaluates your home and needs. I'd be happy to book an in-home consultation so you get an exact quote."
+            },
+            {
+              "question": "Can you install a smart thermostat?",
+              "answer": "Yes, we install and set up smart and programmable thermostats, including wiring and app integration. Let's schedule an appointment and I'll confirm your local availability first."
+            },
+            {
+              "question": "Do you clean air ducts?",
+              "answer": "Yes, we handle air duct cleaning to remove debris and improve airflow and allergen reduction. Share your ZIP and I'll set up a visit for you."
+            },
+            {
+              "question": "My furnace won't turn on, what should I do?",
+              "answer": "That could be an igniter, flame sensor, or gas valve issue that a professional should diagnose safely. Let me confirm your ZIP and schedule a repair visit right away."
+            },
+            {
+              "question": "Do you offer financing on new HVAC systems?",
+              "answer": "Yes, we offer buy now, pay over time financing on new systems. I can share details during your consultation, so let's get one on the calendar."
+            },
+            {
+              "question": "What is the Advantage Plan?",
+              "answer": "The Advantage Plan is our maintenance membership offering priority scheduling, discounted repairs, and seasonal tune-up visits. I can go over enrollment when we set up your appointment."
+            },
+            {
+              "question": "How often should I get a tune-up?",
+              "answer": "We recommend seasonal maintenance to keep your system running efficiently and catch issues early. Let's schedule a multi-point tune-up for you now."
+            },
+            {
+              "question": "Do you install mini-split systems?",
+              "answer": "Yes, we install ductless mini-splits with wall-mount heads and zoned room-by-room control. Let's book a consultation so a specialist can size the right setup for your space."
+            },
+            {
+              "question": "Can you replace my water heater?",
+              "answer": "Yes, we install both tank and tankless water heaters, including venting and connections. Share your ZIP and I'll schedule an appointment for an exact quote."
+            },
+            {
+              "question": "Do you service commercial buildings?",
+              "answer": "Yes, we provide commercial HVAC service including refrigeration and multi-family housing solutions. Let me confirm your ZIP and set up a consultation with a commercial specialist."
+            },
+            {
+              "question": "How much does a heat pump cost to install?",
+              "answer": "Heat pump installation pricing depends on your home's needs and the efficiency setup, and we quote by the job with no hidden fees. Let's schedule an in-home consultation for your exact upfront price."
+            },
+            {
+              "question": "Do you fix boilers?",
+              "answer": "Yes, we service and replace boilers, including circulator pumps, pressure valves, and hydronic heating. Let me get a repair visit scheduled once I confirm your area."
+            },
+            {
+              "question": "Can you help improve my indoor air quality?",
+              "answer": "Yes, we offer air filters, UV lamps, humidifiers, and whole-home purifiers to keep your air clean. Let's book a consultation to find the right solution for your home."
+            },
+            {
+              "question": "What areas do you serve?",
+              "answer": "We're a nationwide franchise with local Aire Serv locations, so I just need your ZIP to confirm your local team's availability. What's your ZIP code?"
+            },
+            {
+              "question": "How soon can someone come out?",
+              "answer": "We often have same-day and next-day availability, and we're available 24/7 for emergencies. Share your ZIP and I'll find the earliest appointment for you."
+            },
+            {
+              "question": "Do you clean dryer vents?",
+              "answer": "Yes, we provide dryer vent cleaning to reduce fire risk and improve dryer efficiency. Let me confirm your ZIP and schedule a visit."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule a service appointment\",\"follow_up_message\":\"Great, I'd love to get you on the schedule. I have an opening tomorrow between 10 AM and noon for a service professional to visit, and you'll receive a reminder text before your appointment. Does that time work for you?\"},{\"intent\":\"Request a quote on a new system\",\"follow_up_message\":\"Happy to help you get an exact upfront quote. Based on what you shared, I'd recommend an in-home consultation with a specialist so we can size the right system. What day this week works best for you?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, I'm Aire Serv's AI assistant, here to help with your heating and cooling needs and get you a personalized quote. Would you like to get started?",
+        "goal": "Qualify the homeowner's HVAC need and book an in-home service appointment with a local Aire Serv service professional.",
+        "bookingType": "in-home service appointment",
+        "offer": "Save on a seasonal tune-up when you book today, plus financing available on new systems",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "What type of system are you calling about (AC, furnace, heat pump, mini-split, boiler, or water heater)?",
+          "Are you looking for a repair, a replacement or installation, or routine maintenance?",
+          "About how old is your current system, or do you know its size or model?",
+          "What's your ideal timeline, is this an emergency or can we plan ahead?",
+          "What's your ZIP code so I can confirm your local Aire Serv services your area?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:31 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:31 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:31 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Aire Serv",
+      "callerName": "Michael Torres",
+      "callerPhone": "(480) 555-0187",
+      "campaign": "AC Repair, Phoenix Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Service Appointment Lead",
+      "estimatedValue": "$385",
+      "googleSearch": "air conditioner not cooling phoenix",
+      "websiteSearch": "AC repair near me 85004",
+      "callingWebpage": "/residential/ac-and-heating/air-conditioner-repair",
+      "products": "Air Conditioner Repair, Emergency HVAC Services",
+      "cartId": "AS-7923K",
+      "serviceable": "Yes",
+      "email": "m.torres.hvac@email.com",
+      "street": "4127 South 48th Street",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zip": "85004",
+      "digitalJourney": "/home › /residential › /ac-and-heating › /air-conditioner-repair",
+      "intent": "Central AC unit running but not cooling effectively. Needs diagnostic and repair estimate.",
+      "coverage": "ZIP 85004 confirmed, Phoenix serviceable",
+      "switchIntent": "High, system malfunctioning during heat, wants same-day or next-day appointment.",
+      "greeting": "Hi Michael, thanks for calling Aire Serv. I see you're looking to get your air conditioner fixed in Phoenix. We can send one of our technicians out for a diagnostic and provide you with upfront pricing before any work begins. Would you like to schedule an appointment this week?"
+    },
+    "smsScreenpop": {
+      "brandName": "Aire Serv",
+      "callerName": "Sarah Chen",
+      "callerPhone": "(512) 555-0634",
+      "campaign": "Furnace Replacement, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Service Appointment Lead",
+      "estimatedValue": "$6,750",
+      "googleSearch": "furnace replacement cost austin tx",
+      "websiteSearch": "furnace installation financing",
+      "callingWebpage": "/residential/ac-and-heating/furnace-installation-replacement",
+      "products": "Furnace Installation and Replacement, Advantage Plan Membership",
+      "cartId": "AS-5184M",
+      "serviceable": "Yes",
+      "email": "s.chen.homes@email.com",
+      "street": "2891 Barton Hills Drive",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78704",
+      "digitalJourney": "/home › /residential › /ac-and-heating › /furnace-installation-replacement › /financing",
+      "intent": "Current furnace is 18 years old and inefficient. Exploring new system options with flexible payment terms.",
+      "coverage": "ZIP 78704 confirmed, Austin serviceable",
+      "appointment": "In-home system assessment and replacement quote with specialist. Thu Jul 18, 2:00 PM",
+      "greeting": "Hi Sarah, this is James from Aire Serv Austin. We've got you scheduled for Thursday at 2 PM for a home assessment. Our specialist will evaluate your current furnace and provide a complete replacement quote upfront with no hidden fees. Looking forward to helping you get a new system installed. Any questions before Thursday?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Aire Serv",
+      "brandDomain": "www.aireserv.com",
+      "brandIcon": "❄️",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Rosa, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Emergency HVAC 24/7",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "emergency AC repair near me",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/residential/ac-heating/air-conditioner-repair",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Air Conditioner Repair, Emergency HVAC Services",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Rosa, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "service_appointment_new",
+          "name": "Service Appointment, New Project"
+        },
+        {
+          "id": "existing_service_support",
+          "name": "Existing Service, Support"
+        },
+        {
+          "id": "general_hvac_info",
+          "name": "General HVAC Information"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Thanks for calling Aire Serv. I see you're interested in air conditioner repair. Are you experiencing an issue with your AC system right now?",
+          "sigs": [],
+          "q": [
+            15,
+            40,
+            45
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, my AC stopped cooling this afternoon. It's running but just blowing warm air. I need someone out as soon as possible because it's getting really hot.",
+          "sigs": [
+            {
+              "c": "orange",
+              "t": "<strong>AC not cooling</strong>, immediate need"
+            },
+            {
+              "c": "green",
+              "t": "<strong>Emergency service</strong> required"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Same-day</strong> availability requested"
+            }
+          ],
+          "q": [
+            45,
+            25,
+            30
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I understand, that sounds uncomfortable. We offer 24/7 emergency service and have technicians available today. Can you confirm this is a residential property in Santa Rosa?",
+          "sigs": [],
+          "q": [
+            72,
+            15,
+            13
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, it's my home in Santa Rosa. I'm still under warranty from when you guys installed it two years ago. Do you have someone who can come out this afternoon?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Existing customer</strong>, warranty coverage"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>Residential</strong> property"
+            },
+            {
+              "c": "green",
+              "t": "<strong>Same-day</strong> appointment needed"
+            }
+          ],
+          "q": [
+            94,
+            3,
+            3
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm connecting you with our Service Appointment team for new repairs in your area. They'll verify your warranty and get a technician scheduled for you today. One moment please.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Service Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"get you on the schedule (Agent)\", \"book that service appointment (Agent)\", \"see you tomorrow morning (Agent)\", \"set up the service call (Caller)\"])",
+          "createdAt": "03/12/25 9:14 am",
+          "updatedAt": "12/18/25 4:41 pm"
+        },
+        {
+          "name": "AC Repair Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"my AC isn't cooling (Caller)\", \"air conditioner repair (Caller)\", \"compressor not working (Caller)\", \"refrigerant leak (Caller)\"])",
+          "createdAt": "04/02/25 11:22 am",
+          "updatedAt": "11/09/25 2:07 pm"
+        },
+        {
+          "name": "Competitor Mentioned (Intent)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"quote from another company (Caller)\", \"One Hour Heating and Air (Caller)\", \"found it cheaper somewhere else (Caller)\"])",
+          "createdAt": "05/19/25 8:48 am",
+          "updatedAt": "12/01/25 10:33 am"
+        },
+        {
+          "name": "Emergency Service Request",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"no heat at all (Caller)\", \"need someone out today (Caller)\", \"24 hour emergency service (Caller)\", \"furnace completely dead (Caller)\"])",
+          "createdAt": "03/28/25 1:05 pm",
+          "updatedAt": "12/22/25 9:16 am"
+        },
+        {
+          "name": "Empathy and Reassurance (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy and Reassurance] < 60 and duration > 45 sec",
+          "createdAt": "06/10/25 3:31 pm",
+          "updatedAt": "11/27/25 12:52 pm"
+        },
+        {
+          "name": "Price Objection (Intent)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"that's too expensive (Caller)\", \"can't afford that right now (Caller)\", \"do you offer financing (Caller)\", \"any special offers (Caller)\"])",
+          "createdAt": "04/22/25 10:09 am",
+          "updatedAt": "12/14/25 5:23 pm"
+        },
+        {
+          "name": "Proper Call Greeting (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Proper Call Greeting] < 60 and duration > 45 sec",
+          "createdAt": "05/07/25 9:41 am",
+          "updatedAt": "12/09/25 8:19 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the total comes to (Agent)\", \"upfront price for the job (Agent)\", \"estimate for the replacement (Agent)\", \"quote by the job not the hour (Agent)\"])",
+          "createdAt": "04/15/25 2:56 pm",
+          "updatedAt": "12/20/25 11:44 am"
+        },
+        {
+          "name": "Service Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"available appointment times (Agent)\", \"when works best for you (Agent)\", \"schedule a technician (Agent)\", \"get a service pro out there (Agent)\"])",
+          "createdAt": "03/20/25 10:18 am",
+          "updatedAt": "12/16/25 3:38 pm"
+        },
+        {
+          "name": "Upfront Pricing Explained (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Upfront Pricing Explained] < 60 and duration > 45 sec",
+          "createdAt": "05/29/25 1:47 pm",
+          "updatedAt": "12/11/25 4:02 pm"
+        }
+      ]
+    }
+  }
+}

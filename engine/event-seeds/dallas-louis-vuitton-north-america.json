@@ -1,0 +1,5380 @@
+{
+  "id": "louis-vuitton-north-america",
+  "customerName": "Louis Vuitton North America",
+  "websiteUrl": "https://us.louisvuitton.com",
+  "brandDomain": "us.louisvuitton.com",
+  "networkName": "Invoca for Luxury Retail",
+  "industry": "Luxury Goods & Designer Fashion",
+  "bookingTerm": "Styling Appointment",
+  "customerNoun": "Client",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 8214
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 13652
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 12438
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 11876
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 9253
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Styling Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Styling Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "New Handbags for Her",
+          "marketingSearchTerm": "louis vuitton neverfull",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/women/handbags/all-handbags?utm_source=google&utm_medium=cpc&utm_campaign=new_handbags_for_her",
+          "websiteJourney": "Home / Women / Handbags / All Handbags",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Monogram Anniversary",
+          "marketingSearchTerm": "LV speedy 30",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/products/speedy-bandouliere-30?utm_source=google&utm_medium=cpc&utm_campaign=monogram_anniversary",
+          "websiteJourney": "Home / Women / Handbags / Speedy 30 Bandouliere",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "New Formal Styles for Him",
+          "marketingSearchTerm": "LV trainer sneakers men",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/men/shoes/all-shoes?utm_source=bing&utm_medium=cpc&utm_campaign=new_formal_styles_for_him",
+          "websiteJourney": "Home / Men / Shoes / All Shoes",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "LV Fall Collection",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/men/lv-fall?utm_source=organic&utm_medium=organic&utm_campaign=lv_fall_collection",
+          "websiteJourney": "Home / Men / LV Fall / Product Detail Page",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "New Handbags for Her",
+          "marketingSearchTerm": "louis vuitton wallet on chain",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/products/wallet-on-chain-trotter?utm_source=google&utm_medium=cpc&utm_campaign=new_handbags_for_her",
+          "websiteJourney": "Home / Women / Small Leather Goods / Wallet On Chain Trotter",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Silk Tech",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/men/accessories/all-accessories?utm_source=instagram&utm_medium=social&utm_campaign=silk_tech",
+          "websiteJourney": "Home / Men / Accessories / All Accessories",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Back to School Collection",
+          "marketingSearchTerm": "louis vuitton backpack men",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/products/flaneur-backpack?utm_source=google&utm_medium=cpc&utm_campaign=back_to_school_collection",
+          "websiteJourney": "Home / Men / Bags / Flaneur Backpack",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "New Handbags for Her",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/products/all-in-bb?utm_source=organic&utm_medium=organic&utm_campaign=new_handbags_for_her",
+          "websiteJourney": "Home / Women / Handbags / All In BB",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Monogram Anniversary",
+          "marketingSearchTerm": "LV monogram tote bag",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/women/handbags/all-handbags?utm_source=google&utm_medium=cpc&utm_campaign=monogram_anniversary",
+          "websiteJourney": "Home / Women / Handbags / All Handbags",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "New Formal Styles for Him",
+          "marketingSearchTerm": "louis vuitton belt reversible",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/products/lv-dimension-reversible-belt?utm_source=bing&utm_medium=cpc&utm_campaign=new_formal_styles_for_him",
+          "websiteJourney": "Home / Men / Accessories / LV Dimension Reversible Belt",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "LV Fall Collection",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/men/ready-to-wear/all-ready-to-wear?utm_source=facebook&utm_medium=social&utm_campaign=lv_fall_collection",
+          "websiteJourney": "Home / Men / Ready-to-Wear / All Ready-to-Wear",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Gifts and Personalization",
+          "marketingSearchTerm": "louis vuitton gifts",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/gifts?utm_source=google&utm_medium=cpc&utm_campaign=gifts_and_personalization",
+          "websiteJourney": "Home / Gifts and Personalization / All Gifts",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Store Locator",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/stores?utm_source=organic&utm_medium=organic&utm_campaign=store_locator",
+          "websiteJourney": "Home / Services / Store Locator",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "LV Fall Collection",
+          "marketingSearchTerm": "louis vuitton fall collection",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/women/lv-fall?utm_source=google&utm_medium=cpc&utm_campaign=lv_fall_collection",
+          "websiteJourney": "Home / Women / LV Fall / Product Detail Page",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "New Formal Styles for Him",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/products/westminster-loafer?utm_source=instagram&utm_medium=social&utm_campaign=new_formal_styles_for_him",
+          "websiteJourney": "Home / Men / Shoes / Westminster Loafer",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "New Handbags for Her",
+          "marketingSearchTerm": "louis vuitton hobo low key",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/products/low-key-hobo-pm?utm_source=bing&utm_medium=cpc&utm_campaign=new_handbags_for_her",
+          "websiteJourney": "Home / Women / Handbags / Low Key Hobo PM",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Monogram Anniversary",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/women/accessories/all-accessories?utm_source=organic&utm_medium=organic&utm_campaign=monogram_anniversary",
+          "websiteJourney": "Home / Women / Accessories / All Accessories",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Silk Tech",
+          "marketingSearchTerm": "lv spaced tie",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/products/lv-spaced-tie?utm_source=google&utm_medium=cpc&utm_campaign=silk_tech",
+          "websiteJourney": "Home / Men / Accessories / LV Spaced Tie",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Back to School Collection",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/men/bags/all-bags?utm_source=facebook&utm_medium=social&utm_campaign=back_to_school_collection",
+          "websiteJourney": "Home / Men / Bags / All Bags",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "LV Fall Collection",
+          "marketingSearchTerm": "lv overshirt monogram",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/products/light-padded-monogram-overshirt?utm_source=google&utm_medium=cpc&utm_campaign=lv_fall_collection",
+          "websiteJourney": "Home / Men / Ready-to-Wear / Light Padded Monogram Overshirt",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "The Maison Louis Vuitton",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/magazine?utm_source=organic&utm_medium=organic&utm_campaign=the_maison_louis_vuitton",
+          "websiteJourney": "Home / The Maison Louis Vuitton / Heritage",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "LV Fall Collection",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://us.louisvuitton.com/eng-us/products/monogram-reversible-blouson?utm_source=instagram&utm_medium=social&utm_campaign=lv_fall_collection",
+          "websiteJourney": "Home / Men / Ready-to-Wear / Monogram Reversible Double Face Blouson",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Louis Vuitton North America)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "43,477"
+            },
+            {
+              "label": "Sales Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Purchase (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$27,213,827"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "6,956"
+            },
+            {
+              "label": "Order Status Inquiry (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Repair and Care Service (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Store Locations and Hours (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "48%"
+            },
+            {
+              "label": "Non-Purchasing Inquiry (Percent)",
+              "value": "14%"
+            },
+            {
+              "label": "Purchase (Percent)",
+              "value": "22%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sales Inquiry (Count)",
+            "values": [
+              5842,
+              8213,
+              7946,
+              7681,
+              6839
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              3341,
+              4698,
+              4542,
+              4389,
+              3899
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              974,
+              1368,
+              1324,
+              1281,
+              1140
+            ]
+          },
+          {
+            "name": "Purchase (Count)",
+            "values": [
+              1527,
+              2147,
+              2080,
+              2011,
+              1800
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43477,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "14,213",
+                "48%",
+                "16%",
+                "$6,573,214"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "11,486",
+                "52%",
+                "20%",
+                "$6,628,905"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "8,742",
+                "55%",
+                "24%",
+                "$6,041,772"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "5,619",
+                "58%",
+                "28%",
+                "$4,558,331"
+              ]
+            },
+            {
+              "name": "Email / MyLV CRM",
+              "metrics": [
+                "3,417",
+                "62%",
+                "34%",
+                "$3,411,605"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43477,
+          "rows": [
+            {
+              "name": "Organic",
+              "metrics": [
+                "13,842",
+                "47%",
+                "15%",
+                "$6,142,318"
+              ]
+            },
+            {
+              "name": "Cpc",
+              "metrics": [
+                "11,217",
+                "51%",
+                "19%",
+                "$6,321,447"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "9,318",
+                "54%",
+                "23%",
+                "$6,338,905"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "5,724",
+                "57%",
+                "29%",
+                "$4,905,262"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "3,376",
+                "61%",
+                "35%",
+                "$3,505,895"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21176,
+          "rows": [
+            {
+              "name": "LV Fall Collection",
+              "metrics": [
+                "6,842",
+                "46%",
+                "17%",
+                "$3,384,712"
+              ]
+            },
+            {
+              "name": "Monogram Anniversary",
+              "metrics": [
+                "5,317",
+                "50%",
+                "21%",
+                "$3,241,908"
+              ]
+            },
+            {
+              "name": "New Handbags for Her",
+              "metrics": [
+                "4,128",
+                "53%",
+                "25%",
+                "$2,988,451"
+              ]
+            },
+            {
+              "name": "Back to School Collection",
+              "metrics": [
+                "2,916",
+                "57%",
+                "29%",
+                "$2,447,263"
+              ]
+            },
+            {
+              "name": "New Formal Styles for Him",
+              "metrics": [
+                "1,973",
+                "61%",
+                "33%",
+                "$1,882,594"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16702,
+          "rows": [
+            {
+              "name": "louis vuitton neverfull",
+              "metrics": [
+                "5,421",
+                "47%",
+                "18%",
+                "$2,841,663"
+              ]
+            },
+            {
+              "name": "lv speedy 30",
+              "metrics": [
+                "4,132",
+                "51%",
+                "22%",
+                "$2,647,914"
+              ]
+            },
+            {
+              "name": "louis vuitton near me",
+              "metrics": [
+                "3,318",
+                "54%",
+                "26%",
+                "$2,512,088"
+              ]
+            },
+            {
+              "name": "louis vuitton backpack men",
+              "metrics": [
+                "2,247",
+                "58%",
+                "30%",
+                "$1,958,441"
+              ]
+            },
+            {
+              "name": "louis vuitton belt reversible",
+              "metrics": [
+                "1,584",
+                "62%",
+                "34%",
+                "$1,571,225"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Styling Appointment Set (Industry) (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Bags and Wallets",
+              "metrics": [
+                "15,842",
+                "40%",
+                "15%",
+                "$6,753,482"
+              ]
+            },
+            {
+              "name": "Ready-to-Wear",
+              "metrics": [
+                "10,318",
+                "43%",
+                "21%",
+                "$6,161,724"
+              ]
+            },
+            {
+              "name": "Shoes",
+              "metrics": [
+                "7,946",
+                "44%",
+                "25%",
+                "$5,648,921"
+              ]
+            },
+            {
+              "name": "Accessories and Belts",
+              "metrics": [
+                "5,624",
+                "45%",
+                "30%",
+                "$4,796,318"
+              ]
+            },
+            {
+              "name": "Trunks and Travel",
+              "metrics": [
+                "3,747",
+                "47%",
+                "35%",
+                "$3,853,382"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43477,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "13,264",
+                "41%",
+                "16%",
+                "$6,038,214"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "11,847",
+                "43%",
+                "20%",
+                "$6,739,552"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "9,352",
+                "45%",
+                "24%",
+                "$6,382,109"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "5,986",
+                "46%",
+                "29%",
+                "$4,933,618"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "3,028",
+                "48%",
+                "35%",
+                "$3,120,334"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Purchase (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Bags and Wallets",
+            "values": [
+              512,
+              468,
+              489,
+              451,
+              456
+            ]
+          },
+          {
+            "name": "Ready-to-Wear",
+            "values": [
+              448,
+              432,
+              419,
+              441,
+              427
+            ]
+          },
+          {
+            "name": "Shoes",
+            "values": [
+              402,
+              391,
+              398,
+              405,
+              391
+            ]
+          },
+          {
+            "name": "Accessories and Belts",
+            "values": [
+              342,
+              331,
+              338,
+              346,
+              330
+            ]
+          },
+          {
+            "name": "Trunks and Travel",
+            "values": [
+              268,
+              259,
+              262,
+              271,
+              251
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 43,477 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Isabella Moreno called the flagship boutique to arrange a private viewing of the LV Fall Collection. The client advisor confirmed her preferred date and reserved a styling appointment with a senior stylist. She left delighted and asked to preview the Monogram Reversible Double Face Blouson on arrival.",
+          "date": "Jan 6, 2:42 PM",
+          "agent": "Rose",
+          "duration": "2m 15s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Marcus Bennett phoned to see the Neverfull Inside Out BB and the Speedy 30 Bandouliere side by side before deciding. The advisor booked a styling appointment and set both pieces aside in his size preference. He confirmed he would bring his partner to the fitting.",
+          "date": "Feb 11, 11:18 AM",
+          "agent": "Lila",
+          "duration": "1m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Sophia Laurent requested help selecting formal pieces from the men's ready-to-wear line as a gift. The advisor walked her through the Light Padded Monogram Overshirt and scheduled a styling appointment at the boutique. She was pleased with the personalized attention.",
+          "date": "Mar 4, 4:05 PM",
+          "agent": "Oscar",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 78,
+          "summary": "Daniel Kwon, a new client, called to arrange his very first visit and the advisor collected his full contact details and style preferences. He mentioned interest in the LV Trainer sneaker and the Flaneur backpack, so the advisor booked a styling appointment and created his MyLV profile. He confirmed the date and thanked the advisor.",
+          "date": "Apr 9, 10:47 AM",
+          "agent": "Mary",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 74,
+          "summary": "Olivia Chen called about jewelry and watch options for an anniversary gift. The advisor described several fine pieces and reserved a styling appointment so she could try them in person. She left satisfied with the guidance.",
+          "date": "May 2, 1:29 PM",
+          "agent": "Jennifer",
+          "duration": "2m 04s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 70,
+          "summary": "Ethan Rossi wanted a fitting for the Westminster Loafer and also asked to try the LV Trainer sneaker. The advisor confirmed sizing and booked a styling appointment at his nearest boutique. He appreciated the quick turnaround.",
+          "date": "May 21, 5:16 PM",
+          "agent": "Mike",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Grace Kim called about a delivery delay on her Wallet On Chain Trotter order. The advisor located the shipment and provided an updated arrival window with tracking. She remained a little concerned but accepted the new date.",
+          "date": "Jun 3, 9:52 AM",
+          "agent": "Sue",
+          "duration": "1m 39s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Victor Alvarez asked for an order status update on his Flaneur backpack purchase. The advisor confirmed it had shipped and reviewed the estimated delivery timeline. He wanted faster options but understood the process.",
+          "date": "Jun 18, 3:41 PM",
+          "agent": "Lee",
+          "duration": "1m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Hannah Brooks called to arrange a repair for loose handle stitching on her Speedy handbag. The advisor explained the boutique repair intake and estimated a 24-48h assessment window. She agreed to bring the bag in but was disappointed by the wait.",
+          "date": "Jul 7, 12:08 PM",
+          "agent": "Rosey",
+          "duration": "2m 26s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 25,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Nathan Cole disputed a duplicate charge on his recent order. The advisor reviewed the transactions and opened a billing review to reverse the extra amount. He stayed frustrated until a resolution timeline was confirmed.",
+          "date": "Jul 24, 6:33 PM",
+          "agent": "Oscar",
+          "duration": "2m 51s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "An after-hours caller left a voicemail requesting an exchange for a different size of the LV Trainer sneaker. No advisor was available and the call rolled to voicemail. The message asked for a return call about the sneaker exchange process.",
+          "date": "Aug 5, 8:14 PM",
+          "agent": "No Agent",
+          "duration": "0m 44s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 32,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Amelia Ford called to start an exchange on the LV Dimension Reversible Belt after buying the wrong size. The advisor outlined the exchange steps and shipping label process. She was unhappy about covering return logistics.",
+          "date": "Aug 22, 10:31 AM",
+          "agent": "Lila",
+          "duration": "1m 55s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Preston Hale complained about a long repair turnaround on his Hobo Low Key PM. The advisor apologized and escalated the repair ticket for a status check. He remained annoyed at the lack of updates.",
+          "date": "Sep 9, 2:19 PM",
+          "agent": "Mike",
+          "duration": "3m 04s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Chloe Ramsey reported that her Trunks and Travel delivery arrived with visible damage. The advisor initiated a damage claim and arranged a replacement delivery. She was upset about the condition of the item.",
+          "date": "Sep 27, 4:48 PM",
+          "agent": "Mary",
+          "duration": "2m 40s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Jordan Pierce called to cancel a recent order and voiced frustration over the checkout experience. The advisor processed the cancellation and confirmed the refund timeline. He ended the call still dissatisfied.",
+          "date": "Oct 3, 1:07 PM",
+          "agent": "Lee",
+          "duration": "1m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "styling appointment",
+        "sneaker",
+        "backpack",
+        "delivery",
+        "repair",
+        "exchange"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 41s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Identify Styling Preferences",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Book Styling Appointment Date and Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Appointment via Phone Number",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Explain Virtual Styling Option",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Document Product Interest Category",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "New customer inquiry",
+        "Expressed interest in luxury handbags",
+        "Confirmed appointment booking",
+        "Provided ZIP code",
+        "Identified preferred styling timeframe",
+        "Accepted virtual styling explanation",
+        "Shared specific product category interest",
+        "Confirmed name spelling",
+        "Asked clarifying questions about service",
+        "Showed enthusiasm for brand",
+        "Mentioned upcoming special occasion",
+        "Engaged with agent recommendations",
+        "Preferred weekend appointment"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Phone number not confirmed",
+        "Preferred styling format not explicitly stated",
+        "Budget range not discussed",
+        "Previous LV purchase history not explored",
+        "VIP account eligibility not mentioned",
+        "Personalization service not discussed",
+        "In store vs. at home preference unclear",
+        "Return policy explanation missing",
+        "Warranty information not provided",
+        "Gift wrapping preference not asked",
+        "Monogram service not mentioned",
+        "Follow up communication preference not set",
+        "Delivery timeline expectations not set",
+        "Product size preference not determined",
+        "Color preference not captured",
+        "Leather care information not shared"
+      ],
+      "naSignals": [
+        "Order status inquiry",
+        "Shipping tracking request",
+        "Return or exchange request",
+        "Billing or payment issue",
+        "Damaged merchandise report",
+        "Prior purchase troubleshooting",
+        "Warranty claim inquiry",
+        "Previous order modification",
+        "Refund status check",
+        "Delivery address change"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "The caller is a new customer seeking personalized styling guidance to select luxury handbags and accessories for an upcoming event. She is not resolving an issue but rather exploring Louis Vuitton's collections with expert assistance."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "She expects a dedicated styling appointment where she can view product options, receive expert recommendations tailored to her preferences, and understand the features and craftsmanship of Louis Vuitton handbags and accessories."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should capture the customer's email address and confirm her phone number before closing to enable appointment reminders and follow up communication. Discussing budget range and preferred styling location (in store, at home, or virtual) would also set clearer expectations."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon, thank you for calling Louis Vuitton North America. My name is Marcus Bell. May I ask who I am speaking with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus. I'm calling because I saw the new handbag collection online and I'd love to get some styling help. My name is Jennifer Caldwell."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:42",
+          "text": "Jennifer, it's wonderful to meet you. Thank you so much for choosing Louis Vuitton. I am delighted to help you explore our collections. May I confirm the spelling of your last name? Is that C A L D W E L L?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:56",
+          "text": "Yes, that's correct. Caldwell."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:04",
+          "text": "Perfect, Jennifer Caldwell. I see you are interested in our handbag collection. To best serve you, may I ask what area you are located in? What is your ZIP code?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:18",
+          "text": "I'm in the San Francisco area. My ZIP is 94105."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:28",
+          "text": "Excellent. We have a beautiful boutique location in San Francisco and also offer virtual styling sessions. Are you thinking about scheduling a dedicated styling appointment with us?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:42",
+          "text": "Yes, I would love that. I'm looking for something special for a gala next month. Maybe a tote or a clutch. I really love the Monogram collections I saw online."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:58",
+          "text": "Jennifer, how wonderful. The Monogram collections are absolutely stunning and perfect for a special event. We have several styles ideal for a gala. Would you prefer to come in to our San Francisco boutique, or would a virtual styling session from home work better for your schedule?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:16",
+          "text": "I think I'd prefer to come into the store. I like to see and touch the pieces in person."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:28",
+          "text": "That makes perfect sense. There is nothing quite like experiencing the craftsmanship firsthand. Are you available next weekend, Saturday or Sunday, or would a weekday appointment be better for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:44",
+          "text": "Saturday afternoon would be perfect for me. Maybe around 2 or 3 p.m.?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:56",
+          "text": "Wonderful. I have Saturday, October 28th available at 2:30 p.m. at our San Francisco boutique for your personal styling appointment. That gives you plenty of time to explore our handbag and accessory collections with our styling expert. Does that work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:12",
+          "text": "Yes, that's perfect. I'm really excited."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:20",
+          "text": "Jennifer, I am so thrilled as well. To ensure we have all your information, I do have your name, Jennifer Caldwell, and your ZIP code 94105. Let me get your phone number to confirm the appointment."
+        },
+        {
+          "speaker": "caller",
+          "time": "03:36",
+          "text": "It's ****"
+        },
+        {
+          "speaker": "agent",
+          "time": "03:42",
+          "text": "Thank you. And a quick email address so we can send you confirmation and styling tips before your appointment?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:54",
+          "text": "Oh, I'd prefer not to share my email right now. Maybe when I come in to the store?"
+        },
+        {
+          "speaker": "agent",
+          "time": "04:04",
+          "text": "I completely understand. We look forward to meeting you in person, Jennifer. Your styling appointment is confirmed for Saturday, October 28th at 2:30 p.m. at our San Francisco boutique. Our team will be ready to showcase our finest handbags and accessories. Thank you so much for choosing Louis Vuitton, and we cannot wait to see you."
+        },
+        {
+          "speaker": "caller",
+          "time": "04:26",
+          "text": "Thank you, Marcus. This was so helpful. I'll see you Saturday."
+        },
+        {
+          "speaker": "agent",
+          "time": "04:36",
+          "text": "You're very welcome, Jennifer. Have a wonderful day, and we look forward to your visit."
+        }
+      ],
+      "aiSummary": "Jennifer Caldwell, a new customer from San Francisco, called to book a personal styling appointment for an upcoming gala. Marcus successfully gathered her name, ZIP code, and confirmed a Saturday afternoon appointment slot at 2:30 p.m. at the San Francisco boutique. Jennifer expressed interest in exploring Monogram handbags and totes, and appreciated the ability to experience the products in person. The call was well structured with clear appointment confirmation, though the agent did not capture her email address for follow up communication.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "Great job on this call, @Marcus. Your greeting was warm and professional, and you moved through the discovery phase smoothly to land a confirmed boutique appointment. I would suggest two refinements for your next styling intake calls. First, when Jennifer declined to share her email, gently reframe it as essential for appointment reminders and exclusive pre visit styling guidance, rather than accepting the decline without follow up. Second, consider asking about her experience level with Louis Vuitton and whether she has favorite collections or price points, so our styling team has richer context on Saturday. These details will help personalize her visit even more."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "43,477"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$625.94"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$27,213,827"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "24,113"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "55%"
+            },
+            {
+              "label": "Styling Appointment: Scheduled (Count)",
+              "value": "18,260"
+            },
+            {
+              "label": "Styling Appointment: Scheduled (Percent)",
+              "value": "42%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "19,364"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "45%"
+            },
+            {
+              "label": "Styling Appointment: Canceled (Percent)",
+              "value": "6%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Styling Appointments)",
+          "chart": {
+            "legend": "Styling Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Display/Programmatic",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Email/CRM",
+                "value": 49,
+                "display": "49%"
+              },
+              {
+                "name": "Social Media",
+                "value": 44,
+                "display": "44%"
+              },
+              {
+                "name": "Paid Search",
+                "value": 39,
+                "display": "39%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Styling Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Styling Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Organic Search",
+                  "14,882",
+                  "24%",
+                  "$9,312,455"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Search",
+                  "11,346",
+                  "33%",
+                  "$7,104,882"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "7,913",
+                  "41%",
+                  "$4,955,318"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "5,624",
+                  "49%",
+                  "$3,521,644"
+                ]
+              },
+              {
+                "cells": [
+                  "Display/Programmatic",
+                  "3,712",
+                  "58%",
+                  "$2,319,528"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 16000,
+            "axisTicks": [
+              0,
+              4000,
+              8000,
+              12000,
+              16000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Organic",
+                "value": 15234,
+                "display": "15,234"
+              },
+              {
+                "name": "CPC",
+                "value": 12088,
+                "display": "12,088"
+              },
+              {
+                "name": "Paid Social",
+                "value": 7642,
+                "display": "7,642"
+              },
+              {
+                "name": "Email",
+                "value": 5301,
+                "display": "5,301"
+              },
+              {
+                "name": "Referral",
+                "value": 3212,
+                "display": "3,212"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Styling Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Styling Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Organic",
+                  "15,234",
+                  "28%"
+                ]
+              },
+              {
+                "cells": [
+                  "CPC",
+                  "12,088",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "7,642",
+                  "42%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "5,301",
+                  "48%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "3,212",
+                  "57%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Monogram Anniversary",
+                "value": 6241,
+                "display": "6,241"
+              },
+              {
+                "name": "LV Fall Collection",
+                "value": 5118,
+                "display": "5,118"
+              },
+              {
+                "name": "New Handbags for Her",
+                "value": 4087,
+                "display": "4,087"
+              },
+              {
+                "name": "New Formal Styles for Him",
+                "value": 3142,
+                "display": "3,142"
+              },
+              {
+                "name": "Back to School Collection",
+                "value": 2096,
+                "display": "2,096"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Styling Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Styling Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Monogram Anniversary",
+                  "6,241",
+                  "31%",
+                  "$3,904,118"
+                ]
+              },
+              {
+                "cells": [
+                  "LV Fall Collection",
+                  "5,118",
+                  "38%",
+                  "$3,201,552"
+                ]
+              },
+              {
+                "cells": [
+                  "New Handbags for Her",
+                  "4,087",
+                  "45%",
+                  "$2,556,214"
+                ]
+              },
+              {
+                "cells": [
+                  "New Formal Styles for Him",
+                  "3,142",
+                  "55%",
+                  "$1,965,441"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "louis vuitton neverfull",
+                "value": 3841,
+                "display": "3,841"
+              },
+              {
+                "name": "LV speedy 30",
+                "value": 2986,
+                "display": "2,986"
+              },
+              {
+                "name": "louis vuitton backpack men",
+                "value": 2214,
+                "display": "2,214"
+              },
+              {
+                "name": "LV trainer sneakers men",
+                "value": 1682,
+                "display": "1,682"
+              },
+              {
+                "name": "louis vuitton belt reversible",
+                "value": 1058,
+                "display": "1,058"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Styling Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Styling Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "louis vuitton neverfull",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "LV speedy 30",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "louis vuitton backpack men",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "louis vuitton belt reversible",
+                  "56%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Styling Appointment: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Women's Handbags",
+              "12,884",
+              "30%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Men's Bags",
+              "9,347",
+              "37%",
+              "52%"
+            ]
+          },
+          {
+            "cells": [
+              "Small Leather Goods",
+              "6,521",
+              "44%",
+              "49%"
+            ]
+          },
+          {
+            "cells": [
+              "Shoes",
+              "4,118",
+              "55%",
+              "61%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Styling Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "New York Fifth Avenue",
+              "8,742",
+              "612",
+              "5%",
+              "33%"
+            ]
+          },
+          {
+            "cells": [
+              "Beverly Hills Rodeo Drive",
+              "6,318",
+              "448",
+              "6%",
+              "39%"
+            ]
+          },
+          {
+            "cells": [
+              "Chicago Michigan Avenue",
+              "4,927",
+              "371",
+              "7%",
+              "46%"
+            ]
+          },
+          {
+            "cells": [
+              "Miami Design District",
+              "3,214",
+              "256",
+              "8%",
+              "55%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1402,
+              1521,
+              1438,
+              1389,
+              1392
+            ]
+          },
+          {
+            "name": "Comparing Boutiques",
+            "values": [
+              1188,
+              1262,
+              1224,
+              1205,
+              1209
+            ]
+          },
+          {
+            "name": "Item Out of Stock",
+            "values": [
+              1042,
+              1088,
+              1071,
+              1060,
+              1060
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              782,
+              814,
+              801,
+              792,
+              795
+            ]
+          },
+          {
+            "name": "Outside Delivery Area",
+            "values": [
+              528,
+              548,
+              537,
+              533,
+              536
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "17,391"
+          },
+          {
+            "label": "Styling Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Purchase (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$15,511,881"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,847,392"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,156,774"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,923,845"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,104,567"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,721,845"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,757,458"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Styling Appointment Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 5287,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "4,127",
+                "58%",
+                "31%",
+                "$3,247,881"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "2,856",
+                "54%",
+                "29%",
+                "$2,156,774"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "2,412",
+                "59%",
+                "34%",
+                "$2,504,392"
+              ]
+            },
+            {
+              "name": "Email Marketing",
+              "metrics": [
+                "1,923",
+                "62%",
+                "36%",
+                "$1,923,845"
+              ]
+            },
+            {
+              "name": "Display Retargeting",
+              "metrics": [
+                "1,604",
+                "48%",
+                "24%",
+                "$1,247,567"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Styling Appointment Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 5531,
+          "rows": [
+            {
+              "name": "Voice Call",
+              "metrics": [
+                "5,384",
+                "57%",
+                "33%",
+                "$4,156,392"
+              ]
+            },
+            {
+              "name": "Web Chat",
+              "metrics": [
+                "3,847",
+                "59%",
+                "35%",
+                "$3,247,881"
+              ]
+            },
+            {
+              "name": "SMS Message",
+              "metrics": [
+                "3,156",
+                "54%",
+                "28%",
+                "$2,487,392"
+              ]
+            },
+            {
+              "name": "Form Submission",
+              "metrics": [
+                "2,728",
+                "61%",
+                "37%",
+                "$2,756,827"
+              ]
+            },
+            {
+              "name": "Social Messenger",
+              "metrics": [
+                "2,276",
+                "49%",
+                "23%",
+                "$1,863,389"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Styling Appointment Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 5721,
+          "rows": [
+            {
+              "name": "LV Fall Collection Launch",
+              "metrics": [
+                "3,847",
+                "59%",
+                "32%",
+                "$3,156,847"
+              ]
+            },
+            {
+              "name": "Monogram Anniversary Event",
+              "metrics": [
+                "2,934",
+                "57%",
+                "30%",
+                "$2,384,756"
+              ]
+            },
+            {
+              "name": "New Handbags for Her",
+              "metrics": [
+                "2,156",
+                "61%",
+                "36%",
+                "$2,047,392"
+              ]
+            },
+            {
+              "name": "Back to School Ready-to-Wear",
+              "metrics": [
+                "1,864",
+                "54%",
+                "27%",
+                "$1,487,123"
+              ]
+            },
+            {
+              "name": "Holiday Gift Collection",
+              "metrics": [
+                "1,427",
+                "48%",
+                "21%",
+                "$1,247,567"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Styling Appointment Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 4821,
+          "rows": [
+            {
+              "name": "louis vuitton neverfull",
+              "metrics": [
+                "2,847",
+                "61%",
+                "34%",
+                "$2,287,392"
+              ]
+            },
+            {
+              "name": "LV speedy 30 bandouliere",
+              "metrics": [
+                "2,156",
+                "59%",
+                "32%",
+                "$1,847,581"
+              ]
+            },
+            {
+              "name": "louis vuitton wallet on chain",
+              "metrics": [
+                "1,734",
+                "57%",
+                "30%",
+                "$1,487,923"
+              ]
+            },
+            {
+              "name": "LV trainer sneakers men",
+              "metrics": [
+                "1,284",
+                "54%",
+                "26%",
+                "$1,156,847"
+              ]
+            },
+            {
+              "name": "louis vuitton backpack men",
+              "metrics": [
+                "1,047",
+                "48%",
+                "22%",
+                "$863,574"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Styling Appointment Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Handbags and Leather Goods",
+              "metrics": [
+                "6,847",
+                "61%",
+                "36%",
+                "$5,287,392"
+              ]
+            },
+            {
+              "name": "Ready-to-Wear and Shoes",
+              "metrics": [
+                "4,256",
+                "58%",
+                "32%",
+                "$3,847,581"
+              ]
+            },
+            {
+              "name": "Accessories and Jewelry",
+              "metrics": [
+                "3,128",
+                "55%",
+                "29%",
+                "$2,156,847"
+              ]
+            },
+            {
+              "name": "Perfume and Beauty",
+              "metrics": [
+                "2,043",
+                "52%",
+                "25%",
+                "$1,487,923"
+              ]
+            },
+            {
+              "name": "Trunks Travel and Home",
+              "metrics": [
+                "1,117",
+                "48%",
+                "19%",
+                "$744,158"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Purchase (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Handbags and Leather Goods",
+            "values": [
+              746,
+              748,
+              745,
+              712,
+              614
+            ]
+          },
+          {
+            "name": "Ready-to-Wear and Shoes",
+            "values": [
+              432,
+              426,
+              421,
+              398,
+              350
+            ]
+          },
+          {
+            "name": "Accessories and Jewelry",
+            "values": [
+              289,
+              291,
+              287,
+              264,
+              221
+            ]
+          },
+          {
+            "name": "Perfume and Beauty",
+            "values": [
+              214,
+              206,
+              198,
+              176,
+              134
+            ]
+          },
+          {
+            "name": "Trunks Travel and Home",
+            "values": [
+              92,
+              88,
+              84,
+              71,
+              47
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Styling Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Styling Appointment Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Styling Appointment Scheduled (Count)",
+            "value": "12,164"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$18,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "812"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Styling Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Styling Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Styling Appointment Scheduled (Count)",
+            "value": "1,309"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$3,716,273"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Styling Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Styling Appointment Scheduled",
+            "values": [
+              72,
+              79,
+              74,
+              81,
+              76,
+              78,
+              75,
+              79,
+              72,
+              80,
+              77,
+              74,
+              79,
+              76,
+              78,
+              81,
+              75,
+              79,
+              72,
+              80,
+              76,
+              78,
+              79,
+              81,
+              74,
+              183,
+              187,
+              179,
+              191,
+              184,
+              188,
+              189,
+              172,
+              186,
+              191,
+              178,
+              185,
+              189,
+              176,
+              184,
+              187,
+              179,
+              186,
+              191,
+              182,
+              188,
+              179,
+              185,
+              191
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,156"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "712"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "62%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "691"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Styling Appointment Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Neverfull and Handbag Styles",
+            "values": [
+              8,
+              11,
+              9,
+              7,
+              12,
+              10
+            ]
+          },
+          {
+            "name": "Small Leather Goods Inquiry",
+            "values": [
+              4,
+              6,
+              3,
+              8,
+              5,
+              7
+            ]
+          },
+          {
+            "name": "Personalization and Monogram Options",
+            "values": [
+              6,
+              9,
+              5,
+              11,
+              8,
+              6
+            ]
+          },
+          {
+            "name": "Pre-owned and Vintage Availability",
+            "values": [
+              2,
+              1,
+              4,
+              3,
+              9,
+              2
+            ]
+          },
+          {
+            "name": "Store Locator and In-Store Appointments",
+            "values": [
+              5,
+              7,
+              6,
+              9,
+              4,
+              11
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "39,999"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "29,130"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Styling Appointment Booked (Count)",
+            "value": "18,260"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$27,213,827"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Priya Kapoor",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "James O'Sullivan",
+              "value": 242,
+              "display": "242"
+            },
+            {
+              "name": "Elena Rodriguez",
+              "value": 165,
+              "display": "165"
+            },
+            {
+              "name": "David Nakamura",
+              "value": 203,
+              "display": "203"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Styling Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sophia Laurent",
+            "values": [
+              312,
+              348,
+              371,
+              406,
+              441
+            ]
+          },
+          {
+            "name": "Christopher Hayes",
+            "values": [
+              298,
+              331,
+              364,
+              389,
+              428
+            ]
+          },
+          {
+            "name": "Amelia Zhao",
+            "values": [
+              287,
+              315,
+              342,
+              373,
+              404
+            ]
+          },
+          {
+            "name": "Isabella Moretti",
+            "values": [
+              276,
+              301,
+              328,
+              351,
+              389
+            ]
+          },
+          {
+            "name": "Adrian Fox",
+            "values": [
+              265,
+              288,
+              309,
+              336,
+              368
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Priya Kapoor",
+              "value": 56.1,
+              "display": "56.1%"
+            },
+            {
+              "name": "James O'Sullivan",
+              "value": 52.8,
+              "display": "52.8%"
+            },
+            {
+              "name": "Elena Rodriguez",
+              "value": 57.3,
+              "display": "57.3%"
+            },
+            {
+              "name": "David Nakamura",
+              "value": 55.6,
+              "display": "55.6%"
+            },
+            {
+              "name": "Patricia Wells",
+              "value": 58.4,
+              "display": "58.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Styling Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "54.2%",
+                "28%",
+                "$1,472,318",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Kapoor",
+                "56.1%",
+                "29%",
+                "$1,518,647",
+                "1,398"
+              ]
+            },
+            {
+              "cells": [
+                "James O'Sullivan",
+                "52.8%",
+                "26%",
+                "$1,411,202",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Elena Rodriguez",
+                "57.3%",
+                "30%",
+                "$1,541,890",
+                "1,372"
+              ]
+            },
+            {
+              "cells": [
+                "David Nakamura",
+                "55.6%",
+                "27%",
+                "$1,445,164",
+                "1,489"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Wells",
+                "58.4%",
+                "31%",
+                "$1,598,356",
+                "1,361"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sophia Laurent",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Christopher Hayes",
+              "value": 89.4,
+              "display": "89.4%"
+            },
+            {
+              "name": "Amelia Zhao",
+              "value": 88.6,
+              "display": "88.6%"
+            },
+            {
+              "name": "Isabella Moretti",
+              "value": 90.2,
+              "display": "90.2%"
+            },
+            {
+              "name": "Adrian Fox",
+              "value": 87.9,
+              "display": "87.9%"
+            },
+            {
+              "name": "Victoria Nguyen",
+              "value": 92.3,
+              "display": "92.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Styling Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sophia Laurent",
+                "91.7%",
+                "64%",
+                "$2,694,182",
+                "1,519"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Hayes",
+                "89.4%",
+                "61%",
+                "$2,528,793",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Amelia Zhao",
+                "88.6%",
+                "60%",
+                "$2,487,504",
+                "1,542"
+              ]
+            },
+            {
+              "cells": [
+                "Isabella Moretti",
+                "90.2%",
+                "62%",
+                "$2,608,947",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "Adrian Fox",
+                "87.9%",
+                "58%",
+                "$2,415,298",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Victoria Nguyen",
+                "92.3%",
+                "65%",
+                "$2,748,603",
+                "1,534"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Styling Appointment Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Styling Appointment Booked (Count)",
+        "rightMax": 900,
+        "rightTicks": [
+          0,
+          225,
+          450,
+          675,
+          900
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 677
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 649
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 604
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 576
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 501
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 526
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 582
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 605
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 675
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 654
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 589
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 569
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 506
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 522
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 596
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 614
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 668
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 658
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 577
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 558
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 514
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 519
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 606
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 626
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 660
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 659
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 568
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 545
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 523
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 520
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 614
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1300000,
+        "rightTicks": [
+          0,
+          433333.3333333333,
+          866666.6666666666,
+          1300000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1008792
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 966881
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 900364
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 859120
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 748022
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 785029
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 867198
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 901382
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1005046
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 974454
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 877658
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 848273
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 754821
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 778042
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 887846
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 914900
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 995688
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 980192
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 859522
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 832260
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 766150
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 774182
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 903149
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 933086
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 983039
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 981609
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 847224
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 812352
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 779435
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 775677
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 912434
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "43,477"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,478"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,609"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "412",
+                "91%",
+                "88%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "529",
+                "88%",
+                "85%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "Maria Rodriguez",
+                "458",
+                "88%",
+                "86%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "43,477 calls",
+      "pagerLabel": "1 of 4,348",
+      "calls": [
+        {
+          "time": "1/6/26 9:12 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 10:41 am",
+          "id": "A3C1-4B29E7710C8A"
+        },
+        {
+          "time": "1/9/26 11:27 am",
+          "id": "9D42-6E01AC3388F1"
+        },
+        {
+          "time": "1/13/26 12:33 pm",
+          "id": "7B8E-1F44D9022A6C"
+        },
+        {
+          "time": "1/15/26 1:05 pm",
+          "id": "C209-88B3E51470FD"
+        },
+        {
+          "time": "1/19/26 2:18 pm",
+          "id": "E641-72AD0C9915B3"
+        },
+        {
+          "time": "1/21/26 3:44 pm",
+          "id": "5FA0-93C1668E2201"
+        },
+        {
+          "time": "1/23/26 4:09 pm",
+          "id": "1B7D-40E2F7A8C355"
+        },
+        {
+          "time": "1/27/26 4:52 pm",
+          "id": "D830-2C55B1907E4F"
+        },
+        {
+          "time": "1/29/26 5:31 pm",
+          "id": "6C19-A7E3440B22D9"
+        }
+      ],
+      "duration": "2:22",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Louis Vuitton, this is Camille. How may I assist you today?",
+          "highlights": [
+            "Thank you for calling Louis Vuitton"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Camille. This is my first time reaching out to you all. I'm looking for a nice everyday bag for my wife and maybe a small gift to go with it.",
+          "highlights": [
+            "first time reaching out"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:16",
+          "text": "Wonderful, and welcome. May I have your name so I can set up your profile?",
+          "highlights": [
+            "welcome"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:22",
+          "text": "Sure, it's Daniel Rivera.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:26",
+          "text": "Thank you, Daniel. For an everyday piece, many clients love the Neverfull Inside Out BB. It's a reversible Monogram-canvas tote with a detachable strap and a removable zip pouch.",
+          "highlights": [
+            "Neverfull Inside Out BB"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:37",
+          "text": "That sounds lovely. What does that one run?",
+          "highlights": [
+            "What does that one run?"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:42",
+          "text": "The Neverfull Inside Out BB is $2,900. It's an incredibly versatile piece that works for daily use and travel alike.",
+          "highlights": [
+            "$2,900"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:50",
+          "text": "Okay. I'll be honest, I want to keep it manageable, and I saw a Speedy at a department store counter that was a touch less.",
+          "highlights": [
+            "I want to keep it manageable",
+            "saw a Speedy at a department store counter"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:00",
+          "text": "That's a fair point, Daniel. The Speedy 30 Bandouliere is $1,960 and it's a beautiful iconic shape. Buying directly with us also guarantees full authenticity, complimentary personalization, and access to our repair services.",
+          "highlights": [
+            "Speedy 30 Bandouliere is $1,960",
+            "full authenticity"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:12",
+          "text": "That helps. Maybe the Speedy for her, and something small as the gift?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:19",
+          "text": "A lovely idea. The Wallet On Chain Trotter at $3,000 pairs beautifully, or if you'd like something lighter, the LV Spaced Tie is $220 for a subtle touch.",
+          "highlights": [
+            "Wallet On Chain Trotter",
+            "LV Spaced Tie is $220"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:30",
+          "text": "The tie is a nice add. One thing though, it's her birthday next Friday, so I'd need this in time.",
+          "highlights": [
+            "her birthday next Friday"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:39",
+          "text": "We can absolutely work within that. I'd recommend booking a styling appointment so a client advisor can prepare the pieces and confirm delivery ahead of Friday.",
+          "highlights": [
+            "booking a styling appointment"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:49",
+          "text": "Let me just check with my schedule, I think Thursday morning works best.",
+          "highlights": [
+            "check with my schedule"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:55",
+          "text": "Thursday it is. I have a Styling Appointment open at 10 AM with one of our advisors. Shall I reserve that for you?",
+          "highlights": [
+            "Styling Appointment open at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:02",
+          "text": "Yes, please book it.",
+          "highlights": [
+            "book it"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:06",
+          "text": "You're all set, Daniel. Thursday at 10 AM for the Speedy 30 Bandouliere and the LV Spaced Tie. What's the best number and email for your confirmation?",
+          "highlights": [
+            "You're all set"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:14",
+          "text": "It's daniel.rivera@email.com, and this number is fine.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:18",
+          "text": "Perfect, a confirmation is on its way. Thank you for choosing Louis Vuitton, Daniel. We look forward to welcoming you Thursday.",
+          "highlights": [
+            "Thank you for choosing Louis Vuitton"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Styling Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Product Interest: Handbags",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Product Interest: Small Leather Goods",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Gift Intent Detected",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Daniel Rivera, a new client, called seeking an everyday handbag for his wife plus a small gift for her birthday next Friday. The advisor recommended the Neverfull Inside Out BB and the Speedy 30 Bandouliere, then paired it with the LV Spaced Tie as a gift, addressing his budget and a department store comparison. A Styling Appointment was scheduled for Thursday at 10 AM, and his contact details were captured for confirmation.",
+        "keyPoints": [
+          "New client, first time contacting Louis Vuitton",
+          "Needs an everyday bag plus a birthday gift for his wife",
+          "Recommended Speedy 30 Bandouliere and LV Spaced Tie",
+          "Handled budget concern and department store comparison",
+          "Deadline of the wife's birthday next Friday confirmed as workable",
+          "Styling Appointment booked for Thursday 10 AM, email and phone captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Styling Appointment booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "27,391 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,739",
+      "conversations": [
+        {
+          "id": "C7A2-B91E4FC83D67",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for texting Louis Vuitton. We are excited to help you find the perfect piece today. Are you shopping for yourself or as a gift."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:23 AM",
+              "text": "for myself, a handbag"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:24 AM",
+              "text": "Wonderful. We have some beautiful new handbags in stock. Are you looking for a structured tote, a shoulder bag, or something more compact like a wallet."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "I like the neverfull bag"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Excellent choice. The Neverfull Inside Out BB is stunning and reversible. It is priced at $2,900. Have you visited one of our boutiques before or would this be your first time shopping with us."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "First time shopping with you guys"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:30 AM",
+              "text": "We would love to welcome you. I can schedule you for a personal styling appointment at one of our locations where our stylists can show you the Neverfull and other bags in person. What is your preferred city or region."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "San Francisco or Bay Area"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "Perfect. We have a beautiful boutique in San Francisco. Would you prefer an appointment this Saturday or Sunday afternoon, or would a weekday morning work better for you."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:35 AM",
+              "text": "Saturday afternoon please"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:36 AM",
+              "text": "Wonderful. I have reserved a styling appointment for you this Saturday, March 15th at 2:00 PM at our San Francisco boutique on Union Street. Our stylist will help you explore the Neverfull and find the perfect bag for you. Can you confirm that Saturday at 2:00 PM works."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:38 AM",
+              "text": "yes perfect"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:39 AM",
+              "text": "Excellent. Your appointment is confirmed for Saturday, March 15th at 2:00 PM. Please allow about one hour. You will receive a text reminder 24 hours before your appointment. If you have any questions before Saturday, feel free to call our boutique at 415-781-4477. We look forward to seeing you."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:41 AM",
+              "text": "thank you"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:42 AM",
+              "text": "You are welcome. See you Saturday. Have a wonderful day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Styling Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Neverfull Inside Out BB",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: San Francisco",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Appointment Type: In-Boutique Styling",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Customer Segment: First Time Buyer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C7A2-B91E4FC83D67",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "415-723-8961",
+            "repeatCaller": "No",
+            "city": "San Francisco",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Martinez",
+            "firstName": "Sarah",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C4B9-A27D5E61F4C8",
+          "time": "3/09/26 8:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C4B9-A27D5E61F4C8",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C8E1-D36C9B7A42E5",
+          "time": "3/08/26 2:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C8E1-D36C9B7A42E5",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C5F3-C48B6D91E2A7",
+          "time": "3/07/26 11:32 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C5F3-C48B6D91E2A7",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "43,477 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,348",
+      "conversations": [
+        {
+          "id": "B742-3A7FE491K2M8",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Thank you for calling Louis Vuitton. This is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:47 PM",
+              "text": "Hi Marcus. I'm interested in learning more about your handbags, specifically the Neverfull tote."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:48 PM",
+              "text": "Wonderful. The Neverfull Inside Out BB is one of our most popular pieces. It's a reversible Monogram canvas tote and it's absolutely stunning. Are you shopping for yourself or is this a gift?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:49 PM",
+              "text": "For myself. I've been looking at it online but I'd like to see it in person and maybe talk to someone about the different style options."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:50 PM",
+              "text": "Perfect. I'd love to help you with that. Have you visited one of our boutiques before or would this be your first time with Louis Vuitton?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "No, I haven't been to a boutique yet. I'm pretty new to the brand."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Excellent. We'd be happy to welcome you. Just so I can get you the right appointment, what city are you located in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "I'm in Chicago."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:52 PM",
+              "text": "Great. We have a beautiful boutique in Chicago. Now, when would work best for you to visit? Are you thinking this week or next week?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:53 PM",
+              "text": "I'm pretty flexible. Maybe this weekend or early next week?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:54 PM",
+              "text": "Perfect. How about Saturday, January 18th at 11 AM? We can set up a personal styling session where you'll get to see the Neverfull and explore other pieces that might suit your style."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:55 PM",
+              "text": "That sounds great. Yes, I'll do Saturday at 11."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "Wonderful. So I have you down for Saturday, January 18th at 11 AM at our Chicago boutique. Your stylist will be ready to show you our latest collections. We'll send you a confirmation text to your phone, and our boutique number is 312-915-7842 if you need to reschedule. Thank you so much for choosing Louis Vuitton."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:56 PM",
+              "text": "Perfect. Thank you, Marcus. See you Saturday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Styling Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Neverfull Inside Out BB",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: Chicago",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Personal Styling Session Booked",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimated Product Value: $2900",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "B742-3A7FE491K2M8",
+            "callStartTime": "1/15/26 2:47 pm",
+            "duration": "9:34",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "773-448-6291",
+            "repeatCaller": "No",
+            "city": "Chicago",
+            "region": "IL",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Mitchell",
+            "firstName": "Sarah",
+            "lastName": "Mitchell",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "LV Fall Collection",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "C891-7B2KD648N5P9",
+          "time": "1/22/26 11:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C891-7B2KD648N5P9",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D456-9E4LJ729R3Q6",
+          "time": "1/28/26 3:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D456-9E4LJ729R3Q6",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "E763-5F8MK341S7T2",
+          "time": "1/31/26 1:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "E763-5F8MK341S7T2",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as Louis Vuitton North America's AI agent here to help arrange a complimentary personal styling appointment and share our latest LV Fall Collection previews, then ask if they would like to get started.",
+        "Qualify one at a time: Ask one question per message to learn which category interests them (Bags and Wallets, Ready-to-Wear, Shoes, or Accessories), their size or measurements, a preferred style, model, or collection such as Monogram or Neverfull, their ideal timeline to visit, and the ZIP code or city so we can confirm the nearest Maison.",
+        "Estimate then book: Confirm the closest Maison to their ZIP, share a general starting price range for the pieces they mentioned, recommend a session with a Client Advisor for exact pricing and availability, propose a specific day and time, and confirm they will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Louis_Vuitton_North_America_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Women's Handbags Collection",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Store Locator",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Book a Styling Appointment",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"order status\",\"question\":\"Where is my Neverfull order and when will it arrive?\",\"answer\":\"Your order status is available in your MyLV account under order history, and a Client Advisor can confirm the exact delivery window during a quick styling appointment.\"},{\"topic\":\"repair and care\",\"question\":\"Can I have my Speedy handbag repaired or refreshed?\",\"answer\":\"Yes, our Maison offers repair and care services for eligible pieces, and we can review your item together at an in-store styling appointment to advise on options and timing.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you offer personal styling appointments?",
+              "answer": "Yes, we offer complimentary personal styling appointments with a Client Advisor at your nearest Maison. I can help you book one right now."
+            },
+            {
+              "question": "How much is the Neverfull Inside Out BB?",
+              "answer": "The reversible Neverfull Inside Out BB is one of our most requested pieces, and pricing is confirmed by a Client Advisor. Let's set up a styling appointment so you can see it in person."
+            },
+            {
+              "question": "Is the Speedy 30 Bandouliere available?",
+              "answer": "The Speedy 30 Bandouliere is a signature Monogram handbag we love to showcase. I can arrange a styling appointment to confirm current availability at your closest Maison."
+            },
+            {
+              "question": "Do you carry the Wallet On Chain Trotter?",
+              "answer": "Yes, the Wallet On Chain Trotter is part of our small leather goods selection. A styling appointment lets a Client Advisor confirm availability and show you the piece."
+            },
+            {
+              "question": "What men's backpacks do you have?",
+              "answer": "Our men's collection includes structured Monogram styles like the Flaneur Backpack. Let's book a styling appointment so you can explore the current lineup."
+            },
+            {
+              "question": "Do you have LV Trainer sneakers in stock?",
+              "answer": "The LV Trainer high-top is a favorite in our men's shoe collection, and stock varies by Maison. I can schedule a styling appointment to check availability in your size."
+            },
+            {
+              "question": "Where is the nearest Louis Vuitton store?",
+              "answer": "I can help you find the closest Maison if you share your ZIP code or city, then book a styling appointment there."
+            },
+            {
+              "question": "What are your store hours?",
+              "answer": "Hours vary by Maison location, so share your city or ZIP and I will confirm the nearest one and set up a convenient styling appointment time."
+            },
+            {
+              "question": "Can I reserve a bag before I come in?",
+              "answer": "A Client Advisor can hold and prepare pieces for you ahead of your visit. Let's book a styling appointment and note the items you'd like to see."
+            },
+            {
+              "question": "Do you offer personalization or hot stamping?",
+              "answer": "Yes, our Gifts and Personalization services include hot stamping on eligible items. We can review the details together during a styling appointment."
+            },
+            {
+              "question": "What's included in the Fall Collection?",
+              "answer": "Our LV Fall Collection features new handbags, ready-to-wear, and accessories. I can book a styling appointment so you can preview the highlights in person."
+            },
+            {
+              "question": "Do you sell reversible belts?",
+              "answer": "Yes, styles like the LV Dimension Monogram Reversible Belt offer a two-sided buckle. A styling appointment lets a Client Advisor confirm sizing and finishes."
+            },
+            {
+              "question": "Can you help me pick a gift?",
+              "answer": "Absolutely, from small leather goods to silk ties, our advisors love helping with gifts. Let's set up a styling appointment for personalized recommendations."
+            },
+            {
+              "question": "Do you have ready-to-wear for men?",
+              "answer": "Yes, our men's ready-to-wear includes pieces like the Monogram Reversible Double Face Blouson. Book a styling appointment to try the current styles."
+            },
+            {
+              "question": "What sizes do the loafers come in?",
+              "answer": "The Westminster Loafer is offered across our standard size range, and a Client Advisor can fit you precisely. Let's schedule a styling appointment for a proper fitting."
+            },
+            {
+              "question": "Can I see items before buying?",
+              "answer": "Yes, an in-store styling appointment is the best way to see and feel our pieces before deciding. I can arrange one at your nearest Maison."
+            },
+            {
+              "question": "Do you offer virtual appointments?",
+              "answer": "We can arrange a session with a Client Advisor to suit your preference. Share your location and I will set up the best styling appointment option for you."
+            },
+            {
+              "question": "How do I start a MyLV account?",
+              "answer": "You can create a MyLV account on our site to track orders and save favorites, and a Client Advisor can help you during a styling appointment."
+            },
+            {
+              "question": "Do you carry jewelry and watches?",
+              "answer": "Yes, our collections include fine jewelry and watches. Let's book a styling appointment so you can view the selection at your closest Maison."
+            },
+            {
+              "question": "How soon can I book an appointment?",
+              "answer": "We often have same-week openings depending on your Maison. Share your ZIP or city and I will propose a specific day and time."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule a styling appointment\",\"follow_up_message\":\"Wonderful, I have you down for a personal styling appointment at your nearest Maison. Please reply with your preferred day and time and I will confirm with a Client Advisor and send a reminder text.\"},{\"intent\":\"request pricing on a handbag\",\"follow_up_message\":\"Happy to help with the Neverfull. A Client Advisor will confirm exact pricing and availability during a quick styling appointment. Which day this week works best for you?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Louis Vuitton North America's AI agent. I would love to help you arrange a complimentary personal styling appointment and preview our latest LV Fall Collection. Would you like to get started?",
+        "goal": "Guide the client to book an in-store personal styling appointment with a Client Advisor at their nearest Maison.",
+        "bookingType": "in-store personal styling appointment",
+        "offer": "Complimentary personal styling session and early preview of the LV Fall Collection when you book this week",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Which category are you most interested in, Bags and Wallets, Ready-to-Wear, Shoes, or Accessories?",
+          "Do you have a particular style, model, or collection in mind, such as Monogram, Neverfull, or Speedy?",
+          "If it's ready-to-wear or shoes, what size or measurements should we prepare?",
+          "When are you hoping to visit, this week or later this month?",
+          "What ZIP code or city are you in so I can confirm your nearest Maison?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:15 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:15 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:15 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Louis Vuitton North America",
+      "callerName": "Sophia Mitchell",
+      "callerPhone": "(310) 555-0847",
+      "campaign": "Neverfull Handbags, Beverly Hills Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Styling Appointment Lead",
+      "estimatedValue": "$3,285",
+      "googleSearch": "Louis Vuitton neverfull inside out BB price",
+      "websiteSearch": "reversible monogram tote bags women luxury",
+      "callingWebpage": "/women/handbags/all-handbags",
+      "products": "Neverfull Inside Out BB, Wallet On Chain Trotter",
+      "cartId": "LV-8934M",
+      "serviceable": "Yes",
+      "email": "sophia.mitchell@email.com",
+      "street": "9847 Sunset Boulevard",
+      "city": "Beverly Hills",
+      "state": "CA",
+      "zip": "90210",
+      "digitalJourney": "/home › /women › /handbags/all-handbags › /neverfull-inside-out-bb",
+      "intent": "Interested in purchasing a reversible Neverfull tote and wants personalized styling guidance to select matching accessories.",
+      "coverage": "ZIP 90210 confirmed, Beverly Hills serviceable",
+      "switchIntent": "High. Currently comparing LV and Gucci. Wants to see Neverfull in person at nearby boutique this week with a stylist consultation.",
+      "greeting": "Hi Sophia, this is Michael from Louis Vuitton North America. Thank you for calling. I see you were just looking at our Neverfull Inside Out BB on our site. I'd love to help you find the perfect handbag and matching pieces. Can I book you an in-home personal styling appointment with one of our specialists?"
+    },
+    "smsScreenpop": {
+      "brandName": "Louis Vuitton North America",
+      "callerName": "James Chen",
+      "callerPhone": "(212) 555-0623",
+      "campaign": "LV Trainer Sneakers, Manhattan Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Styling Appointment Lead",
+      "estimatedValue": "$2,847",
+      "googleSearch": "LV trainer sneaker men's high top leather",
+      "websiteSearch": "louis vuitton monogram sneakers luxury athletic wear",
+      "callingWebpage": "/men/shoes/all-shoes",
+      "products": "LV Trainer Sneaker, LV Dimension Monogram 40mm Reversible Belt",
+      "cartId": "LV-5621P",
+      "serviceable": "Yes",
+      "email": "james.chen@email.com",
+      "street": "285 Park Avenue South",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10010",
+      "digitalJourney": "/home › /men › /shoes/all-shoes › /lv-trainer-sneaker",
+      "intent": "Shopping for signature LV trainer sneakers and reversible monogram belt to complete a premium casual wardrobe refresh.",
+      "coverage": "ZIP 10010 confirmed, New York serviceable",
+      "appointment": "In-home styling consultation with specialist. Thu Jul 18, 2:00 PM",
+      "greeting": "Hi James. This is Gabriela with Louis Vuitton North America. We have you confirmed for an exclusive in-home styling session this Thursday at 2 PM to review our LV Trainer collection and premium accessories. Do you have any questions before we get started?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Louis Vuitton North America",
+      "brandDomain": "www.us.louisvuitton.com",
+      "brandIcon": "👜",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Beverly Hills, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "New Handbags for Her",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "louis vuitton neverfull tote bag",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Home / Women / Handbags / All Handbags",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Neverfull Inside Out BB, Speedy 30 Bandoulière",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Beverly Hills, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "styling_appt_new",
+          "name": "Styling Appointment, New Project"
+        },
+        {
+          "id": "existing_order_support",
+          "name": "Existing Order Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Concierge"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hello and thank you for calling Louis Vuitton. My name is Claire. I see you've been browsing our women's handbags today. What brings you in today, and how can I help you find the perfect piece?",
+          "sigs": [],
+          "q": [
+            5,
+            55,
+            40
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Hi Claire. I'm looking at the Neverfull and the Speedy. I'm actually planning a trip to Europe this summer and I need something versatile that can hold everything but still look elegant.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Travel occasion</strong> - summer trip"
+            },
+            {
+              "c": "blue",
+              "t": "Two premium tote options"
+            },
+            {
+              "c": "orange",
+              "t": "Functionality plus style"
+            }
+          ],
+          "q": [
+            45,
+            25,
+            30
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "How wonderful. Both of those are iconic choices for travel. The Neverfull Inside Out is reversible, which is perfect for different outfits, and the Speedy works beautifully as a carry-on. Are you shopping for yourself, or are you selecting a gift for someone special?",
+          "sigs": [],
+          "q": [
+            62,
+            18,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "It's for me. I'm really particular about quality and I've always admired Louis Vuitton craftsmanship. I'd love to see both in person and maybe get styling advice on which works best with my wardrobe before I commit.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Premium buyer</strong> - quality focused"
+            },
+            {
+              "c": "blue",
+              "t": "In-person consultation request"
+            },
+            {
+              "c": "purple",
+              "t": "Ready to make purchase decision"
+            }
+          ],
+          "q": [
+            85,
+            8,
+            7
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's wonderful, and I completely understand. Let me connect you with our Beverly Hills boutique styling team. They'll be able to show you both the Neverfull and Speedy in person, discuss the craftsmanship, and help you pick the perfect travel companion. One moment while I transfer you to our Styling Appointment team.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Styling Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"booked your styling appointment (Agent)\", \"I'll schedule your personal appointment (Agent)\", \"see you at the store on (Agent)\", \"book a styling session (Caller)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "01/09/26 2:41 pm"
+        },
+        {
+          "name": "Client Care Quality",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Client Care] < 60 and duration > 45 sec",
+          "createdAt": "05/22/25 11:38 am",
+          "updatedAt": "12/18/25 4:05 pm"
+        },
+        {
+          "name": "Client Greeting Quality",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Client Greeting] < 60 and duration > 45 sec",
+          "createdAt": "04/09/25 8:57 am",
+          "updatedAt": "11/30/25 10:22 am"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Chanel (Caller)\", \"Hermes Birkin (Caller)\", \"Gucci (Caller)\", \"Dior (Caller)\"])",
+          "createdAt": "06/17/25 1:24 pm",
+          "updatedAt": "01/06/26 9:48 am"
+        },
+        {
+          "name": "Handbag Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Neverfull (Caller)\", \"Speedy 30 Bandouliere (Caller)\", \"Wallet on Chain (Caller)\", \"Monogram tote (Caller)\"])",
+          "createdAt": "02/28/25 3:47 pm",
+          "updatedAt": "01/12/26 11:15 am"
+        },
+        {
+          "name": "Personalization Upsell Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"hot stamping (Agent)\", \"add your initials (Agent)\", \"personalize the bag (Caller)\", \"monogram my initials (Caller)\"])",
+          "createdAt": "07/03/25 10:09 am",
+          "updatedAt": "12/29/25 5:33 pm"
+        },
+        {
+          "name": "Price Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"how much is the (Caller)\", \"that's too expensive (Caller)\", \"is there anything less pricey (Caller)\", \"price of the trainer (Caller)\"])",
+          "createdAt": "05/01/25 2:16 pm",
+          "updatedAt": "01/04/26 8:52 am"
+        },
+        {
+          "name": "Product Expertise Quality",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Product Expertise] < 60 and duration > 45 sec",
+          "createdAt": "04/25/25 9:41 am",
+          "updatedAt": "12/11/25 3:19 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the price comes to (Agent)\", \"that would be (Agent)\", \"total with tax (Agent)\", \"it retails for (Agent)\"])",
+          "createdAt": "03/30/25 12:05 pm",
+          "updatedAt": "01/08/26 4:27 pm"
+        },
+        {
+          "name": "Styling Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"personal styling appointment (Agent)\", \"book a time to come in (Agent)\", \"your client advisor (Agent)\", \"schedule a visit to the store (Caller)\"])",
+          "createdAt": "06/09/25 10:52 am",
+          "updatedAt": "01/10/26 1:38 pm"
+        }
+      ]
+    }
+  }
+}

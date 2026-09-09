@@ -1,0 +1,5301 @@
+{
+  "id": "etech",
+  "customerName": "Etech",
+  "websiteUrl": "https://www.etechgs.com",
+  "brandDomain": "etechgs.com",
+  "networkName": "Invoca for BPO",
+  "industry": "Contact center outsourcing / customer experience (CX)",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Client",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 700,
+      "yTicks": [
+        0,
+        175,
+        350,
+        525,
+        700
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 512
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 548
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 587
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 561
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 528
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Contact Center Outsourcing, Get a Quote",
+          "marketingSearchTerm": "contact center outsourcing companies USA",
+          "landingPageUrl": "https://www.etechgs.com/solutions/customer-care/?utm_source=google&utm_medium=cpc&utm_campaign=cc_outsourcing_quote",
+          "websiteJourney": "Home / Solutions / Customer Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Call Center Quality Monitoring Software",
+          "marketingSearchTerm": "call center quality monitoring software with AI scoring",
+          "landingPageUrl": "https://www.etechgs.com/ets-labs/qeval-platform/?utm_source=google&utm_medium=cpc&utm_campaign=qeval_quality_monitoring",
+          "websiteJourney": "Home / ETS Labs / QEval Platform",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "BPO Services for Healthcare",
+          "marketingSearchTerm": "HIPAA compliant healthcare call center outsourcing",
+          "landingPageUrl": "https://www.etechgs.com/industries/healthcare-life-sciences/?utm_source=google&utm_medium=cpc&utm_campaign=bpo_healthcare",
+          "websiteJourney": "Home / Industries / Healthcare & Life Sciences",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Outbound Sales Outsourcing",
+          "marketingSearchTerm": "outbound sales outsourcing company",
+          "landingPageUrl": "https://www.etechgs.com/solutions/sales-revenue/?utm_source=google&utm_medium=cpc&utm_campaign=outbound_sales",
+          "websiteJourney": "Home / Solutions / Sales & Revenue",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Contact Center Outsourcing, Get a Quote",
+          "marketingSearchTerm": "enterprise BPO provider",
+          "landingPageUrl": "https://www.etechgs.com/solutions/?utm_source=bing&utm_medium=cpc&utm_campaign=enterprise_bpo",
+          "websiteJourney": "Home / Solutions / Back Office Operations",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "100% Interaction Analysis vs. 2-5% Sampling",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.etechgs.com/ets-labs/speech-ai/?utm_source=organic&utm_medium=organic&utm_campaign=interaction_analysis",
+          "websiteJourney": "Home / ETS Labs / Speech AI",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Call Center Quality Monitoring Software",
+          "marketingSearchTerm": "speech analytics software for contact centers",
+          "landingPageUrl": "https://www.etechgs.com/ets-labs/qeval-interactive-tour/?utm_source=google&utm_medium=cpc&utm_campaign=qeval_tour",
+          "websiteJourney": "Home / ETS Labs / QEval Interactive Tour",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Full-Stack BPO, One Partner, Zero Gaps",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.etechgs.com/company/how-we-work/?utm_source=facebook&utm_medium=social&utm_campaign=full_stack_bpo",
+          "websiteJourney": "Home / Company / How We Work",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "BPO Services for Healthcare",
+          "marketingSearchTerm": "back office claims processing outsourcing",
+          "landingPageUrl": "https://www.etechgs.com/solutions/back-office-operations/?utm_source=google&utm_medium=cpc&utm_campaign=claims_processing",
+          "websiteJourney": "Home / Solutions / Back Office Operations",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "AI Journey Roadmap",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.etechgs.com/ets-labs/voice-ai-technology/?utm_source=organic&utm_medium=organic&utm_campaign=ai_journey_roadmap",
+          "websiteJourney": "Home / ETS Labs / Voice AI Technology",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Servant Leadership = Lower Attrition",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.etechgs.com/company/culture-values/?utm_source=instagram&utm_medium=social&utm_campaign=servant_leadership",
+          "websiteJourney": "Home / Company / Culture & Values",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Outbound Sales Outsourcing",
+          "marketingSearchTerm": "real-time agent assist AI",
+          "landingPageUrl": "https://www.etechgs.com/ets-labs/rtaa-real-time-agent-assist/?utm_source=google&utm_medium=cpc&utm_campaign=rtaa_agent_assist",
+          "websiteJourney": "Home / ETS Labs / RTAA, Real-Time Agent Assist",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "QEval Interactive Tour",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.etechgs.com/resources/roi-calculator/?utm_source=organic&utm_medium=organic&utm_campaign=roi_calculator",
+          "websiteJourney": "Home / Resources / ROI Calculator",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "BPO Services for Healthcare",
+          "marketingSearchTerm": "nearshore contact center Jamaica",
+          "landingPageUrl": "https://www.etechgs.com/company/global-delivery/?utm_source=google&utm_medium=cpc&utm_campaign=nearshore_jamaica",
+          "websiteJourney": "Home / Company / Global Delivery",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Why Enterprise Teams Switch",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.etechgs.com/resources/case-studies/?utm_source=facebook&utm_medium=social&utm_campaign=enterprise_teams_switch",
+          "websiteJourney": "Home / Resources / Case Studies",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Contact Center Outsourcing, Get a Quote",
+          "marketingSearchTerm": "minority-owned BPO MBE certified call center",
+          "landingPageUrl": "https://www.etechgs.com/company/who-we-are/?utm_source=bing&utm_medium=cpc&utm_campaign=minority_owned_bpo",
+          "websiteJourney": "Home / Company / Who We Are",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "AI Journey Roadmap",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.etechgs.com/ets-labs/automation/?utm_source=organic&utm_medium=organic&utm_campaign=automation_rpa",
+          "websiteJourney": "Home / ETS Labs / Automation",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Call Center Quality Monitoring Software",
+          "marketingSearchTerm": "voice AI agents for call centers",
+          "landingPageUrl": "https://www.etechgs.com/solutions/voice-ai-services/?utm_source=google&utm_medium=cpc&utm_campaign=voice_ai_agents",
+          "websiteJourney": "Home / Solutions / Voice AI Services",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Full-Stack BPO, One Partner, Zero Gaps",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.etechgs.com/resources/webinars/?utm_source=instagram&utm_medium=social&utm_campaign=webinar_replay",
+          "websiteJourney": "Home / Resources / Webinars",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "100% Interaction Analysis vs. 2-5% Sampling",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.etechgs.com/resources/cx-assessment/?utm_source=organic&utm_medium=organic&utm_campaign=cx_assessment",
+          "websiteJourney": "Home / Resources / CX Assessment",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Outbound Sales Outsourcing",
+          "marketingSearchTerm": "offshore call center India",
+          "landingPageUrl": "https://www.etechgs.com/company/locations/?utm_source=google&utm_medium=cpc&utm_campaign=offshore_india",
+          "websiteJourney": "Home / Company / Locations",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Etech)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "2,146"
+            },
+            {
+              "label": "Outsourcing Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Contract Won (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$13,755,015"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "343"
+            },
+            {
+              "label": "Existing Client Support (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Careers & Recruiting (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Vendor & Partner Inquiry (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Outsourcing Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Outsourcing Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "25%"
+            },
+            {
+              "label": "Not Qualified (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Contract Won (Percent)",
+              "value": "5%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Outsourcing Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Outsourcing Inquiry (Count)",
+            "values": [
+              342,
+              388,
+              401,
+              367,
+              305
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              98,
+              115,
+              121,
+              109,
+              94
+            ]
+          },
+          {
+            "name": "Not Qualified (Count)",
+            "values": [
+              89,
+              97,
+              103,
+              96,
+              87
+            ]
+          },
+          {
+            "name": "Contract Won (Count)",
+            "values": [
+              19,
+              23,
+              25,
+              22,
+              18
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2146,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "742",
+                "22.1%",
+                "3.2%",
+                "$3,086,417"
+              ]
+            },
+            {
+              "name": "LinkedIn",
+              "metrics": [
+                "518",
+                "24.3%",
+                "4.6%",
+                "$3,081,905"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "421",
+                "26.2%",
+                "5.9%",
+                "$3,215,240"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "287",
+                "28.3%",
+                "6.6%",
+                "$2,442,118"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "178",
+                "31.5%",
+                "8.4%",
+                "$1,929,335"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2146,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "698",
+                "22.1%",
+                "3.2%",
+                "$2,829,415"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "512",
+                "24.3%",
+                "4.5%",
+                "$2,957,240"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "436",
+                "26.2%",
+                "5.5%",
+                "$3,086,118"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "289",
+                "28.3%",
+                "6.6%",
+                "$2,443,905"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "211",
+                "29.9%",
+                "9.0%",
+                "$2,438,337"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2146,
+          "rows": [
+            {
+              "name": "Contact Center Outsourcing, Get a Quote",
+              "metrics": [
+                "487",
+                "20.5%",
+                "3.1%",
+                "$1,928,415"
+              ]
+            },
+            {
+              "name": "Call Center Quality Monitoring Software",
+              "metrics": [
+                "356",
+                "23.0%",
+                "4.2%",
+                "$1,931,240"
+              ]
+            },
+            {
+              "name": "Full-Stack BPO, One Partner, Zero Gaps",
+              "metrics": [
+                "278",
+                "25.5%",
+                "5.4%",
+                "$1,925,118"
+              ]
+            },
+            {
+              "name": "BPO Services for Healthcare",
+              "metrics": [
+                "198",
+                "28.0%",
+                "6.6%",
+                "$1,672,905"
+              ]
+            },
+            {
+              "name": "Outbound Sales Outsourcing",
+              "metrics": [
+                "142",
+                "31.0%",
+                "8.5%",
+                "$1,543,337"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2146,
+          "rows": [
+            {
+              "name": "contact center outsourcing companies usa",
+              "metrics": [
+                "412",
+                "20.5%",
+                "2.9%",
+                "$1,543,415"
+              ]
+            },
+            {
+              "name": "call center quality monitoring software",
+              "metrics": [
+                "318",
+                "23.0%",
+                "4.1%",
+                "$1,672,240"
+              ]
+            },
+            {
+              "name": "hipaa compliant healthcare call center outsourcing",
+              "metrics": [
+                "241",
+                "25.5%",
+                "5.4%",
+                "$1,668,118"
+              ]
+            },
+            {
+              "name": "outbound sales outsourcing company",
+              "metrics": [
+                "176",
+                "28.0%",
+                "6.8%",
+                "$1,541,905"
+              ]
+            },
+            {
+              "name": "speech analytics software for contact centers",
+              "metrics": [
+                "119",
+                "31.0%",
+                "8.4%",
+                "$1,287,337"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Customer Care (Voice/Chat/Email/Social)",
+              "metrics": [
+                "682",
+                "21.6%",
+                "3.4%",
+                "$2,954,215"
+              ]
+            },
+            {
+              "name": "ETS Labs Technology (QEval & SaaS)",
+              "metrics": [
+                "521",
+                "23.4%",
+                "4.2%",
+                "$2,831,180"
+              ]
+            },
+            {
+              "name": "Sales & Revenue Growth",
+              "metrics": [
+                "397",
+                "25.8%",
+                "5.3%",
+                "$2,698,455"
+              ]
+            },
+            {
+              "name": "Back Office & Technical Support",
+              "metrics": [
+                "314",
+                "27.1%",
+                "7.0%",
+                "$2,835,640"
+              ]
+            },
+            {
+              "name": "Quality & Analytics",
+              "metrics": [
+                "232",
+                "29.7%",
+                "8.2%",
+                "$2,435,525"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2146,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "611",
+                "23.4%",
+                "3.6%",
+                "$2,827,435"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "498",
+                "25.1%",
+                "4.2%",
+                "$2,698,760"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "421",
+                "26.8%",
+                "5.2%",
+                "$2,827,915"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "342",
+                "28.2%",
+                "6.4%",
+                "$2,825,890"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "274",
+                "30.4%",
+                "7.3%",
+                "$2,575,015"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Contract Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Customer Care (Voice/Chat/Email/Social)",
+            "values": [
+              4,
+              6,
+              5,
+              4,
+              4
+            ]
+          },
+          {
+            "name": "ETS Labs Technology (QEval & SaaS)",
+            "values": [
+              5,
+              4,
+              5,
+              3,
+              5
+            ]
+          },
+          {
+            "name": "Sales & Revenue Growth",
+            "values": [
+              4,
+              5,
+              4,
+              4,
+              4
+            ]
+          },
+          {
+            "name": "Back Office & Technical Support",
+            "values": [
+              5,
+              4,
+              5,
+              4,
+              4
+            ]
+          },
+          {
+            "name": "Quality & Analytics",
+            "values": [
+              3,
+              4,
+              4,
+              4,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 2,146 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 91,
+          "summary": "Priya Raman, VP of Customer Experience at a healthcare payer, called to schedule a CX Assessment consultation for HIPAA compliant customer care outsourcing. Oscar walked her through the assessment scope and confirmed her channel volumes. He booked a consultation for the following week and sent a prep packet.",
+          "date": "Feb 4, 10:12 AM",
+          "agent": "Oscar",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 87,
+          "summary": "Daniel Okafor, a quality director, requested a QEval Platform demo to replace his 2 to 5 percent manual sampling. Lila confirmed his seat count and explained the AI scoring and automated coaching features. She scheduled a live demo consultation and looped in a solutions engineer.",
+          "date": "Mar 12, 2:41 PM",
+          "agent": "Lila",
+          "duration": "2m 48s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 10,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 82,
+          "summary": "Meredith Cole, a sales operations lead, called for a quote on outbound sales outsourcing and consultative selling teams. Mary reviewed her monthly call volume and the performance based pricing model. She booked a consultation to scope a pilot program.",
+          "date": "Jan 22, 9:33 AM",
+          "agent": "Mary",
+          "duration": "2m 30s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Marcus Feldman, a new prospect from a telecom carrier, called to schedule a CX Assessment consultation for inbound support. Rosey collected his company details, contact information, and channel volumes across voice and chat. She confirmed the consultation date and set expectations for the discovery agenda.",
+          "date": "Apr 8, 1:57 PM",
+          "agent": "Rosey",
+          "duration": "3m 18s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 14,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Angela Brooks, a contact center manager, asked about Voice AI Agents for after hours support and human handoff. Lee outlined a typical 30 to 90 day deployment and per minute pricing. He scheduled a consultation to scope the deployment with her operations team.",
+          "date": "May 19, 4:22 PM",
+          "agent": "Lee",
+          "duration": "2m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Rahul Mehta, an existing QEval client, called about a speech analytics keyword report and his onboarding demo settings. Jennifer answered his configuration questions and updated the compliance flags. No new consultation was booked on this call.",
+          "date": "Jun 3, 11:48 AM",
+          "agent": "Jennifer",
+          "duration": "1m 54s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Karen Willis, an existing client, checked the status of her back office onboarding for claims processing. Mike gave her a timeline update and confirmed the RPA workflow build was on track. He offered a follow up email with milestones.",
+          "date": "Jan 14, 3:09 PM",
+          "agent": "Mike",
+          "duration": "1m 40s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Thomas Reed called to dispute a billing charge for extra QEval seats he did not recognize on his latest invoice. Sue reviewed the account and opened a billing review ticket. She promised a credit decision within 48 hours.",
+          "date": "Jul 21, 10:26 AM",
+          "agent": "Sue",
+          "duration": "2m 03s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Nina Alvarez complained that the promised bilingual agents were understaffed on her account this week. Rose apologized and logged an escalation to the workforce management team. She confirmed a staffing review would be completed by Friday.",
+          "date": "Aug 6, 1:14 PM",
+          "agent": "Rose",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Gregory Payne reported an integration failure between QEval and his CRM after a recent update. Oscar gathered the error details and escalated to the integrations team. He set a callback for the next business day.",
+          "date": "Sep 2, 9:51 AM",
+          "agent": "Oscar",
+          "duration": "1m 32s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Sandra Kim complained about a delayed RTAA rollout for her onshore team after two missed dates. Lila apologized and escalated the deployment to the project lead. She could not commit to a firm go live date on the call.",
+          "date": "Sep 24, 3:38 PM",
+          "agent": "Lila",
+          "duration": "1m 21s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 32,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Victor Osei called to cancel his speech analytics add-on, citing low usage across his queues. Mary started the cancellation request and reviewed the contract terms. She flagged an early termination clause that frustrated the caller.",
+          "date": "Oct 5, 11:05 AM",
+          "agent": "Mary",
+          "duration": "1m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Bernard Cole escalated an unresolved billing dispute over automation workflow charges from two invoices. Mike acknowledged the prior ticket had stalled and promised a manager callback. The caller remained dissatisfied at the end of the call.",
+          "date": "Oct 17, 2:29 PM",
+          "agent": "Mike",
+          "duration": "0m 58s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Denise Frank complained that her Voice AI deployment was weeks behind the promised 30 to 90 day window. Jennifer logged the complaint and apologized for the delay. She escalated the account but offered no revised timeline.",
+          "date": "Oct 28, 4:47 PM",
+          "agent": "Jennifer",
+          "duration": "0m 51s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Harold Simms reached voicemail after hours and left a message about a missed onboarding call for his quality program. He asked for an urgent callback and left his direct line. The call rolled to voicemail with no agent available.",
+          "date": "Oct 30, 6:02 PM",
+          "agent": "No Agent",
+          "duration": "0m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "qeval",
+        "consultation",
+        "voice ai",
+        "demo",
+        "onboarding",
+        "billing"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Service Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Geographic Service Area",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Set Expectations for Engagement",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer Additional Resources",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Professional greeting with name",
+        "Clear value proposition stated",
+        "Active listening throughout",
+        "Confirmed caller is decision maker",
+        "Identified primary pain point",
+        "Verified service availability in ZIP code",
+        "Captured name and email correctly",
+        "Scheduled consultation date confirmed",
+        "Provided confirmation details",
+        "Offered follow up via email",
+        "Confirmed best time to reach",
+        "Identified budget parameters",
+        "Decision timeline established"
+      ],
+      "unmetSignals": [
+        "Phone number not recorded in system",
+        "Did not set expectations for consultation duration",
+        "Failed to mention ETS Labs capabilities",
+        "Did not ask about current vendor",
+        "No mention of Quality Assurance benefits",
+        "Did not capture company size",
+        "Missed opportunity to reference case study",
+        "Did not explain security certifications",
+        "No mention of global delivery model",
+        "Caller expressed urgency but not escalated"
+      ],
+      "naSignals": [
+        "Order placement process",
+        "Billing inquiry",
+        "Service adjustment request",
+        "Complaint resolution",
+        "Account recovery",
+        "Technical support tier level",
+        "Implementation timeline after contract"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller is a new customer interested in contact center outsourcing for customer care operations. They are seeking a BPO provider that can handle inbound support across multiple channels and want to understand Etech's capabilities, service areas, and availability."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a consultation to discuss their company's current volume, geographic footprint (mentioned Texas location), and timeline. They want to know if Etech services their area and are ready to schedule a follow up discussion with a sales specialist."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured the phone number before closing the call to ensure proper follow up contact. Additionally, setting clear expectations around the consultation duration, next steps, and what materials to review beforehand would strengthen the caller experience and reduce no-shows."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Etech Global Services. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:24",
+          "text": "Hi Marcus. Yes, I'm looking into contact center outsourcing options for my company. We're in Dallas and we have a growing customer care operation that's getting too large to handle in-house."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:38",
+          "text": "That's great. I'm glad you reached out. We work with companies across the U.S. providing enterprise contact center solutions. Before we dive deeper, may I get your name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:48",
+          "text": "Of course. It's Jennifer Walsh."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:52",
+          "text": "Thank you, Jennifer. And what is the primary challenge you're facing with your customer care operation right now?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:04",
+          "text": "Honestly, we're struggling to scale. We've got good agents but we're constantly hiring and training. The quality and consistency just isn't there. Plus we don't have real-time visibility into how calls are going."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:18",
+          "text": "That's exactly what we solve for. Etech provides both the staffing and analytics capabilities so you get trained, experienced agents plus AI-driven quality monitoring on every single interaction. We call that 100 percent interaction analysis rather than the old 2 to 5 percent sampling approach."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:36",
+          "text": "That sounds promising. Are you able to support operations in the Dallas area specifically?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:44",
+          "text": "Absolutely. We have capacity onshore and can serve Dallas and the surrounding Texas region. Can I get your email address so we can send you some information and get you scheduled with one of our specialist sales consultants?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:58",
+          "text": "Sure. It's jennifer.walsh at company dot com."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:06",
+          "text": "Perfect. Jennifer, how does next Tuesday at 2 PM sound for a 30-minute consultation call where we can walk through our capabilities and your specific requirements?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:16",
+          "text": "That works well for me. Tuesday at 2 PM is confirmed."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:22",
+          "text": "Excellent, Jennifer. We'll send you a calendar invite shortly. Looking forward to our conversation. Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Walsh, a new prospect from Dallas, called to explore contact center outsourcing for her company's growing customer care operation. She expressed challenges with scaling in-house hiring, training, quality consistency, and lack of real-time interaction visibility. Marcus confirmed Etech's service availability in the Dallas area, introduced the value proposition of AI-driven quality monitoring on 100 percent of interactions versus traditional sampling, and successfully scheduled a 30-minute consultation for the following Tuesday at 2 PM. The call was structured well but lacked capture of her phone number and setting of expectations around the pre-consultation materials.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "Great work on this one, Marcus. You nailed the structure, paced the discovery well, and got Jennifer comfortable enough to commit to a consultation. One thing for next time, capture the phone number before hanging up. Systems can fail and voicemail is a backup. Also, before closing, spend 15 seconds telling her what to expect on Tuesday. 'Jennifer, bring a quick summary of your current volumes and your team structure. On our call, we'll walk through how our Quality Assurance and analytics work.' Sets the tone and lifts the show rate. Nice job overall."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "2,146"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$6409.61"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$13,755,015"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "1,309"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "61%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "537"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "25%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "837"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "39%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Email",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "Referral",
+                "value": 34,
+                "display": "34%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 27,
+                "display": "27%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 22,
+                "display": "22%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "712",
+                  "18%",
+                  "$4,563,900"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "523",
+                  "22%",
+                  "$3,352,300"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "418",
+                  "27%",
+                  "$2,679,500"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "297",
+                  "34%",
+                  "$1,903,600"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "196",
+                  "41%",
+                  "$1,255,715"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 800,
+            "axisTicks": [
+              0,
+              160,
+              320,
+              480,
+              640,
+              800
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 698,
+                "display": "698"
+              },
+              {
+                "name": "organic",
+                "value": 541,
+                "display": "541"
+              },
+              {
+                "name": "paid-social",
+                "value": 402,
+                "display": "402"
+              },
+              {
+                "name": "email",
+                "value": 289,
+                "display": "289"
+              },
+              {
+                "name": "referral",
+                "value": 216,
+                "display": "216"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "698",
+                  "17%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "541",
+                  "21%"
+                ]
+              },
+              {
+                "cells": [
+                  "paid-social",
+                  "402",
+                  "26%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "289",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "216",
+                  "39%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 500,
+            "axisTicks": [
+              0,
+              100,
+              200,
+              300,
+              400,
+              500
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Contact Center Outsourcing, Get a Quote",
+                "value": 412,
+                "display": "412"
+              },
+              {
+                "name": "Call Center Quality Monitoring Software",
+                "value": 318,
+                "display": "318"
+              },
+              {
+                "name": "BPO Services for Healthcare",
+                "value": 247,
+                "display": "247"
+              },
+              {
+                "name": "Full-Stack BPO, One Partner Zero Gaps",
+                "value": 189,
+                "display": "189"
+              },
+              {
+                "name": "Outbound Sales Outsourcing",
+                "value": 141,
+                "display": "141"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Contact Center Outsourcing, Get a Quote",
+                  "412",
+                  "19%",
+                  "$2,701,845"
+                ]
+              },
+              {
+                "cells": [
+                  "Call Center Quality Monitoring Software",
+                  "318",
+                  "24%",
+                  "$2,053,720"
+                ]
+              },
+              {
+                "cells": [
+                  "BPO Services for Healthcare",
+                  "247",
+                  "30%",
+                  "$1,538,655"
+                ]
+              },
+              {
+                "cells": [
+                  "Outbound Sales Outsourcing",
+                  "141",
+                  "38%",
+                  "$902,300"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 200,
+            "axisTicks": [
+              0,
+              40,
+              80,
+              120,
+              160,
+              200
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "contact center outsourcing companies usa",
+                "value": 168,
+                "display": "168"
+              },
+              {
+                "name": "call center quality monitoring software",
+                "value": 132,
+                "display": "132"
+              },
+              {
+                "name": "hipaa compliant healthcare call center",
+                "value": 97,
+                "display": "97"
+              },
+              {
+                "name": "outbound sales outsourcing company",
+                "value": 74,
+                "display": "74"
+              },
+              {
+                "name": "speech analytics software for contact centers",
+                "value": 52,
+                "display": "52"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "contact center outsourcing companies usa",
+                  "20%"
+                ]
+              },
+              {
+                "cells": [
+                  "call center quality monitoring software",
+                  "26%"
+                ]
+              },
+              {
+                "cells": [
+                  "hipaa compliant healthcare call center",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "outbound sales outsourcing company",
+                  "42%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Customer Care (Voice/Chat/Email/Social)",
+              "741",
+              "19%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "QEval Platform & Analytics",
+              "578",
+              "24%",
+              "63%"
+            ]
+          },
+          {
+            "cells": [
+              "Sales & Revenue Growth",
+              "489",
+              "29%",
+              "67%"
+            ]
+          },
+          {
+            "cells": [
+              "Voice AI & Automation",
+              "338",
+              "37%",
+              "71%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Nacogdoches, TX Delivery Center",
+              "687",
+              "68",
+              "4%",
+              "21%"
+            ]
+          },
+          {
+            "cells": [
+              "Montego Bay, Jamaica Delivery Center",
+              "561",
+              "47",
+              "3%",
+              "24%"
+            ]
+          },
+          {
+            "cells": [
+              "Gandhinagar, India Delivery Center",
+              "498",
+              "39",
+              "3%",
+              "27%"
+            ]
+          },
+          {
+            "cells": [
+              "San Marcos, TX Delivery Center",
+              "400",
+              "18",
+              "2%",
+              "33%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              88,
+              94,
+              79,
+              82,
+              69
+            ]
+          },
+          {
+            "name": "Comparing BPO Providers",
+            "values": [
+              79,
+              83,
+              72,
+              75,
+              69
+            ]
+          },
+          {
+            "name": "Contract Timing Not Right",
+            "values": [
+              68,
+              71,
+              63,
+              62,
+              57
+            ]
+          },
+          {
+            "name": "Needs Executive Approval",
+            "values": [
+              58,
+              61,
+              52,
+              54,
+              49
+            ]
+          },
+          {
+            "name": "Outside Service Scope",
+            "values": [
+              47,
+              49,
+              43,
+              45,
+              40
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "858"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Contract Won (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$7,840,359"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$412,680"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent and Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "26%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$689,435"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$751,524"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$518,744"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent and Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,847,392"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,620,584"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Interactions by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1020,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "321",
+                "59%",
+                "28%",
+                "$2,105,472"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "189",
+                "54%",
+                "31%",
+                "$1,247,890"
+              ]
+            },
+            {
+              "name": "Content and Web",
+              "metrics": [
+                "156",
+                "58%",
+                "35%",
+                "$1,183,044"
+              ]
+            },
+            {
+              "name": "LinkedIn",
+              "metrics": [
+                "118",
+                "52%",
+                "38%",
+                "$1,142,408"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "74",
+                "49%",
+                "42%",
+                "$1,161,545"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Interactions by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 948,
+          "rows": [
+            {
+              "name": "Paid Search Voice",
+              "metrics": [
+                "267",
+                "55%",
+                "27%",
+                "$1,834,119"
+              ]
+            },
+            {
+              "name": "Email nurture",
+              "metrics": [
+                "198",
+                "57%",
+                "32%",
+                "$1,421,344"
+              ]
+            },
+            {
+              "name": "Organic social",
+              "metrics": [
+                "152",
+                "54%",
+                "36%",
+                "$1,056,768"
+              ]
+            },
+            {
+              "name": "Webinar replay",
+              "metrics": [
+                "113",
+                "51%",
+                "39%",
+                "$1,142,720"
+              ]
+            },
+            {
+              "name": "Industry events",
+              "metrics": [
+                "128",
+                "48%",
+                "41%",
+                "$1,384,408"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Interactions by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 966,
+          "rows": [
+            {
+              "name": "Full Stack BPO One Partner Zero Gaps",
+              "metrics": [
+                "246",
+                "53%",
+                "26%",
+                "$1,623,744"
+              ]
+            },
+            {
+              "name": "Call Center Quality Monitoring AI Scoring",
+              "metrics": [
+                "187",
+                "56%",
+                "30%",
+                "$1,396,476"
+              ]
+            },
+            {
+              "name": "Voice AI Agents for Contact Centers",
+              "metrics": [
+                "154",
+                "58%",
+                "35%",
+                "$1,227,840"
+              ]
+            },
+            {
+              "name": "Enterprise Team Switch Servant Leadership",
+              "metrics": [
+                "119",
+                "51%",
+                "38%",
+                "$1,149,256"
+              ]
+            },
+            {
+              "name": "Real Time Agent Assist Conversational AI",
+              "metrics": [
+                "152",
+                "48%",
+                "41%",
+                "$1,443,043"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Interactions by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 932,
+          "rows": [
+            {
+              "name": "contact center outsourcing companies USA",
+              "metrics": [
+                "218",
+                "54%",
+                "28%",
+                "$1,528,848"
+              ]
+            },
+            {
+              "name": "call center quality monitoring software with AI scoring",
+              "metrics": [
+                "167",
+                "57%",
+                "32%",
+                "$1,268,832"
+              ]
+            },
+            {
+              "name": "outbound sales outsourcing company telesales",
+              "metrics": [
+                "143",
+                "55%",
+                "36%",
+                "$1,175,256"
+              ]
+            },
+            {
+              "name": "speech analytics software for contact centers",
+              "metrics": [
+                "118",
+                "50%",
+                "39%",
+                "$1,232,336"
+              ]
+            },
+            {
+              "name": "voice AI agents for call centers automation",
+              "metrics": [
+                "136",
+                "47%",
+                "42%",
+                "$1,316,952"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Customer Care Solutions",
+              "metrics": [
+                "287",
+                "57%",
+                "31%",
+                "$2,254,880"
+              ]
+            },
+            {
+              "name": "QEval Platform and Analytics",
+              "metrics": [
+                "194",
+                "59%",
+                "37%",
+                "$1,844,356"
+              ]
+            },
+            {
+              "name": "Voice AI and Automation",
+              "metrics": [
+                "216",
+                "54%",
+                "34%",
+                "$1,958,784"
+              ]
+            },
+            {
+              "name": "RTAA and Agent Assist Technology",
+              "metrics": [
+                "118",
+                "51%",
+                "35%",
+                "$1,093,145"
+              ]
+            },
+            {
+              "name": "Omnichannel and Integration Services",
+              "metrics": [
+                "43",
+                "48%",
+                "28%",
+                "$689,194"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Contract Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Customer Care Solutions",
+            "values": [
+              21,
+              19,
+              23,
+              21,
+              15
+            ]
+          },
+          {
+            "name": "QEval Platform and Analytics",
+            "values": [
+              17,
+              15,
+              18,
+              20,
+              12
+            ]
+          },
+          {
+            "name": "Voice AI and Automation",
+            "values": [
+              18,
+              16,
+              20,
+              19,
+              15
+            ]
+          },
+          {
+            "name": "RTAA and Agent Assist Technology",
+            "values": [
+              11,
+              9,
+              10,
+              8,
+              3
+            ]
+          },
+          {
+            "name": "Omnichannel and Integration Services",
+            "values": [
+              4,
+              3,
+              4,
+              4,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "378"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$4,854,790"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "842"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "18:47:15"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "29"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$186,245"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              72,
+              75,
+              71,
+              78,
+              73,
+              76,
+              74,
+              77,
+              72,
+              78,
+              75,
+              73,
+              76,
+              71,
+              78,
+              74,
+              77,
+              75,
+              72,
+              76,
+              78,
+              73,
+              75,
+              77,
+              74,
+              176,
+              189,
+              172,
+              184,
+              178,
+              181,
+              287,
+              294,
+              278,
+              301,
+              289,
+              296,
+              283,
+              298,
+              291,
+              305,
+              287,
+              299,
+              293,
+              302,
+              288,
+              295,
+              301,
+              297
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,174"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "687"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "59%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "656"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "96%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Quality Program Inquiry",
+            "values": [
+              8,
+              11,
+              9,
+              10,
+              7,
+              12
+            ]
+          },
+          {
+            "name": "Voice AI Agent Setup",
+            "values": [
+              6,
+              9,
+              7,
+              1,
+              8,
+              11
+            ]
+          },
+          {
+            "name": "Staffing & Recruitment",
+            "values": [
+              5,
+              7,
+              6,
+              8,
+              4,
+              9
+            ]
+          },
+          {
+            "name": "Real-Time Agent Assist Demo",
+            "values": [
+              7,
+              10,
+              8,
+              9,
+              6,
+              10
+            ]
+          },
+          {
+            "name": "Speech Analytics Pricing",
+            "values": [
+              4,
+              6,
+              5,
+              7,
+              3,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "1,974"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "1,256"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "537"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$13,755,015"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Hendricks",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Jessica Volkov",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Raymond Tate",
+              "value": 241,
+              "display": "241"
+            },
+            {
+              "name": "Priya Desai",
+              "value": 159,
+              "display": "159"
+            },
+            {
+              "name": "Kevin O'Brien",
+              "value": 203,
+              "display": "203"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Aisha Mohamed",
+            "values": [
+              8,
+              14,
+              19,
+              24,
+              32
+            ]
+          },
+          {
+            "name": "Chen Liu",
+            "values": [
+              6,
+              12,
+              18,
+              23,
+              29
+            ]
+          },
+          {
+            "name": "Patricia Gomez",
+            "values": [
+              7,
+              13,
+              17,
+              22,
+              31
+            ]
+          },
+          {
+            "name": "David Kovalenko",
+            "values": [
+              9,
+              15,
+              20,
+              25,
+              33
+            ]
+          },
+          {
+            "name": "Sandra Wright",
+            "values": [
+              5,
+              11,
+              16,
+              21,
+              28
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Hendricks",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Jessica Volkov",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "Raymond Tate",
+              "value": 53.1,
+              "display": "53.1%"
+            },
+            {
+              "name": "Priya Desai",
+              "value": 57.9,
+              "display": "57.9%"
+            },
+            {
+              "name": "Kevin O'Brien",
+              "value": 55.3,
+              "display": "55.3%"
+            },
+            {
+              "name": "Thomas Reeves",
+              "value": 52.6,
+              "display": "52.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Hendricks",
+                "54.2%",
+                "28%",
+                "$1,024,847",
+                "1,427"
+              ]
+            },
+            {
+              "cells": [
+                "Jessica Volkov",
+                "56.8%",
+                "30%",
+                "$1,097,415",
+                "1,434"
+              ]
+            },
+            {
+              "cells": [
+                "Raymond Tate",
+                "53.1%",
+                "27%",
+                "$973,228",
+                "1,395"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Desai",
+                "57.9%",
+                "31%",
+                "$1,122,089",
+                "1,419"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin O'Brien",
+                "55.3%",
+                "29%",
+                "$1,063,583",
+                "1,441"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Reeves",
+                "52.6%",
+                "26%",
+                "$942,341",
+                "1,382"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Aisha Mohamed",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Chen Liu",
+              "value": 89.2,
+              "display": "89.2%"
+            },
+            {
+              "name": "Patricia Gomez",
+              "value": 92.4,
+              "display": "92.4%"
+            },
+            {
+              "name": "David Kovalenko",
+              "value": 90.8,
+              "display": "90.8%"
+            },
+            {
+              "name": "Sandra Wright",
+              "value": 88.6,
+              "display": "88.6%"
+            },
+            {
+              "name": "Elena Morales",
+              "value": 93.1,
+              "display": "93.1%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Aisha Mohamed",
+                "91.7%",
+                "67%",
+                "$2,287,964",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Chen Liu",
+                "89.2%",
+                "64%",
+                "$2,124,517",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Gomez",
+                "92.4%",
+                "66%",
+                "$2,254,891",
+                "1,505"
+              ]
+            },
+            {
+              "cells": [
+                "David Kovalenko",
+                "90.8%",
+                "65%",
+                "$2,209,738",
+                "1,541"
+              ]
+            },
+            {
+              "cells": [
+                "Sandra Wright",
+                "88.6%",
+                "63%",
+                "$2,058,924",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "Elena Morales",
+                "93.1%",
+                "68%",
+                "$2,321,038",
+                "1,534"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Scheduled (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Scheduled (Count)",
+        "rightMax": 100,
+        "rightTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 19
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 19
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 17
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 17
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 15
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 15
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 17
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 17
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 19
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 19
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 17
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 16
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 15
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 15
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 17
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 18
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 19
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 19
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 17
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 16
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 15
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 15
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 17
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 18
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 19
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 19
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 16
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 16
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 15
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 15
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 29
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 700000,
+        "rightTicks": [
+          0,
+          233333.33333333334,
+          466666.6666666667,
+          700000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 509886
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 488703
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 455082
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 434236
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 378082
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 396786
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 438319
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 455596
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 507993
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 492530
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 443605
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 428753
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 381518
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 393255
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 448755
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 462429
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 503263
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 495431
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 434439
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 420659
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 387244
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 391304
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 456490
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 471621
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 496869
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 496147
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 428223
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 410597
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 393959
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 392059
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 461182
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "2,146"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "172"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "129"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Maria Garcia",
+                "412",
+                "91%",
+                "88%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James Mitchell",
+                "738",
+                "88%",
+                "85%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Desai",
+                "996",
+                "88%",
+                "87%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "2,146 calls",
+      "pagerLabel": "1 of 215",
+      "calls": [
+        {
+          "time": "1/6/26 8:52 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 9:41 am",
+          "id": "A21C-4E9B7710C3A2"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C93D-2F18A0561BE7"
+        },
+        {
+          "time": "1/14/26 11:19 am",
+          "id": "7B04-9D3C61FE20A8"
+        },
+        {
+          "time": "1/16/26 12:33 pm",
+          "id": "E68A-1C50F7B9D340"
+        },
+        {
+          "time": "1/20/26 1:07 pm",
+          "id": "3F29-88A1D40E7C15"
+        },
+        {
+          "time": "1/22/26 2:24 pm",
+          "id": "9D51-6B72E0F41A93"
+        },
+        {
+          "time": "1/26/26 3:48 pm",
+          "id": "B4C7-0A19F3D82E56"
+        },
+        {
+          "time": "1/28/26 4:36 pm",
+          "id": "D82E-5F63A907C4B1"
+        },
+        {
+          "time": "1/30/26 5:12 pm",
+          "id": "1A6F-72C4B9E035D8"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling Etech Global Services, this is Marcus. Who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling Etech Global Services"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Marcus, this is Priya Raman. I run customer operations for a mid-size insurance company and we're looking at outsourcing part of our contact center.",
+          "highlights": [
+            "outsourcing part of our contact center"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:18",
+          "text": "Great to meet you, Priya. I'd be happy to help. Can you tell me a little about the volume you're handling and what channels you support today?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:27",
+          "text": "Sure. We do a lot of inbound claims and member support, voice and chat mostly. Our internal team is stretched thin and quality is slipping.",
+          "highlights": [
+            "inbound claims and member support"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:37",
+          "text": "That's exactly the kind of work we specialize in. Our Customer Care teams handle voice, chat, email, and social, and since you're in insurance we can staff HIPAA-aware agents who average over six years of tenure.",
+          "highlights": [
+            "Customer Care teams",
+            "HIPAA-aware agents"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:49",
+          "text": "Tenure matters to us. But honestly, what does that run per agent? I need to keep this manageable, I can't blow out my operating budget.",
+          "highlights": [
+            "what does that run per agent",
+            "keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:59",
+          "text": "Understood completely. Offshore care runs roughly eight to sixteen dollars per agent hour, onshore is higher. We scale to your volume, so you only pay for the coverage you need. Many clients start with a blended model to control cost.",
+          "highlights": [
+            "scale to your volume"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:12",
+          "text": "Okay, that helps. I'll be honest though, we're getting a couple of quotes. There's another provider we've talked to that came in cheaper on the base rate.",
+          "highlights": [
+            "getting a couple of quotes",
+            "came in cheaper on the base rate"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:23",
+          "text": "That's fair, and I'd encourage you to compare. Where Etech separates is our AI division, ETS Labs. Our QEval platform scores one hundred percent of interactions, not a two to five percent sample, so quality doesn't slip the way it does with a cheaper vendor.",
+          "highlights": [
+            "QEval platform scores one hundred percent of interactions"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:38",
+          "text": "That quality piece is actually the part I'm worried about. Can QEval work on top of the claims support too?",
+          "highlights": [
+            "Can QEval work on top of the claims support too"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:46",
+          "text": "Absolutely. QEval covers every channel with AI scoring, compliance monitoring, and automated coaching. We can bundle it with your Back Office and claims processing, which our teams support with Document AI and RPA.",
+          "highlights": [
+            "Back Office and claims processing",
+            "Document AI and RPA"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:58",
+          "text": "That sounds strong. My one hesitation is I don't want to be locked into some long commitment before I know it works.",
+          "highlights": [
+            "don't want to be locked into some long commitment"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:07",
+          "text": "Completely reasonable. We usually start with a CX Assessment, an honest audit of where you are and what you need. It's a low-risk way to see the fit before any large commitment.",
+          "highlights": [
+            "CX Assessment"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:18",
+          "text": "I like that approach. I'd want my VP of operations on the call too before we go far.",
+          "highlights": [
+            "want my VP of operations on the call too"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:25",
+          "text": "Perfect, let's get a consultation on the calendar and you're welcome to bring your VP. Would Thursday at 10 AM Central work for you?",
+          "highlights": [
+            "let's get a consultation on the calendar"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:32",
+          "text": "Thursday at 10 works for both of us. Let me give you my email.",
+          "highlights": [
+            "Thursday at 10 works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:36",
+          "text": "Wonderful. I have you booked for Thursday at 10 AM Central for your CX Assessment. Thank you for calling Etech, Priya, we look forward to it.",
+          "highlights": [
+            "booked for Thursday at 10 AM Central",
+            "Thank you for calling Etech"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: Customer Care Outsourcing",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Product: QEval Platform",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Product: Back Office & Claims",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Pricing Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Priya Raman, a new prospect running customer operations for a mid-size insurance company, called about outsourcing part of her inbound claims and member support contact center. Marcus recommended Etech's Customer Care voice and chat teams, the QEval platform for full interaction quality monitoring, and Back Office claims support powered by Document AI and RPA. He addressed her budget, competitor, and commitment concerns by proposing a low-risk CX Assessment. A consultation was scheduled for Thursday at 10 AM Central with her VP of operations included.",
+        "keyPoints": [
+          "New client from the insurance vertical inquiring about contact center outsourcing",
+          "Needs inbound claims and member support across voice and chat",
+          "Recommended Customer Care, QEval platform, and Back Office claims processing",
+          "Handled price concern, a competing quote, and a commitment worry",
+          "VP of operations to join, contact email captured",
+          "CX Assessment consultation booked for Thursday 10 AM Central"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, CX Assessment Thursday 10 AM Central"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "1,352 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 135",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. This is Maya from Etech Global Services. We help enterprise teams with customer experience outsourcing and AI powered analytics. Do you have 5 minutes to talk about how we might support your contact center?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Sure, I'm interested. We're managing a lot of volume right now."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great. Are you currently handling customer support calls in house, or do you work with a partner already?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "We have an in house team, but they're stretched thin. Quality is suffering."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "I hear that a lot. What channel are you focused on right now, voice calls, chat, email, or a mix?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Mostly voice. We get hundreds of inbound calls daily."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "That makes sense. And what's your primary pain point with those calls today? Is it handling volume, training agents, or tracking quality?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "All three really, but quality assurance is the biggest headache. We only review a small sample of calls."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Perfect. That's exactly what our QEval platform solves. It analyzes 100 percent of your interactions with AI scoring and automated coaching, not just 2 to 5 percent sampling. Are you managing agents across multiple sites, or all in one location?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "We have teams in three different locations. It's hard to keep standards consistent."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Our system can definitely help with that. Based on what you've shared, I think a CX Assessment would be perfect next. We'd audit where you are today and map the right architecture for you. I have Thursday March 13th at 2 PM Pacific or Friday March 14th at 10 AM Pacific available. Which works better?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Thursday at 2 PM works great."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "Excellent. I'm booking you for Thursday March 13th at 2 PM Pacific. You'll hear from our consulting team the day before with call details. You can also reach us at 877-936-2933 if you need to reschedule. Thanks for your time."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:34 AM",
+              "text": "Perfect, thanks. Looking forward to it."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Keyword Spotting",
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Quality & Analytics Platform",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Volume: High Inbound Call Volume",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Pain Point: Quality Assurance Consistency",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Multi Site Operations Confirmed",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "214-551-4829",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C847-2B4D8F91C3A7",
+          "time": "8/16/25 10:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C847-2B4D8F91C3A7",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C923-5E7C1A6D9B42",
+          "time": "8/16/25 10:39 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C923-5E7C1A6D9B42",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C741-3F8E5C2B7A19",
+          "time": "8/16/25 10:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C741-3F8E5C2B7A19",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "2,146 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 215",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/22/26 4:12 pm",
+          "active": true,
+          "date": "January 22, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Thank you for calling Etech Global Services, this is Marcus speaking. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Hi Marcus, yeah I'm calling about your contact center outsourcing services. We're looking to expand our customer care operations but don't have the resources in house."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Great, I'm glad you reached out. We'd love to help you scale your customer experience. Quick question, are you currently handling your customer care with an existing outsourcing partner, or is this completely new for your organization?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "We've got a small team handling it internally right now, but we're getting overwhelmed. We need something more scalable."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "That makes sense. Volume growth is one of the biggest reasons companies come to us. Just to understand your situation better, which channels are you looking to outsource? Are we talking voice, chat, email, or a mix of those?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Mainly voice for now, but eventually we'd want to add chat and email support too."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Perfect. Voice is our bread and butter, and we can scale across all those channels whenever you're ready. One more thing, roughly how many inbound calls per month are we talking about for your customer care operations?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "We're getting around eight thousand calls a month right now, but we expect that to grow to maybe twelve thousand over the next few quarters."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:20 PM",
+              "text": "Excellent, that's a solid volume, and totally manageable for us. We've got teams across the US, Jamaica, and India, so we can handle that growth smoothly. Based on what you've shared, I'd like to schedule a consultation with one of our enterprise solution architects. They can walk through your specific needs, give you a customized quote, and show you how our quality analytics platform QEval helps us monitor every single interaction. Would next Wednesday, January twenty-ninth at two PM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:21 PM",
+              "text": "Yeah, that works. What do I need to do to prepare?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:22 PM",
+              "text": "Just have a sense of your call volume, your current customer satisfaction scores if you have them, and any compliance requirements you need to meet. Our team will do the rest. I'm booking you for Wednesday, January twenty-ninth at two PM Eastern time. You'll get a confirmation email with a callback number of eight seven seven, nine three six, twenty-nine thirty-three. Any other questions before we wrap up?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:23 PM",
+              "text": "No, that sounds great. Thanks Marcus."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:24 PM",
+              "text": "Thank you for calling Etech. We look forward to speaking with you next Wednesday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Customer Care Voice",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Volume Discussed: Eight Thousand Calls Monthly",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Omnichannel Interest: Voice, Chat, Email",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Growth Indicator: Twelve Thousand Calls Projected",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/22/26 4:12 pm",
+            "duration": "12:34",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "512-887-4429",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B629-5A3EF482B1C7",
+          "time": "1/15/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B629-5A3EF482B1C7",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C814-7D6F2A9E4B53",
+          "time": "1/08/26 3:22 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C814-7D6F2A9E4B53",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D941-8C5B3F6E7A92",
+          "time": "1/28/26 1:56 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D941-8C5B3F6E7A92",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: I'm Etech's AI agent, here to help you scope a personalized contact center outsourcing quote, and right now we're offering a complimentary CX Assessment for new enterprise clients. Would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, starting with which solution you need (Customer Care, Sales, Quality & Analytics, Back Office, or an ETS Labs platform like QEval or Voice AI), then your interaction volume or seat count, your primary channels (voice, chat, email, social), your industry and any compliance needs (for example HIPAA), your target go-live timeline, and finally the ZIP code of your headquarters so we can confirm delivery coverage.",
+        "Estimate then book: Once I confirm we support your region, I'll share a general engagement structure and next steps, then recommend a consultation with a CX solutions specialist for an exact custom quote, propose a specific day and time, and confirm you'll get a reminder text before the consultation with a number to call if anything changes."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Etech_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Solutions Overview",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "ETS Labs Platforms",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "CX Assessment",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Program status\",\"question\":\"Can I get an update on my QEval quality program rollout?\",\"answer\":\"Your QEval program is on track and your dedicated program manager can walk you through the current milestone. I can set up a quick check-in call with your account team.\"},{\"topic\":\"Reschedule\",\"question\":\"I need to move our scheduled business review to next week.\",\"answer\":\"No problem, I can reschedule your business review. Let me confirm a new day and time that works for your team.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What does Etech actually do?",
+              "answer": "Etech is a full stack, technology-enabled BPO delivering enterprise contact center outsourcing across customer care, sales, quality analytics, and back office, powered by our in-house AI division ETS Labs. The best next step is a complimentary CX Assessment to map the right fit for you."
+            },
+            {
+              "question": "Do you offer onshore and offshore delivery?",
+              "answer": "Yes, we deliver from seven global sites across the United States, Jamaica, and India, so we can scale onshore through offshore based on your needs. A specialist can outline the ideal delivery mix on a consultation."
+            },
+            {
+              "question": "Can you support HIPAA compliant healthcare programs?",
+              "answer": "Yes, we support regulated verticals including Healthcare and Life Sciences with compliance monitoring built into every interaction. Let's book a consultation so a specialist can review your specific compliance requirements."
+            },
+            {
+              "question": "What is QEval?",
+              "answer": "QEval is our call center quality monitoring platform that scores 100% of interactions with AI, speech analytics, and automated coaching, without the blind spots of 2 to 5% sampling. I'd recommend a consultation with an interactive tour to see it on your data."
+            },
+            {
+              "question": "How much does outsourcing with Etech cost?",
+              "answer": "Pricing is custom because every engagement is scoped to your volume, channels, and goals, so we don't quote flat rates over text. A consultation with our specialist gets you an accurate custom quote."
+            },
+            {
+              "question": "How many agents can you provide?",
+              "answer": "With more than 4,000 team members across seven sites we can scale from a small pilot to large enterprise programs. Let's set up a consultation to size a team to your interaction volume."
+            },
+            {
+              "question": "What channels do you support?",
+              "answer": "We support voice, chat, email, and social through our omnichannel platform with unified interaction history. A specialist can map your channel mix on a quick consultation."
+            },
+            {
+              "question": "Do you offer outbound sales outsourcing?",
+              "answer": "Yes, our consultative sales teams are coached on every interaction via QEval and have driven a documented 79% conversion lift. Book a consultation and we'll walk through your revenue goals."
+            },
+            {
+              "question": "What is Voice AI and how does it work?",
+              "answer": "Our Voice AI agents handle conversational automation with human handoff for interactions that need judgment, and typical deployment runs 30 to 90 days. Let's schedule a consultation to scope a pilot."
+            },
+            {
+              "question": "What is Real-Time Agent Assist?",
+              "answer": "RTAA surfaces next-best-action prompts, knowledge, and compliance cues live during agent conversations. A specialist can demo it for your use case on a consultation."
+            },
+            {
+              "question": "How long does it take to get started?",
+              "answer": "Timelines vary by scope, and technology deployments like Voice AI typically run 30 to 90 days. A consultation lets us build a realistic launch plan for you."
+            },
+            {
+              "question": "Are you a minority-owned company?",
+              "answer": "Yes, Etech is a global minority-owned business grounded in servant leadership with 23 years of experience. We can share our certifications and credentials on a consultation."
+            },
+            {
+              "question": "Which industries do you serve?",
+              "answer": "We serve around 15 verticals including Telecommunications, Healthcare, Insurance, Banking, Retail, Education, and Automotive. Book a consultation and we'll tailor our approach to your industry."
+            },
+            {
+              "question": "Can you integrate with our existing CRM and telephony?",
+              "answer": "Yes, our Integrations Suite offers 80+ connections to CRM, telephony, and WFM systems. A specialist can confirm your specific stack on a consultation."
+            },
+            {
+              "question": "Do you provide speech analytics?",
+              "answer": "Yes, our Speech AI provides automated transcription, sentiment and keyword detection, and compliance flagging on every recorded conversation. Let's set up a consultation to see it in action."
+            },
+            {
+              "question": "What makes Etech different from other BPOs?",
+              "answer": "Our differentiator is our captive AI and analytics division, ETS Labs, which makes every interaction measurable and every agent conversation actionable. A consultation is the best way to see the difference on your data."
+            },
+            {
+              "question": "Can you handle back office and claims processing?",
+              "answer": "Yes, we handle claims processing, order management, and technical support backed by Document AI and RPA built by ETS Labs. Book a consultation to scope your back office needs."
+            },
+            {
+              "question": "Do you offer a free assessment?",
+              "answer": "Yes, our CX Assessment is an honest audit of where you are and what you need across people, AI, and analytics, and it's often complimentary. Let's get one on the calendar."
+            },
+            {
+              "question": "What is the average agent tenure at Etech?",
+              "answer": "Our agents average 6.3 years of tenure, which reflects our servant leadership culture and lower attrition. A specialist can share more on a consultation."
+            },
+            {
+              "question": "How do I request a demo of QEval?",
+              "answer": "I can arrange a QEval interactive tour and demo with a specialist. Let's find a day and time that works for you."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule the consultation\",\"follow_up_message\":\"Great, let's get your CX Assessment on the calendar. Does Thursday at 10:00 AM or Friday at 2:00 PM work better for a virtual consultation with a solutions specialist?\"},{\"intent\":\"Request a custom quote\",\"follow_up_message\":\"Happy to help you get an accurate custom quote. I'll connect you with a specialist on a short consultation to scope your volume and channels, and you'll get a reminder text beforehand with a number to call.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Etech's AI agent. Thanks for your interest in our contact center outsourcing and ETS Labs solutions. I can help scope your needs and set up a complimentary CX Assessment. Want to get started?",
+        "goal": "Qualify the prospect's outsourcing or CX technology needs and book a virtual consultation with a solutions specialist for a custom quote.",
+        "bookingType": "virtual consultation",
+        "offer": "Complimentary CX Assessment when you book this week",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Which solution are you interested in: Customer Care, Sales and Revenue, Quality and Analytics, Back Office, or an ETS Labs platform like QEval or Voice AI?",
+          "What is your approximate interaction volume or number of agent seats?",
+          "Which channels do you need to support: voice, chat, email, or social?",
+          "What industry are you in, and do you have compliance needs such as HIPAA?",
+          "What is your target go-live timeline?",
+          "What is the ZIP code of your headquarters so we can confirm delivery coverage?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:02 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:02 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:02 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Etech",
+      "callerName": "Sarah Mitchell",
+      "callerPhone": "(512) 555-0847",
+      "campaign": "Quality Analytics Platform, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$18,750",
+      "googleSearch": "call center quality monitoring software with AI scoring",
+      "websiteSearch": "QEval platform pricing for enterprise contact centers",
+      "callingWebpage": "/ets-labs/qeval-platform",
+      "products": "QEval Platform, Speech AI",
+      "cartId": "ET-7392M",
+      "serviceable": "Yes",
+      "email": "sarah.mitchell@austintechcorp.com",
+      "street": "1847 Congress Avenue, Suite 400",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78701",
+      "digitalJourney": "/home › /ets-labs › /ets-labs/qeval-platform › /resources/case-studies",
+      "intent": "Seeking full interaction analysis solution to replace current 2 to 5 percent sampling model for compliance and quality improvement.",
+      "coverage": "ZIP 78701 confirmed, Austin serviceable",
+      "switchIntent": "High. Currently evaluates every 3rd call manually. Budget approved for Q3, needs implementation within 90 days.",
+      "greeting": "Hi Sarah, this is Marcus with Etech Global Services. I see you were exploring our QEval platform for enterprise quality monitoring. We'd love to walk you through how 100 percent interaction analysis can transform your compliance and coaching workflows. Do you have 20 minutes this week for a personalized consultation?"
+    },
+    "smsScreenpop": {
+      "brandName": "Etech",
+      "callerName": "James Rodriguez",
+      "callerPhone": "(305) 555-0629",
+      "campaign": "Back Office Automation, Miami Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$12,400",
+      "googleSearch": "back office claims processing outsourcing RPA automation",
+      "websiteSearch": "claims processing BPO nearshore contact center",
+      "callingWebpage": "/solutions/back-office-operations",
+      "products": "Back Office Operations, Automation RPA and Document AI",
+      "cartId": "ET-5641K",
+      "serviceable": "Yes",
+      "email": "jrodriguez@miamiadmin.com",
+      "street": "2205 Brickell Avenue, Suite 850",
+      "city": "Miami",
+      "state": "FL",
+      "zip": "33129",
+      "digitalJourney": "/home › /solutions › /solutions/back-office-operations › /industries/insurance",
+      "intent": "Reduce manual claims entry and processing time through RPA and document AI integration with existing legacy systems.",
+      "coverage": "ZIP 33129 confirmed, Miami serviceable",
+      "appointment": "Claims processing workflow consultation with automation specialist. Thu Jul 18, 2:00 PM.",
+      "greeting": "Hi James, it's Amanda from Etech. Great to connect with you. I've got your consultation scheduled for Thursday at 2 PM to discuss how our RPA and Document AI can cut your claims processing time in half. Questions before then? Looking forward to showing you what our team delivers."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Etech",
+      "brandDomain": "www.etechgs.com",
+      "brandIcon": "📞",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Jacksonville, FL",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Contact Center Outsourcing, Get a Quote",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "enterprise BPO provider for healthcare",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/solutions/customer-care",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Quality & Analytics, Voice AI Services",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Jacksonville, FL",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_new_project",
+          "name": "Consultation, New Project"
+        },
+        {
+          "id": "existing_support",
+          "name": "Existing Client Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for reaching out to Etech. I'm an AI assistant here to help route you to the right team. Are you looking to explore outsourcing solutions or contact center services for your organization?",
+          "sigs": [],
+          "q": [
+            25,
+            45,
+            30
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, we run a healthcare insurance operation here in Jacksonville and we're overwhelmed with our current call volume. We need to find a BPO partner who understands HIPAA compliance.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Healthcare</strong> industry focus"
+            },
+            {
+              "c": "green",
+              "t": "<strong>High call volume</strong> needs outsourcing"
+            },
+            {
+              "c": "blue",
+              "t": "HIPAA compliance required"
+            }
+          ],
+          "q": [
+            58,
+            22,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. Etech specializes in HIPAA compliant healthcare contact center outsourcing with our onshore and nearshore teams. Are you looking to move your entire customer care operation, or would you also be interested in our QEval quality analytics to improve your existing team's performance?",
+          "sigs": [],
+          "q": [
+            72,
+            15,
+            13
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We'd like to explore both honestly. We have agents now but their quality metrics are inconsistent. We've heard QEval analyzes every interaction, not just a sample like other vendors.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Full stack</strong> interest, people and analytics"
+            },
+            {
+              "c": "orange",
+              "t": "Quality improvement priority"
+            },
+            {
+              "c": "blue",
+              "t": "100% interaction analysis appeal"
+            }
+          ],
+          "q": [
+            88,
+            6,
+            6
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent. I'm connecting you with our New Project Consultation team. They'll walk you through how our full-stack approach combines experienced healthcare agents with real-time QEval scoring and ETS Labs automation to reduce your compliance risk and operational costs. Someone will follow up within two hours.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule your CX assessment (Agent)\", \"book the discovery call (Agent)\", \"get you on the calendar (Agent)\", \"lock in a consultation (Caller)\"])",
+          "createdAt": "11/14/24 9:15 am",
+          "updatedAt": "01/12/26 3:40 pm"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"currently using TTEC (Caller)\", \"quote from Teleperformance (Caller)\", \"compared to Concentrix (Caller)\", \"already with Alorica (Caller)\"])",
+          "createdAt": "03/22/25 10:05 am",
+          "updatedAt": "01/07/26 2:18 pm"
+        },
+        {
+          "name": "Compliance Adherence",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Compliance Adherence] < 60 and duration > 45 sec",
+          "createdAt": "02/09/25 8:42 am",
+          "updatedAt": "01/05/26 11:27 am"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"walk you through our solutions (Agent)\", \"tell me about your contact center (Agent)\", \"how many agent seats (Agent)\", \"what channels do you support (Caller)\"])",
+          "createdAt": "12/03/24 1:30 pm",
+          "updatedAt": "01/09/26 9:52 am"
+        },
+        {
+          "name": "Empathy & Rapport",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy & Rapport] < 60 and duration > 45 sec",
+          "createdAt": "01/18/25 3:11 pm",
+          "updatedAt": "01/11/26 4:05 pm"
+        },
+        {
+          "name": "Price Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"what does it cost per seat (Caller)\", \"too expensive for us (Caller)\", \"per agent hour (Caller)\", \"tight on budget (Caller)\"])",
+          "createdAt": "04/07/25 9:48 am",
+          "updatedAt": "01/06/26 10:33 am"
+        },
+        {
+          "name": "Proper Call Greeting",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Proper Call Greeting] < 60 and duration > 45 sec",
+          "createdAt": "02/25/25 11:20 am",
+          "updatedAt": "01/04/26 1:14 pm"
+        },
+        {
+          "name": "QEval Platform Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"QEval quality monitoring (Caller)\", \"score every interaction (Caller)\", \"speech analytics platform (Caller)\", \"automated coaching (Agent)\"])",
+          "createdAt": "05/16/25 2:55 pm",
+          "updatedAt": "01/10/26 3:22 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"send over a proposal (Agent)\", \"pricing per seat (Agent)\", \"here is the estimate (Agent)\", \"put together a quote (Agent)\"])",
+          "createdAt": "03/11/25 10:40 am",
+          "updatedAt": "01/08/26 12:47 pm"
+        },
+        {
+          "name": "Voice AI Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"voice AI agents (Caller)\", \"conversational automation (Caller)\", \"real-time agent assist (Agent)\", \"human handoff (Agent)\"])",
+          "createdAt": "06/02/25 9:05 am",
+          "updatedAt": "01/09/26 2:59 pm"
+        }
+      ]
+    }
+  }
+}

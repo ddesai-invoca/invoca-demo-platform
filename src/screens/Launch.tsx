@@ -5,6 +5,7 @@ import { useDemoLibrary } from "../data/DemoLibraryContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { CustomerProfile } from "../data/schema";
 import { SEED_IDS } from "../data/profiles";
+import { DALLAS_EVENT } from "../data/eventDemos";
 
 /* Where a prospect opens (both a fresh generation and revisiting one) — the
    demo starts on the Marketing Performance dashboard. */
@@ -50,12 +51,11 @@ type EntryGroup = "mine" | "team" | "dallas" | "sample";
 
 /* Section order + headers — each is now its own dropdown.
    ⚠️ THE THIRD ELEMENT IS "ALWAYS SHOW, EVEN EMPTY" — every other section omits
-   it and is hidden when it has no rows (see the `!rows.length` skip below). Asked
-   for directly: "add another dropdown under Team Demos called '2026 Dallas Invoca
-   Summit'" with no demos named for it yet, so without this flag the section would
-   render nothing and never appear at all — the opposite of a placeholder. Nothing
-   is tagged into the "dallas" group yet; this is the section only, deliberately
-   unwired (see the note on `LibraryPicker`'s empty state below). */
+   it and is hidden when it has no rows (see the `!rows.length` skip below). The
+   Dallas section keeps it even now that demos ARE tagged into it, because its
+   rows come from the SERVER: with the library unreachable the app falls back to
+   local profiles only, and a conference roster that silently vanishes reads as
+   the demos having been deleted rather than as an offline library. */
 const GROUP_ORDER: [EntryGroup, string, boolean?][] = [
   ["mine", "My demos"],
   ["team", "Team demos"],
@@ -84,6 +84,10 @@ function LibraryPicker({ label, entries, renderRow }: { label: string; entries: 
     ? entries.filter((e) =>
         e.name.toLowerCase().includes(q) ||
         e.industry.toLowerCase().includes(q) ||
+        /* The source-list name, so pasting "H. LEE MOFFITT CANCER CENTER AND
+           RESEARCH INSTITUTE, INC." off the original spreadsheet still finds the
+           row now displayed as "Moffitt Cancer Center". */
+        (e.listedAs ?? "").toLowerCase().includes(q) ||
         (e.creator?.name ?? "").toLowerCase().includes(q) ||
         (e.creator?.email ?? "").toLowerCase().includes(q))
     : entries;
@@ -136,6 +140,8 @@ interface Entry {
   /* Name of the admin who last edited it, when that is not the creator. */
   editedBy?: string;
   group: EntryGroup;
+  /* Verbatim name from the list an event roster came from — searched, not shown. */
+  listedAs?: string;
 }
 
 export function Launch() {
@@ -181,7 +187,10 @@ export function Launch() {
            it an audit line rather than a "you edited this" note. */
         editedBy: d.updatedBy && d.updatedBy.email.toLowerCase() !== d.creator?.email?.toLowerCase()
           ? d.updatedBy.name : undefined,
-        group: (mine ? "mine" : "team") as EntryGroup,
+        /* An EVENT demo is filed under its event, whoever owns it — the roster is
+           the point, not whose copy it is. Ordinary demos split mine/team. */
+        group: (d.event === DALLAS_EVENT ? "dallas" : mine ? "mine" : "team") as EntryGroup,
+        listedAs: d.listedAs,
       };
     }),
     ...profiles.filter((p) => !libraryIds.has(p.id)).map((p) => ({

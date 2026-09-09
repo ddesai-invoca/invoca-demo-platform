@@ -1,0 +1,5431 @@
+{
+  "id": "senior-helpers",
+  "customerName": "Senior Helpers",
+  "websiteUrl": "https://www.seniorhelpers.com",
+  "brandDomain": "seniorhelpers.com",
+  "networkName": "Invoca for In-Home Senior Care",
+  "industry": "In-Home Senior Care",
+  "bookingTerm": "Care Consultation",
+  "customerNoun": "Client",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 8214
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 13472
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 13889
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 13061
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 11822
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Care Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Care Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "In-Home Care, Near Me",
+          "marketingSearchTerm": "in-home senior care near me",
+          "landingPageUrl": "https://www.seniorhelpers.com/services/personal-care/?utm_source=google&utm_medium=cpc&utm_campaign=in-home-care-near-me",
+          "websiteJourney": "Home / Services / Personal Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Dementia Care Search",
+          "marketingSearchTerm": "dementia care at home",
+          "landingPageUrl": "https://www.seniorhelpers.com/services/alzheimers-dementia-care/?utm_source=google&utm_medium=cpc&utm_campaign=dementia-care-search",
+          "websiteJourney": "Home / Services / Alzheimer's & Dementia Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Veterans Home Care, VA Benefits",
+          "marketingSearchTerm": "VA home care benefits for veterans",
+          "landingPageUrl": "https://www.seniorhelpers.com/services/va-benefit-assistance/?utm_source=google&utm_medium=cpc&utm_campaign=veterans-home-care",
+          "websiteJourney": "Home / Services / VA Benefit Assistance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Respite Care Relief",
+          "marketingSearchTerm": "respite care near me",
+          "landingPageUrl": "https://www.seniorhelpers.com/services/respite-care/?utm_source=google&utm_medium=cpc&utm_campaign=respite-care-relief",
+          "websiteJourney": "Home / Services / Respite Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Parkinson's Home Care",
+          "marketingSearchTerm": "parkinson's home care",
+          "landingPageUrl": "https://www.seniorhelpers.com/services/parkinsons-care/?utm_source=bing&utm_medium=cpc&utm_campaign=parkinsons-home-care",
+          "websiteJourney": "Home / Services / Parkinson's Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Companion Care Seniors",
+          "marketingSearchTerm": "companion care for seniors",
+          "landingPageUrl": "https://www.seniorhelpers.com/services/companion-care/?utm_source=google&utm_medium=cpc&utm_campaign=companion-care-seniors",
+          "websiteJourney": "Home / Services / Companion Care",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "24 Hour Home Care",
+          "marketingSearchTerm": "24 hour home care cost",
+          "landingPageUrl": "https://www.seniorhelpers.com/resources/options-to-pay-for-home-care/?utm_source=google&utm_medium=cpc&utm_campaign=24-hour-home-care",
+          "websiteJourney": "Home / Resources / Options To Pay For Home Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Post-Surgery Home Help",
+          "marketingSearchTerm": "post-surgery in-home help",
+          "landingPageUrl": "https://www.seniorhelpers.com/services/surgery-assistance/?utm_source=bing&utm_medium=cpc&utm_campaign=post-surgery-home-help",
+          "websiteJourney": "Home / Services / Surgery Assistance/Sitter Services",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Elderly Parent Care",
+          "marketingSearchTerm": "home care for elderly parent",
+          "landingPageUrl": "https://www.seniorhelpers.com/services/personal-care/?utm_source=google&utm_medium=cpc&utm_campaign=elderly-parent-care",
+          "websiteJourney": "Home / Services / Personal Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Is Home Care Right For Me Quiz",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.seniorhelpers.com/resources/is-home-care-right-for-me/?utm_source=organic&utm_medium=organic&utm_campaign=home-care-quiz",
+          "websiteJourney": "Home / Resources / Is Home Care Right For Me?",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Aging in Place Guide",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.seniorhelpers.com/resources/benefits-of-home-care/?utm_source=organic&utm_medium=organic&utm_campaign=aging-in-place-guide",
+          "websiteJourney": "Home / Resources / Benefits of Home Care",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Senior Care Only Better Blog",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.seniorhelpers.com/resources/blog/?utm_source=organic&utm_medium=organic&utm_campaign=senior-care-blog",
+          "websiteJourney": "Home / Resources / Blog",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "How Much Does Home Care Cost",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.seniorhelpers.com/resources/options-to-pay-for-home-care/?utm_source=organic&utm_medium=organic&utm_campaign=home-care-cost",
+          "websiteJourney": "Home / Resources / Options To Pay For Home Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Peace of Mind at Home",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.seniorhelpers.com/why-senior-helpers/mission-values/?utm_source=facebook&utm_medium=social&utm_campaign=peace-of-mind-at-home",
+          "websiteJourney": "Home / Why Senior Helpers / Mission & Values",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "The Senior Helpers Difference",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.seniorhelpers.com/why-senior-helpers/the-leader-in-chronic-care/?utm_source=facebook&utm_medium=social&utm_campaign=senior-helpers-difference",
+          "websiteJourney": "Home / Why Senior Helpers / The Leader in Chronic Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Senior Gems Awareness",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.seniorhelpers.com/services/alzheimers-dementia-care/?utm_source=instagram&utm_medium=social&utm_campaign=senior-gems-awareness",
+          "websiteJourney": "Home / Services / Alzheimer's & Dementia Care",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Chronic Disease Care Content",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.seniorhelpers.com/services/chronic-disease-care/?utm_source=organic&utm_medium=organic&utm_campaign=chronic-disease-care",
+          "websiteJourney": "Home / Services / Chronic Disease Care",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Return Home Transitional Care",
+          "marketingSearchTerm": "is home care right for my mom",
+          "landingPageUrl": "https://www.seniorhelpers.com/services/return-home-transitional-care/?utm_source=google&utm_medium=cpc&utm_campaign=return-home-transitional",
+          "websiteJourney": "Home / Services / Return Home Transitional Care",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Caregiver Recruitment, Rewarding Careers",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.seniorhelpers.com/careers/apply-now/?utm_source=instagram&utm_medium=social&utm_campaign=caregiver-recruitment",
+          "websiteJourney": "Home / Careers / Apply Now",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "End-of-Life Support Awareness",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.seniorhelpers.com/services/end-of-life-support-care/?utm_source=facebook&utm_medium=social&utm_campaign=end-of-life-support",
+          "websiteJourney": "Home / Services / End-of-Life Support Care",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Senior Helpers)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "47,418"
+            },
+            {
+              "label": "Care Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "New Client (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$40,026,776"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "7,587"
+            },
+            {
+              "label": "Careers Inquiry (Percent)",
+              "value": "7%"
+            },
+            {
+              "label": "Billing Question (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Existing Client Support (Percent)",
+              "value": "4%"
+            }
+          ]
+        },
+        {
+          "title": "Care Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Care Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Quote Discussed (Percent)",
+              "value": "52%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "15%"
+            },
+            {
+              "label": "New Client (Percent)",
+              "value": "18%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Care Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Care Inquiry (Count)",
+            "values": [
+              6842,
+              8113,
+              8547,
+              8401,
+              7928
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              4231,
+              5102,
+              5318,
+              5206,
+              4800
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              1224,
+              1451,
+              1538,
+              1489,
+              1411
+            ]
+          },
+          {
+            "name": "New Client (Count)",
+            "values": [
+              1468,
+              1742,
+              1834,
+              1801,
+              1690
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 47418,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "18,342",
+                "34%",
+                "13%",
+                "$11,214,026"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "8,214",
+                "39%",
+                "17%",
+                "$6,544,945"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "7,653",
+                "41%",
+                "19%",
+                "$6,816,675"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "6,891",
+                "44%",
+                "22%",
+                "$7,102,460"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "6,318",
+                "48%",
+                "28%",
+                "$8,348,670"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 47418,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "19,847",
+                "34%",
+                "13%",
+                "$12,127,601"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "9,213",
+                "38%",
+                "17%",
+                "$7,252,380"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "8,124",
+                "41%",
+                "20%",
+                "$7,463,205"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "5,637",
+                "45%",
+                "25%",
+                "$6,507,465"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "4,597",
+                "49%",
+                "31%",
+                "$6,676,125"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 24803,
+          "rows": [
+            {
+              "name": "In-Home Care Near Me",
+              "metrics": [
+                "8,247",
+                "35%",
+                "14%",
+                "$5,411,175"
+              ]
+            },
+            {
+              "name": "Dementia Care Search",
+              "metrics": [
+                "5,913",
+                "40%",
+                "18%",
+                "$4,984,840"
+              ]
+            },
+            {
+              "name": "Veterans Home Care VA Benefits",
+              "metrics": [
+                "4,182",
+                "44%",
+                "22%",
+                "$4,310,200"
+              ]
+            },
+            {
+              "name": "Respite Care Relief",
+              "metrics": [
+                "3,564",
+                "47%",
+                "26%",
+                "$4,342,995"
+              ]
+            },
+            {
+              "name": "Peace of Mind at Home",
+              "metrics": [
+                "2,897",
+                "52%",
+                "33%",
+                "$4,478,860"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 15118,
+          "rows": [
+            {
+              "name": "in-home senior care near me",
+              "metrics": [
+                "4,821",
+                "36%",
+                "15%",
+                "$3,387,255"
+              ]
+            },
+            {
+              "name": "dementia care at home",
+              "metrics": [
+                "3,542",
+                "41%",
+                "19%",
+                "$3,153,005"
+              ]
+            },
+            {
+              "name": "respite care near me",
+              "metrics": [
+                "2,918",
+                "45%",
+                "23%",
+                "$3,143,635"
+              ]
+            },
+            {
+              "name": "24 hour home care cost",
+              "metrics": [
+                "2,164",
+                "49%",
+                "27%",
+                "$2,736,040"
+              ]
+            },
+            {
+              "name": "va home care benefits for veterans",
+              "metrics": [
+                "1,673",
+                "55%",
+                "34%",
+                "$2,665,765"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Care Consultation Set (Industry) (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 47418,
+          "rows": [
+            {
+              "name": "Companion Care",
+              "metrics": [
+                "13,842",
+                "34%",
+                "11%",
+                "$7,428,612"
+              ]
+            },
+            {
+              "name": "Personal Care",
+              "metrics": [
+                "11,376",
+                "37%",
+                "15%",
+                "$8,027,433"
+              ]
+            },
+            {
+              "name": "Alzheimer's & Dementia Care",
+              "metrics": [
+                "9,214",
+                "40%",
+                "19%",
+                "$8,081,254"
+              ]
+            },
+            {
+              "name": "Parkinson's & Chronic Disease Care",
+              "metrics": [
+                "7,438",
+                "42%",
+                "23%",
+                "$7,998,169"
+              ]
+            },
+            {
+              "name": "Respite & Transitional Care",
+              "metrics": [
+                "5,548",
+                "46%",
+                "33%",
+                "$8,491,308"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 47418,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "14,238",
+                "33%",
+                "12%",
+                "$8,253,142"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "11,072",
+                "37%",
+                "16%",
+                "$8,064,918"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "9,346",
+                "39%",
+                "18%",
+                "$7,972,336"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "7,914",
+                "43%",
+                "24%",
+                "$8,913,547"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "4,848",
+                "48%",
+                "30%",
+                "$6,822,833"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Client (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Companion Care",
+            "values": [
+              301,
+              338,
+              372,
+              289,
+              284
+            ]
+          },
+          {
+            "name": "Personal Care",
+            "values": [
+              326,
+              358,
+              381,
+              332,
+              315
+            ]
+          },
+          {
+            "name": "Alzheimer's & Dementia Care",
+            "values": [
+              332,
+              361,
+              384,
+              329,
+              318
+            ]
+          },
+          {
+            "name": "Parkinson's & Chronic Disease Care",
+            "values": [
+              328,
+              357,
+              379,
+              326,
+              316
+            ]
+          },
+          {
+            "name": "Respite & Transitional Care",
+            "values": [
+              349,
+              378,
+              401,
+              347,
+              334
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 47,418 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Margaret Ellison called about in-home dementia care for her mother who was recently diagnosed with early-stage Alzheimer's. Agent Rosey explained the Senior Gems program and matched a Gems-certified caregiver to the family's needs. Margaret scheduled a care consultation for the following week and felt reassured throughout.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Rosey",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "David Ramsey inquired about respite care so he could travel for two weeks while his father continued to receive support at home. Agent Lila walked him through short-block and daily respite options and pricing. David booked a care consultation to finalize coverage dates.",
+          "date": "Feb 11, 1:47 PM",
+          "agent": "Lila",
+          "duration": "2m 48s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Sandra Whitfield wanted companion care for her aunt who lives alone and needs help with meals and errands. Agent Oscar described socialization, light housekeeping, and medication reminder services. Sandra scheduled an in-home care consultation and asked to include weekend visits.",
+          "date": "Mar 4, 9:22 AM",
+          "agent": "Oscar",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 10,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Thomas Beckett called as a new client to arrange in-home care for his wife after a recent hospital stay. Agent Mary collected his contact details, address, and care preferences, then explained personal care and transitional support services. Thomas scheduled a care consultation and provided insurance information for follow-up.",
+          "date": "Apr 9, 3:05 PM",
+          "agent": "Mary",
+          "duration": "3m 24s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Patricia Nolan asked about Parkinson's home care for her husband, focusing on fall prevention and mobility support. Agent Lee explained the specialized caregiver training and daily-routine assistance. Patricia scheduled a care consultation and requested a caregiver experienced with tremor management.",
+          "date": "May 15, 11:38 AM",
+          "agent": "Lee",
+          "duration": "2m 57s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Robert Haines, a veteran, called to ask how VA benefit assistance could help pay for in-home care. Agent Sue explained Aid and Attendance eligibility and the free consultation process. Robert scheduled a consultation to begin his benefits paperwork.",
+          "date": "Jun 2, 4:19 PM",
+          "agent": "Sue",
+          "duration": "3m 02s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Karen Doyle called with a billing question about the hourly rate on her mother's last invoice. Agent Mike reviewed the charges and clarified the personal care hours logged. Karen understood the total but wanted a written breakdown emailed to her.",
+          "date": "Jun 21, 2:11 PM",
+          "agent": "Mike",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Gregory Pace called to check the status of his father's Parkinson's care schedule after a caregiver swap. Agent Jennifer confirmed the assigned caregiver and upcoming visit times. Gregory was satisfied but asked to be notified sooner about future changes.",
+          "date": "Jul 8, 10:44 AM",
+          "agent": "Jennifer",
+          "duration": "1m 41s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Diane Foster needed to reschedule an existing respite care block because her travel plans shifted. Agent Rose adjusted the dates but noted limited weekend availability. Diane was mildly frustrated by the shortage but accepted the new times.",
+          "date": "Aug 3, 3:52 PM",
+          "agent": "Rose",
+          "duration": "2m 09s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Michael Barrett called to report that a scheduled caregiver arrived late two days in a row for his mother's personal care visits. Agent Oscar apologized and opened a service review with the local office. Michael wanted assurance the issue would not repeat.",
+          "date": "Aug 27, 9:07 AM",
+          "agent": "Oscar",
+          "duration": "2m 24s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Laura Simmons disputed a billing charge she believed was for hours her father did not receive. Agent Lila pulled the visit logs but could not resolve the discrepancy on the call. Laura remained unhappy and requested a supervisor callback.",
+          "date": "Sep 5, 1:29 PM",
+          "agent": "Lila",
+          "duration": "2m 47s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Steven Marsh called to cancel his aunt's companion care service because the family decided on a different arrangement. Agent Lee processed the cancellation and explained the final invoice timing. Steven declined an offer to pause instead of cancel.",
+          "date": "Sep 22, 4:03 PM",
+          "agent": "Lee",
+          "duration": "1m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "A caller, later identified as veteran James Cole, left a voicemail asking about VA benefit assistance and next steps for his home care. No agent was available and the call rolled to voicemail. The message was flagged for a callback the next morning.",
+          "date": "Oct 1, 6:41 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Nancy Alvarez complained that her mother's companion care caregiver had been changed three times in a month, disrupting the routine. Agent Sue apologized and escalated to the local franchise office. Nancy said she was considering ending the service if it continued.",
+          "date": "Oct 14, 11:52 AM",
+          "agent": "Sue",
+          "duration": "2m 38s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Frank Delgado angrily disputed a billing statement for his wife's dementia care, saying the total was far higher than quoted. Agent Mike tried to explain the specialty care rate but could not calm the caller. Frank demanded a full review and threatened to cancel the account.",
+          "date": "Oct 29, 2:16 PM",
+          "agent": "Mike",
+          "duration": "3m 18s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "dementia",
+        "respite",
+        "companion",
+        "parkinson",
+        "billing",
+        "veteran"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Care Type Needed",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area/ZIP",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Schedule Consultation Visit",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Document Client Mobility/Special Needs",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Set Next Steps Expectations",
+          "points": "10/10",
+          "status": "met"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Identified caller as adult child seeking care for parent",
+        "Determined need for Companion Care",
+        "Confirmed service availability in caller's ZIP code",
+        "Obtained full legal name of prospective client",
+        "Verified phone contact method",
+        "Offered morning consultation appointment",
+        "Acknowledged caller concern about aging in place",
+        "Explained Senior Helpers value proposition",
+        "Confirmed caller's preferred contact method",
+        "Recognized urgency in caller tone",
+        "Documented prospective client age range",
+        "Captured appointment date and time",
+        "Maintained professional and empathetic tone"
+      ],
+      "unmetSignals": [
+        "Did not capture email for confirmation",
+        "Did not ask about caregiver shift preferences",
+        "Did not mention Senior Gems certification",
+        "Did not discuss pricing or payment options",
+        "Did not ask about existing medical conditions",
+        "Did not confirm whether caller is primary decision maker",
+        "Did not mention flexHOME technology option",
+        "Did not ask frequency of care needed per week",
+        "Did not discuss trial period or satisfaction guarantee",
+        "Did not capture secondary contact method"
+      ],
+      "naSignals": [
+        "Billing address not applicable to intake",
+        "Insurance pre-authorization not discussed",
+        "Caregiver schedule conflict not relevant",
+        "Return care equipment not applicable",
+        "Service cancellation policy not discussed",
+        "Subscription renewal not applicable",
+        "Facility discharge documentation not provided"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller's mother is aging and the family wants to explore in-home companion care to support daily activities and socialization while she remains at home."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a care consultant to visit within a few days, assess the parent's needs, and explain what companion care entails and how Senior Helpers' services work in their area."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent could have captured the caller's email for appointment confirmation and asked about the mother's mobility level or any specific care concerns to help prepare the consultant visit more thoroughly."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Senior Helpers. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus. Yes, thank you for picking up. I'm calling because my mom is 78 and we're looking into getting some help at home. She lives alone and we think it might be good for her to have someone to help with everyday things and just keep her company."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:52",
+          "text": "I'm so glad you reached out. We'd love to help your mom stay independent at home. Can I get your mom's full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:02",
+          "text": "Sure, her name is Patricia Anne Vickers."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:08",
+          "text": "Thank you Patricia Anne Vickers. And what's your name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:14",
+          "text": "I'm David. David Vickers, her son."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:20",
+          "text": "Nice to meet you David. So it sounds like you're interested in companion care for your mom. Is that right? Just someone to help with meals, light housework, errands, that kind of thing?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:35",
+          "text": "Yes exactly. She still gets around pretty well, but I think having someone there a few times a week would really help her feel less lonely and make sure everything is taken care of."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:48",
+          "text": "That makes perfect sense. Companion care is a wonderful service for exactly that. What ZIP code is your mom's home in?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:57",
+          "text": "She's in 94301 in Palo Alto."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:04",
+          "text": "Perfect. We do serve that area. I can connect you with one of our care consultants who will call you within the next couple of days to learn more about your mom and set up a free in home assessment. What's the best phone number to reach you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:18",
+          "text": "It's ****-****-2847."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:26",
+          "text": "Got it. And your email address, David?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:32",
+          "text": "Oh, um, I'll give you my phone number, that's really how I prefer to reach you."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:42",
+          "text": "No problem at all. So we'll be calling you at ****-****-2847. Our consultant will follow up within two business days to schedule that visit with your mom. Does a morning appointment work better for you, or are you more flexible?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:58",
+          "text": "Morning is better if possible. Let's say next week, maybe Tuesday or Wednesday."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:08",
+          "text": "Sounds good. I've noted that we'll aim for a morning slot next Tuesday or Wednesday. Is there anything else I can help clarify about the companion care service or our process?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:20",
+          "text": "No, I think that covers it. Thank you so much."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:26",
+          "text": "You're very welcome David. Thank you for choosing Senior Helpers. We can't wait to meet your mom and help her stay happy and healthy at home. Have a wonderful day."
+        }
+      ],
+      "aiSummary": "David Vickers called on behalf of his 78 year old mother Patricia who lives alone in Palo Alto and needs companion care support a few times per week to assist with daily activities and reduce isolation. Marcus successfully qualified the care type, confirmed service availability in the client's ZIP code, captured contact information and demographics, and scheduled a free in home assessment consultation for the following week. The call was professional and empathetic but missed the opportunity to capture an email address for appointment confirmation and did not explore specific care needs or frequency preferences in detail.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus great structure and tone on this intake call. You moved smoothly through qualification and painted a clear picture of what companion care offers. Two coaching notes for next time. First, when David declined to share his email, gently remind him that it helps us send appointment confirmations and resources, he may reconsider. Second, ask about Mom's current living situation and mobility level before the consultant visits, it helps us prepare better and shows the caller we're thinking ahead. Keep up the solid work."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "47,418"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$844.13"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$40,026,776"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "29,842"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "63%"
+            },
+            {
+              "label": "Care Consultation: Scheduled (Count)",
+              "value": "18,019"
+            },
+            {
+              "label": "Care Consultation: Scheduled (Percent)",
+              "value": "38%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "17,576"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Care Consultation: Canceled (Percent)",
+              "value": "9%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Care Consultations)",
+          "chart": {
+            "legend": "Care Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Referral Partners",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Google Business Profile",
+                "value": 48,
+                "display": "48%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "Facebook / Instagram",
+                "value": 34,
+                "display": "34%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Care Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Care Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google Paid Search",
+                  "18,214",
+                  "26%",
+                  "$14,982,143"
+                ]
+              },
+              {
+                "cells": [
+                  "Facebook / Instagram",
+                  "11,436",
+                  "34%",
+                  "$9,764,318"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "8,972",
+                  "41%",
+                  "$7,731,540"
+                ]
+              },
+              {
+                "cells": [
+                  "Google Business Profile",
+                  "5,318",
+                  "48%",
+                  "$4,602,655"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral Partners",
+                  "3,478",
+                  "58%",
+                  "$2,946,120"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 20000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search (cpc)",
+                "value": 19847,
+                "display": "19,847"
+              },
+              {
+                "name": "Paid Social",
+                "value": 10213,
+                "display": "10,213"
+              },
+              {
+                "name": "Organic",
+                "value": 8461,
+                "display": "8,461"
+              },
+              {
+                "name": "Local / Directory",
+                "value": 5742,
+                "display": "5,742"
+              },
+              {
+                "name": "Email",
+                "value": 3155,
+                "display": "3,155"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Care Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Care Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search (cpc)",
+                  "19,847",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "10,213",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "8,461",
+                  "40%"
+                ]
+              },
+              {
+                "cells": [
+                  "Local / Directory",
+                  "5,742",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "3,155",
+                  "57%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "In-Home Care Near Me",
+                "value": 8214,
+                "display": "8,214"
+              },
+              {
+                "name": "Dementia Care Search",
+                "value": 5132,
+                "display": "5,132"
+              },
+              {
+                "name": "Peace of Mind at Home",
+                "value": 4318,
+                "display": "4,318"
+              },
+              {
+                "name": "Veterans Home Care VA Benefits",
+                "value": 3476,
+                "display": "3,476"
+              },
+              {
+                "name": "Respite Care Relief",
+                "value": 2218,
+                "display": "2,218"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Care Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Care Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "In-Home Care Near Me",
+                  "8,214",
+                  "33%",
+                  "$6,932,916"
+                ]
+              },
+              {
+                "cells": [
+                  "Dementia Care Search",
+                  "5,132",
+                  "38%",
+                  "$4,331,254"
+                ]
+              },
+              {
+                "cells": [
+                  "Veterans Home Care VA Benefits",
+                  "3,476",
+                  "44%",
+                  "$2,933,764"
+                ]
+              },
+              {
+                "cells": [
+                  "Respite Care Relief",
+                  "2,218",
+                  "55%",
+                  "$1,872,340"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "in-home senior care near me",
+                "value": 3842,
+                "display": "3,842"
+              },
+              {
+                "name": "dementia care at home",
+                "value": 2918,
+                "display": "2,918"
+              },
+              {
+                "name": "respite care near me",
+                "value": 2134,
+                "display": "2,134"
+              },
+              {
+                "name": "24 hour home care cost",
+                "value": 1662,
+                "display": "1,662"
+              },
+              {
+                "name": "va home care benefits for veterans",
+                "value": 1208,
+                "display": "1,208"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Care Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Care Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "in-home senior care near me",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "dementia care at home",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "respite care near me",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "va home care benefits for veterans",
+                  "56%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Care Consultation: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Alzheimer's & Dementia Care",
+              "14,238",
+              "33%",
+              "66%"
+            ]
+          },
+          {
+            "cells": [
+              "Personal Care",
+              "11,842",
+              "37%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Companion Care",
+              "9,476",
+              "42%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Respite Care",
+              "6,318",
+              "51%",
+              "54%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Care Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Senior Helpers of Naperville",
+              "8,214",
+              "612",
+              "5%",
+              "34%"
+            ]
+          },
+          {
+            "cells": [
+              "Senior Helpers of Scottsdale",
+              "6,742",
+              "498",
+              "6%",
+              "39%"
+            ]
+          },
+          {
+            "cells": [
+              "Senior Helpers of Tampa Bay",
+              "5,318",
+              "421",
+              "7%",
+              "45%"
+            ]
+          },
+          {
+            "cells": [
+              "Senior Helpers of Raleigh",
+              "3,876",
+              "287",
+              "8%",
+              "53%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1642,
+              1718,
+              1584,
+              1652,
+              1618
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1418,
+              1502,
+              1386,
+              1458,
+              1368
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              1264,
+              1318,
+              1242,
+              1288,
+              1206
+            ]
+          },
+          {
+            "name": "Needs Family Approval",
+            "values": [
+              892,
+              924,
+              868,
+              912,
+              880
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              642,
+              678,
+              618,
+              664,
+              657
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "18,967"
+          },
+          {
+            "label": "Care Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "New Client (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$22,815,262"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,847,550"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,156,280"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,124,746"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,218,640"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,847,196"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "43%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,620,850"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Care Consultation Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21847,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "6,247",
+                "62%",
+                "38%",
+                "$7,356,428"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "5,832",
+                "58%",
+                "35%",
+                "$6,247,392"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "3,641",
+                "51%",
+                "29%",
+                "$4,138,852"
+              ]
+            },
+            {
+              "name": "Referral Partners",
+              "metrics": [
+                "2,156",
+                "48%",
+                "27%",
+                "$2,417,184"
+              ]
+            },
+            {
+              "name": "Direct Navigation",
+              "metrics": [
+                "1,091",
+                "42%",
+                "21%",
+                "$1,654,406"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Care Consultation Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21156,
+          "rows": [
+            {
+              "name": "Google Search",
+              "metrics": [
+                "7,354",
+                "63%",
+                "39%",
+                "$8,612,648"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "4,219",
+                "54%",
+                "32%",
+                "$4,927,356"
+              ]
+            },
+            {
+              "name": "Bing Search",
+              "metrics": [
+                "3,608",
+                "49%",
+                "28%",
+                "$4,184,672"
+              ]
+            },
+            {
+              "name": "Instagram",
+              "metrics": [
+                "2,147",
+                "45%",
+                "25%",
+                "$2,465,308"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "1,639",
+                "41%",
+                "20%",
+                "$1,853,278"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Care Consultation Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21684,
+          "rows": [
+            {
+              "name": "In-Home Care Near Me",
+              "metrics": [
+                "5,163",
+                "61%",
+                "37%",
+                "$6,082,752"
+              ]
+            },
+            {
+              "name": "Dementia Care at Home",
+              "metrics": [
+                "4,847",
+                "57%",
+                "34%",
+                "$5,714,184"
+              ]
+            },
+            {
+              "name": "Respite Care Relief Solutions",
+              "metrics": [
+                "3,742",
+                "52%",
+                "31%",
+                "$4,426,928"
+              ]
+            },
+            {
+              "name": "Veterans VA Benefits Support",
+              "metrics": [
+                "2,634",
+                "47%",
+                "26%",
+                "$3,087,476"
+              ]
+            },
+            {
+              "name": "Aging in Place Guide Resource",
+              "metrics": [
+                "2,581",
+                "43%",
+                "22%",
+                "$2,503,922"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Care Consultation Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 19847,
+          "rows": [
+            {
+              "name": "in-home senior care near me",
+              "metrics": [
+                "3,956",
+                "64%",
+                "40%",
+                "$4,862,184"
+              ]
+            },
+            {
+              "name": "home care for elderly parent",
+              "metrics": [
+                "3,218",
+                "59%",
+                "36%",
+                "$3,924,528"
+              ]
+            },
+            {
+              "name": "dementia care at home",
+              "metrics": [
+                "2,847",
+                "55%",
+                "32%",
+                "$3,381,264"
+              ]
+            },
+            {
+              "name": "Alzheimer's caregiver services",
+              "metrics": [
+                "2,156",
+                "48%",
+                "27%",
+                "$2,531,820"
+              ]
+            },
+            {
+              "name": "respite care near me",
+              "metrics": [
+                "1,942",
+                "42%",
+                "21%",
+                "$2,214,546"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Care Consultation Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Alzheimer's and Dementia Care",
+              "metrics": [
+                "4,872",
+                "67%",
+                "42%",
+                "$6,254,784"
+              ]
+            },
+            {
+              "name": "Companion Care",
+              "metrics": [
+                "3,956",
+                "58%",
+                "35%",
+                "$4,687,312"
+              ]
+            },
+            {
+              "name": "Personal Care",
+              "metrics": [
+                "3,418",
+                "54%",
+                "31%",
+                "$4,035,236"
+              ]
+            },
+            {
+              "name": "Chronic Disease Management",
+              "metrics": [
+                "3,247",
+                "49%",
+                "27%",
+                "$3,828,544"
+              ]
+            },
+            {
+              "name": "Return Home Transitional Care",
+              "metrics": [
+                "3,474",
+                "52%",
+                "29%",
+                "$4,009,386"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls Over Time",
+          "tableTitle": "Weekly Call Trend",
+          "dimensionColumn": "Week",
+          "metricColumns": [
+            "Call Count",
+            "Care Consultation Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Jan 1-4",
+              "metrics": [
+                "3,247",
+                "57%",
+                "34%",
+                "$3,918,752"
+              ]
+            },
+            {
+              "name": "Jan 5-11",
+              "metrics": [
+                "3,892",
+                "56%",
+                "33%",
+                "$4,614,248"
+              ]
+            },
+            {
+              "name": "Jan 12-18",
+              "metrics": [
+                "3,714",
+                "57%",
+                "34%",
+                "$4,392,216"
+              ]
+            },
+            {
+              "name": "Jan 19-25",
+              "metrics": [
+                "4,156",
+                "55%",
+                "32%",
+                "$5,012,384"
+              ]
+            },
+            {
+              "name": "Jan 26-31",
+              "metrics": [
+                "3,958",
+                "56%",
+                "33%",
+                "$4,877,662"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Client Acquisition by Region",
+          "tableTitle": "Regional Performance",
+          "dimensionColumn": "Region",
+          "metricColumns": [
+            "Call Count",
+            "Care Consultation Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21948,
+          "rows": [
+            {
+              "name": "Northeast",
+              "metrics": [
+                "4,231",
+                "59%",
+                "36%",
+                "$5,127,584"
+              ]
+            },
+            {
+              "name": "Southeast",
+              "metrics": [
+                "3,847",
+                "56%",
+                "33%",
+                "$4,538,416"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "3,562",
+                "54%",
+                "31%",
+                "$4,214,752"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "2,984",
+                "51%",
+                "29%",
+                "$3,528,224"
+              ]
+            },
+            {
+              "name": "West Coast",
+              "metrics": [
+                "3,343",
+                "52%",
+                "30%",
+                "$4,006,286"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Client (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Alzheimer's and Dementia Care",
+            "values": [
+              693,
+              823,
+              781,
+              847,
+              728
+            ]
+          },
+          {
+            "name": "Companion Care",
+            "values": [
+              553,
+              648,
+              607,
+              689,
+              559
+            ]
+          },
+          {
+            "name": "Personal Care",
+            "values": [
+              513,
+              592,
+              566,
+              621,
+              526
+            ]
+          },
+          {
+            "name": "Chronic Disease Management",
+            "values": [
+              432,
+              502,
+              468,
+              541,
+              404
+            ]
+          },
+          {
+            "name": "Return Home Transitional Care",
+            "values": [
+              508,
+              619,
+              584,
+              641,
+              622
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Care Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Care Consultation Scheduled (Percent)",
+            "value": "26%"
+          },
+          {
+            "label": "Care Consultation Scheduled (Count)",
+            "value": "351"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "812"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Care Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Care Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Care Consultation Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Care Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Care Consultation Scheduled",
+            "values": [
+              72,
+              78,
+              74,
+              81,
+              76,
+              73,
+              79,
+              75,
+              80,
+              77,
+              72,
+              74,
+              81,
+              78,
+              76,
+              75,
+              79,
+              73,
+              71,
+              74,
+              77,
+              80,
+              75,
+              72,
+              76,
+              78,
+              81,
+              74,
+              73,
+              79,
+              75,
+              83,
+              174,
+              189,
+              167,
+              192,
+              178,
+              185,
+              171,
+              188,
+              182,
+              176,
+              194,
+              179,
+              181,
+              176,
+              187,
+              191,
+              178
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,264"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "743"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "62%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "724"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Care Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Dementia and Alzheimer's Care",
+            "values": [
+              11,
+              9,
+              8,
+              12,
+              10,
+              9
+            ]
+          },
+          {
+            "name": "Post Discharge Transition Care",
+            "values": [
+              8,
+              6,
+              9,
+              7,
+              8,
+              11
+            ]
+          },
+          {
+            "name": "Respite Care Services",
+            "values": [
+              9,
+              12,
+              7,
+              10,
+              9,
+              8
+            ]
+          },
+          {
+            "name": "Personal Care and Companion Services",
+            "values": [
+              7,
+              8,
+              11,
+              6,
+              12,
+              10
+            ]
+          },
+          {
+            "name": "Pricing and Payment Options",
+            "values": [
+              6,
+              9,
+              8,
+              9,
+              7,
+              12
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "43,625"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "30,822"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Care Consultation Booked (Count)",
+            "value": "18,019"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$40,026,776"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Rodriguez",
+              "value": 217,
+              "display": "217"
+            },
+            {
+              "name": "Jennifer Walsh",
+              "value": 189,
+              "display": "189"
+            },
+            {
+              "name": "David Chen",
+              "value": 241,
+              "display": "241"
+            },
+            {
+              "name": "Patricia Gomez",
+              "value": 203,
+              "display": "203"
+            },
+            {
+              "name": "Thomas O'Brien",
+              "value": 175,
+              "display": "175"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Care Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              127,
+              168,
+              201,
+              245,
+              289
+            ]
+          },
+          {
+            "name": "Robert Jackson",
+            "values": [
+              102,
+              156,
+              198,
+              237,
+              271
+            ]
+          },
+          {
+            "name": "Amanda Foster",
+            "values": [
+              119,
+              172,
+              209,
+              248,
+              296
+            ]
+          },
+          {
+            "name": "Michael Torres",
+            "values": [
+              94,
+              149,
+              191,
+              228,
+              264
+            ]
+          },
+          {
+            "name": "Elizabeth Harper",
+            "values": [
+              111,
+              164,
+              205,
+              241,
+              283
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Rodriguez",
+              "value": 52.4,
+              "display": "52.4%"
+            },
+            {
+              "name": "Jennifer Walsh",
+              "value": 54.1,
+              "display": "54.1%"
+            },
+            {
+              "name": "David Chen",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "Patricia Gomez",
+              "value": 58.3,
+              "display": "58.3%"
+            },
+            {
+              "name": "Thomas O'Brien",
+              "value": 59.7,
+              "display": "59.7%"
+            },
+            {
+              "name": "William Nash",
+              "value": 61.2,
+              "display": "61.2%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Care Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Rodriguez",
+                "52.4%",
+                "26%",
+                "$877,445",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Walsh",
+                "54.1%",
+                "27%",
+                "$892,831",
+                "1,447"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "56.8%",
+                "29%",
+                "$950,272",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Gomez",
+                "58.3%",
+                "31%",
+                "$1,012,648",
+                "1,389"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas O'Brien",
+                "59.7%",
+                "32%",
+                "$1,043,521",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "William Nash",
+                "61.2%",
+                "34%",
+                "$1,104,896",
+                "1,478"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Mitchell",
+              "value": 93.2,
+              "display": "93.2%"
+            },
+            {
+              "name": "Robert Jackson",
+              "value": 91.8,
+              "display": "91.8%"
+            },
+            {
+              "name": "Amanda Foster",
+              "value": 92.5,
+              "display": "92.5%"
+            },
+            {
+              "name": "Michael Torres",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "Elizabeth Harper",
+              "value": 90.4,
+              "display": "90.4%"
+            },
+            {
+              "name": "Christopher Lane",
+              "value": 88.9,
+              "display": "88.9%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Care Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "93.2%",
+                "67%",
+                "$1,982,447",
+                "1,548"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Jackson",
+                "91.8%",
+                "65%",
+                "$1,894,527",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Foster",
+                "92.5%",
+                "66%",
+                "$1,938,684",
+                "1,529"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Torres",
+                "89.7%",
+                "61%",
+                "$1,651,238",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Elizabeth Harper",
+                "90.4%",
+                "63%",
+                "$1,751,294",
+                "1,501"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Lane",
+                "88.9%",
+                "59%",
+                "$1,544,683",
+                "1,423"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Care Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Care Consultation Booked (Count)",
+        "rightMax": 900,
+        "rightTicks": [
+          0,
+          225,
+          450,
+          675,
+          900
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 668
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 640
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 596
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 569
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 495
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 519
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 574
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 597
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 666
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 645
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 581
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 561
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 499
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 515
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 588
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 606
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 659
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 649
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 569
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 551
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 507
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 512
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 598
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 618
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 651
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 650
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 561
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 537
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 516
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 513
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 609
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1900000,
+        "rightTicks": [
+          0,
+          633333.3333333334,
+          1266666.6666666667,
+          1900000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1483757
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1422113
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1324277
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1263616
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 1100210
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 1154640
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1275497
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1325775
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1478246
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1433251
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1290881
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1247662
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 1110209
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 1144363
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1305866
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1345657
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1464482
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1441691
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1264207
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 1224109
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 1126873
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 1138687
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1328374
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1372407
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1445878
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1443775
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 1246118
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 1194828
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 1146413
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 1140885
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1342029
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "47,418"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,793"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,845"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "81%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jessica Chen",
+                "412",
+                "88%",
+                "87%",
+                "79%"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Rodriguez",
+                "589",
+                "85%",
+                "84%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Williams",
+                "378",
+                "85%",
+                "85%",
+                "82%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "47,418 calls",
+      "pagerLabel": "1 of 4,742",
+      "calls": [
+        {
+          "time": "1/6/26 9:12 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 10:41 am",
+          "id": "A3C2-91DE4470B18A"
+        },
+        {
+          "time": "1/12/26 11:27 am",
+          "id": "7B90-2C4F8815DA63"
+        },
+        {
+          "time": "1/14/26 1:03 pm",
+          "id": "E24D-6A70FF1390C5"
+        },
+        {
+          "time": "1/16/26 1:48 pm",
+          "id": "C918-4B2210E7A5F9"
+        },
+        {
+          "time": "1/20/26 2:15 pm",
+          "id": "5D7A-88C3160BE472"
+        },
+        {
+          "time": "1/22/26 3:09 pm",
+          "id": "9F31-0E5D74A9C286"
+        },
+        {
+          "time": "1/26/26 3:52 pm",
+          "id": "1A6E-B29740FD5138"
+        },
+        {
+          "time": "1/28/26 4:34 pm",
+          "id": "6C05-3F81AD62E907"
+        },
+        {
+          "time": "1/30/26 5:11 pm",
+          "id": "D48B-72A0596C41EF"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Senior Helpers, this is Diane. How can I help you and your family today?",
+          "highlights": [
+            "Thank you for calling Senior Helpers",
+            "this is Diane"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Diane. I'm looking into in-home care for my mother. She was recently diagnosed with early stage Alzheimer's and I'm not sure where to start.",
+          "highlights": [
+            "early stage Alzheimer's"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "I'm so glad you reached out, and I'm sorry to hear about your mom's diagnosis. We help families with exactly this every day. May I get your name to start?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:27",
+          "text": "Sure, it's Robert Callahan. My mom's name is Eleanor and she still lives on her own, which is what worries me.",
+          "highlights": [
+            "Robert Callahan"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:36",
+          "text": "Thank you, Robert. And is Eleanor managing daily tasks okay right now, things like meals, medications, and getting around the house?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:45",
+          "text": "Mostly, but she forgets her pills and left the stove on twice last month. I mainly want someone there for company and to keep her safe.",
+          "highlights": [
+            "forgets her pills",
+            "keep her safe"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:56",
+          "text": "That's very common at this stage. I'd recommend our Alzheimer's and Dementia Care program. Our caregivers are certified through Senior Gems, which matches the care to each stage of cognitive change.",
+          "highlights": [
+            "Alzheimer's and Dementia Care program",
+            "Senior Gems"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:08",
+          "text": "That sounds good, but honestly what does that run per hour? I want to keep this manageable for as long as possible.",
+          "highlights": [
+            "what does that run per hour",
+            "keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:18",
+          "text": "Absolutely, and it's smart to plan. Our specialized dementia care generally falls between thirty-two and forty-two dollars an hour, set locally, and we can start with just a few hours a week and add more only if she needs it.",
+          "highlights": [
+            "thirty-two and forty-two dollars an hour"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:31",
+          "text": "Okay. I'll be honest, I'm getting a couple of quotes right now. There's an agency a few towns over that quoted me a little less.",
+          "highlights": [
+            "getting a couple of quotes"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:41",
+          "text": "That's completely fair, and I'd encourage you to compare. What sets us apart is the Senior Gems certification and our LIFE Profile, so the caregiver we match to Eleanor is trained specifically for her stage, not just a general aide.",
+          "highlights": [
+            "Senior Gems certification",
+            "LIFE Profile"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:54",
+          "text": "That does matter to me. One more thing, I don't want to be locked into some long agreement in case her needs change.",
+          "highlights": [
+            "don't want to be locked into some long agreement"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:03",
+          "text": "You won't be. Our care plans are flexible and adjust with her needs, so there's no long commitment holding you in place. Would it help to have one of our care coordinators come out for a free in-home care consultation?",
+          "highlights": [
+            "no long commitment",
+            "free in-home care consultation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:15",
+          "text": "Yes, that would help. Could we do sometime later this week? I'd like my sister there too.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:22",
+          "text": "Of course. I have Thursday at 10 AM open. I'll schedule the care consultation for then so you and your sister can both meet the coordinator.",
+          "highlights": [
+            "Thursday at 10 AM",
+            "schedule the care consultation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:31",
+          "text": "Thursday at 10 works great. Thank you, Diane.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:36",
+          "text": "You're very welcome, Robert. You'll get a confirmation shortly, and we look forward to helping Eleanor stay safe at home. Take care.",
+          "highlights": [
+            "look forward to helping Eleanor",
+            "Take care"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Care Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Alzheimer's & Dementia Care Intent",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Price Sensitivity Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Commitment / Contract Concern",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Robert Callahan, a new client, called on behalf of his mother Eleanor, who was recently diagnosed with early stage Alzheimer's and lives alone. The agent, Diane, gathered his needs around safety and companionship and recommended the Alzheimer's and Dementia Care program with Senior Gems certified caregivers. Diane addressed his concerns about hourly cost, a competing quote, and being locked into a long agreement, then scheduled a free in-home care consultation. The call closed positively with a confirmed appointment for Thursday at 10 AM.",
+        "keyPoints": [
+          "New client inquiring about care for his mother Eleanor",
+          "Need centered on early stage Alzheimer's, medication reminders, and home safety",
+          "Recommended Alzheimer's & Dementia Care with Senior Gems certification",
+          "Handled price, competitor quote, and no long commitment concerns",
+          "Free in-home care consultation booked for Thursday at 10 AM",
+          "Caller name and family situation captured for follow-up"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Care Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "29,873 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,987",
+      "conversations": [
+        {
+          "id": "C847-3B2F9A1E7D64",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. This is Sarah from Senior Helpers. We help seniors stay independent and comfortable right at home. Do you have a few minutes to chat about what you're looking for?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes, hi. My mom is recovering from hip surgery and she needs some help at home."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "I'm so glad you reached out. Surgery recovery at home is exactly what we specialize in. How many weeks out from her surgery is she right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "About 3 weeks. She can't really move around much yet and my sister and I are trying to help but we both work."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Three weeks is a great time to get professional support in place. Our caregivers are trained in post operative care and mobility assistance. Is she needing help mainly during the day, or do you need evening or overnight coverage too?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Mostly during the day right now. Maybe 6 or 7 hours a day. She's in Portland."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Portland is perfect. We have caregivers there. For post surgery care with that level of daily support, we're looking at approximately 32 to 38 dollars per hour depending on the specific care tasks. Does that fit your budget?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "That sounds reasonable. What's the next step?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:30 AM",
+              "text": "Great. I'd like to set up a Care Consultation with one of our care coordinators. They'll do a full assessment and match your mom with the right caregiver. How does Tuesday, March 18th at 2 PM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "Yes, Tuesday works. That's perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "Wonderful. We have you down for Tuesday, March 18th at 2 PM. A care coordinator will call you at this number to confirm and answer any questions. You can also reach us at 877-936-2933 if you need anything before then. Thank you for choosing Senior Helpers."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Thank you so much."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Care Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Identified: Surgery Assistance",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Care Hours: 6-7 hours daily",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: Portland, OR",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Rate Estimate Provided",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C847-3B2F9A1E7D64",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "503-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "503-555-0147",
+            "repeatCaller": "No",
+            "city": "Portland",
+            "region": "OR",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C923-5F8C1D4A2B91",
+          "time": "8/16/25 10:48 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C923-5F8C1D4A2B91",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C671-7E3F9B2D5A48",
+          "time": "8/16/25 10:37 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C671-7E3F9B2D5A48",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C159-6A4C8E2F1D73",
+          "time": "8/16/25 10:22 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C159-6A4C8E2F1D73",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "47,418 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,742",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hi there, thank you for calling Senior Helpers. This is Marcus. How can I help you find the right care for your loved one today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:47 PM",
+              "text": "Hi Marcus. Um, my mom is 78 and she's been having trouble getting around after her knee surgery. My sister and I are looking for someone to help her during recovery."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:48 PM",
+              "text": "I'm really glad you reached out. We specialize in post-surgery care and recovery support right in your home. Can I ask, what city or area is your mom located in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "She's in Phoenix. We're in Arizona."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "Perfect. Phoenix is one of our service areas. Now, for her recovery, would she need help mainly during the day, or are you looking for around-the-clock support as well?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:49 PM",
+              "text": "Probably just during the day for now. Maybe four to six hours a day while my sister and I are at work."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:50 PM",
+              "text": "That makes sense. And is she receiving any physical therapy at home, or will she need a caregiver who can assist with mobility and help her get around safely?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "Yeah, she'll have a physical therapist coming twice a week. But we definitely need someone there to help with walking, bathing, that kind of thing on the other days."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Excellent. So personal care assistance with mobility support. Our caregivers are trained in exactly that, and we can typically arrange daytime sessions within a few days. Based on what you've told me, we're looking at roughly thirty to thirty eight dollars per hour for post-surgery care in your area. Does that feel like a fit for your budget?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "That sounds reasonable. When could you get someone started?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:52 PM",
+              "text": "Great. I'd love to get your mom matched with the right caregiver. I have availability for a free in-home care consultation this Friday, January seventeenth at ten a.m., or we could do Monday the twentieth at two p.m. Which works better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:53 PM",
+              "text": "Friday at ten would be perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:53 PM",
+              "text": "Wonderful. So I've got you down for a care consultation on Friday, January seventeenth at ten a.m. at your mom's home in Phoenix. A Senior Helpers care coordinator will come by to meet her, assess her needs, and we'll get everything set up for regular caregiving to start right away. You can reach us if you need to reschedule at eight seven seven, nine three six, twenty nine thirty three. Is there anything else I can help you with today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:54 PM",
+              "text": "No, that's perfect. Thank you so much, Marcus."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:54 PM",
+              "text": "You're very welcome. We're excited to help your mom recover and stay at home where she's comfortable. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Care Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Identified: Return Home Transitional Care",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Daytime Care Hours: Four to Six Hours Daily",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area Confirmed: Phoenix, Arizona",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Rate Estimate Provided: Thirty to Thirty Eight Dollars Per Hour",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:47 pm",
+            "duration": "7:12",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "602-551-8847",
+            "repeatCaller": "No",
+            "city": "Phoenix",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B829-4D7EB562F1C3",
+          "time": "1/22/26 11:34 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B829-4D7EB562F1C3",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C645-3A8FB274E9D6",
+          "time": "1/28/26 9:19 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C645-3A8FB274E9D6",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D912-5F6AC381B7E2",
+          "time": "1/31/26 3:56 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D912-5F6AC381B7E2",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as Senior Helpers's AI agent here to help build a personalized in-home care quote, mention that the initial care consultation is always free, and ask if they would like to get started.",
+        "Qualify one question at a time: Ask one question at a time to learn who needs care and their relationship to the client, the type of care needed such as companion, personal, or Alzheimer's and dementia care, how many hours per day or week they are considering, the desired start timeline, and finally their ZIP code to confirm we serve their area.",
+        "Estimate then book: Confirm we service their ZIP code, share a preliminary hourly range based on the care type and hours they described, recommend a care consultation with a local care specialist for an exact quote, propose a specific day and time, and confirm they will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Senior_Helpers_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Care Services & Specialties",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Location",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Schedule a Care Consultation",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"reschedule\",\"question\":\"I need to change my mother's care schedule this week, can you help?\",\"answer\":\"Absolutely, we can adjust your care schedule. I can connect you with your local care coordinator to update the days and hours, or set up a quick call to review the changes.\"},{\"topic\":\"caregiver match\",\"question\":\"Can I request a different caregiver for my dad?\",\"answer\":\"Yes, we want the right match for your family and can arrange a new caregiver. Let me schedule a short call with your care coordinator to review preferences and update the assignment.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you provide care in the home or do we have to go somewhere?",
+              "answer": "All of our care is delivered right in your loved one's home so they can age in place comfortably. I can set up a free in-home care consultation to review the details."
+            },
+            {
+              "question": "How much does home care cost?",
+              "answer": "Rates depend on the type of care and hours needed, and pricing is set by your local office. The best next step is a free care consultation where a specialist gives you an exact quote."
+            },
+            {
+              "question": "What is the difference between companion care and personal care?",
+              "answer": "Companion care covers socialization, meal prep, light housekeeping, and errands, while personal care adds hands-on help with bathing, dressing, and mobility. A care consultation can help match the right level for your family."
+            },
+            {
+              "question": "Do you offer care for someone with dementia?",
+              "answer": "Yes, our Senior Gems certified caregivers specialize in Alzheimer's and dementia care matched to each stage. I can book a care consultation to build a plan for your loved one."
+            },
+            {
+              "question": "Can you help with Parkinson's care?",
+              "answer": "We have caregivers trained in mobility, fall prevention, and daily routine support for Parkinson's clients. Let me set up a care consultation to discuss their needs."
+            },
+            {
+              "question": "Do you offer respite care so I can take a break?",
+              "answer": "Yes, respite care provides temporary relief coverage so family caregivers can rest or travel. I can schedule a care consultation to arrange the timing that works for you."
+            },
+            {
+              "question": "Can you provide 24 hour or live-in care?",
+              "answer": "We offer around-the-clock coverage including live-in and awake overnight care for high-needs clients. A care consultation is the best way to review scheduling and pricing."
+            },
+            {
+              "question": "Do you help after a hospital stay or surgery?",
+              "answer": "Yes, our Return Home transitional and surgery assistance services support recovery and help reduce readmissions. I can book a care consultation to plan the discharge support."
+            },
+            {
+              "question": "Are your caregivers screened and trained?",
+              "answer": "Our caregivers are carefully screened, trained, and matched to your loved one's needs. A care specialist can walk you through the process during a free consultation."
+            },
+            {
+              "question": "How quickly can care start?",
+              "answer": "Care can often begin quickly once we complete a consultation and build the care plan. Let me schedule that consultation so we can confirm a start date."
+            },
+            {
+              "question": "Do you accept VA benefits?",
+              "answer": "Yes, we offer VA benefit assistance and can guide veterans through options like Aid and Attendance. The consultation for this is free, and I can set it up for you."
+            },
+            {
+              "question": "Do you take insurance or Medicare?",
+              "answer": "Coverage varies by plan and situation, and your local office can review payment options with you. I can book a care consultation to go over how to pay for care."
+            },
+            {
+              "question": "What areas do you serve?",
+              "answer": "We serve clients through local offices, so let me confirm your ZIP code to make sure we cover your area. Then I can schedule your free care consultation."
+            },
+            {
+              "question": "Can I choose the days and hours of care?",
+              "answer": "Yes, care schedules are flexible and built around your family's needs. A care consultation lets us map out the exact days and hours."
+            },
+            {
+              "question": "What is Senior Gems?",
+              "answer": "Senior Gems is our proprietary program that certifies caregivers in Alzheimer's and dementia care matched to each stage of cognitive change. I would be happy to schedule a consultation to explain how it helps."
+            },
+            {
+              "question": "Do you help with medication?",
+              "answer": "Our caregivers can provide medication reminders as part of companion and personal care. A care consultation can confirm exactly what support your loved one needs."
+            },
+            {
+              "question": "Can you provide end-of-life support?",
+              "answer": "Yes, we offer comfort-focused end-of-life support that complements hospice care. I can arrange a compassionate care consultation whenever you are ready."
+            },
+            {
+              "question": "What is flexHOME?",
+              "answer": "flexHOME is our technology-enabled remote monitoring and wellness add-on to in-home care. I can include it in your care consultation so a specialist can explain the options."
+            },
+            {
+              "question": "Do you offer transportation or errands?",
+              "answer": "Yes, our caregivers can help with errands and transportation as part of companion care. Let me set up a consultation to review the details."
+            },
+            {
+              "question": "How do I get started?",
+              "answer": "The first step is a free care consultation with a local specialist who builds a personalized plan. Share your ZIP code and I can propose a day and time to get you scheduled."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the booking\",\"follow_up_message\":\"Thanks for reaching out to Senior Helpers. I can set up your free in-home care consultation with a local care specialist. Does tomorrow at 10:00 AM or 2:00 PM work better for you?\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Happy to help with a personalized quote. Based on the care type and hours you mentioned, a specialist can confirm exact pricing during a free care consultation. What ZIP code is the care needed in so I can confirm availability and book a time?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is the Senior Helpers AI assistant. I can help you build a personalized in-home care quote and set up a free care consultation. Would you like to get started?",
+        "goal": "Guide the family to schedule a free in-home care consultation with a local care specialist.",
+        "bookingType": "in-home care consultation",
+        "offer": "Your initial care consultation is always free",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "Who needs care, and what is your relationship to them?",
+          "What type of care are you looking for, such as companion care, personal care, or Alzheimer's and dementia care?",
+          "About how many hours per day or week are you considering?",
+          "When would you like care to begin?",
+          "What ZIP code is the care needed in so I can confirm we serve your area?"
+        ]
+      },
+      "serviceArea": "the greater Baltimore, Maryland area, ZIP codes starting with 212"
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:28 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:28 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:28 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Senior Helpers",
+      "callerName": "Margaret Chen",
+      "callerPhone": "(503) 555-0847",
+      "campaign": "Dementia Care, Portland Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Care Consultation Lead",
+      "estimatedValue": "$3,847",
+      "googleSearch": "dementia care at home Portland Oregon",
+      "websiteSearch": "Alzheimer's caregiver services near me",
+      "callingWebpage": "/services/alzheimers-dementia-care",
+      "products": "Alzheimer's and Dementia Care, Companion Care",
+      "cartId": "SH-7291M",
+      "serviceable": "Yes",
+      "email": "margaret.chen@emailprovider.com",
+      "street": "2847 NW Lovejoy Street",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97209",
+      "digitalJourney": "/home › /services › /services/alzheimers-dementia-care › /resources/is-home-care-right-for-me",
+      "intent": "Seeking in-home dementia care support for mother recently diagnosed with early-stage Alzheimer's disease.",
+      "coverage": "ZIP 97209 confirmed, Portland serviceable",
+      "switchIntent": "High. Mother's diagnosis is recent, family is searching actively this week, and ready to schedule initial assessment.",
+      "greeting": "Hi Margaret, this is David with Senior Helpers. I see you're looking into Alzheimer's care options for your mom in Portland. We specialize in Senior Gems certified dementia care right here in your area. Would you like to schedule an in-home care consultation with one of our specialists this week?"
+    },
+    "smsScreenpop": {
+      "brandName": "Senior Helpers",
+      "callerName": "Robert Martinez",
+      "callerPhone": "(214) 555-0923",
+      "campaign": "Post-Surgery Care, Dallas Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Care Consultation Lead",
+      "estimatedValue": "$2,156",
+      "googleSearch": "post surgery in-home care help Dallas",
+      "websiteSearch": "recovery assistance after surgery near me",
+      "callingWebpage": "/services/surgery-assistance-sitter-services",
+      "products": "Surgery Assistance, Personal Care",
+      "cartId": "SH-5634K",
+      "serviceable": "Yes",
+      "email": "robert.martinez@emailprovider.com",
+      "street": "3521 Maple Avenue",
+      "city": "Dallas",
+      "state": "TX",
+      "zip": "75219",
+      "digitalJourney": "/home › /services › /services/surgery-assistance-sitter-services › /resources/benefits-of-home-care",
+      "intent": "Needs bedside support and recovery monitoring following knee replacement surgery scheduled for next month.",
+      "coverage": "ZIP 75219 confirmed, Dallas serviceable",
+      "appointment": "In-home care consultation with surgery specialist, Thursday July 18, 2:30 PM",
+      "greeting": "Hi Robert, it's Sarah from Senior Helpers Dallas. Great to connect with you. We've got your in-home care consultation booked for Thursday at 2:30 PM with our surgery recovery specialist. Looking forward to helping you have a smooth recovery at home. Any questions before then?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Senior Helpers",
+      "brandDomain": "www.seniorhelpers.com",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Dementia Care Search, Santa Barbara",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "dementia care at home near me",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Services / Alzheimer's & Dementia Care",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Alzheimer's & Dementia Care, Is Home Care Right For Me?",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "care_consultation_new",
+          "name": "Care Consultation, New Project"
+        },
+        {
+          "id": "existing_support",
+          "name": "Existing Client Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Information Line"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Senior Helpers. I see you're interested in our dementia care services. Can I ask, are you looking for care for a family member right now?",
+          "sigs": [],
+          "q": [
+            45,
+            35,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, my mom has been diagnosed with early stage Alzheimer's and we want to keep her at home as long as possible. We're not sure what level of support she needs yet though.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Early stage Alzheimer's</strong> - aging in place"
+            },
+            {
+              "c": "blue",
+              "t": "Needs <strong>care level assessment</strong>"
+            },
+            {
+              "c": "orange",
+              "t": "Active decision phase"
+            }
+          ],
+          "q": [
+            60,
+            25,
+            15
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's great that you want to support her staying at home. Our Senior Gems program is specifically designed for Alzheimer's and dementia clients at every stage. Have you had a chance to think about whether she might need help with daily activities like bathing, meals, or medication reminders?",
+          "sigs": [],
+          "q": [
+            72,
+            18,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "She definitely needs help with meals and remembering to take her medications. We're also worried about her safety at home alone during the day. I think she probably needs companion care combined with some hands on personal care.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Personal care and companion care</strong> needs"
+            },
+            {
+              "c": "blue",
+              "t": "Safety and medication management priority"
+            },
+            {
+              "c": "purple",
+              "t": "Ready to move forward with planning"
+            }
+          ],
+          "q": [
+            88,
+            8,
+            4
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect, you've described exactly what many families need. I'm going to connect you with our care consultation team in Santa Barbara. They'll do a free assessment to understand your mom's specific needs and show you how our certified dementia caregivers can create a personalized care plan. Let me get you over to them now.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Care Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule your free consultation (Agent)\", \"come out and do an in-home assessment (Agent)\", \"get someone started with care (Caller)\", \"set up the in-home visit (Agent)\"])",
+          "createdAt": "08/14/25 9:12 am",
+          "updatedAt": "01/06/26 3:45 pm"
+        },
+        {
+          "name": "Alzheimer's & Dementia Care Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"mom has dementia (Caller)\", \"Alzheimer's care at home (Caller)\", \"Senior Gems (Agent)\", \"she keeps wandering (Caller)\"])",
+          "createdAt": "09/02/25 10:20 am",
+          "updatedAt": "12/18/25 2:10 pm"
+        },
+        {
+          "name": "Care Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"talk through your care options (Agent)\", \"tell me about your situation (Agent)\", \"what kind of help does she need (Agent)\"])",
+          "createdAt": "07/22/25 8:05 am",
+          "updatedAt": "11/30/25 4:22 pm"
+        },
+        {
+          "name": "Caregiver Compassion Coaching",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Caregiver Compassion] < 60 and duration > 45 sec",
+          "createdAt": "10/11/25 1:15 pm",
+          "updatedAt": "01/09/26 11:03 am"
+        },
+        {
+          "name": "Competitor Home Care Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Home Instead (Caller)\", \"Comfort Keepers (Caller)\", \"Visiting Angels (Caller)\", \"another agency quoted us (Caller)\"])",
+          "createdAt": "09/19/25 3:40 pm",
+          "updatedAt": "12/28/25 9:50 am"
+        },
+        {
+          "name": "Empathy and Active Listening",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy and Active Listening] < 60 and duration > 45 sec",
+          "createdAt": "08/30/25 11:30 am",
+          "updatedAt": "01/12/26 10:15 am"
+        },
+        {
+          "name": "Needs Assessment Thoroughness",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Needs Assessment] < 60 and duration > 45 sec",
+          "createdAt": "10/05/25 2:25 pm",
+          "updatedAt": "01/04/26 8:40 am"
+        },
+        {
+          "name": "Price Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"how much does it cost (Caller)\", \"what's the hourly rate (Caller)\", \"can we afford this (Caller)\", \"that sounds too expensive (Caller)\"])",
+          "createdAt": "09/28/25 4:05 pm",
+          "updatedAt": "12/22/25 1:30 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the rate would be (Agent)\", \"per hour for personal care (Agent)\", \"cost per day for live-in (Agent)\"])",
+          "createdAt": "08/18/25 9:55 am",
+          "updatedAt": "01/07/26 5:12 pm"
+        },
+        {
+          "name": "Respite Care Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"I need a break (Caller)\", \"respite care (Caller)\", \"family caregiver relief (Caller)\", \"cover her for a few days (Caller)\"])",
+          "createdAt": "09/10/25 12:40 pm",
+          "updatedAt": "12/15/25 3:18 pm"
+        }
+      ]
+    }
+  }
+}

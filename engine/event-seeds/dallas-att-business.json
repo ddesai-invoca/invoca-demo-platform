@@ -1,0 +1,5320 @@
+{
+  "id": "atandt-business",
+  "customerName": "AT&T Business",
+  "websiteUrl": "https://www.att.com/business",
+  "brandDomain": "att.com",
+  "networkName": "Invoca for Telecommunications",
+  "industry": "Business Telecommunications & Technology Services",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Customer",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 25000,
+      "yTicks": [
+        5000,
+        10000,
+        15000,
+        20000,
+        25000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 17245
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 19832
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 20567
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 18904
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 17300
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Switch to AT&T Business - $800/Line",
+          "marketingSearchTerm": "AT&T business unlimited plan",
+          "landingPageUrl": "https://www.att.com/business/wireless/plans/?utm_source=google&utm_medium=cpc&utm_campaign=switch_800_line",
+          "websiteJourney": "Home / Products / Wireless plans & devices",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Business Unlimited - 4 Lines Offer",
+          "marketingSearchTerm": "business cell phone plans 4 lines",
+          "landingPageUrl": "https://www.att.com/business/wireless/plans/business-unlimited-advanced/?utm_source=google&utm_medium=cpc&utm_campaign=4_lines_offer",
+          "websiteJourney": "Home / Products / Wireless plans & devices / Plans and prices",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Business Fiber $40/mo Launch",
+          "marketingSearchTerm": "AT&T business fiber internet price",
+          "landingPageUrl": "https://www.att.com/business/internet/fiber/?utm_source=google&utm_medium=cpc&utm_campaign=fiber_40_launch",
+          "websiteJourney": "Home / Products / Business internet / Business fiber",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "5G Fixed Wireless for Business",
+          "marketingSearchTerm": "5G fixed wireless internet for business",
+          "landingPageUrl": "https://www.att.com/business/internet/wireless-internet/?utm_source=bing&utm_medium=cpc&utm_campaign=fixed_wireless_5g",
+          "websiteJourney": "Home / Products / Business internet / Wireless internet",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AutoPay Savings - $15/mo per line",
+          "marketingSearchTerm": "business hotspot plan",
+          "landingPageUrl": "https://www.att.com/business/wireless/hotspots/?utm_source=google&utm_medium=cpc&utm_campaign=autopay_savings",
+          "websiteJourney": "Home / Products / Wireless plans & devices / Hotspots",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "SIP Trunking Voice Solutions",
+          "marketingSearchTerm": "SIP trunking business VoIP",
+          "landingPageUrl": "https://www.att.com/business/voice/ip-flexible-reach/?utm_source=google&utm_medium=cpc&utm_campaign=sip_trunking",
+          "websiteJourney": "Home / Products / Voice & collaboration / Voice & VoIP",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "SD-WAN Provider Search",
+          "marketingSearchTerm": "SD-WAN provider for business",
+          "landingPageUrl": "https://www.att.com/business/networking/sd-wan/?utm_source=bing&utm_medium=cpc&utm_campaign=sdwan_provider",
+          "websiteJourney": "Home / Products / Networking services / SD-WAN",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Managed SASE Enterprise Security",
+          "marketingSearchTerm": "managed SASE cybersecurity",
+          "landingPageUrl": "https://www.att.com/business/cybersecurity/managed-sase/?utm_source=google&utm_medium=cpc&utm_campaign=managed_sase",
+          "websiteJourney": "Home / Products / Cybersecurity / Managed SASE",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Dedicated Internet SLA Guarantee",
+          "marketingSearchTerm": "AT&T dedicated internet SLA",
+          "landingPageUrl": "https://www.att.com/business/internet/dedicated-internet/?utm_source=google&utm_medium=cpc&utm_campaign=dedicated_sla",
+          "websiteJourney": "Home / Products / Business internet / Dedicated internet",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "In-Building Signal Solutions",
+          "marketingSearchTerm": "cell signal booster for office",
+          "landingPageUrl": "https://www.att.com/business/wireless/in-building-solutions/cell-booster-pro/?utm_source=google&utm_medium=cpc&utm_campaign=in_building",
+          "websiteJourney": "Home / Products / Wireless plans & devices / In-building solutions",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "International Travel Plans, Day Pass",
+          "marketingSearchTerm": "AT&T international day pass business",
+          "landingPageUrl": "https://www.att.com/business/wireless/international/day-pass/?utm_source=bing&utm_medium=cpc&utm_campaign=intl_day_pass",
+          "websiteJourney": "Home / Products / Wireless plans & devices / International plans",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "LinkedIn",
+          "marketingCampaign": "Enterprise SASE Thought Leadership",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/business/cybersecurity/?utm_source=linkedin&utm_medium=paid_social&utm_campaign=enterprise_sase",
+          "websiteJourney": "Home / Products / Cybersecurity",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "SMB Wireless Switch & Save",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/business/wireless/plans/?utm_source=facebook&utm_medium=paid_social&utm_campaign=smb_switch_save",
+          "websiteJourney": "Home / Products / Wireless plans & devices",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Business Fiber Launch Reels",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/business/internet/fiber/?utm_source=instagram&utm_medium=paid_social&utm_campaign=fiber_reels",
+          "websiteJourney": "Home / Products / Business internet / Business fiber",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "LinkedIn",
+          "marketingCampaign": "Private Cellular Networks Demo",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/business/networking/private-cellular-networks/?utm_source=linkedin&utm_medium=paid_social&utm_campaign=private_cellular",
+          "websiteJourney": "Home / Products / Networking services / Edge solutions",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/business/wireless/plans/business-unlimited-premium/",
+          "websiteJourney": "Home / Products / Wireless plans & devices / Plans and prices",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/business/voice/att-phone-for-business/",
+          "websiteJourney": "Home / Products / Voice & collaboration / Voice & VoIP",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/business/internet/dedicated-internet/",
+          "websiteJourney": "Home / Products / Business internet / Dedicated internet",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Switch & Save Rewards - $500 Card",
+          "marketingSearchTerm": "AT&T business unlimited plan",
+          "landingPageUrl": "https://www.att.com/business/wireless/plans/?utm_source=google&utm_medium=cpc&utm_campaign=switch_save_rewards",
+          "websiteJourney": "Home / Products / Wireless plans & devices",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "SMB Wireless Switch & Save",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/business/wireless/plans/business-unlimited-standard/?utm_source=instagram&utm_medium=paid_social&utm_campaign=smb_switch_save",
+          "websiteJourney": "Home / Products / Wireless plans & devices / Plans and prices",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/business/internet-of-things/",
+          "websiteJourney": "Home / Products / Internet of Things",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (AT&T Business)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "73,606"
+            },
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Activation (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$26,516,698"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "11,777"
+            },
+            {
+              "label": "Technical Support Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing Inquiry (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Account Management Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "42%"
+            },
+            {
+              "label": "Ineligible Inquiry (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "Activation (Percent)",
+              "value": "22%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sales Call (Count)",
+            "values": [
+              11842,
+              12507,
+              13061,
+              12338,
+              12081
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              5842,
+              6201,
+              6507,
+              6138,
+              6227
+            ]
+          },
+          {
+            "name": "Ineligible Inquiry (Count)",
+            "values": [
+              2483,
+              2701,
+              2807,
+              2638,
+              2620
+            ]
+          },
+          {
+            "name": "Activation (Count)",
+            "values": [
+              3042,
+              3281,
+              3407,
+              3238,
+              3225
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 73606,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "31,842",
+                "38%",
+                "16%",
+                "$8,876,386"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "15,914",
+                "42%",
+                "20%",
+                "$5,210,571"
+              ]
+            },
+            {
+              "name": "LinkedIn",
+              "metrics": [
+                "11,267",
+                "45%",
+                "24%",
+                "$4,426,448"
+              ]
+            },
+            {
+              "name": "Meta",
+              "metrics": [
+                "8,153",
+                "48%",
+                "30%",
+                "$4,004,102"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "6,430",
+                "52%",
+                "38%",
+                "$3,999,191"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 73606,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "34,118",
+                "37%",
+                "15%",
+                "$9,878,214"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "16,442",
+                "41%",
+                "19%",
+                "$5,384,662"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "10,336",
+                "44%",
+                "23%",
+                "$3,912,447"
+              ]
+            },
+            {
+              "name": "Email Nurture",
+              "metrics": [
+                "7,285",
+                "48%",
+                "29%",
+                "$3,668,905"
+              ]
+            },
+            {
+              "name": "Partner Referral",
+              "metrics": [
+                "5,425",
+                "53%",
+                "40%",
+                "$3,672,470"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 37028,
+          "rows": [
+            {
+              "name": "Switch to AT&T Business, $800 Per Line",
+              "metrics": [
+                "12,847",
+                "36%",
+                "14%",
+                "$2,945,363"
+              ]
+            },
+            {
+              "name": "Business Unlimited, 4 Lines Offer",
+              "metrics": [
+                "9,318",
+                "40%",
+                "18%",
+                "$2,745,182"
+              ]
+            },
+            {
+              "name": "Business Fiber $40/mo Launch",
+              "metrics": [
+                "6,742",
+                "44%",
+                "23%",
+                "$2,539,014"
+              ]
+            },
+            {
+              "name": "AutoPay Savings, $15/mo Per Line",
+              "metrics": [
+                "4,916",
+                "47%",
+                "28%",
+                "$2,252,467"
+              ]
+            },
+            {
+              "name": "Managed SASE Enterprise Security",
+              "metrics": [
+                "3,205",
+                "51%",
+                "36%",
+                "$1,889,105"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 28730,
+          "rows": [
+            {
+              "name": "at&t business unlimited plan",
+              "metrics": [
+                "9,642",
+                "35%",
+                "13%",
+                "$2,051,143"
+              ]
+            },
+            {
+              "name": "business cell phone plans 4 lines",
+              "metrics": [
+                "7,183",
+                "39%",
+                "17%",
+                "$1,998,761"
+              ]
+            },
+            {
+              "name": "business fiber internet price",
+              "metrics": [
+                "5,428",
+                "43%",
+                "22%",
+                "$1,954,602"
+              ]
+            },
+            {
+              "name": "5g fixed wireless internet for business",
+              "metrics": [
+                "3,911",
+                "46%",
+                "27%",
+                "$1,728,655"
+              ]
+            },
+            {
+              "name": "sip trunking business voip",
+              "metrics": [
+                "2,566",
+                "50%",
+                "35%",
+                "$1,470,038"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Wireless plans & devices",
+              "metrics": [
+                "24,183",
+                "40.0%",
+                "14.5%",
+                "$5,749,716"
+              ]
+            },
+            {
+              "name": "Business internet",
+              "metrics": [
+                "18,647",
+                "41.0%",
+                "20.0%",
+                "$6,104,373"
+              ]
+            },
+            {
+              "name": "Voice & collaboration",
+              "metrics": [
+                "14,092",
+                "43.0%",
+                "25.0%",
+                "$5,767,151"
+              ]
+            },
+            {
+              "name": "Networking services",
+              "metrics": [
+                "9,861",
+                "44.0%",
+                "30.0%",
+                "$4,842,246"
+              ]
+            },
+            {
+              "name": "Cybersecurity",
+              "metrics": [
+                "6,823",
+                "46.0%",
+                "36.3%",
+                "$4,053,212"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 73606,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "22,187",
+                "40.0%",
+                "15.2%",
+                "$5,536,906"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "17,463",
+                "41.0%",
+                "20.5%",
+                "$5,860,460"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "14,209",
+                "43.0%",
+                "23.5%",
+                "$5,465,943"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "11,842",
+                "45.0%",
+                "27.5%",
+                "$5,331,709"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "7,905",
+                "47.0%",
+                "33.4%",
+                "$4,321,680"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Activation (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Wireless plans & devices",
+            "values": [
+              512,
+              748,
+              801,
+              743,
+              703
+            ]
+          },
+          {
+            "name": "Business internet",
+            "values": [
+              561,
+              782,
+              834,
+              801,
+              751
+            ]
+          },
+          {
+            "name": "Voice & collaboration",
+            "values": [
+              524,
+              741,
+              788,
+              752,
+              718
+            ]
+          },
+          {
+            "name": "Networking services",
+            "values": [
+              431,
+              624,
+              667,
+              631,
+              605
+            ]
+          },
+          {
+            "name": "Cybersecurity",
+            "values": [
+              361,
+              519,
+              558,
+              531,
+              507
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 73,606 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Delgado called to modernize his 6 site network and asked about AT&T SD-WAN pricing and performance. Oscar walked through per-site options and booked a consultation with a networking specialist for the following week. Marcus confirmed the appointment and shared his IT contact details.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 6,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 87,
+          "summary": "Priya Nathan inquired about AT&T Business Fiber for a new office location and wanted symmetrical speeds with unlimited data. Lila confirmed serviceability at the address and scheduled a consultation to finalize the plan. Priya was pleased with the $40 starting rate.",
+          "date": "Feb 11, 1:38 PM",
+          "agent": "Lila",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 81,
+          "summary": "Dennis ORourke wanted to move his team to Business Unlimited Advanced with 4 lines and asked about hotspot data. Rosey explained the 100GB per line allowance and set up a consultation to review device upgrades. Dennis agreed to the follow up.",
+          "date": "Mar 4, 9:22 AM",
+          "agent": "Rosey",
+          "duration": "2m 5s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 74,
+          "summary": "Angela Foster called as a new customer to set up SIP trunking for her growing call center and needed IP Flexible Reach connected to her IP-PBX. Lee collected her business name, location, channel count, and billing contact, then scheduled a consultation with a voice specialist. Angela confirmed her details and the appointment time.",
+          "date": "Apr 9, 3:41 PM",
+          "agent": "Lee",
+          "duration": "3m 8s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Robert Chan asked how the AT&T International Day Pass for Business works before a trip to Germany. Mary confirmed the roughly $10 per day rate and explained his domestic plan would apply abroad. Robert was checking an existing setup and did not need a new appointment.",
+          "date": "May 2, 11:05 AM",
+          "agent": "Mary",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Teresa Blanco called about a delayed Business Fiber installation at her retail store that missed the scheduled window. Sue apologized, located the work order, and escalated to dispatch for a firm reschedule. Teresa remained frustrated but accepted the new date.",
+          "date": "May 18, 4:27 PM",
+          "agent": "Sue",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Victor Mendez disputed a charge on his Business Unlimited Standard account after being billed for extra lines he did not add. Mike reviewed the invoice and opened a billing adjustment case. Victor wanted a credit before the next cycle.",
+          "date": "Jun 7, 10:49 AM",
+          "agent": "Mike",
+          "duration": "2m 18s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 59,
+          "summary": "Karen Whitfield asked about AT&T SD-WAN for two branch offices and wanted to understand security and performance benefits. Jennifer outlined the per-site model and booked a consultation with a solutions engineer. Karen agreed to review her current circuits before the call.",
+          "date": "Jun 22, 2:14 PM",
+          "agent": "Jennifer",
+          "duration": "2m 41s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Sam Petrakis wanted a quote for SIP trunking to replace aging analog lines at his warehouse. Rose gathered his channel needs and scheduled a consultation with a voice specialist. Sam was interested but wanted pricing confirmed first.",
+          "date": "Jul 8, 9:37 AM",
+          "agent": "Rose",
+          "duration": "2m 9s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Nadia Rahman complained that her International Day Pass charges appeared incorrect after returning from a trip. Oscar reviewed the daily rate applied and filed a dispute for review. Nadia was unhappy with the wait time on the line.",
+          "date": "Jul 21, 12:52 PM",
+          "agent": "Oscar",
+          "duration": "2m 26s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 23,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Greg Hollis called to cancel one of his wireless lines after an employee left the company. Lila processed the line removal and confirmed the prorated charge. Greg felt the process took longer than expected.",
+          "date": "Aug 5, 3:19 PM",
+          "agent": "Lila",
+          "duration": "1m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 43,
+          "summary": "Dana Kirchner reported that her AT&T 5G Cell Booster Pro stopped providing in-building coverage. Lee ran diagnostics and started a warranty replacement request. Dana was frustrated about the office signal gaps in the meantime.",
+          "date": "Aug 19, 10:08 AM",
+          "agent": "Lee",
+          "duration": "2m 55s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Paul Estrada called after hours about a Dedicated Internet outage affecting his office and reached voicemail. He left a message asking for an urgent callback and his SLA reference number. No agent was available to take the call.",
+          "date": "Sep 3, 6:47 PM",
+          "agent": "No Agent",
+          "duration": "0m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 32,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Lorraine Byrd called to cancel her Business Fiber service after repeated slowdowns at her clinic. Mary tried to retain the account but Lorraine insisted on ending service. The call ended with a cancellation request submitted.",
+          "date": "Sep 24, 1:11 PM",
+          "agent": "Mary",
+          "duration": "2m 37s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Curtis Nolan was angry about a large unexpected balance on his Business Unlimited account and demanded a full explanation. Mike reviewed the charges but Curtis grew more upset about prior promises. The billing dispute was escalated to a supervisor.",
+          "date": "Oct 2, 4:53 PM",
+          "agent": "Mike",
+          "duration": "3m 21s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "business fiber",
+        "sip trunking",
+        "unlimited",
+        "international",
+        "sd-wan",
+        "cancel"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Business Type and Employee Count",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify on Internet Speed Requirements",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Technician Visit",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "(QA) Professionalism and Tone",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Greeted caller professionally within two rings",
+        "Confirmed business name and verified ZIP code",
+        "Identified need for broadband internet upgrade",
+        "Captured full name and business address",
+        "Acknowledged interest in Fiber pricing",
+        "Proactively offered a service appointment",
+        "Scheduled technician for following week",
+        "Restated appointment time at close",
+        "Asked about additional service needs",
+        "Offered international plan information",
+        "Mentioned AutoPay savings option",
+        "Provided reference number for call",
+        "Closed call with confidence"
+      ],
+      "unmetSignals": [
+        "Did not capture email address for follow-up",
+        "Failed to ask about current provider speeds",
+        "No mention of dedicated internet SLA options",
+        "Did not qualify on data backup or redundancy needs",
+        "Missed opportunity to discuss SD-WAN benefits",
+        "No discussion of managed services agreement terms",
+        "Failed to capture preferred time window for visit",
+        "Did not mention business Wi-Fi solutions",
+        "No follow-up on potential office signal booster need",
+        "Missed opportunity to discuss wireless plan bundle discount"
+      ],
+      "naSignals": [
+        "Discuss billing cycle adjustment",
+        "Process early contract termination",
+        "Explain equipment return shipping",
+        "Review previous month's usage charges",
+        "Address service outage compensation",
+        "Discuss account consolidation options",
+        "Explain late payment policy"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller's small business is experiencing slow internet speeds and needs to upgrade from their current DSL service to a faster option to support their growing team of eight employees."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The customer expects a quick consultation to understand pricing for AT&T Business Fiber or Wireless Internet options, with a technician visit to assess their location and provide a formal quote within one week."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the customer's email address for sending appointment confirmation and product information. Additionally, setting clear expectations about what the technician will evaluate during the site visit would have increased customer confidence and reduced cancellations."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon, thank you for calling AT&T Business Sales. This is Marcus speaking. May I have your name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:27",
+          "text": "Hi Marcus. My name is Jennifer Sanchez. I own a small marketing agency here in Chicago."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:38",
+          "text": "Jennifer, it's great to hear from you today. I appreciate you choosing AT&T Business. Can you tell me a bit about your business? How many employees do you have at your location?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:52",
+          "text": "We have eight full time employees, and we're starting to see issues with our current internet speed. It's just not keeping up anymore."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:06",
+          "text": "I completely understand. Internet speed is critical for a marketing team. We have some excellent options that could solve that. What kind of speeds are you currently getting with your provider?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:20",
+          "text": "I think it's around 25 megabits down, but it feels much slower when everyone's on video calls and uploading files."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:34",
+          "text": "Yes, 25 megabits won't cut it for eight people collaborating. We can get you up to 1 gigabit with our Business Fiber service, or if fiber isn't available in your area, we have a fantastic 5G Wireless Internet option starting at $60 per month. Can you provide me with your ZIP code so I can check availability?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:52",
+          "text": "Sure. It's 60611."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:00",
+          "text": "Perfect. 60611 in Chicago. Let me note your business address as well for the technician visit. Is it the same as 2847 North Clybourn Avenue?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:09",
+          "text": "Yes, that's right. That's our office location."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:18",
+          "text": "Excellent. Jennifer, I'd like to schedule a no-cost site visit where our technician can assess your current setup and confirm exact speeds and pricing we can offer you. We have availability this Thursday at 2 PM or Friday at 10 AM. Which works better for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:38",
+          "text": "Friday at 10 AM is perfect. That gives me time to let the team know."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:49",
+          "text": "Great choice. So your appointment is confirmed for Friday, October 25th at 10 AM at 2847 North Clybourn Avenue in Chicago. Your reference number is 0597-627F62F2570D. The technician will bring equipment to test your connection speeds and discuss options for AT&T Business Fiber and our wireless solutions. Is there anything else I can help you with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:18",
+          "text": "No, I think that covers it. Thank you so much, Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:25",
+          "text": "You're very welcome, Jennifer. We look forward to helping your team get faster, more reliable internet. Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Sanchez, owner of an eight-person marketing agency in Chicago's 60611 ZIP code, called to upgrade from her current 25 Mbps DSL service due to performance issues affecting video conferencing and file uploads. Marcus Bell qualified the customer on business type and location, confirmed service availability, and positioned both AT&T Business Fiber and Wireless Internet solutions before scheduling a no-cost site visit for Friday, October 25th at 10 AM. Although the appointment was successfully booked with a reference number and clear confirmation, the agent did not capture Jennifer's email address for follow-up materials or set detailed expectations about the technician's evaluation process.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, excellent job structuring this intake call. You opened strong, qualified Jennifer on business size and current pain point, confirmed the service area, and closed with a specific appointment time and reference number. Two quick coaching notes for next time: ask for email address before hanging up so you can send the appointment confirmation and product comparison sheets automatically. Also, take 15 seconds at the end to walk her through what to expect during the site visit, so she's not surprised when the tech arrives with test equipment. Those two touches will reduce no-shows and increase confidence in our process."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "73,606"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$360.25"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$26,516,698"
+            }
+          ]
+        },
+        {
+          "title": "NEW CUSTOMER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Customers (Count)",
+              "value": "44,164"
+            },
+            {
+              "label": "Caller Type: New Customers (Percent)",
+              "value": "60%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "30,915"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "42%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CUSTOMERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Customer (Count)",
+              "value": "29,442"
+            },
+            {
+              "label": "Caller Type: Existing Customer (Percent)",
+              "value": "40%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Email",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Display/Retargeting",
+                "value": 51,
+                "display": "51%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 44,
+                "display": "44%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 37,
+                "display": "37%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "27,483",
+                  "29%",
+                  "$9,914,552"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "19,214",
+                  "37%",
+                  "$6,932,417"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "12,657",
+                  "44%",
+                  "$4,558,291"
+                ]
+              },
+              {
+                "cells": [
+                  "Display/Retargeting",
+                  "8,542",
+                  "51%",
+                  "$3,082,146"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "5,710",
+                  "58%",
+                  "$2,029,292"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 30000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000,
+              25000,
+              30000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 26914,
+                "display": "26,914"
+              },
+              {
+                "name": "organic",
+                "value": 18332,
+                "display": "18,332"
+              },
+              {
+                "name": "social",
+                "value": 12105,
+                "display": "12,105"
+              },
+              {
+                "name": "referral",
+                "value": 9478,
+                "display": "9,478"
+              },
+              {
+                "name": "email",
+                "value": 6777,
+                "display": "6,777"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "26,914",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "18,332",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "12,105",
+                  "43%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "9,478",
+                  "50%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "6,777",
+                  "59%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 12000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Switch to AT&T Business $800/Line",
+                "value": 11842,
+                "display": "11,842"
+              },
+              {
+                "name": "Business Unlimited 4 Lines Offer",
+                "value": 9317,
+                "display": "9,317"
+              },
+              {
+                "name": "Business Fiber $40/mo Launch",
+                "value": 7104,
+                "display": "7,104"
+              },
+              {
+                "name": "AutoPay Savings $15/mo per Line",
+                "value": 5436,
+                "display": "5,436"
+              },
+              {
+                "name": "Switch & Save Rewards $500 Card",
+                "value": 3928,
+                "display": "3,928"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Switch to AT&T Business $800/Line",
+                  "11,842",
+                  "33%",
+                  "$4,268,914"
+                ]
+              },
+              {
+                "cells": [
+                  "Business Unlimited 4 Lines Offer",
+                  "9,317",
+                  "41%",
+                  "$3,359,271"
+                ]
+              },
+              {
+                "cells": [
+                  "Business Fiber $40/mo Launch",
+                  "7,104",
+                  "48%",
+                  "$2,561,438"
+                ]
+              },
+              {
+                "cells": [
+                  "AutoPay Savings $15/mo per Line",
+                  "5,436",
+                  "56%",
+                  "$1,960,552"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "AT&T business unlimited plan",
+                "value": 6914,
+                "display": "6,914"
+              },
+              {
+                "name": "business cell phone plans 4 lines",
+                "value": 5238,
+                "display": "5,238"
+              },
+              {
+                "name": "AT&T business fiber internet price",
+                "value": 4127,
+                "display": "4,127"
+              },
+              {
+                "name": "5G fixed wireless internet for business",
+                "value": 3015,
+                "display": "3,015"
+              },
+              {
+                "name": "SD-WAN provider for business",
+                "value": 2182,
+                "display": "2,182"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "AT&T business unlimited plan",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "business cell phone plans 4 lines",
+                  "42%"
+                ]
+              },
+              {
+                "cells": [
+                  "AT&T business fiber internet price",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "5G fixed wireless internet for business",
+                  "57%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Customers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Customers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Wireless plans & devices",
+              "24,318",
+              "32%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Business internet",
+              "18,742",
+              "40%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Voice & collaboration",
+              "11,205",
+              "47%",
+              "54%"
+            ]
+          },
+          {
+            "cells": [
+              "Cybersecurity",
+              "6,438",
+              "55%",
+              "49%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "AT&T Business Solutions Center, Dallas",
+              "22,417",
+              "1,942",
+              "6%",
+              "34%"
+            ]
+          },
+          {
+            "cells": [
+              "AT&T Business Solutions Center, Atlanta",
+              "19,864",
+              "1,573",
+              "5%",
+              "40%"
+            ]
+          },
+          {
+            "cells": [
+              "AT&T Business Solutions Center, Chicago",
+              "17,342",
+              "1,384",
+              "4%",
+              "46%"
+            ]
+          },
+          {
+            "cells": [
+              "AT&T Business Solutions Center, Los Angeles",
+              "13,983",
+              "989",
+              "3%",
+              "53%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              2418,
+              2517,
+              2384,
+              2246,
+              2277
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1984,
+              2013,
+              1942,
+              1908,
+              1917
+            ]
+          },
+          {
+            "name": "Needs Partner Approval",
+            "values": [
+              1684,
+              1712,
+              1648,
+              1634,
+              1639
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              1438,
+              1462,
+              1408,
+              1394,
+              1403
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              1142,
+              1168,
+              1124,
+              1108,
+              1121
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "29,442"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Activation (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$15,114,518"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,847,340"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,964,715"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "42%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,122,880"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,156,445"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,047,928"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "45%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,975,210"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 35642,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "8347",
+                "54%",
+                "30%",
+                "$2,732,411"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "7214",
+                "58%",
+                "34%",
+                "$2,418,947"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "5893",
+                "59%",
+                "37%",
+                "$2,106,854"
+              ]
+            },
+            {
+              "name": "Display Retargeting",
+              "metrics": [
+                "4126",
+                "61%",
+                "41%",
+                "$1,474,318"
+              ]
+            },
+            {
+              "name": "Email Marketing",
+              "metrics": [
+                "3862",
+                "63%",
+                "44%",
+                "$1,381,088"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 34018,
+          "rows": [
+            {
+              "name": "Form Fill",
+              "metrics": [
+                "9284",
+                "55%",
+                "31%",
+                "$3,123,808"
+              ]
+            },
+            {
+              "name": "Voice Call",
+              "metrics": [
+                "7543",
+                "57%",
+                "34%",
+                "$2,594,245"
+              ]
+            },
+            {
+              "name": "SMS Inquiry",
+              "metrics": [
+                "5627",
+                "60%",
+                "39%",
+                "$1,968,413"
+              ]
+            },
+            {
+              "name": "Chat Widget",
+              "metrics": [
+                "4189",
+                "62%",
+                "42%",
+                "$1,487,218"
+              ]
+            },
+            {
+              "name": "Click to Call",
+              "metrics": [
+                "3452",
+                "64%",
+                "45%",
+                "$1,198,834"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 35117,
+          "rows": [
+            {
+              "name": "Business Unlimited 4 Lines Offer",
+              "metrics": [
+                "7856",
+                "52%",
+                "28%",
+                "$2,406,832"
+              ]
+            },
+            {
+              "name": "Switch to AT&T Business 800 per Line",
+              "metrics": [
+                "6243",
+                "57%",
+                "33%",
+                "$1,983,276"
+              ]
+            },
+            {
+              "name": "Business Fiber 40 Monthly Launch",
+              "metrics": [
+                "5134",
+                "60%",
+                "38%",
+                "$1,714,358"
+              ]
+            },
+            {
+              "name": "AutoPay Savings 15 per Line",
+              "metrics": [
+                "3891",
+                "62%",
+                "41%",
+                "$1,357,924"
+              ]
+            },
+            {
+              "name": "Managed SASE for Enterprise",
+              "metrics": [
+                "3127",
+                "66%",
+                "46%",
+                "$1,133,682"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 28537,
+          "rows": [
+            {
+              "name": "AT&T business unlimited plan",
+              "metrics": [
+                "6234",
+                "53%",
+                "29%",
+                "$1,878,942"
+              ]
+            },
+            {
+              "name": "business cell phone plans 4 lines",
+              "metrics": [
+                "5147",
+                "56%",
+                "32%",
+                "$1,647,204"
+              ]
+            },
+            {
+              "name": "AT&T business fiber internet price",
+              "metrics": [
+                "4082",
+                "59%",
+                "37%",
+                "$1,361,628"
+              ]
+            },
+            {
+              "name": "5G fixed wireless internet for business",
+              "metrics": [
+                "3421",
+                "62%",
+                "41%",
+                "$1,198,237"
+              ]
+            },
+            {
+              "name": "managed SASE cybersecurity",
+              "metrics": [
+                "2518",
+                "67%",
+                "47%",
+                "$876,314"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Wireless Plans and Devices",
+              "metrics": [
+                "9847",
+                "54%",
+                "31%",
+                "$3,247,547"
+              ]
+            },
+            {
+              "name": "Business Internet",
+              "metrics": [
+                "8234",
+                "58%",
+                "35%",
+                "$2,914,218"
+              ]
+            },
+            {
+              "name": "Voice and Collaboration",
+              "metrics": [
+                "5632",
+                "61%",
+                "39%",
+                "$1,946,248"
+              ]
+            },
+            {
+              "name": "Networking Services",
+              "metrics": [
+                "3428",
+                "64%",
+                "44%",
+                "$1,182,754"
+              ]
+            },
+            {
+              "name": "Cybersecurity Solutions",
+              "metrics": [
+                "2301",
+                "68%",
+                "48%",
+                "$823,751"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Activation (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Wireless Plans and Devices",
+            "values": [
+              962,
+              1027,
+              984,
+              951,
+              1049
+            ]
+          },
+          {
+            "name": "Business Internet",
+            "values": [
+              822,
+              918,
+              876,
+              894,
+              821
+            ]
+          },
+          {
+            "name": "Voice and Collaboration",
+            "values": [
+              561,
+              598,
+              572,
+              541,
+              614
+            ]
+          },
+          {
+            "name": "Networking Services",
+            "values": [
+              356,
+              401,
+              378,
+              382,
+              393
+            ]
+          },
+          {
+            "name": "Cybersecurity Solutions",
+            "values": [
+              423,
+              459,
+              441,
+              433,
+              398
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "348"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$2,156,892"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "812"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "33%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "24"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$127,451"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              74,
+              79,
+              71,
+              78,
+              76,
+              72,
+              81,
+              75,
+              77,
+              73,
+              79,
+              82,
+              76,
+              71,
+              78,
+              80,
+              74,
+              77,
+              73,
+              75,
+              79,
+              81,
+              76,
+              72,
+              77,
+              79,
+              178,
+              184,
+              171,
+              189,
+              176,
+              181,
+              187,
+              173,
+              191,
+              179,
+              184,
+              172,
+              186,
+              181,
+              177,
+              189,
+              174,
+              183,
+              179,
+              188,
+              175,
+              186,
+              180
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,189"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "716"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "699"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Business Wireless Plans Inquiry",
+            "values": [
+              8,
+              11,
+              2,
+              9,
+              10,
+              12
+            ]
+          },
+          {
+            "name": "Fiber Internet Pricing",
+            "values": [
+              6,
+              9,
+              7,
+              8,
+              11,
+              9
+            ]
+          },
+          {
+            "name": "5G Fixed Wireless Availability",
+            "values": [
+              9,
+              7,
+              8,
+              10,
+              6,
+              11
+            ]
+          },
+          {
+            "name": "Managed SASE Security Solutions",
+            "values": [
+              4,
+              6,
+              5,
+              7,
+              9,
+              8
+            ]
+          },
+          {
+            "name": "SD-WAN Network Optimization",
+            "values": [
+              5,
+              8,
+              6,
+              4,
+              7,
+              10
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "67,718"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "49,317"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "30,915"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$26,516,698"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Priya Patel",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Raymond Mitchell",
+              "value": 242,
+              "display": "242"
+            },
+            {
+              "name": "Jessica Kowalski",
+              "value": 203,
+              "display": "203"
+            },
+            {
+              "name": "David Hernandez",
+              "value": 196,
+              "display": "196"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Angela Torres",
+            "values": [
+              312,
+              358,
+              401,
+              445,
+              489
+            ]
+          },
+          {
+            "name": "Brian Nakamura",
+            "values": [
+              294,
+              331,
+              367,
+              398,
+              421
+            ]
+          },
+          {
+            "name": "Sarah Whitmore",
+            "values": [
+              301,
+              345,
+              382,
+              419,
+              453
+            ]
+          },
+          {
+            "name": "James Patterson",
+            "values": [
+              276,
+              314,
+              348,
+              387,
+              412
+            ]
+          },
+          {
+            "name": "Michelle Adeyemi",
+            "values": [
+              289,
+              326,
+              364,
+              401,
+              438
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Priya Patel",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "Raymond Mitchell",
+              "value": 52.9,
+              "display": "52.9%"
+            },
+            {
+              "name": "Jessica Kowalski",
+              "value": 58.1,
+              "display": "58.1%"
+            },
+            {
+              "name": "David Hernandez",
+              "value": 55.4,
+              "display": "55.4%"
+            },
+            {
+              "name": "Thomas Valdez",
+              "value": 53.7,
+              "display": "53.7%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "54.2%",
+                "28%",
+                "$1,019,384",
+                "1,423"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Patel",
+                "56.8%",
+                "29%",
+                "$1,063,971",
+                "1,387"
+              ]
+            },
+            {
+              "cells": [
+                "Raymond Mitchell",
+                "52.9%",
+                "26%",
+                "$953,287",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Jessica Kowalski",
+                "58.1%",
+                "31%",
+                "$1,099,652",
+                "1,441"
+              ]
+            },
+            {
+              "cells": [
+                "David Hernandez",
+                "55.4%",
+                "27%",
+                "$1,002,156",
+                "1,468"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Valdez",
+                "53.7%",
+                "30%",
+                "$1,074,228",
+                "1,419"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Angela Torres",
+              "value": 91.6,
+              "display": "91.6%"
+            },
+            {
+              "name": "Brian Nakamura",
+              "value": 89.3,
+              "display": "89.3%"
+            },
+            {
+              "name": "Sarah Whitmore",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "James Patterson",
+              "value": 87.8,
+              "display": "87.8%"
+            },
+            {
+              "name": "Michelle Adeyemi",
+              "value": 90.7,
+              "display": "90.7%"
+            },
+            {
+              "name": "Robert Kaplan",
+              "value": 88.5,
+              "display": "88.5%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Angela Torres",
+                "91.6%",
+                "63%",
+                "$1,924,387",
+                "1,547"
+              ]
+            },
+            {
+              "cells": [
+                "Brian Nakamura",
+                "89.3%",
+                "61%",
+                "$1,847,921",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Whitmore",
+                "92.1%",
+                "64%",
+                "$1,983,456",
+                "1,519"
+              ]
+            },
+            {
+              "cells": [
+                "James Patterson",
+                "87.8%",
+                "59%",
+                "$1,756,204",
+                "1,489"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Adeyemi",
+                "90.7%",
+                "62%",
+                "$1,899,843",
+                "1,531"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Kaplan",
+                "88.5%",
+                "60%",
+                "$1,802,687",
+                "1,505}]"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Scheduled (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Scheduled (Count)",
+        "rightMax": 1400,
+        "rightTicks": [
+          0,
+          350,
+          700,
+          1050,
+          1400
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1146
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1098
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1023
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 976
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 849
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 891
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 985
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1024
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1142
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1107
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 997
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 963
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 857
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 883
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1008
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1039
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1131
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1114
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 976
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 945
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 870
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 879
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1026
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1060
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1117
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1115
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 962
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 922
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 885
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 881
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1044
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1200000,
+        "rightTicks": [
+          0,
+          400000,
+          800000,
+          1200000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 982950
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 942113
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 877299
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 837113
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 728860
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 764919
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 844984
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 878291
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 979300
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 949491
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 855175
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 826543
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 735485
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 758111
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 865102
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 891463
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 970181
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 955083
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 837504
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 810940
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 746524
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 754350
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 880013
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 909184
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 957856
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 956463
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 825521
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 791543
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 759469
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 755806
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 889062
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "73,606"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "5,888"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "4,416"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "83%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "83%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Margaret Chen",
+                "412",
+                "88%",
+                "85%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "David Rodriguez",
+                "358",
+                "84%",
+                "81%",
+                "81%"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Walsh",
+                "289",
+                "86%",
+                "83%",
+                "84%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "73,606 calls",
+      "pagerLabel": "1 of 7,361",
+      "calls": [
+        {
+          "time": "1/6/26 9:14 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 10:41 am",
+          "id": "A21C-4E9B7710DDA2"
+        },
+        {
+          "time": "1/12/26 11:23 am",
+          "id": "C93D-1F26A80B4E77"
+        },
+        {
+          "time": "1/14/26 12:52 pm",
+          "id": "7E4A-9C0512DE83B1"
+        },
+        {
+          "time": "1/16/26 1:37 pm",
+          "id": "B08F-63A1D7420C9E"
+        },
+        {
+          "time": "1/20/26 2:05 pm",
+          "id": "D45E-2B7809FA61C4"
+        },
+        {
+          "time": "1/22/26 3:18 pm",
+          "id": "18AC-5D0E9317B2FA"
+        },
+        {
+          "time": "1/26/26 4:02 pm",
+          "id": "9F73-6A2C10DB84E5"
+        },
+        {
+          "time": "1/28/26 4:49 pm",
+          "id": "3C6B-0E9147AD52F8"
+        },
+        {
+          "time": "1/30/26 5:27 pm",
+          "id": "6D91-7F3B24C098A1"
+        }
+      ],
+      "duration": "2:34",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling AT&T Business, this is Marcus. Who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling AT&T Business",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:08",
+          "text": "Hi Marcus, my name is Danielle Cortez. I run a small design studio and we just opened a second office, so I'm looking at getting everyone on the same phone plan.",
+          "highlights": [
+            "Danielle Cortez"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "Congratulations on the new office, Danielle. How many lines are you thinking about setting up for the team?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:24",
+          "text": "Probably six lines to start. We're all on personal phones right now and it's getting messy.",
+          "highlights": [
+            "six lines"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:31",
+          "text": "That makes sense. For a team that size I'd point you to our AT&T Business Unlimited Advanced 3.0. It's twenty five dollars per line per month on four or more lines, with unlimited talk, text, and data plus one hundred gigs of hotspot on each line.",
+          "highlights": [
+            "AT&T Business Unlimited Advanced 3.0",
+            "twenty five dollars per line per month"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:44",
+          "text": "Okay, and what does that run all in once you add the taxes and everything? I want to keep it manageable while we're still getting the second office off the ground.",
+          "highlights": [
+            "I want to keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:54",
+          "text": "Totally fair. On six lines you're looking at around one hundred fifty a month before taxes, and with AutoPay and paperless billing you save fifteen dollars per line. I can send an itemized breakdown so there are no surprises.",
+          "highlights": [
+            "save fifteen dollars per line"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:05",
+          "text": "That helps. Honestly the store down the street was pushing Verizon at me, and their number came in a little lower on the first quote.",
+          "highlights": [
+            "the store down the street was pushing Verizon at me"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:14",
+          "text": "I appreciate you being upfront. A couple things set us apart: right now we're covering up to eight hundred dollars per line to help you switch, plus a five hundred dollar reward card. Once you factor those in, the first year usually lands well in our favor.",
+          "highlights": [
+            "eight hundred dollars per line to help you switch",
+            "five hundred dollar reward card"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:26",
+          "text": "That's a strong offer. My only hesitation is I really don't want to get locked into some long agreement in case the studio grows faster than I expect.",
+          "highlights": [
+            "I really don't want to get locked into some long agreement"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:36",
+          "text": "Understood, and you won't be. These business unlimited plans are month to month, so you can add or drop lines as your team changes. No long term commitment holding you back.",
+          "highlights": [
+            "month to month",
+            "No long term commitment"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:46",
+          "text": "Good. One more thing while I have you, the new office internet is terrible. Is that something you handle too?",
+          "highlights": [
+            "the new office internet is terrible"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:53",
+          "text": "Absolutely. AT&T Business Fiber starts at forty dollars a month with symmetrical speeds and unlimited data. If fiber isn't lit at your address yet, our Wireless Internet on 5G is a quick no contract option in the meantime.",
+          "highlights": [
+            "AT&T Business Fiber",
+            "starts at forty dollars a month"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:04",
+          "text": "Okay, that could solve two problems at once. What's the next step?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:10",
+          "text": "Let me set up a consultation with one of our business specialists. They'll confirm fiber availability at your address and lock in the switch credits on your six lines. Does Thursday at ten in the morning work?",
+          "highlights": [
+            "set up a consultation",
+            "Thursday at ten in the morning"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:20",
+          "text": "Thursday at ten works great.",
+          "highlights": [
+            "Thursday at ten works great"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:24",
+          "text": "Perfect, I've got you booked for Thursday at ten. What's the best email and cell to send the confirmation and that itemized quote to?",
+          "highlights": [
+            "I've got you booked for Thursday at ten"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:29",
+          "text": "It's danielle at cortezdesign dot co, and my cell is five zero three, four one two, eight八 eight zero.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:33",
+          "text": "Got it, confirmation is on its way. Thanks so much for choosing AT&T Business, Danielle, we'll talk Thursday. Have a great day.",
+          "highlights": [
+            "Thanks so much for choosing AT&T Business",
+            "Have a great day"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Customer",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Wireless Lines",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Intent: Business Fiber",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Switch Offer Presented",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "New prospect Danielle Cortez, who runs a design studio opening a second office, called to move her six person team onto a single business phone plan. Agent Marcus recommended AT&T Business Unlimited Advanced 3.0 at twenty five dollars per line and addressed her budget, a competing Verizon quote, and her worry about being locked into a long agreement by highlighting month to month terms plus switch credits and a reward card. When she raised poor internet at the new office, he added AT&T Business Fiber and Wireless Internet as options. He scheduled a specialist consultation for Thursday at ten and captured her email and cell.",
+        "keyPoints": [
+          "New customer opening a second design studio office",
+          "Needs six wireless lines to replace personal phones",
+          "Recommended AT&T Business Unlimited Advanced 3.0 with AutoPay savings",
+          "Overcame Verizon comparison with up to $800 per line switch credit and $500 reward card",
+          "Added AT&T Business Fiber to solve poor office internet",
+          "Consultation booked for Thursday 10 AM, email and cell captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "46,372 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,637",
+      "conversations": [
+        {
+          "id": "C847-3F2E19B5D4A7",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for texting AT&T Business. I'm Sarah. Are you looking to upgrade your current wireless plan or explore new services today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi Sarah. We have 8 lines right now but we're spending way too much. Looking for something more affordable."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Got it. I can definitely help you save. Are those 8 lines all on an unlimited plan right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "Yes, the Premium tier. But honestly we don't need all the hotspot data they keep charging for."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. Sounds like our Business Unlimited Standard 3.0 could cut your bill significantly. That's $30 per line with 5GB hotspot instead of the higher tier. How many of your 8 lines actually need hotspot?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:27 AM",
+              "text": "Maybe 3 or 4 of them. The rest just use WiFi mostly."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:28 AM",
+              "text": "Excellent. So we could move 4 lines to Standard at $30 each and keep a couple on Premium if you'd like. That alone could save you $40 to $60 per month. Plus, right now we have an AutoPay discount that takes another $15 off per line. Would you be interested in a quick consultation to review the exact savings on your account?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "Yeah that sounds good. When could we set that up?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Great. How about this Thursday, March 13th at 2 PM? One of our account managers will call you back to run through your account and confirm the final pricing."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Thursday at 2 PM works perfectly."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Wonderful. I've scheduled your consultation for Thursday, March 13th at 2 PM Pacific Time. You'll receive a callback at this number. Your account reference is 847FX2. Thanks for choosing AT&T Business, and we'll talk soon."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:35 AM",
+              "text": "Perfect. Thanks Sarah."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:36 AM",
+              "text": "You're welcome. See you Thursday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product: Business Unlimited Standard 3.0",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Line Optimization",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Savings Estimate: $40-$60 Monthly",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Hotspot Data: 5GB Tier",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C847-3F2E19B5D4A7",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "408-556-7823",
+            "repeatCaller": "No",
+            "city": "San Jose",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Michael Chen",
+            "firstName": "Michael",
+            "lastName": "Chen",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C652-8A1F4E7B2C93",
+          "time": "3/10/26 8:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C652-8A1F4E7B2C93",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C913-5D6C2F8E4A71",
+          "time": "3/10/26 11:23 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C913-5D6C2F8E4A71",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C741-7E3B19D6F5C2",
+          "time": "3/11/26 1:15 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C741-7E3B19D6F5C2",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "73,606 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 7,361",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/23/26 4:12 pm",
+          "active": true,
+          "date": "January 23, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Thanks for calling AT&T Business. My name is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Hi Marcus. Yeah, I'm calling because we need to upgrade our wireless plans. We currently have four lines on a basic plan and we're looking at something with more hotspot data."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Great. I'd be happy to help you find the right plan. Just to understand your usage better, how much hotspot data are your team members typically using each month?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "I'd say probably around fifty to sixty gigs total across the four lines. So we need something with decent hotspot included."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Perfect. That's really helpful to know. Based on that, I'd recommend our AT&T Business Unlimited Advanced three point zero plan. That gives you one hundred gigs of hotspot per line, so four hundred total, which should cover you easily. It's twenty five dollars per line when you get four lines, so one hundred dollars a month."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "Okay, that sounds good. What about if we need even more data in the future?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Excellent question. If you ever need more, we also offer the Premium plan at thirty five dollars per line with three hundred gigs of hotspot per line. But I think the Advanced plan will work great for you. Are you in the Dallas area, by the way?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Yes, we're actually just outside Dallas in Arlington."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Awesome. So we're all set there. I'd like to get you scheduled for a consultation with one of our specialist account managers to finalize the switch and make sure everything transitions smoothly. Would next Wednesday the twenty ninth at two PM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Yeah, next Wednesday at two PM is perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Wonderful. I've got you down for Wednesday, January twenty ninth at two PM Central Time. A specialist will call you back at this number to confirm all the details and walk through your new plan setup. Your confirmation number is seven seven four nine three six. Thanks so much for choosing AT&T Business."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Perfect. Thanks Marcus. I appreciate it."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "You're very welcome. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Wireless Plans",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Hotspot Data Need Identified",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "AT&T Business Unlimited Advanced Selected",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area: Dallas Metro Confirmed",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/23/26 4:12 pm",
+            "duration": "7:32",
+            "destinationPhone": "877-936-2933",
+            "source": "877-328-6841",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "817-555-0847",
+            "repeatCaller": "No",
+            "city": "Arlington",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "James Patterson",
+            "firstName": "James",
+            "lastName": "Patterson",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Business Unlimited, 4 Lines Offer",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B523-4D8AE427F941",
+          "time": "1/18/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B523-4D8AE427F941",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C761-9B2E153A6C84",
+          "time": "1/09/26 11:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C761-9B2E153A6C84",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D845-7F3C291BE5A2",
+          "time": "1/27/26 3:56 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D845-7F3C291BE5A2",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Hi, I'm AT&T Business's AI agent, here to build you a personalized quote on wireless, fiber, and networking solutions. Right now you can save up to $800 per line to switch and earn a $500 reward card, would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, how many wireless lines or business locations you need, which solution fits best (Business Unlimited wireless, Business Fiber, VoIP, SD-WAN, or cybersecurity), your current provider and rough monthly spend, your ideal install or activation timeline, and finally your business ZIP code so I can confirm availability at your address.",
+        "Estimate then book: Once I confirm we service your ZIP, I'll share a preliminary monthly price range based on what you told me, then recommend a consultation with a Business Solutions specialist for an exact quote. I'll propose a specific day and time, and you'll get a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "AT_T_Business_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Business Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Wireless Plans & Devices",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Business Internet & Fiber",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Contact Sales",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"order status\",\"question\":\"When will my new business phones and SIM kits arrive?\",\"answer\":\"Most business device orders ship within two to three business days, and you'll receive tracking by email once activated. I can connect you with a specialist to confirm the exact status of your order.\"},{\"topic\":\"reschedule\",\"question\":\"Can I move my scheduled fiber installation to a different day?\",\"answer\":\"Yes, we can reschedule your Business Fiber install to a time that works better for your location. Let me set up a quick consultation to lock in a new date and confirm the details.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How much is the AT&T Business Unlimited Advanced plan?",
+              "answer": "Business Unlimited Advanced starts around $25 per line per month with four lines and includes 100GB of hotspot data on each line. Pricing depends on line count and current promotions, so let's book a consultation to lock in your exact rate."
+            },
+            {
+              "question": "What is the difference between the Business Unlimited plans?",
+              "answer": "The main differences are hotspot data and international features, ranging from Standard up to Ultimate with unlimited hotspot. A specialist can match the right tier to how your team works, want me to set that up?"
+            },
+            {
+              "question": "How many lines do I need to qualify for the 4-line pricing?",
+              "answer": "The best per line pricing shows with four qualifying lines on AutoPay and paperless billing. I can have a specialist confirm the total for your line count on a quick consultation."
+            },
+            {
+              "question": "Do you offer business fiber internet?",
+              "answer": "Yes, AT&T Business Fiber offers high speed symmetrical internet with unlimited data, starting around $40 per month. Let's schedule a consultation to confirm fiber availability at your address."
+            },
+            {
+              "question": "Is AT&T Business Fiber available at my location?",
+              "answer": "Availability varies by address, so I'd want to verify your service ZIP before quoting. Share your ZIP and I'll get you booked with a specialist to confirm."
+            },
+            {
+              "question": "What internet options do you have if fiber isn't available?",
+              "answer": "We also offer Wireless Internet fixed 5G with no caps or contracts and Dedicated Internet with guaranteed SLAs. A specialist can recommend the best fit on a consultation."
+            },
+            {
+              "question": "How fast is AT&T Dedicated Internet?",
+              "answer": "Dedicated Internet provides secure, dedicated bandwidth up to 1Tbps with guaranteed service level agreements. Pricing scales with bandwidth, so let's book a consultation for an exact quote."
+            },
+            {
+              "question": "Can I switch to AT&T Business and keep my phone numbers?",
+              "answer": "Yes, we can port your existing business numbers when you switch, and you may save up to $800 per line to break your current contract. Let me set up a consultation to get started."
+            },
+            {
+              "question": "What is the current switch offer?",
+              "answer": "Right now qualifying businesses can save up to $800 per line to switch and earn a $500 reward card. A specialist can confirm which offers apply to you on a quick consultation."
+            },
+            {
+              "question": "Do you have a VoIP or business phone system?",
+              "answer": "AT&T Phone for Business is a VoIP business line with unlimited nationwide calling and advanced calling features. Let's schedule a consultation to size the right solution for your team."
+            },
+            {
+              "question": "What is SIP trunking and do you offer it?",
+              "answer": "IP Flexible Reach is our scalable SIP trunking that connects your IP-PBX to the phone network, priced per channel. A specialist can scope your channel needs on a consultation."
+            },
+            {
+              "question": "Can you help with cybersecurity for my business network?",
+              "answer": "Yes, we offer Managed SASE for AI accelerated security and Dynamic Defense that stops threats at the network edge. These are custom quoted, so let's book a consultation to scope your environment."
+            },
+            {
+              "question": "What is SD-WAN and how much does it cost?",
+              "answer": "AT&T SD-WAN optimizes your network with enhanced performance, security, and intelligence, typically priced per site. A specialist can give you an exact per site quote on a consultation."
+            },
+            {
+              "question": "Do you offer private cellular networks?",
+              "answer": "Yes, our Private Cellular Networks deliver dedicated on premise 5G or LTE combining connectivity, control, and compute. Pricing is custom, so let's set up a consultation with an enterprise specialist."
+            },
+            {
+              "question": "Can I improve weak cell signal in my office?",
+              "answer": "The AT&T 5G Cell Booster Pro provides in building cellular coverage for weak signal locations. A specialist can confirm the right in building solution on a consultation."
+            },
+            {
+              "question": "Do you have plans for international travel?",
+              "answer": "The International Day Pass for Business lets your team use their domestic plan abroad with promotional daily pricing. Let's book a consultation to add it to the right lines."
+            },
+            {
+              "question": "Can I get IoT connectivity for my devices?",
+              "answer": "Yes, we offer IoT connectivity and solutions to manage connected devices at scale. A specialist can tailor a plan to your device count on a consultation."
+            },
+            {
+              "question": "How do I add more lines to my current account?",
+              "answer": "We can add lines and keep your team on a consistent plan and rate. Let me connect you with a specialist to review options on a quick consultation."
+            },
+            {
+              "question": "Do you offer discounts for AutoPay?",
+              "answer": "Yes, enrolling in AutoPay and paperless billing can lower your monthly per line rate. A specialist can confirm your savings when we book your consultation."
+            },
+            {
+              "question": "How do I get an exact quote for my business?",
+              "answer": "The best way is a short consultation with a Business Solutions specialist who can price your exact setup. Share your ZIP and preferred time and I'll get you scheduled."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the consultation\",\"follow_up_message\":\"Great, I have you down for a virtual consultation with a Business Solutions specialist. You'll get a reminder text beforehand with a number to call, is the proposed time still good for you?\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Based on what you shared, I can get you a preliminary monthly range, and a specialist will finalize your exact quote on a quick consultation. What ZIP code is the service for so I can confirm availability and book you?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, I'm AT&T Business's AI agent, here to help you find the right wireless, internet, and networking solutions and build a personalized quote.",
+        "goal": "Qualify the business's needs and book a virtual consultation with an AT&T Business Solutions specialist for an exact quote.",
+        "bookingType": "virtual consultation",
+        "offer": "Save up to $800 per line to switch, plus a $500 reward card",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "How many wireless lines or business locations do you need service for?",
+          "Which solution are you most interested in, Business Unlimited wireless, Business Fiber, VoIP phone, SD-WAN, or cybersecurity?",
+          "Who is your current provider and roughly what do you spend per month?",
+          "What is your ideal timeline to activate or install?",
+          "What is your business ZIP code so I can confirm availability at your address?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:41 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:41 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:41 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "AT&T Business",
+      "callerName": "Michael Chen",
+      "callerPhone": "(512) 555-0147",
+      "campaign": "Business Fiber $40/mo Launch, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$1,875",
+      "googleSearch": "AT&T business fiber internet price Austin",
+      "websiteSearch": "high speed fiber for small business Texas",
+      "callingWebpage": "/products/business-internet/business-fiber",
+      "products": "AT&T Business Fiber, AT&T Phone for Business",
+      "cartId": "ATB-7429R",
+      "serviceable": "Yes",
+      "email": "mchen@austintech.com",
+      "street": "2847 Barton Springs Road",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78746",
+      "digitalJourney": "/home › /products › /business-internet › /business-fiber",
+      "intent": "Small tech firm needs reliable fiber internet and VoIP phone system for new office location",
+      "coverage": "ZIP 78746 confirmed, Austin serviceable",
+      "switchIntent": "High, office opens in 3 weeks, needs installation quote this week",
+      "greeting": "Hi Michael, this is Sarah from AT&T Business. Thanks for calling about fiber internet for your Austin office. I see you're also interested in our business phone system. I'd love to walk through our fiber plans and get you connected with our installation team to schedule a site survey. Do you have 15 minutes right now?"
+    },
+    "smsScreenpop": {
+      "brandName": "AT&T Business",
+      "callerName": "Lisa Rodriguez",
+      "callerPhone": "(305) 555-0189",
+      "campaign": "Business Unlimited 4 Lines Offer, Miami Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$3,240",
+      "googleSearch": "business cell phone plans 4 lines Miami",
+      "websiteSearch": "AT&T unlimited wireless plans for SMB",
+      "callingWebpage": "/products/wireless-plans-devices/plans-and-prices",
+      "products": "AT&T Business Unlimited Premium 3.0, AT&T 5G Cell Booster Pro",
+      "cartId": "ATB-5842K",
+      "serviceable": "Yes",
+      "email": "lrodriguez@miamidental.com",
+      "street": "1562 Coral Way",
+      "city": "Miami",
+      "state": "FL",
+      "zip": "33145",
+      "digitalJourney": "/home › /products › /wireless-plans-devices › /in-building-solutions",
+      "intent": "Dental practice group switching from personal plans, needs 4 business lines with strong 5G signal boost for clinic locations",
+      "coverage": "ZIP 33145 confirmed, Miami serviceable",
+      "appointment": "Wireless consultation with coverage specialist, Thu Jul 17, 2:00 PM",
+      "greeting": "Hi Lisa, this is James from AT&T Business. Great to confirm your consultation this Thursday at 2 PM. Our specialist will review our 4 line premium plans and show you how the 5G Cell Booster Pro works in clinical environments. Have any questions before then? Looking forward to helping your practice go all AT&T Business."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "AT&T Business",
+      "brandDomain": "www.att.com",
+      "brandIcon": "📱",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Ventura, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Business Fiber $40/mo Launch",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "business internet fiber plans near me",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/products/business-internet/business-fiber",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Business Fiber, Dedicated Internet",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Ventura, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_new_project",
+          "name": "Consultation, New Project"
+        },
+        {
+          "id": "support_existing_service",
+          "name": "Support, Existing Service"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there. Thanks for calling AT&T Business. I see you've been looking at our fiber internet options. Are you exploring connectivity solutions for a new location or expanding your current setup.",
+          "sigs": [],
+          "q": [
+            35,
+            40,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, we have a warehouse in Ventura that we're opening next month, and we need reliable high speed internet. We're a small logistics company with about 15 employees.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>New warehouse</strong> opening next month"
+            },
+            {
+              "c": "blue",
+              "t": "15 person team"
+            },
+            {
+              "c": "orange",
+              "t": "Logistics business"
+            }
+          ],
+          "q": [
+            55,
+            25,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's great. So you'd be looking at our Business Fiber for that new location. With your team size, we can get you up to gigabit speeds starting at just 40 per month. Would you also be interested in pairing that with wireless backup or a dedicated internet solution for mission critical operations.",
+          "sigs": [],
+          "q": [
+            70,
+            15,
+            15
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Definitely interested in the fiber. But honestly, I'm not sure about the wireless backup piece. I'd really like to talk to someone who can walk us through what makes sense for our needs and give us a real quote.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "Qualified for fiber service"
+            },
+            {
+              "c": "purple",
+              "t": "<strong>Wants consultation</strong> and formal quote"
+            },
+            {
+              "c": "green",
+              "t": "Open to additional services"
+            }
+          ],
+          "q": [
+            88,
+            7,
+            5
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm connecting you with our Consultation team for New Projects. They'll do a complete needs assessment for your warehouse, walk through fiber availability at your location, and put together a custom proposal with pricing. You'll be in great hands. Transferring you now.",
+          "sigs": [],
+          "q": [
+            95,
+            3,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule your consultation (Agent)\", \"set up a call with a solutions specialist (Agent)\", \"get you on the calendar (Agent)\", \"book that appointment (Caller)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "12/09/25 4:47 pm"
+        },
+        {
+          "name": "Agent Compliance Greeting",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Agent Greeting & Branding] < 60 and duration > 45 sec",
+          "createdAt": "04/02/25 11:38 am",
+          "updatedAt": "11/21/25 2:15 pm"
+        },
+        {
+          "name": "Business Fiber Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"business fiber (Caller)\", \"symmetrical fiber internet (Caller)\", \"fiber to my location (Caller)\", \"gig speed internet (Caller)\"])",
+          "createdAt": "05/19/25 3:04 pm",
+          "updatedAt": "10/30/25 10:22 am"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Verizon Business (Caller)\", \"T-Mobile for Business (Caller)\", \"Comcast Business (Caller)\", \"Spectrum Business (Caller)\"])",
+          "createdAt": "02/27/25 8:51 am",
+          "updatedAt": "12/18/25 1:33 pm"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"talk to a solutions specialist (Agent)\", \"review your business needs (Agent)\", \"walk through the options with you (Agent)\"])",
+          "createdAt": "06/06/25 10:09 am",
+          "updatedAt": "11/04/25 5:12 pm"
+        },
+        {
+          "name": "Needs Discovery Completed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Needs Discovery] < 60 and duration > 60 sec",
+          "createdAt": "04/22/25 2:44 pm",
+          "updatedAt": "12/02/25 9:58 am"
+        },
+        {
+          "name": "Objection Handling Quality",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Objection Handling] < 60 and duration > 45 sec",
+          "createdAt": "03/28/25 1:17 pm",
+          "updatedAt": "12/22/25 11:41 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your monthly price would be (Agent)\", \"per line for four lines (Agent)\", \"custom quote for your business (Agent)\", \"starting at forty a month (Agent)\"])",
+          "createdAt": "05/03/25 4:26 pm",
+          "updatedAt": "01/07/26 10:05 am"
+        },
+        {
+          "name": "Unlimited Plan Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Business Unlimited Advanced (Caller)\", \"unlimited talk and text (Caller)\", \"hotspot data (Caller)\", \"premium plan (Caller)\"])",
+          "createdAt": "02/11/25 9:33 am",
+          "updatedAt": "12/28/25 3:19 pm"
+        },
+        {
+          "name": "Wireless Line Upgrade Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"add more lines (Caller)\", \"upgrade my phones (Caller)\", \"switch and save (Caller)\", \"eight hundred per line (Caller)\"])",
+          "createdAt": "06/24/25 11:52 am",
+          "updatedAt": "01/12/26 2:08 pm"
+        }
+      ]
+    }
+  }
+}

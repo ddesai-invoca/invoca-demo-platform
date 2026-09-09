@@ -1,0 +1,5311 @@
+{
+  "id": "christus-health",
+  "customerName": "CHRISTUS Health",
+  "websiteUrl": "https://www.christushealth.org",
+  "brandDomain": "christushealth.org",
+  "networkName": "Invoca for Healthcare",
+  "industry": "Nonprofit Hospital & Health System",
+  "bookingTerm": "Appointment",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 20000,
+      "yTicks": [
+        4000,
+        8000,
+        12000,
+        16000,
+        20000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 15231
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 16842
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 17105
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 15988
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 15610
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Urgent Care Same-Day",
+          "marketingSearchTerm": "urgent care near me san antonio",
+          "landingPageUrl": "https://www.christushealth.org/get-care/urgent-care?utm_source=google&utm_medium=cpc&utm_campaign=urgent_care_same_day",
+          "websiteJourney": "Home / Get Care / Urgent Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "ER Near Me Wait Times",
+          "marketingSearchTerm": "christus er wait time",
+          "landingPageUrl": "https://www.christushealth.org/get-care/emergency-care?utm_source=google&utm_medium=cpc&utm_campaign=er_near_me_wait_times",
+          "websiteJourney": "Home / Get Care / Emergency Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Find a Doctor Primary Care",
+          "marketingSearchTerm": "primary care doctor accepting new patients texas",
+          "landingPageUrl": "https://www.christushealth.org/get-care/primary-care?utm_source=google&utm_medium=cpc&utm_campaign=find_a_doctor_primary_care",
+          "websiteJourney": "Home / Get Care / Primary Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Schedule Your Mammogram",
+          "marketingSearchTerm": "mammogram appointment shreveport",
+          "landingPageUrl": "https://www.christushealth.org/services/womens-health/mammogram?utm_source=bing&utm_medium=cpc&utm_campaign=schedule_your_mammogram",
+          "websiteJourney": "Home / Get Care / Conditions & Treatments / Women's Health",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Telehealth Online Visit",
+          "marketingSearchTerm": "telehealth doctor online visit",
+          "landingPageUrl": "https://www.christushealth.org/get-care/virtual-care?utm_source=google&utm_medium=cpc&utm_campaign=telehealth_online_visit",
+          "websiteJourney": "Home / Get Care / Virtual Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Pediatric Care Same-Day",
+          "marketingSearchTerm": "pediatrician near me",
+          "landingPageUrl": "https://www.christushealth.org/get-care/pediatric-care?utm_source=google&utm_medium=cpc&utm_campaign=pediatric_care_same_day",
+          "websiteJourney": "Home / Get Care / Pediatric Care",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Service Line SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.christushealth.org/services/heart-vascular?utm_source=organic&utm_medium=organic&utm_campaign=service_line_seo",
+          "websiteJourney": "Home / Get Care / Conditions & Treatments / Heart & Vascular",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Condition A-to-Z Index",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.christushealth.org/services/cancer-care?utm_source=organic&utm_medium=organic&utm_campaign=condition_a_to_z_index",
+          "websiteJourney": "Home / Get Care / Conditions & Treatments / Cancer Care",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Orthopedic Knee Replacement",
+          "marketingSearchTerm": "orthopedic surgeon knee replacement",
+          "landingPageUrl": "https://www.christushealth.org/services/orthopedics?utm_source=google&utm_medium=cpc&utm_campaign=orthopedic_knee_replacement",
+          "websiteJourney": "Home / Get Care / Conditions & Treatments / Orthopedics",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Your Health Content Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.christushealth.org/your-health/heart-health-month?utm_source=organic&utm_medium=organic&utm_campaign=your_health_content_hub",
+          "websiteJourney": "Home / Connect with CHRISTUS / Your Health",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Heart Health Month Know Your Risk",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.christushealth.org/services/heart-vascular/risk-assessment?utm_source=facebook&utm_medium=social&utm_campaign=heart_health_month_know_your_risk",
+          "websiteJourney": "Home / Get Care / Conditions & Treatments / Heart & Vascular",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Find a Doctor Primary Care",
+          "marketingSearchTerm": "find a doctor christus",
+          "landingPageUrl": "https://www.christushealth.org/find-a-doctor?utm_source=bing&utm_medium=cpc&utm_campaign=find_a_doctor_primary_care",
+          "websiteJourney": "Home / Connect with CHRISTUS / Find a Location",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Meet Our Physicians",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.christushealth.org/find-a-doctor?utm_source=instagram&utm_medium=social&utm_campaign=meet_our_physicians",
+          "websiteJourney": "Home / Connect with CHRISTUS / Find a Location",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Cancer Treatment Center",
+          "marketingSearchTerm": "cancer treatment center louisiana",
+          "landingPageUrl": "https://www.christushealth.org/services/cancer-care?utm_source=google&utm_medium=cpc&utm_campaign=cancer_treatment_center",
+          "websiteJourney": "Home / Get Care / Conditions & Treatments / Cancer Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Well-Woman Exam Booking",
+          "marketingSearchTerm": "well woman exam near me tyler",
+          "landingPageUrl": "https://www.christushealth.org/services/womens-health/well-woman-exam?utm_source=google&utm_medium=cpc&utm_campaign=well_woman_exam_booking",
+          "websiteJourney": "Home / Get Care / Conditions & Treatments / Women's Health",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Sports Medicine Injury Eval",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.christushealth.org/services/orthopedics/sports-medicine?utm_source=facebook&utm_medium=social&utm_campaign=sports_medicine_injury_eval",
+          "websiteJourney": "Home / Get Care / Conditions & Treatments / Orthopedics / Sports Medicine",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Pay My Bill SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.christushealth.org/plan-care/pay-your-bill?utm_source=organic&utm_medium=organic&utm_campaign=pay_my_bill_seo",
+          "websiteJourney": "Home / Plan Care / Pay Your Bill Online",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "MyCHRISTUS Portal Login",
+          "marketingSearchTerm": "mychristus login mychart",
+          "landingPageUrl": "https://www.christushealth.org/plan-care/mychristus?utm_source=google&utm_medium=cpc&utm_campaign=mychristus_portal_login",
+          "websiteJourney": "Home / Plan Care / MyCHRISTUS",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Healthy Living Tips",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.christushealth.org/your-health/healthy-living?utm_source=instagram&utm_medium=social&utm_campaign=healthy_living_tips",
+          "websiteJourney": "Home / Connect with CHRISTUS / Your Health",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Price Transparency SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.christushealth.org/plan-care/price-transparency?utm_source=organic&utm_medium=organic&utm_campaign=price_transparency_seo",
+          "websiteJourney": "Home / Plan Care / Price Transparency",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (CHRISTUS Health)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "63,354"
+            },
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$13,105,238"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "10,137"
+            },
+            {
+              "label": "Billing & Payment Inquiry (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Existing Patient Support (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Medical Records Request (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Patient Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "55%"
+            },
+            {
+              "label": "Non-Qualifying Inquiry (Percent)",
+              "value": "14%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Patient Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Patient Call (Count)",
+            "values": [
+              6143,
+              11872,
+              11564,
+              11738,
+              11900
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              4018,
+              7764,
+              7592,
+              7681,
+              7790
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              1024,
+              1978,
+              1932,
+              1953,
+              1983
+            ]
+          },
+          {
+            "name": "New Patient (Count)",
+            "values": [
+              2047,
+              3953,
+              3864,
+              3912,
+              3963
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 63354,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "24,183",
+                "44%",
+                "18%",
+                "$4,982,347"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "12,894",
+                "51%",
+                "24%",
+                "$2,761,588"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "11,647",
+                "48%",
+                "29%",
+                "$2,458,119"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "8,472",
+                "55%",
+                "34%",
+                "$1,742,955"
+              ]
+            },
+            {
+              "name": "Yelp",
+              "metrics": [
+                "6,158",
+                "58%",
+                "41%",
+                "$1,160,229"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 63354,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "22,847",
+                "45%",
+                "19%",
+                "$4,712,884"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "15,238",
+                "50%",
+                "25%",
+                "$3,148,662"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "9,864",
+                "47%",
+                "30%",
+                "$2,037,551"
+              ]
+            },
+            {
+              "name": "Email/Portal CRM",
+              "metrics": [
+                "8,417",
+                "54%",
+                "36%",
+                "$1,738,449"
+              ]
+            },
+            {
+              "name": "Display/Programmatic",
+              "metrics": [
+                "6,988",
+                "57%",
+                "42%",
+                "$1,467,692"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 27507,
+          "rows": [
+            {
+              "name": "Urgent Care Same-Day",
+              "metrics": [
+                "8,214",
+                "46%",
+                "20%",
+                "$1,689,442"
+              ]
+            },
+            {
+              "name": "ER Near Me Wait Times",
+              "metrics": [
+                "6,847",
+                "49%",
+                "26%",
+                "$1,412,338"
+              ]
+            },
+            {
+              "name": "Find a Doctor Primary Care",
+              "metrics": [
+                "5,238",
+                "52%",
+                "31%",
+                "$1,079,884"
+              ]
+            },
+            {
+              "name": "Schedule Your Mammogram",
+              "metrics": [
+                "4,116",
+                "55%",
+                "37%",
+                "$848,662"
+              ]
+            },
+            {
+              "name": "Heart Health Month Know Your Risk",
+              "metrics": [
+                "3,092",
+                "59%",
+                "44%",
+                "$637,559"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18871,
+          "rows": [
+            {
+              "name": "urgent care near me",
+              "metrics": [
+                "5,847",
+                "47%",
+                "21%",
+                "$1,203,558"
+              ]
+            },
+            {
+              "name": "christus er wait time",
+              "metrics": [
+                "4,283",
+                "50%",
+                "27%",
+                "$882,447"
+              ]
+            },
+            {
+              "name": "find a doctor christus",
+              "metrics": [
+                "3,689",
+                "53%",
+                "32%",
+                "$759,884"
+              ]
+            },
+            {
+              "name": "mammogram appointment near me",
+              "metrics": [
+                "2,914",
+                "56%",
+                "38%",
+                "$600,229"
+              ]
+            },
+            {
+              "name": "pediatrician near me",
+              "metrics": [
+                "2,138",
+                "60%",
+                "45%",
+                "$440,338"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Set (Industry) (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Primary & Pediatric Care",
+              "metrics": [
+                "19,842",
+                "44%",
+                "19%",
+                "$2,753,142"
+              ]
+            },
+            {
+              "name": "Emergency & Urgent Care",
+              "metrics": [
+                "16,473",
+                "40%",
+                "27%",
+                "$3,248,271"
+              ]
+            },
+            {
+              "name": "Women's Health & Maternity",
+              "metrics": [
+                "12,318",
+                "47%",
+                "31%",
+                "$2,788,946"
+              ]
+            },
+            {
+              "name": "Heart & Vascular",
+              "metrics": [
+                "8,946",
+                "51%",
+                "37%",
+                "$2,417,231"
+              ]
+            },
+            {
+              "name": "Cancer Care & Oncology",
+              "metrics": [
+                "5,775",
+                "54%",
+                "45%",
+                "$1,897,648"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 63354,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "24,187",
+                "44%",
+                "21%",
+                "$3,798,142"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "15,326",
+                "41%",
+                "27%",
+                "$3,086,948"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "11,842",
+                "47%",
+                "31%",
+                "$2,738,566"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "7,653",
+                "50%",
+                "36%",
+                "$2,055,230"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "4,346",
+                "53%",
+                "44%",
+                "$1,426,352"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Primary & Pediatric Care",
+            "values": [
+              742,
+              801,
+              758,
+              712,
+              757
+            ]
+          },
+          {
+            "name": "Emergency & Urgent Care",
+            "values": [
+              872,
+              918,
+              905,
+              881,
+              872
+            ]
+          },
+          {
+            "name": "Women's Health & Maternity",
+            "values": [
+              748,
+              792,
+              776,
+              761,
+              742
+            ]
+          },
+          {
+            "name": "Heart & Vascular",
+            "values": [
+              648,
+              682,
+              671,
+              659,
+              650
+            ]
+          },
+          {
+            "name": "Cancer Care & Oncology",
+            "values": [
+              508,
+              534,
+              526,
+              517,
+              514
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 63,354 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Diana Fuentes called to book a screening mammogram at the CHRISTUS women's imaging center near her home. Agent Rosey confirmed her insurance network, found a next-week 3D mammogram slot, and texted a prep reminder. Diana scheduled the appointment and thanked the agent for the quick help.",
+          "date": "Jan 6, 9:14 AM",
+          "agent": "Rosey",
+          "duration": "2m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Marcus Ellison wanted to establish with a primary care physician accepting new patients in the Tyler area. Agent Lila verified coverage, matched him to a nearby clinic, and booked a new-patient preventive visit. He confirmed and set up appointment reminders.",
+          "date": "Feb 12, 1:48 PM",
+          "agent": "Lila",
+          "duration": "2m 40s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Aaron Whitfield could not log into his MyCHRISTUS portal to view recent lab results. Agent Oscar walked him through a password reset and confirmed the MyCHRISTUS mobile app was synced. No appointment was needed and Aaron left satisfied.",
+          "date": "Mar 3, 4:22 PM",
+          "agent": "Oscar",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "New patient Priscilla Vaughn called to schedule primary care and a pediatric visit for her son after relocating to San Antonio. Agent Mary collected her demographics, insurance details, and preferred clinic, then booked both appointments and created her MyCHRISTUS account. Priscilla confirmed the times and received a welcome packet by email.",
+          "date": "Apr 9, 11:03 AM",
+          "agent": "Mary",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Gregory Nunez had a sprained ankle and asked about urgent care wait times and on-site X-ray. Agent Lee confirmed the nearest urgent care location was open and reserved a walk-in slot for early afternoon. Gregory scheduled the visit and headed over.",
+          "date": "May 15, 3:37 PM",
+          "agent": "Lee",
+          "duration": "1m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Renee Castillo called with a billing question about an emergency room facility fee she did not expect. Agent Sue explained the itemized charges and started a financial assistance application. No new visit was booked, but Renee felt the billing was clearer.",
+          "date": "May 28, 10:19 AM",
+          "agent": "Sue",
+          "duration": "2m 28s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 62,
+          "summary": "Tobias Grant wanted a telehealth visit for a medication refill. Agent Mike confirmed his provider offered virtual care through MyCHRISTUS and booked a same-day video appointment. Tobias scheduled it and received the join link by text.",
+          "date": "Jun 4, 5:02 PM",
+          "agent": "Mike",
+          "duration": "1m 30s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 21,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Yolanda Reyes called to check the status of her cardiac catheterization results and a referral to Heart and Vascular. Agent Jennifer located the pending report and messaged the cardiology office on her behalf. No appointment was scheduled during the call.",
+          "date": "Jun 22, 12:41 PM",
+          "agent": "Jennifer",
+          "duration": "2m 09s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Bethany Cole rescheduled a missed mammogram after a work conflict. Agent Rose found an early-morning slot the following week and confirmed her insurance was still active. Bethany scheduled the new appointment despite some frustration about the earlier delay.",
+          "date": "Jul 8, 8:55 AM",
+          "agent": "Rose",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Damian Fowler disputed a duplicate charge on his billing statement for a primary care office visit. Agent Oscar opened a review ticket and promised a callback within 48 hours. Damian remained unhappy that it was not resolved on the call.",
+          "date": "Jul 25, 2:16 PM",
+          "agent": "Oscar",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 30,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Karen Bishop called upset about a long urgent care wait during a recent sick visit and asked for a supervisor. Agent Lila documented the complaint and escalated it to the clinic manager. No new visit was booked and Karen ended the call still dissatisfied.",
+          "date": "Aug 3, 6:24 PM",
+          "agent": "Lila",
+          "duration": "3m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Victor Salinas wanted to cancel an upcoming orthopedic consult because he switched insurance plans. Agent Sue processed the cancellation and explained network options going forward. Victor declined to rebook at this time.",
+          "date": "Aug 19, 10:48 AM",
+          "agent": "Sue",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Angela Marsh complained that a pediatric after-hours line left her waiting and her child's fever went unaddressed. Agent Mike apologized, gave nearby emergency guidance, and logged the service complaint. She hung up frustrated without scheduling anything.",
+          "date": "Sep 11, 7:33 PM",
+          "agent": "Mike",
+          "duration": "2m 51s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Harold Prentice called after hours about a labor and delivery pre-registration question and reached voicemail. He left a message asking for a callback the next morning. No agent handled the call live.",
+          "date": "Sep 27, 9:41 PM",
+          "agent": "No Agent",
+          "duration": "0m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Sondra Mabry was angry about a billing statement sent to collections for a chemotherapy cycle she believed was covered. Agent Jennifer tried to explain the appeal process, but Sondra felt unheard and demanded escalation. The billing dispute stayed open with no resolution.",
+          "date": "Oct 5, 1:27 PM",
+          "agent": "Jennifer",
+          "duration": "3m 18s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "urgent care",
+        "mammogram",
+        "primary care",
+        "billing",
+        "mychristus",
+        "pediatric"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 19, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Insurance and Coverage Type",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Verify Service Location and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Visit Type and Clinical Workflow",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Appointment and Confirm Date/Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Patient Expectations for First Visit",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Acknowledged new patient status",
+        "Confirmed primary care specialty",
+        "Verified zip code in service area",
+        "Provided clinic location details",
+        "Confirmed appointment time",
+        "Used patient name throughout call",
+        "Explained MyCHRISTUS portal access",
+        "Mentioned required documentation",
+        "Stated visit duration expectations",
+        "Offered virtual care alternative",
+        "Provided after-hours contact info",
+        "Closed with confirmation summary",
+        "Transferred appointment to system"
+      ],
+      "unmetSignals": [
+        "Did not collect email for portal setup",
+        "Failed to verify phone number",
+        "Did not confirm insurance details",
+        "Missed opportunity to ask about existing conditions",
+        "Did not explain copay or financial responsibility",
+        "Failed to ask preferred communication method",
+        "Did not mention wellness screening forms",
+        "Rushed through insurance questions",
+        "Did not offer call reminder option",
+        "Did not ask about medication list preparation",
+        "Skipped parking and arrival instructions",
+        "Did not mention telehealth eligibility check"
+      ],
+      "naSignals": [
+        "Billing inquiry",
+        "Previous balance due",
+        "Prescription refill status",
+        "Lab results access",
+        "Specialist referral approval",
+        "Medical records transfer request",
+        "Prior authorization needed",
+        "Urgent care follow-up from ER visit"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes, the caller is a new patient to CHRISTUS Health seeking to establish care with a primary care physician. She wants to schedule an initial appointment and register as a new patient in the system."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a straightforward scheduling process and wants to confirm that the clinic is in her insurance network. She also wants to know what to bring and what to expect during her first visit."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address for MyCHRISTUS portal registration and confirmed her phone number for appointment reminders. Additionally, confirming specific insurance details and copay information would have set clearer financial expectations."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling CHRISTUS Health Primary Care. My name is Marcus Bell. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:24",
+          "text": "Hi Marcus, I need to find a doctor and schedule an appointment. I'm new to the area and I'm looking for a primary care physician."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:35",
+          "text": "Great, I'd be happy to help you get set up with one of our physicians. Can I start by getting your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:42",
+          "text": "Sure, it's Jennifer Ramirez."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:47",
+          "text": "Perfect, Jennifer. And just to confirm, you're looking to establish primary care with us as a new patient?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:54",
+          "text": "Yes, that's correct. I just moved to the area and my previous doctor is out of state."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:03",
+          "text": "I understand. Let me verify we have availability in your area. What is your ZIP code?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:10",
+          "text": "It's 77002."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:15",
+          "text": "Excellent, that's Houston and we have several primary care clinics in that area. Do you have insurance with us or a preferred CHRISTUS network plan?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:26",
+          "text": "Yes, I have Blue Cross Blue Shield and I believe it's in your network."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:33",
+          "text": "Great, Blue Cross Blue Shield works well with CHRISTUS Health. Let me get you scheduled. Our next available appointment is this Thursday, October 24th at 2:00 PM with Dr. Sarah Chen at our Medical Center on Main Street. Does that work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:52",
+          "text": "That sounds perfect. What do I need to bring to the appointment?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:58",
+          "text": "Bring your insurance card, photo ID, and any medical records you have from your previous provider if available. The visit will take about 30 to 45 minutes, and we'll do a full health history and physical exam. You can also access your records anytime through our MyCHRISTUS patient portal."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:14",
+          "text": "Okay, got it. Thank you so much."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:20",
+          "text": "You're welcome, Jennifer. Your appointment is confirmed for Thursday, October 24th at 2:00 PM with Dr. Sarah Chen. We look forward to seeing you, and if you have any questions before your visit, just call us back. Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Ramirez, a new patient relocating to the Houston area, called to establish primary care with CHRISTUS Health. Marcus Bell successfully verified her service area ZIP code, confirmed her insurance coverage with Blue Cross Blue Shield, and scheduled an appointment with Dr. Sarah Chen for October 24th at 2:00 PM. The agent explained the visit structure, required documentation, and MyCHRISTUS portal access, but did not capture her email address or phone number for appointment reminders and portal registration. The call concluded with a clear confirmation of the appointment details.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, excellent work on the greeting, qualification, and appointment scheduling structure. You confirmed the patient's new status, verified the service area, and clearly explained what to bring and what to expect. Two coaching points for next time: make sure you capture the patient's email address during the call so we can send her the pre-visit forms and MyCHRISTUS registration link, and always repeat back the phone number for her confirmation so she can reach us if she needs to reschedule. This small step would have reduced the risk of a missed or confused appointment."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "63,354"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$206.86"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$13,105,238"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "34,844"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "55%"
+            },
+            {
+              "label": "Appointment: Scheduled (Count)",
+              "value": "30,410"
+            },
+            {
+              "label": "Appointment: Scheduled (Percent)",
+              "value": "48%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "28,510"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "45%"
+            },
+            {
+              "label": "Appointment: Canceled (Percent)",
+              "value": "9%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Appointments)",
+          "chart": {
+            "legend": "Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Organic Search",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Direct",
+                "value": 55,
+                "display": "55%"
+              },
+              {
+                "name": "Facebook",
+                "value": 51,
+                "display": "51%"
+              },
+              {
+                "name": "Bing",
+                "value": 46,
+                "display": "46%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "28,417",
+                  "41%",
+                  "$6,012,455"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing",
+                  "14,208",
+                  "46%",
+                  "$2,944,120"
+                ]
+              },
+              {
+                "cells": [
+                  "Facebook",
+                  "9,832",
+                  "51%",
+                  "$2,015,338"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "6,741",
+                  "55%",
+                  "$1,388,770"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "4,156",
+                  "58%",
+                  "$744,555"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 30000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000,
+              25000,
+              30000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 24918,
+                "display": "24,918"
+              },
+              {
+                "name": "organic",
+                "value": 15332,
+                "display": "15,332"
+              },
+              {
+                "name": "referral",
+                "value": 10207,
+                "display": "10,207"
+              },
+              {
+                "name": "email",
+                "value": 7641,
+                "display": "7,641"
+              },
+              {
+                "name": "social",
+                "value": 5256,
+                "display": "5,256"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "24,918",
+                  "40%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "15,332",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "10,207",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "7,641",
+                  "54%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "5,256",
+                  "58%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "ER Near Me City Wait Times",
+                "value": 9842,
+                "display": "9,842"
+              },
+              {
+                "name": "Urgent Care Same-Day",
+                "value": 7213,
+                "display": "7,213"
+              },
+              {
+                "name": "Find a Doctor Primary Care",
+                "value": 5684,
+                "display": "5,684"
+              },
+              {
+                "name": "Schedule Your Mammogram",
+                "value": 4127,
+                "display": "4,127"
+              },
+              {
+                "name": "Heart Health Month Know Your Risk",
+                "value": 2918,
+                "display": "2,918"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "ER Near Me City Wait Times",
+                  "9,842",
+                  "38%",
+                  "$2,041,338"
+                ]
+              },
+              {
+                "cells": [
+                  "Urgent Care Same-Day",
+                  "7,213",
+                  "44%",
+                  "$1,502,674"
+                ]
+              },
+              {
+                "cells": [
+                  "Find a Doctor Primary Care",
+                  "5,684",
+                  "49%",
+                  "$1,178,229"
+                ]
+              },
+              {
+                "cells": [
+                  "Schedule Your Mammogram",
+                  "4,127",
+                  "57%",
+                  "$856,441"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 7000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000,
+              6000,
+              7000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "urgent care near me",
+                "value": 6418,
+                "display": "6,418"
+              },
+              {
+                "name": "christus er wait time",
+                "value": 4912,
+                "display": "4,912"
+              },
+              {
+                "name": "find a doctor christus",
+                "value": 3684,
+                "display": "3,684"
+              },
+              {
+                "name": "mychristus login",
+                "value": 2841,
+                "display": "2,841"
+              },
+              {
+                "name": "mammogram appointment",
+                "value": 1927,
+                "display": "1,927"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "urgent care near me",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "christus er wait time",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "find a doctor christus",
+                  "52%"
+                ]
+              },
+              {
+                "cells": [
+                  "mammogram appointment",
+                  "59%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Appointment: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Care Access",
+              "24,318",
+              "42%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Conditions & Treatments",
+              "16,742",
+              "47%",
+              "54%"
+            ]
+          },
+          {
+            "cells": [
+              "Plan Care & Billing",
+              "12,908",
+              "51%",
+              "48%"
+            ]
+          },
+          {
+            "cells": [
+              "Digital Tools (MyCHRISTUS)",
+              "9,386",
+              "57%",
+              "43%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "CHRISTUS Trinity Mother Frances Tyler",
+              "21,842",
+              "2,184",
+              "6%",
+              "43%"
+            ]
+          },
+          {
+            "cells": [
+              "CHRISTUS Spohn Corpus Christi",
+              "16,318",
+              "1,468",
+              "7%",
+              "47%"
+            ]
+          },
+          {
+            "cells": [
+              "CHRISTUS St. Michael Texarkana",
+              "14,208",
+              "1,137",
+              "8%",
+              "51%"
+            ]
+          },
+          {
+            "cells": [
+              "CHRISTUS St. Frances Cabrini Alexandria",
+              "10,986",
+              "879",
+              "9%",
+              "58%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1842,
+              1918,
+              1764,
+              1896,
+              1798
+            ]
+          },
+          {
+            "name": "Insurance Not Accepted",
+            "values": [
+              1512,
+              1624,
+              1538,
+              1608,
+              1560
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              1284,
+              1342,
+              1268,
+              1326,
+              1294
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              1042,
+              1098,
+              1064,
+              1086,
+              1036
+            ]
+          },
+          {
+            "name": "Needs Referral Approval",
+            "values": [
+              798,
+              834,
+              806,
+              818,
+              788
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "25,342"
+          },
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "New Patient (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$7,469,986"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,847,265"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent and Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,156,442"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,466,279"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$756,814"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent and Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$921,387"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$321,799"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 9847,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "7,418",
+                "58%",
+                "31%",
+                "$2,247,854"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "5,614",
+                "55%",
+                "34%",
+                "$1,698,442"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "4,289",
+                "57%",
+                "35%",
+                "$1,403,627"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "3,847",
+                "54%",
+                "30%",
+                "$1,019,518"
+              ]
+            },
+            {
+              "name": "Display Advertising",
+              "metrics": [
+                "2,156",
+                "52%",
+                "36%",
+                "$562,847"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 9156,
+          "rows": [
+            {
+              "name": "Mobile Web",
+              "metrics": [
+                "6,842",
+                "57%",
+                "32%",
+                "$2,104,318"
+              ]
+            },
+            {
+              "name": "Desktop Web",
+              "metrics": [
+                "5,127",
+                "56%",
+                "33%",
+                "$1,547,296"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "4,618",
+                "55%",
+                "34%",
+                "$1,389,722"
+              ]
+            },
+            {
+              "name": "Voice Call",
+              "metrics": [
+                "3,921",
+                "54%",
+                "31%",
+                "$1,128,444"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "2,734",
+                "51%",
+                "35%",
+                "$718,206"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8926,
+          "rows": [
+            {
+              "name": "Find a Doctor Primary Care Accepting New Patients",
+              "metrics": [
+                "5,847",
+                "59%",
+                "30%",
+                "$1,802,756"
+              ]
+            },
+            {
+              "name": "Emergency Care Wait Times and Locations",
+              "metrics": [
+                "4,263",
+                "56%",
+                "33%",
+                "$1,301,418"
+              ]
+            },
+            {
+              "name": "Virtual Care Same Day Appointments",
+              "metrics": [
+                "3,614",
+                "54%",
+                "35%",
+                "$1,087,214"
+              ]
+            },
+            {
+              "name": "Mammogram Screening Campaign",
+              "metrics": [
+                "2,891",
+                "52%",
+                "36%",
+                "$867,518"
+              ]
+            },
+            {
+              "name": "Orthopedic Knee Replacement Surgery",
+              "metrics": [
+                "2,156",
+                "48%",
+                "32%",
+                "$627,865"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8618,
+          "rows": [
+            {
+              "name": "urgent care near me Texas",
+              "metrics": [
+                "4,127",
+                "60%",
+                "29%",
+                "$1,247,652"
+              ]
+            },
+            {
+              "name": "find a doctor CHRISTUS Health",
+              "metrics": [
+                "3,284",
+                "57%",
+                "32%",
+                "$1,009,284"
+              ]
+            },
+            {
+              "name": "primary care doctor accepting new patients",
+              "metrics": [
+                "2,847",
+                "55%",
+                "34%",
+                "$859,418"
+              ]
+            },
+            {
+              "name": "telehealth doctor online visit",
+              "metrics": [
+                "2,156",
+                "51%",
+                "37%",
+                "$647,186"
+              ]
+            },
+            {
+              "name": "CHRISTUS ER wait time near me",
+              "metrics": [
+                "1,814",
+                "48%",
+                "38%",
+                "$541,752"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Primary Care and Preventive Services",
+              "metrics": [
+                "6,841",
+                "59%",
+                "28%",
+                "$2,156,432"
+              ]
+            },
+            {
+              "name": "Urgent Care and Emergency Services",
+              "metrics": [
+                "5,614",
+                "56%",
+                "32%",
+                "$1,847,628"
+              ]
+            },
+            {
+              "name": "Virtual Care and Telehealth",
+              "metrics": [
+                "4,289",
+                "58%",
+                "36%",
+                "$1,434,867"
+              ]
+            },
+            {
+              "name": "Women's Health and Specialty Care",
+              "metrics": [
+                "4,847",
+                "54%",
+                "35%",
+                "$1,529,486"
+              ]
+            },
+            {
+              "name": "Orthopedic Surgery and Sports Medicine",
+              "metrics": [
+                "3,751",
+                "51%",
+                "31%",
+                "$1,501,573"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Primary Care and Preventive Services",
+            "values": [
+              614,
+              487,
+              518,
+              612,
+              465
+            ]
+          },
+          {
+            "name": "Urgent Care and Emergency Services",
+            "values": [
+              479,
+              412,
+              368,
+              419,
+              376
+            ]
+          },
+          {
+            "name": "Virtual Care and Telehealth",
+            "values": [
+              512,
+              398,
+              436,
+              378,
+              500
+            ]
+          },
+          {
+            "name": "Women's Health and Specialty Care",
+            "values": [
+              597,
+              486,
+              528,
+              419,
+              395
+            ]
+          },
+          {
+            "name": "Orthopedic Surgery and Sports Medicine",
+            "values": [
+              348,
+              289,
+              301,
+              356,
+              274
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "26%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "18,627"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$9,247,156"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "1,752"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$238,917"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Appointment Scheduled",
+            "values": [
+              72,
+              78,
+              75,
+              81,
+              79,
+              74,
+              83,
+              77,
+              80,
+              76,
+              79,
+              82,
+              78,
+              81,
+              74,
+              80,
+              76,
+              79,
+              77,
+              75,
+              81,
+              78,
+              80,
+              76,
+              74,
+              182,
+              188,
+              176,
+              192,
+              185,
+              179,
+              178,
+              186,
+              191,
+              177,
+              189,
+              180,
+              185,
+              192,
+              178,
+              187,
+              183,
+              179,
+              188,
+              185,
+              181,
+              176,
+              184,
+              189
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,186"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "723"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "706"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Appointment Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Urgent Care Availability",
+            "values": [
+              8,
+              9,
+              7,
+              11,
+              9,
+              8
+            ]
+          },
+          {
+            "name": "Virtual Care Scheduling",
+            "values": [
+              6,
+              7,
+              5,
+              9,
+              8,
+              6
+            ]
+          },
+          {
+            "name": "Primary Care New Patient",
+            "values": [
+              4,
+              5,
+              3,
+              6,
+              5,
+              4
+            ]
+          },
+          {
+            "name": "Pediatric Well Visit",
+            "values": [
+              2,
+              3,
+              1,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "name": "Specialist Referral Status",
+            "values": [
+              3,
+              4,
+              2,
+              5,
+              4,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "58,286"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "44,348"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Appointment Booked (Count)",
+            "value": "30,410"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$13,105,238"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Michael Torres",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Sarah Obando",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Jennifer Kowalski",
+              "value": 241,
+              "display": "241"
+            },
+            {
+              "name": "David Chen",
+              "value": 203,
+              "display": "203"
+            },
+            {
+              "name": "Amanda Gutierrez",
+              "value": 176,
+              "display": "176"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Rachel Dominguez",
+            "values": [
+              94,
+              127,
+              156,
+              198,
+              242
+            ]
+          },
+          {
+            "name": "James Patterson",
+            "values": [
+              81,
+              119,
+              147,
+              185,
+              231
+            ]
+          },
+          {
+            "name": "Lisa Hernandez",
+            "values": [
+              72,
+              108,
+              138,
+              174,
+              219
+            ]
+          },
+          {
+            "name": "Christopher Moore",
+            "values": [
+              68,
+              104,
+              134,
+              169,
+              213
+            ]
+          },
+          {
+            "name": "Margaret Sullivan",
+            "values": [
+              59,
+              91,
+              118,
+              152,
+              196
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Michael Torres",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Sarah Obando",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "Jennifer Kowalski",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "David Chen",
+              "value": 57.4,
+              "display": "57.4%"
+            },
+            {
+              "name": "Amanda Gutierrez",
+              "value": 55.9,
+              "display": "55.9%"
+            },
+            {
+              "name": "Robert Sánchez",
+              "value": 58.6,
+              "display": "58.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Michael Torres",
+                "54.2%",
+                "28%",
+                "$172,847",
+                "1,447"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Obando",
+                "56.8%",
+                "29%",
+                "$181,556",
+                "1,522"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Kowalski",
+                "52.1%",
+                "26%",
+                "$152,439",
+                "1,383"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "57.4%",
+                "31%",
+                "$196,234",
+                "1,465"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Gutierrez",
+                "55.9%",
+                "30%",
+                "$188,943",
+                "1,501"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Sánchez",
+                "58.6%",
+                "32%",
+                "$205,128",
+                "1,549"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Rachel Dominguez",
+              "value": 92.3,
+              "display": "92.3%"
+            },
+            {
+              "name": "James Patterson",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "Lisa Hernandez",
+              "value": 91.1,
+              "display": "91.1%"
+            },
+            {
+              "name": "Christopher Moore",
+              "value": 87.4,
+              "display": "87.4%"
+            },
+            {
+              "name": "Margaret Sullivan",
+              "value": 90.2,
+              "display": "90.2%"
+            },
+            {
+              "name": "Victoria Reyes",
+              "value": 88.9,
+              "display": "88.9%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Rachel Dominguez",
+                "92.3%",
+                "67%",
+                "$452,891",
+                "1,543"
+              ]
+            },
+            {
+              "cells": [
+                "James Patterson",
+                "89.7%",
+                "64%",
+                "$416,728",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Hernandez",
+                "91.1%",
+                "66%",
+                "$439,356",
+                "1,478"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Moore",
+                "87.4%",
+                "59%",
+                "$372,614",
+                "1,451"
+              ]
+            },
+            {
+              "cells": [
+                "Margaret Sullivan",
+                "90.2%",
+                "65%",
+                "$429,847",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Victoria Reyes",
+                "88.9%",
+                "61%",
+                "$400,802",
+                "1,497"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Appointment Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Appointment Booked (Count)",
+        "rightMax": 1400,
+        "rightTicks": [
+          0,
+          350,
+          700,
+          1050,
+          1400
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1128
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1081
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1006
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 960
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 835
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 877
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 969
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1007
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1124
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1089
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 981
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 948
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 843
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 869
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 992
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1023
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1113
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1096
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 960
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 930
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 856
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 865
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1009
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1043
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1099
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1097
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 947
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 908
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 871
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 866
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1018
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 600000,
+        "rightTicks": [
+          0,
+          200000,
+          400000,
+          600000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 485800
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 465618
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 433585
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 413723
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 360222
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 378043
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 417613
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 434075
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 483996
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 469264
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 422650
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 408500
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 363496
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 374678
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 427556
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 440585
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 479490
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 472028
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 413917
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 400788
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 368952
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 372820
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 434926
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 449343
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 473398
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 472710
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 407994
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 391201
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 375349
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 373539
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 439379
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "63,354"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:42"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "5,068"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "3,801"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Margaret T. Delgado",
+                "412",
+                "91%",
+                "88%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James R. Kowalski",
+                "528",
+                "88%",
+                "85%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia M. López",
+                "359",
+                "88%",
+                "85%",
+                "87%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "63,354 calls",
+      "pagerLabel": "1 of 6,335",
+      "calls": [
+        {
+          "time": "1/6/26 9:14 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 10:41 am",
+          "id": "A2C4-9B3E7710D6F1"
+        },
+        {
+          "time": "1/12/26 11:26 am",
+          "id": "7D19-4EF2A0C8B355"
+        },
+        {
+          "time": "1/14/26 12:38 pm",
+          "id": "3B8E-C1970A4F2D6E"
+        },
+        {
+          "time": "1/16/26 1:52 pm",
+          "id": "9E0A-62D5F38C7B14"
+        },
+        {
+          "time": "1/20/26 2:07 pm",
+          "id": "C4F7-18A3E9026D5B"
+        },
+        {
+          "time": "1/22/26 3:19 pm",
+          "id": "5A6D-D07B41F9E2C8"
+        },
+        {
+          "time": "1/26/26 4:03 pm",
+          "id": "E81B-3F5C7A20941D"
+        },
+        {
+          "time": "1/28/26 4:47 pm",
+          "id": "6C2F-90AD31E7B584"
+        },
+        {
+          "time": "1/30/26 5:22 pm",
+          "id": "B3D9-7E14C style0A6F82"
+        }
+      ],
+      "duration": "2:34",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling CHRISTUS Health, this is Mia. How can I help you today?",
+          "highlights": [
+            "Thank you for calling CHRISTUS Health",
+            "this is Mia"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi, yes, I just moved to the area and I'm looking for a primary care doctor who's taking new patients. I also think I'm due for a mammogram.",
+          "highlights": [
+            "looking for a primary care doctor",
+            "new patients"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:18",
+          "text": "Welcome to the area, I can absolutely help set that up. May I start with your name?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:24",
+          "text": "Sure, it's Danielle Robchaux. I'm over near the San Antonio, Westover Hills side.",
+          "highlights": [
+            "Danielle Robchaux"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:31",
+          "text": "Great, Danielle. We have several primary care providers accepting new patients near Westover Hills. I can pair you with one for a first visit and add a screening mammogram order the same trip.",
+          "highlights": [
+            "accepting new patients",
+            "screening mammogram"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:42",
+          "text": "That would be convenient. Before we go further though, what does a first visit like that run? I'd like to keep it manageable while I'm between insurance plans.",
+          "highlights": [
+            "what does a first visit like that run",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:53",
+          "text": "Understood. A primary care office visit self-pay is typically around $150 to $300, and a screening mammogram runs about $150 to $350. If you set up MyCHRISTUS we can also check any coverage before the visit at no charge.",
+          "highlights": [
+            "around $150 to $300",
+            "MyCHRISTUS"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:06",
+          "text": "Okay, that's fair. Honestly I was also pricing the clinic down the street, they quoted me a little less for the office visit but they don't do the imaging on site.",
+          "highlights": [
+            "pricing the clinic down the street",
+            "don't do the imaging on site"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:18",
+          "text": "That's a real advantage on our side, Danielle. Our medical centers keep primary care and 3D mammography under one roof, so you get the exam, the imaging, and your radiologist read without a second trip.",
+          "highlights": [
+            "under one roof",
+            "without a second trip"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:30",
+          "text": "That does save me time. One more thing, I don't want to be signed up for a bunch of ongoing appointments I didn't ask for. Is this just the one visit?",
+          "highlights": [
+            "don't want to be signed up for a bunch of ongoing appointments"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:40",
+          "text": "Absolutely, there is no commitment. We schedule only the visit you want, and any follow-up is entirely your choice after you meet the provider.",
+          "highlights": [
+            "there is no commitment"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:49",
+          "text": "Perfect. Let me also ask, could my husband get in as a new patient too, or should he call separately?",
+          "highlights": [
+            "could my husband get in as a new patient too"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:57",
+          "text": "He can be added, he'd just need to call in himself to confirm his details. For now let me get you booked. Does Thursday at 10 AM work?",
+          "highlights": [
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:06",
+          "text": "Thursday at ten is good, yes.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:11",
+          "text": "Wonderful. I have you scheduled Thursday at 10 AM with Dr. Alvarez at our Westover Hills primary care clinic, with your screening mammogram right after.",
+          "highlights": [
+            "scheduled Thursday at 10 AM",
+            "screening mammogram right after"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:20",
+          "text": "That's great, thank you so much.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:25",
+          "text": "You're very welcome, Danielle. You'll get a MyCHRISTUS reminder before the visit. Thank you for choosing CHRISTUS Health and take care.",
+          "highlights": [
+            "Thank you for choosing CHRISTUS Health",
+            "take care"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Primary Care",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Intent: Screening Mammogram",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Price Sensitivity Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Robchaux, a new patient who recently moved near Westover Hills in San Antonio, called to find a primary care provider accepting new patients and to schedule an overdue screening mammogram. The agent, Mia, explained self-pay ranges, addressed her cost concern, and highlighted that CHRISTUS offers both the office visit and 3D mammography under one roof versus a nearby clinic that lacks on-site imaging. Mia reassured her there was no ongoing commitment and noted her husband could enroll separately. The visit was booked for Thursday at 10 AM with Dr. Alvarez, with the mammogram immediately after.",
+        "keyPoints": [
+          "New patient relocating to the Westover Hills area",
+          "Needs primary care provider plus a screening mammogram",
+          "Raised a cost concern while between insurance plans",
+          "Compared a cheaper nearby clinic that lacks on-site imaging",
+          "Asked about ongoing appointment commitment and adding her husband",
+          "Appointment scheduled Thursday 10 AM with Dr. Alvarez, MyCHRISTUS reminder set"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Appointment booked, Thursday 10 AM primary care plus mammogram"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "39,913 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,991",
+      "conversations": [
+        {
+          "id": "C847-9F3B2E47A1C6",
+          "time": "1/14/26 3:42 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Welcome to CHRISTUS Health. This is Sarah with our scheduling team. Are you looking to schedule an appointment or get care information today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes, I need to see a doctor. I have been having chest pain for a few days."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "I'm sorry to hear that. Chest pain should be evaluated right away. Are you experiencing any shortness of breath or dizziness right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "No, I feel okay otherwise. Just the chest pain when I move around."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Thank you for that information. We have both urgent care and primary care options available. Given your symptoms, would you prefer a same day urgent care visit or a virtual care consultation with a provider?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "What's the cost difference? I don't have insurance right now."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Our virtual care visits run about fifty to seventy five dollars, and urgent care visits are typically one hundred twenty five to two hundred fifty dollars depending on any imaging needed. Both can address your chest pain. Which would work better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "I think urgent care is better since I want someone to actually examine me."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Great choice. What city are you located in so I can find your nearest urgent care location?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "I'm in Houston, Texas."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "Perfect. We have several urgent care centers in Houston. I can get you in today at our Medical Center location at two PM if that works for you. Does that time suit your schedule?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Yes, two PM works great. What do I need to bring?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:35 AM",
+              "text": "Bring a photo ID and any insurance cards you have. If you don't have insurance, we can discuss payment options when you arrive. Your appointment is confirmed for today at two PM at CHRISTUS Urgent Care on Main Street, Houston. You'll receive a reminder text shortly. Our clinic number is 713-555-0147. See you soon."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:36 AM",
+              "text": "Thank you so much."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Identified: Urgent Care Visit",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Symptom Identified: Chest Pain",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Financial Qualifier: Uninsured",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: Houston, Texas",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided: 125-250 dollars",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C847-9F3B2E47A1C6",
+            "smsStartTime": "1/14/26 6:21 am",
+            "destinationPhone": "713-555-0147",
+            "totalMessages": "14",
+            "source": "713-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "832-441-5628",
+            "repeatCaller": "No",
+            "city": "Houston",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Marcus Williams",
+            "firstName": "Marcus",
+            "lastName": "Williams",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C512-7D4E8B1F9C2A",
+          "time": "1/18/26 11:28 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C512-7D4E8B1F9C2A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C923-6A1C5E7B3F4D",
+          "time": "1/22/26 2:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C923-6A1C5E7B3F4D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C634-9F2B5E8A1C7D",
+          "time": "1/26/26 7:05 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C634-9F2B5E8A1C7D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "63,354 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 6,335",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:34 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:34 PM",
+              "text": "Thank you for calling CHRISTUS Health. This is Maria speaking. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:34 PM",
+              "text": "Hi, yeah, I'm looking to schedule an appointment with a primary care doctor. I just moved to the area."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:35 PM",
+              "text": "Great, welcome to CHRISTUS Health. I'd be happy to help you find a primary care physician. Are you looking for a doctor in Houston or another location?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:35 PM",
+              "text": "Houston, yes. Somewhere on the west side if possible."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:36 PM",
+              "text": "Perfect. And just to confirm, are you a new patient with CHRISTUS Health, or have you seen one of our providers before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:36 PM",
+              "text": "I'm completely new to CHRISTUS. This is my first time calling."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:37 PM",
+              "text": "Excellent. We'd love to get you set up. Is there a specific reason for your visit, or are you just looking for a general wellness exam and to establish care?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:37 PM",
+              "text": "Just a general checkup and preventive care. I haven't had one in a while."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:38 PM",
+              "text": "That's great. A preventive primary care visit typically runs about one hundred seventy-five to three hundred dollars depending on your insurance. Now, what day of the week works best for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:39 PM",
+              "text": "Weekday mornings would be ideal. I work during the afternoons."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:39 PM",
+              "text": "Got it. I have an opening for you on Wednesday, January twenty-second at nine fifteen in the morning with Dr. Sarah Chen at our West Houston clinic. Does that work?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:40 PM",
+              "text": "Yeah, that works great. So it's Wednesday the twenty-second at nine fifteen?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:40 PM",
+              "text": "That's correct. Wednesday, January twenty-second at nine fifteen a.m. with Dr. Chen at CHRISTUS West Houston. Your confirmation number is C H four seven nine eight. Please bring your insurance card and photo ID. Do you have any questions for me?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:41 PM",
+              "text": "No, I think I'm all set. Thanks for your help."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:41 PM",
+              "text": "You're welcome. Just a reminder, if you need to reschedule or cancel, please call us at eight seven seven, nine three six, two nine three three at least twenty-four hours before your appointment. We look forward to seeing you on the twenty-second."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Primary Care Office Visit",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: West Houston",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Visit Type: Preventive Wellness Exam",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Price Estimate Provided: One Hundred Seventy-Five to Three Hundred Dollars",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:34 pm",
+            "duration": "7:23",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice Campaign, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "713-445-2817",
+            "repeatCaller": "No",
+            "city": "Houston",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B823-5D4AE621B9C3",
+          "time": "1/22/26 10:47 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B823-5D4AE621B9C3",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C156-7F2DB845E6A9",
+          "time": "1/28/26 3:12 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C156-7F2DB845E6A9",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D942-3C8BF967D2E4",
+          "time": "1/30/26 1:56 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D942-3C8BF967D2E4",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Hi, I'm CHRISTUS Health's AI scheduling assistant, and I can help you find the right care and set up a personalized visit estimate. New patients can often schedule a same-week appointment, so would you like to get started?",
+        "Qualify one question at a time: To match you with the right provider, I'll ask a few quick questions one at a time, which type of care you need (virtual, urgent, primary, pediatric, or a specialty like Women's Health or Orthopedics), the reason for your visit or main symptoms, whether you are a new or returning patient, your preferred timing, and your ZIP code so I can confirm a nearby CHRISTUS location.",
+        "Estimate then book: Once I confirm we serve your ZIP, I'll share a preliminary self-pay price range for that visit type, recommend a consultation with the right provider or specialist for an exact cost based on your coverage, propose a specific day and time, and confirm you'll receive a reminder text before your appointment with a number to call if anything changes."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "CHRISTUS_Health_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Services & Specialties",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Location",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Provider",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Reschedule\",\"question\":\"I need to move my primary care appointment to next week, can you help?\",\"answer\":\"Absolutely, I can find a new opening with your provider. Please share your preferred day and I'll confirm the next available time at your CHRISTUS location.\"},{\"topic\":\"Test Results\",\"question\":\"How do I see my recent lab results?\",\"answer\":\"Your test results are available anytime in the MyCHRISTUS patient portal under the results section. If you'd like to discuss them, I can schedule a quick follow-up with your provider.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How much does an urgent care visit cost?",
+              "answer": "Self-pay urgent care visits typically fall within a general range, though your exact cost depends on services and coverage. I'd recommend booking a visit so our team can confirm pricing for your situation."
+            },
+            {
+              "question": "Do you accept new patients for primary care?",
+              "answer": "Yes, many of our primary care providers are accepting new patients across Texas, Louisiana, and New Mexico. Share your ZIP code and I'll help you schedule with a nearby provider."
+            },
+            {
+              "question": "Can I do a video visit instead of coming in?",
+              "answer": "Yes, we offer virtual care visits for minor illnesses, refills, and follow-ups. I can set up a telehealth appointment for you, what day works best?"
+            },
+            {
+              "question": "What is the ER wait time right now?",
+              "answer": "Wait times vary by location and time of day, and our emergency teams see the most urgent cases first. If this is a true emergency please call 911, otherwise I can help you find the nearest CHRISTUS ER."
+            },
+            {
+              "question": "How do I schedule a mammogram?",
+              "answer": "I can help you book a screening mammogram at a nearby CHRISTUS imaging location. Please share your ZIP code and a preferred date."
+            },
+            {
+              "question": "Do you have same-day appointments?",
+              "answer": "Many of our urgent care and virtual care options offer same-day availability. Tell me the type of care you need and I'll check the earliest opening."
+            },
+            {
+              "question": "Where is the closest CHRISTUS location to me?",
+              "answer": "I can find the nearest hospital, clinic, or urgent care once you share your ZIP code. Would you like me to locate one for you?"
+            },
+            {
+              "question": "How do I pay my bill?",
+              "answer": "You can pay your bill securely through the MyCHRISTUS portal or by contacting patient financial services. If you have questions about charges, I can connect you with the right team."
+            },
+            {
+              "question": "Do you offer financial assistance?",
+              "answer": "Yes, CHRISTUS Health offers financial assistance options for those who qualify. I can point you to the application and help you schedule any needed visits in the meantime."
+            },
+            {
+              "question": "Can I get a well-child checkup for my kids?",
+              "answer": "Yes, our pediatric providers offer well-child checks, immunizations, and sick visits. Share your ZIP code and I'll help you book with a pediatrician nearby."
+            },
+            {
+              "question": "I need to see an orthopedic doctor for my knee.",
+              "answer": "I can schedule an orthopedic consult that typically includes an evaluation and imaging. What day would you like to come in, and what is your ZIP code?"
+            },
+            {
+              "question": "Do you treat sports injuries?",
+              "answer": "Yes, our sports medicine team handles athletic-injury evaluations and rehab referrals. I'd be glad to book an evaluation for you, when are you available?"
+            },
+            {
+              "question": "How do I set up a MyCHRISTUS account?",
+              "answer": "MyCHRISTUS is free and available for iPhone and Android, letting you message your provider, view results, and manage appointments. I can help you get started and schedule your first visit."
+            },
+            {
+              "question": "What should I do about a possible cancer diagnosis?",
+              "answer": "Our cancer care team provides oncology consults and multidisciplinary treatment planning. I can schedule a consultation with a specialist to review your needs."
+            },
+            {
+              "question": "Can I schedule a well-woman exam?",
+              "answer": "Yes, our Women's Health providers offer annual well-woman exams including screenings and preventive counseling. Share your ZIP code and a preferred date to book."
+            },
+            {
+              "question": "Do I need a referral to see a specialist?",
+              "answer": "Some specialties require a referral depending on your plan, while others allow direct scheduling. I can help you book a primary care visit first if a referral is needed."
+            },
+            {
+              "question": "How much is a telehealth visit?",
+              "answer": "Virtual visits are among our most affordable options, though the exact cost depends on your coverage. I can set up a visit and our team will confirm pricing."
+            },
+            {
+              "question": "Can I get a prescription refill?",
+              "answer": "Refill requests can be made through the MyCHRISTUS portal or during a virtual visit with a provider. Would you like me to schedule a quick telehealth appointment?"
+            },
+            {
+              "question": "Do you offer maternity and delivery services?",
+              "answer": "Yes, our Women's Services provide prenatal-to-delivery care with birthing suites and newborn care. I can schedule a consultation with a maternity provider near you."
+            },
+            {
+              "question": "What insurance networks do you accept?",
+              "answer": "CHRISTUS participates in a range of insurance networks that vary by location and plan. Share your ZIP code and I'll help you confirm options and book a visit."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule an appointment\",\"follow_up_message\":\"Great, I can get you scheduled with the right provider. Please share your ZIP code and a preferred day, and I'll confirm your appointment along with a reminder text.\"},{\"intent\":\"Request a visit estimate\",\"follow_up_message\":\"Happy to help with that. Once you tell me the type of care and your ZIP code, I'll share a preliminary self-pay range and set up a consultation to confirm your exact cost.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is CHRISTUS Health's AI scheduling assistant. I can help you find the right care and book your visit.",
+        "goal": "Guide the patient to schedule the right appointment with a nearby CHRISTUS provider and confirm a preliminary visit estimate.",
+        "bookingType": "in-clinic or virtual appointment",
+        "offer": "",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "What type of care are you looking for, such as virtual, urgent, primary, pediatric, or a specialty like Women's Health or Orthopedics?",
+          "What is the main reason for your visit or your primary symptoms?",
+          "Are you a new patient or a returning CHRISTUS patient?",
+          "When would you prefer to be seen?",
+          "What is your ZIP code so I can confirm a nearby CHRISTUS location and availability?"
+        ]
+      },
+      "serviceArea": "Texas, Louisiana, and New Mexico, including ZIP codes starting with 75, 78, 70, and 87"
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:54 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:54 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:54 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "CHRISTUS Health",
+      "callerName": "Maria Gonzalez",
+      "callerPhone": "(210) 555-0847",
+      "campaign": "Primary Care Physician, San Antonio Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$285",
+      "googleSearch": "primary care doctor accepting new patients San Antonio",
+      "websiteSearch": "find a doctor CHRISTUS Health primary care",
+      "callingWebpage": "/care-access/primary-care",
+      "products": "Primary Care Office Visit, Health Risk Assessment",
+      "cartId": "CH-7392M",
+      "serviceable": "Yes",
+      "email": "maria.gonzalez@email.com",
+      "street": "4521 Blanco Road",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78212",
+      "digitalJourney": "/home › /care-access › /primary-care › /find-a-location",
+      "intent": "New patient seeking primary care physician for preventive exam and chronic disease management",
+      "coverage": "ZIP 78212 confirmed, San Antonio serviceable",
+      "switchIntent": "High. Relocating to San Antonio next month, needs established care before then, prefers appointment within two weeks",
+      "greeting": "Hi Maria, this is Sarah with CHRISTUS Health. I see you were looking for a primary care doctor in San Antonio. I'd love to help you schedule an appointment with one of our physicians who are accepting new patients. Would this week or next week work better for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "CHRISTUS Health",
+      "callerName": "James Mitchell",
+      "callerPhone": "(504) 555-0623",
+      "campaign": "Orthopedic Consult, New Orleans Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$375",
+      "googleSearch": "orthopedic surgeon knee pain New Orleans",
+      "websiteSearch": "orthopedics sports medicine CHRISTUS Health Louisiana",
+      "callingWebpage": "/conditions-treatments/orthopedics",
+      "products": "Orthopedic Consult with X-ray, Sports Medicine Injury Evaluation",
+      "cartId": "CH-5816K",
+      "serviceable": "Yes",
+      "email": "james.mitchell@email.com",
+      "street": "2847 Magazine Street",
+      "city": "New Orleans",
+      "state": "LA",
+      "zip": "70115",
+      "digitalJourney": "/home › /conditions-treatments › /orthopedics › /find-a-location",
+      "intent": "Knee pain evaluation and diagnosis from orthopedic specialist with possible imaging",
+      "coverage": "ZIP 70115 confirmed, New Orleans serviceable",
+      "appointment": "Orthopedic Consult with X-ray. Thu Jul 18, 2:30 PM at CHRISTUS Orthopedic Center, Magazine Street location",
+      "greeting": "Hi James, it's Dr. Patterson's office at CHRISTUS Health here. We've got you all set for your knee evaluation this Thursday at 2:30 PM. Your imaging will be done same day. Do you have any questions before your visit?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "CHRISTUS Health",
+      "brandDomain": "www.christushealth.org",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (210) 555-0847",
+      "callerLocation": "San Antonio, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Urgent Care Same-Day Availability",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "urgent care near me San Antonio",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/get-care/urgent-care/locations",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Urgent Care Visit, Primary Care Office Visit",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "San Antonio, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "appointment_urgent_care",
+          "name": "Appointment Scheduling, Urgent Care"
+        },
+        {
+          "id": "support_general",
+          "name": "General Patient Support"
+        },
+        {
+          "id": "er_routing",
+          "name": "Emergency Care Routing"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling CHRISTUS Health. I'm an AI assistant here to help connect you with the right care team. What brings you in today?",
+          "sigs": [],
+          "q": [
+            33,
+            33,
+            34
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, I twisted my ankle pretty bad this morning playing soccer and I can't put weight on it. I'm wondering if I can get someone to look at it today.",
+          "sigs": [
+            {
+              "c": "orange",
+              "t": "Sports injury with <strong>same-day need</strong>"
+            },
+            {
+              "c": "green",
+              "t": "Ankle sprain, weight-bearing issue"
+            }
+          ],
+          "q": [
+            58,
+            25,
+            17
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I'm sorry to hear that. A twisted ankle is exactly what our urgent care team can evaluate right away. We can do X-rays on site and get you seen typically within 30 minutes. Do you have insurance, and are you able to come to one of our San Antonio locations this afternoon?",
+          "sigs": [],
+          "q": [
+            72,
+            18,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, I have Aetna insurance and I can head over now if you have an opening. I'm in the north part of town.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "Insurance verified, <strong>immediate availability</strong>"
+            },
+            {
+              "c": "green",
+              "t": "Geographic preference noted"
+            }
+          ],
+          "q": [
+            86,
+            9,
+            5
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm routing you to our urgent care appointment scheduling team at the Stone Oak location, just minutes from you. They'll confirm your insurance details and get you booked in right away. You're in great hands.",
+          "sigs": [],
+          "q": [
+            95,
+            3,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get you scheduled (Agent)\", \"I'll book that appointment for you (Agent)\", \"yes I'd like to come in (Caller)\", \"go ahead and schedule my visit (Caller)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "01/09/26 2:41 pm"
+        },
+        {
+          "name": "Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"do you have any openings (Caller)\", \"what times are available (Caller)\", \"next available appointment (Agent)\", \"when would you like to come in (Agent)\"])",
+          "createdAt": "04/02/25 11:37 am",
+          "updatedAt": "12/18/25 10:05 am"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Baylor Scott and White (Caller)\", \"Methodist Hospital (Caller)\", \"HCA facility (Caller)\", \"another health system (Caller)\"])",
+          "createdAt": "05/21/25 3:48 pm",
+          "updatedAt": "11/30/25 4:22 pm"
+        },
+        {
+          "name": "Cost & Insurance Concern",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"do you take my insurance (Caller)\", \"how much will this cost (Caller)\", \"is this covered by my plan (Caller)\", \"do you offer financial assistance (Caller)\"])",
+          "createdAt": "06/09/25 8:55 am",
+          "updatedAt": "01/05/26 1:17 pm"
+        },
+        {
+          "name": "Empathy & Compassion",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Patient Empathy & Compassion] < 60 and duration > 45 sec",
+          "createdAt": "07/16/25 10:24 am",
+          "updatedAt": "12/28/25 9:33 am"
+        },
+        {
+          "name": "HIPAA & Privacy Compliance",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[HIPAA Privacy Compliance] < 60 and duration > 45 sec",
+          "createdAt": "08/03/25 2:19 pm",
+          "updatedAt": "01/12/26 11:48 am"
+        },
+        {
+          "name": "Provider Availability Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"are you accepting new patients (Caller)\", \"help me find a doctor (Caller)\", \"need a primary care physician (Caller)\", \"pediatrician near me (Caller)\"])",
+          "createdAt": "09/11/25 4:07 pm",
+          "updatedAt": "12/22/25 3:59 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the self-pay price is (Agent)\", \"the cash rate would be (Agent)\", \"estimated cost for the procedure (Agent)\", \"that would run about (Agent)\"])",
+          "createdAt": "10/07/25 9:41 am",
+          "updatedAt": "01/15/26 10:12 am"
+        },
+        {
+          "name": "Scheduling Follow-up Offered",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Follow-up Scheduling] < 60 and duration > 45 sec",
+          "createdAt": "10/29/25 1:33 pm",
+          "updatedAt": "01/18/26 4:05 pm"
+        },
+        {
+          "name": "Service Line Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule a mammogram (Caller)\", \"urgent care visit (Caller)\", \"knee replacement surgery (Caller)\", \"cancer treatment center (Caller)\"])",
+          "createdAt": "11/12/25 8:26 am",
+          "updatedAt": "01/22/26 2:50 pm"
+        }
+      ]
+    }
+  }
+}

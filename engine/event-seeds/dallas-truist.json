@@ -1,0 +1,5438 @@
+{
+  "id": "truist",
+  "customerName": "Truist",
+  "websiteUrl": "https://www.truist.com",
+  "brandDomain": "truist.com",
+  "networkName": "Invoca for Banking",
+  "industry": "Retail & Consumer Banking",
+  "bookingTerm": "Appointment",
+  "customerNoun": "Client",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 25000,
+      "yTicks": [
+        5000,
+        10000,
+        15000,
+        20000,
+        25000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 17842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 19264
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 20158
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 19347
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 17753
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Truist One Checking, Open in Minutes",
+          "marketingSearchTerm": "truist one checking monthly fee",
+          "landingPageUrl": "https://www.truist.com/checking/truist-one-checking?utm_source=google&utm_medium=cpc&utm_campaign=one_checking",
+          "websiteJourney": "Home / Checking & Savings / Checking",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Cash Rewards Card, No Annual Fee",
+          "marketingSearchTerm": "truist cash rewards credit card 3 2 1",
+          "landingPageUrl": "https://www.truist.com/credit-cards/enjoy-cash?utm_source=google&utm_medium=cpc&utm_campaign=enjoy_cash",
+          "websiteJourney": "Home / Credit Cards / Our Products",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "CD Rates, Guaranteed Return",
+          "marketingSearchTerm": "truist cd rates today",
+          "landingPageUrl": "https://www.truist.com/savings/cds?utm_source=bing&utm_medium=cpc&utm_campaign=cd_rates",
+          "websiteJourney": "Home / Checking & Savings / Savings",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Mortgage Rates, Buy a Home",
+          "marketingSearchTerm": "truist mortgage rates",
+          "landingPageUrl": "https://www.truist.com/mortgage/buy-a-home?utm_source=google&utm_medium=cpc&utm_campaign=mortgage_buy",
+          "websiteJourney": "Home / Mortgage / Mortgage Lending",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "LightStream Debt Consolidation",
+          "marketingSearchTerm": "lightstream debt consolidation loan",
+          "landingPageUrl": "https://www.truist.com/loans/lightstream-debt-consolidation?utm_source=google&utm_medium=cpc&utm_campaign=lightstream_debt",
+          "websiteJourney": "Home / Loans / Personal Loans & Lines of Credit",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "HELOC, Borrow Against Equity",
+          "marketingSearchTerm": "truist heloc",
+          "landingPageUrl": "https://www.truist.com/mortgage/home-equity?utm_source=google&utm_medium=cpc&utm_campaign=heloc",
+          "websiteJourney": "Home / Mortgage / Home Equity Lending",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Auto Refinance, Lower Your Payment",
+          "marketingSearchTerm": "truist auto loan refinance",
+          "landingPageUrl": "https://www.truist.com/loans/auto/refinance?utm_source=bing&utm_medium=cpc&utm_campaign=auto_refi",
+          "websiteJourney": "Home / Loans / Auto Loans",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Truist One Checking, Open in Minutes",
+          "marketingSearchTerm": "truist checking account open online",
+          "landingPageUrl": "https://www.truist.com/checking/open-account?utm_source=google&utm_medium=cpc&utm_campaign=open_checking",
+          "websiteJourney": "Home / Checking & Savings / Checking",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Build Credit, Secured Card",
+          "marketingSearchTerm": "truist secured card build credit",
+          "landingPageUrl": "https://www.truist.com/credit-cards/enjoy-cash-secured?utm_source=google&utm_medium=cpc&utm_campaign=secured_card",
+          "websiteJourney": "Home / Credit Cards / Our Products",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Student Checking, No Monthly Fee",
+          "marketingSearchTerm": "truist student checking no fee",
+          "landingPageUrl": "https://www.truist.com/checking/student?utm_source=google&utm_medium=cpc&utm_campaign=student_checking",
+          "websiteJourney": "Home / Checking & Savings / Checking",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Find a Branch Near You",
+          "marketingSearchTerm": "truist near me locations",
+          "landingPageUrl": "https://www.truist.com/locations?utm_source=bing&utm_medium=cpc&utm_campaign=branch_locator",
+          "websiteJourney": "Home / Locations / Branch Finder",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Care That Moves You",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.truist.com/checking/truist-one-checking?utm_source=instagram&utm_medium=paid_social&utm_campaign=care_moves_you",
+          "websiteJourney": "Home / Checking & Savings / Checking",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Unstoppable Together",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.truist.com/credit-cards/enjoy-travel?utm_source=facebook&utm_medium=paid_social&utm_campaign=unstoppable",
+          "websiteJourney": "Home / Credit Cards / Our Products",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Check for Offers, Pre-Qualified",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.truist.com/loans/lightstream?utm_source=instagram&utm_medium=paid_social&utm_campaign=pre_qualified",
+          "websiteJourney": "Home / Loans / Personal Loans & Lines of Credit",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Truist Cares, Disaster Relief",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.truist.com/purpose/truist-cares?utm_source=facebook&utm_medium=paid_social&utm_campaign=truist_cares",
+          "websiteJourney": "Home / Purpose / Truist Cares",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Money and Mindset Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.truist.com/money-and-mindset/outsmart-debt?utm_source=organic&utm_medium=seo&utm_campaign=money_mindset",
+          "websiteJourney": "Home / Money and Mindset / Outsmart Debt",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Homebuyer's Guide",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.truist.com/mortgage/homebuyers-guide?utm_source=organic&utm_medium=seo&utm_campaign=homebuyer_guide",
+          "websiteJourney": "Home / Mortgage / Mortgage Lending",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Switching Banks Guide",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.truist.com/money-and-mindset/switching-banks?utm_source=organic&utm_medium=seo&utm_campaign=switching_banks",
+          "websiteJourney": "Home / Money and Mindset / Switching Banks",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Truist Trade, Self-Directed Investing",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.truist.com/investing/truist-trade?utm_source=organic&utm_medium=seo&utm_campaign=truist_trade",
+          "websiteJourney": "Home / Investing & Retirement / Investing Services",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Enjoy Travel Card, Rewards Points",
+          "marketingSearchTerm": "truist enjoy travel card review",
+          "landingPageUrl": "https://www.truist.com/credit-cards/enjoy-travel?utm_source=google&utm_medium=cpc&utm_campaign=enjoy_travel",
+          "websiteJourney": "Home / Credit Cards / Our Products",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Zelle Digital Banking Adoption",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.truist.com/banking-services/zelle?utm_source=instagram&utm_medium=paid_social&utm_campaign=zelle_adoption",
+          "websiteJourney": "Home / Checking & Savings / Banking Services",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Home Money Market, Higher Balances",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.truist.com/savings/money-market?utm_source=organic&utm_medium=seo&utm_campaign=money_market",
+          "websiteJourney": "Home / Checking & Savings / Savings",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Truist)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "74,011"
+            },
+            {
+              "label": "New Account Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Account Opened (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$51,167,702"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "11,842"
+            },
+            {
+              "label": "Existing Account Servicing (Percent)",
+              "value": "7%"
+            },
+            {
+              "label": "Card Support (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Locations & Hours (Percent)",
+              "value": "4%"
+            }
+          ]
+        },
+        {
+          "title": "New Account Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Account Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "42%"
+            },
+            {
+              "label": "Unqualified Inquiry (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "Account Opened (Percent)",
+              "value": "22%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Account Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Account Inquiry (Count)",
+            "values": [
+              7142,
+              14203,
+              13876,
+              14521,
+              12427
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              3584,
+              7102,
+              6948,
+              7241,
+              6210
+            ]
+          },
+          {
+            "name": "Unqualified Inquiry (Count)",
+            "values": [
+              1538,
+              3047,
+              2976,
+              3112,
+              2649
+            ]
+          },
+          {
+            "name": "Account Opened (Count)",
+            "values": [
+              1872,
+              3724,
+              3638,
+              3801,
+              3247
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74011,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "28,417",
+                "38%",
+                "15%",
+                "$14,509,472"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "18,642",
+                "42%",
+                "19%",
+                "$12,060,517"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "12,853",
+                "45%",
+                "23%",
+                "$10,065,183"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "8,764",
+                "49%",
+                "28%",
+                "$8,355,861"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "5,335",
+                "54%",
+                "34%",
+                "$6,176,669"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74011,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "26,318",
+                "39%",
+                "16%",
+                "$13,458,352"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "17,942",
+                "43%",
+                "20%",
+                "$11,467,251"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "13,657",
+                "46%",
+                "24%",
+                "$10,476,489"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "9,428",
+                "50%",
+                "29%",
+                "$8,737,861"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "6,666",
+                "55%",
+                "33%",
+                "$7,027,749"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 30202,
+          "rows": [
+            {
+              "name": "Truist One Checking: Open in Minutes",
+              "metrics": [
+                "9,847",
+                "40%",
+                "17%",
+                "$5,440,517"
+              ]
+            },
+            {
+              "name": "Cash Rewards Card, No Annual Fee",
+              "metrics": [
+                "7,318",
+                "44%",
+                "21%",
+                "$4,995,238"
+              ]
+            },
+            {
+              "name": "Care That Moves You",
+              "metrics": [
+                "5,942",
+                "47%",
+                "25%",
+                "$4,829,486"
+              ]
+            },
+            {
+              "name": "Check for Offers Pre-Qualified",
+              "metrics": [
+                "4,231",
+                "51%",
+                "30%",
+                "$4,124,261"
+              ]
+            },
+            {
+              "name": "Money and Mindset Hub",
+              "metrics": [
+                "2,864",
+                "56%",
+                "36%",
+                "$3,350,742"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25655,
+          "rows": [
+            {
+              "name": "truist one checking monthly fee",
+              "metrics": [
+                "8,417",
+                "41%",
+                "18%",
+                "$4,999,518"
+              ]
+            },
+            {
+              "name": "truist cd rates today",
+              "metrics": [
+                "6,238",
+                "45%",
+                "22%",
+                "$4,527,614"
+              ]
+            },
+            {
+              "name": "truist cash rewards credit card",
+              "metrics": [
+                "4,952",
+                "48%",
+                "26%",
+                "$4,250,382"
+              ]
+            },
+            {
+              "name": "lightstream debt consolidation loan",
+              "metrics": [
+                "3,617",
+                "52%",
+                "31%",
+                "$3,699,317"
+              ]
+            },
+            {
+              "name": "truist auto loan refinance",
+              "metrics": [
+                "2,431",
+                "57%",
+                "37%",
+                "$2,966,684"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Set (Industry) (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Checking & Savings",
+              "metrics": [
+                "24,317",
+                "40%",
+                "15%",
+                "$11,548,213"
+              ]
+            },
+            {
+              "name": "Credit Cards",
+              "metrics": [
+                "18,462",
+                "41%",
+                "19%",
+                "$11,027,644"
+              ]
+            },
+            {
+              "name": "Mortgage & Home Equity",
+              "metrics": [
+                "14,205",
+                "43%",
+                "24%",
+                "$10,691,905"
+              ]
+            },
+            {
+              "name": "Loans (Personal & Auto)",
+              "metrics": [
+                "10,738",
+                "44%",
+                "30%",
+                "$10,122,377"
+              ]
+            },
+            {
+              "name": "Investing & Retirement",
+              "metrics": [
+                "6,289",
+                "46%",
+                "39%",
+                "$7,777,563"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74011,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "26,418",
+                "41%",
+                "16.5%",
+                "$13,692,417"
+              ]
+            },
+            {
+              "name": "Southeast",
+              "metrics": [
+                "19,247",
+                "42%",
+                "20%",
+                "$12,098,644"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "12,863",
+                "43%",
+                "24%",
+                "$9,701,255"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "9,538",
+                "45%",
+                "28%",
+                "$8,394,833"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "5,945",
+                "47%",
+                "39%",
+                "$7,280,553"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Account Opened (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Checking & Savings",
+            "values": [
+              712,
+              738,
+              745,
+              731,
+              746
+            ]
+          },
+          {
+            "name": "Credit Cards",
+            "values": [
+              682,
+              701,
+              715,
+              698,
+              712
+            ]
+          },
+          {
+            "name": "Mortgage & Home Equity",
+            "values": [
+              665,
+              678,
+              692,
+              688,
+              686
+            ]
+          },
+          {
+            "name": "Loans (Personal & Auto)",
+            "values": [
+              628,
+              641,
+              655,
+              648,
+              649
+            ]
+          },
+          {
+            "name": "Investing & Retirement",
+            "values": [
+              478,
+              489,
+              505,
+              498,
+              502
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 74,011 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 91,
+          "summary": "Danielle Whitfield called to open a Truist One Checking account after switching from another bank. Agent Oscar walked her through the direct-deposit fee waiver and booked a branch appointment to finalize the paperwork. She left satisfied with a confirmed time.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 87,
+          "summary": "Marcus Deleon asked about current mortgage rates for a first home purchase. Agent Lila reviewed the Homebuyer's Guide options and scheduled a consultation with a loan officer. He appreciated the clear next steps.",
+          "date": "Feb 12, 3:22 PM",
+          "agent": "Lila",
+          "duration": "3m 04s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 82,
+          "summary": "Priya Nandakumar wanted to compare the Truist Enjoy Cash credit card tiers before applying. Agent Rosey explained the 3%, 2%, 1% rewards and the 12 month intro APR, then set an in-branch appointment to complete the application. She confirmed the meeting gladly.",
+          "date": "Mar 4, 1:47 PM",
+          "agent": "Rosey",
+          "duration": "2m 18s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "New caller Anthony Brubaker phoned to open his first checking and savings relationship and asked how to get started. Agent Lee collected his full name, address, and employment details, then scheduled a new-account appointment at the nearest branch. Anthony confirmed the time and thanked Lee for the help.",
+          "date": "Apr 9, 11:05 AM",
+          "agent": "Lee",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 72,
+          "summary": "Gloria Sandoval called about the latest Truist CD rates for a 12 month term. Agent Mary confirmed the current APY and minimum deposit, then booked an appointment to fund the certificate. Gloria was pleased with the guaranteed rate.",
+          "date": "May 15, 9:33 AM",
+          "agent": "Mary",
+          "duration": "2m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Ramon Castellano wanted to refinance an existing auto loan to lower his monthly payment. Agent Sue reviewed refinance terms and scheduled a follow-up appointment with a lending specialist. He agreed the estimate looked promising.",
+          "date": "Jun 2, 4:18 PM",
+          "agent": "Sue",
+          "duration": "2m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 17,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Teresa Okoro asked about a HELOC to fund a kitchen remodel. Agent Mike explained the draw period and variable rate but she wanted to think it over before committing. No appointment was booked on this call.",
+          "date": "Jul 8, 12:52 PM",
+          "agent": "Mike",
+          "duration": "2m 29s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Bradley Kimura disputed a late fee on his Truist Enjoy Cash credit card statement. Agent Jennifer opened a review case and explained the dispute timeline. He remained frustrated that a credit had not posted yet.",
+          "date": "Aug 3, 2:39 PM",
+          "agent": "Jennifer",
+          "duration": "2m 56s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Nadia Fuller called because a Zelle transfer had not reached her recipient. Agent Rose checked the transaction status and started a trace request. Nadia was anxious about the missing funds.",
+          "date": "Aug 21, 10:41 AM",
+          "agent": "Rose",
+          "duration": "2m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Victor Aldridge checked the status of his pending auto loan application. Agent Oscar found that a document was still missing and requested a re-upload. Victor was annoyed at the delay.",
+          "date": "Sep 5, 3:14 PM",
+          "agent": "Oscar",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Sharon Vandermeer wanted to cancel her Truist One Money Market account after a fee surprise. Agent Lila explained the waiver conditions but Sharon insisted on closing it. The cancellation request was logged.",
+          "date": "Sep 19, 1:26 PM",
+          "agent": "Lila",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Curtis Mbeki complained that a Zelle limit blocked an urgent payment and no one had called him back. Agent Mary apologized and escalated to the fraud team. He stayed upset about the wait time.",
+          "date": "Sep 27, 11:58 AM",
+          "agent": "Mary",
+          "duration": "1m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Elena Poborsky left a voicemail asking about the status of her HELOC application and closing costs. The call rolled to voicemail after hours with no agent available. Her message was flagged for a callback.",
+          "date": "Oct 2, 6:47 PM",
+          "agent": "No Agent",
+          "duration": "0m 51s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Gerald Tomlinson was furious about an escrow error on his mortgage statement. Agent Mike tried to explain the adjustment but Gerald demanded a supervisor. The call ended without resolution.",
+          "date": "Oct 14, 4:33 PM",
+          "agent": "Mike",
+          "duration": "3m 08s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Bianca Shreveport complained that her Truist One Checking overdraft cushion had not worked as promised and she was charged twice. Agent Jennifer opened a complaint ticket but could not reverse the fees on the call. Bianca remained dissatisfied.",
+          "date": "Oct 23, 9:19 AM",
+          "agent": "Jennifer",
+          "duration": "2m 44s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "checking",
+        "mortgage",
+        "credit card",
+        "auto loan",
+        "heloc",
+        "zelle"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 41s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Verify Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Primary Banking Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Appointment Date and Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Next Steps and What to Bring",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer Additional Products or Services",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Documentation and Account Opener Notes",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller inquired about opening a checking account",
+        "Caller is new to Truist",
+        "Caller mentioned desire for no monthly fees",
+        "Caller confirmed primary residence in service area",
+        "Caller showed interest in cash rewards credit card",
+        "Caller is employed full-time",
+        "Caller requested appointment for account opening",
+        "Agent offered Truist One Checking product",
+        "Agent confirmed appointment within 3 business days",
+        "Agent captured full legal name",
+        "Agent verified caller's ZIP code",
+        "Agent explained basic account features",
+        "Agent offered to discuss credit card options at appointment"
+      ],
+      "unmetSignals": [
+        "Email address not captured in CRM",
+        "Caller did not provide driver's license information",
+        "Agent did not confirm account funding method",
+        "Direct deposit setup was not discussed",
+        "Overdraft protection options were not explained",
+        "Caller's credit score or pre-qualification status was not determined",
+        "Mobile banking features were not highlighted",
+        "Zelle money transfer capability was not mentioned",
+        "Identity verification process was not outlined",
+        "Appointment confirmation email was not promised"
+      ],
+      "naSignals": [
+        "Caller did not inquire about loan products",
+        "No discussion of mortgage or refinance options",
+        "Caller did not ask about existing account transfer",
+        "No questions about bill pay setup",
+        "Caller did not request information on HSA or retirement accounts",
+        "No discussion of investment services",
+        "Caller did not mention business banking needs"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller is relocating to the Charlotte area and needs to open a new checking account with a bank that has local branch access and no monthly fees. They are switching from another bank and want to get set up before their move."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a straightforward process to open an account, wants confirmation of an in-person appointment at a nearby branch, and is interested in learning about rewards credit card options during the appointment."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address for account opening confirmation and appointment reminders. Additionally, the agent could have set clearer expectations about what documents to bring to the appointment and confirmed that a welcome package would be sent to their new address."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Truist. This is Marcus Bell. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:25",
+          "text": "Hi Marcus. I'm looking to open a checking account. I'm moving to Charlotte in about two weeks and I need to set up banking there."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:38",
+          "text": "That's great. I'd be happy to help you open an account with Truist. To get started, can I get your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:46",
+          "text": "Sure. It's David Chen."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:52",
+          "text": "Thank you, David. And just to confirm, you're looking to open a checking account as a new customer with us?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:01",
+          "text": "Yes, exactly. I've heard good things about Truist and I like that there are branches all over Charlotte."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:12",
+          "text": "Perfect. We have great branch availability in Charlotte. What's the ZIP code where you'll be living?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:22",
+          "text": "28202. That's in the uptown area."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:28",
+          "text": "Excellent. We definitely service that area. Now David, are you interested in our Truist One Checking account? It's our flagship checking product with no monthly fees when you set up direct deposit, and it comes with some nice overdraft protection options."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:48",
+          "text": "That sounds good. No monthly fees is definitely what I want. Do you have any rewards credit cards?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:01",
+          "text": "We absolutely do. We have several options including our Enjoy Cash Visa card with cash back rewards. We can discuss all the details at your appointment, and you can apply if you're interested. Let me schedule that appointment for you now. How does Thursday, October 26th at 2 PM sound at our Uptown Charlotte location?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:26",
+          "text": "That works perfectly for me."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:33",
+          "text": "Great, David. So I've got you scheduled for Thursday, October 26th at 2 PM at our Uptown branch. A specialist will walk you through the account opening process and we can explore credit card options. Is there anything else I can help you with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:53",
+          "text": "No, that covers it. Thanks for your help, Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:02",
+          "text": "You're very welcome, David. Thank you for choosing Truist and we look forward to seeing you on the 26th. Have a great day."
+        }
+      ],
+      "aiSummary": "David Chen, a new banking customer relocating to Charlotte, called to open a checking account with Truist. Marcus Bell successfully captured David's full name, confirmed service area availability in ZIP code 28202, and discussed the features of the Truist One Checking account including no monthly fees. An in-person appointment was scheduled for October 26th at the Uptown Charlotte location where David can complete his account opening and explore rewards credit card options. The agent offered the Enjoy Cash Visa as a credit product opportunity but did not capture David's email address for confirmation or collect additional documentation requirements.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus Great call structure and product knowledge on the Truist One Checking pitch. You clearly qualified David's need and moved through the appointment booking smoothly. Two coaching points: make sure you always capture the email address for account confirmation and appointment reminders, especially on new customer intakes. Also, set expectations upfront about what documents David should bring to his appointment (ID, proof of address, etc.). This removes friction and improves the check-in experience. Well done overall."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "74,011"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$691.35"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$51,167,702"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "41,847"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "56%"
+            },
+            {
+              "label": "Appointment: Scheduled (Count)",
+              "value": "31,085"
+            },
+            {
+              "label": "Appointment: Scheduled (Percent)",
+              "value": "42%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "32,164"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Appointment: Canceled (Percent)",
+              "value": "9%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Appointments)",
+          "chart": {
+            "legend": "Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Direct/Referral",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Email/CRM",
+                "value": 49,
+                "display": "49%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 42,
+                "display": "42%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 34,
+                "display": "34%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "24,318",
+                  "26%",
+                  "$16,842,551"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "18,742",
+                  "34%",
+                  "$13,204,887"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "13,507",
+                  "42%",
+                  "$9,317,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "9,861",
+                  "49%",
+                  "$6,948,213"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct/Referral",
+                  "7,583",
+                  "58%",
+                  "$4,854,609"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 25000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000,
+              25000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 22847,
+                "display": "22,847"
+              },
+              {
+                "name": "organic",
+                "value": 19633,
+                "display": "19,633"
+              },
+              {
+                "name": "paid-social",
+                "value": 14218,
+                "display": "14,218"
+              },
+              {
+                "name": "email",
+                "value": 10472,
+                "display": "10,472"
+              },
+              {
+                "name": "referral",
+                "value": 6841,
+                "display": "6,841"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "22,847",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "19,633",
+                  "36%"
+                ]
+              },
+              {
+                "cells": [
+                  "paid-social",
+                  "14,218",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "10,472",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "6,841",
+                  "56%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 15000,
+            "axisTicks": [
+              0,
+              3000,
+              6000,
+              9000,
+              12000,
+              15000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Truist One Checking, Open in Minutes",
+                "value": 12847,
+                "display": "12,847"
+              },
+              {
+                "name": "Cash Rewards Card, No Annual Fee",
+                "value": 9633,
+                "display": "9,633"
+              },
+              {
+                "name": "Care That Moves You",
+                "value": 7418,
+                "display": "7,418"
+              },
+              {
+                "name": "Check for Offers, Pre-Qualified",
+                "value": 5241,
+                "display": "5,241"
+              },
+              {
+                "name": "CD Rates Today",
+                "value": 3872,
+                "display": "3,872"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Truist One Checking, Open in Minutes",
+                  "12,847",
+                  "33%",
+                  "$8,842,517"
+                ]
+              },
+              {
+                "cells": [
+                  "Cash Rewards Card, No Annual Fee",
+                  "9,633",
+                  "39%",
+                  "$6,651,338"
+                ]
+              },
+              {
+                "cells": [
+                  "Care That Moves You",
+                  "7,418",
+                  "45%",
+                  "$5,127,449"
+                ]
+              },
+              {
+                "cells": [
+                  "Check for Offers, Pre-Qualified",
+                  "5,241",
+                  "54%",
+                  "$3,621,884"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 5000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "truist one checking monthly fee",
+                "value": 4847,
+                "display": "4,847"
+              },
+              {
+                "name": "truist cd rates today",
+                "value": 3912,
+                "display": "3,912"
+              },
+              {
+                "name": "truist cash rewards credit card",
+                "value": 3218,
+                "display": "3,218"
+              },
+              {
+                "name": "lightstream debt consolidation loan",
+                "value": 2684,
+                "display": "2,684"
+              },
+              {
+                "name": "truist mortgage rates",
+                "value": 2147,
+                "display": "2,147"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "truist one checking monthly fee",
+                  "37%"
+                ]
+              },
+              {
+                "cells": [
+                  "truist cd rates today",
+                  "43%"
+                ]
+              },
+              {
+                "cells": [
+                  "truist cash rewards credit card",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "truist mortgage rates",
+                  "58%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Appointment: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Checking & Savings",
+              "21,483",
+              "34%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Credit Cards",
+              "15,742",
+              "40%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Mortgage & Home Equity",
+              "11,318",
+              "46%",
+              "52%"
+            ]
+          },
+          {
+            "cells": [
+              "Loans & Investing",
+              "8,214",
+              "55%",
+              "48%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Truist Charlotte Uptown Branch",
+              "8,472",
+              "641",
+              "4%",
+              "36%"
+            ]
+          },
+          {
+            "cells": [
+              "Truist Atlanta Midtown Branch",
+              "6,918",
+              "512",
+              "5%",
+              "42%"
+            ]
+          },
+          {
+            "cells": [
+              "Truist Winston-Salem Main Branch",
+              "5,341",
+              "387",
+              "6%",
+              "48%"
+            ]
+          },
+          {
+            "cells": [
+              "Truist Orlando Downtown Branch",
+              "3,972",
+              "268",
+              "7%",
+              "55%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Rate Above Expectation",
+            "values": [
+              2384,
+              2517,
+              2206,
+              2341,
+              2399
+            ]
+          },
+          {
+            "name": "Comparing Financial Institutions",
+            "values": [
+              1847,
+              2014,
+              1922,
+              1986,
+              1864
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              1624,
+              1718,
+              1681,
+              1712,
+              1683
+            ]
+          },
+          {
+            "name": "Needs Co-Applicant Approval",
+            "values": [
+              1412,
+              1487,
+              1451,
+              1468,
+              1423
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              1124,
+              1187,
+              1148,
+              1169,
+              1159
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "29,604"
+          },
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Account Opened (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$29,165,590"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,287,120"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,156,840"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$6,892,350"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "27%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,891,670"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,428,950"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,508,660"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 34854,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "8947",
+                "54%",
+                "29%",
+                "$7,156,280"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "7234",
+                "57%",
+                "32%",
+                "$6,842,560"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "6128",
+                "59%",
+                "35%",
+                "$6,289,420"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "4385",
+                "61%",
+                "38%",
+                "$5,127,840"
+              ]
+            },
+            {
+              "name": "Email Campaign",
+              "metrics": [
+                "2910",
+                "63%",
+                "41%",
+                "$3,749,490"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 33195,
+          "rows": [
+            {
+              "name": "Mobile Web",
+              "metrics": [
+                "9156",
+                "53%",
+                "28%",
+                "$6,847,920"
+              ]
+            },
+            {
+              "name": "Desktop Web",
+              "metrics": [
+                "7682",
+                "56%",
+                "31%",
+                "$6,234,580"
+              ]
+            },
+            {
+              "name": "Mobile App",
+              "metrics": [
+                "5437",
+                "59%",
+                "36%",
+                "$5,819,640"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "3847",
+                "62%",
+                "39%",
+                "$4,892,170"
+              ]
+            },
+            {
+              "name": "Voice Call",
+              "metrics": [
+                "2635",
+                "65%",
+                "42%",
+                "$2,371,280"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 32416,
+          "rows": [
+            {
+              "name": "Truist One Checking, Open in Minutes",
+              "metrics": [
+                "6842",
+                "52%",
+                "27%",
+                "$4,925,880"
+              ]
+            },
+            {
+              "name": "Cash Rewards Card, No Annual Fee",
+              "metrics": [
+                "5729",
+                "55%",
+                "30%",
+                "$4,687,350"
+              ]
+            },
+            {
+              "name": "Truist Mortgage Rates Today",
+              "metrics": [
+                "4563",
+                "58%",
+                "34%",
+                "$4,128,690"
+              ]
+            },
+            {
+              "name": "LightStream Debt Consolidation",
+              "metrics": [
+                "3891",
+                "60%",
+                "37%",
+                "$3,741,280"
+              ]
+            },
+            {
+              "name": "Care That Moves You, Truist Cares",
+              "metrics": [
+                "2874",
+                "63%",
+                "40%",
+                "$2,682,590"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 31287,
+          "rows": [
+            {
+              "name": "Truist checking account open online",
+              "metrics": [
+                "4156",
+                "51%",
+                "26%",
+                "$2,842,940"
+              ]
+            },
+            {
+              "name": "Truist cash rewards credit card 3 2 1",
+              "metrics": [
+                "3642",
+                "54%",
+                "29%",
+                "$2,567,380"
+              ]
+            },
+            {
+              "name": "Truist mortgage rates",
+              "metrics": [
+                "2947",
+                "57%",
+                "33%",
+                "$2,456,720"
+              ]
+            },
+            {
+              "name": "Truist CD rates today",
+              "metrics": [
+                "2384",
+                "60%",
+                "36%",
+                "$2,158,400"
+              ]
+            },
+            {
+              "name": "LightStream personal loan",
+              "metrics": [
+                "1876",
+                "62%",
+                "38%",
+                "$1,687,520"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Checking & Savings",
+              "metrics": [
+                "8634",
+                "58%",
+                "34%",
+                "$8,942,180"
+              ]
+            },
+            {
+              "name": "Credit Cards",
+              "metrics": [
+                "6847",
+                "56%",
+                "31%",
+                "$6,158,420"
+              ]
+            },
+            {
+              "name": "Mortgage",
+              "metrics": [
+                "5392",
+                "55%",
+                "30%",
+                "$5,784,260"
+              ]
+            },
+            {
+              "name": "Personal Loans & Lines",
+              "metrics": [
+                "4921",
+                "57%",
+                "32%",
+                "$4,687,950"
+              ]
+            },
+            {
+              "name": "Investing & Wealth Management",
+              "metrics": [
+                "3810",
+                "59%",
+                "35%",
+                "$3,592,780"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Checking & Savings",
+              "metrics": [
+                "8634",
+                "58%",
+                "34%",
+                "$8,942,180"
+              ]
+            },
+            {
+              "name": "Credit Cards",
+              "metrics": [
+                "6847",
+                "56%",
+                "31%",
+                "$6,158,420"
+              ]
+            },
+            {
+              "name": "Mortgage",
+              "metrics": [
+                "5392",
+                "55%",
+                "30%",
+                "$5,784,260"
+              ]
+            },
+            {
+              "name": "Personal Loans & Lines",
+              "metrics": [
+                "4921",
+                "57%",
+                "32%",
+                "$4,687,950"
+              ]
+            },
+            {
+              "name": "Investing & Wealth Management",
+              "metrics": [
+                "3810",
+                "59%",
+                "35%",
+                "$3,592,780"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Account Opened (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Checking & Savings",
+            "values": [
+              598,
+              742,
+              815,
+              689,
+              571
+            ]
+          },
+          {
+            "name": "Credit Cards",
+            "values": [
+              482,
+              615,
+              521,
+              603,
+              426
+            ]
+          },
+          {
+            "name": "Mortgage",
+            "values": [
+              392,
+              487,
+              502,
+              531,
+              408
+            ]
+          },
+          {
+            "name": "Personal Loans & Lines",
+            "values": [
+              348,
+              421,
+              516,
+              478,
+              359
+            ]
+          },
+          {
+            "name": "Investing & Wealth Management",
+            "values": [
+              276,
+              318,
+              394,
+              527,
+              295
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "376"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "843"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Appointment Scheduled",
+            "values": [
+              73,
+              79,
+              75,
+              81,
+              77,
+              82,
+              74,
+              78,
+              80,
+              76,
+              83,
+              79,
+              75,
+              81,
+              78,
+              82,
+              74,
+              79,
+              81,
+              77,
+              80,
+              78,
+              76,
+              82,
+              79,
+              81,
+              75,
+              78,
+              80,
+              79,
+              77,
+              85,
+              178,
+              189,
+              174,
+              191,
+              183,
+              187,
+              175,
+              192,
+              186,
+              180,
+              188,
+              177,
+              184,
+              190,
+              179,
+              185,
+              181
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,173"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "724"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "62%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "709"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "98%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Appointment Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Checking & Savings Account Questions",
+            "values": [
+              8,
+              12,
+              4,
+              11,
+              9,
+              10
+            ]
+          },
+          {
+            "name": "Credit Card Rewards Inquiry",
+            "values": [
+              6,
+              9,
+              7,
+              8,
+              11,
+              9
+            ]
+          },
+          {
+            "name": "Mortgage & Refinance Rates",
+            "values": [
+              11,
+              14,
+              9,
+              13,
+              12,
+              15
+            ]
+          },
+          {
+            "name": "Personal Loan & Debt Consolidation",
+            "values": [
+              7,
+              10,
+              6,
+              9,
+              8,
+              11
+            ]
+          },
+          {
+            "name": "Auto & Recreational Loan Options",
+            "values": [
+              5,
+              8,
+              3,
+              7,
+              6,
+              9
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "68,090"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "49,588"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Account Opened (Count)",
+            "value": "31,085"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$51,167,702"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Wellington",
+              "value": 217,
+              "display": "217"
+            },
+            {
+              "name": "Sheila Gonzalez",
+              "value": 189,
+              "display": "189"
+            },
+            {
+              "name": "David Chen",
+              "value": 243,
+              "display": "243"
+            },
+            {
+              "name": "Patricia Okonkwo",
+              "value": 201,
+              "display": "201"
+            },
+            {
+              "name": "James Kowalski",
+              "value": 156,
+              "display": "156"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Account Opened (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Jennifer Massey",
+            "values": [
+              318,
+              356,
+              389,
+              412,
+              487
+            ]
+          },
+          {
+            "name": "Robert Villanueva",
+            "values": [
+              294,
+              331,
+              367,
+              401,
+              456
+            ]
+          },
+          {
+            "name": "Amanda Foster",
+            "values": [
+              272,
+              308,
+              346,
+              378,
+              419
+            ]
+          },
+          {
+            "name": "Victor Ramirez",
+            "values": [
+              251,
+              287,
+              322,
+              359,
+              401
+            ]
+          },
+          {
+            "name": "Nicole Ashford",
+            "values": [
+              238,
+              269,
+              301,
+              334,
+              376
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Wellington",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Sheila Gonzalez",
+              "value": 56.7,
+              "display": "56.7%"
+            },
+            {
+              "name": "David Chen",
+              "value": 52.8,
+              "display": "52.8%"
+            },
+            {
+              "name": "Patricia Okonkwo",
+              "value": 58.1,
+              "display": "58.1%"
+            },
+            {
+              "name": "James Kowalski",
+              "value": 55.4,
+              "display": "55.4%"
+            },
+            {
+              "name": "Gregory Hayes",
+              "value": 57.3,
+              "display": "57.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Wellington",
+                "54.2%",
+                "28%",
+                "$646,891",
+                "1,397"
+              ]
+            },
+            {
+              "cells": [
+                "Sheila Gonzalez",
+                "56.7%",
+                "29%",
+                "$668,247",
+                "1,441"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "52.8%",
+                "26%",
+                "$596,134",
+                "1,387"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Okonkwo",
+                "58.1%",
+                "31%",
+                "$714,556",
+                "1,468"
+              ]
+            },
+            {
+              "cells": [
+                "James Kowalski",
+                "55.4%",
+                "27%",
+                "$621,309",
+                "1,419"
+              ]
+            },
+            {
+              "cells": [
+                "Gregory Hayes",
+                "57.3%",
+                "30%",
+                "$687,438",
+                "1,403"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Jennifer Massey",
+              "value": 91.6,
+              "display": "91.6%"
+            },
+            {
+              "name": "Robert Villanueva",
+              "value": 89.3,
+              "display": "89.3%"
+            },
+            {
+              "name": "Amanda Foster",
+              "value": 87.8,
+              "display": "87.8%"
+            },
+            {
+              "name": "Victor Ramirez",
+              "value": 93.1,
+              "display": "93.1%"
+            },
+            {
+              "name": "Nicole Ashford",
+              "value": 88.5,
+              "display": "88.5%"
+            },
+            {
+              "name": "Christopher Baldwin",
+              "value": 90.2,
+              "display": "90.2%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Massey",
+                "91.6%",
+                "62%",
+                "$1,521,874",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Villanueva",
+                "89.3%",
+                "59%",
+                "$1,442,167",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Foster",
+                "87.8%",
+                "58%",
+                "$1,408,292",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Victor Ramirez",
+                "93.1%",
+                "64%",
+                "$1,564,291",
+                "1,506"
+              ]
+            },
+            {
+              "cells": [
+                "Nicole Ashford",
+                "88.5%",
+                "61%",
+                "$1,487,456",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Baldwin",
+                "90.2%",
+                "63%",
+                "$1,553,802",
+                "1,545"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Account Opened (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Account Opened (Count)",
+        "rightMax": 1500,
+        "rightTicks": [
+          0,
+          375,
+          750,
+          1125,
+          1500
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1152
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1104
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1029
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 982
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 855
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 897
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 991
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1030
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1148
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1113
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1003
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 969
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 863
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 889
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1014
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1045
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1137
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1120
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 982
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 951
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 876
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 885
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1032
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1066
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1123
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1121
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 968
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 928
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 891
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 887
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1034
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 2400000,
+        "rightTicks": [
+          0,
+          800000,
+          1600000,
+          2400000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1896741
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1817940
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1692873
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1615327
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 1406439
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 1476020
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1630516
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1694787
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1889697
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1832178
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1650181
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1594932
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 1419222
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 1462882
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1669337
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1720204
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1872102
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1842967
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1616083
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 1564824
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 1440524
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 1455626
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1698110
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1754399
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1848319
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1845631
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 1592959
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 1527394
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 1465502
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 1458435
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1715551
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "74,011"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:17"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "5,921"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "4,441"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "81%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Margaret Chen",
+                "412",
+                "89%",
+                "88%",
+                "79%"
+              ]
+            },
+            {
+              "cells": [
+                "David Rodriguez",
+                "538",
+                "85%",
+                "84%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "Jessica Walters",
+                "456",
+                "84%",
+                "83%",
+                "82%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "74,011 calls",
+      "pagerLabel": "1 of 7,401",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 9:22 am",
+          "id": "A31C-4D9E7A16B208"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C84D-2F1B6E90A7C3"
+        },
+        {
+          "time": "1/14/26 11:05 am",
+          "id": "9E20-6C3A8B12D4F7"
+        },
+        {
+          "time": "1/15/26 12:18 pm",
+          "id": "B7F9-1A82C5E30D96"
+        },
+        {
+          "time": "1/20/26 1:33 pm",
+          "id": "D45A-93E1F6027BC8"
+        },
+        {
+          "time": "1/22/26 2:49 pm",
+          "id": "6218-7BD4A9E1350F"
+        },
+        {
+          "time": "1/26/26 3:57 pm",
+          "id": "E903-5F27A8C4162B"
+        },
+        {
+          "time": "1/28/26 4:26 pm",
+          "id": "71BC-08D3E9F2A564"
+        },
+        {
+          "time": "1/30/26 5:12 pm",
+          "id": "3A6E-C41F0827B9D5"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling Truist, this is Marcus. Who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling Truist",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:08",
+          "text": "Hi Marcus, my name is Danielle Foster. I just moved to the area and I'm looking to open a new checking account.",
+          "highlights": [
+            "Danielle Foster",
+            "open a new checking account"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:15",
+          "text": "Welcome to Truist, Danielle, and congratulations on the move. Are you brand new to Truist, or have you banked with us before?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:22",
+          "text": "Brand new. I've never had an account here. I've been with a smaller local bank up until now.",
+          "highlights": [
+            "Brand new"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:29",
+          "text": "Great, I can absolutely help you get set up. May I ask what matters most to you in a checking account, things like direct deposit, mobile banking, or avoiding fees?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:38",
+          "text": "Honestly, avoiding fees is a big one. What does the monthly charge run on your everyday account? I want to keep it manageable.",
+          "highlights": [
+            "What does the monthly charge run",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:47",
+          "text": "That's a fair question. Our Truist One Checking has a twelve dollar monthly maintenance fee, but it's waived when you set up a qualifying direct deposit or keep a minimum balance. Most customers never pay it.",
+          "highlights": [
+            "Truist One Checking",
+            "twelve dollar monthly maintenance fee",
+            "waived"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:59",
+          "text": "Okay, that's reasonable. The bank down the street offered me free checking with no strings, so I'm comparing a few options before I decide.",
+          "highlights": [
+            "comparing a few options"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:09",
+          "text": "That makes sense, and I'd encourage you to compare. What sets Truist One apart is the overdraft cushion tiers and relationship benefits, plus your direct deposit waives the fee entirely, so it functions like free checking with more protection.",
+          "highlights": [
+            "overdraft cushion tiers"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:21",
+          "text": "That's good to know. I'd also want to look at a rewards credit card at some point. Do you have anything with cash back?",
+          "highlights": [
+            "rewards credit card",
+            "cash back"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:29",
+          "text": "We do. The Truist Enjoy Cash Visa has no annual fee and earns three, two, and one percent cash rewards in your top categories, with a low intro APR for the first twelve months. It pairs nicely with the checking account.",
+          "highlights": [
+            "Truist Enjoy Cash Visa",
+            "no annual fee",
+            "three, two, and one percent cash rewards"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:41",
+          "text": "Nice. One thing though, I don't want to be locked into anything if it turns out this isn't the right fit for me.",
+          "highlights": [
+            "don't want to be locked into anything"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:49",
+          "text": "Completely understand, and there's no lock-in. The checking account has no term commitment, and the card is a standard revolving account you can manage or close anytime. You're always in control.",
+          "highlights": [
+            "no lock-in",
+            "no term commitment"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:00",
+          "text": "That eases my mind. I think I'd like to come in and get this started properly with someone.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:07",
+          "text": "Wonderful. I can schedule an appointment at your nearest branch so a banker walks you through the checking account and the Enjoy Cash card together. Would Thursday at 10 AM work?",
+          "highlights": [
+            "schedule an appointment",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:16",
+          "text": "Thursday at 10 works for me. Let me just double-check with my husband, but I'm fairly sure we're free then.",
+          "highlights": [
+            "double-check with my husband"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:23",
+          "text": "No problem at all. I'll pencil in Thursday at 10 AM and send a confirmation. What's the best email and phone number to reach you?",
+          "highlights": [
+            "Thursday at 10 AM",
+            "confirmation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:30",
+          "text": "Email is danielle.foster@email.com, and my cell is 704-555-0182.",
+          "highlights": [
+            "danielle.foster@email.com",
+            "704-555-0182"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:36",
+          "text": "Perfect, you're all set for Thursday at 10 AM, Danielle. Bring a photo ID and we'll have everything ready. Thank you for choosing Truist, and welcome to the family.",
+          "highlights": [
+            "all set for Thursday at 10 AM",
+            "Thank you for choosing Truist"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:40",
+          "text": "Thank you so much, Marcus. See you Thursday.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:41",
+          "text": "Take care, Danielle. Goodbye.",
+          "highlights": [
+            "Take care"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Product Interest: Checking Account",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Product Interest: Cash Rewards Card",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Fee Objection Raised",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Foster, a new prospect who recently moved to the area, called Truist to open a checking account and asked about avoiding monthly fees. Agent Marcus recommended Truist One Checking, explaining the twelve dollar fee is waived with direct deposit, and cross-sold the Truist Enjoy Cash Visa with three, two, and one percent cash rewards. He addressed her fee concern, a competing local bank offer, and her worry about being locked in, then scheduled a branch appointment for Thursday at 10 AM and captured her contact details.",
+        "keyPoints": [
+          "New client, never banked with Truist, recently relocated",
+          "Primary need: fee-conscious everyday checking account",
+          "Recommended Truist One Checking with fee waived via direct deposit",
+          "Cross-sold Truist Enjoy Cash Visa cash rewards card",
+          "Handled objections on fees, a competitor offer, and no lock-in",
+          "Branch appointment booked for Thursday at 10 AM, email and phone captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Appointment booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "46,627 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,663",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for reaching out to Truist. I'm helping folks explore checking and savings options today. Quick question, are you currently banking with us or looking to switch?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Looking to switch. My current bank charges me too much in fees."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "I hear you on that. So we've got some great no-fee and low-fee options that might be a better fit. Are you mainly looking for a basic checking account, or do you also need a linked savings account?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "Both actually. I want checking and savings."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. And just to understand your needs better, roughly how much do you keep in your accounts each month? Are we talking under 500, between 500 and 2500, or higher?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:27 AM",
+              "text": "I'd say around 1500 to 2000 most months."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:28 AM",
+              "text": "Great. So our Truist One Checking has no monthly fee if you set up direct deposit, and our Truist One Savings pairs nicely with that. I can walk you through opening both. Do you get a regular paycheck deposited each month?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "Yes I do. This sounds good so far."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Excellent. So we can get you started with both accounts right now or schedule a time to talk through it with one of our advisors. Would you prefer to open online today, or would you like to schedule a call with someone at our branch in Denver this week?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "I'd rather do a call. Maybe Thursday or Friday?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Perfect. I have Thursday March 13th at 10 AM or Friday March 14th at 2 PM available with our team. Which works better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:36 AM",
+              "text": "Thursday at 10 AM is great."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:37 AM",
+              "text": "Wonderful. I've got you down for Thursday, March 13th at 10 AM with our Denver branch. You'll get a confirmation text shortly with a callback number. Thanks for choosing Truist, and we look forward to helping you save on fees."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:38 AM",
+              "text": "Thanks so much. See you Thursday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product: Checking and Savings",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Balance Range: $1500 to $2000",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Direct Deposit Confirmed",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Branch Location: Denver",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "303-555-0147",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Mitchell",
+            "firstName": "Sarah",
+            "lastName": "Mitchell",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A823-4B9C6E1F7D2A",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A823-4B9C6E1F7D2A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B741-9A3F5C8E2B6D",
+          "time": "8/16/25 10:38 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B741-9A3F5C8E2B6D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D965-7E4A2C1B8F9E",
+          "time": "8/16/25 10:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D965-7E4A2C1B8F9E",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "74,011 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 7,401",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Thank you for calling Truist. This is Marcus speaking. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Hi, yeah, I saw an ad about your cash rewards credit card and I'm interested in learning more."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:48 PM",
+              "text": "Great, I'd be happy to tell you about our Enjoy Cash Visa card. It's a fantastic option with no annual fee and rewards up to three percent cash back. Are you currently using a rewards card with another bank?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:49 PM",
+              "text": "I am, but I'm looking to switch because I want better rates and benefits."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:50 PM",
+              "text": "Perfect. The Enjoy Cash card earns three percent on groceries and gas, two percent on dining and travel, and one percent on everything else. We also offer an intro APR offer for the first twelve months. What's your primary spending category each month?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:51 PM",
+              "text": "Probably groceries and fuel. I spend maybe eight hundred to a thousand a month on those combined."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:52 PM",
+              "text": "Excellent, so you'd be earning twenty-four to thirty dollars a month just on those categories alone. Do you currently bank with Truist, or would this be a new relationship?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:53 PM",
+              "text": "New relationship. I've been with another bank for years but I'm ready to make the switch."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:54 PM",
+              "text": "Welcome. I'd love to get you set up. Just a quick question, what's your annual household income range? This helps us determine your approval odds."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:55 PM",
+              "text": "Between seventy-five and a hundred thousand."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:56 PM",
+              "text": "Wonderful, that's very helpful. So here's what I'd like to do. I can schedule you with a specialist who can walk through the application process, answer any questions about the intro APR, and get your card approved today. Does sometime this Thursday, January sixteenth at ten in the morning work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:57 PM",
+              "text": "Yeah, that works great for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:58 PM",
+              "text": "Perfect. I've scheduled you for Thursday, January sixteenth at ten AM with our new accounts specialist. They'll have everything ready when you call back. Your reference number is V eight four two six one. We'll also send you a confirmation email. Thanks so much for choosing Truist."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:59 PM",
+              "text": "Great, thanks Marcus. I appreciate the help."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:59 PM",
+              "text": "You're very welcome. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Enjoy Cash Visa",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Annual Income Verified",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Credit Card Application Intent",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Monthly Spending Profile Established",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:47 pm",
+            "duration": "12:18",
+            "destinationPhone": "877-936-2933",
+            "source": "877-930-8847",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "404-218-7634",
+            "repeatCaller": "No",
+            "city": "Atlanta",
+            "region": "GA",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Eastern Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B821-7F4AD298C61E",
+          "time": "1/18/26 11:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B821-7F4AD298C61E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C649-3E8B5F2DA704",
+          "time": "1/22/26 3:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C649-3E8B5F2DA704",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D175-6A9CF847B3E2",
+          "time": "1/28/26 1:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D175-6A9CF847B3E2",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as Truist's AI banking assistant here to help match you with the right account or loan and set up a personalized banking consultation, mention that new Truist One Checking clients may qualify for a limited-time welcome bonus with qualifying direct deposit, and ask if they'd like to get started.",
+        "Qualify one question at a time: Ask only one question per text, covering which product they're interested in (checking, savings, credit card, mortgage, auto or personal loan), their primary banking goal, their approximate timeline to open or apply, whether they're a current Truist client, and finally their ZIP code so we can confirm the nearest branch.",
+        "Confirm then book: Confirm we have a Truist branch near their ZIP, share a general overview of the options that fit their goal without quoting exact rates or fees, recommend a consultation with a Truist banker for personalized terms, propose a specific day and time, and confirm they'll receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Truist_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Checking & Savings",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Credit Cards",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Locations & Find a Branch",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Card status\",\"question\":\"When will my new Truist Enjoy Cash Visa arrive?\",\"answer\":\"Approved cards typically arrive within 7 to 10 business days after your application is finalized. A banker can confirm the exact status of your card during a quick appointment.\"},{\"topic\":\"Reschedule\",\"question\":\"Can I move my mortgage consultation to another day?\",\"answer\":\"Absolutely, we can reschedule your consultation to a time that works better for you. Let me know your preferred day and I'll update your appointment and send a new reminder text.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What is the monthly fee for Truist One Checking?",
+              "answer": "Truist One Checking has a monthly maintenance fee that can be waived when you meet relationship or direct deposit requirements. I can set you up with a banker who will walk through the exact ways to waive it and help you open the account."
+            },
+            {
+              "question": "How do I open a Truist checking account?",
+              "answer": "You can open a Truist One, Confidence, or Student Checking account online or with a banker at your local branch. I'd be glad to book a quick appointment so a banker can help you choose the right fit and complete the setup."
+            },
+            {
+              "question": "Do you offer a no fee student checking account?",
+              "answer": "Yes, Truist Student Checking has no monthly maintenance fee for enrolled students and includes our digital banking tools. Let's schedule a short appointment so a banker can get you started."
+            },
+            {
+              "question": "What are your current CD rates?",
+              "answer": "Our Certificates of Deposit come in terms from 7 months to 5 years with fixed, guaranteed rates that change over time. A banker can share today's current terms and help you open one during a consultation."
+            },
+            {
+              "question": "Which credit card gives the best cash rewards?",
+              "answer": "The Truist Enjoy Cash Visa offers tiered cash rewards with no annual fee, which many clients love. I can arrange a consultation so a banker can compare it with our other cards for your spending habits."
+            },
+            {
+              "question": "Do you have a card for building credit?",
+              "answer": "Yes, the Truist Enjoy Cash Secured Visa helps you build credit while earning cash rewards. Let's set up an appointment so a banker can review the deposit requirement and get you approved."
+            },
+            {
+              "question": "Can I refinance my auto loan with Truist?",
+              "answer": "Yes, we offer auto refinancing that may lower your rate or payment depending on your situation. A banker can review your details during a consultation to find the best terms for you."
+            },
+            {
+              "question": "What personal loans do you offer?",
+              "answer": "Through LightStream we offer fixed-rate personal loans for debt consolidation, home improvement, and major expenses with no fees and no collateral. I'd be happy to book a consultation so a specialist can review your options."
+            },
+            {
+              "question": "How much can I borrow with a HELOC?",
+              "answer": "Your available amount depends on your home equity, credit, and other factors that a lending specialist reviews individually. Let's schedule an appointment so a banker can walk you through the numbers."
+            },
+            {
+              "question": "What mortgage programs are available?",
+              "answer": "Truist offers purchase, refinance, FHA, VA, doctor, and construction-to-permanent home loans among others. A mortgage consultation is the best way to match a program to your goals, and I can set that up for you."
+            },
+            {
+              "question": "Do you have a branch near me?",
+              "answer": "We have branches across our service footprint, and I can confirm the closest one once you share your ZIP code. From there I'll book you an appointment with a nearby banker."
+            },
+            {
+              "question": "How do I switch my banking to Truist?",
+              "answer": "Our team can help you move direct deposits and automatic payments smoothly using our switching guide. Let's set up an appointment so a banker can walk you through each step."
+            },
+            {
+              "question": "Does Truist offer Zelle and mobile banking?",
+              "answer": "Yes, Truist includes Zelle, Paze, and full online and mobile banking with our accounts. A banker can help you enroll and get comfortable with the tools during a quick appointment."
+            },
+            {
+              "question": "What is the difference between Truist One Savings and the Money Market account?",
+              "answer": "Truist One Savings is a companion savings account with automatic-transfer tools, while the One Money Market Account is designed for higher balances with check and debit access. A banker can help you pick the right one during a consultation."
+            },
+            {
+              "question": "Can I open a savings account for my child?",
+              "answer": "Yes, we offer savings options that work well for building early habits, and a banker can review the best fit for your family. I'd be glad to schedule an appointment for you."
+            },
+            {
+              "question": "How do I apply for a mortgage refinance?",
+              "answer": "You can start a refinance with a mortgage specialist who reviews your current loan and goals to find savings opportunities. Let me book a consultation so we can get that started."
+            },
+            {
+              "question": "What do I need to open an account?",
+              "answer": "Generally you'll need a government-issued ID, your Social Security number, and a way to fund the account, though a banker will confirm specifics for your situation. Let's set up an appointment so everything is ready."
+            },
+            {
+              "question": "Do you finance RVs and boats?",
+              "answer": "Yes, we offer recreational loans for RVs, boats, marine, and motorcycles at fixed terms. A banker can review your financing options during a consultation, and I can book that now."
+            },
+            {
+              "question": "Can I invest through Truist?",
+              "answer": "Yes, Truist Trade offers self-directed investing with commission-free online stock and ETF trades, plus advisor-guided planning is available. A consultation with a specialist is a great next step, and I can arrange it."
+            },
+            {
+              "question": "How do I get pre-qualified without hurting my credit?",
+              "answer": "We offer a way to check for offers you may pre-qualify for without impacting your credit score. Let's schedule an appointment so a banker can walk you through your personalized options."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule a banking appointment\",\"follow_up_message\":\"Great, I have you down for a banking consultation with a Truist banker. Please confirm your ZIP code so I can match you with the nearest branch and lock in your preferred day and time.\"},{\"intent\":\"Request account and loan options\",\"follow_up_message\":\"Happy to help you find the right fit. Once you share your ZIP code and preferred time, I'll book you with a Truist banker who can review the accounts and loans that match your goals and finalize the details.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Truist's AI banking assistant. I can help you find the right account, card, or loan and set up a personalized consultation with a Truist banker. Would you like to get started?",
+        "goal": "Guide the client to book an in-branch banking appointment with a Truist banker to open an account or apply for the right product.",
+        "bookingType": "in-branch banking appointment",
+        "offer": "Ask about our limited-time Truist One Checking welcome bonus with qualifying direct deposit",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Which product are you most interested in today: checking, savings, a credit card, a mortgage, or an auto or personal loan?",
+          "What is your main banking goal, such as everyday banking, saving, building credit, or financing a purchase?",
+          "What is your approximate timeline to open the account or apply?",
+          "Are you a current Truist client, or would this be a new relationship?",
+          "What is your ZIP code so I can confirm the Truist branch nearest you?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:32 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:32 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:32 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Truist",
+      "callerName": "Jennifer Martinez",
+      "callerPhone": "(704) 555-0187",
+      "campaign": "Truist One Checking, Charlotte Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$3,847",
+      "googleSearch": "Truist checking account open online low fee",
+      "websiteSearch": "Truist One Checking vs competitor monthly charges",
+      "callingWebpage": "/checking-savings/checking",
+      "products": "Truist One Checking, Truist One Savings",
+      "cartId": "TR-7392M",
+      "serviceable": "Yes",
+      "email": "jennifer.martinez@email.com",
+      "street": "4215 Wendover Road",
+      "city": "Charlotte",
+      "state": "NC",
+      "zip": "28211",
+      "digitalJourney": "/home › /checking-savings › /checking › /truist-one-checking",
+      "intent": "Customer is comparing checking accounts with no monthly fee and wants to understand overdraft protection options for her small business cash flow.",
+      "coverage": "ZIP 28211 confirmed. Charlotte serviceable",
+      "switchIntent": "High. Currently banking with competitor and frustrated by monthly maintenance fees. Ready to switch accounts this week if no-fee options available.",
+      "greeting": "Hi Jennifer, this is Sarah at Truist. I see you were just looking at our Truist One Checking account and comparing monthly fees. I'd love to walk you through our waivable fee structure and overdraft cushion options that might work perfectly for your business. Do you have 10 minutes to chat?"
+    },
+    "smsScreenpop": {
+      "brandName": "Truist",
+      "callerName": "Marcus Thompson",
+      "callerPhone": "(602) 555-0243",
+      "campaign": "LightStream Debt Consolidation. Phoenix Growth",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$18,650",
+      "googleSearch": "LightStream debt consolidation loan no fee bad credit",
+      "websiteSearch": "Truist LightStream personal loan rates today 2024",
+      "callingWebpage": "/loans/personal-loans",
+      "products": "LightStream Unsecured Personal Loan, Debt Consolidation",
+      "cartId": "TR-5618K",
+      "serviceable": "Yes",
+      "email": "marcus.thompson@email.com",
+      "street": "8902 North 16th Street",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zip": "85020",
+      "digitalJourney": "/home › /loans › /personal-loans › /lightstream-debt-consolidation",
+      "intent": "Marcus is consolidating multiple credit card balances and looking for a fixed rate personal loan with no origination or prepayment fees to simplify his monthly payments.",
+      "coverage": "ZIP 85020 confirmed. Phoenix serviceable",
+      "appointment": "Phone consultation with LightStream specialist. Wed Jul 17, 2:00 PM",
+      "greeting": "Hi Marcus, it's David from Truist LightStream. We have you scheduled for a call tomorrow at 2 PM to review your consolidation options and get you a custom rate quote. Do you have any questions before we connect?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Truist",
+      "brandDomain": "www.truist.com",
+      "brandIcon": "🏦",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Fresno, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Truist One Checking, Open in Minutes",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "Truist checking account open online",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/checking-savings/checking/truist-one-checking",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Truist One Checking, LightStream Debt Consolidation Loan",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Fresno, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "new_acct_appointment",
+          "name": "Appointment, New Checking Account"
+        },
+        {
+          "id": "loan_specialist",
+          "name": "Loan Specialist, Debt Consolidation"
+        },
+        {
+          "id": "general_support",
+          "name": "General Banking Support"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Truist. I'm seeing you've been looking at our Truist One Checking account. Are you interested in opening a new checking account with us today?",
+          "sigs": [],
+          "q": [
+            15,
+            70,
+            15
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, I've been comparing checking accounts. I like the Truist One because of the no-fee option with direct deposit. But I also saw you have debt consolidation loans. I'm actually looking to consolidate some credit card debt.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "Checking account interest with <strong>no-fee direct deposit option</strong>"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>Debt consolidation</strong> need identified"
+            }
+          ],
+          "q": [
+            25,
+            65,
+            10
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Great. So we can definitely help with both. Let me ask you, are you looking to open the checking account first, or is the debt consolidation loan your main priority right now? And roughly how much debt are you looking to consolidate?",
+          "sigs": [],
+          "q": [
+            35,
+            55,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "The debt consolidation is actually the priority. I've got about fifteen thousand in credit card balances across a few cards. I'd love to lock in a fixed rate and get one monthly payment instead of juggling multiple cards. And yeah, I'd open a checking account too once I have the loan.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>$15K debt consolidation</strong> priority"
+            },
+            {
+              "c": "purple",
+              "t": "Fixed-rate loan needed for <strong>multiple credit card payoff</strong>"
+            }
+          ],
+          "q": [
+            10,
+            85,
+            5
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I'm in Fresno, so I'm definitely in your service area. When could I speak to someone about the loan application process?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Service area confirmed - <strong>Fresno, CA</strong>"
+            },
+            {
+              "c": "blue",
+              "t": "Ready to move forward with <strong>application process</strong>"
+            }
+          ],
+          "q": [
+            5,
+            96,
+            1
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm routing you right now to one of our Loan Specialists who handles LightStream debt consolidation. They'll walk you through the application, confirm your rate, and get you set up. You're about to speak with our specialist team. Thanks for choosing Truist.",
+          "sigs": [],
+          "q": [
+            2,
+            97,
+            1
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get you booked with a banker (Agent)\", \"schedule you a branch appointment (Agent)\", \"I'd like to come in and open the account (Caller)\", \"set up a time to meet (Agent)\"])",
+          "createdAt": "11/14/24 9:12 am",
+          "updatedAt": "01/09/26 2:38 pm"
+        },
+        {
+          "name": "Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"would you want to visit a branch (Agent)\", \"do I need to come in to open this (Caller)\", \"we can meet with a relationship banker (Agent)\", \"what are your branch hours (Caller)\"])",
+          "createdAt": "10/22/24 3:41 pm",
+          "updatedAt": "12/18/25 10:05 am"
+        },
+        {
+          "name": "Balance Transfer Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"move my balance over to the Enjoy Cash card (Caller)\", \"transfer my other card balance (Caller)\", \"low intro APR for twelve months (Agent)\", \"consolidate my credit card debt (Caller)\"])",
+          "createdAt": "12/03/24 11:27 am",
+          "updatedAt": "01/15/26 4:52 pm"
+        },
+        {
+          "name": "CD Rate Inquiry",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"what are your CD rates today (Caller)\", \"seven month certificate of deposit (Agent)\", \"how much APY on a one year CD (Caller)\", \"thousand dollar minimum to open a CD (Agent)\"])",
+          "createdAt": "01/19/25 8:55 am",
+          "updatedAt": "01/22/26 9:14 am"
+        },
+        {
+          "name": "Competitor Rate Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Bank of America is offering me a better rate (Caller)\", \"Wells Fargo has no monthly fee (Caller)\", \"Chase gave me a higher APY (Caller)\", \"I'm comparing you to Ally (Caller)\"])",
+          "createdAt": "09/30/24 1:18 pm",
+          "updatedAt": "12/29/25 3:47 pm"
+        },
+        {
+          "name": "Compliance Disclosure Given",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Regulatory Disclosures] < 60 and duration > 45 sec",
+          "createdAt": "11/07/24 10:02 am",
+          "updatedAt": "01/11/26 11:33 am"
+        },
+        {
+          "name": "Empathy and Reassurance",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Client Empathy] < 60 and duration > 45 sec",
+          "createdAt": "10/15/24 4:26 pm",
+          "updatedAt": "01/07/26 1:09 pm"
+        },
+        {
+          "name": "Fee Objection Raised",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"I don't want a twelve dollar monthly fee (Caller)\", \"how do I waive the maintenance fee (Caller)\", \"why am I getting an overdraft charge (Caller)\", \"is there a no fee checking option (Caller)\"])",
+          "createdAt": "12/12/24 9:44 am",
+          "updatedAt": "01/18/26 5:21 pm"
+        },
+        {
+          "name": "Needs Discovery Completed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Needs Discovery] < 60 and duration > 45 sec",
+          "createdAt": "11/21/24 2:15 pm",
+          "updatedAt": "01/13/26 8:47 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your estimated APR would be around (Agent)\", \"your monthly mortgage payment comes to (Agent)\", \"here is the rate I can offer on the auto loan (Agent)\", \"your HELOC line would be approximately (Agent)\"])",
+          "createdAt": "01/05/25 10:38 am",
+          "updatedAt": "01/24/26 3:02 pm"
+        }
+      ]
+    }
+  }
+}

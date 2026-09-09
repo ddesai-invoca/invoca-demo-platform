@@ -1,0 +1,5362 @@
+{
+  "id": "atandt",
+  "customerName": "AT&T",
+  "websiteUrl": "https://www.att.com",
+  "brandDomain": "att.com",
+  "networkName": "Invoca for Telecommunications",
+  "industry": "Wireless, broadband, and connected-device carrier",
+  "bookingTerm": "Installation",
+  "customerNoun": "Customer",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 25000,
+      "yTicks": [
+        5000,
+        10000,
+        15000,
+        20000,
+        25000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 15842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 19417
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 21203
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 19864
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 18377
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Installation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Installation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AT&T Fiber, Order Now",
+          "marketingSearchTerm": "AT&T fiber internet near me",
+          "landingPageUrl": "https://www.att.com/internet/fiber/?utm_source=google&utm_medium=cpc&utm_campaign=fiber_order_now",
+          "websiteJourney": "Home / Shop / Internet / Fiber",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Switch & Save $800/line",
+          "marketingSearchTerm": "switch to AT&T $800 offer",
+          "landingPageUrl": "https://www.att.com/deals/switch/?utm_source=google&utm_medium=cpc&utm_campaign=switch_save_800",
+          "websiteJourney": "Home / Deals / Switch Offers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "iPhone 17 Deals",
+          "marketingSearchTerm": "AT&T iPhone 17 deals",
+          "landingPageUrl": "https://www.att.com/buy/phones/apple-iphone-17/?utm_source=google&utm_medium=cpc&utm_campaign=iphone17_deals",
+          "websiteJourney": "Home / Shop / Phones / iPhone 17",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "AT&T Internet Air Coverage",
+          "marketingSearchTerm": "AT&T Internet Air review",
+          "landingPageUrl": "https://www.att.com/internet/internet-air/?utm_source=bing&utm_medium=cpc&utm_campaign=internet_air_coverage",
+          "websiteJourney": "Home / Shop / Internet / Internet Air",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Unlimited Plans Pricing",
+          "marketingSearchTerm": "AT&T unlimited plans price",
+          "landingPageUrl": "https://www.att.com/plans/wireless/?utm_source=google&utm_medium=cpc&utm_campaign=unlimited_plans",
+          "websiteJourney": "Home / Shop / Wireless Plans",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Get Galaxy Z Fold8 for $0",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/buy/phones/samsung-galaxy-z-fold8/?utm_source=facebook&utm_medium=paid_social&utm_campaign=zfold8_zero",
+          "websiteJourney": "Home / Shop / Phones / Galaxy Z Fold8",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AT&T Fiber, Order Now",
+          "marketingSearchTerm": "AT&T fiber 1 gig plan",
+          "landingPageUrl": "https://www.att.com/internet/fiber/1gig/?utm_source=google&utm_medium=cpc&utm_campaign=fiber_order_now",
+          "websiteJourney": "Home / Shop / Internet / Fiber / 1 Gig",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "AT&T Prepaid Unlimited",
+          "marketingSearchTerm": "AT&T prepaid plans",
+          "landingPageUrl": "https://www.att.com/prepaid/?utm_source=bing&utm_medium=cpc&utm_campaign=prepaid_unlimited_max",
+          "websiteJourney": "Home / Shop / Prepaid",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Great Connections Start Here",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/bundles/?utm_source=instagram&utm_medium=paid_social&utm_campaign=great_connections",
+          "websiteJourney": "Home / Shop / Bundles",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Phone Watch Tablet Bundle",
+          "marketingSearchTerm": "AT&T three device bundle deal",
+          "landingPageUrl": "https://www.att.com/bundles/phone-watch-tablet/?utm_source=google&utm_medium=cpc&utm_campaign=three_device_bundle",
+          "websiteJourney": "Home / Shop / Bundles / Phone + Watch + Tablet",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Galaxy Z Flip8 Trade-In",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/buy/phones/samsung-galaxy-z-flip8/?utm_source=facebook&utm_medium=paid_social&utm_campaign=zflip8_tradein",
+          "websiteJourney": "Home / Shop / Phones / Galaxy Z Flip8",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AT&T Trade-In Value",
+          "marketingSearchTerm": "AT&T trade-in value",
+          "landingPageUrl": "https://www.att.com/deals/trade-in/?utm_source=google&utm_medium=cpc&utm_campaign=trade_in_value",
+          "websiteJourney": "Home / Deals / Trade-In",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Coverage Map Content",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/coverage/?utm_source=organic&utm_medium=organic&utm_campaign=coverage_map",
+          "websiteJourney": "Home / AT&T Difference / Coverage",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "AT&T Difference Reliability",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/att-difference/?utm_source=organic&utm_medium=organic&utm_campaign=att_guarantee",
+          "websiteJourney": "Home / AT&T Difference / Guarantee",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AT&T Fiber, Order Now",
+          "marketingSearchTerm": "AT&T fiber multi gig availability",
+          "landingPageUrl": "https://www.att.com/internet/fiber/multi-gig/?utm_source=google&utm_medium=cpc&utm_campaign=fiber_order_now",
+          "websiteJourney": "Home / Shop / Internet / Fiber / Multi-Gig",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Galaxy Watch9 Bundle",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/buy/watches/samsung-galaxy-watch9/?utm_source=instagram&utm_medium=paid_social&utm_campaign=watch9_bundle",
+          "websiteJourney": "Home / Shop / Watches / Galaxy Watch9",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Support Hub, Pay Bill",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/support/pay-bill/?utm_source=organic&utm_medium=organic&utm_campaign=support_hub",
+          "websiteJourney": "Home / Support / Pay Bill",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "iPhone 17 Deals",
+          "marketingSearchTerm": "AT&T iPhone 17 pro trade in",
+          "landingPageUrl": "https://www.att.com/buy/phones/apple-iphone-17-pro/?utm_source=bing&utm_medium=cpc&utm_campaign=iphone17_deals",
+          "websiteJourney": "Home / Shop / Phones / iPhone 17 Pro",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Great Connections Start Here",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/plans/wireless/unlimited-premium/?utm_source=facebook&utm_medium=paid_social&utm_campaign=great_connections",
+          "websiteJourney": "Home / Shop / Wireless Plans / Unlimited Premium",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "AT&T Internet Air Content",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.att.com/internet/internet-air/faq/?utm_source=organic&utm_medium=organic&utm_campaign=internet_air_content",
+          "websiteJourney": "Home / Shop / Internet / Internet Air / FAQ",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (AT&T)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "74,277"
+            },
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Activation (Percent)",
+              "value": "27%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$14,632,021"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "11,884"
+            },
+            {
+              "label": "Billing & Payment Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Technical Support Call (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Account Management Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "45%"
+            },
+            {
+              "label": "Non-Qualified Inquiry (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Activation (Percent)",
+              "value": "27%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sales Call (Count)",
+            "values": [
+              8127,
+              14382,
+              13918,
+              14251,
+              11715
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              4318,
+              7642,
+              7431,
+              7819,
+              6215
+            ]
+          },
+          {
+            "name": "Non-Qualified Inquiry (Count)",
+            "values": [
+              1164,
+              2053,
+              1987,
+              2041,
+              1668
+            ]
+          },
+          {
+            "name": "Activation (Count)",
+            "values": [
+              2617,
+              4612,
+              4478,
+              4583,
+              3765
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74277,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "28,431",
+                "44.2%",
+                "21.4%",
+                "$4,542,661"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "13,842",
+                "48.6%",
+                "25.8%",
+                "$2,603,259"
+              ]
+            },
+            {
+              "name": "Meta",
+              "metrics": [
+                "12,657",
+                "51.3%",
+                "28.3%",
+                "$2,611,278"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "11,264",
+                "54.7%",
+                "31.6%",
+                "$2,594,511"
+              ]
+            },
+            {
+              "name": "YouTube",
+              "metrics": [
+                "8,083",
+                "59.8%",
+                "38.7%",
+                "$2,280,312"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74277,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "34,912",
+                "45.1%",
+                "22.1%",
+                "$5,833,720"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "15,673",
+                "49.3%",
+                "26.4%",
+                "$3,016,602"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "10,548",
+                "52.6%",
+                "29.7%",
+                "$2,283,957"
+              ]
+            },
+            {
+              "name": "Email/CRM",
+              "metrics": [
+                "7,921",
+                "56.2%",
+                "33.2%",
+                "$1,917,270"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "5,223",
+                "61.4%",
+                "41.5%",
+                "$1,580,472"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74277,
+          "rows": [
+            {
+              "name": "AT&T Fiber, Order Now",
+              "metrics": [
+                "12,847",
+                "43.8%",
+                "20.8%",
+                "$1,947,888"
+              ]
+            },
+            {
+              "name": "Switch & Save $800/line",
+              "metrics": [
+                "9,663",
+                "47.5%",
+                "24.6%",
+                "$1,732,833"
+              ]
+            },
+            {
+              "name": "iPhone 17 Deals",
+              "metrics": [
+                "7,541",
+                "50.9%",
+                "27.9%",
+                "$1,533,816"
+              ]
+            },
+            {
+              "name": "Get Galaxy Z Fold8 for $0",
+              "metrics": [
+                "5,872",
+                "54.3%",
+                "31.4%",
+                "$1,344,276"
+              ]
+            },
+            {
+              "name": "Bundle & Save",
+              "metrics": [
+                "4,326",
+                "59.1%",
+                "37.2%",
+                "$1,172,961"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74277,
+          "rows": [
+            {
+              "name": "att fiber internet near me",
+              "metrics": [
+                "8,214",
+                "44.6%",
+                "21.2%",
+                "$1,269,189"
+              ]
+            },
+            {
+              "name": "att iphone 17 deals",
+              "metrics": [
+                "6,127",
+                "48.2%",
+                "25.4%",
+                "$1,134,324"
+              ]
+            },
+            {
+              "name": "switch to att $800 offer",
+              "metrics": [
+                "4,982",
+                "51.7%",
+                "28.6%",
+                "$1,038,825"
+              ]
+            },
+            {
+              "name": "att galaxy z fold8 $0",
+              "metrics": [
+                "3,641",
+                "55.4%",
+                "32.1%",
+                "$852,201"
+              ]
+            },
+            {
+              "name": "att prepaid plans",
+              "metrics": [
+                "2,873",
+                "60.3%",
+                "39.4%",
+                "$825,228"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Installation Set (Industry) (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Wireless Plans",
+              "metrics": [
+                "24,183",
+                "44%",
+                "21%",
+                "$3,650,920"
+              ]
+            },
+            {
+              "name": "Devices",
+              "metrics": [
+                "19,762",
+                "46%",
+                "25%",
+                "$3,586,800"
+              ]
+            },
+            {
+              "name": "Home Internet",
+              "metrics": [
+                "15,428",
+                "49%",
+                "29%",
+                "$3,320,450"
+              ]
+            },
+            {
+              "name": "Bundles",
+              "metrics": [
+                "8,946",
+                "51%",
+                "34%",
+                "$2,321,800"
+              ]
+            },
+            {
+              "name": "Support & Account Services",
+              "metrics": [
+                "5,958",
+                "54%",
+                "44%",
+                "$1,752,051"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74277,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "23,417",
+                "44%",
+                "20%",
+                "$3,395,175"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "18,264",
+                "47%",
+                "25%",
+                "$3,333,180"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "14,092",
+                "50%",
+                "29%",
+                "$3,003,945"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "11,538",
+                "52%",
+                "33%",
+                "$2,761,304"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "6,966",
+                "58%",
+                "42%",
+                "$2,138,417"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Activation (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Wireless Plans",
+            "values": [
+              702,
+              1104,
+              1156,
+              1121,
+              932
+            ]
+          },
+          {
+            "name": "Devices",
+            "values": [
+              684,
+              1072,
+              1098,
+              1063,
+              963
+            ]
+          },
+          {
+            "name": "Home Internet",
+            "values": [
+              628,
+              986,
+              1024,
+              975,
+              862
+            ]
+          },
+          {
+            "name": "Bundles",
+            "values": [
+              427,
+              672,
+              701,
+              668,
+              587
+            ]
+          },
+          {
+            "name": "Support & Account Services",
+            "values": [
+              368,
+              579,
+              604,
+              573,
+              506
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 74,277 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 91,
+          "summary": "Marcus Bellingham called to order AT&T fiber for a newly built home and asked about the 1 Gig symmetrical plan. Oscar confirmed serviceability, walked him through the no annual contract terms, and locked in pricing with equipment included. Marcus scheduled a new fiber installation for the following week.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "2m 51s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Priya Nandakumar lives outside a fiber area and wanted a home internet option that did not require a wired line. Lila explained AT&T Internet Air, the plug-in 5G gateway, and the bundled rate near 47 dollars. Priya agreed to switch and booked a new Internet Air installation.",
+          "date": "Feb 12, 3:38 PM",
+          "agent": "Lila",
+          "duration": "2m 19s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Devon Ashworth called to check the order status on his iPhone 17 Pro that he bought on installments with an eligible trade-in. Rosey located the order, confirmed the trade-in credit had posted, and gave him a shipping window of 24 to 48 hours. No new service was scheduled on the call.",
+          "date": "Mar 4, 1:05 PM",
+          "agent": "Rosey",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Alicia Fontenot is a brand new customer who called to set up home internet and a wireless line after moving into the area. Lee collected her name, service address, and preferred plan, then walked her through the fiber options and the AT&T Guarantee. Lee scheduled her fiber installation and confirmed her contact details for the technician visit.",
+          "date": "Apr 9, 11:52 AM",
+          "agent": "Lee",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 14,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Grant Whitfield wanted to switch to AT&T and asked about the offer to cover up to 800 dollars per line to break his current contract. Mary confirmed his eligibility and paired the switch with a fiber home internet order. Grant scheduled a new fiber installation before ending the call.",
+          "date": "May 15, 4:27 PM",
+          "agent": "Mary",
+          "duration": "2m 44s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Naomi Trujillo asked whether Internet Air was available at her rural address and if she could add a device on a trade-in. Mike confirmed 5G coverage, explained the gateway setup, and reviewed the trade-in credit on her old phone. Naomi booked a new Internet Air installation for the weekend.",
+          "date": "Jun 2, 9:33 AM",
+          "agent": "Mike",
+          "duration": "2m 08s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Harold Metcalfe disputed a charge on his latest bill that pushed his Unlimited Extra plan higher than expected. Sue reviewed the bill line by line and found a prorated charge from a mid-cycle plan change. She applied a partial credit and explained the next statement, but no new service was scheduled.",
+          "date": "Jun 21, 2:16 PM",
+          "agent": "Sue",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Carla Devereux called about a warranty issue on her iPhone 17 that kept restarting after an update. Jennifer ran through basic troubleshooting and then opened a repair claim under the device protection terms. Carla was frustrated by the wait but accepted the mail-in replacement path.",
+          "date": "Jul 8, 12:41 PM",
+          "agent": "Jennifer",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Trevor Anslow asked why his Galaxy Z Fold8 trade-in quote came back lower than the advertised 290 dollar tier. Rose explained the device grading criteria and the plan eligibility rules for the 0 dollar promo. Trevor was unhappy and said he would think it over, so nothing was scheduled.",
+          "date": "Jul 24, 10:09 AM",
+          "agent": "Rose",
+          "duration": "1m 39s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Bianca Holloway called because her scheduled fiber installation window was missed and no technician showed up. Lee apologized, confirmed the dispatch error, and rebooked the visit with a priority note. Bianca remained irritated about the lost day off work.",
+          "date": "Aug 3, 3:51 PM",
+          "agent": "Lee",
+          "duration": "1m 27s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Wesley Caldicott wanted to cancel his Galaxy Z Fold8 order after seeing a better promotion elsewhere. Oscar reviewed the cancellation terms and the trade-in reversal, then processed the request. Wesley declined a retention offer and ended the call flatly.",
+          "date": "Aug 19, 1:22 PM",
+          "agent": "Oscar",
+          "duration": "1m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Dolores Pfeiffer complained that her Unlimited Premium plan speeds had slowed and support kept transferring her. Lila acknowledged the poor experience, checked the account for throttling flags, and filed a network ticket. Dolores stayed dissatisfied and asked for a supervisor callback.",
+          "date": "Sep 5, 4:04 PM",
+          "agent": "Lila",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 37,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Ramon Vasquez called about a billing dispute after two months of overcharges on his prepaid line. Sue found a duplicate autopay charge and started a refund, but the timeline of five to seven days upset him. He said his last bill had eroded his trust and hung up before finishing.",
+          "date": "Sep 22, 11:18 AM",
+          "agent": "Sue",
+          "duration": "1m 34s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "An unidentified caller reached the line after hours and left a partial message about a home internet outage before the call rolled to voicemail. No agent was available to capture the account details. The message was queued for a next-day callback.",
+          "date": "Oct 1, 7:46 PM",
+          "agent": "No Agent",
+          "duration": "0m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Franklin Ostrander called angry about repeated failed appointments and an unresolved account credit. Mike tried to de-escalate and reviewed the history, but the caller talked over him throughout. The call ended with Franklin threatening to cancel all of his services.",
+          "date": "Oct 14, 2:59 PM",
+          "agent": "Mike",
+          "duration": "1m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "fiber",
+        "internet air",
+        "iphone 17",
+        "trade-in",
+        "z fold8",
+        "bill"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 37s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Service Address and ZIP",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Fiber Availability in Area",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Plan Features and Pricing",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Installation Date and Time Window",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Primary Phone Number",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Set Expectations for Technician Visit",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Greeted with name and department",
+        "Offered AT&T Fiber plan details",
+        "Confirmed service address",
+        "Discussed unlimited data features",
+        "Mentioned no annual contract",
+        "Provided installation scheduling",
+        "Confirmed appointment window",
+        "Customer expressed satisfaction with pricing",
+        "Verified ZIP code for service availability",
+        "Explained AT&T Guarantee included",
+        "Scheduled installation appointment",
+        "Closed professionally",
+        "Captured full legal name"
+      ],
+      "unmetSignals": [
+        "Did not capture email for account setup",
+        "Failed to get primary contact phone",
+        "Did not mention trade-in opportunities",
+        "Missed bundling option inquiry",
+        "Did not offer Internet Air as alternative",
+        "Skipped discussing ActiveArmor security",
+        "No mention of autopay discount",
+        "Did not qualify for promotional offers",
+        "Missed upsell to Multi-Gig plan",
+        "Did not confirm callback number",
+        "Skipped confirming preferred contact method",
+        "Missed discussing router setup",
+        "Did not offer service area coverage map",
+        "Failed to mention 24/7 support availability",
+        "Omitted discussion of bill delivery options"
+      ],
+      "naSignals": [
+        "Not applicable: existing account upgrade",
+        "Not applicable: device trade-in valuation",
+        "Not applicable: billing inquiry",
+        "Not applicable: service outage troubleshooting",
+        "Not applicable: return authorization request",
+        "Not applicable: payment arrangement discussion",
+        "Not applicable: account suspension inquiry"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "The caller is a new customer looking to establish home internet service at a new address. They are interested in Fiber but have not yet confirmed their building receives fiber service, which is the primary problem to solve."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The customer expects quick installation and wants to schedule an appointment within the next two weeks. They prefer a specific time window and want confirmation that the service will be available at their ZIP code."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the customer's email address for account setup and confirmed a primary phone number for the technician to use on installation day. Additionally, discussing the AT&T Guarantee upfront and mentioning optional bundles or Internet Air as a backup would have strengthened the pitch."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Thank you for calling AT&T. My name is Marcus Bell. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:08",
+          "text": "Hi Marcus. I just moved to a new place and I need to set up home internet. I saw you offer fiber internet and I'd like to learn more."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Excellent. I'd be happy to help you get set up with AT&T Fiber. This is a great time to switch, and I think you'll love the speeds we offer. Can I start by getting your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:25",
+          "text": "My name is Jennifer Walsh."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:28",
+          "text": "Jennifer, thank you. And just to confirm, you're looking to add internet service at a new address, correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:35",
+          "text": "That's right. I'm in the Columbus area. My ZIP is 43215. I heard fiber is available there."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:42",
+          "text": "Let me check that for you. ZIP 43215 in Columbus. Yes, Jennifer, great news. Fiber is absolutely available at that address. We have multiple speed tiers from 300 megabits per second all the way up to multi-gigabit speeds."
+        },
+        {
+          "speaker": "caller",
+          "time": "00:56",
+          "text": "That sounds perfect. What's the pricing on the base plan?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:02",
+          "text": "Our AT&T Fiber 300 plan is $55 per month with no annual contract and no equipment fees. That includes unlimited data and the AT&T Guarantee, which means if you don't love your service, you get a credit. Very straightforward."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:16",
+          "text": "I like that. No contract is a huge plus. When could you get someone out to install it?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:23",
+          "text": "We can schedule installation quite quickly. What works best for you, Jennifer? Would you prefer morning, afternoon, or evening? And do you have any preferred dates this week or next?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:35",
+          "text": "I'm free on Wednesday afternoon after 2 PM. That would be ideal."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:42",
+          "text": "Perfect. I have Wednesday from 2 to 5 PM available for you. I'll schedule our technician to come out then. The technician will bring the fiber gateway, set everything up, and make sure you're online before they leave."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:58",
+          "text": "That sounds great. Is there anything else I need to know before they arrive?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:05",
+          "text": "Just have your account information ready and make sure you're home during that window. We'll call you 30 minutes before arrival. Your plan starts immediately upon installation, Jennifer, and you can pay the first month's bill at setup. Any questions for me?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:18",
+          "text": "No, I think I'm all set. Thanks for your help, Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:25",
+          "text": "You're very welcome, Jennifer. Thank you for choosing AT&T. We look forward to providing you great internet service. Have a wonderful day."
+        }
+      ],
+      "aiSummary": "Jennifer Walsh, a new customer in Columbus, Ohio, called to set up AT&T Fiber at her new residence. Marcus Bell confirmed fiber availability at ZIP 43215 and sold her the Fiber 300 plan at $55 per month with no contract. He successfully scheduled a Wednesday afternoon installation between 2 and 5 PM and explained the setup process and AT&T Guarantee. The agent demonstrated strong product knowledge and appointment-setting skills, though he did not capture an email address or primary phone number for the service record.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, nice structure and calm delivery on this new-customer fiber intake. You nailed the address confirmation and installation scheduling. Two coaching points: (1) Always capture the customer's email early so billing and setup instructions go to the right place. (2) Briefly mention what to expect on installation day, like how long the technician will be there or what equipment to have nearby. These small details build confidence and reduce no-shows. Great work overall."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "74,277"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$196.99"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$14,632,021"
+            }
+          ]
+        },
+        {
+          "title": "NEW CUSTOMER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Customers (Count)",
+              "value": "41,553"
+            },
+            {
+              "label": "Caller Type: New Customers (Percent)",
+              "value": "56%"
+            },
+            {
+              "label": "Installation: Scheduled (Count)",
+              "value": "34,910"
+            },
+            {
+              "label": "Installation: Scheduled (Percent)",
+              "value": "47%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CUSTOMERs & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Customer (Count)",
+              "value": "32,724"
+            },
+            {
+              "label": "Caller Type: Existing Customer (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Installation: Canceled (Percent)",
+              "value": "8%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Installations)",
+          "chart": {
+            "legend": "Installation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "YouTube",
+                "value": 57,
+                "display": "57%"
+              },
+              {
+                "name": "Direct",
+                "value": 53,
+                "display": "53%"
+              },
+              {
+                "name": "Meta",
+                "value": 49,
+                "display": "49%"
+              },
+              {
+                "name": "Bing",
+                "value": 44,
+                "display": "44%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Installations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Installation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "28,431",
+                  "38%",
+                  "$5,412,338"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing",
+                  "16,842",
+                  "44%",
+                  "$3,284,915"
+                ]
+              },
+              {
+                "cells": [
+                  "Meta",
+                  "12,905",
+                  "49%",
+                  "$2,561,472"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "9,614",
+                  "53%",
+                  "$1,918,644"
+                ]
+              },
+              {
+                "cells": [
+                  "YouTube",
+                  "6,485",
+                  "57%",
+                  "$1,454,652"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 35000,
+            "axisTicks": [
+              0,
+              7000,
+              14000,
+              21000,
+              28000,
+              35000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 31208,
+                "display": "31,208"
+              },
+              {
+                "name": "Paid Social",
+                "value": 17455,
+                "display": "17,455"
+              },
+              {
+                "name": "Organic Search",
+                "value": 11932,
+                "display": "11,932"
+              },
+              {
+                "name": "Email/CRM",
+                "value": 8047,
+                "display": "8,047"
+              },
+              {
+                "name": "Display/Affiliate",
+                "value": 5635,
+                "display": "5,635"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Installations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Installation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "31,208",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "17,455",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "11,932",
+                  "50%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "8,047",
+                  "54%"
+                ]
+              },
+              {
+                "cells": [
+                  "Display/Affiliate",
+                  "5,635",
+                  "60%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 12000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "AT&T Fiber, Order Now",
+                "value": 9842,
+                "display": "9,842"
+              },
+              {
+                "name": "Switch & Save $800/line",
+                "value": 8214,
+                "display": "8,214"
+              },
+              {
+                "name": "iPhone 17 Deals",
+                "value": 7105,
+                "display": "7,105"
+              },
+              {
+                "name": "Get Galaxy Z Fold8 for $0",
+                "value": 5633,
+                "display": "5,633"
+              },
+              {
+                "name": "Great Connections Start Here",
+                "value": 4287,
+                "display": "4,287"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Installations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Installation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "AT&T Fiber, Order Now",
+                  "9,842",
+                  "40%",
+                  "$1,984,562"
+                ]
+              },
+              {
+                "cells": [
+                  "Switch & Save $800/line",
+                  "8,214",
+                  "46%",
+                  "$1,652,338"
+                ]
+              },
+              {
+                "cells": [
+                  "iPhone 17 Deals",
+                  "7,105",
+                  "51%",
+                  "$1,438,915"
+                ]
+              },
+              {
+                "cells": [
+                  "Get Galaxy Z Fold8 for $0",
+                  "5,633",
+                  "58%",
+                  "$1,142,674"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 7000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000,
+              6000,
+              7000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "at&t fiber internet near me",
+                "value": 6214,
+                "display": "6,214"
+              },
+              {
+                "name": "at&t iphone 17 deals",
+                "value": 5338,
+                "display": "5,338"
+              },
+              {
+                "name": "switch to at&t $800 offer",
+                "value": 4127,
+                "display": "4,127"
+              },
+              {
+                "name": "at&t galaxy z fold8 $0",
+                "value": 3442,
+                "display": "3,442"
+              },
+              {
+                "name": "at&t unlimited plans price",
+                "value": 2815,
+                "display": "2,815"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Installations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Installation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "at&t fiber internet near me",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "at&t iphone 17 deals",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "switch to at&t $800 offer",
+                  "52%"
+                ]
+              },
+              {
+                "cells": [
+                  "at&t galaxy z fold8 $0",
+                  "59%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Customers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Installation: Scheduled (Percent)",
+          "Caller Type: New Customers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Wireless Plans",
+              "24,318",
+              "40%",
+              "52%"
+            ]
+          },
+          {
+            "cells": [
+              "Devices (Phones & Watches)",
+              "19,842",
+              "45%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Home Internet (Fiber & Air)",
+              "15,633",
+              "51%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Bundles",
+              "9,105",
+              "58%",
+              "67%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Installation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "AT&T Store, Dallas Preston Center",
+              "12,418",
+              "984",
+              "6%",
+              "42%"
+            ]
+          },
+          {
+            "cells": [
+              "AT&T Store, Atlanta Midtown",
+              "9,842",
+              "712",
+              "5%",
+              "47%"
+            ]
+          },
+          {
+            "cells": [
+              "AT&T Store, Los Angeles Downtown",
+              "7,633",
+              "588",
+              "4%",
+              "52%"
+            ]
+          },
+          {
+            "cells": [
+              "AT&T Store, Chicago Magnificent Mile",
+              "5,127",
+              "402",
+              "3%",
+              "58%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              2214,
+              2438,
+              2405,
+              2392,
+              2393
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1842,
+              1955,
+              1938,
+              1942,
+              1936
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              1412,
+              1518,
+              1505,
+              1510,
+              1510
+            ]
+          },
+          {
+            "name": "Needs Trade-In Device",
+            "values": [
+              1105,
+              1192,
+              1185,
+              1180,
+              1180
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              872,
+              938,
+              935,
+              935,
+              935
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "29,711"
+          },
+          {
+            "label": "Installation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Activation (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$8,340,252"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$987,544"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,204,867"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,518,923"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,156,792"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "33%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,847,341"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,624,785"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Installation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 35617,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "8,742",
+                "58%",
+                "29%",
+                "$2,147,863"
+              ]
+            },
+            {
+              "name": "Organic/SEO",
+              "metrics": [
+                "6,819",
+                "54%",
+                "32%",
+                "$1,847,291"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "5,247",
+                "55%",
+                "34%",
+                "$1,556,847"
+              ]
+            },
+            {
+              "name": "Email/CRM",
+              "metrics": [
+                "4,163",
+                "57%",
+                "36%",
+                "$1,124,952"
+              ]
+            },
+            {
+              "name": "Affiliate/Retail Partners",
+              "metrics": [
+                "3,041",
+                "56%",
+                "37%",
+                "$943,188"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Installation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 37894,
+          "rows": [
+            {
+              "name": "Google Ads",
+              "metrics": [
+                "7,156",
+                "57%",
+                "28%",
+                "$1,743,216"
+              ]
+            },
+            {
+              "name": "Meta/Facebook",
+              "metrics": [
+                "5,928",
+                "56%",
+                "31%",
+                "$1,502,847"
+              ]
+            },
+            {
+              "name": "TikTok/YouTube",
+              "metrics": [
+                "4,381",
+                "54%",
+                "33%",
+                "$1,289,563"
+              ]
+            },
+            {
+              "name": "Email Campaigns",
+              "metrics": [
+                "3,247",
+                "58%",
+                "35%",
+                "$998,741"
+              ]
+            },
+            {
+              "name": "Display/Retargeting",
+              "metrics": [
+                "2,119",
+                "55%",
+                "37%",
+                "$684,156"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Installation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 32178,
+          "rows": [
+            {
+              "name": "Switch to AT&T and Save $800 per Line",
+              "metrics": [
+                "6,847",
+                "56%",
+                "27%",
+                "$1,658,923"
+              ]
+            },
+            {
+              "name": "AT&T Fiber Order Now",
+              "metrics": [
+                "5,419",
+                "57%",
+                "32%",
+                "$1,443,267"
+              ]
+            },
+            {
+              "name": "Galaxy Z Fold8 for $0 with Trade In",
+              "metrics": [
+                "4,236",
+                "55%",
+                "35%",
+                "$1,285,641"
+              ]
+            },
+            {
+              "name": "iPhone 17 Premium Deals",
+              "metrics": [
+                "3,118",
+                "58%",
+                "36%",
+                "$1,012,847"
+              ]
+            },
+            {
+              "name": "Great Connections Start Here",
+              "metrics": [
+                "2,047",
+                "54%",
+                "38%",
+                "$767,392"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Installation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 31652,
+          "rows": [
+            {
+              "name": "AT&T unlimited plans price",
+              "metrics": [
+                "5,284",
+                "56%",
+                "26%",
+                "$1,264,847"
+              ]
+            },
+            {
+              "name": "AT&T fiber internet near me",
+              "metrics": [
+                "4,127",
+                "57%",
+                "31%",
+                "$1,089,564"
+              ]
+            },
+            {
+              "name": "AT&T Galaxy Z Fold8 $0",
+              "metrics": [
+                "3,562",
+                "55%",
+                "34%",
+                "$982,341"
+              ]
+            },
+            {
+              "name": "Switch to AT&T $800 offer",
+              "metrics": [
+                "2,841",
+                "58%",
+                "37%",
+                "$948,276"
+              ]
+            },
+            {
+              "name": "AT&T iPhone 17 deals",
+              "metrics": [
+                "1,936",
+                "54%",
+                "39%",
+                "$597,892"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Installation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Wireless Plans",
+              "metrics": [
+                "10,847",
+                "58%",
+                "28%",
+                "$2,658,923"
+              ]
+            },
+            {
+              "name": "Devices (Phones & Tablets)",
+              "metrics": [
+                "8,264",
+                "55%",
+                "34%",
+                "$2,347,891"
+              ]
+            },
+            {
+              "name": "Home Internet (Fiber & Air)",
+              "metrics": [
+                "6,419",
+                "57%",
+                "36%",
+                "$1,847,256"
+              ]
+            },
+            {
+              "name": "Bundles",
+              "metrics": [
+                "3,127",
+                "56%",
+                "37%",
+                "$1,002,847"
+              ]
+            },
+            {
+              "name": "Support/Account Services",
+              "metrics": [
+                "1,054",
+                "54%",
+                "41%",
+                "$482,335"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Activation (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Wireless Plans",
+            "values": [
+              802,
+              921,
+              857,
+              764,
+              614
+            ]
+          },
+          {
+            "name": "Devices (Phones & Tablets)",
+            "values": [
+              698,
+              847,
+              743,
+              612,
+              587
+            ]
+          },
+          {
+            "name": "Home Internet (Fiber & Air)",
+            "values": [
+              631,
+              714,
+              658,
+              542,
+              483
+            ]
+          },
+          {
+            "name": "Bundles",
+            "values": [
+              291,
+              347,
+              298,
+              241,
+              183
+            ]
+          },
+          {
+            "name": "Support/Account Services",
+            "values": [
+              172,
+              189,
+              167,
+              141,
+              103
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Installation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Installation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Installation Scheduled (Count)",
+            "value": "318"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Installation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Installation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Installation Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Installation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Installation Scheduled",
+            "values": [
+              72,
+              74,
+              73,
+              76,
+              71,
+              75,
+              72,
+              74,
+              73,
+              75,
+              71,
+              76,
+              74,
+              73,
+              75,
+              72,
+              71,
+              74,
+              75,
+              73,
+              72,
+              74,
+              76,
+              73,
+              71,
+              75,
+              72,
+              74,
+              73,
+              75,
+              71,
+              76,
+              178,
+              182,
+              175,
+              184,
+              179,
+              181,
+              176,
+              183,
+              180,
+              179,
+              177,
+              182,
+              184,
+              175,
+              181,
+              178,
+              179
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,187"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "718"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "696"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Installation Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Device Financing Offers",
+            "values": [
+              8,
+              11,
+              9,
+              10,
+              7,
+              12
+            ]
+          },
+          {
+            "name": "Wireless Plan Comparisons",
+            "values": [
+              6,
+              9,
+              8,
+              7,
+              10,
+              11
+            ]
+          },
+          {
+            "name": "Trade-In Value Inquiries",
+            "values": [
+              4,
+              2,
+              3,
+              1,
+              5,
+              8
+            ]
+          },
+          {
+            "name": "Fiber Internet Availability",
+            "values": [
+              7,
+              8,
+              6,
+              9,
+              8,
+              10
+            ]
+          },
+          {
+            "name": "Service Plan Upgrades",
+            "values": [
+              5,
+              6,
+              7,
+              4,
+              6,
+              9
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "68,335"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "51,623"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Installation Booked (Count)",
+            "value": "34,910"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$14,632,021"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Williams",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Jennifer Chen",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "David Rodriguez",
+              "value": 243,
+              "display": "243"
+            },
+            {
+              "name": "Sarah Mitchell",
+              "value": 156,
+              "display": "156"
+            },
+            {
+              "name": "Kevin Patterson",
+              "value": 201,
+              "display": "201"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Installation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Amanda Torres",
+            "values": [
+              312,
+              358,
+              401,
+              437,
+              489
+            ]
+          },
+          {
+            "name": "Brandon Scott",
+            "values": [
+              289,
+              334,
+              378,
+              412,
+              461
+            ]
+          },
+          {
+            "name": "Lisa Bergman",
+            "values": [
+              267,
+              301,
+              344,
+              389,
+              428
+            ]
+          },
+          {
+            "name": "Rafael Morales",
+            "values": [
+              278,
+              318,
+              365,
+              401,
+              447
+            ]
+          },
+          {
+            "name": "Emily Zhang",
+            "values": [
+              251,
+              289,
+              326,
+              368,
+              412
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Williams",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Jennifer Chen",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "David Rodriguez",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "Sarah Mitchell",
+              "value": 58.6,
+              "display": "58.6%"
+            },
+            {
+              "name": "Kevin Patterson",
+              "value": 55.4,
+              "display": "55.4%"
+            },
+            {
+              "name": "Thomas Anderson",
+              "value": 57.3,
+              "display": "57.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Installation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Williams",
+                "54.2%",
+                "28%",
+                "$479,532",
+                "1,467"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Chen",
+                "56.8%",
+                "29%",
+                "$491,834",
+                "1,389"
+              ]
+            },
+            {
+              "cells": [
+                "David Rodriguez",
+                "52.1%",
+                "26%",
+                "$431,298",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "58.6%",
+                "32%",
+                "$519,745",
+                "1,412"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Patterson",
+                "55.4%",
+                "30%",
+                "$505,421",
+                "1,445"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Anderson",
+                "57.3%",
+                "31%",
+                "$511,167",
+                "1,398"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Amanda Torres",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Brandon Scott",
+              "value": 89.2,
+              "display": "89.2%"
+            },
+            {
+              "name": "Lisa Bergman",
+              "value": 87.5,
+              "display": "87.5%"
+            },
+            {
+              "name": "Rafael Morales",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "Emily Zhang",
+              "value": 88.4,
+              "display": "88.4%"
+            },
+            {
+              "name": "Jessica Huang",
+              "value": 90.6,
+              "display": "90.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Installation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Amanda Torres",
+                "91.7%",
+                "65%",
+                "$746,523",
+                "1,548"
+              ]
+            },
+            {
+              "cells": [
+                "Brandon Scott",
+                "89.2%",
+                "62%",
+                "$719,284",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Bergman",
+                "87.5%",
+                "59%",
+                "$693,891",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Rafael Morales",
+                "92.1%",
+                "64%",
+                "$740,156",
+                "1,534"
+              ]
+            },
+            {
+              "cells": [
+                "Emily Zhang",
+                "88.4%",
+                "61%",
+                "$712,635",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "Jessica Huang",
+                "90.6%",
+                "63%",
+                "$732,847",
+                "1,556"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Installation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Installation Booked (Count)",
+        "rightMax": 1600,
+        "rightTicks": [
+          0,
+          400,
+          800,
+          1200,
+          1600
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1294
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1240
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1155
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1102
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 959
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 1007
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1112
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1156
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1289
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1250
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1126
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1088
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 968
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 998
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1139
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1174
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1277
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1257
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1102
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 1067
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 982
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 993
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1158
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1197
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1261
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1259
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 1087
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 1042
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 1000
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 995
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1176
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 700000,
+        "rightTicks": [
+          0,
+          233333.33333333334,
+          466666.6666666667,
+          700000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 542396
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 519862
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 484098
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 461923
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 402188
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 422086
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 466266
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 484645
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 540382
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 523934
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 471889
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 456090
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 405844
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 418329
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 477367
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 491913
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 535351
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 527019
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 462139
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 447481
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 411935
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 416254
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 485595
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 501692
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 528550
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 527781
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 455526
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 436777
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 419078
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 417057
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 490574
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "74,277"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "5,942"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "4,457"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Martinez",
+                "412",
+                "88%",
+                "84%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Thompson",
+                "389",
+                "86%",
+                "86%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Susan Liu",
+                "378",
+                "87%",
+                "85%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "74,277 calls",
+      "pagerLabel": "1 of 7,428",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:12 am",
+          "id": "A21C-4E9B7710C3AF"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "3D8E-91C24B60F7A2"
+        },
+        {
+          "time": "1/14/26 11:23 am",
+          "id": "7B45-2F81A9D0E6B3"
+        },
+        {
+          "time": "1/16/26 12:38 pm",
+          "id": "C902-6A17DF3B845E"
+        },
+        {
+          "time": "1/20/26 1:05 pm",
+          "id": "E48F-0B93C271AD56"
+        },
+        {
+          "time": "1/22/26 2:19 pm",
+          "id": "9F13-7C40E8B2916D"
+        },
+        {
+          "time": "1/26/26 3:44 pm",
+          "id": "6A70-D251F9038CB4"
+        },
+        {
+          "time": "1/28/26 4:52 pm",
+          "id": "1E96-8340B7C15FA9"
+        },
+        {
+          "time": "1/30/26 5:31 pm",
+          "id": "B527-3F98A0D64E71"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling AT&T, this is Marcus. Who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling AT&T",
+            "Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:08",
+          "text": "Hi Marcus, my name is Diana Whitfield. I just moved into a new place and I'm looking to get internet set up, and maybe a new phone too.",
+          "highlights": [
+            "Diana Whitfield",
+            "new place"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "Welcome to the neighborhood, Diana. I can absolutely help you get connected. Are you a current AT&T customer or would this be your first time with us?",
+          "highlights": [
+            "first time with us"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:26",
+          "text": "First time. I was with another provider at my old apartment, honestly their service kept dropping so I'm shopping around this time.",
+          "highlights": [
+            "First time",
+            "shopping around"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:35",
+          "text": "I hear you, and reliability is exactly where we shine. Let me check your address for AT&T Fiber. What speeds do you usually need at home?",
+          "highlights": [
+            "AT&T Fiber"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:44",
+          "text": "I work from home and stream a lot, so something fast. But I want to keep it manageable, what does the fast one run per month?",
+          "highlights": [
+            "work from home",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:53",
+          "text": "Good news, your address qualifies for AT&T Fiber 1 Gig at about $80 a month, symmetrical speeds, equipment included, and no annual contract.",
+          "highlights": [
+            "AT&T Fiber 1 Gig",
+            "$80 a month",
+            "no annual contract"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:03",
+          "text": "No contract, that's good. I really don't want to be locked into anything for two years like my last provider did to me.",
+          "highlights": [
+            "don't want to be locked into anything"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:12",
+          "text": "You won't be, Diana. It's month to month, and it's backed by the AT&T Guarantee. Now you mentioned a new phone, are you thinking iPhone or Samsung?",
+          "highlights": [
+            "AT&T Guarantee"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:22",
+          "text": "I've been eyeing the iPhone 17. The store down the street quoted me a price but it felt steep, what can you do?",
+          "highlights": [
+            "iPhone 17",
+            "felt steep"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:31",
+          "text": "With an eligible trade-in on your current phone, we can get the iPhone 17 close to zero down on installments, and I'd pair it with our Unlimited Extra plan at $75.99 a month.",
+          "highlights": [
+            "iPhone 17",
+            "zero down",
+            "Unlimited Extra plan",
+            "$75.99 a month"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:42",
+          "text": "That's more like it. Can I bundle the phone and the internet together to save a bit?",
+          "highlights": [
+            "bundle the phone and the internet"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:49",
+          "text": "Absolutely, bundling the fiber and wireless brings your monthly down further, and I can even add a Samsung Galaxy Watch9 for $1.99 a month if you'd like.",
+          "highlights": [
+            "bundling the fiber and wireless",
+            "Galaxy Watch9 for $1.99 a month"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:59",
+          "text": "Let me hold off on the watch, I want to run the numbers by my husband first. But the internet and phone sound great.",
+          "highlights": [
+            "run the numbers by my husband"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:08",
+          "text": "That's completely fair. Let's get your fiber installation on the calendar so you're connected, and you can finalize the phone at that time. Does Thursday at 10 AM work?",
+          "highlights": [
+            "fiber installation on the calendar",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:18",
+          "text": "Thursday at 10 works perfectly.",
+          "highlights": [
+            "Thursday at 10 works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:22",
+          "text": "Wonderful. I've scheduled your AT&T Fiber installation for Thursday at 10 AM. What's the best mobile number and email for your confirmation?",
+          "highlights": [
+            "scheduled your AT&T Fiber installation",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:30",
+          "text": "It's 214-555-0182, and diana.whitfield@email.com.",
+          "highlights": [
+            "214-555-0182"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:35",
+          "text": "Perfect, you're all set, Diana. You'll get a text confirmation shortly. Thank you for choosing AT&T, and welcome aboard.",
+          "highlights": [
+            "all set",
+            "Thank you for choosing AT&T",
+            "welcome aboard"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:39",
+          "text": "Thanks Marcus, talk soon.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:41",
+          "text": "Take care, Diana. Goodbye.",
+          "highlights": [
+            "Goodbye"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Customer",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Installation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Fiber Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Device Upgrade Intent",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Bundle Discussed",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Diana Whitfield, a first-time AT&T customer who recently moved, called to set up home internet and possibly a new phone after leaving an unreliable provider. Marcus confirmed her address qualified for AT&T Fiber 1 Gig at about $80 a month with no annual contract, and paired an iPhone 17 with near zero down through trade-in on the Unlimited Extra plan. Diana deferred the Galaxy Watch9 add-on to check with her husband but committed to the fiber and phone. Marcus scheduled her AT&T Fiber installation for Thursday at 10 AM and captured her contact details.",
+        "keyPoints": [
+          "New customer switching from an unreliable competitor",
+          "Needs fast home internet for remote work and streaming",
+          "Recommended AT&T Fiber 1 Gig, no annual contract, AT&T Guarantee",
+          "iPhone 17 near zero down with trade-in on Unlimited Extra plan",
+          "Fiber installation booked for Thursday at 10 AM",
+          "Mobile number and email captured for confirmation"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Installation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "46,795 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,679",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for texting AT&T. Is this about wireless plans, home internet, or device upgrades today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi, interested in fiber internet for my place"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great choice. Fiber is fast and reliable. What city or zip code is your home in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "I'm in Austin, TX, zip 78701"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. Let me confirm fiber is available there. Have you checked your address on our coverage map, or should I look that up for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "No I haven't checked yet. Can you let me know?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Absolutely. Fiber is available at your address in downtown Austin. We offer speeds up to 1 Gig for 245 dollars per month, or 500M for 155 dollars per month. No annual contract or equipment fees. Which speed interests you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "1 Gig sounds good. What's the installation process?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "We'll schedule a technician to come out and install everything. Usually takes about 2 to 3 hours. When would work best for you? This week or next?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "Next week works. How about Wednesday afternoon?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Perfect. I can book you for Wednesday, March 12th between 1 and 4 pm. Our technician will call you 30 minutes before arrival. Does that work?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Yes that's perfect. Thank you."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "Excellent. Your installation is confirmed for March 12th, 1 to 4 pm at your Austin address. You'll get a reminder text and can reach us at 877.936.2933 if you need to reschedule. Thanks for choosing AT&T Fiber."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Installation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product: AT&T Fiber 1 Gig",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Service Area: Austin TX 78701",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Quote Given: 245 dollars monthly",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Installation Window Confirmed",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "512-555-8847",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "James Rodriguez",
+            "firstName": "James",
+            "lastName": "Rodriguez",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C827-4A2B9F47E891",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C643-6D8E5C12F4A7",
+          "time": "8/16/25 10:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C734-9F5B2E81C6D3",
+          "time": "8/16/25 10:18 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "74,277 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 7,428",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thanks for calling AT&T. This is Marcus. I see you're interested in our Fiber internet options. Is this your first time looking at AT&T services?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Yeah, actually it is. I'm currently with another provider and I'm just not happy with the speeds. My neighbor has AT&T Fiber and they're getting like five hundred megabits per second."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "That's great to hear. We'd love to get you switched over. Let me just ask, is your address currently serviceable for our Fiber network? Do you happen to know what area you're in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "I'm in Portland, Oregon. South side, around the Hawthorne district."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Perfect. Let me check that for you real quick. We do service that area. Now, when you say you need faster speeds, are you mainly streaming video, working from home, or gaming?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "All three, honestly. I work remote now and we've got three people streaming at home pretty regularly."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "Okay, that definitely sounds like you'd benefit from our one gigabyte plan. That's our fastest Fiber option at two hundred forty five dollars per month, and you get symmetrical upload and download speeds. No annual contract, no equipment fees. Plus, with our AT&T Guarantee, if you're not satisfied with your service, we'll make it right. How does that sound?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:20 PM",
+              "text": "That's interesting. What's included in the AT&T Guarantee, exactly?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:22 PM",
+              "text": "Great question. The Guarantee covers service reliability, so if you experience outages or quality issues, we credit your account and work to fix it fast. You also get twenty four seven support included. We stand behind our network. So let me ask you this, would you prefer to get installed this weekend or would next week work better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:23 PM",
+              "text": "Next week would be better. I'm pretty busy this Saturday and Sunday."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:24 PM",
+              "text": "Totally understand. How about Tuesday, January twenty first, in the afternoon? We could get a technician out between one and three PM. Does that work for your schedule?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:25 PM",
+              "text": "Tuesday works for me. One to three is good."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:26 PM",
+              "text": "Excellent. So I've got you scheduled for Tuesday, January twenty first, between one and three PM for your AT&T Fiber one gig installation. Your account number is going to be emailed to you shortly, and we'll send you a confirmation text as well. If you need to reschedule or have any questions before then, just call us back at eight seven seven, nine three six, twenty nine thirty three. Are you all set?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:27 PM",
+              "text": "Yeah, that's great. Thanks, Marcus."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:28 PM",
+              "text": "You're welcome. Thanks for choosing AT&T. We'll see you Tuesday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Installation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: AT&T Fiber one gigabyte",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Offer: AT&T Guarantee included",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area Confirmed: Portland, Oregon",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Installation Date: January 21, 2026",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "5:47",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice. Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "503-555-8847",
+            "repeatCaller": "No",
+            "city": "Portland",
+            "region": "OR",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B829-5D7AB142E6C3",
+          "time": "1/18/26 2:35 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B829-5D7AB142E6C3",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C156-9F4CD58A2B71",
+          "time": "1/22/26 10:47 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C156-9F4CD58A2B71",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D741-3E8FB629A4D5",
+          "time": "1/28/26 6:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D741-3E8FB629A4D5",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as AT&T's AI agent helping put together a personalized quote for wireless, fiber, or a bundle, mention that new customers can switch and get up to $800 per line to break their current contract, and ask if they'd like to get started.",
+        "Qualify one question at a time: Ask one question at a time to learn how many lines or devices they need, whether they want a phone, home internet, or a bundle, which plan tier or device model interests them (such as Unlimited Premium or iPhone 17), when they'd like service to begin, and their ZIP code so we can confirm AT&T Fiber or Internet Air availability at their address.",
+        "Estimate then book: Confirm we service their ZIP, share a preliminary monthly price range based on the plan and devices they described, recommend a consultation with an AT&T specialist for an exact quote and trade-in value, propose a specific day and time for an in-home installation, and let them know they'll receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "AT_T_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Shop Wireless Plans",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Internet: Fiber & Internet Air",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Deals & Bundles",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Order status\",\"question\":\"Where is my iPhone 17 order and when will it ship?\",\"answer\":\"I can look up your order with the confirmation number on your account, and most in-stock devices ship within 24 to 48 hours. If you'd like, I can also schedule an in-home installation once it arrives.\"},{\"topic\":\"Reschedule installation\",\"question\":\"Can I move my AT&T Fiber installation to another day?\",\"answer\":\"Absolutely, I can help you reschedule your in-home installation to a time that works better for you. Just let me know your preferred day and I'll confirm the new window and send a reminder text.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How much are AT&T unlimited plans?",
+              "answer": "Our unlimited plans range from around $65.99 a month for Unlimited Starter up to about $85.99 a month for Unlimited Premium, and pricing depends on the number of lines. I can set up a quick consultation with a specialist to build the exact quote for you."
+            },
+            {
+              "question": "Is AT&T Fiber available at my address?",
+              "answer": "I can check that in seconds if you share your ZIP code and street address. Once we confirm availability, I'll help you schedule an in-home installation."
+            },
+            {
+              "question": "What is the difference between AT&T Fiber and Internet Air?",
+              "answer": "Fiber offers symmetrical speeds from 300M up to Multi-Gig where the network is built out, while Internet Air is a plug-in 5G gateway for homes outside the fiber footprint. Share your ZIP and I'll confirm which one is available and get you booked for installation."
+            },
+            {
+              "question": "Can I really get the Galaxy Z Fold8 for $0?",
+              "answer": "Yes, the Galaxy Z Fold8 can be as low as $0 a month with an eligible trade-in of $290 or more and a qualifying plan. Let's set up a consultation so a specialist can confirm your trade-in value and finalize the offer."
+            },
+            {
+              "question": "How does the $800 per line switch offer work?",
+              "answer": "When you switch to AT&T we can help you get up to $800 per line to help cover the cost of leaving your current carrier, subject to eligibility. I'd recommend a quick consultation to confirm the details and get you started."
+            },
+            {
+              "question": "Do you have deals on the iPhone 17?",
+              "answer": "Yes, the iPhone 17 and iPhone 17 Pro are available on installments starting as low as $0 with an eligible trade-in and plan. I can book a consultation so a specialist can lock in your trade-in and the exact monthly amount."
+            },
+            {
+              "question": "What is included in the phone, watch, and tablet bundle?",
+              "answer": "That bundle can save you over $2,500 and includes a phone plus a Galaxy Watch9 and Galaxy Tab A11+ 5G each at $1.99 a month with trade-in and qualifying plans. Let's schedule a consultation to confirm eligibility and pricing for you."
+            },
+            {
+              "question": "Does AT&T Fiber require a contract?",
+              "answer": "No, AT&T Fiber has no annual contract and no equipment fee. Share your ZIP and I can confirm availability and set up your in-home installation."
+            },
+            {
+              "question": "What is the AT&T Guarantee?",
+              "answer": "The AT&T Guarantee is our service reliability and credit assurance program that comes bundled with plans. A specialist can walk you through the details during a quick consultation."
+            },
+            {
+              "question": "How much hotspot data do the plans include?",
+              "answer": "Unlimited Premium includes 60GB of hotspot, Unlimited Extra includes 30GB, and Starter includes basic access. I can arrange a consultation to match the right plan to how you use data."
+            },
+            {
+              "question": "Do you offer prepaid plans?",
+              "answer": "Yes, our Prepaid Unlimited MAX is about $65 a month with unlimited high-speed data and hotspot, no annual contract, and no credit check. I can connect you with a specialist to get set up."
+            },
+            {
+              "question": "Can I keep my phone number if I switch?",
+              "answer": "Yes, you can transfer your existing number to AT&T during the switch. Let's schedule a consultation so a specialist can walk you through the process."
+            },
+            {
+              "question": "How long does a fiber installation take?",
+              "answer": "An in-home fiber installation typically takes a couple of hours during your scheduled window. Share your ZIP and I'll help you pick a day and time."
+            },
+            {
+              "question": "What speeds does AT&T Fiber offer?",
+              "answer": "Fiber tiers include 300M, 500M, 1 Gig, and Multi-Gig with symmetrical upload and download speeds, roughly $55 to $245 a month. I can confirm which speeds reach your address and book your installation."
+            },
+            {
+              "question": "Is ActiveArmor security included?",
+              "answer": "Yes, AT&T ActiveArmor security is included with our unlimited plans for added protection. A specialist can explain the features during a quick consultation."
+            },
+            {
+              "question": "Can I bundle my phone and internet?",
+              "answer": "Yes, bundling a phone plan with home internet unlocks additional savings, and Internet Air can be as low as about $47 a month when bundled. Let's set up a consultation to build your bundle."
+            },
+            {
+              "question": "What is my trade-in worth?",
+              "answer": "Trade-in values vary by device model and condition, and eligible trades can bring some phones to $0 a month. I'd recommend a consultation so a specialist can confirm your exact value."
+            },
+            {
+              "question": "Do you have deals for business accounts?",
+              "answer": "Yes, we have offers tailored for Business as well as Personal customers. I can schedule a consultation with a specialist who handles business accounts."
+            },
+            {
+              "question": "How do I get 24/7 support after I sign up?",
+              "answer": "AT&T provides 24/7 support along with online tools to pay bills and manage your account. First, let's get you set up by booking a consultation with a specialist."
+            },
+            {
+              "question": "Can someone come to my home to set everything up?",
+              "answer": "Yes, we offer in-home installation so a technician can get your service running. Share your ZIP and preferred day and I'll get your installation scheduled."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule fiber installation\",\"follow_up_message\":\"Great news, AT&T Fiber is available at your address. I have an in-home installation window open this Thursday between 8 and 10 AM. Shall I lock that in and send you a reminder text with a number to call?\"},{\"intent\":\"Request a plan and device quote\",\"follow_up_message\":\"Based on two lines of Unlimited Extra with an iPhone 17 trade-in, your preliminary range is roughly $150 to $180 a month. Let's set up a consultation with a specialist to confirm your exact quote and trade-in value, does tomorrow at 2 PM work?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is AT&T's AI agent. I can help you build a personalized quote on wireless, home internet, or a bundle, and right now new customers can switch and get up to $800 per line to help break their current contract. Would you like to get started?",
+        "goal": "Qualify the customer's wireless and internet needs, confirm service availability by ZIP, and book an in-home installation with an AT&T specialist.",
+        "bookingType": "in-home installation",
+        "offer": "Switch to AT&T and get up to $800 per line to help break your current contract",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "Are you looking for wireless service, home internet, or a bundle of both?",
+          "How many lines or devices do you need to set up?",
+          "Which plan tier or device are you interested in, such as Unlimited Premium, the iPhone 17, or the Galaxy Z Fold8?",
+          "When would you like your new service to begin?",
+          "What is your ZIP code and street address so I can confirm AT&T Fiber or Internet Air availability?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:43 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:43 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:43 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "AT&T",
+      "callerName": "Michael Torres",
+      "callerPhone": "(805) 555-0142",
+      "campaign": "AT&T Fiber 300M, Santa Barbara Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Installation Lead",
+      "estimatedValue": "$2,485",
+      "googleSearch": "AT&T fiber internet near me santa barbara",
+      "websiteSearch": "AT&T fiber 300M pricing installation",
+      "callingWebpage": "/shop/internet/fiber",
+      "products": "AT&T Fiber 300M, Professional Installation",
+      "cartId": "ATT-4827K",
+      "serviceable": "Yes",
+      "email": "michael.torres@email.com",
+      "street": "1247 Montecito Street",
+      "city": "Santa Barbara",
+      "state": "CA",
+      "zip": "93101",
+      "digitalJourney": "/home › /shop/internet/fiber › /shop/internet/fiber/plans › /shop/internet/fiber/checkout",
+      "intent": "Researching fiber internet availability for home office, needs reliable high-speed connection for video conferencing and file uploads.",
+      "coverage": "ZIP 93101 confirmed, Santa Barbara serviceable",
+      "switchIntent": "High. Current provider has frequent outages. Wants installation within two weeks before new fiscal quarter starts.",
+      "greeting": "Hi Michael, thanks for calling AT&T. I see you're interested in our Fiber 300M service in Santa Barbara. I'd love to check availability at your address and walk you through our installation options. Would this week or next work better for scheduling your in-home setup?"
+    },
+    "smsScreenpop": {
+      "brandName": "AT&T",
+      "callerName": "Jennifer Wu",
+      "callerPhone": "(214) 555-0189",
+      "campaign": "Galaxy Z Fold8 Trade-in, Dallas Promotion",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Installation Lead",
+      "estimatedValue": "$1,847",
+      "googleSearch": "AT&T Galaxy Z Fold8 trade-in $0 deal",
+      "websiteSearch": "Samsung Galaxy Z Fold8 AT&T plans upgrade",
+      "callingWebpage": "/shop/phones/samsung-galaxy-z-fold8",
+      "products": "Samsung Galaxy Z Fold8, AT&T Unlimited Premium Plan",
+      "cartId": "ATT-6091L",
+      "serviceable": "Yes",
+      "email": "jennifer.wu@email.com",
+      "street": "3521 Maple Avenue",
+      "city": "Dallas",
+      "state": "TX",
+      "zip": "75201",
+      "digitalJourney": "/home › /deals › /shop/phones/samsung-galaxy-z-fold8 › /bundles",
+      "intent": "Interested in upgrading to foldable device, has eligible trade-in from two-year-old iPhone, wants premium unlimited plan with hotspot.",
+      "coverage": "ZIP 75201 confirmed, Dallas serviceable",
+      "appointment": "Device setup and plan activation with specialist, Thursday July 18, 2:00 PM",
+      "greeting": "Hi Jennifer, this is Marcus from AT&T. Just confirming your Samsung Galaxy Z Fold8 device setup is scheduled for Thursday at 2 PM. We'll get your new phone activated, transfer your data, and make sure your premium plan is optimized. Any questions before then? Text back anytime."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "AT&T",
+      "brandDomain": "www.att.com",
+      "brandIcon": "📱",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Switch to AT&T $800 offer",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "AT&T fiber internet near me",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/shop/internet/fiber",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "AT&T Fiber 500M plan, Galaxy Z Fold8 with trade-in",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "fiber_install_new",
+          "name": "Fiber Installation, New Service"
+        },
+        {
+          "id": "general_sales",
+          "name": "General Wireless and Bundles"
+        },
+        {
+          "id": "support_billing",
+          "name": "Support and Account Services"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling AT&T. I see you've been looking at our fiber plans today. Are you interested in bringing gigabit fiber internet to your Santa Barbara home?",
+          "sigs": [],
+          "q": [
+            35,
+            40,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, actually I'm looking at the 500 megabit plan. My current provider is really slow and I want something faster. We've been with them for like five years.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "<strong>Fiber 500M plan</strong> interest"
+            },
+            {
+              "c": "green",
+              "t": "<strong>Existing subscriber</strong>, switching urgency"
+            },
+            {
+              "c": "orange",
+              "t": "Service area confirmed Santa Barbara"
+            }
+          ],
+          "q": [
+            55,
+            30,
+            15
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect, and the 500M is excellent for most households. Just to confirm, you'd be switching from your current provider and you're looking to get installed as soon as possible?",
+          "sigs": [],
+          "q": [
+            72,
+            18,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, definitely. And actually, I'm also considering upgrading my phone while I'm at it. Do you guys have any deals on the new iPhone 17? My phone's getting old.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Ready to switch</strong> and install"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Device upgrade</strong>, iPhone 17 interest"
+            },
+            {
+              "c": "purple",
+              "t": "Bundle opportunity, phone plus internet"
+            }
+          ],
+          "q": [
+            85,
+            10,
+            5
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Great news. We can absolutely bundle your new fiber service with an iPhone 17, and you'll qualify for our switch credit on top of any trade-in offers. Let me connect you with our fiber installation team right now. They'll handle everything from confirming your address to scheduling your install and locking in your device deal. One moment please.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Installation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your installation is scheduled for (Agent)\", \"we'll get you set up on (Agent)\", \"confirm your install date (Agent)\", \"activate your new line today (Agent)\"])",
+          "createdAt": "11/12/24 9:14 am",
+          "updatedAt": "01/08/26 3:22 pm"
+        },
+        {
+          "name": "Bundle Upsell Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"add home internet (Caller)\", \"phone and internet bundle (Caller)\", \"bundle and save (Agent)\", \"phone watch and tablet bundle (Agent)\"])",
+          "createdAt": "02/03/25 10:05 am",
+          "updatedAt": "12/19/25 2:41 pm"
+        },
+        {
+          "name": "Competitor Named",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"I'm with Verizon (Caller)\", \"T-Mobile has (Caller)\", \"switch from Spectrum (Caller)\", \"Xfinity offer (Caller)\"])",
+          "createdAt": "03/17/25 8:30 am",
+          "updatedAt": "01/06/26 11:12 am"
+        },
+        {
+          "name": "Coverage Confidence",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Coverage Confidence] < 60 and duration > 45 sec",
+          "createdAt": "01/22/25 4:18 pm",
+          "updatedAt": "12/28/25 9:47 am"
+        },
+        {
+          "name": "Device Trade-In Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"trade in my iPhone (Caller)\", \"how much for my old phone (Caller)\", \"trade-in value (Caller)\", \"up to $800 off per line (Agent)\"])",
+          "createdAt": "12/05/24 1:53 pm",
+          "updatedAt": "01/14/26 10:33 am"
+        },
+        {
+          "name": "Empathy & Rapport",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy & Rapport] < 60 and duration > 45 sec",
+          "createdAt": "11/29/24 3:07 pm",
+          "updatedAt": "01/03/26 8:55 am"
+        },
+        {
+          "name": "Fiber Availability Requested",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"is fiber available at my address (Caller)\", \"AT&T Fiber near me (Caller)\", \"do you have fiber in my area (Caller)\", \"Internet Air instead of fiber (Agent)\"])",
+          "createdAt": "04/09/25 9:26 am",
+          "updatedAt": "12/22/25 4:10 pm"
+        },
+        {
+          "name": "Installation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"when can you install (Caller)\", \"schedule the technician (Agent)\", \"installation window (Agent)\", \"self-install kit (Agent)\"])",
+          "createdAt": "12/18/24 11:40 am",
+          "updatedAt": "01/09/26 1:15 pm"
+        },
+        {
+          "name": "Plan Needs Discovery",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "2 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Plan Needs Discovery] < 60 and duration > 45 sec",
+          "createdAt": "02/14/25 2:22 pm",
+          "updatedAt": "12/30/25 10:05 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"that comes to per month (Agent)\", \"your monthly total would be (Agent)\", \"$85.99 a month for the Premium plan (Agent)\", \"after your trade-in credit (Agent)\"])",
+          "createdAt": "03/02/25 9:48 am",
+          "updatedAt": "01/07/26 3:33 pm"
+        }
+      ]
+    }
+  }
+}

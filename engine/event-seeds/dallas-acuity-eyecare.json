@@ -1,0 +1,5359 @@
+{
+  "id": "acuity-eyecare",
+  "customerName": "Acuity Eyecare",
+  "websiteUrl": "https://www.aegvision.com",
+  "brandDomain": "aegvision.com",
+  "networkName": "Invoca for Eye Care",
+  "industry": "Optometry and eye care",
+  "bookingTerm": "Eye Exam",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 20000,
+      "yTicks": [
+        4000,
+        8000,
+        12000,
+        16000,
+        20000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 8742
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 15318
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 14876
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 14203
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 14626
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Eye Exam Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Eye Exam Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Eye Exam Near Me, Dallas",
+          "marketingSearchTerm": "eye exam near me",
+          "landingPageUrl": "https://www.aegvision.com/eye-care-services/eye-exams?utm_source=google&utm_medium=cpc&utm_campaign=eye_exam_dallas",
+          "websiteJourney": "Home / Eye Care Services / Eye Exams",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Contact Lens Fitting, Book Online",
+          "marketingSearchTerm": "contact lens fitting cost",
+          "landingPageUrl": "https://www.aegvision.com/contact-lenses/fitting?utm_source=google&utm_medium=cpc&utm_campaign=cl_fitting_book",
+          "websiteJourney": "Home / Contact Lenses / Fitting",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Optometrist Near Me, Fort Worth",
+          "marketingSearchTerm": "optometrist fort worth",
+          "landingPageUrl": "https://www.aegvision.com/our-practices/locations?utm_source=bing&utm_medium=cpc&utm_campaign=optometrist_ftworth",
+          "websiteJourney": "Home / Our Practices / Locations",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local SEO, Diabetic Eye Care",
+          "marketingSearchTerm": "diabetic eye exam near me",
+          "landingPageUrl": "https://www.aegvision.com/eye-care-services/medical-eye-care?utm_source=google&utm_medium=organic&utm_campaign=diabetic_eye_seo",
+          "websiteJourney": "Home / Eye Care Services / Medical Eye Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Prescription Glasses, Same Day",
+          "marketingSearchTerm": "prescription glasses near me",
+          "landingPageUrl": "https://www.aegvision.com/eyewear/glasses?utm_source=google&utm_medium=cpc&utm_campaign=rx_glasses_sameday",
+          "websiteJourney": "Home / Eyewear / Glasses",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Back-to-School Eye Exams",
+          "marketingSearchTerm": "N/A",
+          "landingPageUrl": "https://www.aegvision.com/eye-care-services/eye-exams?utm_source=facebook&utm_medium=paid_social&utm_campaign=back_to_school",
+          "websiteJourney": "Home / Eye Care Services / Eye Exams",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Dry Eye Specialist, Plano",
+          "marketingSearchTerm": "dry eye specialist near me",
+          "landingPageUrl": "https://www.aegvision.com/eye-care-services/dry-eye?utm_source=google&utm_medium=cpc&utm_campaign=dry_eye_plano",
+          "websiteJourney": "Home / Eye Care Services / Dry Eye",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Annual Contact Lens Supply Savings",
+          "marketingSearchTerm": "N/A",
+          "landingPageUrl": "https://www.aegvision.com/contact-lenses/order-contacts?utm_source=instagram&utm_medium=paid_social&utm_campaign=cl_annual_savings",
+          "websiteJourney": "Home / Contact Lenses / Order Contacts",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local SEO, Designer Frames",
+          "marketingSearchTerm": "designer frames eye doctor",
+          "landingPageUrl": "https://www.aegvision.com/eyewear/frame-brands?utm_source=google&utm_medium=organic&utm_campaign=designer_frames_seo",
+          "websiteJourney": "Home / Eyewear / Frame Brands",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Accepts VSP EyeMed, Arlington",
+          "marketingSearchTerm": "accepts vsp insurance eye doctor",
+          "landingPageUrl": "https://www.aegvision.com/patient-info/insurance?utm_source=google&utm_medium=cpc&utm_campaign=vsp_eyemed_arlington",
+          "websiteJourney": "Home / Patient Info / Insurance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Frame Trunk Show",
+          "marketingSearchTerm": "N/A",
+          "landingPageUrl": "https://www.aegvision.com/eyewear/frame-brands?utm_source=facebook&utm_medium=paid_social&utm_campaign=frame_trunk_show",
+          "websiteJourney": "Home / Eyewear / Frame Brands",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Specialty Contacts, Scleral Lenses",
+          "marketingSearchTerm": "scleral contact lens fitting",
+          "landingPageUrl": "https://www.aegvision.com/contact-lenses/specialty-lenses?utm_source=bing&utm_medium=cpc&utm_campaign=scleral_specialty",
+          "websiteJourney": "Home / Contact Lenses / Specialty Lenses",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local SEO, Book Appointment",
+          "marketingSearchTerm": "book eye exam online",
+          "landingPageUrl": "https://www.aegvision.com/patient-info/book-appointment?utm_source=google&utm_medium=organic&utm_campaign=book_appt_seo",
+          "websiteJourney": "Home / Patient Info / Book Appointment",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Prescription Sunglasses, Polarized",
+          "marketingSearchTerm": "prescription sunglasses near me",
+          "landingPageUrl": "https://www.aegvision.com/eyewear/sunglasses?utm_source=google&utm_medium=cpc&utm_campaign=rx_sunglasses",
+          "websiteJourney": "Home / Eyewear / Sunglasses",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Use Your Vision Benefits Before Year-End",
+          "marketingSearchTerm": "N/A",
+          "landingPageUrl": "https://www.aegvision.com/patient-info/insurance?utm_source=instagram&utm_medium=paid_social&utm_campaign=year_end_benefits",
+          "websiteJourney": "Home / Patient Info / Insurance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Progressive Lenses, No-Line Bifocal",
+          "marketingSearchTerm": "progressive lenses cost",
+          "landingPageUrl": "https://www.aegvision.com/eyewear/lens-options?utm_source=google&utm_medium=cpc&utm_campaign=progressive_lenses",
+          "websiteJourney": "Home / Eyewear / Lens Options",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local SEO, Retinal Imaging",
+          "marketingSearchTerm": "optomap retinal imaging near me",
+          "landingPageUrl": "https://www.aegvision.com/eye-care-services/diagnostic?utm_source=google&utm_medium=organic&utm_campaign=optomap_seo",
+          "websiteJourney": "Home / Eye Care Services / Diagnostic",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Kids Eye Exam, Frisco",
+          "marketingSearchTerm": "pediatric eye exam near me",
+          "landingPageUrl": "https://www.aegvision.com/eye-care-services/eye-exams?utm_source=google&utm_medium=cpc&utm_campaign=kids_eye_frisco",
+          "websiteJourney": "Home / Eye Care Services / Eye Exams",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Daily Disposable Contacts Promo",
+          "marketingSearchTerm": "N/A",
+          "landingPageUrl": "https://www.aegvision.com/contact-lenses/order-contacts?utm_source=facebook&utm_medium=paid_social&utm_campaign=daily_disposable_promo",
+          "websiteJourney": "Home / Contact Lenses / Order Contacts",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local SEO, Eyewear Warranty",
+          "marketingSearchTerm": "eyeglass protection plan",
+          "landingPageUrl": "https://www.aegvision.com/eyewear/protection-plan?utm_source=google&utm_medium=organic&utm_campaign=warranty_seo",
+          "websiteJourney": "Home / Eyewear / Protection Plan",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Blue-Light Lens Upgrade",
+          "marketingSearchTerm": "N/A",
+          "landingPageUrl": "https://www.aegvision.com/eyewear/lens-options?utm_source=instagram&utm_medium=paid_social&utm_campaign=blue_light_upgrade",
+          "websiteJourney": "Home / Eyewear / Lens Options",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Same-Day Glasses, Mesquite",
+          "marketingSearchTerm": "same day glasses near me",
+          "landingPageUrl": "https://www.aegvision.com/eyewear/glasses?utm_source=bing&utm_medium=cpc&utm_campaign=same_day_mesquite",
+          "websiteJourney": "Home / Eyewear / Glasses",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Acuity Eyecare)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "53,149"
+            },
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,640,756"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "8,504"
+            },
+            {
+              "label": "Insurance & Benefits Inquiry (Percent)",
+              "value": "7%"
+            },
+            {
+              "label": "Reschedule or Cancel (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Order Status (Percent)",
+              "value": "4%"
+            }
+          ]
+        },
+        {
+          "title": "New Patient Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "58%"
+            },
+            {
+              "label": "Unqualified Inquiry (Percent)",
+              "value": "11%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "34%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Patient Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Patient Call (Count)",
+            "values": [
+              6214,
+              9847,
+              10213,
+              9986,
+              8385
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              4287,
+              6731,
+              7058,
+              6892,
+              5858
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              812,
+              1273,
+              1341,
+              1286,
+              1134
+            ]
+          },
+          {
+            "name": "New Patient (Count)",
+            "values": [
+              2514,
+              3982,
+              4127,
+              4041,
+              3407
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 53149,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "24,318",
+                "49%",
+                "28%",
+                "$2,481,344"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "11,642",
+                "52%",
+                "34%",
+                "$1,236,589"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "8,217",
+                "55%",
+                "41%",
+                "$872,415"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "5,893",
+                "58%",
+                "47%",
+                "$631,208"
+              ]
+            },
+            {
+              "name": "LinkedIn",
+              "metrics": [
+                "3,079",
+                "61%",
+                "58%",
+                "$419,200"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 53149,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "22,861",
+                "48%",
+                "27%",
+                "$2,391,502"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "12,438",
+                "51%",
+                "33%",
+                "$1,318,744"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "9,127",
+                "54%",
+                "39%",
+                "$968,215"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "5,342",
+                "57%",
+                "46%",
+                "$561,893"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "3,381",
+                "60%",
+                "55%",
+                "$400,402"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 36422,
+          "rows": [
+            {
+              "name": "Eye Exam Near Me",
+              "metrics": [
+                "14,238",
+                "50%",
+                "29%",
+                "$1,428,116"
+              ]
+            },
+            {
+              "name": "Annual Contact Lens Supply Savings",
+              "metrics": [
+                "8,917",
+                "53%",
+                "34%",
+                "$912,447"
+              ]
+            },
+            {
+              "name": "Back-to-School Eye Exams",
+              "metrics": [
+                "6,124",
+                "55%",
+                "40%",
+                "$628,193"
+              ]
+            },
+            {
+              "name": "Frame Trunk Show",
+              "metrics": [
+                "4,382",
+                "58%",
+                "46%",
+                "$451,882"
+              ]
+            },
+            {
+              "name": "Sell Your Optometry Practice",
+              "metrics": [
+                "2,761",
+                "61%",
+                "57%",
+                "$289,204"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25178,
+          "rows": [
+            {
+              "name": "eye exam near me",
+              "metrics": [
+                "9,847",
+                "49%",
+                "28%",
+                "$988,412"
+              ]
+            },
+            {
+              "name": "optometrist near me",
+              "metrics": [
+                "6,238",
+                "52%",
+                "33%",
+                "$627,193"
+              ]
+            },
+            {
+              "name": "contact lens fitting cost",
+              "metrics": [
+                "4,192",
+                "55%",
+                "39%",
+                "$419,884"
+              ]
+            },
+            {
+              "name": "prescription glasses near me",
+              "metrics": [
+                "3,017",
+                "58%",
+                "45%",
+                "$302,447"
+              ]
+            },
+            {
+              "name": "diabetic eye exam",
+              "metrics": [
+                "1,884",
+                "60%",
+                "56%",
+                "$188,566"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Eye Exam Set (Industry) (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 53149,
+          "rows": [
+            {
+              "name": "Comprehensive Eye Exams & Medical Eye Care",
+              "metrics": [
+                "18,437",
+                "61%",
+                "22%",
+                "$1,943,208"
+              ]
+            },
+            {
+              "name": "Prescription Eyeglasses",
+              "metrics": [
+                "13,942",
+                "54%",
+                "28%",
+                "$1,481,652"
+              ]
+            },
+            {
+              "name": "Contact Lenses",
+              "metrics": [
+                "10,318",
+                "49%",
+                "33%",
+                "$1,095,384"
+              ]
+            },
+            {
+              "name": "Specialty & Diagnostic Services",
+              "metrics": [
+                "6,214",
+                "44%",
+                "41%",
+                "$658,932"
+              ]
+            },
+            {
+              "name": "Optical Retail & Accessories",
+              "metrics": [
+                "4,238",
+                "38%",
+                "48%",
+                "$461,580"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 53149,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "17,213",
+                "57%",
+                "24%",
+                "$1,826,394"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "12,684",
+                "52%",
+                "30%",
+                "$1,346,208"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "9,847",
+                "48%",
+                "35%",
+                "$1,045,932"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "8,132",
+                "43%",
+                "42%",
+                "$862,884"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "5,273",
+                "39%",
+                "51%",
+                "$559,338"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Comprehensive Eye Exams & Medical Eye Care",
+            "values": [
+              812,
+              798,
+              856,
+              790,
+              800
+            ]
+          },
+          {
+            "name": "Prescription Eyeglasses",
+            "values": [
+              782,
+              768,
+              812,
+              758,
+              784
+            ]
+          },
+          {
+            "name": "Contact Lenses",
+            "values": [
+              681,
+              672,
+              704,
+              668,
+              680
+            ]
+          },
+          {
+            "name": "Specialty & Diagnostic Services",
+            "values": [
+              512,
+              498,
+              528,
+              502,
+              508
+            ]
+          },
+          {
+            "name": "Optical Retail & Accessories",
+            "values": [
+              408,
+              398,
+              424,
+              402,
+              402
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 53,149 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcia Delgado called to book a comprehensive eye exam for herself and her husband. Agent Lila confirmed both patients were covered under their VSP insurance, found matching openings, and scheduled the exams. Marcia was thrilled with how quickly the eye exam slots were found.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Lila",
+          "duration": "2m 18s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Trevor Nakamura wanted a contact lens fitting since he had never worn lenses before. Agent Oscar explained the fitting and trial process, checked pricing, and booked a new eye exam paired with the contact lens evaluation. Trevor left the call excited to try dailies.",
+          "date": "Feb 11, 3:47 PM",
+          "agent": "Oscar",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 82,
+          "summary": "Gloria Ashford asked about the status of her progressive lenses that were ordered two weeks ago. Agent Mary looked up the lab ticket and told her the progressive lenses were being finished and would arrive in a few days. Gloria appreciated the clear update but was hoping they would be ready sooner.",
+          "date": "Mar 3, 1:05 PM",
+          "agent": "Mary",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "First-time caller Priya Venkatesan phoned to schedule an eye exam after moving to the area. Agent Rosey collected her full details, insurance information, and preferred location, then booked her comprehensive eye exam. Priya also asked to browse frames during her visit and Rosey noted it on her chart.",
+          "date": "Apr 9, 9:32 AM",
+          "agent": "Rosey",
+          "duration": "2m 55s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Daniel Okoro called about persistent dry eye irritation and wanted to know if his medical insurance would cover an evaluation. Agent Lee verified his coverage and scheduled a dry eye and medical eye exam. Daniel was relieved to finally get a visit on the books.",
+          "date": "Feb 22, 4:21 PM",
+          "agent": "Lee",
+          "duration": "2m 09s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Sandra Whitfield wanted to know which designer frames the clinic carried before committing to an appointment. Agent Sue described the Ray-Ban and Coach frames in stock and lens upgrade options. Sandra said she would think it over and call back rather than book today.",
+          "date": "May 14, 11:48 AM",
+          "agent": "Sue",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 17,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 62,
+          "summary": "Harold Simmons, a diabetic patient, called to arrange his annual dilated retinal check. Agent Mike confirmed his medical insurance and booked a diabetic eye exam with retinal imaging. Harold was satisfied though he wished the earliest slot was not three weeks out.",
+          "date": "Jun 5, 2:33 PM",
+          "agent": "Mike",
+          "duration": "2m 26s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Erica Bowman phoned to check on her single-vision glasses order that felt overdue. Agent Jennifer found the order stuck at the lab and promised to escalate it. Erica was frustrated that nobody had called her with an update first.",
+          "date": "Mar 27, 10:52 AM",
+          "agent": "Jennifer",
+          "duration": "1m 38s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Kevin Ashcroft disputed a charge on his last eye exam that he believed his insurance should have covered. Agent Rose reviewed the claim and explained the copay portion, then opened a billing review ticket. Kevin remained unhappy and asked for a manager callback.",
+          "date": "Jul 8, 3:19 PM",
+          "agent": "Rose",
+          "duration": "2m 44s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 29,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Natalie Frost called to set up a first eye exam for her teenage son before the school year. Agent Oscar found a weekend opening and booked the eye exam despite some confusion over which insurance plan applied. Natalie was glad it was scheduled but the coverage question was left unresolved.",
+          "date": "Aug 19, 12:07 PM",
+          "agent": "Oscar",
+          "duration": "2m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "RogerAblitt called about a warranty repair for frames whose hinge had snapped after two months. Agent Lila explained the one-year protection plan but could not confirm if his purchase was enrolled. Roger grew impatient waiting for the record to be located.",
+          "date": "Sep 2, 4:55 PM",
+          "agent": "Lila",
+          "duration": "1m 29s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 43,
+          "summary": "Yvonne Castellano tried to reorder her monthly contact lens supply but her prescription had expired. Agent Lee told her a new contact lens evaluation was required before reordering. Yvonne was annoyed she had to come back in just to renew.",
+          "date": "May 30, 9:18 AM",
+          "agent": "Lee",
+          "duration": "1m 41s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Brandon Meeks called to cancel his upcoming eye exam and did not want to reschedule. Agent Mary processed the cancellation and asked if anything went wrong. Brandon said he had found another provider closer to home.",
+          "date": "Jun 24, 1:44 PM",
+          "agent": "Mary",
+          "duration": "1m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Denise Rutherford complained that her dry eye treatment plan had not improved her symptoms and she felt rushed at her last visit. Agent Sue listened and offered to schedule a follow-up with the doctor. Denise declined and demanded a refund instead.",
+          "date": "Oct 4, 3:38 PM",
+          "agent": "Sue",
+          "duration": "2m 07s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Curtis Halloway called after hours asking to confirm whether his insurance was accepted, but the call rolled to voicemail. He left a brief message with his name and callback number about a possible eye exam. No agent was available to assist during the call.",
+          "date": "Jan 29, 6:12 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "eye exam",
+        "contact lens",
+        "progressive",
+        "insurance",
+        "frames",
+        "dry eye"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 1:44 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Insurance / Benefits",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Exam Type Needed",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Verify Service Area / ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Appointment Slot",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Explain Pre-Visit Requirements",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Polite greeting",
+        "Confirmed caller identity",
+        "Asked about vision concerns",
+        "Captured full name correctly",
+        "Confirmed ZIP code in service area",
+        "Confirmed insurance carrier",
+        "Offered exam time options",
+        "Caller accepted appointment",
+        "Clear next steps communicated",
+        "Professional tone maintained",
+        "Active listening demonstrated",
+        "Appointment date confirmed",
+        "Caller expressed satisfaction"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Appointment time not locked in system",
+        "Pre-visit form instructions not provided",
+        "Glasses prescription history not mentioned",
+        "Contact lens interest not explored",
+        "Dry eye symptoms not assessed",
+        "Previous eye doctor name not obtained",
+        "New patient intake form details not reviewed",
+        "Vision insurance deductible not explained",
+        "Expected out-of-pocket cost not quoted"
+      ],
+      "naSignals": [
+        "Frame warranty enrollment not applicable",
+        "Contact lens reorder status not applicable",
+        "Previous eyewear return process not applicable",
+        "Lens upgrade options not applicable",
+        "Frame selection guidance not applicable",
+        "Specialty lens fitting not applicable",
+        "Optical accessories purchase not applicable"
+      ],
+      "prompts": [
+        {
+          "question": "Is the patient trying to solve a specific problem?",
+          "answer": "Yes. The caller is a new patient seeking a comprehensive eye exam for an initial vision evaluation. They mentioned occasional blurry vision at distance and want to determine if they need glasses or contacts."
+        },
+        {
+          "question": "What are the patient's expectations?",
+          "answer": "The caller expects to schedule a convenient appointment time and have their vision assessed. They are insured and want to understand their coverage before arriving at the clinic."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address for appointment confirmation and pre-visit form delivery. Providing a specific appointment time slot and explaining what to bring would set better expectations for the visit."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon, and thank you for calling Acuity Eyecare. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus. I am looking to schedule an eye exam. I haven't been to an eye doctor in a few years and my vision seems a bit blurry sometimes when I am looking at things far away."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:42",
+          "text": "Great. I would be happy to help you schedule that comprehensive exam. Can I get your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:52",
+          "text": "Yes, it is Jennifer Martinez. That is M-A-R-T-I-N-E-Z."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:04",
+          "text": "Thank you, Jennifer. And do you currently have vision insurance or do you know your insurance carrier?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:16",
+          "text": "Yes, I have VSP through my employer."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:24",
+          "text": "Excellent. VSP coverage is great and we accept that. What is your ZIP code so I can confirm we have a location near you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:36",
+          "text": "It is 75201. I am in the Dallas area."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:44",
+          "text": "Perfect. That is in our service area and we have several locations throughout Dallas. Let me get your phone number for the appointment reminder."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:58",
+          "text": "Sure, it is ****-****-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:04",
+          "text": "Thank you. We have opening times next Tuesday at 9 a.m., 11 a.m., or 2 p.m. Which would work best for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:16",
+          "text": "The 11 a.m. slot works perfectly for me."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:26",
+          "text": "Wonderful. I have you scheduled for a comprehensive eye exam on Tuesday, October 29th at 11 a.m. at our Dallas Uptown location. You will want to bring your insurance card and arrive about 10 minutes early. We look forward to seeing you, Jennifer. Is there anything else I can help you with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:50",
+          "text": "No, that sounds good. Thank you so much."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:56",
+          "text": "You are very welcome. Thank you for calling Acuity Eyecare, Jennifer. Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Martinez, a new patient from Dallas ZIP 75201, called to schedule a comprehensive eye exam due to occasional blurry vision at distance. She confirmed VSP vision insurance coverage, accepted the Tuesday 11 a.m. appointment slot at the Dallas Uptown location, and confirmed she will bring her insurance card. The agent successfully captured her name, phone number, and appointment details but did not record her email address for confirmation or pre-visit materials.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, excellent work on the call structure and greeting. You stayed professional and moved efficiently through the key steps. Two quick coaching notes for next time. One, always capture the email address so we can send the new patient form and confirmation link. Two, consider briefly setting expectations by mentioning she will need about 45 minutes for the exam and what will be included, like the visual acuity check and retinal imaging. Small touches like that build confidence before the first visit."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "53,149"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$106.13"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,640,756"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "31,264"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "59%"
+            },
+            {
+              "label": "Eye Exam: Scheduled (Count)",
+              "value": "28,700"
+            },
+            {
+              "label": "Eye Exam: Scheduled (Percent)",
+              "value": "54%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "21,885"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Eye Exam: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Eye Exams)",
+          "chart": {
+            "legend": "Eye Exam: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "LinkedIn",
+                "value": 60,
+                "display": "60%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Bing",
+                "value": 55,
+                "display": "55%"
+              },
+              {
+                "name": "Facebook",
+                "value": 51,
+                "display": "51%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Eye Exams)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Eye Exam: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "21,342",
+                  "46%",
+                  "$2,264,853"
+                ]
+              },
+              {
+                "cells": [
+                  "Facebook",
+                  "12,867",
+                  "51%",
+                  "$1,365,402"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing",
+                  "8,713",
+                  "55%",
+                  "$924,713"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "6,458",
+                  "58%",
+                  "$685,428"
+                ]
+              },
+              {
+                "cells": [
+                  "LinkedIn",
+                  "3,769",
+                  "60%",
+                  "$400,360"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 24000,
+            "axisTicks": [
+              0,
+              4000,
+              8000,
+              12000,
+              16000,
+              20000,
+              24000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 19847,
+                "display": "19,847"
+              },
+              {
+                "name": "Paid Social",
+                "value": 11238,
+                "display": "11,238"
+              },
+              {
+                "name": "Organic Search",
+                "value": 9564,
+                "display": "9,564"
+              },
+              {
+                "name": "Email/CRM",
+                "value": 7321,
+                "display": "7,321"
+              },
+              {
+                "name": "Display Retargeting",
+                "value": 5179,
+                "display": "5,179"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Eye Exams)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Eye Exam: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "19,847",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "11,238",
+                  "50%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "9,564",
+                  "53%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "7,321",
+                  "57%"
+                ]
+              },
+              {
+                "cells": [
+                  "Display Retargeting",
+                  "5,179",
+                  "61%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Eye Exam Near Me",
+                "value": 8742,
+                "display": "8,742"
+              },
+              {
+                "name": "Contact Lens Fitting Book Online",
+                "value": 6318,
+                "display": "6,318"
+              },
+              {
+                "name": "Annual Contact Lens Supply Savings",
+                "value": 4957,
+                "display": "4,957"
+              },
+              {
+                "name": "Back-to-School Eye Exams",
+                "value": 3689,
+                "display": "3,689"
+              },
+              {
+                "name": "Designer Frames Trunk Show",
+                "value": 2514,
+                "display": "2,514"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Eye Exams)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Eye Exam: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Eye Exam Near Me",
+                  "8,742",
+                  "47%",
+                  "$927,314"
+                ]
+              },
+              {
+                "cells": [
+                  "Contact Lens Fitting Book Online",
+                  "6,318",
+                  "51%",
+                  "$669,708"
+                ]
+              },
+              {
+                "cells": [
+                  "Annual Contact Lens Supply Savings",
+                  "4,957",
+                  "55%",
+                  "$525,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Back-to-School Eye Exams",
+                  "3,689",
+                  "62%",
+                  "$391,034"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 6000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000,
+              6000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "eye exam near me",
+                "value": 5847,
+                "display": "5,847"
+              },
+              {
+                "name": "contact lens fitting cost",
+                "value": 3912,
+                "display": "3,912"
+              },
+              {
+                "name": "prescription glasses near me",
+                "value": 3124,
+                "display": "3,124"
+              },
+              {
+                "name": "optometrist near me",
+                "value": 2568,
+                "display": "2,568"
+              },
+              {
+                "name": "diabetic eye exam",
+                "value": 1689,
+                "display": "1,689"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Eye Exams)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Eye Exam: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "eye exam near me",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "contact lens fitting cost",
+                  "52%"
+                ]
+              },
+              {
+                "cells": [
+                  "prescription glasses near me",
+                  "57%"
+                ]
+              },
+              {
+                "cells": [
+                  "optometrist near me",
+                  "63%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Eye Exam: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Comprehensive Eye Exams",
+              "18,742",
+              "48%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Prescription Eyeglasses",
+              "13,684",
+              "52%",
+              "55%"
+            ]
+          },
+          {
+            "cells": [
+              "Contact Lenses",
+              "11,347",
+              "56%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Medical & Specialty Eye Care",
+              "9,376",
+              "63%",
+              "49%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Eye Exam: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Acuity Eyecare Dallas",
+              "16,847",
+              "1,284",
+              "4%",
+              "49%"
+            ]
+          },
+          {
+            "cells": [
+              "Acuity Eyecare Fort Worth",
+              "13,928",
+              "1,047",
+              "5%",
+              "53%"
+            ]
+          },
+          {
+            "cells": [
+              "Acuity Eyecare Plano",
+              "12,463",
+              "986",
+              "6%",
+              "56%"
+            ]
+          },
+          {
+            "cells": [
+              "Acuity Eyecare Arlington",
+              "9,911",
+              "935",
+              "7%",
+              "61%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Insurance Not Accepted",
+            "values": [
+              1247,
+              1463,
+              1389,
+              1342,
+              1401
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1034,
+              1247,
+              1189,
+              1142,
+              1126
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              923,
+              1047,
+              1012,
+              978,
+              967
+            ]
+          },
+          {
+            "name": "Price Above Budget",
+            "values": [
+              784,
+              892,
+              863,
+              847,
+              827
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              498,
+              574,
+              562,
+              548,
+              547
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "21,260"
+          },
+          {
+            "label": "Eye Exam Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "New Patient (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$3,215,231"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$156,840"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent and Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$287,445"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$198,270"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$289,560"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent and Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$512,715"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$770,411"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Eye Exam Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25847,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "7,284",
+                "58%",
+                "31%",
+                "$892,156"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "5,862",
+                "56%",
+                "32%",
+                "$798,480"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "4,195",
+                "54%",
+                "34%",
+                "$562,219"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "2,847",
+                "53%",
+                "36%",
+                "$398,752"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "1,072",
+                "51%",
+                "38%",
+                "$163,624"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Eye Exam Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 26153,
+          "rows": [
+            {
+              "name": "Website Form",
+              "metrics": [
+                "8,459",
+                "57%",
+                "30%",
+                "$1,098,870"
+              ]
+            },
+            {
+              "name": "Phone Call",
+              "metrics": [
+                "6,734",
+                "55%",
+                "33%",
+                "$834,216"
+              ]
+            },
+            {
+              "name": "SMS Message",
+              "metrics": [
+                "3,728",
+                "54%",
+                "35%",
+                "$478,936"
+              ]
+            },
+            {
+              "name": "Facebook Messenger",
+              "metrics": [
+                "1,864",
+                "52%",
+                "37%",
+                "$268,352"
+              ]
+            },
+            {
+              "name": "Google Business Profile",
+              "metrics": [
+                "675",
+                "51%",
+                "39%",
+                "$135,857"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Eye Exam Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 26480,
+          "rows": [
+            {
+              "name": "Eye Exam Near Me, Local",
+              "metrics": [
+                "6,847",
+                "57%",
+                "30%",
+                "$881,432"
+              ]
+            },
+            {
+              "name": "Annual Contact Lens Supply Savings",
+              "metrics": [
+                "4,293",
+                "55%",
+                "33%",
+                "$528,648"
+              ]
+            },
+            {
+              "name": "Back to School Eye Exams",
+              "metrics": [
+                "3,562",
+                "54%",
+                "35%",
+                "$467,104"
+              ]
+            },
+            {
+              "name": "Diabetic Eye Care Awareness",
+              "metrics": [
+                "2,418",
+                "52%",
+                "37%",
+                "$349,960"
+              ]
+            },
+            {
+              "name": "Frame Trunk Show and Designer Brands",
+              "metrics": [
+                "1,840",
+                "51%",
+                "39%",
+                "$288,087"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Eye Exam Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 23416,
+          "rows": [
+            {
+              "name": "Eye exam near me",
+              "metrics": [
+                "4,156",
+                "58%",
+                "29%",
+                "$562,847"
+              ]
+            },
+            {
+              "name": "Optometrist in my city",
+              "metrics": [
+                "2,784",
+                "56%",
+                "32%",
+                "$398,271"
+              ]
+            },
+            {
+              "name": "Contact lens fitting cost",
+              "metrics": [
+                "1,947",
+                "54%",
+                "34%",
+                "$289,536"
+              ]
+            },
+            {
+              "name": "Dry eye specialist near me",
+              "metrics": [
+                "1,263",
+                "52%",
+                "36%",
+                "$198,464"
+              ]
+            },
+            {
+              "name": "Prescription glasses same day",
+              "metrics": [
+                "814",
+                "51%",
+                "38%",
+                "$137,845"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Product Category: Call Outcome Summary",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Eye Exam Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Comprehensive Eye Exam",
+              "metrics": [
+                "9,347",
+                "62%",
+                "35%",
+                "$1,428,768"
+              ]
+            },
+            {
+              "name": "Prescription Eyeglasses",
+              "metrics": [
+                "4,862",
+                "48%",
+                "31%",
+                "$698,512"
+              ]
+            },
+            {
+              "name": "Contact Lens Fitting and Supply",
+              "metrics": [
+                "3,684",
+                "52%",
+                "37%",
+                "$687,456"
+              ]
+            },
+            {
+              "name": "Specialty Diagnostic Services",
+              "metrics": [
+                "2,156",
+                "54%",
+                "32%",
+                "$298,432"
+              ]
+            },
+            {
+              "name": "Eyewear Protection and Accessories",
+              "metrics": [
+                "1,211",
+                "44%",
+                "29%",
+                "$102,063"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Comprehensive Eye Exam",
+            "values": [
+              1024,
+              1187,
+              1289,
+              1142,
+              953
+            ]
+          },
+          {
+            "name": "Prescription Eyeglasses",
+            "values": [
+              721,
+              598,
+              522,
+              517,
+              469
+            ]
+          },
+          {
+            "name": "Contact Lens Fitting and Supply",
+            "values": [
+              508,
+              614,
+              683,
+              589,
+              418
+            ]
+          },
+          {
+            "name": "Specialty Diagnostic Services",
+            "values": [
+              277,
+              318,
+              356,
+              304,
+              217
+            ]
+          },
+          {
+            "name": "Eyewear Protection and Accessories",
+            "values": [
+              157,
+              149,
+              134,
+              128,
+              88
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Eye Exam Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Eye Exam Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Eye Exam Scheduled (Count)",
+            "value": "8,943"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$2,794,608"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "847"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Eye Exam Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Eye Exam Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Eye Exam Scheduled (Count)",
+            "value": "29"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Eye Exam Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Eye Exam Scheduled",
+            "values": [
+              72,
+              74,
+              71,
+              78,
+              75,
+              73,
+              76,
+              79,
+              72,
+              74,
+              77,
+              75,
+              78,
+              76,
+              73,
+              79,
+              74,
+              72,
+              75,
+              77,
+              76,
+              74,
+              78,
+              75,
+              73,
+              72,
+              76,
+              79,
+              74,
+              73,
+              75,
+              81,
+              178,
+              184,
+              171,
+              189,
+              176,
+              182,
+              179,
+              187,
+              173,
+              185,
+              191,
+              177,
+              180,
+              186,
+              174,
+              188,
+              175
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,183"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "89%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "11,247"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "739"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "63%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "716"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Eye Exam Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Comprehensive Eye Exam Scheduling",
+            "values": [
+              8,
+              11,
+              7,
+              13,
+              9,
+              12
+            ]
+          },
+          {
+            "name": "Contact Lens Fitting Inquiry",
+            "values": [
+              5,
+              4,
+              6,
+              8,
+              4,
+              7
+            ]
+          },
+          {
+            "name": "Medical Eye Care / Diabetic Exam",
+            "values": [
+              3,
+              2,
+              1,
+              4,
+              2,
+              3
+            ]
+          },
+          {
+            "name": "Prescription Eyewear Availability",
+            "values": [
+              6,
+              9,
+              5,
+              11,
+              8,
+              10
+            ]
+          },
+          {
+            "name": "Insurance & Coverage Questions",
+            "values": [
+              4,
+              6,
+              3,
+              7,
+              5,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "48,897"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "38,799"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Eye Exam Booked (Count)",
+            "value": "28,700"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$5,640,756"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 300,
+          "axisTicks": [
+            0,
+            75,
+            150,
+            225,
+            300
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Vega",
+              "value": 247,
+              "display": "247"
+            },
+            {
+              "name": "Brittany Cole",
+              "value": 182,
+              "display": "182"
+            },
+            {
+              "name": "James Hooper",
+              "value": 219,
+              "display": "219"
+            },
+            {
+              "name": "Sandra Liu",
+              "value": 263,
+              "display": "263"
+            },
+            {
+              "name": "David Patel",
+              "value": 194,
+              "display": "194"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Eye Exam Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Elena Rodriguez",
+            "values": [
+              156,
+              189,
+              214,
+              248,
+              276
+            ]
+          },
+          {
+            "name": "Kevin Okonkwo",
+            "values": [
+              143,
+              167,
+              195,
+              226,
+              261
+            ]
+          },
+          {
+            "name": "Jasmine Hayes",
+            "values": [
+              138,
+              162,
+              187,
+              219,
+              248
+            ]
+          },
+          {
+            "name": "Robert Chen",
+            "values": [
+              151,
+              178,
+              203,
+              237,
+              271
+            ]
+          },
+          {
+            "name": "Michelle Torres",
+            "values": [
+              129,
+              151,
+              174,
+              201,
+              229
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Vega",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Brittany Cole",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "James Hooper",
+              "value": 55.1,
+              "display": "55.1%"
+            },
+            {
+              "name": "Sandra Liu",
+              "value": 57.9,
+              "display": "57.9%"
+            },
+            {
+              "name": "David Patel",
+              "value": 52.3,
+              "display": "52.3%"
+            },
+            {
+              "name": "Patricia Nguyen",
+              "value": 58.4,
+              "display": "58.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Eye Exam Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Vega",
+                "54.2%",
+                "28%",
+                "$713,856",
+                "1,397"
+              ]
+            },
+            {
+              "cells": [
+                "Brittany Cole",
+                "56.8%",
+                "30%",
+                "$823,410",
+                "1,423"
+              ]
+            },
+            {
+              "cells": [
+                "James Hooper",
+                "55.1%",
+                "27%",
+                "$682,743",
+                "1,411"
+              ]
+            },
+            {
+              "cells": [
+                "Sandra Liu",
+                "57.9%",
+                "31%",
+                "$854,269",
+                "1,438"
+              ]
+            },
+            {
+              "cells": [
+                "David Patel",
+                "52.3%",
+                "26%",
+                "$651,324",
+                "1,384"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Nguyen",
+                "58.4%",
+                "32%",
+                "$881,152",
+                "1,419"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Elena Rodriguez",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Kevin Okonkwo",
+              "value": 89.3,
+              "display": "89.3%"
+            },
+            {
+              "name": "Jasmine Hayes",
+              "value": 93.1,
+              "display": "93.1%"
+            },
+            {
+              "name": "Robert Chen",
+              "value": 87.6,
+              "display": "87.6%"
+            },
+            {
+              "name": "Michelle Torres",
+              "value": 90.2,
+              "display": "90.2%"
+            },
+            {
+              "name": "Thomas Williamson",
+              "value": 92.4,
+              "display": "92.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Eye Exam Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Elena Rodriguez",
+                "91.7%",
+                "64%",
+                "$1,762,608",
+                "1,547"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Okonkwo",
+                "89.3%",
+                "61%",
+                "$1,548,214",
+                "1,483"
+              ]
+            },
+            {
+              "cells": [
+                "Jasmine Hayes",
+                "93.1%",
+                "67%",
+                "$1,821,937",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Chen",
+                "87.6%",
+                "58%",
+                "$1,419,756",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Torres",
+                "90.2%",
+                "63%",
+                "$1,721,843",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Williamson",
+                "92.4%",
+                "66%",
+                "$1,804,398",
+                "1,549"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Eye Exam Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Eye Exam Booked (Count)",
+        "rightMax": 1300,
+        "rightTicks": [
+          0,
+          325,
+          650,
+          975,
+          1300
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1064
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1020
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 950
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 906
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 789
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 828
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 915
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 951
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1060
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1028
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 926
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 895
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 796
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 820
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 937
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 965
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1051
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1034
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 907
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 878
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 808
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 816
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 953
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 984
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1037
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1036
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 894
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 857
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 822
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 818
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 955
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 300000,
+        "rightTicks": [
+          0,
+          100000,
+          200000,
+          300000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 209098
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 200411
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 186623
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 178075
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 155047
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 162717
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 179749
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 186834
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 208321
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 201981
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 181917
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 175826
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 156456
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 161269
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 184029
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 189636
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 206382
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 203170
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 178158
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 172507
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 158804
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 160469
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 187201
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 193406
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 203760
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 203464
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 175609
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 168381
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 161558
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 160779
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 189119
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "53,149"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "4,252"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "3,189"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "85%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "412",
+                "91%",
+                "87%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James Rodriguez",
+                "528",
+                "86%",
+                "84%",
+                "86%"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Chen",
+                "389",
+                "87%",
+                "84%",
+                "85%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "53,149 calls",
+      "pagerLabel": "1 of 5,315",
+      "calls": [
+        {
+          "time": "1/12/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/12/26 9:23 am",
+          "id": "A2C4-91B3E7440F1A"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "7D19-3E8A5C22B0F6"
+        },
+        {
+          "time": "1/12/26 11:08 am",
+          "id": "C4E2-6B1F90A3D57E"
+        },
+        {
+          "time": "1/12/26 11:52 am",
+          "id": "90AB-2F7C4E19D803"
+        },
+        {
+          "time": "1/12/26 1:14 pm",
+          "id": "5E33-8A0D61F42C97"
+        },
+        {
+          "time": "1/12/26 2:05 pm",
+          "id": "B6F1-4C29E7A08D15"
+        },
+        {
+          "time": "1/12/26 3:31 pm",
+          "id": "18D7-9F3B052E6A44"
+        },
+        {
+          "time": "1/12/26 4:19 pm",
+          "id": "3A9C-7E10B84F2D69"
+        },
+        {
+          "time": "1/12/26 5:36 pm",
+          "id": "6C82-1D5A9F3E07B4"
+        }
+      ],
+      "duration": "2:38",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Thank you for calling Acuity Eyecare, this is Danielle. How can I help you see clearly today?",
+          "highlights": [
+            "Thank you for calling Acuity Eyecare",
+            "this is Danielle"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "00:07",
+          "text": "Hi, yeah, I just moved to the area and I'm looking to set up an eye exam. I haven't been to an eye doctor in a couple of years.",
+          "highlights": [
+            "set up an eye exam"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "00:15",
+          "text": "Absolutely, we'd love to welcome you as a new patient. Can I start with your first and last name?",
+          "highlights": [
+            "new patient"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "00:21",
+          "text": "Sure, it's Marcus Bell.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "00:24",
+          "text": "Great to meet you, Marcus. Are you mainly looking for a comprehensive eye exam, or do you also need new glasses or contacts?",
+          "highlights": [
+            "comprehensive eye exam"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "00:32",
+          "text": "Probably both. My glasses are pretty old and I've been thinking about trying contacts too. But before we go too far, what does the exam run? I want to keep it manageable.",
+          "highlights": [
+            "what does the exam run",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "00:43",
+          "text": "Totally fair. A comprehensive eye exam is typically between 95 and 200 dollars, and if you carry vision insurance like VSP or EyeMed, that often covers most of it. Do you have a vision plan?",
+          "highlights": [
+            "comprehensive eye exam is typically between 95 and 200 dollars"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "00:55",
+          "text": "I've got EyeMed through my job, I think. Honestly the place over by the mall quoted me around 79 for an exam, so I'm shopping around a little.",
+          "highlights": [
+            "place over by the mall quoted me",
+            "shopping around"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "01:05",
+          "text": "That's smart to compare. What sets us apart is our exams are full-scope and medically oriented, so the doctor does a complete ocular health evaluation, not just a quick refraction. With your EyeMed, your out of pocket may be very small once we verify the benefits.",
+          "highlights": [
+            "full-scope and medically oriented"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "01:18",
+          "text": "Okay, that makes sense. And if I want to try the contacts, is that extra?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "01:23",
+          "text": "It is a separate step. A contact lens fitting and evaluation runs about 75 to 150 on top of the exam, and that covers the corneal measurements and trial lenses so we get the right fit.",
+          "highlights": [
+            "contact lens fitting and evaluation runs about 75 to 150"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "01:34",
+          "text": "Got it. One more thing, I'd probably want to talk it over with my wife before I commit to a full year of contacts. I don't want to get locked into anything.",
+          "highlights": [
+            "talk it over with my wife",
+            "don't want to get locked into anything"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "01:44",
+          "text": "No commitment at all, Marcus. The fitting just gets you a valid prescription. You can order a full annual supply with us later or not, entirely your call. Nothing is locked in.",
+          "highlights": [
+            "No commitment at all",
+            "Nothing is locked in"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "01:54",
+          "text": "Perfect, that's what I wanted to hear. Let's get the exam on the books then.",
+          "highlights": [
+            "get the exam on the books"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "02:00",
+          "text": "Wonderful. I have this Thursday at 10 AM or Friday at 2:30 PM open with Dr. Nguyen. Which works better?",
+          "highlights": [
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "02:08",
+          "text": "Thursday at 10 works great.",
+          "highlights": [
+            "Thursday at 10 works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "02:11",
+          "text": "You're booked for a comprehensive eye exam Thursday at 10 AM, and I'll note you'd like to explore a contact lens fitting too. What's the best cell number to send a reminder?",
+          "highlights": [
+            "booked for a comprehensive eye exam Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "02:21",
+          "text": "It's 214-555-0182.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "02:25",
+          "text": "Got it. Please bring your EyeMed card and your current glasses. We'll verify your benefits before you arrive so there are no surprises on price.",
+          "highlights": [
+            "verify your benefits before you arrive"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "02:32",
+          "text": "Sounds great, thank you so much.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "02:35",
+          "text": "My pleasure, Marcus. We'll see you Thursday at 10. Have a wonderful day and welcome to Acuity Eyecare.",
+          "highlights": [
+            "welcome to Acuity Eyecare",
+            "We'll see you Thursday at 10"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Eye Exam: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Vision Insurance Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Contact Lens Fitting Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity Detected",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Eyewear Interest: Glasses",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Marcus Bell, a new patient who recently moved to the area, called Acuity Eyecare to schedule an eye exam after a couple of years without one. He was interested in both new glasses and trying contacts, and the agent recommended a comprehensive eye exam plus a contact lens fitting and evaluation while addressing his price, competitor, and commitment concerns. The agent verified he carries EyeMed vision insurance and reassured him there is no obligation to buy an annual supply. A comprehensive eye exam was booked for Thursday at 10 AM with Dr. Nguyen and his cell number was captured for a reminder.",
+        "keyPoints": [
+          "New patient, recently relocated, no exam in about two years",
+          "Needs comprehensive eye exam plus interest in glasses and contacts",
+          "Recommended contact lens fitting and evaluation with no commitment",
+          "Compared pricing against a mall location, EyeMed benefits to be verified",
+          "Booked Thursday at 10 AM with Dr. Nguyen",
+          "Captured cell number 214-555-0182 for reminder"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Eye Exam booked, Thursday 10 AM with Dr. Nguyen"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "33,484 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,348",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for texting Acuity Eyecare. Do you need to schedule an eye exam or are you calling about something else today."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi yeah I need to get an eye exam. Its been like 2 years."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great. We can get you in soon. Have you been to one of our clinics before."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "No first time. I live in Portland."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. We have several Portland locations. Are you looking for a comprehensive eye exam or do you have specific concerns like dry eye or a diabetic screening."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Just a regular comprehensive exam. My vision has been blurry lately."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Got it. A comprehensive exam is $125 and includes a full refraction and eye health evaluation. Does that work for you."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "Yeah that sounds good."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Excellent. How about next Tuesday March 18th at 2 PM. Would that time work for you."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "Yeah that works perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "Awesome. We have you down for a comprehensive eye exam on Tuesday March 18th at 2 PM at our Pearl District clinic. You'll get a text reminder the day before. Any questions for me."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "No I think Im good. Thanks."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "You're all set. See you Tuesday. If you need to reschedule just call us at 503-555-0147. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Eye Exam: Scheduled",
+              "badges": [
+                "Rule",
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting",
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Comprehensive Eye Exam",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: Pearl District",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Presenting Complaint: Blurry Vision",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided: $125",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "503-555-0147",
+            "totalMessages": "14",
+            "source": "503-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "503-555-8842",
+            "repeatCaller": "No",
+            "city": "Portland",
+            "region": "OR",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Martinez",
+            "firstName": "Sarah",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C721-8A4B92F3D1C6",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C721-8A4B92F3D1C6",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C832-5F7E4C2B9A1D",
+          "time": "8/16/25 10:38 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C832-5F7E4C2B9A1D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C943-6D1A8E5F4C2B",
+          "time": "8/16/25 10:29 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C943-6D1A8E5F4C2B",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "53,149 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 5,315",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/16/26 4:12 pm",
+          "active": true,
+          "date": "January 16, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thanks for calling Acuity Eyecare. This is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Yeah, hi. I've been meaning to get my eyes checked. I think I need new glasses."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Great, we'd love to help you with that. Just so I can point you in the right direction, have you been to Acuity Eyecare before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "No, I haven't. This would be my first time."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Perfect. Welcome. And do you currently have vision insurance, or would you be paying out of pocket?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "I've got vision insurance through my job. I think it's VSP."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Excellent, VSP works great with us. Just one more quick thing, are you experiencing any specific issues with your vision right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "Well, I've been having some trouble with screen time. My eyes get pretty tired when I'm working on the computer."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "I hear that all the time. Our doctors can definitely help with that and recommend some solutions. Let me get you scheduled for a comprehensive eye exam. We have some availability coming up. Would next Thursday the twenty-third work for you, around two thirty in the afternoon?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Yeah, that works. Two thirty is good for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Wonderful. So I've got you down for Thursday, January the twenty-third at two thirty p.m. for a comprehensive eye exam. That's usually about an hour with us. Can I grab a phone number to confirm this appointment?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Sure, it's five five five, two one four, nine eight seven six."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Perfect. Five five five, two one four, nine eight seven six. And just so you know, if anything changes, you can always call us back at eight seven seven, nine three six, twenty nine thirty three. We're excited to see you next Thursday."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Great, thanks so much."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "You're very welcome. See you Thursday the twenty-third. Bye now."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Eye Exam: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Insurance Identified: VSP",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Vision Problem: Screen Fatigue",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Comprehensive Eye Exam",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Appointment Confirmed",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/16/26 4:12 pm",
+            "duration": "7:23",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "555-214-9876",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B823-5F4E1A92D1C6",
+          "time": "1/14/26 11:47 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B823-5F4E1A92D1C6",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C741-7B3D2E59F8A4",
+          "time": "1/22/26 2:34 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C741-7B3D2E59F8A4",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D956-4C6B8F21E7D3",
+          "time": "1/28/26 3:58 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D956-4C6B8F21E7D3",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Hi, I'm Acuity Eyecare's AI scheduling assistant, here to help you book a comprehensive eye exam and get a personalized care plan. Right now new patients can save 20% on a complete pair of prescription glasses when they book this month, would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, first whether the exam is for glasses, contacts, or a medical concern like dry eye or diabetic screening, then who the exam is for and their age, whether you currently wear glasses or contacts and what type, when you'd like to be seen, and finally your ZIP code so I can confirm we have a practice near you.",
+        "Estimate then book: Once I confirm we serve your ZIP code, I'll share a preliminary price range based on your insurance and the services you need, recommend a comprehensive exam with one of our optometrists for an exact quote, propose a specific day and time such as this Thursday at 10:00 AM, and confirm you'll get a reminder text before your appointment with a number to call if anything changes."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Acuity_Eyecare_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Eye Care Services",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Practice",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Book an Eye Exam",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"order status\",\"question\":\"Are my glasses ready for pickup yet?\",\"answer\":\"Most eyeglass orders are ready within 7 to 10 business days, and we send a text or call as soon as yours arrive. If you'd like, I can check your order status and set up a pickup time at your practice.\"},{\"topic\":\"reschedule\",\"question\":\"I need to move my eye exam to a different day, can you help?\",\"answer\":\"Absolutely, I can reschedule your comprehensive eye exam to a day and time that works better for you. Just let me know your preferred day and I'll confirm availability at your practice.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How much is a comprehensive eye exam?",
+              "answer": "The cost depends on your vision or medical insurance and the services you need, and many patients pay very little out of pocket. The best next step is to book an exam so our team can verify your benefits and give you an exact quote."
+            },
+            {
+              "question": "Do you accept VSP or EyeMed insurance?",
+              "answer": "Yes, our practices work with most major vision plans including VSP and EyeMed, along with many medical insurance carriers. Let's book your exam and we'll confirm your specific coverage before your visit."
+            },
+            {
+              "question": "How long does an eye exam take?",
+              "answer": "A comprehensive eye exam typically takes about 30 to 60 minutes depending on the testing needed. I can find you a convenient time, would you like to book one this week?"
+            },
+            {
+              "question": "Do I need a contact lens fitting?",
+              "answer": "Yes, if you want to wear or update contacts we include a fitting and evaluation to finalize your prescription. I can schedule your exam with a contact lens fitting added, when works best for you?"
+            },
+            {
+              "question": "Can I get glasses the same day?",
+              "answer": "Some prescriptions and frames can be ready quickly, though most orders take about 7 to 10 business days. Book an exam and our optical team can walk you through the fastest options at your practice."
+            },
+            {
+              "question": "Do you offer diabetic eye exams?",
+              "answer": "Yes, our optometrists provide dilated diabetic and medical eye exams that are usually billed to your medical insurance. Let's get you scheduled so we can monitor your eye health properly."
+            },
+            {
+              "question": "What brands of frames do you carry?",
+              "answer": "Our practices stock a wide selection of designer and name-brand frames such as Ray-Ban, Oakley, and Coach, along with many other collections. Book an appointment and you can browse our full optical selection in person."
+            },
+            {
+              "question": "Do you treat dry eye?",
+              "answer": "Yes, we offer dry eye diagnostic testing and therapeutic treatments tailored to your needs. The best step is to book an evaluation so an optometrist can recommend the right care plan for you."
+            },
+            {
+              "question": "Can I order a year's supply of contacts?",
+              "answer": "Yes, we can set you up with an annual supply of daily, bi-weekly, or monthly contacts once your prescription is current. Let's schedule your exam and fitting to get started."
+            },
+            {
+              "question": "Do you have appointments this week?",
+              "answer": "We usually have openings within a few days across our practices. Share your ZIP code and preferred time and I'll find the earliest available exam near you."
+            },
+            {
+              "question": "How often should I get an eye exam?",
+              "answer": "Most adults benefit from a comprehensive eye exam once a year, and sooner if you notice changes in your vision. I'd be happy to book your annual exam now."
+            },
+            {
+              "question": "Do you see children?",
+              "answer": "Yes, our practices provide eye exams for children as well as adults. Let me know their age and I'll schedule an appointment for you."
+            },
+            {
+              "question": "What is retinal imaging?",
+              "answer": "Optomap retinal imaging is a quick, wide-field digital scan that helps detect eye disease early, and it can be added to your exam. Book an appointment and our team can explain the option in more detail."
+            },
+            {
+              "question": "Do you offer progressive lenses?",
+              "answer": "Yes, we offer digital progressive no-line lenses along with premium coatings for glare and UV protection. Schedule an exam and our optical staff can help you choose the right lenses."
+            },
+            {
+              "question": "Can I use my FSA or HSA?",
+              "answer": "Yes, most eye exams, glasses, and contacts are eligible for FSA and HSA funds. Let's book your visit and our team can provide the documentation you need."
+            },
+            {
+              "question": "Where is your nearest location?",
+              "answer": "We have a large network of practices, so if you share your ZIP code I can find the closest one to you. Then I'll get you booked at a convenient time."
+            },
+            {
+              "question": "Do you offer prescription sunglasses?",
+              "answer": "Yes, our practices offer polarized prescription sunglasses in both fashion and sport frames. Book an exam and our optical team can help you find the perfect pair."
+            },
+            {
+              "question": "What should I bring to my appointment?",
+              "answer": "Please bring your insurance card, your current glasses or contacts, and a list of any medications. Would you like me to schedule your exam now?"
+            },
+            {
+              "question": "Do you carry blue-light glasses?",
+              "answer": "Yes, we offer blue-light and anti-reflective lens upgrades that are great for screen use and glare reduction. Let's book your exam and you can add these when you choose your lenses."
+            },
+            {
+              "question": "Can I get an eye exam without buying glasses?",
+              "answer": "Of course, you're welcome to have a comprehensive exam and use your prescription however you like. I can find you an appointment time that works, when are you available?"
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule an eye exam\",\"follow_up_message\":\"Great, I'd love to get you booked for a comprehensive eye exam. Share your ZIP code and a day that works and I'll confirm the earliest opening at a practice near you, plus send a reminder text before your visit.\"},{\"intent\":\"request a quote for glasses and exam\",\"follow_up_message\":\"Happy to help with that. Once you book an exam we'll verify your vision benefits and share an exact quote for your exam and eyewear, so let's find a time that works and I'll get you scheduled.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, I'm Acuity Eyecare's AI scheduling assistant. I can help you book a comprehensive eye exam and answer any questions about our services and insurance.",
+        "goal": "Qualify the patient's vision needs and insurance, then book an in-office comprehensive eye exam at the nearest Acuity Eyecare practice.",
+        "bookingType": "in-office comprehensive eye exam",
+        "offer": "Save 20% on a complete pair of prescription glasses when you book your exam this month",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Is this exam for glasses, contacts, or a medical concern such as dry eye or a diabetic screening?",
+          "Who is the exam for, and what is their age?",
+          "Do you currently wear glasses or contacts, and if so what type?",
+          "Do you have vision or medical insurance you'd like us to bill, such as VSP or EyeMed?",
+          "When would you like to be seen?",
+          "What is your ZIP code so I can confirm we have a practice near you?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:38 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:38 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:38 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Acuity Eyecare",
+      "callerName": "Marcus Henderson",
+      "callerPhone": "(805) 555-0142",
+      "campaign": "Comprehensive Eye Exam, Santa Barbara Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Eye Exam Lead",
+      "estimatedValue": "$1,847",
+      "googleSearch": "eye exam near me Santa Barbara",
+      "websiteSearch": "comprehensive eye exam with diabetic screening",
+      "callingWebpage": "/eye-care-services/comprehensive-exams",
+      "products": "Comprehensive Eye Exam, Diabetic Eye Exam with OCT Imaging",
+      "cartId": "AE-7421R",
+      "serviceable": "Yes",
+      "email": "marcus.henderson@emailprovider.com",
+      "street": "2847 Olive Street",
+      "city": "Santa Barbara",
+      "state": "CA",
+      "zip": "93101",
+      "digitalJourney": "/home › /eye-care-services › /comprehensive-exams › /book-appointment",
+      "intent": "Marcus needs a comprehensive eye exam with diabetic screening and is interested in contact lens fitting options.",
+      "coverage": "ZIP 93101 confirmed, Santa Barbara serviceable",
+      "switchIntent": "High. Marcus has not had an eye exam in 18 months, recently diagnosed with prediabetes, and mentioned needing new glasses today.",
+      "greeting": "Hi Marcus, this is Sarah from Acuity Eyecare in Santa Barbara. I see you were looking for a comprehensive eye exam with diabetic screening. We can schedule you with one of our doctors this week, and they can also discuss contact lens options if that interests you. Would Thursday or Friday work better for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "Acuity Eyecare",
+      "callerName": "Jessica Morales",
+      "callerPhone": "(559) 555-0876",
+      "campaign": "Back-to-School Frames, Fresno Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Eye Exam Lead",
+      "estimatedValue": "$2,163",
+      "googleSearch": "designer frames eye doctor Fresno",
+      "websiteSearch": "back to school glasses same day fitting",
+      "callingWebpage": "/eyewear/designer-frames",
+      "products": "Single-Vision Prescription Eyeglasses, Designer Branded Frames",
+      "cartId": "AE-9834K",
+      "serviceable": "Yes",
+      "email": "jessica.morales@emailprovider.com",
+      "street": "1523 Palm Avenue",
+      "city": "Fresno",
+      "state": "CA",
+      "zip": "93650",
+      "digitalJourney": "/home › /eyewear › /designer-frames › /book-eye-exam",
+      "intent": "Jessica needs a back-to-school eye exam and frame fitting for her teen daughter. She prefers designer brands and wants same-day service if possible.",
+      "coverage": "ZIP 93650 confirmed, Fresno serviceable",
+      "appointment": "In-office comprehensive eye exam with frame fitting, Thursday July 18, 2:30 PM",
+      "greeting": "Hi Jessica. This is Dr. Chen's team at Acuity Eyecare Fresno. We've got your appointment confirmed for Thursday at 2:30 PM for your daughter's eye exam and frame fitting. We have Ray-Ban, Coach, and Oakley in stock. Text back if you have any questions or need directions to our clinic."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Acuity Eyecare",
+      "brandDomain": "www.aegvision.com",
+      "brandIcon": "👁️",
+      "callerPhone": "+1 (972) 555-0187",
+      "callerLocation": "Dallas, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Eye Exam Near Me, Dallas",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "comprehensive eye exam Dallas",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/eye-care-services/comprehensive-exams",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Comprehensive Eye Exams, Contact Lens Fitting",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Dallas, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "new_exam_booking",
+          "name": "Eye Exam, New Patient"
+        },
+        {
+          "id": "contact_lens_support",
+          "name": "Contact Lens Services"
+        },
+        {
+          "id": "general_support",
+          "name": "General Patient Support"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Thank you for calling Acuity Eyecare. I'm an AI assistant here to help route your call. Are you calling about scheduling an eye exam, ordering contact lenses, or something else today?",
+          "sigs": [],
+          "q": [
+            25,
+            40,
+            35
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, hi. I need to get a comprehensive eye exam. I haven't seen an optometrist in like three years and my vision's been getting worse.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Comprehensive exam</strong> needed"
+            },
+            {
+              "c": "green",
+              "t": "<strong>New patient</strong> inquiry"
+            },
+            {
+              "c": "orange",
+              "t": "Vision <strong>deterioration</strong>"
+            }
+          ],
+          "q": [
+            65,
+            20,
+            15
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Got it. That's great that you're prioritizing your eye health. Just to confirm, are you looking to schedule this exam for yourself, and do you have vision insurance or would you prefer to pay out of pocket?",
+          "sigs": [],
+          "q": [
+            72,
+            18,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "It's just for me. And yeah, I have VSP coverage through my employer, so I'm hoping that'll help with the cost.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "Individual patient"
+            },
+            {
+              "c": "green",
+              "t": "<strong>VSP insurance</strong> coverage"
+            },
+            {
+              "c": "blue",
+              "t": "Cost conscious"
+            }
+          ],
+          "q": [
+            84,
+            12,
+            4
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. You're all set. I'm connecting you with our New Patient Eye Exam team who will verify your VSP benefits and get you scheduled as soon as this week. Thanks for choosing Acuity Eyecare.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Eye Exam Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"you're all booked (Agent)\", \"see you at your appointment (Agent)\", \"schedule your eye exam (Agent)\", \"book the appointment (Caller)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "01/08/26 2:45 pm"
+        },
+        {
+          "name": "Appointment Confirmation Etiquette (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Appointment Confirmation Etiquette] < 60 and duration > 45 sec",
+          "createdAt": "05/02/25 10:30 am",
+          "updatedAt": "12/18/25 4:15 pm"
+        },
+        {
+          "name": "Competitor Named (Intent)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"LensCrafters (Caller)\", \"America's Best (Caller)\", \"Warby Parker (Caller)\", \"Costco Optical (Caller)\"])",
+          "createdAt": "06/11/25 8:05 am",
+          "updatedAt": "01/12/26 11:20 am"
+        },
+        {
+          "name": "Contact Lens Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"contact lens fitting (Caller)\", \"order contacts (Caller)\", \"daily disposables (Caller)\", \"Acuvue Oasys (Caller)\"])",
+          "createdAt": "04/22/25 1:40 pm",
+          "updatedAt": "01/05/26 9:55 am"
+        },
+        {
+          "name": "Designer Frames Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Ray-Ban frames (Caller)\", \"designer frames (Caller)\", \"do you carry Oakley (Caller)\", \"Coach glasses (Caller)\"])",
+          "createdAt": "07/09/25 3:25 pm",
+          "updatedAt": "12/28/25 10:10 am"
+        },
+        {
+          "name": "Dry Eye Treatment Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"dry eye (Caller)\", \"my eyes are always dry (Caller)\", \"punctal plugs (Agent)\", \"dry eye specialist (Caller)\"])",
+          "createdAt": "08/15/25 11:50 am",
+          "updatedAt": "01/15/26 3:30 pm"
+        },
+        {
+          "name": "Empathy and Patient Rapport (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy and Patient Rapport] < 60 and duration > 45 sec",
+          "createdAt": "02/20/25 9:00 am",
+          "updatedAt": "01/10/26 1:05 pm"
+        },
+        {
+          "name": "Eye Exam Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"comprehensive eye exam (Agent)\", \"eye exam (Caller)\", \"vision check (Caller)\", \"when did you last get your eyes checked (Agent)\"])",
+          "createdAt": "03/28/25 2:15 pm",
+          "updatedAt": "12/22/25 8:40 am"
+        },
+        {
+          "name": "Insurance Verification Offered (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Insurance Verification Offered] < 60 and duration > 45 sec",
+          "createdAt": "05/19/25 10:45 am",
+          "updatedAt": "01/09/26 4:50 pm"
+        },
+        {
+          "name": "Quote Provided (Lead)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the exam is ninety-five dollars (Agent)\", \"your total comes to (Agent)\", \"with your VSP benefits (Agent)\", \"out of pocket cost (Caller)\"])",
+          "createdAt": "09/03/25 12:30 pm",
+          "updatedAt": "01/14/26 2:20 pm"
+        }
+      ]
+    }
+  }
+}

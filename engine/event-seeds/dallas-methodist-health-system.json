@@ -1,0 +1,5299 @@
+{
+  "id": "methodist-health-system",
+  "customerName": "Methodist Health System",
+  "websiteUrl": "https://www.methodisthealthsystem.org",
+  "brandDomain": "methodisthealthsystem.org",
+  "networkName": "Invoca for Healthcare",
+  "industry": "Multi-hospital health system",
+  "bookingTerm": "Appointment",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 12000,
+      "yTicks": [
+        0,
+        3000,
+        6000,
+        9000,
+        12000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 7842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 9214
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 9673
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 9021
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 8634
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Heart Care That's Close to Home",
+          "marketingSearchTerm": "cardiologist Dallas TX",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/services/heart-care?utm_source=google&utm_medium=cpc&utm_campaign=heart_care_close_to_home",
+          "websiteJourney": "Home / Services & Treatments / Cardiology",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Same-Day Orthopedic Appointments",
+          "marketingSearchTerm": "knee replacement surgeon DFW",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/services/orthopedics?utm_source=google&utm_medium=cpc&utm_campaign=same_day_ortho",
+          "websiteJourney": "Home / Services & Treatments / Orthopedics",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Schedule Your Mammogram",
+          "marketingSearchTerm": "screening mammogram Dallas cost",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/locations/mammography?utm_source=google&utm_medium=cpc&utm_campaign=schedule_mammogram",
+          "websiteJourney": "Home / Locations / Mammography",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Find a Doctor Near You",
+          "marketingSearchTerm": "primary care doctor near me Dallas",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/services/primary-care?utm_source=google&utm_medium=cpc&utm_campaign=find_a_doctor",
+          "websiteJourney": "Home / Locations / Methodist Medical Group Primary Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "ER Wait Times DFW",
+          "marketingSearchTerm": "ER wait times Mansfield",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/locations/emergency-room?utm_source=bing&utm_medium=cpc&utm_campaign=er_wait_times_dfw",
+          "websiteJourney": "Home / Locations / Emergency Room",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Delivering Dallas, Maternity at Methodist",
+          "marketingSearchTerm": "OB GYN maternity hospital Dallas",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/services/maternity?utm_source=google&utm_medium=cpc&utm_campaign=delivering_dallas",
+          "websiteJourney": "Home / Services & Treatments / Maternity",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Find a Doctor Near You",
+          "marketingSearchTerm": "urgent care near me open now",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/locations/urgent-care?utm_source=bing&utm_medium=cpc&utm_campaign=find_a_doctor",
+          "websiteJourney": "Home / Locations / Urgent Care",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local SEO, Colonoscopy",
+          "marketingSearchTerm": "colonoscopy screening near me",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/services/gastroenterology?utm_source=organic&utm_medium=organic&utm_campaign=local_seo_gi",
+          "websiteJourney": "Home / Services & Treatments / Gastroenterology",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Estimates & Price Transparency",
+          "marketingSearchTerm": "MRI cost without insurance Dallas",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/services/imaging-radiology?utm_source=google&utm_medium=cpc&utm_campaign=price_transparency",
+          "websiteJourney": "Home / Services & Treatments / Imaging & Radiology",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Trust Methodist",
+          "marketingSearchTerm": "Methodist hospital Dallas",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/locations/hospitals?utm_source=organic&utm_medium=organic&utm_campaign=trust_methodist",
+          "websiteJourney": "Home / Locations / Hospitals",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Celebrating 100 Years of Care",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/resources/classes-events?utm_source=facebook&utm_medium=social&utm_campaign=100_years_of_care",
+          "websiteJourney": "Home / Resources / Classes & Events",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Delivering Dallas, Maternity at Methodist",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/services/maternity?utm_source=instagram&utm_medium=social&utm_campaign=delivering_dallas",
+          "websiteJourney": "Home / Services & Treatments / Maternity",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local SEO, Heart Care",
+          "marketingSearchTerm": "echocardiogram near me Dallas",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/services/heart-care?utm_source=organic&utm_medium=organic&utm_campaign=local_seo_heart",
+          "websiteJourney": "Home / Services & Treatments / Cardiology",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Find a Doctor Near You",
+          "marketingSearchTerm": "Methodist MyChart login",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/resources/mychart?utm_source=google&utm_medium=cpc&utm_campaign=find_a_doctor",
+          "websiteJourney": "Home / Resources / MyChart",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Pay My Bill",
+          "marketingSearchTerm": "pay my hospital bill Methodist",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/financial-services/pay-my-bill?utm_source=organic&utm_medium=organic&utm_campaign=pay_my_bill",
+          "websiteJourney": "Home / Financial Services / Pay My Bill",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Generations Walking Program",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/resources/classes-events?utm_source=facebook&utm_medium=social&utm_campaign=generations_walking",
+          "websiteJourney": "Home / Resources / Classes & Events",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Heart Care That's Close to Home",
+          "marketingSearchTerm": "cardiac catheterization Dallas",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/services/heart-care?utm_source=google&utm_medium=cpc&utm_campaign=heart_care_close_to_home",
+          "websiteJourney": "Home / Services & Treatments / Cardiology",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local SEO, Imaging",
+          "marketingSearchTerm": "CT scan cost Dallas",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/services/imaging-radiology?utm_source=organic&utm_medium=organic&utm_campaign=local_seo_imaging",
+          "websiteJourney": "Home / Services & Treatments / Imaging & Radiology",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Trust Methodist",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/find-a-doctor?utm_source=instagram&utm_medium=social&utm_campaign=trust_methodist",
+          "websiteJourney": "Home / Find a Doctor",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Careers at Methodist",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.methodisthealthsystem.org/resources/health-library?utm_source=facebook&utm_medium=social&utm_campaign=careers_at_methodist",
+          "websiteJourney": "Home / Resources / Health Library",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Methodist Health System)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "34,811"
+            },
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Appointment Booked (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$18,166,312"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "5,570"
+            },
+            {
+              "label": "Billing & Payment Call (Percent)",
+              "value": "7%"
+            },
+            {
+              "label": "Medical Records Request (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "General Inquiry Call (Percent)",
+              "value": "4%"
+            }
+          ]
+        },
+        {
+          "title": "New Patient Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Estimate Discussed (Percent)",
+              "value": "47%"
+            },
+            {
+              "label": "Non-Qualified Call (Percent)",
+              "value": "14%"
+            },
+            {
+              "label": "Appointment Booked (Percent)",
+              "value": "28%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Patient Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Patient Call (Count)",
+            "values": [
+              3842,
+              6913,
+              6478,
+              6204,
+              5804
+            ]
+          },
+          {
+            "name": "Estimate Discussed (Count)",
+            "values": [
+              2131,
+              3842,
+              3591,
+              3438,
+              3212
+            ]
+          },
+          {
+            "name": "Non-Qualified Call (Count)",
+            "values": [
+              654,
+              1183,
+              1102,
+              1058,
+              990
+            ]
+          },
+          {
+            "name": "Appointment Booked (Count)",
+            "values": [
+              1284,
+              2318,
+              2157,
+              2064,
+              1924
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 34811,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "14,208",
+                "58%",
+                "40%",
+                "$6,842,118"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "8,946",
+                "62%",
+                "46%",
+                "$4,517,662"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "5,127",
+                "66%",
+                "52%",
+                "$2,988,540"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "3,982",
+                "71%",
+                "60%",
+                "$2,214,905"
+              ]
+            },
+            {
+              "name": "Yelp",
+              "metrics": [
+                "2,548",
+                "84%",
+                "78%",
+                "$1,603,087"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 34811,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "13,412",
+                "57%",
+                "41%",
+                "$6,458,204"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "9,238",
+                "61%",
+                "45%",
+                "$4,922,116"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "5,614",
+                "68%",
+                "53%",
+                "$2,881,447"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "3,976",
+                "73%",
+                "62%",
+                "$2,213,668"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "2,571",
+                "85%",
+                "79%",
+                "$1,690,877"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 17429,
+          "rows": [
+            {
+              "name": "Trust Methodist",
+              "metrics": [
+                "6,214",
+                "59%",
+                "42%",
+                "$3,142,558"
+              ]
+            },
+            {
+              "name": "Heart Care That's Close to Home",
+              "metrics": [
+                "4,128",
+                "64%",
+                "48%",
+                "$2,087,446"
+              ]
+            },
+            {
+              "name": "Same-Day Orthopedic Appointments",
+              "metrics": [
+                "3,057",
+                "69%",
+                "55%",
+                "$1,528,703"
+              ]
+            },
+            {
+              "name": "Schedule Your Mammogram",
+              "metrics": [
+                "2,341",
+                "74%",
+                "63%",
+                "$1,164,882"
+              ]
+            },
+            {
+              "name": "Delivering Dallas Maternity",
+              "metrics": [
+                "1,689",
+                "86%",
+                "80%",
+                "$842,117"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 13216,
+          "rows": [
+            {
+              "name": "cardiologist dallas tx",
+              "metrics": [
+                "4,517",
+                "60%",
+                "43%",
+                "$2,284,556"
+              ]
+            },
+            {
+              "name": "urgent care near me open now",
+              "metrics": [
+                "3,288",
+                "65%",
+                "49%",
+                "$1,663,118"
+              ]
+            },
+            {
+              "name": "screening mammogram dallas cost",
+              "metrics": [
+                "2,461",
+                "70%",
+                "56%",
+                "$1,247,905"
+              ]
+            },
+            {
+              "name": "knee replacement surgeon dfw",
+              "metrics": [
+                "1,807",
+                "76%",
+                "64%",
+                "$914,662"
+              ]
+            },
+            {
+              "name": "ob gyn maternity hospital dallas",
+              "metrics": [
+                "1,143",
+                "87%",
+                "81%",
+                "$578,443"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Set (Industry) (Percent)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Primary Care",
+              "metrics": [
+                "10,842",
+                "42%",
+                "18%",
+                "$3,412,847"
+              ]
+            },
+            {
+              "name": "Cardiology (Heart Care)",
+              "metrics": [
+                "8,317",
+                "48%",
+                "24%",
+                "$4,188,326"
+              ]
+            },
+            {
+              "name": "Imaging & Radiology",
+              "metrics": [
+                "6,945",
+                "52%",
+                "30%",
+                "$3,331,255"
+              ]
+            },
+            {
+              "name": "Orthopedics",
+              "metrics": [
+                "5,238",
+                "55%",
+                "38%",
+                "$4,374,193"
+              ]
+            },
+            {
+              "name": "Maternity / Women's Health",
+              "metrics": [
+                "3,469",
+                "60%",
+                "50%",
+                "$2,859,691"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 34811,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "12,483",
+                "44%",
+                "20%",
+                "$4,653,218"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "8,647",
+                "50%",
+                "26%",
+                "$4,189,447"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "6,219",
+                "54%",
+                "32%",
+                "$3,708,662"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "4,512",
+                "58%",
+                "38%",
+                "$3,196,338"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "2,950",
+                "62%",
+                "44%",
+                "$2,418,647"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Primary Care",
+            "values": [
+              378,
+              412,
+              405,
+              389,
+              368
+            ]
+          },
+          {
+            "name": "Cardiology (Heart Care)",
+            "values": [
+              385,
+              421,
+              408,
+              402,
+              380
+            ]
+          },
+          {
+            "name": "Imaging & Radiology",
+            "values": [
+              402,
+              438,
+              425,
+              418,
+              401
+            ]
+          },
+          {
+            "name": "Orthopedics",
+            "values": [
+              384,
+              419,
+              407,
+              398,
+              382
+            ]
+          },
+          {
+            "name": "Maternity / Women's Health",
+            "values": [
+              335,
+              362,
+              358,
+              345,
+              335
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 34,811 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Angela Cortez called to schedule a screening mammogram at Methodist Richardson Medical Center. Agent Lila confirmed her insurance was accepted, found a morning slot, and booked the 3D mammogram appointment. Angela left the call reassured and set for her visit.",
+          "date": "Jan 6, 9:14 AM",
+          "agent": "Lila",
+          "duration": "2m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Robert Nguyen wanted to establish with a cardiology specialist after some chest tightness during exercise. Agent Oscar reviewed available heart care providers at Methodist Dallas Medical Center and scheduled a new cardiology consultation for the following week. Robert thanked the agent for the quick turnaround.",
+          "date": "Feb 11, 1:37 PM",
+          "agent": "Oscar",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Priscilla Adams called because she could not access her test results in MyChart after a recent lab visit. Agent Rosey walked her through resetting her MyChart password and verified the results would post within 24-48h. The issue was resolved and no appointment was needed.",
+          "date": "Mar 3, 10:52 AM",
+          "agent": "Rosey",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "New patient Marcus Delgado called to schedule a screening colonoscopy after turning 45 and asked about the Methodist Medical Group gastroenterology team. Agent Mary collected his full details, insurance information, and preferred location, then booked his colonoscopy at Methodist Mansfield Medical Center. She also texted him prep instructions before ending the call.",
+          "date": "Apr 8, 3:22 PM",
+          "agent": "Mary",
+          "duration": "3m 06s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 70,
+          "summary": "Sandra Kim needed a diagnostic MRI of her knee that her orthopedic surgeon had ordered. Agent Lee verified the referral, checked imaging availability, and scheduled the MRI at the Methodist Southlake Medical Center imaging suite. Sandra was pleased to get a next-day slot.",
+          "date": "May 14, 11:09 AM",
+          "agent": "Lee",
+          "duration": "2m 18s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 15,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Daniel Foster called asking whether the Methodist Midlothian urgent care was open and could treat a sprained ankle same day. Agent Mike confirmed the urgent care hours and estimated the visit cost range, but Daniel decided to wait and see how it felt overnight. No appointment was set.",
+          "date": "May 27, 4:41 PM",
+          "agent": "Mike",
+          "duration": "1m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Teresa Valdez wanted to move up her scheduled colonoscopy after a cancellation opened up. Agent Sue found an earlier date at Methodist Celina Medical Center and rebooked her, then reconfirmed her sedation arrangements. Teresa appreciated the flexibility.",
+          "date": "Jun 9, 8:57 AM",
+          "agent": "Sue",
+          "duration": "2m 27s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 59,
+          "summary": "Gregory Simmons disputed a charge on his statement from a cardiology visit he felt should have been covered by insurance. Agent Jennifer reviewed the itemized bill, explained the coinsurance portion, and opened a billing review case. Gregory remained frustrated but agreed to wait for the outcome.",
+          "date": "Jun 23, 2:15 PM",
+          "agent": "Jennifer",
+          "duration": "3m 11s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 28,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Bianca Reyes called to ask the cash price of an MRI without insurance and whether financial assistance was available. Agent Rose directed her to the Estimates and Price Transparency tool and explained the financial assistance application. Bianca said she would review the estimate before booking anything.",
+          "date": "Jul 7, 12:40 PM",
+          "agent": "Rose",
+          "duration": "2m 02s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 51,
+          "summary": "Nathan Brooks needed to reschedule his mother's mammogram because of a transportation conflict. Agent Oscar located the existing booking, canceled it, and offered later dates, but Nathan wanted to confirm with family first. No new appointment was finalized on the call.",
+          "date": "Jul 21, 3:58 PM",
+          "agent": "Oscar",
+          "duration": "1m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 47,
+          "summary": "Olivia Marsh was upset about a long wait she experienced at a Methodist urgent care over the weekend and wanted to file a complaint. Agent Lee apologized, documented the feedback, and forwarded it to the site manager. Olivia remained dissatisfied at the end of the call.",
+          "date": "Aug 4, 5:19 PM",
+          "agent": "Lee",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 44,
+          "summary": "Kevin Holloway called after hours trying to reset his MyChart login before an upcoming visit. The call rolled to voicemail and he left a message asking for a callback. No agent handled the request during the call.",
+          "date": "Aug 18, 7:46 PM",
+          "agent": "No Agent",
+          "duration": "0m 51s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Denise Alvarado wanted to cancel an orthopedic follow-up and was frustrated by the automated menu before reaching a person. Agent Mike canceled the appointment but could not answer her refund question and had to transfer her. Denise felt the process took too long.",
+          "date": "Sep 2, 10:27 AM",
+          "agent": "Mike",
+          "duration": "2m 49s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Harold Pierce called about a duplicate charge on his emergency room bill and grew angry when the amount did not match his estimate. Agent Jennifer tried to explain the facility fee but Harold demanded a supervisor. The call ended without resolution and was escalated.",
+          "date": "Sep 19, 1:04 PM",
+          "agent": "Jennifer",
+          "duration": "3m 22s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Regina Foster complained that no one had returned her earlier message about a delayed lab result and threatened to switch providers. Agent Sue struggled to locate the prior note and apologized repeatedly for the breakdown. Regina hung up still unhappy with the experience.",
+          "date": "Oct 6, 4:33 PM",
+          "agent": "Sue",
+          "duration": "2m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "mammogram",
+        "cardiology",
+        "mychart",
+        "mri",
+        "urgent care",
+        "colonoscopy"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Chief Complaint or Service Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Location and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Insurance Status or Self-Pay",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Appointment Date and Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Next Steps and Arrival Instructions",
+          "points": "0/10",
+          "status": "unmet"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Warm greeting with facility name",
+        "Patient name obtained",
+        "Chief complaint documented",
+        "Service location confirmed",
+        "Phone number captured",
+        "Insurance question asked",
+        "Appointment time confirmed",
+        "Polite closing statement",
+        "Offered specific appointment slots",
+        "Acknowledged patient concern",
+        "Confirmed business hours awareness",
+        "Asked clarifying question about symptoms",
+        "Thanked patient for calling"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Arrival time instructions missing",
+        "Parking information not provided",
+        "Pre-arrival checklist not mentioned",
+        "Medication list reminder omitted",
+        "Insurance card reminder not given",
+        "COVID screening protocol not explained",
+        "Hospital security entrance location not mentioned",
+        "Estimated wait time not provided",
+        "Follow-up confirmation method not specified"
+      ],
+      "naSignals": [
+        "Prior authorization discussed",
+        "Insurance claim status",
+        "Billing dispute resolution",
+        "Prescription refill authorization",
+        "Lab result delivery timeline",
+        "Medical record transfer request",
+        "Specialist referral authorization",
+        "Appointment cancellation or rescheduling"
+      ],
+      "prompts": [
+        {
+          "question": "Is the patient trying to solve a specific problem?",
+          "answer": "Yes. The caller is experiencing chest discomfort and shortness of breath during light activity and needs to schedule a cardiology consultation to rule out cardiac issues and establish care with Methodist's heart care team."
+        },
+        {
+          "question": "What are the patient's expectations?",
+          "answer": "The patient expects a prompt appointment with a cardiologist at Methodist's Dallas location and needs guidance on what to bring and how to prepare for the visit."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have captured the patient's email address for appointment confirmation and provided clear instructions about arrival time, parking, and what medical documents or insurance information to bring to the first visit."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Thank you for calling Methodist Health System scheduling. My name is Marcus. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:12",
+          "text": "Hi Marcus. I've been having some chest discomfort and shortness of breath when I'm doing light exercise, and my doctor recommended I see a cardiologist. I'm hoping to get an appointment soon."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:28",
+          "text": "I'm sorry to hear you're experiencing that. We're here to help. I'll get you connected with one of our excellent cardiologists at Methodist. Can I start by getting your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:40",
+          "text": "Yes, it's Jennifer Martinez."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:45",
+          "text": "Thank you, Jennifer. And just to confirm, you're looking for a cardiology consultation for chest discomfort and shortness of breath, is that correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:54",
+          "text": "That's right. I want to make sure everything is okay with my heart."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:02",
+          "text": "Absolutely. We have cardiology services at several Methodist locations. Which is most convenient for you. Dallas Medical Center, Richardson, or Southlake?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:14",
+          "text": "Dallas Medical Center would be best. That's closest to my home."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:20",
+          "text": "Perfect. And what's your ZIP code?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:24",
+          "text": "75204."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:28",
+          "text": "Great. Now I'll need a phone number where we can reach you to confirm the appointment. Can I get that?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:35",
+          "text": "It's ****-****-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:39",
+          "text": "Thank you. I have that recorded. We have an opening with Dr. Sarah Chen, one of our cardiologists, next Tuesday, October 29th at 2 p.m. Does that work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:52",
+          "text": "Yes, that works perfectly."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:56",
+          "text": "Excellent, Jennifer. So you're all set for Tuesday, October 29th at 2 p.m. with Dr. Sarah Chen for your cardiology consultation at Methodist Dallas Medical Center. Is there anything else I can help you with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:10",
+          "text": "No, that's all. Thank you so much, Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:14",
+          "text": "You're very welcome, Jennifer. Thanks for choosing Methodist, and we'll see you Tuesday. Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Martinez called to schedule a cardiology consultation for chest discomfort and shortness of breath. Marcus efficiently captured her name, confirmed her chief complaint, identified Methodist Dallas Medical Center as her preferred location, and obtained her phone number. He booked her with Dr. Sarah Chen for Tuesday, October 29th at 2 p.m. The call was friendly and well-structured, though Marcus did not capture Jennifer's email address or provide pre-appointment instructions regarding what to bring or arrival procedures.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great job on today's cardiology intake call with Jennifer Martinez. Your greeting was warm, you moved smoothly through the appointment booking, and you confirmed all critical details. Next time, I'd like you to capture the patient's email address so we can send appointment reminders and pre-visit checklists. Also, take 30 seconds at the close to explain what Jennifer should bring, like her insurance card and a list of current medications. This sets expectations and reduces no-shows and delays. Keep up the solid work."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "34,811"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$521.86"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$18,166,312"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "19,283"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "55%"
+            },
+            {
+              "label": "Appointment: Scheduled (Count)",
+              "value": "16,709"
+            },
+            {
+              "label": "Appointment: Scheduled (Percent)",
+              "value": "48%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "15,528"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "45%"
+            },
+            {
+              "label": "Appointment: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Appointments)",
+          "chart": {
+            "legend": "Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Referral/Direct",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Email/CRM",
+                "value": 52,
+                "display": "52%"
+              },
+              {
+                "name": "Social Media",
+                "value": 45,
+                "display": "45%"
+              },
+              {
+                "name": "Paid Search",
+                "value": 38,
+                "display": "38%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Organic Search",
+                  "12,847",
+                  "30%",
+                  "$6,689,432"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Search",
+                  "9,436",
+                  "38%",
+                  "$4,982,116"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "5,928",
+                  "45%",
+                  "$3,101,558"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "3,894",
+                  "52%",
+                  "$2,038,744"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral/Direct",
+                  "2,706",
+                  "58%",
+                  "$1,354,462"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 12000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Organic Search",
+                "value": 11238,
+                "display": "11,238"
+              },
+              {
+                "name": "Paid Search (cpc)",
+                "value": 8764,
+                "display": "8,764"
+              },
+              {
+                "name": "Social",
+                "value": 6417,
+                "display": "6,417"
+              },
+              {
+                "name": "Email",
+                "value": 4982,
+                "display": "4,982"
+              },
+              {
+                "name": "Display",
+                "value": 3410,
+                "display": "3,410"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Organic Search",
+                  "11,238",
+                  "32%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Search (cpc)",
+                  "8,764",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "6,417",
+                  "48%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "4,982",
+                  "55%"
+                ]
+              },
+              {
+                "cells": [
+                  "Display",
+                  "3,410",
+                  "63%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 7000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000,
+              6000,
+              7000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Heart Care That's Close to Home",
+                "value": 6428,
+                "display": "6,428"
+              },
+              {
+                "name": "Find a Doctor Near You",
+                "value": 5341,
+                "display": "5,341"
+              },
+              {
+                "name": "Schedule Your Mammogram",
+                "value": 4219,
+                "display": "4,219"
+              },
+              {
+                "name": "Delivering Dallas Maternity",
+                "value": 3187,
+                "display": "3,187"
+              },
+              {
+                "name": "Same-Day Orthopedic Appointments",
+                "value": 2264,
+                "display": "2,264"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Heart Care That's Close to Home",
+                  "6,428",
+                  "35%",
+                  "$3,346,712"
+                ]
+              },
+              {
+                "cells": [
+                  "Find a Doctor Near You",
+                  "5,341",
+                  "43%",
+                  "$2,781,455"
+                ]
+              },
+              {
+                "cells": [
+                  "Schedule Your Mammogram",
+                  "4,219",
+                  "51%",
+                  "$1,914,338"
+                ]
+              },
+              {
+                "cells": [
+                  "Delivering Dallas Maternity",
+                  "3,187",
+                  "62%",
+                  "$1,742,689"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cardiologist dallas tx",
+                "value": 3847,
+                "display": "3,847"
+              },
+              {
+                "name": "primary care doctor near me dallas",
+                "value": 3216,
+                "display": "3,216"
+              },
+              {
+                "name": "screening mammogram dallas cost",
+                "value": 2594,
+                "display": "2,594"
+              },
+              {
+                "name": "er wait times mansfield",
+                "value": 1938,
+                "display": "1,938"
+              },
+              {
+                "name": "knee replacement surgeon dfw",
+                "value": 1472,
+                "display": "1,472"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cardiologist dallas tx",
+                  "37%"
+                ]
+              },
+              {
+                "cells": [
+                  "primary care doctor near me dallas",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "screening mammogram dallas cost",
+                  "52%"
+                ]
+              },
+              {
+                "cells": [
+                  "er wait times mansfield",
+                  "61%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Appointment: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Cardiology (Heart Care)",
+              "9,438",
+              "34%",
+              "52%"
+            ]
+          },
+          {
+            "cells": [
+              "Orthopedics",
+              "7,216",
+              "42%",
+              "57%"
+            ]
+          },
+          {
+            "cells": [
+              "Maternity / Women's Health",
+              "5,689",
+              "49%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Imaging & Radiology",
+              "4,127",
+              "63%",
+              "66%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Methodist Dallas Medical Center",
+              "10,847",
+              "892",
+              "5%",
+              "36%"
+            ]
+          },
+          {
+            "cells": [
+              "Methodist Richardson Medical Center",
+              "8,214",
+              "671",
+              "6%",
+              "44%"
+            ]
+          },
+          {
+            "cells": [
+              "Methodist Mansfield Medical Center",
+              "6,538",
+              "498",
+              "7%",
+              "51%"
+            ]
+          },
+          {
+            "cells": [
+              "Methodist Southlake Medical Center",
+              "4,392",
+              "337",
+              "8%",
+              "62%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Comparing Providers",
+            "values": [
+              918,
+              1042,
+              987,
+              1074,
+              800
+            ]
+          },
+          {
+            "name": "Cost Above Budget",
+            "values": [
+              782,
+              891,
+              864,
+              823,
+              827
+            ]
+          },
+          {
+            "name": "Outside Insurance Network",
+            "values": [
+              684,
+              731,
+              712,
+              698,
+              739
+            ]
+          },
+          {
+            "name": "Needs Referral First",
+            "values": [
+              587,
+              612,
+              601,
+              598,
+              614
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              478,
+              512,
+              501,
+              509,
+              518
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "13,924"
+          },
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Appointment Booked (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$10,354,798"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Appointment Booked (Percent)",
+              "value": "24%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$186,432"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Appointment Booked (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$248,718"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Appointment Booked (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$312,156"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Appointment Booked (Percent)",
+              "value": "26%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$215,648"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Appointment Booked (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$304,872"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Appointment Booked (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$398,526"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16248,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "4,217",
+                "58%",
+                "31%",
+                "$2,487,271"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "3,854",
+                "55%",
+                "29%",
+                "$2,143,786"
+              ]
+            },
+            {
+              "name": "Local SEO",
+              "metrics": [
+                "2,691",
+                "57%",
+                "32%",
+                "$1,628,352"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "1,968",
+                "54%",
+                "30%",
+                "$1,092,840"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "1,194",
+                "52%",
+                "34%",
+                "$742,549"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16485,
+          "rows": [
+            {
+              "name": "Mobile",
+              "metrics": [
+                "5,432",
+                "59%",
+                "32%",
+                "$3,254,144"
+              ]
+            },
+            {
+              "name": "Desktop",
+              "metrics": [
+                "4,127",
+                "56%",
+                "31%",
+                "$2,482,397"
+              ]
+            },
+            {
+              "name": "Tablet",
+              "metrics": [
+                "1,847",
+                "53%",
+                "28%",
+                "$1,089,572"
+              ]
+            },
+            {
+              "name": "Telephone",
+              "metrics": [
+                "1,243",
+                "54%",
+                "30%",
+                "$743,218"
+              ]
+            },
+            {
+              "name": "Kiosk",
+              "metrics": [
+                "275",
+                "48%",
+                "25%",
+                "$121,467"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16042,
+          "rows": [
+            {
+              "name": "Find a Doctor Near You",
+              "metrics": [
+                "3,487",
+                "61%",
+                "35%",
+                "$2,156,893"
+              ]
+            },
+            {
+              "name": "Heart Care That's Close to Home",
+              "metrics": [
+                "2,843",
+                "57%",
+                "33%",
+                "$1,721,428"
+              ]
+            },
+            {
+              "name": "Same-Day Orthopedic Appointments",
+              "metrics": [
+                "2,156",
+                "55%",
+                "30%",
+                "$1,293,480"
+              ]
+            },
+            {
+              "name": "Delivering Dallas. Maternity at Methodist",
+              "metrics": [
+                "1,924",
+                "53%",
+                "28%",
+                "$1,098,752"
+              ]
+            },
+            {
+              "name": "Schedule Your Mammogram",
+              "metrics": [
+                "1,514",
+                "49%",
+                "26%",
+                "$721,245"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16184,
+          "rows": [
+            {
+              "name": "primary care doctor near me Dallas",
+              "metrics": [
+                "2,218",
+                "62%",
+                "37%",
+                "$1,524,166"
+              ]
+            },
+            {
+              "name": "cardiologist Dallas TX",
+              "metrics": [
+                "1,847",
+                "59%",
+                "34%",
+                "$1,289,442"
+              ]
+            },
+            {
+              "name": "Methodist hospital Dallas",
+              "metrics": [
+                "1,654",
+                "56%",
+                "31%",
+                "$998,418"
+              ]
+            },
+            {
+              "name": "urgent care near me open now",
+              "metrics": [
+                "1,283",
+                "51%",
+                "27%",
+                "$712,509"
+              ]
+            },
+            {
+              "name": "knee replacement surgeon DFW",
+              "metrics": [
+                "1,156",
+                "48%",
+                "24%",
+                "$598,765"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Primary Care",
+              "metrics": [
+                "3,612",
+                "63%",
+                "36%",
+                "$2,847,336"
+              ]
+            },
+            {
+              "name": "Cardiology (Heart Care)",
+              "metrics": [
+                "3,284",
+                "60%",
+                "34%",
+                "$2,651,952"
+              ]
+            },
+            {
+              "name": "Imaging & Radiology",
+              "metrics": [
+                "2,847",
+                "55%",
+                "30%",
+                "$1,754,538"
+              ]
+            },
+            {
+              "name": "Orthopedics",
+              "metrics": [
+                "2,356",
+                "52%",
+                "28%",
+                "$1,387,168"
+              ]
+            },
+            {
+              "name": "Maternity and Women's Health",
+              "metrics": [
+                "1,825",
+                "48%",
+                "26%",
+                "$713,804"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Primary Care",
+            "values": [
+              381,
+              408,
+              395,
+              422,
+              398
+            ]
+          },
+          {
+            "name": "Cardiology (Heart Care)",
+            "values": [
+              342,
+              376,
+              358,
+              364,
+              352
+            ]
+          },
+          {
+            "name": "Imaging & Radiology",
+            "values": [
+              285,
+              314,
+              268,
+              296,
+              281
+            ]
+          },
+          {
+            "name": "Orthopedics",
+            "values": [
+              227,
+              268,
+              251,
+              244,
+              218
+            ]
+          },
+          {
+            "name": "Maternity and Women's Health",
+            "values": [
+              163,
+              185,
+              171,
+              152,
+              148
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "24%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "347"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "32%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "31"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Appointment Scheduled",
+            "values": [
+              74,
+              78,
+              71,
+              76,
+              82,
+              79,
+              73,
+              81,
+              77,
+              72,
+              84,
+              78,
+              75,
+              80,
+              73,
+              79,
+              76,
+              78,
+              82,
+              71,
+              77,
+              80,
+              75,
+              76,
+              74,
+              79,
+              81,
+              78,
+              76,
+              81,
+              77,
+              80,
+              172,
+              189,
+              178,
+              185,
+              191,
+              184,
+              176,
+              188,
+              179,
+              186,
+              174,
+              182,
+              188,
+              175,
+              183,
+              179,
+              177
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,156"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "89%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "11,347"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "687"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "59%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "662"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "96%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Appointment Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Primary Care Appointment Requests",
+            "values": [
+              8,
+              11,
+              2,
+              12,
+              9,
+              10
+            ]
+          },
+          {
+            "name": "Cardiology Specialist Consultation",
+            "values": [
+              6,
+              7,
+              9,
+              4,
+              8,
+              7
+            ]
+          },
+          {
+            "name": "Imaging & Radiology Scheduling",
+            "values": [
+              5,
+              4,
+              8,
+              6,
+              5,
+              9
+            ]
+          },
+          {
+            "name": "Orthopedic Evaluation Inquiry",
+            "values": [
+              4,
+              6,
+              3,
+              7,
+              6,
+              5
+            ]
+          },
+          {
+            "name": "Maternity & Prenatal Care",
+            "values": [
+              3,
+              5,
+              4,
+              2,
+              4,
+              6
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "32,026"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "24,368"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Appointment Booked (Count)",
+            "value": "16,709"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$18,166,312"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Angela Martinez",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Derek Thompson",
+              "value": 216,
+              "display": "216"
+            },
+            {
+              "name": "Jessica Liu",
+              "value": 203,
+              "display": "203"
+            },
+            {
+              "name": "Marcus Johnson",
+              "value": 174,
+              "display": "174"
+            },
+            {
+              "name": "Patricia Nguyen",
+              "value": 229,
+              "display": "229"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Dr. James Chen",
+            "values": [
+              142,
+              168,
+              201,
+              238,
+              267
+            ]
+          },
+          {
+            "name": "Sarah Williams",
+            "values": [
+              159,
+              187,
+              219,
+              246,
+              289
+            ]
+          },
+          {
+            "name": "Michael Rodriguez",
+            "values": [
+              136,
+              159,
+              194,
+              221,
+              265
+            ]
+          },
+          {
+            "name": "Emily Patel",
+            "values": [
+              148,
+              171,
+              208,
+              237,
+              271
+            ]
+          },
+          {
+            "name": "David Morrison",
+            "values": [
+              152,
+              182,
+              215,
+              241,
+              278
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Kevin Butler",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Tanya Singh",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "Robert Holmes",
+              "value": 52.5,
+              "display": "52.5%"
+            },
+            {
+              "name": "Lisa Chen",
+              "value": 58.1,
+              "display": "58.1%"
+            },
+            {
+              "name": "Christopher Wade",
+              "value": 55.9,
+              "display": "55.9%"
+            },
+            {
+              "name": "Victoria Lopez",
+              "value": 57.3,
+              "display": "57.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Kevin Butler",
+                "54.2%",
+                "28%",
+                "$428,754",
+                "1,347"
+              ]
+            },
+            {
+              "cells": [
+                "Tanya Singh",
+                "56.8%",
+                "29%",
+                "$449,287",
+                "1,419"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Holmes",
+                "52.5%",
+                "26%",
+                "$387,641",
+                "1,302"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Chen",
+                "58.1%",
+                "31%",
+                "$486,923",
+                "1,481"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Wade",
+                "55.9%",
+                "27%",
+                "$398,562",
+                "1,364"
+              ]
+            },
+            {
+              "cells": [
+                "Victoria Lopez",
+                "57.3%",
+                "30%",
+                "$463,851",
+                "1,428"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Dr. James Chen",
+              "value": 91.3,
+              "display": "91.3%"
+            },
+            {
+              "name": "Sarah Williams",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "Michael Rodriguez",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "Emily Patel",
+              "value": 88.4,
+              "display": "88.4%"
+            },
+            {
+              "name": "David Morrison",
+              "value": 90.8,
+              "display": "90.8%"
+            },
+            {
+              "name": "Jennifer Hayes",
+              "value": 87.6,
+              "display": "87.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Dr. James Chen",
+                "91.3%",
+                "64%",
+                "$943,287",
+                "1,527"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Williams",
+                "89.7%",
+                "62%",
+                "$897,654",
+                "1,481"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Rodriguez",
+                "92.1%",
+                "65%",
+                "$971,248",
+                "1,524"
+              ]
+            },
+            {
+              "cells": [
+                "Emily Patel",
+                "88.4%",
+                "61%",
+                "$868,941",
+                "1,465"
+              ]
+            },
+            {
+              "cells": [
+                "David Morrison",
+                "90.8%",
+                "63%",
+                "$920,715",
+                "1,539"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Hayes",
+                "87.6%",
+                "58%",
+                "$791,847",
+                "1,423"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Appointment Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Appointment Booked (Count)",
+        "rightMax": 800,
+        "rightTicks": [
+          0,
+          200,
+          400,
+          600,
+          800
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 619
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 593
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 553
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 528
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 460
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 482
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 532
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 553
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 617
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 598
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 539
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 521
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 464
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 478
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 545
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 562
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 611
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 601
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 528
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 511
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 471
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 476
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 554
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 573
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 603
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 602
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 520
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 499
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 479
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 477
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 560
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 900000,
+        "rightTicks": [
+          0,
+          300000,
+          600000,
+          900000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 673409
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 645432
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 601029
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 573497
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 499335
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 524038
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 578890
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 601708
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 670908
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 650487
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 585871
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 566256
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 503873
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 519374
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 592672
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 610732
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 664661
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 654317
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 573766
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 555567
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 511436
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 516798
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 602888
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 622872
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 656217
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 655263
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 565556
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 542278
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 520304
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 517795
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 609083
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "34,811"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "2,785"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,089"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "81%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "412",
+                "88%",
+                "89%",
+                "79%"
+              ]
+            },
+            {
+              "cells": [
+                "James Rodriguez",
+                "358",
+                "82%",
+                "83%",
+                "78%"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Chen",
+                "321",
+                "85%",
+                "86%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "34,811 calls",
+      "pagerLabel": "1 of 3,481",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 9:14 am",
+          "id": "A2C9-41B3E7660A18"
+        },
+        {
+          "time": "1/9/26 10:41 am",
+          "id": "3D8E-6F2A19CB4477"
+        },
+        {
+          "time": "1/13/26 11:23 am",
+          "id": "9B14-C05E82A7F310"
+        },
+        {
+          "time": "1/15/26 12:38 pm",
+          "id": "7E60-D9142FBA6C85"
+        },
+        {
+          "time": "1/16/26 1:52 pm",
+          "id": "C481-3A7E9051DD62"
+        },
+        {
+          "time": "1/21/26 2:29 pm",
+          "id": "1F93-8B60E243A9F1"
+        },
+        {
+          "time": "1/23/26 3:17 pm",
+          "id": "6A27-EF01924C7B58"
+        },
+        {
+          "time": "1/27/26 4:05 pm",
+          "id": "B8D5-24F60739E1AC"
+        },
+        {
+          "time": "1/29/26 5:31 pm",
+          "id": "D302-9C7A15E840BF"
+        }
+      ],
+      "duration": "2:22",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Methodist Health System, this is Denise. How can I help you today?",
+          "highlights": [
+            "Thank you for calling Methodist Health System",
+            "this is Denise"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Denise. I've been having some chest tightness when I walk and my regular doctor said I should see a cardiologist. I've never been a patient with you all before.",
+          "highlights": [
+            "see a cardiologist",
+            "never been a patient with you all before"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:18",
+          "text": "I'm sorry you're dealing with that, and I'm glad you're getting it checked. I can absolutely set you up with one of our heart specialists. May I start with your full name?",
+          "highlights": [
+            "heart specialists"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:29",
+          "text": "Sure, it's Raymond Ellison.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:33",
+          "text": "Thank you, Raymond. And are you looking to be seen near a particular location? We have heart care at Methodist Dallas, Richardson, and Mansfield.",
+          "highlights": [
+            "heart care"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:42",
+          "text": "Mansfield would be closest for me. Before we go further though, what does a cardiology visit like that run? I want to keep this manageable while I'm between plans.",
+          "highlights": [
+            "what does a cardiology visit like that run",
+            "keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:54",
+          "text": "That's a fair question. A cardiology consultation typically falls in the range of $250 to $450, and if the doctor orders an EKG that's reviewed during the visit. Our Estimates and Price Transparency team can give you an exact figure based on your coverage before you come in.",
+          "highlights": [
+            "$250 to $450",
+            "Estimates and Price Transparency"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:08",
+          "text": "Okay. Honestly I was also pricing this out at a clinic over by Arlington, they quoted me something similar. What makes Methodist the better call?",
+          "highlights": [
+            "pricing this out at a clinic over by Arlington",
+            "what makes Methodist the better call"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:20",
+          "text": "I understand shopping around. With Methodist, your cardiologist, any imaging like an echocardiogram, and follow-up all stay within one connected system and one chart, so nothing gets lost between offices. That continuity really matters with heart symptoms.",
+          "highlights": [
+            "one connected system and one chart",
+            "echocardiogram"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:34",
+          "text": "That does make sense. One more thing, if they end up wanting more tests, am I committing to a whole package today?",
+          "highlights": [
+            "am I committing to a whole package today"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:42",
+          "text": "Not at all. Today we're just scheduling the consultation. Any additional testing is only ordered if the physician recommends it, and you approve it then. No commitment beyond the visit.",
+          "highlights": [
+            "just scheduling the consultation",
+            "No commitment beyond the visit"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:53",
+          "text": "Good. Then let's get that on the books. I should run it past my wife's schedule, but mornings are usually best for us.",
+          "highlights": [
+            "let's get that on the books",
+            "run it past my wife's schedule"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:01",
+          "text": "I can offer Thursday at 10 AM with Dr. Patel at Methodist Mansfield. I'll note it's pending your wife's confirmation, and send a MyChart reminder you can adjust.",
+          "highlights": [
+            "Thursday at 10 AM with Dr. Patel",
+            "MyChart reminder"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:11",
+          "text": "Thursday at 10 works. Thank you for walking me through all that.",
+          "highlights": [
+            "Thursday at 10 works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:16",
+          "text": "You're very welcome, Raymond. You're all set. Take care of yourself and we'll see you Thursday.",
+          "highlights": [
+            "You're all set",
+            "see you Thursday"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Cardiology Consultation",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Intent: Imaging Interest (Echo)",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Estimate Requested",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Comparison Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Raymond Ellison, a new patient experiencing chest tightness on exertion, called on referral from his primary doctor to see a cardiologist. Denise explained the cardiology consultation range and pointed him to Estimates and Price Transparency, addressed his comparison with an Arlington clinic by highlighting Methodist's connected system and single chart, and reassured him there was no commitment beyond the visit. She scheduled a consultation with Dr. Patel at Methodist Mansfield for Thursday at 10 AM, pending his wife's schedule, with a MyChart reminder.",
+        "keyPoints": [
+          "New patient, first time with Methodist Health System",
+          "Chest tightness on exertion, referred for cardiology consultation",
+          "Requested pricing, addressed with $250 to $450 range and Estimates team",
+          "Comparison shopping with an Arlington clinic handled with continuity-of-care message",
+          "Reassured no commitment beyond the consultation",
+          "Appointment booked with Dr. Patel at Methodist Mansfield, MyChart reminder sent"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Appointment booked, Thursday 10 AM with Dr. Patel, Methodist Mansfield"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "21,931 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,193",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi Sarah. Thanks for texting Methodist Health System. We help patients schedule appointments with our cardiologists and primary care doctors across the DFW area. How can we help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:23 AM",
+              "text": "Hi, I think I need to see a cardiologist. I've been having some chest discomfort and my doctor recommended I get evaluated."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:24 AM",
+              "text": "I'm sorry to hear you're experiencing chest discomfort. A cardiology consultation is a great next step. Have you ever seen one of our cardiologists before, or would this be your first visit with Methodist?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "First time. I'm new to the area actually. Just moved to Plano last month."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Welcome to Plano. We have excellent cardiologists at Methodist Richardson Medical Center, which is very close to you. What matters most to you when scheduling an appointment, would you prefer mornings, afternoons, or are you flexible?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "I'm flexible really. Maybe mornings would be better if possible."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Perfect. I can offer you an appointment with Dr. Michael Chen, one of our top cardiologists, on Wednesday, March 12th at 9:00 AM at Methodist Richardson Medical Center. Does that work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Yes that works great. What do I need to bring?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Excellent. Please bring your insurance card, photo ID, and a list of any medications you're currently taking. The visit runs about 45 minutes and typically costs $325 for a new patient cardiology consultation. Does that sound okay?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:36 AM",
+              "text": "Yes, that's fine. What's the address again?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:37 AM",
+              "text": "Methodist Richardson Medical Center is located at 2405 President George Bush Turnpike, Richardson, TX 75082. Your appointment confirmation will be sent to this number shortly. If you need to reschedule, call us at 972-566-7000. Looking forward to seeing you soon."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:39 AM",
+              "text": "Thanks so much. See you Wednesday."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:40 AM",
+              "text": "You're welcome, Sarah. See you Wednesday at 9:00 AM at Methodist Richardson. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Cardiology Consultation",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location: Methodist Richardson Medical Center",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Customer Preference: Morning Appointment",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "214-555-0847",
+            "repeatCaller": "No",
+            "city": "Plano",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Martinez",
+            "firstName": "Sarah",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A827-4B3FC689E1A5",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A827-4B3FC689E1A5",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B643-9A2ED7F04C1B",
+          "time": "8/16/25 10:28 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B643-9A2ED7F04C1B",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D934-5C7FB1E8A6D2",
+          "time": "8/16/25 10:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D934-5C7FB1E8A6D2",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "34,811 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,481",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/14/26 2:47 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Thank you for calling Methodist Health System. This is Angela. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Yeah, hi. I'm looking for a cardiologist in the Dallas area. I've been having some chest discomfort and my primary care doctor recommended I see a heart specialist."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "I'm sorry to hear you're experiencing that. We have excellent cardiologists throughout our network. First, have you seen a cardiologist with us before, or would this be your first visit to Methodist?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "This would be my first time. I'm new to the area and don't have an established cardiologist yet."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Welcome to the Dallas area. We'd be happy to help you. Can you tell me what type of symptoms you've been experiencing? Is it chest pain, shortness of breath, or something else?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "It's mostly chest tightness when I exert myself. My doctor thinks I should get an EKG and maybe an echocardiogram to rule out any issues."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:53 PM",
+              "text": "That's a good precaution. A cardiology consultation with us typically runs around three hundred fifty dollars, and that would include an EKG review and a risk assessment. The echocardiogram would be a separate procedure that runs between one thousand and twenty-five hundred dollars. Does that sound like something you'd like to move forward with?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:55 PM",
+              "text": "Yeah, that sounds reasonable. When could I get in to see someone?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:56 PM",
+              "text": "Great. We have availability at our Methodist Dallas Medical Center. Would Wednesday, January twenty-ninth at two o'clock PM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:57 PM",
+              "text": "Actually, I prefer morning appointments. Do you have anything earlier in the day?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:58 PM",
+              "text": "Absolutely. How about Tuesday, January twenty-eighth at nine thirty AM?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:59 PM",
+              "text": "Perfect. That works for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "3:00 PM",
+              "text": "Excellent. So I have you scheduled with our cardiology team for Tuesday, January twenty-eighth at nine thirty AM at Methodist Dallas Medical Center. You'll want to arrive about fifteen minutes early to check in. If you have any questions before your appointment, you can call us back at eight seven seven, nine three six, twenty-nine thirty-three. Is that number good for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:01 PM",
+              "text": "Yes, that's my cell phone. Thanks so much."
+            },
+            {
+              "speaker": "agent",
+              "time": "3:02 PM",
+              "text": "You're welcome. We look forward to seeing you. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Cardiology Consultation",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Symptom: Chest Discomfort",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Imaging Procedure: Echocardiogram",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location: Methodist Dallas Medical Center",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/14/26 2:47 pm",
+            "duration": "5:47",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice: Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "214-552-8847",
+            "repeatCaller": "No",
+            "city": "Dallas",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Robert Chen",
+            "firstName": "Robert",
+            "lastName": "Chen",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B823-5E7A1F4D9C2B",
+          "time": "1/18/26 10:32 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B823-5E7A1F4D9C2B",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C456-7K2L8M9N0P3Q",
+          "time": "1/22/26 3:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C456-7K2L8M9N0P3Q",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D789-9R8S7T6U5V4W",
+          "time": "1/28/26 1:43 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D789-9R8S7T6U5V4W",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro plus offer: Introduce yourself as Methodist Health System's AI scheduling assistant helping patients find the right provider and get a personalized care estimate, mention that new patient appointments are often available same week and screening mammograms can be scheduled in minutes, then ask if they would like to get started.",
+        "Qualify one question at a time: Ask only one question per message, covering what type of care or service they need (primary care, cardiology, orthopedics, maternity, imaging, or GI), whether they are a new or returning patient, their insurance or self-pay status, how soon they need to be seen, and their ZIP code so we can confirm the nearest Methodist location.",
+        "Estimate then book: Confirm we serve their ZIP code and name the closest Methodist facility, share a general cost range while noting that actual pricing depends on insurance and is available through our Estimates and Price Transparency tool, recommend a consultation with the right specialist for an exact quote, propose a specific day and time, and confirm they will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Methodist_Health_System_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Services & Treatments",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Locations",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Doctor",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Reschedule appointment\",\"question\":\"I need to move my cardiology follow up to next week, can you help?\",\"answer\":\"Absolutely, I can help you reschedule your cardiology follow up at Methodist. Let me know your preferred day and the location and I will find the next available slot with your provider.\"},{\"topic\":\"Test results and MyChart\",\"question\":\"Where can I see my recent lab and imaging results?\",\"answer\":\"Your lab and imaging results are posted to your Methodist MyChart account, usually within a few days of your visit. If you have questions about a result, I can help you book a follow up with your provider.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you accept my insurance?",
+              "answer": "Methodist Health System accepts most major commercial plans as well as Medicare and Medicaid, and you can review accepted plans under Insurances Accepted. I can confirm coverage details when I match you with a provider and book your appointment."
+            },
+            {
+              "question": "How much does a screening mammogram cost?",
+              "answer": "Pricing depends on your insurance and facility, and exact estimates are available through our Estimates and Price Transparency tool. I would be glad to schedule your screening mammogram at the Methodist location nearest you."
+            },
+            {
+              "question": "Can I get a same day appointment?",
+              "answer": "Same day and next day visits are often available at our Methodist Medical Group primary care and urgent care locations. Tell me your ZIP code and I will find the soonest opening near you."
+            },
+            {
+              "question": "How do I find a doctor near me?",
+              "answer": "I can match you with a Methodist provider based on your care needs and location. Just let me know what type of care you are looking for and your ZIP code."
+            },
+            {
+              "question": "Where are your hospitals located?",
+              "answer": "Methodist operates hospitals across the Dallas and Fort Worth metroplex, including Dallas, Richardson, Southwest, Mansfield, Midlothian, Southlake, and Celina. Share your ZIP code and I will point you to the closest one and book your visit."
+            },
+            {
+              "question": "Do I need a referral to see a cardiologist?",
+              "answer": "Some insurance plans require a referral for specialist visits while others do not, so it depends on your coverage. I can help verify this and schedule your cardiology consultation with a Methodist heart specialist."
+            },
+            {
+              "question": "What should I bring to my first appointment?",
+              "answer": "Please bring a photo ID, your insurance card, a list of current medications, and any relevant medical records. I can go ahead and book your new patient visit now."
+            },
+            {
+              "question": "How long is the ER wait time?",
+              "answer": "Emergency Room wait times vary by location and time of day, and current times are posted for our Methodist facilities. If your situation is not an emergency, I can book you a faster urgent care or primary care visit instead."
+            },
+            {
+              "question": "Can I schedule an annual physical?",
+              "answer": "Yes, I can schedule your annual physical or wellness exam with a Methodist primary care provider. Let me know your ZIP code and preferred day and I will find an opening."
+            },
+            {
+              "question": "Do you offer maternity and delivery services?",
+              "answer": "Yes, Methodist offers full maternity and women's health care including labor and delivery across our hospital network. I can book a maternity consultation with an OB provider near you."
+            },
+            {
+              "question": "How do I get an MRI or CT scan scheduled?",
+              "answer": "Imaging like MRI and CT is scheduled through our Imaging and Radiology service, often with a provider order. I can help set up your imaging appointment at the nearest Methodist location."
+            },
+            {
+              "question": "What is the cost of a colonoscopy?",
+              "answer": "Colonoscopy pricing varies by insurance and whether it is a screening, and exact estimates are available through our Estimates and Price Transparency tool. I can schedule your GI consultation to get you started."
+            },
+            {
+              "question": "Do you have urgent care clinics?",
+              "answer": "Yes, Methodist has urgent care locations for same day treatment of minor illness and injury. Give me your ZIP code and I will find the closest one and confirm hours."
+            },
+            {
+              "question": "Can I book a knee replacement consultation?",
+              "answer": "Yes, I can schedule an orthopedic consultation to evaluate your knee and discuss treatment options including joint replacement. Let me know your location and availability."
+            },
+            {
+              "question": "How do I pay my bill?",
+              "answer": "You can pay your bill through Methodist MyChart or the Pay My Bill option under Financial Services. If you need care first, I can help you schedule your appointment now."
+            },
+            {
+              "question": "Is financial assistance available?",
+              "answer": "Yes, Methodist offers financial assistance for qualifying patients through our Financial Services team. I can book your appointment and connect you with resources on payment options."
+            },
+            {
+              "question": "Can I do a virtual visit?",
+              "answer": "Virtual appointments are available for many primary care and follow up needs. Tell me what type of care you need and I will find the right visit option for you."
+            },
+            {
+              "question": "What services does Methodist Medical Group offer?",
+              "answer": "Methodist Medical Group provides primary care, specialty care, and preventive services across the metroplex. I can match you with the right provider and book your visit today."
+            },
+            {
+              "question": "How soon can I be seen for chest pain or heart symptoms?",
+              "answer": "If you are having severe chest pain, please call 911 or go to the nearest Emergency Room right away. For non urgent heart concerns, I can schedule a prompt cardiology consultation with a Methodist specialist."
+            },
+            {
+              "question": "Do you offer 3D mammography?",
+              "answer": "Yes, Methodist offers 3D digital mammography with radiologist reads at our mammography locations. I can schedule your screening mammogram at the site nearest you."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule a new patient appointment\",\"follow_up_message\":\"Thanks for reaching out to Methodist Health System. I can get you booked with a provider near you. What type of care do you need and what is your ZIP code so I can find the closest location?\"},{\"intent\":\"Request a care cost estimate\",\"follow_up_message\":\"Happy to help with that. Costs depend on your insurance and facility, and exact estimates come from our Price Transparency tool. Let me schedule a consultation so we can give you an accurate quote. What day works best for you?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Methodist Health System's AI scheduling assistant. I can help you find the right provider and book your appointment. Would you like to get started?",
+        "goal": "Guide the patient to book an appointment with the right Methodist provider or facility for their care needs.",
+        "bookingType": "in-person or virtual appointment",
+        "offer": "",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "What type of care are you looking for, such as primary care, cardiology, orthopedics, maternity, imaging, or GI?",
+          "Are you a new patient or a returning Methodist patient?",
+          "Will you be using insurance, and if so which plan, or will this be self-pay?",
+          "How soon would you like to be seen?",
+          "What is your ZIP code so I can confirm the nearest Methodist location and availability?"
+        ]
+      },
+      "serviceArea": "the Dallas and Fort Worth, Texas metroplex, ZIP codes starting with 75 and 76"
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:18 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:18 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:18 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Methodist Health System",
+      "callerName": "Sarah Martinez",
+      "callerPhone": "(214) 555-0847",
+      "campaign": "Cardiology Consultation, Dallas Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$3,285",
+      "googleSearch": "cardiologist Dallas TX heart pain",
+      "websiteSearch": "Methodist cardiology consultation near me",
+      "callingWebpage": "/services/heart-care",
+      "products": "Cardiology Consultation, Echocardiogram",
+      "cartId": "MHS-7194K",
+      "serviceable": "Yes",
+      "email": "sarah.martinez@email.com",
+      "street": "4521 Abrams Road",
+      "city": "Dallas",
+      "state": "TX",
+      "zip": "75214",
+      "digitalJourney": "/home › /services/heart-care › /find-a-doctor › /locations/dallas-medical-center",
+      "intent": "Patient experiencing chest discomfort and shortness of breath, seeking urgent cardiology evaluation and diagnostic imaging.",
+      "coverage": "ZIP 75214 confirmed, Dallas serviceable",
+      "switchIntent": "High, symptoms started three days ago, prefers Methodist Dallas Medical Center, wants appointment within 48 hours.",
+      "greeting": "Hi Sarah, you've reached Methodist Health System. I see you're interested in our cardiology services and a consultation with one of our heart specialists. I'd love to help you schedule an appointment at Methodist Dallas Medical Center this week. Would Thursday or Friday work better for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "Methodist Health System",
+      "callerName": "James Chen",
+      "callerPhone": "(817) 555-0623",
+      "campaign": "Orthopedic Surgery, Southlake Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$42,150",
+      "googleSearch": "knee replacement surgery cost Southlake",
+      "websiteSearch": "Methodist orthopedic surgeon near me total knee replacement",
+      "callingWebpage": "/services/orthopedics",
+      "products": "Total Knee Replacement, Orthopedic Consultation",
+      "cartId": "MHS-5621K",
+      "serviceable": "Yes",
+      "email": "james.chen@email.com",
+      "street": "812 Highland Drive",
+      "city": "Southlake",
+      "state": "TX",
+      "zip": "76092",
+      "digitalJourney": "/home › /services/orthopedics › /find-a-doctor › /financial-services/estimates-pricing",
+      "intent": "Patient with severe knee osteoarthritis seeking total knee replacement surgery, interested in pricing and payment options.",
+      "coverage": "ZIP 76092 confirmed, Southlake serviceable",
+      "appointment": "Orthopedic pre-surgical consultation with Dr. Patterson, Methodist Southlake Medical Center, Monday July 22, 2:30 PM",
+      "greeting": "Hi James, this is Rebecca from Methodist Health System. Thanks for texting us about knee replacement surgery. We've confirmed your pre-surgical consultation with our orthopedic team on Monday July 22 at 2:30 PM at Methodist Southlake. Our financial counselor will review payment options with you that day. Reply with any questions about your appointment or insurance."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Methodist Health System",
+      "brandDomain": "www.methodisthealthsystem.org",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (214) 555-0847",
+      "callerLocation": "Richardson, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Heart Care That's Close to Home",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "cardiologist Dallas TX",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/services/heart-care",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Cardiology Consultation, Echocardiogram Imaging",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Richardson, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "cardio_appointment_new",
+          "name": "Cardiology Appointment Scheduling"
+        },
+        {
+          "id": "general_info_support",
+          "name": "General Information and Support"
+        },
+        {
+          "id": "existing_patient_routing",
+          "name": "Existing Patient Services"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Good afternoon, thank you for calling Methodist Health System. I see you're interested in our cardiology services. Are you looking to schedule an appointment for a heart concern, or are you calling for general information?",
+          "sigs": [],
+          "q": [
+            15,
+            55,
+            30
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Hi yes, I've been having some chest tightness and my primary care doctor recommended I see a cardiologist. I'm looking to get in for a consultation as soon as possible.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Cardiology consultation</strong> interest"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>Urgent</strong> scheduling need"
+            }
+          ],
+          "q": [
+            68,
+            18,
+            14
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I understand, and I'm glad your primary care doctor referred you. To get you scheduled with one of our cardiologists, I just need to confirm a couple things. Are you currently a patient at Methodist, or would this be your first visit with us?",
+          "sigs": [],
+          "q": [
+            72,
+            15,
+            13
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "This would be my first time seeing a cardiologist there, though I've gone to urgent care at Methodist Mansfield before. I'm located in Richardson and ideally need an appointment within the next week or two.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "<strong>New cardiology patient</strong>"
+            },
+            {
+              "c": "purple",
+              "t": "<strong>Richardson location</strong> preference"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>One to two week</strong> timeline"
+            }
+          ],
+          "q": [
+            84,
+            10,
+            6
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm connecting you with our Cardiology Appointment Scheduling team at Methodist Richardson Medical Center. They'll get you set up with an available cardiologist and can confirm your first consultation visit. You're in great hands.",
+          "sigs": [],
+          "q": [
+            95,
+            3,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"you're all set for your visit (Agent)\", \"scheduled you with the doctor on (Agent)\", \"confirm your appointment for (Agent)\", \"got you booked for (Agent)\"])",
+          "createdAt": "03/12/25 9:14 am",
+          "updatedAt": "01/09/26 2:47 pm"
+        },
+        {
+          "name": "Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"what days do you have available (Caller)\", \"can I come in this week (Caller)\", \"do you have any openings (Caller)\", \"how soon can I be seen (Caller)\"])",
+          "createdAt": "04/02/25 11:38 am",
+          "updatedAt": "12/18/25 4:05 pm"
+        },
+        {
+          "name": "Cardiology Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"see a cardiologist (Caller)\", \"need a heart doctor (Caller)\", \"schedule an echocardiogram (Caller)\", \"chest pain and shortness of breath (Caller)\"])",
+          "createdAt": "05/20/25 8:52 am",
+          "updatedAt": "01/06/26 10:22 am"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"I usually go to Baylor Scott and White (Caller)\", \"Texas Health Resources quoted me (Caller)\", \"UT Southwestern told me (Caller)\", \"comparing you with another hospital (Caller)\"])",
+          "createdAt": "06/11/25 1:27 pm",
+          "updatedAt": "12/29/25 9:41 am"
+        },
+        {
+          "name": "Imaging Cost Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"how much is an MRI without insurance (Caller)\", \"that's too expensive (Caller)\", \"what's the cash price for a CT scan (Caller)\", \"can I get a cost estimate first (Caller)\"])",
+          "createdAt": "07/08/25 3:15 pm",
+          "updatedAt": "01/12/26 11:03 am"
+        },
+        {
+          "name": "Maternity Services Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"deliver my baby at Methodist (Caller)\", \"tour the labor and delivery unit (Caller)\", \"looking for an OB GYN (Caller)\", \"maternity package cost (Caller)\"])",
+          "createdAt": "08/14/25 10:06 am",
+          "updatedAt": "01/04/26 3:58 pm"
+        },
+        {
+          "name": "Patient Empathy Score (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Patient Empathy] < 60 and duration > 45 sec",
+          "createdAt": "05/03/25 9:47 am",
+          "updatedAt": "01/10/26 8:33 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your estimated out of pocket is (Agent)\", \"the price transparency tool shows (Agent)\", \"that procedure runs about (Agent)\", \"your self-pay estimate would be (Agent)\"])",
+          "createdAt": "09/09/25 2:19 pm",
+          "updatedAt": "01/07/26 12:15 pm"
+        },
+        {
+          "name": "Scheduling Accuracy (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Scheduling Accuracy] < 60 and duration > 45 sec",
+          "createdAt": "06/22/25 11:52 am",
+          "updatedAt": "12/27/25 5:11 pm"
+        },
+        {
+          "name": "Wait Time Concern Handling (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Wait Time Handling] < 60 and duration > 30 sec",
+          "createdAt": "07/30/25 4:44 pm",
+          "updatedAt": "01/11/26 9:29 am"
+        }
+      ]
+    }
+  }
+}

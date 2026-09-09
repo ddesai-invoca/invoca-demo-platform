@@ -87,15 +87,28 @@ export function trackedSiteUrl(domain: string): string {
    adding a key only when a real prospect needs it, and leave the rest to the ZIP override on
    the search screen, which resolves any US ZIP for real.
    ============================================================================= */
+/* ⚠️ SEVEN KEYS WERE ADDED 9/9/2026 FOR THE DALLAS SUMMIT ROSTER, and they are
+   marked so nobody mistakes them for the original hand-checked set. Each of the
+   59 new prospects named a real city that simply was not in this table, so all
+   seven fell back to Santa Barbara — the exact defect the 9/8 note below was
+   written about, reappearing not as a regression but as the documented limit of
+   substring matching ("add a key only when a real prospect needs one").
+   Coordinates come from Places API (New) `places:searchText` with a
+   STATE-QUALIFIED query, and every returned address was checked to confirm the
+   state — the bare-city ambiguity that put Washington in the wrong state and
+   Duluth in Minnesota is exactly what a qualified query avoids. */
 const CITIES: Record<string, { ll: [number, number]; st: string }> = {
+  "asheville": { ll: [35.5975, -82.5461], st: "NC" },      // Dallas roster: Hopscotch Primary Care
   "atlanta": { ll: [33.7490, -84.3880], st: "GA" },
   "austin": { ll: [30.2672, -97.7431], st: "TX" },
   "baltimore": { ll: [39.2904, -76.6122], st: "MD" },
   "boston": { ll: [42.3601, -71.0589], st: "MA" },
+  "cerritos": { ll: [33.8659, -118.0639], st: "CA" },      // Dallas roster: Kia America
   "charlotte": { ll: [35.2271, -80.8431], st: "NC" },
   "chicago": { ll: [41.8781, -87.6298], st: "IL" },
   "cleveland": { ll: [41.4993, -81.6944], st: "OH" },
   "columbus": { ll: [39.9612, -82.9988], st: "OH" },
+  "cornelia": { ll: [34.5115, -83.5271], st: "GA" },      // Dallas roster: Vyve Broadband
   "dallas": { ll: [32.7767, -96.7970], st: "TX" },
   "denver": { ll: [39.7392, -104.9903], st: "CO" },
   "detroit": { ll: [42.3314, -83.0458], st: "MI" },
@@ -103,13 +116,16 @@ const CITIES: Record<string, { ll: [number, number]; st: string }> = {
   "duluth": { ll: [34.0029, -84.1446], st: "GA" },
   "fort worth": { ll: [32.7555, -97.3308], st: "TX" },
   "greensboro": { ll: [33.5757, -83.1824], st: "GA" },
+  "hershey": { ll: [40.2859, -76.6502], st: "PA" },       // Dallas roster: Country Meadows
   "houston": { ll: [29.7604, -95.3698], st: "TX" },
   "jacksonville": { ll: [30.3322, -81.6557], st: "FL" },
   "kansas city": { ll: [39.0997, -94.5786], st: "MO" },
+  "katy": { ll: [29.7858, -95.8245], st: "TX" },          // Dallas roster: Christian Brothers Automotive
   "las vegas": { ll: [36.1699, -115.1398], st: "NV" },
   "los angeles": { ll: [34.0522, -118.2437], st: "CA" },
   "miami": { ll: [25.7617, -80.1918], st: "FL" },
   "minneapolis": { ll: [44.9778, -93.2650], st: "MN" },
+  "nacogdoches": { ll: [31.6039, -94.6560], st: "TX" },   // Dallas roster: Etech
   "nashville": { ll: [36.1627, -86.7816], st: "TN" },
   "new york": { ll: [40.7128, -74.0060], st: "NY" },
   "orlando": { ll: [28.5383, -81.3792], st: "FL" },
@@ -129,6 +145,7 @@ const CITIES: Record<string, { ll: [number, number]; st: string }> = {
   "seattle": { ll: [47.6062, -122.3321], st: "WA" },
   "tampa": { ll: [27.9506, -82.4572], st: "FL" },
   "thousand oaks": { ll: [34.1706, -118.8376], st: "CA" },
+  "tyler": { ll: [32.3513, -95.3011], st: "TX" },         // Dallas roster: CHRISTUS Health
   /* ⚠️ DC, not the state — see above. */
   "washington": { ll: [38.9072, -77.0369], st: "DC" },
   "winter park": { ll: [28.6000, -81.3392], st: "FL" },
@@ -331,7 +348,17 @@ const PROMO = /offer|free|save|sale|deal|promo|special|financing|rebate|savings|
 
 /** A short benefit line, from a promotional campaign or from the prospect's own offer text. */
 function offerHook(p: CustomerProfile, themes: string[], skip?: string): string | null {
-  const promo = themes.find((t) => t !== skip && PROMO.test(t) && t.length <= 34 && !isKeywordish(t));
+  /* ⚠️⚠️ THE FREE-BOOKING RULE WAS ONLY ON THE `offer` BRANCH BELOW, AND A CAMPAIGN
+     THEME WALKED STRAIGHT PAST IT (found 9/9/2026 on the Dallas roster). Rentokil
+     generated a campaign literally named "Free Site Survey" while its bookingTerm
+     IS "Site Survey", so the headline promised a free booking — the exact claim
+     the branch below refuses. The rule is about what the ad ASSERTS, so it cannot
+     depend on which field the words came out of. */
+  const promisesFreeBooking = (t: string) =>
+    new RegExp(`\\bfree\\s+${p.bookingTerm}s?\\b`, "i").test(t);
+
+  const promo = themes.find((t) =>
+    t !== skip && PROMO.test(t) && t.length <= 34 && !isKeywordish(t) && !promisesFreeBooking(t));
   if (promo) return promo;
 
   const offer = p.reports.agentConfig?.smsPlaybook?.offer ?? "";

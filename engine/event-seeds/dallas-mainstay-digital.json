@@ -1,0 +1,5283 @@
+{
+  "id": "mainstay-digital",
+  "customerName": "Mainstay Digital",
+  "websiteUrl": "https://www.mainstaydigital.com",
+  "brandDomain": "mainstaydigital.com",
+  "networkName": "Invoca for B2B Product Visualization",
+  "industry": "B2B Manufacturing 3D Product Visualization",
+  "bookingTerm": "Demo",
+  "customerNoun": "Client",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 1500,
+      "yTicks": [
+        300,
+        600,
+        900,
+        1200,
+        1500
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 968
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 1147
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 1085
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 1122
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 948
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Demo Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Demo Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "CAD-to-CGI, Book a Demo",
+          "marketingSearchTerm": "cad to photorealistic rendering service",
+          "landingPageUrl": "https://mainstaydigital.com/solutions/product-stills?utm_source=google&utm_medium=cpc&utm_campaign=cad_to_cgi",
+          "websiteJourney": "Home / Solutions / Product Stills",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "See It Before You Build It",
+          "marketingSearchTerm": "interactive 3d product video",
+          "landingPageUrl": "https://mainstaydigital.com/solutions/interactive-3d-video?utm_source=google&utm_medium=cpc&utm_campaign=see_it_before_build",
+          "websiteJourney": "Home / Solutions / Interactive 3D Video",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Ditch the Trade-Show Freight",
+          "marketingSearchTerm": "industrial product ar demo company",
+          "landingPageUrl": "https://mainstaydigital.com/solutions/augmented-reality?utm_source=google&utm_medium=cpc&utm_campaign=ditch_freight",
+          "websiteJourney": "Home / Solutions / Augmented Reality",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "3D Product Visualization for Manufacturers, Lead Gen",
+          "marketingSearchTerm": "3d product visualization for manufacturers",
+          "landingPageUrl": "https://mainstaydigital.com/?utm_source=bing&utm_medium=cpc&utm_campaign=3d_viz_manufacturers",
+          "websiteJourney": "Home / Solutions / Product Videos",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Exploded Views for Sales Teams",
+          "marketingSearchTerm": "exploded view animation service",
+          "landingPageUrl": "https://mainstaydigital.com/solutions/product-stills?utm_source=google&utm_medium=cpc&utm_campaign=exploded_views",
+          "websiteJourney": "Home / Solutions / Product Stills",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "MainstayOne Always-On Content",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://mainstaydigital.com/mainstayone?utm_source=instagram&utm_medium=paid_social&utm_campaign=mainstayone_always_on",
+          "websiteJourney": "Home / Get MainstayOne",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "See It Before You Build It",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://mainstaydigital.com/solutions/interactive-3d-video?utm_source=facebook&utm_medium=paid_social&utm_campaign=see_it_before_build",
+          "websiteJourney": "Home / Solutions / Interactive 3D Video",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "See It Before You Build It",
+          "marketingSearchTerm": "product configurator for b2b manufacturing",
+          "landingPageUrl": "https://mainstaydigital.com/solutions/interactive-3d-video?utm_source=google&utm_medium=cpc&utm_campaign=configurator",
+          "websiteJourney": "Home / Solutions / Interactive 3D Video",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "White Papers, CAD Optimization",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://mainstaydigital.com/white-papers?utm_source=organic&utm_medium=organic&utm_campaign=cad_optimization",
+          "websiteJourney": "Home / White Papers / Process",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "CAD-to-CGI, Book a Demo",
+          "marketingSearchTerm": "turn cad files into marketing images",
+          "landingPageUrl": "https://mainstaydigital.com/solutions/product-stills?utm_source=bing&utm_medium=cpc&utm_campaign=cad_to_cgi",
+          "websiteJourney": "Home / Solutions / Product Stills",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Ditch the Trade-Show Freight",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://mainstaydigital.com/solutions/augmented-reality?utm_source=facebook&utm_medium=paid_social&utm_campaign=ditch_freight",
+          "websiteJourney": "Home / Solutions / Augmented Reality",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Process to Contact, Book a Demo",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://mainstaydigital.com/process?utm_source=organic&utm_medium=organic&utm_campaign=process_contact",
+          "websiteJourney": "Home / Process / Contact",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "3D Product Visualization for Manufacturers, Lead Gen",
+          "marketingSearchTerm": "b2b cgi product rendering agency",
+          "landingPageUrl": "https://mainstaydigital.com/?utm_source=google&utm_medium=cpc&utm_campaign=3d_viz_manufacturers",
+          "websiteJourney": "Home / Solutions / Product Videos",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Ditch the Trade-Show Freight",
+          "marketingSearchTerm": "trade show product animation",
+          "landingPageUrl": "https://mainstaydigital.com/solutions/product-videos?utm_source=google&utm_medium=cpc&utm_campaign=trade_show_loop",
+          "websiteJourney": "Home / Solutions / Product Videos",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "See It Before You Build It",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://mainstaydigital.com/solutions/interactive-3d-video?utm_source=instagram&utm_medium=paid_social&utm_campaign=see_it_before_build",
+          "websiteJourney": "Home / Solutions / Interactive 3D Video",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "MainstayOne Always-On Content",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://mainstaydigital.com/mainstayone?utm_source=organic&utm_medium=organic&utm_campaign=mainstayone",
+          "websiteJourney": "Home / Get MainstayOne",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Exploded Views for Sales Teams",
+          "marketingSearchTerm": "exploded view animation service",
+          "landingPageUrl": "https://mainstaydigital.com/solutions/product-stills?utm_source=google&utm_medium=cpc&utm_campaign=exploded_views",
+          "websiteJourney": "Home / Solutions / Product Stills",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "MainstayOne Always-On Content",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://mainstaydigital.com/mainstayone?utm_source=facebook&utm_medium=paid_social&utm_campaign=mainstayone_always_on",
+          "websiteJourney": "Home / Get MainstayOne",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "See It Before You Build It",
+          "marketingSearchTerm": "interactive 3d product video",
+          "landingPageUrl": "https://mainstaydigital.com/solutions/interactive-3d-video?utm_source=bing&utm_medium=cpc&utm_campaign=see_it_before_build",
+          "websiteJourney": "Home / Solutions / Interactive 3D Video",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "White Papers, AR Sales Kit",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://mainstaydigital.com/white-papers?utm_source=organic&utm_medium=organic&utm_campaign=ar_sales_kit",
+          "websiteJourney": "Home / White Papers / Augmented Reality",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Mainstay Digital)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "4,133"
+            },
+            {
+              "label": "Sales Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Project Won (Percent)",
+              "value": "9%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,529,009"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "661"
+            },
+            {
+              "label": "Existing Project Support (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing & Invoicing (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Partner/Vendor Inquiry (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Project Won (Percent)",
+              "value": "9%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sales Inquiry (Count)",
+            "values": [
+              641,
+              728,
+              763,
+              701,
+              639
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              313,
+              356,
+              372,
+              342,
+              312
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              91,
+              104,
+              108,
+              100,
+              93
+            ]
+          },
+          {
+            "name": "Project Won (Count)",
+            "values": [
+              68,
+              78,
+              81,
+              75,
+              70
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 4133,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "1,512",
+                "26%",
+                "6.42%",
+                "$921,347"
+              ]
+            },
+            {
+              "name": "LinkedIn",
+              "metrics": [
+                "1,087",
+                "29%",
+                "8.00%",
+                "$824,116"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "743",
+                "32%",
+                "9.96%",
+                "$702,558"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "458",
+                "35%",
+                "13.54%",
+                "$589,742"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "333",
+                "38%",
+                "15.62%",
+                "$491,246"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 4133,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "1,583",
+                "25%",
+                "6.38%",
+                "$959,241"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "1,024",
+                "28%",
+                "8.01%",
+                "$776,904"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "776",
+                "31%",
+                "9.92%",
+                "$731,558"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "449",
+                "34%",
+                "13.36%",
+                "$570,362"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "301",
+                "37%",
+                "17.28%",
+                "$490,944"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2519,
+          "rows": [
+            {
+              "name": "CAD to CGI Book a Demo",
+              "metrics": [
+                "842",
+                "24%",
+                "6.29%",
+                "$503,914"
+              ]
+            },
+            {
+              "name": "3D Product Visualization for Manufacturers Lead Gen",
+              "metrics": [
+                "611",
+                "27%",
+                "7.86%",
+                "$454,187"
+              ]
+            },
+            {
+              "name": "Ditch the Trade-Show Freight",
+              "metrics": [
+                "447",
+                "30%",
+                "10.07%",
+                "$427,556"
+              ]
+            },
+            {
+              "name": "See It Before You Build It",
+              "metrics": [
+                "358",
+                "33%",
+                "13.41%",
+                "$456,491"
+              ]
+            },
+            {
+              "name": "MainstayOne Always-On Content",
+              "metrics": [
+                "261",
+                "36%",
+                "16.86%",
+                "$416,238"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1384,
+          "rows": [
+            {
+              "name": "3d product visualization for manufacturers",
+              "metrics": [
+                "447",
+                "25%",
+                "6.49%",
+                "$276,241"
+              ]
+            },
+            {
+              "name": "cad to photorealistic rendering service",
+              "metrics": [
+                "336",
+                "28%",
+                "8.33%",
+                "$264,517"
+              ]
+            },
+            {
+              "name": "industrial product ar demo company",
+              "metrics": [
+                "261",
+                "31%",
+                "10.34%",
+                "$257,338"
+              ]
+            },
+            {
+              "name": "product configurator for b2b manufacturing",
+              "metrics": [
+                "197",
+                "34%",
+                "13.71%",
+                "$255,014"
+              ]
+            },
+            {
+              "name": "interactive 3d product video",
+              "metrics": [
+                "143",
+                "37%",
+                "16.78%",
+                "$226,847"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Demo Set (Industry) (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Product Stills",
+              "metrics": [
+                "1,187",
+                "27%",
+                "5.98%",
+                "$671,842"
+              ]
+            },
+            {
+              "name": "Product Videos",
+              "metrics": [
+                "986",
+                "29%",
+                "7.0%",
+                "$652,915"
+              ]
+            },
+            {
+              "name": "Augmented Reality",
+              "metrics": [
+                "843",
+                "30%",
+                "8.42%",
+                "$674,308"
+              ]
+            },
+            {
+              "name": "Interactive 3D Video",
+              "metrics": [
+                "641",
+                "33%",
+                "11.86%",
+                "$722,156"
+              ]
+            },
+            {
+              "name": "MainstayOne Program",
+              "metrics": [
+                "476",
+                "36%",
+                "17.86%",
+                "$807,788"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 4133,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "1,156",
+                "28%",
+                "6.4%",
+                "$702,144"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "1,042",
+                "30%",
+                "7.0%",
+                "$690,315"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "878",
+                "31%",
+                "8.09%",
+                "$672,908"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "623",
+                "34%",
+                "10.9%",
+                "$645,832"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "434",
+                "38%",
+                "19.8%",
+                "$817,810"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Project Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Product Stills",
+            "values": [
+              14,
+              13,
+              15,
+              15,
+              14
+            ]
+          },
+          {
+            "name": "Product Videos",
+            "values": [
+              13,
+              14,
+              14,
+              15,
+              13
+            ]
+          },
+          {
+            "name": "Augmented Reality",
+            "values": [
+              14,
+              15,
+              14,
+              14,
+              14
+            ]
+          },
+          {
+            "name": "Interactive 3D Video",
+            "values": [
+              15,
+              16,
+              15,
+              15,
+              15
+            ]
+          },
+          {
+            "name": "MainstayOne Program",
+            "values": [
+              17,
+              17,
+              17,
+              17,
+              17
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 4,133 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Priya Venkatesan, a marketing director at a pump manufacturer, called to book a demo of the Interactive 3D Configurator so her reps could build and price valve variants online. Lila walked her through the options-rules and lead-capture features and scheduled the demo for the following week. Priya confirmed a project budget and the demo was booked.",
+          "date": "Feb 12, 10:14 AM",
+          "agent": "Lila",
+          "duration": "2m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 6,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Daniel Brooks from a hydraulics OEM asked about a Product Still Bundle to replace studio photography for a new equipment line. Oscar explained the CAD-to-CGI render process and multi-angle exports, then booked a demo to review sample renders. Daniel scheduled the demo and shared his CAD file formats.",
+          "date": "Mar 3, 1:42 PM",
+          "agent": "Oscar",
+          "duration": "2m 48s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 8,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Grace Whitfield, a trade-show manager for a compressor brand, called to set up an AR demo so reps could place equipment in-space at booths. Rosey outlined the WebAR build and QR launch and booked a discovery demo. Grace was enthusiastic and confirmed a date.",
+          "date": "Jan 22, 9:30 AM",
+          "agent": "Rosey",
+          "duration": "1m 55s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Kevin Aldridge, a new prospect from a conveyor systems maker, called to schedule his first consultation about a Standard product video and CAD render work. Mary collected his company details, contact information, and product line, then booked the intake demo for later that week. Kevin confirmed the appointment time and the demo was scheduled.",
+          "date": "Apr 8, 3:20 PM",
+          "agent": "Mary",
+          "duration": "3m 10s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Sofia Marchetti asked about the MainstayOne retainer program to keep her firm's 3D asset library refreshed and hosted. Lee explained the monthly subscription tiers and analytics, then booked a demo to scope the ongoing content plan. Sofia agreed to schedule the demo.",
+          "date": "May 19, 11:05 AM",
+          "agent": "Lee",
+          "duration": "2m 30s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Ronald Keese called to check the status of an Exploded-View Still order for a gearbox assembly that was still in revisions. Mike looked up the project and confirmed the callout annotations were being finalized with delivery in 24-48h. Ronald was satisfied but no new work was booked.",
+          "date": "Jun 2, 4:12 PM",
+          "agent": "Mike",
+          "duration": "1m 40s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 62,
+          "summary": "Helen Cho, a marketing lead at a robotics firm, called to book a demo about a Technical How-It-Works animation and a shorter product video for social. Jennifer reviewed storyboard timelines and scheduled the demo. Helen confirmed but wanted pricing clarified beforehand.",
+          "date": "Jul 15, 2:47 PM",
+          "agent": "Jennifer",
+          "duration": "2m 22s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Marcus Delgado called frustrated that his 360 spin render sequence was running behind the promised timeline. Sue apologized, checked the production queue, and escalated the render to the team lead for a firm delivery date. Marcus stayed on as a client but no new order was placed.",
+          "date": "Aug 6, 10:53 AM",
+          "agent": "Sue",
+          "duration": "1m 30s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Angela Pruitt disputed the number of included revisions on her Interactive 3D Configurator build and felt the options-rules work was over scope. Rose reviewed the contract terms and offered to route the billing question to the account manager. Angela remained unhappy and no resolution was reached on the call.",
+          "date": "Sep 9, 3:05 PM",
+          "agent": "Rose",
+          "duration": "3m 25s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 31,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Trevor Baskin called to explore an AR demo built around an AR Sales Kit and, despite some confusion about pricing, agreed to book a demo to see the branded viewer and analytics dashboard. Oscar clarified the asset-pack scope and scheduled the demo. Trevor booked but sounded hesitant about budget.",
+          "date": "Mar 27, 12:18 PM",
+          "agent": "Oscar",
+          "duration": "2m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Nora Feldman called about an invoice for an Exploded-View Still project she believed was already paid. Lila could not locate the payment and had to open a billing ticket for finance to review. Nora was irritated by the delay and hung up without resolution.",
+          "date": "Jun 21, 9:48 AM",
+          "agent": "Lila",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Victor Salcido called to cancel his MainstayOne monthly retainer, citing budget cuts at his manufacturing firm. Lee tried to offer a lower tier but Victor declined and requested the cancellation be processed. The subscription was ended and no demo was booked.",
+          "date": "Oct 4, 1:33 PM",
+          "agent": "Lee",
+          "duration": "1m 20s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Beatrice Nyong left a voicemail asking about turnaround for converting CAD files into marketing images but did not reach an agent. The call rolled to voicemail after hours and no callback was scheduled during the call. Her message was logged for follow-up.",
+          "date": "Feb 28, 6:22 PM",
+          "agent": "No Agent",
+          "duration": "0m 45s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Gerald Poff called angry that his trade-show loop video export was the wrong resolution for the booth screen. Mike apologized and confirmed the large-format re-export would be redone at no charge. Gerald remained frustrated about the tight deadline.",
+          "date": "Jul 30, 11:27 AM",
+          "agent": "Mike",
+          "duration": "2m 02s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Denise Hargrove called to complain that repeated emails about her product video project had gone unanswered for two weeks. Sue apologized, could not reach the assigned producer, and promised an escalation. Denise was dissatisfied and threatened to end the contract.",
+          "date": "Aug 18, 4:41 PM",
+          "agent": "Sue",
+          "duration": "2m 55s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "configurator",
+        "render",
+        "exploded",
+        "ar demo",
+        "mainstayone",
+        "product video"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 19, 2:28 PM",
+      "duration": "2m 41s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Primary Use Case",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Budget Range",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Geographic Service Area",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Schedule Demo Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Next Steps",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller identifies as manufacturing company",
+        "Explicit interest in product visualization",
+        "Caller has CAD files ready",
+        "Mentions trade show timeline",
+        "Open to multiple solution types",
+        "Engages with follow-up questions",
+        "Confirms availability for demo",
+        "Provides email for contact",
+        "Accepts demo time slot",
+        "Expressed urgency around product launch",
+        "Asked about turnaround time",
+        "Mentioned competitor research",
+        "Shows technical understanding"
+      ],
+      "unmetSignals": [
+        "Budget range not discussed",
+        "Specific project scope not confirmed",
+        "Decision timeline unclear",
+        "Company size not established",
+        "Buying committee structure not identified",
+        "Internal approval process not explained",
+        "Competing priorities not addressed",
+        "Contract structure not mentioned",
+        "Team size for project not captured",
+        "Geographic constraints not fully explored"
+      ],
+      "naSignals": [
+        "Existing order status",
+        "Delivery schedule",
+        "Billing questions",
+        "Return or refund request",
+        "Warranty coverage",
+        "Maintenance service",
+        "Renewal status",
+        "Asset management",
+        "Integration support"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller represents a heavy equipment manufacturer preparing for a major trade show and needs photorealistic 3D visualizations and possibly AR demos to replace shipping physical units. They have CAD files available and a defined timeline."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a fast turnaround for initial product stills and wants to explore interactive 3D options for their sales reps. They plan to use these assets at a trade show within the next two months."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have probed deeper into budget expectations and ensured phone number capture before the close. Asking about the number of SKUs and solution priority would have improved qualification."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon, thank you for calling Mainstay Digital. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:26",
+          "text": "Hi Marcus. Thanks for picking up. I saw your site and we are interested in your 3D product visualization services. We manufacture industrial equipment and need content for an upcoming trade show."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:41",
+          "text": "That sounds great. I am really excited to hear that. Can I get your name to start with?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:48",
+          "text": "Sure, it is Jennifer Holtzman. I work for Precision Hydraulics as the marketing director."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:57",
+          "text": "Perfect, Jennifer. Thank you. So Precision Hydraulics. That's in the hydraulic systems space, is that right?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:04",
+          "text": "Yes, exactly. We make complex assemblies and pump systems for construction equipment. Our challenge is that we currently ship physical units to trade shows, but it is expensive and risky."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:18",
+          "text": "I completely understand. That is exactly what many of our manufacturing clients face. So you are looking to replace those physical demos with digital content?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:27",
+          "text": "Right. We have CAD files for most of our product line and we need photorealistic stills plus maybe interactive experiences so our sales team can configure products on a tablet at the booth."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:42",
+          "text": "That is a perfect use case. We offer photorealistic product stills, 360 spin renders, and interactive 3D configurators. And we can work directly from your CAD files. Can I get your email address to send you some information and portfolio examples?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:58",
+          "text": "Yes, it is jholtzman at precisionhydraulics dot com."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:05",
+          "text": "Great, Jennifer. And just to confirm, you are located in the United States, correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:11",
+          "text": "Yes, we are in Ohio. Cincinnati area."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:18",
+          "text": "Perfect. We work with clients nationwide, so that is no problem. Let me schedule a demo call for you. Would next Tuesday at 10 AM work, or would you prefer a different day or time?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:31",
+          "text": "Tuesday at 10 AM is great for me."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:37",
+          "text": "Excellent. I have you down for next Tuesday, October 25th at 10 AM. We will walk through your specific products, discuss timelines and solutions, and show you examples. You should see a calendar confirmation in your inbox shortly. Thank you, Jennifer, and we look forward to speaking with you then."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:58",
+          "text": "Perfect. Thanks so much, Marcus."
+        }
+      ],
+      "aiSummary": "Jennifer Holtzman, marketing director at Precision Hydraulics, called to explore 3D product visualization solutions for an upcoming trade show. She described a pain point around shipping expensive physical units and expressed interest in photorealistic stills and interactive 3D configurators her sales team can use at trade booths. Marcus collected her name, company, email, and location, and successfully scheduled a demo for the following Tuesday. While Marcus confirmed her geographic region and solution fit, he did not capture her phone number or probe into budget expectations or project scope details.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great structure on this intake. You set up the discovery call well by identifying her pain point and confirming alignment with our solutions. Two quick coaching tips: try to capture phone number before the close so we have a backup contact method if email bounces. Also, next time ask about the size of her product portfolio or estimated project budget early, so the demo facilitator is prepped on scope. Nice work overall."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "4,133"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$853.86"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,529,009"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "2,478"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "60%"
+            },
+            {
+              "label": "Demo: Scheduled (Count)",
+              "value": "1,199"
+            },
+            {
+              "label": "Demo: Scheduled (Percent)",
+              "value": "29%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "1,655"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "40%"
+            },
+            {
+              "label": "Demo: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Demos)",
+          "chart": {
+            "legend": "Demo: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Direct/Referral",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "Email/ABM",
+                "value": 34,
+                "display": "34%"
+              },
+              {
+                "name": "LinkedIn Paid Social",
+                "value": 29,
+                "display": "29%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 24,
+                "display": "24%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Demos)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Demo: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "1,418",
+                  "18%",
+                  "$1,182,411"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "1,052",
+                  "24%",
+                  "$902,340"
+                ]
+              },
+              {
+                "cells": [
+                  "LinkedIn Paid Social",
+                  "782",
+                  "29%",
+                  "$681,120"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/ABM",
+                  "512",
+                  "34%",
+                  "$432,090"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct/Referral",
+                  "369",
+                  "41%",
+                  "$331,048"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 1500,
+            "axisTicks": [
+              0,
+              300,
+              600,
+              900,
+              1200,
+              1500
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 1418,
+                "display": "1,418"
+              },
+              {
+                "name": "organic",
+                "value": 1052,
+                "display": "1,052"
+              },
+              {
+                "name": "paid-social",
+                "value": 782,
+                "display": "782"
+              },
+              {
+                "name": "email",
+                "value": 512,
+                "display": "512"
+              },
+              {
+                "name": "video",
+                "value": 369,
+                "display": "369"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Demos)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Demo: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "1,418",
+                  "18%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "1,052",
+                  "23%"
+                ]
+              },
+              {
+                "cells": [
+                  "paid-social",
+                  "782",
+                  "28%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "512",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "video",
+                  "369",
+                  "40%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 1000,
+            "axisTicks": [
+              0,
+              200,
+              400,
+              600,
+              800,
+              1000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "CAD-to-CGI, Book a Demo",
+                "value": 892,
+                "display": "892"
+              },
+              {
+                "name": "3D Product Visualization for Manufacturers, Lead Gen",
+                "value": 714,
+                "display": "714"
+              },
+              {
+                "name": "Ditch the Trade-Show Freight",
+                "value": 561,
+                "display": "561"
+              },
+              {
+                "name": "See It Before You Build It",
+                "value": 438,
+                "display": "438"
+              },
+              {
+                "name": "MainstayOne Always-On Content",
+                "value": 327,
+                "display": "327"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Demos)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Demo: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "CAD-to-CGI, Book a Demo",
+                  "892",
+                  "19%",
+                  "$742,880"
+                ]
+              },
+              {
+                "cells": [
+                  "3D Product Visualization for Manufacturers, Lead Gen",
+                  "714",
+                  "25%",
+                  "$611,420"
+                ]
+              },
+              {
+                "cells": [
+                  "Ditch the Trade-Show Freight",
+                  "561",
+                  "31%",
+                  "$487,960"
+                ]
+              },
+              {
+                "cells": [
+                  "See It Before You Build It",
+                  "438",
+                  "38%",
+                  "$402,150"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 350,
+            "axisTicks": [
+              0,
+              70,
+              140,
+              210,
+              280,
+              350
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "3d product visualization for manufacturers",
+                "value": 312,
+                "display": "312"
+              },
+              {
+                "name": "cad to photorealistic rendering service",
+                "value": 248,
+                "display": "248"
+              },
+              {
+                "name": "industrial product ar demo company",
+                "value": 197,
+                "display": "197"
+              },
+              {
+                "name": "product configurator for b2b manufacturing",
+                "value": 154,
+                "display": "154"
+              },
+              {
+                "name": "interactive 3d product video",
+                "value": 118,
+                "display": "118"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Demos)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Demo: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "3d product visualization for manufacturers",
+                  "22%"
+                ]
+              },
+              {
+                "cells": [
+                  "cad to photorealistic rendering service",
+                  "28%"
+                ]
+              },
+              {
+                "cells": [
+                  "industrial product ar demo company",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "product configurator for b2b manufacturing",
+                  "44%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Demo: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Product Stills",
+              "1,384",
+              "21%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Product Videos",
+              "1,102",
+              "27%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Augmented Reality",
+              "918",
+              "33%",
+              "64%"
+            ]
+          },
+          {
+            "cells": [
+              "Interactive 3D Video",
+              "729",
+              "42%",
+              "68%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Demo: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Chicago Studio",
+              "1,412",
+              "118",
+              "6%",
+              "22%"
+            ]
+          },
+          {
+            "cells": [
+              "Detroit Studio",
+              "1,089",
+              "92",
+              "5%",
+              "27%"
+            ]
+          },
+          {
+            "cells": [
+              "Cleveland Studio",
+              "918",
+              "71",
+              "4%",
+              "33%"
+            ]
+          },
+          {
+            "cells": [
+              "Milwaukee Studio",
+              "714",
+              "50",
+              "3%",
+              "41%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              138,
+              152,
+              161,
+              149,
+              142
+            ]
+          },
+          {
+            "name": "Comparing Studios",
+            "values": [
+              121,
+              134,
+              142,
+              128,
+              126
+            ]
+          },
+          {
+            "name": "Needs Internal Approval",
+            "values": [
+              108,
+              119,
+              128,
+              117,
+              116
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              94,
+              104,
+              112,
+              103,
+              99
+            ]
+          },
+          {
+            "name": "CAD Files Not Ready",
+            "values": [
+              82,
+              88,
+              95,
+              90,
+              86
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "1,653"
+          },
+          {
+            "label": "Demo Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Project Won (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$2,011,535"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Project Won (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$187,440"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Project Won (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$246,880"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Project Won (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$189,420"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Project Won (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$220,680"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Project Won (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$693,755"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Project Won (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$473,360"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1932,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "487",
+                "58%",
+                "26%",
+                "$289,440"
+              ]
+            },
+            {
+              "name": "LinkedIn Paid Social",
+              "metrics": [
+                "356",
+                "54%",
+                "31%",
+                "$268,680"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "298",
+                "52%",
+                "34%",
+                "$241,920"
+              ]
+            },
+            {
+              "name": "Email Nurture Campaign",
+              "metrics": [
+                "267",
+                "61%",
+                "38%",
+                "$386,760"
+              ]
+            },
+            {
+              "name": "YouTube Video Remarketing",
+              "metrics": [
+                "245",
+                "53%",
+                "41%",
+                "$424,235"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1915,
+          "rows": [
+            {
+              "name": "Paid Search Form Submission",
+              "metrics": [
+                "512",
+                "56%",
+                "27%",
+                "$312,660"
+              ]
+            },
+            {
+              "name": "LinkedIn Form Fill",
+              "metrics": [
+                "398",
+                "55%",
+                "29%",
+                "$285,540"
+              ]
+            },
+            {
+              "name": "Organic Form Fill",
+              "metrics": [
+                "287",
+                "51%",
+                "35%",
+                "$229,480"
+              ]
+            },
+            {
+              "name": "Email Link Click",
+              "metrics": [
+                "276",
+                "60%",
+                "37%",
+                "$372,240"
+              ]
+            },
+            {
+              "name": "YouTube Video Click",
+              "metrics": [
+                "180",
+                "52%",
+                "42%",
+                "$511,615"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1898,
+          "rows": [
+            {
+              "name": "CAD to CGI. Book a Demo",
+              "metrics": [
+                "423",
+                "54%",
+                "28%",
+                "$298,760"
+              ]
+            },
+            {
+              "name": "Ditch the Trade Show Freight",
+              "metrics": [
+                "356",
+                "57%",
+                "31%",
+                "$287,120"
+              ]
+            },
+            {
+              "name": "See It Before You Build It",
+              "metrics": [
+                "298",
+                "53%",
+                "36%",
+                "$253,440"
+              ]
+            },
+            {
+              "name": "Exploded Views for Sales Teams",
+              "metrics": [
+                "267",
+                "58%",
+                "38%",
+                "$386,820"
+              ]
+            },
+            {
+              "name": "MainstayOne Always On Content",
+              "metrics": [
+                "245",
+                "52%",
+                "42%",
+                "$425,395"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1887,
+          "rows": [
+            {
+              "name": "3D product visualization for manufacturers",
+              "metrics": [
+                "412",
+                "55%",
+                "27%",
+                "$289,880"
+              ]
+            },
+            {
+              "name": "CAD to photorealistic rendering service",
+              "metrics": [
+                "387",
+                "54%",
+                "30%",
+                "$275,160"
+              ]
+            },
+            {
+              "name": "Industrial product AR demo company",
+              "metrics": [
+                "298",
+                "52%",
+                "34%",
+                "$238,920"
+              ]
+            },
+            {
+              "name": "Product configurator for B2B manufacturing",
+              "metrics": [
+                "276",
+                "57%",
+                "37%",
+                "$363,240"
+              ]
+            },
+            {
+              "name": "Interactive 3D product video",
+              "metrics": [
+                "214",
+                "51%",
+                "41%",
+                "$412,540"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Project Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Interactive 3D Video and Configurators",
+              "metrics": [
+                "467",
+                "59%",
+                "35%",
+                "$518,690"
+              ]
+            },
+            {
+              "name": "Augmented Reality Experiences",
+              "metrics": [
+                "398",
+                "57%",
+                "32%",
+                "$397,580"
+              ]
+            },
+            {
+              "name": "Product Videos and Animation",
+              "metrics": [
+                "356",
+                "55%",
+                "31%",
+                "$285,760"
+              ]
+            },
+            {
+              "name": "Product Stills and 360 Renders",
+              "metrics": [
+                "287",
+                "52%",
+                "30%",
+                "$236,040"
+              ]
+            },
+            {
+              "name": "CAD to 3D Asset Optimization",
+              "metrics": [
+                "145",
+                "48%",
+                "28%",
+                "$173,465"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Project Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Interactive 3D Video and Configurators",
+            "values": [
+              59,
+              68,
+              54,
+              82,
+              50
+            ]
+          },
+          {
+            "name": "Augmented Reality Experiences",
+            "values": [
+              51,
+              65,
+              47,
+              58,
+              52
+            ]
+          },
+          {
+            "name": "Product Videos and Animation",
+            "values": [
+              45,
+              52,
+              39,
+              68,
+              47
+            ]
+          },
+          {
+            "name": "Product Stills and 360 Renders",
+            "values": [
+              38,
+              44,
+              35,
+              52,
+              41
+            ]
+          },
+          {
+            "name": "CAD to 3D Asset Optimization",
+            "values": [
+              22,
+              18,
+              24,
+              20,
+              20
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Demo Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Demo Scheduled (Percent)",
+            "value": "29%"
+          },
+          {
+            "label": "Demo Scheduled (Count)",
+            "value": "371"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$2,844,156"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "842"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "18:47:33"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Demo Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Demo Scheduled (Percent)",
+            "value": "4%"
+          },
+          {
+            "label": "Demo Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$184,885"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Demo Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Demo Scheduled",
+            "values": [
+              72,
+              74,
+              75,
+              73,
+              76,
+              74,
+              77,
+              75,
+              78,
+              76,
+              79,
+              74,
+              76,
+              75,
+              77,
+              73,
+              78,
+              76,
+              75,
+              74,
+              77,
+              75,
+              76,
+              74,
+              77,
+              75,
+              76,
+              72,
+              74,
+              76,
+              75,
+              173,
+              176,
+              174,
+              178,
+              175,
+              179,
+              176,
+              174,
+              177,
+              175,
+              178,
+              176,
+              179,
+              174,
+              176,
+              178,
+              175,
+              177
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,223"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "719"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "59%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "701"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Demo Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Interactive 3D Configurator Pricing",
+            "values": [
+              8,
+              11,
+              9,
+              12,
+              2,
+              10
+            ]
+          },
+          {
+            "name": "CAD to 3D Asset Optimization Timeline",
+            "values": [
+              6,
+              9,
+              8,
+              10,
+              1,
+              8
+            ]
+          },
+          {
+            "name": "AR Product Demo Setup",
+            "values": [
+              7,
+              8,
+              10,
+              9,
+              3,
+              11
+            ]
+          },
+          {
+            "name": "Product Still Bundle Quotes",
+            "values": [
+              9,
+              10,
+              7,
+              11,
+              2,
+              9
+            ]
+          },
+          {
+            "name": "Trade Show Loop Video Delivery",
+            "values": [
+              5,
+              7,
+              6,
+              8,
+              1,
+              7
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "3,802"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "2,501"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Demo Booked (Count)",
+            "value": "1,199"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$3,529,009"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 217,
+              "display": "217"
+            },
+            {
+              "name": "Priya Sharma",
+              "value": 184,
+              "display": "184"
+            },
+            {
+              "name": "Derek Paulson",
+              "value": 241,
+              "display": "241"
+            },
+            {
+              "name": "Elena Vasquez",
+              "value": 198,
+              "display": "198"
+            },
+            {
+              "name": "James Kirkwood",
+              "value": 206,
+              "display": "206"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Demo Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              64,
+              71,
+              84,
+              96,
+              112
+            ]
+          },
+          {
+            "name": "David Torres",
+            "values": [
+              52,
+              61,
+              75,
+              89,
+              104
+            ]
+          },
+          {
+            "name": "Jennifer Park",
+            "values": [
+              48,
+              58,
+              69,
+              83,
+              97
+            ]
+          },
+          {
+            "name": "Robert Castellano",
+            "values": [
+              55,
+              67,
+              81,
+              94,
+              108
+            ]
+          },
+          {
+            "name": "Amanda Kozlov",
+            "values": [
+              51,
+              60,
+              74,
+              88,
+              103
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 53.2,
+              "display": "53.2%"
+            },
+            {
+              "name": "Priya Sharma",
+              "value": 55.7,
+              "display": "55.7%"
+            },
+            {
+              "name": "Derek Paulson",
+              "value": 54.1,
+              "display": "54.1%"
+            },
+            {
+              "name": "Elena Vasquez",
+              "value": 56.3,
+              "display": "56.3%"
+            },
+            {
+              "name": "James Kirkwood",
+              "value": 52.9,
+              "display": "52.9%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Demo Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "53.2%",
+                "28%",
+                "$950,387",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Sharma",
+                "55.7%",
+                "30%",
+                "$1,053,614",
+                "1,398"
+              ]
+            },
+            {
+              "cells": [
+                "Derek Paulson",
+                "54.1%",
+                "27%",
+                "$893,526",
+                "1,489"
+              ]
+            },
+            {
+              "cells": [
+                "Elena Vasquez",
+                "56.3%",
+                "31%",
+                "$1,098,742",
+                "1,407"
+              ]
+            },
+            {
+              "cells": [
+                "James Kirkwood",
+                "52.9%",
+                "26%",
+                "$891,245",
+                "1,418"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Mitchell",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "David Torres",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "Jennifer Park",
+              "value": 91.4,
+              "display": "91.4%"
+            },
+            {
+              "name": "Robert Castellano",
+              "value": 93.8,
+              "display": "93.8%"
+            },
+            {
+              "name": "Amanda Kozlov",
+              "value": 90.2,
+              "display": "90.2%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Demo Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "92.1%",
+                "66%",
+                "$1,457,892",
+                "1,483"
+              ]
+            },
+            {
+              "cells": [
+                "David Torres",
+                "89.7%",
+                "62%",
+                "$1,346,521",
+                "1,541"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Park",
+                "91.4%",
+                "64%",
+                "$1,398,876",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Castellano",
+                "93.8%",
+                "67%",
+                "$1,489,256",
+                "1,469"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Kozlov",
+                "90.2%",
+                "63%",
+                "$1,408,441",
+                "1,438"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Demo Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Demo Booked (Count)",
+        "rightMax": 100,
+        "rightTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 45
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 43
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 40
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 38
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 33
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 35
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 39
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 40
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 45
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 43
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 39
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 38
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 33
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 34
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 39
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 41
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 44
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 44
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 38
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 37
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 34
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 34
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 40
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 42
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 44
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 44
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 38
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 36
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 35
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 34
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 30
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 200000,
+        "rightTicks": [
+          0,
+          66666.66666666667,
+          133333.33333333334,
+          200000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 130817
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 125383
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 116757
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 111408
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 97001
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 101800
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 112456
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 116889
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 130332
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 126364
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 113812
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 110002
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 97883
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 100894
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 115133
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 118642
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 129118
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 127109
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 111460
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 107925
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 99352
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 100394
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 117118
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 121000
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 127478
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 127292
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 109866
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 105343
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 101075
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 100587
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 118319
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "4,133"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "331"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "248"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Chen",
+                "1,847",
+                "91%",
+                "88%",
+                "88%"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Rodriguez",
+                "1,312",
+                "88%",
+                "85%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Walsh",
+                "974",
+                "86%",
+                "84%",
+                "84%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "4,133 calls",
+      "pagerLabel": "1 of 413",
+      "calls": [
+        {
+          "time": "1/6/26 9:12 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 10:41 am",
+          "id": "A2C4-93B1E7745F02"
+        },
+        {
+          "time": "1/12/26 11:27 am",
+          "id": "6E19-2D8F4A0C1B73"
+        },
+        {
+          "time": "1/14/26 1:03 pm",
+          "id": "C08D-5F71A9E33C40"
+        },
+        {
+          "time": "1/16/26 2:38 pm",
+          "id": "9B3F-71C0D82E4A15"
+        },
+        {
+          "time": "1/20/26 8:54 am",
+          "id": "3D77-E4A2091C6B58"
+        },
+        {
+          "time": "1/22/26 12:19 pm",
+          "id": "B15A-6C8F30D91E27"
+        },
+        {
+          "time": "1/26/26 3:47 pm",
+          "id": "E92C-4B70F51A8D63"
+        },
+        {
+          "time": "1/28/26 4:22 pm",
+          "id": "70F8-1A9D3E62C405"
+        },
+        {
+          "time": "1/30/26 5:11 pm",
+          "id": "D4E6-8C21B70F953A"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Mainstay Digital, this is Renee. How can I help you bring your product to life today?",
+          "highlights": [
+            "Thank you for calling Mainstay Digital",
+            "this is Renee"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Renee. My name is Paul Hartley, I run marketing for a company that builds industrial pumps and valves. We keep hauling physical units to trade shows and it is getting painful.",
+          "highlights": [
+            "Paul Hartley"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:18",
+          "text": "That is exactly the problem we solve, Paul. We turn your CAD files into photorealistic 3D so you can show and demo products digitally. Is this your first time looking into 3D visualization?",
+          "highlights": [
+            "photorealistic 3D"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:29",
+          "text": "Yeah, first time for us. We have real CAD models from engineering, but we have never done anything with them beyond the shop floor.",
+          "highlights": [
+            "first time for us"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:38",
+          "text": "Perfect starting point. We would begin with our CAD-to-3D Asset Optimization, which converts your engineering files into lightweight assets we can reuse everywhere. From there we can build stills, video, or AR.",
+          "highlights": [
+            "CAD-to-3D Asset Optimization"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:50",
+          "text": "The AR part is interesting. If a rep could stand a pump in a customer's plant on a tablet, that would replace a lot of freight. What does that run?",
+          "highlights": [
+            "What does that run?"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:01",
+          "text": "For a single SKU, our AR Product Demo lands between five and twelve thousand depending on complexity. If you want a full library for the sales team, the AR Sales Kit runs higher but includes an analytics dashboard.",
+          "highlights": [
+            "AR Product Demo"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:14",
+          "text": "Okay, I will be honest, I am getting a couple of quotes on this. Another studio quoted us a flat number but their samples looked kind of gamey, not realistic.",
+          "highlights": [
+            "getting a couple of quotes"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:26",
+          "text": "That is a fair thing to check. Where we differ is photorealism straight from your CAD, so a valve looks like machined metal, not a video game prop. I can show you side by side samples on the demo.",
+          "highlights": [
+            "photorealism straight from your CAD"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:38",
+          "text": "That would help. One more thing, we have a big distributor show in early April. I do not want to sign up for some long retainer just to make that deadline.",
+          "highlights": [
+            "big distributor show in early April",
+            "do not want to sign up for some long retainer"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:50",
+          "text": "Understood. You can start with a single project, no ongoing commitment. The AR demo and a Product Still Bundle would be ready well before April. Our MainstayOne retainer is only if you want always-on content later.",
+          "highlights": [
+            "no ongoing commitment"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:03",
+          "text": "That is reassuring. I would probably also want a short animation showing how the valve works internally, the cutaway thing.",
+          "highlights": [
+            "cutaway thing"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:12",
+          "text": "That is our Technical How-It-Works Animation, a cutaway that shows the internal mechanism with annotated callouts. We can scope it alongside the AR piece. Let me set you up with a demo so our team can review your CAD.",
+          "highlights": [
+            "Technical How-It-Works Animation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:24",
+          "text": "Sure, let us do that. I will need to loop in my VP of sales too, he holds the budget.",
+          "highlights": [
+            "loop in my VP of sales"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:31",
+          "text": "Absolutely, bring him along. I have you booked for a demo this Thursday at 10 AM, and I will email a calendar invite plus an upload link for your CAD files. Anything else, Paul?",
+          "highlights": [
+            "booked for a demo this Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:38",
+          "text": "No, that covers it. Thanks Renee.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:41",
+          "text": "Wonderful, thank you for calling Mainstay Digital. We will talk Thursday. Have a great day.",
+          "highlights": [
+            "thank you for calling Mainstay Digital"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Demo: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: AR Product Demo",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: CAD-to-3D Optimization",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: Technical Animation",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity Raised",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Paul Hartley, a marketing lead at an industrial pump and valve manufacturer, called Mainstay Digital as a new client to reduce the cost of shipping physical units to trade shows. Renee recommended starting with CAD-to-3D Asset Optimization, then an AR Product Demo and a Product Still Bundle, and later a Technical How-It-Works Animation for the valve cutaway. She addressed his pricing questions, a competitor comparison, and his retainer concern, confirming a single project could hit his April show deadline. A demo was scheduled for Thursday at 10 AM with a CAD upload link to follow.",
+        "keyPoints": [
+          "New client, first time exploring 3D visualization",
+          "Needs to replace trade-show freight with digital demos",
+          "Recommended CAD-to-3D Optimization, AR Product Demo, and Technical How-It-Works Animation",
+          "Handled price, competitor, and no-retainer concerns",
+          "VP of sales to join as budget holder",
+          "Demo booked for Thursday at 10 AM"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Demo booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "2,604 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 260",
+      "conversations": [
+        {
+          "id": "C516-A47FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. This is Sarah from Mainstay Digital. We specialize in turning complex industrial CAD files into photorealistic 3D experiences and AR demos for manufacturers. Do you have a specific product you're looking to visualize?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yeah, we make heavy pump equipment. We've been shipping physical units to trade shows and it's really expensive."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "That's exactly what we solve for. Many of our clients in the pump and compressor space use our interactive 3D videos and AR product demos instead. What's your role on the team?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "I'm the marketing director for our company."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. Have you worked with 3D product visualization or CAD-to-rendering services before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Not really. We mostly use static images and PDFs right now."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Got it. So which would be more useful for your sales team right now, an interactive 3D configurator where customers can build their own pump variant, or an AR demo they can view on their phone at a tradeshow?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "The AR demo sounds really interesting actually. How much would that run us?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "An AR product demo for a single SKU typically ranges from 5,000 to 12,000 dollars depending on complexity. How many different SKUs are you thinking of starting with?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "Just one to start."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Excellent. I'd love to schedule a brief demo call to walk through your CAD files and give you a more precise estimate. How does Thursday, March 13th at 2 PM Pacific sound?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "That works great."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "Perfect. We'll send you a calendar invite to confirm. Your callback number is 877-936-2933, and we'll follow up with you by Wednesday. Looking forward to showing you what we can do."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Demo: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: AR Demo",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Industry: Heavy Equipment Manufacturing",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Decision Role: Marketing Director",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Budget Range: 5000-12000",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-A47FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "408-555-0147",
+            "repeatCaller": "No",
+            "city": "Oakland",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Marcus Chen",
+            "firstName": "Marcus",
+            "lastName": "Chen",
+            "gender": "M",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C516-B82FE212560D",
+          "time": "8/16/25 10:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C516-B82FE212560D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C516-C63FE212560D",
+          "time": "8/16/25 10:39 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C516-C63FE212560D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C516-D91FE212560D",
+          "time": "8/16/25 10:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C516-D91FE212560D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "4,133 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 413",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hi there, thanks for calling Mainstay Digital. This is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Yeah, hi. I saw your website and I'm really interested in learning more about your three D product visualization services. We manufacture industrial valves and we've been thinking about doing more digital demos instead of shipping physical units."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "That's perfect. You're calling the right place. We work with manufacturers just like you to turn CAD files into photorealistic renders and interactive three D experiences. Before I get into specifics, what type of visualization are you most interested in right now? Are we talking product stills, AR demos, videos, or interactive configurators?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "Honestly, we're still figuring that out. But I know our sales team would love to have AR demos that our reps could show customers on their phones at customer sites."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Excellent. AR is a huge win for sales teams. How many valve SKUs or product lines are we talking about that you'd want to get into AR?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "We've got about fifteen different models across three main product families."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:53 PM",
+              "text": "Got it. So that sounds like you'd be a great fit for our AR Sales Kit. That's a multi product AR library we build specifically for sales reps. It comes with all your models optimized, a branded viewer app, and an analytics dashboard so you can see which products your reps are demoing most."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:54 PM",
+              "text": "That sounds exactly like what we need. What kind of pricing are we looking at?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "AR Sales Kits typically run between fifteen thousand and forty thousand dollars depending on complexity and customization. With fifteen models, I'd estimate you'd be looking at the mid to upper range there. But I'd love to walk you through it in detail on a demo call. Are you available sometime this week? Say Thursday or Friday afternoon?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:57 PM",
+              "text": "Friday works for me. What time?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:57 PM",
+              "text": "Perfect. How does three PM Pacific Time sound for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:58 PM",
+              "text": "Three PM Pacific works great."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:59 PM",
+              "text": "Awesome. So I've got you down for this Friday, January seventeenth at three PM Pacific Time. Our solutions architect will walk you through the AR Sales Kit, show you some examples, and we'll answer any technical questions about getting your CAD files prepared. Can we get a callback number for you? What's the best number to reach you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:00 PM",
+              "text": "Sure, it's five oh five, four four four, nine eight seven six."
+            },
+            {
+              "speaker": "agent",
+              "time": "3:01 PM",
+              "text": "Perfect. Five oh five, four four four, nine eight seven six. Thanks so much for calling in, and we'll see you Friday at three PM. Have a great day."
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:02 PM",
+              "text": "Thanks, Marcus. Talk soon."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Demo: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: AR Sales Kit",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Estimated Value: 35000 USD",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Company Type: Valve Manufacturer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Use Case: Sales Team Enablement",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:47 pm",
+            "duration": "14:32",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "505-444-9876",
+            "repeatCaller": "No",
+            "city": "Albuquerque",
+            "region": "NM",
+            "phoneType": "Mobile",
+            "displayName": "James Petry",
+            "firstName": "James",
+            "lastName": "Petry",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "CAD-to-CGI, Book a Demo",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B822-7A3CD891B54F",
+          "time": "1/18/26 11:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B822-7A3CD891B54F",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C639-5B8FE427A16L",
+          "time": "1/22/26 1:58 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C639-5B8FE427A16L",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D751-9C2AF668E89J",
+          "time": "1/28/26 3:14 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D751-9C2AF668E89J",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Introduce yourself as Mainstay Digital's AI agent helping put together a personalized project quote, mention our current offer of a complimentary CAD-to-3D asset assessment when a demo is booked this month, and ask if they'd like to get started.",
+        "Qualify one question at a time: Ask, one question at a time, how many products or SKUs they want visualized, which solution they're after (product stills, AR demo, product video, or interactive 3D or configurator), whether they can share CAD files and the product type or model, their target launch or trade-show timeline, and their business ZIP code to confirm project availability.",
+        "Estimate then book: Confirm we can support their region, share a preliminary price range based on the solution and product count they described, recommend a consultation with a visualization specialist for an exact scoped quote, propose a specific day and time, and confirm they'll get a reminder text before the demo with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Mainstay_Digital_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Solutions Overview",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Our Process",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Book a Demo",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"project status\",\"question\":\"Where does my exploded-view still project stand right now?\",\"answer\":\"Your project is currently in the materials and lighting stage, and your producer will send the first-round preview within the next few business days. I can also connect you with your account specialist for a live status walkthrough.\"},{\"topic\":\"revisions\",\"question\":\"How many revisions are included on my product video?\",\"answer\":\"Your Standard Product Video package includes two rounds of revisions after the storyboard is approved. If you'd like additional rounds, we can scope that with your producer on a quick call.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What does Mainstay Digital actually do?",
+              "answer": "We turn complex industrial products into photorealistic 3D stills, AR demos, product videos, and interactive 3D experiences for B2B manufacturers. The best next step is a short demo where a specialist reviews your goals, would you like me to set that up?"
+            },
+            {
+              "question": "Can you work directly from our CAD files?",
+              "answer": "Yes, we routinely convert engineering CAD into optimized, lightweight 3D assets that power renders, AR, and configurators. A specialist can review a sample file on your demo, shall I book a time?"
+            },
+            {
+              "question": "How much does a photorealistic product still cost?",
+              "answer": "Pricing depends on model complexity, angles, and materials, so we scope it precisely on a consultation rather than quote a flat number. I can schedule a demo where a specialist gives you an accurate range, want me to set that up?"
+            },
+            {
+              "question": "Do you make augmented reality demos for sales reps?",
+              "answer": "Yes, we build place-in-space AR demos and full AR sales kits with branded viewers and analytics for field teams. Let's get you a demo so a specialist can tailor it to your product line, does that work?"
+            },
+            {
+              "question": "Can you build a product configurator for our website?",
+              "answer": "Absolutely, we build interactive 3D configurators with modular assets, options rules, and lead capture. The scope varies a lot by product, so let's book a demo to walk through your requirements."
+            },
+            {
+              "question": "What is MainstayOne?",
+              "answer": "MainstayOne is our always-on retainer program for ongoing content, asset library management, hosting, refreshes, and analytics. A specialist can explain how it fits your roadmap on a demo, want me to schedule one?"
+            },
+            {
+              "question": "How long does a typical project take?",
+              "answer": "Timelines vary by solution and complexity, from a couple of weeks for stills to longer for interactive builds. On your demo a specialist maps a realistic timeline to your target date, shall I book it?"
+            },
+            {
+              "question": "Can you replace shipping physical units to trade shows?",
+              "answer": "Yes, that's a core use case, AR demos and interactive 3D let reps show and configure products digitally instead of freighting hardware. Let's set up a demo to plan your trade-show approach."
+            },
+            {
+              "question": "Do you do exploded-view images?",
+              "answer": "Yes, we produce exploded-view stills with part separation, callout annotations, and BOM labeling. Pricing depends on assembly complexity, so a demo lets a specialist scope it accurately, want to book?"
+            },
+            {
+              "question": "What file formats do you need from us?",
+              "answer": "We work with most standard CAD and engineering formats and handle the optimization on our end. A specialist can confirm your specific files on a quick demo, shall I schedule one?"
+            },
+            {
+              "question": "Can you animate how our machine works internally?",
+              "answer": "Yes, our technical how-it-works animations use cutaways and motion to reveal internal mechanisms with annotated callouts. Let's book a demo so a specialist can review your geometry and goals."
+            },
+            {
+              "question": "Do you offer 360 spin renders?",
+              "answer": "Yes, we create interactive 360 turntable renders with an embeddable viewer for your product pages. Scope depends on frame count and detail, so let's set up a demo for an accurate range."
+            },
+            {
+              "question": "How do we get started?",
+              "answer": "The first step is a short demo where a specialist reviews your products and goals and scopes the right solution. I can find a time that works for you, when are you generally available?"
+            },
+            {
+              "question": "Do you serve manufacturers outside the US?",
+              "answer": "We work with B2B manufacturers across regions since our production and delivery are digital. A specialist can confirm details on your demo, want me to schedule one?"
+            },
+            {
+              "question": "Can you handle a whole product line, not just one item?",
+              "answer": "Yes, we regularly build multi-product bundles, AR sales kits, and asset libraries across full catalogs. Let's book a demo so a specialist can scope your line accurately."
+            },
+            {
+              "question": "What makes you different from a general CGI studio?",
+              "answer": "We focus specifically on B2B industrial manufacturing and building sales-enablement assets from real engineering CAD. A specialist can show relevant examples on your demo, shall I set that up?"
+            },
+            {
+              "question": "Do you provide the interactive viewer or just the files?",
+              "answer": "We deliver both the optimized assets and the branded, embeddable viewers or web builds, depending on the solution. Let's book a demo to match the right delivery to your needs."
+            },
+            {
+              "question": "Can you help with content on an ongoing basis?",
+              "answer": "Yes, that's exactly what MainstayOne is for, ongoing refreshes, hosting, and analytics on a monthly retainer. A specialist can outline it on your demo, want me to schedule one?"
+            },
+            {
+              "question": "Do you offer trade-show booth loop videos?",
+              "answer": "Yes, we produce silent looping booth reels with branded titles in large-format export. Pricing depends on length and content, so let's book a demo for a precise range."
+            },
+            {
+              "question": "Can I see examples of your work?",
+              "answer": "Absolutely, a specialist will walk you through relevant examples matched to your industry on your demo. When would be a good time for me to book that for you?"
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the demo\",\"follow_up_message\":\"Great, I have you down for a virtual demo with a visualization specialist. Please confirm the day and time that works best and I'll lock it in and send a reminder text beforehand.\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Happy to help with a quote. Based on what you've shared I can give a preliminary range, and a specialist will confirm an exact scoped price on a quick demo. What day and time should I book?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Mainstay Digital's AI agent. I can help scope a personalized quote and set up a virtual demo with one of our visualization specialists. Would you like to get started?",
+        "goal": "Qualify the manufacturer's visualization needs and book a virtual demo with a visualization specialist.",
+        "bookingType": "virtual demo",
+        "offer": "Book a demo this month and get a complimentary CAD-to-3D asset assessment",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "How many products or SKUs would you like to visualize?",
+          "Which solution are you most interested in: product stills, augmented reality, product videos, or interactive 3D or a configurator?",
+          "Can you share CAD files, and what type or model of product is it?",
+          "What's your target launch or trade-show timeline?",
+          "What's your business ZIP code so I can confirm project availability?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:20 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:20 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:20 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Mainstay Digital",
+      "callerName": "Michael Chen",
+      "callerPhone": "(206) 555-0847",
+      "campaign": "Interactive 3D Configurator, Seattle Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Demo Lead",
+      "estimatedValue": "$34,750",
+      "googleSearch": "product configurator for B2B manufacturing",
+      "websiteSearch": "interactive 3D web tool for equipment pricing",
+      "callingWebpage": "/solutions/interactive-3d-video",
+      "products": "Interactive 3D Configurator, CAD-to-3D Asset Optimization",
+      "cartId": "MD-7461F",
+      "serviceable": "Yes",
+      "email": "m.chen@precisiontools.com",
+      "street": "4521 Industrial Way Northeast",
+      "city": "Seattle",
+      "state": "WA",
+      "zip": "98105",
+      "digitalJourney": "/ › /solutions › /solutions/interactive-3d-video › /process",
+      "intent": "Wants to replace static PDF configuration sheets with an interactive 3D tool so customers can visualize and price equipment variants in real time before ordering.",
+      "coverage": "ZIP 98105 confirmed, Seattle serviceable",
+      "switchIntent": "High. Currently using outdated CAD renderings for proposals. Budget allocated for Q3. Wants to see proof of concept within two weeks.",
+      "greeting": "Hi Michael, this is Sarah from Mainstay Digital. I see you were looking at our Interactive 3D Configurator solutions. We help manufacturers like you let customers build and price equipment variants online instead of back-and-forth emails. Would you like to schedule a demo where I can show you how this works for your product line?"
+    },
+    "smsScreenpop": {
+      "brandName": "Mainstay Digital",
+      "callerName": "Jennifer Hartley",
+      "callerPhone": "(503) 555-1263",
+      "campaign": "AR Sales Kit, Portland Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Demo Lead",
+      "estimatedValue": "$18,900",
+      "googleSearch": "industrial product AR demo for sales teams",
+      "websiteSearch": "augmented reality product visualization manufacturing",
+      "callingWebpage": "/solutions/augmented-reality",
+      "products": "AR Sales Kit, Photorealistic Product Still Bundle",
+      "cartId": "MD-5829K",
+      "serviceable": "Yes",
+      "email": "jen.hartley@industrialdrivetech.com",
+      "street": "2847 Swan Island Drive",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97217",
+      "digitalJourney": "/ › /white-papers › /solutions/augmented-reality › /solutions",
+      "intent": "Sales team travels to customer sites and wants to show complex drive assemblies in AR on mobile devices instead of shipping heavy demo units. Needs multi-product asset library.",
+      "coverage": "ZIP 97217 confirmed, Portland serviceable",
+      "appointment": "Live AR demo with specialist, Thu Jul 25, 2:00 PM",
+      "greeting": "Hi Jennifer, it's Tom from Mainstay Digital here. Excited to walk you through our AR Sales Kit on Thursday at 2 PM. This will show you how your reps can let customers place your full drive lineup in their own facilities using just their phones. Any questions before we connect?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Mainstay Digital",
+      "brandDomain": "www.mainstaydigital.com",
+      "brandIcon": "🎬",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Los Angeles, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "CAD to CGI. Book a Demo",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "3D product visualization for manufacturers",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/solutions/interactive-3d-video",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Interactive 3D Video, Product Stills",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Los Angeles, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "demo_new_project",
+          "name": "Demo, New Interactive 3D Project"
+        },
+        {
+          "id": "support_existing",
+          "name": "Support, Existing Order"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Sales Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Mainstay Digital. I see you've been looking at our Interactive 3D Video solutions. Are you exploring options for a new manufacturing product visualization project?",
+          "sigs": [],
+          "q": [
+            25,
+            40,
+            35
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, exactly. We're a heavy equipment manufacturer and we need to demo a new excavator model to customers without shipping physical units around the country. Your configurator demo looked really promising.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>New project</strong> - excavator demo"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Large equipment</strong> - high-value demo"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>Sales enablement</strong> - replace physical freight"
+            }
+          ],
+          "q": [
+            60,
+            15,
+            25
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. That's exactly what Interactive 3D Video is designed for. So this would be a real-time 3D experience where your sales team can showcase configurations and specifications right from the web, correct?",
+          "sigs": [],
+          "q": [
+            70,
+            10,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, we'd want hotspots for different subsystems, maybe pricing integration so customers can build a quote. And it needs to work on iPad for trade shows. Do you have experience with equipment that size and complexity?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Configurator features</strong> - pricing, hotspots"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>iPad compatible</strong> - trade show deployment"
+            },
+            {
+              "c": "purple",
+              "t": "<strong>Complex assembly</strong> - subsystem callouts"
+            }
+          ],
+          "q": [
+            82,
+            8,
+            10
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Absolutely, we work with large industrial manufacturers constantly. Our CAD-to-3D pipeline and real-time engine build handles exactly that level of detail. I'm going to connect you with our Demo and New Project team. They'll walk you through our process, timeline, and pricing for an interactive configurator of that scope. Sound good?",
+          "sigs": [],
+          "q": [
+            95,
+            2,
+            3
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Demo Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"book you a demo (Agent)\", \"get you on the calendar (Agent)\", \"schedule the walkthrough (Caller)\", \"set up a demo session (Agent)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "12/09/25 4:41 pm"
+        },
+        {
+          "name": "AR Demo Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"augmented reality demo (Caller)\", \"place it in our booth (Caller)\", \"WebAR on a phone (Caller)\", \"AR sales kit for our reps (Caller)\"])",
+          "createdAt": "04/02/25 11:38 am",
+          "updatedAt": "11/21/25 2:07 pm"
+        },
+        {
+          "name": "Competitor Named",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"quote from another rendering studio (Caller)\", \"using a freelance CGI artist (Caller)\", \"another visualization agency (Caller)\", \"in-house engineering team does it (Caller)\"])",
+          "createdAt": "04/18/25 8:55 am",
+          "updatedAt": "10/30/25 1:19 pm"
+        },
+        {
+          "name": "Configurator Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"3D configurator (Caller)\", \"build and price online (Caller)\", \"let customers pick options (Caller)\", \"interactive 3D video tool (Caller)\"])",
+          "createdAt": "05/06/25 3:22 pm",
+          "updatedAt": "12/15/25 10:44 am"
+        },
+        {
+          "name": "Demo Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"turn our CAD files into renders (Caller)\", \"photorealistic product render (Caller)\", \"stop shipping units to trade shows (Caller)\", \"exploded view of the assembly (Caller)\"])",
+          "createdAt": "05/20/25 10:05 am",
+          "updatedAt": "11/28/25 9:33 am"
+        },
+        {
+          "name": "Discovery Questions Asked",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Discovery Quality] < 60 and duration > 45 sec",
+          "createdAt": "06/03/25 1:47 pm",
+          "updatedAt": "12/22/25 3:58 pm"
+        },
+        {
+          "name": "Next Steps Confirmed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Next Steps Confirmed] < 60 and duration > 45 sec",
+          "createdAt": "06/19/25 9:26 am",
+          "updatedAt": "01/08/26 11:12 am"
+        },
+        {
+          "name": "Price Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"too expensive (Caller)\", \"price per render (Caller)\", \"out of our budget (Caller)\", \"is there a cheaper option (Caller)\"])",
+          "createdAt": "07/09/25 4:14 pm",
+          "updatedAt": "12/01/25 8:49 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"send you a project estimate (Agent)\", \"put together a statement of work (Agent)\", \"scope and pricing (Agent)\", \"quote for the render bundle (Agent)\"])",
+          "createdAt": "07/28/25 10:51 am",
+          "updatedAt": "01/12/26 2:36 pm"
+        },
+        {
+          "name": "Rep Explained Process",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Process Explained] < 60 and duration > 45 sec",
+          "createdAt": "08/11/25 12:09 pm",
+          "updatedAt": "01/05/26 5:27 pm"
+        }
+      ]
+    }
+  }
+}

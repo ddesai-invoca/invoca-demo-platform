@@ -1,0 +1,5418 @@
+{
+  "id": "affordable-care",
+  "customerName": "Affordable Care",
+  "websiteUrl": "https://www.affordablecare.com",
+  "brandDomain": "affordablecare.com",
+  "networkName": "Invoca for Dental",
+  "industry": "Dental Support Organization, Tooth Replacement",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 8247
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 12436
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 11872
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 10918
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 9743
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Same-Day Dentures Near Me",
+          "marketingSearchTerm": "same day dentures cost",
+          "landingPageUrl": "https://affordablecare.com/services/dentures/immediate?utm_source=google&utm_medium=cpc&utm_campaign=same_day_dentures",
+          "websiteJourney": "Home / Services / Dentures / Immediate",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Affordable Dental Implants Free Consult",
+          "marketingSearchTerm": "free implant consultation",
+          "landingPageUrl": "https://affordablecare.com/new-patients/special-offers?utm_source=google&utm_medium=cpc&utm_campaign=free_implant_consult",
+          "websiteJourney": "Home / New Patients / Special Offers & Financing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "All-on-4 Full Arch Offer",
+          "marketingSearchTerm": "all on 4 dental implants near me",
+          "landingPageUrl": "https://affordablecare.com/services/dental-implants/full-arch?utm_source=google&utm_medium=cpc&utm_campaign=all_on_4",
+          "websiteJourney": "Home / Services / Dental Implants / Full-Arch",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Snap-In Dentures Search",
+          "marketingSearchTerm": "snap-in dentures",
+          "landingPageUrl": "https://affordablecare.com/services/dental-implants/snap-in-overdenture?utm_source=bing&utm_medium=cpc&utm_campaign=snap_in",
+          "websiteJourney": "Home / Services / Dental Implants / Snap-In Overdenture",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Cheap Full Dentures",
+          "marketingSearchTerm": "cheap full dentures price",
+          "landingPageUrl": "https://affordablecare.com/services/dentures/economy?utm_source=google&utm_medium=cpc&utm_campaign=economy_dentures",
+          "websiteJourney": "Home / Services / Dentures / Economy",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Dental Implants Cost",
+          "marketingSearchTerm": "dental implants cost per tooth",
+          "landingPageUrl": "https://affordablecare.com/services/dental-implants/single?utm_source=google&utm_medium=cpc&utm_campaign=single_implant",
+          "websiteJourney": "Home / Services / Dental Implants / Single Implant",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Immediate Dentures Extraction",
+          "marketingSearchTerm": "immediate dentures same day extraction",
+          "landingPageUrl": "https://affordablecare.com/services/dentures/immediate?utm_source=bing&utm_medium=cpc&utm_campaign=immediate_extraction",
+          "websiteJourney": "Home / Services / Dentures / Immediate",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Denture Reline Local",
+          "marketingSearchTerm": "denture reline near me",
+          "landingPageUrl": "https://affordablecare.com/services/dentures/reline?utm_source=google&utm_medium=cpc&utm_campaign=denture_reline",
+          "websiteJourney": "Home / Services / Dentures / Reline",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Partial Dentures Offer",
+          "marketingSearchTerm": "partial dentures cost",
+          "landingPageUrl": "https://affordablecare.com/services/dentures/partial?utm_source=google&utm_medium=cpc&utm_campaign=partial_dentures",
+          "websiteJourney": "Home / Services / Dentures / Partial",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Tooth Replacement Seniors",
+          "marketingSearchTerm": "tooth replacement options for seniors",
+          "landingPageUrl": "https://affordablecare.com/tooth-replacement-options/compare?utm_source=google&utm_medium=cpc&utm_campaign=senior_tooth_replacement",
+          "websiteJourney": "Home / Tooth Replacement Options / Compare Solutions",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Smile Again",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://affordablecare.com/new-patients/special-offers?utm_source=facebook&utm_medium=social&utm_campaign=smile_again",
+          "websiteJourney": "Home / New Patients / Special Offers & Financing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "New Year New Smile",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://affordablecare.com/services/dentures/custom?utm_source=facebook&utm_medium=social&utm_campaign=new_year_new_smile",
+          "websiteJourney": "Home / Services / Dentures / Custom",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Love Your Teeth",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://affordablecare.com/services/dental-implants/full-arch?utm_source=instagram&utm_medium=social&utm_campaign=love_your_teeth",
+          "websiteJourney": "Home / Services / Dental Implants / Full-Arch",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Senior Retargeting",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://affordablecare.com/tooth-replacement-options/compare?utm_source=facebook&utm_medium=social&utm_campaign=senior_retargeting",
+          "websiteJourney": "Home / Tooth Replacement Options / Compare Solutions",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Organic Find a Location",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://affordablecare.com/find-a-location?utm_source=google&utm_medium=organic&utm_campaign=find_location",
+          "websiteJourney": "Home / Find a Location / State / City Practice",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Organic Dentures Services",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://affordablecare.com/services/dentures?utm_source=google&utm_medium=organic&utm_campaign=organic_dentures",
+          "websiteJourney": "Home / Services / Dentures",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Organic Extractions",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://affordablecare.com/services/extractions-oral-surgery/bone-graft?utm_source=google&utm_medium=organic&utm_campaign=organic_extractions",
+          "websiteJourney": "Home / Services / Extractions & Oral Surgery / Bone Graft",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Local Practice Grand Opening",
+          "marketingSearchTerm": "dentures and implants clinic",
+          "landingPageUrl": "https://affordablecare.com/find-a-location?utm_source=google&utm_medium=cpc&utm_campaign=grand_opening",
+          "websiteJourney": "Home / Find a Location / State / City Practice",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Mini Implants Search",
+          "marketingSearchTerm": "mini dental implants cost",
+          "landingPageUrl": "https://affordablecare.com/services/dental-implants/mini?utm_source=bing&utm_medium=cpc&utm_campaign=mini_implants",
+          "websiteJourney": "Home / Services / Dental Implants / Mini Implants",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Love Your Teeth",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://affordablecare.com/about/our-doctors?utm_source=instagram&utm_medium=social&utm_campaign=love_your_teeth",
+          "websiteJourney": "Home / About / Our Doctors",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Smile Again",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://affordablecare.com/new-patients/special-offers?utm_source=facebook&utm_medium=social&utm_campaign=smile_again",
+          "websiteJourney": "Home / New Patients / Special Offers & Financing",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Organic Denture Repair",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://affordablecare.com/services/dentures/repair?utm_source=google&utm_medium=organic&utm_campaign=organic_repair",
+          "websiteJourney": "Home / Services / Dentures / Repair",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Affordable Care)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "41,738"
+            },
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Treatment Accepted (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$32,155,642"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "6,678"
+            },
+            {
+              "label": "Existing Patient Service Call (Percent)",
+              "value": "7%"
+            },
+            {
+              "label": "Billing & Financing Call (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "General Inquiry Call (Percent)",
+              "value": "4%"
+            }
+          ]
+        },
+        {
+          "title": "New Patient Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Estimate Discussed (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Unqualified Inquiry (Percent)",
+              "value": "24%"
+            },
+            {
+              "label": "Treatment Accepted (Percent)",
+              "value": "18%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Patient Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Patient Call (Count)",
+            "values": [
+              4873,
+              8124,
+              7956,
+              7489,
+              6618
+            ]
+          },
+          {
+            "name": "Estimate Discussed (Count)",
+            "values": [
+              2187,
+              3642,
+              3558,
+              3411,
+              3062
+            ]
+          },
+          {
+            "name": "Unqualified Inquiry (Count)",
+            "values": [
+              1398,
+              2314,
+              2256,
+              2147,
+              1902
+            ]
+          },
+          {
+            "name": "Treatment Accepted (Count)",
+            "values": [
+              1042,
+              1738,
+              1701,
+              1603,
+              1429
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Treatment Accepted (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 41738,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "18,342",
+                "34%",
+                "14.5%",
+                "$11,319,962"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "9,617",
+                "37%",
+                "16.5%",
+                "$6,844,280"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "6,483",
+                "39%",
+                "19.9%",
+                "$5,529,810"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "4,192",
+                "42%",
+                "24.0%",
+                "$4,290,590"
+              ]
+            },
+            {
+              "name": "Simpli.fi Programmatic",
+              "metrics": [
+                "3,104",
+                "45%",
+                "31.3%",
+                "$4,171,000"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Treatment Accepted (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 41738,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "16,284",
+                "33%",
+                "14.0%",
+                "$9,722,892"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "10,472",
+                "37%",
+                "16.3%",
+                "$7,318,740"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "7,318",
+                "40%",
+                "19.7%",
+                "$6,200,600"
+              ]
+            },
+            {
+              "name": "Programmatic Display",
+              "metrics": [
+                "4,529",
+                "43%",
+                "24.3%",
+                "$4,705,540"
+              ]
+            },
+            {
+              "name": "Email/CRM",
+              "metrics": [
+                "3,135",
+                "46%",
+                "31.3%",
+                "$4,207,870"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Treatment Accepted (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 41738,
+          "rows": [
+            {
+              "name": "Same-Day Dentures Near Me",
+              "metrics": [
+                "7,842",
+                "33%",
+                "14.0%",
+                "$4,688,460"
+              ]
+            },
+            {
+              "name": "Affordable Dental Implants Free Consult",
+              "metrics": [
+                "5,318",
+                "36%",
+                "16.5%",
+                "$3,775,400"
+              ]
+            },
+            {
+              "name": "All-on-4 Full Arch Offer",
+              "metrics": [
+                "3,687",
+                "39%",
+                "19.5%",
+                "$3,084,510"
+              ]
+            },
+            {
+              "name": "Smile Again",
+              "metrics": [
+                "2,564",
+                "42%",
+                "23.5%",
+                "$2,571,795"
+              ]
+            },
+            {
+              "name": "New Year New Smile",
+              "metrics": [
+                "1,729",
+                "45%",
+                "30.0%",
+                "$2,236,890"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Treatment Accepted (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 41738,
+          "rows": [
+            {
+              "name": "affordable dentures near me",
+              "metrics": [
+                "3,842",
+                "32%",
+                "13.5%",
+                "$2,213,535"
+              ]
+            },
+            {
+              "name": "same day dentures cost",
+              "metrics": [
+                "2,417",
+                "35%",
+                "16.0%",
+                "$1,664,100"
+              ]
+            },
+            {
+              "name": "dental implants cost per tooth",
+              "metrics": [
+                "1,689",
+                "38%",
+                "19.0%",
+                "$1,377,090"
+              ]
+            },
+            {
+              "name": "all on 4 dental implants near me",
+              "metrics": [
+                "1,124",
+                "41%",
+                "23.0%",
+                "$1,108,520"
+              ]
+            },
+            {
+              "name": "snap-in dentures",
+              "metrics": [
+                "738",
+                "44%",
+                "29.5%",
+                "$937,400"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Treatment Accepted (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Dentures",
+              "metrics": [
+                "14,382",
+                "36%",
+                "13%",
+                "$7,801,644"
+              ]
+            },
+            {
+              "name": "Dental Implants",
+              "metrics": [
+                "10,916",
+                "39%",
+                "16%",
+                "$7,523,918"
+              ]
+            },
+            {
+              "name": "Extractions & Oral Surgery",
+              "metrics": [
+                "7,214",
+                "41%",
+                "19%",
+                "$5,663,472"
+              ]
+            },
+            {
+              "name": "Diagnostics & Add-Ons",
+              "metrics": [
+                "5,341",
+                "44%",
+                "24%",
+                "$5,616,335"
+              ]
+            },
+            {
+              "name": "Full-Arch Solutions",
+              "metrics": [
+                "3,885",
+                "47%",
+                "31%",
+                "$5,550,273"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Treatment Accepted (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 41738,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "13,624",
+                "34%",
+                "14%",
+                "$8,146,127"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "9,832",
+                "37%",
+                "16%",
+                "$6,868,455"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "8,146",
+                "39%",
+                "18%",
+                "$6,219,318"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "6,215",
+                "42%",
+                "21%",
+                "$5,785,970"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "3,921",
+                "46%",
+                "30%",
+                "$5,135,772"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Treatment Accepted (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Dentures",
+            "values": [
+              288,
+              402,
+              421,
+              415,
+              354
+            ]
+          },
+          {
+            "name": "Dental Implants",
+            "values": [
+              262,
+              378,
+              391,
+              385,
+              342
+            ]
+          },
+          {
+            "name": "Extractions & Oral Surgery",
+            "values": [
+              205,
+              298,
+              312,
+              305,
+              265
+            ]
+          },
+          {
+            "name": "Diagnostics & Add-Ons",
+            "values": [
+              188,
+              278,
+              290,
+              282,
+              250
+            ]
+          },
+          {
+            "name": "Full-Arch Solutions",
+            "values": [
+              172,
+              258,
+              268,
+              262,
+              242
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 41,738 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Margaret Ellison called to explore economy full dentures after losing several teeth. Rosey walked her through the price range, confirmed the new patient exam and X-ray were free, and booked a consultation at the Greensboro practice. Margaret was thrilled and confirmed the visit.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Rosey",
+          "duration": "2m 45s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Robert Hayes asked about the cost of a single dental implant to replace one missing front tooth. Lila explained the titanium post, abutment, and crown pricing clearly and scheduled a free implant consultation for the following week. Robert appreciated the transparency.",
+          "date": "Feb 12, 1:30 PM",
+          "agent": "Lila",
+          "duration": "2m 10s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Dorothy Mitchell called because her existing dentures had become loose and uncomfortable. Oscar explained the soft and hard reline options and pricing, then booked her for a reline appointment. This was an existing-patient service so no new consultation was created.",
+          "date": "Mar 4, 3:52 PM",
+          "agent": "Oscar",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "James Carpenter called as a new patient to schedule a consultation for an implant-supported full-arch solution. Mary collected his contact details, insurance information, and preferred location, then booked a free implant consultation at the Durham practice. James confirmed he would attend.",
+          "date": "Apr 9, 9:25 AM",
+          "agent": "Mary",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Patricia Nguyen wanted to understand financing options for an All-on-4 full arch treatment. Lee explained the CareCredit financing plans and monthly estimates, then scheduled a consultation to finalize a treatment plan. Patricia felt reassured about affordability.",
+          "date": "May 15, 11:47 AM",
+          "agent": "Lee",
+          "duration": "2m 55s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Frank Torres asked about immediate same-day dentures placed the day of extraction. Sue described the on-site lab process and same-day delivery, then booked a consultation to plan the extraction and denture fitting. Frank scheduled the visit.",
+          "date": "Jun 2, 4:08 PM",
+          "agent": "Sue",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 64,
+          "summary": "Nancy Brooks called to check the status of her denture repair after a cracked plate. Mike looked up the order and told her it was still in the lab with an estimated pickup date. Nancy was mildly frustrated by the wait but understood.",
+          "date": "Jul 7, 12:19 PM",
+          "agent": "Mike",
+          "duration": "1m 40s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 60,
+          "summary": "William Foster disputed a charge on his bill for a surgical extraction he thought was included in his estimate. Jennifer reviewed the itemized charges and explained the difference between simple and surgical extraction fees. William remained unhappy but accepted the explanation.",
+          "date": "Aug 3, 2:41 PM",
+          "agent": "Jennifer",
+          "duration": "2m 48s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 28,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Helen Ramirez called to reschedule her implant follow-up because of a work conflict. Rose found a new open slot and moved the appointment without issue. Helen was satisfied but no new consultation was created.",
+          "date": "Sep 10, 10:56 AM",
+          "agent": "Rose",
+          "duration": "1m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 51,
+          "summary": "George Sanders was upset that his financing application through CareCredit had been declined for his snap-in overdenture. Lila explained alternative financing paths and third-party lenders, but George stayed frustrated and did not book anything. No consultation was scheduled.",
+          "date": "Sep 22, 3:15 PM",
+          "agent": "Lila",
+          "duration": "2m 30s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 47,
+          "summary": "Barbara Coleman complained that her recent denture reline still did not fit properly and caused sore spots. Oscar apologized and arranged an adjustment appointment, but Barbara was clearly dissatisfied with the repeated issues. No new consultation resulted.",
+          "date": "Oct 5, 1:03 PM",
+          "agent": "Oscar",
+          "duration": "2m 19s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 43,
+          "summary": "Thomas Reed called to schedule a consultation for a partial denture to fill gaps around his remaining teeth. The call was choppy and the agent struggled to capture his details, but eventually booked the consultation. Thomas confirmed the appointment despite the friction.",
+          "date": "Oct 18, 11:34 AM",
+          "agent": "Lee",
+          "duration": "3m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Linda Powell was angry about a delayed delivery of her full-arch implant bridge, which had pushed back her planned surgery. Mike checked the lab timeline and could only offer a revised estimate. Linda demanded a callback from the practice manager.",
+          "date": "Oct 24, 4:22 PM",
+          "agent": "Mike",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Richard Gray called to cancel his upcoming consultation and demanded a refund of his deposit. Jennifer processed the cancellation and explained the refund timeline, but Richard remained irritated about the delay. No visit will take place.",
+          "date": "Oct 28, 9:48 AM",
+          "agent": "Jennifer",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Susan Wright left a voicemail after hours describing pain following a tooth extraction and a question about her billing statement. The call rolled to voicemail with no agent available to assist. Her message was flagged for a next-day callback.",
+          "date": "Oct 30, 6:12 PM",
+          "agent": "No Agent",
+          "duration": "0m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "dentures",
+        "implant",
+        "consultation",
+        "extraction",
+        "reline",
+        "financing"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Tooth Replacement Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area & ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Explain Consultation Process",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Appointment Date & Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer Financing Information",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller identified as new patient",
+        "Full name captured cleanly",
+        "Tooth replacement problem stated clearly",
+        "Caller interested in same-day dentures",
+        "ZIP code verified",
+        "Service area confirmed",
+        "Consultation scheduled successfully",
+        "Agent maintained professional tone",
+        "Caller accepted appointment confirmation",
+        "Agent used consultative language",
+        "Appointment date and time provided",
+        "Interest in cost information expressed",
+        "Caller ready to move forward"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Phone number not verified for callback",
+        "Financing options not discussed",
+        "Insurance coverage question unaddressed",
+        "Specific denture type preference not explored",
+        "Bone health assessment not mentioned",
+        "Timeline expectation not set",
+        "Extraction needs not clarified",
+        "Follow-up appointment cadence not explained",
+        "Preparation instructions for visit not given"
+      ],
+      "naSignals": [
+        "Order status tracking",
+        "Denture delivery logistics",
+        "Insurance claim submission",
+        "Follow-up reline appointment booked",
+        "Adjustment visit scheduled",
+        "Warranty or guarantee details",
+        "Patient satisfaction survey",
+        "Post-care maintenance products",
+        "Referral incentive program",
+        "Account balance or payment method"
+      ],
+      "prompts": [
+        {
+          "question": "Is the patient trying to solve a specific problem?",
+          "answer": "Yes, the caller has been dealing with missing teeth and wants an affordable, quick solution. They expressed strong interest in same-day dentures and asked about cost, indicating they need both functional and financial relief."
+        },
+        {
+          "question": "What are the patient's expectations?",
+          "answer": "The caller expects a fast turnaround on tooth replacement and wants to understand pricing. They are motivated by the word 'affordable' and the promise of same-day delivery, suggesting they prioritize speed and value."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have captured the caller's email address and discussed financing options or insurance to remove barriers to booking. Setting expectations about what happens during the consultation and what to bring would also build confidence."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Affordable Dentures and Implants. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus. Yeah, I've had a really hard time with my teeth for years and I saw your ad about same day dentures. I'm interested in learning more."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:42",
+          "text": "I'm glad you reached out. Same-day dentures are a great option for patients in your situation. To get started, may I have your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:52",
+          "text": "Sure, it's Jennifer Martinez."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:58",
+          "text": "Thank you, Jennifer. So when you mention having trouble with your teeth, are you looking to replace missing teeth, or are you interested in a full denture solution?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:12",
+          "text": "I'm missing several teeth on the top and bottom. I think a full denture would be best because I want something I can get done fast."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:26",
+          "text": "A full denture is definitely an option for you. That's very common, and our same-day process works well for that. What ZIP code are you in? I want to make sure we have a location near you."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:40",
+          "text": "I'm in 28202, Charlotte area."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:48",
+          "text": "Perfect. We have a clinic right in Charlotte. Now, I'd like to schedule you for a consultation. During that visit, our doctor will examine you, take any imaging we need, and go over your specific options and pricing. Does that sound good?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:04",
+          "text": "Yeah, that sounds perfect. When could I come in?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:12",
+          "text": "Great. I have an opening this Thursday, October 24th at 10 AM. Does that work for you, Jennifer?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:24",
+          "text": "Yes, Thursday at 10 works perfectly. Thank you."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:34",
+          "text": "Excellent. We'll see you Thursday, October 24th at 10 AM at our Charlotte location. We're looking forward to helping you get your smile back. Is there anything else I can help with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:48",
+          "text": "No, that's everything. Thanks so much."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:56",
+          "text": "You're welcome, Jennifer. Thank you for calling Affordable Dentures and Implants. Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Martinez, a new patient from Charlotte (ZIP 28202), called inquiring about same-day full denture solutions after seeing an Affordable Dentures and Implants advertisement. Marcus qualified her need as replacement of multiple missing teeth and confirmed she was a good candidate for a full denture. He successfully scheduled her for a consultation appointment on Thursday, October 24th at 10 AM at the Charlotte clinic. The call was structured and professional, though Marcus did not capture Jennifer's email or phone number for confirmation, and did not discuss financing options or set specific expectations for the consultation visit.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great structural control on this new patient intake. You greeted warmly, captured the name, identified the tooth replacement need, and booked the appointment cleanly. Two coaching points for next time: grab the email address before you close so you can send a confirmation and prep instructions, and ask a quick question about whether the caller has heard about our financing options or if insurance is a concern. That removes friction before the visit. Nice work."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "41,738"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$770.42"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$32,155,642"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "27,431"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "66%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "15,860"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "38%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "14,307"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "9%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Simpli.fi Display",
+                "value": 55,
+                "display": "55%"
+              },
+              {
+                "name": "Instagram",
+                "value": 47,
+                "display": "47%"
+              },
+              {
+                "name": "Facebook",
+                "value": 40,
+                "display": "40%"
+              },
+              {
+                "name": "Bing",
+                "value": 33,
+                "display": "33%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "18,342",
+                  "24%",
+                  "$13,842,190"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing",
+                  "8,914",
+                  "33%",
+                  "$6,714,320"
+                ]
+              },
+              {
+                "cells": [
+                  "Facebook",
+                  "6,127",
+                  "40%",
+                  "$4,905,660"
+                ]
+              },
+              {
+                "cells": [
+                  "Instagram",
+                  "4,983",
+                  "47%",
+                  "$3,908,840"
+                ]
+              },
+              {
+                "cells": [
+                  "Simpli.fi Display",
+                  "3,372",
+                  "55%",
+                  "$2,784,632"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 20000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 19847,
+                "display": "19,847"
+              },
+              {
+                "name": "Organic Search",
+                "value": 9213,
+                "display": "9,213"
+              },
+              {
+                "name": "Paid Social",
+                "value": 7352,
+                "display": "7,352"
+              },
+              {
+                "name": "Display",
+                "value": 3088,
+                "display": "3,088"
+              },
+              {
+                "name": "Email",
+                "value": 2238,
+                "display": "2,238"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "19,847",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "9,213",
+                  "37%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "7,352",
+                  "43%"
+                ]
+              },
+              {
+                "cells": [
+                  "Display",
+                  "3,088",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "2,238",
+                  "58%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Same-Day Dentures Near Me",
+                "value": 6842,
+                "display": "6,842"
+              },
+              {
+                "name": "Affordable Dental Implants Free Consult",
+                "value": 5238,
+                "display": "5,238"
+              },
+              {
+                "name": "All-on-4 Full Arch Offer",
+                "value": 4127,
+                "display": "4,127"
+              },
+              {
+                "name": "Smile Again",
+                "value": 3014,
+                "display": "3,014"
+              },
+              {
+                "name": "New Year New Smile",
+                "value": 2451,
+                "display": "2,451"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Same-Day Dentures Near Me",
+                  "6,842",
+                  "28%",
+                  "$5,127,340"
+                ]
+              },
+              {
+                "cells": [
+                  "Affordable Dental Implants Free Consult",
+                  "5,238",
+                  "35%",
+                  "$4,238,910"
+                ]
+              },
+              {
+                "cells": [
+                  "All-on-4 Full Arch Offer",
+                  "4,127",
+                  "44%",
+                  "$4,912,660"
+                ]
+              },
+              {
+                "cells": [
+                  "Smile Again",
+                  "3,014",
+                  "56%",
+                  "$2,014,530"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "affordable dentures near me",
+                "value": 3842,
+                "display": "3,842"
+              },
+              {
+                "name": "same day dentures cost",
+                "value": 2914,
+                "display": "2,914"
+              },
+              {
+                "name": "all on 4 dental implants near me",
+                "value": 2318,
+                "display": "2,318"
+              },
+              {
+                "name": "dental implants cost per tooth",
+                "value": 1762,
+                "display": "1,762"
+              },
+              {
+                "name": "snap-in dentures",
+                "value": 1247,
+                "display": "1,247"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "affordable dentures near me",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "same day dentures cost",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "all on 4 dental implants near me",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "dental implants cost per tooth",
+                  "57%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Dentures",
+              "17,428",
+              "32%",
+              "64%"
+            ]
+          },
+          {
+            "cells": [
+              "Dental Implants",
+              "13,214",
+              "40%",
+              "71%"
+            ]
+          },
+          {
+            "cells": [
+              "Extractions & Oral Surgery",
+              "6,982",
+              "48%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Diagnostics & Add-Ons",
+              "4,114",
+              "59%",
+              "77%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Charlotte, NC Clinic",
+              "5,842",
+              "418",
+              "6%",
+              "34%"
+            ]
+          },
+          {
+            "cells": [
+              "Houston, TX Clinic",
+              "4,918",
+              "372",
+              "7%",
+              "39%"
+            ]
+          },
+          {
+            "cells": [
+              "Phoenix, AZ Clinic",
+              "3,764",
+              "214",
+              "5%",
+              "44%"
+            ]
+          },
+          {
+            "cells": [
+              "Morrisville, NC Clinic",
+              "2,487",
+              "132",
+              "4%",
+              "51%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1142,
+              1738,
+              1682,
+              1798,
+              1482
+            ]
+          },
+          {
+            "name": "Comparing Dental Providers",
+            "values": [
+              842,
+              1384,
+              1362,
+              1428,
+              1198
+            ]
+          },
+          {
+            "name": "Needs Financing Approval",
+            "values": [
+              682,
+              1102,
+              1084,
+              1142,
+              928
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              548,
+              918,
+              902,
+              942,
+              817
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              382,
+              614,
+              598,
+              632,
+              531
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "16,695"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Treatment Accepted (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$18,328,716"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Treatment Accepted (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,847,920"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent and Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Treatment Accepted (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,156,384"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Treatment Accepted (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,634,512"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Treatment Accepted (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,248,756"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent and Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Treatment Accepted (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,117,288"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Treatment Accepted (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,323,856"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Treatment Accepted (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 19247,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "4,847",
+                "58%",
+                "31%",
+                "$6,372,544"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "3,652",
+                "55%",
+                "29%",
+                "$3,447,236"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "2,915",
+                "54%",
+                "32%",
+                "$3,087,456"
+              ]
+            },
+            {
+              "name": "Programmatic Display",
+              "metrics": [
+                "2,384",
+                "57%",
+                "34%",
+                "$2,748,384"
+              ]
+            },
+            {
+              "name": "Local Business Profile",
+              "metrics": [
+                "1,897",
+                "51%",
+                "28%",
+                "$2,673,696"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Treatment Accepted (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 19284,
+          "rows": [
+            {
+              "name": "Search Engine Marketing",
+              "metrics": [
+                "5,234",
+                "59%",
+                "32%",
+                "$7,156,928"
+              ]
+            },
+            {
+              "name": "Social Media Advertising",
+              "metrics": [
+                "3,819",
+                "54%",
+                "30%",
+                "$3,652,544"
+              ]
+            },
+            {
+              "name": "Display and Remarketing",
+              "metrics": [
+                "2,456",
+                "56%",
+                "33%",
+                "$2,834,672"
+              ]
+            },
+            {
+              "name": "Local Listings",
+              "metrics": [
+                "2,108",
+                "53%",
+                "29%",
+                "$2,578,344"
+              ]
+            },
+            {
+              "name": "Direct Web Traffic",
+              "metrics": [
+                "1,678",
+                "52%",
+                "31%",
+                "$2,106,228"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Treatment Accepted (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 19156,
+          "rows": [
+            {
+              "name": "Same Day Dentures Near Me",
+              "metrics": [
+                "3,847",
+                "60%",
+                "34%",
+                "$5,287,156"
+              ]
+            },
+            {
+              "name": "Affordable Dental Implants Free Consult",
+              "metrics": [
+                "2,934",
+                "57%",
+                "31%",
+                "$3,648,276"
+              ]
+            },
+            {
+              "name": "All on 4 Full Arch Offer",
+              "metrics": [
+                "2,156",
+                "55%",
+                "30%",
+                "$2,834,544"
+              ]
+            },
+            {
+              "name": "Smile Again Campaign",
+              "metrics": [
+                "1,823",
+                "54%",
+                "28%",
+                "$2,156,384"
+              ]
+            },
+            {
+              "name": "New Year New Smile",
+              "metrics": [
+                "1,456",
+                "52%",
+                "27%",
+                "$1,612,328"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Treatment Accepted (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18874,
+          "rows": [
+            {
+              "name": "affordable dentures near me",
+              "metrics": [
+                "2,847",
+                "62%",
+                "35%",
+                "$4,156,288"
+              ]
+            },
+            {
+              "name": "same day dentures cost",
+              "metrics": [
+                "2,134",
+                "58%",
+                "32%",
+                "$2,934,576"
+              ]
+            },
+            {
+              "name": "dental implants cost per tooth",
+              "metrics": [
+                "1,678",
+                "56%",
+                "30%",
+                "$2,156,384"
+              ]
+            },
+            {
+              "name": "snap in dentures",
+              "metrics": [
+                "1,245",
+                "54%",
+                "28%",
+                "$1,648,344"
+              ]
+            },
+            {
+              "name": "all on 4 dental implants near me",
+              "metrics": [
+                "987",
+                "51%",
+                "26%",
+                "$1,087,344"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Treatment Accepted (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Dental Implants",
+              "metrics": [
+                "4,234",
+                "59%",
+                "36%",
+                "$6,847,456"
+              ]
+            },
+            {
+              "name": "Dentures",
+              "metrics": [
+                "6,127",
+                "57%",
+                "32%",
+                "$6,234,512"
+              ]
+            },
+            {
+              "name": "Extractions and Oral Surgery",
+              "metrics": [
+                "3,456",
+                "54%",
+                "29%",
+                "$2,934,276"
+              ]
+            },
+            {
+              "name": "Implant Supported Fixed Denture",
+              "metrics": [
+                "1,987",
+                "52%",
+                "30%",
+                "$1,678,432"
+              ]
+            },
+            {
+              "name": "Diagnostics and Add Ons",
+              "metrics": [
+                "891",
+                "48%",
+                "22%",
+                "$634,040"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Product Category Conversions Over Time",
+          "tableTitle": "Product Category Conversions Over Time",
+          "dimensionColumn": "Week",
+          "metricColumns": [
+            "Dental Implants",
+            "Dentures",
+            "Extractions and Oral Surgery",
+            "Implant Supported Fixed Denture",
+            "Diagnostics and Add Ons"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Jan 1-4",
+              "metrics": [
+                "524",
+                "743",
+                "312",
+                "189",
+                "78"
+              ]
+            },
+            {
+              "name": "Jan 5-11",
+              "metrics": [
+                "687",
+                "912",
+                "401",
+                "234",
+                "98"
+              ]
+            },
+            {
+              "name": "Jan 12-18",
+              "metrics": [
+                "763",
+                "1,084",
+                "534",
+                "267",
+                "112"
+              ]
+            },
+            {
+              "name": "Jan 19-25",
+              "metrics": [
+                "641",
+                "945",
+                "478",
+                "223",
+                "94"
+              ]
+            },
+            {
+              "name": "Jan 26-31",
+              "metrics": [
+                "619",
+                "843",
+                "356",
+                "197",
+                "72"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Treatment Accepted (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Dental Implants",
+            "values": [
+              188,
+              220,
+              274,
+              199,
+              187
+            ]
+          },
+          {
+            "name": "Dentures",
+            "values": [
+              238,
+              293,
+              347,
+              302,
+              269
+            ]
+          },
+          {
+            "name": "Extractions and Oral Surgery",
+            "values": [
+              90,
+              116,
+              155,
+              139,
+              103
+            ]
+          },
+          {
+            "name": "Implant Supported Fixed Denture",
+            "values": [
+              57,
+              70,
+              80,
+              67,
+              59
+            ]
+          },
+          {
+            "name": "Diagnostics and Add Ons",
+            "values": [
+              17,
+              23,
+              25,
+              21,
+              16
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "26%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "351"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "891"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "27"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              76,
+              78,
+              81,
+              74,
+              79,
+              82,
+              77,
+              80,
+              75,
+              83,
+              78,
+              81,
+              79,
+              76,
+              82,
+              80,
+              77,
+              81,
+              79,
+              78,
+              75,
+              80,
+              82,
+              76,
+              81,
+              78,
+              79,
+              177,
+              184,
+              179,
+              182,
+              187,
+              181,
+              185,
+              189,
+              178,
+              183,
+              180,
+              186,
+              179,
+              182,
+              185,
+              181,
+              178,
+              184,
+              180,
+              182,
+              179,
+              183
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,173"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "689"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "59%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "661"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "96%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Custom Denture Pricing",
+            "values": [
+              8,
+              11,
+              9,
+              7,
+              10,
+              12
+            ]
+          },
+          {
+            "name": "All-on-4 Implant Cost",
+            "values": [
+              6,
+              8,
+              5,
+              9,
+              7,
+              11
+            ]
+          },
+          {
+            "name": "Same-Day Denture Availability",
+            "values": [
+              1,
+              2,
+              0,
+              3,
+              2,
+              4
+            ]
+          },
+          {
+            "name": "Dental Implant Financing Options",
+            "values": [
+              7,
+              9,
+              8,
+              6,
+              10,
+              9
+            ]
+          },
+          {
+            "name": "Denture Reline & Adjustment",
+            "values": [
+              4,
+              6,
+              5,
+              7,
+              6,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "38,399"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "27,130"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Booked (Count)",
+            "value": "15,860"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$32,155,642"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Brandi Kowalski",
+              "value": 203,
+              "display": "203"
+            },
+            {
+              "name": "Derek Holmes",
+              "value": 156,
+              "display": "156"
+            },
+            {
+              "name": "Shanice Williams",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Troy Gutierrez",
+              "value": 172,
+              "display": "172"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Jennifer Martinez",
+            "values": [
+              89,
+              104,
+              118,
+              142,
+              156
+            ]
+          },
+          {
+            "name": "Kevin O'Brien",
+            "values": [
+              91,
+              106,
+              121,
+              138,
+              151
+            ]
+          },
+          {
+            "name": "Priya Nair",
+            "values": [
+              84,
+              97,
+              112,
+              134,
+              148
+            ]
+          },
+          {
+            "name": "Robert Walsh",
+            "values": [
+              86,
+              103,
+              119,
+              136,
+              147
+            ]
+          },
+          {
+            "name": "Amanda Foster",
+            "values": [
+              82,
+              98,
+              115,
+              132,
+              144
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Derek Holmes",
+              "value": 52.4,
+              "display": "52.4%"
+            },
+            {
+              "name": "Marcus Chen",
+              "value": 53.8,
+              "display": "53.8%"
+            },
+            {
+              "name": "Troy Gutierrez",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Shanice Williams",
+              "value": 55.6,
+              "display": "55.6%"
+            },
+            {
+              "name": "Brandi Kowalski",
+              "value": 56.3,
+              "display": "56.3%"
+            },
+            {
+              "name": "Carlos Rivera",
+              "value": 57.1,
+              "display": "57.1%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Derek Holmes",
+                "52.4%",
+                "28%",
+                "$823,156",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Chen",
+                "53.8%",
+                "29%",
+                "$861,243",
+                "1,387"
+              ]
+            },
+            {
+              "cells": [
+                "Troy Gutierrez",
+                "54.2%",
+                "30%",
+                "$889,621",
+                "1,459"
+              ]
+            },
+            {
+              "cells": [
+                "Shanice Williams",
+                "55.6%",
+                "31%",
+                "$927,508",
+                "1,493"
+              ]
+            },
+            {
+              "cells": [
+                "Brandi Kowalski",
+                "56.3%",
+                "32%",
+                "$964,779",
+                "1,481"
+              ]
+            },
+            {
+              "cells": [
+                "Carlos Rivera",
+                "57.1%",
+                "33%",
+                "$998,447",
+                "1,512"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Jennifer Martinez",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Kevin O'Brien",
+              "value": 90.3,
+              "display": "90.3%"
+            },
+            {
+              "name": "Priya Nair",
+              "value": 89.8,
+              "display": "89.8%"
+            },
+            {
+              "name": "Robert Walsh",
+              "value": 88.9,
+              "display": "88.9%"
+            },
+            {
+              "name": "Amanda Foster",
+              "value": 87.4,
+              "display": "87.4%"
+            },
+            {
+              "name": "Victoria Sampson",
+              "value": 86.6,
+              "display": "86.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Martinez",
+                "91.7%",
+                "64%",
+                "$1,847,291",
+                "1,547"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin O'Brien",
+                "90.3%",
+                "63%",
+                "$1,803,468",
+                "1,531"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Nair",
+                "89.8%",
+                "61%",
+                "$1,756,294",
+                "1,519"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Walsh",
+                "88.9%",
+                "60%",
+                "$1,724,156",
+                "1,492"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Foster",
+                "87.4%",
+                "59%",
+                "$1,682,837",
+                "1,453"
+              ]
+            },
+            {
+              "cells": [
+                "Victoria Sampson",
+                "86.6%",
+                "58%",
+                "$1,641,596",
+                "1,423"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Booked (Count)",
+        "rightMax": 800,
+        "rightTicks": [
+          0,
+          200,
+          400,
+          600,
+          800
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 588
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 564
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 525
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 501
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 436
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 458
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 506
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 526
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 586
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 568
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 512
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 495
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 440
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 454
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 518
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 534
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 581
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 572
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 501
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 485
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 447
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 452
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 527
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 544
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 573
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 573
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 494
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 474
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 455
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 452
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 519
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1500000,
+        "rightTicks": [
+          0,
+          500000,
+          1000000,
+          1500000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1191982
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1142460
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1063863
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1015130
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 883857
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 927584
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1024676
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1065066
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1187555
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1151408
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1037034
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1002314
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 891890
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 919328
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1049072
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1081039
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1176498
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1158188
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1015606
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 983393
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 905277
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 914768
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1067154
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1102528
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1161552
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1159862
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 1001074
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 959870
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 920975
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 916534
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1078105
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "41,738"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,339"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,504"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "81%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Patricia Hernandez",
+                "516",
+                "89%",
+                "87%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Wellington",
+                "412",
+                "84%",
+                "83%",
+                "78%"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Liu",
+                "438",
+                "85%",
+                "85%",
+                "81%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "41,738 calls",
+      "pagerLabel": "1 of 4,174",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 9:23 am",
+          "id": "A3D1-6B2C4419E7A8"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C90E-2F17DA5630B4"
+        },
+        {
+          "time": "1/14/26 11:16 am",
+          "id": "D42A-9E03B7561CFA"
+        },
+        {
+          "time": "1/16/26 12:38 pm",
+          "id": "B71F-4C82E0917DA3"
+        },
+        {
+          "time": "1/20/26 1:52 pm",
+          "id": "E58C-1A6D3F0492BE"
+        },
+        {
+          "time": "1/22/26 2:29 pm",
+          "id": "9F30-7B41C process"
+        },
+        {
+          "time": "1/26/26 3:14 pm",
+          "id": "7C2D-58E9F1043BA6"
+        },
+        {
+          "time": "1/28/26 4:37 pm",
+          "id": "1E6B-A2049CF7318D"
+        },
+        {
+          "time": "1/30/26 5:21 pm",
+          "id": "48A9-DC3170E6529F"
+        }
+      ],
+      "duration": "2:34",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Affordable Dentures and Implants, this is Danielle. How can I help you smile again today?",
+          "highlights": [
+            "Thank you for calling Affordable Dentures and Implants",
+            "How can I help you smile again today?"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi there. My name is Robert Hayes and I've been losing a few teeth on the bottom. I'm trying to figure out what my options are for replacing them.",
+          "highlights": [
+            "Robert Hayes"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:16",
+          "text": "I'm so sorry to hear that, Robert, but you've called the right place. Can I ask, are we talking about a few missing teeth or are you looking at a full replacement for the lower arch?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:26",
+          "text": "Probably the whole bottom eventually. A couple are already gone and two more are pretty loose. It's getting hard to eat.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:34",
+          "text": "Understood. We have a few solutions that would fit that. A custom full denture, a snap-in overdenture that clips onto a couple of implants for stability, or a full-arch fixed implant bridge that stays in permanently.",
+          "highlights": [
+            "custom full denture",
+            "snap-in overdenture",
+            "full-arch fixed implant bridge"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:47",
+          "text": "Okay, the snap-in one sounds interesting. What does that run, roughly? I want to keep this manageable.",
+          "highlights": [
+            "What does that run, roughly?",
+            "I want to keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:55",
+          "text": "Absolutely fair question. A snap-in implant overdenture typically lands between five and nine thousand per arch depending on how many implants. A custom full denture is far less, usually around eleven hundred to nineteen hundred. We also offer financing to spread that out.",
+          "highlights": [
+            "financing to spread that out"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:09",
+          "text": "See, that's the thing. There's a place a few miles down the road quoting me a flat price, and I'm getting a couple of quotes before I decide anything.",
+          "highlights": [
+            "I'm getting a couple of quotes before I decide anything"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:19",
+          "text": "That's smart, and I'd encourage you to compare. What sets us apart is our on-site lab, so adjustments and repairs happen fast, and your consultation includes the exam and 3D scan so the quote you get from us is exact, not a guess.",
+          "highlights": [
+            "on-site lab",
+            "exam and 3D scan"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:31",
+          "text": "Alright. One more thing though, do I get locked into anything if I start the process? I don't want to feel stuck.",
+          "highlights": [
+            "do I get locked into anything",
+            "I don't want to feel stuck"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:39",
+          "text": "Not at all, Robert. The consultation is a no-obligation visit. You leave with a written treatment plan and pricing, and you decide on your own timeline. Nothing is committed until you say so.",
+          "highlights": [
+            "no-obligation visit",
+            "Nothing is committed until you say so"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:50",
+          "text": "Okay, that puts me at ease. And if two of those loose teeth need to come out, can that happen there too?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:57",
+          "text": "Yes, we handle extractions and even same-day dentures right in the practice, so you'd never leave without teeth. The doctor will walk through all of it at your consultation.",
+          "highlights": [
+            "extractions",
+            "same-day dentures"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:06",
+          "text": "Great. Let's get me in for that consultation then.",
+          "highlights": [
+            "Let's get me in for that consultation"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:11",
+          "text": "Wonderful. I have a Thursday at 10 AM open at our Charlotte location. Shall I book that for you?",
+          "highlights": [
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:17",
+          "text": "Thursday at ten works perfectly.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:21",
+          "text": "You're all set, Robert. I'll text a confirmation to this number. Please arrive fifteen minutes early so we can get your scan done.",
+          "highlights": [
+            "You're all set",
+            "confirmation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:28",
+          "text": "Perfect, thank you so much for your help.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:31",
+          "text": "My pleasure. We look forward to helping you love your teeth again. Take care, Robert.",
+          "highlights": [
+            "We look forward to helping you love your teeth again",
+            "Take care, Robert."
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Snap-In Overdenture",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Full-Arch Implants",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Financing Discussed",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "New patient Robert Hayes called about replacing lost and loosening teeth on his lower arch. Agent Danielle reviewed custom full dentures, snap-in implant overdentures, and full-arch fixed implant bridges, addressed his budget, competitor quotes, and commitment concerns, and highlighted the on-site lab and no-obligation consultation. She scheduled a Thursday 10 AM consultation at the Charlotte location and confirmed his contact number for a text confirmation.",
+        "keyPoints": [
+          "New patient inquiring about lower-arch tooth replacement",
+          "Interested in snap-in overdenture, plus custom full denture and full-arch options",
+          "Raised budget, competitor quotes, and fear of being locked in",
+          "Agent handled all three concerns and mentioned financing and on-site lab",
+          "Extractions and same-day dentures noted as available",
+          "Consultation booked for Thursday 10 AM in Charlotte with confirmation text"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM Charlotte"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "26,295 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,629",
+      "conversations": [
+        {
+          "id": "C8A2-4F7B9E1C2D5A",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for contacting Affordable Dentures and Implants. My name is Sarah. Are you interested in learning about tooth replacement options today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes hello. I lost a few teeth and need to do something about it"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "I'm sorry to hear that. We can definitely help you get back to smiling. Have you had dentures or implants before, or would this be your first time exploring options?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:25 AM",
+              "text": "First time. I'm not sure what the difference is between them"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:26 AM",
+              "text": "Great question. Dentures are removable replacements, and implants are permanent anchored solutions. Both work really well. To point you to the best fit, are the missing teeth just in the front, or spread across your whole mouth?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "It's my whole upper arch. All the back teeth are gone"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Understood. For a full upper replacement, we typically recommend either a full custom denture or an implant supported bridge. A full denture runs around 1,100 to 1,900, and our implant options start around 15,000 for a full arch. Do you have a budget preference or insurance?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "I don't have dental insurance. What about the cheaper option?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "A custom full denture is a great affordable choice. We can get you fit and ready quickly. We also offer financing through CareCredit if that helps. Can I get your first name?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:34 AM",
+              "text": "Sure. It's Robert. Robert Patterson"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:35 AM",
+              "text": "Thanks Robert. And what's the best phone to reach you on?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:36 AM",
+              "text": "My cell is 503-555-0147"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:37 AM",
+              "text": "Perfect. I'd like to schedule a new patient exam and consultation at one of our Portland clinics. We have availability this Thursday at 2 PM or Friday at 10 AM. Which works better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:39 AM",
+              "text": "Friday at 10 works. I can make that"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:40 AM",
+              "text": "Excellent Robert. Your consultation is confirmed for this Friday March 14th at 10 AM at our Portland clinic. You'll meet with our doctor to discuss your custom denture options. Our number is 877-936-2933 if you need to reschedule. We look forward to seeing you."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:42 AM",
+              "text": "Great thanks Sarah. See you Friday"
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Custom Full Denture",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Full Upper Arch Replacement",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "No Insurance Coverage",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Budget Conscious",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Financing Interest: CareCredit",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C8A2-4F7B9E1C2D5A",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "21",
+            "source": "503-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "503-555-0147",
+            "repeatCaller": "No",
+            "city": "Portland",
+            "region": "OR",
+            "phoneType": "Mobile",
+            "displayName": "Robert Patterson",
+            "firstName": "Robert",
+            "lastName": "Patterson",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C7D4-6B2E8F3A1C9E",
+          "time": "3/9/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C7D4-6B2E8F3A1C9E",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C5F9-7A3D4E2B6C1F",
+          "time": "3/8/26 11:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C5F9-7A3D4E2B6C1F",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C9E1-8C7F5D3B2A4E",
+          "time": "3/7/26 4:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C9E1-8C7F5D3B2A4E",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "41,738 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,174",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hi there, thanks for calling Affordable Care. This is Marcus speaking. Are you interested in learning about our same day denture services today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:47 PM",
+              "text": "Yeah, hi. I've been looking into getting new dentures. I'm not sure where to start though."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:48 PM",
+              "text": "Great, I'm happy to help you explore your options. Have you had dentures before, or would this be your first time?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "First time. I still have some of my natural teeth but they're in pretty rough shape."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "I understand. So we'd likely be looking at a partial denture solution for you. Are you currently in pain with those teeth, or is this more of a cosmetic concern?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:49 PM",
+              "text": "Both honestly. They're uncomfortable and I just don't feel confident smiling anymore."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:50 PM",
+              "text": "That's something we hear a lot, and we can definitely help with that. Just to clarify, when you think about getting this done, are you looking for the most affordable option, or would you prefer something with more premium materials and a longer warranty?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "I need it to be reasonable price wise, but I also want it to look natural."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Perfect. Our custom partial dentures run about twelve hundred to nineteen hundred dollars and they're designed to look really natural. Now, here's the great news, we can often get you in within the week. What's your availability looking like? Could you come in next Tuesday the twenty first at ten in the morning?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:51 PM",
+              "text": "Yeah, I think that works. What should I bring with me?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:52 PM",
+              "text": "Just bring your ID and insurance card if you have one. We'll do a free initial exam and take x rays to map out exactly what we need to do. Just to confirm, that's Tuesday January twenty first at ten AM, and your name is Robert, correct?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "Yes, that's right."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:53 PM",
+              "text": "Excellent. We'll see you then, Robert. If you need to reschedule or have any questions before Tuesday, just give us a call back at eight seven seven, nine three six, twenty nine thirty three. Have a great day."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:53 PM",
+              "text": "Thanks so much, I appreciate it."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Partial Denture",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Patient Concern: Aesthetics and Comfort",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Price Sensitivity: Mid-Range",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided: 1200 to 1900 dollars",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:47 pm",
+            "duration": "6:14",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "615-429-7823",
+            "repeatCaller": "No",
+            "city": "Nashville",
+            "region": "TN",
+            "phoneType": "Mobile",
+            "displayName": "Robert Patterson",
+            "firstName": "Robert",
+            "lastName": "Patterson",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B523-7D4AC821E956",
+          "time": "1/18/26 10:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B523-7D4AC821E956",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C741-9B6FD235A7C2",
+          "time": "1/22/26 3:16 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C741-9B6FD235A7C2",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D862-4E8BC7F1D9A3",
+          "time": "1/28/26 1:41 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D862-4E8BC7F1D9A3",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro plus offer: Introduce yourself as Affordable Care's AI scheduling assistant helping build a personalized tooth-replacement quote, mention that new patients can get a free exam with X-ray or 3D scan when they book, and ask if they would like to get started.",
+        "Qualify one question at a time: Ask, one at a time, which solution they are considering (full or partial dentures, single implant, snap-in overdenture, or full-arch), how many teeth or arches are involved, their preferred material or grade (economy, custom, or premium), whether they need extractions or same-day service, their ideal timeline, and finally their ZIP code so we can confirm a nearby Affordable Dentures and Implants practice.",
+        "Estimate then book: Confirm we have a practice serving their ZIP, share a preliminary price range based on what they described, explain that an exact quote comes from an in-office consultation with a tooth-replacement specialist, propose a specific day and time, and confirm they will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Affordable_Care_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Tooth Replacement Services",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Location",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "New Patients, Offers and Financing",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Warranty\",\"question\":\"Are my new custom dentures still under warranty if a tooth chips?\",\"answer\":\"Premium and custom dentures include a limited warranty, so bring your dentures to the practice where they were made and our team will review coverage and arrange a repair or replacement.\"},{\"topic\":\"Reschedule\",\"question\":\"I need to move my denture reline appointment to next week, can you help?\",\"answer\":\"Absolutely, we can move your reline visit to a new day and time, and you will get a reminder text beforehand with the practice number to call.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you offer same-day dentures?",
+              "answer": "Yes, many of our practices have an on-site lab that can deliver immediate dentures the same day your teeth are removed. Let's book a consultation so a specialist can confirm same-day options for you."
+            },
+            {
+              "question": "How much do full dentures cost?",
+              "answer": "Pricing depends on the material grade you choose and your specific needs, so ranges vary quite a bit. The best next step is a free new patient exam where a specialist gives you an exact quote."
+            },
+            {
+              "question": "What is the difference between economy and premium dentures?",
+              "answer": "Economy dentures use a standard acrylic base with basic teeth, while premium dentures use higher-grade materials for a more lifelike look and added durability. A specialist can help you compare options during your consultation."
+            },
+            {
+              "question": "Do you do dental implants?",
+              "answer": "Yes, we offer single implants, snap-in overdentures, and full-arch implant-supported solutions. A consultation with a specialist will determine which option fits your mouth and goals."
+            },
+            {
+              "question": "What is All-on-4?",
+              "answer": "It is a permanent, non-removable full-arch bridge secured on four to six implants. Let's schedule a consultation so a specialist can evaluate whether you are a candidate."
+            },
+            {
+              "question": "Can I get a free consultation?",
+              "answer": "Yes, new patients can receive a free exam with X-ray or 3D scan and a personalized treatment plan. I can help you book that visit right now."
+            },
+            {
+              "question": "Do you pull teeth before making dentures?",
+              "answer": "Yes, our practices provide simple and surgical extractions, often before denture placement, and can sometimes place an immediate denture the same day. A specialist will confirm your plan at the consultation."
+            },
+            {
+              "question": "How long does it take to get dentures?",
+              "answer": "Timelines vary from same-day immediate dentures to a few visits for custom work. Booking a consultation lets a specialist give you an accurate timeframe."
+            },
+            {
+              "question": "Do you offer financing?",
+              "answer": "Yes, our practices offer third-party financing options to help make treatment affordable. The team can review plans with you at your consultation."
+            },
+            {
+              "question": "What are snap-in dentures?",
+              "answer": "Snap-in overdentures are removable dentures that clip onto two to four implants for added stability. A specialist can confirm if they are right for you during a consultation."
+            },
+            {
+              "question": "Can you fix or reline my current denture?",
+              "answer": "Yes, we provide relines and repairs to restore fit and fix cracks or lost teeth. Let's set up a visit so we can take a look."
+            },
+            {
+              "question": "Do you take my insurance?",
+              "answer": "Coverage varies by practice and plan, so our team can review your benefits when you come in. Let's book a consultation to go over the details."
+            },
+            {
+              "question": "What are mini implants?",
+              "answer": "Mini implants are smaller-diameter posts often used to secure lower dentures at a lower cost. A specialist can tell you if they suit your case at your appointment."
+            },
+            {
+              "question": "Where is your nearest location?",
+              "answer": "We have Affordable Dentures and Implants practices across the country. Share your ZIP code and I will help you find the closest one and book a consultation."
+            },
+            {
+              "question": "Do you replace just one missing tooth?",
+              "answer": "Yes, a single dental implant with a crown can replace one missing tooth. Book a consultation and a specialist will assess the site."
+            },
+            {
+              "question": "Are consultations really free for new patients?",
+              "answer": "New patient exams with imaging are frequently offered at no cost as part of a promotion. I can help you reserve that appointment today."
+            },
+            {
+              "question": "What is a partial denture?",
+              "answer": "A partial denture fills gaps around your remaining natural teeth using clasps or a flexible base. A specialist can design one for you after an exam."
+            },
+            {
+              "question": "Do implants hurt?",
+              "answer": "Most patients are comfortable during and after treatment thanks to modern techniques and anesthesia. A specialist can walk you through the process at your consultation."
+            },
+            {
+              "question": "Can I get dentures the same day my teeth are extracted?",
+              "answer": "Yes, immediate dentures are placed the day of extraction at practices with an on-site lab. Let's book a consultation to confirm same-day availability near you."
+            },
+            {
+              "question": "How do I get an exact price for my treatment?",
+              "answer": "An exact quote comes from an in-office exam where a specialist evaluates your mouth and treatment plan. I can schedule that consultation for you now."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule a consultation\",\"follow_up_message\":\"Great, I can reserve your free new patient exam at the Affordable Dentures and Implants practice nearest you. Does this Thursday at 10:00 AM work, and you will get a reminder text with the practice number before your visit?\"},{\"intent\":\"Request a quote\",\"follow_up_message\":\"Based on what you shared I can give you a preliminary range, but the exact quote comes from a specialist at an in-office exam. Let's book that consultation so you get an accurate number, would tomorrow afternoon suit you?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Affordable Care's AI scheduling assistant with Affordable Dentures and Implants. I can help you build a personalized tooth-replacement quote, and new patients can get a free exam with X-ray or 3D scan when they book. Would you like to get started?",
+        "goal": "Qualify the patient's tooth-replacement needs and book a free in-office consultation with a specialist at their nearest Affordable Dentures and Implants practice.",
+        "bookingType": "in-office consultation",
+        "offer": "Get a free new patient exam with X-ray or 3D scan when you book today",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "Which solution are you considering: full or partial dentures, a single implant, snap-in overdentures, or a full-arch implant option?",
+          "How many teeth or arches are involved?",
+          "Which material or grade are you leaning toward: economy, custom, or premium?",
+          "Do you also need extractions or same-day service?",
+          "What is your ideal timeline for treatment?",
+          "What is your ZIP code so I can confirm a nearby practice that serves your area?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:40 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:40 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:40 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Affordable Care",
+      "callerName": "Margaret Chen",
+      "callerPhone": "(704) 555-0142",
+      "campaign": "All-on-4 Dental Implants, Charlotte Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$18,750",
+      "googleSearch": "all on 4 dental implants near me Charlotte",
+      "websiteSearch": "full arch implant solution cost",
+      "callingWebpage": "/services/dental-implants/full-arch",
+      "products": "Implant-Supported Fixed Denture, New Patient Exam + 3D Scan",
+      "cartId": "AC-7392K",
+      "serviceable": "Yes",
+      "email": "m.chen.1967@email.com",
+      "street": "2847 Abercorn Drive",
+      "city": "Charlotte",
+      "state": "NC",
+      "zip": "28205",
+      "digitalJourney": "/home › /services › /dental-implants/full-arch › /find-location/nc/charlotte",
+      "intent": "Exploring permanent full-arch tooth replacement solution after years with dentures, seeking consultation on All-on-4 implants and financing options.",
+      "coverage": "ZIP 28205 confirmed, Charlotte serviceable",
+      "switchIntent": "High. Patient has discussed implants for 18 months, recent Facebook ad reignited interest, ready to explore cost and timeline now.",
+      "greeting": "Hi Margaret, thanks for calling Affordable Care. I see you're interested in our All-on-4 dental implant solution for a permanent full-arch replacement. I'd love to schedule a consultation with one of our specialists to go over your options and financing. Would this week or next work best for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "Affordable Care",
+      "callerName": "Robert Valdez",
+      "callerPhone": "(210) 555-0189",
+      "campaign": "Same-Day Dentures, San Antonio Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$2,485",
+      "googleSearch": "same day dentures cost San Antonio",
+      "websiteSearch": "immediate denture placement extraction",
+      "callingWebpage": "/services/dentures/immediate",
+      "products": "Immediate Same-Day Denture, Surgical Full-Mouth Extractions",
+      "cartId": "AC-5641M",
+      "serviceable": "Yes",
+      "email": "rvaldeztx@email.com",
+      "street": "1623 Wilderness Trail",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78217",
+      "digitalJourney": "/home › /services › /dentures › /immediate › /new-patients/special-offers",
+      "intent": "Needs urgent tooth extraction and same-day denture placement. Multiple broken teeth causing pain. Prefers one visit solution rather than multiple appointments.",
+      "coverage": "ZIP 78217 confirmed, San Antonio serviceable",
+      "appointment": "In-office extractions and same-day denture fitting with Dr. Martinez, Wednesday July 17, 2:00 PM",
+      "greeting": "Hi Robert, this is Dr. Martinez's team at Affordable Care. Confirming your appointment for this Wednesday at 2 PM. We'll handle your extractions and fit your new denture the same day. Reply with any questions or call us at the clinic if you need to reschedule. Excited to help you smile again!"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Affordable Care",
+      "brandDomain": "www.affordablecare.com",
+      "brandIcon": "🦷",
+      "callerPhone": "+1 (919) 555-0142",
+      "callerLocation": "Charlotte, NC",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Same-Day Dentures Near Me",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "affordable dental implants Charlotte NC",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/Services/Dental-Implants/Single-Implant",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Single Dental Implant, Implant-Retained Overdenture",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Charlotte, NC",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "new_implant_consultation",
+          "name": "Consultation, New Implant Case"
+        },
+        {
+          "id": "existing_patient_support",
+          "name": "Support, Existing Patient"
+        },
+        {
+          "id": "general_dentist_inquiry",
+          "name": "General Information, Dentist Referral"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Affordable Care. I see you're interested in dental implants. Are you looking to replace a single tooth or explore options for more extensive tooth replacement?",
+          "sigs": [],
+          "q": [
+            25,
+            40,
+            35
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, I lost a tooth a while back and I'm tired of dealing with it. I want to know if an implant makes sense for me and what it would actually cost.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "<strong>Single tooth</strong> replacement inquiry"
+            },
+            {
+              "c": "green",
+              "t": "Cost conscious, ready to explore options"
+            }
+          ],
+          "q": [
+            45,
+            35,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I completely understand. A single dental implant is a great permanent solution. Just to help route you to the right specialist, are you a patient with us already, or would this be your first visit to one of our practices?",
+          "sigs": [],
+          "q": [
+            62,
+            25,
+            13
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "First time. I don't have anyone else in the area, and I saw you do free consultations. I'm in Charlotte and I want to move forward soon.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "New patient, <strong>free consultation</strong> interested"
+            },
+            {
+              "c": "orange",
+              "t": "Charlotte NC service area confirmed"
+            }
+          ],
+          "q": [
+            85,
+            10,
+            5
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. You're in great hands. I'm connecting you now with our New Implant Consultation team at our Charlotte location. They'll walk you through the implant process, discuss pricing, and get you scheduled for your exam and 3D scan. You'll be speaking with someone in just a moment.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule my consultation (Caller)\", \"book you an appointment (Agent)\", \"get you scheduled for a free exam (Agent)\", \"come in and see the doctor (Agent)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "01/09/26 2:47 pm"
+        },
+        {
+          "name": "Agent Introduction and Branding (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Call Handling Quality] < 60 and duration > 45 sec",
+          "createdAt": "04/02/25 11:38 am",
+          "updatedAt": "12/18/25 10:05 am"
+        },
+        {
+          "name": "All-on-4 Full-Arch Interest (Product)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"all on four (Caller)\", \"full arch implants (Caller)\", \"permanent teeth in a day (Caller)\", \"fixed denture (Caller)\"])",
+          "createdAt": "05/21/25 3:22 pm",
+          "updatedAt": "01/12/26 8:59 am"
+        },
+        {
+          "name": "Competitor Mentioned (Intent)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Aspen Dental (Caller)\", \"ClearChoice (Caller)\", \"another clinic quoted me (Caller)\"])",
+          "createdAt": "06/09/25 1:47 pm",
+          "updatedAt": "12/29/25 4:14 pm"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"free consultation (Agent)\", \"come in for an exam (Agent)\", \"meet with the doctor (Agent)\", \"personalized treatment plan (Agent)\"])",
+          "createdAt": "03/28/25 10:15 am",
+          "updatedAt": "01/06/26 11:33 am"
+        },
+        {
+          "name": "Empathy and Reassurance (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Patient Empathy] < 60 and duration > 45 sec",
+          "createdAt": "04/17/25 2:05 pm",
+          "updatedAt": "01/15/26 9:41 am"
+        },
+        {
+          "name": "Financing Interest (Product)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"CareCredit (Caller)\", \"payment plan (Caller)\", \"monthly payments (Caller)\", \"financing options (Agent)\"])",
+          "createdAt": "07/03/25 8:52 am",
+          "updatedAt": "01/20/26 3:26 pm"
+        },
+        {
+          "name": "Price Sensitivity (Intent)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"too expensive (Caller)\", \"cheapest denture option (Caller)\", \"how much does it cost (Caller)\", \"can I get a discount (Caller)\"])",
+          "createdAt": "06/25/25 4:33 pm",
+          "updatedAt": "01/18/26 12:08 pm"
+        },
+        {
+          "name": "Quote Provided (Lead)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your estimate is (Agent)\", \"the price would be (Agent)\", \"that would cost per arch (Agent)\", \"out the door price (Agent)\"])",
+          "createdAt": "05/06/25 9:19 am",
+          "updatedAt": "01/22/26 10:52 am"
+        },
+        {
+          "name": "Treatment Plan Explained (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Treatment Plan Review] < 60 and duration > 45 sec",
+          "createdAt": "04/30/25 1:11 pm",
+          "updatedAt": "01/11/26 2:19 pm"
+        }
+      ]
+    }
+  }
+}

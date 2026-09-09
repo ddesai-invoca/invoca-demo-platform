@@ -1,0 +1,5375 @@
+{
+  "id": "krueger-and-richard",
+  "customerName": "Krueger & Richard",
+  "websiteUrl": "https://krueger-richard.com",
+  "brandDomain": "krueger-richard.com",
+  "networkName": "Invoca for Legal Services",
+  "industry": "Estate Planning & Business Law",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Client",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 5000,
+      "yTicks": [
+        1000,
+        2000,
+        3000,
+        4000,
+        5000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 3124
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 4587
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 4321
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 4198
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 3897
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "TX Estate Planning, Exact",
+          "marketingSearchTerm": "revocable living trust cost Texas",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/estate-planning/revocable-living-trusts?utm_source=google&utm_medium=cpc&utm_campaign=tx_estate_exact",
+          "websiteJourney": "Home / Practice Areas / Estate Planning",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Medicaid Crisis Planning, DFW",
+          "marketingSearchTerm": "how to avoid nursing home taking house",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/medicaid-elder-law/medicaid-asset-protection-trusts?utm_source=google&utm_medium=cpc&utm_campaign=medicaid_crisis_dfw",
+          "websiteJourney": "Home / Practice Areas / Medicaid & Elder Law",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Kansas Probate Attorney",
+          "marketingSearchTerm": "kansas probate lawyer",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/probate-trust-administration/kansas-probate?utm_source=google&utm_medium=cpc&utm_campaign=ks_probate",
+          "websiteJourney": "Home / Practice Areas / Probate & Trust Administration",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "TX Estate Planning, Exact",
+          "marketingSearchTerm": "estate planning attorney near me",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/estate-planning?utm_source=google&utm_medium=cpc&utm_campaign=tx_estate_exact",
+          "websiteJourney": "Home / Practice Areas / Estate Planning",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Business Succession, DFW",
+          "marketingSearchTerm": "buy-sell agreement attorney",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/business-succession/buy-sell-agreements?utm_source=google&utm_medium=cpc&utm_campaign=biz_succession_dfw",
+          "websiteJourney": "Home / Practice Areas / Business Succession",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Entity Formation, TX",
+          "marketingSearchTerm": "llc formation lawyer texas",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/entity-structure/llc-formation?utm_source=bing&utm_medium=cpc&utm_campaign=entity_formation_tx",
+          "websiteJourney": "Home / Practice Areas / Entity & Structure",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Elder Law, DFW",
+          "marketingSearchTerm": "elder law attorney dfw",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/medicaid-elder-law?utm_source=google&utm_medium=cpc&utm_campaign=elder_law_dfw",
+          "websiteJourney": "Home / Practice Areas / Medicaid & Elder Law",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Estate Tax Sunset, 2025",
+          "marketingSearchTerm": "estate tax exemption sunset 2025",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/tax-planning/estate-tax-planning?utm_source=google&utm_medium=cpc&utm_campaign=tcja_sunset",
+          "websiteJourney": "Home / Practice Areas / Tax Planning",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Kansas Medicaid Planning",
+          "marketingSearchTerm": "medicaid asset protection trust kansas",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/medicaid-elder-law/medicaid-asset-protection-trusts?utm_source=bing&utm_medium=cpc&utm_campaign=ks_medicaid",
+          "websiteJourney": "Home / Practice Areas / Medicaid & Elder Law",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Guardianship, KS",
+          "marketingSearchTerm": "guardianship attorney kansas",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/medicaid-elder-law/guardianship?utm_source=google&utm_medium=cpc&utm_campaign=guardianship_ks",
+          "websiteJourney": "Home / Practice Areas / Medicaid & Elder Law",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "K&R Answers, Elder Law FAQ",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.krueger-richard.com/answers/elder-law-faq?utm_source=organic&utm_medium=seo&utm_campaign=kr_answers_elderlaw",
+          "websiteJourney": "Home / Answers / Elder Law FAQ",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Articles, Trust Funding Guide",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.krueger-richard.com/articles/trust-funding-guide?utm_source=organic&utm_medium=seo&utm_campaign=articles_trustfunding",
+          "websiteJourney": "Home / Articles / Trust Funding Guide",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Near Me, Estate Attorney",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.krueger-richard.com/contact/schedule?utm_source=gbp&utm_medium=organic&utm_campaign=near_me_estate",
+          "websiteJourney": "Home / Contact / Schedule a Consultation",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Attorney Bio, Daniel Krueger",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.krueger-richard.com/attorneys/daniel-krueger?utm_source=organic&utm_medium=seo&utm_campaign=attorney_bio",
+          "websiteJourney": "Home / Attorneys / Daniel Krueger",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Protect What You Built",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/business-succession?utm_source=facebook&utm_medium=social&utm_campaign=protect_what_you_built",
+          "websiteJourney": "Home / Practice Areas / Business Succession",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "LinkedIn",
+          "marketingCampaign": "Advisor Partner Network",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.krueger-richard.com/contact/schedule?utm_source=linkedin&utm_medium=social&utm_campaign=advisor_partner_network",
+          "websiteJourney": "Home / Contact / Schedule a Consultation",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "One Plan, Two States",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.krueger-richard.com/about?utm_source=instagram&utm_medium=social&utm_campaign=one_plan_two_states",
+          "websiteJourney": "Home / About",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "VA Benefits, Elder Law",
+          "marketingSearchTerm": "va aid and attendance help",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/medicaid-elder-law/va-aid-attendance?utm_source=google&utm_medium=cpc&utm_campaign=va_aid_attendance",
+          "websiteJourney": "Home / Practice Areas / Medicaid & Elder Law",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "TX Probate Attorney",
+          "marketingSearchTerm": "dallas probate lawyer",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/probate-trust-administration/texas-probate?utm_source=google&utm_medium=cpc&utm_campaign=tx_probate",
+          "websiteJourney": "Home / Practice Areas / Probate & Trust Administration",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Articles, TCJA Sunset 2025",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.krueger-richard.com/articles/tcja-sunset-2025?utm_source=organic&utm_medium=seo&utm_campaign=articles_tcja",
+          "websiteJourney": "Home / Articles / TCJA Sunset 2025",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "For The Decisions That Outlast You",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/estate-planning?utm_source=facebook&utm_medium=social&utm_campaign=decisions_outlast_you",
+          "websiteJourney": "Home / Practice Areas / Estate Planning",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Protect What You Built",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.krueger-richard.com/practice-areas/entity-structure?utm_source=instagram&utm_medium=social&utm_campaign=protect_what_you_built",
+          "websiteJourney": "Home / Practice Areas / Entity & Structure",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Krueger & Richard)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "15,786"
+            },
+            {
+              "label": "New Client Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Engagement Signed (Percent)",
+              "value": "16%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$10,805,493"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "2,526"
+            },
+            {
+              "label": "Existing Client Matter (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing Question (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "General Inquiry (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Client Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Client Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "48%"
+            },
+            {
+              "label": "Outside Practice Area (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Engagement Signed (Percent)",
+              "value": "16%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Client Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Client Inquiry (Count)",
+            "values": [
+              1842,
+              3124,
+              2987,
+              2876,
+              2431
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              1043,
+              1789,
+              1672,
+              1588,
+              1485
+            ]
+          },
+          {
+            "name": "Outside Practice Area (Count)",
+            "values": [
+              267,
+              438,
+              412,
+              401,
+              376
+            ]
+          },
+          {
+            "name": "Engagement Signed (Count)",
+            "values": [
+              351,
+              596,
+              558,
+              542,
+              479
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Engagement Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 15786,
+          "rows": [
+            {
+              "name": "Paid Search (Google Ads)",
+              "metrics": [
+                "5,842",
+                "34%",
+                "12%",
+                "$2,964,918"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "4,187",
+                "37%",
+                "15%",
+                "$2,656,204"
+              ]
+            },
+            {
+              "name": "Google Business Profile",
+              "metrics": [
+                "2,913",
+                "40%",
+                "18%",
+                "$2,216,337"
+              ]
+            },
+            {
+              "name": "Advisor Referral",
+              "metrics": [
+                "1,624",
+                "44%",
+                "23%",
+                "$1,577,681"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "1,220",
+                "48%",
+                "27%",
+                "$1,390,353"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Engagement Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 15786,
+          "rows": [
+            {
+              "name": "Paid Search (cpc)",
+              "metrics": [
+                "5,517",
+                "33%",
+                "12%",
+                "$2,805,159"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "4,392",
+                "36%",
+                "15%",
+                "$2,792,447"
+              ]
+            },
+            {
+              "name": "Local Services Ads",
+              "metrics": [
+                "2,861",
+                "39%",
+                "18%",
+                "$2,182,261"
+              ]
+            },
+            {
+              "name": "Email Nurture",
+              "metrics": [
+                "1,738",
+                "43%",
+                "22%",
+                "$1,618,687"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "1,278",
+                "47%",
+                "26%",
+                "$1,406,939"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Engagement Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 7397,
+          "rows": [
+            {
+              "name": "TX Estate Planning Exact",
+              "metrics": [
+                "2,417",
+                "35%",
+                "13%",
+                "$1,343,218"
+              ]
+            },
+            {
+              "name": "Medicaid Crisis Planning DFW",
+              "metrics": [
+                "1,884",
+                "38%",
+                "16%",
+                "$1,288,467"
+              ]
+            },
+            {
+              "name": "Kansas Probate Attorney",
+              "metrics": [
+                "1,356",
+                "41%",
+                "19%",
+                "$1,101,254"
+              ]
+            },
+            {
+              "name": "Near Me Estate Attorney",
+              "metrics": [
+                "998",
+                "45%",
+                "23%",
+                "$981,096"
+              ]
+            },
+            {
+              "name": "Protect What You Built",
+              "metrics": [
+                "742",
+                "49%",
+                "28%",
+                "$888,362"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Engagement Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 5949,
+          "rows": [
+            {
+              "name": "estate planning attorney near me",
+              "metrics": [
+                "1,982",
+                "34%",
+                "12%",
+                "$1,016,573"
+              ]
+            },
+            {
+              "name": "medicaid asset protection trust kansas",
+              "metrics": [
+                "1,437",
+                "37%",
+                "15%",
+                "$921,714"
+              ]
+            },
+            {
+              "name": "dallas probate lawyer",
+              "metrics": [
+                "1,089",
+                "40%",
+                "18%",
+                "$837,926"
+              ]
+            },
+            {
+              "name": "revocable living trust cost texas",
+              "metrics": [
+                "824",
+                "44%",
+                "22%",
+                "$775,041"
+              ]
+            },
+            {
+              "name": "how to avoid nursing home taking house",
+              "metrics": [
+                "617",
+                "48%",
+                "27%",
+                "$712,238"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Engagement Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Estate Planning",
+              "metrics": [
+                "5,142",
+                "34%",
+                "13%",
+                "$2,798,412"
+              ]
+            },
+            {
+              "name": "Medicaid & Elder Law",
+              "metrics": [
+                "4,013",
+                "36%",
+                "14.5%",
+                "$2,691,255"
+              ]
+            },
+            {
+              "name": "Probate & Trust Administration",
+              "metrics": [
+                "2,987",
+                "37%",
+                "16%",
+                "$1,884,637"
+              ]
+            },
+            {
+              "name": "Business Succession",
+              "metrics": [
+                "2,146",
+                "39%",
+                "20%",
+                "$2,289,704"
+              ]
+            },
+            {
+              "name": "Entity & Structure",
+              "metrics": [
+                "1,498",
+                "41%",
+                "24%",
+                "$1,141,485"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Engagement Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 15786,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "6,238",
+                "33%",
+                "13%",
+                "$3,421,884"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "4,127",
+                "35%",
+                "15%",
+                "$2,701,455"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "2,564",
+                "37%",
+                "17%",
+                "$1,912,338"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "1,743",
+                "39%",
+                "20%",
+                "$1,502,716"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "1,114",
+                "42%",
+                "28%",
+                "$1,267,100"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Engagement Signed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Estate Planning",
+            "values": [
+              118,
+              142,
+              151,
+              138,
+              128
+            ]
+          },
+          {
+            "name": "Medicaid & Elder Law",
+            "values": [
+              101,
+              118,
+              126,
+              124,
+              113
+            ]
+          },
+          {
+            "name": "Probate & Trust Administration",
+            "values": [
+              84,
+              97,
+              104,
+              99,
+              94
+            ]
+          },
+          {
+            "name": "Business Succession",
+            "values": [
+              74,
+              86,
+              94,
+              91,
+              84
+            ]
+          },
+          {
+            "name": "Entity & Structure",
+            "values": [
+              62,
+              71,
+              79,
+              76,
+              72
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 15,786 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Eleanor Whitfield called the Texas office to ask about a Revocable Living Trust Package for herself and her husband. Rosey walked her through the trust funding and pour-over will components and confirmed pricing. Eleanor scheduled a consultation with Daniel Krueger for the following week.",
+          "date": "Feb 4, 10:18 AM",
+          "agent": "Rosey",
+          "duration": "2m 40s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Harold Benavidez called about protecting his mother's home from nursing home costs and asked about a Medicaid asset protection trust in Kansas. Lila explained the lookback analysis and MAPT structuring clearly and answered his questions. He booked a consultation to review the family's assets.",
+          "date": "Mar 12, 1:47 PM",
+          "agent": "Lila",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 9,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Margaret Colson called to understand the probate process after her father passed in Dallas. Oscar explained independent probate administration in Texas and the creditor notice steps and reassured her about timelines. She said she would gather the paperwork and call back, so no consultation was booked yet.",
+          "date": "Apr 8, 3:22 PM",
+          "agent": "Oscar",
+          "duration": "2m 15s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Trevor Nakashima called as a new client wanting to form an LLC for his growing contracting business in Texas. Mary collected his full contact details, business name, and structure preferences, then explained the Texas Series LLC option. She scheduled his consultation with Marcus Richard and confirmed the intake by email.",
+          "date": "Jan 22, 11:05 AM",
+          "agent": "Mary",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 72,
+          "summary": "Priya Raman called about a buy-sell agreement for her two-partner firm and asked how trigger and valuation mechanics work. Lee outlined the design and funding approach and the typical fee range. Priya scheduled a consultation to move forward with the partners.",
+          "date": "May 6, 9:41 AM",
+          "agent": "Lee",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Douglas Ferraro called with a billing question about his trust funding and re-titling invoice, saying two charges looked duplicated. Sue reviewed the account and explained the line items but could not resolve the discrepancy on the call. She opened a ticket for the billing team to follow up.",
+          "date": "Jun 15, 4:09 PM",
+          "agent": "Sue",
+          "duration": "2m 04s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 64,
+          "summary": "Sandra Ellison called about a simple will and powers of attorney bundle for herself before an upcoming surgery. Mike explained the durable power of attorney and healthcare directive components. She booked a consultation for later that week.",
+          "date": "Feb 19, 2:55 PM",
+          "agent": "Mike",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 60,
+          "summary": "Raymond Kubiak called to check the status of his Kansas probate administration filing that felt delayed. Jennifer looked up the matter and explained it was awaiting a court date, which frustrated him slightly. No new consultation was needed since he is an existing client.",
+          "date": "Jul 2, 10:33 AM",
+          "agent": "Jennifer",
+          "duration": "1m 46s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 56,
+          "summary": "Gloria Amundsen called in a panic about her husband's sudden nursing home admission and asked about Medicaid crisis planning. Rose calmed her down and explained the spousal protection options and next steps. Gloria scheduled an urgent consultation for the following morning.",
+          "date": "Aug 14, 8:27 AM",
+          "agent": "Rose",
+          "duration": "3m 20s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 21,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 52,
+          "summary": "Vincent Ortega called complaining that his estate planning documents were taking longer than promised to finalize. Oscar apologized and checked the drafting queue but could not give a firm completion date. Vincent stayed unhappy and asked for a callback from the attorney.",
+          "date": "Sep 9, 1:12 PM",
+          "agent": "Oscar",
+          "duration": "2m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 48,
+          "summary": "Bethany Sculley called to cancel an upcoming consultation because she decided to postpone her estate planning. Lila confirmed the cancellation and offered to reschedule later, which the caller declined for now. No new booking resulted from the call.",
+          "date": "Mar 27, 3:48 PM",
+          "agent": "Lila",
+          "duration": "1m 21s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 44,
+          "summary": "Curtis Delacroix called upset that his LLC formation paperwork listed the wrong registered agent address. Lee acknowledged the error and said the correction would need to be refiled with the state. The caller remained irritated about the delay and extra time involved.",
+          "date": "Oct 3, 11:39 AM",
+          "agent": "Lee",
+          "duration": "2m 09s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "An unidentified caller reached the Kansas line after business hours and left a brief voicemail asking about guardianship for an elderly parent. The message rolled to voicemail with no agent available. A callback was queued for the elder law team.",
+          "date": "Jun 28, 6:52 PM",
+          "agent": "No Agent",
+          "duration": "0m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Nadia Prewitt called frustrated that a signed will and directive package she expected by mail had not arrived. Jennifer searched shipping records but could not confirm the tracking, which upset the caller further. The issue was escalated without resolution on the call.",
+          "date": "May 21, 4:31 PM",
+          "agent": "Jennifer",
+          "duration": "1m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Walter Kozlowski called angry about an unexpected retainer charge on his card for probate work he thought was quoted lower. Mike tried to explain the fee agreement but the caller repeatedly interrupted and demanded a refund. The call ended tensely with a dispute logged for management review.",
+          "date": "Jul 18, 5:07 PM",
+          "agent": "Mike",
+          "duration": "2m 51s",
+          "scorecards": 7,
+          "comments": 2,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "trust",
+        "medicaid",
+        "probate",
+        "consultation",
+        "llc",
+        "will"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 34s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Service Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Estate Planning Scope",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Next Steps",
+          "points": "0/10",
+          "status": "unmet"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller identified as new client",
+        "Mentioned estate planning concerns",
+        "Family with minor children",
+        "Owns property in Texas",
+        "Expressed urgency about will creation",
+        "Caller asked about revocable living trust",
+        "Consultation scheduled successfully",
+        "Agent confirmed callback availability",
+        "Caller provided full legal name",
+        "Agent offered multiple appointment slots",
+        "Caller accepted initial consultation date",
+        "Expressed concern about Medicaid planning",
+        "Showed interest in bundled services"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Agent did not explain trust funding process",
+        "Caller did not confirm spousal coordination needs",
+        "Agent missed opportunity to identify business assets",
+        "No discussion of power of attorney documents",
+        "Caller did not provide asset range estimate",
+        "Agent did not mention probate administration",
+        "Pricing expectations were not set",
+        "Guardianship needs for minors not explored",
+        "No mention of Texas Series LLC considerations",
+        "Caller did not disclose prior legal documents",
+        "Agent did not confirm two-state coordination"
+      ],
+      "naSignals": [
+        "Trust administration review",
+        "Probate claim filing status",
+        "Medicaid crisis intervention",
+        "Previous estate tax return filed",
+        "Buy-sell agreement existing trigger",
+        "VA Aid and Attendance application status",
+        "Prior guardianship proceedings"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller is a new parent concerned about creating an estate plan and revocable living trust to protect their minor children and Texas property. They want to ensure guardianship and asset protection decisions are documented."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects to schedule an initial consultation to discuss estate planning options, learn about trust structures, and understand how Krueger and Richard can coordinate planning across their family and assets. They seek clarity on the process and timeline."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have captured the caller's email address and explained the scope of the initial consultation, including what documents will be reviewed and what outcomes to expect from the first meeting."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Krueger and Richard, Attorneys at Law. This is Marcus Bell speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus. I found your firm online and I'm looking for help with estate planning. My wife and I just had our second child and we realize we need to get our wills and trusts set up properly."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:44",
+          "text": "Congratulations on the new addition to your family. That's a great reason to get your estate plan in order. I'd be happy to help. Can I start by getting your full name, please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:54",
+          "text": "Of course. It's David Christopher Whitmore."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:02",
+          "text": "Thank you, David. And just to confirm, are you calling about setting up a revocable living trust, a will, or both documents for your family?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:14",
+          "text": "Ideally both. I've read a bit about revocable living trusts avoiding probate, and I want to make sure my kids are protected if something happens to me or my wife."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:28",
+          "text": "That makes sense. We can absolutely help with a trust and will package. Are you and your family located in Texas, Kansas, or do you span both states?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:40",
+          "text": "We're in Dallas, so Texas. Our property is here, our jobs are here. Everything is in Texas right now."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:50",
+          "text": "Perfect. Dallas is right in our primary service area. Now, before I get your contact information to schedule your consultation, I want to make sure I understand your situation. Do you have any business interests or other significant assets beyond your home and personal property?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:08",
+          "text": "We have a home we just bought, and I have a small side consulting business, but nothing huge. I'm mostly concerned about the trust for the house and making sure our guardianship wishes are clear for the kids."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:26",
+          "text": "Great. That helps me understand the scope. Let me get your phone number so we can schedule your consultation."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:34",
+          "text": "Sure, it's ****-688-9142."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:44",
+          "text": "Thank you. I have that down. I'm going to get you scheduled with Daniel or myself for a consultation. We have availability this Friday at 10 AM or Thursday at 2 PM. Which works better for your schedule?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:58",
+          "text": "Thursday at 2 PM works perfectly for me."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:08",
+          "text": "Excellent. I've scheduled you for Thursday, October 25th at 2 PM here in our Dallas office. You'll receive a confirmation shortly. Is there anything else I can help you with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:22",
+          "text": "That's great. No, I think that covers everything for now. Thank you."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:30",
+          "text": "You're welcome, David. We look forward to meeting with you on Thursday. Thank you for choosing Krueger and Richard."
+        }
+      ],
+      "aiSummary": "David Whitmore, a new parent from Dallas, called to initiate estate planning services for his growing family. He expressed concerns about creating a revocable living trust and will to protect his two children and their home, and also mentioned having a small consulting business. Marcus scheduled David for a consultation on Thursday at 2 PM at the firm's Dallas office and confirmed his phone number, though the email address was not captured during the call.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus Great structure and warm tone throughout this intake call. You qualified David's needs clearly and confirmed our two-state service area, which helped him understand our firm's scope. Two coaching notes for next time: (1) Ask for the email address before closing so we have a complete record for the confirmation and any pre-consultation materials we send, and (2) take 30 seconds at the end to briefly explain what David should bring or expect during the Thursday consultation, such as asset documents or family tree. This sets expectations and reduces no-shows. Keep up the solid execution on your consultation bookings."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "15,786"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$684.50"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$10,805,493"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "9,624"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "61%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "5,683"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "36%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "6,162"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "39%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Social Media",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Referral",
+                "value": 48,
+                "display": "48%"
+              },
+              {
+                "name": "Google Business Profile",
+                "value": 39,
+                "display": "39%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 33,
+                "display": "33%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google Ads",
+                  "6,247",
+                  "26%",
+                  "$4,213,662"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "4,118",
+                  "33%",
+                  "$2,847,119"
+                ]
+              },
+              {
+                "cells": [
+                  "Google Business Profile",
+                  "2,946",
+                  "39%",
+                  "$1,982,340"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "1,673",
+                  "48%",
+                  "$1,148,772"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "802",
+                  "58%",
+                  "$613,600"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 6891,
+                "display": "6,891"
+              },
+              {
+                "name": "Organic",
+                "value": 4002,
+                "display": "4,002"
+              },
+              {
+                "name": "Local Listing",
+                "value": 2417,
+                "display": "2,417"
+              },
+              {
+                "name": "Email",
+                "value": 1548,
+                "display": "1,548"
+              },
+              {
+                "name": "Referral",
+                "value": 928,
+                "display": "928"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "6,891",
+                  "28%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "4,002",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "Local Listing",
+                  "2,417",
+                  "40%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "1,548",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "928",
+                  "58%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 2500,
+            "axisTicks": [
+              0,
+              500,
+              1000,
+              1500,
+              2000,
+              2500
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "TX Estate Planning Exact",
+                "value": 2214,
+                "display": "2,214"
+              },
+              {
+                "name": "Medicaid Crisis Planning DFW",
+                "value": 1687,
+                "display": "1,687"
+              },
+              {
+                "name": "Kansas Probate Attorney",
+                "value": 1342,
+                "display": "1,342"
+              },
+              {
+                "name": "Near Me Estate Attorney",
+                "value": 998,
+                "display": "998"
+              },
+              {
+                "name": "TCJA Sunset 2025",
+                "value": 651,
+                "display": "651"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "TX Estate Planning Exact",
+                  "2,214",
+                  "29%",
+                  "$1,514,220"
+                ]
+              },
+              {
+                "cells": [
+                  "Medicaid Crisis Planning DFW",
+                  "1,687",
+                  "35%",
+                  "$1,183,470"
+                ]
+              },
+              {
+                "cells": [
+                  "Kansas Probate Attorney",
+                  "1,342",
+                  "41%",
+                  "$947,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Near Me Estate Attorney",
+                  "998",
+                  "53%",
+                  "$712,650"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 2000,
+            "axisTicks": [
+              0,
+              500,
+              1000,
+              1500,
+              2000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "estate planning attorney near me",
+                "value": 1842,
+                "display": "1,842"
+              },
+              {
+                "name": "revocable living trust cost texas",
+                "value": 1318,
+                "display": "1,318"
+              },
+              {
+                "name": "medicaid asset protection trust kansas",
+                "value": 1047,
+                "display": "1,047"
+              },
+              {
+                "name": "dallas probate lawyer",
+                "value": 812,
+                "display": "812"
+              },
+              {
+                "name": "estate tax exemption sunset 2025",
+                "value": 559,
+                "display": "559"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "estate planning attorney near me",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "revocable living trust cost texas",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "medicaid asset protection trust kansas",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "dallas probate lawyer",
+                  "56%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Estate Planning",
+              "5,842",
+              "30%",
+              "68%"
+            ]
+          },
+          {
+            "cells": [
+              "Medicaid & Elder Law",
+              "4,318",
+              "37%",
+              "62%"
+            ]
+          },
+          {
+            "cells": [
+              "Business Succession",
+              "2,914",
+              "44%",
+              "55%"
+            ]
+          },
+          {
+            "cells": [
+              "Probate & Trust Administration",
+              "1,872",
+              "57%",
+              "49%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Dallas TX Office",
+              "6,124",
+              "512",
+              "5%",
+              "31%"
+            ]
+          },
+          {
+            "cells": [
+              "Frisco TX Office",
+              "4,287",
+              "348",
+              "4%",
+              "35%"
+            ]
+          },
+          {
+            "cells": [
+              "Wichita KS Office",
+              "3,218",
+              "247",
+              "6%",
+              "40%"
+            ]
+          },
+          {
+            "cells": [
+              "Overland Park KS Office",
+              "2,157",
+              "156",
+              "3%",
+              "48%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              612,
+              548,
+              571,
+              559,
+              557
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              502,
+              478,
+              491,
+              468,
+              479
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              418,
+              392,
+              405,
+              401,
+              397
+            ]
+          },
+          {
+            "name": "Needs Spouse Approval",
+            "values": [
+              318,
+              302,
+              311,
+              304,
+              307
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              268,
+              251,
+              259,
+              254,
+              251
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "6,314"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Engagement Signed (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$6,159,131"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Engagement Signed (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$412,847"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Engagement Signed (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$687,920"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Engagement Signed (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$536,188"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Engagement Signed (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$528,674"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Engagement Signed (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,847,291"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Engagement Signed (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,146,211"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Engagement Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 7892,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "2,847",
+                "58%",
+                "29%",
+                "$1,412,883"
+              ]
+            },
+            {
+              "name": "Google Business Profile",
+              "metrics": [
+                "1,563",
+                "54%",
+                "32%",
+                "$987,541"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "1,128",
+                "59%",
+                "35%",
+                "$748,220"
+              ]
+            },
+            {
+              "name": "Email Referral Network",
+              "metrics": [
+                "512",
+                "61%",
+                "38%",
+                "$627,814"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "264",
+                "63%",
+                "41%",
+                "$382,673"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Engagement Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 7814,
+          "rows": [
+            {
+              "name": "Voice Call",
+              "metrics": [
+                "2,956",
+                "55%",
+                "28%",
+                "$1,394,752"
+              ]
+            },
+            {
+              "name": "Lead Form Submission",
+              "metrics": [
+                "1,847",
+                "57%",
+                "34%",
+                "$1,636,955"
+              ]
+            },
+            {
+              "name": "SMS Message",
+              "metrics": [
+                "1,204",
+                "61%",
+                "37%",
+                "$1,089,442"
+              ]
+            },
+            {
+              "name": "Website Chat",
+              "metrics": [
+                "648",
+                "62%",
+                "40%",
+                "$892,637"
+              ]
+            },
+            {
+              "name": "Social Message",
+              "metrics": [
+                "325",
+                "64%",
+                "43%",
+                "$711,345"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Engagement Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 7891,
+          "rows": [
+            {
+              "name": "Protect What You Built",
+              "metrics": [
+                "1,684",
+                "54%",
+                "26%",
+                "$879,312"
+              ]
+            },
+            {
+              "name": "TCJA Sunset 2025 Awareness",
+              "metrics": [
+                "1,247",
+                "56%",
+                "31%",
+                "$744,189"
+              ]
+            },
+            {
+              "name": "Estate Planning Essentials",
+              "metrics": [
+                "987",
+                "59%",
+                "36%",
+                "$612,847"
+              ]
+            },
+            {
+              "name": "Medicaid Crisis Planning DFW",
+              "metrics": [
+                "742",
+                "62%",
+                "39%",
+                "$591,283"
+              ]
+            },
+            {
+              "name": "Business Succession Planning",
+              "metrics": [
+                "411",
+                "65%",
+                "43%",
+                "$475,821"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Engagement Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 7923,
+          "rows": [
+            {
+              "name": "estate planning attorney near me",
+              "metrics": [
+                "1,563",
+                "53%",
+                "27%",
+                "$748,291"
+              ]
+            },
+            {
+              "name": "revocable living trust cost Texas",
+              "metrics": [
+                "894",
+                "57%",
+                "32%",
+                "$612,954"
+              ]
+            },
+            {
+              "name": "Medicaid asset protection trust Kansas",
+              "metrics": [
+                "742",
+                "59%",
+                "35%",
+                "$589,124"
+              ]
+            },
+            {
+              "name": "how to avoid nursing home taking house",
+              "metrics": [
+                "687",
+                "62%",
+                "39%",
+                "$628,741"
+              ]
+            },
+            {
+              "name": "Dallas probate lawyer",
+              "metrics": [
+                "509",
+                "65%",
+                "42%",
+                "$512,387"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Engagement Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Revocable Living Trust Package",
+              "metrics": [
+                "1,847",
+                "58%",
+                "29%",
+                "$1,384,219"
+              ]
+            },
+            {
+              "name": "Medicaid Crisis Planning",
+              "metrics": [
+                "1,204",
+                "61%",
+                "37%",
+                "$1,089,442"
+              ]
+            },
+            {
+              "name": "Business Succession Plan",
+              "metrics": [
+                "1,128",
+                "59%",
+                "35%",
+                "$742,581"
+              ]
+            },
+            {
+              "name": "Estate Tax Planning",
+              "metrics": [
+                "756",
+                "63%",
+                "41%",
+                "$925,647"
+              ]
+            },
+            {
+              "name": "LLC Entity Formation",
+              "metrics": [
+                "379",
+                "68%",
+                "44%",
+                "$617,242"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Engagement Signed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Revocable Living Trust Package",
+            "values": [
+              159,
+              218,
+              198,
+              265,
+              276
+            ]
+          },
+          {
+            "name": "Medicaid Crisis Planning",
+            "values": [
+              142,
+              187,
+              209,
+              243,
+              265
+            ]
+          },
+          {
+            "name": "Business Succession Plan",
+            "values": [
+              118,
+              156,
+              174,
+              201,
+              225
+            ]
+          },
+          {
+            "name": "Estate Tax Planning",
+            "values": [
+              107,
+              154,
+              187,
+              228,
+              280
+            ]
+          },
+          {
+            "name": "LLC Entity Formation",
+            "values": [
+              85,
+              121,
+              143,
+              163,
+              207
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "367"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,843,562"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "31"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$178,342"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              72,
+              78,
+              74,
+              81,
+              76,
+              79,
+              73,
+              75,
+              82,
+              77,
+              80,
+              74,
+              78,
+              81,
+              76,
+              79,
+              82,
+              75,
+              78,
+              81,
+              74,
+              77,
+              80,
+              76,
+              79,
+              183,
+              187,
+              174,
+              191,
+              178,
+              185,
+              189,
+              176,
+              188,
+              181,
+              194,
+              177,
+              186,
+              179,
+              192,
+              184,
+              171,
+              188,
+              180,
+              193,
+              177,
+              186,
+              182,
+              189
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,168"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "716"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "698"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Revocable Living Trust Planning",
+            "values": [
+              8,
+              11,
+              9,
+              2,
+              12,
+              7
+            ]
+          },
+          {
+            "name": "Medicaid Asset Protection",
+            "values": [
+              6,
+              9,
+              7,
+              1,
+              10,
+              5
+            ]
+          },
+          {
+            "name": "Business Succession Planning",
+            "values": [
+              7,
+              10,
+              8,
+              3,
+              11,
+              6
+            ]
+          },
+          {
+            "name": "Estate Tax Exemption Sunset Planning",
+            "values": [
+              5,
+              8,
+              6,
+              2,
+              9,
+              4
+            ]
+          },
+          {
+            "name": "Probate and Trust Administration",
+            "values": [
+              4,
+              6,
+              5,
+              1,
+              7,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "14,523"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "10,103"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Booked (Count)",
+            "value": "5,683"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$10,805,493"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Patricia Domingo",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Kevin O'Neill",
+              "value": 176,
+              "display": "176"
+            },
+            {
+              "name": "Sandra Kowalski",
+              "value": 247,
+              "display": "247"
+            },
+            {
+              "name": "James Whitmore",
+              "value": 203,
+              "display": "203"
+            },
+            {
+              "name": "Rebecca Summers",
+              "value": 185,
+              "display": "185"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Marcus Chen",
+            "values": [
+              147,
+              162,
+              178,
+              198,
+              215
+            ]
+          },
+          {
+            "name": "Ava Patel",
+            "values": [
+              156,
+              168,
+              179,
+              194,
+              211
+            ]
+          },
+          {
+            "name": "David Rossi",
+            "values": [
+              134,
+              151,
+              167,
+              182,
+              209
+            ]
+          },
+          {
+            "name": "Elena Vasquez",
+            "values": [
+              143,
+              159,
+              174,
+              193,
+              218
+            ]
+          },
+          {
+            "name": "Sophia Nakamura",
+            "values": [
+              139,
+              154,
+              169,
+              188,
+              212
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Patricia Domingo",
+              "value": 54.3,
+              "display": "54.3%"
+            },
+            {
+              "name": "Kevin O'Neill",
+              "value": 56.7,
+              "display": "56.7%"
+            },
+            {
+              "name": "Sandra Kowalski",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "James Whitmore",
+              "value": 58.9,
+              "display": "58.9%"
+            },
+            {
+              "name": "Rebecca Summers",
+              "value": 55.4,
+              "display": "55.4%"
+            },
+            {
+              "name": "Marcus Tran",
+              "value": 61.2,
+              "display": "61.2%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Patricia Domingo",
+                "54.3%",
+                "28%",
+                "$739,648",
+                "1,387"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin O'Neill",
+                "56.7%",
+                "29%",
+                "$763,919",
+                "1,419"
+              ]
+            },
+            {
+              "cells": [
+                "Sandra Kowalski",
+                "52.1%",
+                "26%",
+                "$704,842",
+                "1,396"
+              ]
+            },
+            {
+              "cells": [
+                "James Whitmore",
+                "58.9%",
+                "31%",
+                "$820,556",
+                "1,448"
+              ]
+            },
+            {
+              "cells": [
+                "Rebecca Summers",
+                "55.4%",
+                "27%",
+                "$721,673",
+                "1,407"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Tran",
+                "61.2%",
+                "32%",
+                "$843,719",
+                "1,421"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 92.4,
+              "display": "92.4%"
+            },
+            {
+              "name": "Ava Patel",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "David Rossi",
+              "value": 91.2,
+              "display": "91.2%"
+            },
+            {
+              "name": "Elena Vasquez",
+              "value": 93.1,
+              "display": "93.1%"
+            },
+            {
+              "name": "Sophia Nakamura",
+              "value": 90.5,
+              "display": "90.5%"
+            },
+            {
+              "name": "Jonathan Blackwell",
+              "value": 87.8,
+              "display": "87.8%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "92.4%",
+                "64%",
+                "$1,710,841",
+                "1,537"
+              ]
+            },
+            {
+              "cells": [
+                "Ava Patel",
+                "89.7%",
+                "61%",
+                "$1,594,672",
+                "1,508"
+              ]
+            },
+            {
+              "cells": [
+                "David Rossi",
+                "91.2%",
+                "63%",
+                "$1,672,948",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Elena Vasquez",
+                "93.1%",
+                "66%",
+                "$1,744,823",
+                "1,542"
+              ]
+            },
+            {
+              "cells": [
+                "Sophia Nakamura",
+                "90.5%",
+                "62%",
+                "$1,633,754",
+                "1,519"
+              ]
+            },
+            {
+              "cells": [
+                "Jonathan Blackwell",
+                "87.8%",
+                "58%",
+                "$1,515,867",
+                "1,429"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Booked (Count)",
+        "rightMax": 300,
+        "rightTicks": [
+          0,
+          75,
+          150,
+          225,
+          300
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 210
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 202
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 188
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 179
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 156
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 164
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 181
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 188
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 210
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 203
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 183
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 177
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 157
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 162
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 185
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 191
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 208
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 204
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 179
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 173
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 160
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 161
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 188
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 195
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 205
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 205
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 177
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 169
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 162
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 162
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 199
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 500000,
+        "rightTicks": [
+          0,
+          166666.66666666666,
+          333333.3333333333,
+          500000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 400550
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 383909
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 357497
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 341121
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 297008
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 311702
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 344329
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 357902
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 399063
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 386916
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 348482
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 336814
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 299708
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 308928
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 352527
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 363269
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 395347
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 389194
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 341281
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 330456
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 304206
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 307395
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 358603
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 370490
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 390325
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 389757
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 336398
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 322551
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 309481
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 307989
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 362295
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "15,786"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "1,263"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "947"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "412",
+                "91%",
+                "88%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James Hendricks",
+                "523",
+                "88%",
+                "85%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Gonzalez",
+                "338",
+                "88%",
+                "86%",
+                "87%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "15,786 calls",
+      "pagerLabel": "1 of 1,579",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:22 am",
+          "id": "A3C1-6B29D4E71F08"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "7E90-33AC1populate0"
+        },
+        {
+          "time": "1/14/26 11:08 am",
+          "id": "2D4F-9A17C0E6B583"
+        },
+        {
+          "time": "1/16/26 12:33 pm",
+          "id": "B8E2-4F71A9D30C67"
+        },
+        {
+          "time": "1/20/26 1:19 pm",
+          "id": "6C05-E28B4711DA9F"
+        },
+        {
+          "time": "1/22/26 2:44 pm",
+          "id": "91AF-70D3E5182B4C"
+        },
+        {
+          "time": "1/26/26 3:27 pm",
+          "id": "4B73-C1A6F9082E5D"
+        },
+        {
+          "time": "1/28/26 4:52 pm",
+          "id": "D0E8-58291BAC37F6"
+        },
+        {
+          "time": "1/30/26 5:31 pm",
+          "id": "3F6A-B7420E9D1C85"
+        }
+      ],
+      "duration": "2:38",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling Krueger and Richard, Attorneys at Law, this is Bethany. How can I help you today?",
+          "highlights": [
+            "Thank you for calling Krueger and Richard",
+            "this is Bethany"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Bethany, my name is Gerald Hoffman. My wife and I are getting our affairs in order and we think we need some kind of living trust set up.",
+          "highlights": [
+            "Gerald Hoffman",
+            "living trust"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "That is a great place to start, Gerald. Is this the first time you and your wife are putting an estate plan together?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:24",
+          "text": "Yes, first time. We just have simple wills from years ago, but we own a home here in Plano and a rental property, so it feels like we need more than that now.",
+          "highlights": [
+            "first time",
+            "own a home here in Plano and a rental property"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:34",
+          "text": "You are right that a revocable living trust would fit that situation well. It helps your family avoid probate on both properties and keeps everything coordinated in one plan.",
+          "highlights": [
+            "revocable living trust",
+            "avoid probate"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:44",
+          "text": "Okay. Now before we go too far, what does something like that run? I want to keep it manageable, we are on a fixed income these days.",
+          "highlights": [
+            "what does something like that run",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:53",
+          "text": "Completely understand. Our Revocable Living Trust Package is a flat fee, typically between two thousand five hundred and four thousand five hundred dollars depending on the assets involved, so there are no surprise hourly charges.",
+          "highlights": [
+            "flat fee",
+            "no surprise hourly charges"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:04",
+          "text": "That is fair. Honestly the guys down the street quoted me something similar but they wanted to bill by the hour, and that made me nervous.",
+          "highlights": [
+            "the guys down the street quoted me something similar",
+            "bill by the hour"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:13",
+          "text": "That is a common concern. With us the price is set up front, and it includes your pour-over wills and coordinating the trust funding so the properties are actually re-titled into the trust.",
+          "highlights": [
+            "price is set up front",
+            "trust funding"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:24",
+          "text": "Good. One more thing, my wife has an aging mother we may need to help with. Is that something you handle too, the nursing home side of things?",
+          "highlights": [
+            "aging mother",
+            "the nursing home side of things"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:34",
+          "text": "We do. That falls under our Medicaid and elder law practice, including asset protection and crisis planning. We can flag it during your consultation and one of our attorneys can walk through the options.",
+          "highlights": [
+            "Medicaid and elder law",
+            "asset protection and crisis planning"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:45",
+          "text": "That would be helpful. I would need to talk it over with my wife before we sign anything though, I do not want to feel locked in on day one.",
+          "highlights": [
+            "talk it over with my wife",
+            "do not want to feel locked in"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:54",
+          "text": "Absolutely, the initial consultation is just a conversation, no commitment. You both come in, we review your situation, and you decide from there.",
+          "highlights": [
+            "no commitment"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:02",
+          "text": "That sounds reasonable. Can we get something on the calendar?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:07",
+          "text": "Of course. I have Daniel Krueger available Thursday at ten in the morning at our Texas office. Would that work for you both?",
+          "highlights": [
+            "Daniel Krueger available Thursday at ten"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:14",
+          "text": "Thursday at ten works for us.",
+          "highlights": [
+            "Thursday at ten works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:18",
+          "text": "Wonderful, I have you scheduled. Can I get the best phone number and an email to send the confirmation?",
+          "highlights": [
+            "I have you scheduled"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:24",
+          "text": "Sure, it is 972-555-0148, and my email is gerald.hoffman at gmail dot com.",
+          "highlights": [
+            "972-555-0148"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:30",
+          "text": "Perfect, you are all set for Thursday at ten with Daniel. I will note the elder law question so he is ready for it.",
+          "highlights": [
+            "all set for Thursday at ten"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:34",
+          "text": "Thank you Bethany, this was easy.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:37",
+          "text": "My pleasure, Gerald. We look forward to seeing you both. Have a wonderful day.",
+          "highlights": [
+            "look forward to seeing you both",
+            "Have a wonderful day"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Revocable Living Trust",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Intent: Medicaid & Elder Law",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Pricing Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "New prospect Gerald Hoffman called on behalf of himself and his wife to set up a first-time estate plan covering their Plano home and a rental property. Agent Bethany recommended the flat-fee Revocable Living Trust Package with pour-over wills and trust funding, and addressed his budget, an hourly-billing competitor, and his wish to consult his wife before committing. She also flagged a Medicaid and elder law need for his mother-in-law. A no-commitment consultation was scheduled with Daniel Krueger for Thursday at ten at the Texas office.",
+        "keyPoints": [
+          "New client, first-time estate plan for a married couple",
+          "Owns a home and a rental property, wants to avoid probate",
+          "Recommended Revocable Living Trust Package, flat fee $2,500 to $4,500",
+          "Raised elder law need for aging mother-in-law",
+          "Handled price, hourly-billing competitor, and check-with-spouse concerns",
+          "Consultation booked with Daniel Krueger, contact number and email captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM with Daniel Krueger"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "9,945 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 995",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. This is Sarah from Krueger & Richard. A firm built around the plan, not the paper. Thanks for reaching out about estate planning. How can we help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi Sarah. I inherited some property in Texas and I'm not sure what to do with it. I want to make sure my kids are taken care of."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "That's great that you're thinking ahead for your kids. We help families like yours plan for the future. Just to understand your situation better, do you currently have a will or trust in place?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:25 AM",
+              "text": "No, I don't have anything set up yet. I've been meaning to do it but never got around to it."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:26 AM",
+              "text": "I understand. That's actually pretty common. Since you inherited property in Texas, a revocable living trust could be a really solid option to avoid probate and make things easier for your kids down the road. Are you looking to set up something just for yourself, or do you want to coordinate planning across both states?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "I'm in Texas right now, but my sister lives in Kansas. Should I be thinking about both states?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:30 AM",
+              "text": "Great question. If you have family or assets in Kansas too, coordinating across both states can save a lot of headaches later. We have partners in both TX and KS who can work together on your plan. For now, let's focus on your Texas property. What's the approximate value of the property you inherited?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "It's worth around 350k. Plus I have some savings and retirement accounts."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:35 AM",
+              "text": "Perfect. With that amount, a revocable living trust package combined with a trust funding review makes a lot of sense. That's typically around 2500 to 4500 depending on what we find when we audit your beneficiaries and assets. Does that sound like something you'd want to explore?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:37 AM",
+              "text": "Yeah, that sounds reasonable. What's the next step?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:38 AM",
+              "text": "Excellent. Let's get you scheduled with one of our attorneys for a consultation. How does Thursday, March 13th at 2 PM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:40 AM",
+              "text": "That works perfectly. Should I bring anything with me?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:42 AM",
+              "text": "Great. We'll send you a reminder SMS and an email with details. Just bring any documents you have related to the inherited property and your accounts. You can also call us back at 972-688-6760 if anything comes up. See you Thursday."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:43 AM",
+              "text": "Thanks Sarah. Talk to you then."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Revocable Living Trust Package",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Trust Funding & Beneficiary Audit",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Asset Value Established: 350k",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Multi-State Coordination Interest",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimated Service Value: 2500 to 4500",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "23",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "512-557-7338",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C728-4A8BD39E7C2F",
+          "time": "8/16/25 10:58 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C728-4A8BD39E7C2F",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C934-6D2C5A91B4E8",
+          "time": "8/16/25 11:02 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C934-6D2C5A91B4E8",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C145-9F7E3C6BA2D1",
+          "time": "8/16/25 11:05 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C145-9F7E3C6BA2D1",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "15,786 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 1,579",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/23/26 2:47 pm",
+          "active": true,
+          "date": "January 23, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hi there. Thanks for calling Krueger and Richard, estate planning attorneys. This is Sarah. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Yeah, hi. I'm looking for someone who can help me set up a living trust. My wife and I have some property in Texas and we want to make sure everything's in order."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "Great. A revocable living trust is one of our most popular services. I'd love to help you get started. Are you and your wife looking to protect your assets from probate, or is there a specific concern you have right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "Mainly just want to avoid probate. We have a house, some rental property, and a few investment accounts. We're getting older and want to make sure our kids can handle things easily."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "I completely understand. That's a perfect fit for our Revocable Living Trust Package, which includes the trust itself and a pour-over will. The process usually takes two to three weeks once we gather your asset information. Does that timeframe work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "Yeah, that sounds good. How much would something like that run us?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:53 PM",
+              "text": "Our Revocable Living Trust Package ranges from twenty-five hundred to forty-five hundred dollars, depending on the complexity of your assets. Since you mentioned rental property and investments, we'd probably be closer to the thirty-eight hundred to forty-one hundred range. Does that fit your budget?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:54 PM",
+              "text": "That's reasonable. What's the next step?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "Perfect. I'd like to schedule you for a consultation with one of our attorneys, either Daniel Krueger or Marcus Richard. They'll review your specific situation and give you a detailed plan. Are you available next Wednesday, January twenty-ninth, at ten in the morning?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:56 PM",
+              "text": "Wednesday at ten works. Should I bring anything with me?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:57 PM",
+              "text": "Bring a list of your major assets. That's really all we need to get started. Your consultation is set for Wednesday, January twenty-ninth at ten AM. We'll give you a call that morning as a reminder at this number, and if you need to reach us before then, our main line is nine seven two, six eight eight, six seven six zero. Does that all sound good?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:58 PM",
+              "text": "Sounds perfect. Thank you."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:59 PM",
+              "text": "You're welcome. We'll talk soon."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Identified: Revocable Living Trust",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Asset Type Confirmed: Real Property",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area: Texas",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Price Quote Provided: 3800 to 4100 dollars",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/23/26 2:47 pm",
+            "duration": "12:32",
+            "destinationPhone": "877-936-2933",
+            "source": "(972) 688-6760",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "(214) 555-0847",
+            "repeatCaller": "No",
+            "city": "Arlington",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B829-3D4AE521C68F",
+          "time": "1/15/26 11:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B829-3D4AE521C68F",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C741-5F6BD835A92E",
+          "time": "1/8/26 3:16 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C741-5F6BD835A92E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D956-7E2C194F73DB",
+          "time": "1/28/26 9:41 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D956-7E2C194F73DB",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as Krueger & Richard's AI intake assistant helping match families and business owners to the right plan, mention that we currently offer a complimentary 20-minute initial consultation when you book this week, and ask if they would like to get started.",
+        "Qualify one question at a time: Ask, one at a time, which practice area they need (estate planning, Medicaid and elder law, business succession, entity and structure, tax planning, or probate and trust administration), whether the matter is personal or business, whether they already have any existing documents such as a will or trust, their ideal timeline, and finally their ZIP code so we can confirm we serve their area.",
+        "Estimate then book: Confirm we serve their ZIP across Texas and Kansas, explain that fees depend on the plan's complexity so an attorney will review specifics during the consultation, recommend a personalized consultation with one of our attorneys for an exact quote, propose a specific day and time, and confirm they will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Krueger_Richard_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Practice Areas",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Attorneys",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Schedule a Consultation",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Matter status\",\"question\":\"Where does my probate administration stand right now?\",\"answer\":\"Your matter is actively moving through the court process and your attorney will share the current filing status during your next check-in. I can schedule that call for you today.\"},{\"topic\":\"Reschedule\",\"question\":\"I need to move my consultation to a different day, can you help?\",\"answer\":\"Absolutely, I can move your consultation to a time that works better for you and send an updated reminder text. What day and time would you prefer?\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you handle estate planning in both Texas and Kansas?",
+              "answer": "Yes, our attorneys are licensed across Texas, Kansas, Oklahoma, and Indiana, and we coordinate one plan across two states. I can set up a consultation to review your situation."
+            },
+            {
+              "question": "How much does a revocable living trust cost?",
+              "answer": "The fee depends on the complexity of your family and assets, so an attorney will confirm the exact amount during your consultation. Would you like me to schedule that for you?"
+            },
+            {
+              "question": "Can you help protect my house from a nursing home?",
+              "answer": "Yes, our Medicaid and elder law team designs asset protection strategies, including Medicaid Asset Protection Trusts. Let's book a consultation so an attorney can review your specifics."
+            },
+            {
+              "question": "What is a Medicaid Asset Protection Trust?",
+              "answer": "It is a specialized trust that helps shield certain assets while planning for long-term care eligibility, subject to lookback rules in Texas and Kansas. Our attorney can walk you through it during a consultation."
+            },
+            {
+              "question": "Do you handle probate in Dallas?",
+              "answer": "Yes, we handle both independent and dependent probate administration in Texas as well as Kansas probate. I can schedule a consultation to discuss the estate."
+            },
+            {
+              "question": "I need an LLC formed for my business, can you help?",
+              "answer": "Yes, we form LLCs, PLLCs, S-corps, C-corps, and Texas Series LLCs with the right structure for your goals. Let's set up a consultation to get started."
+            },
+            {
+              "question": "What is a buy-sell agreement?",
+              "answer": "It is an agreement that sets the terms and valuation for transferring ownership when a triggering event happens among business owners. An attorney can design one for you, so let's book a consultation."
+            },
+            {
+              "question": "Do you help with VA Aid and Attendance benefits?",
+              "answer": "Yes, we coordinate Department of Veterans Affairs Aid and Attendance benefits as part of elder law planning. I can arrange a consultation to review eligibility."
+            },
+            {
+              "question": "Can you help me plan for the 2025 estate tax exemption sunset?",
+              "answer": "Yes, our tax planning team models federal exemption and portability strategies ahead of the Tax Cuts and Jobs Act sunset. Let's schedule a consultation to build your plan."
+            },
+            {
+              "question": "Do I need a will or a trust?",
+              "answer": "That depends on your assets, family situation, and goals, which an attorney will review with you. I can book a consultation to help you decide."
+            },
+            {
+              "question": "How do I fund my trust after it is created?",
+              "answer": "We coordinate asset titling, beneficiary audits, and re-titling so your trust is properly funded. An attorney can review your accounts during a consultation."
+            },
+            {
+              "question": "Do you handle guardianships in Kansas?",
+              "answer": "Yes, we handle guardianships and conservatorships, including filings and ongoing support. Let's schedule a consultation to discuss the situation."
+            },
+            {
+              "question": "Who are the attorneys at your firm?",
+              "answer": "Our partners are Daniel Krueger and Marcus Richard, licensed across multiple states. I can book you a consultation with the attorney best suited to your matter."
+            },
+            {
+              "question": "How quickly can I be seen?",
+              "answer": "We have consultation availability this week and next, and I can find a time that fits your schedule. What days generally work best for you?"
+            },
+            {
+              "question": "Do you offer virtual consultations?",
+              "answer": "Yes, we offer virtual consultations as well as in-office meetings in Texas and Kansas. Would you like me to set one up?"
+            },
+            {
+              "question": "Can you help with business succession planning?",
+              "answer": "Yes, we build family-business succession plans, key-person coordination, and ownership transitions across generations. Let's schedule a consultation to map it out."
+            },
+            {
+              "question": "What areas do you serve?",
+              "answer": "We serve families and business owners across Texas and Kansas from our two offices. Share your ZIP code and I can confirm coverage and book your consultation."
+            },
+            {
+              "question": "Do you help with powers of attorney and healthcare directives?",
+              "answer": "Yes, our will and powers of attorney bundle includes durable powers of attorney and healthcare directives. I can arrange a consultation to prepare your documents."
+            },
+            {
+              "question": "Is the first consultation free?",
+              "answer": "We currently offer a complimentary 20-minute initial consultation when you book this week. Would you like me to reserve a time for you?"
+            },
+            {
+              "question": "How do I get started?",
+              "answer": "The easiest first step is a consultation with one of our attorneys to review your goals. Tell me your practice area and ZIP code and I will get you scheduled."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule a consultation\",\"follow_up_message\":\"Great news, we serve your area across Texas and Kansas. I have you down for a consultation with one of our attorneys, and you will receive a reminder text beforehand with a number to call if anything changes.\"},{\"intent\":\"Request a quote for a living trust\",\"follow_up_message\":\"Fees depend on the complexity of your plan, so our attorney will confirm an exact quote during your consultation. I can reserve a time this week so you get answers quickly.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Krueger & Richard's AI intake assistant. I can help match you to the right plan and get you scheduled with one of our attorneys.",
+        "goal": "Guide families and business owners to book a personalized consultation with a Krueger & Richard attorney.",
+        "bookingType": "virtual consultation with an attorney",
+        "offer": "Complimentary 20-minute initial consultation when you book this week",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Which practice area do you need help with: estate planning, Medicaid and elder law, business succession, entity and structure, tax planning, or probate and trust administration?",
+          "Is this matter for you and your family personally or for your business?",
+          "Do you already have any existing documents, such as a will, trust, or operating agreement?",
+          "What is your ideal timeline for getting this handled?",
+          "What is your ZIP code so I can confirm we serve your area?"
+        ]
+      },
+      "serviceArea": "the Dallas and Fort Worth, Texas and Kansas areas, ZIP codes starting with 75 and 67"
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:13 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:13 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:13 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Krueger & Richard",
+      "callerName": "Patricia Ellsworth",
+      "callerPhone": "(972) 555-0847",
+      "campaign": "Medicaid Crisis Planning, Dallas Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$7,250",
+      "googleSearch": "how to avoid nursing home taking house Dallas",
+      "websiteSearch": "Medicaid asset protection trust Texas cost",
+      "callingWebpage": "/practice-areas/medicaid-elder-law",
+      "products": "Medicaid Asset Protection Trust, Crisis Planning and Nursing Home Admission",
+      "cartId": "KR-5923M",
+      "serviceable": "Yes",
+      "email": "pellsworth@email.com",
+      "street": "4817 Maple Ridge Drive",
+      "city": "Dallas",
+      "state": "TX",
+      "zip": "75209",
+      "digitalJourney": "/home › /practice-areas/medicaid-elder-law › /articles › /contact/schedule",
+      "intent": "Patricia's mother is declining and family needs immediate Medicaid planning to protect the home before long-term care costs consume savings.",
+      "coverage": "ZIP 75209 confirmed, Dallas serviceable",
+      "switchIntent": "Very high. Mother showing signs of needing care within 6 months. Family meets with other attorney this week but prefers Krueger & Richard if consultation shows faster Medicaid positioning.",
+      "greeting": "Hi Patricia, this is David from Krueger & Richard. I see you called about protecting your family's assets in a Medicaid crisis situation. We specialize in exactly this kind of urgent planning across Dallas and can often move faster than you'd expect. Would a consultation with Daniel or Marcus this week work for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "Krueger & Richard",
+      "callerName": "Robert Chen",
+      "callerPhone": "(620) 555-0312",
+      "campaign": "Business Succession Planning, Kansas Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$11,475",
+      "googleSearch": "business succession plan attorney Kansas",
+      "websiteSearch": "buy sell agreement design small business",
+      "callingWebpage": "/practice-areas/business-succession",
+      "products": "Business Succession Plan, Buy-Sell Agreement Design and Funding",
+      "cartId": "KR-7641N",
+      "serviceable": "Yes",
+      "email": "rchen.manufacturing@email.com",
+      "street": "2305 Industrial Park Road",
+      "city": "Wichita",
+      "state": "KS",
+      "zip": "67204",
+      "digitalJourney": "/home › /practice-areas/business-succession › /attorneys › /contact/schedule",
+      "intent": "Robert co-owns a manufacturing firm with two partners and needs a documented succession and buy-sell structure to protect all three families if any owner passes or wants out.",
+      "coverage": "ZIP 67204 confirmed, Wichita serviceable",
+      "appointment": "Phone consultation with Marcus Richard to review buy-sell mechanics and key-person insurance coordination, Tue Jul 23, 2:00 PM",
+      "greeting": "Hi Robert, it's Marcus from Krueger & Richard. Great to connect with you. We've got you down for a call next Tuesday at 2 PM to walk through buy-sell agreement options and insurance funding for your manufacturing partnership. In the meantime, feel free to send over any questions or a quick summary of your current setup. Looking forward to it."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Krueger & Richard",
+      "brandDomain": "www.krueger-richard.com",
+      "brandIcon": "⚖️",
+      "callerPhone": "+1 (972) 555-0147",
+      "callerLocation": "Dallas, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "TX Estate Planning Exact Match",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "revocable living trust cost Texas",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/practice-areas/estate-planning/revocable-living-trusts",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Revocable Living Trusts, Medicaid Asset Protection Trusts",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Dallas, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_new_estate",
+          "name": "Consultation, Estate Planning, New Client"
+        },
+        {
+          "id": "support_existing",
+          "name": "Support, Existing Client Matter"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry, Callback"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Krueger and Richard. I'm Alex with our intake team. I see you were looking at our revocable living trust information. Are you exploring trust planning for yourself and your family right now?",
+          "sigs": [],
+          "q": [
+            45,
+            30,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, actually my wife and I are starting to think about our estate plan. We have two kids and a home here in Dallas. We've never set up a living trust before.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Estate planning</strong> for family"
+            },
+            {
+              "c": "green",
+              "t": "First time trust setup"
+            },
+            {
+              "c": "blue",
+              "t": "Household with assets"
+            }
+          ],
+          "q": [
+            68,
+            18,
+            14
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That makes a lot of sense, and you're being proactive. A revocable living trust is a solid foundation. Quick question, do you have a business or investments outside the home, or is this primarily about protecting your family assets and avoiding probate?",
+          "sigs": [],
+          "q": [
+            72,
+            15,
+            13
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "No business, just our house and some savings and retirement accounts. We want to make sure everything passes to the kids smoothly and we don't have to worry about probate headaches.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Probate avoidance</strong> priority"
+            },
+            {
+              "c": "blue",
+              "t": "Primary residence plus liquid assets"
+            },
+            {
+              "c": "orange",
+              "t": "Clear succession intent"
+            }
+          ],
+          "q": [
+            89,
+            6,
+            5
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. That's exactly what a revocable living trust with coordinated pour-over wills handles. I'm going to connect you right now with our estate planning team. They'll walk you through your options, answer your questions, and get you scheduled for a consultation. Is that all right?",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule a consultation (Caller)\", \"let's get you on the calendar (Agent)\", \"book your appointment with the attorney (Agent)\", \"set up a meeting to review your plan\"])",
+          "createdAt": "11/14/24 9:22 am",
+          "updatedAt": "01/12/26 3:41 pm"
+        },
+        {
+          "name": "Competitor Firm Mentioned (Intent)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"I called another law firm (Caller)\", \"LegalZoom (Caller)\", \"a cheaper attorney (Caller)\", \"my current estate attorney (Caller)\"])",
+          "createdAt": "12/03/24 2:15 pm",
+          "updatedAt": "01/09/26 10:08 am"
+        },
+        {
+          "name": "Consultation Closing Score (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Consultation Closing] < 60 and duration > 45 sec",
+          "createdAt": "11/27/24 8:47 am",
+          "updatedAt": "01/15/26 1:19 pm"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"initial consultation (Agent)\", \"meet with Daniel Krueger (Agent)\", \"come into our Dallas office (Agent)\", \"consultation fee (Caller)\"])",
+          "createdAt": "11/19/24 11:03 am",
+          "updatedAt": "01/07/26 4:52 pm"
+        },
+        {
+          "name": "Empathy & Rapport Score (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy & Rapport] < 60 and duration > 45 sec",
+          "createdAt": "12/09/24 3:38 pm",
+          "updatedAt": "01/18/26 9:26 am"
+        },
+        {
+          "name": "Estate Planning Interest (Product)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"revocable living trust (Caller)\", \"pour-over will (Caller)\", \"powers of attorney (Caller)\", \"avoid probate (Caller)\"])",
+          "createdAt": "12/14/24 10:41 am",
+          "updatedAt": "01/20/26 2:07 pm"
+        },
+        {
+          "name": "Medicaid Crisis Intent (Product)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"nursing home taking the house (Caller)\", \"Medicaid asset protection (Caller)\", \"spend down (Caller)\", \"crisis planning (Caller)\"])",
+          "createdAt": "12/22/24 1:56 pm",
+          "updatedAt": "01/23/26 11:34 am"
+        },
+        {
+          "name": "Needs Discovery Score (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Needs Discovery] < 60 and duration > 45 sec",
+          "createdAt": "11/30/24 9:12 am",
+          "updatedAt": "01/16/26 3:48 pm"
+        },
+        {
+          "name": "Price Sensitivity Raised (Intent)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"how much does it cost (Caller)\", \"is it a flat fee (Caller)\", \"that's too expensive (Caller)\", \"do you offer a payment plan (Caller)\"])",
+          "createdAt": "01/04/26 8:29 am",
+          "updatedAt": "01/25/26 4:11 pm"
+        },
+        {
+          "name": "Quote Provided (Lead)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the flat fee would be (Agent)\", \"our fee for the trust package (Agent)\", \"I can quote you (Agent)\", \"the engagement letter (Agent)\"])",
+          "createdAt": "12/18/24 2:33 pm",
+          "updatedAt": "01/27/26 10:52 am"
+        }
+      ]
+    }
+  }
+}

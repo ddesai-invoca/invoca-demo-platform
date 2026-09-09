@@ -1,0 +1,5118 @@
+{
+  "id": "sage-hospitality",
+  "customerName": "Sage Hospitality",
+  "websiteUrl": "https://sagehospitalitygroup.com",
+  "brandDomain": "sagehospitalitygroup.com",
+  "networkName": "Invoca for Hospitality",
+  "industry": "Experiential Hospitality, Hotels & Restaurants",
+  "bookingTerm": "Reservation",
+  "customerNoun": "Guest",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 12000,
+      "yTicks": [
+        0,
+        3000,
+        6000,
+        9000,
+        12000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 9243
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 10187
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 9856
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 10432
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 9043
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Reservation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Reservation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Enrich Your Stay, Denver",
+          "marketingSearchTerm": "Crawford Hotel Union Station",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/crawford-hotel?utm_source=google&utm_medium=cpc&utm_campaign=enrich_your_stay_denver",
+          "websiteJourney": "Home / Our Places / Our Portfolio / The Crawford Hotel",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Local Character, World-Class Hospitality",
+          "marketingSearchTerm": "boutique hotels downtown Denver",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-collections?utm_source=google&utm_medium=cpc&utm_campaign=local_character",
+          "websiteJourney": "Home / Our Places / Our Collections",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Enrich Your Stay, Austin",
+          "marketingSearchTerm": "Hotel Van Zandt Austin rooftop pool",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/hotel-van-zandt?utm_source=google&utm_medium=cpc&utm_campaign=enrich_your_stay_austin",
+          "websiteJourney": "Home / Our Places / Our Portfolio / Hotel Van Zandt",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Enrich Your Stay, Portland",
+          "marketingSearchTerm": "luxury hotel Portland The Nines",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/the-nines?utm_source=bing&utm_medium=cpc&utm_campaign=enrich_your_stay_portland",
+          "websiteJourney": "Home / Our Places / Our Portfolio / The Nines",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Rooftop Season at Departure",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/departure?utm_source=instagram&utm_medium=social&utm_campaign=rooftop_season",
+          "websiteJourney": "Home / Our Places / Our Portfolio / Departure",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Meetings with Soul",
+          "marketingSearchTerm": "hotel meetings events Denver",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/crawford-hotel/meetings?utm_source=google&utm_medium=cpc&utm_campaign=meetings_with_soul",
+          "websiteJourney": "Home / Our Places / Our Portfolio / The Crawford Hotel / Meetings",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Places You Go To, Not Through",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/asbury-lanes?utm_source=organic&utm_medium=organic&utm_campaign=places_you_go_to",
+          "websiteJourney": "Home / Our Places / Our Portfolio / Asbury Lanes",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Book Direct & Belong",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/the-maven?utm_source=facebook&utm_medium=social&utm_campaign=book_direct_belong",
+          "websiteJourney": "Home / Our Places / Our Portfolio / The Maven Hotel",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Enrich Your Stay, Denver",
+          "marketingSearchTerm": "Maven Hotel Dairy Block suite",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/the-maven?utm_source=google&utm_medium=cpc&utm_campaign=enrich_your_stay_denver",
+          "websiteJourney": "Home / Our Places / Our Portfolio / The Maven Hotel",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Rooftop Season at Departure",
+          "marketingSearchTerm": "best rooftop restaurant Portland Departure",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/departure?utm_source=bing&utm_medium=cpc&utm_campaign=rooftop_season",
+          "websiteJourney": "Home / Our Places / Our Portfolio / Departure",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Rooftop Season at Departure",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/call-me-pearl?utm_source=instagram&utm_medium=social&utm_campaign=rooftop_season",
+          "websiteJourney": "Home / Our Places / Our Portfolio / Call Me Pearl",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local Character, World-Class Hospitality",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/bar-clara?utm_source=organic&utm_medium=organic&utm_campaign=local_character",
+          "websiteJourney": "Home / Our Places / Our Portfolio / Bar Clara",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Enrich Your Stay, Austin",
+          "marketingSearchTerm": "Van Zandt Rainey suite booking",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/hotel-van-zandt/suites?utm_source=google&utm_medium=cpc&utm_campaign=enrich_your_stay_austin",
+          "websiteJourney": "Home / Our Places / Our Portfolio / Hotel Van Zandt / Suites",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Places You Go To, Not Through",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/asbury-lanes?utm_source=instagram&utm_medium=social&utm_campaign=places_you_go_to",
+          "websiteJourney": "Home / Our Places / Our Portfolio / Asbury Lanes",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Meetings with Soul",
+          "marketingSearchTerm": "group room block Portland",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/the-nines/meetings?utm_source=google&utm_medium=cpc&utm_campaign=meetings_with_soul",
+          "websiteJourney": "Home / Our Places / Our Portfolio / The Nines / Meetings",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Book Direct & Belong",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-places/our-portfolio/crawford-hotel?utm_source=organic&utm_medium=organic&utm_campaign=book_direct_belong",
+          "websiteJourney": "Home / Our Places / Our Portfolio / The Crawford Hotel",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Think Like an Owner",
+          "marketingSearchTerm": "hotel management companies USA",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-capabilities/sage-hotel-management?utm_source=google&utm_medium=cpc&utm_campaign=think_like_an_owner",
+          "websiteJourney": "Home / Our Capabilities / Sage Hotel Management",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Think Like an Owner",
+          "marketingSearchTerm": "hospitality real estate investment partner",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-capabilities/sage-investments?utm_source=bing&utm_medium=cpc&utm_campaign=think_like_an_owner",
+          "websiteJourney": "Home / Our Capabilities / Sage Investments",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Places You Go To, Not Through",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-stories?utm_source=facebook&utm_medium=social&utm_campaign=places_you_go_to",
+          "websiteJourney": "Home / Our Stories",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local Character, World-Class Hospitality",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sagehospitalitygroup.com/our-capabilities/sage-restaurant-concepts?utm_source=organic&utm_medium=organic&utm_campaign=local_character",
+          "websiteJourney": "Home / Our Capabilities / Sage Restaurant Concepts",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Sage Hospitality)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "38,244"
+            },
+            {
+              "label": "Reservation Inquiry (Percent)",
+              "value": "51%"
+            },
+            {
+              "label": "Reservation Booked (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$8,805,396"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "6,119"
+            },
+            {
+              "label": "Guest Service Request (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Existing Reservation Change (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Directions & Hours (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Reservation Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Reservation Inquiry (Percent)",
+              "value": "51%"
+            },
+            {
+              "label": "Rate Quoted (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Unqualified Inquiry (Percent)",
+              "value": "9%"
+            },
+            {
+              "label": "Reservation Booked (Percent)",
+              "value": "31%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Reservation Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Reservation Inquiry (Count)",
+            "values": [
+              2884,
+              4517,
+              4193,
+              4326,
+              3584
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              2487,
+              3912,
+              3608,
+              3724,
+              3096
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              512,
+              788,
+              741,
+              762,
+              639
+            ]
+          },
+          {
+            "name": "Reservation Booked (Count)",
+            "values": [
+              1748,
+              2743,
+              2551,
+              2629,
+              2185
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Reservation Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38244,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "12,847",
+                "58%",
+                "42%",
+                "$2,847,312"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "9,338",
+                "62%",
+                "48%",
+                "$2,234,558"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "7,512",
+                "66%",
+                "55%",
+                "$1,612,447"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "5,224",
+                "70%",
+                "62%",
+                "$1,214,889"
+              ]
+            },
+            {
+              "name": "Email & Loyalty CRM",
+              "metrics": [
+                "3,323",
+                "74%",
+                "71%",
+                "$896,190"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Reservation Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38244,
+          "rows": [
+            {
+              "name": "Organic",
+              "metrics": [
+                "12,338",
+                "56%",
+                "40%",
+                "$2,731,455"
+              ]
+            },
+            {
+              "name": "CPC",
+              "metrics": [
+                "8,724",
+                "61%",
+                "46%",
+                "$2,098,772"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "7,033",
+                "65%",
+                "53%",
+                "$1,644,318"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "6,012",
+                "69%",
+                "60%",
+                "$1,398,006"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "4,137",
+                "73%",
+                "68%",
+                "$932,845"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Reservation Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20338,
+          "rows": [
+            {
+              "name": "Enrich Your Stay, Denver",
+              "metrics": [
+                "6,847",
+                "55%",
+                "38%",
+                "$1,512,338"
+              ]
+            },
+            {
+              "name": "Rooftop Season at Departure",
+              "metrics": [
+                "4,912",
+                "60%",
+                "45%",
+                "$1,087,442"
+              ]
+            },
+            {
+              "name": "Book Direct & Belong",
+              "metrics": [
+                "3,988",
+                "64%",
+                "52%",
+                "$884,215"
+              ]
+            },
+            {
+              "name": "Meetings with Soul",
+              "metrics": [
+                "2,734",
+                "68%",
+                "61%",
+                "$612,889"
+              ]
+            },
+            {
+              "name": "Places You Go To, Not Through",
+              "metrics": [
+                "1,857",
+                "72%",
+                "69%",
+                "$421,556"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Reservation Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 11807,
+          "rows": [
+            {
+              "name": "boutique hotels downtown denver",
+              "metrics": [
+                "3,847",
+                "57%",
+                "41%",
+                "$854,312"
+              ]
+            },
+            {
+              "name": "hotel van zandt austin rooftop pool",
+              "metrics": [
+                "2,914",
+                "61%",
+                "47%",
+                "$621,447"
+              ]
+            },
+            {
+              "name": "crawford hotel union station",
+              "metrics": [
+                "2,331",
+                "65%",
+                "54%",
+                "$498,332"
+              ]
+            },
+            {
+              "name": "best rooftop restaurant portland",
+              "metrics": [
+                "1,672",
+                "69%",
+                "62%",
+                "$342,118"
+              ]
+            },
+            {
+              "name": "asbury lanes bowling live music tickets",
+              "metrics": [
+                "1,043",
+                "73%",
+                "70%",
+                "$224,556"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Reservation Set (Industry) (Percent)",
+            "Reservation Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Hotel Stays",
+              "metrics": [
+                "13,842",
+                "44%",
+                "22%",
+                "$2,384,117"
+              ]
+            },
+            {
+              "name": "Restaurant & Bar Dining",
+              "metrics": [
+                "9,517",
+                "49%",
+                "28%",
+                "$2,086,443"
+              ]
+            },
+            {
+              "name": "Meetings & Events",
+              "metrics": [
+                "7,438",
+                "54%",
+                "33%",
+                "$1,921,655"
+              ]
+            },
+            {
+              "name": "Suites & Signature Stays",
+              "metrics": [
+                "5,129",
+                "60%",
+                "39%",
+                "$1,565,860"
+              ]
+            },
+            {
+              "name": "Owner & Investment Services",
+              "metrics": [
+                "2,318",
+                "66%",
+                "47%",
+                "$847,321"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Reservation Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38244,
+          "rows": [
+            {
+              "name": "West",
+              "metrics": [
+                "11,247",
+                "45%",
+                "23%",
+                "$1,885,927"
+              ]
+            },
+            {
+              "name": "South",
+              "metrics": [
+                "9,638",
+                "50%",
+                "29%",
+                "$2,037,551"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "7,952",
+                "55%",
+                "34%",
+                "$1,971,213"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "5,614",
+                "61%",
+                "40%",
+                "$1,637,338"
+              ]
+            },
+            {
+              "name": "Mountain",
+              "metrics": [
+                "3,793",
+                "67%",
+                "46%",
+                "$1,273,367"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Reservation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Hotel Stays",
+            "values": [
+              582,
+              671,
+              648,
+              634,
+              510
+            ]
+          },
+          {
+            "name": "Restaurant & Bar Dining",
+            "values": [
+              498,
+              571,
+              552,
+              548,
+              496
+            ]
+          },
+          {
+            "name": "Meetings & Events",
+            "values": [
+              462,
+              528,
+              509,
+              503,
+              453
+            ]
+          },
+          {
+            "name": "Suites & Signature Stays",
+            "values": [
+              376,
+              431,
+              415,
+              411,
+              367
+            ]
+          },
+          {
+            "name": "Owner & Investment Services",
+            "values": [
+              205,
+              234,
+              226,
+              224,
+              200
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 38,244 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 91,
+          "summary": "Marcus Delgado called to book a Loft Suite at The Crawford Hotel for an anniversary weekend at Denver Union Station. Oscar confirmed a station-view suite, added a late checkout, and secured the reservation. Marcus was delighted with the local F&B recommendations.",
+          "date": "Jan 6, 2:42 PM",
+          "agent": "Oscar",
+          "duration": "2m 50s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 86,
+          "summary": "Priya Nadkarni wanted a room at Hotel Van Zandt in Austin with access to the rooftop pool during a live music weekend. Lila found availability in the Rainey District block and booked a two-night reservation. Priya appreciated the rooftop programming details.",
+          "date": "Feb 11, 10:18 AM",
+          "agent": "Lila",
+          "duration": "2m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 81,
+          "summary": "Deborah Klein called about a Meetings with Soul group booking for a 40 person corporate dinner at Departure in Portland. Rosey walked through event space, catering, and a room block, then locked in the reservation. Deborah left the call ready to sign the event agreement.",
+          "date": "Mar 3, 4:05 PM",
+          "agent": "Rosey",
+          "duration": "3m 08s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 74,
+          "summary": "First-time guest Anthony Rivera called to schedule a stay at The Maven Hotel in the Dairy Block and asked the agent to set up his profile. Lee collected his contact details, loyalty preferences, and dates, then confirmed an Innovator Suite reservation. Anthony was pleased to be welcomed as a new guest.",
+          "date": "Apr 9, 11:47 AM",
+          "agent": "Lee",
+          "duration": "2m 34s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Grace Holloway inquired about a room night and rooftop dining at The Nines in Portland for a family trip. Mary confirmed a luxury collection room and noted a dinner request, completing the reservation. Grace had a few billing questions that were answered clearly.",
+          "date": "May 14, 1:22 PM",
+          "agent": "Mary",
+          "duration": "2m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 64,
+          "summary": "Samuel Ortiz called to reserve a rooftop dinner for two at Departure and asked about the Asian-inspired menu. Sue confirmed a window table and noted a dietary preference, booking the reservation. Samuel was satisfied though he waited briefly on hold.",
+          "date": "Jun 2, 7:38 PM",
+          "agent": "Sue",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 60,
+          "summary": "Nina Petrov called to check the status of a loyalty points transfer from a prior stay at Call Me Pearl. Mike located her account and explained the co-branded loyalty timeline. No new booking was made on the call.",
+          "date": "Jun 21, 9:11 AM",
+          "agent": "Mike",
+          "duration": "1m 40s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 56,
+          "summary": "Roland Estes disputed a resort fee charge on his folio from Bar Clara dining. Jennifer reviewed the itemized charges and opened a billing review case. Roland remained frustrated but agreed to await the adjustment.",
+          "date": "Jul 8, 3:26 PM",
+          "agent": "Jennifer",
+          "duration": "2m 20s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 27,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 52,
+          "summary": "Yvonne Chambers asked to modify dates on an existing Asbury Lanes event and F&B booking. Rose explained the change fee and shifted the date, but availability was tight. Yvonne kept the existing reservation without adding services.",
+          "date": "Jul 27, 12:49 PM",
+          "agent": "Rose",
+          "duration": "2m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 48,
+          "summary": "Brian Fowler called to cancel an upcoming reservation at Hotel Van Zandt due to a schedule conflict. Oscar processed the cancellation and reviewed the refund policy. Brian was disappointed about a partial non-refundable night.",
+          "date": "Aug 5, 5:14 PM",
+          "agent": "Oscar",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 44,
+          "summary": "Teresa Bianchi reported a broken air conditioning unit during her stay at The Crawford Hotel. Lila logged the maintenance request and arranged a room move. Teresa was unhappy about the disruption to her evening.",
+          "date": "Aug 23, 8:47 PM",
+          "agent": "Lila",
+          "duration": "2m 30s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Gerald Nunez complained about slow service at a hotel restaurant during a recent visit. Lee documented the feedback and offered a dining credit for a future reservation. Gerald stayed skeptical about the resolution.",
+          "date": "Sep 4, 6:33 PM",
+          "agent": "Lee",
+          "duration": "2m 10s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Caller Stephanie Marsh phoned after hours about a group room block quote but reached voicemail. No agent was available to take the reservation request. The message was routed to the sales team for follow up.",
+          "date": "Sep 19, 10:02 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Howard Simmons wanted to cancel a deposit and disputed a duplicate charge on a past dinner reservation. Mary attempted to reconcile the folio but the caller grew increasingly upset. The billing dispute was escalated to a supervisor.",
+          "date": "Oct 2, 4:41 PM",
+          "agent": "Mary",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Angela Foster called angry about a lost pre-authorization hold following a stay and demanded an immediate refund. Sue explained the release timeline but the caller remained dissatisfied. The complaint was logged for management review.",
+          "date": "Oct 15, 1:09 PM",
+          "agent": "Sue",
+          "duration": "2m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "crawford",
+        "van zandt",
+        "rooftop",
+        "reservation",
+        "cancel",
+        "suite"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Property and Service Type",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and Availability",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Document Check-in Preferences",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Set Expectation for Confirmation",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Offer Loyalty or Membership Information",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Guest identified as first-time visitor",
+        "Requested weekend availability",
+        "Expressed interest in rooftop access",
+        "Confirmed party size of two",
+        "Preferred room type specified",
+        "Stated budget range",
+        "Provided valid phone number",
+        "Acknowledged cancellation policy",
+        "Expressed interest in dining reservation",
+        "Confirmed travel dates",
+        "Asked about parking options",
+        "Mentioned prior knowledge of property",
+        "Confirmed guest name spelling"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Special room requests unclear",
+        "Loyalty program not discussed",
+        "Dietary restrictions for F&B not gathered",
+        "Arrival time window not confirmed",
+        "Departure preferences not documented",
+        "Guest profession not determined",
+        "Group affiliation not identified",
+        "Upsell opportunity for suite upgrade missed",
+        "Payment method not discussed"
+      ],
+      "naSignals": [
+        "Existing reservation modification",
+        "Prior stay history not applicable",
+        "Membership tier upgrade",
+        "Refund or cancellation request",
+        "Billing dispute resolution",
+        "Loyalty points redemption",
+        "Group event coordination experience",
+        "Restaurant reservation follow-up",
+        "Staff recommendation from previous visit",
+        "Referral incentive eligibility"
+      ],
+      "prompts": [
+        {
+          "question": "Is the guest trying to solve a specific problem?",
+          "answer": "The caller is a first-time visitor seeking a weekend getaway at The Crawford Hotel in Denver. She wants a room with rooftop or station views and is looking to book for a party of two with access to the hotel's rooftop dining experience."
+        },
+        {
+          "question": "What are the guest's expectations?",
+          "answer": "The caller expects competitive weekend pricing, availability for her specified dates, and a smooth booking process with confirmation details sent promptly. She also seems interested in dining options and the property's unique Union Station location."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have collected the guest's email address during the call to ensure confirmation details reach her directly. He could also have set clearer expectations around check-in timing and offered upsell information about The Crawford's signature suites or restaurant partnerships."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Hello, thank you for calling Sage Hospitality. This is Marcus speaking. May I help you with a reservation today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus. Yes, I am looking to book a room at The Crawford Hotel in Denver for a weekend getaway. It would be for two people."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:41",
+          "text": "Wonderful. I would be happy to help you with that. May I have your full name, please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:50",
+          "text": "Yes, it is Sarah Chen. That is S-A-R-A-H, C-H-E-N."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:02",
+          "text": "Thank you, Sarah. And just to confirm, you are looking for a room for two guests at The Crawford Hotel. What dates were you interested in, and would you prefer a specific room type?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:18",
+          "text": "I am flexible on exact dates but looking at the last weekend of November. We would love a room with a view if possible, maybe overlooking the station or the city."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:32",
+          "text": "That is beautiful. Let me check our availability for the last weekend of November. We have some excellent options with those views. May I have your phone number to keep on file?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:47",
+          "text": "Of course. It is ****."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:55",
+          "text": "Perfect. And what is your email address so we can send you a confirmation and any special offers?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:03",
+          "text": "Oh, I will just grab the confirmation when you call back. I prefer not to give that out right now."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:12",
+          "text": "I understand. Let me get that for you. So we have your phone number on file, Sarah. Our last weekend in November we have standard rooms starting at $350 a night and our signature suites at $650 a night, both with premium views. Which sounds best for your stay?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:35",
+          "text": "The standard room with a view sounds good. That works for our budget."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:45",
+          "text": "Excellent choice. I am going to process your reservation for The Crawford Hotel, November 24th through 26th, standard room with a view for two guests. You will receive a confirmation call at the number you provided within the next 24 hours. Is there anything else I can help you with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:08",
+          "text": "No, that sounds great. Thank you so much, Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:16",
+          "text": "You are very welcome, Sarah. Thank you for choosing Sage Hospitality and The Crawford Hotel. We look forward to welcoming you to Denver. Have a wonderful day."
+        }
+      ],
+      "aiSummary": "Sarah Chen, a first-time guest, called to book a room at The Crawford Hotel in Denver for the last weekend of November for two people. Marcus confirmed her full name and phone number, identified her preference for a room with station or city views, and secured her reservation at the standard room rate of $350 per night. While the call was structured and the reservation was successfully captured, the agent did not collect Sarah's email address for direct confirmation, which could impact delivery of booking details and upsell communications.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "Great job on the call structure, @Marcus. You nailed the greeting, confirmed all the key details, and closed professionally. One thing to work on: when Sarah declined to give her email, you accepted that without gently pushing back or explaining how it helps us send her confirmation and exclusive offers. Next time, try something like, 'I totally understand, Sarah. An email just makes sure nothing gets lost, and we can send you our restaurant partnerships and special perks right to your inbox.' Also, did not catch any mention of check-in time preferences or special requests, like late arrival or accessibility needs. These details really set us up for a seamless guest experience. Keep the momentum going."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "38,244"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$230.24"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$8,805,396"
+            }
+          ]
+        },
+        {
+          "title": "NEW GUEST ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Guests (Count)",
+              "value": "21,891"
+            },
+            {
+              "label": "Caller Type: New Guests (Percent)",
+              "value": "57%"
+            },
+            {
+              "label": "Reservation: Scheduled (Count)",
+              "value": "19,504"
+            },
+            {
+              "label": "Reservation: Scheduled (Percent)",
+              "value": "51%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING GUESTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Guest (Count)",
+              "value": "16,353"
+            },
+            {
+              "label": "Caller Type: Existing Guest (Percent)",
+              "value": "43%"
+            },
+            {
+              "label": "Reservation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Reservations)",
+          "chart": {
+            "legend": "Reservation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Email/CRM & Loyalty",
+                "value": 61,
+                "display": "61%"
+              },
+              {
+                "name": "Social Media",
+                "value": 52,
+                "display": "52%"
+              },
+              {
+                "name": "Metasearch/OTA",
+                "value": 43,
+                "display": "43%"
+              },
+              {
+                "name": "Paid Search",
+                "value": 34,
+                "display": "34%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Reservations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Reservation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Organic Search",
+                  "12,847",
+                  "26%",
+                  "$2,914,853"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Search",
+                  "9,633",
+                  "34%",
+                  "$2,203,687"
+                ]
+              },
+              {
+                "cells": [
+                  "Metasearch/OTA",
+                  "7,214",
+                  "43%",
+                  "$1,668,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "5,382",
+                  "52%",
+                  "$1,258,109"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM & Loyalty",
+                  "3,168",
+                  "61%",
+                  "$760,305"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 15000,
+            "axisTicks": [
+              0,
+              3000,
+              6000,
+              9000,
+              12000,
+              15000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "organic",
+                "value": 13124,
+                "display": "13,124"
+              },
+              {
+                "name": "cpc",
+                "value": 10092,
+                "display": "10,092"
+              },
+              {
+                "name": "referral",
+                "value": 7318,
+                "display": "7,318"
+              },
+              {
+                "name": "social",
+                "value": 4986,
+                "display": "4,986"
+              },
+              {
+                "name": "email",
+                "value": 2724,
+                "display": "2,724"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Reservations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Reservation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "organic",
+                  "13,124",
+                  "27%"
+                ]
+              },
+              {
+                "cells": [
+                  "cpc",
+                  "10,092",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "7,318",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "4,986",
+                  "51%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "2,724",
+                  "60%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Enrich Your Stay, Denver",
+                "value": 6842,
+                "display": "6,842"
+              },
+              {
+                "name": "Rooftop Season at Departure",
+                "value": 4915,
+                "display": "4,915"
+              },
+              {
+                "name": "Places You Go To, Not Through",
+                "value": 3927,
+                "display": "3,927"
+              },
+              {
+                "name": "Book Direct & Belong",
+                "value": 3268,
+                "display": "3,268"
+              },
+              {
+                "name": "Meetings with Soul",
+                "value": 1894,
+                "display": "1,894"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Reservations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Reservation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Enrich Your Stay, Denver",
+                  "6,842",
+                  "33%",
+                  "$1,562,318"
+                ]
+              },
+              {
+                "cells": [
+                  "Rooftop Season at Departure",
+                  "4,915",
+                  "42%",
+                  "$1,128,447"
+                ]
+              },
+              {
+                "cells": [
+                  "Book Direct & Belong",
+                  "3,268",
+                  "49%",
+                  "$758,229"
+                ]
+              },
+              {
+                "cells": [
+                  "Meetings with Soul",
+                  "1,894",
+                  "58%",
+                  "$442,116"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 3000,
+            "axisTicks": [
+              0,
+              500,
+              1000,
+              1500,
+              2000,
+              2500,
+              3000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "crawford hotel union station",
+                "value": 2847,
+                "display": "2,847"
+              },
+              {
+                "name": "hotel van zandt austin rooftop pool",
+                "value": 2193,
+                "display": "2,193"
+              },
+              {
+                "name": "best rooftop restaurant portland departure",
+                "value": 1762,
+                "display": "1,762"
+              },
+              {
+                "name": "boutique hotels downtown denver",
+                "value": 1418,
+                "display": "1,418"
+              },
+              {
+                "name": "asbury lanes bowling live music",
+                "value": 987,
+                "display": "987"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Reservations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Reservation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "crawford hotel union station",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "hotel van zandt austin rooftop pool",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "best rooftop restaurant portland departure",
+                  "54%"
+                ]
+              },
+              {
+                "cells": [
+                  "boutique hotels downtown denver",
+                  "63%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Guests",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Reservation: Scheduled (Percent)",
+          "Caller Type: New Guests (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Hotel Stays",
+              "15,382",
+              "34%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Dining & Bars",
+              "9,847",
+              "43%",
+              "57%"
+            ]
+          },
+          {
+            "cells": [
+              "Meetings & Events",
+              "5,214",
+              "51%",
+              "48%"
+            ]
+          },
+          {
+            "cells": [
+              "Entertainment Venues",
+              "2,918",
+              "62%",
+              "44%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Reservation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "The Crawford Hotel, Denver",
+              "11,428",
+              "842",
+              "6%",
+              "38%"
+            ]
+          },
+          {
+            "cells": [
+              "Hotel Van Zandt, Austin",
+              "8,917",
+              "613",
+              "5%",
+              "45%"
+            ]
+          },
+          {
+            "cells": [
+              "The Nines, Portland",
+              "6,342",
+              "421",
+              "4%",
+              "52%"
+            ]
+          },
+          {
+            "cells": [
+              "The Maven Hotel, Denver",
+              "3,987",
+              "268",
+              "3%",
+              "61%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Rate Above Budget",
+            "values": [
+              1087,
+              1142,
+              998,
+              1024,
+              963
+            ]
+          },
+          {
+            "name": "Comparing Other Hotels",
+            "values": [
+              912,
+              887,
+              834,
+              908,
+              841
+            ]
+          },
+          {
+            "name": "Dates Not Available",
+            "values": [
+              782,
+              814,
+              769,
+              798,
+              755
+            ]
+          },
+          {
+            "name": "Needs Group Approval",
+            "values": [
+              573,
+              591,
+              548,
+              582,
+              553
+            ]
+          },
+          {
+            "name": "Outside Travel Area",
+            "values": [
+              487,
+              498,
+              461,
+              479,
+              454
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "15,298"
+          },
+          {
+            "label": "Reservation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Reservation Booked (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$5,019,076"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Reservation Booked (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$287,416"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Reservation Booked (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$358,924"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Reservation Booked (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$412,768"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Reservation Booked (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$298,541"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Reservation Booked (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$387,692"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Reservation Booked (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$455,319"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Reservation Scheduled (Percent)",
+            "Reservation Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18142,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "4847",
+                "58%",
+                "29%",
+                "$1,306,547"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "3621",
+                "54%",
+                "31%",
+                "$1,104,863"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "2834",
+                "59%",
+                "34%",
+                "$943,526"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "2156",
+                "52%",
+                "35%",
+                "$751,892"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "1840",
+                "49%",
+                "38%",
+                "$912,248"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Reservation Scheduled (Percent)",
+            "Reservation Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 17846,
+          "rows": [
+            {
+              "name": "Phone",
+              "metrics": [
+                "5234",
+                "56%",
+                "30%",
+                "$1,420,781"
+              ]
+            },
+            {
+              "name": "Web Form",
+              "metrics": [
+                "3647",
+                "57%",
+                "32%",
+                "$1,168,937"
+              ]
+            },
+            {
+              "name": "Mobile App",
+              "metrics": [
+                "2918",
+                "55%",
+                "35%",
+                "$1,021,146"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "2356",
+                "54%",
+                "36%",
+                "$887,304"
+              ]
+            },
+            {
+              "name": "Live Chat",
+              "metrics": [
+                "1143",
+                "52%",
+                "34%",
+                "$520,908"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Reservation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Hotel Rooms & Suites",
+            "values": [
+              487,
+              521,
+              548,
+              462,
+              415
+            ]
+          },
+          {
+            "name": "Restaurant & Bar Dining",
+            "values": [
+              312,
+              368,
+              341,
+              395,
+              287
+            ]
+          },
+          {
+            "name": "Group Meetings & Events",
+            "values": [
+              198,
+              217,
+              245,
+              201,
+              189
+            ]
+          },
+          {
+            "name": "Rooftop & Specialty Venues",
+            "values": [
+              156,
+              189,
+              174,
+              162,
+              148
+            ]
+          },
+          {
+            "name": "Property Management Inquiries",
+            "values": [
+              87,
+              94,
+              112,
+              78,
+              82
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Reservation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Reservation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Reservation Scheduled (Count)",
+            "value": "10,707"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$7,954,218"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "847"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Reservation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Reservation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Reservation Scheduled (Count)",
+            "value": "1,149"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$851,178"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Reservation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Reservation Scheduled",
+            "values": [
+              76,
+              79,
+              74,
+              81,
+              77,
+              75,
+              83,
+              78,
+              72,
+              80,
+              77,
+              81,
+              76,
+              79,
+              74,
+              82,
+              78,
+              75,
+              77,
+              81,
+              79,
+              73,
+              80,
+              77,
+              74,
+              79,
+              81,
+              78,
+              75,
+              77,
+              82,
+              181,
+              187,
+              173,
+              195,
+              181,
+              189,
+              176,
+              184,
+              191,
+              178,
+              186,
+              179,
+              193,
+              182,
+              177,
+              185,
+              188,
+              174,
+              179,
+              186
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,164"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "86%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "679"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "58%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "651"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "96%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Reservation Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Room Availability and Booking",
+            "values": [
+              11,
+              8,
+              12,
+              9,
+              14,
+              11
+            ]
+          },
+          {
+            "name": "Dining and Restaurant Reservations",
+            "values": [
+              9,
+              7,
+              10,
+              8,
+              12,
+              9
+            ]
+          },
+          {
+            "name": "Spa and Wellness Services",
+            "values": [
+              6,
+              5,
+              7,
+              6,
+              8,
+              7
+            ]
+          },
+          {
+            "name": "Event and Group Accommodations",
+            "values": [
+              8,
+              6,
+              9,
+              7,
+              11,
+              8
+            ]
+          },
+          {
+            "name": "Property and Amenity Details",
+            "values": [
+              7,
+              4,
+              8,
+              5,
+              10,
+              6
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "35,184"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "27,344"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Reservation Booked (Count)",
+            "value": "19,504"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$8,805,396"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Wellington",
+              "value": 247,
+              "display": "247"
+            },
+            {
+              "name": "Priya Desai",
+              "value": 193,
+              "display": "193"
+            },
+            {
+              "name": "Kevin O'Neill",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Jasmine Rodriguez",
+              "value": 156,
+              "display": "156"
+            },
+            {
+              "name": "David Chen",
+              "value": 229,
+              "display": "229"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Reservation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Amanda Hartley",
+            "values": [
+              287,
+              301,
+              315,
+              328,
+              352
+            ]
+          },
+          {
+            "name": "Thomas Bryant",
+            "values": [
+              264,
+              278,
+              291,
+              305,
+              318
+            ]
+          },
+          {
+            "name": "Sophia Mendez",
+            "values": [
+              256,
+              269,
+              284,
+              297,
+              311
+            ]
+          },
+          {
+            "name": "Rachel Goldstein",
+            "values": [
+              243,
+              261,
+              275,
+              289,
+              304
+            ]
+          },
+          {
+            "name": "Michael Torres",
+            "values": [
+              238,
+              254,
+              268,
+              282,
+              298
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Wellington",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Priya Desai",
+              "value": 55.8,
+              "display": "55.8%"
+            },
+            {
+              "name": "Kevin O'Neill",
+              "value": 56.4,
+              "display": "56.4%"
+            },
+            {
+              "name": "Jasmine Rodriguez",
+              "value": 57.9,
+              "display": "57.9%"
+            },
+            {
+              "name": "David Chen",
+              "value": 58.7,
+              "display": "58.7%"
+            },
+            {
+              "name": "Carlos Fuentes",
+              "value": 59.3,
+              "display": "59.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Reservation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Wellington",
+                "54.2%",
+                "28%",
+                "$176,847",
+                "1,387"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Desai",
+                "55.8%",
+                "29%",
+                "$180,923",
+                "1,402"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin O'Neill",
+                "56.4%",
+                "30%",
+                "$188,415",
+                "1,419"
+              ]
+            },
+            {
+              "cells": [
+                "Jasmine Rodriguez",
+                "57.9%",
+                "31%",
+                "$193,647",
+                "1,465"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "58.7%",
+                "32%",
+                "$198,272",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Carlos Fuentes",
+                "59.3%",
+                "33%",
+                "$209,341",
+                "1,521"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Amanda Hartley",
+              "value": 92.6,
+              "display": "92.6%"
+            },
+            {
+              "name": "Thomas Bryant",
+              "value": 90.8,
+              "display": "90.8%"
+            },
+            {
+              "name": "Sophia Mendez",
+              "value": 89.4,
+              "display": "89.4%"
+            },
+            {
+              "name": "Rachel Goldstein",
+              "value": 88.7,
+              "display": "88.7%"
+            },
+            {
+              "name": "Michael Torres",
+              "value": 87.2,
+              "display": "87.2%"
+            },
+            {
+              "name": "Victoria Napoli",
+              "value": 86.9,
+              "display": "86.9%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Reservation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Amanda Hartley",
+                "92.6%",
+                "63%",
+                "$398,847",
+                "1,483"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Bryant",
+                "90.8%",
+                "61%",
+                "$382,105",
+                "1,506"
+              ]
+            },
+            {
+              "cells": [
+                "Sophia Mendez",
+                "89.4%",
+                "60%",
+                "$373,629",
+                "1,438"
+              ]
+            },
+            {
+              "cells": [
+                "Rachel Goldstein",
+                "88.7%",
+                "59%",
+                "$361,247",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Torres",
+                "87.2%",
+                "58%",
+                "$351,684",
+                "1,507"
+              ]
+            },
+            {
+              "cells": [
+                "Victoria Napoli",
+                "86.9%",
+                "58%",
+                "$345,218",
+                "1,512"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Reservation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Reservation Booked (Count)",
+        "rightMax": 900,
+        "rightTicks": [
+          0,
+          225,
+          450,
+          675,
+          900
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 723
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 693
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 645
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 616
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 536
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 562
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 621
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 646
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 721
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 699
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 629
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 608
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 540
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 557
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 636
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 656
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 714
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 703
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 616
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 596
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 549
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 554
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 647
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 669
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 705
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 704
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 607
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 582
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 558
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 555
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 657
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 400000,
+        "rightTicks": [
+          0,
+          133333.33333333334,
+          266666.6666666667,
+          400000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 326409
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 312848
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 291325
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 277980
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 242032
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 254006
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 280594
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 291654
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 325196
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 315298
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 283978
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 274470
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 244232
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 251745
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 287274
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 296028
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 322169
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 317155
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 278110
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 269289
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 247898
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 250497
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 292226
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 301913
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 318076
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 317613
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 274131
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 262847
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 252196
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 250980
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 295227
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "38,244"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:47"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,060"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,295"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "82%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Michelle Rodriguez",
+                "412",
+                "89%",
+                "91%",
+                "79%"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "516",
+                "86%",
+                "86%",
+                "83%"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Valdez",
+                "488",
+                "86%",
+                "87%",
+                "84%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "38,244 calls",
+      "pagerLabel": "1 of 3,824",
+      "calls": [
+        {
+          "time": "1/6/26 9:12 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 10:41 am",
+          "id": "A213-6C4E19B2F0A7"
+        },
+        {
+          "time": "1/12/26 11:23 am",
+          "id": "7D9C-3B21F84C0E15"
+        },
+        {
+          "time": "1/14/26 1:05 pm",
+          "id": "C48E-92AF17D3B620"
+        },
+        {
+          "time": "1/16/26 2:37 pm",
+          "id": "3F1A-D50C8E27149B"
+        },
+        {
+          "time": "1/20/26 8:54 am",
+          "id": "9B62-4E17A3F8C209"
+        },
+        {
+          "time": "1/22/26 12:18 pm",
+          "id": "E074-1A9B3C6D2F58"
+        },
+        {
+          "time": "1/26/26 3:46 pm",
+          "id": "5C93-7F20E14B8A61"
+        },
+        {
+          "time": "1/28/26 4:29 pm",
+          "id": "D18F-6B42C907E351"
+        },
+        {
+          "time": "1/30/26 5:11 pm",
+          "id": "2A56-8E31D40F97C2"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling The Crawford Hotel at Denver Union Station, this is Marcus. How can I help you today?",
+          "highlights": [
+            "Thank you for calling The Crawford Hotel",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Marcus, I'm planning a weekend in Denver and I've never stayed with you before. I wanted to ask about rooms.",
+          "highlights": [
+            "never stayed with you before"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:16",
+          "text": "Wonderful, welcome. I'd be glad to help you find the right room. May I get your name so I can pull everything up for you?",
+          "highlights": [
+            "May I get your name"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:23",
+          "text": "Sure, it's Danielle Foster. I'm looking at the weekend of February 13th, two nights.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:30",
+          "text": "Thank you, Danielle. For that weekend we have our historic standard rooms right inside the station, and if you'd like a bit more space, the signature loft suites.",
+          "highlights": [
+            "standard rooms",
+            "signature loft suites"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:39",
+          "text": "What does a standard room run for those nights? I want to keep it manageable, it's a little getaway not a splurge.",
+          "highlights": [
+            "I want to keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:47",
+          "text": "Completely understand. The standard room is running about $310 a night for that Valentine's weekend, which includes access to the station's shops and dining right downstairs.",
+          "highlights": [
+            "$310 a night"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:57",
+          "text": "Okay. Honestly I was also pricing the Maven over at Dairy Block, they came in a touch lower for a suite.",
+          "highlights": [
+            "pricing the Maven over at Dairy Block"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:06",
+          "text": "The Maven is a great property, it's one of our sister hotels actually. The difference here is the historic Union Station setting, you step out your door into the terminal with The Cooper Lounge and the rail access, which most guests find makes the weekend feel special.",
+          "highlights": [
+            "one of our sister hotels",
+            "historic Union Station setting"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:18",
+          "text": "That does sound nice. Is there anything with a little more room without jumping way up in price?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:25",
+          "text": "There is. Our signature loft suite is $540 for that weekend, and it gives you a multi-level layout with station views. For a special occasion many couples feel it's worth the step up.",
+          "highlights": [
+            "signature loft suite is $540"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:36",
+          "text": "Let me think. Also, do I have to lock in the whole stay now? I may need to run it by my husband before I fully commit.",
+          "highlights": [
+            "run it by my husband before I fully commit"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:45",
+          "text": "Not a problem at all. I can hold a flexible reservation with free cancellation up to 48 hours before arrival, so nothing is locked in and you can confirm with him.",
+          "highlights": [
+            "free cancellation up to 48 hours",
+            "nothing is locked in"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:55",
+          "text": "Oh that's perfect. Then let's do the standard room for the two nights, and I'll look at upgrading to the loft later if he's on board.",
+          "highlights": [
+            "let's do the standard room for the two nights"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:04",
+          "text": "Great choice, Danielle. I'll book the historic standard room for February 13th and 14th, two nights, with flexible cancellation. Can I get the best email and phone number for your confirmation?",
+          "highlights": [
+            "I'll book the historic standard room"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:14",
+          "text": "Yes, it's danielle.foster@email.com, and my cell is 303-555-0148.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:22",
+          "text": "Perfect, that's all set. You'll get a confirmation shortly, and if you'd like I can note a possible loft upgrade so we can honor the rate when you decide.",
+          "highlights": [
+            "that's all set"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:30",
+          "text": "Please do, thank you so much Marcus, this was really easy.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:35",
+          "text": "My pleasure, Danielle. We can't wait to welcome you to The Crawford. Enjoy your day and safe travels.",
+          "highlights": [
+            "We can't wait to welcome you to The Crawford",
+            "Enjoy your day"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Guest",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Reservation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Room Stay Inquiry",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Rate Objection Raised",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Cancellation Policy Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Foster, a first-time guest, called The Crawford Hotel to plan a two-night getaway over the February 13th weekend. Agent Marcus presented the historic standard room and the signature loft suite, addressed her interest in keeping the cost manageable, and reassured her after she compared rates with the Maven and asked to confirm with her husband. He booked the historic standard room for February 13th and 14th with flexible cancellation and captured her email and phone number, noting a possible loft upgrade.",
+        "keyPoints": [
+          "New guest, first stay with The Crawford Hotel",
+          "Needed a two-night Valentine's weekend getaway, February 13th to 14th",
+          "Recommended historic standard room ($310/night) and signature loft suite ($540)",
+          "Handled rate concern, Maven comparison, and need to check with husband",
+          "Booked standard room with free 48-hour cancellation",
+          "Captured contact: danielle.foster@email.com, 303-555-0148"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Reservation booked, standard room Feb 13-14 with flexible cancellation"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "24,094 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,409",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for texting Sage Hospitality. I'm here to help you find the perfect place for your next stay or event. What brings you in today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi, I'm looking for a nice hotel in Denver for a weekend getaway with my partner."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "That sounds wonderful. We have some beautiful properties in Denver. Are you looking for a luxury experience, or something more intimate and design-forward?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "We like luxury but also want something with character and local vibe. Not just a standard chain."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. You might love The Crawford Hotel. It's a historic landmark in Denver Union Station with world-class hospitality and an amazing restaurant scene. Have you stayed with us before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "No, this would be our first time. When do you have availability? We're thinking mid-March."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Great to hear. Mid-March is perfect. I can get you into The Crawford Hotel starting at $280 per night for a beautiful standard room, or $600 plus for our Loft suites if you want the full experience. Which appeals to you more?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "The Loft suite sounds amazing. What dates are you thinking?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Excellent choice. How about Saturday, March 15th through Monday, March 17th? That's two nights in our Loft suite with views of the station. Does that work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "Yes, that's perfect. Let's do it."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Wonderful. I've scheduled your reservation for March 15-17 at The Crawford Hotel Loft suite. Your confirmation number is CR-2026-7734. You'll receive a reminder text tomorrow. Thanks for choosing Sage Hospitality."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Thank you so much. Excited to visit."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "You're welcome. If you have any questions before your stay, just call us at 877-936-2933. See you soon!"
+            }
+          ],
+          "signals": [
+            {
+              "name": "Reservation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Guest",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Property Interest: The Crawford Hotel",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Room Category: Loft Suite",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Trip Type: Weekend Getaway",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Revenue Captured: $1,200 per night",
+              "badges": [
+                "Rule"
+              ],
+              "count": 2
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "(720) 445-3821",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "(720) 445-3821",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A742-29BC847F1E5A",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A742-29BC847F1E5A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B891-5F73D04AC692",
+          "time": "8/16/25 10:38 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B891-5F73D04AC692",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D564-81A29E6FB3C7",
+          "time": "8/16/25 10:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D564-81A29E6FB3C7",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "38,244 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,824",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Thank you for calling Sage Hospitality. This is Marcus. How can we help you plan an unforgettable stay today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Hi Marcus. I'm looking to book a room at The Crawford Hotel in Denver for next month. I've heard great things about it."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "That's wonderful. The Crawford Hotel is truly special. Located right in Denver's Union Station, it's an experience like no other. Are you looking for our standard rooms or would you prefer one of our signature loft suites?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "What's the difference in price? I'm looking for something nice but want to stay within budget."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Great question. Our standard rooms start at two hundred eighty dollars per night and go up to four hundred fifty. The loft suites are more spacious with multi-level layouts and premium finishes, running from six hundred to twelve hundred per night. Both offer that authentic Denver charm with access to our local food and beverage venues."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "Okay, the standard rooms sound perfect for me. How many nights were you thinking?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "I'm flexible. Are you planning a two night stay, or would you prefer a longer visit?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "I think three nights would be good. February 14th through the 17th."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Perfect. That's Valentine's Day weekend, very romantic. So three nights in a standard room at The Crawford Hotel, February 14th to 17th. May I confirm your email address so I can send you a reservation confirmation?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Sure. It's sarah.martinez.2891 at gmail dot com."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Excellent. Sarah, I'm locking in three nights for you. Your reservation is confirmed for February 14th through the 17th in a standard room. You'll receive a confirmation email shortly at sarah.martinez.2891 at gmail dot com. Our team will reach out forty eight hours before your arrival with final details. If you have any questions, you can call us back at eight seven seven, nine three six, twenty nine three three. Thank you for choosing Sage Hospitality."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Thank you so much, Marcus. I'm excited."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "You're very welcome, Sarah. We can't wait to welcome you to The Crawford Hotel. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Reservation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Guest",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Property Identified: The Crawford Hotel",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Room Type: Standard Room",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Stay Duration: Three Nights",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Rate Confirmed: $280-$450 per night",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "5:47",
+            "destinationPhone": "877-936-2933",
+            "source": "(303) 551-0199",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "(720) 555-0847",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Martinez",
+            "firstName": "Sarah",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Enrich Your Stay, Denver",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B823-7D4A1E5C2B91",
+          "time": "1/23/26 2:34 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B823-7D4A1E5C2B91",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C641-8F2B3A9D7E6C",
+          "time": "1/28/26 11:19 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C641-8F2B3A9D7E6C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D957-5C6B1A2F8E7D",
+          "time": "1/30/26 6:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D957-5C6B1A2F8E7D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: I introduce myself as Sage Hospitality's AI agent here to help craft a personalized reservation quote, mention our current Book Direct and Belong perk that saves 15 percent plus late checkout when you reserve today, and ask if you would like to get started.",
+        "Qualify one question at a time: I ask, one at a time, which destination or property interests you (The Crawford in Denver, Hotel Van Zandt in Austin, The Maven, or The Nines in Portland), your check in and check out dates, how many guests and which room or suite type, whether this is a stay, a dining visit, or a meetings and events booking, and finally the city or ZIP code you are traveling from so I can confirm availability.",
+        "Estimate then book: I confirm the property has availability for your dates, share a preliminary nightly rate range based on what you shared, recommend a quick consultation with a reservations specialist for an exact quote, propose a specific day and time such as Thursday at 10:00 AM, and confirm you will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Sage_Hospitality_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Our Places and Portfolio",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Our Capabilities",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Book Your Stay",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Reschedule reservation\",\"question\":\"Can I change the dates on my existing reservation at The Crawford Hotel?\",\"answer\":\"Yes, we can adjust your stay dates based on availability, and I can connect you with a reservations specialist to confirm the change today. Would you like me to set that up?\"},{\"topic\":\"Loyalty and confirmation status\",\"question\":\"How do I check my reservation confirmation and apply my Marriott loyalty number?\",\"answer\":\"I can look up your confirmation and make sure your loyalty number is attached so you earn points for the stay. Let me schedule a quick call with a specialist to verify the details.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Where is The Crawford Hotel located?",
+              "answer": "The Crawford Hotel is set inside historic Denver Union Station with direct rail terminal access and local dining. I can check available dates and set up a reservation for you."
+            },
+            {
+              "question": "Does Hotel Van Zandt have a rooftop pool?",
+              "answer": "Yes, Hotel Van Zandt in Austin's Rainey District features a rooftop pool and live music programming. Let me confirm availability for your travel dates and reserve a room."
+            },
+            {
+              "question": "What room types are available at The Maven Hotel?",
+              "answer": "The Maven in Denver's Dairy Block offers design forward rooms and the Innovator Suite in a curated urban alley district. I can reserve the room that fits your stay best."
+            },
+            {
+              "question": "Is The Nines a luxury hotel?",
+              "answer": "Yes, The Nines in Portland is a Luxury Collection soft brand property in a historic building with rooftop dining. I would be glad to book your stay there."
+            },
+            {
+              "question": "Can I make a dinner reservation at Departure?",
+              "answer": "Absolutely, Departure is our rooftop restaurant in Portland serving Asian inspired dishes with downtown views. Let me set up a dining reservation for you."
+            },
+            {
+              "question": "Do you host live music at Asbury Lanes?",
+              "answer": "Asbury Lanes in Asbury Park pairs bowling with a live music venue and full food and beverage. I can help you reserve a lane or event package."
+            },
+            {
+              "question": "How much is a night at The Crawford Hotel?",
+              "answer": "Nightly rates vary by season, room type, and dates, so I would rather give you an accurate figure. Let me connect you with a reservations specialist for an exact quote."
+            },
+            {
+              "question": "Do you offer suites for special occasions?",
+              "answer": "Yes, several of our hotels offer signature and presidential suites ideal for celebrations. Share your dates and I can reserve the right suite for you."
+            },
+            {
+              "question": "Can I book a group block for a wedding?",
+              "answer": "We offer meetings and events bookings with room blocks, catering, and on site coordination. Let me schedule a consultation to plan your group reservation."
+            },
+            {
+              "question": "Do your hotels allow pets?",
+              "answer": "Pet policies vary by property, so I can confirm the details for the hotel you prefer. Would you like me to check and set up a reservation?"
+            },
+            {
+              "question": "What time is check in and check out?",
+              "answer": "Standard check in and check out times differ slightly by property, and I can confirm for your chosen hotel. Let me book your stay and note any early arrival requests."
+            },
+            {
+              "question": "Is parking available at your Denver hotels?",
+              "answer": "Both The Crawford and The Maven offer on site parking options in downtown Denver. I can add that to your reservation when we book."
+            },
+            {
+              "question": "Do you have restaurants inside your hotels?",
+              "answer": "Yes, our properties feature destination worthy dining such as Departure, Call Me Pearl, and Bar Clara. I can reserve both your room and a table."
+            },
+            {
+              "question": "Can I book a meeting or event space?",
+              "answer": "We provide event space, catering, and room blocks for meetings and events at our properties. Let me arrange a consultation to reserve your space."
+            },
+            {
+              "question": "What is the Book Direct and Belong offer?",
+              "answer": "When you reserve directly today you can save 15 percent plus enjoy late checkout at select properties. Would you like me to lock that in with a reservation?"
+            },
+            {
+              "question": "Do you serve cocktails at Call Me Pearl?",
+              "answer": "Call Me Pearl offers a craft cocktail program with locally sourced lifestyle dining. I can reserve a table for you and your party."
+            },
+            {
+              "question": "Are your hotels close to downtown attractions?",
+              "answer": "Our properties are crafted as places you go to, blending local character with world class hospitality near key downtown districts. Let me reserve a stay at the location that suits you."
+            },
+            {
+              "question": "Can I add breakfast to my reservation?",
+              "answer": "Many of our properties offer dining and breakfast options you can enjoy on site. I can note that when I set up your reservation."
+            },
+            {
+              "question": "How far in advance should I book?",
+              "answer": "Popular dates and suites fill quickly, so booking early secures the best availability. Share your dates and I will reserve your stay now."
+            },
+            {
+              "question": "How do I get an exact price for my stay?",
+              "answer": "Because rates change with dates, room type, and demand, the best path is a quick consultation for an exact quote. Let me connect you with a reservations specialist today."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule the reservation\",\"follow_up_message\":\"Great choice on Hotel Van Zandt. I have your dates and guest count, so let me confirm your reservation and send a reminder text before your stay with a number to call if anything changes.\"},{\"intent\":\"Request a quote\",\"follow_up_message\":\"Thanks for sharing your travel details. Based on your dates and room type your nightly rate falls in a preliminary range, and I can connect you with a reservations specialist for an exact quote and to finalize your reservation.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Sage Hospitality's AI agent. I can help you find the right property and put together a personalized reservation quote. Would you like to get started?",
+        "goal": "Guide the guest to confirm their property, dates, and room preferences and book a reservation with a Sage Hospitality specialist.",
+        "bookingType": "hotel stay reservation",
+        "offer": "Book Direct and Belong: save 15 percent plus late checkout when you reserve today",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "Which destination or property interests you, such as The Crawford in Denver, Hotel Van Zandt in Austin, The Maven, or The Nines in Portland?",
+          "What are your check in and check out dates?",
+          "How many guests will be staying and which room or suite type do you prefer?",
+          "Is this for a hotel stay, a dining reservation, or a meetings and events booking?",
+          "What city or ZIP code will you be traveling from so I can confirm availability and options?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:29 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:29 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:29 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Sage Hospitality",
+      "callerName": "Michael Chen",
+      "callerPhone": "(720) 555-0847",
+      "campaign": "The Crawford Hotel, Denver Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Reservation Lead",
+      "estimatedValue": "$1,847",
+      "googleSearch": "boutique hotels downtown Denver Union Station",
+      "websiteSearch": "Crawford Hotel room rates availability",
+      "callingWebpage": "/our-places/our-portfolio/crawford-hotel",
+      "products": "The Crawford Hotel standard room night, Hotel Van Zandt Austin room night",
+      "cartId": "SH-6294M",
+      "serviceable": "Yes",
+      "email": "m.chen.denver@outlook.com",
+      "street": "1542 Larimer Street",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80202",
+      "digitalJourney": "/home › /our-places/our-portfolio › /our-places/our-portfolio/crawford-hotel › /our-capabilities/sage-hotel-management",
+      "intent": "Booking a three-night stay at The Crawford Hotel with signature suite upgrade for upcoming business conference and client entertainment.",
+      "coverage": "ZIP 80202 confirmed, Denver serviceable",
+      "switchIntent": "High urgency. Needs reservation confirmed within 48 hours for conference week. Willing to upgrade suite and book dining at hotel restaurant.",
+      "greeting": "Hi Michael, this is Sarah with Sage Hospitality. I see you were just looking at The Crawford Hotel. Are you ready to book your stay with us, and would you like me to secure a signature suite with views of Union Station for your conference visit?"
+    },
+    "smsScreenpop": {
+      "brandName": "Sage Hospitality",
+      "callerName": "Jessica Rodriguez",
+      "callerPhone": "(503) 555-0613",
+      "campaign": "Departure Restaurant Portland, Spring Events",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Reservation Lead",
+      "estimatedValue": "$385",
+      "googleSearch": "best rooftop restaurant Portland Oregon private events",
+      "websiteSearch": "Departure Portland dinner reservation group booking",
+      "callingWebpage": "/our-places/our-portfolio/the-nines",
+      "products": "Departure rooftop restaurant dinner for two, The Nines a Luxury Collection Hotel room night",
+      "cartId": "SH-3821P",
+      "serviceable": "Yes",
+      "email": "jrodriguez.events@gmail.com",
+      "street": "847 SW Alder Avenue",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97214",
+      "digitalJourney": "/home › /our-places/our-collections › /our-places/our-portfolio/the-nines › /our-capabilities/sage-restaurant-concepts",
+      "intent": "Hosting a client appreciation dinner for eight guests at Departure with hotel room blocks at The Nines for overnight accommodations.",
+      "coverage": "ZIP 97214 confirmed, Portland serviceable",
+      "appointment": "Private dining event coordination call with events specialist, Thu Apr 11, 2:00 PM",
+      "greeting": "Hi Jessica. This is Marcus from Sage Hospitality. Thanks for reaching out about Departure for your client event. I've blocked time with our events team for Thursday at 2 PM to walk through menu options and your room block. Looking forward to creating something memorable for your group."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Sage Hospitality",
+      "brandDomain": "www.sagehospitalitygroup.com",
+      "brandIcon": "🏨",
+      "callerPhone": "+1 (720) 555-0147",
+      "callerLocation": "Denver, CO",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "Enrich Your Stay, Denver",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "luxury boutique hotels downtown Denver",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/our-places/our-portfolio/crawford-hotel",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "The Crawford Hotel, Hotel Van Zandt Austin",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Denver, CO",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "reservation_new_group",
+          "name": "Reservation, Group Events"
+        },
+        {
+          "id": "dining_experiences",
+          "name": "Dining Reservations"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry Support"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Thanks for calling Sage Hospitality. I see you've been looking at our Denver properties. Are you planning a group event or meeting, or is this for a personal getaway?",
+          "sigs": [],
+          "q": [
+            0.3,
+            0.4,
+            0.3
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Hi, yes. We're actually planning a corporate retreat for about 80 people in the next few months. We'd need hotel rooms, a few event spaces, and probably some group dining experiences.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Group event</strong>, 80 attendees"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>Multi-service booking</strong>, rooms plus dining"
+            }
+          ],
+          "q": [
+            0.65,
+            0.2,
+            0.15
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. That's exactly what we do best. The Crawford Hotel with our Union Station location is fantastic for groups, and we have dedicated event spaces plus our restaurant partners can create custom menus. Just to confirm, are you looking at dates within the next 90 days, or is this more flexible?",
+          "sigs": [],
+          "q": [
+            0.78,
+            0.12,
+            0.1
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Within 90 days ideally. We want something that feels authentic and locally rooted for our team. The Crawford seems perfect from what I've seen online.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "<strong>Firm timeline</strong>, within 90 days"
+            },
+            {
+              "c": "green",
+              "t": "<strong>Experiential placemaking</strong> appeal, authenticity important"
+            }
+          ],
+          "q": [
+            0.93,
+            0.05,
+            0.02
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent. I'm going to connect you with our Meetings and Events team right now. They'll walk through room blocks, event packages, and coordinate with our culinary team at The Crawford to build something unforgettable for your retreat. One moment please.",
+          "sigs": [],
+          "q": [
+            0.96,
+            0.02,
+            0.02
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Reservation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your reservation is confirmed (Agent)\", \"your confirmation number is (Agent)\", \"you're all booked for those dates (Agent)\", \"I'll go ahead and charge the card on file (Agent)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "01/09/26 2:41 pm"
+        },
+        {
+          "name": "Competitor Property Named",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"staying at the Kimpton (Caller)\", \"the Marriott downtown (Caller)\", \"cheaper at the Hilton (Caller)\", \"looking at the Ritz-Carlton (Caller)\"])",
+          "createdAt": "05/22/25 11:03 am",
+          "updatedAt": "12/18/25 4:27 pm"
+        },
+        {
+          "name": "Dining & Rooftop Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"rooftop pool (Caller)\", \"dinner at Departure (Caller)\", \"the rooftop bar (Caller)\", \"restaurant reservation (Caller)\"])",
+          "createdAt": "04/08/25 1:45 pm",
+          "updatedAt": "01/06/26 10:19 am"
+        },
+        {
+          "name": "Empathy & Guest Care",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Guest Care & Empathy] < 60 and duration > 45 sec",
+          "createdAt": "06/17/25 8:52 am",
+          "updatedAt": "01/12/26 3:33 pm"
+        },
+        {
+          "name": "Group & Meetings Inquiry",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"room block (Caller)\", \"meetings with soul (Caller)\", \"event space for our group (Caller)\", \"catering for the reception (Caller)\"])",
+          "createdAt": "07/29/25 2:18 pm",
+          "updatedAt": "01/04/26 9:47 am"
+        },
+        {
+          "name": "Property Knowledge Demonstrated",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Property Knowledge] < 60 and duration > 45 sec",
+          "createdAt": "02/26/25 10:36 am",
+          "updatedAt": "12/29/25 1:05 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the rate for that night is (Agent)\", \"that comes to per night (Agent)\", \"I can quote you (Agent)\", \"the total for your stay would be (Agent)\"])",
+          "createdAt": "08/11/25 12:29 pm",
+          "updatedAt": "01/15/26 11:52 am"
+        },
+        {
+          "name": "Rate Objection Raised",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"too expensive (Caller)\", \"that's out of my budget (Caller)\", \"is there any discount (Caller)\", \"what's this resort fee (Caller)\"])",
+          "createdAt": "09/03/25 3:41 pm",
+          "updatedAt": "01/07/26 8:58 am"
+        },
+        {
+          "name": "Reservation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"check availability (Caller)\", \"do you have any rooms (Caller)\", \"for those dates (Caller)\", \"is the king suite available (Caller)\"])",
+          "createdAt": "03/29/25 9:24 am",
+          "updatedAt": "01/10/26 5:14 pm"
+        },
+        {
+          "name": "Warm Greeting & Introduction",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Warm Greeting] < 60 and duration > 45 sec",
+          "createdAt": "05/06/25 10:11 am",
+          "updatedAt": "12/22/25 2:09 pm"
+        }
+      ]
+    }
+  }
+}

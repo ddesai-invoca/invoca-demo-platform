@@ -1,0 +1,5313 @@
+{
+  "id": "ut-southwestern-medical-center",
+  "customerName": "UT Southwestern Medical Center",
+  "websiteUrl": "https://www.utsouthwestern.edu",
+  "brandDomain": "utsouthwestern.edu",
+  "networkName": "Invoca for Healthcare",
+  "industry": "Academic Medical Center",
+  "bookingTerm": "Appointment",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 10842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 12318
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 11764
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 11209
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 10139
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Find a Doctor DFW",
+          "marketingSearchTerm": "UT Southwestern find a doctor",
+          "landingPageUrl": "https://www.utsouthwestern.edu/patient-care/find-a-doctor?utm_source=google&utm_medium=cpc&utm_campaign=find_a_doctor_dfw",
+          "websiteJourney": "Home / Patient Care / Find a Doctor",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Cancer Care Simmons",
+          "marketingSearchTerm": "best cancer hospital Dallas",
+          "landingPageUrl": "https://www.utsouthwestern.edu/patient-care/conditions-treatments/cancer?utm_source=google&utm_medium=cpc&utm_campaign=cancer_care_simmons",
+          "websiteJourney": "Home / Patient Care / Conditions & Treatments",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Same-Day Ortho Appointment",
+          "marketingSearchTerm": "same day ortho appointment dallas",
+          "landingPageUrl": "https://www.utsouthwestern.edu/patient-care/conditions-treatments/orthopaedics?utm_source=google&utm_medium=cpc&utm_campaign=same_day_ortho",
+          "websiteJourney": "Home / Patient Care / Conditions & Treatments",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Heart & Vascular Care",
+          "marketingSearchTerm": "heart specialist Dallas UT Southwestern",
+          "landingPageUrl": "https://www.utsouthwestern.edu/patient-care/conditions-treatments/heart-vascular?utm_source=bing&utm_medium=cpc&utm_campaign=heart_vascular",
+          "websiteJourney": "Home / Patient Care / Conditions & Treatments",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Second Opinion Oncology",
+          "marketingSearchTerm": "second opinion oncology DFW",
+          "landingPageUrl": "https://www.utsouthwestern.edu/patient-care/conditions-treatments/cancer/second-opinion?utm_source=google&utm_medium=cpc&utm_campaign=second_opinion_onc",
+          "websiteJourney": "Home / Patient Care / Conditions & Treatments",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Locations Near Me",
+          "marketingSearchTerm": "UT Southwestern locations near me",
+          "landingPageUrl": "https://www.utsouthwestern.edu/patient-care/locations?utm_source=google&utm_medium=cpc&utm_campaign=locations_near_me",
+          "websiteJourney": "Home / Patient Care / Locations",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Neurology & Neurosurgery",
+          "marketingSearchTerm": "brain surgery specialist dallas",
+          "landingPageUrl": "https://www.utsouthwestern.edu/patient-care/conditions-treatments/neurology?utm_source=bing&utm_medium=cpc&utm_campaign=neuro_care",
+          "websiteJourney": "Home / Patient Care / Conditions & Treatments",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Advanced Imaging MRI",
+          "marketingSearchTerm": "MRI imaging center dallas",
+          "landingPageUrl": "https://www.utsouthwestern.edu/patient-care/conditions-treatments/imaging?utm_source=google&utm_medium=cpc&utm_campaign=advanced_imaging",
+          "websiteJourney": "Home / Patient Care / Conditions & Treatments",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "MedBlog Ask the Expert",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.utsouthwestern.edu/newsroom/medblog?utm_source=organic&utm_medium=organic&utm_campaign=medblog_ask_expert",
+          "websiteJourney": "Home / Patient Resources / MedBlog",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "No. 1 Hospital in DFW",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.utsouthwestern.edu/patient-care/why-ut-southwestern?utm_source=organic&utm_medium=organic&utm_campaign=no1_hospital_dfw",
+          "websiteJourney": "Home / Patient Care / Why UT Southwestern",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Transplant Services",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.utsouthwestern.edu/patient-care/conditions-treatments/transplant?utm_source=organic&utm_medium=organic&utm_campaign=transplant_services",
+          "websiteJourney": "Home / Patient Care / Conditions & Treatments",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Clinical Trials Enrollment",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.utsouthwestern.edu/research/clinical-trials?utm_source=organic&utm_medium=organic&utm_campaign=clinical_trials",
+          "websiteJourney": "Home / Research / Clinical Trials",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Primary Care Wellness",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.utsouthwestern.edu/patient-care/conditions-treatments/primary-care?utm_source=organic&utm_medium=organic&utm_campaign=primary_care_wellness",
+          "websiteJourney": "Home / Patient Care / Conditions & Treatments",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Meet Our Physicians",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.utsouthwestern.edu/patient-care/find-a-doctor?utm_source=facebook&utm_medium=social&utm_campaign=meet_our_physicians",
+          "websiteJourney": "Home / Patient Care / Find a Doctor",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Groundbreaking Discoveries",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.utsouthwestern.edu/research?utm_source=instagram&utm_medium=social&utm_campaign=groundbreaking_discoveries",
+          "websiteJourney": "Home / Research / Programs",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Simmons Cancer Awareness",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.utsouthwestern.edu/patient-care/conditions-treatments/cancer?utm_source=instagram&utm_medium=social&utm_campaign=simmons_awareness",
+          "websiteJourney": "Home / Patient Care / Conditions & Treatments",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Medical School Tuition",
+          "marketingSearchTerm": "UT Southwestern medical school tuition",
+          "landingPageUrl": "https://www.utsouthwestern.edu/education/medical-school?utm_source=google&utm_medium=cpc&utm_campaign=medical_school_tuition",
+          "websiteJourney": "Home / Education & Training / Medical School",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "MyChart Patient Portal",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.utsouthwestern.edu/patient-care/patient-resources/mychart?utm_source=organic&utm_medium=organic&utm_campaign=mychart_portal",
+          "websiteJourney": "Home / Patient Care / Patient Resources",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "CME Enrollment",
+          "marketingSearchTerm": "continuing medical education dallas",
+          "landingPageUrl": "https://www.utsouthwestern.edu/education/cme?utm_source=bing&utm_medium=cpc&utm_campaign=cme_enrollment",
+          "websiteJourney": "Home / Education & Training / CME",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Giving & Philanthropy",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.utsouthwestern.edu/about-us/giving?utm_source=facebook&utm_medium=social&utm_campaign=giving_philanthropy",
+          "websiteJourney": "Home / About Us / Giving",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Careers at UTSW",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.utsouthwestern.edu/about-us/careers?utm_source=instagram&utm_medium=social&utm_campaign=careers_utsw",
+          "websiteJourney": "Home / Careers",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Core Facility Services",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.utsouthwestern.edu/research/core-facilities?utm_source=organic&utm_medium=organic&utm_campaign=core_facilities",
+          "websiteJourney": "Home / Research / Core Facilities",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (UT Southwestern Medical Center)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "44,135"
+            },
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$37,570,769"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "7,062"
+            },
+            {
+              "label": "Billing & Insurance Inquiry (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Appointment Rescheduling (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Medical Records Request (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Patient Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "48%"
+            },
+            {
+              "label": "Non-Qualifying Inquiry (Percent)",
+              "value": "14%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "22%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Patient Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Patient Call (Count)",
+            "values": [
+              5842,
+              8731,
+              8247,
+              8109,
+              6144
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              3214,
+              4987,
+              4652,
+              4438,
+              3894
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              1047,
+              1432,
+              1318,
+              1289,
+              1093
+            ]
+          },
+          {
+            "name": "New Patient (Count)",
+            "values": [
+              1476,
+              2318,
+              2157,
+              2089,
+              1670
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 44135,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "18,742",
+                "38%",
+                "14%",
+                "$15,972,483"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "9,318",
+                "41%",
+                "19%",
+                "$7,893,241"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "7,865",
+                "44%",
+                "22%",
+                "$6,684,915"
+              ]
+            },
+            {
+              "name": "Physician Referral",
+              "metrics": [
+                "5,127",
+                "48%",
+                "27%",
+                "$4,357,682"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "3,083",
+                "52%",
+                "34%",
+                "$2,662,448"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 44135,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "16,984",
+                "39%",
+                "15%",
+                "$14,472,318"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "11,237",
+                "43%",
+                "20%",
+                "$9,563,742"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "6,915",
+                "46%",
+                "24%",
+                "$5,884,215"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "5,241",
+                "49%",
+                "29%",
+                "$4,461,927"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "3,758",
+                "53%",
+                "33%",
+                "$3,188,567"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 23122,
+          "rows": [
+            {
+              "name": "Find a Doctor DFW",
+              "metrics": [
+                "7,842",
+                "40%",
+                "16%",
+                "$6,684,215"
+              ]
+            },
+            {
+              "name": "Simmons Cancer Care Near Me",
+              "metrics": [
+                "5,318",
+                "44%",
+                "21%",
+                "$4,531,782"
+              ]
+            },
+            {
+              "name": "Same-Day Ortho Appointment",
+              "metrics": [
+                "4,127",
+                "47%",
+                "25%",
+                "$3,517,436"
+              ]
+            },
+            {
+              "name": "Heart and Vascular Diagnostics",
+              "metrics": [
+                "3,264",
+                "50%",
+                "30%",
+                "$2,782,159"
+              ]
+            },
+            {
+              "name": "Second Opinion Oncology",
+              "metrics": [
+                "2,571",
+                "55%",
+                "38%",
+                "$2,193,847"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 15834,
+          "rows": [
+            {
+              "name": "ut southwestern find a doctor",
+              "metrics": [
+                "5,214",
+                "41%",
+                "17%",
+                "$4,417,382"
+              ]
+            },
+            {
+              "name": "best cancer hospital dallas",
+              "metrics": [
+                "3,872",
+                "45%",
+                "22%",
+                "$3,281,547"
+              ]
+            },
+            {
+              "name": "heart specialist dallas",
+              "metrics": [
+                "2,918",
+                "48%",
+                "26%",
+                "$2,473,916"
+              ]
+            },
+            {
+              "name": "utsw same day appointment",
+              "metrics": [
+                "2,143",
+                "51%",
+                "31%",
+                "$1,817,254"
+              ]
+            },
+            {
+              "name": "second opinion oncology dfw",
+              "metrics": [
+                "1,687",
+                "56%",
+                "39%",
+                "$1,432,689"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Set (Industry) (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Patient Care & Clinical Services",
+              "metrics": [
+                "18,472",
+                "41%",
+                "18%",
+                "$12,838,412"
+              ]
+            },
+            {
+              "name": "Diagnostic Imaging & Labs",
+              "metrics": [
+                "10,318",
+                "43%",
+                "21%",
+                "$8,371,205"
+              ]
+            },
+            {
+              "name": "Education & Training",
+              "metrics": [
+                "7,845",
+                "44%",
+                "24%",
+                "$7,272,634"
+              ]
+            },
+            {
+              "name": "Research & Innovation",
+              "metrics": [
+                "4,627",
+                "45%",
+                "29%",
+                "$5,189,743"
+              ]
+            },
+            {
+              "name": "Philanthropy & Giving",
+              "metrics": [
+                "2,873",
+                "47%",
+                "35%",
+                "$3,898,775"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 44135,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "21,342",
+                "42%",
+                "16%",
+                "$13,041,287"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "8,164",
+                "45%",
+                "23%",
+                "$7,265,914"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "6,571",
+                "47%",
+                "27%",
+                "$6,862,455"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "4,893",
+                "49%",
+                "31%",
+                "$5,869,338"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "3,165",
+                "52%",
+                "37%",
+                "$4,531,775"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Patient Care & Clinical Services",
+            "values": [
+              640,
+              712,
+              698,
+              681,
+              587
+            ]
+          },
+          {
+            "name": "Diagnostic Imaging & Labs",
+            "values": [
+              418,
+              455,
+              452,
+              441,
+              398
+            ]
+          },
+          {
+            "name": "Education & Training",
+            "values": [
+              362,
+              398,
+              391,
+              382,
+              347
+            ]
+          },
+          {
+            "name": "Research & Innovation",
+            "values": [
+              258,
+              284,
+              279,
+              271,
+              249
+            ]
+          },
+          {
+            "name": "Philanthropy & Giving",
+            "values": [
+              193,
+              214,
+              209,
+              204,
+              187
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 44,135 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Patricia Nguyen called to find a doctor for ongoing chest tightness and wanted a cardiology evaluation. Agent Rosey used Find a Doctor to match her with a Heart and Vascular specialist and booked a new patient consultation at the Dallas campus. Patricia confirmed her insurance and left satisfied.",
+          "date": "Jan 6, 9:14 AM",
+          "agent": "Rosey",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Marcus Bell called seeking a second opinion in oncology after a recent diagnosis at another hospital. Agent Lila explained the intake process at Simmons Comprehensive Cancer Center and scheduled a new consultation with a medical oncologist. Marcus was relieved to get cancer care access within the week.",
+          "date": "Feb 12, 1:38 PM",
+          "agent": "Lila",
+          "duration": "3m 08s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Diane Foster called to schedule an MRI that her referring physician had ordered for a knee injury. Agent Lee verified the order, found an open slot at the imaging center, and booked the MRI study for the following Tuesday. Diane appreciated the quick turnaround.",
+          "date": "Mar 3, 10:52 AM",
+          "agent": "Lee",
+          "duration": "2m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Ronald Simmons, a new patient relocating to Dallas, called to establish primary and preventive care. Agent Mary collected his demographics, insurance details, and medical history, then scheduled a new patient wellness visit at the North Dallas location. Ronald confirmed the appointment and requested a MyChart activation code.",
+          "date": "Apr 9, 3:22 PM",
+          "agent": "Mary",
+          "duration": "3m 18s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Elena Vasquez called to find a doctor for chronic hip pain and hoped for an orthopaedic surgery evaluation. Agent Mike reviewed her symptoms, explained the joint replacement consultation process, and scheduled a new patient appointment. Elena was pleased with the same-week option.",
+          "date": "May 15, 11:07 AM",
+          "agent": "Mike",
+          "duration": "2m 34s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Gregory Lin called because he could not log into MyChart to view his lab results. Agent Sue verified his identity and walked him through resetting his MyChart password. The issue was resolved on the call, and no visit was needed.",
+          "date": "Jun 21, 4:45 PM",
+          "agent": "Sue",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Sandra Okafor called to move up her oncology follow-up after new symptoms appeared. Agent Jennifer coordinated with the care team and scheduled an earlier appointment with her medical oncologist. Sandra thanked the agent for the flexibility.",
+          "date": "Jul 2, 8:56 AM",
+          "agent": "Jennifer",
+          "duration": "2m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 21,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Thomas Reilly called disputing a billing statement he felt was higher than the estimate he received. Agent Oscar reviewed the charges and opened a billing review case, but could not resolve the amount on the call. Thomas remained frustrated and asked for a callback.",
+          "date": "Jul 18, 2:03 PM",
+          "agent": "Oscar",
+          "duration": "3m 01s",
+          "scorecards": 7,
+          "comments": 2,
+          "negativeSentiment": 29,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Karen Mitchell called with questions about the results from a recent MRI that had not yet appeared in her portal. Agent Rose explained that the radiologist read was still pending and that her physician would follow up. Karen was anxious about the delay.",
+          "date": "Aug 5, 12:29 PM",
+          "agent": "Rose",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "David Huang called to cancel an upcoming neurology appointment because of a scheduling conflict at work. Agent Lila processed the cancellation and offered to rebook later, but David declined for now. He said he would call back next month.",
+          "date": "Aug 22, 5:11 PM",
+          "agent": "Lila",
+          "duration": "1m 19s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Angela Barnes called because her MyChart account was locked after several failed login attempts. Agent Lee attempted to reset it but the system required an in-person verification step. Angela was annoyed at the extra hurdle.",
+          "date": "Sep 4, 10:16 AM",
+          "agent": "Lee",
+          "duration": "2m 27s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Robert Nash called with a billing complaint about a duplicate charge on his imaging visit. Agent Mike documented the concern and escalated it to the billing department for investigation. Robert was upset that it could take up to ten business days.",
+          "date": "Sep 19, 1:44 PM",
+          "agent": "Mike",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Linda Carver called to complain about wait times during her cancer treatment infusion visits at the center. Agent Sue apologized and logged the feedback for the clinical team, but could not offer an immediate fix. Linda ended the call still dissatisfied.",
+          "date": "Oct 1, 9:37 AM",
+          "agent": "Sue",
+          "duration": "3m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "James Whitfield called after hours trying to reschedule a transplant evaluation appointment. The call rolled to voicemail and no agent was available to assist. He left a message requesting a callback the next morning.",
+          "date": "Oct 12, 6:58 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Michelle Torres called angry that her referral had not been processed and she still could not book a specialist. Agent Oscar tried to locate the referral but the record was incomplete on the call. Michelle was frustrated and threatened to seek care elsewhere.",
+          "date": "Oct 24, 11:29 AM",
+          "agent": "Oscar",
+          "duration": "3m 14s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "find a doctor",
+        "mri",
+        "oncology",
+        "mychart",
+        "cancer",
+        "billing"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 15, 2024, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Insurance / Financial Class",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Medical Specialty and Chief Complaint",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area / ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Appointment Date and Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Offer Parking and Transportation Info",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Explain Pre-Visit Paperwork and MyChart",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller explicitly stated chief complaint (left shoulder pain)",
+        "Agent confirmed specialty (Orthopedic Surgery)",
+        "Agent verified Dallas ZIP code (75204)",
+        "Caller provided full legal name",
+        "Insurance question posed and partially answered",
+        "Appointment date offered and confirmed",
+        "Agent thanked caller at close",
+        "Professional tone maintained throughout",
+        "Agent avoided rushed pacing",
+        "Caller confirmed receipt of appointment details",
+        "First-time patient status confirmed",
+        "Agent offered reschedule option",
+        "Call concluded with clear next steps"
+      ],
+      "unmetSignals": [
+        "Email address never captured in transcript",
+        "No mention of parking or valet options",
+        "No explanation of pre-visit forms or MyChart setup",
+        "Caller's phone number redacted and not confirmed verbally",
+        "No assessment of caller anxiety or surgery history",
+        "No mention of insurance pre-authorization timeline",
+        "Caller's preferred contact method not established",
+        "Follow-up expectations not set for insurance verification",
+        "No mention of arrival time guidance (15 min early)",
+        "Transportation assistance options not offered"
+      ],
+      "naSignals": [
+        "Billing inquiry (not applicable to new-patient intake)",
+        "Insurance claim status (not applicable to new-patient intake)",
+        "Medical record request (handled separately)",
+        "Prescription refill (not applicable to intake)",
+        "Lab result retrieval (not applicable to intake)",
+        "Cancellation or reschedule reason (active booking)",
+        "Previous encounter feedback (new patient)"
+      ],
+      "prompts": [
+        {
+          "question": "Is the patient trying to solve a specific problem?",
+          "answer": "Yes. The caller (prospective new patient) is experiencing left shoulder pain and mobility restriction. She is seeking evaluation and treatment options from an orthopedic surgeon at UT Southwestern and wants to book a consultation appointment to begin the diagnostic and care-planning process."
+        },
+        {
+          "question": "What are the patient's expectations?",
+          "answer": "The patient expects to be seen by an orthopedic specialist, have a thorough examination, receive a diagnosis and treatment plan, and schedule the appointment within a reasonable timeframe (she accepted the offered date without hesitation). She is a new patient to UT Southwestern and is likely comparing this experience to other local providers."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have confirmed the patient's email address before closing (it was not captured), offered parking and transportation guidance (UT Southwestern's Dallas campus has valet and public options), and briefly explained the pre-visit paperwork and MyChart portal setup so the patient knows what to expect. These additions would reduce call-backs and no-shows."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon, thank you for calling UT Southwestern Medical Center orthopedic appointments. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus. Yes, I'm calling because I've had really bad left shoulder pain for about three weeks now and a friend recommended I see someone at UT Southwestern. I'm not sure if I need surgery or what, but I want to talk to a doctor about it."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:48",
+          "text": "I'm glad you reached out to us. Left shoulder pain is definitely something our orthopedic team can evaluate. I'd like to get you scheduled with one of our specialists. Can I start by getting your full name, please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:02",
+          "text": "Of course. It's Sarah Chen. C as in Charlie, H as in Hotel, E as in Echo, N as in November."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:12",
+          "text": "Perfect, Sarah Chen. Thank you. And Sarah, are you a current UT Southwestern patient, or will this be your first visit with us?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:22",
+          "text": "First time. I've never been to UT Southwestern before."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:28",
+          "text": "Wonderful. I'll get you set up as a new patient. Do you have insurance coverage, Sarah, or are you planning to self pay?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:38",
+          "text": "I have Blue Cross Blue Shield through my employer."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:44",
+          "text": "Great, that's helpful. And just to confirm, are you located in the Dallas area? What's your ZIP code?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:54",
+          "text": "Yes, I'm in Dallas. It's 75204. That's close to the medical center, right?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:02",
+          "text": "Yes, that's very close. Our main campus is right there. Now, I have an opening with one of our orthopedic surgeons next Tuesday, October 22 at 2 PM. Does that work for your schedule?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:16",
+          "text": "October 22 at 2 PM works perfectly. I'll be there."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:24",
+          "text": "Excellent. So to confirm, Sarah Chen, new patient orthopedic consultation for left shoulder pain, next Tuesday October 22 at 2 PM here at UT Southwestern. You'll receive a confirmation email shortly with all the details. Is there anything else I can help you with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:42",
+          "text": "No, that sounds good. Thank you so much."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:48",
+          "text": "You're very welcome, Sarah. Thank you for choosing UT Southwestern Medical Center, and we look forward to seeing you on the 22nd. Have a great day."
+        }
+      ],
+      "aiSummary": "Sarah Chen, a new patient in Dallas ZIP 75204 with Blue Cross Blue Shield insurance, called to schedule an orthopedic consultation for left shoulder pain persisting for three weeks. Marcus Bell completed the intake efficiently, capturing her name, insurance status, and location, and booked her for a new patient orthopedic appointment on Tuesday, October 22 at 2 PM at UT Southwestern's main campus. The call proceeded smoothly with clear confirmation of appointment details, though email address was not captured and patient expectations around pre-visit forms and parking were not addressed.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, excellent structure and professional tone on this new patient orthopedic intake. You nailed the greeting, captured all required demographics, and booked the appointment with clear confirmation. Two quick coaching points for next time: (1) Always grab the email address before you close, so we can send confirmation and reduce no-shows. (2) Briefly mention that she'll receive pre-visit forms via MyChart and note our parking options at the campus. These small touches set expectations and reduce call-backs. Well done overall."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "44,135"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$851.27"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$37,570,769"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "26,481"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "60%"
+            },
+            {
+              "label": "Appointment: Scheduled (Count)",
+              "value": "18,537"
+            },
+            {
+              "label": "Appointment: Scheduled (Percent)",
+              "value": "42%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "17,654"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "40%"
+            },
+            {
+              "label": "Appointment: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Appointments)",
+          "chart": {
+            "legend": "Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Social",
+                "value": 54,
+                "display": "54%"
+              },
+              {
+                "name": "Referral",
+                "value": 47,
+                "display": "47%"
+              },
+              {
+                "name": "Direct",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 36,
+                "display": "36%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google (Paid Search)",
+                  "15,204",
+                  "31%",
+                  "$12,184,553"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "11,847",
+                  "36%",
+                  "$9,712,441"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "8,213",
+                  "41%",
+                  "$7,046,882"
+                ]
+              },
+              {
+                "cells": [
+                  "Physician Referral",
+                  "5,632",
+                  "47%",
+                  "$5,011,205"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "3,239",
+                  "54%",
+                  "$3,615,688"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 16000,
+            "axisTicks": [
+              0,
+              4000,
+              8000,
+              12000,
+              16000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc (Paid Search)",
+                "value": 14882,
+                "display": "14,882"
+              },
+              {
+                "name": "organic",
+                "value": 11235,
+                "display": "11,235"
+              },
+              {
+                "name": "email",
+                "value": 7914,
+                "display": "7,914"
+              },
+              {
+                "name": "referral",
+                "value": 6428,
+                "display": "6,428"
+              },
+              {
+                "name": "social",
+                "value": 3676,
+                "display": "3,676"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc (Paid Search)",
+                  "14,882",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "11,235",
+                  "37%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "7,914",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "6,428",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "3,676",
+                  "52%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2500,
+              5000,
+              7500,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Find a Doctor DFW",
+                "value": 9428,
+                "display": "9,428"
+              },
+              {
+                "name": "Simmons Cancer Care Near Me",
+                "value": 6713,
+                "display": "6,713"
+              },
+              {
+                "name": "Same-Day Ortho Appointment",
+                "value": 4905,
+                "display": "4,905"
+              },
+              {
+                "name": "Heart & Vascular Dallas",
+                "value": 3682,
+                "display": "3,682"
+              },
+              {
+                "name": "No. 1 Hospital in DFW",
+                "value": 2341,
+                "display": "2,341"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Find a Doctor DFW",
+                  "9,428",
+                  "30%",
+                  "$8,024,553"
+                ]
+              },
+              {
+                "cells": [
+                  "Simmons Cancer Care Near Me",
+                  "6,713",
+                  "38%",
+                  "$5,712,884"
+                ]
+              },
+              {
+                "cells": [
+                  "Same-Day Ortho Appointment",
+                  "4,905",
+                  "44%",
+                  "$4,174,266"
+                ]
+              },
+              {
+                "cells": [
+                  "Heart & Vascular Dallas",
+                  "3,682",
+                  "51%",
+                  "$3,133,447"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 5000,
+            "axisTicks": [
+              0,
+              1250,
+              2500,
+              3750,
+              5000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "UTSW find a doctor",
+                "value": 4213,
+                "display": "4,213"
+              },
+              {
+                "name": "best cancer hospital Dallas",
+                "value": 3187,
+                "display": "3,187"
+              },
+              {
+                "name": "UT Southwestern MyChart login",
+                "value": 2564,
+                "display": "2,564"
+              },
+              {
+                "name": "heart specialist Dallas UT Southwestern",
+                "value": 1892,
+                "display": "1,892"
+              },
+              {
+                "name": "UT Southwestern locations near me",
+                "value": 1338,
+                "display": "1,338"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "UTSW find a doctor",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "best cancer hospital Dallas",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "UT Southwestern MyChart login",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "heart specialist Dallas UT Southwestern",
+                  "53%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Appointment: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Patient Care / Clinical Services",
+              "18,942",
+              "33%",
+              "64%"
+            ]
+          },
+          {
+            "cells": [
+              "Education & Training",
+              "6,417",
+              "40%",
+              "71%"
+            ]
+          },
+          {
+            "cells": [
+              "Research & Innovation",
+              "3,884",
+              "46%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Giving & Philanthropy",
+              "1,762",
+              "55%",
+              "49%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Clements University Hospital",
+              "12,834",
+              "1,043",
+              "6%",
+              "34%"
+            ]
+          },
+          {
+            "cells": [
+              "Simmons Comprehensive Cancer Center",
+              "8,217",
+              "588",
+              "5%",
+              "40%"
+            ]
+          },
+          {
+            "cells": [
+              "Zale Lipshy Pavilion",
+              "5,461",
+              "342",
+              "4%",
+              "47%"
+            ]
+          },
+          {
+            "cells": [
+              "Outpatient Medical Center Clinic",
+              "3,129",
+              "174",
+              "3%",
+              "55%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1284,
+              1472,
+              1398,
+              1356,
+              1332
+            ]
+          },
+          {
+            "name": "Insurance Not Accepted",
+            "values": [
+              1118,
+              1263,
+              1207,
+              1184,
+              1141
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              984,
+              1102,
+              1067,
+              1041,
+              1010
+            ]
+          },
+          {
+            "name": "Needs Referral First",
+            "values": [
+              823,
+              934,
+              897,
+              872,
+              850
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              612,
+              698,
+              671,
+              651,
+              631
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "17,654"
+          },
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "New Patient (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$21,415,338"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,127,480"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,853,216"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,741,642"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "30%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,315,844"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,928,715"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "39%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,448,441"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20891,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "5827",
+                "58%",
+                "28%",
+                "$6,234,981"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "4293",
+                "54%",
+                "31%",
+                "$4,891,237"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "3156",
+                "59%",
+                "36%",
+                "$3,827,944"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "2841",
+                "51%",
+                "29%",
+                "$2,614,785"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "1542",
+                "52%",
+                "38%",
+                "$1,846,391"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 19247,
+          "rows": [
+            {
+              "name": "Website Form",
+              "metrics": [
+                "6413",
+                "57%",
+                "29%",
+                "$7,105,526"
+              ]
+            },
+            {
+              "name": "Voice Call",
+              "metrics": [
+                "4728",
+                "55%",
+                "32%",
+                "$5,238,684"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "3145",
+                "53%",
+                "30%",
+                "$3,421,965"
+              ]
+            },
+            {
+              "name": "Mobile App",
+              "metrics": [
+                "2184",
+                "50%",
+                "35%",
+                "$2,847,108"
+              ]
+            },
+            {
+              "name": "Chatbot",
+              "metrics": [
+                "1589",
+                "52%",
+                "38%",
+                "$1,802,055"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 19428,
+          "rows": [
+            {
+              "name": "Find a Doctor: Specialist Consultation DFW",
+              "metrics": [
+                "4156",
+                "52%",
+                "26%",
+                "$4,627,384"
+              ]
+            },
+            {
+              "name": "Simmons Cancer Center: Second Opinion Campaign",
+              "metrics": [
+                "3284",
+                "58%",
+                "32%",
+                "$3,918,627"
+              ]
+            },
+            {
+              "name": "Cardiology Services: Heart Health Screening",
+              "metrics": [
+                "2847",
+                "56%",
+                "28%",
+                "$3,104,962"
+              ]
+            },
+            {
+              "name": "Orthopaedic Surgery: Joint Health Webinar",
+              "metrics": [
+                "2315",
+                "54%",
+                "37%",
+                "$2,756,841"
+              ]
+            },
+            {
+              "name": "Primary Care: New Patient Wellness Program",
+              "metrics": [
+                "1826",
+                "48%",
+                "41%",
+                "$2,008,194"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18756,
+          "rows": [
+            {
+              "name": "UT Southwestern doctors Dallas",
+              "metrics": [
+                "3742",
+                "51%",
+                "25%",
+                "$4,156,238"
+              ]
+            },
+            {
+              "name": "Best cancer hospital Dallas",
+              "metrics": [
+                "2918",
+                "59%",
+                "34%",
+                "$3,527,614"
+              ]
+            },
+            {
+              "name": "Heart specialist Dallas UT Southwestern",
+              "metrics": [
+                "2165",
+                "57%",
+                "29%",
+                "$2,384,915"
+              ]
+            },
+            {
+              "name": "UTSW find a doctor specialist",
+              "metrics": [
+                "1847",
+                "55%",
+                "36%",
+                "$2,041,782"
+              ]
+            },
+            {
+              "name": "Second opinion oncology DFW",
+              "metrics": [
+                "1489",
+                "60%",
+                "39%",
+                "$1,728,491"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Specialist Consultation and Evaluation",
+              "metrics": [
+                "5893",
+                "62%",
+                "31%",
+                "$7,842,156"
+              ]
+            },
+            {
+              "name": "Cardiology and Heart and Vascular Care",
+              "metrics": [
+                "3241",
+                "58%",
+                "28%",
+                "$4,156,782"
+              ]
+            },
+            {
+              "name": "Cancer Care and Oncology Services",
+              "metrics": [
+                "4127",
+                "54%",
+                "35%",
+                "$6,234,891"
+              ]
+            },
+            {
+              "name": "Orthopaedic Surgery and Joint Procedures",
+              "metrics": [
+                "2684",
+                "51%",
+                "34%",
+                "$2,187,643"
+              ]
+            },
+            {
+              "name": "Advanced Imaging and Diagnostic Services",
+              "metrics": [
+                "1709",
+                "47%",
+                "32%",
+                "$993,866"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Specialist Consultation and Evaluation",
+            "values": [
+              612,
+              608,
+              634,
+              598,
+              615
+            ]
+          },
+          {
+            "name": "Cardiology and Heart and Vascular Care",
+            "values": [
+              285,
+              297,
+              312,
+              261,
+              283
+            ]
+          },
+          {
+            "name": "Cancer Care and Oncology Services",
+            "values": [
+              465,
+              518,
+              508,
+              486,
+              497
+            ]
+          },
+          {
+            "name": "Orthopaedic Surgery and Joint Procedures",
+            "values": [
+              456,
+              402,
+              428,
+              391,
+              417
+            ]
+          },
+          {
+            "name": "Advanced Imaging and Diagnostic Services",
+            "values": [
+              187,
+              198,
+              214,
+              171,
+              163
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "347"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,847,329"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "843"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "31"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$156,847"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Appointment Scheduled",
+            "values": [
+              72,
+              75,
+              74,
+              77,
+              73,
+              76,
+              72,
+              78,
+              74,
+              75,
+              71,
+              76,
+              73,
+              77,
+              75,
+              72,
+              76,
+              74,
+              178,
+              182,
+              175,
+              188,
+              181,
+              179,
+              186,
+              177,
+              183,
+              185,
+              174,
+              181,
+              179,
+              177,
+              189,
+              184,
+              186,
+              175,
+              182,
+              188,
+              176,
+              185,
+              183,
+              179,
+              187,
+              174,
+              181,
+              186,
+              175,
+              184,
+              182
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,168"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "724"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "62%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "709"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Appointment Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "New Patient Specialist Consultations",
+            "values": [
+              8,
+              12,
+              3,
+              11,
+              9,
+              14
+            ]
+          },
+          {
+            "name": "Imaging and Diagnostic Services",
+            "values": [
+              6,
+              9,
+              5,
+              8,
+              7,
+              11
+            ]
+          },
+          {
+            "name": "Cancer Treatment Programs",
+            "values": [
+              4,
+              7,
+              2,
+              6,
+              5,
+              9
+            ]
+          },
+          {
+            "name": "Cardiology and Vascular Care",
+            "values": [
+              5,
+              8,
+              4,
+              7,
+              6,
+              10
+            ]
+          },
+          {
+            "name": "Orthopedic Surgery Scheduling",
+            "values": [
+              7,
+              10,
+              1,
+              9,
+              8,
+              12
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "40,604"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "29,571"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "18,537"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$37,570,769"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Jennifer Ochoa",
+              "value": 214,
+              "display": "214"
+            },
+            {
+              "name": "Anthony Nguyen",
+              "value": 201,
+              "display": "201"
+            },
+            {
+              "name": "Sheila Hart",
+              "value": 168,
+              "display": "168"
+            },
+            {
+              "name": "David Kramer",
+              "value": 195,
+              "display": "195"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Appointment Scheduled (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Dr. Angela Martinez",
+            "values": [
+              156,
+              178,
+              201,
+              224,
+              248
+            ]
+          },
+          {
+            "name": "Patricia Wong",
+            "values": [
+              142,
+              165,
+              187,
+              209,
+              237
+            ]
+          },
+          {
+            "name": "Robert Chen",
+            "values": [
+              128,
+              151,
+              174,
+              198,
+              219
+            ]
+          },
+          {
+            "name": "Lisa Patel",
+            "values": [
+              134,
+              159,
+              182,
+              204,
+              226
+            ]
+          },
+          {
+            "name": "James Caldwell",
+            "values": [
+              119,
+              143,
+              168,
+              191,
+              215
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 52.3,
+              "display": "52.3%"
+            },
+            {
+              "name": "Jennifer Ochoa",
+              "value": 54.1,
+              "display": "54.1%"
+            },
+            {
+              "name": "Anthony Nguyen",
+              "value": 53.7,
+              "display": "53.7%"
+            },
+            {
+              "name": "Sheila Hart",
+              "value": 55.2,
+              "display": "55.2%"
+            },
+            {
+              "name": "David Kramer",
+              "value": 54.8,
+              "display": "54.8%"
+            },
+            {
+              "name": "Karen Hughes",
+              "value": 56.4,
+              "display": "56.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Webb",
+                "52.3%",
+                "27%",
+                "$753,891",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Ochoa",
+                "54.1%",
+                "28%",
+                "$806,527",
+                "1,468"
+              ]
+            },
+            {
+              "cells": [
+                "Anthony Nguyen",
+                "53.7%",
+                "26%",
+                "$741,203",
+                "1,384"
+              ]
+            },
+            {
+              "cells": [
+                "Sheila Hart",
+                "55.2%",
+                "29%",
+                "$812,664",
+                "1,339"
+              ]
+            },
+            {
+              "cells": [
+                "David Kramer",
+                "54.8%",
+                "27%",
+                "$764,119",
+                "1,437"
+              ]
+            },
+            {
+              "cells": [
+                "Karen Hughes",
+                "56.4%",
+                "30%",
+                "$878,445",
+                "1,456"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Dr. Angela Martinez",
+              "value": 93.2,
+              "display": "93.2%"
+            },
+            {
+              "name": "Patricia Wong",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Robert Chen",
+              "value": 89.4,
+              "display": "89.4%"
+            },
+            {
+              "name": "Lisa Patel",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "James Caldwell",
+              "value": 87.9,
+              "display": "87.9%"
+            },
+            {
+              "name": "Victoria Reeves",
+              "value": 90.8,
+              "display": "90.8%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Dr. Angela Martinez",
+                "93.2%",
+                "67%",
+                "$2,847,316",
+                "1,542"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Wong",
+                "91.7%",
+                "64%",
+                "$2,651,284",
+                "1,507"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Chen",
+                "89.4%",
+                "61%",
+                "$2,508,073",
+                "1,489"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Patel",
+                "92.1%",
+                "66%",
+                "$2,754,198",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "James Caldwell",
+                "87.9%",
+                "58%",
+                "$2,214,652",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Victoria Reeves",
+                "90.8%",
+                "63%",
+                "$2,596,445",
+                "1,537"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Appointment Scheduled (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Appointment Scheduled (Count)",
+        "rightMax": 900,
+        "rightTicks": [
+          0,
+          225,
+          450,
+          675,
+          900
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 687
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 659
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 613
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 585
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 509
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 535
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 591
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 614
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 685
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 664
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 598
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 578
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 514
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 530
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 605
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 623
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 679
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 668
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 585
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 567
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 522
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 527
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 615
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 636
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 670
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 669
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 577
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 553
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 531
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 528
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 620
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1700000,
+        "rightTicks": [
+          0,
+          566666.6666666666,
+          1133333.3333333333,
+          1700000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1392715
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1334854
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1243021
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1186082
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 1032702
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 1083792
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1197234
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1244426
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1387543
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1345308
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1211674
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1171106
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 1042088
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 1074146
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1225739
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1263089
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1374623
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1353231
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1186637
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 1148999
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 1057729
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 1068818
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1246866
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1288197
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1357160
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1355186
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 1169658
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 1121515
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 1076070
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 1070881
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1259680
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "44,135"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:47"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,531"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,648"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "83%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Chen",
+                "412",
+                "89%",
+                "91%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Rodriguez",
+                "358",
+                "86%",
+                "86%",
+                "81%"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Paulson",
+                "289",
+                "86%",
+                "87%",
+                "83%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "44,135 calls",
+      "pagerLabel": "1 of 4,414",
+      "calls": [
+        {
+          "time": "1/6/26 8:52 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 9:37 am",
+          "id": "A21C-4E9B7C0158AF"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "7D3E-1B26A9F04C88"
+        },
+        {
+          "time": "1/14/26 11:19 am",
+          "id": "C90A-58F1D3720E64"
+        },
+        {
+          "time": "1/15/26 12:48 pm",
+          "id": "3E6F-9A0C41B7D255"
+        },
+        {
+          "time": "1/20/26 1:24 pm",
+          "id": "B4D8-6F92E017A3C1"
+        },
+        {
+          "time": "1/22/26 2:11 pm",
+          "id": "9F17-2C84B0DE6591"
+        },
+        {
+          "time": "1/26/26 3:33 pm",
+          "id": "6A2B-70D5F1948C03"
+        },
+        {
+          "time": "1/28/26 4:07 pm",
+          "id": "D85C-3B19E60A7F42"
+        },
+        {
+          "time": "1/30/26 5:29 pm",
+          "id": "14E9-8D62C5170BFA"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "7D3E-1B26A9F04C88"
+        }
+      ],
+      "duration": "2:44",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling UT Southwestern Medical Center, this is Diane. How can I help you today?",
+          "highlights": [
+            "Thank you for calling UT Southwestern Medical Center",
+            "this is Diane"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Diane. My name is Robert Alvarez, I'm a new patient. My wife was just diagnosed with breast cancer and we're looking for a second opinion at your Simmons cancer center.",
+          "highlights": [
+            "new patient",
+            "second opinion",
+            "Simmons cancer center"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:19",
+          "text": "I'm so sorry to hear that, Robert, and I'm glad you reached out. UT Southwestern's Harold C. Simmons Comprehensive Cancer Center is the only NCI-designated center in North Texas. Can I get her name and a callback number to start?",
+          "highlights": [
+            "Harold C. Simmons Comprehensive Cancer Center"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:33",
+          "text": "Sure, it's Maria Alvarez, and the best number is 214-555-0148.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:40",
+          "text": "Thank you. And do you have her pathology reports and imaging available? That helps our breast oncology team review her case before the visit.",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:49",
+          "text": "We have the biopsy report from the other hospital. Honestly we already started talking to Baylor down the road, but everyone keeps telling us to check with you first.",
+          "highlights": [
+            "already started talking to Baylor down the road"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:01",
+          "text": "That's a very common comparison, and I'd say the difference is our multidisciplinary tumor board and clinical trial access. Every case is reviewed by surgical, medical, and radiation oncology together. Would you like a new patient consultation with our breast oncology team?",
+          "highlights": [
+            "multidisciplinary tumor board",
+            "new patient consultation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:16",
+          "text": "Yes, but before we go further, what does a consult like that run? We're still sorting out what insurance covers and I want to keep this manageable.",
+          "highlights": [
+            "what does a consult like that run",
+            "keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:28",
+          "text": "Understandable. A new patient specialist consultation typically ranges from about $250 to $500 for self-pay, but most of it is billed through insurance. I can also connect you with a financial counselor who reviews assistance options before your first visit.",
+          "highlights": [
+            "$250 to $500",
+            "financial counselor"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:42",
+          "text": "Okay, that helps. One more thing, she'll also need genetic testing at some point, is that something you handle there too?",
+          "highlights": [
+            "she'll also need genetic testing"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:51",
+          "text": "Yes, we have a full cancer genetics program on site, so her oncologist can order that during the same care plan. No need to go anywhere else.",
+          "highlights": [
+            "cancer genetics program"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:00",
+          "text": "That's good to hear. The tricky part is timing, her surgeon at the other place wants an answer within two weeks, so I'd need something soon.",
+          "highlights": [
+            "wants an answer within two weeks"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:10",
+          "text": "I can work with that. I have a new patient breast oncology consultation open this Thursday at 10 AM at our Simmons Cancer Center on Harry Hines. Shall I book that for Maria?",
+          "highlights": [
+            "Thursday at 10 AM",
+            "book that for Maria"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:21",
+          "text": "Let me just confirm with Maria quickly... yes, Thursday at 10 works for us. Please book it.",
+          "highlights": [
+            "Thursday at 10 works",
+            "book it"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:29",
+          "text": "Wonderful. You're scheduled for Thursday at 10 AM. I'll send a MyChart invite so you can upload her records ahead of time, and a financial counselor will call before the visit.",
+          "highlights": [
+            "You're scheduled for Thursday at 10 AM",
+            "MyChart invite"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:38",
+          "text": "Thank you, Diane. That's a big relief.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:41",
+          "text": "You're very welcome, Robert. Take care, and we'll see Maria Thursday.",
+          "highlights": [
+            "Take care"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Second Opinion",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Service Line: Oncology / Simmons",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Financial Assistance Offered",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Robert Alvarez, a new patient, called on behalf of his wife Maria who was recently diagnosed with breast cancer and is seeking a second opinion at UT Southwestern's Harold C. Simmons Comprehensive Cancer Center. Agent Diane addressed his cost concerns, a competing consideration with Baylor, and a two-week deadline from Maria's current surgeon, while noting the on-site cancer genetics program. She recommended a new patient breast oncology consultation and scheduled it for Thursday at 10 AM. A MyChart invite and a financial counselor call were arranged ahead of the visit.",
+        "keyPoints": [
+          "New patient calling for spouse Maria Alvarez",
+          "Need: breast cancer second opinion at Simmons Cancer Center",
+          "Recommended new patient breast oncology consultation ($250-$500 self-pay)",
+          "Addressed Baylor comparison, cost concern, and two-week deadline",
+          "Genetic testing and financial counseling offered on site",
+          "Callback captured: 214-555-0148, MyChart invite sent"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Appointment booked, Thursday 10 AM, Simmons Cancer Center"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "27,805 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,781",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi this is Sarah from UT Southwestern. We received your inquiry about scheduling a cardiology consultation. Is this still a good time to chat?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes hi. I need to see a heart specialist. My primary care doc recommended UT Southwestern."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great! We're glad your doctor referred you. To find the right cardiologist for you, are you looking for a diagnostic evaluation, or do you have a known heart condition you'd like us to manage?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "I have high blood pressure and my doctor thinks I might need further testing. Maybe an echo or something."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "That makes sense. An echocardiogram is a great first step. Have you ever had heart imaging done before, or would this be your first time?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "First time. I'm pretty nervous about it honestly."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "That's completely normal. Our team will walk you through everything. Quick question, are you insured, or would you prefer to discuss self pay options?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "I have Blue Cross. So I'm covered."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Perfect. With your insurance, we can get you scheduled quickly. We have openings next week. Would Tuesday March 18th at 2 pm or Thursday March 20th at 10 am work better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "Tuesday the 18th at 2 pm is perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "Excellent. I'm booking you with Dr. Michael Chen in our Cardiology program at our main campus on Harry Hines Boulevard. Your appointment is Tuesday March 18th at 2 pm. We'll send you a text reminder the day before. Can you confirm the phone number we're using is 214-555-0847?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Yes that's correct."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Perfect. If you have any questions before your visit, you can call us back at 214-645-8989. Thanks for choosing UT Southwestern, and we look forward to seeing you!"
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Identified: Cardiology Consultation",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Insurance Verified: Commercial",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Imaging Study: Echocardiogram Requested",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: Harry Hines Campus",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "214-555-0847",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "214-555-0847",
+            "repeatCaller": "No",
+            "city": "Dallas",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "James Patterson",
+            "firstName": "James",
+            "lastName": "Patterson",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A742-6E3D4A9B2C15",
+          "time": "8/16/25 10:48 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A742-6E3D4A9B2C15",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B893-7F4E5B1A3D26",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B893-7F4E5B1A3D26",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D025-8G5F6C2B4E37",
+          "time": "8/16/25 10:35 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D025-8G5F6C2B4E37",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "44,135 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,414",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/14/26 2:47 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hi there, thanks for calling UT Southwestern Medical Center. This is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Yeah, hi. I'm looking to get a second opinion on my cancer treatment. I heard you guys have a really good oncology program."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:48 PM",
+              "text": "Absolutely. Our Simmons Comprehensive Cancer Center is ranked among the best in the nation. I'd be happy to help you schedule a consultation. Have you been treated elsewhere, or is this your first time seeking oncology care?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:49 PM",
+              "text": "No, I've already had some chemo at another facility. I just want to make sure I'm getting the best possible treatment plan."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:50 PM",
+              "text": "That makes total sense. A second opinion is a great step. What type of cancer are you dealing with, if you don't mind me asking?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:51 PM",
+              "text": "It's stage two lung cancer. They said I might need radiation after the chemo, but I want to explore all my options."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:52 PM",
+              "text": "Got it. Lung cancer, stage two. We have excellent outcomes with our multidisciplinary tumor board approach. We can have you in to see one of our oncologists. Are you looking to come in sometime this month, or do you prefer early next month?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:53 PM",
+              "text": "I'm pretty flexible. Whatever's soonest would be best for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:54 PM",
+              "text": "Perfect. How about Tuesday, January twenty-eighth at two o'clock in the afternoon? That would give you about two weeks to gather your prior records."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:55 PM",
+              "text": "Yeah, that works for me. What do I need to bring?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:56 PM",
+              "text": "Great. Please bring your insurance card, a photo ID, and any prior imaging or treatment records you have. Your appointment is Tuesday, January twenty-eighth at two PM at our main campus on Harry Hines Boulevard in Dallas. Your confirmation number is seven four nine three two eight. If you need to reach us before then, just call eight seven seven, nine three six, twenty-nine thirty-three."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:57 PM",
+              "text": "Perfect. Thanks so much. I really appreciate it."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:57 PM",
+              "text": "You're very welcome. We're looking forward to seeing you. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Oncology Consultation",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Diagnosis: Lung Cancer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Prior Treatment Mentioned",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Second Opinion Request",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/14/26 2:47 pm",
+            "duration": "10:32",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "469-555-0847",
+            "repeatCaller": "No",
+            "city": "Arlington",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B523-7A4D156E2891",
+          "time": "1/09/26 11:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B523-7A4D156E2891",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C847-3E9B421F5D76",
+          "time": "1/22/26 3:14 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C847-3E9B421F5D76",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D662-8F1C7A3E4B29",
+          "time": "1/28/26 9:56 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D662-8F1C7A3E4B29",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Introduce yourself as UT Southwestern Medical Center's AI scheduling assistant here to help match the patient with the right specialist and secure a personalized appointment, mention that new patients can often be seen within a few days at our Dallas locations, and ask if they'd like to get started.",
+        "Qualify one question at a time: Ask a single question per message to learn the reason for the visit or condition, whether they are a new or returning patient, which specialty or provider they need, their preferred timeframe and location, and finally their ZIP code to confirm we serve their area.",
+        "Estimate then book: Confirm we care for patients in their ZIP code, share what a first visit and evaluation generally involves without quoting exact pricing since charges depend on insurance and services, recommend a consultation with the appropriate specialist for a full care plan, propose a specific day and time, and confirm they will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "UT_Southwestern_Medical_Center_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Doctor",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Conditions & Treatments",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Locations",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Reschedule appointment\",\"question\":\"I need to move my cardiology follow-up to next week, can you help?\",\"answer\":\"Absolutely, I can help you reschedule your cardiology follow-up. Please share your preferred day and location and I will find the next available time with your care team.\"},{\"topic\":\"Test results\",\"question\":\"How do I see my recent MRI results?\",\"answer\":\"Your imaging results and radiologist notes are posted to your MyChart patient portal once reviewed by your provider. If you have questions about the findings, I can help you book a visit to discuss them with your specialist.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How do I find a doctor at UT Southwestern?",
+              "answer": "You can search our Find a Doctor directory by specialty, condition, or provider name. Tell me what you need care for and I will help match you with the right specialist and book a visit."
+            },
+            {
+              "question": "Are you accepting new patients?",
+              "answer": "Yes, most of our specialties and primary care clinics are accepting new patients across the Dallas area. Share the reason for your visit and I will get you scheduled with the appropriate provider."
+            },
+            {
+              "question": "Do you take my insurance?",
+              "answer": "UT Southwestern participates with most major insurance plans, though coverage varies by plan and service. Our team can verify your benefits when we schedule your appointment, so let's find a time that works for you."
+            },
+            {
+              "question": "How soon can I be seen?",
+              "answer": "Many new patients can be seen within a few days, and some specialties offer same-week visits. Tell me your preferred location and timeframe and I will find the earliest opening."
+            },
+            {
+              "question": "Where are your locations?",
+              "answer": "We have hospitals and clinics throughout the Dallas-Fort Worth area, including our main campus and neighborhood locations. Let me know which area is convenient and I will book you nearby."
+            },
+            {
+              "question": "Can I get a second opinion on my cancer diagnosis?",
+              "answer": "Yes, our Simmons Comprehensive Cancer Center offers second-opinion consultations with our oncology specialists and tumor board. I can schedule an evaluation for you if you share a bit about your diagnosis."
+            },
+            {
+              "question": "Do I need a referral to be seen?",
+              "answer": "Some specialties and insurance plans require a referral, while others allow you to book directly. Tell me the type of care you need and I will let you know and get you scheduled."
+            },
+            {
+              "question": "How much will my visit cost?",
+              "answer": "Charges depend on your insurance, the specialist you see, and the services provided, so I cannot quote an exact price. The best next step is to book a consultation where our team can review your coverage and care plan."
+            },
+            {
+              "question": "Can I schedule an MRI or imaging study?",
+              "answer": "Yes, we offer high-field MRI, CT, and PET imaging with radiologist reads at several locations. I can help you book an imaging appointment once your provider has ordered the study."
+            },
+            {
+              "question": "How do I access MyChart?",
+              "answer": "MyChart is our secure patient portal for messages, results, and appointment reminders, and you can sign up at our website or during your first visit. I can also help you schedule an appointment right now."
+            },
+            {
+              "question": "Do you offer virtual visits?",
+              "answer": "Yes, many of our providers offer video visits in addition to in-person appointments. Let me know your preference and I will find an available time."
+            },
+            {
+              "question": "Can I see a heart specialist?",
+              "answer": "Our Heart and Vascular Care team offers diagnostics, procedures, and surgical care with nationally ranked cardiologists. Share your symptoms or referral and I will book you with the right specialist."
+            },
+            {
+              "question": "I need orthopaedic care for my knee, who do I see?",
+              "answer": "Our orthopaedic surgeons treat joint conditions from evaluation through surgery and rehab coordination. I can schedule a consultation to get your knee assessed and a care plan started."
+            },
+            {
+              "question": "Do you treat neurological conditions like stroke or epilepsy?",
+              "answer": "Yes, our Neurology and Neurosurgery teams provide multidisciplinary care for stroke, epilepsy, and brain and spine conditions. Tell me more about your needs and I will book you with the appropriate team."
+            },
+            {
+              "question": "Can I book a primary care or wellness visit?",
+              "answer": "Yes, our primary and preventive care providers handle wellness exams, screenings, and chronic-disease management. Let me know your preferred location and I will find you an appointment."
+            },
+            {
+              "question": "How do I enroll in a clinical trial?",
+              "answer": "UT Southwestern offers clinical trials that provide access to investigational therapies, typically at no cost to participants. I can help you schedule a consultation to discuss whether a trial is right for you."
+            },
+            {
+              "question": "What makes UT Southwestern different?",
+              "answer": "We are the No. 1 hospital in DFW for the tenth year in a row with more nationally ranked specialties than any hospital in Texas. Let me help you book with one of our specialists to experience that care."
+            },
+            {
+              "question": "Can I request a specific doctor?",
+              "answer": "Yes, if you have a preferred provider I can check their availability and book you directly. Just share the doctor's name and your preferred timeframe."
+            },
+            {
+              "question": "My symptoms are getting worse, what should I do?",
+              "answer": "If this is an emergency please call 911 or go to the nearest emergency room right away. For urgent but non-emergency concerns, I can help you find the soonest available appointment with the right specialist."
+            },
+            {
+              "question": "Can I transfer my care to UT Southwestern?",
+              "answer": "Yes, we welcome patients transferring their care and can coordinate records from your current provider. Let me know the type of care you need and I will schedule your first visit."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule a new patient appointment\",\"follow_up_message\":\"Thanks for reaching out to UT Southwestern. I have a new patient consultation available with our specialist this Thursday at 10:15 AM at our Dallas campus. Would you like me to reserve that time and send a reminder text?\"},{\"intent\":\"Request information before booking\",\"follow_up_message\":\"Happy to help you find the right care. Once you tell me the reason for your visit and your ZIP code, I will match you with the appropriate specialist and propose a specific appointment time that fits your schedule.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is UT Southwestern Medical Center's AI scheduling assistant. I can help match you with the right specialist and book your appointment. Would you like to get started?",
+        "goal": "Guide the patient to book a new patient appointment with the appropriate UT Southwestern specialist or care team.",
+        "bookingType": "in-person or virtual appointment",
+        "offer": "",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "What is the main reason for your visit or the condition you need care for?",
+          "Are you a new patient or returning to UT Southwestern?",
+          "Which specialty or provider are you hoping to see?",
+          "What is your preferred timeframe and do you prefer an in-person or video visit?",
+          "What ZIP code are you located in so I can confirm the most convenient location for you?"
+        ]
+      },
+      "serviceArea": "the greater Dallas-Fort Worth, Texas area, ZIP codes starting with 75"
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:41 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:41 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:41 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "UT Southwestern Medical Center",
+      "callerName": "Margaret Chen",
+      "callerPhone": "(214) 555-0847",
+      "campaign": "Cardiology Services, Dallas Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$7,250",
+      "googleSearch": "heart specialist Dallas UT Southwestern",
+      "websiteSearch": "cardiology consultation near me",
+      "callingWebpage": "/patient-care/conditions-treatments/heart-vascular",
+      "products": "Cardiology Consultation, Diagnostic Imaging",
+      "cartId": "UT-3792M",
+      "serviceable": "Yes",
+      "email": "margaret.chen@email.com",
+      "street": "4521 Maple Ridge Drive",
+      "city": "Dallas",
+      "state": "TX",
+      "zip": "75205",
+      "digitalJourney": "/home › /patient-care › /conditions-treatments › /heart-vascular",
+      "intent": "Seeking second opinion on atrial fibrillation diagnosis from her primary care physician.",
+      "coverage": "ZIP 75205 confirmed, Dallas serviceable",
+      "switchIntent": "High, experiencing palpitations and fatigue, wants appointment within two weeks.",
+      "greeting": "Hi Margaret, thanks for calling UT Southwestern Medical Center. I see you're interested in our Cardiology Services for a second opinion on your heart condition. I'd love to get you scheduled with one of our cardiologists. Would this week or next week work better for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "UT Southwestern Medical Center",
+      "callerName": "James Rodriguez",
+      "callerPhone": "(469) 555-0923",
+      "campaign": "Orthopaedic Surgery, Arlington Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$32,840",
+      "googleSearch": "joint replacement surgery Arlington Texas",
+      "websiteSearch": "best orthopedic surgeon near me",
+      "callingWebpage": "/patient-care/conditions-treatments/orthopedics",
+      "products": "Joint Replacement Surgery, Orthopedic Consultation",
+      "cartId": "UT-8614J",
+      "serviceable": "Yes",
+      "email": "james.rodriguez@email.com",
+      "street": "2847 Oak Hollow Lane",
+      "city": "Arlington",
+      "state": "TX",
+      "zip": "76010",
+      "digitalJourney": "/home › /patient-care › /find-a-doctor › /orthopedics",
+      "intent": "Scheduled for left knee replacement consultation following chronic arthritis diagnosis and failed conservative treatment.",
+      "coverage": "ZIP 76010 confirmed, Arlington serviceable",
+      "appointment": "Orthopedic Consultation with Dr. Patricia Sanchez, Thursday Jul 18, 2:00 PM",
+      "greeting": "Hi James, this is Dr. Sanchez's scheduler at UT Southwestern Medical Center. We've got you confirmed for your knee replacement consultation this Thursday at 2 PM. Please bring your recent imaging and insurance card. Looking forward to seeing you soon."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "UT Southwestern Medical Center",
+      "brandDomain": "www.utsouthwestern.edu",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (214) 555-0847",
+      "callerLocation": "Dallas, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Best Cancer Hospital DFW",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "oncology second opinion Dallas",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/patient-care/conditions-treatments/cancer-care",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Simmons Comprehensive Cancer Center, Find a Doctor Oncology",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Dallas, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "appt_new_oncology",
+          "name": "Appointment, New Oncology Consultation"
+        },
+        {
+          "id": "clinical_trials_intake",
+          "name": "Clinical Trials Intake"
+        },
+        {
+          "id": "patient_support",
+          "name": "Patient Support Services"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Good morning, thank you for calling UT Southwestern Medical Center. This is the AI scheduling assistant. I see you're interested in our cancer care services. Are you looking to schedule a new consultation with one of our oncologists today?",
+          "sigs": [],
+          "q": [
+            15,
+            40,
+            45
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, I've been diagnosed with stage two colon cancer and my local doctors recommended I get a second opinion from a top cancer center. I heard you're ranked number one in DFW and I want to see a specialist there.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Colon cancer</strong> diagnosis"
+            },
+            {
+              "c": "blue",
+              "t": "Second opinion needed"
+            },
+            {
+              "c": "orange",
+              "t": "New patient consultation"
+            }
+          ],
+          "q": [
+            62,
+            25,
+            13
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I'm very glad you reached out to us. Our Simmons Comprehensive Cancer Center is an excellent choice for a second opinion. To connect you with the right oncologist, can you tell me if you have your pathology reports and imaging studies available, and are you able to come in for an initial consultation within the next two weeks?",
+          "sigs": [],
+          "q": [
+            74,
+            15,
+            11
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I have everything ready to send over. And yes, I can definitely come in within two weeks. I prefer an afternoon appointment if possible. This is really urgent for me so I want to get started with treatment planning as soon as I can.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Urgent</strong> consultation needed"
+            },
+            {
+              "c": "purple",
+              "t": "Ready with medical records"
+            },
+            {
+              "c": "orange",
+              "t": "Afternoon availability preferred"
+            }
+          ],
+          "q": [
+            89,
+            7,
+            4
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm connecting you now to our New Oncology Consultation team. They'll verify your insurance, schedule your appointment with one of our board-certified oncologists, and arrange for us to request your medical records. You're in great hands. Thank you for choosing UT Southwestern.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"you're all set for your appointment (Agent)\", \"scheduled you with the doctor (Agent)\", \"see you on your appointment date (Agent)\", \"get you booked in with the specialist (Agent)\"])",
+          "createdAt": "03/12/25 9:14 am",
+          "updatedAt": "12/28/25 4:41 pm"
+        },
+        {
+          "name": "Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule an appointment (Caller)\", \"see a specialist (Caller)\", \"next available opening (Caller)\", \"book a visit (Caller)\"])",
+          "createdAt": "04/02/25 10:26 am",
+          "updatedAt": "11/19/25 2:08 pm"
+        },
+        {
+          "name": "Cancer Care Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Simmons Cancer Center (Caller)\", \"oncology consult (Caller)\", \"chemotherapy options (Caller)\", \"radiation therapy (Caller)\"])",
+          "createdAt": "05/18/25 8:47 am",
+          "updatedAt": "01/09/26 11:52 am"
+        },
+        {
+          "name": "Competitor Hospital Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"MD Anderson (Caller)\", \"Baylor Scott and White (Caller)\", \"Texas Health Resources (Caller)\", \"another hospital (Caller)\"])",
+          "createdAt": "06/07/25 1:33 pm",
+          "updatedAt": "12/15/25 9:19 am"
+        },
+        {
+          "name": "Cost & Insurance Concern",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"does my insurance cover (Caller)\", \"how much will this cost (Caller)\", \"self-pay price (Caller)\", \"financial assistance (Caller)\"])",
+          "createdAt": "07/21/25 3:05 pm",
+          "updatedAt": "01/14/26 10:37 am"
+        },
+        {
+          "name": "Empathy & Bedside Manner (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Patient Empathy] < 60 and duration > 45 sec",
+          "createdAt": "08/09/25 9:58 am",
+          "updatedAt": "01/06/26 5:22 pm"
+        },
+        {
+          "name": "HIPAA Privacy Compliance (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[HIPAA Compliance] < 60 and duration > 45 sec",
+          "createdAt": "08/24/25 11:12 am",
+          "updatedAt": "01/18/26 8:44 am"
+        },
+        {
+          "name": "New Patient Intake Quality (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[New Patient Intake] < 60 and duration > 45 sec",
+          "createdAt": "09/15/25 2:41 pm",
+          "updatedAt": "01/21/26 3:56 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the estimated cost is (Agent)\", \"your out-of-pocket would be (Agent)\", \"self-pay rate for that (Agent)\", \"the price for the procedure (Agent)\"])",
+          "createdAt": "10/03/25 10:19 am",
+          "updatedAt": "01/23/26 1:27 pm"
+        },
+        {
+          "name": "Second Opinion Requested",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"get a second opinion (Caller)\", \"review my diagnosis (Caller)\", \"another set of eyes (Caller)\", \"confirm my treatment plan (Caller)\"])",
+          "createdAt": "11/11/25 9:36 am",
+          "updatedAt": "01/26/26 4:03 pm"
+        }
+      ]
+    }
+  }
+}

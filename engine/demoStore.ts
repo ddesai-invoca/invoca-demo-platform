@@ -56,6 +56,20 @@ export interface DemoRecord {
      edited someone else's demo; optional so records written before this existed
      still load. */
   updatedBy?: DemoCreator;
+  /* Which EVENT roster this demo belongs to (see src/data/eventDemos.ts). Set
+     only on seeded event demos; absent on every ordinary demo, which is why it
+     is optional — all the records already on the disk have to keep loading.
+     A demo carrying it is filed under that event's own Launch dropdown instead
+     of My/Team demos. Preserved by PATCH (which spreads the record), and
+     deliberately NOT carried by a duplicate: a copy is the SE's own working
+     demo, so it belongs in "My demos". */
+  event?: string;
+  /* The name this prospect appears under on the source list an event roster was
+     built from, when that differs from `prospect`. `prospect` is what every
+     screen shows and what the voice agent says out loud, so it drops LLC/Inc.
+     suffixes and fixes ALL-CAPS rows; this keeps the verbatim row searchable, so
+     pasting the name off the original list still finds the demo. */
+  listedAs?: string;
   profile: unknown;
   customizations: {
     overrides: Record<string, unknown>;

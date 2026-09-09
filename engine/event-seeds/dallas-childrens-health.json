@@ -1,0 +1,5327 @@
+{
+  "id": "children-s-health",
+  "customerName": "Children's Health",
+  "websiteUrl": "https://www.childrens.com",
+  "brandDomain": "childrens.com",
+  "networkName": "Invoca for Pediatric Healthcare",
+  "industry": "Pediatric healthcare system",
+  "bookingTerm": "Appointment",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 6842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 12417
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 13205
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 12861
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 10612
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Pediatric ER Near Me, Dallas",
+          "marketingSearchTerm": "kids emergency room Plano",
+          "landingPageUrl": "https://www.childrens.com/get-care/emergency-care?utm_source=google&utm_medium=cpc&utm_campaign=pediatric_er_dallas",
+          "websiteJourney": "Home / Get Care / Emergency Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Kids Urgent Care DFW",
+          "marketingSearchTerm": "pediatric urgent care near me",
+          "landingPageUrl": "https://www.childrens.com/get-care/urgent-care?utm_source=google&utm_medium=cpc&utm_campaign=kids_urgent_care_dfw",
+          "websiteJourney": "Home / Get Care / Urgent Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Top Children's Hospital Texas",
+          "marketingSearchTerm": "children's hospital Dallas",
+          "landingPageUrl": "https://www.childrens.com/find-a-location?utm_source=google&utm_medium=cpc&utm_campaign=top_childrens_hospital_tx",
+          "websiteJourney": "Home / Get Care / Primary Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Best Children's Heart Hospital",
+          "marketingSearchTerm": "best children's heart hospital Texas",
+          "landingPageUrl": "https://www.childrens.com/get-care/specialty-care/cardiology?utm_source=bing&utm_medium=cpc&utm_campaign=childrens_heart_hospital",
+          "websiteJourney": "Home / Get Care / Specialty Care / Cardiology",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Pediatric Specialist Appointments",
+          "marketingSearchTerm": "pediatric specialist appointment Dallas",
+          "landingPageUrl": "https://www.childrens.com/find-a-doctor?utm_source=google&utm_medium=cpc&utm_campaign=pediatric_specialist",
+          "websiteJourney": "Home / Get Care / Specialty Care / Specialty Centers & Programs",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Cost Estimates, Billing Transparency",
+          "marketingSearchTerm": "children's hospital cost estimate",
+          "landingPageUrl": "https://www.childrens.com/for-patients/billing-insurance/cost-estimates?utm_source=google&utm_medium=cpc&utm_campaign=cost_estimates",
+          "websiteJourney": "Home / For Patients / Billing & Insurance / Cost Estimates",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Pediatrician Near Me",
+          "marketingSearchTerm": "pediatrician near me Fort Worth",
+          "landingPageUrl": "https://www.childrens.com/get-care/primary-care?utm_source=bing&utm_medium=cpc&utm_campaign=pediatrician_near_me",
+          "websiteJourney": "Home / Get Care / Primary Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Pediatric Transplant Program",
+          "marketingSearchTerm": "pediatric transplant program Texas",
+          "landingPageUrl": "https://www.childrens.com/get-care/specialty-care/transplant?utm_source=google&utm_medium=cpc&utm_campaign=transplant_program",
+          "websiteJourney": "Home / Get Care / Specialty Care / Transplant",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Kingston's Heart Patient Story",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.childrens.com/campaigns/excellence?utm_source=facebook&utm_medium=social&utm_campaign=kingstons_heart",
+          "websiteJourney": "Home / Get Care / Specialty Care / Cardiology",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Luna's Transplant Story",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.childrens.com/campaigns/excellence?utm_source=instagram&utm_medium=social&utm_campaign=lunas_transplant",
+          "websiteJourney": "Home / Get Care / Specialty Care / Transplant",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Health & Wellness Featured Content",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.childrens.com/learn/podcasts?utm_source=google&utm_medium=organic&utm_campaign=featured_content",
+          "websiteJourney": "Home / Learn / Podcasts & Featured Content",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "MyChart Virtual Visit",
+          "marketingSearchTerm": "Children's Health MyChart login",
+          "landingPageUrl": "https://www.childrens.com/for-patients/parent-resources/mychart?utm_source=google&utm_medium=cpc&utm_campaign=mychart_virtual_visit",
+          "websiteJourney": "Home / For Patients / Parent Resources / MyChart Guide",
+          "signals": [
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Symptom Checker, Nurse Line",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.childrens.com/get-care/symptom-checker?utm_source=google&utm_medium=organic&utm_campaign=symptom_checker",
+          "websiteJourney": "Home / Get Care / Symptom Checker",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Kids Fever When To Go To ER",
+          "marketingSearchTerm": "kids fever when to go to ER",
+          "landingPageUrl": "https://www.childrens.com/get-care/emergency-care?utm_source=bing&utm_medium=cpc&utm_campaign=kids_fever_er",
+          "websiteJourney": "Home / Get Care / Emergency Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Making Life Better for Children",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.childrens.com/campaigns/excellence?utm_source=facebook&utm_medium=social&utm_campaign=making_life_better",
+          "websiteJourney": "Home / Get Care / Primary Care",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Outpatient Pharmacy Refills",
+          "marketingSearchTerm": "pediatric pharmacy Dallas refill",
+          "landingPageUrl": "https://www.childrens.com/get-care/pharmacy?utm_source=google&utm_medium=cpc&utm_campaign=outpatient_pharmacy",
+          "websiteJourney": "Home / Get Care / Pharmacy",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Ranked in All 11 Specialties",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.childrens.com/campaigns/excellence?utm_source=instagram&utm_medium=social&utm_campaign=all_11_specialties",
+          "websiteJourney": "Home / Get Care / Specialty Care / Specialty Centers & Programs",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Rehabilitation Therapy Services",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.childrens.com/get-care/specialty-care/rehabilitation?utm_source=google&utm_medium=organic&utm_campaign=rehab_therapy",
+          "websiteJourney": "Home / Get Care / Specialty Care / Rehabilitation",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Behavioral & Mental Health Support",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.childrens.com/get-care/specialty-care/behavioral-health?utm_source=facebook&utm_medium=social&utm_campaign=behavioral_health",
+          "websiteJourney": "Home / Get Care / Specialty Care / Behavioral Health",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Beyond ABC Community Report",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.childrens.com/give/beyond-abc?utm_source=google&utm_medium=organic&utm_campaign=beyond_abc",
+          "websiteJourney": "Home / Give / Volunteer / Donate",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Children's Health)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "43,872"
+            },
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$9,125,205"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "7,020"
+            },
+            {
+              "label": "Billing & Insurance Inquiry (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Medical Records Request (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Appointment Reschedule (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Patient Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Estimate Discussed (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Non-Qualifying Inquiry (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Patient Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Patient Call (Count)",
+            "values": [
+              4517,
+              8942,
+              8331,
+              7864,
+              7198
+            ]
+          },
+          {
+            "name": "Estimate Discussed (Count)",
+            "values": [
+              2391,
+              4732,
+              4401,
+              4158,
+              3801
+            ]
+          },
+          {
+            "name": "Non-Qualifying Inquiry (Count)",
+            "values": [
+              647,
+              1283,
+              1192,
+              1124,
+              1025
+            ]
+          },
+          {
+            "name": "New Patient (Count)",
+            "values": [
+              1507,
+              2981,
+              2776,
+              2619,
+              2401
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43872,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "18,342",
+                "52.4%",
+                "19.2%",
+                "$3,814,655"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "9,657",
+                "48.1%",
+                "24.7%",
+                "$2,007,431"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "6,428",
+                "55.7%",
+                "29.3%",
+                "$1,334,982"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "5,213",
+                "44.3%",
+                "34.6%",
+                "$1,085,214"
+              ]
+            },
+            {
+              "name": "Instagram",
+              "metrics": [
+                "4,232",
+                "58.2%",
+                "41.8%",
+                "$882,923"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43872,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "16,428",
+                "50.1%",
+                "21.3%",
+                "$3,418,672"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "11,234",
+                "46.7%",
+                "26.8%",
+                "$2,334,551"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "7,342",
+                "54.3%",
+                "31.4%",
+                "$1,527,318"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "5,213",
+                "43.8%",
+                "36.2%",
+                "$1,084,229"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "3,655",
+                "57.6%",
+                "43.7%",
+                "$760,435"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 23032,
+          "rows": [
+            {
+              "name": "Pediatric ER Near Me, Dallas",
+              "metrics": [
+                "7,342",
+                "51.2%",
+                "22.4%",
+                "$1,528,443"
+              ]
+            },
+            {
+              "name": "Kids Urgent Care DFW",
+              "metrics": [
+                "5,918",
+                "47.8%",
+                "27.1%",
+                "$1,231,822"
+              ]
+            },
+            {
+              "name": "Top Children's Hospital Texas",
+              "metrics": [
+                "4,231",
+                "55.4%",
+                "31.8%",
+                "$880,517"
+              ]
+            },
+            {
+              "name": "Making Life Better for Children",
+              "metrics": [
+                "3,124",
+                "44.1%",
+                "36.5%",
+                "$650,231"
+              ]
+            },
+            {
+              "name": "Excellence, Ranked in All 11 Specialties",
+              "metrics": [
+                "2,417",
+                "58.3%",
+                "42.3%",
+                "$503,118"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 13911,
+          "rows": [
+            {
+              "name": "pediatric urgent care near me",
+              "metrics": [
+                "4,318",
+                "49.3%",
+                "20.8%",
+                "$896,431"
+              ]
+            },
+            {
+              "name": "children's hospital dallas",
+              "metrics": [
+                "3,624",
+                "46.2%",
+                "25.6%",
+                "$751,224"
+              ]
+            },
+            {
+              "name": "kids emergency room plano",
+              "metrics": [
+                "2,713",
+                "53.7%",
+                "30.2%",
+                "$562,318"
+              ]
+            },
+            {
+              "name": "pediatrician near me fort worth",
+              "metrics": [
+                "1,914",
+                "43.5%",
+                "35.7%",
+                "$397,215"
+              ]
+            },
+            {
+              "name": "children's health mychart login",
+              "metrics": [
+                "1,342",
+                "56.8%",
+                "41.9%",
+                "$278,417"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Set (Industry) (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Emergency & Urgent Care",
+              "metrics": [
+                "14,213",
+                "44%",
+                "19.9%",
+                "$2,103,447"
+              ]
+            },
+            {
+              "name": "Primary Care",
+              "metrics": [
+                "11,647",
+                "49%",
+                "25.9%",
+                "$2,244,015"
+              ]
+            },
+            {
+              "name": "Specialty Care",
+              "metrics": [
+                "8,932",
+                "52%",
+                "30.9%",
+                "$2,051,338"
+              ]
+            },
+            {
+              "name": "Diagnostic Imaging",
+              "metrics": [
+                "5,478",
+                "55%",
+                "37.1%",
+                "$1,510,662"
+              ]
+            },
+            {
+              "name": "Surgical & Transplant Services",
+              "metrics": [
+                "3,602",
+                "58%",
+                "45.4%",
+                "$1,215,743"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43872,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "15,832",
+                "46%",
+                "21.9%",
+                "$2,578,341"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "11,238",
+                "50%",
+                "26.9%",
+                "$2,244,067"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "7,461",
+                "53%",
+                "30.9%",
+                "$1,713,588"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "5,392",
+                "56%",
+                "34.9%",
+                "$1,397,455"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "3,949",
+                "60%",
+                "40.6%",
+                "$1,191,754"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Emergency & Urgent Care",
+            "values": [
+              531,
+              602,
+              578,
+              561,
+              559
+            ]
+          },
+          {
+            "name": "Primary Care",
+            "values": [
+              587,
+              631,
+              618,
+              604,
+              581
+            ]
+          },
+          {
+            "name": "Specialty Care",
+            "values": [
+              534,
+              571,
+              563,
+              552,
+              542
+            ]
+          },
+          {
+            "name": "Diagnostic Imaging",
+            "values": [
+              389,
+              421,
+              418,
+              407,
+              398
+            ]
+          },
+          {
+            "name": "Surgical & Transplant Services",
+            "values": [
+              312,
+              338,
+              335,
+              329,
+              323
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 43,872 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Amelia Torres called to schedule a pediatric cardiology consult for her 6-year-old after a heart murmur was noted at his well-child visit. Agent Lila verified insurance, found a same-week opening in Dallas, and booked the appointment. Amelia left reassured and confirmed the details in her portal.",
+          "date": "Jan 6, 9:14 AM",
+          "agent": "Lila",
+          "duration": "2m 40s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Marcus Delgado called for help activating his MyChart account so he could message his daughter's pediatrician and view lab results. Agent Oscar walked him through the reset and confirmed his email on file. Marcus thanked him and said the app was now working.",
+          "date": "Feb 11, 1:27 PM",
+          "agent": "Oscar",
+          "duration": "1m 55s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Priya Nair called about her son's fever and asked whether to visit urgent care or the ER. Agent Rosey used the triage guidance, recommended the Plano urgent care clinic, and booked an appointment slot for that afternoon. Priya appreciated the clear direction.",
+          "date": "Mar 3, 4:02 PM",
+          "agent": "Rosey",
+          "duration": "2m 10s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "New patient Daniel Foster called to establish primary care for his 3-year-old and requested a well-child checkup. Agent Mary collected the family's contact details, insurance information, and preferred location, then scheduled the appointment in Fort Worth. Daniel confirmed he would complete intake forms in the portal beforehand.",
+          "date": "Apr 8, 10:46 AM",
+          "agent": "Mary",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 72,
+          "summary": "Gabriela Ruiz called about the pediatric transplant program after a referral for her daughter's evaluation. Agent Lee explained the multidisciplinary team process and scheduled an initial consult appointment with the transplant coordinator. Gabriela felt supported and understood the next steps.",
+          "date": "Apr 22, 11:33 AM",
+          "agent": "Lee",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Kevin Barnes called with a billing question about an ER visit charge he did not recognize. Agent Sue reviewed the itemized statement and explained the imaging portion of the bill. Kevin was satisfied with the explanation but wanted to review it further before paying.",
+          "date": "May 5, 3:19 PM",
+          "agent": "Sue",
+          "duration": "2m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 64,
+          "summary": "Hannah Wells called to check the current wait time at the Prosper urgent care before bringing in her son with an ear infection. Agent Mike gave her the estimated wait and confirmed walk-in availability. Hannah decided to head over but did not book anything in advance.",
+          "date": "May 19, 6:41 PM",
+          "agent": "Mike",
+          "duration": "1m 32s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 60,
+          "summary": "Robert Klein called to schedule a cardiology follow-up for his daughter after her recent echocardiogram. Agent Jennifer located the ordering physician's notes and booked the appointment for the following week. Robert asked a few extra questions about parking and directions.",
+          "date": "Jun 2, 9:58 AM",
+          "agent": "Jennifer",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 21,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Teresa Owens called frustrated that her MyChart login kept failing before her son's telehealth visit. Agent Rose reset the credentials but the video link still would not load on the first try. Teresa was annoyed by the delay though the issue was eventually resolved.",
+          "date": "Jun 17, 12:15 PM",
+          "agent": "Rose",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 51,
+          "summary": "Andre Simmons called to dispute a billing statement for a diagnostic MRI that he believed insurance should have covered. Agent Oscar said the claim was still processing and could not give a final figure. Andre asked for a callback once the insurer responded.",
+          "date": "Jul 9, 2:04 PM",
+          "agent": "Oscar",
+          "duration": "2m 51s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 47,
+          "summary": "Nicole Pham called about coordinating her son's bone marrow transplant follow-up appointments across two departments. Agent Lila took notes but had to transfer her twice to reach the right coordinator. Nicole was patient but grew tired of repeating the details.",
+          "date": "Jul 24, 10:22 AM",
+          "agent": "Lila",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 43,
+          "summary": "Brian Hoffman called to reschedule a physical therapy appointment that conflicted with school. Agent Lee found no nearby openings for two weeks, which frustrated Brian. The visit was moved but he was unhappy with the wait.",
+          "date": "Aug 6, 4:37 PM",
+          "agent": "Lee",
+          "duration": "2m 09s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Sandra Willis called after hours to ask about her daughter's pharmacy prescription refill status. The call rolled to voicemail and no agent was available. She left a message requesting a callback the next morning.",
+          "date": "Aug 21, 7:52 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Gregory Vance called to complain about a long delay in the specialty clinic waiting room during his son's recent appointment. Agent Mike apologized and logged the feedback but could not offer a specific resolution. Gregory remained dissatisfied and asked to speak with a manager.",
+          "date": "Sep 10, 1:44 PM",
+          "agent": "Mike",
+          "duration": "2m 26s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Lauren Mitchell called upset about a billing statement sent to collections despite her financial assistance application. Agent Sue could not locate the application in the system, which escalated Lauren's frustration. The call ended without resolution and a supervisor callback was requested.",
+          "date": "Oct 2, 11:08 AM",
+          "agent": "Sue",
+          "duration": "3m 21s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "urgent care",
+        "mychart",
+        "cardiology",
+        "billing",
+        "appointment",
+        "transplant"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 12, 1:47 PM",
+      "duration": "2m 34s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Date of Birth",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Insurance Status",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area/Location",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Appointment with Confirmation",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Document Reason for Visit",
+          "points": "0/10",
+          "status": "unmet"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Acknowledged caller request",
+        "Used patient name during call",
+        "Confirmed appointment date and time",
+        "Provided location details",
+        "Offered next steps",
+        "Expressed care for patient",
+        "Verified contact information",
+        "Confirmed insurance coverage",
+        "Asked clarifying questions",
+        "Set expectations for first visit",
+        "Documented chief complaint",
+        "Provided appointment number",
+        "Maintained professional tone"
+      ],
+      "unmetSignals": [
+        "Did not capture email address",
+        "Missed opportunity to assess urgency",
+        "Did not confirm pre-visit paperwork requirements",
+        "Failed to explain visit duration estimate",
+        "Skipped pharmacy or medication review",
+        "Did not mention behavioral health screening",
+        "Missed allergy documentation",
+        "Forgot to ask about transportation needs",
+        "Did not offer telehealth alternative",
+        "No mention of cost estimate tool"
+      ],
+      "naSignals": [
+        "Previous visit history",
+        "Insurance claim status",
+        "Prescription refill processing",
+        "Billing dispute resolution",
+        "Referral from external provider",
+        "Medical records transfer",
+        "Follow-up imaging order"
+      ],
+      "prompts": [
+        {
+          "question": "Is the patient trying to solve a specific problem?",
+          "answer": "Yes. The caller is a new parent seeking an urgent appointment for their six-month-old daughter who has had a fever and congestion for two days. They are concerned and want pediatric evaluation as soon as possible."
+        },
+        {
+          "question": "What are the patient's expectations?",
+          "answer": "The caller expects to see a pediatrician quickly, ideally within one to two business days. They want professional guidance on whether the symptoms require emergency care or if an outpatient visit is appropriate."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have captured the patient's email address for appointment confirmation and digital forms. He also could have explained pre-visit preparation and provided a range for how long the first visit typically takes."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Children's Health scheduling. My name is Marcus. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:24",
+          "text": "Hi Marcus, yes, I need to get my daughter in to see a pediatrician as soon as possible. She has had a fever and congestion for two days now."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:35",
+          "text": "I understand, and I'm glad you reached out. Let me get some information to find the right appointment for your daughter. What is your daughter's full name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:44",
+          "text": "Her name is Sophie Marie Gutierrez."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:50",
+          "text": "Thank you, Sophie Marie Gutierrez. And when was she born?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:56",
+          "text": "She was born on April 8th, 2024."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:02",
+          "text": "Perfect, so Sophie is six months old. Do you have Children's Health insurance coverage, or do you carry insurance through another provider?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:12",
+          "text": "We have Blue Cross Blue Shield. My husband's employer provides it."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:19",
+          "text": "Great. I have that in our system. And what is the best phone number to reach you at?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:26",
+          "text": "It's area code 972, ****, ****."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:34",
+          "text": "Got it. I have that down. Now, what is the ZIP code or service area where you would prefer to see the pediatrician?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:42",
+          "text": "We live in Plano. That would be 75074."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:48",
+          "text": "Perfect. We have several locations serving Plano and the surrounding areas. For fever and congestion in an infant, I want to make sure we get Sophie in quickly. Can you tell me, has she seemed lethargic or is she feeding normally?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:00",
+          "text": "She is eating, but she seems fussy and uncomfortable. I am worried it might be something serious."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:08",
+          "text": "I hear your concern. Based on what you have shared, I can schedule Sophie for an urgent appointment tomorrow at our Plano clinic at 2 PM. The pediatrician will do a full assessment. Does that time work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:19",
+          "text": "Yes, tomorrow at 2 PM is perfect. Can you confirm the details?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:25",
+          "text": "Absolutely. Sophie Marie Gutierrez, age six months, Blue Cross Blue Shield, appointment tomorrow at 2 PM at Children's Health Plano clinic, 75074. Your appointment number is CH001947. You will receive a text reminder tomorrow at 10 AM. Thank you for choosing Children's Health, and we look forward to caring for Sophie."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:41",
+          "text": "Thank you so much, Marcus. I really appreciate it."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:47",
+          "text": "You are very welcome. Take care, and we will see you tomorrow."
+        }
+      ],
+      "aiSummary": "Marcus Bell received an inbound call from a new parent seeking urgent pediatric care for their six-month-old daughter, Sophie Marie Gutierrez, presenting with fever and congestion. He successfully captured the patient's name, date of birth, insurance information (Blue Cross Blue Shield), phone number, and service area (Plano, ZIP 75074), then scheduled an urgent appointment for the following day at 2 PM at the Children's Health Plano clinic. The call was well-structured and professional, though the agent did not capture the caller's email address or fully document the clinical reason for the visit in the notes.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great work on this intake call. You established rapport quickly, asked qualifying questions about Sophie's symptoms, and confirmed all the appointment details clearly. Two coaching points for next time. First, always capture the parent or guardian email address for digital appointment reminders and pre-visit forms, especially for new patients. Second, take an extra 10 seconds to reassure the caller about what to expect at the visit, such as typical duration and whether they should bring anything. These small touches build confidence and reduce no-shows."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "43,872"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$208.00"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$9,125,205"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "26,323"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "60%"
+            },
+            {
+              "label": "Appointment: Scheduled (Count)",
+              "value": "21,059"
+            },
+            {
+              "label": "Appointment: Scheduled (Percent)",
+              "value": "48%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "17,549"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "40%"
+            },
+            {
+              "label": "Appointment: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Appointments)",
+          "chart": {
+            "legend": "Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Direct",
+                "value": 54,
+                "display": "54%"
+              },
+              {
+                "name": "Bing",
+                "value": 45,
+                "display": "45%"
+              },
+              {
+                "name": "Organic",
+                "value": 38,
+                "display": "38%"
+              },
+              {
+                "name": "Facebook",
+                "value": 31,
+                "display": "31%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "18,436",
+                  "22%",
+                  "$3,712,455"
+                ]
+              },
+              {
+                "cells": [
+                  "Facebook",
+                  "10,214",
+                  "31%",
+                  "$2,145,890"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "7,853",
+                  "38%",
+                  "$1,588,230"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing",
+                  "4,621",
+                  "45%",
+                  "$987,415"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "2,748",
+                  "54%",
+                  "$691,215"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 20000,
+            "axisTicks": [
+              0,
+              4000,
+              8000,
+              12000,
+              16000,
+              20000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 17214,
+                "display": "17,214"
+              },
+              {
+                "name": "Organic Search",
+                "value": 9865,
+                "display": "9,865"
+              },
+              {
+                "name": "Social",
+                "value": 7432,
+                "display": "7,432"
+              },
+              {
+                "name": "Referral",
+                "value": 5918,
+                "display": "5,918"
+              },
+              {
+                "name": "Email",
+                "value": 3443,
+                "display": "3,443"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "17,214",
+                  "24%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "9,865",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "7,432",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "5,918",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "3,443",
+                  "51%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 12000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Kids Urgent Care DFW",
+                "value": 9342,
+                "display": "9,342"
+              },
+              {
+                "name": "Pediatric ER Near Me Dallas",
+                "value": 7614,
+                "display": "7,614"
+              },
+              {
+                "name": "Top Children's Hospital Texas",
+                "value": 5228,
+                "display": "5,228"
+              },
+              {
+                "name": "Making Life Better for Children",
+                "value": 3916,
+                "display": "3,916"
+              },
+              {
+                "name": "Ranked in All 11 Specialties",
+                "value": 2477,
+                "display": "2,477"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Kids Urgent Care DFW",
+                  "9,342",
+                  "26%",
+                  "$1,942,310"
+                ]
+              },
+              {
+                "cells": [
+                  "Pediatric ER Near Me Dallas",
+                  "7,614",
+                  "34%",
+                  "$1,585,240"
+                ]
+              },
+              {
+                "cells": [
+                  "Top Children's Hospital Texas",
+                  "5,228",
+                  "41%",
+                  "$1,088,455"
+                ]
+              },
+              {
+                "cells": [
+                  "Making Life Better for Children",
+                  "3,916",
+                  "49%",
+                  "$815,690"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 6000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000,
+              6000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "pediatric urgent care near me",
+                "value": 4853,
+                "display": "4,853"
+              },
+              {
+                "name": "children's hospital dallas",
+                "value": 3942,
+                "display": "3,942"
+              },
+              {
+                "name": "kids emergency room plano",
+                "value": 2761,
+                "display": "2,761"
+              },
+              {
+                "name": "pediatrician near me fort worth",
+                "value": 1884,
+                "display": "1,884"
+              },
+              {
+                "name": "children's health mychart login",
+                "value": 1247,
+                "display": "1,247"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "pediatric urgent care near me",
+                  "27%"
+                ]
+              },
+              {
+                "cells": [
+                  "children's hospital dallas",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "kids emergency room plano",
+                  "42%"
+                ]
+              },
+              {
+                "cells": [
+                  "pediatrician near me fort worth",
+                  "50%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Appointment: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Urgent Care",
+              "12,483",
+              "25%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Emergency Care",
+              "9,714",
+              "33%",
+              "63%"
+            ]
+          },
+          {
+            "cells": [
+              "Primary Care",
+              "7,229",
+              "44%",
+              "55%"
+            ]
+          },
+          {
+            "cells": [
+              "Specialty Care",
+              "4,116",
+              "52%",
+              "49%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Children's Medical Center Dallas",
+              "15,238",
+              "1,214",
+              "4%",
+              "24%"
+            ]
+          },
+          {
+            "cells": [
+              "Children's Medical Center Plano",
+              "11,647",
+              "892",
+              "5%",
+              "33%"
+            ]
+          },
+          {
+            "cells": [
+              "Specialty Center Prosper",
+              "9,432",
+              "648",
+              "6%",
+              "41%"
+            ]
+          },
+          {
+            "cells": [
+              "Outpatient Center Fort Worth",
+              "7,555",
+              "483",
+              "7%",
+              "50%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1214,
+              1358,
+              1287,
+              1189,
+              1166
+            ]
+          },
+          {
+            "name": "Insurance Not Accepted",
+            "values": [
+              1043,
+              1187,
+              1124,
+              1052,
+              1026
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              892,
+              978,
+              942,
+              921,
+              885
+            ]
+          },
+          {
+            "name": "Needs Referral First",
+            "values": [
+              748,
+              812,
+              798,
+              801,
+              768
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              498,
+              542,
+              531,
+              524,
+              527
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "17,549"
+          },
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "New Patient (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$5,201,367"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$487,293"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$623,458"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$359,771"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$541,682"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$698,237"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$490,926"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 6287,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "3847",
+                "58%",
+                "31%",
+                "$2,853,354"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "2156",
+                "54%",
+                "35%",
+                "$1,601,852"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "1829",
+                "53%",
+                "36%",
+                "$1,359,284"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "1243",
+                "51%",
+                "37%",
+                "$923,761"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "1089",
+                "48%",
+                "40%",
+                "$718,405"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 5819,
+          "rows": [
+            {
+              "name": "Mobile Web",
+              "metrics": [
+                "3218",
+                "57%",
+                "30%",
+                "$2,387,336"
+              ]
+            },
+            {
+              "name": "Desktop Web",
+              "metrics": [
+                "2104",
+                "55%",
+                "34%",
+                "$1,561,648"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "1547",
+                "52%",
+                "38%",
+                "$1,148,297"
+              ]
+            },
+            {
+              "name": "Social App",
+              "metrics": [
+                "891",
+                "49%",
+                "41%",
+                "$661,074"
+              ]
+            },
+            {
+              "name": "Direct App",
+              "metrics": [
+                "642",
+                "47%",
+                "42%",
+                "$477,268"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 6384,
+          "rows": [
+            {
+              "name": "Pediatric ER Near Me Campaign",
+              "metrics": [
+                "2764",
+                "59%",
+                "29%",
+                "$2,049,376"
+              ]
+            },
+            {
+              "name": "Top Children's Hospital Texas",
+              "metrics": [
+                "1893",
+                "56%",
+                "33%",
+                "$1,403,762"
+              ]
+            },
+            {
+              "name": "Health and Wellness Featured Content",
+              "metrics": [
+                "1347",
+                "52%",
+                "36%",
+                "$999,354"
+              ]
+            },
+            {
+              "name": "MyChart App Download Drive",
+              "metrics": [
+                "1089",
+                "49%",
+                "39%",
+                "$808,611"
+              ]
+            },
+            {
+              "name": "Specialty Care Excellence Campaign",
+              "metrics": [
+                "753",
+                "46%",
+                "43%",
+                "$559,078"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 5421,
+          "rows": [
+            {
+              "name": "Pediatric urgent care near me",
+              "metrics": [
+                "1847",
+                "61%",
+                "28%",
+                "$1,369,754"
+              ]
+            },
+            {
+              "name": "Best children's heart hospital Texas",
+              "metrics": [
+                "1263",
+                "57%",
+                "32%",
+                "$937,446"
+              ]
+            },
+            {
+              "name": "Kids fever when to go to ER",
+              "metrics": [
+                "956",
+                "54%",
+                "37%",
+                "$709,792"
+              ]
+            },
+            {
+              "name": "Pediatric specialist appointment Dallas",
+              "metrics": [
+                "743",
+                "51%",
+                "40%",
+                "$551,306"
+              ]
+            },
+            {
+              "name": "Children's hospital cost estimate",
+              "metrics": [
+                "612",
+                "48%",
+                "43%",
+                "$453,869"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Primary and Pediatric Care",
+              "metrics": [
+                "4287",
+                "62%",
+                "29%",
+                "$3,180,354"
+              ]
+            },
+            {
+              "name": "Emergency and Urgent Care",
+              "metrics": [
+                "3652",
+                "57%",
+                "34%",
+                "$2,708,384"
+              ]
+            },
+            {
+              "name": "Specialty Care and Specialty Centers",
+              "metrics": [
+                "5018",
+                "54%",
+                "33%",
+                "$3,722,338"
+              ]
+            },
+            {
+              "name": "Surgical and Transplant Services",
+              "metrics": [
+                "2847",
+                "51%",
+                "37%",
+                "$2,110,749"
+              ]
+            },
+            {
+              "name": "Outpatient Pharmacy and Support Services",
+              "metrics": [
+                "1745",
+                "48%",
+                "41%",
+                "$1,294,842"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Primary and Pediatric Care",
+            "values": [
+              374,
+              398,
+              412,
+              401,
+              419
+            ]
+          },
+          {
+            "name": "Emergency and Urgent Care",
+            "values": [
+              312,
+              328,
+              356,
+              341,
+              366
+            ]
+          },
+          {
+            "name": "Specialty Care and Specialty Centers",
+            "values": [
+              448,
+              472,
+              501,
+              485,
+              521
+            ]
+          },
+          {
+            "name": "Surgical and Transplant Services",
+            "values": [
+              289,
+              307,
+              338,
+              324,
+              355
+            ]
+          },
+          {
+            "name": "Outpatient Pharmacy and Support Services",
+            "values": [
+              218,
+              241,
+              268,
+              254,
+              285
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "26%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "358"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "842"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Appointment Scheduled",
+            "values": [
+              73,
+              79,
+              75,
+              81,
+              77,
+              74,
+              82,
+              76,
+              80,
+              78,
+              72,
+              79,
+              75,
+              81,
+              78,
+              74,
+              80,
+              77,
+              76,
+              82,
+              79,
+              75,
+              80,
+              78,
+              74,
+              79,
+              81,
+              77,
+              75,
+              73,
+              79,
+              81,
+              174,
+              189,
+              176,
+              182,
+              179,
+              185,
+              178,
+              186,
+              183,
+              180,
+              187,
+              181,
+              179,
+              184,
+              182,
+              178,
+              186
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,214"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "697"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "59%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "671"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "96%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Appointment Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Pediatric Primary Care",
+            "values": [
+              8,
+              12,
+              9,
+              11,
+              10,
+              14
+            ]
+          },
+          {
+            "name": "Urgent Care Inquiry",
+            "values": [
+              6,
+              9,
+              7,
+              8,
+              11,
+              10
+            ]
+          },
+          {
+            "name": "Specialty Consult Scheduling",
+            "values": [
+              4,
+              3,
+              2,
+              5,
+              7,
+              9
+            ]
+          },
+          {
+            "name": "Telehealth Visit Booking",
+            "values": [
+              5,
+              8,
+              6,
+              9,
+              8,
+              11
+            ]
+          },
+          {
+            "name": "Prescription Refill Request",
+            "values": [
+              3,
+              6,
+              4,
+              7,
+              5,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "40,362"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "30,711"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Appointment Booked (Count)",
+            "value": "21,059"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$9,125,205"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 247,
+              "display": "247"
+            },
+            {
+              "name": "Patricia Gomez",
+              "value": 189,
+              "display": "189"
+            },
+            {
+              "name": "David Okonkwo",
+              "value": 216,
+              "display": "216"
+            },
+            {
+              "name": "Jennifer Walsh",
+              "value": 173,
+              "display": "173"
+            },
+            {
+              "name": "Raymond Lightfoot",
+              "value": 201,
+              "display": "201"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              184,
+              201,
+              219,
+              256,
+              298
+            ]
+          },
+          {
+            "name": "James Patel",
+            "values": [
+              167,
+              189,
+              204,
+              241,
+              273
+            ]
+          },
+          {
+            "name": "Angela Rodriguez",
+            "values": [
+              152,
+              168,
+              187,
+              219,
+              251
+            ]
+          },
+          {
+            "name": "Christopher Blake",
+            "values": [
+              179,
+              198,
+              218,
+              251,
+              284
+            ]
+          },
+          {
+            "name": "Lisa Chen",
+            "values": [
+              161,
+              177,
+              195,
+              226,
+              263
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 54.3,
+              "display": "54.3%"
+            },
+            {
+              "name": "Patricia Gomez",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "David Okonkwo",
+              "value": 55.2,
+              "display": "55.2%"
+            },
+            {
+              "name": "Jennifer Walsh",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "Raymond Lightfoot",
+              "value": 57.9,
+              "display": "57.9%"
+            },
+            {
+              "name": "Tamara Reeves",
+              "value": 53.6,
+              "display": "53.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "54.3%",
+                "27%",
+                "$506,847",
+                "1,457"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Gomez",
+                "56.8%",
+                "29%",
+                "$542,312",
+                "1,388"
+              ]
+            },
+            {
+              "cells": [
+                "David Okonkwo",
+                "55.2%",
+                "28%",
+                "$519,625",
+                "1,501"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Walsh",
+                "52.1%",
+                "26%",
+                "$471,634",
+                "1,392"
+              ]
+            },
+            {
+              "cells": [
+                "Raymond Lightfoot",
+                "57.9%",
+                "30%",
+                "$583,441",
+                "1,459"
+              ]
+            },
+            {
+              "cells": [
+                "Tamara Reeves",
+                "53.6%",
+                "27%",
+                "$513,502",
+                "1,411"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Mitchell",
+              "value": 91.2,
+              "display": "91.2%"
+            },
+            {
+              "name": "James Patel",
+              "value": 88.7,
+              "display": "88.7%"
+            },
+            {
+              "name": "Angela Rodriguez",
+              "value": 89.4,
+              "display": "89.4%"
+            },
+            {
+              "name": "Christopher Blake",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "Lisa Chen",
+              "value": 87.3,
+              "display": "87.3%"
+            },
+            {
+              "name": "Kevin Morales",
+              "value": 90.6,
+              "display": "90.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "91.2%",
+                "65%",
+                "$844,217",
+                "1,524"
+              ]
+            },
+            {
+              "cells": [
+                "James Patel",
+                "88.7%",
+                "62%",
+                "$791,854",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Angela Rodriguez",
+                "89.4%",
+                "63%",
+                "$812,739",
+                "1,506"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Blake",
+                "92.1%",
+                "66%",
+                "$862,005",
+                "1,511"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Chen",
+                "87.3%",
+                "61%",
+                "$768,412",
+                "1,498"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Morales",
+                "90.6%",
+                "64%",
+                "$833,186",
+                "1,520"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Appointment Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Appointment Booked (Count)",
+        "rightMax": 1000,
+        "rightTicks": [
+          0,
+          250,
+          500,
+          750,
+          1000
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 780
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 748
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 696
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 664
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 578
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 607
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 671
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 697
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 778
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 754
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 679
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 656
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 584
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 602
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 687
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 708
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 770
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 758
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 665
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 644
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 592
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 599
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 699
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 722
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 760
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 759
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 655
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 628
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 603
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 600
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 716
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 500000,
+        "rightTicks": [
+          0,
+          166666.66666666666,
+          333333.3333333333,
+          500000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 338263
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 324209
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 301905
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 288076
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 250823
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 263232
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 290784
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 302246
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 337006
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 326749
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 294291
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 284438
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 253103
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 260889
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 297708
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 306779
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 333869
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 328673
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 288211
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 279069
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 256901
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 259595
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 302839
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 312877
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 329627
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 329148
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 284087
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 272394
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 261356
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 260096
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 305962
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "43,872"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,510"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,632"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Martinez",
+                "412",
+                "90%",
+                "91%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "James O'Connor",
+                "389",
+                "86%",
+                "87%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Patel",
+                "478",
+                "88%",
+                "89%",
+                "85%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "43,872 calls",
+      "pagerLabel": "1 of 4,387",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:23 am",
+          "id": "A21C-4E9B7715AC38"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C93D-2F14BE60A9D1"
+        },
+        {
+          "time": "1/14/26 11:16 am",
+          "id": "7B08-91DDA3F42E5C"
+        },
+        {
+          "time": "1/16/26 12:38 pm",
+          "id": "E4F2-6C88017BD934"
+        },
+        {
+          "time": "1/20/26 1:52 pm",
+          "id": "9D71-B305F62A18E7"
+        },
+        {
+          "time": "1/22/26 2:29 pm",
+          "id": "3A6E-D71F49B0C265"
+        },
+        {
+          "time": "1/26/26 3:04 pm",
+          "id": "B85F-0E62A9D7134F"
+        },
+        {
+          "time": "1/28/26 4:33 pm",
+          "id": "6C19-F82D5A0B7E43"
+        },
+        {
+          "time": "1/30/26 5:11 pm",
+          "id": "D02A-7B41E96C58AF"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling Children's Health, this is Marcus. How can I help you and your family today?",
+          "highlights": [
+            "Thank you for calling Children's Health",
+            "How can I help you and your family today?"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:10",
+          "text": "Hi, our pediatrician heard a heart murmur at my daughter's checkup and wants her seen by a specialist. I've never been through your system before.",
+          "highlights": [
+            "heart murmur",
+            "never been through your system before"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:19",
+          "text": "I'm sorry to hear that, but you're in very good hands. Our cardiology team is ranked among the best in the country. May I get your name and your daughter's name to start?",
+          "highlights": [
+            "cardiology team is ranked among the best"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:29",
+          "text": "Sure, I'm Diana Alvarez and my daughter is Sofia. She's four.",
+          "highlights": [
+            "Diana Alvarez"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:36",
+          "text": "Thank you, Diana. So what we would set up is a pediatric cardiology consult, where a sub-specialist evaluates Sofia and runs any diagnostic workup that's needed.",
+          "highlights": [
+            "pediatric cardiology consult"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:46",
+          "text": "Okay. Before we go further, what does a visit like that run? Money is a little tight right now and I want to keep it manageable.",
+          "highlights": [
+            "what does a visit like that run?",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:56",
+          "text": "That's a fair question. A specialty consult typically falls in the range of $250 to $600 depending on the workup, but your insurance changes that a lot. I can send you our Cost Estimates tool so you see your actual out-of-pocket before the visit.",
+          "highlights": [
+            "$250 to $600",
+            "Cost Estimates tool"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:08",
+          "text": "That would help. Honestly I was also looking at the children's clinic over in Plano because a friend mentioned them. What makes you different?",
+          "highlights": [
+            "looking at the children's clinic over in Plano"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:19",
+          "text": "They do good work, but our Dallas hospital is ranked in all eleven pediatric specialties by U.S. News, and our cardiology program handles complex cases like biventricular repair right here. For a murmur, Sofia would see a dedicated pediatric cardiologist with child-life support during any imaging.",
+          "highlights": [
+            "ranked in all eleven pediatric specialties",
+            "child-life support"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:33",
+          "text": "That's reassuring. My husband handles most of the scheduling though, so I'd want to run the day by him before I lock anything in.",
+          "highlights": [
+            "run the day by him before I lock anything in"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:42",
+          "text": "Absolutely, and nothing is binding. I can hold a tentative slot and you can confirm or move it at no charge. What days generally work best for your family?",
+          "highlights": [
+            "nothing is binding"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:52",
+          "text": "Probably a Thursday or Friday morning. Sofia's calmer earlier in the day.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:59",
+          "text": "I have Thursday the twenty-second at 10 AM with Dr. Patel at our Dallas cardiology center. Shall I pencil that in for Sofia?",
+          "highlights": [
+            "Thursday the twenty-second at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:08",
+          "text": "Yes, let's do that. And can you also point me to how I set up the MyChart app? I'd like her records in one place.",
+          "highlights": [
+            "also point me to how I set up the MyChart app"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:16",
+          "text": "Of course. I'll email your MyChart setup guide along with the Cost Estimates link, and Sofia's appointment confirmation. What's the best email for you?",
+          "highlights": [
+            "MyChart setup guide"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:25",
+          "text": "It's diana.alvarez@email.com. Thank you for being patient with all my questions.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:31",
+          "text": "You're very welcome, Diana. Sofia is scheduled for Thursday the twenty-second at 10 AM, and everything is on its way to your inbox. We look forward to caring for her.",
+          "highlights": [
+            "Sofia is scheduled for Thursday the twenty-second at 10 AM",
+            "We look forward to caring for her"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Specialty Care: Cardiology Consult",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Billing: Cost Estimate Requested",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "MyChart App Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Diana Alvarez called on behalf of her four-year-old daughter Sofia, who was referred for a heart murmur found during a pediatrician checkup. As a new patient family, Diana raised concerns about cost, compared Children's Health to a clinic in Plano, and noted she wanted to check the date with her husband. Agent Marcus recommended a pediatric cardiology consult, shared the Cost Estimates tool and MyChart setup, and scheduled Sofia with Dr. Patel for Thursday the twenty-second at 10 AM.",
+        "keyPoints": [
+          "New patient family, first time using Children's Health",
+          "Need: pediatric cardiology consult for a heart murmur",
+          "Agent addressed cost concern with the Cost Estimates tool ($250 to $600 range)",
+          "Handled competitor comparison with Plano clinic by citing top rankings",
+          "Cardiology consult booked with Dr. Patel, Thursday the twenty-second at 10 AM",
+          "Captured email and offered MyChart app setup guide"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Appointment booked, cardiology consult Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "27,639 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,764",
+      "conversations": [
+        {
+          "id": "C847-3F9B2E4C61A7",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hi there. Thanks for texting Children's Health Dallas. I'm here to help you find the right care for your child. What brings you in today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Hi, my son has had a fever for two days and I'm not sure if he needs to go to the ER or if urgent care is okay."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "I understand. A fever can be worrying. How old is your son?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "He's 4 years old."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Thanks. And is he acting normally otherwise, or does he seem unusually lethargic or have any difficulty breathing?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "No, he's playing and eating normally. Just the fever."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:53 PM",
+              "text": "That's good to hear. For a 4 year old with a fever but normal behavior, our Pediatric Urgent Care is a great option. It's faster than the ER and we can do rapid testing and exams right there. Would that work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:54 PM",
+              "text": "Yes, that sounds better than the ER. How much would that cost?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "A Pediatric Urgent Care visit typically runs between 150 and 300 dollars. If you'd like an exact estimate, I can help with that too. Which Children's Health location is closest to you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:56 PM",
+              "text": "I'm in Plano. Which clinic is nearest?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:57 PM",
+              "text": "Perfect. Our Plano Urgent Care clinic is at 5500 Windmill Parkway. How about we schedule you for tomorrow at 10 AM? Does that work?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:58 PM",
+              "text": "Yes, 10 AM tomorrow works great."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:59 PM",
+              "text": "Wonderful. I've scheduled your son's visit for Thursday, January 16th at 10 AM at our Plano Urgent Care. Please bring insurance info and any prior records. You'll get a confirmation text shortly. Our number is 214-456-7890 if you have questions. Thank you."
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:00 PM",
+              "text": "Perfect, thanks so much."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Identified: Pediatric Urgent Care",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Location Confirmed: Plano",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Patient Age: 4 Years",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Chief Complaint: Fever",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C847-3F9B2E4C61A7",
+            "smsStartTime": "1/15/26 2:47 pm",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "13",
+            "source": "214-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "214-555-0147",
+            "repeatCaller": "No",
+            "city": "Plano",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Mitchell",
+            "firstName": "Sarah",
+            "lastName": "Mitchell",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C923-7A1D4E8B92F6",
+          "time": "1/20/26 11:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C923-7A1D4E8B92F6",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D156-5C2K7H9L13M4",
+          "time": "1/25/26 5:18 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D156-5C2K7H9L13M4",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "E429-6B4J8P2Q47N9",
+          "time": "1/28/26 9:41 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "E429-6B4J8P2Q47N9",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "43,872 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,387",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/14/26 4:12 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Thank you for calling Children's Health. This is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Hi, yeah, I'm looking to schedule a well child checkup for my daughter. She's five years old and it's been about a year since her last visit."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Great. I'm happy to help you get her scheduled for a primary care visit. Just to confirm, is your daughter established with us already, or would this be her first time seeing a Children's Health pediatrician?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "No, she's new. We just moved to the Dallas area from Houston."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Welcome to the Dallas area. Perfect. We have pediatricians available at several locations. Which part of Dallas would be most convenient for you, the north side or closer to downtown?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "North side, definitely. We're in Plano."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Excellent. We have a clinic in Plano that has some great availability. Are you looking to schedule sometime this month, or would early February work better for your family?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "This month would be perfect. What do you have open?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "I'm showing we have an opening on January twenty-third at two fifteen in the afternoon, or the twenty-ninth at ten in the morning. Which of those works better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "The twenty-ninth at ten is perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Wonderful. I'm booking your daughter for a primary care well child visit on January twenty-ninth at ten AM at our Plano location. The visit typically runs about thirty minutes. Your estimated cost based on routine immunizations and preventive care will be around two hundred fifteen dollars, though we'll have a final estimate once we verify your insurance."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Okay, that sounds good."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Perfect. As a reminder, please arrive about ten minutes early to check in. If you have any questions before your appointment, you can reach us back at eight seven seven, nine three six, twenty nine thirty three. Is there anything else I can help you with today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "No, that's it. Thank you so much."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "You're very welcome. Thank you for choosing Children's Health. We look forward to seeing your daughter. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Primary Care Well Child Visit",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location: Plano",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimated Cost Provided",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Insurance Verification Needed",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/14/26 4:12 pm",
+            "duration": "7:23",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "469-555-8847",
+            "repeatCaller": "No",
+            "city": "Plano",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B521-3D8GA425881E",
+          "time": "1/18/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B521-3D8GA425881E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C734-4E7HB536992F",
+          "time": "1/22/26 11:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C734-4E7HB536992F",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D846-5F9IC647AA3G",
+          "time": "1/27/26 9:56 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D846-5F9IC647AA3G",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Introduce yourself as Children's Health's AI scheduling assistant helping families find the right pediatric care and book an appointment, mention that new patient visits and MyChart virtual visits often have same-week availability, and ask if they'd like to get started.",
+        "Qualify one question at a time: Ask only one question per message, covering the child's age, the main symptom or reason for the visit, the type of care needed (urgent care, primary care, specialty consult, or virtual visit), how soon they need to be seen, and the family's ZIP code to confirm the nearest North Texas location.",
+        "Estimate then book: Confirm you serve their ZIP code, explain that exact costs depend on insurance and direct them to the official Cost Estimates tool for an insurance-adjusted figure, recommend an appointment with the appropriate pediatric provider, propose a specific day and time, and confirm they'll receive a reminder text before the visit with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Children_s_Health_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Get Care & Specialties",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Location",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Book an Appointment",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Reschedule appointment\",\"question\":\"How do I reschedule my child's cardiology consult?\",\"answer\":\"You can reschedule anytime through your MyChart account or by calling our scheduling line, and I can also help find a new day and time right now.\"},{\"topic\":\"Billing and estimates\",\"question\":\"Where can I see what my child's visit will cost with my insurance?\",\"answer\":\"Please use our official Cost Estimates tool under For Patients, Billing and Insurance, which provides an insurance-adjusted estimate for your specific plan.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you have a pediatric emergency room near Dallas?",
+              "answer": "Yes, our 24/7 pediatric-trained emergency rooms are ready for serious injuries and illnesses across North Texas. If this is a life-threatening emergency please call 911, otherwise I can help you find the nearest ER location."
+            },
+            {
+              "question": "Where is the closest urgent care for kids?",
+              "answer": "We have several pediatric urgent care locations across the Dallas-Fort Worth region for minor illness and injury, with onsite X-ray and rapid testing. Share your ZIP code and I'll point you to the nearest one and help you plan a visit."
+            },
+            {
+              "question": "How do I book a well-child checkup?",
+              "answer": "I can help you schedule a primary care well-child visit for checkups, immunizations, and growth screening. Let me know your child's age and preferred location to get started."
+            },
+            {
+              "question": "Can my child see a doctor by video?",
+              "answer": "Yes, we offer telehealth virtual visits through MyChart with secure video and e-prescribing. I can help you set up a virtual appointment at a convenient time."
+            },
+            {
+              "question": "How do I get a specialty referral for cardiology?",
+              "answer": "Our pediatric specialists, including cardiology, accept referrals and self-scheduled consults depending on the case. Tell me the concern and I'll help arrange a specialty consult with the right team."
+            },
+            {
+              "question": "What does an urgent care visit cost?",
+              "answer": "Actual costs vary by insurance and the care provided, so I can't quote an exact price here. Please use our official Cost Estimates tool, and I can still help you book the visit today."
+            },
+            {
+              "question": "Do you take my insurance?",
+              "answer": "We work with many insurance plans, and coverage details are best confirmed through our Billing and Insurance resources or the Cost Estimates tool. I'd be glad to help schedule your child's appointment in the meantime."
+            },
+            {
+              "question": "How do I log in to MyChart?",
+              "answer": "You can access MyChart from our website or the Children's Health app to view records, message providers, and manage visits. If you need a virtual visit, I can help you book one now."
+            },
+            {
+              "question": "My child has a fever, should we go to the ER?",
+              "answer": "For guidance on the right level of care, our free online Symptom Checker and nurse line can help you decide. If symptoms are severe or worsening quickly, seek emergency care, and I can help you locate the nearest ER."
+            },
+            {
+              "question": "Do you have pediatric specialists in Fort Worth?",
+              "answer": "Yes, our network of pediatric specialists serves families throughout North Texas including the Fort Worth area. Share your ZIP code and I'll help you find a provider and book a consult."
+            },
+            {
+              "question": "Can I fill a prescription at your pharmacy?",
+              "answer": "Our outpatient pharmacies offer pediatric-dosed medications, compounding, and refill options. I can help you connect with the pharmacy or schedule a related visit if needed."
+            },
+            {
+              "question": "How do I schedule diagnostic imaging like an MRI?",
+              "answer": "We provide pediatric-optimized, low-dose imaging with child life support, typically arranged through your provider. I can help you book the appropriate appointment to get the process started."
+            },
+            {
+              "question": "Do you offer physical or occupational therapy for kids?",
+              "answer": "Yes, our rehabilitation team provides physical, occupational, and developmental therapy for children. Let me know your child's needs and I'll help arrange a therapy appointment."
+            },
+            {
+              "question": "Can my child see someone for anxiety or behavioral concerns?",
+              "answer": "We offer behavioral and mental health services including counseling and psychiatric evaluation. I can help you schedule an appointment with the appropriate specialist."
+            },
+            {
+              "question": "Are you really ranked among the top children's hospitals?",
+              "answer": "Yes, Children's Health Dallas is ranked in all 11 pediatric specialties by U.S. News and World Report, and our nurses hold the Magnet designation. I'd be happy to help you book care with our team."
+            },
+            {
+              "question": "Do you have a transplant program?",
+              "answer": "Yes, our multidisciplinary transplant program provides organ and bone-marrow transplant care with full post-op monitoring. I can help you request a specialty consult to learn more."
+            },
+            {
+              "question": "Can we get financial assistance for care?",
+              "answer": "We offer financial assistance and billing support through our For Patients resources. I can help you schedule the appointment your child needs while you review those options."
+            },
+            {
+              "question": "How soon can my child be seen?",
+              "answer": "Availability depends on the type of care and location, and many visits have same-week openings. Tell me the reason for the visit and your ZIP code and I'll find the soonest option."
+            },
+            {
+              "question": "Do you offer heart surgery for congenital conditions?",
+              "answer": "Yes, our cardiac surgery program includes complex congenital repairs such as biventricular repair. I can help arrange a cardiology consult as the first step."
+            },
+            {
+              "question": "What areas do you serve?",
+              "answer": "We serve families throughout the Dallas-Fort Worth region and North Texas. Share your ZIP code and I'll confirm the nearest location and help you book an appointment."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule a new patient appointment\",\"follow_up_message\":\"Thanks for reaching out to Children's Health. I can get your child scheduled with the right pediatric provider. Could you share your child's age, the reason for the visit, and your ZIP code so I can confirm the nearest North Texas location?\"},{\"intent\":\"Request a cost estimate for a visit\",\"follow_up_message\":\"Happy to help. Exact costs depend on your insurance, so our official Cost Estimates tool gives an accurate, insurance-adjusted figure. In the meantime, would you like me to go ahead and book the appointment for your child?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Children's Health's AI scheduling assistant. I can help you find the right pediatric care and book an appointment for your child. Would you like to get started?",
+        "goal": "Guide families to the appropriate level of pediatric care and book an appointment with the right provider or location in North Texas.",
+        "bookingType": "virtual appointment via MyChart or in-person visit at a North Texas location",
+        "offer": "",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "How old is your child?",
+          "What is the main symptom or reason for the visit?",
+          "What type of care are you looking for: urgent care, primary care, a specialty consult, or a virtual visit?",
+          "How soon do you need your child to be seen?",
+          "What is your ZIP code so I can confirm the nearest Children's Health location?"
+        ]
+      },
+      "serviceArea": "the greater Dallas-Fort Worth and North Texas area, ZIP codes starting with 75"
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:50 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:50 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:50 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Children's Health",
+      "callerName": "Sarah Mitchell",
+      "callerPhone": "(214) 555-0847",
+      "campaign": "Pediatric Cardiology Specialty Care, Plano Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$3,750",
+      "googleSearch": "best children's heart hospital Texas",
+      "websiteSearch": "pediatric cardiology specialist Plano",
+      "callingWebpage": "/get-care/specialty-care/cardiology",
+      "products": "Specialty Cardiology Consult, Biventricular Heart Repair Surgery",
+      "cartId": "CH-7341M",
+      "serviceable": "Yes",
+      "email": "sarah.mitchell@email.com",
+      "street": "2847 Preston Road",
+      "city": "Plano",
+      "state": "TX",
+      "zip": "75093",
+      "digitalJourney": "/home › /get-care/specialty-care › /get-care/specialty-care/cardiology › /find-a-doctor",
+      "intent": "Seeking pediatric cardiologist evaluation for daughter's congenital heart condition and potential surgical repair options.",
+      "coverage": "ZIP 75093 confirmed, Plano serviceable",
+      "switchIntent": "High, daughter has known heart condition, parent seeking specialist opinion within two weeks.",
+      "greeting": "Hi Sarah, thanks for calling Children's Health. I see you're looking for our pediatric cardiology services for your daughter. I'd love to get her scheduled with one of our top-ranked cardiologists. When would work best for an initial consultation?"
+    },
+    "smsScreenpop": {
+      "brandName": "Children's Health",
+      "callerName": "Marcus Johnson",
+      "callerPhone": "(469) 555-0321",
+      "campaign": "Emergency and Urgent Care, Dallas Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$285",
+      "googleSearch": "kids emergency room near me Dallas",
+      "websiteSearch": "pediatric urgent care fever treatment",
+      "callingWebpage": "/get-care/emergency-care",
+      "products": "Pediatric Emergency Room Visit, Urgent Care Evaluation",
+      "cartId": "CH-5614K",
+      "serviceable": "Yes",
+      "email": "marcus.johnson@email.com",
+      "street": "1523 Maple Avenue",
+      "city": "Dallas",
+      "state": "TX",
+      "zip": "75201",
+      "digitalJourney": "/home › /get-care/emergency-care › /symptom-checker › /find-a-location",
+      "intent": "Parent seeking immediate evaluation for child with high fever and possible ear infection. Considering ER versus urgent care option.",
+      "coverage": "ZIP 75201 confirmed, Dallas serviceable",
+      "appointment": "Urgent Care visit with pediatric provider, Today 3:30 PM",
+      "greeting": "Hi Marcus, this is Jennifer from Children's Health. We got your request and have you set up for an urgent care visit today at 3:30 PM. Our pediatric team is ready to see your child. Do you have any questions before you come in?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Children's Health",
+      "brandDomain": "www.childrens.com",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (972) 555-0142",
+      "callerLocation": "Plano, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "Pediatric ER Near Me, Dallas",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "kids emergency room Plano",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/get-care/emergency-care",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Emergency & Urgent Care, Symptom Checker",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Plano, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "appointment_new_urgent_visit",
+          "name": "Appointment Scheduling, New Urgent Care Visit"
+        },
+        {
+          "id": "emergency_support_line",
+          "name": "Emergency Care Support Line"
+        },
+        {
+          "id": "general_info_routing",
+          "name": "General Information & Referral"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Thank you for calling Children's Health. This is our automated routing system. Are you calling about an immediate emergency or an urgent care visit that needs scheduling today?",
+          "sigs": [],
+          "q": [
+            35,
+            40,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Hi yes, my daughter has had a fever since this morning and I'm not sure if we should go to the ER or if urgent care would be better. She's four years old.",
+          "sigs": [
+            {
+              "c": "orange",
+              "t": "Child age 4 with <strong>fever</strong>"
+            },
+            {
+              "c": "blue",
+              "t": "Seeking <strong>urgent care</strong> guidance"
+            },
+            {
+              "c": "green",
+              "t": "Patient in service area"
+            }
+          ],
+          "q": [
+            60,
+            25,
+            15
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I understand. A fever in a four year old can definitely be concerning for parents. Let me help you get to the right care level. Is your daughter having any difficulty breathing, severe pain, or any other symptoms that worry you right now?",
+          "sigs": [],
+          "q": [
+            72,
+            18,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "No, she's acting pretty normal otherwise. Just the high fever. We're here in Plano so we'd prefer to go somewhere close by if possible.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Stable symptoms, no red flags"
+            },
+            {
+              "c": "green",
+              "t": "Plano location confirmed"
+            },
+            {
+              "c": "blue",
+              "t": "Seeking convenient clinic access"
+            }
+          ],
+          "q": [
+            85,
+            10,
+            5
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. Your daughter sounds like a good candidate for our Pediatric Urgent Care in Plano. We have walk-in appointments available, and our team can do rapid testing and X-rays if needed. Let me connect you to our Appointment Scheduling team who can confirm availability and get you checked in right away.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "answered_by_agent and (signal = \"Booking Scheduled\" or signal = \"Appointment Confirmed\")",
+          "createdAt": "03/12/25 9:14 am",
+          "updatedAt": "12/18/25 4:02 pm"
+        },
+        {
+          "name": "Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let me check the schedule (Agent)\", \"do you have any openings (Caller)\", \"what days is the doctor available (Caller)\", \"we can get your child in (Agent)\"])",
+          "createdAt": "02/20/25 11:47 am",
+          "updatedAt": "11/30/25 8:15 am"
+        },
+        {
+          "name": "Cardiology Specialty Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"pediatric heart specialist (Caller)\", \"congenital heart defect (Caller)\", \"biventricular repair (Agent)\", \"cardiology clinic in Dallas (Caller)\"])",
+          "createdAt": "04/03/25 3:22 pm",
+          "updatedAt": "12/09/25 10:41 am"
+        },
+        {
+          "name": "Compassionate Care Language",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Family Experience] < 60 and duration > 45 sec",
+          "createdAt": "01/28/25 8:05 am",
+          "updatedAt": "12/22/25 2:19 pm"
+        },
+        {
+          "name": "Cost Estimate Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the estimated cost is (Agent)\", \"with your insurance it would be (Agent)\", \"how much will the visit cost (Caller)\", \"out of pocket estimate (Agent)\"])",
+          "createdAt": "03/05/25 1:38 pm",
+          "updatedAt": "12/15/25 5:27 pm"
+        },
+        {
+          "name": "Emergency vs Urgent Care Triage",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Care Guidance Quality] < 60 and duration > 45 sec",
+          "createdAt": "05/16/25 10:12 am",
+          "updatedAt": "12/27/25 9:53 am"
+        },
+        {
+          "name": "Insurance & Billing Concern",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"is this covered by my insurance (Caller)\", \"financial assistance program (Caller)\", \"pay my bill (Caller)\", \"do you take Medicaid (Caller)\"])",
+          "createdAt": "02/11/25 4:44 pm",
+          "updatedAt": "11/21/25 3:08 pm"
+        },
+        {
+          "name": "MyChart Enrollment Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"set up MyChart (Caller)\", \"download the Children's Health app (Agent)\", \"schedule a virtual visit (Caller)\", \"message my child's provider (Caller)\"])",
+          "createdAt": "04/29/25 9:31 am",
+          "updatedAt": "12/11/25 1:16 pm"
+        },
+        {
+          "name": "Next Steps & Follow-Up Set",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Follow-Up Confirmed] < 60 and duration > 45 sec",
+          "createdAt": "03/22/25 2:57 pm",
+          "updatedAt": "12/20/25 11:04 am"
+        },
+        {
+          "name": "Pediatric ER Location Request",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"nearest emergency room (Caller)\", \"kids ER in Plano (Caller)\", \"where should I bring my child (Caller)\", \"the closest location is (Agent)\"])",
+          "createdAt": "05/02/25 12:26 pm",
+          "updatedAt": "12/29/25 8:47 am"
+        }
+      ]
+    }
+  }
+}

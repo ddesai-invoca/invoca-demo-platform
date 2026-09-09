@@ -1,0 +1,5324 @@
+{
+  "id": "healthmarkets",
+  "customerName": "HealthMarkets",
+  "websiteUrl": "https://www.healthmarkets.com",
+  "brandDomain": "healthmarkets.com",
+  "networkName": "Invoca for Insurance",
+  "industry": "Health and life insurance brokerage",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Policyholder",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 25000,
+      "yTicks": [
+        5000,
+        10000,
+        15000,
+        20000,
+        25000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 14832
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 21467
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 20153
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 19984
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 18174
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Open Enrollment 2025 Free Quotes",
+          "marketingSearchTerm": "affordable health insurance quotes",
+          "landingPageUrl": "https://www.healthmarkets.com/health-insurance?utm_source=google&utm_medium=cpc&utm_campaign=open_enrollment_2025",
+          "websiteJourney": "Home / Health Insurance / Individual Health Insurance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Medicare Advantage $0 Plans",
+          "marketingSearchTerm": "medicare advantage plans near me",
+          "landingPageUrl": "https://www.healthmarkets.com/medicare/medicare-advantage?utm_source=google&utm_medium=cpc&utm_campaign=ma_zero_dollar",
+          "websiteJourney": "Home / Medicare / Medicare Advantage",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "ACA Subsidy Eligibility Checker",
+          "marketingSearchTerm": "aca marketplace plans texas",
+          "landingPageUrl": "https://www.healthmarkets.com/plans/texas?utm_source=bing&utm_medium=cpc&utm_campaign=aca_subsidy_checker",
+          "websiteJourney": "Home / Plans / Plans by State / Texas",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Turning 65 Medicare Guide",
+          "marketingSearchTerm": "turning 65 medicare enrollment",
+          "landingPageUrl": "https://www.healthmarkets.com/medicare?utm_source=google&utm_medium=cpc&utm_campaign=turning_65_guide",
+          "websiteJourney": "Home / Medicare / Medicare Supplement",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Short-Term Health Fast Coverage",
+          "marketingSearchTerm": "short term health insurance",
+          "landingPageUrl": "https://www.healthmarkets.com/health-insurance/short-term-medical?utm_source=google&utm_medium=cpc&utm_campaign=short_term_fast",
+          "websiteJourney": "Home / Health Insurance / Short-Term Medical",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Medigap Plan G Quotes",
+          "marketingSearchTerm": "medigap plan g cost",
+          "landingPageUrl": "https://www.healthmarkets.com/medicare/medicare-supplement?utm_source=bing&utm_medium=cpc&utm_campaign=medigap_plan_g",
+          "websiteJourney": "Home / Medicare / Medicare Supplement",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Self-Employed Health Coverage",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.healthmarkets.com/health-insurance?utm_source=facebook&utm_medium=paid_social&utm_campaign=self_employed",
+          "websiteJourney": "Home / Health Insurance / Individual Health Insurance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Find a Local Agent",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.healthmarkets.com/find-an-agent?utm_source=facebook&utm_medium=paid_social&utm_campaign=find_local_agent",
+          "websiteJourney": "Home / Find a Licensed Insurance Agent / Contact",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Turning 65 Medicare Guide",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.healthmarkets.com/medicare?utm_source=instagram&utm_medium=paid_social&utm_campaign=turning_65_guide",
+          "websiteJourney": "Home / Medicare / Medicare Advantage",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Health Insurance by State",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.healthmarkets.com/plans/florida?utm_source=organic&utm_medium=seo&utm_campaign=state_pages",
+          "websiteJourney": "Home / Plans / Plans by State / Florida",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Open Enrollment FAQ",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.healthmarkets.com/faqs/open-enrollment?utm_source=organic&utm_medium=seo&utm_campaign=oe_faq",
+          "websiteJourney": "Home / FAQs / Get Answers",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "What is Telemedicine",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.healthmarkets.com/resources/telemedicine?utm_source=organic&utm_medium=seo&utm_campaign=telemedicine_content",
+          "websiteJourney": "Home / Resources / Glossary",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Dental & Vision Bundle Quotes",
+          "marketingSearchTerm": "cheap dental and vision insurance",
+          "landingPageUrl": "https://www.healthmarkets.com/supplemental/dental-vision?utm_source=google&utm_medium=cpc&utm_campaign=dental_vision_bundle",
+          "websiteJourney": "Home / Supplemental / Dental + Vision",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Term Life Quotes",
+          "marketingSearchTerm": "term life insurance quote",
+          "landingPageUrl": "https://www.healthmarkets.com/life-insurance?utm_source=google&utm_medium=cpc&utm_campaign=term_life_quotes",
+          "websiteJourney": "Home / Life Insurance",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "No Need to Shop Alone",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.healthmarkets.com/how-we-help?utm_source=facebook&utm_medium=paid_social&utm_campaign=shop_alone",
+          "websiteJourney": "Home / How We Help",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Supplemental Accident Plans",
+          "marketingSearchTerm": "supplemental accident insurance",
+          "landingPageUrl": "https://www.healthmarkets.com/supplemental/accident-plans?utm_source=bing&utm_medium=cpc&utm_campaign=accident_plans",
+          "websiteJourney": "Home / Supplemental / Accident Plans",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Find a Licensed Agent Near You",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.healthmarkets.com/find-an-agent?utm_source=organic&utm_medium=seo&utm_campaign=agent_locator",
+          "websiteJourney": "Home / Find a Licensed Insurance Agent / Customer Service",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Medicare Part D Rx Plans",
+          "marketingSearchTerm": "medicare part d prescription coverage",
+          "landingPageUrl": "https://www.healthmarkets.com/medicare/part-d?utm_source=google&utm_medium=cpc&utm_campaign=part_d_rx",
+          "websiteJourney": "Home / Medicare / Part D",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Self-Employed Health Coverage",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.healthmarkets.com/health-insurance?utm_source=instagram&utm_medium=paid_social&utm_campaign=self_employed",
+          "websiteJourney": "Home / Health Insurance / Individual Health Insurance",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Open Enrollment FAQ",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.healthmarkets.com/faqs/deadlines?utm_source=organic&utm_medium=seo&utm_campaign=oe_deadline",
+          "websiteJourney": "Home / FAQs / News",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (HealthMarkets)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "74,204"
+            },
+            {
+              "label": "Coverage Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Enrollment (Percent)",
+              "value": "21%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$29,262,285"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "11,873"
+            },
+            {
+              "label": "Billing Question (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Policy Service Call (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "General Information Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Coverage Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Coverage Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Quote Discussed (Percent)",
+              "value": "51%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Enrollment (Percent)",
+              "value": "21%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Coverage Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Coverage Inquiry (Count)",
+            "values": [
+              9214,
+              13472,
+              13918,
+              12865,
+              12862
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              5612,
+              8153,
+              8471,
+              7806,
+              7802
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              1318,
+              1921,
+              1994,
+              1838,
+              1834
+            ]
+          },
+          {
+            "name": "Enrollment (Count)",
+            "values": [
+              2306,
+              3368,
+              3478,
+              3217,
+              3214
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Enrollment (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74204,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "28,417",
+                "38%",
+                "16%",
+                "$8,214,662"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "18,332",
+                "40%",
+                "20%",
+                "$6,628,411"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "12,946",
+                "42%",
+                "23%",
+                "$5,447,298"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "8,521",
+                "44%",
+                "28%",
+                "$4,681,552"
+              ]
+            },
+            {
+              "name": "Agent Referral",
+              "metrics": [
+                "5,988",
+                "47%",
+                "33%",
+                "$4,290,362"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Enrollment (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74204,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "31,204",
+                "37%",
+                "15%",
+                "$8,662,144"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "17,662",
+                "39%",
+                "18%",
+                "$6,214,882"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "13,088",
+                "43%",
+                "23%",
+                "$5,988,421"
+              ]
+            },
+            {
+              "name": "Email Nurture",
+              "metrics": [
+                "7,321",
+                "45%",
+                "27%",
+                "$4,321,556"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "4,929",
+                "48%",
+                "33%",
+                "$4,075,282"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Enrollment (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74204,
+          "rows": [
+            {
+              "name": "Open Enrollment 2026 Free Quotes",
+              "metrics": [
+                "14,217",
+                "38%",
+                "16%",
+                "$4,271,556"
+              ]
+            },
+            {
+              "name": "Medicare Advantage $0 Plans",
+              "metrics": [
+                "9,882",
+                "40%",
+                "19%",
+                "$3,528,914"
+              ]
+            },
+            {
+              "name": "ACA Subsidy Eligibility Checker",
+              "metrics": [
+                "7,341",
+                "43%",
+                "23%",
+                "$3,172,441"
+              ]
+            },
+            {
+              "name": "Turning 65 Medicare Guide",
+              "metrics": [
+                "5,126",
+                "46%",
+                "27%",
+                "$2,601,772"
+              ]
+            },
+            {
+              "name": "Short-Term Health Fast Coverage",
+              "metrics": [
+                "3,894",
+                "49%",
+                "31%",
+                "$2,268,433"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Enrollment (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74204,
+          "rows": [
+            {
+              "name": "affordable health insurance quotes",
+              "metrics": [
+                "9,417",
+                "39%",
+                "17%",
+                "$3,008,441"
+              ]
+            },
+            {
+              "name": "medicare advantage plans near me",
+              "metrics": [
+                "6,882",
+                "41%",
+                "20%",
+                "$2,585,912"
+              ]
+            },
+            {
+              "name": "aca marketplace plans texas",
+              "metrics": [
+                "4,921",
+                "44%",
+                "24%",
+                "$2,218,334"
+              ]
+            },
+            {
+              "name": "turning 65 medicare enrollment",
+              "metrics": [
+                "3,564",
+                "47%",
+                "28%",
+                "$1,875,621"
+              ]
+            },
+            {
+              "name": "short term health insurance",
+              "metrics": [
+                "2,318",
+                "50%",
+                "32%",
+                "$1,394,283"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Enrollment (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Health Insurance",
+              "metrics": [
+                "24,317",
+                "38%",
+                "15%",
+                "$6,663,740"
+              ]
+            },
+            {
+              "name": "Medicare",
+              "metrics": [
+                "19,842",
+                "42%",
+                "19%",
+                "$7,190,400"
+              ]
+            },
+            {
+              "name": "Dental & Vision",
+              "metrics": [
+                "13,468",
+                "45%",
+                "23%",
+                "$5,579,255"
+              ]
+            },
+            {
+              "name": "Supplemental",
+              "metrics": [
+                "9,753",
+                "48%",
+                "28%",
+                "$5,193,030"
+              ]
+            },
+            {
+              "name": "Life Insurance",
+              "metrics": [
+                "6,824",
+                "52%",
+                "35%",
+                "$4,635,860"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Enrollment (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74204,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "22,847",
+                "40%",
+                "16%",
+                "$6,780,480"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "18,362",
+                "43%",
+                "19%",
+                "$6,594,210"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "14,573",
+                "46%",
+                "22%",
+                "$5,979,190"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "11,238",
+                "49%",
+                "26%",
+                "$5,551,800"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "7,184",
+                "53%",
+                "32%",
+                "$4,356,605"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Enrollment (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Health Insurance",
+            "values": [
+              604,
+              812,
+              798,
+              743,
+              662
+            ]
+          },
+          {
+            "name": "Medicare",
+            "values": [
+              612,
+              831,
+              824,
+              762,
+              716
+            ]
+          },
+          {
+            "name": "Dental & Vision",
+            "values": [
+              498,
+              702,
+              688,
+              634,
+              569
+            ]
+          },
+          {
+            "name": "Supplemental",
+            "values": [
+              431,
+              618,
+              602,
+              561,
+              514
+            ]
+          },
+          {
+            "name": "Life Insurance",
+            "values": [
+              378,
+              542,
+              531,
+              496,
+              455
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 74,204 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Maria Castellano called to compare on-marketplace ACA individual health plans and to check her subsidy eligibility. Agent Oscar ran a quick quote, confirmed she qualified for a tax credit that brought her net premium near $40, and scheduled a follow-up enrollment consultation. Maria was thrilled with the fast, clear help.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Devon Marsh asked for a dental and vision bundle quote for himself and his spouse. Agent Lila walked him through a combined plan near $52 a month, explained annual maximums and in-network dentists, and booked a consultation to finalize the dental coverage. Devon appreciated the friendly, thorough explanation.",
+          "date": "Feb 11, 2:05 PM",
+          "agent": "Lila",
+          "duration": "2m 48s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 85,
+          "summary": "Beatrice Nguyen, who is turning 65 in the spring, called to understand her Medicare Advantage options. Agent Rosey outlined a $0 premium Part C plan with drug and dental extras and scheduled a Medicare enrollment consultation with a local licensed agent. Beatrice felt reassured and ready.",
+          "date": "Mar 3, 9:41 AM",
+          "agent": "Rosey",
+          "duration": "3m 06s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 10,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "New caller Gregory Alvarado phoned to schedule a consultation about term life insurance for income replacement. Agent Lee collected his full details, age, coverage goal, and beneficiary notes, then gathered a quote near $38 a month for a 20 year term and booked the consultation. Gregory confirmed the appointment time before hanging up.",
+          "date": "Apr 15, 1:27 PM",
+          "agent": "Lee",
+          "duration": "2m 55s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Harold Simmons requested a Medicare Supplement quote to cover Original Medicare cost-sharing. Agent Mary compared a Plan G option near $145 a month, explained deductibles and coinsurance, and scheduled a Medicare consultation. Harold was satisfied with the guidance.",
+          "date": "May 8, 11:52 AM",
+          "agent": "Mary",
+          "duration": "2m 21s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Priya Kapoor, between jobs, called about short-term medical coverage to bridge a gap. Agent Sue described a temporary plan near $110 a month with fast approval and limited benefits and scheduled a consultation to complete the application. Priya was relieved to have a plan.",
+          "date": "Jun 2, 3:44 PM",
+          "agent": "Sue",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 17,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Franklin Ortega called confused about why his ACA subsidy did not reduce his first invoice as expected. Agent Mike reviewed the account, explained the tax credit timing, and opened a billing correction ticket. Franklin was calmer but still wanted written confirmation.",
+          "date": "Jul 9, 4:18 PM",
+          "agent": "Mike",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Lorraine Beck phoned to check the status of her recently submitted individual health plan application. Agent Jennifer confirmed it was still pending carrier review and set expectations for a 24-48h update. Lorraine was somewhat impatient about the wait.",
+          "date": "Aug 4, 10:33 AM",
+          "agent": "Jennifer",
+          "duration": "1m 41s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Terrence Wallace called to cancel his standalone dental insurance because he found employer coverage. Agent Rose processed the cancellation request and confirmed the effective end date. Terrence was polite but firm about ending the plan.",
+          "date": "Sep 1, 12:09 PM",
+          "agent": "Rose",
+          "duration": "1m 34s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Angela Freeman had questions about the cash-value growth on her whole life insurance policy. Agent Mike explained the accumulation basics but could not access the carrier ledger and promised a callback. Angela was frustrated by the missing detail.",
+          "date": "Sep 18, 2:52 PM",
+          "agent": "Mike",
+          "duration": "2m 07s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Rodney Pierce complained that a promised local agent never called him back about his supplemental accident plan. Agent Lila apologized, logged the escalation, and re-assigned a new agent. Rodney remained irritated about the delay.",
+          "date": "Sep 27, 9:16 AM",
+          "agent": "Lila",
+          "duration": "1m 49s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 32,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Gloria Hensley called to cancel her Medicare Part D prescription plan after switching carriers during open enrollment. Agent Sue tried to clarify the disenrollment window but Gloria grew confused about deadlines. The call ended without full resolution.",
+          "date": "Oct 5, 11:28 AM",
+          "agent": "Sue",
+          "duration": "2m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Victor Salazar disputed a double charge on his critical illness supplemental plan. Agent Jennifer could not immediately locate the second transaction and had to open an investigation. Victor was angry about the billing error.",
+          "date": "Oct 12, 3:37 PM",
+          "agent": "Jennifer",
+          "duration": "3m 01s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Denise Abbott called after hours about a telemedicine membership billing question and reached voicemail. No agent was available to take the call, and she left a message requesting a callback. The message noted growing frustration with reaching a person.",
+          "date": "Oct 20, 6:52 PM",
+          "agent": "No Agent",
+          "duration": "0m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Carl Whitmore complained loudly that his wellness plan discounts were not honored at a partner provider. Agent Rose struggled to verify the benefit and the caller demanded a supervisor. The call ended unresolved with Carl very dissatisfied.",
+          "date": "Oct 28, 1:03 PM",
+          "agent": "Rose",
+          "duration": "2m 18s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "medicare",
+        "dental",
+        "quote",
+        "subsidy",
+        "life",
+        "cancel"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 16s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Coverage Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Verify Service Area",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Plan Options",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Compliance Disclosures",
+          "points": "0/10",
+          "status": "unmet"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller identified self-employed status",
+        "Caller stated recent job change",
+        "Agent acknowledged coverage gap concern",
+        "Agent proactively mentioned subsidy eligibility",
+        "Agent identified family size and ages",
+        "Caller expressed interest in affordable options",
+        "Agent verified ZIP code for plan availability",
+        "Caller confirmed scheduling preference",
+        "Agent set consultation appointment time",
+        "Caller accepted next steps",
+        "Agent offered multiple contact methods",
+        "Caller seemed relieved about free service model",
+        "Agent demonstrated product knowledge"
+      ],
+      "unmetSignals": [
+        "Email address not captured in system",
+        "No confirmation of current coverage status",
+        "Income range not explored for subsidy calculation",
+        "Dependent information incomplete for spouses",
+        "Prescription medication needs not discussed",
+        "Pre-existing condition screening not performed",
+        "Dental and vision supplemental options not mentioned",
+        "Preferred network carrier preferences not captured",
+        "Callback reminder procedure not set",
+        "Coverage effective date preference not confirmed",
+        "Document upload instructions not provided",
+        "Plan comparison worksheet not offered"
+      ],
+      "naSignals": [
+        "Return or cancellation request",
+        "Billing dispute or payment issue",
+        "Claims processing status",
+        "Existing policy modification",
+        "Renewal or open enrollment guidance",
+        "Prior authorization request",
+        "Provider network search assistance",
+        "Policy cancellation request"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller recently transitioned from employed to self-employed status and lost access to group health insurance. They need individual ACA coverage urgently and want to understand subsidy eligibility and affordable monthly premium options for themselves and their two dependents."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a free consultation without sales pressure, wants to know available plans and costs in their area, and needs coverage to begin as soon as possible given their current uninsured status."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address for plan comparison documents and confirmation details. Additionally, the agent could have briefly explored income range to give the caller an early indication of subsidy potential before the scheduled consultation."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon and thank you for calling HealthMarkets. My name is Marcus Bell. How can I help you find coverage today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus. I just left my job and became self-employed about two weeks ago. I no longer have health insurance and I'm pretty worried about that."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:42",
+          "text": "I completely understand. Self-employment is exciting but coverage is critical. We help people in exactly your situation every single day at no cost to you. Can I start with your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:54",
+          "text": "Sure, it's Jennifer Martinez."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:02",
+          "text": "Jennifer, thanks so much. And just to confirm, when you left your job, did you have dependents on that plan or is it just you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:12",
+          "text": "I have two kids, ages 8 and 12. So it's three of us total."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:19",
+          "text": "Perfect. Family of three. Jennifer, because you recently had a life change, you may qualify for subsidies that could bring your monthly premium to virtually nothing depending on your income. What ZIP code are you in?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:34",
+          "text": "We're in Austin, Texas. 78704."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:41",
+          "text": "Excellent. Texas is a robust marketplace. We have many carriers and plan options in that ZIP. And I need to confirm your phone number for our records."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:52",
+          "text": "It's ****-****-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:01",
+          "text": "Thank you Jennifer. So here is what I'd like to do. I'll connect you with one of our licensed agents who specializes in individual and family health plans. They'll review your options, calculate what you might pay with subsidies, and help you enroll in the plan that works best for your budget and healthcare needs. Does that sound good?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:18",
+          "text": "Yes, that sounds really helpful."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:24",
+          "text": "Great. Let me get you scheduled. Are you available tomorrow morning around 9 or 10 AM for a quick consultation call?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:34",
+          "text": "Tomorrow morning works perfectly. 10 AM would be ideal."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:41",
+          "text": "Wonderful. You're all set for tomorrow, October 23rd at 10 AM. Our agent will call you at the number you provided. Jennifer, we genuinely want to help you get the right coverage. Any questions for me before we wrap up?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:56",
+          "text": "No, I think I'm good. Thanks so much Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:04",
+          "text": "You're welcome Jennifer. Thanks for calling HealthMarkets and we look forward to helping your family. Have a great rest of your day."
+        }
+      ],
+      "aiSummary": "Jennifer Martinez called HealthMarkets after losing group health insurance due to a recent transition to self-employment. Marcus Bell successfully identified her need for individual family coverage for three people in Austin, Texas. Marcus confirmed her coverage requirement, verified her service area, and explained the potential for ACA subsidy eligibility. The consultation was scheduled for the next morning with a licensed agent to review plan options and finalize enrollment. The call was efficient and friendly but did not capture the caller's email address for follow-up documentation.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, really solid intake here. Your greeting was warm, you got Jennifer's family situation confirmed quickly, and you did a great job mentioning subsidy eligibility early to ease her anxiety about cost. Tone was empathetic and professional throughout. Two things to tighten up on future calls like this: grab the email address before you hang up so we can send her a welcome packet and plan preview materials, and do a quick income range qualifier (e.g., roughly $30k to $80k annually?) so she has a ballpark monthly estimate before the agent callback. That small detail sets better expectations and builds trust. Great work."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "74,204"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$394.35"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$29,262,285"
+            }
+          ]
+        },
+        {
+          "title": "NEW POLICYHOLDER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Policyholders (Count)",
+              "value": "48,617"
+            },
+            {
+              "label": "Caller Type: New Policyholders (Percent)",
+              "value": "65%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "30,424"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "41%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING POLICYHOLDERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Policyholder (Count)",
+              "value": "25,587"
+            },
+            {
+              "label": "Caller Type: Existing Policyholder (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Agent Referral",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Direct",
+                "value": 50,
+                "display": "50%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 44,
+                "display": "44%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 38,
+                "display": "38%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "27,412",
+                  "34%",
+                  "$10,842,617"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "18,633",
+                  "38%",
+                  "$7,318,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "13,847",
+                  "44%",
+                  "$5,486,193"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "8,921",
+                  "50%",
+                  "$3,566,281"
+                ]
+              },
+              {
+                "cells": [
+                  "Agent Referral",
+                  "5,391",
+                  "58%",
+                  "$2,048,752"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 26000,
+            "axisTicks": [
+              0,
+              6500,
+              13000,
+              19500,
+              26000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 24318,
+                "display": "24,318"
+              },
+              {
+                "name": "paid-social",
+                "value": 17442,
+                "display": "17,442"
+              },
+              {
+                "name": "organic",
+                "value": 14231,
+                "display": "14,231"
+              },
+              {
+                "name": "email",
+                "value": 10847,
+                "display": "10,847"
+              },
+              {
+                "name": "referral",
+                "value": 7366,
+                "display": "7,366"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "24,318",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "paid-social",
+                  "17,442",
+                  "37%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "14,231",
+                  "42%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "10,847",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "7,366",
+                  "58%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 14000,
+            "axisTicks": [
+              0,
+              3500,
+              7000,
+              10500,
+              14000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Open Enrollment 2026 Free Quotes",
+                "value": 12847,
+                "display": "12,847"
+              },
+              {
+                "name": "Medicare Advantage $0 Plans",
+                "value": 9633,
+                "display": "9,633"
+              },
+              {
+                "name": "ACA Subsidy Eligibility Checker",
+                "value": 7412,
+                "display": "7,412"
+              },
+              {
+                "name": "Turning 65 Medicare Guide",
+                "value": 5281,
+                "display": "5,281"
+              },
+              {
+                "name": "Short-Term Health Fast Coverage",
+                "value": 3644,
+                "display": "3,644"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Open Enrollment 2026 Free Quotes",
+                  "12,847",
+                  "32%",
+                  "$4,842,183"
+                ]
+              },
+              {
+                "cells": [
+                  "Medicare Advantage $0 Plans",
+                  "9,633",
+                  "39%",
+                  "$3,681,442"
+                ]
+              },
+              {
+                "cells": [
+                  "ACA Subsidy Eligibility Checker",
+                  "7,412",
+                  "45%",
+                  "$2,814,672"
+                ]
+              },
+              {
+                "cells": [
+                  "Turning 65 Medicare Guide",
+                  "5,281",
+                  "56%",
+                  "$2,043,918"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "affordable health insurance quotes",
+                "value": 6842,
+                "display": "6,842"
+              },
+              {
+                "name": "medicare advantage plans near me",
+                "value": 5231,
+                "display": "5,231"
+              },
+              {
+                "name": "short term health insurance",
+                "value": 4118,
+                "display": "4,118"
+              },
+              {
+                "name": "aca marketplace plans texas",
+                "value": 3447,
+                "display": "3,447"
+              },
+              {
+                "name": "medigap plan g cost",
+                "value": 2619,
+                "display": "2,619"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "affordable health insurance quotes",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "medicare advantage plans near me",
+                  "40%"
+                ]
+              },
+              {
+                "cells": [
+                  "short term health insurance",
+                  "48%"
+                ]
+              },
+              {
+                "cells": [
+                  "medigap plan g cost",
+                  "57%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Policyholders",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Policyholders (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Health Insurance (ACA & Individual)",
+              "24,318",
+              "35%",
+              "68%"
+            ]
+          },
+          {
+            "cells": [
+              "Medicare",
+              "19,442",
+              "41%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Dental & Vision",
+              "8,631",
+              "48%",
+              "55%"
+            ]
+          },
+          {
+            "cells": [
+              "Life & Supplemental",
+              "5,847",
+              "57%",
+              "49%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "HealthMarkets Dallas Agency Office",
+              "21,447",
+              "1,842",
+              "4%",
+              "36%"
+            ]
+          },
+          {
+            "cells": [
+              "HealthMarkets Phoenix Agency Office",
+              "16,318",
+              "1,233",
+              "5%",
+              "42%"
+            ]
+          },
+          {
+            "cells": [
+              "HealthMarkets Tampa Agency Office",
+              "11,842",
+              "947",
+              "6%",
+              "49%"
+            ]
+          },
+          {
+            "cells": [
+              "HealthMarkets Charlotte Agency Office",
+              "8,331",
+              "612",
+              "7%",
+              "58%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              2418,
+              2647,
+              2531,
+              2388,
+              2434
+            ]
+          },
+          {
+            "name": "Comparing Carriers",
+            "values": [
+              2147,
+              2231,
+              2318,
+              2047,
+              2104
+            ]
+          },
+          {
+            "name": "Outside Enrollment Window",
+            "values": [
+              1847,
+              1733,
+              1712,
+              1681,
+              1660
+            ]
+          },
+          {
+            "name": "Needs Spouse Approval",
+            "values": [
+              1318,
+              1287,
+              1342,
+              1247,
+              1248
+            ]
+          },
+          {
+            "name": "Not Eligible for Plan",
+            "values": [
+              1147,
+              1082,
+              1118,
+              1047,
+              1046
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "29,682"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Enrollment (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$16,679,502"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Enrollment (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,847,216"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent and Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Enrollment (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,209,843"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Enrollment (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,921,502"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Enrollment (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,156,874"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent and Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Enrollment (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,943,721"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Enrollment (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$600,346"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Enrollment (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 35247,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "8,934",
+                "62%",
+                "35%",
+                "$5,387,924"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "7,482",
+                "55%",
+                "32%",
+                "$3,926,784"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "6,218",
+                "58%",
+                "34%",
+                "$2,847,562"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "4,156",
+                "48%",
+                "28%",
+                "$2,343,816"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "2,892",
+                "41%",
+                "24%",
+                "$1,173,416"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Enrollment (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 33189,
+          "rows": [
+            {
+              "name": "Web Form",
+              "metrics": [
+                "9,847",
+                "61%",
+                "36%",
+                "$6,124,352"
+              ]
+            },
+            {
+              "name": "Click to Call",
+              "metrics": [
+                "8,364",
+                "54%",
+                "31%",
+                "$3,847,216"
+              ]
+            },
+            {
+              "name": "SMS Inquiry",
+              "metrics": [
+                "5,726",
+                "52%",
+                "29%",
+                "$2,564,894"
+              ]
+            },
+            {
+              "name": "Email Signup",
+              "metrics": [
+                "3,582",
+                "43%",
+                "25%",
+                "$1,691,750"
+              ]
+            },
+            {
+              "name": "Phone Number Display",
+              "metrics": [
+                "2,183",
+                "38%",
+                "22%",
+                "$1,451,290"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Enrollment (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 34076,
+          "rows": [
+            {
+              "name": "Open Enrollment 2025 Free Quotes",
+              "metrics": [
+                "9,218",
+                "63%",
+                "37%",
+                "$6,281,974"
+              ]
+            },
+            {
+              "name": "Medicare Advantage Zero Dollar Plans",
+              "metrics": [
+                "7,643",
+                "56%",
+                "33%",
+                "$3,918,547"
+              ]
+            },
+            {
+              "name": "ACA Subsidy Eligibility Checker",
+              "metrics": [
+                "6,527",
+                "51%",
+                "30%",
+                "$2,756,418"
+              ]
+            },
+            {
+              "name": "Self Employed Health Coverage Solutions",
+              "metrics": [
+                "4,034",
+                "44%",
+                "26%",
+                "$1,847,924"
+              ]
+            },
+            {
+              "name": "Short Term Health Fast Coverage",
+              "metrics": [
+                "2,260",
+                "37%",
+                "21%",
+                "$876,639"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Enrollment (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 28562,
+          "rows": [
+            {
+              "name": "Affordable health insurance quotes",
+              "metrics": [
+                "6,874",
+                "64%",
+                "38%",
+                "$4,627,812"
+              ]
+            },
+            {
+              "name": "Health insurance for self employed",
+              "metrics": [
+                "5,218",
+                "57%",
+                "34%",
+                "$3,156,784"
+              ]
+            },
+            {
+              "name": "Medicare Advantage plans near me",
+              "metrics": [
+                "4,156",
+                "52%",
+                "31%",
+                "$2,387,516"
+              ]
+            },
+            {
+              "name": "ACA marketplace plans open enrollment",
+              "metrics": [
+                "3,427",
+                "46%",
+                "27%",
+                "$1,564,238"
+              ]
+            },
+            {
+              "name": "Short term health insurance coverage",
+              "metrics": [
+                "2,109",
+                "39%",
+                "23%",
+                "$943,152"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Enrollment (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Medicare Advantage and Part D",
+              "metrics": [
+                "8,746",
+                "65%",
+                "39%",
+                "$5,847,216"
+              ]
+            },
+            {
+              "name": "ACA Individual and Family Health",
+              "metrics": [
+                "7,384",
+                "58%",
+                "35%",
+                "$4,926,784"
+              ]
+            },
+            {
+              "name": "Short Term Medical Coverage",
+              "metrics": [
+                "5,218",
+                "48%",
+                "28%",
+                "$2,347,562"
+              ]
+            },
+            {
+              "name": "Life Insurance Term and Permanent",
+              "metrics": [
+                "4,627",
+                "41%",
+                "24%",
+                "$1,751,424"
+              ]
+            },
+            {
+              "name": "Dental and Vision Plans",
+              "metrics": [
+                "3,707",
+                "52%",
+                "30%",
+                "$1,856,516"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Enrollment (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Medicare Advantage and Part D",
+            "values": [
+              584,
+              712,
+              896,
+              1042,
+              1083
+            ]
+          },
+          {
+            "name": "ACA Individual and Family Health",
+            "values": [
+              512,
+              638,
+              847,
+              974,
+              1061
+            ]
+          },
+          {
+            "name": "Short Term Medical Coverage",
+            "values": [
+              318,
+              412,
+              524,
+              674,
+              718
+            ]
+          },
+          {
+            "name": "Life Insurance Term and Permanent",
+            "values": [
+              256,
+              341,
+              418,
+              583,
+              614
+            ]
+          },
+          {
+            "name": "Dental and Vision Plans",
+            "values": [
+              198,
+              276,
+              348,
+              472,
+              511
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "349"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "841"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "25"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              73,
+              76,
+              72,
+              79,
+              75,
+              77,
+              71,
+              80,
+              74,
+              78,
+              76,
+              72,
+              81,
+              75,
+              79,
+              73,
+              80,
+              77,
+              74,
+              76,
+              75,
+              79,
+              72,
+              78,
+              1,
+              74,
+              176,
+              189,
+              182,
+              171,
+              185,
+              188,
+              179,
+              191,
+              183,
+              174,
+              187,
+              180,
+              193,
+              181,
+              178,
+              186,
+              175,
+              184,
+              182,
+              177,
+              190,
+              185,
+              179
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,087"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "718"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "697"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Medicare Advantage Plans",
+            "values": [
+              8,
+              11,
+              9,
+              12,
+              2,
+              10
+            ]
+          },
+          {
+            "name": "ACA Individual Health",
+            "values": [
+              6,
+              7,
+              8,
+              5,
+              1,
+              9
+            ]
+          },
+          {
+            "name": "Supplemental Insurance",
+            "values": [
+              7,
+              6,
+              10,
+              8,
+              3,
+              11
+            ]
+          },
+          {
+            "name": "Short Term Medical",
+            "values": [
+              5,
+              8,
+              6,
+              4,
+              1,
+              7
+            ]
+          },
+          {
+            "name": "Life Insurance Quotes",
+            "values": [
+              9,
+              10,
+              7,
+              9,
+              4,
+              12
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "68,268"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "49,346"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Booked (Count)",
+            "value": "30,424"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$29,262,285"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 300,
+          "axisTicks": [
+            0,
+            75,
+            150,
+            225,
+            300
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Ellery",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Diane Kuhns",
+              "value": 224,
+              "display": "224"
+            },
+            {
+              "name": "Bradford Schultz",
+              "value": 163,
+              "display": "163"
+            },
+            {
+              "name": "Yvette Romero",
+              "value": 251,
+              "display": "251"
+            },
+            {
+              "name": "Keith Northrup",
+              "value": 198,
+              "display": "198"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Jennifer Vasquez",
+            "values": [
+              268,
+              304,
+              351,
+              387,
+              442
+            ]
+          },
+          {
+            "name": "Raul Gutierrez",
+            "values": [
+              279,
+              318,
+              366,
+              401,
+              465
+            ]
+          },
+          {
+            "name": "Sophia Chen",
+            "values": [
+              251,
+              287,
+              329,
+              371,
+              438
+            ]
+          },
+          {
+            "name": "Marcus Williams",
+            "values": [
+              244,
+              279,
+              318,
+              362,
+              421
+            ]
+          },
+          {
+            "name": "Patricia Mendoza",
+            "values": [
+              256,
+              295,
+              337,
+              379,
+              447
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Raymond Deluca",
+              "value": 53.4,
+              "display": "53.4%"
+            },
+            {
+              "name": "Trevor Hancock",
+              "value": 54.7,
+              "display": "54.7%"
+            },
+            {
+              "name": "Marla Fosse",
+              "value": 55.2,
+              "display": "55.2%"
+            },
+            {
+              "name": "Gavin Posey",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "Lenore Burch",
+              "value": 57.1,
+              "display": "57.1%"
+            },
+            {
+              "name": "Oscar Ruiz",
+              "value": 58.3,
+              "display": "58.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Raymond Deluca",
+                "53.4%",
+                "28%",
+                "$35,840",
+                "1,468"
+              ]
+            },
+            {
+              "cells": [
+                "Trevor Hancock",
+                "54.7%",
+                "29%",
+                "$37,186",
+                "1,402"
+              ]
+            },
+            {
+              "cells": [
+                "Marla Fosse",
+                "55.2%",
+                "31%",
+                "$38,447",
+                "1,441"
+              ]
+            },
+            {
+              "cells": [
+                "Gavin Posey",
+                "56.8%",
+                "32%",
+                "$39,156",
+                "1,387"
+              ]
+            },
+            {
+              "cells": [
+                "Lenore Burch",
+                "57.1%",
+                "33%",
+                "$41,264",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Oscar Ruiz",
+                "58.3%",
+                "34%",
+                "$42,783",
+                "1,512"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Jennifer Vasquez",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Raul Gutierrez",
+              "value": 90.4,
+              "display": "90.4%"
+            },
+            {
+              "name": "Sophia Chen",
+              "value": 89.2,
+              "display": "89.2%"
+            },
+            {
+              "name": "Marcus Williams",
+              "value": 88.6,
+              "display": "88.6%"
+            },
+            {
+              "name": "Patricia Mendoza",
+              "value": 87.9,
+              "display": "87.9%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Vasquez",
+                "91.7%",
+                "63%",
+                "$81,458",
+                "1,536"
+              ]
+            },
+            {
+              "cells": [
+                "Raul Gutierrez",
+                "90.4%",
+                "62%",
+                "$79,647",
+                "1,507"
+              ]
+            },
+            {
+              "cells": [
+                "Sophia Chen",
+                "89.2%",
+                "60%",
+                "$76,924",
+                "1,481"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Williams",
+                "88.6%",
+                "59%",
+                "$74,182",
+                "1,443"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Mendoza",
+                "87.9%",
+                "58%",
+                "$73,421",
+                "1,502"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Booked (Count)",
+        "rightMax": 1400,
+        "rightTicks": [
+          0,
+          350,
+          700,
+          1050,
+          1400
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1128
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1081
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1006
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 960
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 835
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 877
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 969
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1007
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1124
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1089
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 981
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 948
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 843
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 869
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 992
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1023
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1113
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1096
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 960
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 930
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 856
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 865
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1009
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1043
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1099
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1097
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 947
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 908
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 871
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 866
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1032
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1400000,
+        "rightTicks": [
+          0,
+          466666.6666666667,
+          933333.3333333334,
+          1400000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1084727
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1039662
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 968137
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 923789
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 804328
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 844121
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 932476
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 969232
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1080699
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1047804
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 943722
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 912126
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 811639
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 836608
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 954677
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 983767
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1070637
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1053975
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 924222
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 894907
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 823821
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 832458
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 971132
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1003323
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1057035
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1055498
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 910997
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 873501
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 838106
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 834064
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 981095
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "74,204"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "5,936"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "4,452"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "83%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "83%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer M. Parrish",
+                "412",
+                "87%",
+                "84%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Chen",
+                "528",
+                "85%",
+                "82%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Richardson",
+                "389",
+                "86%",
+                "83%",
+                "83%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "74,204 calls",
+      "pagerLabel": "1 of 7,420",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:23 am",
+          "id": "A21C-4E9B7710DDA4"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "7C4D-1188AF63C0E2"
+        },
+        {
+          "time": "1/14/26 11:05 am",
+          "id": "93E0-DA47C1F5B682"
+        },
+        {
+          "time": "1/16/26 12:18 pm",
+          "id": "6BB2-77A0E4C31159"
+        },
+        {
+          "time": "1/20/26 1:32 pm",
+          "id": "D0F4-3C82119E7A46"
+        },
+        {
+          "time": "1/22/26 2:09 pm",
+          "id": "48A9-EE5510B7C3F0"
+        },
+        {
+          "time": "1/26/26 3:27 pm",
+          "id": "1F73-90CD44A2E6B8"
+        },
+        {
+          "time": "1/28/26 4:44 pm",
+          "id": "BC85-27F1A0339D71"
+        },
+        {
+          "time": "1/30/26 5:15 pm",
+          "id": "5E62-6BA9C8047F13"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling HealthMarkets, this is Dana, a licensed insurance agent. Who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling HealthMarkets",
+            "licensed insurance agent"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:11",
+          "text": "Hi Dana, this is Marcus Ellison. I just went out on my own as a contractor and I lost the coverage I had through my old job.",
+          "highlights": [
+            "Marcus Ellison"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:20",
+          "text": "Congratulations on going independent, Marcus. I can absolutely help you find coverage. Are you looking just for yourself, or family too?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:28",
+          "text": "Just me and my wife for now. We are both healthy, mid forties, no kids at home anymore.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:36",
+          "text": "Perfect. Since you lost job-based coverage, that opens a special enrollment window, so we can look at an ACA Individual and Family plan and check if you qualify for a subsidy.",
+          "highlights": [
+            "ACA Individual and Family plan",
+            "subsidy"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:47",
+          "text": "That is the thing though. A full plan runs around four hundred fifty a month, right? I want to keep this manageable while I get the business going.",
+          "highlights": [
+            "keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:57",
+          "text": "I hear you completely. That is the pre-subsidy sticker price. Based on self-employed income, a lot of folks land between zero and a hundred dollars a month after the tax credit. Let me run your numbers before you assume the worst.",
+          "highlights": [
+            "after the tax credit"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:09",
+          "text": "Okay, that changes things. Honestly I was also getting a couple of quotes online and one of those bare bones sites pushed me toward some short term thing.",
+          "highlights": [
+            "getting a couple of quotes"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:20",
+          "text": "I can quote that too. A Short-Term Medical plan is around eighty to a hundred fifty a month and it is a good bridge, but it has limited benefits and no essential coverage. For a couple staying on long term, the ACA plan usually protects you better.",
+          "highlights": [
+            "Short-Term Medical plan",
+            "limited benefits"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:34",
+          "text": "That makes sense. One more thing, my wife has been after me about a dental plan too. Can you bundle that in?",
+          "highlights": [
+            "dental plan"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:42",
+          "text": "Absolutely. We can add a Dental and Vision bundle for roughly thirty to sixty a month, so you both get cleanings, exams, and frames covered in one plan.",
+          "highlights": [
+            "Dental and Vision bundle"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:52",
+          "text": "Alright. I do need to move on this soon, the enrollment deadline is coming up and I do not want a gap in coverage.",
+          "highlights": [
+            "enrollment deadline is coming up"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:00",
+          "text": "Then let us not wait. I would like to set up a consultation where I pull exact plans and subsidy amounts for your zip code and walk you and your wife through the options.",
+          "highlights": [
+            "set up a consultation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:10",
+          "text": "That works. I would want her on the call, she gets home around six. Am I locked into anything by scheduling?",
+          "highlights": [
+            "locked into anything"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:18",
+          "text": "Not at all. There is no cost and no obligation to enroll. Our help is free to you because we are paid by the carriers. How about Thursday at ten in the morning?",
+          "highlights": [
+            "no obligation to enroll",
+            "Thursday at ten"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:27",
+          "text": "Thursday at ten is good. Let me give you my cell so you both can reach me.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:33",
+          "text": "Got it, I have your number and your email confirmation is on the way. You are all set for Thursday at ten, Marcus.",
+          "highlights": [
+            "all set for Thursday at ten"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:38",
+          "text": "Thanks Dana, I appreciate you breaking it down for me.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:40",
+          "text": "My pleasure. Thank you for choosing HealthMarkets, talk soon.",
+          "highlights": [
+            "Thank you for choosing HealthMarkets"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Policyholder",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: ACA Individual Plan",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Intent: Subsidy Eligibility",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Product: Dental and Vision Bundle",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Loss of Coverage Trigger",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Marcus Ellison, a newly self-employed contractor, called after losing his job-based coverage and needed a plan for himself and his wife while keeping costs manageable. Agent Dana identified a special enrollment window and recommended an ACA Individual and Family plan with a likely subsidy, positioned it against a bare bones short-term option Marcus was quoted elsewhere, and added a Dental and Vision bundle at his wife's request. Dana addressed his budget, competitor, and commitment concerns, then booked a consultation to pull exact plans and subsidy figures. The call closed politely with contact details captured.",
+        "keyPoints": [
+          "New policyholder losing employer coverage, qualifies for special enrollment",
+          "Needs coverage for himself and his wife, mid forties, healthy",
+          "Recommended ACA Individual and Family plan with subsidy check",
+          "Compared against a short-term plan and added a Dental and Vision bundle",
+          "Handled budget, competitor quotes, deadline, and no-obligation concerns",
+          "Consultation scheduled for Thursday 10 AM with cell and email captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "46,749 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,675",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for reaching out to HealthMarkets. I'm Sarah, your insurance agent. How can I help you find coverage today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi Sarah. I'm looking for health insurance. My job doesn't offer it and I need something affordable."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great, I can definitely help. Are you looking for coverage just for yourself, or do you have a family you need to cover?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "Just me. I'm 38 years old and pretty healthy."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. Are you currently uninsured, or do you have coverage through another plan?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "I've been uninsured for about a year. Lost my job and didn't get COBRA."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "I understand. Since you're uninsured, you may qualify for ACA subsidies that could bring your monthly cost way down. What state do you live in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "I'm in Colorado."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Excellent. In Colorado, individual ACA plans typically run 450 per month before subsidies, but many people with your situation qualify for 100 to 200 a month or less. What's your approximate household income for 2026?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "Around 28,000 a year."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "That income level puts you well into subsidy range. I'd like to schedule a free consultation with one of our licensed agents here in Colorado who can run an exact quote for you. Does Tuesday, March 17th at 2 PM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Yes, that works great. What do I need to do?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Perfect. I've scheduled your consultation for Tuesday, March 17th at 2 PM with our Colorado team. You'll get a call at this number. Our callback number is 1.866.892.7324. Any other questions before we wrap up?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:35 AM",
+              "text": "No, that's all. Thanks Sarah."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:36 AM",
+              "text": "You're welcome. Looking forward to helping you get covered. See you Tuesday at 2 PM."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Policyholder",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product: ACA Individual Health Plan",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Coverage Type: Individual",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "State: Colorado",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Subsidy Eligible",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Monthly Estimate: $100-$200",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "303-448-6127",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "James Martinez",
+            "firstName": "James",
+            "lastName": "Martinez",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A892-3F4C7E1A9B2K",
+          "time": "8/16/25 10:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A892-3F4C7E1A9B2K",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B745-6D2E8F9A1C5L",
+          "time": "8/16/25 10:39 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B745-6D2E8F9A1C5L",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D129-5A7B3F8E2G6M",
+          "time": "8/16/25 10:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D129-5A7B3F8E2G6M",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "74,204 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 7,420",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hi there, thanks for calling HealthMarkets. My name is Sarah. Is this a good time to talk about finding you an affordable health insurance plan?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Yeah, sure. I've been looking for something that won't break the bank. I'm self-employed."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:48 PM",
+              "text": "Great, thanks for letting me know. So self-employed folks often qualify for some really nice tax credits on the ACA marketplace. Are you currently enrolled in any health coverage right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:49 PM",
+              "text": "No, I don't have anything. Been without coverage for about eight months."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:50 PM",
+              "text": "Okay, I hear you. And just to make sure I get you into the right plan, what state are you located in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "Texas. I'm in the Austin area."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Perfect. Austin's got a lot of great options. Now, are you looking for something with pretty comprehensive coverage, or would you prefer something lighter just to cover major medical?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "Comprehensive, I think. I've got some ongoing health stuff, so I want to make sure I'm covered."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:53 PM",
+              "text": "That makes total sense. Based on what you've told me, I'd estimate you'd be looking at somewhere around four hundred to five hundred dollars a month before any tax credits, and those credits could bring that down to anywhere from zero to maybe one hundred dollars depending on your income. Does that sound like something that could work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:54 PM",
+              "text": "Yeah, that's way better than what I was expecting. What's the next step?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "Excellent. What I'd like to do is get you scheduled with one of our licensed agents in the Austin area who can run your eligibility for subsidies and show you the actual plans available. Would tomorrow at three PM work for you, or would you prefer something later in the week?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:56 PM",
+              "text": "Tomorrow at three works great."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:56 PM",
+              "text": "Perfect. I've got you down for tomorrow, January sixteenth at three PM Central Time. One of our agents will call you back at this number, and in the meantime, you can expect a confirmation text. Is there anything else I can answer for you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:57 PM",
+              "text": "No, that's everything. Thanks so much."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:58 PM",
+              "text": "You're so welcome. Thanks for choosing HealthMarkets, and we'll talk to you tomorrow. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Policyholder",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Identified: ACA Individual Health Plan",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Income Qualifier: Self-Employed",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area Confirmed: Texas",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimated Premium Provided",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:47 pm",
+            "duration": "11:23",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "512-555-0847",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Michael Torres",
+            "firstName": "Michael",
+            "lastName": "Torres",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B892-7F3AC851629E",
+          "time": "1/22/26 10:34 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B892-7F3AC851629E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C634-1E5BD721468F",
+          "time": "1/28/26 1:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C634-1E5BD721468F",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D476-9A2E7C534B1F",
+          "time": "1/09/26 11:58 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D476-9A2E7C534B1F",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro plus offer: Hi, I'm HealthMarkets's AI agent, and I can help you get a free, no-obligation personalized quote from our network of 200+ insurance companies. Would you like to get started?",
+        "Qualify one at a time: I'll ask a few quick questions one at a time, what type of coverage you're looking for (Health, Medicare, Dental and Vision, Supplemental, or Life), who needs to be covered and their ages, whether you have coverage now or are experiencing a life change, your ideal start date, and finally your ZIP code so I can confirm plan availability in your state.",
+        "Estimate then book: Once I confirm we serve your ZIP, I'll share a preliminary monthly premium range based on what you shared, then recommend a consultation with a local licensed insurance agent for an exact quote. I'll propose a specific day and time, and you'll get a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "HealthMarkets_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Plans and Coverage Options",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "How We Help",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Licensed Insurance Agent",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"policy status\",\"question\":\"How do I check the status of my enrollment application?\",\"answer\":\"Your licensed insurance agent can pull up your application status right away and confirm your effective date. I can connect you with your agent or schedule a quick consultation to review it.\"},{\"topic\":\"reschedule\",\"question\":\"Can I reschedule my consultation with my agent?\",\"answer\":\"Absolutely, we can move your consultation to a time that works better for you. Just let me know your preferred day and time and I'll set it up.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How much does your help cost?",
+              "answer": "Our help is completely free to you, because we're compensated by the insurance carriers when you enroll. There's no obligation to enroll, and I can book a no-cost consultation with a licensed agent whenever you're ready."
+            },
+            {
+              "question": "Do you sell the insurance yourselves?",
+              "answer": "We're an insurance agency and marketplace, so we match you to plans from our network of 200+ carriers rather than underwriting policies ourselves. A licensed agent can walk you through your best options on a quick consultation."
+            },
+            {
+              "question": "How much will an ACA health plan cost me?",
+              "answer": "Premiums vary widely by age, state, and subsidy eligibility, and many people qualify for significant tax credits. The best next step is a consultation with a licensed agent who can give you an exact quote."
+            },
+            {
+              "question": "Can I get help choosing a Medicare plan?",
+              "answer": "Yes, our licensed agents help with Medicare Advantage, Medicare Supplement, and Part D options every day. I can schedule a consultation to review which fits your needs and budget."
+            },
+            {
+              "question": "I'm turning 65 soon, what should I do?",
+              "answer": "Turning 65 opens your Medicare enrollment window, and it's a great time to review your options. Let's book a consultation with a licensed agent so you don't miss any deadlines."
+            },
+            {
+              "question": "Do you offer short-term health insurance?",
+              "answer": "Yes, we offer short-term medical plans that provide temporary coverage for gaps with fast approval. A licensed agent can confirm what's available in your state on a quick consultation."
+            },
+            {
+              "question": "Can I get dental and vision coverage together?",
+              "answer": "Yes, we offer combined dental and vision bundles as well as standalone plans. I'd be happy to schedule a consultation to compare options for you."
+            },
+            {
+              "question": "What kind of life insurance do you offer?",
+              "answer": "We offer both term life for a set period and whole or permanent life with cash-value accumulation. A licensed agent can help you find the right fit on a consultation."
+            },
+            {
+              "question": "Am I eligible for a subsidy?",
+              "answer": "Subsidy eligibility depends on your income, household size, and state, and many shoppers qualify. A licensed agent can check your eligibility exactly during a consultation."
+            },
+            {
+              "question": "Do you have plans in my state?",
+              "answer": "We're licensed nationwide except in Massachusetts, so we very likely serve your area. Share your ZIP code and I'll confirm, then book you a consultation."
+            },
+            {
+              "question": "How do I find a local agent?",
+              "answer": "I can connect you with a local, licensed insurance agent near you for personalized help. Just give me your ZIP code and I'll set up a consultation."
+            },
+            {
+              "question": "Can I keep my current doctor?",
+              "answer": "Whether your doctor is in-network depends on the specific plan and carrier you choose. A licensed agent can check network details for you during a consultation."
+            },
+            {
+              "question": "When is open enrollment?",
+              "answer": "Open enrollment dates vary by coverage type, and special enrollment periods may apply after life changes. Let's book a consultation so an agent can confirm your window and options."
+            },
+            {
+              "question": "Do you offer supplemental or accident insurance?",
+              "answer": "Yes, we offer accident, critical illness, and other supplemental plans that pay cash benefits for covered events. A licensed agent can review these with you on a consultation."
+            },
+            {
+              "question": "What is telemedicine and do you offer it?",
+              "answer": "Telemedicine gives you 24/7 virtual doctor visits, and it's often bundled with our supplemental plans. I can schedule a consultation to explain how it works with your coverage."
+            },
+            {
+              "question": "I'm self-employed, what are my options?",
+              "answer": "We help many self-employed shoppers find individual health, dental, and supplemental coverage. A licensed agent can compare plans for your situation on a consultation."
+            },
+            {
+              "question": "How long does it take to get covered?",
+              "answer": "Timelines depend on the plan type, with short-term plans often approving fast and ACA plans following enrollment periods. A licensed agent can give you exact timing during a consultation."
+            },
+            {
+              "question": "Do I have to enroll if I get a quote?",
+              "answer": "No, there's absolutely no obligation to enroll when you get a quote or speak with an agent. Let's book a no-cost consultation so you can explore your options."
+            },
+            {
+              "question": "Can you help me compare Medigap plans?",
+              "answer": "Yes, our licensed agents can compare Medicare Supplement plans like Plan G across carriers for you. I'd be glad to schedule a consultation to review the details."
+            },
+            {
+              "question": "How do I get started?",
+              "answer": "The easiest way is a quick consultation with a licensed insurance agent who can build a personalized quote. Share your ZIP code and preferred time and I'll set it up."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule a consultation\",\"follow_up_message\":\"Great, I have you down for a virtual consultation with a local licensed insurance agent. You'll get a reminder text before your appointment with a number to call if anything changes.\"},{\"intent\":\"request a personalized quote\",\"follow_up_message\":\"Thanks for the details, I'll have a licensed agent prepare a personalized, no-obligation quote from our network of carriers. Let's confirm a day and time that works so they can walk you through it.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, I'm HealthMarkets's AI agent. I can help you get a free, no-obligation personalized quote from our network of 200+ insurance companies. Would you like to get started?",
+        "goal": "Guide the shopper to book a no-cost virtual consultation with a local licensed insurance agent for a personalized quote and enrollment help.",
+        "bookingType": "virtual consultation with a licensed insurance agent",
+        "offer": "Get a free, no-obligation personalized quote when you book today",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "What type of coverage are you looking for: Health, Medicare, Dental and Vision, Supplemental, or Life?",
+          "Who needs to be covered, and what are their ages?",
+          "Do you currently have coverage, or have you had a recent life change like a new job or turning 65?",
+          "When would you like your coverage to start?",
+          "What's your ZIP code so I can confirm plan availability in your state?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:05 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:05 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:05 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "HealthMarkets",
+      "callerName": "Sarah Mitchell",
+      "callerPhone": "(512) 555-0147",
+      "campaign": "Medicare Advantage, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$1,847",
+      "googleSearch": "Medicare Advantage plans near me Austin Texas",
+      "websiteSearch": "turning 65 Medicare enrollment options",
+      "callingWebpage": "/medicare",
+      "products": "Medicare Advantage Plan, Medicare Supplement Medigap",
+      "cartId": "HM-6392K",
+      "serviceable": "Yes",
+      "email": "sarah.mitchell.512@email.com",
+      "street": "4217 Barton Hills Drive",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78746",
+      "digitalJourney": "/home › /medicare › /medicare-advantage › /plans-by-state/texas",
+      "intent": "Turning 65 in three months, needs guidance on Medicare Advantage versus Original Medicare with supplement coverage",
+      "coverage": "ZIP 78746 confirmed, Austin serviceable",
+      "switchIntent": "High, birthday enrollment deadline approaching in 90 days, comparing costs across multiple carriers",
+      "greeting": "Hi Sarah, this is Marcus from HealthMarkets. I see you're researching Medicare options as you turn 65. We help seniors like you find the best Medicare Advantage or Medigap plan at no cost. Can I schedule a quick consultation with one of our licensed agents to review your options this week?"
+    },
+    "smsScreenpop": {
+      "brandName": "HealthMarkets",
+      "callerName": "David Chen",
+      "callerPhone": "(720) 555-0183",
+      "campaign": "ACA Health Insurance, Denver Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$2,156",
+      "googleSearch": "affordable ACA health insurance quotes Colorado",
+      "websiteSearch": "self employed health insurance coverage denver",
+      "callingWebpage": "/health-insurance/individual",
+      "products": "ACA Individual Health Plan, Short Term Medical Plan",
+      "cartId": "HM-7845K",
+      "serviceable": "Yes",
+      "email": "david.chen.720@email.com",
+      "street": "2891 Larimer Street",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80205",
+      "digitalJourney": "/home › /health-insurance › /individual-health-insurance › /plans-by-state/colorado",
+      "intent": "Self employed consultant needing comprehensive ACA coverage with subsidy eligibility check before open enrollment closes",
+      "coverage": "ZIP 80205 confirmed, Denver serviceable",
+      "appointment": "Insurance review consultation with agent, Thu Jan 23, 2:30 PM",
+      "greeting": "Hi David, this is Rebecca at HealthMarkets. Thanks for texting. We have you down for a consultation with one of our licensed agents this Thursday at 2:30 PM to review your ACA health insurance options and subsidy eligibility. Looking forward to helping you find the right plan. Any questions before then?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "HealthMarkets",
+      "brandDomain": "www.healthmarkets.com",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Phoenix, AZ",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Open Enrollment 2025 Free Quotes",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "affordable health insurance ACA subsidy eligible",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/plans/individual-health-insurance",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "ACA Individual Health Plan and Medicare Advantage Plans",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Phoenix, AZ",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_new_business",
+          "name": "Consultation with Licensed Agent New Enrollment"
+        },
+        {
+          "id": "medicare_specialist",
+          "name": "Medicare Specialist Support"
+        },
+        {
+          "id": "general_support",
+          "name": "General Customer Service"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling HealthMarkets. I see you were looking at our individual health insurance plans today. Are you currently covered or looking to get started with a new policy?",
+          "sigs": [],
+          "q": [
+            25,
+            40,
+            35
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Hey, yeah. I'm self employed and my current plan is way too expensive. I saw you guys might have something better with subsidies and I'm in Arizona.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Self employed</strong> status, cost concerned"
+            },
+            {
+              "c": "blue",
+              "t": "Looking for <strong>ACA subsidy eligible</strong> plan"
+            },
+            {
+              "c": "orange",
+              "t": "Arizona location confirmed"
+            }
+          ],
+          "q": [
+            45,
+            30,
+            25
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Got it. Self employed folks often qualify for significant tax credits on the ACA marketplace. I want to connect you with one of our licensed agents who can pull your eligibility and find the best plan. Just to confirm, are you looking to enroll before the end of open enrollment?",
+          "sigs": [],
+          "q": [
+            68,
+            18,
+            14
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, I need coverage to start January. And honestly I'd also like to know if there's dental or vision coverage I can add without breaking the bank.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>January start date</strong> urgent timeline"
+            },
+            {
+              "c": "purple",
+              "t": "Interest in <strong>dental and vision bundled</strong> supplemental"
+            },
+            {
+              "c": "orange",
+              "t": "Budget conscious, multiple product inquiry"
+            }
+          ],
+          "q": [
+            86,
+            8,
+            6
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm going to route you to our new enrollment team right now. They'll walk you through ACA plans with your estimated subsidies and show you how affordable dental and vision can be added. You'll be in great hands. Transferring you now.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"get you enrolled today (Agent)\", \"let's schedule your consultation (Agent)\", \"book an appointment with a licensed agent (Agent)\", \"I'd like to sign up for that plan (Caller)\"])",
+          "createdAt": "03/12/25 9:14 am",
+          "updatedAt": "01/08/26 2:30 pm"
+        },
+        {
+          "name": "Agent Licensing Disclosure (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Agent Licensing Disclosure] < 60 and duration > 45 sec",
+          "createdAt": "05/20/25 11:02 am",
+          "updatedAt": "12/15/25 4:47 pm"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"eHealth quote (Caller)\", \"SelectQuote (Caller)\", \"GoHealth agent (Caller)\", \"my broker at another agency (Caller)\"])",
+          "createdAt": "07/02/25 8:36 am",
+          "updatedAt": "11/22/25 1:19 pm"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"speak with a licensed agent (Agent)\", \"review your plan options (Agent)\", \"walk you through the available plans (Agent)\"])",
+          "createdAt": "04/18/25 10:25 am",
+          "updatedAt": "01/05/26 9:52 am"
+        },
+        {
+          "name": "Dental Vision Upsell Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"add dental and vision (Caller)\", \"dental and vision bundle (Agent)\", \"cover my eye exams (Caller)\", \"dental coverage too (Caller)\"])",
+          "createdAt": "08/09/25 3:41 pm",
+          "updatedAt": "12/28/25 10:07 am"
+        },
+        {
+          "name": "Empathy and Needs Assessment (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy and Needs Assessment] < 60 and duration > 45 sec",
+          "createdAt": "06/14/25 1:58 pm",
+          "updatedAt": "01/10/26 11:33 am"
+        },
+        {
+          "name": "Medicare Advantage Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Medicare Advantage plan (Caller)\", \"turning 65 (Caller)\", \"zero dollar premium (Caller)\", \"Part C coverage (Agent)\"])",
+          "createdAt": "09/03/25 9:12 am",
+          "updatedAt": "01/12/26 3:04 pm"
+        },
+        {
+          "name": "Plan Comparison Explained (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Plan Comparison Explained] < 60 and duration > 45 sec",
+          "createdAt": "05/27/25 4:20 pm",
+          "updatedAt": "12/30/25 8:45 am"
+        },
+        {
+          "name": "Price Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"too expensive (Caller)\", \"can't afford the premium (Caller)\", \"is there a subsidy (Caller)\", \"a cheaper plan (Caller)\"])",
+          "createdAt": "10/11/25 12:16 pm",
+          "updatedAt": "01/15/26 2:51 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your monthly premium would be (Agent)\", \"the quote comes to (Agent)\", \"your estimated cost is (Agent)\", \"with the tax credit applied (Agent)\"])",
+          "createdAt": "02/25/25 10:48 am",
+          "updatedAt": "01/20/26 1:22 pm"
+        }
+      ]
+    }
+  }
+}

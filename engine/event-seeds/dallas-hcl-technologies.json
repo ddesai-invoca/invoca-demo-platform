@@ -1,0 +1,5297 @@
+{
+  "id": "hcl-technologies",
+  "customerName": "HCL Technologies",
+  "websiteUrl": "https://www.hcltech.com",
+  "brandDomain": "hcltech.com",
+  "networkName": "Invoca for IT Services",
+  "industry": "Enterprise IT Services & Technology Consulting",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Client",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 2000,
+      "yTicks": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 1487
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 1592
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 1438
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 1621
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 1411
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Enterprise Cloud Migration, Lead Gen",
+          "marketingSearchTerm": "enterprise cloud migration services",
+          "landingPageUrl": "https://www.hcltech.com/it-infrastructure/cloud?utm_source=google&utm_medium=cpc&utm_campaign=enterprise_cloud_migration",
+          "websiteJourney": "Home / What We Do / IT Infrastructure / Cloud",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "GenAI Advisory, Search",
+          "marketingSearchTerm": "generative ai consulting for enterprise",
+          "landingPageUrl": "https://www.hcltech.com/ai-and-generative-ai/ai-advisory?utm_source=google&utm_medium=cpc&utm_campaign=genai_advisory_search",
+          "websiteJourney": "Home / What We Do / AI and Generative AI / AI Advisory",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Managed Cybersecurity, Search",
+          "marketingSearchTerm": "managed cybersecurity services provider",
+          "landingPageUrl": "https://www.hcltech.com/it-infrastructure/cybersecurity?utm_source=bing&utm_medium=cpc&utm_campaign=managed_cybersecurity",
+          "websiteJourney": "Home / What We Do / IT Infrastructure / Cybersecurity",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "SAP Implementation Partner, Lead Gen",
+          "marketingSearchTerm": "sap implementation partner",
+          "landingPageUrl": "https://www.hcltech.com/applications/enterprise-applications?utm_source=google&utm_medium=cpc&utm_campaign=sap_implementation",
+          "websiteJourney": "Home / What We Do / Applications / Enterprise Applications",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "App Modernization, Search",
+          "marketingSearchTerm": "application modernization services",
+          "landingPageUrl": "https://www.hcltech.com/applications/modern-applications?utm_source=google&utm_medium=cpc&utm_campaign=app_modernization",
+          "websiteJourney": "Home / What We Do / Applications / Modern Applications",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "IT Outsourcing, Search",
+          "marketingSearchTerm": "it outsourcing companies",
+          "landingPageUrl": "https://www.hcltech.com/what-we-do/business-process-operations?utm_source=bing&utm_medium=cpc&utm_campaign=it_outsourcing",
+          "websiteJourney": "Home / What We Do / Business Process Operations",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Digital Workplace, Lead Gen",
+          "marketingSearchTerm": "digital workplace managed services",
+          "landingPageUrl": "https://www.hcltech.com/it-infrastructure/digital-workplace?utm_source=google&utm_medium=cpc&utm_campaign=digital_workplace",
+          "websiteJourney": "Home / What We Do / IT Infrastructure / Digital Workplace",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Engineering R&D Outsourcing, Search",
+          "marketingSearchTerm": "engineering r&d outsourcing",
+          "landingPageUrl": "https://www.hcltech.com/engineering-rd-services/digital-engineering?utm_source=google&utm_medium=cpc&utm_campaign=ers_outsourcing",
+          "websiteJourney": "Home / What We Do / Engineering and R&D Services / Digital Engineering",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "AI Force Launch",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.hcltech.com/ai-and-generative-ai/ai-force?utm_source=instagram&utm_medium=social&utm_campaign=ai_force_launch",
+          "websiteJourney": "Home / What We Do / AI and Generative AI / AI Force",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "HCLTech x MotoGP",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.hcltech.com/who-we-are/about-us?utm_source=facebook&utm_medium=social&utm_campaign=hcltech_motogp",
+          "websiteJourney": "Home / Who We Are / About Us",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Physical AI / AIoT Awareness",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.hcltech.com/ai-and-generative-ai/physical-ai?utm_source=instagram&utm_medium=social&utm_campaign=physical_ai_awareness",
+          "websiteJourney": "Home / What We Do / AI and Generative AI / Physical AI",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Great Place to Work, Employer Brand",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.hcltech.com/who-we-are/awards?utm_source=facebook&utm_medium=social&utm_campaign=gptw_employer_brand",
+          "websiteJourney": "Home / Who We Are / Awards",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Supercharging Progress, Content Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.hcltech.com/what-we-do/ai-and-generative-ai/ai-foundry?utm_source=hcltech&utm_medium=organic&utm_campaign=supercharging_progress",
+          "websiteJourney": "Home / What We Do / AI and Generative AI / AI Foundry",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Analyst Recognitions, SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.hcltech.com/who-we-are/analyst-recognitions?utm_source=hcltech&utm_medium=organic&utm_campaign=analyst_recognitions",
+          "websiteJourney": "Home / Who We Are / Analyst Recognitions",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Financial Services Banking, SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.hcltech.com/industries/financial-services/banking?utm_source=hcltech&utm_medium=organic&utm_campaign=fs_banking",
+          "websiteJourney": "Home / Industries / Financial Services / Banking",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Supply Chain Optimization, Content",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.hcltech.com/what-we-do/supply-chain?utm_source=hcltech&utm_medium=organic&utm_campaign=supply_chain_opt",
+          "websiteJourney": "Home / What We Do / Supply Chain",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "HCL BigFix, Product SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.hcltech.com/products-and-platforms/hcl-bigfix?utm_source=hcltech&utm_medium=organic&utm_campaign=bigfix_product",
+          "websiteJourney": "Home / What We Do / Products and Platforms / HCL BigFix",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AI Foundry Webinar Series",
+          "marketingSearchTerm": "data and ai foundry platform",
+          "landingPageUrl": "https://www.hcltech.com/ai-and-generative-ai/ai-foundry?utm_source=google&utm_medium=cpc&utm_campaign=ai_foundry_webinar",
+          "websiteJourney": "Home / What We Do / AI and Generative AI / AI Foundry",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Fortune 500 Account-Based Marketing",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.hcltech.com/industries/manufacturing?utm_source=instagram&utm_medium=social&utm_campaign=fortune500_abm",
+          "websiteJourney": "Home / Industries / Manufacturing",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "HCL AppScan, Product SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.hcltech.com/products-and-platforms/hcl-appscan?utm_source=hcltech&utm_medium=organic&utm_campaign=appscan_product",
+          "websiteJourney": "Home / What We Do / Products and Platforms / HCL AppScan",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (HCL Technologies)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "5,921"
+            },
+            {
+              "label": "Engagement Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Contract Won (Percent)",
+              "value": "4%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$77,179,599"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "947"
+            },
+            {
+              "label": "Existing Client Support (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing and Invoicing (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Careers Inquiry (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Engagement Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Engagement Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Quote Discussed (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "13%"
+            },
+            {
+              "label": "Contract Won (Percent)",
+              "value": "4%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Engagement Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Engagement Inquiry (Count)",
+            "values": [
+              712,
+              1043,
+              1087,
+              1131,
+              1001
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              351,
+              507,
+              531,
+              549,
+              490
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              112,
+              158,
+              167,
+              174,
+              159
+            ]
+          },
+          {
+            "name": "Contract Won (Count)",
+            "values": [
+              34,
+              49,
+              53,
+              56,
+              45
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 5921,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "2,143",
+                "21%",
+                "2.8%",
+                "$19,684,220"
+              ]
+            },
+            {
+              "name": "LinkedIn",
+              "metrics": [
+                "1,487",
+                "23%",
+                "3.4%",
+                "$16,512,340"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "1,024",
+                "25%",
+                "4.4%",
+                "$14,588,760"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "726",
+                "27%",
+                "5.5%",
+                "$13,142,890"
+              ]
+            },
+            {
+              "name": "Referral Partners",
+              "metrics": [
+                "541",
+                "29%",
+                "7.6%",
+                "$13,251,389"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 5921,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "2,317",
+                "22%",
+                "3.0%",
+                "$22,608,140"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "1,563",
+                "24%",
+                "3.7%",
+                "$18,724,355"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "987",
+                "26%",
+                "4.6%",
+                "$14,502,880"
+              ]
+            },
+            {
+              "name": "Email and Webinars",
+              "metrics": [
+                "632",
+                "28%",
+                "5.5%",
+                "$11,257,330"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "422",
+                "30%",
+                "7.3%",
+                "$10,086,894"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 3767,
+          "rows": [
+            {
+              "name": "Enterprise Cloud Migration Lead Gen",
+              "metrics": [
+                "1,247",
+                "23%",
+                "3.1%",
+                "$12,584,320"
+              ]
+            },
+            {
+              "name": "GenAI Advisory Search",
+              "metrics": [
+                "936",
+                "25%",
+                "3.8%",
+                "$11,842,650"
+              ]
+            },
+            {
+              "name": "AI Force Launch",
+              "metrics": [
+                "714",
+                "27%",
+                "4.6%",
+                "$10,687,410"
+              ]
+            },
+            {
+              "name": "Fortune 500 Account-Based Marketing",
+              "metrics": [
+                "512",
+                "29%",
+                "5.7%",
+                "$9,512,880"
+              ]
+            },
+            {
+              "name": "AI Foundry Webinar Series",
+              "metrics": [
+                "358",
+                "31%",
+                "7.4%",
+                "$8,405,220"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2574,
+          "rows": [
+            {
+              "name": "it outsourcing companies",
+              "metrics": [
+                "892",
+                "24%",
+                "3.3%",
+                "$9,388,240"
+              ]
+            },
+            {
+              "name": "enterprise cloud migration services",
+              "metrics": [
+                "641",
+                "26%",
+                "4.0%",
+                "$8,517,930"
+              ]
+            },
+            {
+              "name": "managed cybersecurity services provider",
+              "metrics": [
+                "487",
+                "28%",
+                "4.8%",
+                "$7,431,860"
+              ]
+            },
+            {
+              "name": "generative ai consulting for enterprise",
+              "metrics": [
+                "336",
+                "30%",
+                "5.9%",
+                "$6,572,140"
+              ]
+            },
+            {
+              "name": "sap implementation partner",
+              "metrics": [
+                "218",
+                "32%",
+                "7.6%",
+                "$5,488,970"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "IT Infrastructure",
+              "metrics": [
+                "1,847",
+                "21.5%",
+                "2.76%",
+                "$16,588,240"
+              ]
+            },
+            {
+              "name": "AI & Generative AI",
+              "metrics": [
+                "1,523",
+                "24.2%",
+                "3.41%",
+                "$17,042,915"
+              ]
+            },
+            {
+              "name": "Applications",
+              "metrics": [
+                "1,142",
+                "23.1%",
+                "3.94%",
+                "$14,613,470"
+              ]
+            },
+            {
+              "name": "Engineering & R&D",
+              "metrics": [
+                "837",
+                "26.8%",
+                "5.26%",
+                "$14,281,655"
+              ]
+            },
+            {
+              "name": "Software Products & Platforms",
+              "metrics": [
+                "572",
+                "28.4%",
+                "7.87%",
+                "$14,653,319"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 5921,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "1,732",
+                "21.8%",
+                "2.71%",
+                "$15,284,210"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "1,458",
+                "23.5%",
+                "3.43%",
+                "$16,318,455"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "1,193",
+                "22.6%",
+                "4.02%",
+                "$15,602,330"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "976",
+                "25.1%",
+                "4.61%",
+                "$14,631,270"
+              ]
+            },
+            {
+              "name": "Mountain",
+              "metrics": [
+                "562",
+                "27.9%",
+                "8.36%",
+                "$15,343,334"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Contract Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "IT Infrastructure",
+            "values": [
+              9,
+              12,
+              11,
+              10,
+              9
+            ]
+          },
+          {
+            "name": "AI & Generative AI",
+            "values": [
+              10,
+              11,
+              12,
+              9,
+              10
+            ]
+          },
+          {
+            "name": "Applications",
+            "values": [
+              8,
+              9,
+              10,
+              9,
+              9
+            ]
+          },
+          {
+            "name": "Engineering & R&D",
+            "values": [
+              7,
+              10,
+              9,
+              8,
+              10
+            ]
+          },
+          {
+            "name": "Software Products & Platforms",
+            "values": [
+              8,
+              9,
+              10,
+              9,
+              9
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 5,921 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Priya Ramachandran, VP of Infrastructure at a regional bank, called about enterprise cloud migration and multi-cloud managed operations. Oscar walked her through Cloud Services scope and blended rates, then booked a scoping consultation with a cloud architect. She confirmed budget authority for a 2026 migration program.",
+          "date": "Feb 4, 10:12 AM",
+          "agent": "Oscar",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 87,
+          "summary": "Daniel Okafor, CISO at a manufacturing group, asked about managed cybersecurity services, SOC coverage, and zero-trust rollout. Lila explained the threat detection and identity offerings and scheduled a cybersecurity advisory consultation for the following week. He was pleased with the clear next steps.",
+          "date": "Mar 9, 2:42 PM",
+          "agent": "Lila",
+          "duration": "2m 48s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 8,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 81,
+          "summary": "Meera Sundaram, Head of Data at a life sciences firm, inquired about AI Foundry for a data platform and model deployment program. Rosey outlined the build and deploy foundation and reserved a consultation with an AI advisory lead. Meera asked for a follow up deck before the call.",
+          "date": "Apr 15, 11:30 AM",
+          "agent": "Rosey",
+          "duration": "2m 55s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 10,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Thomas Vetrano, a new prospect and IT Director at a retail chain, called to schedule his first consultation about Cloud Services and application modernization. Lee collected his company details, program timeline, and stakeholder list, then booked a consultation with a solutions consultant. Thomas confirmed the calendar invite before hanging up.",
+          "date": "May 6, 3:18 PM",
+          "agent": "Lee",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 70,
+          "summary": "Sarah Lindqvist, an application security manager, wanted pricing tiers for HCL AppScan SAST and DAST licensing. Mary reviewed the license options and set up a consultation with a product specialist to size the deployment. Sarah appreciated the quick turnaround.",
+          "date": "May 21, 9:05 AM",
+          "agent": "Mary",
+          "duration": "2m 20s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Rahul Mehta, an endpoint operations lead, called with a question about HCL BigFix patching coverage on an existing contract. Mike checked the account and answered the endpoint remediation query without needing an escalation. No new engagement was opened.",
+          "date": "Jan 27, 1:47 PM",
+          "agent": "Mike",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Angela Brooks, a procurement manager, disputed a billing line on a Digital Workplace Services invoice covering seat counts. Jennifer reviewed the per seat charges and opened a billing correction ticket for finance to resolve. Angela remained frustrated about the delay.",
+          "date": "Feb 18, 4:33 PM",
+          "agent": "Jennifer",
+          "duration": "2m 40s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 23,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Victor Alonzo, a program sponsor, called for a status update on an Enterprise Applications Transformation SAP migration milestone. Sue pulled the project record and relayed the current phase and next delivery date. He asked for a written summary from the delivery manager.",
+          "date": "Mar 25, 10:58 AM",
+          "agent": "Sue",
+          "duration": "2m 10s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 21,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Nadia Farouk, a security operations director, asked about adding managed cybersecurity monitoring to an existing network contract. Rose explained the SOC expansion and booked a consultation with a security architect to scope the add on. Nadia agreed to the meeting time.",
+          "date": "Apr 2, 12:22 PM",
+          "agent": "Rose",
+          "duration": "2m 35s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 24,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Greg Halvorsen, an IT operations manager, reported a failed BigFix agent deployment across several sites. Mike logged the deployment issue and routed it to the technical support queue for remediation. Greg was unhappy that it had recurred twice.",
+          "date": "May 14, 3:50 PM",
+          "agent": "Mike",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Denise Yamamoto, a finance controller, called to cancel a HCL Unica marketing automation renewal citing budget cuts. Jennifer captured the cancellation reason and started the contract offboarding workflow. She declined an offer to speak with an account manager.",
+          "date": "Jun 9, 11:15 AM",
+          "agent": "Jennifer",
+          "duration": "2m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Karl Feldman, an accounts payable lead, contested a billing overage on a Business Process Operations statement. Sue reviewed the FTE hours charged and escalated the billing dispute to the commercial team. Karl demanded a callback within 24 hours.",
+          "date": "Jul 3, 2:08 PM",
+          "agent": "Sue",
+          "duration": "2m 44s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Olivia Trentino, an operations director, complained that Digital Workplace service desk response times had slipped below the agreed SLA. Lee documented the complaint and opened a service escalation with the delivery lead. She said she would consider reviewing the vendor relationship.",
+          "date": "Aug 12, 4:47 PM",
+          "agent": "Lee",
+          "duration": "3m 20s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Brandon Ishii, a security engineer, called for repair support on a broken AppScan scan integration in his CI pipeline. Mary tried basic troubleshooting but had to transfer him to advanced support after the fix failed. Brandon was audibly annoyed by the wait.",
+          "date": "Sep 5, 1:19 PM",
+          "agent": "Mary",
+          "duration": "3m 02s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Elena Marchetti, an enterprise architect, called after hours about a stalled cloud modernization proposal and reached voicemail. She left a message asking for an urgent callback and expressed frustration that no one answered. No agent handled the call live.",
+          "date": "Oct 1, 6:41 PM",
+          "agent": "No Agent",
+          "duration": "0m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "cloud",
+        "cybersecurity",
+        "appscan",
+        "bigfix",
+        "billing",
+        "consultation"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 41s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Service Line and Industry Fit",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Geography and Account Region",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation with Confirmed Date/Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Next Steps",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Document Account Classification (New vs Existing)",
+          "points": "10/10",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller self-identified as new prospect",
+        "Inquiry routed to correct service line",
+        "Caller stated budget range informally",
+        "Caller mentioned digital transformation mandate",
+        "Caller acknowledged HCLTech brand familiarity",
+        "Caller works in regulated industry",
+        "Caller has multi-country operations",
+        "Agent asked qualifying questions",
+        "Agent confirmed primary business challenge",
+        "Agent offered relevant service options",
+        "Caller agreed to consultation window",
+        "Agent provided follow-up confirmation",
+        "Caller expressed urgency"
+      ],
+      "unmetSignals": [
+        "Email address not captured in call",
+        "Caller's job title not probed",
+        "Specific compliance requirements not explored",
+        "Current vendor landscape not discussed",
+        "Decision timeline not established",
+        "Budget approval process not discussed",
+        "Technical infrastructure maturity not assessed",
+        "Caller's peer influencers not identified",
+        "RFP or procurement process not mentioned",
+        "Competitive alternatives not addressed"
+      ],
+      "naSignals": [
+        "Order status inquiry",
+        "Existing contract renewal",
+        "Billing dispute resolution",
+        "Service ticket escalation",
+        "Software license renewal",
+        "Incident response or emergency",
+        "Contract performance review",
+        "Vendor offboarding request",
+        "Invoice or payment question",
+        "Existing engagement expansion"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller's enterprise faces increasing pressure to modernize aging applications and migrate to cloud infrastructure, and they want to explore whether HCLTech's Modern Application Services and Cloud Services can accelerate their digital roadmap within a 12 to 18 month window."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects an initial consultation to review their current technology footprint, understand HCLTech's delivery model and pricing structure, and receive a preliminary assessment within two weeks, with a formal proposal to follow in Q1 if alignment exists."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have captured the caller's email address explicitly before closing, and he could have set clearer expectations about whether the consultation would be virtual or on-site and what materials the caller should prepare in advance."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Good afternoon, thank you for calling HCLTech Enterprise Solutions intake line. My name is Marcus Bell. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:12",
+          "text": "Hi Marcus, thanks for picking up. My name is Jennifer Chen, and I'm the Chief Technology Officer at Meridian Financial Group. We're based in Chicago, and we've been looking at our technology strategy for next year. I saw one of your webinars on digital transformation and thought I'd reach out."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:32",
+          "text": "That's wonderful, Jennifer. I'm really glad you attended that session. Just to confirm, are you exploring services like application modernization, cloud migration, or perhaps both for Meridian Financial?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:48",
+          "text": "Both, actually. We have a legacy portfolio of applications built on outdated frameworks, and we're on premises today. We need to move to cloud and modernize in parallel, ideally within 18 months."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:06",
+          "text": "That makes perfect sense. Many of our financial services clients are on that exact journey. Can you tell me which geographic region your operations span? Are you US-only or do you have international footprint?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:22",
+          "text": "We're headquartered here in Chicago, but we have operations in Toronto, London, and Singapore. So we need a vendor who can support multi-region deployment."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:38",
+          "text": "Got it. That's really helpful context. Let me also grab your direct phone number so I can send over some initial materials. What's the best number to reach you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:50",
+          "text": "Sure, it's ****. And my email is ****@meridianfg.com."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:02",
+          "text": "Perfect, thank you. And just to confirm, that's Jennifer Chen, C-T-O at Meridian Financial, Chicago. Is that all correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:12",
+          "text": "That's correct."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:18",
+          "text": "Excellent. Here's what I'll do. I'm going to schedule you for an initial consultation with one of our Solutions Architects within the next two weeks. They'll review your technical environment and put together a high-level assessment. Does Tuesday or Wednesday of next week work better for a 60-minute call?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:40",
+          "text": "Wednesday is better for me. Morning would be ideal, maybe 9 or 10 AM Eastern."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:52",
+          "text": "Wednesday morning at 9 AM Eastern, I've got that locked in for you. You should receive a calendar invite within the hour, and our Solutions Architect will dial in at that time. Jennifer, thank you for choosing HCLTech, and we look forward to speaking with you soon."
+        },
+        {
+          "speaker": "caller",
+          "time": "03:12",
+          "text": "Great, thank you Marcus. I appreciate your help."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:18",
+          "text": "You're very welcome. Have a wonderful day."
+        }
+      ],
+      "aiSummary": "Jennifer Chen, CTO at Meridian Financial Group, called to explore HCLTech's application modernization and cloud migration services. She represents a multi-region enterprise (Chicago, Toronto, London, Singapore) with a legacy technology portfolio that requires both on-premises to cloud transition and framework modernization within an 18-month timeline. Marcus captured her name, organization, geographic scope, and phone number, and successfully scheduled a consultation with a Solutions Architect for Wednesday at 9 AM ET. The intake met most BASE SKILLS criteria, though Jennifer's email was not confirmed in the call record and next-step expectations (pre-call materials, virtual vs. on-site format) were not fully clarified.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, Really solid work on this new-customer intake. Your qualifying questions were targeted and you nailed the geographic and service-line qualification. Two small refinements for next time: First, always confirm and repeat back the email address in the call, even if the caller provided it verbally. It ensures accuracy in our follow-up. Second, take 15 seconds before hang-up to set expectations about what Jennifer should expect from her Wednesday call (e.g., 'Our Solutions Architect will send you a pre-call questionnaire to complete, and we'll be looking at your current application portfolio'). That small step reduces no-shows and keeps energy high. Great job overall."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "5,921"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$13034.89"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$77,179,599"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "3,558"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "60%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "1,421"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "24%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "2,363"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "40%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Direct",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "Social",
+                "value": 33,
+                "display": "33%"
+              },
+              {
+                "name": "Referral",
+                "value": 27,
+                "display": "27%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 21,
+                "display": "21%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "2,143",
+                  "16%",
+                  "$27,451,233"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "1,486",
+                  "21%",
+                  "$19,244,867"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "987",
+                  "27%",
+                  "$12,863,451"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "764",
+                  "33%",
+                  "$9,987,214"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "541",
+                  "41%",
+                  "$7,632,834"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 2400,
+            "axisTicks": [
+              0,
+              600,
+              1200,
+              1800,
+              2400
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 2143,
+                "display": "2,143"
+              },
+              {
+                "name": "organic",
+                "value": 1486,
+                "display": "1,486"
+              },
+              {
+                "name": "referral",
+                "value": 1024,
+                "display": "1,024"
+              },
+              {
+                "name": "email",
+                "value": 728,
+                "display": "728"
+              },
+              {
+                "name": "social",
+                "value": 540,
+                "display": "540"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "2,143",
+                  "16%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "1,486",
+                  "20%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "1,024",
+                  "26%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "728",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "540",
+                  "38%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 1600,
+            "axisTicks": [
+              0,
+              400,
+              800,
+              1200,
+              1600
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Enterprise Cloud Migration Lead Gen",
+                "value": 1342,
+                "display": "1,342"
+              },
+              {
+                "name": "GenAI Advisory Search",
+                "value": 1087,
+                "display": "1,087"
+              },
+              {
+                "name": "AI Force Launch",
+                "value": 864,
+                "display": "864"
+              },
+              {
+                "name": "Fortune 500 ABM",
+                "value": 642,
+                "display": "642"
+              },
+              {
+                "name": "HCLTech x MotoGP",
+                "value": 458,
+                "display": "458"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Enterprise Cloud Migration Lead Gen",
+                  "1,342",
+                  "17%",
+                  "$14,238,652"
+                ]
+              },
+              {
+                "cells": [
+                  "GenAI Advisory Search",
+                  "1,087",
+                  "22%",
+                  "$11,432,118"
+                ]
+              },
+              {
+                "cells": [
+                  "AI Force Launch",
+                  "864",
+                  "28%",
+                  "$8,764,233"
+                ]
+              },
+              {
+                "cells": [
+                  "Fortune 500 ABM",
+                  "642",
+                  "35%",
+                  "$6,321,554"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 800,
+            "axisTicks": [
+              0,
+              200,
+              400,
+              600,
+              800
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "enterprise cloud migration services",
+                "value": 687,
+                "display": "687"
+              },
+              {
+                "name": "managed cybersecurity services provider",
+                "value": 542,
+                "display": "542"
+              },
+              {
+                "name": "generative ai consulting for enterprise",
+                "value": 431,
+                "display": "431"
+              },
+              {
+                "name": "sap implementation partner",
+                "value": 328,
+                "display": "328"
+              },
+              {
+                "name": "application modernization services",
+                "value": 214,
+                "display": "214"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "enterprise cloud migration services",
+                  "19%"
+                ]
+              },
+              {
+                "cells": [
+                  "managed cybersecurity services provider",
+                  "24%"
+                ]
+              },
+              {
+                "cells": [
+                  "generative ai consulting for enterprise",
+                  "29%"
+                ]
+              },
+              {
+                "cells": [
+                  "sap implementation partner",
+                  "36%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "AI and Generative AI",
+              "1,486",
+              "18%",
+              "64%"
+            ]
+          },
+          {
+            "cells": [
+              "Cloud and IT Infrastructure",
+              "1,187",
+              "23%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Applications",
+              "892",
+              "29%",
+              "52%"
+            ]
+          },
+          {
+            "cells": [
+              "Engineering and R&D Services",
+              "634",
+              "36%",
+              "47%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Noida Delivery Center",
+              "1,987",
+              "168",
+              "4%",
+              "18%"
+            ]
+          },
+          {
+            "cells": [
+              "Chennai Delivery Center",
+              "1,542",
+              "121",
+              "3%",
+              "22%"
+            ]
+          },
+          {
+            "cells": [
+              "Dallas Delivery Center",
+              "1,364",
+              "98",
+              "3%",
+              "27%"
+            ]
+          },
+          {
+            "cells": [
+              "London Client Office",
+              "1,028",
+              "87",
+              "2%",
+              "33%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Budget Above Approved Spend",
+            "values": [
+              231,
+              268,
+              254,
+              214,
+              220
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              198,
+              224,
+              231,
+              201,
+              189
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              172,
+              188,
+              196,
+              174,
+              162
+            ]
+          },
+          {
+            "name": "Needs Board Approval",
+            "values": [
+              148,
+              162,
+              171,
+              146,
+              137
+            ]
+          },
+          {
+            "name": "Outside Service Scope",
+            "values": [
+              118,
+              132,
+              141,
+              119,
+              104
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "2,368"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Contract Won (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$43,992,371"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$9,847,264"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$11,256,891"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "39%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$8,992,847"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$7,654,329"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,287,156"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,953,884"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2847,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "847",
+                "58%",
+                "29%",
+                "$12,483,652"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "614",
+                "54%",
+                "31%",
+                "$9,847,281"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "483",
+                "57%",
+                "34%",
+                "$8,965,413"
+              ]
+            },
+            {
+              "name": "Content Marketing",
+              "metrics": [
+                "298",
+                "55%",
+                "37%",
+                "$7,284,591"
+              ]
+            },
+            {
+              "name": "Email Campaign",
+              "metrics": [
+                "126",
+                "52%",
+                "41%",
+                "$5,421,434"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2693,
+          "rows": [
+            {
+              "name": "Mobile Web",
+              "metrics": [
+                "756",
+                "56%",
+                "30%",
+                "$11,847,329"
+              ]
+            },
+            {
+              "name": "Desktop Web",
+              "metrics": [
+                "629",
+                "55%",
+                "32%",
+                "$10,264,518"
+              ]
+            },
+            {
+              "name": "Mobile App",
+              "metrics": [
+                "481",
+                "58%",
+                "35%",
+                "$9,156,274"
+              ]
+            },
+            {
+              "name": "Email Link",
+              "metrics": [
+                "187",
+                "53%",
+                "38%",
+                "$6,847,391"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "95",
+                "51%",
+                "42%",
+                "$5,876,859"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2712,
+          "rows": [
+            {
+              "name": "GenAI Advisory for Enterprise",
+              "metrics": [
+                "834",
+                "57%",
+                "28%",
+                "$12,156,847"
+              ]
+            },
+            {
+              "name": "Cloud Migration Success Stories",
+              "metrics": [
+                "618",
+                "55%",
+                "32%",
+                "$9,743,682"
+              ]
+            },
+            {
+              "name": "AI Foundry Webinar Series",
+              "metrics": [
+                "497",
+                "56%",
+                "34%",
+                "$8,428,619"
+              ]
+            },
+            {
+              "name": "Cybersecurity Solutions ABM",
+              "metrics": [
+                "301",
+                "54%",
+                "37%",
+                "$7,156,834"
+              ]
+            },
+            {
+              "name": "Digital Workplace Transformation",
+              "metrics": [
+                "118",
+                "52%",
+                "41%",
+                "$6,505,389"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2541,
+          "rows": [
+            {
+              "name": "generative AI consulting for enterprise",
+              "metrics": [
+                "521",
+                "58%",
+                "29%",
+                "$8,647,921"
+              ]
+            },
+            {
+              "name": "IT outsourcing companies",
+              "metrics": [
+                "409",
+                "56%",
+                "31%",
+                "$7,284,756"
+              ]
+            },
+            {
+              "name": "enterprise cloud migration services",
+              "metrics": [
+                "368",
+                "55%",
+                "34%",
+                "$6,892,847"
+              ]
+            },
+            {
+              "name": "digital transformation company",
+              "metrics": [
+                "247",
+                "54%",
+                "37%",
+                "$5,931,284"
+              ]
+            },
+            {
+              "name": "managed cybersecurity services provider",
+              "metrics": [
+                "156",
+                "51%",
+                "41%",
+                "$5,245,563"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "AI and Generative AI",
+              "metrics": [
+                "743",
+                "59%",
+                "31%",
+                "$11,847,269"
+              ]
+            },
+            {
+              "name": "Cloud Services",
+              "metrics": [
+                "568",
+                "56%",
+                "33%",
+                "$9,564,821"
+              ]
+            },
+            {
+              "name": "Cybersecurity Services",
+              "metrics": [
+                "421",
+                "54%",
+                "35%",
+                "$8,273,456"
+              ]
+            },
+            {
+              "name": "Applications Modernization",
+              "metrics": [
+                "389",
+                "55%",
+                "36%",
+                "$7,892,147"
+              ]
+            },
+            {
+              "name": "Engineering and R&D Services",
+              "metrics": [
+                "247",
+                "53%",
+                "38%",
+                "$6,414,678"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Contract Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "AI and Generative AI",
+            "values": [
+              71,
+              68,
+              74,
+              69,
+              63
+            ]
+          },
+          {
+            "name": "Cloud Services",
+            "values": [
+              58,
+              62,
+              55,
+              61,
+              56
+            ]
+          },
+          {
+            "name": "Cybersecurity Services",
+            "values": [
+              48,
+              51,
+              49,
+              52,
+              47
+            ]
+          },
+          {
+            "name": "Applications Modernization",
+            "values": [
+              43,
+              47,
+              44,
+              48,
+              46
+            ]
+          },
+          {
+            "name": "Engineering and R&D Services",
+            "values": [
+              38,
+              41,
+              39,
+              42,
+              35
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "346"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$41,829,504"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$182,957"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              72,
+              78,
+              75,
+              81,
+              76,
+              79,
+              74,
+              77,
+              80,
+              73,
+              78,
+              76,
+              82,
+              75,
+              79,
+              81,
+              74,
+              78,
+              76,
+              79,
+              71,
+              80,
+              77,
+              75,
+              82,
+              79,
+              76,
+              78,
+              74,
+              80,
+              77,
+              79,
+              174,
+              189,
+              172,
+              185,
+              178,
+              191,
+              176,
+              183,
+              187,
+              174,
+              179,
+              185,
+              176,
+              182,
+              189,
+              177,
+              184
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,156"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "721"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "59%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "704"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Cloud Migration Inquiry",
+            "values": [
+              8,
+              11,
+              9,
+              12,
+              10,
+              7
+            ]
+          },
+          {
+            "name": "AI Services Assessment",
+            "values": [
+              6,
+              9,
+              8,
+              11,
+              9,
+              6
+            ]
+          },
+          {
+            "name": "Digital Transformation Strategy",
+            "values": [
+              7,
+              10,
+              12,
+              9,
+              11,
+              8
+            ]
+          },
+          {
+            "name": "Cybersecurity Solutions",
+            "values": [
+              5,
+              8,
+              7,
+              10,
+              6,
+              9
+            ]
+          },
+          {
+            "name": "Managed Services Pricing",
+            "values": [
+              2,
+              6,
+              4,
+              8,
+              3,
+              5
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "5447"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "3434"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Engagement Scheduled (Count)",
+            "value": "1421"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$77179599"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Rajesh Malhotra",
+              "value": 247,
+              "display": "247"
+            },
+            {
+              "name": "Priya Sharma",
+              "value": 189,
+              "display": "189"
+            },
+            {
+              "name": "Amitabh Desai",
+              "value": 216,
+              "display": "216"
+            },
+            {
+              "name": "Deepika Nair",
+              "value": 173,
+              "display": "173"
+            },
+            {
+              "name": "Vikram Patel",
+              "value": 201,
+              "display": "201"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Engagement Scheduled (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Arjun Kapoor",
+            "values": [
+              156,
+              203,
+              248,
+              287,
+              312
+            ]
+          },
+          {
+            "name": "Neha Singh",
+            "values": [
+              142,
+              188,
+              226,
+              271,
+              294
+            ]
+          },
+          {
+            "name": "Suresh Chatterjee",
+            "values": [
+              128,
+              165,
+              201,
+              248,
+              268
+            ]
+          },
+          {
+            "name": "Anjali Verma",
+            "values": [
+              119,
+              154,
+              189,
+              232,
+              251
+            ]
+          },
+          {
+            "name": "Rohan Gupta",
+            "values": [
+              108,
+              143,
+              176,
+              214,
+              238
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Vikram Patel",
+              "value": 56.3,
+              "display": "56.3%"
+            },
+            {
+              "name": "Priya Sharma",
+              "value": 57.8,
+              "display": "57.8%"
+            },
+            {
+              "name": "Deepika Nair",
+              "value": 58.2,
+              "display": "58.2%"
+            },
+            {
+              "name": "Amitabh Desai",
+              "value": 59.1,
+              "display": "59.1%"
+            },
+            {
+              "name": "Rajesh Malhotra",
+              "value": 60.4,
+              "display": "60.4%"
+            },
+            {
+              "name": "Sanjay Bhat",
+              "value": 61.2,
+              "display": "61.2%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Engagement Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Vikram Patel",
+                "56.3%",
+                "27%",
+                "$19234568",
+                "1423"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Sharma",
+                "57.8%",
+                "29%",
+                "$22456712",
+                "1447"
+              ]
+            },
+            {
+              "cells": [
+                "Deepika Nair",
+                "58.2%",
+                "31%",
+                "$24187645",
+                "1389"
+              ]
+            },
+            {
+              "cells": [
+                "Amitabh Desai",
+                "59.1%",
+                "32%",
+                "$25334891",
+                "1412"
+              ]
+            },
+            {
+              "cells": [
+                "Rajesh Malhotra",
+                "60.4%",
+                "34%",
+                "$26752923",
+                "1438"
+              ]
+            },
+            {
+              "cells": [
+                "Sanjay Bhat",
+                "61.2%",
+                "35%",
+                "$27478834",
+                "1405"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Arjun Kapoor",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Neha Singh",
+              "value": 90.2,
+              "display": "90.2%"
+            },
+            {
+              "name": "Suresh Chatterjee",
+              "value": 88.9,
+              "display": "88.9%"
+            },
+            {
+              "name": "Anjali Verma",
+              "value": 87.3,
+              "display": "87.3%"
+            },
+            {
+              "name": "Rohan Gupta",
+              "value": 86.8,
+              "display": "86.8%"
+            },
+            {
+              "name": "Meera Krishnan",
+              "value": 85.4,
+              "display": "85.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Engagement Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Arjun Kapoor",
+                "91.7%",
+                "64%",
+                "$49285476",
+                "1548"
+              ]
+            },
+            {
+              "cells": [
+                "Neha Singh",
+                "90.2%",
+                "63%",
+                "$48127634",
+                "1521"
+              ]
+            },
+            {
+              "cells": [
+                "Suresh Chatterjee",
+                "88.9%",
+                "61%",
+                "$46834521",
+                "1487"
+              ]
+            },
+            {
+              "cells": [
+                "Anjali Verma",
+                "87.3%",
+                "59%",
+                "$45623789",
+                "1463"
+              ]
+            },
+            {
+              "cells": [
+                "Rohan Gupta",
+                "86.8%",
+                "58%",
+                "$44872456",
+                "1438"
+              ]
+            },
+            {
+              "cells": [
+                "Meera Krishnan",
+                "85.4%",
+                "57%",
+                "$43778923",
+                "1412"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Engagement Scheduled (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Engagement Scheduled (Count)",
+        "rightMax": 100,
+        "rightTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 53
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 51
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 47
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 45
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 39
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 41
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 45
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 47
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 53
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 51
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 46
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 44
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 39
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 41
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 47
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 48
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 52
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 52
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 45
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 44
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 40
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 40
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 47
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 49
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 52
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 52
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 44
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 42
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 41
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 40
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 44
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 3500000,
+        "rightTicks": [
+          0,
+          1166666.6666666667,
+          2333333.3333333335,
+          3500000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 2860979
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 2742119
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 2553471
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 2436503
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 2121423
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 2226376
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 2459413
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 2556358
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 2850354
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 2763594
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 2489076
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 2405740
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 2140704
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 2206560
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 2517969
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 2594696
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 2823815
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 2779869
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 2437644
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 2360327
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 2172836
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 2195615
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 2561370
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 2646274
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 2787941
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 2783886
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 2402764
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 2303867
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 2210512
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 2199853
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 2587691
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "5,921"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "474"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "355"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "82%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "84%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "81%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "81%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Rajesh Patel",
+                "412",
+                "86%",
+                "83%",
+                "79%"
+              ]
+            },
+            {
+              "cells": [
+                "Monica Chen",
+                "328",
+                "82%",
+                "79%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "David Thompson",
+                "289",
+                "84%",
+                "81%",
+                "83%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "5,921 calls",
+      "pagerLabel": "1 of 592",
+      "calls": [
+        {
+          "time": "1/6/26 9:14 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 10:41 am",
+          "id": "A3C2-6B19D40F7E82"
+        },
+        {
+          "time": "1/12/26 11:27 am",
+          "id": "D18E-4C7A90B2F513"
+        },
+        {
+          "time": "1/14/26 1:05 pm",
+          "id": "9B4F-2E88A17C6045"
+        },
+        {
+          "time": "1/16/26 2:38 pm",
+          "id": "7C60-F3D521E9A874"
+        },
+        {
+          "time": "1/20/26 8:52 am",
+          "id": "E249-5A0C7BF13D96"
+        },
+        {
+          "time": "1/22/26 12:19 pm",
+          "id": "B85D-91E4C207A6F3"
+        },
+        {
+          "time": "1/26/26 3:47 pm",
+          "id": "4F71-D6B8039E2C15"
+        },
+        {
+          "time": "1/28/26 4:22 pm",
+          "id": "6A93-8C15FE740BD2"
+        },
+        {
+          "time": "1/30/26 5:11 pm",
+          "id": "2D08-7BF4A619C3E5"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling HCLTech, this is Marcus. How can I help you supercharge your progress today?",
+          "highlights": [
+            "Thank you for calling HCLTech",
+            "supercharge your progress"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:11",
+          "text": "Hi Marcus, my name is Priya Desai. I run IT operations for a mid-size insurance firm and we're looking at moving our core systems to the cloud this year.",
+          "highlights": [
+            "Priya Desai",
+            "moving our core systems to the cloud"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:22",
+          "text": "Great to meet you, Priya. Enterprise cloud migration is one of our core areas. Is this the first time you've engaged HCLTech for a program like this?",
+          "highlights": [
+            "enterprise cloud migration"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:31",
+          "text": "Yes, first time reaching out to you. We've been running everything on-premise and it's getting hard to maintain.",
+          "highlights": [
+            "first time reaching out"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:39",
+          "text": "Understood. Can you tell me a bit about the environment? Roughly how many applications and workloads are we talking about?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:47",
+          "text": "About forty applications, a mix of legacy claims systems and some newer customer portals. Security is a big worry for us given the data we hold.",
+          "highlights": [
+            "Security is a big worry"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:58",
+          "text": "That makes sense for insurance. I'd recommend pairing our Cloud Services for the migration and modernization work with our Cybersecurity Services for threat detection, identity, and compliance. They're designed to run together.",
+          "highlights": [
+            "Cloud Services",
+            "Cybersecurity Services"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:12",
+          "text": "Okay. I do need to keep this manageable though. What does a program like that typically run?",
+          "highlights": [
+            "keep this manageable",
+            "What does a program like that typically run"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:21",
+          "text": "It scopes to your environment, but a migration of that size usually starts around a million and cloud rates run roughly one forty to two twenty an hour blended. Managed cybersecurity is a yearly figure. We size it precisely in the consultation so you only pay for what you need.",
+          "highlights": [
+            "we size it precisely in the consultation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:38",
+          "text": "To be honest, we're also getting a couple of quotes. The team at TCS gave us some numbers already, so I'm weighing the options.",
+          "highlights": [
+            "also getting a couple of quotes",
+            "weighing the options"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:49",
+          "text": "That's completely fair, and I'd encourage you to compare. Where we tend to stand out is our AI Force accelerators that speed up the migration lifecycle, which usually lowers the total program cost against a straight lift and shift.",
+          "highlights": [
+            "AI Force"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:02",
+          "text": "That's interesting. One more thing, I don't want us locked into some rigid multi-year arrangement before we know it works.",
+          "highlights": [
+            "don't want us locked into some rigid multi-year arrangement"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:11",
+          "text": "Absolutely. We can start with a scoped assessment phase first, prove the value, then decide on the broader engagement together. No long commitment up front.",
+          "highlights": [
+            "start with a scoped assessment phase first"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:21",
+          "text": "That works for me. What's the next step?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:26",
+          "text": "I'll set up a consultation with one of our cloud advisory architects. Would Thursday at 10 AM work for you?",
+          "highlights": [
+            "set up a consultation",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:32",
+          "text": "Thursday at 10 works. Let me give you my email so you can send the invite.",
+          "highlights": [
+            "Thursday at 10 works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:37",
+          "text": "Perfect, I've got you booked, Priya, and I'll send the confirmation now. Thanks for calling HCLTech, we look forward to supercharging your progress.",
+          "highlights": [
+            "I've got you booked",
+            "Thanks for calling HCLTech"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Cloud Migration",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Intent: Cybersecurity Services",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Pricing Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Priya Desai, a new prospect running IT operations for a mid-size insurance firm, called to explore moving roughly forty on-premise applications to the cloud with strong security requirements. Agent Marcus recommended pairing Cloud Services for the migration and modernization work with Cybersecurity Services, and highlighted AI Force accelerators to lower total program cost. He addressed her budget, competitor quotes from TCS, and her concern about being locked into a long contract by proposing a scoped assessment phase first. A consultation with a cloud advisory architect was scheduled for Thursday at 10 AM.",
+        "keyPoints": [
+          "New client, first engagement with HCLTech",
+          "Needs enterprise cloud migration for about 40 legacy and portal applications",
+          "Security and compliance are top priorities for the insurance firm",
+          "Recommended Cloud Services plus Cybersecurity Services, with AI Force accelerators",
+          "Handled budget, TCS competitor quotes, and contract lock-in concern",
+          "Consultation booked for Thursday 10 AM, contact email captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "3,730 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 373",
+      "conversations": [
+        {
+          "id": "C7B4-E91D2F5A8C6B",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for reaching out to HCL Technologies. This is Marcus with our AI Solutions team. Are you inquiring about our AI Foundry platform or one of our other AI services today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi Marcus. Yeah, I'm interested in learning more about your AI Foundry. We're looking to build out a data platform at our company."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Excellent. AI Foundry is perfect for that. Just to get started, what industry does your organization operate in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:25 AM",
+              "text": "We're in financial services. Banking specifically. We have about 5,000 employees across the US."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:26 AM",
+              "text": "Great. That's a perfect fit for our banking vertical expertise. Are you looking to build AI models from scratch, or do you already have data infrastructure in place that you'd like to enhance?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "We have some legacy systems but nothing modern. We'd be starting fairly close to scratch on the AI side."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Understood. That's actually very common with traditional banking. Based on your scope, a typical AI Foundry engagement for a financial services firm your size ranges from 500K to around 1.2 million depending on model complexity. Does that budget range work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "That's in line with what we discussed internally. What's the timeline typically look like?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "Most engagements run 6 to 9 months from kickoff to first production models. Would you be available for a detailed consultation with our AI Foundry specialists next Tuesday or Wednesday afternoon?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:34 AM",
+              "text": "Wednesday afternoon works better for us. What time?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:35 AM",
+              "text": "Perfect. How about Wednesday at 2 PM Pacific Time? I'll send you a calendar invite and our team will call you then. Your callback number will be 877-936-2933. Does that all work?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:37 AM",
+              "text": "Yes, 2 PM Wednesday is confirmed. Looking forward to it."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:38 AM",
+              "text": "Fantastic. We'll see you then. This is a great opportunity to explore how AI Foundry can transform your banking operations. Bye now."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Industry Identified: Financial Services Banking",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Identified: AI Foundry Data Platform",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Budget Range Confirmed: 500K to 1.2M",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Timeline Discussed: 6 to 9 Months",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C7B4-E91D2F5A8C6B",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "214-556-8847",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "214-556-8847",
+            "repeatCaller": "No",
+            "city": "Dallas",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Mitchell",
+            "firstName": "Sarah",
+            "lastName": "Mitchell",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C3F9-7A6C4D1E2B8F",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C3F9-7A6C4D1E2B8F",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C8A2-5F3B9E1C7D4A",
+          "time": "8/16/25 10:28 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C8A2-5F3B9E1C7D4A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C6E1-4B7A2F9C5D3E",
+          "time": "8/16/25 10:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C6E1-4B7A2F9C5D3E",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "5,921 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 592",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/22/26 4:12 pm",
+          "active": true,
+          "date": "Jan 22, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Thanks for calling HCL Technologies. This is Marcus speaking. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Yeah, hi. I'm looking to learn more about your AI advisory services. We're just starting our generative AI journey."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Great, I'm glad you reached out. To point you in the right direction, are you currently working with an IT services provider, or are you exploring options for the first time?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "We've worked with a couple of vendors in the past, but we're looking for someone who can really guide us through this transformation."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Perfect. That's exactly what our AI advisory team does. Can I ask, what industry does your organization operate in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "We're in financial services. Banking specifically."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Excellent. We have deep expertise in banking digital transformation. I'd like to get you connected with one of our advisory consultants who can discuss your specific AI strategy and roadmap. Would you be available for a brief consultation call next week?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "Sure, that would be helpful. What days work?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "We have availability Tuesday, January 28th at 2 PM Eastern, or Thursday, January 30th at 10 AM Eastern. Which works better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Tuesday at 2 PM sounds good."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Excellent. I have you scheduled for Tuesday, January 28th at 2 PM Eastern with our AI Advisory team. You'll receive a confirmation email shortly. Our consultants will dive into your current state, your goals, and outline a responsible AI adoption strategy. Is the best callback number 415-555-0184?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Yep, that's the right number."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Perfect. Thanks so much for calling. We're excited to help you accelerate your AI initiatives. Have a great day."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Thank you."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: AI Advisory",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Industry: Financial Services, Banking",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Stage: Strategy and Roadmap Discussion",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Engagement Model: Consulting Engagement",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/22/26 4:12 pm",
+            "duration": "6:18",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "415-555-0184",
+            "repeatCaller": "No",
+            "city": "San Francisco",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "James Crawford",
+            "firstName": "James",
+            "lastName": "Crawford",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B629-4A7EB821C4F3",
+          "time": "1/15/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B629-4A7EB821C4F3",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C834-5D8FC7E2A1H6",
+          "time": "1/08/26 11:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C834-5D8FC7E2A1H6",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D941-6E9GD8F3B2J7",
+          "time": "1/25/26 9:55 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D941-6E9GD8F3B2J7",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as HCL Technologies's AI agent here to help scope a personalized engagement estimate for services like Cloud, Cybersecurity, AI Force, or Enterprise Applications Transformation, mention that new enterprise clients can get a complimentary AI Advisory discovery session this quarter, then ask if they'd like to get started.",
+        "Qualify one question at a time: Ask only one question at a time, covering which service area they need (AI and GenAI, Cloud, Cybersecurity, Applications, Engineering and R&D, BPO, or Supply Chain), the approximate program scope or number of users, seats, or endpoints, their current platforms or environment (SAP, Oracle, Salesforce, multi-cloud, on-prem), their target timeline, and their company location or region to confirm delivery coverage.",
+        "Estimate then book: Confirm HCLTech delivers in their region, share a rough program-size range based on what they shared, note that final scope and blended rates are set after discovery, recommend a virtual consultation with a solutions specialist for an exact proposal, propose a specific day and time, and confirm they will get a reminder text before the meeting with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "HCL_Technologies_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "What We Do, Services Overview",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "AI and Generative AI Solutions",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Contact Us, Book a Consultation",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Engagement status\",\"question\":\"How can I check the status of my current cloud migration program?\",\"answer\":\"Your dedicated engagement manager can share the live program dashboard and milestone status. I can connect you or set up a quick check-in call with your delivery team.\"},{\"topic\":\"Support and SLA\",\"question\":\"How do I raise a priority ticket for our managed cybersecurity service?\",\"answer\":\"Priority incidents can be raised through your SOC service portal or the 24-hour support line tied to your SLA. I can also arrange a call with your service delivery lead to review coverage.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What services does HCLTech offer?",
+              "answer": "We deliver AI and Generative AI, Cloud, Cybersecurity, Applications, Engineering and R&D, Business Process Operations, Supply Chain, and HCLSoftware products. I can set up a virtual consultation to match the right offering to your goals."
+            },
+            {
+              "question": "How much does a cloud migration cost?",
+              "answer": "Cloud programs are custom-scoped, so pricing depends on your environment and scale rather than a fixed price. Let's book a consultation with a specialist for an accurate proposal."
+            },
+            {
+              "question": "Do you help with generative AI adoption?",
+              "answer": "Yes, our AI Advisory and AI Foundry teams help enterprises build a roadmap and deploy responsible AI at scale. I can schedule a discovery session to explore your use cases."
+            },
+            {
+              "question": "Can you implement or migrate SAP?",
+              "answer": "Yes, our Enterprise Applications Transformation team handles SAP, Oracle, and Salesforce implementations and migrations. A consultation with a specialist is the best next step to scope it."
+            },
+            {
+              "question": "What is AI Force?",
+              "answer": "AI Force is our GenAI-powered platform that accelerates and automates the software engineering lifecycle. I can arrange a walkthrough with a solutions specialist."
+            },
+            {
+              "question": "Do you offer managed cybersecurity?",
+              "answer": "Yes, we provide threat detection, SOC operations, identity, zero-trust, and compliance as managed services. Let's book a consultation to review your security posture."
+            },
+            {
+              "question": "What industries do you serve?",
+              "answer": "We serve financial services, telecom and media, manufacturing, life sciences, retail, public sector, and more. A specialist can share relevant case studies during a consultation."
+            },
+            {
+              "question": "How many people work at HCLTech?",
+              "answer": "HCLTech has over 223,000 people across 60 countries delivering AI, engineering, and cloud solutions. I can connect you with a specialist to discuss your program."
+            },
+            {
+              "question": "Do you provide application modernization?",
+              "answer": "Yes, our Modern Application Services cover microservices, DevOps, and cloud-native builds. Let's set up a consultation to scope your modernization roadmap."
+            },
+            {
+              "question": "What is HCL BigFix?",
+              "answer": "HCL BigFix is our endpoint management, patching, and vulnerability remediation product from HCLSoftware. I can book a demo with a specialist for you."
+            },
+            {
+              "question": "What is HCL AppScan?",
+              "answer": "HCL AppScan is our application security testing suite covering SAST, DAST, and IAST. A specialist can walk you through licensing tiers on a consultation."
+            },
+            {
+              "question": "Do you offer digital workplace services?",
+              "answer": "Yes, we manage employee IT, endpoints, service desk, and collaboration tools. Let's schedule a consultation to size it to your workforce."
+            },
+            {
+              "question": "Can you support multi-cloud environments?",
+              "answer": "Yes, our Cloud Services cover migration, modernization, and multi-cloud managed operations. I can arrange a consultation with a cloud specialist."
+            },
+            {
+              "question": "Do you handle business process outsourcing?",
+              "answer": "Yes, our Business Process Operations cover finance, HR, procurement, and industry back-office functions. Let's book a consultation to review your needs."
+            },
+            {
+              "question": "How do I get a proposal or quote?",
+              "answer": "Proposals are tailored after a short discovery of your scope, environment, and timeline. I can set up a virtual consultation with a specialist to get that started."
+            },
+            {
+              "question": "How long does an engagement take?",
+              "answer": "Timelines vary from short advisory sprints to multi-year transformation programs. A consultation with a specialist will give you a realistic timeline for your goals."
+            },
+            {
+              "question": "Do you offer engineering and R&D services?",
+              "answer": "Yes, our teams cover product design, embedded software, IoT, and platform engineering. Let's book a consultation to discuss your product roadmap."
+            },
+            {
+              "question": "How is HCLTech different from TCS or Infosys?",
+              "answer": "HCLTech pairs deep engineering heritage with AI, cloud, and software products under one portfolio. A specialist can share tailored comparisons on a consultation."
+            },
+            {
+              "question": "Do you help with supply chain transformation?",
+              "answer": "Yes, our Supply Chain services cover planning, procurement, and digital optimization. I can schedule a consultation with a specialist for you."
+            },
+            {
+              "question": "How do I get started?",
+              "answer": "The easiest way is a virtual consultation with one of our solutions specialists. Share your service area and timeline and I will propose a day and time."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule a discovery consultation\",\"follow_up_message\":\"Great, I can set up your virtual consultation with an HCLTech solutions specialist. Does Thursday at 10 AM or Friday at 2 PM work better, and you will get a reminder text with a number to call.\"},{\"intent\":\"Request a program estimate\",\"follow_up_message\":\"Thanks for the details on your cloud and AI goals. A specialist will prepare a tailored program estimate, so let's book a short consultation to confirm scope and next steps.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is HCL Technologies's AI agent. I can help you scope the right enterprise solution and connect you with a solutions specialist. Would you like to get started?",
+        "goal": "Qualify the client's service needs, scope, and timeline, then book a virtual consultation with an HCLTech solutions specialist.",
+        "bookingType": "virtual consultation",
+        "offer": "Complimentary AI Advisory discovery session for new enterprise clients this quarter",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Which service area do you need help with: AI and Generative AI, Cloud, Cybersecurity, Applications, Engineering and R&D, Business Process Operations, or Supply Chain?",
+          "What is the approximate scope, such as number of users, seats, or endpoints involved?",
+          "What platforms or environment are you running today, for example SAP, Oracle, Salesforce, multi-cloud, or on-prem?",
+          "What is your target timeline to begin the engagement?",
+          "What is your company location or region so I can confirm our delivery coverage?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:06 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:06 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:06 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "HCL Technologies",
+      "callerName": "Michael Chen",
+      "callerPhone": "(408) 555-0187",
+      "campaign": "AI Force Engineering Acceleration, San Jose",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$875,000",
+      "googleSearch": "generative AI software engineering lifecycle automation enterprise",
+      "websiteSearch": "AI Force pricing implementation",
+      "callingWebpage": "/ai-and-generative-ai/ai-force",
+      "products": "AI Force, Modern Application Services",
+      "cartId": "HCL-7294M",
+      "serviceable": "Yes",
+      "email": "michael.chen@techventures.com",
+      "street": "2847 Innovation Drive",
+      "city": "San Jose",
+      "state": "CA",
+      "zip": "95110",
+      "digitalJourney": "/home › /what-we-do/ai-and-generative-ai › /ai-and-generative-ai/ai-force › /contact-sales",
+      "intent": "Organization needs to accelerate software development lifecycle with generative AI automation, seeking implementation partner for 200-person engineering team.",
+      "coverage": "ZIP 95110 confirmed, San Jose serviceable",
+      "switchIntent": "High. Active budget cycle, CTO evaluating vendors this month, wants technical deep dive with solution architect within 5 business days.",
+      "greeting": "Hi Michael, thanks for calling HCL Technologies. I see you've been exploring our AI Force solution for engineering acceleration. I'd love to connect you with our AI advisory team to discuss how we can help your organization automate your software lifecycle. Can we schedule a brief consultation this week?"
+    },
+    "smsScreenpop": {
+      "brandName": "HCL Technologies",
+      "callerName": "Jennifer Patel",
+      "callerPhone": "(614) 555-0349",
+      "campaign": "Cloud Services Migration, Columbus",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$1,250,000",
+      "googleSearch": "enterprise cloud migration services managed operations",
+      "websiteSearch": "multi-cloud managed services implementation cost",
+      "callingWebpage": "/it-infrastructure/cloud-services",
+      "products": "Cloud Services, Cybersecurity Services",
+      "cartId": "HCL-5821N",
+      "serviceable": "Yes",
+      "email": "jennifer.patel@midwestenterprises.com",
+      "street": "5102 Corporate Parkway",
+      "city": "Columbus",
+      "state": "OH",
+      "zip": "43219",
+      "digitalJourney": "/home › /what-we-do/it-infrastructure › /it-infrastructure/cloud-services › /industries/financial-services/banking",
+      "intent": "Financial services firm seeking comprehensive cloud migration and multi-cloud management platform with integrated security operations.",
+      "coverage": "ZIP 43219 confirmed, Columbus serviceable",
+      "appointment": "Cloud migration strategy session with senior consultant, Thursday Jul 18, 2:00 PM",
+      "greeting": "Hi Jennifer, this is Marcus from HCL Technologies. Thanks for connecting with us on SMS. We have your cloud migration strategy session confirmed for Thursday at 2 PM. Our consultant will walk through your modernization roadmap and security framework. Have any questions before then? Reply STOP to opt out."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "HCL Technologies",
+      "brandDomain": "www.hcltech.com",
+      "brandIcon": "🛡️",
+      "callerPhone": "+1 (512) 555-0147",
+      "callerLocation": "Austin, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "Enterprise Cloud Migration Lead Gen",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "generative AI consulting for enterprise",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "What We Do / AI and Generative AI / AI Advisory",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "AI Foundry and Modern Application Services",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Austin, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_new_engagement",
+          "name": "Consultation, New Engagement"
+        },
+        {
+          "id": "existing_support",
+          "name": "Existing Program Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling HCL Technologies. I see you've been looking at our AI Foundry and application modernization solutions. Are you exploring these for a new project or to enhance an existing program?",
+          "sigs": [],
+          "q": [
+            25,
+            50,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, we're actually looking to accelerate our digital transformation. We need help with both AI strategy and migrating some of our legacy applications to the cloud. It's kind of urgent for us.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Digital transformation</strong> initiative"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>AI strategy</strong> plus cloud migration scope"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>Urgent timeline</strong>"
+            }
+          ],
+          "q": [
+            45,
+            35,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That sounds like a great fit for our AI Advisory and Cloud Services together. Can I ask, are you looking for this to be a strategic roadmap engagement first, or do you want to move straight into implementation planning?",
+          "sigs": [],
+          "q": [
+            65,
+            20,
+            15
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We definitely need the strategy piece upfront, and we'd love to see how you'd approach the whole thing end-to-end. We're based in Austin, and we want a partner who can really understand our business, not just hand off a generic plan.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "<strong>Strategy first</strong>, then implementation"
+            },
+            {
+              "c": "green",
+              "t": "End-to-end engagement model"
+            },
+            {
+              "c": "purple",
+              "t": "Local delivery preference"
+            }
+          ],
+          "q": [
+            85,
+            8,
+            7
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. Based on what you've shared, I'm routing you to our Consultation team who specializes in new enterprise engagements. They'll work with you on a tailored AI and cloud transformation roadmap. You'll be connected shortly.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get a discovery call scheduled (Agent)\", \"book the consultation for next week (Caller)\", \"I'll set up time with our solution architect (Agent)\", \"yes, let's schedule that assessment (Caller)\"])",
+          "createdAt": "09/12/25 10:14 am",
+          "updatedAt": "01/08/26 3:42 pm"
+        },
+        {
+          "name": "AI Force Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"tell me more about AI Force (Caller)\", \"generative AI for software engineering (Caller)\", \"we want to accelerate our development lifecycle (Caller)\", \"GenAI code automation (Agent)\"])",
+          "createdAt": "07/22/25 9:03 am",
+          "updatedAt": "12/19/25 11:27 am"
+        },
+        {
+          "name": "Cloud Migration Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"we're planning a cloud migration (Caller)\", \"move our workloads to multi-cloud (Caller)\", \"modernize our infrastructure (Caller)\", \"managed cloud operations (Agent)\"])",
+          "createdAt": "06/30/25 2:48 pm",
+          "updatedAt": "11/14/25 4:05 pm"
+        },
+        {
+          "name": "Competitor Named (Infosys, TCS, Wipro)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"we're also talking to TCS (Caller)\", \"how do you compare to Infosys (Caller)\", \"Wipro quoted us a lower rate (Caller)\", \"we shortlisted Accenture as well (Caller)\"])",
+          "createdAt": "08/05/25 1:19 pm",
+          "updatedAt": "12/28/25 10:52 am"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"walk me through how the engagement works (Caller)\", \"what does a discovery workshop look like (Caller)\", \"I'd like to understand your delivery model (Caller)\", \"we could set up an advisory session (Agent)\"])",
+          "createdAt": "07/09/25 11:41 am",
+          "updatedAt": "12/02/25 9:16 am"
+        },
+        {
+          "name": "Discovery and Needs Assessment (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Discovery and Needs Assessment] < 60 and duration > 45 sec",
+          "createdAt": "05/18/25 8:57 am",
+          "updatedAt": "01/06/26 2:33 pm"
+        },
+        {
+          "name": "Objection Handling (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Objection Handling] < 60 and duration > 45 sec",
+          "createdAt": "05/25/25 3:22 pm",
+          "updatedAt": "01/09/26 10:08 am"
+        },
+        {
+          "name": "Pricing Objection",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the blended rate is too high (Caller)\", \"that program cost is over our budget (Caller)\", \"can you bring the per seat price down (Caller)\", \"we need a more competitive quote (Caller)\"])",
+          "createdAt": "08/19/25 4:44 pm",
+          "updatedAt": "01/03/26 1:57 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"I'll put together a statement of work (Agent)\", \"let me send over a proposal with pricing (Agent)\", \"here's the estimate for the program (Agent)\", \"our ballpark for the migration is (Agent)\"])",
+          "createdAt": "07/01/25 10:26 am",
+          "updatedAt": "12/22/25 3:11 pm"
+        },
+        {
+          "name": "Solution Recap and Next Steps (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Solution Recap and Next Steps] < 60 and duration > 45 sec",
+          "createdAt": "06/11/25 9:38 am",
+          "updatedAt": "01/07/26 11:49 am"
+        }
+      ]
+    }
+  }
+}

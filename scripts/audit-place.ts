@@ -180,7 +180,15 @@ fellBack <= MAY_FALL_BACK.size
     /* ⚠️ THE LEAD MUST BE RELEVANT TO WHAT WAS SEARCHED. Ungated, Orlando Health headlined an
        "emergency room near me" search with "Cancer Institute" — its biggest product category
        and nothing to do with the query. Plausible and wrong is the worst combination here. */
-    const sig = (t: string) => new Set((t.toLowerCase().match(/[a-z0-9$]{4,}/g) ?? []));
+    /* ⚠️ SINGULARISED ON BOTH SIDES, because the plural cost a FALSE FAILURE. Acuity
+       Eyecare's "Comprehensive Eye Exams & Medical Eye Care" was reported as unrelated
+       to "eye exam near me": "eye" is 3 letters so the 4+ filter drops it, and
+       "exams" is not "exam". The headline is plainly relevant, and a check that
+       reddens on correct data is one that gets deleted as a nuisance. Still catches
+       the real case it was written for — Orlando Health's "Cancer Institute" against
+       "emergency room near me" shares no word in any number. */
+    const stem = (w: string) => w.replace(/s$/, "");
+    const sig = (t: string) => new Set((t.toLowerCase().match(/[a-z0-9$]{4,}/g) ?? []).map(stem));
     const leadWords = sig(lead), qWords = sig(d.query);
     const related = [...leadWords].some((w) => qWords.has(w)) || themes.includes(lead);
     if (!related) bad(`${p.customerName}: headline "${lead}" is unrelated to the query "${d.query}"`);

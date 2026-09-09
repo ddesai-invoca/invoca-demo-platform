@@ -1,0 +1,5356 @@
+{
+  "id": "goosehead-insurance",
+  "customerName": "Goosehead Insurance",
+  "websiteUrl": "https://www.goosehead.com",
+  "brandDomain": "goosehead.com",
+  "networkName": "Invoca for Insurance",
+  "industry": "Personal Lines P&C Insurance Brokerage",
+  "bookingTerm": "Quote",
+  "customerNoun": "Client",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 8214
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 13472
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 12905
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 11847
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 9485
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Quote Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Quote Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Bundle & Save Home Auto",
+          "marketingSearchTerm": "home and auto insurance bundle",
+          "landingPageUrl": "goosehead.com/homeowners-insurance?utm_source=google&utm_medium=cpc&utm_campaign=bundle_save",
+          "websiteJourney": "Home / Insurance / Home + Auto Bundle",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Compare 200 Carriers Home + Auto",
+          "marketingSearchTerm": "compare insurance carriers",
+          "landingPageUrl": "goosehead.com/get-a-quote?utm_source=google&utm_medium=cpc&utm_campaign=compare_carriers",
+          "websiteJourney": "Home / Get a Quote / Carrier Comparison",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Get a Quote in Minutes",
+          "marketingSearchTerm": "cheap car insurance quote",
+          "landingPageUrl": "goosehead.com/car-insurance?utm_source=google&utm_medium=cpc&utm_campaign=quote_minutes",
+          "websiteJourney": "Home / Insurance / Car Insurance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Get a Quote in Minutes",
+          "marketingSearchTerm": "homeowners insurance near me",
+          "landingPageUrl": "goosehead.com/homeowners-insurance?utm_source=bing&utm_medium=cpc&utm_campaign=quote_minutes",
+          "websiteJourney": "Home / Insurance / Homeowners Insurance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Compare 200 Carriers Home + Auto",
+          "marketingSearchTerm": "goosehead insurance quote",
+          "landingPageUrl": "goosehead.com/get-a-quote?utm_source=google&utm_medium=cpc&utm_campaign=compare_carriers",
+          "websiteJourney": "Home / Get a Quote / Coverages",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Bundle & Save Home Auto",
+          "marketingSearchTerm": "best insurance for new home purchase",
+          "landingPageUrl": "goosehead.com/homeowners-insurance?utm_source=bing&utm_medium=cpc&utm_campaign=bundle_save",
+          "websiteJourney": "Home / Insurance / Homeowners Insurance",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "State Landing Pages",
+          "marketingSearchTerm": "flood insurance quote texas",
+          "landingPageUrl": "goosehead.com/flood-insurance/texas?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Insurance / Flood Insurance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Get a Quote in Minutes",
+          "marketingSearchTerm": "renters insurance quote",
+          "landingPageUrl": "goosehead.com/renters-insurance?utm_source=google&utm_medium=cpc&utm_campaign=quote_minutes",
+          "websiteJourney": "Home / Insurance / Renters Insurance",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Switch & Save Bundle",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "goosehead.com/get-a-quote?utm_source=facebook&utm_medium=paid_social&utm_campaign=switch_save",
+          "websiteJourney": "Home / Get a Quote / Coverages",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Smarter Insurance by Design",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "goosehead.com/homeowners-insurance?utm_source=instagram&utm_medium=paid_social&utm_campaign=smarter_insurance",
+          "websiteJourney": "Home / Insurance / Homeowners Insurance",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Insurance Education Blog",
+          "marketingSearchTerm": "insurance broker vs agent",
+          "landingPageUrl": "goosehead.com/blog/insurance-broker-vs-agent?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Resources / Blog",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Compare 200 Carriers Home + Auto",
+          "marketingSearchTerm": "condo insurance ho-6",
+          "landingPageUrl": "goosehead.com/condo-insurance?utm_source=google&utm_medium=cpc&utm_campaign=compare_carriers",
+          "websiteJourney": "Home / Insurance / Condo Insurance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "State Landing Pages",
+          "marketingSearchTerm": "goosehead insurance reviews",
+          "landingPageUrl": "goosehead.com/reviews?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / About / Reviews",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Switch & Save Bundle",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "goosehead.com/car-insurance?utm_source=facebook&utm_medium=paid_social&utm_campaign=switch_save",
+          "websiteJourney": "Home / Insurance / Car Insurance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Own a Goosehead Franchise",
+          "marketingSearchTerm": "goosehead franchise cost",
+          "landingPageUrl": "goosehead.com/franchise?utm_source=google&utm_medium=cpc&utm_campaign=own_franchise",
+          "websiteJourney": "Home / Franchise / Explore Franchise Ownership",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "LinkedIn",
+          "marketingCampaign": "Build Your Book of Business",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "goosehead.com/franchise?utm_source=linkedin&utm_medium=paid_social&utm_campaign=build_book",
+          "websiteJourney": "Home / Franchise / Application",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Existing Client Portal",
+          "marketingSearchTerm": "manage my goosehead policy",
+          "landingPageUrl": "goosehead.com/service-portal?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Existing Client / Service Portal",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Get a Quote in Minutes",
+          "marketingSearchTerm": "umbrella insurance quote",
+          "landingPageUrl": "goosehead.com/umbrella-insurance?utm_source=bing&utm_medium=cpc&utm_campaign=quote_minutes",
+          "websiteJourney": "Home / Insurance / Umbrella Insurance",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Smarter Insurance by Design",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "goosehead.com/renters-insurance?utm_source=instagram&utm_medium=paid_social&utm_campaign=smarter_insurance",
+          "websiteJourney": "Home / Insurance / Renters Insurance",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "State Landing Pages",
+          "marketingSearchTerm": "boat insurance quote florida",
+          "landingPageUrl": "goosehead.com/boat-insurance/florida?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Insurance / Boat Insurance",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Annual Policy Review",
+          "marketingSearchTerm": "goosehead renewal re-shop",
+          "landingPageUrl": "goosehead.com/service-portal?utm_source=google&utm_medium=cpc&utm_campaign=annual_review",
+          "websiteJourney": "Home / Existing Client / Annual Review",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Goosehead Insurance)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "43,861"
+            },
+            {
+              "label": "Quote Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Policy Bound (Percent)",
+              "value": "27%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$22,736,537"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "7,018"
+            },
+            {
+              "label": "Existing Policy Service Call",
+              "value": "8%"
+            },
+            {
+              "label": "Claims Support Call",
+              "value": "5%"
+            },
+            {
+              "label": "Billing & Payment Call",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Quote Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Quote Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Quote Discussed (Percent)",
+              "value": "47%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "10%"
+            },
+            {
+              "label": "Policy Bound (Percent)",
+              "value": "27%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Quote Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Quote Call (Count)",
+            "values": [
+              5842,
+              8217,
+              7946,
+              8103,
+              6735
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              3214,
+              4612,
+              4438,
+              4527,
+              3824
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              682,
+              978,
+              941,
+              963,
+              822
+            ]
+          },
+          {
+            "name": "Policy Bound (Count)",
+            "values": [
+              1842,
+              2647,
+              2551,
+              2608,
+              2194
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Policy Bound (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43861,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "18,742",
+                "42%",
+                "22%",
+                "$7,912,436"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "9,318",
+                "46%",
+                "26%",
+                "$4,655,318"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "7,463",
+                "48%",
+                "29%",
+                "$4,138,207"
+              ]
+            },
+            {
+              "name": "Referral Partners",
+              "metrics": [
+                "5,127",
+                "51%",
+                "35%",
+                "$3,442,881"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "3,211",
+                "55%",
+                "43%",
+                "$2,587,695"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Policy Bound (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43861,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "17,264",
+                "41%",
+                "21%",
+                "$7,262,155"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "10,142",
+                "45%",
+                "25%",
+                "$4,867,214"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "7,853",
+                "48%",
+                "29%",
+                "$4,369,882"
+              ]
+            },
+            {
+              "name": "Lender & Realtor Referral",
+              "metrics": [
+                "5,338",
+                "52%",
+                "34%",
+                "$3,482,613"
+              ]
+            },
+            {
+              "name": "Email & CRM",
+              "metrics": [
+                "3,264",
+                "57%",
+                "44%",
+                "$2,754,673"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Policy Bound (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21457,
+          "rows": [
+            {
+              "name": "Compare 200 Carriers Home + Auto",
+              "metrics": [
+                "8,124",
+                "43%",
+                "23%",
+                "$3,584,742"
+              ]
+            },
+            {
+              "name": "Get a Quote in Minutes",
+              "metrics": [
+                "5,236",
+                "46%",
+                "26%",
+                "$2,613,455"
+              ]
+            },
+            {
+              "name": "Bundle & Save Home Auto",
+              "metrics": [
+                "3,918",
+                "49%",
+                "29%",
+                "$2,178,318"
+              ]
+            },
+            {
+              "name": "Switch & Save Bundle",
+              "metrics": [
+                "2,647",
+                "52%",
+                "33%",
+                "$1,677,229"
+              ]
+            },
+            {
+              "name": "Own a Goosehead Franchise",
+              "metrics": [
+                "1,532",
+                "56%",
+                "41%",
+                "$1,205,876"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Policy Bound (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 12728,
+          "rows": [
+            {
+              "name": "home and auto insurance bundle",
+              "metrics": [
+                "4,318",
+                "42%",
+                "22%",
+                "$1,823,466"
+              ]
+            },
+            {
+              "name": "cheap car insurance quote",
+              "metrics": [
+                "3,164",
+                "45%",
+                "25%",
+                "$1,518,853"
+              ]
+            },
+            {
+              "name": "homeowners insurance near me",
+              "metrics": [
+                "2,536",
+                "48%",
+                "28%",
+                "$1,361,780"
+              ]
+            },
+            {
+              "name": "goosehead insurance quote",
+              "metrics": [
+                "1,742",
+                "53%",
+                "34%",
+                "$1,135,656"
+              ]
+            },
+            {
+              "name": "goosehead franchise cost",
+              "metrics": [
+                "968",
+                "57%",
+                "43%",
+                "$799,392"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Quote Set (Industry) (Percent)",
+            "Policy Bound (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Home + Auto Bundle",
+              "metrics": [
+                "13,742",
+                "43%",
+                "21%",
+                "$6,984,213"
+              ]
+            },
+            {
+              "name": "Auto Insurance",
+              "metrics": [
+                "11,318",
+                "45%",
+                "25%",
+                "$4,772,918"
+              ]
+            },
+            {
+              "name": "Homeowners Insurance",
+              "metrics": [
+                "9,256",
+                "47%",
+                "28%",
+                "$5,501,644"
+              ]
+            },
+            {
+              "name": "Renters & Condo Insurance",
+              "metrics": [
+                "6,081",
+                "50%",
+                "34%",
+                "$2,498,357"
+              ]
+            },
+            {
+              "name": "Specialty & Life (Flood, Umbrella, Life)",
+              "metrics": [
+                "3,464",
+                "55%",
+                "44%",
+                "$2,979,405"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Policy Bound (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43861,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "14,318",
+                "44%",
+                "22%",
+                "$7,412,655"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "10,642",
+                "46%",
+                "25%",
+                "$5,318,442"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "8,415",
+                "48%",
+                "28%",
+                "$4,236,119"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "6,297",
+                "50%",
+                "31%",
+                "$3,297,864"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "4,189",
+                "53%",
+                "38%",
+                "$2,471,457"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Policy Bound (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Home + Auto Bundle",
+            "values": [
+              432,
+              618,
+              642,
+              651,
+              543
+            ]
+          },
+          {
+            "name": "Auto Insurance",
+            "values": [
+              418,
+              602,
+              615,
+              628,
+              567
+            ]
+          },
+          {
+            "name": "Homeowners Insurance",
+            "values": [
+              382,
+              548,
+              561,
+              573,
+              528
+            ]
+          },
+          {
+            "name": "Renters & Condo Insurance",
+            "values": [
+              308,
+              442,
+              448,
+              456,
+              414
+            ]
+          },
+          {
+            "name": "Specialty & Life (Flood, Umbrella, Life)",
+            "values": [
+              224,
+              322,
+              328,
+              334,
+              316
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 43,861 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Sarah Whitfield called for a home and auto bundle quote after buying a new house. Oscar shopped several carriers, compared homeowners and auto options, and locked in a multi-policy discount. Sarah scheduled a follow-up quote review and agreed to bind coverage before closing.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "2m 55s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 87,
+          "summary": "Marcus Bell reached out for a homeowners quote tied to a new home purchase closing in two weeks. Lila gathered the property details and compared coverage across multiple carriers. She scheduled a quote appointment and emailed the closing-ready binder options.",
+          "date": "Feb 11, 1:37 PM",
+          "agent": "Lila",
+          "duration": "2m 20s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 83,
+          "summary": "Priya Raman wanted a renters insurance quote for a new apartment lease. Rosey explained personal-property and liability limits, then priced a low-cost policy. Priya scheduled the quote and asked to add coverage before her move-in date.",
+          "date": "Mar 4, 9:52 AM",
+          "agent": "Rosey",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Daniel Ortiz called as a new client to schedule a full home and auto bundle quote. Lee collected his contact details, vehicle information, and property address, then walked him through the comparison process. Lee booked the quote appointment and confirmed the carrier options he would shop.",
+          "date": "Apr 9, 3:05 PM",
+          "agent": "Lee",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 14,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Nora Feldman called about her existing flood insurance policy and a coverage limit question. Mary reviewed the NFIP policy details and clarified building versus contents coverage. No new policy was scheduled since it was a service inquiry.",
+          "date": "May 15, 11:28 AM",
+          "agent": "Mary",
+          "duration": "1m 42s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 64,
+          "summary": "Trevor Cain requested an auto insurance quote after his current premium jumped. Sue compared liability and collision options across carriers and found a lower rate. Trevor scheduled a quote review and agreed to switch carriers.",
+          "date": "May 22, 4:41 PM",
+          "agent": "Sue",
+          "duration": "2m 06s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 21,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 60,
+          "summary": "Angela Voss disputed a billing charge on her policy renewal. Mike reviewed the payment history and explained the premium adjustment. The issue was routed to the service portal team and no new quote was scheduled.",
+          "date": "Jun 3, 2:42 PM",
+          "agent": "Mike",
+          "duration": "2m 30s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Hannah Doyle called for a condo and renters coverage quote for a downtown unit. Jennifer explained walls-in HO-6 coverage and contents protection, then priced a policy. Hannah scheduled the quote to finalize her limits.",
+          "date": "Jun 19, 10:03 AM",
+          "agent": "Jennifer",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 51,
+          "summary": "Robert Mensah called to check the status of a home claim filed last week. Rose looked up the claim and connected him with the carrier adjuster contact. This was a service call with no new policy scheduled.",
+          "date": "Jul 8, 3:19 PM",
+          "agent": "Rose",
+          "duration": "1m 35s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 47,
+          "summary": "Cynthia Park requested a flood insurance quote for a coastal property. Oscar compared NFIP and private carrier options and outlined the pricing. Cynthia scheduled a quote appointment to review the building and contents coverage.",
+          "date": "Jul 25, 12:47 PM",
+          "agent": "Oscar",
+          "duration": "2m 11s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 43,
+          "summary": "Kevin Stroud called to cancel his auto policy after moving out of state. Lila explained the cancellation steps and confirmed the effective date. No new policy was scheduled during the call.",
+          "date": "Aug 2, 9:24 AM",
+          "agent": "Lila",
+          "duration": "1m 27s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Denise Alvarado called about a delayed claim payout on a wind damage repair. Mike reviewed the claim timeline and escalated it to the carrier. She remained frustrated and no quote was scheduled.",
+          "date": "Aug 21, 2:16 PM",
+          "agent": "Mike",
+          "duration": "2m 44s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Gregory Lin called after hours to complain about a renewal premium increase and left a voicemail. The call rolled to voicemail with no agent available. No follow-up quote was scheduled during the call.",
+          "date": "Sep 6, 6:52 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 35,
+          "summary": "Patricia Nunez disputed a double charge on her homeowners policy autopay. Sue reviewed the transaction and opened a billing correction ticket. The matter was unresolved on the call and no quote was scheduled.",
+          "date": "Sep 24, 11:09 AM",
+          "agent": "Sue",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Frank Delgado called angry that his home and auto bundle discount was removed at renewal. Mike explained the carrier eligibility change and offered to re-shop later. Frank declined and no quote was scheduled.",
+          "date": "Oct 12, 4:58 PM",
+          "agent": "Mike",
+          "duration": "3m 02s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "bundle",
+        "auto",
+        "homeowners",
+        "renters",
+        "flood",
+        "quote"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 34s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Home Ownership Status",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Coverage Types of Interest",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Quote Delivery",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Follow Up Appointment",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller identified self as new customer",
+        "Agent greeted professionally",
+        "Agent used caller's name multiple times",
+        "Caller has homeownership intent",
+        "Caller interested in home and auto bundle",
+        "Caller provided valid ZIP code",
+        "Caller confirmed primary residence",
+        "Caller expressed budget sensitivity",
+        "Agent explained quote process",
+        "Agent offered to shop multiple carriers",
+        "Caller agreed to quote terms",
+        "Agent provided next steps",
+        "Call ended with agent confirmation"
+      ],
+      "unmetSignals": [
+        "Email address verified and logged",
+        "Confirmation of quote timeline provided",
+        "Agent asked about existing coverage",
+        "Caller's age or household size captured",
+        "Driver safety questions asked",
+        "Vehicle information collected",
+        "Discount eligibility discussed",
+        "Policy start date preference noted",
+        "Agent built rapport on pain point",
+        "Caller expressed satisfaction with process"
+      ],
+      "naSignals": [
+        "Policy cancellation discussed",
+        "Claim filing initiated",
+        "Payment method established",
+        "Policy renewal completed",
+        "Coverage modification requested",
+        "Agent assisted with app login",
+        "Billing issue addressed",
+        "Referral program explained",
+        "Premium comparison between carriers reviewed"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller is relocating to the area and needs to secure both homeowners and auto insurance before their move. They specifically mentioned wanting bundled coverage at a competitive price and expressed concern about finding affordable rates."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects to receive a quote within a reasonable timeframe and wants to compare rates across multiple carriers. They also want to understand what coverage options are available and prefer a streamlined process without excessive follow up calls."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have captured the caller's email address to ensure quote delivery confirmation and set a specific timeline for when the quote would be ready. He also could have gathered details about existing auto policies to help with carrier matching and discount eligibility."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Good afternoon and thank you for calling Goosehead Insurance. This is Marcus Bell speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:16",
+          "text": "Hi Marcus. Yes, I'm looking to get a quote on home and auto insurance. We're actually moving to the area in about three weeks and we need to get both policies set up."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:32",
+          "text": "That's great. I'd be happy to help you find the right coverage. To get started, may I have your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:44",
+          "text": "Sure, it's Jennifer Chen."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:50",
+          "text": "Jennifer, wonderful. So you're relocating to our area. Are you currently a homeowner or will you be purchasing a home in the near future?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:06",
+          "text": "We're buying a home. We already have the house under contract, so it should close in about two weeks."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:18",
+          "text": "Excellent, Jennifer. And what area will that be? What's your ZIP code?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:28",
+          "text": "It's 75201 in Dallas."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:36",
+          "text": "Perfect. That's a great area. And what about your vehicle? How many cars will we be insuring?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:48",
+          "text": "We have two vehicles. A 2022 Honda Accord and a 2019 Mazda CX5."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:04",
+          "text": "Wonderful. I can definitely help you find competitive rates on both your home and auto with our bundle discount. At Goosehead, we shop over 200 carriers to find you the best value. Can I get your phone number so I can reach you with your quote?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:24",
+          "text": "Of course. It's ****-****-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:32",
+          "text": "Great, Jennifer. So here's what happens next. I'm going to gather all your information and work with our underwriting team to get you quotes from multiple carriers. You should expect to hear back from us within one business day with several options to compare. Does that work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:54",
+          "text": "Yes, that sounds perfect. I really appreciate your help with this."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:06",
+          "text": "Of course, Jennifer. We really appreciate your business. We'll be in touch very soon with your custom quotes from the best carriers for your situation. Thank you for choosing Goosehead Insurance, and welcome to Dallas."
+        },
+        {
+          "speaker": "caller",
+          "time": "03:28",
+          "text": "Thank you so much. I look forward to it."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:38",
+          "text": "You're welcome. Have a great day, Jennifer."
+        }
+      ],
+      "aiSummary": "Jennifer Chen, a relocating homebuyer in the Dallas 75201 area, contacted Goosehead for home and auto insurance quotes for her new residence and two vehicles. Marcus Bell collected her full name, confirmed her homeownership status and intent, captured her ZIP code and vehicle details, and obtained her phone number. While Marcus explained Goosehead's multi-carrier shopping process and set a one-business-day turnaround expectation, he did not capture Jennifer's email address or provide a more specific follow-up timeline. The call was professional and well-structured, positioning a smooth transition to the quoting phase.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, strong call foundation here. You nailed the greeting, built rapport throughout, and kept Jennifer engaged with the multi-carrier story. Two quick coaching points for next time: grab that email address in addition to the phone number so you have a backup channel for quote delivery, and be even more specific about timing, for example, 'I'll have this to you by tomorrow at 10 AM.' Small moves that reinforce professionalism and set clear expectations."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "43,861"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$518.38"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$22,736,537"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "28,493"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "65%"
+            },
+            {
+              "label": "Quote: Scheduled (Count)",
+              "value": "20,615"
+            },
+            {
+              "label": "Quote: Scheduled (Percent)",
+              "value": "47%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "15,368"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Quote: Canceled (Percent)",
+              "value": "8%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Quotes)",
+          "chart": {
+            "legend": "Quote: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Email/CRM",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Social Media",
+                "value": 54,
+                "display": "54%"
+              },
+              {
+                "name": "Referral Partner",
+                "value": 48,
+                "display": "48%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 41,
+                "display": "41%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Quotes)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Quote: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "16,842",
+                  "32%",
+                  "$8,214,553"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "11,238",
+                  "41%",
+                  "$5,682,441"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral Partner",
+                  "7,914",
+                  "48%",
+                  "$4,128,772"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "4,982",
+                  "54%",
+                  "$2,914,668"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "2,885",
+                  "58%",
+                  "$1,796,103"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 18000,
+            "axisTicks": [
+              0,
+              3000,
+              6000,
+              9000,
+              12000,
+              15000,
+              18000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 15983,
+                "display": "15,983"
+              },
+              {
+                "name": "organic",
+                "value": 10472,
+                "display": "10,472"
+              },
+              {
+                "name": "referral",
+                "value": 8241,
+                "display": "8,241"
+              },
+              {
+                "name": "social",
+                "value": 5619,
+                "display": "5,619"
+              },
+              {
+                "name": "email",
+                "value": 3546,
+                "display": "3,546"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Quotes)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Quote: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "15,983",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "10,472",
+                  "40%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "8,241",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "5,619",
+                  "52%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "3,546",
+                  "59%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 12000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Compare 200 Carriers Home + Auto",
+                "value": 9842,
+                "display": "9,842"
+              },
+              {
+                "name": "Get a Quote in Minutes",
+                "value": 7318,
+                "display": "7,318"
+              },
+              {
+                "name": "Bundle & Save Home Auto",
+                "value": 5671,
+                "display": "5,671"
+              },
+              {
+                "name": "Switch & Save Bundle",
+                "value": 3914,
+                "display": "3,914"
+              },
+              {
+                "name": "Own a Goosehead Franchise",
+                "value": 2486,
+                "display": "2,486"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Quotes)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Quote: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Compare 200 Carriers Home + Auto",
+                  "9,842",
+                  "35%",
+                  "$4,812,663"
+                ]
+              },
+              {
+                "cells": [
+                  "Get a Quote in Minutes",
+                  "7,318",
+                  "44%",
+                  "$3,578,441"
+                ]
+              },
+              {
+                "cells": [
+                  "Bundle & Save Home Auto",
+                  "5,671",
+                  "51%",
+                  "$2,773,558"
+                ]
+              },
+              {
+                "cells": [
+                  "Switch & Save Bundle",
+                  "3,914",
+                  "57%",
+                  "$1,914,229"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4500,
+            "axisTicks": [
+              0,
+              900,
+              1800,
+              2700,
+              3600,
+              4500
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "goosehead insurance quote",
+                "value": 4218,
+                "display": "4,218"
+              },
+              {
+                "name": "home and auto insurance bundle",
+                "value": 3182,
+                "display": "3,182"
+              },
+              {
+                "name": "cheap car insurance quote",
+                "value": 2647,
+                "display": "2,647"
+              },
+              {
+                "name": "homeowners insurance near me",
+                "value": 1933,
+                "display": "1,933"
+              },
+              {
+                "name": "goosehead franchise cost",
+                "value": 1214,
+                "display": "1,214"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Quotes)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Quote: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "goosehead insurance quote",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "home and auto insurance bundle",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "cheap car insurance quote",
+                  "53%"
+                ]
+              },
+              {
+                "cells": [
+                  "homeowners insurance near me",
+                  "61%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Quote: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Home + Auto Bundle",
+              "14,238",
+              "34%",
+              "71%"
+            ]
+          },
+          {
+            "cells": [
+              "Auto Insurance",
+              "11,472",
+              "43%",
+              "66%"
+            ]
+          },
+          {
+            "cells": [
+              "Homeowners Insurance",
+              "9,318",
+              "50%",
+              "62%"
+            ]
+          },
+          {
+            "cells": [
+              "Renters & Condo Insurance",
+              "5,214",
+              "59%",
+              "58%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Quote: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Westlake, TX Branch",
+              "13,842",
+              "1,284",
+              "4%",
+              "38%"
+            ]
+          },
+          {
+            "cells": [
+              "Houston, TX Branch",
+              "11,238",
+              "918",
+              "3%",
+              "45%"
+            ]
+          },
+          {
+            "cells": [
+              "Chicago, IL Branch",
+              "8,472",
+              "642",
+              "3%",
+              "52%"
+            ]
+          },
+          {
+            "cells": [
+              "Phoenix, AZ Branch",
+              "6,318",
+              "418",
+              "2%",
+              "59%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1284,
+              1472,
+              1418,
+              1383,
+              1285
+            ]
+          },
+          {
+            "name": "Comparing Carriers",
+            "values": [
+              1142,
+              1238,
+              1214,
+              1182,
+              1142
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              842,
+              918,
+              914,
+              902,
+              896
+            ]
+          },
+          {
+            "name": "Needs Spouse Approval",
+            "values": [
+              682,
+              742,
+              738,
+              726,
+              726
+            ]
+          },
+          {
+            "name": "Outside Coverage Area",
+            "values": [
+              452,
+              492,
+              488,
+              484,
+              484
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "17,544"
+          },
+          {
+            "label": "Quote Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Policy Bound (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$12,959,826"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Policy Bound (Percent)",
+              "value": "26%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$847,392"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Policy Bound (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,124,568"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Policy Bound (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,356,744"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Policy Bound (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,156,280"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Policy Bound (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,847,512"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Policy Bound (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,627,330"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Scheduled (Percent)",
+            "Policy Bound (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20847,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "4856",
+                "58%",
+                "31%",
+                "$2,947,408"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "3921",
+                "54%",
+                "30%",
+                "$2,247,630"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "3547",
+                "57%",
+                "35%",
+                "$2,568,795"
+              ]
+            },
+            {
+              "name": "Referral Partners",
+              "metrics": [
+                "3178",
+                "56%",
+                "32%",
+                "$2,074,816"
+              ]
+            },
+            {
+              "name": "Direct Website",
+              "metrics": [
+                "2042",
+                "52%",
+                "34%",
+                "$1,848,876"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Scheduled (Percent)",
+            "Policy Bound (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20156,
+          "rows": [
+            {
+              "name": "Search Engine Marketing",
+              "metrics": [
+                "5203",
+                "57%",
+                "32%",
+                "$3,145,728"
+              ]
+            },
+            {
+              "name": "Social Media Platform",
+              "metrics": [
+                "4118",
+                "53%",
+                "29%",
+                "$2,002,602"
+              ]
+            },
+            {
+              "name": "Organic Website",
+              "metrics": [
+                "3864",
+                "56%",
+                "34%",
+                "$2,376,384"
+              ]
+            },
+            {
+              "name": "Email Campaign",
+              "metrics": [
+                "2347",
+                "55%",
+                "31%",
+                "$1,429,307"
+              ]
+            },
+            {
+              "name": "Direct Traffic",
+              "metrics": [
+                "1624",
+                "52%",
+                "35%",
+                "$1,289,840"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Scheduled (Percent)",
+            "Policy Bound (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20438,
+          "rows": [
+            {
+              "name": "Compare 200 Carriers Home Auto",
+              "metrics": [
+                "3847",
+                "54%",
+                "28%",
+                "$2,148,696"
+              ]
+            },
+            {
+              "name": "Bundle and Save Auto Quote",
+              "metrics": [
+                "2934",
+                "57%",
+                "32%",
+                "$1,896,384"
+              ]
+            },
+            {
+              "name": "Smarter Insurance by Design",
+              "metrics": [
+                "2461",
+                "56%",
+                "35%",
+                "$1,912,370"
+              ]
+            },
+            {
+              "name": "Switch and Save Bundle",
+              "metrics": [
+                "1728",
+                "58%",
+                "31%",
+                "$1,048,704"
+              ]
+            },
+            {
+              "name": "Closing Ready Home Insurance",
+              "metrics": [
+                "1247",
+                "52%",
+                "36%",
+                "$948,816"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Quote Scheduled (Percent)",
+            "Policy Bound (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 19256,
+          "rows": [
+            {
+              "name": "Home and auto insurance bundle",
+              "metrics": [
+                "2684",
+                "55%",
+                "29%",
+                "$1,427,332"
+              ]
+            },
+            {
+              "name": "Goosehead insurance quote",
+              "metrics": [
+                "2156",
+                "54%",
+                "30%",
+                "$1,235,736"
+              ]
+            },
+            {
+              "name": "Cheap car insurance quote",
+              "metrics": [
+                "1893",
+                "58%",
+                "32%",
+                "$1,185,984"
+              ]
+            },
+            {
+              "name": "Homeowners insurance near me",
+              "metrics": [
+                "1547",
+                "57%",
+                "35%",
+                "$1,241,615"
+              ]
+            },
+            {
+              "name": "Compare insurance carriers",
+              "metrics": [
+                "1126",
+                "56%",
+                "34%",
+                "$829,944"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Quote Scheduled (Percent)",
+            "Policy Bound (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Home and Auto Bundle",
+              "metrics": [
+                "5432",
+                "58%",
+                "36%",
+                "$3,843,776"
+              ]
+            },
+            {
+              "name": "Auto Insurance",
+              "metrics": [
+                "4127",
+                "56%",
+                "32%",
+                "$2,514,208"
+              ]
+            },
+            {
+              "name": "Homeowners Insurance",
+              "metrics": [
+                "3856",
+                "54%",
+                "31%",
+                "$2,036,672"
+              ]
+            },
+            {
+              "name": "Renters and Condo Insurance",
+              "metrics": [
+                "2348",
+                "52%",
+                "29%",
+                "$1,749,664"
+              ]
+            },
+            {
+              "name": "Specialty Coverage",
+              "metrics": [
+                "1781",
+                "51%",
+                "28%",
+                "$1,815,506"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Policy Bound (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Home and Auto Bundle",
+            "values": [
+              689,
+              756,
+              814,
+              698,
+              618
+            ]
+          },
+          {
+            "name": "Auto Insurance",
+            "values": [
+              425,
+              489,
+              521,
+              438,
+              379
+            ]
+          },
+          {
+            "name": "Homeowners Insurance",
+            "values": [
+              382,
+              418,
+              456,
+              391,
+              322
+            ]
+          },
+          {
+            "name": "Renters and Condo Insurance",
+            "values": [
+              283,
+              312,
+              348,
+              261,
+              212
+            ]
+          },
+          {
+            "name": "Specialty Coverage",
+            "values": [
+              198,
+              246,
+              289,
+              234,
+              157
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Quote Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Quote Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Quote Scheduled (Count)",
+            "value": "378"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "856"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Quote Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Quote Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Quote Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Quote Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Quote Scheduled",
+            "values": [
+              73,
+              78,
+              71,
+              75,
+              82,
+              76,
+              74,
+              79,
+              81,
+              72,
+              77,
+              80,
+              73,
+              75,
+              78,
+              76,
+              82,
+              71,
+              74,
+              79,
+              81,
+              76,
+              75,
+              73,
+              78,
+              80,
+              74,
+              72,
+              76,
+              79,
+              77,
+              78,
+              182,
+              175,
+              189,
+              178,
+              181,
+              184,
+              176,
+              179,
+              172,
+              186,
+              181,
+              178,
+              175,
+              183,
+              179,
+              177,
+              180
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,214"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "89%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "11,447"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "687"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "62%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "664"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Quote Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Home Insurance Quote",
+            "values": [
+              8,
+              11,
+              9,
+              2,
+              10,
+              12
+            ]
+          },
+          {
+            "name": "Auto Insurance Quote",
+            "values": [
+              6,
+              9,
+              7,
+              1,
+              8,
+              11
+            ]
+          },
+          {
+            "name": "Bundle Home and Auto",
+            "values": [
+              7,
+              10,
+              8,
+              3,
+              9,
+              10
+            ]
+          },
+          {
+            "name": "Policy Comparison Inquiry",
+            "values": [
+              5,
+              7,
+              6,
+              2,
+              6,
+              8
+            ]
+          },
+          {
+            "name": "Flood Coverage Question",
+            "values": [
+              4,
+              6,
+              5,
+              1,
+              5,
+              7
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "40,352"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "30,484"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Quote Booked (Count)",
+            "value": "20,615"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$22,736,537"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 247,
+              "display": "247"
+            },
+            {
+              "name": "Priya Desai",
+              "value": 189,
+              "display": "189"
+            },
+            {
+              "name": "Brandon Hayes",
+              "value": 214,
+              "display": "214"
+            },
+            {
+              "name": "Tiffany Rodriguez",
+              "value": 196,
+              "display": "196"
+            },
+            {
+              "name": "James Mitchell",
+              "value": 201,
+              "display": "201"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Quote Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Whitmore",
+            "values": [
+              156,
+              174,
+              198,
+              216,
+              241
+            ]
+          },
+          {
+            "name": "David Morales",
+            "values": [
+              142,
+              168,
+              187,
+              209,
+              238
+            ]
+          },
+          {
+            "name": "Jennifer Park",
+            "values": [
+              164,
+              181,
+              205,
+              224,
+              252
+            ]
+          },
+          {
+            "name": "Robert Chen",
+            "values": [
+              151,
+              172,
+              194,
+              218,
+              244
+            ]
+          },
+          {
+            "name": "Amanda Kozlov",
+            "values": [
+              148,
+              169,
+              191,
+              215,
+              239
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Priya Desai",
+              "value": 56.7,
+              "display": "56.7%"
+            },
+            {
+              "name": "Brandon Hayes",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "Tiffany Rodriguez",
+              "value": 58.3,
+              "display": "58.3%"
+            },
+            {
+              "name": "James Mitchell",
+              "value": 61.4,
+              "display": "61.4%"
+            },
+            {
+              "name": "Kevin Butler",
+              "value": 55.9,
+              "display": "55.9%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Quote Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "54.2%",
+                "28%",
+                "$404,892",
+                "1,289"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Desai",
+                "56.7%",
+                "31%",
+                "$418,556",
+                "1,221"
+              ]
+            },
+            {
+              "cells": [
+                "Brandon Hayes",
+                "52.1%",
+                "26%",
+                "$369,247",
+                "1,307"
+              ]
+            },
+            {
+              "cells": [
+                "Tiffany Rodriguez",
+                "58.3%",
+                "33%",
+                "$445,178",
+                "1,198"
+              ]
+            },
+            {
+              "cells": [
+                "James Mitchell",
+                "61.4%",
+                "35%",
+                "$476,841",
+                "1,247"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Butler",
+                "55.9%",
+                "29%",
+                "$391,234",
+                "1,199"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Whitmore",
+              "value": 91.3,
+              "display": "91.3%"
+            },
+            {
+              "name": "David Morales",
+              "value": 88.7,
+              "display": "88.7%"
+            },
+            {
+              "name": "Jennifer Park",
+              "value": 93.2,
+              "display": "93.2%"
+            },
+            {
+              "name": "Robert Chen",
+              "value": 89.6,
+              "display": "89.6%"
+            },
+            {
+              "name": "Amanda Kozlov",
+              "value": 90.1,
+              "display": "90.1%"
+            },
+            {
+              "name": "Michelle Torres",
+              "value": 92.4,
+              "display": "92.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Quote Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Whitmore",
+                "91.3%",
+                "67%",
+                "$1,127,456",
+                "1,527"
+              ]
+            },
+            {
+              "cells": [
+                "David Morales",
+                "88.7%",
+                "64%",
+                "$1,089,312",
+                "1,549"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Park",
+                "93.2%",
+                "68%",
+                "$1,156,843",
+                "1,538"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Chen",
+                "89.6%",
+                "66%",
+                "$1,114,267",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Kozlov",
+                "90.1%",
+                "65%",
+                "$1,098,654",
+                "1,504"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Torres",
+                "92.4%",
+                "67%",
+                "$1,139,821",
+                "1,512"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Quote Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Quote Booked (Count)",
+        "rightMax": 1000,
+        "rightTicks": [
+          0,
+          250,
+          500,
+          750,
+          1000
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 764
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 732
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 682
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 651
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 567
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 595
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 657
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 683
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 761
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 738
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 665
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 643
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 572
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 589
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 673
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 693
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 754
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 742
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 651
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 631
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 581
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 587
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 684
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 707
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 745
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 743
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 642
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 615
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 591
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 588
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 689
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1100000,
+        "rightTicks": [
+          0,
+          366666.6666666667,
+          733333.3333333334,
+          1100000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 842824
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 807809
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 752234
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 717776
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 624955
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 655874
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 724525
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 753085
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 839694
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 814135
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 733264
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 708714
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 630636
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 650036
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 741776
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 764379
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 831876
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 818930
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 718112
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 695335
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 640101
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 646812
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 754561
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 779573
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 821308
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 820113
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 707837
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 678702
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 651201
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 648060
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 762300
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "43,861"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,509"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,632"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "83%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "83%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Martinez",
+                "412",
+                "88%",
+                "85%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James Chen",
+                "389",
+                "84%",
+                "81%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "Rebecca Thompson",
+                "521",
+                "86%",
+                "84%",
+                "83%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "43,861 calls",
+      "pagerLabel": "1 of 4,386",
+      "calls": [
+        {
+          "time": "1/6/26 9:14 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 10:41 am",
+          "id": "A213-6C4E90B71F82"
+        },
+        {
+          "time": "1/12/26 11:27 am",
+          "id": "9D40-2B7A1E55C3A9"
+        },
+        {
+          "time": "1/14/26 1:03 pm",
+          "id": "C82E-4F0916DDA7B1"
+        },
+        {
+          "time": "1/16/26 2:38 pm",
+          "id": "7B19-8E3C0A44F6D2"
+        },
+        {
+          "time": "1/20/26 8:52 am",
+          "id": "E604-1A9D7C22B850"
+        },
+        {
+          "time": "1/22/26 12:19 pm",
+          "id": "3F77-5D8B0E1996CA"
+        },
+        {
+          "time": "1/26/26 3:44 pm",
+          "id": "D915-0C6F82A3417E"
+        },
+        {
+          "time": "1/28/26 4:11 pm",
+          "id": "6A2C-9B47E0D51823"
+        },
+        {
+          "time": "1/30/26 5:07 pm",
+          "id": "B45F-2E80C7194AD6"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling Goosehead Insurance, this is Marcus. Who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling Goosehead Insurance",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Marcus, my name is Danielle Foster. We just went under contract on a house and I need to get homeowners insurance sorted out.",
+          "highlights": [
+            "just went under contract on a house"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "Congratulations on the new home, Danielle. I can absolutely help you shop that. Do you also have vehicles you would want us to look at while we are at it?",
+          "highlights": [
+            "Congratulations on the new home"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:26",
+          "text": "Yeah, two cars actually. I figured I would just keep everything with one company if it makes sense.",
+          "highlights": [
+            "two cars"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:33",
+          "text": "That is exactly the kind of thing we are built for. We compare over 200 carriers, so I can put together a home and auto bundle and find you the multi-policy discount.",
+          "highlights": [
+            "compare over 200 carriers",
+            "home and auto bundle"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:43",
+          "text": "Okay, but honestly I want to keep this manageable. What does a bundle like that usually run?",
+          "highlights": [
+            "want to keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:50",
+          "text": "Totally fair question. Bundled home and auto in your area typically lands somewhere between $2,800 and $4,500 a year, and the bundle discount usually knocks a good chunk off each side. Once I shop it we will see the real numbers.",
+          "highlights": [
+            "$2,800 and $4,500 a year"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:02",
+          "text": "See, that is the thing. I already pulled a quote from one of those big direct companies online and it came in around three thousand. Can you actually beat that?",
+          "highlights": [
+            "already pulled a quote from one of those big direct companies"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:12",
+          "text": "Often we can, and here is why. That direct site only shows you their own price. I run the same profile across all our carriers at once, so you see who is genuinely cheapest for your exact home and drivers, not just one brand.",
+          "highlights": [
+            "genuinely cheapest for your exact home and drivers"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:24",
+          "text": "Alright, that makes sense. One more thing, do I get locked into anything? I don't want to be stuck if I find something better later.",
+          "highlights": [
+            "don't want to be locked into anything"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:33",
+          "text": "Not at all. There is no long-term commitment on our end. We are your broker, so if a better rate shows up at renewal we re-shop it for you. You are never tied down.",
+          "highlights": [
+            "no long-term commitment",
+            "never tied down"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:44",
+          "text": "Good. My closing date is February 12th, so I do need the home policy ready before then.",
+          "highlights": [
+            "closing date is February 12th"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:52",
+          "text": "Plenty of time. Lenders love to see that squared away early. Let me set up a quote review so we can go over the bundle options together. Would Thursday at 10 AM work for you?",
+          "highlights": [
+            "set up a quote review",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:03",
+          "text": "Thursday could work, but let me just check with my husband since he is on the auto policy too.",
+          "highlights": [
+            "check with my husband"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:11",
+          "text": "Of course, and it is great to have you both on the call. If Thursday at 10 slips, I have Friday morning open as well. Should I pencil in Thursday and confirm by text?",
+          "highlights": [
+            "confirm by text"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:20",
+          "text": "Yes, let's do Thursday at 10 and I will make sure he is around.",
+          "highlights": [
+            "Thursday at 10"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:26",
+          "text": "Perfect. I have your quote scheduled for Thursday at 10 AM. What is the best mobile number and email to send the confirmation and the coverage details to?",
+          "highlights": [
+            "quote scheduled for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:33",
+          "text": "It is 512-555-0184, and my email is danielle.foster@email.com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:38",
+          "text": "Got it, Danielle. You are all set for Thursday, we will have your home and auto bundle options ready. Thanks for choosing Goosehead, and congratulations again on the house.",
+          "highlights": [
+            "all set for Thursday",
+            "Thanks for choosing Goosehead"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Quote: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Home + Auto Bundle Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Homeowners Insurance Intent",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Price Objection Raised",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "New Home Purchase / Closing",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "New client Danielle Foster called after going under contract on a home and needed homeowners coverage before her February 12th closing. The agent, Marcus, identified an opportunity to bundle her two vehicles and recommended a home and auto bundle shopped across Goosehead's 200-plus carriers. He handled her price concern, a competing direct-carrier quote near three thousand dollars, and a worry about being locked in, then scheduled a quote review for Thursday at 10 AM and captured her mobile number and email.",
+        "keyPoints": [
+          "New client purchasing a home with a February 12th closing date",
+          "Needs homeowners coverage plus auto for two vehicles",
+          "Recommended a home and auto bundle with multi-policy discount",
+          "Overcame price objection and a direct-carrier competitor quote",
+          "Reassured caller there is no long-term commitment",
+          "Quote review scheduled for Thursday at 10 AM with contact details captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Quote booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "27,632 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,763",
+      "conversations": [
+        {
+          "id": "C8A2-F49E7B3C2D61",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there, thanks for texting Goosehead Insurance. I'm here to help you find the best coverage at the lowest price. Are you looking to get a quote for home, auto, or both today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:23 AM",
+              "text": "Hi, I need a home insurance quote. Just bought a house in Denver"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:24 AM",
+              "text": "Congrats on the new home. To find you the best rate from our 150 plus carriers, I need to ask a few quick questions. What year was your home built?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "2015"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Great. And approximately what is the square footage of your home?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "About 2200 sq ft"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:30 AM",
+              "text": "Perfect. Do you currently have any homeowners insurance with another provider, or is this a new policy?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "New policy, this is my first home"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "Excellent. Based on what you've shared, I can get you quotes from multiple carriers. Most customers see savings of 15 to 30 percent. Would tomorrow at 2 PM work for a quick call to review your options?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:35 AM",
+              "text": "Yes, 2 PM works great"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:36 AM",
+              "text": "Perfect. I've scheduled your quote consultation for tomorrow, March 11th at 2 PM Mountain Time. You'll receive a reminder shortly. Any questions before then?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:38 AM",
+              "text": "No, sounds good. Thanks"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:39 AM",
+              "text": "You're welcome. Our team will call you at this number to walk through your personalized quotes. If you need anything before then, text back or call 877 936 2933. See you tomorrow."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Quote: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Home Insurance Interest",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Property Details Captured",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "First Time Homebuyer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Denver Metro Area Confirmed",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C8A2-F49E7B3C2D61",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "303-555-0847",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "303-555-0847",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Mitchell",
+            "firstName": "Sarah",
+            "lastName": "Mitchell",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C3F7-E82B1A4C9F56",
+          "time": "3/10/26 3:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C3F7-E82B1A4C9F56",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C5D1-B73A6E2F8C44",
+          "time": "3/10/26 8:12 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C5D1-B73A6E2F8C44",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C9B4-D156C7A3E2F9",
+          "time": "3/11/26 7:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C9B4-D156C7A3E2F9",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "43,861 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,386",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thanks for calling Goosehead Insurance. My name is Sarah. How can I help you find the right coverage today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Hey Sarah, yeah I'm looking to get a quote on home insurance. We just bought a house in Austin and we need to get it covered."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Congratulations on the new home! That's exciting. I'd be happy to help you get covered. Can I ask, is this your first time shopping for homeowners insurance, or are you switching from another carrier?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Switching. We had coverage in our old place but I want to compare rates. We heard Goosehead shops a bunch of carriers, so I figured I'd call."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "That's exactly right. We work with over two hundred carriers to find the best fit for you. So to get started, what's the approximate square footage of your home?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "It's about thirty-eight hundred square feet. Single story, brick construction."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Great, brick is good for insurance rates. And just to confirm, do you have any other structures on the property, like a garage or a shed?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "No, just the main house. We've got a regular two car garage attached though."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Perfect. I'm noting that. Now, what is the approximate replacement value you'd like for the dwelling coverage? Most homeowners in that square footage and Austin area are looking at around two hundred twenty to two hundred sixty thousand."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "Yeah, that sounds about right. Maybe two hundred forty thousand to be safe."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Excellent. I've got all that down. Now, would you also be interested in bundling your auto insurance with us if you don't already have that through Goosehead?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Actually, yeah. We've got two cars. We're with someone else right now for auto, so we'd definitely want to compare that too."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "That's perfect. A bundle is usually going to save you the most. I can get you scheduled with one of our agents to go through those details and shop all those carriers for you. How does Thursday afternoon at two o'clock work?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Thursday at two works for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "Wonderful. I've got you down for Thursday, January sixteenth at two p m. You'll get a call from one of our licensed agents, and they'll walk through everything and get you some quotes. Your confirmation callback number is eight seven seven, nine three six, twenty nine thirty three. Does that number work to reach you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Yeah, that's my cell. Thanks, Sarah."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:20 PM",
+              "text": "You're welcome. We're excited to help you find the right coverage at the best price. Have a great day!"
+            }
+          ],
+          "signals": [
+            {
+              "name": "Quote: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Home Insurance: Requested",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Auto Insurance: Interest Expressed",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Bundle: Mentioned",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Replacement Value: Two Hundred Forty Thousand",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "8:23",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "512-555-0847",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Jordan Martinez",
+            "firstName": "Jordan",
+            "lastName": "Martinez",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B829-3D4FE527891C",
+          "time": "1/18/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B829-3D4FE527891C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C641-5E2AB936472F",
+          "time": "1/22/26 11:05 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C641-5E2AB936472F",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D753-6F1CD048583E",
+          "time": "1/28/26 3:33 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D753-6F1CD048583E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as Goosehead Insurance's AI agent helping shop 200+ carriers for a personalized quote, mention the current bundle and save on home plus auto incentive, and ask if they'd like to get started.",
+        "Qualify one question at a time: Ask one question at a time about the coverage type they need (home, auto, bundle, renters, etc.), the property or vehicle details (home square footage or vehicle year, make, and model), their current carrier and coverage status, their timeline to switch or bind, and finally their ZIP code to confirm carrier availability in their state.",
+        "Estimate then book: Confirm we shop carriers in their ZIP, share a preliminary annual premium range based on what they shared, recommend a quote consultation with a licensed agent for an exact comparison, propose a specific day and time, and confirm they'll receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Goosehead_Insurance_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Homeowners Insurance",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Car Insurance",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Get a Quote",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"policy_management\",\"question\":\"How do I make a payment or update my policy details?\",\"answer\":\"You can log into the Goosehead service portal to make a payment, update your details, or file a claim anytime. If you'd like, I can also connect you with your service team for help.\"},{\"topic\":\"renewal_reshop\",\"question\":\"My renewal premium went up, can you re-shop my policy?\",\"answer\":\"Absolutely, we can re-shop your coverage across 200+ carriers to find a better rate. Let's schedule an annual policy review with a licensed agent to compare your options.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How does Goosehead work?",
+              "answer": "Goosehead is an independent brokerage that compares 200+ carriers to find you the best coverage and price. The easiest next step is a quote consultation with a licensed agent to review your options."
+            },
+            {
+              "question": "Do you sell insurance directly?",
+              "answer": "We don't underwrite policies ourselves; we shop 200+ carriers on your behalf to match you with the right coverage. Let's set up a quick quote consultation to get started."
+            },
+            {
+              "question": "Can you bundle my home and auto?",
+              "answer": "Yes, bundling home and auto often unlocks a multi-policy discount with a single digital agent. I can book a quote consultation so an agent can build your custom bundle."
+            },
+            {
+              "question": "How much does homeowners insurance cost?",
+              "answer": "Premiums vary widely by home, location, and coverage since we shop multiple carriers for you. Let's schedule a quote consultation so a licensed agent can give you an exact figure."
+            },
+            {
+              "question": "How much is car insurance?",
+              "answer": "Auto rates depend on your vehicle, driving history, and coverage needs, and we compare carriers to find your best price. I'd recommend a quick quote consultation for an accurate comparison."
+            },
+            {
+              "question": "Do you offer renters insurance?",
+              "answer": "Yes, we offer renters coverage protecting your personal property, liability, and living expenses. Let's book a quote consultation to lock in the right policy for you."
+            },
+            {
+              "question": "Can I get flood insurance?",
+              "answer": "Yes, we place separate NFIP and private flood policies covering flood-related building and contents damage. A licensed agent can confirm availability in your area during a quote consultation."
+            },
+            {
+              "question": "What states do you cover?",
+              "answer": "We work with over 200 carriers across the United States, though specific coverages vary by state. Share your ZIP code and I can confirm what's available, then set up a quote consultation."
+            },
+            {
+              "question": "How long does it take to get a quote?",
+              "answer": "Many quotes come together in minutes once we have your details, and an agent finalizes the best carrier match. Let's schedule a quote consultation to get you covered quickly."
+            },
+            {
+              "question": "Do you offer condo insurance?",
+              "answer": "Yes, we offer HO-6 condo policies covering interior walls-in, contents, liability, and loss assessment. I can book a quote consultation to tailor it to your unit."
+            },
+            {
+              "question": "Can you insure my rental property?",
+              "answer": "Yes, we place landlord and dwelling property policies with structure, liability, and lost-rent protection. Let's set up a quote consultation with an agent who handles investor coverage."
+            },
+            {
+              "question": "Do you cover motorcycles, boats, or RVs?",
+              "answer": "Yes, we shop carriers for motorcycle, boat, watercraft, and RV coverage tailored to your needs. A quote consultation is the fastest way to compare your options."
+            },
+            {
+              "question": "What is umbrella insurance?",
+              "answer": "An umbrella policy adds an extra $1M or more of liability protection above your home and auto limits. Let's book a quote consultation to see if it's a smart fit for you."
+            },
+            {
+              "question": "Do you offer life insurance?",
+              "answer": "Yes, we offer term and whole life products for income replacement and final expenses. An agent can walk you through options during a quote consultation."
+            },
+            {
+              "question": "Why should I use a broker instead of going direct?",
+              "answer": "A broker shops 200+ carriers at once so you don't have to fill out multiple applications, and we advocate for your best price. Let's schedule a quote consultation to see the savings."
+            },
+            {
+              "question": "I'm buying a new home and my lender needs proof of insurance.",
+              "answer": "We specialize in closing-ready home insurance and can coordinate with your lender quickly. Let's book a quote consultation so we hit your closing date."
+            },
+            {
+              "question": "Can I switch carriers mid-policy?",
+              "answer": "Yes, you can switch anytime, and we'll help manage timing to avoid coverage gaps. A quote consultation will let an agent map out the smoothest transition."
+            },
+            {
+              "question": "Do you offer earthquake or wind coverage?",
+              "answer": "Yes, we place standalone catastrophe policies for wind, hail, and seismic damage where available. Let's set up a quote consultation to confirm options in your area."
+            },
+            {
+              "question": "How do I file a claim?",
+              "answer": "Existing clients can file a claim through the Goosehead service portal or with their service team. If you're not yet a client, let's book a quote consultation to get you protected."
+            },
+            {
+              "question": "Can you help me lower my current premium?",
+              "answer": "Yes, we can re-shop your coverage across many carriers to find a better rate. Let's schedule a quote consultation to compare your current policy."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule_quote_consultation\",\"follow_up_message\":\"Great, I have you down for a quote consultation with a licensed Goosehead agent. You'll get a reminder text beforehand with a number to call if anything changes.\"},{\"intent\":\"request_home_auto_bundle_quote\",\"follow_up_message\":\"Perfect, I'll have an agent build a custom home and auto bundle comparing 200+ carriers. Let's confirm a day and time that works so we can lock in your multi-policy discount.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Goosehead Insurance's AI agent. I can help you shop 200+ carriers for a personalized quote on home, auto, or a bundle. Would you like to get started?",
+        "goal": "Drive the customer toward booking a quote consultation with a licensed Goosehead agent to compare carriers and bind the right coverage.",
+        "bookingType": "virtual quote consultation",
+        "offer": "Bundle and save on home plus auto when you get a quote today",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "What type of coverage are you looking for, such as home, auto, a home plus auto bundle, renters, or something else?",
+          "Can you share the key details, like your home's square footage or your vehicle's year, make, and model?",
+          "Do you currently have coverage, and if so, who is your carrier?",
+          "What's your timeline to switch or bind a new policy?",
+          "What's your ZIP code so I can confirm which carriers are available in your state?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:04 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:04 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:04 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Goosehead Insurance",
+      "callerName": "Marcus Henderson",
+      "callerPhone": "(512) 555-0187",
+      "campaign": "Home and Auto Bundle, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Quote Lead",
+      "estimatedValue": "$3,645",
+      "googleSearch": "home and auto insurance bundle Austin Texas",
+      "websiteSearch": "compare insurance carriers homeowners and auto",
+      "callingWebpage": "/home-auto-bundle",
+      "products": "Homeowners Insurance, Auto Insurance",
+      "cartId": "GH-7392K",
+      "serviceable": "Yes",
+      "email": "marcus.henderson@emailprovider.com",
+      "street": "1847 Riverside Drive",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78741",
+      "digitalJourney": "/home › /insurance › /homeowners-insurance › /home-auto-bundle",
+      "intent": "Homeowner seeking bundled home and auto coverage with multi-policy discount for recent move to Austin",
+      "coverage": "ZIP 78741 confirmed, Austin serviceable",
+      "switchIntent": "High, moving into new home this month, needs both policies in place before closing",
+      "greeting": "Hi Marcus, this is Stephanie with Goosehead Insurance. I see you were looking into bundling your homeowners and auto coverage with us. Great news, we can compare over 200 carriers to find you the best rate. Can I schedule a quick digital quote session with you today or tomorrow?"
+    },
+    "smsScreenpop": {
+      "brandName": "Goosehead Insurance",
+      "callerName": "Jennifer Torres",
+      "callerPhone": "(720) 555-0924",
+      "campaign": "Flood Insurance Protection, Denver Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Quote Lead",
+      "estimatedValue": "$1,085",
+      "googleSearch": "flood insurance quote Denver Colorado",
+      "websiteSearch": "NFIP private flood coverage options near me",
+      "callingWebpage": "/flood-insurance",
+      "products": "Flood Insurance, Homeowners Insurance",
+      "cartId": "GH-5641M",
+      "serviceable": "Yes",
+      "email": "jennifer.torres@emailprovider.com",
+      "street": "3521 South Gaylord Street",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80210",
+      "digitalJourney": "/home › /insurance › /homeowners-insurance › /flood-insurance",
+      "intent": "Homeowner in flood zone seeking standalone flood coverage to protect dwelling and contents",
+      "coverage": "ZIP 80210 confirmed, Denver serviceable",
+      "appointment": "In-home coverage consultation with specialist, Thursday July 18, 2:00 PM",
+      "greeting": "Hi Jennifer, this is David from Goosehead Insurance. Thanks for checking out flood coverage options with us. We have your in-home consultation scheduled for Thursday at 2 PM with one of our specialists. They'll walk through NFIP and private carrier options to get you protected. Looking forward to it!"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Goosehead Insurance",
+      "brandDomain": "www.goosehead.com",
+      "brandIcon": "🏠",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Bundle and Save Home Auto",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "home and auto insurance bundle",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/homeowners-insurance",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Homeowners Insurance, Auto Insurance",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "quote_new_bundle",
+          "name": "Quote, New Bundle"
+        },
+        {
+          "id": "existing_client_support",
+          "name": "Existing Client Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there. Thanks for calling Goosehead Insurance. I see you've been looking at our homeowners and auto coverage options today. Are you looking to get a quote for both home and car insurance?",
+          "sigs": [],
+          "q": [
+            25,
+            40,
+            35
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, actually. I just bought a house here in Santa Barbara and I need to bundle home and auto coverage before my loan closes in three weeks.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>New homebuyer</strong> with purchase deadline"
+            },
+            {
+              "c": "blue",
+              "t": "Bundle intent confirmed"
+            },
+            {
+              "c": "orange",
+              "t": "Urgent timeline: 3 weeks to close"
+            }
+          ],
+          "q": [
+            65,
+            20,
+            15
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect timing. We shop over 200 carriers to find you the best bundle rate. Do you currently have auto insurance with another carrier, or do you need us to quote that as well?",
+          "sigs": [],
+          "q": [
+            72,
+            15,
+            13
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I have auto insurance now but I want to switch everything to Goosehead when I close. And I'll need to add my spouse to both policies.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Multi-line bundle opportunity"
+            },
+            {
+              "c": "blue",
+              "t": "Policy holder plus spouse"
+            },
+            {
+              "c": "purple",
+              "t": "Auto carrier switch candidate"
+            }
+          ],
+          "q": [
+            85,
+            8,
+            7
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent. I'm routing you to our New Business team right now. They'll compare carriers for both home and auto, apply your household discount, and have everything ready well before closing. Hold for just one moment.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Quote Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "answered_by_agent and (signal = \"Coverage Bound\" or signal = \"Down Payment Collected\")",
+          "createdAt": "03/12/25 9:14 am",
+          "updatedAt": "01/08/26 2:41 pm"
+        },
+        {
+          "name": "Auto Insurance Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"quote for car insurance (Caller)\", \"auto policy (Caller)\", \"add my vehicle (Caller)\", \"full coverage auto (Agent)\"])",
+          "createdAt": "04/02/25 11:05 am",
+          "updatedAt": "12/19/25 4:22 pm"
+        },
+        {
+          "name": "Competitor Rate Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"State Farm quoted me (Caller)\", \"cheaper with Progressive (Caller)\", \"my current rate with Allstate (Caller)\", \"Geico gave me (Caller)\"])",
+          "createdAt": "05/21/25 3:47 pm",
+          "updatedAt": "01/03/26 10:16 am"
+        },
+        {
+          "name": "Coverage Needs Discovery (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Coverage Needs Discovery] < 60 and duration > 45 sec",
+          "createdAt": "02/18/25 8:33 am",
+          "updatedAt": "12/29/25 1:09 pm"
+        },
+        {
+          "name": "Empathy and Rapport (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy and Rapport] < 60 and duration > 45 sec",
+          "createdAt": "02/25/25 10:52 am",
+          "updatedAt": "01/11/26 9:38 am"
+        },
+        {
+          "name": "Franchise Ownership Inquiry",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"own a franchise (Caller)\", \"become an agent (Caller)\", \"franchise cost (Caller)\", \"open my own agency (Caller)\"])",
+          "createdAt": "06/09/25 2:15 pm",
+          "updatedAt": "01/06/26 3:50 pm"
+        },
+        {
+          "name": "Home Auto Bundle Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"bundle home and auto (Caller)\", \"multi policy discount (Agent)\", \"combine my policies (Caller)\", \"home and auto together (Caller)\"])",
+          "createdAt": "03/30/25 1:41 pm",
+          "updatedAt": "12/22/25 11:27 am"
+        },
+        {
+          "name": "Proper Call Greeting (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Call Greeting and Verification] < 60 and duration > 45 sec",
+          "createdAt": "02/12/25 9:20 am",
+          "updatedAt": "12/15/25 4:05 pm"
+        },
+        {
+          "name": "Quote Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"get a quote (Caller)\", \"shop the carriers (Agent)\", \"compare rates (Caller)\", \"how much would it cost (Caller)\"])",
+          "createdAt": "04/17/25 10:08 am",
+          "updatedAt": "01/09/26 2:12 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your premium would be (Agent)\", \"annual premium of (Agent)\", \"I can offer you (Agent)\", \"the rate comes to (Agent)\"])",
+          "createdAt": "05/06/25 3:29 pm",
+          "updatedAt": "01/07/26 10:44 am"
+        }
+      ]
+    }
+  }
+}

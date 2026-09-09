@@ -1,0 +1,5296 @@
+{
+  "id": "mitel",
+  "customerName": "Mitel",
+  "websiteUrl": "https://www.mitel.com",
+  "brandDomain": "mitel.com",
+  "networkName": "Invoca for Enterprise Communications",
+  "industry": "Enterprise Unified Communications & Contact Center Software",
+  "bookingTerm": "Demo",
+  "customerNoun": "Customer",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 4000,
+      "yTicks": [
+        0,
+        1000,
+        2000,
+        3000,
+        4000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 3218
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 3642
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 3897
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 3541
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 3426
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Demo Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Demo Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "The Hybrid & AI Revolution in UC",
+          "marketingSearchTerm": "cloud contact center software",
+          "landingPageUrl": "https://www.mitel.com/products/mitel-cx?utm_source=google&utm_medium=cpc&utm_campaign=hybrid_ai_uc",
+          "websiteJourney": "Home / Products & Services / Advanced UC & CX Solutions / Mitel CX",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Migrate to the Cloud, Your Way",
+          "marketingSearchTerm": "Mitel MiVoice Business pricing",
+          "landingPageUrl": "https://www.mitel.com/products/business-communications-platforms/mivoice-business?utm_source=google&utm_medium=cpc&utm_campaign=migrate_cloud",
+          "websiteJourney": "Home / Products & Services / Business Communications Platforms / MiVoice Business",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Secure Communications for Healthcare",
+          "marketingSearchTerm": "hospital mass notification system",
+          "landingPageUrl": "https://www.mitel.com/solutions/industries/healthcare?utm_source=bing&utm_medium=cpc&utm_campaign=secure_healthcare",
+          "websiteJourney": "Home / Solutions / Industries / Healthcare",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Communication Without Compromise",
+          "marketingSearchTerm": "government secure UC solution",
+          "landingPageUrl": "https://www.mitel.com/products/secure-sovereign-hosted-cloud/mitel-secure-cloud?utm_source=google&utm_medium=cpc&utm_campaign=comms_no_compromise",
+          "websiteJourney": "Home / Solutions / Industries / Government & Defense",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Resource Center, Techaisle Survey",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mitel.com/resources/resource-center/techaisle-hybrid-ai-survey?utm_source=organic&utm_medium=organic&utm_campaign=techaisle_survey",
+          "websiteJourney": "Home / Resources / Resource Center / White Papers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Powering the Connections that Power Your World",
+          "marketingSearchTerm": "business phone system",
+          "landingPageUrl": "https://www.mitel.com/products/business-communications-platforms?utm_source=google&utm_medium=cpc&utm_campaign=powering_connections",
+          "websiteJourney": "Home / Products & Services / Business Communications Platforms / OpenScape Business",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "The Hybrid & AI Revolution in UC",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mitel.com/solutions/business-needs/hybrid-communications?utm_source=facebook&utm_medium=social&utm_campaign=hybrid_ai_uc",
+          "websiteJourney": "Home / Solutions / Business Needs / Hybrid Communications",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "The Hybrid & AI Revolution in UC",
+          "marketingSearchTerm": "contact center IVR software",
+          "landingPageUrl": "https://www.mitel.com/products/advanced-uc-cx/micontact-center-enterprise?utm_source=google&utm_medium=cpc&utm_campaign=hybrid_ai_uc",
+          "websiteJourney": "Home / Products & Services / Advanced UC & CX Solutions / MiContact Center Enterprise",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Migrate to the Cloud, Your Way",
+          "marketingSearchTerm": "hybrid VoIP phone system",
+          "landingPageUrl": "https://www.mitel.com/solutions/business-needs/migrate-to-the-cloud?utm_source=bing&utm_medium=cpc&utm_campaign=migrate_cloud",
+          "websiteJourney": "Home / Solutions / Business Needs / Migrate to the Cloud",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Powering the Connections that Power Your World",
+          "marketingSearchTerm": "unified communications provider",
+          "landingPageUrl": "https://www.mitel.com/products/unified-communications-collaboration/micollab?utm_source=google&utm_medium=cpc&utm_campaign=powering_connections",
+          "websiteJourney": "Home / Products & Services / Unified Communications & Collaboration / MiCollab",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Secure Communications for Healthcare",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mitel.com/products/critical-communications/revolution?utm_source=instagram&utm_medium=social&utm_campaign=secure_healthcare",
+          "websiteJourney": "Home / Products & Services / Critical Communications / Revolution",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Aragon Research Globe Leader 2026",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mitel.com/resources/news/aragon-research-globe-intelligent-contact-center?utm_source=organic&utm_medium=organic&utm_campaign=aragon_leader",
+          "websiteJourney": "Home / Resources / News / Analyst Recognition",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Communication Without Compromise",
+          "marketingSearchTerm": "MiCollab vs Teams",
+          "landingPageUrl": "https://www.mitel.com/products/unified-communications-collaboration/microsoft-teams-integration?utm_source=google&utm_medium=cpc&utm_campaign=comms_no_compromise",
+          "websiteJourney": "Home / Products & Services / Unified Communications & Collaboration / Microsoft Teams Integration",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Powering the Connections that Power Your World",
+          "marketingSearchTerm": "on-premises PBX for enterprise",
+          "landingPageUrl": "https://www.mitel.com/products/business-communications-platforms/openscape-4000?utm_source=google&utm_medium=cpc&utm_campaign=powering_connections",
+          "websiteJourney": "Home / Products & Services / Business Communications Platforms / OpenScape 4000",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Navigating Uncertainty",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mitel.com/solutions/business-profiles/enterprise?utm_source=facebook&utm_medium=social&utm_campaign=navigating_uncertainty",
+          "websiteJourney": "Home / Solutions / Business Profiles / Enterprise",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Powering the Connections that Power Your World",
+          "marketingSearchTerm": "SIP desk phones for business",
+          "landingPageUrl": "https://www.mitel.com/products/devices-accessories/mitel-6900-series?utm_source=bing&utm_medium=cpc&utm_campaign=powering_connections",
+          "websiteJourney": "Home / Products & Services / Devices & Accessories / IP Phones",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Resource Center, CX eBook",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mitel.com/resources/resource-center/omnichannel-cx-ebook?utm_source=organic&utm_medium=organic&utm_campaign=cx_ebook",
+          "websiteJourney": "Home / Resources / Resource Center / eBooks",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "The Hybrid & AI Revolution in UC",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mitel.com/solutions/business-needs/mitel-ai-ecosystem?utm_source=instagram&utm_medium=social&utm_campaign=hybrid_ai_uc",
+          "websiteJourney": "Home / Solutions / Business Needs / Mitel AI Ecosystem",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Migrate to the Cloud, Your Way",
+          "marketingSearchTerm": "Microsoft Teams telephony integration",
+          "landingPageUrl": "https://www.mitel.com/products/unified-communications-collaboration/unify-phone?utm_source=google&utm_medium=cpc&utm_campaign=migrate_cloud",
+          "websiteJourney": "Home / Products & Services / Unified Communications & Collaboration / Unify Phone",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Resource Center, Manufacturing Case Study",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mitel.com/resources/case-studies/manufacturing-uc-modernization?utm_source=organic&utm_medium=organic&utm_campaign=mfg_case_study",
+          "websiteJourney": "Home / Solutions / Industries / Manufacturing",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Communication Without Compromise",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mitel.com/products/critical-communications/critical-event-management?utm_source=facebook&utm_medium=social&utm_campaign=comms_no_compromise",
+          "websiteJourney": "Home / Products & Services / Critical Communications / Critical Event Management",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Mitel)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "13,901"
+            },
+            {
+              "label": "Sales Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Contract Won (Percent)",
+              "value": "9%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$20,551,114"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "2,224"
+            },
+            {
+              "label": "Technical Support Call (Percent)",
+              "value": "7%"
+            },
+            {
+              "label": "Billing Question (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Partner Inquiry (Percent)",
+              "value": "4%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Quote Discussed (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "15%"
+            },
+            {
+              "label": "Contract Won (Percent)",
+              "value": "9%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sales Inquiry (Count)",
+            "values": [
+              2187,
+              2634,
+              2512,
+              2398,
+              1946
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              798,
+              892,
+              861,
+              774,
+              706
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              412,
+              468,
+              445,
+              397,
+              363
+            ]
+          },
+          {
+            "name": "Contract Won (Count)",
+            "values": [
+              238,
+              276,
+              259,
+              247,
+              231
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 13901,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "4,732",
+                "28%",
+                "6.2%",
+                "$4,912,633"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "3,218",
+                "31%",
+                "7.6%",
+                "$3,988,441"
+              ]
+            },
+            {
+              "name": "LinkedIn",
+              "metrics": [
+                "2,845",
+                "34%",
+                "9.3%",
+                "$4,405,772"
+              ]
+            },
+            {
+              "name": "Partner Referral",
+              "metrics": [
+                "1,879",
+                "38%",
+                "12.4%",
+                "$3,721,896"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "1,227",
+                "42%",
+                "15.6%",
+                "$3,522,372"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 13901,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "5,124",
+                "27%",
+                "5.8%",
+                "$5,238,902"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "3,047",
+                "30%",
+                "7.2%",
+                "$3,701,455"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "2,638",
+                "33%",
+                "9.5%",
+                "$4,122,668"
+              ]
+            },
+            {
+              "name": "Email Nurture",
+              "metrics": [
+                "1,872",
+                "37%",
+                "12.0%",
+                "$3,842,213"
+              ]
+            },
+            {
+              "name": "Webinar",
+              "metrics": [
+                "1,220",
+                "41%",
+                "15.4%",
+                "$3,645,876"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 7844,
+          "rows": [
+            {
+              "name": "Powering the Connections that Power Your World",
+              "metrics": [
+                "2,417",
+                "29%",
+                "6.1%",
+                "$2,451,882"
+              ]
+            },
+            {
+              "name": "The Hybrid and AI Revolution in UC",
+              "metrics": [
+                "1,884",
+                "32%",
+                "7.8%",
+                "$2,014,553"
+              ]
+            },
+            {
+              "name": "Migrate to the Cloud, Your Way",
+              "metrics": [
+                "1,562",
+                "35%",
+                "9.6%",
+                "$1,762,440"
+              ]
+            },
+            {
+              "name": "Communication Without Compromise",
+              "metrics": [
+                "1,138",
+                "39%",
+                "12.2%",
+                "$1,388,921"
+              ]
+            },
+            {
+              "name": "Secure Communications for Healthcare",
+              "metrics": [
+                "843",
+                "43%",
+                "15.8%",
+                "$1,142,668"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 5924,
+          "rows": [
+            {
+              "name": "business phone system",
+              "metrics": [
+                "1,847",
+                "30%",
+                "6.3%",
+                "$1,872,441"
+              ]
+            },
+            {
+              "name": "cloud contact center software",
+              "metrics": [
+                "1,423",
+                "33%",
+                "7.9%",
+                "$1,538,662"
+              ]
+            },
+            {
+              "name": "unified communications provider",
+              "metrics": [
+                "1,168",
+                "36%",
+                "9.8%",
+                "$1,342,880"
+              ]
+            },
+            {
+              "name": "microsoft teams telephony integration",
+              "metrics": [
+                "872",
+                "40%",
+                "12.5%",
+                "$1,048,553"
+              ]
+            },
+            {
+              "name": "hospital mass notification system",
+              "metrics": [
+                "614",
+                "44%",
+                "16.1%",
+                "$842,117"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Demo Set (Industry) (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Business Communications Platforms",
+              "metrics": [
+                "4,187",
+                "28.0%",
+                "6.4%",
+                "$4,462,138"
+              ]
+            },
+            {
+              "name": "Unified Communications & Collaboration",
+              "metrics": [
+                "3,642",
+                "29.0%",
+                "7.8%",
+                "$4,644,921"
+              ]
+            },
+            {
+              "name": "Advanced UC & CX Solutions",
+              "metrics": [
+                "2,918",
+                "30.0%",
+                "9.6%",
+                "$4,719,655"
+              ]
+            },
+            {
+              "name": "Devices & Accessories",
+              "metrics": [
+                "2,013",
+                "26.0%",
+                "11.8%",
+                "$3,786,412"
+              ]
+            },
+            {
+              "name": "Critical Communications",
+              "metrics": [
+                "1,141",
+                "33.7%",
+                "15.6%",
+                "$2,937,988"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 13901,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "4,021",
+                "30.0%",
+                "6.2%",
+                "$4,081,266"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "3,512",
+                "31.0%",
+                "7.8%",
+                "$4,458,922"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "2,876",
+                "29.0%",
+                "9.8%",
+                "$4,679,338"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "2,214",
+                "32.0%",
+                "12.2%",
+                "$4,448,610"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "1,278",
+                "33.0%",
+                "13.8%",
+                "$2,882,978"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Contract Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Business Communications Platforms",
+            "values": [
+              52,
+              58,
+              61,
+              54,
+              44
+            ]
+          },
+          {
+            "name": "Unified Communications & Collaboration",
+            "values": [
+              55,
+              60,
+              62,
+              58,
+              50
+            ]
+          },
+          {
+            "name": "Advanced UC & CX Solutions",
+            "values": [
+              54,
+              59,
+              61,
+              57,
+              50
+            ]
+          },
+          {
+            "name": "Devices & Accessories",
+            "values": [
+              44,
+              50,
+              52,
+              48,
+              44
+            ]
+          },
+          {
+            "name": "Critical Communications",
+            "values": [
+              33,
+              37,
+              39,
+              36,
+              33
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 13,901 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Gregory Salas from a regional healthcare network called to see the Mitel CX cloud contact center in action for his 40 agent team. Oscar walked him through omnichannel routing and AI-assisted IVR, then booked a live demo for the following week. Gregory confirmed the date and shared his rollout timeline.",
+          "date": "Jan 6, 2:42 PM",
+          "agent": "Oscar",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Diane Whitfield wanted to modernize her firm's hybrid workforce with MiCollab for voice, video, and messaging in one app. Lila explained the mobile client and presence features, then scheduled a product demo with a solutions engineer. Diane was enthusiastic and asked for pricing to follow.",
+          "date": "Feb 11, 10:18 AM",
+          "agent": "Lila",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Anthony Reyes called to check the shipment status of his Mitel 6900 Series SIP desk phones and to confirm the remaining warranty coverage. Rosey located the order, provided a tracking update, and clarified the Software Assurance warranty terms. Anthony was satisfied with the answers.",
+          "date": "Mar 3, 4:05 PM",
+          "agent": "Rosey",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Marcus Bellamy, opening a new midsize accounting office, called to schedule a consultation for a MiVoice Business phone system across two sites. Lee collected his company name, user count, and preferred deployment model, then booked a demo with the local partner. Marcus confirmed his contact details for the follow up.",
+          "date": "Apr 9, 11:33 AM",
+          "agent": "Lee",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Patricia Nunez asked about MiContact Center Enterprise for her financial services support line and wanted to compare it against her current contact center setup. Mary outlined skills-based routing and reporting, then set up a demo with a specialist. Patricia agreed and picked a morning slot.",
+          "date": "May 14, 9:27 AM",
+          "agent": "Mary",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Kevin Ostrander wanted to add MiCollab licenses for remote staff and see how it ties into his existing desk phones. Sue reviewed his current plan and booked a demo to show the mobile and video features. Kevin confirmed he would join with two colleagues.",
+          "date": "Jun 2, 1:49 PM",
+          "agent": "Sue",
+          "duration": "2m 10s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 62,
+          "summary": "Rachel Kimura reported that her new SIP DECT handsets lost connection during the warehouse installation and staff could not roam between floors. Mike ran through the base station setup and opened a service ticket for an onsite technician. Rachel remained frustrated about the delay.",
+          "date": "Jul 8, 3:21 PM",
+          "agent": "Mike",
+          "duration": "2m 55s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Daniel Foster disputed a charge on his latest Software Assurance billing statement, saying the renewal amount was higher than quoted. Jennifer reviewed the invoice, explained the annual percentage tied to license value, and escalated the billing discrepancy for review. Daniel wanted a callback with a correction.",
+          "date": "Aug 5, 10:52 AM",
+          "agent": "Jennifer",
+          "duration": "3m 18s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 25,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Laura Pham called about a warranty repair for a conference phone in a meeting room that had failed audio on one side. Rose confirmed the unit was still covered and arranged a replacement shipment. Laura was relieved but noted the outage had disrupted several meetings.",
+          "date": "Aug 21, 2:07 PM",
+          "agent": "Rose",
+          "duration": "2m 24s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Steven Alvarado was comparing MiVoice Business against a competitor for a manufacturing plant and asked to see reliability and hybrid options firsthand. Oscar answered his questions and scheduled a demo despite some hesitation on price. Steven agreed to attend and requested a proposal afterward.",
+          "date": "Sep 4, 4:41 PM",
+          "agent": "Oscar",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Monica Reyes complained that her OpenScape Business installation had been delayed twice and her small office was still without a working phone system. Lila apologized, checked the partner schedule, and pushed for an expedited installation date. Monica remained unhappy about the missed timelines.",
+          "date": "Sep 19, 11:14 AM",
+          "agent": "Lila",
+          "duration": "2m 38s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 43,
+          "summary": "Brian Coleman called upset over a duplicate billing charge for user licenses he said he had already cancelled last quarter. Lee pulled the account, confirmed the error, and opened a billing adjustment request with a credit. Brian demanded written confirmation before ending the call.",
+          "date": "Sep 27, 3:55 PM",
+          "agent": "Lee",
+          "duration": "3m 02s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Angela Brooks called to cancel her Mitel Secure Cloud subscription because her organization was consolidating vendors. Mary attempted to retain the account and explain the sovereign hosting benefits, but Angela insisted on the cancel request. The account was flagged for a retention specialist.",
+          "date": "Oct 2, 10:39 AM",
+          "agent": "Mary",
+          "duration": "2m 19s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Thomas Nguyen called after hours to report that his contact center queue had dropped calls during peak hours and no one answered. The call rolled to voicemail without reaching an agent. He left an angry message demanding an urgent callback about the outage.",
+          "date": "Oct 11, 6:48 PM",
+          "agent": "No Agent",
+          "duration": "0m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Victoria Salinas called furious about repeated service issues and wanted to cancel her entire MiVoice Business contract immediately. Sue tried to de-escalate and offer a support review, but Victoria refused and asked for a manager. The call ended without resolution and was escalated.",
+          "date": "Oct 24, 1:12 PM",
+          "agent": "Sue",
+          "duration": "2m 51s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "installation",
+        "billing",
+        "warranty",
+        "demo",
+        "contact center",
+        "cancel"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Jan 12, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Primary UC Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area and Deployment Model",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Next Steps",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Demo or Consultation",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Phone Number",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Verify Vertical or Industry",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller is a new prospect",
+        "Caller is seeking unified communications modernization",
+        "Caller mentioned hybrid workforce challenges",
+        "Caller expressed interest in cloud deployment",
+        "Caller is decision maker or influencer",
+        "Caller is evaluating multiple vendors",
+        "Caller has budget authority signals",
+        "Caller needs omnichannel contact center",
+        "Caller is in healthcare vertical",
+        "Caller expressed timeline urgency",
+        "Caller mentioned compliance or security concerns",
+        "Caller scheduled a follow-up meeting",
+        "Caller provided company name"
+      ],
+      "unmetSignals": [
+        "Caller did not mention current system provider",
+        "Caller did not specify team size",
+        "Caller did not confirm IT infrastructure readiness",
+        "Caller did not mention existing Mitel footprint",
+        "Caller did not discuss licensing preference",
+        "Caller did not clarify deployment timeline",
+        "Caller did not mention integration needs with Teams or Zoom",
+        "Caller did not specify geographic distribution",
+        "Caller did not mention support SLA expectations",
+        "Caller did not reference analyst recommendations"
+      ],
+      "naSignals": [
+        "Caller did not discuss existing contract renewal terms",
+        "Caller did not ask about migration services",
+        "Caller did not inquire about device pricing",
+        "Caller did not mention maintenance or support costs",
+        "Caller did not discuss partner enablement",
+        "Caller did not reference previous demo attendance",
+        "Caller did not ask about Software Assurance pricing"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller is a healthcare IT manager seeking to modernize their on-premises PBX system and enable remote work capabilities across multiple clinic locations. They are frustrated with system inflexibility and want to evaluate cloud and hybrid deployment options."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a detailed technical demo showing how Mitel's UC platform integrates with their existing Microsoft infrastructure and supports their distributed workforce. They also want clarity on security and compliance features for healthcare environments."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent did well structuring the intake and scheduling the demo, but missed capturing the email address and failed to set expectations about pre-demo questionnaire or required participants. A brief mention of what materials to gather before the demo would have improved engagement."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Mitel. My name is Marcus Bell. May I have your name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:22",
+          "text": "Hi Marcus, this is Jennifer Chen. I'm the IT director at Evergreen Health Systems."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:29",
+          "text": "Jennifer, thanks for reaching out. We're excited to help. Can you tell me what brings you to Mitel today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:36",
+          "text": "We're currently on an older on-premises system that just isn't keeping up. We have three clinic locations and staff working from home now. We need something more flexible, ideally cloud or hybrid."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:48",
+          "text": "I understand. Hybrid and cloud flexibility are exactly what our Unified Communications platform delivers. Just to confirm, are you looking for voice, collaboration, or an integrated solution across both?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:58",
+          "text": "Both. We also have a small contact center handling patient intake calls, so we'd benefit from a solution that covers both unified communications and basic contact center capabilities."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:10",
+          "text": "That's perfect. MiVoice Business combined with our Mitel CX platform covers exactly that scenario. Before I schedule your demo, let me get a couple more details. What is your approximate employee count?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:22",
+          "text": "We have about 150 employees across the three clinics, with roughly 40 in our central office handling calls."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:31",
+          "text": "Excellent. And are all three locations in the same geographic area, or spread across different states?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:39",
+          "text": "All in the Pacific Northwest. We're based in Portland, Oregon."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:45",
+          "text": "Perfect. So to confirm, I'll set up a technical demo of our UC and contact center solutions tailored for healthcare. Let me get your phone number to send confirmation details."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:54",
+          "text": "Sure, it's ****-555-0142."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:01",
+          "text": "Got it. And your best email for follow-up?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:06",
+          "text": "Actually, just send everything to our main IT email. Our internal team will coordinate from there."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:13",
+          "text": "Great, Jennifer. I've scheduled your demo for January 19 at 2:00 PM Pacific. A specialist will walk you through security, compliance features for healthcare, and how Teams integration works. Thanks for choosing Mitel."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:24",
+          "text": "Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Chen, IT director at Evergreen Health Systems, called to evaluate Mitel's UC and contact center solutions for three clinic locations in the Portland, Oregon area. Her organization is looking to migrate from an outdated on-premises PBX to a hybrid or cloud platform to support remote work and distributed staff. The agent successfully captured her primary needs, confirmed the requirement for both unified communications and light contact center capabilities, and scheduled a technical demo for January 19. However, the agent did not secure the caller's direct email address, which may impact follow-up efficiency.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus great structure and intake discipline on this call. You qualified the vertical, confirmed cloud interest, and booked the demo smoothly. Two coaching notes for next time. First, when the caller defers to a shared IT email, gently push back and get at least one direct contact. Shared inboxes create demo no-shows. Second, use the final 15 seconds to set expectations, something like 'Before the demo, our team will send a quick IT discovery questionnaire and a link to our healthcare compliance overview. Just review those so we can maximize our time together.' This primes the customer and shows professionalism."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "13,901"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$1478.39"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$20,551,114"
+            }
+          ]
+        },
+        {
+          "title": "NEW CUSTOMER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Customers (Count)",
+              "value": "8,142"
+            },
+            {
+              "label": "Caller Type: New Customers (Percent)",
+              "value": "59%"
+            },
+            {
+              "label": "Demo: Scheduled (Count)",
+              "value": "4,031"
+            },
+            {
+              "label": "Demo: Scheduled (Percent)",
+              "value": "29%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CUSTOMERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Customer (Count)",
+              "value": "5,759"
+            },
+            {
+              "label": "Caller Type: Existing Customer (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Demo: Canceled (Percent)",
+              "value": "6%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Demos)",
+          "chart": {
+            "legend": "Demo: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Partner Referral",
+                "value": 47,
+                "display": "47%"
+              },
+              {
+                "name": "Bing",
+                "value": 38,
+                "display": "38%"
+              },
+              {
+                "name": "LinkedIn",
+                "value": 31,
+                "display": "31%"
+              },
+              {
+                "name": "Direct",
+                "value": 26,
+                "display": "26%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Demos)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Demo: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "5,237",
+                  "22%",
+                  "$6,842,155"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "3,164",
+                  "26%",
+                  "$4,713,288"
+                ]
+              },
+              {
+                "cells": [
+                  "LinkedIn",
+                  "2,458",
+                  "31%",
+                  "$3,988,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing",
+                  "1,879",
+                  "38%",
+                  "$2,905,117"
+                ]
+              },
+              {
+                "cells": [
+                  "Partner Referral",
+                  "1,163",
+                  "47%",
+                  "$2,102,112"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 6000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000,
+              6000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 5614,
+                "display": "5,614"
+              },
+              {
+                "name": "Organic Search",
+                "value": 3122,
+                "display": "3,122"
+              },
+              {
+                "name": "Email Nurture",
+                "value": 2238,
+                "display": "2,238"
+              },
+              {
+                "name": "Paid Social",
+                "value": 1764,
+                "display": "1,764"
+              },
+              {
+                "name": "Partner Co-marketing",
+                "value": 1163,
+                "display": "1,163"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Demos)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Demo: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "5,614",
+                  "24%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "3,122",
+                  "27%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email Nurture",
+                  "2,238",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "1,764",
+                  "36%"
+                ]
+              },
+              {
+                "cells": [
+                  "Partner Co-marketing",
+                  "1,163",
+                  "44%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Powering the Connections that Power Your World",
+                "value": 3124,
+                "display": "3,124"
+              },
+              {
+                "name": "The Hybrid & AI Revolution in UC",
+                "value": 2441,
+                "display": "2,441"
+              },
+              {
+                "name": "Migrate to the Cloud, Your Way",
+                "value": 1893,
+                "display": "1,893"
+              },
+              {
+                "name": "Communication Without Compromise",
+                "value": 1352,
+                "display": "1,352"
+              },
+              {
+                "name": "Secure Communications for Healthcare",
+                "value": 987,
+                "display": "987"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Demos)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Demo: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Powering the Connections that Power Your World",
+                  "3,124",
+                  "23%",
+                  "$4,512,338"
+                ]
+              },
+              {
+                "cells": [
+                  "The Hybrid & AI Revolution in UC",
+                  "2,441",
+                  "28%",
+                  "$3,388,221"
+                ]
+              },
+              {
+                "cells": [
+                  "Migrate to the Cloud, Your Way",
+                  "1,893",
+                  "33%",
+                  "$2,744,190"
+                ]
+              },
+              {
+                "cells": [
+                  "Communication Without Compromise",
+                  "1,352",
+                  "41%",
+                  "$2,013,455"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 2000,
+            "axisTicks": [
+              0,
+              500,
+              1000,
+              1500,
+              2000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "business phone system",
+                "value": 1842,
+                "display": "1,842"
+              },
+              {
+                "name": "cloud contact center software",
+                "value": 1411,
+                "display": "1,411"
+              },
+              {
+                "name": "unified communications provider",
+                "value": 1187,
+                "display": "1,187"
+              },
+              {
+                "name": "MiVoice Business pricing",
+                "value": 894,
+                "display": "894"
+              },
+              {
+                "name": "Microsoft Teams telephony integration",
+                "value": 673,
+                "display": "673"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Demos)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Demo: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "business phone system",
+                  "22%"
+                ]
+              },
+              {
+                "cells": [
+                  "cloud contact center software",
+                  "27%"
+                ]
+              },
+              {
+                "cells": [
+                  "unified communications provider",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "MiVoice Business pricing",
+                  "43%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Customers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Demo: Scheduled (Percent)",
+          "Caller Type: New Customers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Business Communications Platforms",
+              "4,821",
+              "25%",
+              "62%"
+            ]
+          },
+          {
+            "cells": [
+              "Advanced UC & CX Solutions",
+              "3,644",
+              "29%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Unified Communications & Collaboration",
+              "3,187",
+              "33%",
+              "66%"
+            ]
+          },
+          {
+            "cells": [
+              "Critical Communications",
+              "2,249",
+              "44%",
+              "71%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Demo: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Ottawa Headquarters",
+              "4,512",
+              "378",
+              "8%",
+              "26%"
+            ]
+          },
+          {
+            "cells": [
+              "Dallas Sales Center",
+              "3,824",
+              "312",
+              "6%",
+              "29%"
+            ]
+          },
+          {
+            "cells": [
+              "Phoenix Support Hub",
+              "3,109",
+              "244",
+              "5%",
+              "33%"
+            ]
+          },
+          {
+            "cells": [
+              "Chicago Regional Office",
+              "2,456",
+              "178",
+              "4%",
+              "41%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              512,
+              578,
+              561,
+              548,
+              515
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              448,
+              492,
+              478,
+              471,
+              449
+            ]
+          },
+          {
+            "name": "Needs Partner Approval",
+            "values": [
+              382,
+              418,
+              405,
+              398,
+              384
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              298,
+              328,
+              318,
+              312,
+              308
+            ]
+          },
+          {
+            "name": "Requires Custom Deployment",
+            "values": [
+              242,
+              266,
+              258,
+              254,
+              247
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "5,560"
+          },
+          {
+            "label": "Demo Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Contract Won (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$11,714,135"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "19%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$485,920"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "26%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,127,340"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$892,155"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "24%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,643,280"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,891,775"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Won (Percent)",
+              "value": "42%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,673,665"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2087,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "1,847",
+                "62%",
+                "38%",
+                "$3,248,795"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "1,243",
+                "51%",
+                "29%",
+                "$1,893,457"
+              ]
+            },
+            {
+              "name": "LinkedIn Ads",
+              "metrics": [
+                "987",
+                "54%",
+                "32%",
+                "$2,104,688"
+              ]
+            },
+            {
+              "name": "Direct Traffic",
+              "metrics": [
+                "623",
+                "58%",
+                "35%",
+                "$2,267,405"
+              ]
+            },
+            {
+              "name": "Email Nurture",
+              "metrics": [
+                "560",
+                "49%",
+                "24%",
+                "$1,779,790"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2156,
+          "rows": [
+            {
+              "name": "Web Form",
+              "metrics": [
+                "1,892",
+                "57%",
+                "31%",
+                "$3,125,280"
+              ]
+            },
+            {
+              "name": "Phone Call",
+              "metrics": [
+                "1,456",
+                "63%",
+                "37%",
+                "$3,687,920"
+              ]
+            },
+            {
+              "name": "Chat",
+              "metrics": [
+                "985",
+                "52%",
+                "28%",
+                "$1,804,340"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "738",
+                "48%",
+                "22%",
+                "$1,358,960"
+              ]
+            },
+            {
+              "name": "Social Media Message",
+              "metrics": [
+                "489",
+                "54%",
+                "33%",
+                "$1,737,655"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2244,
+          "rows": [
+            {
+              "name": "Powering the Connections that Power Your World",
+              "metrics": [
+                "1,634",
+                "59%",
+                "36%",
+                "$3,445,280"
+              ]
+            },
+            {
+              "name": "The Hybrid and AI Revolution in UC",
+              "metrics": [
+                "1,208",
+                "54%",
+                "31%",
+                "$2,187,640"
+              ]
+            },
+            {
+              "name": "Migrate to the Cloud Your Way",
+              "metrics": [
+                "847",
+                "51%",
+                "27%",
+                "$1,624,795"
+              ]
+            },
+            {
+              "name": "Communication Without Compromise",
+              "metrics": [
+                "569",
+                "55%",
+                "29%",
+                "$1,278,655"
+              ]
+            },
+            {
+              "name": "Secure Communications for Healthcare",
+              "metrics": [
+                "302",
+                "47%",
+                "19%",
+                "$778,785"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1856,
+          "rows": [
+            {
+              "name": "Unified Communications Provider",
+              "metrics": [
+                "1,142",
+                "64%",
+                "39%",
+                "$2,854,380"
+              ]
+            },
+            {
+              "name": "Cloud Contact Center Software",
+              "metrics": [
+                "876",
+                "55%",
+                "33%",
+                "$1,945,260"
+              ]
+            },
+            {
+              "name": "MiVoice Business Pricing",
+              "metrics": [
+                "654",
+                "49%",
+                "26%",
+                "$1,387,920"
+              ]
+            },
+            {
+              "name": "Hybrid VoIP Phone System",
+              "metrics": [
+                "421",
+                "52%",
+                "28%",
+                "$912,445"
+              ]
+            },
+            {
+              "name": "Microsoft Teams Telephony Integration",
+              "metrics": [
+                "467",
+                "51%",
+                "24%",
+                "$1,614,150"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Demo Scheduled (Percent)",
+            "Contract Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Business Communications Platforms",
+              "metrics": [
+                "1,876",
+                "61%",
+                "36%",
+                "$3,968,755"
+              ]
+            },
+            {
+              "name": "Advanced UC and CX Solutions",
+              "metrics": [
+                "1,243",
+                "58%",
+                "34%",
+                "$2,854,920"
+              ]
+            },
+            {
+              "name": "Unified Communications and Collaboration",
+              "metrics": [
+                "987",
+                "52%",
+                "30%",
+                "$1,876,540"
+              ]
+            },
+            {
+              "name": "Professional and Managed Services",
+              "metrics": [
+                "723",
+                "49%",
+                "26%",
+                "$1,692,380"
+              ]
+            },
+            {
+              "name": "Devices and Accessories",
+              "metrics": [
+                "731",
+                "51%",
+                "28%",
+                "$1,481,540"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Contract Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Business Communications Platforms",
+            "values": [
+              265,
+              298,
+              287,
+              301,
+              314
+            ]
+          },
+          {
+            "name": "Advanced UC and CX Solutions",
+            "values": [
+              211,
+              249,
+              235,
+              254,
+              267
+            ]
+          },
+          {
+            "name": "Unified Communications and Collaboration",
+            "values": [
+              161,
+              198,
+              176,
+              202,
+              188
+            ]
+          },
+          {
+            "name": "Professional and Managed Services",
+            "values": [
+              117,
+              142,
+              128,
+              155,
+              144
+            ]
+          },
+          {
+            "name": "Devices and Accessories",
+            "values": [
+              125,
+              156,
+              142,
+              168,
+              163
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Demo Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Demo Scheduled (Percent)",
+            "value": "31%"
+          },
+          {
+            "label": "Demo Scheduled (Count)",
+            "value": "4,031"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$16,420,847"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "18:47:15"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Demo Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Demo Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Demo Scheduled (Count)",
+            "value": "287"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$261,442"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Demo Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Demo Scheduled",
+            "values": [
+              73,
+              78,
+              71,
+              74,
+              79,
+              68,
+              75,
+              82,
+              70,
+              77,
+              74,
+              81,
+              73,
+              76,
+              80,
+              72,
+              78,
+              75,
+              79,
+              74,
+              71,
+              77,
+              83,
+              76,
+              73,
+              74,
+              78,
+              81,
+              70,
+              75,
+              77,
+              172,
+              189,
+              167,
+              184,
+              191,
+              173,
+              187,
+              179,
+              182,
+              174,
+              188,
+              169,
+              186,
+              193,
+              175,
+              184,
+              178,
+              191
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,173"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "743"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "63%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "721"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Demo Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Unified Communications Licensing",
+            "values": [
+              8,
+              11,
+              9,
+              12,
+              6,
+              10
+            ]
+          },
+          {
+            "name": "Cloud Migration & Hybrid Deployment",
+            "values": [
+              12,
+              9,
+              10,
+              8,
+              11,
+              13
+            ]
+          },
+          {
+            "name": "Contact Center AI Integration",
+            "values": [
+              7,
+              10,
+              12,
+              11,
+              8,
+              9
+            ]
+          },
+          {
+            "name": "Device & Infrastructure Compatibility",
+            "values": [
+              9,
+              7,
+              8,
+              12,
+              10,
+              11
+            ]
+          },
+          {
+            "name": "Security & Compliance Requirements",
+            "values": [
+              6,
+              8,
+              11,
+              9,
+              12,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "12,789"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "8,410"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Demo Scheduled (Count)",
+            "value": "4,031"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$20,551,114"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 300,
+          "axisTicks": [
+            0,
+            75,
+            150,
+            225,
+            300
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "David Kinsella",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Patricia Nguyen",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Marcus Webb",
+              "value": 261,
+              "display": "261"
+            },
+            {
+              "name": "Jennifer Ortiz",
+              "value": 204,
+              "display": "204"
+            },
+            {
+              "name": "Robert Castellano",
+              "value": 172,
+              "display": "172"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Demo Scheduled (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Mendez",
+            "values": [
+              156,
+              187,
+              209,
+              248,
+              267
+            ]
+          },
+          {
+            "name": "James Harding",
+            "values": [
+              142,
+              165,
+              193,
+              224,
+              251
+            ]
+          },
+          {
+            "name": "Amanda Foster",
+            "values": [
+              168,
+              192,
+              218,
+              241,
+              263
+            ]
+          },
+          {
+            "name": "Christopher Ball",
+            "values": [
+              151,
+              178,
+              205,
+              229,
+              245
+            ]
+          },
+          {
+            "name": "Elena Rodriguez",
+            "values": [
+              144,
+              169,
+              198,
+              219,
+              237
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "David Kinsella",
+              "value": 52.3,
+              "display": "52.3%"
+            },
+            {
+              "name": "Patricia Nguyen",
+              "value": 54.7,
+              "display": "54.7%"
+            },
+            {
+              "name": "Marcus Webb",
+              "value": 56.1,
+              "display": "56.1%"
+            },
+            {
+              "name": "Jennifer Ortiz",
+              "value": 57.8,
+              "display": "57.8%"
+            },
+            {
+              "name": "Robert Castellano",
+              "value": 59.4,
+              "display": "59.4%"
+            },
+            {
+              "name": "Michelle Torres",
+              "value": 61.2,
+              "display": "61.2%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Demo Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "David Kinsella",
+                "52.3%",
+                "28%",
+                "$1,888,864",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Nguyen",
+                "54.7%",
+                "29%",
+                "$2,010,442",
+                "1,352"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Webb",
+                "56.1%",
+                "31%",
+                "$2,127,958",
+                "1,401"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Ortiz",
+                "57.8%",
+                "32%",
+                "$2,284,512",
+                "1,488"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Castellano",
+                "59.4%",
+                "34%",
+                "$2,367,816",
+                "1,356"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Torres",
+                "61.2%",
+                "35%",
+                "$2,449,296",
+                "1,429"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Mendez",
+              "value": 91.6,
+              "display": "91.6%"
+            },
+            {
+              "name": "James Harding",
+              "value": 89.8,
+              "display": "89.8%"
+            },
+            {
+              "name": "Amanda Foster",
+              "value": 92.3,
+              "display": "92.3%"
+            },
+            {
+              "name": "Christopher Ball",
+              "value": 88.4,
+              "display": "88.4%"
+            },
+            {
+              "name": "Elena Rodriguez",
+              "value": 90.7,
+              "display": "90.7%"
+            },
+            {
+              "name": "Kevin Vasquez",
+              "value": 93.1,
+              "display": "93.1%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Demo Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mendez",
+                "91.6%",
+                "65%",
+                "$4,726,434",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "James Harding",
+                "89.8%",
+                "62%",
+                "$4,342,218",
+                "1,369"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Foster",
+                "92.3%",
+                "66%",
+                "$4,799,352",
+                "1,443"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Ball",
+                "88.4%",
+                "60%",
+                "$4,157,964",
+                "1,354"
+              ]
+            },
+            {
+              "cells": [
+                "Elena Rodriguez",
+                "90.7%",
+                "63%",
+                "$4,347,986",
+                "1,386"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Vasquez",
+                "93.1%",
+                "67%",
+                "$4,804,908",
+                "1,422}]"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Demo Scheduled (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Demo Scheduled (Count)",
+        "rightMax": 200,
+        "rightTicks": [
+          0,
+          50,
+          100,
+          150,
+          200
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 149
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 143
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 133
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 127
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 111
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 116
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 128
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 133
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 149
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 144
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 130
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 126
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 112
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 115
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 131
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 135
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 147
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 145
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 127
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 123
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 114
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 115
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 134
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 138
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 145
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 145
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 126
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 120
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 116
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 115
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 139
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1000000,
+        "rightTicks": [
+          0,
+          333333.3333333333,
+          666666.6666666666,
+          1000000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 761811
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 730161
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 679929
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 648784
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 564886
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 592832
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 654884
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 680698
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 758982
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 735880
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 662782
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 640592
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 570020
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 587555
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 670476
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 690906
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 751915
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 740213
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 649087
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 628500
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 578575
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 584641
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 682032
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 704640
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 742363
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 741283
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 639800
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 613466
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 588608
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 585769
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 689044
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "13,901"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "1,112"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "834"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "81%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Martinez",
+                "412",
+                "88%",
+                "87%",
+                "79%"
+              ]
+            },
+            {
+              "cells": [
+                "David Thornton",
+                "389",
+                "84%",
+                "83%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Chen",
+                "298",
+                "86%",
+                "85%",
+                "82%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "13,901 calls",
+      "pagerLabel": "1 of 1,390",
+      "calls": [
+        {
+          "time": "1/6/26 9:12 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 10:41 am",
+          "id": "A2C4-5E19B7F3A8C1"
+        },
+        {
+          "time": "1/13/26 11:27 am",
+          "id": "7D3E-91BC44A0F6E2"
+        },
+        {
+          "time": "1/15/26 1:03 pm",
+          "id": "C918-2A7F0D5E113B"
+        },
+        {
+          "time": "1/16/26 2:38 pm",
+          "id": "4B6A-88E1C209D7F5"
+        },
+        {
+          "time": "1/20/26 8:54 am",
+          "id": "E13F-6C90A2B84D17"
+        },
+        {
+          "time": "1/22/26 12:19 pm",
+          "id": "9F02-3D71E8A5B0C4"
+        },
+        {
+          "time": "1/26/26 3:47 pm",
+          "id": "1A5C-B4E70F92836D"
+        },
+        {
+          "time": "1/28/26 4:22 pm",
+          "id": "6E80-2F19C7A3D540"
+        },
+        {
+          "time": "1/30/26 10:08 am",
+          "id": "B7D1-58A0E6C29F13"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Mitel, this is Rachel on the business communications team. How can I help you today?",
+          "highlights": [
+            "Thank you for calling Mitel",
+            "this is Rachel"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Rachel. We're a growing insurance firm, about 60 staff across two offices, and our current phone setup is really showing its age. I'm looking at replacing the whole thing.",
+          "highlights": [
+            "about 60 staff across two offices"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:18",
+          "text": "Happy to help with that. Can I get your name and a bit about what you have in place right now?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:25",
+          "text": "Sure, it's Daniel Okafor. We're on an old on-premises PBX that keeps dropping calls, and half the team is remote now so it just doesn't fit how we work anymore.",
+          "highlights": [
+            "Daniel Okafor",
+            "half the team is remote"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:37",
+          "text": "Thanks Daniel. Given the remote split and two sites, I'd point you toward MiVoice Business as your call platform paired with MiCollab so your people get voice, video, messaging, and presence in one app on any device.",
+          "highlights": [
+            "MiVoice Business",
+            "MiCollab"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:52",
+          "text": "Okay, that sounds like the right direction. What does something like that run per person? I want to keep this manageable, we're not a huge company.",
+          "highlights": [
+            "What does something like that run per person",
+            "I want to keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:03",
+          "text": "Completely understand. MiVoice Business typically lands around twenty five to forty five dollars per user each month, and MiCollab adds roughly twenty to thirty five, though your partner tailors the quote to your licensing and volume so you're not overbuying.",
+          "highlights": [
+            "twenty five to forty five dollars per user"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:18",
+          "text": "Right. To be honest I'm getting a couple of quotes on this. The team at RingCentral gave me a number last week, so I'm weighing my options.",
+          "highlights": [
+            "I'm getting a couple of quotes",
+            "The team at RingCentral gave me a number"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:31",
+          "text": "That's smart, and I'd encourage it. Where Mitel stands apart is deployment flexibility. We can do cloud, hybrid, or keep some on-premises, so you migrate at your own pace instead of ripping everything out at once. That tends to be the deciding factor for firms like yours.",
+          "highlights": [
+            "cloud, hybrid, or keep some on-premises"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:47",
+          "text": "That flexibility matters, our compliance people would want some data kept in-house. One thing though, I don't want to get locked into a long commitment if it doesn't work out.",
+          "highlights": [
+            "I don't want to get locked into a long commitment"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:00",
+          "text": "Understood, and we can walk through term options that keep you comfortable. Many customers start hybrid and expand once they see the reliability firsthand. Nothing forces you all in on day one.",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "2:11",
+          "text": "Good. I'd also want to know about desk phones for the front office, the receptionists still want physical handsets.",
+          "highlights": [
+            "desk phones for the front office"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:19",
+          "text": "Easy add. The Mitel 6900 Series IP Phones give you HD audio and color displays, and they pair right into MiVoice Business. Let me set you up with a personalized demo so an engineer can show all of this against your two-site setup. Does Thursday at 10 AM work?",
+          "highlights": [
+            "Mitel 6900 Series IP Phones",
+            "personalized demo",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:33",
+          "text": "Thursday at 10 works for me. Let me just confirm my partner can join, but pencil us in.",
+          "highlights": [
+            "Thursday at 10 works",
+            "confirm my partner can join"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:38",
+          "text": "Done, Daniel, you're booked for Thursday at 10 AM and I'll send a calendar invite you can forward. Thanks so much for calling Mitel, we'll talk soon.",
+          "highlights": [
+            "you're booked for Thursday at 10 AM",
+            "Thanks so much for calling Mitel"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Customer",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Demo: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Interest: Unified Communications",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Interest: IP Desk Phones",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Pricing Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Daniel Okafor, a new prospect from a 60-person insurance firm with two offices and a large remote team, called to replace an aging on-premises PBX. Rachel recommended MiVoice Business paired with MiCollab for unified voice, video, and messaging, plus Mitel 6900 Series IP Phones for the front office. She handled his pricing, RingCentral comparison, and commitment concerns by emphasizing Mitel's cloud, hybrid, and on-premises flexibility. A personalized engineering demo was scheduled for Thursday at 10 AM.",
+        "keyPoints": [
+          "New customer, growing insurance firm with 60 staff across two offices",
+          "Needs to replace an unreliable on-premises PBX with a remote-friendly platform",
+          "Recommended MiVoice Business, MiCollab, and Mitel 6900 Series IP Phones",
+          "Raised pricing, a RingCentral quote, and a lock-in worry, all addressed",
+          "Wants some data kept in-house, hybrid deployment fits",
+          "Demo booked for Thursday 10 AM, contact captured as Daniel Okafor"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Demo booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "8,758 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 876",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for contacting Mitel. This is Sarah with our sales team. Are you calling about unified communications for your business today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes, we're looking to upgrade our phone system. We have about 150 employees spread across 3 locations."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great, sounds like a good fit. Just to get started, are you looking for a cloud based solution or do you prefer to keep systems on premises?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "We'd prefer hybrid actually. We want some flexibility. Cloud for remote workers but some on site capability too."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. Hybrid is exactly what MiVoice Business excels at. Quick question, do you currently have any contact center or customer service team that handles inbound calls?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "We have about 12 people in customer service, yes."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Excellent. So we'd look at MiVoice Business for your main platform plus our Mitel CX for your contact center team. That gives you omnichannel routing and AI assisted CX. For your company size, we're looking at roughly 18 to 24 dollars per user monthly for the base offering."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "That sounds reasonable. What would the total investment be approximately?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:30 AM",
+              "text": "With 162 users including your contact center, you're looking at around 2900 to 3200 monthly, plus a one time setup and migration fee typically 4000 to 6000 depending on complexity."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Got it. When could we get a demo of the system?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "I have availability to walk you through everything. Would Thursday March 13th at 2 PM Pacific work for you? I'll send you a demo link and we can discuss your specific setup."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:34 AM",
+              "text": "Thursday at 2 PM is perfect. Should I expect a call?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:35 AM",
+              "text": "Yes, I'll call you at this number or you can call our demo line at 877-936-2933 if you need to reschedule. Looking forward to showing you how Mitel can transform your communications."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Demo: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Solution: MiVoice Business + Mitel CX",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Deployment: Hybrid Cloud",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimated Monthly: 2900-3200",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Company Size: 150 Employees",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "206-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "206-555-0147",
+            "repeatCaller": "No",
+            "city": "Seattle",
+            "region": "WA",
+            "phoneType": "Mobile",
+            "displayName": "Michael Chen",
+            "firstName": "Michael",
+            "lastName": "Chen",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A742-4B8C93E7F2A1",
+          "time": "8/16/25 10:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A742-4B8C93E7F2A1",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B851-6D2F14A9C8E5",
+          "time": "8/16/25 10:39 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B851-6D2F14A9C8E5",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D963-7E5A1B6F4C2D",
+          "time": "8/16/25 10:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D963-7E5A1B6F4C2D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "13,901 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 1,390",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:34 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:34 PM",
+              "text": "Hello, thanks for calling Mitel. My name is David. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:35 PM",
+              "text": "Hi David. Yeah, I'm looking for a phone system for our office. We've got about 50 employees spread across two locations."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:35 PM",
+              "text": "Great. Thanks for that info. Just to get started, are you currently using an on premises system, or are you looking to move to cloud?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:36 PM",
+              "text": "We're actually in a hybrid setup right now. Some people in the office, some working from home. It's getting pretty messy."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:37 PM",
+              "text": "I hear that all the time. So hybrid is really the way forward. Quick question. What industry are you in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:37 PM",
+              "text": "We're in healthcare. It's a medical services group with a couple of clinics."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:38 PM",
+              "text": "Perfect. Healthcare is a huge focus for us. We have solutions that are HIPAA compliant and built for your exact use case. Are you looking for basic phone capability, or do you need contact center features like call routing and queuing?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:39 PM",
+              "text": "Right now just basic, but we do want a good voicemail system and mobile integration. Maybe someday a call center thing if we grow."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:40 PM",
+              "text": "Understood. So MiVoice Business would be a really solid fit for you. It's thirty to forty dollars per user per month, scalable, and integrates beautifully with mobile devices. Can I propose a quick twenty minute demo? We can walk through how it handles your hybrid setup, HIPAA compliance, and mobile workflow."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:41 PM",
+              "text": "Yeah, that sounds good. When could we do it?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:41 PM",
+              "text": "How about next Thursday at two PM Pacific? That way you can get your team together if you want."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:42 PM",
+              "text": "Let me check my calendar real quick. Yeah, two PM Thursday works for us."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:42 PM",
+              "text": "Excellent. So that's Thursday, January twenty third at two PM Pacific time. We'll send you a calendar invite and a dial in link. Your demo specialist will walk you through the platform and answer any questions about the implementation timeline. Sound good?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:43 PM",
+              "text": "Perfect. Thanks David."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:43 PM",
+              "text": "Great. And just so you have it, my callback number is eight seven seven, nine three six, two nine three three. Looking forward to seeing you Thursday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Demo: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: MiVoice Business",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Industry: Healthcare",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Use Case: Hybrid Deployment",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Compliance Requirement: HIPAA",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:34 pm",
+            "duration": "9:12",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "720-555-8847",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Chen",
+            "firstName": "Sarah",
+            "lastName": "Chen",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B82F-4E7A2B1C9D5F",
+          "time": "1/22/26 10:47 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B82F-4E7A2B1C9D5F",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C6F3-71D4A8E29B44",
+          "time": "1/28/26 1:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C6F3-71D4A8E29B44",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D1A9-56C3F2E8A7C0",
+          "time": "1/31/26 3:56 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D1A9-56C3F2E8A7C0",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Hi, I'm Mitel's AI agent and I can help you build a personalized quote for a business communications or contact center solution, and right now we're offering a complimentary migration assessment when you book this week. Would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, first how many users or agents you need to support, then which solution fits best (unified communications like MiCollab, a business platform like MiVoice Business, or a contact center like Mitel CX), then your preferred deployment model (cloud, hybrid, or on-premises), then your ideal go-live timeline, and finally your business ZIP code so I can confirm partner coverage and availability.",
+        "Estimate then book: Once I confirm we cover your ZIP code, I'll share a preliminary per-user or per-agent price range based on what you shared, then recommend a live demo with a Mitel solutions specialist for an exact quote. I can propose a specific day and time, and you'll get a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Mitel_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Products & Services",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Solutions by Industry",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Contact Sales",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Software Assurance renewal\",\"question\":\"When does my Software Assurance subscription renew and what does it cover?\",\"answer\":\"Your Software Assurance covers ongoing support and version upgrades and typically renews annually. I can connect you with your account manager to review your renewal date and confirm coverage.\"},{\"topic\":\"Add users to existing platform\",\"question\":\"How do I add more user licenses to my MiVoice Business system?\",\"answer\":\"Additional user licenses can be provisioned through your Mitel partner and applied to your existing platform. I can schedule a quick call with a specialist to size the license expansion and confirm pricing.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What is the difference between MiCollab and MiVoice Business?",
+              "answer": "MiVoice Business is the underlying IP call-control platform for voice and mobility, while MiCollab is the single-app client that adds voice, video, messaging, and presence on top of it. A specialist can map both to your setup on a quick demo, which I'd be glad to book."
+            },
+            {
+              "question": "Do you offer a cloud phone system?",
+              "answer": "Yes, Mitel supports flexible cloud, hybrid, and on-premises deployment models across our platforms and Mitel Secure Cloud. Let's set up a demo so a specialist can recommend the right model for you."
+            },
+            {
+              "question": "Can Mitel integrate with Microsoft Teams?",
+              "answer": "Yes, our Microsoft Teams Integration embeds Mitel enterprise voice and PBX calling directly inside Teams. I can arrange a demo to walk you through how it works for your team."
+            },
+            {
+              "question": "How much does MiVoice Business cost?",
+              "answer": "Pricing depends on your user count, deployment model, and licensing, so it varies by configuration. The best next step is a demo where a specialist can build an accurate quote for you."
+            },
+            {
+              "question": "What contact center solutions do you offer?",
+              "answer": "We offer Mitel CX for cloud omnichannel routing and IVR, plus MiContact Center Enterprise for large-scale skills-based routing and reporting. A demo is the best way to see which fits your agent volume, and I can schedule one."
+            },
+            {
+              "question": "Do you support hybrid deployments?",
+              "answer": "Yes, Mitel is built for hybrid communications so you can blend cloud and on-premises as needed. Let's book a demo so a specialist can design a hybrid approach for you."
+            },
+            {
+              "question": "Can I keep my existing desk phones?",
+              "answer": "Many Mitel and OpenScape phones carry forward, and we also offer the 6900 Series, SIP, DECT, and conference phones. A specialist can confirm compatibility on a demo, which I can set up."
+            },
+            {
+              "question": "What is Mitel CX?",
+              "answer": "Mitel CX is our cloud contact center with omnichannel routing, IVR, and AI-assisted customer experience tools. I'd recommend a demo so you can see it in action, and I can arrange that."
+            },
+            {
+              "question": "Do you have solutions for healthcare?",
+              "answer": "Yes, we serve healthcare with secure, compliant communications and EHR-integrated critical communications solutions. Let's schedule a demo tailored to your healthcare environment."
+            },
+            {
+              "question": "What is Revolution used for?",
+              "answer": "Revolution is our mass notification and emergency alerting solution that reaches devices and endpoints across a site. A specialist can scope it for your facilities on a demo, which I can book."
+            },
+            {
+              "question": "How many users can Mitel support?",
+              "answer": "Our platforms scale from small business up to large enterprises, and Mitel serves 70 million users across 100+ countries. A demo will let a specialist right-size a solution for you."
+            },
+            {
+              "question": "Do you offer managed services?",
+              "answer": "Yes, our Professional and Managed Services span Advise, Transform, Operate, and Optimize offerings. I can set up a demo to review which service tier fits your needs."
+            },
+            {
+              "question": "Can I get a softphone for remote workers?",
+              "answer": "Yes, Unify Phone is a cloud-connected softphone that bridges desk phones with mobile and remote work. Let's book a demo so a specialist can configure it for your team."
+            },
+            {
+              "question": "Is Mitel secure and compliant?",
+              "answer": "Mitel emphasizes reliability, security, and offers Mitel Secure Cloud for regulated and sovereign requirements. A specialist can walk through compliance details on a demo I can schedule."
+            },
+            {
+              "question": "What is OpenScape Business?",
+              "answer": "OpenScape Business is an all-in-one unified communications platform designed for small and midsize businesses. I'd suggest a demo to see if it fits your size, and I can arrange one."
+            },
+            {
+              "question": "Do you provide analytics and reporting?",
+              "answer": "Yes, our contact center and workforce optimization tools include advanced analytics, quality management, and reporting. Let's set up a demo so you can see the dashboards."
+            },
+            {
+              "question": "How long does deployment take?",
+              "answer": "Timelines vary by solution, deployment model, and scale, so it depends on your requirements. A specialist can outline a realistic timeline on a demo, which I can book for you."
+            },
+            {
+              "question": "Do you work through partners?",
+              "answer": "Yes, Mitel sells through a global network of 6,000+ trusted partners who help deploy and support your solution. I can connect you with the right partner through a demo."
+            },
+            {
+              "question": "Can Mitel help me migrate to the cloud?",
+              "answer": "Yes, our Migrate to the Cloud approach lets you move at your own pace with cloud or hybrid options. Let's schedule a demo so a specialist can plan your migration path."
+            },
+            {
+              "question": "How do I get a quote?",
+              "answer": "Quotes are built around your user count, deployment model, and features, so a specialist prepares them for you. The fastest way is to book a demo, and I can set that up right now."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule the demo\",\"follow_up_message\":\"Great, I have you down for a Mitel solutions demo. I'll confirm a specialist for your preferred day and time and you'll receive a reminder text with a number to call before the appointment.\"},{\"intent\":\"Request a quote\",\"follow_up_message\":\"Happy to help with a quote. Based on your user count and deployment preference I'll share a preliminary range, then book a demo so a specialist can prepare an exact quote for you.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, I'm Mitel's AI agent. I can help you find the right business communications or contact center solution and build a personalized quote. Want to get started?",
+        "goal": "Qualify the prospect's communications needs and book a live demo with a Mitel solutions specialist.",
+        "bookingType": "virtual demo",
+        "offer": "Get a complimentary migration assessment when you book this week.",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "How many users or contact center agents do you need to support?",
+          "Which solution are you exploring: unified communications, a business phone platform, or a contact center?",
+          "Do you prefer a cloud, hybrid, or on-premises deployment?",
+          "What is your ideal go-live timeline?",
+          "What is your business ZIP code so I can confirm partner coverage and availability?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:21 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:21 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:21 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Mitel",
+      "callerName": "Jennifer Martinez",
+      "callerPhone": "(512) 555-0184",
+      "campaign": "MiVoice Business, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Demo Lead",
+      "estimatedValue": "$4,850",
+      "googleSearch": "enterprise IP PBX system pricing",
+      "websiteSearch": "MiVoice Business cloud hybrid deployment",
+      "callingWebpage": "/products-services/business-communications-platforms/mivoice-business",
+      "products": "MiVoice Business, Mitel CX",
+      "cartId": "MT-7391K",
+      "serviceable": "Yes",
+      "email": "j.martinez.512@outlook.com",
+      "street": "3847 Barton Creek Drive",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78735",
+      "digitalJourney": "/home › /solutions/hybrid-communications › /products-services/business-communications-platforms › /products-services/business-communications-platforms/mivoice-business",
+      "intent": "Upgrade from legacy on-premises PBX to scalable hybrid voice platform with cloud flexibility and AI-assisted routing for growing tech firm.",
+      "coverage": "ZIP 78735 confirmed, Austin serviceable",
+      "switchIntent": "High. Currently managing multiple legacy systems across three offices, experiencing support costs escalation, and board has approved modernization budget for Q3 2025.",
+      "greeting": "Hi Jennifer, this is Alex at Mitel. I see you were looking at MiVoice Business for your Austin offices today. We help growing tech companies consolidate legacy systems into a single flexible platform that works cloud, hybrid, or on-premises. Would you have time this week for a quick walkthrough of how we could simplify your infrastructure?"
+    },
+    "smsScreenpop": {
+      "brandName": "Mitel",
+      "callerName": "David Chen",
+      "callerPhone": "(206) 555-0127",
+      "campaign": "MiContact Center Enterprise, Seattle Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Demo Lead",
+      "estimatedValue": "$18,750",
+      "googleSearch": "cloud contact center software omnichannel routing",
+      "websiteSearch": "MiContact Center Enterprise pricing per agent",
+      "callingWebpage": "/products-services/advanced-uc-cx-solutions/micontact-center-enterprise",
+      "products": "MiContact Center Enterprise, Mitel Workforce Optimization",
+      "cartId": "MT-6524L",
+      "serviceable": "Yes",
+      "email": "d.chen.seattle@corporatemail.com",
+      "street": "1420 Elliott Avenue West",
+      "city": "Seattle",
+      "state": "WA",
+      "zip": "98119",
+      "digitalJourney": "/home › /solutions/call-center-cx › /products-services/advanced-uc-cx-solutions › /products-services/advanced-uc-cx-solutions/micontact-center-enterprise",
+      "intent": "Deploy omnichannel contact center for healthcare provider network with skills-based routing, call recording, and workforce scheduling across 45 agents.",
+      "coverage": "ZIP 98119 confirmed, Seattle serviceable",
+      "appointment": "Live product demo with CX specialist, Tue Jul 22, 2:00 PM PT",
+      "greeting": "Hi David. This is Sarah from Mitel. Thanks for your interest in MiContact Center Enterprise. I've got you scheduled for a personalized demo on Tuesday at 2 PM where we can show you how our omnichannel routing handles healthcare interactions across voice, chat, and email. Feel free to reply with any questions before then."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Mitel",
+      "brandDomain": "www.mitel.com",
+      "brandIcon": "☎️",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "San Jose, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Hybrid & AI Revolution in UC",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "cloud contact center software for enterprise",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/products/mitel-cx",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Mitel CX and MiContact Center Enterprise",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes. not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "San Jose, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "demo_new_project",
+          "name": "Demo. New Project"
+        },
+        {
+          "id": "support_existing",
+          "name": "Support. Existing Customer"
+        },
+        {
+          "id": "general_sales",
+          "name": "General Sales Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Thanks for calling Mitel. I see you've been looking at our contact center solutions. Are you exploring options for a new deployment, or are you supporting an existing system?",
+          "sigs": [],
+          "q": [
+            25,
+            40,
+            35
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We're looking to upgrade our contact center. We currently run an older system and need something with better AI routing and omnichannel support.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Contact center upgrade</strong>. Current legacy system"
+            },
+            {
+              "c": "blue",
+              "t": "AI routing and omnichannel required"
+            }
+          ],
+          "q": [
+            45,
+            30,
+            25
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. And are you looking at this for a single location or across multiple sites?",
+          "sigs": [],
+          "q": [
+            50,
+            28,
+            22
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We have three locations in California, so we need something that scales. We're also interested in workforce optimization features.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Multi-site deployment. Three California locations"
+            },
+            {
+              "c": "orange",
+              "t": "Workforce optimization priority"
+            }
+          ],
+          "q": [
+            72,
+            15,
+            13
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent. It sounds like you'd be a great fit for a personalized demo of Mitel CX with our Workforce Optimization module. I'm connecting you now to our New Project team. They'll walk you through the omnichannel routing, AI-assisted features, and how we handle multi-site scaling. You'll be in great hands.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Demo Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"get you booked for a demo (Agent)\", \"schedule the demo (Agent)\", \"set up a live demo (Caller)\", \"send the calendar invite for the demo (Agent)\"])",
+          "createdAt": "03/12/25 9:14 am",
+          "updatedAt": "01/09/26 2:47 pm"
+        },
+        {
+          "name": "Cloud Migration Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"move to the cloud (Caller)\", \"cloud deployment model (Caller)\", \"migrate our phone system (Caller)\", \"hybrid cloud option (Caller)\"])",
+          "createdAt": "04/02/25 11:30 am",
+          "updatedAt": "12/18/25 10:22 am"
+        },
+        {
+          "name": "Competitor Named",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"looking at RingCentral (Caller)\", \"comparing you to 8x8 (Caller)\", \"quote from Zoom (Caller)\", \"already using Microsoft Teams calling (Caller)\"])",
+          "createdAt": "05/19/25 3:05 pm",
+          "updatedAt": "01/06/26 9:41 am"
+        },
+        {
+          "name": "Contact Center Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Signal",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"cloud contact center (Caller)\", \"omnichannel routing (Caller)\", \"skills based routing (Caller)\", \"call center for our agents (Caller)\"])",
+          "createdAt": "02/24/25 8:52 am",
+          "updatedAt": "12/29/25 4:16 pm"
+        },
+        {
+          "name": "Demo Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"show you MiCollab (Agent)\", \"walk you through MiVoice Business (Agent)\", \"see the platform in action (Caller)\", \"demo of the contact center (Caller)\"])",
+          "createdAt": "03/28/25 10:11 am",
+          "updatedAt": "01/11/26 1:33 pm"
+        },
+        {
+          "name": "Discovery Questions Asked",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Discovery Questions] < 60 and duration > 45 sec",
+          "createdAt": "06/09/25 2:44 pm",
+          "updatedAt": "01/04/26 11:09 am"
+        },
+        {
+          "name": "Next Steps Confirmed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Call Wrap Up] < 60 and duration > 45 sec",
+          "createdAt": "05/30/25 9:26 am",
+          "updatedAt": "01/13/26 3:58 pm"
+        },
+        {
+          "name": "Pricing Objection",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"too expensive (Caller)\", \"per user per month is high (Caller)\", \"what is the licensing cost (Caller)\", \"over our budget (Caller)\"])",
+          "createdAt": "04/15/25 1:19 pm",
+          "updatedAt": "12/22/25 8:47 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"send you a quote (Agent)\", \"pricing proposal (Agent)\", \"per seat pricing (Agent)\", \"your partner will get you a quote (Agent)\"])",
+          "createdAt": "03/07/25 4:33 pm",
+          "updatedAt": "01/07/26 10:52 am"
+        },
+        {
+          "name": "Solution Recap Delivered",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Solution Fit] < 60 and duration > 45 sec",
+          "createdAt": "07/01/25 11:48 am",
+          "updatedAt": "01/10/26 2:05 pm"
+        }
+      ]
+    }
+  }
+}

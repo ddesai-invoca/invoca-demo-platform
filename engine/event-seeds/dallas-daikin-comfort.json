@@ -1,0 +1,5336 @@
+{
+  "id": "daikin-comfort-technologies",
+  "customerName": "Daikin Comfort Technologies",
+  "websiteUrl": "https://www.daikincomfort.com",
+  "brandDomain": "daikincomfort.com",
+  "networkName": "Invoca for HVAC",
+  "industry": "Residential and Light-Commercial HVAC",
+  "bookingTerm": "In-Home Estimate",
+  "customerNoun": "Homeowner",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 6842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 12318
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 13047
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 12986
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 10584
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "In-Home Estimate Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "In-Home Estimate Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Daikin FIT, Find a Local Dealer",
+          "marketingSearchTerm": "daikin fit price",
+          "landingPageUrl": "https://www.daikincomfort.com/products/heating-cooling/daikin-fit?utm_source=google&utm_medium=cpc&utm_campaign=daikin_fit_dealer",
+          "websiteJourney": "Home / Products / Heating & Cooling / Whole Home Systems",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AC Replacement Near Me",
+          "marketingSearchTerm": "replace furnace and ac cost",
+          "landingPageUrl": "https://www.daikincomfort.com/home-solutions/replacing-soon?utm_source=google&utm_medium=cpc&utm_campaign=ac_replacement_near_me",
+          "websiteJourney": "Home / Home Solutions / Replacing Soon",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Heat Pump Tax Credit 2025",
+          "marketingSearchTerm": "hvac tax credit 2025",
+          "landingPageUrl": "https://www.daikincomfort.com/buyers-guide/tax-credits?utm_source=google&utm_medium=cpc&utm_campaign=heat_pump_tax_credit",
+          "websiteJourney": "Home / Buyer's Guide / Tax Credits",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Ductless Mini Split Install",
+          "marketingSearchTerm": "ductless mini split installation cost",
+          "landingPageUrl": "https://www.daikincomfort.com/products/ductless-systems/single-zone?utm_source=bing&utm_medium=cpc&utm_campaign=ductless_install",
+          "websiteJourney": "Home / Products / Ductless Systems / Single-Zone",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Find a Contractor Lead Gen",
+          "marketingSearchTerm": "daikin dealer near me",
+          "landingPageUrl": "https://www.daikincomfort.com/find-a-dealer?utm_source=google&utm_medium=cpc&utm_campaign=find_a_contractor",
+          "websiteJourney": "Home / Find a Dealer",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Repair vs Replace Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.daikincomfort.com/buyers-guide/repair-vs-replace-calculator?utm_source=organic&utm_medium=organic&utm_campaign=repair_vs_replace",
+          "websiteJourney": "Home / Buyer's Guide / Repair vs. Replace Calculator",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Whole Home Heat Pump",
+          "marketingSearchTerm": "heat pump vs furnace",
+          "landingPageUrl": "https://www.daikincomfort.com/products/heating-cooling/heat-pumps?utm_source=google&utm_medium=cpc&utm_campaign=whole_home_heat_pump",
+          "websiteJourney": "Home / Products / Heating & Cooling / Whole Home Systems",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Best High Efficiency AC",
+          "marketingSearchTerm": "best high efficiency air conditioner",
+          "landingPageUrl": "https://www.daikincomfort.com/products/heating-cooling/air-conditioners?utm_source=bing&utm_medium=cpc&utm_campaign=high_efficiency_ac",
+          "websiteJourney": "Home / Products / Heating & Cooling / Whole Home Systems",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Rebates & Offers Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.daikincomfort.com/buyers-guide/rebates-offers?utm_source=organic&utm_medium=organic&utm_campaign=rebates_offers",
+          "websiteJourney": "Home / Buyer's Guide / Rebates & Offers",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Beat the Summer Heat",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.daikincomfort.com/home-solutions/comfort?utm_source=facebook&utm_medium=paid_social&utm_campaign=beat_the_summer_heat",
+          "websiteJourney": "Home / Home Solutions / Comfort",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Quiet Comfort",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.daikincomfort.com/products/ductless-systems/multi-zone?utm_source=instagram&utm_medium=paid_social&utm_campaign=quiet_comfort",
+          "websiteJourney": "Home / Products / Ductless Systems / Multi-Zone",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "0% Financing Through a Dealer",
+          "marketingSearchTerm": "how much does a daikin ac cost",
+          "landingPageUrl": "https://www.daikincomfort.com/buyers-guide/financing?utm_source=google&utm_medium=cpc&utm_campaign=zero_percent_financing",
+          "websiteJourney": "Home / Buyer's Guide / Financing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Heating & Cooling 101",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.daikincomfort.com/buyers-guide/heating-cooling-101?utm_source=organic&utm_medium=organic&utm_campaign=hvac_101",
+          "websiteJourney": "Home / Buyer's Guide / Heating & Cooling 101",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Daikin ONE+ Thermostat",
+          "marketingSearchTerm": "daikin one+ thermostat",
+          "landingPageUrl": "https://www.daikincomfort.com/products/thermostats-controls/daikin-one-plus?utm_source=google&utm_medium=cpc&utm_campaign=daikin_one_plus",
+          "websiteJourney": "Home / Products / Thermostats & Controls",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Cleaner Air at Home",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.daikincomfort.com/products/indoor-air-quality/one-premium-air-cleaner?utm_source=instagram&utm_medium=paid_social&utm_campaign=cleaner_air_at_home",
+          "websiteJourney": "Home / Products / Indoor Air Quality",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Warranty Lookup Content",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.daikincomfort.com/my-daikin-system/warranty-lookup?utm_source=organic&utm_medium=organic&utm_campaign=warranty_lookup",
+          "websiteJourney": "Home / My Daikin System / Warranty Lookup",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Daikin Altherma Hydronic",
+          "marketingSearchTerm": "air to water heat pump cost",
+          "landingPageUrl": "https://www.daikincomfort.com/products/hydronic-systems/altherma?utm_source=bing&utm_medium=cpc&utm_campaign=altherma_hydronic",
+          "websiteJourney": "Home / Products / Hydronic Systems (Altherma)",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Upgrade Your Comfort",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.daikincomfort.com/home-solutions/energy-savings?utm_source=facebook&utm_medium=paid_social&utm_campaign=upgrade_your_comfort",
+          "websiteJourney": "Home / Home Solutions / Energy Savings",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Daikin FIT, Find a Local Dealer",
+          "marketingSearchTerm": "daikin heat pump reviews",
+          "landingPageUrl": "https://www.daikincomfort.com/buyers-guide/solutions-builder?utm_source=google&utm_medium=cpc&utm_campaign=daikin_fit_dealer",
+          "websiteJourney": "Home / Buyer's Guide / Build Your System",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Perfecting the Air We Share",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.daikincomfort.com/products/indoor-air-quality/one-home-air-monitor?utm_source=instagram&utm_medium=paid_social&utm_campaign=perfecting_the_air",
+          "websiteJourney": "Home / Products / Indoor Air Quality",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "FAQs Content Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.daikincomfort.com/buyers-guide/faqs?utm_source=organic&utm_medium=organic&utm_campaign=faqs_hub",
+          "websiteJourney": "Home / Buyer's Guide / Heating & Cooling 101",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Daikin Comfort Technologies)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "43,747"
+            },
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "System Installed (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$65,208,524"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "6,999"
+            },
+            {
+              "label": "Service & Repair Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Warranty Support Call (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Product Support Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Estimate Discussed (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Non-Qualified Lead (Percent)",
+              "value": "14%"
+            },
+            {
+              "label": "System Installed (Percent)",
+              "value": "18%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sales Call (Count)",
+            "values": [
+              4982,
+              8214,
+              8647,
+              8109,
+              6795
+            ]
+          },
+          {
+            "name": "Estimate Discussed (Count)",
+            "values": [
+              2214,
+              3712,
+              3905,
+              3668,
+              3125
+            ]
+          },
+          {
+            "name": "Non-Qualified Lead (Count)",
+            "values": [
+              842,
+              1378,
+              1447,
+              1352,
+              1106
+            ]
+          },
+          {
+            "name": "System Installed (Count)",
+            "values": [
+              1047,
+              1762,
+              1854,
+              1738,
+              1473
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "System Installed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43747,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "19,214",
+                "42%",
+                "14%",
+                "$22,417,318"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "9,832",
+                "47%",
+                "17%",
+                "$13,842,655"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "6,451",
+                "51%",
+                "19%",
+                "$10,231,447"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "4,987",
+                "55%",
+                "22%",
+                "$9,318,662"
+              ]
+            },
+            {
+              "name": "Dealer Referral",
+              "metrics": [
+                "3,263",
+                "62%",
+                "28%",
+                "$9,398,442"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "System Installed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43747,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "17,428",
+                "41%",
+                "13%",
+                "$20,318,447"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "11,342",
+                "46%",
+                "16%",
+                "$14,732,918"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "6,894",
+                "52%",
+                "20%",
+                "$11,284,662"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "4,821",
+                "57%",
+                "24%",
+                "$9,412,335"
+              ]
+            },
+            {
+              "name": "Email/CRM",
+              "metrics": [
+                "3,262",
+                "63%",
+                "29%",
+                "$9,460,162"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "System Installed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 23145,
+          "rows": [
+            {
+              "name": "AC Replacement Near Me",
+              "metrics": [
+                "8,214",
+                "43%",
+                "15%",
+                "$10,214,338"
+              ]
+            },
+            {
+              "name": "Daikin FIT, Find a Local Dealer",
+              "metrics": [
+                "5,932",
+                "48%",
+                "18%",
+                "$7,842,556"
+              ]
+            },
+            {
+              "name": "Heat Pump Tax Credit 2025",
+              "metrics": [
+                "4,187",
+                "53%",
+                "21%",
+                "$6,318,447"
+              ]
+            },
+            {
+              "name": "Upgrade Your Comfort",
+              "metrics": [
+                "2,948",
+                "58%",
+                "25%",
+                "$5,124,662"
+              ]
+            },
+            {
+              "name": "Beat the Summer Heat",
+              "metrics": [
+                "1,864",
+                "64%",
+                "30%",
+                "$3,918,225"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "System Installed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 17838,
+          "rows": [
+            {
+              "name": "daikin dealer near me",
+              "metrics": [
+                "6,428",
+                "44%",
+                "16%",
+                "$8,124,447"
+              ]
+            },
+            {
+              "name": "how much does a daikin ac cost",
+              "metrics": [
+                "4,217",
+                "49%",
+                "19%",
+                "$6,318,662"
+              ]
+            },
+            {
+              "name": "ductless mini split installation cost",
+              "metrics": [
+                "3,142",
+                "54%",
+                "22%",
+                "$5,214,338"
+              ]
+            },
+            {
+              "name": "hvac tax credit 2025",
+              "metrics": [
+                "2,364",
+                "59%",
+                "26%",
+                "$4,127,556"
+              ]
+            },
+            {
+              "name": "daikin fit price",
+              "metrics": [
+                "1,687",
+                "65%",
+                "31%",
+                "$3,418,225"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "In-Home Estimate Set (Industry) (Percent)",
+            "System Installed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Whole Home Heating & Cooling Systems",
+              "metrics": [
+                "15,342",
+                "41%",
+                "12%",
+                "$15,241,882"
+              ]
+            },
+            {
+              "name": "Ductless Mini-Split Systems",
+              "metrics": [
+                "11,238",
+                "44%",
+                "17%",
+                "$15,798,331"
+              ]
+            },
+            {
+              "name": "Thermostats & Controls",
+              "metrics": [
+                "7,461",
+                "46%",
+                "20%",
+                "$12,357,914"
+              ]
+            },
+            {
+              "name": "Indoor Air Quality",
+              "metrics": [
+                "5,916",
+                "49%",
+                "25%",
+                "$12,246,507"
+              ]
+            },
+            {
+              "name": "Hydronic Systems (Altherma)",
+              "metrics": [
+                "3,790",
+                "54%",
+                "30%",
+                "$9,563,890"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "System Installed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43747,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "14,238",
+                "62%",
+                "13%",
+                "$15,342,118"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "10,472",
+                "65%",
+                "16.5%",
+                "$14,331,880"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "8,314",
+                "67%",
+                "18.8%",
+                "$12,958,204"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "6,428",
+                "70%",
+                "22.6%",
+                "$12,047,933"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "4,295",
+                "74%",
+                "29.4%",
+                "$10,528,389"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "System Installed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Whole Home Heating & Cooling Systems",
+            "values": [
+              342,
+              398,
+              401,
+              367,
+              333
+            ]
+          },
+          {
+            "name": "Ductless Mini-Split Systems",
+            "values": [
+              358,
+              412,
+              405,
+              389,
+              346
+            ]
+          },
+          {
+            "name": "Thermostats & Controls",
+            "values": [
+              281,
+              318,
+              322,
+              301,
+              270
+            ]
+          },
+          {
+            "name": "Indoor Air Quality",
+            "values": [
+              276,
+              314,
+              319,
+              298,
+              272
+            ]
+          },
+          {
+            "name": "Hydronic Systems (Altherma)",
+            "values": [
+              214,
+              246,
+              251,
+              232,
+              209
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 43,747 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Feldman called about replacing his aging system with a Daikin FIT and asked about 0% financing through a local dealer. Rosey walked him through the SEER2 efficiency options and confirmed rebate eligibility for 2025. She scheduled a new in-home estimate with a certified dealer for the following week.",
+          "date": "Feb 6, 2:42 PM",
+          "agent": "Rosey",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 87,
+          "summary": "Denise Alvarado wanted to compare a whole-home heat pump against her old gas furnace for a colder climate. Lila explained the variable-speed inverter benefits and the up to 12-year parts limited warranty. She booked an in-home estimate so a dealer could size the equipment properly.",
+          "date": "Mar 14, 10:18 AM",
+          "agent": "Lila",
+          "duration": "2m 51s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 82,
+          "summary": "Gregory Nakamura asked about a multi-zone ductless system for a finished attic and two bedrooms with hot and cold spots. Oscar described independent zone control and quiet operation, then confirmed the installation timeline through a nearby contractor. He scheduled an in-home estimate for the property.",
+          "date": "Apr 2, 4:07 PM",
+          "agent": "Oscar",
+          "duration": "3m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "First-time caller Priya Venkatesan reached out to set up a consultation for a full heat pump replacement in her new home. Mary collected her name, address, phone number, and details about her existing ductwork and preferred timing. She confirmed the appointment and scheduled a new in-home estimate with a local Daikin dealer.",
+          "date": "Jan 21, 11:33 AM",
+          "agent": "Mary",
+          "duration": "2m 38s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 70,
+          "summary": "Ronald Pisano called to ask whether the Daikin ONE+ smart thermostat could monitor indoor air quality and work with a new system. Lee explained the remote access and diagnostics features and recommended pairing it during install. Ronald agreed to move forward and Lee scheduled an in-home estimate.",
+          "date": "May 9, 1:24 PM",
+          "agent": "Lee",
+          "duration": "2m 19s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Angela Brooks wanted a warranty lookup for a condensing unit installed three years ago and could not locate her registration. Jennifer verified the serial number and confirmed the remaining parts coverage. No estimate was needed since the caller only wanted her warranty status.",
+          "date": "Jun 17, 9:52 AM",
+          "agent": "Jennifer",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Thomas Reilly called for an order status update on an air handler and evaporator coil his dealer had promised for early installation. Sue checked the dealer notes and explained the part was still in transit with a 24-48h update expected. She logged a callback request but no new estimate was scheduled.",
+          "date": "Jul 3, 3:41 PM",
+          "agent": "Sue",
+          "duration": "2m 02s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Karen Whitfield asked about a single-zone ductless mini-split for a converted garage office and the typical installation cost. Mike explained the wall-head options and referred her to a nearby installing dealer. He booked an in-home estimate to confirm the layout and pricing.",
+          "date": "Aug 12, 12:15 PM",
+          "agent": "Mike",
+          "duration": "2m 28s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 52,
+          "summary": "Daniel Hoffman had questions about combining a tax credit with dealer financing on a packaged product. Rose pointed him to the rebate center and explained the promo terms, but he was not ready to commit. She did not schedule an estimate since he wanted to review financing options first.",
+          "date": "Sep 5, 5:03 PM",
+          "agent": "Rose",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 48,
+          "summary": "Beatriz Santos reported a rough installation where her new furnace was cycling loudly and left debris in the basement. Oscar apologized, documented the complaint, and escalated it to the installing contractor for a service revisit. This was a support issue, so no new estimate was scheduled.",
+          "date": "Oct 8, 10:44 AM",
+          "agent": "Oscar",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 31,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 44,
+          "summary": "Philip Grant called about a warranty repair after his compressor stopped cooling during a heat wave. Lila explained he needed to contact the servicing dealer for a diagnostic and confirmed the parts coverage window. He was frustrated by the wait and no estimate was booked.",
+          "date": "Feb 27, 3:19 PM",
+          "agent": "Lila",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Cynthia Okafor disputed a charge she believed the dealer added after the quoted price for her heat pump install. Jennifer clarified that Daikin sells through independent dealers and referred the billing question back to the contractor. Cynthia remained unhappy and no estimate was scheduled.",
+          "date": "Mar 30, 1:07 PM",
+          "agent": "Jennifer",
+          "duration": "2m 11s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Victor Delgado said his Daikin ONE+ thermostat kept losing its connection and would not hold a schedule. Lee tried a basic reset walkthrough but the device stayed offline. He opened a tech support ticket rather than scheduling any estimate.",
+          "date": "Apr 19, 4:52 PM",
+          "agent": "Lee",
+          "duration": "1m 42s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 35,
+          "summary": "Marilyn Frost called to cancel a pending in-home estimate because she decided to postpone the project. Sue confirmed the cancellation and removed the dealer appointment from the schedule. The caller was polite but firm about not moving forward.",
+          "date": "Jun 24, 9:28 AM",
+          "agent": "Sue",
+          "duration": "0m 51s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Howard Stein left a voicemail after hours asking whether a whole-home heat pump would qualify for the 2025 tax credit. The call rolled to voicemail and no agent was available to help. No estimate was scheduled because the message was never answered live.",
+          "date": "Jul 15, 7:11 PM",
+          "agent": "No Agent",
+          "duration": "0m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "heat pump",
+        "ductless",
+        "thermostat",
+        "warranty",
+        "financing",
+        "installation"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 34s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Comfort Need and System Type",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule In-Home Estimate Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Visit and Next Steps",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Preferred Contact Method",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Identified as new customer",
+        "Caller expressed cooling system concern",
+        "Mentioned existing system age",
+        "Interested in whole home AC replacement",
+        "Confirmed residential property",
+        "Provided ZIP code for service area",
+        "Agreed to in-home estimate",
+        "Stated availability for weekday appointment",
+        "Displayed openness to energy efficient options",
+        "Acknowledged importance of SEER2 rating",
+        "Caller shared system breakdown incident",
+        "Demonstrated interest in financing options",
+        "Scheduled specific appointment date"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Caller concerns about installation timeline not addressed",
+        "No mention of warranty expectations",
+        "System size or tonnage not determined",
+        "Current utility costs not discussed",
+        "Indoor air quality needs not explored",
+        "Thermostat upgrade interest not probed",
+        "Ductwork condition not assessed",
+        "Budget range not established",
+        "Extended service plan not mentioned"
+      ],
+      "naSignals": [
+        "Discussed order tracking",
+        "Addressed warranty claim process",
+        "Inquired about delivery logistics",
+        "Asked about product return policy",
+        "Discussed previous invoice or billing",
+        "Requested service history or repair records",
+        "Asked about referral rewards program"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller's existing air conditioning unit failed last week during a hot spell, and they need a replacement system to cool their home before summer peaks. They are motivated to schedule an in-home estimate quickly."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects to learn about energy efficient replacement options like the Daikin FIT or whole home AC, wants to understand financing and rebate options, and needs an appointment within the next few days to assess their current ductwork and system requirements."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured the email address before closing and set clearer expectations about what will happen during the in-home visit, such as the technician measuring the home, discussing tonnage requirements, and providing a detailed quote. A brief mention of Daikin's warranty and available rebates would strengthen confidence in the process."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon, thank you for calling Daikin Comfort Technologies. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus. I'm calling because my air conditioner completely stopped working last week and it's been pretty miserable without it. I need to replace it before this heat gets worse."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:42",
+          "text": "I'm really sorry to hear you're dealing with that. I know how uncomfortable that can be during warm weather. I'd be happy to help you get a replacement system scheduled. Can I start by getting your full name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:55",
+          "text": "Sure, it's Jennifer Martinez."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:03",
+          "text": "Perfect, Jennifer. And just to confirm, you're looking to replace your entire air conditioning system for your home, correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:12",
+          "text": "Yes, that's right. My system is about 15 years old and the technician said it's not worth repairing. I've heard good things about Daikin's efficiency, so I wanted to explore replacement options."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:28",
+          "text": "Excellent. Daikin has some great energy efficient solutions like our FIT whole home system and traditional whole home air conditioners with high SEER2 ratings. What ZIP code is your home in?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:42",
+          "text": "I'm in 94102, San Francisco."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:49",
+          "text": "Perfect, we definitely serve that area. And what's the best phone number to reach you at?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:01",
+          "text": "You can reach me at ****-****-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:09",
+          "text": "Got it, thank you. So Jennifer, I'd like to schedule an in-home estimate visit. A technician will come out, assess your current setup, take measurements, and go over what replacement options would work best for your home and budget. What day works best for you this week?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:32",
+          "text": "Thursday afternoon would be great if you have anything available."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:44",
+          "text": "Thursday afternoon is perfect. Let me get that on the calendar for you. You can expect the technician between one and four PM. They'll spend about an hour at your home and will discuss your options and financing. I'll have our office confirm that appointment by end of day today. Is there anything else I can help you with?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:08",
+          "text": "That sounds great. I think I'm all set. Thanks Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:16",
+          "text": "You're very welcome, Jennifer. Thank you for choosing Daikin Comfort Technologies. We look forward to helping you get your home comfortable again. Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Martinez called to inquire about replacing her 15-year-old air conditioning system that recently failed. Marcus successfully qualified her as a new customer interested in energy efficient whole home solutions, captured her name, confirmed her service area in San Francisco, obtained her phone number, and scheduled an in-home estimate appointment for Thursday afternoon. The call demonstrated solid intake structure, though the email address was not captured and expectations around the visit scope and financing options could have been set more explicitly.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus great call structure and pacing with Jennifer. You nailed the empathy on her cooling system failure and quickly pivoted to the solution. Two quick coaching points for next time, first, always ask for the email address before you close the call so we can send appointment confirmation and product info. Second, take 15 seconds to tell the customer what to expect during the in-home visit, the time it takes, and when they'll hear back on next steps. This sets confidence and reduces cancellations. Well done overall."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "43,747"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$1490.58"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$65,208,524"
+            }
+          ]
+        },
+        {
+          "title": "NEW HOMEOWNER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Homeowners (Count)",
+              "value": "25,884"
+            },
+            {
+              "label": "Caller Type: New Homeowners (Percent)",
+              "value": "59%"
+            },
+            {
+              "label": "In-Home Estimate: Scheduled (Count)",
+              "value": "16,624"
+            },
+            {
+              "label": "In-Home Estimate: Scheduled (Percent)",
+              "value": "38%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING HOMEOWNERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Homeowner (Count)",
+              "value": "17,863"
+            },
+            {
+              "label": "Caller Type: Existing Homeowner (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "In-Home Estimate: Canceled (Percent)",
+              "value": "6%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (In-Home Estimates)",
+          "chart": {
+            "legend": "In-Home Estimate: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Dealer Referral",
+                "value": 56,
+                "display": "56%"
+              },
+              {
+                "name": "Email/CRM",
+                "value": 48,
+                "display": "48%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 40,
+                "display": "40%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 36,
+                "display": "36%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in In-Home Estimates)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "In-Home Estimate: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "15,842",
+                  "30%",
+                  "$23,614,882"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "11,238",
+                  "36%",
+                  "$16,842,337"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "7,915",
+                  "40%",
+                  "$11,938,215"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "5,164",
+                  "48%",
+                  "$7,584,626"
+                ]
+              },
+              {
+                "cells": [
+                  "Dealer Referral",
+                  "3,588",
+                  "56%",
+                  "$5,228,464"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 18000,
+            "axisTicks": [
+              0,
+              3000,
+              6000,
+              9000,
+              12000,
+              15000,
+              18000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search (CPC)",
+                "value": 16318,
+                "display": "16,318"
+              },
+              {
+                "name": "Organic",
+                "value": 12047,
+                "display": "12,047"
+              },
+              {
+                "name": "Paid Social",
+                "value": 7286,
+                "display": "7,286"
+              },
+              {
+                "name": "Email",
+                "value": 4921,
+                "display": "4,921"
+              },
+              {
+                "name": "Dealer Referral",
+                "value": 3175,
+                "display": "3,175"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in In-Home Estimates)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "In-Home Estimate: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search (CPC)",
+                  "16,318",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "12,047",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "7,286",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "4,921",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "Dealer Referral",
+                  "3,175",
+                  "55%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Daikin FIT, Find a Local Dealer",
+                "value": 6842,
+                "display": "6,842"
+              },
+              {
+                "name": "AC Replacement Near Me",
+                "value": 5318,
+                "display": "5,318"
+              },
+              {
+                "name": "Heat Pump Tax Credit 2025",
+                "value": 4127,
+                "display": "4,127"
+              },
+              {
+                "name": "Beat the Summer Heat",
+                "value": 3286,
+                "display": "3,286"
+              },
+              {
+                "name": "Upgrade Your Comfort",
+                "value": 2458,
+                "display": "2,458"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in In-Home Estimates)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "In-Home Estimate: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Daikin FIT, Find a Local Dealer",
+                  "6,842",
+                  "33%",
+                  "$10,184,326"
+                ]
+              },
+              {
+                "cells": [
+                  "AC Replacement Near Me",
+                  "5,318",
+                  "38%",
+                  "$7,928,451"
+                ]
+              },
+              {
+                "cells": [
+                  "Heat Pump Tax Credit 2025",
+                  "4,127",
+                  "44%",
+                  "$6,142,338"
+                ]
+              },
+              {
+                "cells": [
+                  "Beat the Summer Heat",
+                  "3,286",
+                  "51%",
+                  "$4,895,217"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "daikin fit price",
+                "value": 3184,
+                "display": "3,184"
+              },
+              {
+                "name": "daikin dealer near me",
+                "value": 2691,
+                "display": "2,691"
+              },
+              {
+                "name": "how much does a daikin ac cost",
+                "value": 2057,
+                "display": "2,057"
+              },
+              {
+                "name": "daikin heat pump reviews",
+                "value": 1643,
+                "display": "1,643"
+              },
+              {
+                "name": "ductless mini split installation cost",
+                "value": 1208,
+                "display": "1,208"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in In-Home Estimates)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "In-Home Estimate: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "daikin fit price",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "daikin dealer near me",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "how much does a daikin ac cost",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "daikin heat pump reviews",
+                  "53%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Homeowners",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "In-Home Estimate: Scheduled (Percent)",
+          "Caller Type: New Homeowners (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Whole Home Heating & Cooling",
+              "18,742",
+              "34%",
+              "62%"
+            ]
+          },
+          {
+            "cells": [
+              "Ductless Systems",
+              "11,318",
+              "39%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Thermostats & Controls",
+              "6,847",
+              "45%",
+              "54%"
+            ]
+          },
+          {
+            "cells": [
+              "Indoor Air Quality",
+              "4,126",
+              "52%",
+              "49%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "In-Home Estimate: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Houston Dealer Network",
+              "13,428",
+              "1,084",
+              "4%",
+              "35%"
+            ]
+          },
+          {
+            "cells": [
+              "Dallas Fort Worth Dealer Network",
+              "11,842",
+              "947",
+              "5%",
+              "38%"
+            ]
+          },
+          {
+            "cells": [
+              "Phoenix Dealer Network",
+              "9,318",
+              "762",
+              "6%",
+              "43%"
+            ]
+          },
+          {
+            "cells": [
+              "Atlanta Dealer Network",
+              "9,159",
+              "707",
+              "5%",
+              "49%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1684,
+              1592,
+              1738,
+              1548,
+              1580
+            ]
+          },
+          {
+            "name": "Comparing Dealers",
+            "values": [
+              1412,
+              1358,
+              1486,
+              1324,
+              1338
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              1058,
+              1012,
+              1124,
+              1046,
+              1044
+            ]
+          },
+          {
+            "name": "Needs Spouse Approval",
+            "values": [
+              782,
+              764,
+              812,
+              758,
+              780
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              574,
+              562,
+              598,
+              571,
+              578
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "17,499"
+          },
+          {
+            "label": "In-Home Estimate Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "System Installed (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$37,168,859"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "System Installed (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,827,156"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "System Installed (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,614,982"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "System Installed (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$6,243,778"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "System Installed (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,091,643"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "System Installed (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,847,294"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "System Installed (Percent)",
+              "value": "36%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$6,544,006"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "In-Home Estimate Scheduled (Percent)",
+            "System Installed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 6284,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "5847",
+                "59%",
+                "28%",
+                "$8,187,342"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "3972",
+                "54%",
+                "32%",
+                "$6,418,827"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "2156",
+                "52%",
+                "35%",
+                "$4,275,641"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "1823",
+                "48%",
+                "38%",
+                "$3,624,518"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "1334",
+                "45%",
+                "41%",
+                "$2,889,742"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "In-Home Estimate Scheduled (Percent)",
+            "System Installed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 6089,
+          "rows": [
+            {
+              "name": "Google Search",
+              "metrics": [
+                "4926",
+                "60%",
+                "27%",
+                "$6,892,154"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "3184",
+                "53%",
+                "33%",
+                "$5,641,287"
+              ]
+            },
+            {
+              "name": "Solutions Builder Landing",
+              "metrics": [
+                "2847",
+                "51%",
+                "36%",
+                "$4,928,693"
+              ]
+            },
+            {
+              "name": "Email Campaign",
+              "metrics": [
+                "1742",
+                "47%",
+                "39%",
+                "$3,284,156"
+              ]
+            },
+            {
+              "name": "YouTube Video",
+              "metrics": [
+                "1456",
+                "44%",
+                "42%",
+                "$2,826,734"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "In-Home Estimate Scheduled (Percent)",
+            "System Installed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 6856,
+          "rows": [
+            {
+              "name": "Daikin FIT Find a Local Dealer",
+              "metrics": [
+                "3428",
+                "57%",
+                "29%",
+                "$4,752,896"
+              ]
+            },
+            {
+              "name": "AC Replacement Near Me",
+              "metrics": [
+                "2841",
+                "55%",
+                "34%",
+                "$5,128,347"
+              ]
+            },
+            {
+              "name": "Heat Pump Tax Credit 2025",
+              "metrics": [
+                "2156",
+                "52%",
+                "36%",
+                "$4,687,924"
+              ]
+            },
+            {
+              "name": "Upgrade Your Comfort",
+              "metrics": [
+                "1547",
+                "49%",
+                "38%",
+                "$3,421,756"
+              ]
+            },
+            {
+              "name": "Beat the Summer Heat",
+              "metrics": [
+                "1193",
+                "46%",
+                "41%",
+                "$2,742,418"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "In-Home Estimate Scheduled (Percent)",
+            "System Installed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 4847,
+          "rows": [
+            {
+              "name": "Daikin FIT price",
+              "metrics": [
+                "1847",
+                "58%",
+                "30%",
+                "$2,584,392"
+              ]
+            },
+            {
+              "name": "How much does a Daikin AC cost",
+              "metrics": [
+                "1423",
+                "56%",
+                "33%",
+                "$2,187,654"
+              ]
+            },
+            {
+              "name": "Daikin heat pump reviews",
+              "metrics": [
+                "1156",
+                "54%",
+                "35%",
+                "$1,942,836"
+              ]
+            },
+            {
+              "name": "HVAC tax credit 2025",
+              "metrics": [
+                "942",
+                "51%",
+                "37%",
+                "$1,631,847"
+              ]
+            },
+            {
+              "name": "Daikin dealer near me",
+              "metrics": [
+                "768",
+                "48%",
+                "39%",
+                "$1,342,618"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "In-Home Estimate Scheduled (Percent)",
+            "System Installed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Whole Home Heat Pumps",
+              "metrics": [
+                "4287",
+                "58%",
+                "34%",
+                "$7,864,213"
+              ]
+            },
+            {
+              "name": "Whole Home Air Conditioners",
+              "metrics": [
+                "3956",
+                "56%",
+                "32%",
+                "$6,548,927"
+              ]
+            },
+            {
+              "name": "Ductless Multi Zone Systems",
+              "metrics": [
+                "2847",
+                "54%",
+                "35%",
+                "$5,423,641"
+              ]
+            },
+            {
+              "name": "Smart Thermostats & Controls",
+              "metrics": [
+                "2341",
+                "51%",
+                "33%",
+                "$4,127,856"
+              ]
+            },
+            {
+              "name": "Indoor Air Quality Systems",
+              "metrics": [
+                "1842",
+                "49%",
+                "31%",
+                "$3,251,784"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "System Installed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Whole Home Heat Pumps",
+            "values": [
+              453,
+              587,
+              621,
+              543,
+              493
+            ]
+          },
+          {
+            "name": "Whole Home Air Conditioners",
+            "values": [
+              398,
+              527,
+              539,
+              478,
+              413
+            ]
+          },
+          {
+            "name": "Ductless Multi Zone Systems",
+            "values": [
+              321,
+              463,
+              498,
+              412,
+              349
+            ]
+          },
+          {
+            "name": "Smart Thermostats & Controls",
+            "values": [
+              287,
+              389,
+              412,
+              356,
+              289
+            ]
+          },
+          {
+            "name": "Indoor Air Quality Systems",
+            "values": [
+              243,
+              321,
+              358,
+              302,
+              241
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent In-Home Estimate Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "In-Home Estimate Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "In-Home Estimate Scheduled (Count)",
+            "value": "337"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$2,791,475"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "743"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "18:47:33"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human In-Home Estimate Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "In-Home Estimate Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "In-Home Estimate Scheduled (Count)",
+            "value": "31"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$256,525"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted In-Home Estimate Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "In-Home Estimate Scheduled",
+            "values": [
+              74,
+              79,
+              76,
+              81,
+              78,
+              75,
+              82,
+              77,
+              80,
+              76,
+              79,
+              81,
+              74,
+              78,
+              82,
+              76,
+              79,
+              81,
+              75,
+              77,
+              80,
+              78,
+              76,
+              82,
+              79,
+              74,
+              80,
+              78,
+              76,
+              82,
+              77,
+              181,
+              189,
+              174,
+              192,
+              183,
+              177,
+              195,
+              182,
+              179,
+              188,
+              174,
+              186,
+              191,
+              179,
+              187,
+              175,
+              184,
+              190
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,089"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "712"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "694"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "In-Home Estimate Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Daikin FIT Pricing & Features",
+            "values": [
+              8,
+              11,
+              2,
+              12,
+              10,
+              9
+            ]
+          },
+          {
+            "name": "Whole-Home AC Replacement Costs",
+            "values": [
+              6,
+              9,
+              1,
+              10,
+              8,
+              7
+            ]
+          },
+          {
+            "name": "Heat Pump Tax Credit Eligibility",
+            "values": [
+              5,
+              7,
+              3,
+              9,
+              6,
+              8
+            ]
+          },
+          {
+            "name": "Ductless Mini Split Installation",
+            "values": [
+              7,
+              10,
+              2,
+              11,
+              9,
+              6
+            ]
+          },
+          {
+            "name": "Warranty & Service Plans",
+            "values": [
+              4,
+              6,
+              1,
+              8,
+              5,
+              7
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "40,247"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "28,436"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "In-Home Estimate Booked (Count)",
+            "value": "16,624"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$65,208,524"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Patricia Chen",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Robert Gutierrez",
+              "value": 242,
+              "display": "242"
+            },
+            {
+              "name": "Jennifer Kowalski",
+              "value": 165,
+              "display": "165"
+            },
+            {
+              "name": "David Thornton",
+              "value": 203,
+              "display": "203"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "In-Home Estimate Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sophia Martinez",
+            "values": [
+              156,
+              189,
+              247,
+              312,
+              388
+            ]
+          },
+          {
+            "name": "James Peterson",
+            "values": [
+              142,
+              168,
+              215,
+              287,
+              356
+            ]
+          },
+          {
+            "name": "Amanda Silva",
+            "values": [
+              148,
+              174,
+              228,
+              301,
+              374
+            ]
+          },
+          {
+            "name": "Kevin O'Brien",
+            "values": [
+              139,
+              161,
+              209,
+              276,
+              341
+            ]
+          },
+          {
+            "name": "Lisa Donovan",
+            "values": [
+              144,
+              170,
+              221,
+              289,
+              363
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 54.3,
+              "display": "54.3%"
+            },
+            {
+              "name": "Patricia Chen",
+              "value": 56.1,
+              "display": "56.1%"
+            },
+            {
+              "name": "Robert Gutierrez",
+              "value": 52.8,
+              "display": "52.8%"
+            },
+            {
+              "name": "Jennifer Kowalski",
+              "value": 57.4,
+              "display": "57.4%"
+            },
+            {
+              "name": "David Thornton",
+              "value": 55.6,
+              "display": "55.6%"
+            },
+            {
+              "name": "Thomas Bradley",
+              "value": 53.9,
+              "display": "53.9%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "In-Home Estimate Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Webb",
+                "54.3%",
+                "28%",
+                "$1,637,842",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Chen",
+                "56.1%",
+                "29%",
+                "$1,784,294",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Gutierrez",
+                "52.8%",
+                "26%",
+                "$1,529,178",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Kowalski",
+                "57.4%",
+                "31%",
+                "$1,892,537",
+                "1,538"
+              ]
+            },
+            {
+              "cells": [
+                "David Thornton",
+                "55.6%",
+                "30%",
+                "$1,764,321",
+                "1,459"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Bradley",
+                "53.9%",
+                "27%",
+                "$1,601,653",
+                "1,403"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sophia Martinez",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "James Peterson",
+              "value": 89.3,
+              "display": "89.3%"
+            },
+            {
+              "name": "Amanda Silva",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "Kevin O'Brien",
+              "value": 87.8,
+              "display": "87.8%"
+            },
+            {
+              "name": "Lisa Donovan",
+              "value": 90.5,
+              "display": "90.5%"
+            },
+            {
+              "name": "Michelle Reeves",
+              "value": 88.6,
+              "display": "88.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "In-Home Estimate Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sophia Martinez",
+                "91.7%",
+                "62%",
+                "$3,618,924",
+                "1,549"
+              ]
+            },
+            {
+              "cells": [
+                "James Peterson",
+                "89.3%",
+                "59%",
+                "$3,402,178",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Silva",
+                "92.1%",
+                "63%",
+                "$3,751,642",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin O'Brien",
+                "87.8%",
+                "58%",
+                "$3,284,516",
+                "1,468"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Donovan",
+                "90.5%",
+                "61%",
+                "$3,537,489",
+                "1,503"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Reeves",
+                "88.6%",
+                "60%",
+                "$3,458,263",
+                "1,527"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "In-Home Estimate Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "In-Home Estimate Booked (Count)",
+        "rightMax": 800,
+        "rightTicks": [
+          0,
+          200,
+          400,
+          600,
+          800
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 616
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 590
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 550
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 525
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 457
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 479
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 529
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 550
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 614
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 595
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 536
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 518
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 461
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 475
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 542
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 559
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 608
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 598
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 525
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 508
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 468
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 473
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 551
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 570
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 600
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 599
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 517
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 496
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 476
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 474
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 565
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 3000000,
+        "rightTicks": [
+          0,
+          1000000,
+          2000000,
+          3000000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 2417223
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 2316799
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 2157411
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 2058586
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 1792376
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 1881050
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 2077942
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 2159851
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 2408246
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 2334943
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 2103004
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 2032594
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 1808667
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 1864308
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 2127416
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 2192242
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 2385823
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 2348693
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 2059549
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 1994225
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 1835814
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 1855060
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 2164085
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 2235820
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 2355514
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 2352088
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 2030080
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 1946522
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 1867647
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 1858641
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 2186305
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "43,747"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,500"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,625"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "82%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer R. Martinez",
+                "412",
+                "88%",
+                "81%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "David S. Thompson",
+                "389",
+                "84%",
+                "80%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "Margaret L. Chen",
+                "248",
+                "86%",
+                "85%",
+                "85%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "43,747 calls",
+      "pagerLabel": "1 of 4,375",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:23 am",
+          "id": "A21C-4E9B7710C6F2"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C84D-19A3F5620B8E"
+        },
+        {
+          "time": "1/14/26 11:18 am",
+          "id": "7B3E-6C0D82F41A97"
+        },
+        {
+          "time": "1/16/26 12:35 pm",
+          "id": "E902-3F71DA5C8804"
+        },
+        {
+          "time": "1/20/26 1:09 pm",
+          "id": "5D6A-B82E4907F13C"
+        },
+        {
+          "time": "1/22/26 2:52 pm",
+          "id": "9F41-7A0C36E2591B"
+        },
+        {
+          "time": "1/26/26 3:27 pm",
+          "id": "3C8B-D45F1980A62E"
+        },
+        {
+          "time": "1/28/26 4:44 pm",
+          "id": "B16F-08E7C2934D5A"
+        },
+        {
+          "time": "1/30/26 5:31 pm",
+          "id": "08E4-2A9F71C63B0D"
+        }
+      ],
+      "duration": "2:34",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling Daikin Comfort Technologies, this is Marcus. Who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling Daikin Comfort Technologies"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Marcus, this is Danielle Foster. We just bought our first house back in November and the old AC and furnace are pretty tired.",
+          "highlights": [
+            "just bought our first house"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "Congratulations on the new home, Danielle. I can absolutely help you look at replacing that system. Is it struggling to keep up, or is it just older equipment you want ahead of?",
+          "highlights": [
+            "Congratulations on the new home"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:27",
+          "text": "Both honestly. The upstairs never gets cool and the furnace is loud. The inspector said the unit was probably fifteen years old.",
+          "highlights": [
+            "upstairs never gets cool"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:36",
+          "text": "That uneven temperature upstairs is very common with aging single-stage units. For a whole-home upgrade I'd point you toward the Daikin FIT system, it's a compact inverter heat pump that evens out those hot and cold spots.",
+          "highlights": [
+            "Daikin FIT system"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:48",
+          "text": "Okay, I've seen that name. What does something like that run once it's installed?",
+          "highlights": [
+            "What does something like that run"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:54",
+          "text": "A fair question. Installed, a Daikin FIT typically lands between about $6,500 and $14,000 depending on the size of your home and the ductwork. A dealer confirms the exact number after seeing the space.",
+          "highlights": [
+            "$6,500 and $14,000"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:06",
+          "text": "That's a wide range, and I want to keep it manageable since we just closed on the place. Money's a little tight right now.",
+          "highlights": [
+            "want to keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:15",
+          "text": "Completely understand. Daikin dealers offer financing, including promotional options, and there are heat pump tax credits for 2026 that can bring the real cost down noticeably.",
+          "highlights": [
+            "financing",
+            "tax credits for 2026"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:26",
+          "text": "That helps. I'll be honest though, I'm getting a couple of quotes. A company down the street pitched me a Carrier system already.",
+          "highlights": [
+            "getting a couple of quotes",
+            "pitched me a Carrier system"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:36",
+          "text": "Smart to compare. Where Daikin tends to stand out is the inverter technology for quiet, even comfort and the up to 12-year parts limited warranty. I'd encourage you to weigh the total value, not just the sticker.",
+          "highlights": [
+            "up to 12-year parts limited warranty"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:48",
+          "text": "Makes sense. One more thing, while someone's out could they look at a thermostat too? Ours is ancient.",
+          "highlights": [
+            "look at a thermostat too"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:56",
+          "text": "Absolutely. The Daikin ONE+ smart thermostat pairs beautifully with the FIT and monitors your indoor air quality too. The dealer can quote that in the same visit.",
+          "highlights": [
+            "Daikin ONE+ smart thermostat"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:05",
+          "text": "Perfect. I would want my husband there too though, he handles this stuff with me.",
+          "highlights": [
+            "want my husband there too"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:11",
+          "text": "Of course, we'll schedule it for a time you're both home. I can set up a free in-home estimate with a local Daikin dealer. Does Thursday at 10 AM work?",
+          "highlights": [
+            "free in-home estimate",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:20",
+          "text": "Thursday at 10 works great for both of us.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:24",
+          "text": "Wonderful. What's the best phone number and email to send the confirmation to?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "2:28",
+          "text": "It's 512-555-0184 and danielle.foster@email.com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:31",
+          "text": "You're all set, Danielle. Your in-home estimate is booked for Thursday at 10 AM. Thank you for choosing Daikin, and welcome home.",
+          "highlights": [
+            "booked for Thursday at 10 AM",
+            "Thank you for choosing Daikin"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Homeowner",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "In-Home Estimate: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Product Interest: Daikin FIT",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Product Interest: ONE+ Thermostat",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Financing & Tax Credit Mentioned",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "New homeowner Danielle Foster called about replacing an aging, roughly fifteen-year-old AC and furnace in the house she closed on in November, noting uneven cooling upstairs and a noisy furnace. Marcus recommended a Daikin FIT inverter heat pump system to address the hot and cold spots and added a Daikin ONE+ smart thermostat to the scope. He addressed her budget concerns with financing and 2026 heat pump tax credits, handled a competing Carrier quote by highlighting Daikin's inverter comfort and up to 12-year parts warranty, and accommodated her need to have her husband present. A free in-home estimate with a local Daikin dealer was scheduled for Thursday at 10 AM.",
+        "keyPoints": [
+          "New homeowner who closed on first house in November",
+          "Needs whole-home AC and furnace replacement, uneven upstairs cooling",
+          "Recommended Daikin FIT system plus Daikin ONE+ thermostat",
+          "Budget concern handled with financing and 2026 tax credits",
+          "Comparing against a Carrier quote from another company",
+          "In-home estimate booked for Thursday 10 AM, contact captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "In-Home Estimate booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "27,561 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,756",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for texting Daikin Comfort Technologies. Is this a good time to chat about your home comfort needs?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "yes i need a new ac unit my system is 15 years old"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great, thanks for letting me know. Are you looking to replace just the air conditioner, or do you need heating as well?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "both heating and cooling. its getting expensive to run"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. A heat pump system can save you a lot on energy costs. Do you currently have a gas furnace or are you all electric?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "gas furnace. system is really old though"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Understood. We can pair a high efficiency Daikin heat pump with your existing furnace for great flexibility. What's your zip code so I can find a qualified Daikin dealer near you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "94301 palo alto"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Excellent. A dealer in your area can do an in home estimate and walk you through financing options including potential tax credits. Are you available for an in home estimate next Tuesday March 18 between 10 AM and 2 PM?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "that works for me. what happens next"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "Perfect. A Daikin dealer will contact you at this number to confirm the exact time on Monday. Here's your confirmation number: DK20260310001. Any questions?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "nope thanks"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "You're welcome. We look forward to helping you achieve Perfecting the Air We Share. The dealer will call 415 555 0147 to confirm. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "In-Home Estimate: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Homeowner",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Heat Pump System",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Service Area: Bay Area California",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Budget Conscious: Energy Savings",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "System Age: 15 Years",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "415-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "415-555-0147",
+            "repeatCaller": "No",
+            "city": "Palo Alto",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Chen",
+            "firstName": "Sarah",
+            "lastName": "Chen",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A847-294BC7F5E1A9",
+          "time": "3/15/26 2:43 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A847-294BC7F5E1A9",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B629-5D3E471CA062",
+          "time": "3/22/26 9:18 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B629-5D3E471CA062",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D754-E8B1926F7C3D",
+          "time": "3/28/26 4:37 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D754-E8B1926F7C3D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "43,747 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,375",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hello, thanks for calling Daikin Comfort Technologies. This is Marcus speaking. Are you calling about an air conditioning replacement or a heat pump system today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Yeah, hi Marcus. So our AC unit is about twelve years old and it's starting to act up. We're looking to replace it before summer hits."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "I appreciate that. Just so I understand your situation, is this for a single family home or a commercial property?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "It's a residential home. We've got about two thousand square feet."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Perfect. And are you currently in an area where you get really hot summers, or do you need heating as well during the colder months?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "Both actually. We definitely need cooling in the summer, but winters get pretty chilly here too, so heating is important."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Great. Based on what you've shared, a Daikin heat pump system would be ideal for your home. It'll give you both heating and cooling with excellent efficiency ratings. We can get an in-home estimate scheduled where our dealer can assess your current ductwork and recommend the right tonnage and configuration for your square footage."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "How much are we talking about, ballpark?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "For a whole-home heat pump installation in your home size, you're typically looking at around forty-five hundred to ninety-one hundred dollars installed, depending on your existing setup. But our local dealer will give you an exact quote after they see the system in person. Plus, there may be tax credits available for two thousand twenty-six that could help offset the cost."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Okay, that's helpful. And what kind of warranty comes with that?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Daikin backs our equipment with up to a twelve year parts limited warranty, which is one of the best in the industry. Our dealer can walk you through all the details during the estimate visit."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Sounds good. I'm ready to get someone out here."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Excellent. How does Thursday, January twenty-third at two o'clock in the afternoon work for you? Our dealer can be there to take a look at your system and provide that detailed quote."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Thursday works great. Yeah, two PM is perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "Fantastic. So I've got you down for an in-home estimate on Thursday, January twenty-third at two PM. A technician from our dealer network will call you at this number about an hour before to confirm. Your confirmation code is E eight three four nine seven. Is there anything else I can help you with today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:20 PM",
+              "text": "No, that covers everything. Thanks, Marcus."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:20 PM",
+              "text": "You're very welcome. We look forward to helping you perfect the air in your home. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "In-Home Estimate: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Homeowner",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Heat Pump System",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Service Area Confirmed: Residential",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Warranty Inquiry Detected",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Tax Credit Mention",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "8:32",
+            "destinationPhone": "877-936-2933",
+            "source": "855-877-2456",
+            "promoNumberDescription": "Voice: Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "602-445-7821",
+            "repeatCaller": "No",
+            "city": "Phoenix",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B521-7D4AF295881C",
+          "time": "1/18/26 3:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B521-7D4AF295881C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C634-8E5BG306992D",
+          "time": "1/22/26 2:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C634-8E5BG306992D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D745-9F6CH417AB3E",
+          "time": "1/28/26 5:33 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D745-9F6CH417AB3E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Hi, I'm Daikin Comfort Technologies's AI agent, here to help you get a personalized quote on a new high-efficiency system, and right now qualifying installs may pair with 2025 HVAC tax credits and 0% financing through a local dealer. Would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions, one at a time, about which system you're considering (whole-home AC, heat pump, Daikin FIT, gas furnace, or ductless mini-split), the approximate square footage or number of zones you need to condition, whether you're replacing existing equipment or adding new, your ideal timeline, and your ZIP code so I can confirm a dealer serves your area.",
+        "Estimate then book: Once I confirm a Daikin dealer covers your ZIP, I'll share a preliminary installed price range based on what you shared, then recommend a free in-home estimate with a local Comfort Pro for an exact quote. I'll propose a specific day and time, and you'll get a reminder text before the appointment with a number to call if anything changes."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Daikin_Comfort_Technologies_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Heating & Cooling Products",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Local Dealer",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Rebates, Offers & Financing",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"warranty\",\"question\":\"How do I look up the warranty on my installed Daikin system?\",\"answer\":\"You can register or check coverage through the Warranty Lookup in your My Daikin System account, and eligible units carry up to a 12-year parts limited warranty when registered on time. If you'd like, I can also connect you with your installing dealer for details.\"},{\"topic\":\"reschedule\",\"question\":\"I need to move my in-home estimate to a different day, can you help?\",\"answer\":\"Absolutely, I can reschedule your in-home estimate to a time that works better for you. Just tell me your preferred day and time and I'll update it and send a new reminder text.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How much does a Daikin FIT system cost?",
+              "answer": "A Daikin FIT system typically runs from about $6,500 to $14,000 installed depending on tonnage, configuration, and local labor. The best way to get an exact figure is a free in-home estimate, which I can help you book."
+            },
+            {
+              "question": "How much is a new Daikin air conditioner installed?",
+              "answer": "Most homeowners pay in the range of $3,500 to $7,500 installed for a whole-home Daikin air conditioner, though it varies with size and ductwork. I'd be glad to schedule an in-home estimate for a precise quote."
+            },
+            {
+              "question": "Do you sell directly to homeowners?",
+              "answer": "Daikin equipment is sold and installed through a network of trained local dealers rather than direct to consumers. I can help match you with a dealer and set up an in-home estimate."
+            },
+            {
+              "question": "What is the difference between a heat pump and a furnace?",
+              "answer": "A heat pump both heats and cools using a reversing outdoor unit, while a gas furnace only heats by circulating warm air through your home. A specialist can help you compare during a free in-home estimate."
+            },
+            {
+              "question": "How much does a ductless mini-split cost?",
+              "answer": "A single-zone ductless mini-split generally runs about $2,000 to $5,000 installed, and multi-zone systems range roughly $5,000 to $12,000. Let's book an in-home estimate to confirm the right setup and price for your space."
+            },
+            {
+              "question": "What is a two-stage compressor?",
+              "answer": "A single-speed compressor runs at 100% capacity until it reaches your set temperature, while a two-stage compressor operates at two levels to reduce temperature swings and improve efficiency. A Comfort Pro can recommend the best fit during your in-home estimate."
+            },
+            {
+              "question": "Do you offer financing?",
+              "answer": "Yes, many local dealers offer financing options, including 0% promotional financing on qualifying installations. I can arrange an in-home estimate where the dealer reviews the plans available to you."
+            },
+            {
+              "question": "Are there tax credits or rebates available?",
+              "answer": "Qualifying high-efficiency systems may be eligible for 2025 federal HVAC tax credits plus local utility rebates. Your dealer can confirm eligibility during a free in-home estimate, which I can schedule now."
+            },
+            {
+              "question": "What is the Daikin ONE+ smart thermostat?",
+              "answer": "The Daikin ONE+ is a two-way communicating hub for temperature, schedules, connectivity, and indoor air quality monitoring, with advanced diagnostics and remote access. It's typically added during a system install, which we can review at your in-home estimate."
+            },
+            {
+              "question": "How long does a system installation take?",
+              "answer": "Most residential installations are completed within one to two days depending on the system and any ductwork changes. Your local dealer will confirm the timeline at your in-home estimate."
+            },
+            {
+              "question": "How efficient are Daikin systems?",
+              "answer": "Daikin offers a portfolio of high-efficiency systems, including inverter-driven units with high SEER2 ratings that use R-32 refrigerant. A specialist can recommend the right efficiency level for your home during an in-home estimate."
+            },
+            {
+              "question": "Can Daikin heat and cool a home with no ductwork?",
+              "answer": "Yes, ductless single-zone and multi-zone systems provide heating and cooling without ducts using outdoor and indoor units. Let's set up an in-home estimate to see how many zones your home would need."
+            },
+            {
+              "question": "What size system do I need for my house?",
+              "answer": "Proper sizing depends on square footage, insulation, layout, and climate, so it isn't something to guess. A Comfort Pro will perform a load calculation at your free in-home estimate to size it correctly."
+            },
+            {
+              "question": "Do you service my area?",
+              "answer": "Daikin works through local dealers across North America, so coverage depends on your ZIP code. Share your ZIP and I'll confirm a nearby dealer and book your in-home estimate."
+            },
+            {
+              "question": "What is the Daikin Altherma system?",
+              "answer": "The Daikin Altherma is an air-to-water hydronic heat pump that provides heating, cooling, and domestic hot water, typically running about $8,000 to $18,000 installed. A specialist can assess your home's fit at an in-home estimate."
+            },
+            {
+              "question": "How much is a gas furnace?",
+              "answer": "A Daikin gas furnace generally runs about $3,000 to $6,500 installed, with the indoor unit providing heat and circulating conditioned air. I can book an in-home estimate for an exact quote."
+            },
+            {
+              "question": "Can I improve my indoor air quality with Daikin?",
+              "answer": "Yes, Daikin offers whole-home air cleaners, air monitors, and room purifiers that integrate with your comfort system. A specialist can recommend the right IAQ solution at your in-home estimate."
+            },
+            {
+              "question": "Should I repair or replace my old system?",
+              "answer": "If your system is aging or facing costly repairs, replacing it with a high-efficiency unit often saves more over time. A Comfort Pro can evaluate your equipment during a free in-home estimate."
+            },
+            {
+              "question": "What thermostat options are available?",
+              "answer": "Daikin offers the ONE+ hub, the ONE Touch touchscreen model, and the entry-level ONE Lite connected thermostat. Your dealer can pair the best one with your system during the in-home estimate."
+            },
+            {
+              "question": "How do I get a quote?",
+              "answer": "The fastest way is a free in-home estimate with a local Daikin Comfort Pro who reviews your home and provides an exact price. Share your ZIP and preferred time and I'll get it scheduled."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule in-home estimate\",\"follow_up_message\":\"Great, I have a Daikin Comfort Pro available this week for your free in-home estimate. Does Thursday at 10 AM or 2 PM work better, and I'll send a reminder text with a number to call?\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Based on what you shared, a new system in your home would likely fall in a preliminary installed range, and a local dealer can confirm the exact figure. Can I book a free in-home estimate to lock in your quote?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Daikin Comfort Technologies's AI agent. I can help you explore a new high-efficiency heating and cooling system and get a personalized quote. Would you like to get started?",
+        "goal": "Qualify the homeowner's comfort needs and book a free in-home estimate with a local Daikin Comfort Pro.",
+        "bookingType": "in-home estimate",
+        "offer": "Ask your dealer about 2025 HVAC tax credits and 0% financing on qualifying installations",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "Which type of system are you considering: whole-home AC, heat pump, Daikin FIT, gas furnace, or ductless mini-split?",
+          "Approximately how large is the space, or how many zones or rooms do you need to heat and cool?",
+          "Are you replacing an existing system or adding new equipment?",
+          "What is your ideal timeline for getting this installed?",
+          "What is your ZIP code so I can confirm a local Daikin dealer serves your area?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:58 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:58 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:58 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Daikin Comfort Technologies",
+      "callerName": "Michael Torres",
+      "callerPhone": "(623) 555-0847",
+      "campaign": "Daikin FIT Heat Pump, Phoenix Metro Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New In-Home Estimate Lead",
+      "estimatedValue": "$8,350",
+      "googleSearch": "Daikin FIT price Phoenix Arizona",
+      "websiteSearch": "high efficiency heat pump installation cost",
+      "callingWebpage": "/products/heating-cooling/whole-home-systems/heat-pumps",
+      "products": "Daikin FIT, Daikin ONE+ Smart Thermostat",
+      "cartId": "DA-7264M",
+      "serviceable": "Yes",
+      "email": "mtorres.phoenix@email.com",
+      "street": "4827 Desert Ridge Court",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zip": "85048",
+      "digitalJourney": "/home › /products › /products/heating-cooling › /products/heating-cooling/whole-home-systems/heat-pumps",
+      "intent": "Homeowner evaluating energy-efficient heat pump replacement for 2200 sq ft home, interested in cooling and heating efficiency ratings and financing options",
+      "coverage": "ZIP 85048 confirmed, Phoenix serviceable",
+      "switchIntent": "High. Current AC unit is 18 years old and failing. Wants in-home estimate this week to explore rebates and tax credits before summer peak.",
+      "greeting": "Hi Michael, welcome to Daikin Comfort Technologies. I see you have been exploring our Daikin FIT heat pump systems for Phoenix area homes. I would be happy to schedule an in-home estimate with one of our certified comfort specialists this week to review efficiency upgrades and financing options for your home. Does that work for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "Daikin Comfort Technologies",
+      "callerName": "Jennifer Nakamura",
+      "callerPhone": "(916) 555-0631",
+      "campaign": "Ductless Mini Split, Sacramento Valley Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New In-Home Estimate Lead",
+      "estimatedValue": "$4,125",
+      "googleSearch": "ductless mini split air conditioner Sacramento cost",
+      "websiteSearch": "quiet single zone ductless system installation",
+      "callingWebpage": "/products/ductless-systems/single-zone",
+      "products": "Single Zone Ductless Mini Split, Daikin ONE Touch Thermostat",
+      "cartId": "DA-5391N",
+      "serviceable": "Yes",
+      "email": "jnakamura.sacramento@email.com",
+      "street": "2156 Elm Street, Suite B",
+      "city": "Folsom",
+      "state": "CA",
+      "zip": "95630",
+      "digitalJourney": "/home › /buyer-guide › /buyer-guide/heating-cooling-101 › /products/ductless-systems/single-zone",
+      "intent": "Small business owner seeking quiet, efficient cooling solution for supplemental office space addition. Exploring ductless option to avoid ductwork renovation.",
+      "coverage": "ZIP 95630 confirmed, Folsom serviceable",
+      "appointment": "In-home estimate with comfort specialist, Thursday July 17, 2:00 PM",
+      "greeting": "Hi Jennifer, this is Marcus from Daikin Comfort Technologies. Great to connect about your ductless mini split inquiry. We have you scheduled for an in-home estimate this Thursday at 2 PM. Our specialist will discuss noise levels and efficiency for your office space. Feel free to call me with any questions before your visit."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Daikin Comfort Technologies",
+      "brandDomain": "www.daikincomfort.com",
+      "brandIcon": "❄️",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Heat Pump Tax Credit 2025",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "Daikin heat pump dealer near me",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/products/heating-cooling/heat-pumps",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Whole Home Heat Pumps, Daikin FIT System",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "in_home_estimate_new",
+          "name": "In-Home Estimate, New Project"
+        },
+        {
+          "id": "existing_system_support",
+          "name": "Existing System Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry Queue"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Daikin Comfort Technologies. I see you've been checking out our heat pumps. Are you looking to replace an existing system or interested in a new installation?",
+          "sigs": [],
+          "q": [
+            35,
+            45,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, our current air conditioner is pretty old, maybe 15 years, and we're thinking about upgrading to something more efficient. We've heard good things about your Daikin FIT.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>AC replacement</strong>, existing system"
+            },
+            {
+              "c": "blue",
+              "t": "Interest in <strong>Daikin FIT</strong>"
+            },
+            {
+              "c": "orange",
+              "t": "Age 15 years, looking to upgrade"
+            }
+          ],
+          "q": [
+            62,
+            25,
+            13
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's great. The FIT is an excellent choice for efficient cooling and heating all in one compact unit. Can I ask, is your home served by the Santa Barbara area, and are you looking to get started with a professional assessment soon?",
+          "sigs": [],
+          "q": [
+            78,
+            12,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, we're in Santa Barbara. And honestly, with those tax credits you mentioned on your site, we'd like to move pretty quickly. We want to know what it would cost and how soon someone can come out.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Confirmed service area</strong> Santa Barbara"
+            },
+            {
+              "c": "green",
+              "t": "<strong>Time sensitive</strong>, tax credit motivated"
+            },
+            {
+              "c": "purple",
+              "t": "Ready for in-home assessment"
+            }
+          ],
+          "q": [
+            89,
+            5,
+            6
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm routing you now to our New Project team who'll schedule your in-home estimate. They'll measure your space, review your current setup, and give you a detailed quote and timeline, plus walk you through the available tax credits and financing options. Just one moment.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "In-Home Estimate Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule your in-home estimate (Agent)\", \"book a free estimate (Agent)\", \"set up an appointment with a local dealer (Agent)\", \"get you on the calendar (Agent)\"])",
+          "createdAt": "03/12/25 9:14 am",
+          "updatedAt": "01/09/26 2:41 pm"
+        },
+        {
+          "name": "Call Opening and Comfort Needs Assessment",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Comfort Needs Assessment] < 60 and duration > 45 sec",
+          "createdAt": "04/02/25 11:26 am",
+          "updatedAt": "12/18/25 10:03 am"
+        },
+        {
+          "name": "Competitor Named (Carrier, Trane, Lennox)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Carrier quote (Caller)\", \"Trane dealer (Caller)\", \"Lennox price (Caller)\", \"comparing with Goodman (Caller)\"])",
+          "createdAt": "05/19/25 3:47 pm",
+          "updatedAt": "11/30/25 4:22 pm"
+        },
+        {
+          "name": "Ductless Mini-Split Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"ductless mini split (Caller)\", \"single zone system (Caller)\", \"multi-zone for a few rooms (Caller)\", \"no ductwork in the house (Caller)\"])",
+          "createdAt": "06/07/25 8:52 am",
+          "updatedAt": "01/05/26 9:37 am"
+        },
+        {
+          "name": "Financing and Tax Credit Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"heat pump tax credit (Caller)\", \"financing options (Caller)\", \"monthly payments (Caller)\", \"any rebates available (Caller)\"])",
+          "createdAt": "06/24/25 1:09 pm",
+          "updatedAt": "01/12/26 11:18 am"
+        },
+        {
+          "name": "In-Home Estimate Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"a technician can come out (Agent)\", \"in-home estimate (Agent)\", \"have a dealer measure the space (Agent)\", \"free assessment at your home (Agent)\"])",
+          "createdAt": "07/15/25 10:41 am",
+          "updatedAt": "01/08/26 3:55 pm"
+        },
+        {
+          "name": "Next Step and Estimate Scheduling Effectiveness",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Estimate Scheduling] < 70 and duration > 60 sec",
+          "createdAt": "08/03/25 2:18 pm",
+          "updatedAt": "12/27/25 8:44 am"
+        },
+        {
+          "name": "Objection Handling and Rebuttal Quality",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Objection Handling] < 60 and duration > 45 sec",
+          "createdAt": "08/21/25 9:33 am",
+          "updatedAt": "01/03/26 12:29 pm"
+        },
+        {
+          "name": "Price Sensitivity Expressed",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"too expensive (Caller)\", \"out of my budget (Caller)\", \"how much does it cost (Caller)\", \"is there a cheaper option (Caller)\"])",
+          "createdAt": "09/09/25 4:07 pm",
+          "updatedAt": "12/22/25 1:15 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"installed price would be (Agent)\", \"your estimate comes to (Agent)\", \"the total for the system (Agent)\", \"ballpark figure (Agent)\"])",
+          "createdAt": "09/28/25 11:52 am",
+          "updatedAt": "01/14/26 10:26 am"
+        }
+      ]
+    }
+  }
+}

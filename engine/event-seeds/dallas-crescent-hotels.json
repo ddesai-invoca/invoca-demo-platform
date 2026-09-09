@@ -1,0 +1,5301 @@
+{
+  "id": "crescent-hotels-and-resorts",
+  "customerName": "Crescent Hotels & Resorts",
+  "websiteUrl": "https://www.crescenthotels.com",
+  "brandDomain": "crescenthotels.com",
+  "networkName": "Invoca for Hotel Management",
+  "industry": "Third-Party Hospitality Management",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Owner",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 400,
+      "yTicks": [
+        0,
+        100,
+        200,
+        300,
+        400
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 289
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 312
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 341
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 298
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 281
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Hotel Management Partner, Search",
+          "marketingSearchTerm": "third party hotel management company",
+          "landingPageUrl": "https://www.crescenthotels.com/management-services?utm_source=google&utm_medium=cpc&utm_campaign=hotel_mgmt_partner",
+          "websiteJourney": "Home / Management Services / Operations",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Third-Party Management RFP",
+          "marketingSearchTerm": "hotel management for owners",
+          "landingPageUrl": "https://www.crescenthotels.com/management-services/overview?utm_source=google&utm_medium=cpc&utm_campaign=tpm_rfp",
+          "websiteJourney": "Home / Management Services / Business Development",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Hotel Management Partner, Search",
+          "marketingSearchTerm": "Marriott approved management company",
+          "landingPageUrl": "https://www.crescenthotels.com/portfolio/our-properties?utm_source=bing&utm_medium=cpc&utm_campaign=hotel_mgmt_partner",
+          "websiteJourney": "Home / Portfolio / Our Properties",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Revenue Management, Search",
+          "marketingSearchTerm": "hotel revenue management services",
+          "landingPageUrl": "https://www.crescenthotels.com/management-services/commercial-strategy?utm_source=google&utm_medium=cpc&utm_campaign=rev_mgmt",
+          "websiteJourney": "Home / Management Services / Commercial Strategy",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Built by Operators",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.crescenthotels.com/crescent-advantage/our-company?utm_source=organic&utm_medium=seo&utm_campaign=built_by_operators",
+          "websiteJourney": "Home / Crescent Advantage / Our Company",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Third-Party Management RFP",
+          "marketingSearchTerm": "best independent hotel management companies",
+          "landingPageUrl": "https://www.crescenthotels.com/crescent-advantage/success-stories?utm_source=google&utm_medium=cpc&utm_campaign=tpm_rfp",
+          "websiteJourney": "Home / Portfolio / Success Stories",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "The Crescent Advantage",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.crescenthotels.com/latitudes?utm_source=organic&utm_medium=seo&utm_campaign=crescent_advantage",
+          "websiteJourney": "Home / Latitudes by Crescent / Overview",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Distressed Asset Management",
+          "marketingSearchTerm": "hotel receivership management",
+          "landingPageUrl": "https://www.crescenthotels.com/management-services/business-development?utm_source=bing&utm_medium=cpc&utm_campaign=distressed_asset",
+          "websiteJourney": "Home / Management Services / Business Development",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Pre-Opening Services",
+          "marketingSearchTerm": "pre-opening hotel management services",
+          "landingPageUrl": "https://www.crescenthotels.com/management-services/operations?utm_source=google&utm_medium=cpc&utm_campaign=pre_opening",
+          "websiteJourney": "Home / Management Services / Operations",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Portfolio Spotlight",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.crescenthotels.com/portfolio/our-properties?utm_source=instagram&utm_medium=social&utm_campaign=portfolio_spotlight",
+          "websiteJourney": "Home / Portfolio / Our Properties",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Luxury Operator, Search",
+          "marketingSearchTerm": "luxury hotel operator",
+          "landingPageUrl": "https://www.crescenthotels.com/latitudes?utm_source=google&utm_medium=cpc&utm_campaign=luxury_operator",
+          "websiteJourney": "Home / Latitudes by Crescent / Overview",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Newsroom / Press",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.crescenthotels.com/crescent-advantage/press?utm_source=organic&utm_medium=seo&utm_campaign=newsroom",
+          "websiteJourney": "Home / Crescent Advantage / Press",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Global Sales Roadshow",
+          "marketingSearchTerm": "global sales representation hotels",
+          "landingPageUrl": "https://www.crescenthotels.com/management-services/commercial-strategy?utm_source=google&utm_medium=cpc&utm_campaign=global_sales_roadshow",
+          "websiteJourney": "Home / Management Services / Commercial Strategy",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Portfolio Spotlight",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.crescenthotels.com/portfolio/colonial-williamsburg-collection?utm_source=facebook&utm_medium=social&utm_campaign=portfolio_spotlight",
+          "websiteJourney": "Home / Portfolio / Colonial Williamsburg Collection",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Hotel Management Partner, Search",
+          "marketingSearchTerm": "resort management company",
+          "landingPageUrl": "https://www.crescenthotels.com/management-services/overview?utm_source=bing&utm_medium=cpc&utm_campaign=hotel_mgmt_partner",
+          "websiteJourney": "Home / Management Services / Operations",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Success Stories, Value Creation",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.crescenthotels.com/crescent-advantage/success-stories?utm_source=organic&utm_medium=seo&utm_campaign=success_stories",
+          "websiteJourney": "Home / Portfolio / Success Stories",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Restaurant Concept, Search",
+          "marketingSearchTerm": "hotel restaurant concept development",
+          "landingPageUrl": "https://www.crescenthotels.com/management-services/crescent-restaurant-group?utm_source=google&utm_medium=cpc&utm_campaign=restaurant_concept",
+          "websiteJourney": "Home / Management Services / Crescent Restaurant Group",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Life at Crescent",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.crescenthotels.com/careers/open-positions?utm_source=instagram&utm_medium=social&utm_campaign=life_at_crescent",
+          "websiteJourney": "Home / Careers / Open Positions",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Join the Crescent Family",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.crescenthotels.com/careers/overview?utm_source=facebook&utm_medium=social&utm_campaign=join_crescent_family",
+          "websiteJourney": "Home / Careers / Overview",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "The Crescent Advantage",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.crescenthotels.com/contact?utm_source=organic&utm_medium=seo&utm_campaign=crescent_advantage",
+          "websiteJourney": "Home / Contact Us",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Project Management, Search",
+          "marketingSearchTerm": "hotel capital improvement project management",
+          "landingPageUrl": "https://www.crescenthotels.com/management-services/project-management?utm_source=google&utm_medium=cpc&utm_campaign=project_mgmt",
+          "websiteJourney": "Home / Management Services / Project Management",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Crescent Hotels & Resorts)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "1,193"
+            },
+            {
+              "label": "Management Inquiry (Percent)",
+              "value": "25%"
+            },
+            {
+              "label": "New Management Contract (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,242,679"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "191"
+            },
+            {
+              "label": "Careers Inquiry (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Existing Owner Support (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Vendor & Partner Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Management Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Management Inquiry (Percent)",
+              "value": "25%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "15%"
+            },
+            {
+              "label": "Unqualified Inquiry (Percent)",
+              "value": "10%"
+            },
+            {
+              "label": "New Management Contract (Percent)",
+              "value": "5%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Management Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Management Inquiry (Count)",
+            "values": [
+              41,
+              68,
+              63,
+              71,
+              55
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              24,
+              41,
+              38,
+              42,
+              34
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              16,
+              27,
+              25,
+              28,
+              23
+            ]
+          },
+          {
+            "name": "New Management Contract (Count)",
+            "values": [
+              8,
+              13,
+              13,
+              15,
+              11
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Management Contract (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1193,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "428",
+                "18.4%",
+                "3.2%",
+                "$1,512,340"
+              ]
+            },
+            {
+              "name": "LinkedIn",
+              "metrics": [
+                "291",
+                "21.2%",
+                "4.1%",
+                "$1,187,655"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "214",
+                "24.6%",
+                "5.3%",
+                "$952,480"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "147",
+                "27.1%",
+                "6.8%",
+                "$848,120"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "113",
+                "30.5%",
+                "8.4%",
+                "$742,084"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Management Contract (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1193,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "392",
+                "19.1%",
+                "3.5%",
+                "$1,438,220"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "318",
+                "22.4%",
+                "4.3%",
+                "$1,256,470"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "226",
+                "25.3%",
+                "5.6%",
+                "$998,540"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "158",
+                "28.0%",
+                "7.2%",
+                "$812,340"
+              ]
+            },
+            {
+              "name": "Trade Show",
+              "metrics": [
+                "99",
+                "31.6%",
+                "9.1%",
+                "$737,109"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Management Contract (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 612,
+          "rows": [
+            {
+              "name": "Third-Party Management RFP",
+              "metrics": [
+                "187",
+                "20.3%",
+                "4.2%",
+                "$712,340"
+              ]
+            },
+            {
+              "name": "Built by Operators",
+              "metrics": [
+                "142",
+                "23.5%",
+                "5.1%",
+                "$548,220"
+              ]
+            },
+            {
+              "name": "The Crescent Advantage",
+              "metrics": [
+                "116",
+                "26.8%",
+                "6.4%",
+                "$462,180"
+              ]
+            },
+            {
+              "name": "Global Sales Roadshow",
+              "metrics": [
+                "92",
+                "29.4%",
+                "7.9%",
+                "$358,140"
+              ]
+            },
+            {
+              "name": "Portfolio Spotlight",
+              "metrics": [
+                "75",
+                "32.7%",
+                "9.6%",
+                "$289,060"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Management Contract (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 248,
+          "rows": [
+            {
+              "name": "third party hotel management company",
+              "metrics": [
+                "78",
+                "21.2%",
+                "4.5%",
+                "$298,340"
+              ]
+            },
+            {
+              "name": "best independent hotel management companies",
+              "metrics": [
+                "61",
+                "24.6%",
+                "5.4%",
+                "$234,180"
+              ]
+            },
+            {
+              "name": "hotel revenue management services",
+              "metrics": [
+                "47",
+                "27.9%",
+                "6.7%",
+                "$186,220"
+              ]
+            },
+            {
+              "name": "pre-opening hotel management services",
+              "metrics": [
+                "35",
+                "30.5%",
+                "8.2%",
+                "$142,080"
+              ]
+            },
+            {
+              "name": "luxury hotel operator",
+              "metrics": [
+                "27",
+                "33.8%",
+                "10.1%",
+                "$118,060"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "New Management Contract (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Full-Service Hotel Management",
+              "metrics": [
+                "347",
+                "22%",
+                "4.0%",
+                "$1,224,913"
+              ]
+            },
+            {
+              "name": "Select-Service Management",
+              "metrics": [
+                "289",
+                "24%",
+                "4.5%",
+                "$1,133,687"
+              ]
+            },
+            {
+              "name": "Commercial Strategy & Revenue Management",
+              "metrics": [
+                "241",
+                "27%",
+                "5.0%",
+                "$1,049,552"
+              ]
+            },
+            {
+              "name": "Restaurant Concept Development",
+              "metrics": [
+                "178",
+                "29%",
+                "6.2%",
+                "$958,461"
+              ]
+            },
+            {
+              "name": "Project & Capital Improvement Management",
+              "metrics": [
+                "138",
+                "33%",
+                "7.2%",
+                "$876,066"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Management Contract (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1193,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "361",
+                "21%",
+                "4.2%",
+                "$1,312,447"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "287",
+                "24%",
+                "4.5%",
+                "$1,133,896"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "233",
+                "27%",
+                "5.2%",
+                "$1,049,215"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "179",
+                "30%",
+                "6.1%",
+                "$962,338"
+              ]
+            },
+            {
+              "name": "Mountain",
+              "metrics": [
+                "133",
+                "33%",
+                "6.8%",
+                "$784,783"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Management Contract (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Full-Service Hotel Management",
+            "values": [
+              3,
+              3,
+              2,
+              3,
+              3
+            ]
+          },
+          {
+            "name": "Select-Service Management",
+            "values": [
+              2,
+              3,
+              3,
+              2,
+              3
+            ]
+          },
+          {
+            "name": "Commercial Strategy & Revenue Management",
+            "values": [
+              2,
+              2,
+              3,
+              2,
+              3
+            ]
+          },
+          {
+            "name": "Restaurant Concept Development",
+            "values": [
+              2,
+              2,
+              2,
+              3,
+              2
+            ]
+          },
+          {
+            "name": "Project & Capital Improvement Management",
+            "values": [
+              1,
+              2,
+              2,
+              2,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 1,193 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Whitfield, a REIT asset manager, called about placing a boutique urban property under full-service management and asked how management fees are structured. Oscar walked him through the percentage of gross revenue plus incentive model and booked a discovery consultation with the Business Development team. Marcus confirmed the meeting and shared his portfolio details.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 89,
+          "summary": "Elena Vasquez, an owner of two select-service hotels, wanted help lifting RevPAR through a dedicated revenue management program. Lila explained the strategy audits and system implementation included in the monthly retainer and scheduled a consultation with a commercial strategy director. Elena was pleased and agreed to the follow up.",
+          "date": "Feb 11, 2:38 PM",
+          "agent": "Lila",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 85,
+          "summary": "Raymond Choi, a developer opening a resort in Q4, asked about pre-opening and staffing ramp support for a new build. Rosey outlined the pre-opening timeline and brand compliance steps and booked a consultation with the operations team. Raymond confirmed his opening date and requested a proposal.",
+          "date": "Mar 4, 9:52 AM",
+          "agent": "Rosey",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 10,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "David Somers, a first-time hotel investor, called to schedule an intake consultation about having Crescent operate his newly acquired 140-room property. Mary collected his contact details, ownership structure, franchise flag, and target handover date, then set up a consultation with Business Development. David confirmed the appointment and asked what documents to prepare.",
+          "date": "Apr 9, 1:20 PM",
+          "agent": "Mary",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 72,
+          "summary": "Priya Nadella, owner of an underperforming independent hotel, asked about re-flagging the asset under a major brand. Lee explained the de-flagging and re-flagging process and the transition support involved and scheduled a consultation with the pre-opening team. Priya agreed and shared her current franchise agreement details.",
+          "date": "May 15, 4:06 PM",
+          "agent": "Lee",
+          "duration": "2m 34s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 13,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Anthony Reyes, a resort owner, wanted creative direction for a new signature restaurant concept on property. Jennifer described how the Crescent Restaurant Group handles design concepts through menu development and booked a consultation with a restaurant concept lead. Anthony was enthusiastic and confirmed the meeting.",
+          "date": "Jun 3, 11:41 AM",
+          "agent": "Jennifer",
+          "duration": "2m 19s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 15,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 64,
+          "summary": "Sandra Kim, an existing management client, called for a status update on her property's revenue management strategy audit. Mike explained the audit was mid-cycle and pulled the latest pacing report for her. Sandra wanted faster reporting turnaround but did not book a new engagement.",
+          "date": "Jul 8, 3:27 PM",
+          "agent": "Mike",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 60,
+          "summary": "Gregory Alton, a current owner, disputed a line item on his monthly statement and questioned how his management fees were calculated for the quarter. Sue reviewed the incentive fee breakdown and opened a billing review ticket. Gregory remained unsatisfied and asked for a call back from finance.",
+          "date": "Aug 12, 10:33 AM",
+          "agent": "Sue",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 21,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 56,
+          "summary": "Nadia Foster, a property owner, called for an update on her lobby capital improvement project that appeared behind schedule. Rose checked with project management and confirmed a material delay on the millwork. Nadia expressed frustration about the timeline and asked for a revised completion date.",
+          "date": "Aug 27, 1:15 PM",
+          "agent": "Rose",
+          "duration": "2m 10s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 23,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 52,
+          "summary": "Thomas Beckett, a developer, was upset that his pre-opening hiring milestones had slipped ahead of his launch. Oscar reviewed the staffing plan and escalated the delay to the operations lead. Thomas asked for daily updates until the property was ready.",
+          "date": "Sep 2, 9:09 AM",
+          "agent": "Oscar",
+          "duration": "2m 27s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 48,
+          "summary": "Carla Jimenez, an owner, complained that her recent re-flagging transition caused booking system errors that hurt occupancy. Lila apologized and logged an urgent operations ticket with the transition team. Carla wanted compensation and remained frustrated at the end of the call.",
+          "date": "Sep 18, 4:44 PM",
+          "agent": "Lila",
+          "duration": "3m 18s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 44,
+          "summary": "Victor Hale, a resort owner, raised repeated service complaints about his property restaurant operations and staffing gaps. Lee documented the issues and promised a review by the Crescent Restaurant Group. Victor was dissatisfied with the delay and demanded a manager follow up.",
+          "date": "Oct 1, 11:22 AM",
+          "agent": "Lee",
+          "duration": "2m 55s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Diane Prescott, an owner, called to begin canceling her management agreement over ongoing performance concerns. Mary explained the notice period and retrieved the contract terms. Diane declined to schedule a retention consultation and asked for the exit paperwork.",
+          "date": "Oct 14, 2:03 PM",
+          "agent": "Mary",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Frank Delacroix, a longtime owner, angrily disputed two months of charges and claimed his invoices were inaccurate. Mike attempted to reconcile the statement but the caller talked over him repeatedly. Frank threatened to withhold payment and ended the call unresolved.",
+          "date": "Oct 22, 3:51 PM",
+          "agent": "Mike",
+          "duration": "3m 24s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "An unidentified caller left a brief voicemail asking someone to call back about a distressed asset and possible receivership management. No details or property information were provided and the message trailed off. The call rolled to voicemail and was not returned during the shift.",
+          "date": "Oct 29, 6:12 PM",
+          "agent": "No Agent",
+          "duration": "0m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "revenue management",
+        "pre-opening",
+        "re-flagging",
+        "management fees",
+        "consultation",
+        "restaurant"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Property Type and Portfolio Fit",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area and Market",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Management Service Value Proposition",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation with Specific Date and Time",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Follow-up Process and Timeline",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller is a hotel owner",
+        "Property has 40 rooms",
+        "Boutique hotel category",
+        "Located in Southeast region",
+        "Interested in revenue management services",
+        "Open to outsourcing operations",
+        "Caller is decision maker",
+        "Specific pain point identified: occupancy rates",
+        "Mentions competing management companies",
+        "Expresses concern about current performance",
+        "Wants expert market analysis",
+        "Caller is engaged and asking questions",
+        "Urgency indicated by timeline"
+      ],
+      "unmetSignals": [
+        "Email not captured during call",
+        "Specific consultation date not booked",
+        "Preferred communication method not confirmed",
+        "Current management arrangement not fully explored",
+        "Budget parameters not discussed",
+        "Timeline for decision not established",
+        "Other properties in portfolio not mentioned",
+        "Competitive bid process not addressed",
+        "Contract terms concerns not surfaced",
+        "Next steps confirmation missed"
+      ],
+      "naSignals": [
+        "Caller did not place a service order",
+        "No payment or invoice required",
+        "Property is not currently under Crescent management",
+        "No facility tour scheduled during this call",
+        "Caller is not requesting restaurant concept services",
+        "Pre-opening timeline not applicable",
+        "Due diligence requirements not applicable",
+        "Asset valuation not requested",
+        "Corporate partnership not discussed"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller owns a 40-room boutique hotel in the Southeast and is concerned about declining occupancy rates and revenue performance. They are actively seeking a third-party management partner to improve commercial strategy and overall operations."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a management company with proven Southeast market experience, demonstrated revenue management expertise, and the ability to lift occupancy and RevPAR within six months. They want a detailed market analysis and performance benchmarking against comparable properties."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have captured the caller's email address explicitly and confirmed a specific consultation date and time before closing the call. He also could have briefly described Crescent's recent success with similar boutique properties to build additional confidence in the partnership value."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Crescent Hotels and Resorts. This is Marcus Bell speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:24",
+          "text": "Hi Marcus. I own a 40-room boutique hotel in Charleston, South Carolina, and I'm looking for a management company. Our occupancy has dropped significantly over the past year, and I think we need professional help with revenue management and overall operations."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:42",
+          "text": "That's great to hear from you. I'm glad you reached out. We work with boutique and independent hotel owners throughout the Southeast, and revenue management is definitely one of our core competencies. Can I get your full name to start?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:54",
+          "text": "Of course. I'm Jonathan Whitmore. W-H-I-T-M-O-R-E."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:02",
+          "text": "Perfect, Jonathan. I appreciate that. So your property is in Charleston. Are you currently working with another management company, or are you operating independently?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:12",
+          "text": "We're independent right now. We've been using a revenue management consultant part-time, but it's not working out. We need a full-service partner who can handle operations, staffing, and strategy all together."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:26",
+          "text": "That makes sense. Crescent specializes in exactly that kind of full-service engagement. We handle guest operations, financial management, and commercial strategy all under one roof. Your property is under what brand flag, if any, or is it independent branded?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:42",
+          "text": "It's an independent luxury boutique property. We've got some online OTA listings, but I'm not flagged with Marriott or Hilton currently."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:52",
+          "text": "Got it. So what's your biggest priority right now? Is it driving occupancy back up, or optimizing your rate strategy once you do fill more rooms?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:04",
+          "text": "Both, honestly. We're sitting around 52% occupancy when we should be closer to 75% to 80% for this market. And our rates are all over the place. I need someone to audit everything and give me a real market analysis."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:18",
+          "text": "I completely understand. What I'd like to do is set up a consultation call where our business development team can do a deeper dive into your property, your market, and your specific challenges. We can pull recent performance data and show you what a Crescent engagement might look like for a boutique property like yours. Does that sound helpful?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:36",
+          "text": "Absolutely. Yes, I'd like to explore that. What's the next step?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:44",
+          "text": "Great. Let me just confirm your phone number so we can reach you directly. What's the best number?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:52",
+          "text": "It's ***-***-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:00",
+          "text": "Perfect, I've got that down. Jonathan, our team will follow up with you within two business days with some available times. We're looking forward to learning more about your property and showing you how Crescent has helped similar boutique properties recover occupancy and grow revenue. Is there anything else I can help clarify before we wrap up?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:22",
+          "text": "No, that sounds good. I appreciate the quick response and professionalism. Looking forward to hearing from your team."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:30",
+          "text": "Thank you, Jonathan. We appreciate your interest in Crescent Hotels and Resorts. Have a great day, and we'll be in touch soon."
+        }
+      ],
+      "aiSummary": "Jonathan Whitmore, owner of a 40-room independent luxury boutique hotel in Charleston, South Carolina, called to explore full-service hotel management and commercial strategy support. His property is experiencing declining occupancy (currently 52% versus target 75 to 80%) and inconsistent rate strategy, prompting him to seek professional help. Marcus identified Crescent's relevant expertise in boutique properties, full-service operations, and revenue management, and scheduled a follow-up business development consultation. The call was well-structured and qualified, though the email address was not captured and a specific consultation appointment date was not confirmed during the call.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, this was a strong qualification call. You navigated the discovery smoothly, identified Jonathan's key pain points (occupancy and rate strategy), and positioned Crescent's full-service value proposition well. Two small coaching notes for next time. First, always confirm the email address on the front end so you have a backup channel if the phone number changes. Second, give the caller a specific consultation window or two during the call itself (e.g., 'We have availability Thursday or Friday afternoon.') rather than leaving it completely open. Buyers like to own the next step together. Great work overall."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "1,193"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$4394.53"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,242,679"
+            }
+          ]
+        },
+        {
+          "title": "NEW OWNER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Owners (Count)",
+              "value": "742"
+            },
+            {
+              "label": "Caller Type: New Owners (Percent)",
+              "value": "62%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "298"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "25%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING OWNERs & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Owner (Count)",
+              "value": "451"
+            },
+            {
+              "label": "Caller Type: Existing Owner (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Direct",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "Social Media",
+                "value": 34,
+                "display": "34%"
+              },
+              {
+                "name": "Referral",
+                "value": 28,
+                "display": "28%"
+              },
+              {
+                "name": "Paid Search",
+                "value": 22,
+                "display": "22%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Organic Search",
+                  "412",
+                  "18%",
+                  "$1,712,455"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Search",
+                  "331",
+                  "22%",
+                  "$1,398,220"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "218",
+                  "28%",
+                  "$1,024,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "142",
+                  "34%",
+                  "$612,340"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "90",
+                  "41%",
+                  "$494,784"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 500,
+            "axisTicks": [
+              0,
+              100,
+              200,
+              300,
+              400,
+              500
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Organic",
+                "value": 398,
+                "display": "398"
+              },
+              {
+                "name": "CPC",
+                "value": 342,
+                "display": "342"
+              },
+              {
+                "name": "Referral",
+                "value": 221,
+                "display": "221"
+              },
+              {
+                "name": "Social",
+                "value": 138,
+                "display": "138"
+              },
+              {
+                "name": "Email",
+                "value": 94,
+                "display": "94"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Organic",
+                  "398",
+                  "17%"
+                ]
+              },
+              {
+                "cells": [
+                  "CPC",
+                  "342",
+                  "21%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "221",
+                  "27%"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "138",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "94",
+                  "40%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 300,
+            "axisTicks": [
+              0,
+              50,
+              100,
+              150,
+              200,
+              250,
+              300
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Hotel Management Partner Search",
+                "value": 287,
+                "display": "287"
+              },
+              {
+                "name": "Third-Party Management RFP",
+                "value": 214,
+                "display": "214"
+              },
+              {
+                "name": "Built by Operators",
+                "value": 176,
+                "display": "176"
+              },
+              {
+                "name": "Global Sales Roadshow",
+                "value": 132,
+                "display": "132"
+              },
+              {
+                "name": "Portfolio Spotlight",
+                "value": 98,
+                "display": "98"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Hotel Management Partner Search",
+                  "287",
+                  "19%",
+                  "$1,024,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Third-Party Management RFP",
+                  "214",
+                  "24%",
+                  "$842,155"
+                ]
+              },
+              {
+                "cells": [
+                  "Built by Operators",
+                  "176",
+                  "29%",
+                  "$698,420"
+                ]
+              },
+              {
+                "cells": [
+                  "Global Sales Roadshow",
+                  "132",
+                  "37%",
+                  "$524,900"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 150,
+            "axisTicks": [
+              0,
+              30,
+              60,
+              90,
+              120,
+              150
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "third party hotel management company",
+                "value": 142,
+                "display": "142"
+              },
+              {
+                "name": "hotel revenue management services",
+                "value": 108,
+                "display": "108"
+              },
+              {
+                "name": "resort management company",
+                "value": 87,
+                "display": "87"
+              },
+              {
+                "name": "Marriott approved management company",
+                "value": 64,
+                "display": "64"
+              },
+              {
+                "name": "pre-opening hotel management services",
+                "value": 43,
+                "display": "43"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "third party hotel management company",
+                  "21%"
+                ]
+              },
+              {
+                "cells": [
+                  "hotel revenue management services",
+                  "26%"
+                ]
+              },
+              {
+                "cells": [
+                  "resort management company",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "Marriott approved management company",
+                  "38%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Owners",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Owners (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Operations",
+              "384",
+              "19%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Commercial Strategy",
+              "301",
+              "24%",
+              "63%"
+            ]
+          },
+          {
+            "cells": [
+              "Business Development",
+              "248",
+              "29%",
+              "69%"
+            ]
+          },
+          {
+            "cells": [
+              "Project Management",
+              "172",
+              "36%",
+              "74%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Fort Worth Corporate Office",
+              "468",
+              "31",
+              "4%",
+              "19%"
+            ]
+          },
+          {
+            "cells": [
+              "Latitudes by Crescent Division",
+              "312",
+              "22",
+              "5%",
+              "24%"
+            ]
+          },
+          {
+            "cells": [
+              "Colonial Williamsburg Collection",
+              "241",
+              "18",
+              "6%",
+              "29%"
+            ]
+          },
+          {
+            "cells": [
+              "Crescent Restaurant Group",
+              "172",
+              "24",
+              "8%",
+              "36%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Fee Above Owner Budget",
+            "values": [
+              52,
+              48,
+              54,
+              46,
+              48
+            ]
+          },
+          {
+            "name": "Comparing Management Companies",
+            "values": [
+              44,
+              42,
+              46,
+              40,
+              44
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              36,
+              34,
+              38,
+              32,
+              38
+            ]
+          },
+          {
+            "name": "Needs Ownership Group Approval",
+            "values": [
+              28,
+              30,
+              26,
+              30,
+              28
+            ]
+          },
+          {
+            "name": "Outside Portfolio Fit",
+            "values": [
+              22,
+              20,
+              24,
+              21,
+              24
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "477"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "New Management Contract (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$2,988,327"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Management Contract (Percent)",
+              "value": "24%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$287,440"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Management Contract (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$468,720"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Management Contract (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$521,088"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Management Contract (Percent)",
+              "value": "26%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$298,512"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Management Contract (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$527,664"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Management Contract (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$884,903"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Management Contract (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 548,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "187",
+                "58%",
+                "29%",
+                "$723,140"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "143",
+                "54%",
+                "31%",
+                "$651,892"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "89",
+                "52%",
+                "32%",
+                "$518,720"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "41",
+                "59%",
+                "37%",
+                "$262,508"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "17",
+                "63%",
+                "42%",
+                "$131,867"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Management Contract (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 535,
+          "rows": [
+            {
+              "name": "Website Contact Form",
+              "metrics": [
+                "218",
+                "55%",
+                "30%",
+                "$782,346"
+              ]
+            },
+            {
+              "name": "Phone Call",
+              "metrics": [
+                "156",
+                "57%",
+                "34%",
+                "$891,744"
+              ]
+            },
+            {
+              "name": "SMS Inquiry",
+              "metrics": [
+                "68",
+                "61%",
+                "35%",
+                "$524,280"
+              ]
+            },
+            {
+              "name": "Email Inquiry",
+              "metrics": [
+                "23",
+                "54%",
+                "29%",
+                "$186,957"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Management Contract (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 526,
+          "rows": [
+            {
+              "name": "Hotel Management Partner Search",
+              "metrics": [
+                "164",
+                "53%",
+                "28%",
+                "$598,456"
+              ]
+            },
+            {
+              "name": "Portfolio Spotlight",
+              "metrics": [
+                "127",
+                "58%",
+                "33%",
+                "$726,924"
+              ]
+            },
+            {
+              "name": "Third Party Management RFP",
+              "metrics": [
+                "89",
+                "61%",
+                "36%",
+                "$614,892"
+              ]
+            },
+            {
+              "name": "Built by Operators",
+              "metrics": [
+                "61",
+                "59%",
+                "38%",
+                "$428,716"
+              ]
+            },
+            {
+              "name": "The Crescent Advantage",
+              "metrics": [
+                "36",
+                "63%",
+                "41%",
+                "$619,339"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Management Contract (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 447,
+          "rows": [
+            {
+              "name": "third party hotel management company",
+              "metrics": [
+                "98",
+                "51%",
+                "27%",
+                "$419,268"
+              ]
+            },
+            {
+              "name": "best independent hotel management companies North America",
+              "metrics": [
+                "76",
+                "56%",
+                "31%",
+                "$501,720"
+              ]
+            },
+            {
+              "name": "hotel management for owners investors",
+              "metrics": [
+                "58",
+                "59%",
+                "35%",
+                "$486,752"
+              ]
+            },
+            {
+              "name": "hotel revenue management services",
+              "metrics": [
+                "42",
+                "63%",
+                "37%",
+                "$387,408"
+              ]
+            },
+            {
+              "name": "resort management company",
+              "metrics": [
+                "31",
+                "67%",
+                "42%",
+                "$393,179"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Management Contract (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Full Service Hotel Management",
+              "metrics": [
+                "156",
+                "59%",
+                "31%",
+                "$681,432"
+              ]
+            },
+            {
+              "name": "Revenue Management Program",
+              "metrics": [
+                "118",
+                "57%",
+                "34%",
+                "$628,816"
+              ]
+            },
+            {
+              "name": "Business Development Advisory",
+              "metrics": [
+                "94",
+                "54%",
+                "29%",
+                "$502,364"
+              ]
+            },
+            {
+              "name": "Digital Marketing & eCommerce",
+              "metrics": [
+                "67",
+                "58%",
+                "36%",
+                "$823,156"
+              ]
+            },
+            {
+              "name": "Pre Opening & Re Flagging Services",
+              "metrics": [
+                "42",
+                "61%",
+                "39%",
+                "$352,359"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Management Contract (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Full Service Hotel Management",
+            "values": [
+              15,
+              14,
+              12,
+              16,
+              11
+            ]
+          },
+          {
+            "name": "Revenue Management Program",
+            "values": [
+              11,
+              13,
+              10,
+              14,
+              12
+            ]
+          },
+          {
+            "name": "Business Development Advisory",
+            "values": [
+              8,
+              9,
+              7,
+              11,
+              8
+            ]
+          },
+          {
+            "name": "Digital Marketing & eCommerce",
+            "values": [
+              9,
+              11,
+              8,
+              13,
+              12
+            ]
+          },
+          {
+            "name": "Pre Opening & Re Flagging Services",
+            "values": [
+              5,
+              6,
+              5,
+              7,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "348"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$4,873,156"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "812"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "18:47:32"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "24"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$369,523"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              73,
+              71,
+              76,
+              74,
+              79,
+              72,
+              75,
+              78,
+              74,
+              71,
+              77,
+              73,
+              79,
+              76,
+              72,
+              75,
+              81,
+              74,
+              71,
+              76,
+              78,
+              72,
+              75,
+              73,
+              79,
+              77,
+              74,
+              71,
+              76,
+              74,
+              72,
+              81,
+              178,
+              174,
+              189,
+              181,
+              176,
+              184,
+              179,
+              182,
+              178,
+              175,
+              187,
+              180,
+              172,
+              185,
+              183,
+              177,
+              179
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,089"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "718"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "701"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Pre-Opening Management Services",
+            "values": [
+              8,
+              11,
+              9,
+              4,
+              12,
+              7
+            ]
+          },
+          {
+            "name": "Revenue Management Program",
+            "values": [
+              6,
+              8,
+              4,
+              2,
+              9,
+              5
+            ]
+          },
+          {
+            "name": "Global Sales Representation",
+            "values": [
+              9,
+              7,
+              11,
+              3,
+              10,
+              8
+            ]
+          },
+          {
+            "name": "Full-Service Management Agreement Inquiry",
+            "values": [
+              7,
+              9,
+              6,
+              1,
+              14,
+              6
+            ]
+          },
+          {
+            "name": "Capital Improvement Project Discussion",
+            "values": [
+              5,
+              6,
+              8,
+              5,
+              11,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "1098"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "698"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Management Engagement Signed (Count)",
+            "value": "298"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$5,242,679"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus DeVries",
+              "value": 247,
+              "display": "247"
+            },
+            {
+              "name": "Jennifer Kohl",
+              "value": 189,
+              "display": "189"
+            },
+            {
+              "name": "Stephen Blackwell",
+              "value": 216,
+              "display": "216"
+            },
+            {
+              "name": "Priya Kapoor",
+              "value": 174,
+              "display": "174"
+            },
+            {
+              "name": "David Ortega",
+              "value": 203,
+              "display": "203"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Management Engagement Signed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Alexis Morrow",
+            "values": [
+              31,
+              38,
+              44,
+              52,
+              61
+            ]
+          },
+          {
+            "name": "Bryce Richardson",
+            "values": [
+              28,
+              34,
+              41,
+              48,
+              57
+            ]
+          },
+          {
+            "name": "Carol Huang",
+            "values": [
+              25,
+              31,
+              37,
+              44,
+              53
+            ]
+          },
+          {
+            "name": "Daniel Foster",
+            "values": [
+              29,
+              36,
+              43,
+              51,
+              59
+            ]
+          },
+          {
+            "name": "Elena Vasquez",
+            "values": [
+              27,
+              33,
+              40,
+              47,
+              56
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus DeVries",
+              "value": 54.3,
+              "display": "54.3%"
+            },
+            {
+              "name": "Jennifer Kohl",
+              "value": 56.1,
+              "display": "56.1%"
+            },
+            {
+              "name": "Stephen Blackwell",
+              "value": 52.8,
+              "display": "52.8%"
+            },
+            {
+              "name": "Priya Kapoor",
+              "value": 58.7,
+              "display": "58.7%"
+            },
+            {
+              "name": "David Ortega",
+              "value": 55.9,
+              "display": "55.9%"
+            },
+            {
+              "name": "Raymond Chen",
+              "value": 61.2,
+              "display": "61.2%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Management Engagement Signed (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus DeVries",
+                "54.3%",
+                "28%",
+                "$686,824",
+                "1411"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Kohl",
+                "56.1%",
+                "30%",
+                "$743,512",
+                "1394"
+              ]
+            },
+            {
+              "cells": [
+                "Stephen Blackwell",
+                "52.8%",
+                "26%",
+                "$597,438",
+                "1443"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Kapoor",
+                "58.7%",
+                "32%",
+                "$801,286",
+                "1419"
+              ]
+            },
+            {
+              "cells": [
+                "David Ortega",
+                "55.9%",
+                "29%",
+                "$712,947",
+                "1408"
+              ]
+            },
+            {
+              "cells": [
+                "Raymond Chen",
+                "61.2%",
+                "35%",
+                "$862,743",
+                "1387"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Alexis Morrow",
+              "value": 92.4,
+              "display": "92.4%"
+            },
+            {
+              "name": "Bryce Richardson",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "Carol Huang",
+              "value": 91.3,
+              "display": "91.3%"
+            },
+            {
+              "name": "Daniel Foster",
+              "value": 90.8,
+              "display": "90.8%"
+            },
+            {
+              "name": "Elena Vasquez",
+              "value": 93.1,
+              "display": "93.1%"
+            },
+            {
+              "name": "Franklin Moore",
+              "value": 88.5,
+              "display": "88.5%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Management Engagement Signed (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Alexis Morrow",
+                "92.4%",
+                "64%",
+                "$1,543,287",
+                "1539"
+              ]
+            },
+            {
+              "cells": [
+                "Bryce Richardson",
+                "89.7%",
+                "61%",
+                "$1,392,548",
+                "1514"
+              ]
+            },
+            {
+              "cells": [
+                "Carol Huang",
+                "91.3%",
+                "63%",
+                "$1,465,821",
+                "1521"
+              ]
+            },
+            {
+              "cells": [
+                "Daniel Foster",
+                "90.8%",
+                "62%",
+                "$1,441,636",
+                "1527"
+              ]
+            },
+            {
+              "cells": [
+                "Elena Vasquez",
+                "93.1%",
+                "65%",
+                "$1,569,234",
+                "1544"
+              ]
+            },
+            {
+              "cells": [
+                "Franklin Moore",
+                "88.5%",
+                "59%",
+                "$1,311,845",
+                "1502"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Management Engagement Signed (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Management Engagement Signed (Count)",
+        "rightMax": 100,
+        "rightTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 11
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 11
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 10
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 10
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 9
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 9
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 10
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 10
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 11
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 11
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 10
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 10
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 9
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 9
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 10
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 10
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 11
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 11
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 10
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 10
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 9
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 9
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 10
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 11
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 11
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 11
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 10
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 9
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 9
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 9
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": -2
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 300000,
+        "rightTicks": [
+          0,
+          100000,
+          200000,
+          300000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 194342
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 186268
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 173453
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 165508
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 144105
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 151234
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 167064
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 173649
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 193620
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 187727
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 169079
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 163418
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 145415
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 149888
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 171042
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 176254
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 191817
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 188832
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 165585
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 160333
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 147597
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 149145
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 173990
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 179757
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 189381
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 189105
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 163216
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 156498
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 150157
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 149432
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 175768
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "1193"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "95"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "72"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "85%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "84%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Martinez",
+                "412",
+                "89%",
+                "86%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "389",
+                "86%",
+                "83%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Richardson",
+                "392",
+                "86%",
+                "83%",
+                "85%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "1,193 calls",
+      "pagerLabel": "1 of 119",
+      "calls": [
+        {
+          "time": "1/5/26 9:14 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/7/26 10:41 am",
+          "id": "A213-4C9E7B1120AF"
+        },
+        {
+          "time": "1/9/26 11:28 am",
+          "id": "C8D4-19AB77E3B045"
+        },
+        {
+          "time": "1/12/26 1:02 pm",
+          "id": "3E7A-6F02D5188C91"
+        },
+        {
+          "time": "1/14/26 2:37 pm",
+          "id": "9B10-D4E7A2660F3C"
+        },
+        {
+          "time": "1/16/26 3:19 pm",
+          "id": "7F62-88C1E0347BDA"
+        },
+        {
+          "time": "1/20/26 8:53 am",
+          "id": "1D45-B90F26AC5511"
+        },
+        {
+          "time": "1/22/26 12:46 pm",
+          "id": "6A98-3C22F718E0D7"
+        },
+        {
+          "time": "1/27/26 4:08 pm",
+          "id": "E204-77BD1955C4A9"
+        },
+        {
+          "time": "1/29/26 5:22 pm",
+          "id": "B3C1-2E6690FA8817"
+        }
+      ],
+      "duration": "2:22",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling Crescent Hotels and Resorts, this is Danielle in Business Development. How can I help you today?",
+          "highlights": [
+            "Thank you for calling Crescent Hotels and Resorts",
+            "How can I help you today?"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:11",
+          "text": "Hi Danielle. My name is Marcus Whitfield. My partners and I just closed on a 142 room independent hotel outside Nashville and we are looking for a third party operator to run it.",
+          "highlights": [
+            "Marcus Whitfield",
+            "142 room independent hotel"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:22",
+          "text": "Congratulations on the acquisition, Marcus. That is exactly the kind of property we love working with. Is this currently flagged, or are you planning to keep it independent?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:31",
+          "text": "It is independent right now, but we are open to a conversion. We want to lift the revenue and honestly we need help with the whole operation.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:40",
+          "text": "Understood. Our Full-Service Hotel Management covers staffing, guest services, financial management, and brand compliance if you do decide to re-flag. We would pair that with our Commercial Strategy team for revenue management.",
+          "highlights": [
+            "Full-Service Hotel Management",
+            "Commercial Strategy"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:53",
+          "text": "That sounds like what we need. What does management like that typically run? I want to keep the fees manageable while we stabilize the asset.",
+          "highlights": [
+            "I want to keep the fees manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:03",
+          "text": "Very fair. Full-service management is generally in the range of two to four percent of gross revenue plus an incentive fee tied to performance, so our upside is aligned with yours. We can tailor the structure to your stabilization timeline.",
+          "highlights": [
+            "two to four percent of gross revenue"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:15",
+          "text": "Okay. I will be honest, we are getting a couple of proposals. There is a regional operator down in Atlanta that quoted us as well.",
+          "highlights": [
+            "we are getting a couple of proposals"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:24",
+          "text": "That is smart diligence, and I would encourage you to compare. What sets us apart is scale, over 25,000 rooms and relationships with Marriott, Hilton, Hyatt and IHG, so a conversion and the revenue systems come built in. Many owners find our approval standing accelerates the whole process.",
+          "highlights": [
+            "over 25,000 rooms",
+            "Marriott, Hilton, Hyatt and IHG"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:40",
+          "text": "That relationship piece is a real draw. My concern is I do not want to be locked into something rigid if it is not performing.",
+          "highlights": [
+            "I do not want to be locked into something rigid"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:49",
+          "text": "Completely understand. Our agreements include performance benchmarks and defined termination provisions, so you retain flexibility. We would rather earn the relationship every quarter than hold you to a rigid term.",
+          "highlights": [
+            "performance benchmarks and defined termination provisions"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:00",
+          "text": "That is reassuring. I would want my two partners on the call before we commit to anything.",
+          "highlights": [
+            "I would want my two partners on the call"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:07",
+          "text": "Absolutely, let us get all of you together. I can set up a consultation with our Business Development lead this Thursday at 10 AM. Can I put that on the calendar and grab the best email for you?",
+          "highlights": [
+            "set up a consultation",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:15",
+          "text": "Thursday at 10 works. It is marcus at whitfield capital dot com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:20",
+          "text": "Perfect, you are booked for Thursday at 10 AM. Thank you for calling Crescent, Marcus, we look forward to it.",
+          "highlights": [
+            "you are booked for Thursday at 10 AM",
+            "Thank you for calling Crescent"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Owner",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: Full-Service Management",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Intent: Brand Conversion / Re-Flag",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: Revenue Management",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Comparison Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Fee / Budget Concern Raised",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Marcus Whitfield, a new owner who just closed on a 142 room independent hotel outside Nashville, called seeking a third party operator for his property. Danielle recommended Crescent's Full-Service Hotel Management paired with the Commercial Strategy revenue management team, and addressed his fee, competitor, and contract flexibility concerns. She positioned Crescent's scale and brand relationships with Marriott, Hilton, Hyatt and IHG as a differentiator. A consultation with the Business Development lead was scheduled for Thursday at 10 AM.",
+        "keyPoints": [
+          "New owner of a 142 room independent hotel near Nashville",
+          "Needs full-service operations plus a possible brand conversion",
+          "Recommended Full-Service Management and Commercial Strategy revenue program",
+          "Handled fee concern, competitor proposal, and contract flexibility worry",
+          "Consultation booked for Thursday at 10 AM with partners to attend",
+          "Captured email marcus at whitfield capital dot com"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "752 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 75",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for texting Crescent Hotels. We help hotel owners and developers maximize their asset value through professional management services. Is this about exploring management options for a property you own or develop?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:23 AM",
+              "text": "Yes, we have a 180-room boutique hotel in Austin that we're looking to improve operations and revenue."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:24 AM",
+              "text": "Great. Are you the owner, developer, or do you work in asset management for your property?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "I'm the owner. We bought it two years ago and want professional management to boost our bottom line."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Perfect. Of our core services, which area matters most right now: full operations management, revenue strategy, or maybe pre opening and positioning work?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "Revenue management. Our occupancy is good but we're not optimizing rates."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "That's exactly what our Revenue Management Program handles. Data analysis, strategy audits, rate optimization by market segment. For an Austin boutique your size, we typically see 8 to 15 percent uplift in RevPAR within 90 days. Interested in a consultation with our Commercial Strategy team?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Yes, definitely. When can we talk?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Excellent. How about next Tuesday, March 18th at 2 PM Central Time? One of our revenue strategists will walk you through a property analysis and estimate."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:36 AM",
+              "text": "Perfect. Tuesday at 2 PM works."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:37 AM",
+              "text": "Wonderful. Your consultation is confirmed for Tuesday, March 18th at 2 PM CT. A strategist will call you at this number. You can also reach our team at 512-737-4521 if you need to reschedule. Looking forward to it."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:39 AM",
+              "text": "Great, thanks."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:40 AM",
+              "text": "You're welcome. See you Tuesday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Owner",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Interest: Revenue Management",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Property Type: Boutique Hotel",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Market Location: Austin, TX",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimated Monthly Service Fee: 4500",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "512-551-8847",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "512-551-8847",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "James Hartley",
+            "firstName": "James",
+            "lastName": "Hartley",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A847-2D9F5B3E1472",
+          "time": "3/11/26 2:14 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A847-2D9F5B3E1472",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B923-4F1C6E7A9D05",
+          "time": "3/12/26 9:47 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B923-4F1C6E7A9D05",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D761-8A3F2C4B6E19",
+          "time": "3/13/26 1:33 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D761-8A3F2C4B6E19",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "1,193 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 119",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/14/26 4:12 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Good afternoon, thanks for calling Crescent Hotels and Resorts. This is Marcus speaking. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Hi Marcus, yeah, I'm interested in learning about your management services. We just acquired a forty room boutique property in Austin and we're looking to improve operations."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Fantastic. Congratulations on the acquisition. We'd love to help you optimize that property. Are you currently operating it under an existing hotel flag, or is it independent?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "It's independent right now, but we're considering a Marriott conversion."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Perfect. That's exactly where we specialize. We work with a lot of owners through pre flagging and reflagging projects. Quick question, what's your primary concern right now with the property? Is it revenue management, operations, or the flagging transition itself?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "Honestly, it's a bit of everything. We need help with the brand conversion but we also want to modernize the operations and get better yield on the rooms."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Great. So you're looking at a full service management approach then. We handle pre opening and reflagging services, revenue management, and full operations support. Let me ask, what's your approximate annual revenue right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "We're doing about two point three million this year."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Excellent. That helps. And just to clarify, are you looking to bring in a third party manager like us, or are you planning to operate it yourselves with our advisory support?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "We're definitely open to a third party manager. We have other investments and can't dedicate the staff time."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Understood. That makes sense. I'd like to set up a formal consultation with our Business Development team. They can review your property details, discuss the Marriott conversion timeline, and walk you through our full service management offering. Would next Thursday, January twenty-third at two p.m. work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Yeah, that works. What do I need to prepare?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Just have your current property financials handy and a rough timeline for the conversion. Our team will send you a prep doc via email. Just to confirm, we'll be reaching out to you at this number, five one two, four four seven, eight nine two two, and your name is David, correct?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Yes, David Chen. That's all correct."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "Perfect, David. You're all set for January twenty-third at two p.m. with our Business Development team. If you need to reschedule, just call us back at eight seven seven, nine three six, twenty nine thirty three. Thanks for choosing Crescent."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Owner",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Property Type: Boutique Hotel",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Interest: Pre Flagging and Reflagging",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Annual Revenue Disclosed: 2.3 Million",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Geographic Market: Austin, Texas",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/14/26 4:12 pm",
+            "duration": "7:31",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "512-447-8922",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "David Chen",
+            "firstName": "David",
+            "lastName": "Chen",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B823-7A4C5D91E6F2",
+          "time": "1/08/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B823-7A4C5D91E6F2",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C945-8D6B2F74A1C8",
+          "time": "1/22/26 11:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C945-8D6B2F74A1C8",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D156-9E7C4B23F5D9",
+          "time": "1/28/26 3:55 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D156-9E7C4B23F5D9",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro plus offer: Introduce yourself as Crescent Hotels & Resorts's AI agent helping owners and investors explore a tailored management proposal, mention that we are currently offering a complimentary portfolio performance review for new ownership groups, and ask if they would like to get started.",
+        "Qualify one question at a time: Ask only one question per message, covering how many properties and rooms are involved, the property type such as select-service, full-service, or luxury resort, the current or desired brand flag such as Marriott, Hilton, Hyatt, or IHG, which services they need such as full management, revenue management, or pre-opening support, the target timeline, and the property ZIP code to confirm regional coverage.",
+        "Estimate then book: Confirm we operate in their market, share a preliminary fee range based on what they shared such as a percentage of gross revenue plus an incentive fee, recommend a consultation with a business development specialist for an exact proposal, propose a specific day and time, and confirm they will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Crescent_Hotels_Resorts_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Management Services Overview",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Portfolio & Success Stories",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Contact Us",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"engagement status\",\"question\":\"Where does my property stand in the pre-opening timeline?\",\"answer\":\"Your dedicated transition team tracks each pre-opening milestone from staffing to brand compliance, and your specialist can walk you through the current status on a quick call. Would you like me to schedule that consultation?\"},{\"topic\":\"reporting\",\"question\":\"Can I get an updated revenue management report for my resort?\",\"answer\":\"Your commercial strategy team publishes performance and pace reports on a set cadence, and we can review the latest figures together with a specialist. I can book a review consultation for you.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What does Crescent Hotels & Resorts do?",
+              "answer": "We are a third-party hospitality management company that operates hotels, resorts, and restaurants on behalf of owners, developers, REITs, and investors. A business development specialist can walk you through how we would manage your asset, so let me set up a consultation."
+            },
+            {
+              "question": "How much do your management services cost?",
+              "answer": "Fees are typically structured as a percentage of gross revenue plus an incentive fee, and the exact structure depends on your property and scope. A specialist can prepare a tailored proposal during a consultation, so let me get one scheduled."
+            },
+            {
+              "question": "Do you manage branded hotels?",
+              "answer": "Yes, we manage properties under major flags including Marriott, Hilton, Hyatt, IHG, and Minor Hotels, as well as independent and lifestyle hotels. A specialist can confirm approval fit for your flag on a consultation."
+            },
+            {
+              "question": "How many properties do you manage?",
+              "answer": "We manage more than 120 properties with over 25,000 rooms across North America. I would love to have a specialist review how our scale benefits your asset, so let me book a consultation."
+            },
+            {
+              "question": "Can you help me open a brand new hotel?",
+              "answer": "Yes, we provide pre-opening, de-flagging, and re-flagging support to launch properties smoothly. Let me schedule a consultation so a specialist can map out your opening timeline."
+            },
+            {
+              "question": "Do you offer revenue management as a standalone service?",
+              "answer": "Yes, our commercial strategy team offers revenue management including data analysis, strategy audits, and system audits. A specialist can scope this for your property on a consultation, so let me set that up."
+            },
+            {
+              "question": "What is Latitudes by Crescent?",
+              "answer": "Latitudes by Crescent is our lifestyle and luxury division dedicated to boutique, luxury, and independent hotels. A specialist can explain whether it fits your property during a consultation."
+            },
+            {
+              "question": "Do you handle restaurant concepts?",
+              "answer": "Yes, our Crescent Restaurant Group provides creative direction from design concepts to menus for hotel and resort restaurants. Let me book a consultation so a specialist can discuss your outlet."
+            },
+            {
+              "question": "Can you help me buy or evaluate a hotel?",
+              "answer": "Yes, our business development team assists with deal sourcing, valuation, and diligence. A specialist can review your acquisition on a consultation, so let me schedule one."
+            },
+            {
+              "question": "Do you manage distressed or receivership assets?",
+              "answer": "Yes, we support ownership groups and lenders through transitions and asset repositioning. A specialist can assess your situation on a consultation, so let me get that on the calendar."
+            },
+            {
+              "question": "What regions do you operate in?",
+              "answer": "We manage properties across North America, from urban boutiques to luxury golf resorts. Share your property location and I can arrange a consultation with the right specialist."
+            },
+            {
+              "question": "How do you improve profitability?",
+              "answer": "We focus on operations, commercial strategy, and asset growth to increase revenue and asset value. A specialist can outline a plan for your property on a consultation, so let me book one."
+            },
+            {
+              "question": "Do you provide capital improvement oversight?",
+              "answer": "Yes, our project management team oversees entire capital improvement projects. A specialist can review your project scope on a consultation, so let me set that up."
+            },
+            {
+              "question": "Can you help with sales and marketing for my hotel?",
+              "answer": "Yes, we offer direct sales, digital advertising, social media, and global sales representation with Fortune 500 relationships. Let me schedule a consultation so a specialist can tailor a plan."
+            },
+            {
+              "question": "How long does it take to transition management?",
+              "answer": "Transition timelines vary by property size and brand requirements, and our team manages each milestone closely. A specialist can give you a realistic timeline on a consultation, so let me book one."
+            },
+            {
+              "question": "Do you manage historic properties?",
+              "answer": "Yes, we manage the Colonial Williamsburg Collection and other historic and destination resorts. A specialist can discuss fit for your property on a consultation."
+            },
+            {
+              "question": "What size properties do you take on?",
+              "answer": "We manage a diverse portfolio from smaller select-service hotels to large luxury resorts. Share your room count and I can arrange a consultation with a specialist."
+            },
+            {
+              "question": "Do you offer global sales representation?",
+              "answer": "Yes, we provide a dedicated corporate global sales team, trade show representation, and mega agency presentations. A specialist can scope this for your property on a consultation, so let me schedule one."
+            },
+            {
+              "question": "How do I get a proposal?",
+              "answer": "The best next step is a consultation where a specialist reviews your property and prepares a tailored management proposal. I can book that for you now."
+            },
+            {
+              "question": "Can I speak with someone directly?",
+              "answer": "Absolutely, a business development specialist can walk you through everything in detail. Let me schedule a consultation and you will receive a reminder text with a number to call."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the consultation\",\"follow_up_message\":\"Great, I have you down for a consultation with a Crescent business development specialist. You will receive a reminder text before your appointment with a number to call if anything changes.\"},{\"intent\":\"request a management proposal\",\"follow_up_message\":\"Thanks for sharing your property details. A specialist will prepare a preliminary fee range and a tailored management proposal, and I can lock in a consultation time to review it together.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Crescent Hotels & Resorts's AI agent. I can help you explore a tailored management proposal for your property and connect you with a business development specialist.",
+        "goal": "Qualify the owner or investor and book a consultation with a Crescent business development specialist to prepare a tailored management proposal.",
+        "bookingType": "virtual consultation",
+        "offer": "Complimentary portfolio performance review when you book this week",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "How many properties and total rooms are you looking to have managed?",
+          "What type of property is it, such as select-service, full-service, or luxury resort?",
+          "What is the current or desired brand flag, such as Marriott, Hilton, Hyatt, IHG, or independent?",
+          "Which services are you most interested in, such as full management, revenue management, pre-opening, or restaurant concept development?",
+          "What is your target timeline to bring on a management partner?",
+          "What is the property ZIP code so I can confirm regional coverage?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:56 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:56 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:56 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Crescent Hotels & Resorts",
+      "callerName": "Michael Torres",
+      "callerPhone": "(512) 555-0147",
+      "campaign": "Revenue Management Program, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$5,240",
+      "googleSearch": "hotel revenue management services Austin Texas",
+      "websiteSearch": "third party hotel management company revenue optimization",
+      "callingWebpage": "/management-services/commercial-strategy",
+      "products": "Revenue Management Program, Digital Marketing & eCommerce",
+      "cartId": "CHR-8392M",
+      "serviceable": "Yes",
+      "email": "mtorres.hospitality@gmail.com",
+      "street": "1247 Lake Austin Boulevard",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78703",
+      "digitalJourney": "/home › /management-services › /commercial-strategy › /management-services/revenue-management-program",
+      "intent": "Hotel owner seeking revenue optimization strategies and data-driven pricing analysis for his 45-room boutique property in Austin market.",
+      "coverage": "ZIP 78703 confirmed, Austin serviceable",
+      "switchIntent": "High. Property performance declining year-over-year. Owner actively evaluating management partners and mentioned budget approval for Q4 engagement.",
+      "greeting": "Hi Michael, this is Sarah with Crescent Hotels and Resorts. I see you've been looking into our Revenue Management Program to help optimize your Austin property's performance. I'd love to walk you through how we've helped similar boutique operators increase RevPAR and margin. Can we schedule a brief consultation this week to discuss your specific goals?"
+    },
+    "smsScreenpop": {
+      "brandName": "Crescent Hotels & Resorts",
+      "callerName": "Jennifer Kowalski",
+      "callerPhone": "(480) 555-0183",
+      "campaign": "Pre-Opening Services, Phoenix Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$87,500",
+      "googleSearch": "pre-opening hotel management services Phoenix",
+      "websiteSearch": "hotel pre-opening support Arizona new property",
+      "callingWebpage": "/management-services/operations",
+      "products": "Pre-Opening and Re-Flagging Services, Full-Service Hotel Management",
+      "cartId": "CHR-5671J",
+      "serviceable": "Yes",
+      "email": "jkowalski.developer@outlook.com",
+      "street": "3842 North 24th Street",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zip": "85016",
+      "digitalJourney": "/home › /management-services › /management-services/operations › /portfolio",
+      "intent": "Hotel developer seeking comprehensive pre-opening management support and staff training for a new 120-room Hilton-flagged property launching in Q1.",
+      "coverage": "ZIP 85016 confirmed, Phoenix serviceable",
+      "appointment": "Pre-opening strategy consultation w/ Operations Director, Thu Aug 15, 2:00 PM",
+      "greeting": "Hi Jennifer, this is David from Crescent Hotels and Resorts. Looking forward to your pre-opening strategy call tomorrow at 2 PM. In the meantime, I wanted to share that we've managed 40+ pre-openings for Hilton properties like yours, and our teams typically reduce soft opening timeline by 3-4 weeks. Any questions before we connect? Reply or call anytime."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Crescent Hotels & Resorts",
+      "brandDomain": "www.crescenthotels.com",
+      "brandIcon": "🏨",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Austin, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Hotel Management Partner, Search",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "third party hotel management company",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/management-services/business-development",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Business Development, Revenue Management Program",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Austin, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consult_new_project",
+          "name": "Consultation, New Project"
+        },
+        {
+          "id": "existing_portfolio_support",
+          "name": "Existing Portfolio Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Thank you for calling Crescent Hotels and Resorts. I'm an AI assistant here to connect you with the right team. Are you calling about management services for a property or portfolio you own or operate?",
+          "sigs": [],
+          "q": [
+            30,
+            35,
+            35
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, we own a 180-room boutique property in Austin and we're looking to improve our revenue management and commercial strategy. We've been managing it ourselves but need expert guidance.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "<strong>180-room property</strong> in Austin"
+            },
+            {
+              "c": "green",
+              "t": "<strong>Revenue management</strong> and commercial strategy"
+            },
+            {
+              "c": "orange",
+              "t": "Seeking expert guidance"
+            }
+          ],
+          "q": [
+            60,
+            20,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That sounds like a great fit for our Revenue Management Program and Commercial Strategy services. We work with independent property owners to optimize occupancy and rate strategy. Are you looking to engage with us for one service or explore a full partnership with our operations team?",
+          "sigs": [],
+          "q": [
+            75,
+            12,
+            13
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We want to start with revenue management and digital marketing, then maybe add more services later. What's the next step to discuss pricing and timelines?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Revenue management</strong> and digital marketing"
+            },
+            {
+              "c": "blue",
+              "t": "Growth toward full partnership"
+            },
+            {
+              "c": "purple",
+              "t": "Ready to discuss pricing"
+            }
+          ],
+          "q": [
+            95,
+            3,
+            2
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm routing you to our Business Development team who will schedule a consultation to review your property, discuss your goals, and provide a customized proposal for revenue management and digital marketing services. You'll hear from them within 24 hours.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get the ownership consultation on the calendar (Agent)\", \"schedule the management review (Caller)\", \"book a call with our operations team (Agent)\", \"send me the calendar invite (Caller)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "01/09/26 2:41 pm"
+        },
+        {
+          "name": "Brand Flag Discussed",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Marriott flag (Caller)\", \"convert it to a Hilton property (Caller)\", \"Hyatt or IHG brand standards (Agent)\", \"re-flag the hotel (Agent)\"])",
+          "createdAt": "05/22/25 11:04 am",
+          "updatedAt": "12/18/25 4:07 pm"
+        },
+        {
+          "name": "Competitor Operator Named",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"currently managed by Aimbridge (Caller)\", \"proposal from Highgate (Caller)\", \"we also spoke with Davidson (Caller)\", \"talking to another third party operator (Caller)\"])",
+          "createdAt": "04/09/25 8:33 am",
+          "updatedAt": "01/05/26 10:22 am"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"tell me how your management model works (Caller)\", \"walk me through your onboarding process (Agent)\", \"what does a typical engagement look like (Caller)\", \"how do you take over operations (Caller)\"])",
+          "createdAt": "06/17/25 1:48 pm",
+          "updatedAt": "12/29/25 9:15 am"
+        },
+        {
+          "name": "Fee Structure Concern",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the base management fee is too high (Caller)\", \"what is your incentive fee (Caller)\", \"percentage of gross revenue (Caller)\", \"can you lower the monthly retainer (Caller)\"])",
+          "createdAt": "07/02/25 10:19 am",
+          "updatedAt": "01/12/26 3:55 pm"
+        },
+        {
+          "name": "Greeting & Owner Rapport",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Owner Discovery Call] < 60 and duration > 45 sec",
+          "createdAt": "02/11/25 3:26 pm",
+          "updatedAt": "12/22/25 11:48 am"
+        },
+        {
+          "name": "Management Agreement Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"ready to sign a management agreement (Caller)\", \"take over my portfolio (Caller)\", \"hand off operations to your team (Caller)\", \"draft the operating agreement (Agent)\"])",
+          "createdAt": "05/30/25 9:41 am",
+          "updatedAt": "01/15/26 1:33 pm"
+        },
+        {
+          "name": "Needs Discovery Completed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Property Needs Discovery] < 60 and duration > 45 sec",
+          "createdAt": "03/03/25 8:57 am",
+          "updatedAt": "12/30/25 5:12 pm"
+        },
+        {
+          "name": "Objection Handling Quality",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Objection Handling] < 60 and duration > 45 sec",
+          "createdAt": "04/25/25 2:14 pm",
+          "updatedAt": "01/07/26 9:04 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"our fee would come to about three percent of gross (Agent)\", \"the pre-opening project runs around one hundred fifty thousand (Agent)\", \"I'll email you the proposal (Agent)\", \"here is the retainer for revenue management (Agent)\"])",
+          "createdAt": "06/28/25 11:52 am",
+          "updatedAt": "01/18/26 4:29 pm"
+        }
+      ]
+    }
+  }
+}

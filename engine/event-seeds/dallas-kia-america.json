@@ -1,0 +1,5343 @@
+{
+  "id": "kia-america",
+  "customerName": "Kia America",
+  "websiteUrl": "https://www.kia.com/us/en",
+  "brandDomain": "kia.com",
+  "networkName": "Invoca for Automotive",
+  "industry": "Automotive Manufacturing & Retail",
+  "bookingTerm": "Test Drive",
+  "customerNoun": "Shopper",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 20000,
+      "yTicks": [
+        4000,
+        8000,
+        12000,
+        16000,
+        20000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 15234
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 16890
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 17456
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 16412
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 15784
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Test Drive Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Test Drive Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Telluride Adventure Awaits",
+          "marketingSearchTerm": "Kia Telluride price",
+          "landingPageUrl": "https://www.kia.com/us/en/telluride?utm_source=google&utm_medium=cpc&utm_campaign=telluride_adventure",
+          "websiteJourney": "Home / Vehicles / SUVs / Telluride",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Kia America EV Movement",
+          "marketingSearchTerm": "Kia EV9 range",
+          "landingPageUrl": "https://www.kia.com/us/en/ev9?utm_source=google&utm_medium=cpc&utm_campaign=ev_movement",
+          "websiteJourney": "Home / Electric & Hybrid / EV / EV9",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Kia Summer Sales Event",
+          "marketingSearchTerm": "Kia dealer near me",
+          "landingPageUrl": "https://www.kia.com/us/en/find-a-dealer?utm_source=google&utm_medium=cpc&utm_campaign=summer_event",
+          "websiteJourney": "Home / Shopping Tools / Find a Dealer",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Build Your Kia",
+          "marketingSearchTerm": "build and price Kia",
+          "landingPageUrl": "https://www.kia.com/us/en/build-price?utm_source=bing&utm_medium=cpc&utm_campaign=build_your_kia",
+          "websiteJourney": "Home / Shopping Tools / Build & Price",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Kia Summer Sales Event",
+          "marketingSearchTerm": "Kia lease deals",
+          "landingPageUrl": "https://www.kia.com/us/en/special-offers?utm_source=google&utm_medium=cpc&utm_campaign=summer_event",
+          "websiteJourney": "Home / Shopping Tools / Special Offers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Movement That Inspires",
+          "marketingSearchTerm": "2025 Kia Sportage hybrid MPG",
+          "landingPageUrl": "https://www.kia.com/us/en/sportage-hybrid?utm_source=google&utm_medium=cpc&utm_campaign=movement_inspires",
+          "websiteJourney": "Home / Electric & Hybrid / Hybrid / Sportage Hybrid",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Kia America EV Movement",
+          "marketingSearchTerm": "Kia EV6 charging time",
+          "landingPageUrl": "https://www.kia.com/us/en/ev6?utm_source=bing&utm_medium=cpc&utm_campaign=ev_movement",
+          "websiteJourney": "Home / Electric & Hybrid / EV / EV6",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Movement That Inspires",
+          "marketingSearchTerm": "Kia Sorento vs Telluride",
+          "landingPageUrl": "https://www.kia.com/us/en/sorento?utm_source=google&utm_medium=cpc&utm_campaign=movement_inspires",
+          "websiteJourney": "Home / Vehicles / SUVs / Sorento",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "The Kia Holidays",
+          "marketingSearchTerm": "Kia finance offers this month",
+          "landingPageUrl": "https://www.kia.com/us/en/financing?utm_source=google&utm_medium=cpc&utm_campaign=kia_holidays",
+          "websiteJourney": "Home / Financing / Kia Finance America",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Movement That Inspires",
+          "marketingSearchTerm": "best Kia SUV for families",
+          "landingPageUrl": "https://www.kia.com/us/en/carnival?utm_source=google&utm_medium=cpc&utm_campaign=movement_inspires",
+          "websiteJourney": "Home / Vehicles / MPV / Carnival",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Kia Summer Sales Event",
+          "marketingSearchTerm": "Kia certified pre-owned",
+          "landingPageUrl": "https://www.kia.com/us/en/certified-pre-owned?utm_source=bing&utm_medium=cpc&utm_campaign=summer_event",
+          "websiteJourney": "Home / Shopping Tools / Certified Pre-Owned",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Movement That Inspires",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.kia.com/us/en/k5?utm_source=instagram&utm_medium=social&utm_campaign=movement_inspires",
+          "websiteJourney": "Home / Vehicles / Cars / K5",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Light Up the Holidays",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.kia.com/us/en/special-offers?utm_source=facebook&utm_medium=social&utm_campaign=light_up_holidays",
+          "websiteJourney": "Home / Shopping Tools / Special Offers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Kia America EV Movement",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.kia.com/us/en/niro?utm_source=facebook&utm_medium=social&utm_campaign=ev_movement",
+          "websiteJourney": "Home / Electric & Hybrid / Hybrid / Niro",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Telluride Adventure Awaits",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.kia.com/us/en/telluride?utm_source=instagram&utm_medium=social&utm_campaign=telluride_adventure",
+          "websiteJourney": "Home / Vehicles / SUVs / Telluride",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.kia.com/us/en/soul?utm_source=organic&utm_medium=organic",
+          "websiteJourney": "Home / Vehicles / Cars / Soul",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.kia.com/us/en/sportage?utm_source=organic&utm_medium=organic",
+          "websiteJourney": "Home / Vehicles / SUVs / Sportage",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.kia.com/us/en/kia-connect?utm_source=organic&utm_medium=organic",
+          "websiteJourney": "Home / Owners / Kia Connect",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Movement That Inspires",
+          "marketingSearchTerm": "Kia Soul reviews",
+          "landingPageUrl": "https://www.kia.com/us/en/k4?utm_source=google&utm_medium=cpc&utm_campaign=movement_inspires",
+          "websiteJourney": "Home / Vehicles / Cars / K4",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Big Game EV Spot",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.kia.com/us/en/ev9?utm_source=facebook&utm_medium=social&utm_campaign=big_game_ev",
+          "websiteJourney": "Home / Electric & Hybrid / EV / EV9",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.kia.com/us/en/service-parts?utm_source=organic&utm_medium=organic",
+          "websiteJourney": "Home / Owners / Service & Parts",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Kia America EV Movement",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.kia.com/us/en/seltos?utm_source=instagram&utm_medium=social&utm_campaign=ev_movement",
+          "websiteJourney": "Home / Vehicles / SUVs / Seltos",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Kia America)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "64,138"
+            },
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Vehicle Sold (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$386,753,717"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "10,262"
+            },
+            {
+              "label": "Service & Parts Inquiry (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Kia Connect Support (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Financing & Leasing Question (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "47%"
+            },
+            {
+              "label": "Not In-Market Lead (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Vehicle Sold (Percent)",
+              "value": "18%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sales Call (Count)",
+            "values": [
+              6842,
+              12417,
+              11983,
+              12254,
+              10380
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              3842,
+              6914,
+              6653,
+              6987,
+              5749
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              982,
+              1764,
+              1693,
+              1784,
+              1474
+            ]
+          },
+          {
+            "name": "Vehicle Sold (Count)",
+            "values": [
+              1468,
+              2657,
+              2554,
+              2691,
+              2175
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Vehicle Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 64138,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "24,617",
+                "44%",
+                "13%",
+                "$118,462,133"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "15,842",
+                "47%",
+                "16%",
+                "$89,317,442"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "11,286",
+                "50%",
+                "19%",
+                "$71,204,916"
+              ]
+            },
+            {
+              "name": "YouTube",
+              "metrics": [
+                "7,613",
+                "53%",
+                "23%",
+                "$58,933,671"
+              ]
+            },
+            {
+              "name": "Instagram",
+              "metrics": [
+                "4,780",
+                "57%",
+                "28%",
+                "$48,835,555"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Vehicle Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 64138,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "26,914",
+                "43%",
+                "12%",
+                "$117,113,342"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "14,238",
+                "46%",
+                "16%",
+                "$82,595,721"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "10,592",
+                "49%",
+                "19%",
+                "$72,951,097"
+              ]
+            },
+            {
+              "name": "Display/Programmatic",
+              "metrics": [
+                "7,451",
+                "52%",
+                "23%",
+                "$62,146,214"
+              ]
+            },
+            {
+              "name": "Email/CRM",
+              "metrics": [
+                "4,943",
+                "56%",
+                "29%",
+                "$51,947,343"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Vehicle Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 36952,
+          "rows": [
+            {
+              "name": "Movement That Inspires",
+              "metrics": [
+                "12,847",
+                "44%",
+                "13%",
+                "$57,613,415"
+              ]
+            },
+            {
+              "name": "The Kia Holidays",
+              "metrics": [
+                "9,241",
+                "47%",
+                "16%",
+                "$51,027,882"
+              ]
+            },
+            {
+              "name": "Kia America EV Movement",
+              "metrics": [
+                "6,918",
+                "50%",
+                "19%",
+                "$45,331,246"
+              ]
+            },
+            {
+              "name": "Telluride Adventure Awaits",
+              "metrics": [
+                "4,762",
+                "53%",
+                "23%",
+                "$37,779,118"
+              ]
+            },
+            {
+              "name": "Build Your Kia",
+              "metrics": [
+                "3,184",
+                "57%",
+                "28%",
+                "$30,772,551"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Vehicle Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 22856,
+          "rows": [
+            {
+              "name": "kia telluride price",
+              "metrics": [
+                "7,842",
+                "43%",
+                "12%",
+                "$31,992,447"
+              ]
+            },
+            {
+              "name": "kia lease deals",
+              "metrics": [
+                "5,913",
+                "46%",
+                "15%",
+                "$30,156,881"
+              ]
+            },
+            {
+              "name": "kia dealer near me",
+              "metrics": [
+                "4,286",
+                "49%",
+                "18%",
+                "$26,249,533"
+              ]
+            },
+            {
+              "name": "kia ev9 range",
+              "metrics": [
+                "2,951",
+                "52%",
+                "22%",
+                "$22,064,912"
+              ]
+            },
+            {
+              "name": "kia finance offers this month",
+              "metrics": [
+                "1,864",
+                "56%",
+                "27%",
+                "$17,103,774"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Test Drive Set (Industry) (Percent)",
+            "Vehicle Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "SUVs & Crossovers",
+              "metrics": [
+                "24,317",
+                "42%",
+                "13%",
+                "$118,432,617"
+              ]
+            },
+            {
+              "name": "Electric & Hybrid Vehicles",
+              "metrics": [
+                "15,842",
+                "40%",
+                "16%",
+                "$96,247,338"
+              ]
+            },
+            {
+              "name": "Sedans & Hatchbacks",
+              "metrics": [
+                "12,463",
+                "37%",
+                "19%",
+                "$71,318,442"
+              ]
+            },
+            {
+              "name": "Ownership Services",
+              "metrics": [
+                "6,731",
+                "35%",
+                "24%",
+                "$51,264,873"
+              ]
+            },
+            {
+              "name": "Minivans & MPVs",
+              "metrics": [
+                "4,785",
+                "33%",
+                "31%",
+                "$49,490,447"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Vehicle Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 64138,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "19,847",
+                "51%",
+                "14%",
+                "$92,847,318"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "15,362",
+                "49%",
+                "16%",
+                "$84,213,662"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "12,458",
+                "47%",
+                "18%",
+                "$74,528,109"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "9,734",
+                "45%",
+                "21%",
+                "$68,912,447"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "6,737",
+                "43%",
+                "29%",
+                "$66,252,181"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Vehicle Sold (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "SUVs & Crossovers",
+            "values": [
+              421,
+              782,
+              748,
+              711,
+              499
+            ]
+          },
+          {
+            "name": "Electric & Hybrid Vehicles",
+            "values": [
+              337,
+              628,
+              601,
+              573,
+              396
+            ]
+          },
+          {
+            "name": "Sedans & Hatchbacks",
+            "values": [
+              312,
+              587,
+              561,
+              534,
+              374
+            ]
+          },
+          {
+            "name": "Ownership Services",
+            "values": [
+              214,
+              401,
+              383,
+              364,
+              253
+            ]
+          },
+          {
+            "name": "Minivans & MPVs",
+            "values": [
+              197,
+              368,
+              351,
+              334,
+              233
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 64,138 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Bell called to book a test drive of the 2026 Kia Telluride SX after comparing trims online. Oscar confirmed local inventory, scheduled a Saturday test drive, and answered his questions on third-row seating and available AWD. Marcus left ready to visit the dealership.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "2m 40s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Danielle Prewitt asked about the Sportage Hybrid mpg and available AWD trims. Lila walked her through the hybrid options and booked a test drive for the weekend. Danielle also asked about a possible trade-in on her current sedan.",
+          "date": "Feb 12, 3:22 PM",
+          "agent": "Lila",
+          "duration": "2m 15s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 82,
+          "summary": "Gregory Nunn called about renewing his Kia Connect subscription after the free trial ended. Rosey explained the tier pricing and remote start features, then emailed him the renewal link. No dealership visit was scheduled on this call.",
+          "date": "Feb 3, 9:48 AM",
+          "agent": "Rosey",
+          "duration": "1m 50s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "First-time caller Priya Raman asked to schedule a test drive of the Kia EV9 and shared her contact details for follow-up. Lee collected her name, phone number, and preferred dealership, then explained the EV9 range and fast charging before booking the test drive. She also asked about lease and financing options.",
+          "date": "Mar 9, 1:05 PM",
+          "agent": "Lee",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Anthony Cole called about current lease deals on the K5 GT. Mary reviewed the monthly lease offer, checked available incentives, and scheduled a test drive at his local dealership. Anthony planned to bring a trade-in.",
+          "date": "Mar 21, 4:37 PM",
+          "agent": "Mary",
+          "duration": "2m 28s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Rebecca Ortiz called to check the delivery status of her ordered Kia Carnival. Sue looked up the build and gave an estimated arrival window along with next steps. No new visit was scheduled.",
+          "date": "Apr 2, 11:19 AM",
+          "agent": "Sue",
+          "duration": "1m 40s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 17,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Kevin Sato was deciding between the Sorento and the Telluride for his growing family. Mike compared seating and towing capacity, then booked a test drive of both at the dealership. Kevin was leaning toward the Telluride.",
+          "date": "Apr 18, 2:53 PM",
+          "agent": "Mike",
+          "duration": "2m 10s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 59,
+          "summary": "Laura Kim disputed an extra fee on her Kia Finance America statement. Jennifer reviewed the financing terms, explained the charge, and opened a billing case for review. Laura remained unhappy about the delay.",
+          "date": "May 7, 10:02 AM",
+          "agent": "Jennifer",
+          "duration": "2m 46s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 23,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Derek Foster called about a warranty repair on his Sportage after a dashboard warning light appeared. Rose logged the issue and scheduled a service appointment at his dealership. He was frustrated by the wait time quoted.",
+          "date": "May 22, 3:41 PM",
+          "agent": "Rose",
+          "duration": "2m 05s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 25,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Monica Reyes asked about lease terms on the Niro hybrid. Oscar explained the current offer and booked a test drive for her. She mentioned a possible trade-in of her older Kia Soul.",
+          "date": "Jun 4, 12:30 PM",
+          "agent": "Oscar",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Steven Wu complained that his EV6 delivery had been delayed twice. Lila apologized, checked the transport status, and escalated the case to the dealership manager. Steven wanted a firm delivery date.",
+          "date": "Jun 26, 9:15 AM",
+          "agent": "Lila",
+          "duration": "2m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Angela Diaz called because her Kia Connect remote start had stopped working. Mary tried troubleshooting steps and opened a support ticket for the app team. Angela was annoyed the app kept logging her out.",
+          "date": "Jul 11, 4:08 PM",
+          "agent": "Mary",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Brian Holt called to cancel a pending order and asked about his deposit refund. Lee explained the refund timeline and processing steps. Brian was dissatisfied with the restocking fee.",
+          "date": "Aug 3, 1:52 PM",
+          "agent": "Lee",
+          "duration": "1m 35s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Teresa Vaughn left a voicemail about a warranty claim on her Sorento transmission. The call rolled to voicemail after hours and no agent answered. A callback was queued for the service department.",
+          "date": "Sep 15, 6:41 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Howard Price angrily disputed a duplicate charge on his financing account and threatened to cancel. Rosey struggled to locate the second charge and the call ended unresolved. Howard demanded a manager callback.",
+          "date": "Oct 8, 11:57 AM",
+          "agent": "Rosey",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "test drive",
+        "lease",
+        "financing",
+        "warranty",
+        "trade-in",
+        "hybrid"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 18, 1:42 PM",
+      "duration": "2m 31s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Qualify Vehicle Interest",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area/ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Test Drive Date",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Visit Expectations",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Offer Financing/Trade-In Info",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "New customer acquisition signal",
+        "Vehicle research intent",
+        "Active test drive intent",
+        "Service area confirmed",
+        "Specific trim interest (EX trim)",
+        "First-time Kia buyer",
+        "Budget-conscious language",
+        "Hybrid model interest",
+        "AWD option mentioned",
+        "Appointment commitment",
+        "Follow-up willingness",
+        "Email collection opportunity missed but mitigated",
+        "Dealer inventory ready signal"
+      ],
+      "unmetSignals": [
+        "Phone number not captured",
+        "Email address not captured",
+        "Driver's license info not verified",
+        "Trade-in vehicle details not collected",
+        "Financing pre-qualification not offered",
+        "Insurance question not addressed",
+        "Vehicle delivery timeline not discussed",
+        "Test drive vehicle not assigned",
+        "Floor plan/finance terms not explained",
+        "Kia Connect trial not mentioned",
+        "Extended warranty not introduced",
+        "Service appointment bundling not proposed",
+        "Dealer VIP program not mentioned",
+        "Previous vehicle ownership not established"
+      ],
+      "naSignals": [
+        "Vehicle delivery scheduled",
+        "Purchase agreement discussed",
+        "Trade-in appraisal completed",
+        "Loan documentation collected",
+        "Dealer add-on upsells",
+        "Remaining payment terms",
+        "Warranty claim status",
+        "Vehicle service history"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes, the caller is a first-time Kia buyer seeking a fuel-efficient, affordable compact SUV for commuting. They are price-conscious and interested in the Sportage Hybrid as a balance between performance and economy."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The customer expects to see real-world MPG performance and wants to experience how the hybrid drivetrain feels on the road. They are ready to schedule a test drive but need confirmation of appointment timing and dealership location."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured the customer's phone number and email at the start of the call rather than allowing the conversation to close without verified contact details. This would ensure dealership follow-up and reduce the risk of no-show for the scheduled test drive."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Good afternoon, thank you for calling Kia America's dealership locator line. My name is Marcus. How can I help you find your next vehicle today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:12",
+          "text": "Hi Marcus, yes, I'm interested in learning more about the new Sportage Hybrid. I've been looking at fuel-efficient SUVs and yours keeps coming up."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:24",
+          "text": "That's wonderful. The Sportage Hybrid is an excellent choice, especially with MPG performance in the 40 range depending on driving conditions. To help you best, may I have your first and last name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:35",
+          "text": "Sure, it's Jennifer Martinez."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:38",
+          "text": "Great, Jennifer. And just to confirm, are you looking to test drive the EX trim, or would you also like to see the SX-Prestige?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:47",
+          "text": "The EX trim sounds perfect for what I need. I want the hybrid features but something practical."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:54",
+          "text": "Perfect. The EX gives you the hybrid powertrain plus the available all-wheel drive option. Now, what area are you located in, Jennifer? What's your ZIP code?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:06",
+          "text": "I'm in the 90210 area, West Los Angeles."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:12",
+          "text": "Excellent. We have a dealer with excellent inventory in your area. The test drive typically takes about 30 to 45 minutes. Are you available this Saturday afternoon, or would a weekday work better for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:26",
+          "text": "Saturday afternoon would be perfect. What time works?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:31",
+          "text": "We have openings at 2 PM or 3:30 PM. Which would suit your schedule?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:38",
+          "text": "2 PM is great."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:41",
+          "text": "Wonderful. I've scheduled you for Saturday, October 22nd at 2 PM. Before we wrap up, may I quickly get your best contact number so our dealership can send you confirmation and directions?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:54",
+          "text": "You know what, I'd rather just show up. I have the address on my end already."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:00",
+          "text": "I understand. Just know that if anything changes with your appointment, you can call the dealership directly. Is there anything else you'd like to know about the Sportage Hybrid before your visit?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:10",
+          "text": "No, I think I'm set. Thanks, Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:14",
+          "text": "You're very welcome, Jennifer. Thank you for choosing Kia, and we'll see you Saturday at 2 PM. Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Martinez, a first-time Kia prospect from Los Angeles, called to inquire about the Sportage Hybrid EX trim after researching fuel-efficient SUV options. Marcus successfully qualified her interest in the hybrid powertrain and all-wheel drive capabilities, confirmed her service area via ZIP code, and scheduled a test drive appointment for Saturday, October 22nd at 2 PM. However, critical contact information (phone number and email) was not captured, creating a gap in dealership follow-up capability and increasing the risk of a no-show. The call demonstrated strong greeting and close structure but missed opportunity to build customer data for CRM and confirmation messaging.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, well done on your greeting and vehicle qualification. Your tone was warm and you moved Jennifer smoothly through the test drive booking. One coaching point: when Jennifer declined to provide her phone number, you could have offered an alternative like capturing just her email for appointment confirmation and special financing offers. This preserves the customer relationship and reduces no-show risk. Next call, try resetting expectations earlier by saying, 'I'll grab a quick email so our dealership can send you directions and pre-visit details' rather than asking broadly for contact info. Keep up the solid work."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "64,138"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$6030.02"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$386,753,717"
+            }
+          ]
+        },
+        {
+          "title": "NEW SHOPPER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Shoppers (Count)",
+              "value": "41,689"
+            },
+            {
+              "label": "Caller Type: New Shoppers (Percent)",
+              "value": "65%"
+            },
+            {
+              "label": "Test Drive: Scheduled (Count)",
+              "value": "24,372"
+            },
+            {
+              "label": "Test Drive: Scheduled (Percent)",
+              "value": "38%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING SHOPPERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Shopper (Count)",
+              "value": "22,449"
+            },
+            {
+              "label": "Caller Type: Existing Shopper (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Test Drive: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Test Drives)",
+          "chart": {
+            "legend": "Test Drive: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Direct / Referral",
+                "value": 55,
+                "display": "55%"
+              },
+              {
+                "name": "Display / Programmatic",
+                "value": 47,
+                "display": "47%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 42,
+                "display": "42%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 37,
+                "display": "37%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Test Drives)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Test Drive: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "22,417",
+                  "30%",
+                  "$135,362,441"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "16,882",
+                  "37%",
+                  "$100,554,908"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "11,964",
+                  "42%",
+                  "$71,548,326"
+                ]
+              },
+              {
+                "cells": [
+                  "Display / Programmatic",
+                  "7,431",
+                  "47%",
+                  "$44,475,219"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct / Referral",
+                  "5,444",
+                  "55%",
+                  "$34,812,823"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 25000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000,
+              25000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 21884,
+                "display": "21,884"
+              },
+              {
+                "name": "organic",
+                "value": 15773,
+                "display": "15,773"
+              },
+              {
+                "name": "paid-social",
+                "value": 11428,
+                "display": "11,428"
+              },
+              {
+                "name": "display",
+                "value": 7662,
+                "display": "7,662"
+              },
+              {
+                "name": "email",
+                "value": 7391,
+                "display": "7,391"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Test Drives)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Test Drive: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "21,884",
+                  "28%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "15,773",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "paid-social",
+                  "11,428",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "display",
+                  "7,662",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "7,391",
+                  "54%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 12000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Movement That Inspires",
+                "value": 9884,
+                "display": "9,884"
+              },
+              {
+                "name": "Kia America EV Movement",
+                "value": 8213,
+                "display": "8,213"
+              },
+              {
+                "name": "Kia New Year Sales Event",
+                "value": 7442,
+                "display": "7,442"
+              },
+              {
+                "name": "Build Your Kia",
+                "value": 5331,
+                "display": "5,331"
+              },
+              {
+                "name": "Telluride Adventure Awaits",
+                "value": 4118,
+                "display": "4,118"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Test Drives)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Test Drive: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Movement That Inspires",
+                  "9,884",
+                  "27%",
+                  "$28,441,882"
+                ]
+              },
+              {
+                "cells": [
+                  "Kia America EV Movement",
+                  "8,213",
+                  "37%",
+                  "$26,118,447"
+                ]
+              },
+              {
+                "cells": [
+                  "Kia New Year Sales Event",
+                  "7,442",
+                  "45%",
+                  "$24,332,905"
+                ]
+              },
+              {
+                "cells": [
+                  "Build Your Kia",
+                  "5,331",
+                  "58%",
+                  "$19,884,213"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 5000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "kia telluride price",
+                "value": 4882,
+                "display": "4,882"
+              },
+              {
+                "name": "kia dealer near me",
+                "value": 4213,
+                "display": "4,213"
+              },
+              {
+                "name": "kia ev9 range",
+                "value": 3441,
+                "display": "3,441"
+              },
+              {
+                "name": "kia lease deals",
+                "value": 2884,
+                "display": "2,884"
+              },
+              {
+                "name": "kia sportage hybrid mpg",
+                "value": 2317,
+                "display": "2,317"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Test Drives)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Test Drive: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "kia telluride price",
+                  "26%"
+                ]
+              },
+              {
+                "cells": [
+                  "kia dealer near me",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "kia ev9 range",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "kia lease deals",
+                  "55%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Shoppers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Test Drive: Scheduled (Percent)",
+          "Caller Type: New Shoppers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "SUVs & Crossovers",
+              "27,884",
+              "30%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Electric & Hybrid",
+              "16,442",
+              "38%",
+              "72%"
+            ]
+          },
+          {
+            "cells": [
+              "Sedans & Hatchbacks",
+              "12,331",
+              "45%",
+              "66%"
+            ]
+          },
+          {
+            "cells": [
+              "Minivans & Ownership Services",
+              "7,481",
+              "56%",
+              "58%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Test Drive: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Kia of Cerritos (CA)",
+              "8,442",
+              "512",
+              "4%",
+              "31%"
+            ]
+          },
+          {
+            "cells": [
+              "Gwinnett Place Kia (GA)",
+              "7,213",
+              "438",
+              "5%",
+              "37%"
+            ]
+          },
+          {
+            "cells": [
+              "Fuccillo Kia of Cape Coral (FL)",
+              "5,884",
+              "389",
+              "6%",
+              "44%"
+            ]
+          },
+          {
+            "cells": [
+              "Kia of Irvine (CA)",
+              "4,331",
+              "221",
+              "3%",
+              "55%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              2184,
+              2312,
+              2096,
+              2201,
+              2091
+            ]
+          },
+          {
+            "name": "Comparing Other Brands",
+            "values": [
+              1884,
+              1942,
+              1913,
+              1821,
+              1882
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              1642,
+              1713,
+              1588,
+              1641,
+              1629
+            ]
+          },
+          {
+            "name": "Financing Not Approved",
+            "values": [
+              1263,
+              1312,
+              1241,
+              1258,
+              1257
+            ]
+          },
+          {
+            "name": "Outside Dealer Area",
+            "values": [
+              984,
+              1012,
+              963,
+              971,
+              966
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "25,655"
+          },
+          {
+            "label": "Test Drive Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Vehicle Sold (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$220,449,619"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Vehicle Sold (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$31,847,216"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Vehicle Sold (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$38,552,944"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Vehicle Sold (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$42,187,835"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Vehicle Sold (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$37,291,548"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Vehicle Sold (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$44,715,623"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Vehicle Sold (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$25,854,453"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Test Drive Scheduled (Percent)",
+            "Vehicle Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 29614,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "8943",
+                "61%",
+                "29%",
+                "$62,771,240"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "5672",
+                "58%",
+                "32%",
+                "$54,218,960"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "4815",
+                "55%",
+                "31%",
+                "$49,557,315"
+              ]
+            },
+            {
+              "name": "Email and CRM",
+              "metrics": [
+                "3421",
+                "53%",
+                "34%",
+                "$35,988,940"
+              ]
+            },
+            {
+              "name": "Display and Retargeting",
+              "metrics": [
+                "2804",
+                "51%",
+                "36%",
+                "$17,913,164"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Test Drive Scheduled (Percent)",
+            "Vehicle Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 29237,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "7124",
+                "62%",
+                "28%",
+                "$51,294,432"
+              ]
+            },
+            {
+              "name": "Meta",
+              "metrics": [
+                "4389",
+                "56%",
+                "33%",
+                "$48,073,620"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "3618",
+                "54%",
+                "30%",
+                "$36,407,940"
+              ]
+            },
+            {
+              "name": "Email Newsletter",
+              "metrics": [
+                "2891",
+                "52%",
+                "35%",
+                "$31,224,850"
+              ]
+            },
+            {
+              "name": "YouTube",
+              "metrics": [
+                "2237",
+                "50%",
+                "37%",
+                "$21,648,777"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Test Drive Scheduled (Percent)",
+            "Vehicle Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 30012,
+          "rows": [
+            {
+              "name": "Movement That Inspires",
+              "metrics": [
+                "6752",
+                "60%",
+                "27%",
+                "$48,986,320"
+              ]
+            },
+            {
+              "name": "Kia Summer Sales Event",
+              "metrics": [
+                "4913",
+                "57%",
+                "31%",
+                "$51,407,430"
+              ]
+            },
+            {
+              "name": "Kia America EV Movement",
+              "metrics": [
+                "3847",
+                "54%",
+                "34%",
+                "$43,771,180"
+              ]
+            },
+            {
+              "name": "Telluride Adventure Awaits",
+              "metrics": [
+                "2564",
+                "52%",
+                "36%",
+                "$30,895,840"
+              ]
+            },
+            {
+              "name": "Build Your Kia",
+              "metrics": [
+                "1982",
+                "49%",
+                "38%",
+                "$15,388,849"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Test Drive Scheduled (Percent)",
+            "Vehicle Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 28536,
+          "rows": [
+            {
+              "name": "Kia Telluride price",
+              "metrics": [
+                "5284",
+                "63%",
+                "26%",
+                "$45,922,560"
+              ]
+            },
+            {
+              "name": "2025 Kia Sportage hybrid mpg",
+              "metrics": [
+                "3876",
+                "59%",
+                "30%",
+                "$39,071,280"
+              ]
+            },
+            {
+              "name": "Kia EV9 range",
+              "metrics": [
+                "2947",
+                "56%",
+                "33%",
+                "$32,304,510"
+              ]
+            },
+            {
+              "name": "Kia dealer near me",
+              "metrics": [
+                "2183",
+                "53%",
+                "35%",
+                "$25,438,390"
+              ]
+            },
+            {
+              "name": "Best Kia SUV for families",
+              "metrics": [
+                "1714",
+                "51%",
+                "37%",
+                "$18,911,858"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Test Drive Scheduled (Percent)",
+            "Vehicle Sold (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "SUVs and Crossovers",
+              "metrics": [
+                "10427",
+                "58%",
+                "32%",
+                "$109,687,840"
+              ]
+            },
+            {
+              "name": "Electric and Hybrid Vehicles",
+              "metrics": [
+                "7139",
+                "55%",
+                "35%",
+                "$83,424,430"
+              ]
+            },
+            {
+              "name": "Sedans and Hatchbacks",
+              "metrics": [
+                "4856",
+                "54%",
+                "31%",
+                "$50,419,320"
+              ]
+            },
+            {
+              "name": "Minivans and MPVs",
+              "metrics": [
+                "2183",
+                "51%",
+                "34%",
+                "$24,589,780"
+              ]
+            },
+            {
+              "name": "Kia Finance and Services",
+              "metrics": [
+                "1050",
+                "48%",
+                "28%",
+                "$7,348,249"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Vehicle Sold (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "SUVs and Crossovers",
+            "values": [
+              1094,
+              1147,
+              1181,
+              1163,
+              1108
+            ]
+          },
+          {
+            "name": "Electric and Hybrid Vehicles",
+            "values": [
+              814,
+              876,
+              904,
+              882,
+              799
+            ]
+          },
+          {
+            "name": "Sedans and Hatchbacks",
+            "values": [
+              483,
+              519,
+              538,
+              502,
+              468
+            ]
+          },
+          {
+            "name": "Minivans and MPVs",
+            "values": [
+              264,
+              298,
+              307,
+              278,
+              251
+            ]
+          },
+          {
+            "name": "Kia Finance and Services",
+            "values": [
+              121,
+              142,
+              151,
+              118,
+              96
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Test Drive Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Test Drive Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Test Drive Scheduled (Count)",
+            "value": "17,944"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$286,419,555"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "842"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "22:14:37"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Test Drive Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Test Drive Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Test Drive Scheduled (Count)",
+            "value": "1,923"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$64,738,294"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Test Drive Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Test Drive Scheduled",
+            "values": [
+              73,
+              76,
+              71,
+              79,
+              74,
+              77,
+              75,
+              72,
+              78,
+              76,
+              74,
+              79,
+              73,
+              77,
+              75,
+              76,
+              74,
+              78,
+              72,
+              75,
+              79,
+              73,
+              76,
+              77,
+              74,
+              75,
+              76,
+              73,
+              78,
+              74,
+              75,
+              74,
+              178,
+              182,
+              175,
+              189,
+              181,
+              184,
+              179,
+              187,
+              183,
+              185,
+              179,
+              182,
+              186,
+              180,
+              184,
+              181,
+              179
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,258"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "719"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "702"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Test Drive Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "EV Charging & Range Questions",
+            "values": [
+              8,
+              11,
+              9,
+              2,
+              12,
+              10
+            ]
+          },
+          {
+            "name": "Hybrid Fuel Efficiency Inquiry",
+            "values": [
+              6,
+              9,
+              8,
+              1,
+              10,
+              7
+            ]
+          },
+          {
+            "name": "Financing & Lease Offers",
+            "values": [
+              7,
+              10,
+              6,
+              3,
+              11,
+              8
+            ]
+          },
+          {
+            "name": "Vehicle Trim & Features Comparison",
+            "values": [
+              9,
+              12,
+              10,
+              2,
+              13,
+              9
+            ]
+          },
+          {
+            "name": "Test Drive Scheduling Request",
+            "values": [
+              11,
+              14,
+              12,
+              4,
+              15,
+              11
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "59,007"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "41,690"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Test Drive Booked (Count)",
+            "value": "24,372"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$386,753,717"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Hernandez",
+              "value": 217,
+              "display": "217"
+            },
+            {
+              "name": "Patricia Chen",
+              "value": 184,
+              "display": "184"
+            },
+            {
+              "name": "Derek Williams",
+              "value": 249,
+              "display": "249"
+            },
+            {
+              "name": "Stephanie Morgan",
+              "value": 198,
+              "display": "198"
+            },
+            {
+              "name": "James Kowalski",
+              "value": 226,
+              "display": "226"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Test Drive Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              187,
+              204,
+              218,
+              241,
+              268
+            ]
+          },
+          {
+            "name": "David Ramirez",
+            "values": [
+              156,
+              172,
+              189,
+              207,
+              231
+            ]
+          },
+          {
+            "name": "Jennifer Torres",
+            "values": [
+              201,
+              219,
+              241,
+              268,
+              297
+            ]
+          },
+          {
+            "name": "Anthony Reeves",
+            "values": [
+              168,
+              184,
+              201,
+              224,
+              247
+            ]
+          },
+          {
+            "name": "Michelle Santos",
+            "values": [
+              179,
+              196,
+              214,
+              237,
+              262
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Hernandez",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Patricia Chen",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "Derek Williams",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "Stephanie Morgan",
+              "value": 58.4,
+              "display": "58.4%"
+            },
+            {
+              "name": "James Kowalski",
+              "value": 55.6,
+              "display": "55.6%"
+            },
+            {
+              "name": "Robert Chang",
+              "value": 57.3,
+              "display": "57.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Test Drive Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Hernandez",
+                "54.2%",
+                "28%",
+                "$577,402,368",
+                "1,387"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Chen",
+                "56.8%",
+                "31%",
+                "$681,334,752",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Derek Williams",
+                "52.1%",
+                "26%",
+                "$571,891,344",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Stephanie Morgan",
+                "58.4%",
+                "33%",
+                "$763,425,891",
+                "1,408"
+              ]
+            },
+            {
+              "cells": [
+                "James Kowalski",
+                "55.6%",
+                "29%",
+                "$637,201,524",
+                "1,372"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Chang",
+                "57.3%",
+                "32%",
+                "$722,564,672",
+                "1,398"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Mitchell",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "David Ramirez",
+              "value": 88.4,
+              "display": "88.4%"
+            },
+            {
+              "name": "Jennifer Torres",
+              "value": 93.2,
+              "display": "93.2%"
+            },
+            {
+              "name": "Anthony Reeves",
+              "value": 87.1,
+              "display": "87.1%"
+            },
+            {
+              "name": "Michelle Santos",
+              "value": 89.6,
+              "display": "89.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Test Drive Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "91.7%",
+                "67%",
+                "$1,486,932,584",
+                "1,547"
+              ]
+            },
+            {
+              "cells": [
+                "David Ramirez",
+                "88.4%",
+                "62%",
+                "$1,286,455,708",
+                "1,423"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Torres",
+                "93.2%",
+                "68%",
+                "$1,537,264,912",
+                "1,518"
+              ]
+            },
+            {
+              "cells": [
+                "Anthony Reeves",
+                "87.1%",
+                "59%",
+                "$1,181,635,440",
+                "1,389"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Santos",
+                "89.6%",
+                "64%",
+                "$1,354,782,656",
+                "1,476"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Test Drive Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Test Drive Booked (Count)",
+        "rightMax": 1200,
+        "rightTicks": [
+          0,
+          300,
+          600,
+          900,
+          1200
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 903
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 865
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 806
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 769
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 670
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 703
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 776
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 807
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 900
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 872
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 786
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 760
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 676
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 697
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 795
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 819
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 891
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 877
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 770
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 745
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 686
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 693
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 809
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 835
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 880
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 879
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 759
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 727
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 698
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 695
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 824
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 17500000,
+        "rightTicks": [
+          0,
+          5833333.333333333,
+          11666666.666666666,
+          17500000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 14336618
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 13740999
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 12795669
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 12209533
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 10630638
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 11156567
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 12324337
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 12810136
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 14283376
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 13848615
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 12472977
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 12055378
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 10727259
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 11057268
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 12617767
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 13002250
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 14150385
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 13930167
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 12215248
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 11827805
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 10888271
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 11002419
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 12835250
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 13260713
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 13970620
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 13950299
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 12040464
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 11544881
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 11077072
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 11023656
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 12967080
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "64,138"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "5:42"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "5,131"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "3,848"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "85%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Martinez",
+                "412",
+                "89%",
+                "86%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James Chen",
+                "528",
+                "87%",
+                "84%",
+                "86%"
+              ]
+            },
+            {
+              "cells": [
+                "Rebecca Thompson",
+                "391",
+                "88%",
+                "85%",
+                "85%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "64,138 calls",
+      "pagerLabel": "1 of 6,414",
+      "calls": [
+        {
+          "time": "1/12/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/12/26 9:23 am",
+          "id": "A19C-3D2E7B41C0F8"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C4E2-9A17F5820BD3"
+        },
+        {
+          "time": "1/12/26 11:15 am",
+          "id": "7B3D-61E4C9F2038A"
+        },
+        {
+          "time": "1/12/26 12:08 pm",
+          "id": "E92A-4F71B60D8C25"
+        },
+        {
+          "time": "1/12/26 1:34 pm",
+          "id": "1D6F-8B25E3A709C4"
+        },
+        {
+          "time": "1/12/26 2:52 pm",
+          "id": "9F04-C7D31A65E28B"
+        },
+        {
+          "time": "1/12/26 3:29 pm",
+          "id": "5A81-2E9F740CB16D"
+        },
+        {
+          "time": "1/12/26 4:47 pm",
+          "id": "B3C7-6D18F09A425E"
+        },
+        {
+          "time": "1/12/26 5:36 pm",
+          "id": "48ED-A5027C91F63B"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling Kia America, this is Marcus. Who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling Kia America",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Marcus, my name is Danielle Reyes. I'm just starting to look at three-row SUVs for our family and wanted some info.",
+          "highlights": [
+            "Danielle Reyes",
+            "three-row SUVs"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "Wonderful, Danielle. Congratulations on the search. Are you looking to seat the whole family, and do you have a sense of gas versus hybrid or electric?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:26",
+          "text": "We've got three kids, so we need the third row. Probably gas for now, but I'm curious about the electric one too.",
+          "highlights": [
+            "need the third row"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:34",
+          "text": "Perfect. For a family of five the Kia Telluride is our most popular three-row. It seats up to eight, has a 291-horsepower V6, and available all-wheel drive. If you want to go electric, the EV9 is the three-row equivalent.",
+          "highlights": [
+            "Kia Telluride",
+            "EV9"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:47",
+          "text": "The Telluride keeps coming up. What does one of those actually run these days?",
+          "highlights": [
+            "What does one of those actually run"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:54",
+          "text": "The Telluride starts right around thirty-seven thousand, and it climbs with the premium trims. The EV9 begins closer to fifty-five thousand before any incentives.",
+          "highlights": [
+            "starts right around thirty-seven thousand"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:04",
+          "text": "Okay, honestly I want to keep this manageable. We were also over at the Honda store looking at the Pilot, and they quoted us something pretty aggressive.",
+          "highlights": [
+            "keep this manageable",
+            "Honda store looking at the Pilot"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:14",
+          "text": "That's a fair comparison. Where the Telluride tends to win people over is the standard features and the interior quality at that price. We also have Kia Finance America running promotional rates this month, so we can often land the monthly payment where you need it.",
+          "highlights": [
+            "Kia Finance America",
+            "promotional rates this month"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:27",
+          "text": "That helps. One thing though, I don't want to feel locked into some long term commitment if our situation changes.",
+          "highlights": [
+            "don't want to feel locked into some long term commitment"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:35",
+          "text": "Completely understand. We have flexible lease terms as well as traditional financing, so you're not boxed in. A lease can actually give you the shortest commitment if that's a concern.",
+          "highlights": [
+            "flexible lease terms"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:45",
+          "text": "Good to know. I'd really want to sit in both before deciding anything, and my husband needs to be there too.",
+          "highlights": [
+            "sit in both before deciding"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:53",
+          "text": "That's exactly what I'd recommend. Let's get you and your husband a test drive so you can compare the Telluride and the EV9 side by side. What day works best for you both?",
+          "highlights": [
+            "get you and your husband a test drive",
+            "Telluride and the EV9"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:03",
+          "text": "Thursday would work, sometime in the morning. We're hoping to decide before the end of the month though.",
+          "highlights": [
+            "Thursday",
+            "before the end of the month"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:11",
+          "text": "Thursday morning it is. I have a ten o'clock test drive open at your local dealership, and I'll have both vehicles pulled up and ready. That leaves plenty of time to decide this month.",
+          "highlights": [
+            "ten o'clock test drive",
+            "both vehicles pulled up and ready"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:21",
+          "text": "Perfect, Thursday at ten works for us.",
+          "highlights": [
+            "Thursday at ten"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:26",
+          "text": "Great. What's the best mobile number and email so I can send the confirmation and directions?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "2:31",
+          "text": "It's 555-0142, and danielle.reyes@email.com.",
+          "highlights": [
+            "555-0142"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:36",
+          "text": "You're all set, Danielle. Your test drive is booked for Thursday at ten. Thanks for calling Kia America, and we'll see you and your husband then.",
+          "highlights": [
+            "test drive is booked for Thursday at ten",
+            "Thanks for calling Kia America"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Shopper",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Test Drive: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Model Interest: Telluride",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Model Interest: EV9",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Financing Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Reyes, a new shopper, called Kia America looking for a three-row family SUV for her family of five. Agent Marcus recommended the Kia Telluride and the electric EV9, addressed her budget concerns with Kia Finance America promotional rates, eased her worry about being locked into a long commitment by explaining flexible lease options, and acknowledged her comparison shopping against the Honda Pilot. He scheduled a test drive of both vehicles for Thursday at 10 AM and captured her contact details.",
+        "keyPoints": [
+          "New shopper researching three-row SUVs for a family of five",
+          "Recommended Kia Telluride and electric EV9",
+          "Handled budget concern with promotional financing rates",
+          "Addressed commitment worry with flexible lease terms",
+          "Comparison shopping against Honda Pilot",
+          "Test drive booked for Thursday 10 AM with contact captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Test Drive booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "40,407 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,041",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hi there. Thanks for reaching out to Kia America. I'm Alex with our SMS team. Are you interested in exploring a new or certified pre-owned Kia today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:49 PM",
+              "text": "Yeah, I'm looking at the Sportage. Just need to know more about the hybrid version."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Great choice. The Sportage Hybrid gets over 40 mpg combined and comes with our dual-motor AWD option. Are you looking for this as your primary family vehicle or more of a weekend explorer?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:53 PM",
+              "text": "Family vehicle. We have two kids and need something spacious but fuel efficient."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "Perfect. The Sportage Hybrid has excellent cargo space and our dual-panel curved displays make family trips easier. What's your preferred budget range for this purchase?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:57 PM",
+              "text": "Around 30 to 35 thousand. Can you tell me the starting price?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:59 PM",
+              "text": "The Sportage Hybrid starts at approximately 29 thousand dollars before any incentives or trade in value. With our current winter sales event, you may qualify for additional savings. Have you owned a Kia before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:01 PM",
+              "text": "No, this would be our first Kia. We're coming from a Honda."
+            },
+            {
+              "speaker": "agent",
+              "time": "3:03 PM",
+              "text": "Welcome to the Kia family. I'd like to schedule a test drive so you can experience the Sportage Hybrid firsthand. Would Thursday, January 23rd at 10 AM work for you at our dealership location?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:05 PM",
+              "text": "That works for us. What do I need to bring?"
+            },
+            {
+              "speaker": "agent",
+              "time": "3:07 PM",
+              "text": "Just bring your driver's license and proof of insurance. You'll also want to bring any trade in documentation if you have a vehicle to trade. We'll send you a reminder text tomorrow and you can call us at 877-936-2933 if you need anything before your visit."
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:09 PM",
+              "text": "Sounds good. Really excited to check it out."
+            },
+            {
+              "speaker": "agent",
+              "time": "3:11 PM",
+              "text": "We're excited to see you Thursday at 10 AM for your Sportage Hybrid test drive. Thanks for choosing Kia America."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Test Drive: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Shopper",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Vehicle Interest: Sportage Hybrid",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Budget Confirmed: 30-35k",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Trade-in Prospect",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Family Use Case",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "1/15/26 2:47 pm",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "650-428-7841",
+            "repeatCaller": "No",
+            "city": "San Jose",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "K724-29AE847B1F63",
+          "time": "1/8/26 11:34 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "K724-29AE847B1F63",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "M891-56CF734D2E48",
+          "time": "1/22/26 4:12 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "M891-56CF734D2E48",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "P347-18BD965A7C92",
+          "time": "1/29/26 9:58 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "P347-18BD965A7C92",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "64,138 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 6,414",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thanks for calling Kia America. This is Marco speaking. Are you calling about one of our vehicles today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Yeah, hi. I saw an ad for the Sportage Hybrid and I'm pretty interested in learning more about it."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Excellent, the Sportage Hybrid is a fantastic choice. Great fuel economy and really stylish. Have you shopped for a new vehicle in the past, or is this your first time looking?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "This is definitely my first time looking at Kias. I drive an older Honda right now."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Perfect, welcome to the Kia family. So what's most important to you in your next vehicle? Is it fuel economy, cargo space, or maybe the styling?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "Honestly, I want something that's going to save me money at the pump. I drive about thirty thousand miles a year for work."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "You're definitely in the right place. Our Sportage Hybrid gets over forty miles per gallon combined, so you'll see real savings. What's your budget looking like for this purchase?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "I was thinking around twenty nine to thirty two thousand dollars, something in that range."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "That's right in our wheelhouse. Our Sportage Hybrid starts at twenty nine thousand, and with our January promotional financing, we can get you into one at a really great rate. When would you like to come in and take one for a test drive?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Um, I could probably do this Saturday or Sunday. What's better for your team?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Saturday works great. How about ten o'clock in the morning? That gives you plenty of time to spend with one of our specialists."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Ten AM on Saturday, that sounds perfect. Where exactly do I go?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "We're located at five thousand two hundred East Camelback Road in Phoenix. When you arrive, just ask for James in our sales team and mention you've got a test drive scheduled for the Sportage Hybrid. Your confirmation number is seven four two three nine eight. If you need to reach us before Saturday, you can call back at eight seven seven, nine three six, twenty nine thirty three. Does that all sound good?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:20 PM",
+              "text": "Yeah, that sounds great. Thanks so much, Marco. I'm looking forward to it."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:21 PM",
+              "text": "You're welcome. See you Saturday at ten AM. Enjoy your test drive."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Test Drive: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Shopper",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Sportage Hybrid",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Budget Established: 29k-32k",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Annual Mileage: 30k",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: Phoenix, Arizona",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "9:18",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "602-555-0147",
+            "repeatCaller": "No",
+            "city": "Phoenix",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "David Martinez",
+            "firstName": "David",
+            "lastName": "Martinez",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B823-1F7AE42956BC",
+          "time": "1/08/26 2:45 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B823-1F7AE42956BC",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C541-3D8BC67E2A91",
+          "time": "1/22/26 11:30 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C541-3D8BC67E2A91",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D764-5E9CF18B4D37",
+          "time": "1/29/26 6:23 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D764-5E9CF18B4D37",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Hi, I'm Kia America's AI assistant here to help you build a personalized quote and set up a test drive, and this month you can take advantage of our Kia Summer Sales Event lease and APR offers. Would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, which Kia model you're interested in (like Telluride, Sportage, or EV9), whether you prefer gas, hybrid, or electric, new or certified pre-owned, your ideal purchase or lease timeline, and your ZIP code so I can confirm a dealer near you.",
+        "Estimate then book: Once I confirm we have a dealer in your ZIP, I'll share a preliminary starting price range for the model you chose, recommend a test drive and consultation with a product specialist for exact pricing and current offers, propose a specific day and time, and confirm you'll get a reminder text before your visit with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Kia_America_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Vehicles & Lineup",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Special Offers",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Dealer",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"warranty\",\"question\":\"How long is my new Kia covered under warranty?\",\"answer\":\"Every new Kia comes with a 10-year or 100,000-mile limited powertrain warranty and a 5-year or 60,000-mile basic warranty. I can connect you with your dealer's service team to review the specifics on your vehicle.\"},{\"topic\":\"reschedule\",\"question\":\"Can I move my test drive to a different day?\",\"answer\":\"Absolutely, I can reschedule your test drive to whatever day and time works best for you. Just let me know your preferred day and I'll update it and send a fresh reminder text.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How much does the Kia Telluride cost?",
+              "answer": "The Telluride starts around $37,000 and pricing varies by trim and options. Let's set up a test drive so a product specialist can walk you through exact figures and current offers."
+            },
+            {
+              "question": "What is the range on the Kia EV9?",
+              "answer": "The EV9 offers up to roughly 300 miles of range depending on trim, along with fast charging. I'd love to book you a test drive so you can experience it firsthand."
+            },
+            {
+              "question": "Do you have any lease deals right now?",
+              "answer": "Yes, we have promotional lease and APR offers through Kia Finance America that change monthly. Share your ZIP and preferred model and I'll set you up with a specialist to review the latest deals."
+            },
+            {
+              "question": "What is the difference between the Sorento and the Telluride?",
+              "answer": "Both are three-row SUVs, with the Sorento being a bit more compact and value-focused and the Telluride offering more space and premium trims. A test drive of both is the best way to compare, shall I schedule one?"
+            },
+            {
+              "question": "Does the Sportage come as a hybrid?",
+              "answer": "Yes, the Sportage Hybrid delivers around 40-plus mpg with an available dual-motor AWD option. Let's book a test drive so you can feel the difference for yourself."
+            },
+            {
+              "question": "How fast can the EV6 charge?",
+              "answer": "The EV6 uses an 800V system for ultra-fast charging that can add significant range in minutes at a compatible station. I can arrange a test drive so a specialist can show you the charging details."
+            },
+            {
+              "question": "What is the starting price of the Kia Soul?",
+              "answer": "The Soul starts around $21,000 and offers distinctive styling with generous headroom. Would you like to schedule a test drive to see it in person?"
+            },
+            {
+              "question": "Is the K4 replacing the Forte?",
+              "answer": "Yes, the K4 is the compact sedan that replaces the Forte, with modern tech and a roomy interior. Let's set up a test drive so you can check out the updates."
+            },
+            {
+              "question": "Do you sell certified pre-owned Kias?",
+              "answer": "Yes, our dealers carry certified pre-owned Kias that go through a thorough inspection and include added coverage. Share your ZIP and I'll connect you with a nearby dealer to view inventory."
+            },
+            {
+              "question": "What financing options do you offer?",
+              "answer": "Kia Finance America offers both financing and leasing with promotional APR and lease offers. A specialist can review the best fit for you during your visit, want me to book it?"
+            },
+            {
+              "question": "How many seats does the Carnival have?",
+              "answer": "The Carnival MPV seats up to 8 with sliding doors and an available hybrid option. Let's schedule a test drive so you can experience the family-friendly cabin."
+            },
+            {
+              "question": "What is Kia Connect?",
+              "answer": "Kia Connect is our connected-car service with remote start, vehicle status, navigation, and emergency assistance, starting with a free trial. I can have a specialist explain the tiers when you come in for a test drive."
+            },
+            {
+              "question": "Which Kia SUV is best for families?",
+              "answer": "Families often love the Telluride and Sorento for three-row space, or the EV9 for an electric option. The best way to decide is a test drive, shall I set one up?"
+            },
+            {
+              "question": "Does the Seltos come with all-wheel drive?",
+              "answer": "Yes, the Seltos offers available AWD and a turbo engine option in a spacious subcompact package. Let's book a test drive so you can take it out on the road."
+            },
+            {
+              "question": "What is the fuel economy on the Niro?",
+              "answer": "The Niro comes in HEV, PHEV, and EV variants and delivers high fuel economy across the lineup. I'd be happy to schedule a test drive so a specialist can match the right variant to your driving."
+            },
+            {
+              "question": "Do you have the K5 with all-wheel drive?",
+              "answer": "Yes, the K5 midsize sedan offers available AWD along with a sporty GT turbo trim. Share your ZIP and I'll find a dealer with one available for a test drive."
+            },
+            {
+              "question": "How do I find a Kia dealer near me?",
+              "answer": "I can help with that right now, just share your ZIP code and I'll confirm the nearest dealer and set up your test drive."
+            },
+            {
+              "question": "Can I build and price a Kia online?",
+              "answer": "Yes, you can configure your ideal Kia and a specialist can confirm exact pricing and offers when you visit. Would you like me to schedule a test drive to finalize the details?"
+            },
+            {
+              "question": "Is the EV9 eligible for any incentives?",
+              "answer": "Available EV incentives can vary by model, trim, and location, and they change over time. Let's book a test drive so a specialist can review current EV offers with you."
+            },
+            {
+              "question": "How long does a test drive take?",
+              "answer": "A test drive typically takes about 30 to 45 minutes, including time to review features and offers. Let me grab your ZIP and preferred day and I'll get it scheduled."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule a test drive\",\"follow_up_message\":\"Great, I have a Kia dealer near your ZIP ready to help. Does this Saturday at 11 AM work for your test drive, and I'll send a reminder text with a number to call beforehand.\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Happy to help with a personalized quote on the model you chose. I'll pair you with a product specialist during a quick test drive so they can confirm exact pricing and current offers, what day works best for you?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Kia America's AI assistant. I can help you build a personalized quote and set up a test drive at a dealer near you. Would you like to get started?",
+        "goal": "Guide the customer to schedule a test drive and consultation with a product specialist at their local Kia dealer.",
+        "bookingType": "test drive at your local Kia dealer",
+        "offer": "Explore special lease and APR offers during the Kia Summer Sales Event when you book this month",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Which Kia model are you most interested in, such as the Telluride, Sportage, or EV9?",
+          "Do you prefer a gas, hybrid, or fully electric vehicle?",
+          "Are you looking at a new Kia or a certified pre-owned one?",
+          "What's your ideal timeline for buying or leasing?",
+          "What's your ZIP code so I can confirm a Kia dealer near you?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:14 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:14 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:14 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Kia America",
+      "callerName": "Jennifer Martinez",
+      "callerPhone": "(805) 555-0142",
+      "campaign": "Kia EV6, Santa Barbara Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Test Drive Lead",
+      "estimatedValue": "$46,875",
+      "googleSearch": "Kia EV6 electric range charging time",
+      "websiteSearch": "EV6 vs Tesla Model Y price",
+      "callingWebpage": "/electric-hybrid/ev/ev6",
+      "products": "Kia EV6, Kia Connect",
+      "cartId": "KA-7392E",
+      "serviceable": "Yes",
+      "email": "jmartinez.sb@email.com",
+      "street": "2847 Olive Mill Road",
+      "city": "Santa Barbara",
+      "state": "CA",
+      "zip": "93108",
+      "digitalJourney": "/home › /electric-hybrid › /ev › /ev6 › /ev6-build-price",
+      "intent": "Shopping for premium electric crossover with fast charging capability, interested in test drive to compare performance and range.",
+      "coverage": "ZIP 93108 confirmed, Santa Barbara serviceable",
+      "switchIntent": "High. Currently drives gas sedan. Researching EVs for 18 months, budget approved, wants test drive this Saturday to confirm purchase decision.",
+      "greeting": "Hi Jennifer, thanks for calling Kia America. I see you have been looking at the EV6. That is an excellent choice for electric performance and range. Would you like to schedule a test drive at our Santa Barbara showroom this weekend to experience the ultra-fast charging firsthand?"
+    },
+    "smsScreenpop": {
+      "brandName": "Kia America",
+      "callerName": "Marcus Washington",
+      "callerPhone": "(512) 555-0876",
+      "campaign": "Kia Telluride, Austin Family SUV",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Test Drive Lead",
+      "estimatedValue": "$38,450",
+      "googleSearch": "Kia Telluride three row SUV family seating",
+      "websiteSearch": "Telluride vs Honda Pilot safety reviews",
+      "callingWebpage": "/vehicles/suvs/telluride",
+      "products": "Kia Telluride, Kia Finance America",
+      "cartId": "KA-5618T",
+      "serviceable": "Yes",
+      "email": "mwashington.austin@email.com",
+      "street": "5124 Barton Hills Drive",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78746",
+      "digitalJourney": "/home › /vehicles › /suvs › /telluride › /special-offers-local-inventory",
+      "intent": "Father of three seeking spacious three row SUV with reliable warranty and flexible financing options for growing family.",
+      "coverage": "ZIP 78746 confirmed, Austin serviceable",
+      "appointment": "Test drive with product specialist, Sat Jul 19, 2:00 PM, Kia Austin Dealership",
+      "greeting": "Hi Marcus, this is Kevin from Kia America. Great to confirm your Telluride test drive this Saturday at 2 PM. The Telluride is perfect for families, and I will show you the spacious third row seating plus our financing options. Looking forward to seeing you then. Any questions before Saturday?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Kia America",
+      "brandDomain": "www.kia.com",
+      "brandIcon": "🚗",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "Kia America EV Movement",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "Kia EV9 range and pricing",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/vehicles/electric-hybrid/ev/ev9",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "EV9 Overview, Build and Price Tool",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "test_drive_ev",
+          "name": "Test Drive Booking, Electric Vehicle"
+        },
+        {
+          "id": "financing_inquiry",
+          "name": "Financing and Lease Options"
+        },
+        {
+          "id": "general_support",
+          "name": "General Customer Support"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Kia America. I see you've been looking at the EV9. Are you interested in learning more about that model or exploring other electric vehicles?",
+          "sigs": [],
+          "q": [
+            45,
+            35,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, I'm really interested in the EV9. I have a family of five and I need something with good range. We're looking to switch to electric soon.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Family of five, <strong>electric vehicle</strong> buyer"
+            },
+            {
+              "c": "green",
+              "t": "<strong>EV9</strong> interest confirmed"
+            },
+            {
+              "c": "blue",
+              "t": "Ready to purchase timeline"
+            }
+          ],
+          "q": [
+            72,
+            18,
+            10
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. The EV9 is our flagship three row electric SUV with up to 300 miles of range and ultra-fast 800V charging. Would you prefer to see one in person soon, or would you like to discuss financing options first?",
+          "sigs": [],
+          "q": [
+            80,
+            12,
+            8
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I definitely want to see it. Can I come in for a test drive this week? Also, do you have any lease deals running right now?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Test drive</strong> request this week"
+            },
+            {
+              "c": "orange",
+              "t": "Lease deal interest"
+            }
+          ],
+          "q": [
+            88,
+            8,
+            4
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent. I'm connecting you now to our Test Drive Booking team for the EV9. They'll get you scheduled this week and can discuss our current lease offers as well. One moment please.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Test Drive Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule your test drive (Agent)\", \"come in for a test drive (Agent)\", \"I'd like to test drive it (Caller)\", \"book a test drive (Caller)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "01/09/26 2:48 pm"
+        },
+        {
+          "name": "Competitor Comparison Raised",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"how does it compare to the Toyota RAV4 (Caller)\", \"versus the Honda CR-V (Caller)\", \"looking at the Mazda CX-5 too (Caller)\", \"cross shopping the Hyundai (Caller)\"])",
+          "createdAt": "05/22/25 11:03 am",
+          "updatedAt": "12/18/25 4:31 pm"
+        },
+        {
+          "name": "Empathy & Rapport",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy & Rapport] < 60 and duration > 45 sec",
+          "createdAt": "04/08/25 8:47 am",
+          "updatedAt": "01/15/26 10:22 am"
+        },
+        {
+          "name": "EV Incentive Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"federal EV tax credit (Caller)\", \"any rebates on the EV9 (Caller)\", \"charging it at home (Caller)\", \"how long to charge the EV6 (Caller)\"])",
+          "createdAt": "06/30/25 3:19 pm",
+          "updatedAt": "01/06/26 9:57 am"
+        },
+        {
+          "name": "Financing & Lease Offer Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"what's the lease payment (Caller)\", \"current APR offers this month (Caller)\", \"Kia Finance America (Agent)\", \"how much money down (Caller)\"])",
+          "createdAt": "07/17/25 1:41 pm",
+          "updatedAt": "01/21/26 11:38 am"
+        },
+        {
+          "name": "Needs Discovery Complete",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Needs Discovery Complete] < 60 and duration > 45 sec",
+          "createdAt": "04/02/25 10:15 am",
+          "updatedAt": "01/12/26 3:09 pm"
+        },
+        {
+          "name": "Price Sensitivity Expressed",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"that's over my budget (Caller)\", \"can you do any better on price (Caller)\", \"a little too expensive (Caller)\", \"best price you can offer (Caller)\"])",
+          "createdAt": "08/05/25 2:53 pm",
+          "updatedAt": "12/29/25 1:14 pm"
+        },
+        {
+          "name": "Proper Call Greeting",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Proper Call Greeting] < 60 and duration > 45 sec",
+          "createdAt": "03/27/25 9:38 am",
+          "updatedAt": "01/18/26 8:44 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your out the door price (Agent)\", \"I can send you a quote (Agent)\", \"the total comes to (Agent)\", \"your monthly payment would be (Agent)\"])",
+          "createdAt": "05/09/25 4:07 pm",
+          "updatedAt": "01/23/26 12:26 pm"
+        },
+        {
+          "name": "Test Drive Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"have you driven a Kia before (Agent)\", \"when are you looking to visit (Agent)\", \"stop by the dealership (Agent)\", \"our showroom hours (Agent)\"])",
+          "createdAt": "06/11/25 11:52 am",
+          "updatedAt": "01/04/26 10:05 am"
+        }
+      ]
+    }
+  }
+}

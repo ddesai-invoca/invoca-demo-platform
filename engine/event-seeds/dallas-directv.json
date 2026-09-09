@@ -1,0 +1,5354 @@
+{
+  "id": "directv",
+  "customerName": "DIRECTV",
+  "websiteUrl": "https://www.directv.com",
+  "brandDomain": "directv.com",
+  "networkName": "Invoca for Telecommunications",
+  "industry": "Pay-TV and streaming entertainment",
+  "bookingTerm": "Installation",
+  "customerNoun": "Subscriber",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 25000,
+      "yTicks": [
+        5000,
+        10000,
+        15000,
+        20000,
+        25000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 17842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 19264
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 18573
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 19847
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 15846
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Installation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Installation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Genre Packs Built Around What You Love",
+          "marketingSearchTerm": "DIRECTV Genre Packs",
+          "landingPageUrl": "https://www.directv.com/packages/genre-packs?utm_source=google&utm_medium=cpc&utm_campaign=genre_packs_evergreen",
+          "websiteJourney": "Home / Packages / Genre Packs / MyEntertainment",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Stream Football Without the Hurdles",
+          "marketingSearchTerm": "DIRECTV MySports college football",
+          "landingPageUrl": "https://www.directv.com/packages/genre-packs/mysports?utm_source=google&utm_medium=cpc&utm_campaign=football_hurdle_free",
+          "websiteJourney": "Home / Sports / MySports & MySports Extra",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "MySports 6-Month Offer",
+          "marketingSearchTerm": "how to watch ESPN and NFL RedZone",
+          "landingPageUrl": "https://www.directv.com/packages/genre-packs/mysports?utm_source=google&utm_medium=cpc&utm_campaign=mysports_6mo_offer",
+          "websiteJourney": "Home / Packages / Genre Packs / MySports",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Switch & Save Evergreen",
+          "marketingSearchTerm": "DIRECTV vs Xfinity",
+          "landingPageUrl": "https://www.directv.com/packages?utm_source=bing&utm_medium=cpc&utm_campaign=switch_save_evergreen",
+          "websiteJourney": "Home / Packages / TV Plans / Compare",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "A Year of Netflix On Us",
+          "marketingSearchTerm": "DIRECTV Netflix deal",
+          "landingPageUrl": "https://www.directv.com/devices/gemini?utm_source=google&utm_medium=cpc&utm_campaign=netflix_on_us",
+          "websiteJourney": "Home / Devices / Gemini / Netflix Bundle",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Genre Packs Built Around What You Love",
+          "marketingSearchTerm": "DIRECTV streaming price",
+          "landingPageUrl": "https://www.directv.com/packages/genre-packs?utm_source=google&utm_medium=cpc&utm_campaign=genre_packs_evergreen",
+          "websiteJourney": "Home / Packages / Genre Packs / MyNews",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Switch & Save Evergreen",
+          "marketingSearchTerm": "cheap live TV with locals",
+          "landingPageUrl": "https://www.directv.com/packages/genre-packs/mynews?utm_source=bing&utm_medium=cpc&utm_campaign=switch_save_evergreen",
+          "websiteJourney": "Home / Channels / Channel Lineup / By ZIP",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Hablamos Espanol MiEspanol",
+          "marketingSearchTerm": "DIRECTV Spanish channels",
+          "landingPageUrl": "https://www.directv.com/miespanol?utm_source=google&utm_medium=cpc&utm_campaign=miespanol_shop",
+          "websiteJourney": "Home / MiEspanol / Shop",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Football Hurdle-Free",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.directv.com/packages/genre-packs/mysports?utm_source=facebook&utm_medium=paid_social&utm_campaign=football_hurdle_free",
+          "websiteJourney": "Home / Sports / MySports & MySports Extra",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "A Year of Netflix On Us",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.directv.com/devices/gemini?utm_source=instagram&utm_medium=paid_social&utm_campaign=netflix_on_us",
+          "websiteJourney": "Home / Devices / Gemini / Netflix Bundle",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Genre Packs Built Around What You Love",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.directv.com/packages/genre-packs/mykids?utm_source=facebook&utm_medium=paid_social&utm_campaign=genre_packs_evergreen",
+          "websiteJourney": "Home / Packages / Genre Packs / MyKids",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.directv.com/devices/satellite/genie-dvr?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Devices / Satellite / Genie DVR",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.directv.com/packages/genre-packs/myentertainment?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Packages / Genre Packs / MyEntertainment",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.directv.com/channels?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Channels / Channel Lineup / By Pack",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Genre Packs Built Around What You Love",
+          "marketingSearchTerm": "DIRECTV Gemini device",
+          "landingPageUrl": "https://www.directv.com/devices/gemini?utm_source=google&utm_medium=cpc&utm_campaign=genre_packs_evergreen",
+          "websiteJourney": "Home / Devices / Technology / Gemini",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Satellite No Internet Evergreen",
+          "marketingSearchTerm": "DIRECTV satellite TV no internet",
+          "landingPageUrl": "https://www.directv.com/satellite?utm_source=google&utm_medium=cpc&utm_campaign=satellite_no_internet",
+          "websiteJourney": "Home / Devices / Satellite / Genie DVR",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Hablamos Espanol MiEspanol",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.directv.com/miespanol?utm_source=instagram&utm_medium=paid_social&utm_campaign=miespanol_shop",
+          "websiteJourney": "Home / MiEspanol / Shop",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.directv.com/insider?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / DIRECTV Insider / Content Hub",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Switch & Save Evergreen",
+          "marketingSearchTerm": "DIRECTV free trial",
+          "landingPageUrl": "https://www.directv.com/packages?utm_source=bing&utm_medium=cpc&utm_campaign=switch_save_evergreen",
+          "websiteJourney": "Home / Packages / TV Plans / Offers",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Genre Packs Built Around What You Love",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.directv.com/packages/genre-packs/mycinema?utm_source=facebook&utm_medium=paid_social&utm_campaign=genre_packs_evergreen",
+          "websiteJourney": "Home / Packages / Genre Packs / MyCinema",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.directv.com/business?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Business TV / Plans",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Genre Packs Built Around What You Love",
+          "marketingSearchTerm": "DIRECTV kids channels",
+          "landingPageUrl": "https://www.directv.com/packages/genre-packs/mykids?utm_source=google&utm_medium=cpc&utm_campaign=genre_packs_evergreen",
+          "websiteJourney": "Home / Packages / Genre Packs / MyKids",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (DIRECTV)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "71,664"
+            },
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Activation (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,366,064"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "11,466"
+            },
+            {
+              "label": "Technical Support Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing Inquiry (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Account Support Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "46%"
+            },
+            {
+              "label": "Non-Qualifying Lead (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Activation (Percent)",
+              "value": "22%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sales Call (Count)",
+            "values": [
+              9842,
+              13507,
+              12916,
+              12238,
+              11695
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              5412,
+              7438,
+              7051,
+              6689,
+              6375
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              1412,
+              1943,
+              1851,
+              1758,
+              1653
+            ]
+          },
+          {
+            "name": "Activation (Count)",
+            "values": [
+              2583,
+              3558,
+              3384,
+              3207,
+              3034
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 71664,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "24,318",
+                "38.2%",
+                "12.4%",
+                "$684,213"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "18,742",
+                "41.7%",
+                "16.8%",
+                "$561,847"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "12,914",
+                "44.3%",
+                "21.3%",
+                "$438,529"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "9,357",
+                "47.6%",
+                "26.9%",
+                "$381,264"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "6,333",
+                "51.8%",
+                "31.7%",
+                "$300,211"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 71664,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "22,847",
+                "37.9%",
+                "13.1%",
+                "$658,942"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "17,236",
+                "40.8%",
+                "17.6%",
+                "$547,318"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "13,918",
+                "43.6%",
+                "22.4%",
+                "$451,207"
+              ]
+            },
+            {
+              "name": "Email/CRM",
+              "metrics": [
+                "9,472",
+                "46.9%",
+                "27.8%",
+                "$389,561"
+              ]
+            },
+            {
+              "name": "Display/Video/CTV",
+              "metrics": [
+                "8,191",
+                "50.4%",
+                "33.2%",
+                "$319,036"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38452,
+          "rows": [
+            {
+              "name": "Stream Football Without the Hurdles",
+              "metrics": [
+                "12,847",
+                "38.4%",
+                "14.2%",
+                "$312,847"
+              ]
+            },
+            {
+              "name": "Genre Packs Built Around What You Love",
+              "metrics": [
+                "9,318",
+                "41.2%",
+                "18.7%",
+                "$248,516"
+              ]
+            },
+            {
+              "name": "A Year of Netflix On Us",
+              "metrics": [
+                "7,214",
+                "44.1%",
+                "23.1%",
+                "$198,742"
+              ]
+            },
+            {
+              "name": "MySports 6-Month Offer",
+              "metrics": [
+                "5,127",
+                "47.5%",
+                "28.4%",
+                "$151,309"
+              ]
+            },
+            {
+              "name": "MiEspanol Hablamos Espanol",
+              "metrics": [
+                "3,946",
+                "51.3%",
+                "33.6%",
+                "$118,264"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25937,
+          "rows": [
+            {
+              "name": "directv genre packs",
+              "metrics": [
+                "8,742",
+                "39.1%",
+                "15.3%",
+                "$214,318"
+              ]
+            },
+            {
+              "name": "directv streaming price",
+              "metrics": [
+                "6,318",
+                "42.3%",
+                "19.8%",
+                "$158,742"
+              ]
+            },
+            {
+              "name": "directv vs xfinity",
+              "metrics": [
+                "4,927",
+                "45.2%",
+                "24.6%",
+                "$121,507"
+              ]
+            },
+            {
+              "name": "directv spanish channels",
+              "metrics": [
+                "3,514",
+                "48.7%",
+                "29.2%",
+                "$89,264"
+              ]
+            },
+            {
+              "name": "directv nfl redzone college football",
+              "metrics": [
+                "2,436",
+                "52.4%",
+                "34.7%",
+                "$61,847"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Installation Set (Industry) (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Streaming Packages (Genre Packs)",
+              "metrics": [
+                "24,318",
+                "41.5%",
+                "14.2%",
+                "$538,323"
+              ]
+            },
+            {
+              "name": "Sports",
+              "metrics": [
+                "18,942",
+                "44.2%",
+                "19.6%",
+                "$578,857"
+              ]
+            },
+            {
+              "name": "Satellite TV",
+              "metrics": [
+                "13,127",
+                "46.8%",
+                "24.8%",
+                "$507,455"
+              ]
+            },
+            {
+              "name": "MiEspañol (Spanish)",
+              "metrics": [
+                "9,411",
+                "48.1%",
+                "29.3%",
+                "$429,816"
+              ]
+            },
+            {
+              "name": "Devices & Technology",
+              "metrics": [
+                "5,866",
+                "51.3%",
+                "34.1%",
+                "$311,613"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 71664,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "21,438",
+                "43.2%",
+                "15.3%",
+                "$494,296"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "17,952",
+                "46.5%",
+                "19.8%",
+                "$535,588"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "13,681",
+                "49.1%",
+                "23.6%",
+                "$486,610"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "10,927",
+                "52.7%",
+                "28.4%",
+                "$467,622"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "7,666",
+                "55.8%",
+                "33.1%",
+                "$381,948"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Activation (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Streaming Packages (Genre Packs)",
+            "values": [
+              588,
+              742,
+              763,
+              741,
+              619
+            ]
+          },
+          {
+            "name": "Sports",
+            "values": [
+              642,
+              798,
+              812,
+              789,
+              672
+            ]
+          },
+          {
+            "name": "Satellite TV",
+            "values": [
+              561,
+              698,
+              712,
+              689,
+              595
+            ]
+          },
+          {
+            "name": "MiEspañol (Spanish)",
+            "values": [
+              471,
+              592,
+              604,
+              581,
+              509
+            ]
+          },
+          {
+            "name": "Devices & Technology",
+            "values": [
+              342,
+              431,
+              438,
+              421,
+              368
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 71,664 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Bell called to sign up for the MySports pack so he could watch college football and ESPN Unlimited. Oscar confirmed pricing, locked in the 44.99 first six months rate, and scheduled his Gemini installation. Marcus was thrilled and completed the order.",
+          "date": "Jan 6, 2:42 PM",
+          "agent": "Oscar",
+          "duration": "2m 15s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 89,
+          "summary": "Priya Nair asked about adding a Gemini Air device with the twelve months of Netflix bundle to her MyEntertainment pack. Lila walked her through the offer and scheduled the installation. Priya signed up on the call.",
+          "date": "Feb 11, 10:18 AM",
+          "agent": "Lila",
+          "duration": "1m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Diego Fuentes called to compare the MiEspanol Spanish channel lineup with his current plan. Rosey explained the ViX Premium and Univision channels clearly, but Diego wanted to think it over. No sale was booked on this call.",
+          "date": "Mar 3, 4:05 PM",
+          "agent": "Rosey",
+          "duration": "2m 40s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Angela Ross was a new customer who called to schedule DIRECTV satellite service because she has no reliable internet at her rural home. Mary collected her address and contact details, confirmed the Genie HD DVR works in any weather, and booked her satellite installation. Angela was pleased to get on the schedule.",
+          "date": "Mar 19, 11:47 AM",
+          "agent": "Mary",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 9,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Tom Whitfield called after seeing the year of Netflix on us promotion and wanted the MyEntertainment pack with a Gemini. Lee confirmed the bundle value and scheduled his installation. Tom happily signed up.",
+          "date": "Apr 8, 1:22 PM",
+          "agent": "Lee",
+          "duration": "1m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 13,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Rachel Kim asked to add MySports Extra with NFL RedZone to her existing MySports subscription and set up a new Gemini. Sue processed the add-on and scheduled the installation. Rachel confirmed the order.",
+          "date": "Apr 22, 9:36 AM",
+          "agent": "Sue",
+          "duration": "2m 08s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 15,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Gerald Price disputed a charge on his MyNews bill after his promotional rate expired. Mike reviewed the account and applied a partial credit, but Gerald remained frustrated about the price jump.",
+          "date": "May 5, 3:51 PM",
+          "agent": "Mike",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 59,
+          "summary": "Bianca Lopez called to add the MyKids pack for her children and schedule a Gemini setup. Jennifer confirmed the Bluey and Paw Patrol channels and booked the installation. Bianca completed the order despite some confusion about billing dates.",
+          "date": "May 20, 12:14 PM",
+          "agent": "Jennifer",
+          "duration": "2m 21s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Kevin Doyle called because his scheduled satellite installation was missed by the technician. Rose apologized and rebooked the visit, but Kevin was annoyed at the delay.",
+          "date": "Jun 2, 10:49 AM",
+          "agent": "Rose",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Sandra Getty called to check the status of her Gemini device shipment. Oscar tracked the order and gave an updated delivery window, though Sandra was unhappy it had slipped.",
+          "date": "Jun 24, 4:33 PM",
+          "agent": "Oscar",
+          "duration": "1m 27s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Nathan Cole reported that his Genie satellite receiver kept freezing and asked about a warranty repair. Lila ran diagnostics and scheduled a technician, but Nathan was irritated by the repeated issues.",
+          "date": "Jul 9, 8:57 AM",
+          "agent": "Lila",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Helen Marsh called to cancel her MySports pack because she felt the price was too high after the promo ended. Lee offered a retention discount, but Helen still chose to cancel.",
+          "date": "Jul 28, 1:09 PM",
+          "agent": "Lee",
+          "duration": "2m 04s",
+          "scorecards": 7,
+          "comments": 2,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Oscar Ramirez left a voicemail asking to cancel his MiEspanol Spanish package and requesting a callback about a refund. The call rolled to voicemail and no agent responded.",
+          "date": "Aug 14, 6:21 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 32,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Frank Odell called furious that his Netflix add-on never activated after his installation. Mary escalated the issue but Frank remained dissatisfied and threatened to cancel his service entirely.",
+          "date": "Sep 6, 11:03 AM",
+          "agent": "Mary",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Wanda Estes called to complain about being double billed for her MyEntertainment pack and a Gemini lease. Sue could not immediately resolve the error and Wanda demanded a supervisor.",
+          "date": "Oct 1, 3:17 PM",
+          "agent": "Sue",
+          "duration": "3m 12s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "mysports",
+        "gemini",
+        "satellite",
+        "netflix",
+        "cancel",
+        "installation"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Service Address and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Availability in Market",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Explain Genre Pack Options and Pricing",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Installation Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Streaming Device Availability",
+          "points": "10/10",
+          "status": "met"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller self-identifies as new customer",
+        "Caller inquires about MySports package",
+        "Caller asks about college football access",
+        "Caller confirms interest in NFL Network",
+        "Caller confirms desire to stream without satellite dish",
+        "Caller expresses interest in Gemini device",
+        "Caller confirms service address",
+        "Caller confirms ZIP code",
+        "Caller provides full legal name",
+        "Caller confirms appointment date preference",
+        "Caller confirms time window for installation",
+        "Caller shows no budget objections",
+        "Caller thanks agent for assistance"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Phone number not captured in full and not verified",
+        "Device shipping timeline not discussed",
+        "Promotional offer not mentioned or explained",
+        "Netflix bundle offer not presented",
+        "MySports promotional rate not quoted",
+        "First month pricing not confirmed",
+        "Billing date not discussed",
+        "Account password reset not discussed",
+        "Activation timeline not specified"
+      ],
+      "naSignals": [
+        "Existing account modification",
+        "Billing adjustment request",
+        "Return or cancellation inquiry",
+        "Equipment damage claim",
+        "Service outage troubleshooting",
+        "Account payment status",
+        "Device swap or upgrade",
+        "Referral bonus eligibility",
+        "Technical support for streaming app",
+        "Spanish language preference confirmed"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "The caller wants to replace their cable service with a more affordable streaming TV option and specifically needs access to college football and NFL programming without a satellite dish."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects transparent Genre Pack pricing, confirmation that their service address qualifies, and a quick installation appointment so they can begin watching sports within the next week."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured the caller's email address and phone number for account confirmation and installation scheduling. He also missed an opportunity to present the Netflix bundle offer and MySports promotional rate to increase order value."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Hello, thank you for calling DIRECTV. My name is Marcus. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:24",
+          "text": "Hi Marcus. I'm looking to switch from cable to DIRECTV. I've heard good things about your Genre Packs and I really want to watch college football and the NFL."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:35",
+          "text": "Great, I'm excited to help you get set up. To get started, may I have your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:42",
+          "text": "Sure, it's Jonathan Walsh."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:47",
+          "text": "Perfect, Jonathan. And just to confirm, you're a new customer to DIRECTV, correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:53",
+          "text": "Yes, I'm completely new. I just want to ditch my cable company and get DIRECTV streaming."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:02",
+          "text": "Wonderful. So you're interested in MySports, which gives you ESPN, FS1, TNT, NFL Network, and over 400 college football games for 64.99 a month, or 44.99 for the first six months. Does that sound good to you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:18",
+          "text": "Yes, that's perfect. The college football coverage is exactly what I need."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:25",
+          "text": "Excellent. Now I'll need your service address and ZIP code to make sure we can deliver to your area. What's your address?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:35",
+          "text": "It's 4782 Westwood Drive, Denver, Colorado 80212."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:47",
+          "text": "Thank you, Jonathan. Let me just confirm that ZIP is 80212 in Denver. And I'm checking our systems right now. Great news, you're in a service area and we can schedule your Gemini streaming device installation."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:02",
+          "text": "Perfect. When can you get it installed?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:08",
+          "text": "We have availability this Saturday, October 26th, between 10 AM and 2 PM. Does that work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:16",
+          "text": "Saturday works great. October 26th, 10 to 2 is perfect."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:23",
+          "text": "Wonderful. I've scheduled your Gemini device installation for Saturday, October 26th, between 10 AM and 2 PM. You'll get MySports Genre Pack at our promotional rate of 44.99 for the first six months. We'll see you on Saturday, Jonathan. Thank you for choosing DIRECTV."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:55",
+          "text": "Thank you so much, Marcus. I'm really looking forward to it."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:02",
+          "text": "You're welcome, Jonathan. Have a great day."
+        }
+      ],
+      "aiSummary": "Jonathan Walsh, a new DIRECTV customer in Denver, called to switch from cable to streaming TV with a focus on sports content. Marcus successfully qualified the caller for MySports Genre Pack, confirmed service availability at the caller's address in ZIP 80212, and scheduled a Gemini device installation for Saturday, October 26th between 10 AM and 2 PM at the promotional rate of 44.99 for the first six months. While Marcus executed the core sales and scheduling flow smoothly, he did not capture Jonathan's email or phone number for account setup and installation confirmation, missing an opportunity to present the Netflix bundle offer and solidify post-sale communication.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great structure and pace on this new customer intake. You nailed the qualification and got the appointment booked fast. Two things to tighten up next time. First, grab the email and phone number before you close so the customer has a confirmation and we have their contact details for the installation crew. Second, lead with the Netflix promotion when you present MySports. that 12 months free is a big value add that can lock in the sale. Nice work today."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "71,664"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$33.02"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,366,064"
+            }
+          ]
+        },
+        {
+          "title": "NEW SUBSCRIBER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Subscribers (Count)",
+              "value": "43,127"
+            },
+            {
+              "label": "Caller Type: New Subscribers (Percent)",
+              "value": "60%"
+            },
+            {
+              "label": "Installation: Scheduled (Count)",
+              "value": "30,099"
+            },
+            {
+              "label": "Installation: Scheduled (Percent)",
+              "value": "42%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING SUBSCRIBERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Subscriber (Count)",
+              "value": "28,537"
+            },
+            {
+              "label": "Caller Type: Existing Subscriber (Percent)",
+              "value": "40%"
+            },
+            {
+              "label": "Installation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Installations)",
+          "chart": {
+            "legend": "Installation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Affiliate/Referral",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Email/CRM",
+                "value": 50,
+                "display": "50%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 43,
+                "display": "43%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 37,
+                "display": "37%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Installations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Installation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "24,318",
+                  "31%",
+                  "$803,451"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "18,542",
+                  "37%",
+                  "$612,338"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "13,761",
+                  "43%",
+                  "$454,509"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "9,187",
+                  "50%",
+                  "$303,171"
+                ]
+              },
+              {
+                "cells": [
+                  "Affiliate/Referral",
+                  "5,856",
+                  "58%",
+                  "$192,595"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 25000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000,
+              25000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 22847,
+                "display": "22,847"
+              },
+              {
+                "name": "organic",
+                "value": 17326,
+                "display": "17,326"
+              },
+              {
+                "name": "social",
+                "value": 14093,
+                "display": "14,093"
+              },
+              {
+                "name": "email",
+                "value": 9738,
+                "display": "9,738"
+              },
+              {
+                "name": "referral",
+                "value": 7660,
+                "display": "7,660"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Installations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Installation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "22,847",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "17,326",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "14,093",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "9,738",
+                  "51%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "7,660",
+                  "59%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 15000,
+            "axisTicks": [
+              0,
+              3000,
+              6000,
+              9000,
+              12000,
+              15000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Genre Packs Built Around What You Love",
+                "value": 11842,
+                "display": "11,842"
+              },
+              {
+                "name": "Stream Football Without the Hurdles",
+                "value": 9673,
+                "display": "9,673"
+              },
+              {
+                "name": "A Year of Netflix On Us",
+                "value": 7218,
+                "display": "7,218"
+              },
+              {
+                "name": "MySports 6-Month Offer",
+                "value": 5461,
+                "display": "5,461"
+              },
+              {
+                "name": "Switch & Save Evergreen",
+                "value": 3987,
+                "display": "3,987"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Installations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Installation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Genre Packs Built Around What You Love",
+                  "11,842",
+                  "34%",
+                  "$373,204"
+                ]
+              },
+              {
+                "cells": [
+                  "Stream Football Without the Hurdles",
+                  "9,673",
+                  "41%",
+                  "$301,558"
+                ]
+              },
+              {
+                "cells": [
+                  "A Year of Netflix On Us",
+                  "7,218",
+                  "48%",
+                  "$228,471"
+                ]
+              },
+              {
+                "cells": [
+                  "MySports 6-Month Offer",
+                  "5,461",
+                  "57%",
+                  "$172,343"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "DIRECTV Genre Packs",
+                "value": 6142,
+                "display": "6,142"
+              },
+              {
+                "name": "DIRECTV streaming price",
+                "value": 4873,
+                "display": "4,873"
+              },
+              {
+                "name": "DIRECTV vs Xfinity",
+                "value": 3918,
+                "display": "3,918"
+              },
+              {
+                "name": "DIRECTV MySports college football",
+                "value": 2764,
+                "display": "2,764"
+              },
+              {
+                "name": "DIRECTV Spanish channels",
+                "value": 1982,
+                "display": "1,982"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Installations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Installation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "DIRECTV Genre Packs",
+                  "36%"
+                ]
+              },
+              {
+                "cells": [
+                  "DIRECTV streaming price",
+                  "43%"
+                ]
+              },
+              {
+                "cells": [
+                  "DIRECTV vs Xfinity",
+                  "50%"
+                ]
+              },
+              {
+                "cells": [
+                  "DIRECTV MySports college football",
+                  "62%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Subscribers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Installation: Scheduled (Percent)",
+          "Caller Type: New Subscribers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Packages/Plans (Genre Packs)",
+              "21,347",
+              "33%",
+              "64%"
+            ]
+          },
+          {
+            "cells": [
+              "Channels (Channel Lineup)",
+              "15,882",
+              "39%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Sports (MySports)",
+              "11,436",
+              "46%",
+              "53%"
+            ]
+          },
+          {
+            "cells": [
+              "Devices/Technology (Gemini)",
+              "7,214",
+              "55%",
+              "49%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Installation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Southeast Sales Center, Atlanta",
+              "22,431",
+              "1,987",
+              "3%",
+              "35%"
+            ]
+          },
+          {
+            "cells": [
+              "West Coast Sales Center, Los Angeles",
+              "18,764",
+              "1,543",
+              "3%",
+              "40%"
+            ]
+          },
+          {
+            "cells": [
+              "Southwest Sales Center, Phoenix",
+              "16,082",
+              "1,208",
+              "2%",
+              "46%"
+            ]
+          },
+          {
+            "cells": [
+              "Northeast Sales Center, Boston",
+              "14,387",
+              "995",
+              "2%",
+              "54%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              2187,
+              2876,
+              2654,
+              2431,
+              2290
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1743,
+              2201,
+              2098,
+              1987,
+              1838
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              1432,
+              1743,
+              1802,
+              1654,
+              1600
+            ]
+          },
+          {
+            "name": "Needs Partner Approval",
+            "values": [
+              1123,
+              1342,
+              1398,
+              1287,
+              1262
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              812,
+              976,
+              998,
+              934,
+              897
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "28,666"
+          },
+          {
+            "label": "Installation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Activation (Percent)",
+            "value": "38%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,348,656"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$89,340"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$127,485"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$154,920"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$106,755"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$142,218"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Activation (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$169,872"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Installation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "8,924",
+                "58%",
+                "35%",
+                "$401,268"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "7,183",
+                "54%",
+                "38%",
+                "$343,764"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "6,447",
+                "57%",
+                "40%",
+                "$318,612"
+              ]
+            },
+            {
+              "name": "Email/CRM",
+              "metrics": [
+                "3,821",
+                "59%",
+                "42%",
+                "$198,486"
+              ]
+            },
+            {
+              "name": "Direct/Referral",
+              "metrics": [
+                "2,291",
+                "62%",
+                "44%",
+                "$121,635"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Installation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21,
+          "rows": [
+            {
+              "name": "Web Form",
+              "metrics": [
+                "12,556",
+                "55%",
+                "36%",
+                "$567,024"
+              ]
+            },
+            {
+              "name": "Mobile App",
+              "metrics": [
+                "9,847",
+                "57%",
+                "39%",
+                "$472,341"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "4,163",
+                "60%",
+                "41%",
+                "$214,287"
+              ]
+            },
+            {
+              "name": "Social Messenger",
+              "metrics": [
+                "1,724",
+                "63%",
+                "43%",
+                "$87,612"
+              ]
+            },
+            {
+              "name": "Callback Request",
+              "metrics": [
+                "376",
+                "67%",
+                "46%",
+                "$19,200"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Installation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25,
+          "rows": [
+            {
+              "name": "Stream Football Without the Hurdles",
+              "metrics": [
+                "7,229",
+                "56%",
+                "34%",
+                "$318,474"
+              ]
+            },
+            {
+              "name": "Genre Packs Built Around What You Love",
+              "metrics": [
+                "6,184",
+                "57%",
+                "37%",
+                "$289,632"
+              ]
+            },
+            {
+              "name": "MySports 6 Month Offer",
+              "metrics": [
+                "5,447",
+                "59%",
+                "40%",
+                "$267,318"
+              ]
+            },
+            {
+              "name": "A Year of Netflix On Us",
+              "metrics": [
+                "4,863",
+                "61%",
+                "42%",
+                "$245,628"
+              ]
+            },
+            {
+              "name": "Switch and Save Evergreen",
+              "metrics": [
+                "4,943",
+                "58%",
+                "39%",
+                "$237,552"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Installation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 22,
+          "rows": [
+            {
+              "name": "DIRECTV MySports college football",
+              "metrics": [
+                "3,857",
+                "54%",
+                "33%",
+                "$169,308"
+              ]
+            },
+            {
+              "name": "DIRECTV streaming price",
+              "metrics": [
+                "3,524",
+                "57%",
+                "36%",
+                "$158,412"
+              ]
+            },
+            {
+              "name": "how to watch ESPN and NFL RedZone",
+              "metrics": [
+                "3,183",
+                "59%",
+                "39%",
+                "$154,686"
+              ]
+            },
+            {
+              "name": "DIRECTV Genre Packs",
+              "metrics": [
+                "2,847",
+                "61%",
+                "41%",
+                "$142,344"
+              ]
+            },
+            {
+              "name": "DIRECTV vs cable Xfinity",
+              "metrics": [
+                "2,419",
+                "63%",
+                "43%",
+                "$128,706"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Installation Scheduled (Percent)",
+            "Activation (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "MySports and MySports Extra",
+              "metrics": [
+                "8,647",
+                "58%",
+                "34%",
+                "$386,952"
+              ]
+            },
+            {
+              "name": "MyEntertainment and Genre Packs",
+              "metrics": [
+                "7,284",
+                "56%",
+                "37%",
+                "$348,216"
+              ]
+            },
+            {
+              "name": "Gemini Streaming Device",
+              "metrics": [
+                "5,193",
+                "59%",
+                "41%",
+                "$268,548"
+              ]
+            },
+            {
+              "name": "MyNews and News Duo",
+              "metrics": [
+                "4,156",
+                "61%",
+                "43%",
+                "$227,808"
+              ]
+            },
+            {
+              "name": "MiEspañol and Spanish Service",
+              "metrics": [
+                "3,386",
+                "62%",
+                "44%",
+                "$181,632"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Activation (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "MySports and MySports Extra",
+            "values": [
+              792,
+              856,
+              918,
+              974,
+              1004
+            ]
+          },
+          {
+            "name": "MyEntertainment and Genre Packs",
+            "values": [
+              671,
+              714,
+              782,
+              821,
+              846
+            ]
+          },
+          {
+            "name": "Gemini Streaming Device",
+            "values": [
+              518,
+              567,
+              619,
+              654,
+              691
+            ]
+          },
+          {
+            "name": "MyNews and News Duo",
+            "values": [
+              468,
+              512,
+              587,
+              643,
+              717
+            ]
+          },
+          {
+            "name": "MiEspañol and Spanish Service",
+            "values": [
+              368,
+              407,
+              461,
+              512,
+              582
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Installation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Installation Scheduled (Percent)",
+            "value": "24%"
+          },
+          {
+            "label": "Installation Scheduled (Count)",
+            "value": "318"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,924,518"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "743"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Installation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Installation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Installation Scheduled (Count)",
+            "value": "31"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$289,156"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Installation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Installation Scheduled",
+            "values": [
+              74,
+              78,
+              72,
+              81,
+              76,
+              79,
+              75,
+              73,
+              77,
+              80,
+              75,
+              78,
+              81,
+              72,
+              79,
+              76,
+              74,
+              77,
+              75,
+              78,
+              79,
+              169,
+              187,
+              172,
+              181,
+              175,
+              184,
+              178,
+              176,
+              182,
+              179,
+              185,
+              173,
+              188,
+              171,
+              183,
+              177,
+              180,
+              174,
+              186,
+              179,
+              181,
+              175
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,263"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "721"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "698"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Installation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "MySports Premium Package Inquiry",
+            "values": [
+              8,
+              11,
+              9,
+              12,
+              2,
+              14
+            ]
+          },
+          {
+            "name": "Streaming Device Compatibility",
+            "values": [
+              6,
+              9,
+              7,
+              10,
+              3,
+              11
+            ]
+          },
+          {
+            "name": "Installation Appointment Scheduling",
+            "values": [
+              12,
+              14,
+              11,
+              13,
+              4,
+              15
+            ]
+          },
+          {
+            "name": "Genre Pack Bundle Questions",
+            "values": [
+              5,
+              8,
+              6,
+              9,
+              1,
+              10
+            ]
+          },
+          {
+            "name": "Spanish Language Service (MiEspañol)",
+            "values": [
+              7,
+              10,
+              8,
+              11,
+              2,
+              12
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "65,931"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "48,015"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Installation Scheduled (Count)",
+            "value": "30,099"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$2,366,064"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Rivera",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Jennifer Park",
+              "value": 241,
+              "display": "241"
+            },
+            {
+              "name": "David Thornton",
+              "value": 203,
+              "display": "203"
+            },
+            {
+              "name": "Amanda Vasquez",
+              "value": 219,
+              "display": "219"
+            },
+            {
+              "name": "Kevin Patel",
+              "value": 156,
+              "display": "156"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Installation Scheduled (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Rajesh Kumar",
+            "values": [
+              312,
+              358,
+              401,
+              447,
+              503
+            ]
+          },
+          {
+            "name": "Nicole Hoffman",
+            "values": [
+              287,
+              329,
+              368,
+              415,
+              461
+            ]
+          },
+          {
+            "name": "Thomas Chen",
+            "values": [
+              301,
+              346,
+              389,
+              438,
+              492
+            ]
+          },
+          {
+            "name": "Sophia Martinez",
+            "values": [
+              278,
+              318,
+              361,
+              408,
+              458
+            ]
+          },
+          {
+            "name": "Brandon Wells",
+            "values": [
+              296,
+              341,
+              384,
+              431,
+              485
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Rivera",
+              "value": 54.3,
+              "display": "54.3%"
+            },
+            {
+              "name": "Jennifer Park",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "David Thornton",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "Amanda Vasquez",
+              "value": 58.4,
+              "display": "58.4%"
+            },
+            {
+              "name": "Kevin Patel",
+              "value": 55.7,
+              "display": "55.7%"
+            },
+            {
+              "name": "Laura Fischer",
+              "value": 61.2,
+              "display": "61.2%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Installation Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Rivera",
+                "54.3%",
+                "28%",
+                "$29,764",
+                "1,343"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Park",
+                "56.8%",
+                "29%",
+                "$30,771",
+                "1,419"
+              ]
+            },
+            {
+              "cells": [
+                "David Thornton",
+                "52.1%",
+                "26%",
+                "$27,014",
+                "1,298"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Vasquez",
+                "58.4%",
+                "31%",
+                "$32,113",
+                "1,481"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Patel",
+                "55.7%",
+                "27%",
+                "$28,567",
+                "1,327"
+              ]
+            },
+            {
+              "cells": [
+                "Laura Fischer",
+                "61.2%",
+                "35%",
+                "$36,441",
+                "1,397"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Rajesh Kumar",
+              "value": 93.2,
+              "display": "93.2%"
+            },
+            {
+              "name": "Nicole Hoffman",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "Thomas Chen",
+              "value": 91.4,
+              "display": "91.4%"
+            },
+            {
+              "name": "Sophia Martinez",
+              "value": 87.9,
+              "display": "87.9%"
+            },
+            {
+              "name": "Brandon Wells",
+              "value": 90.8,
+              "display": "90.8%"
+            },
+            {
+              "name": "Christopher Park",
+              "value": 92.1,
+              "display": "92.1%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Installation Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Rajesh Kumar",
+                "93.2%",
+                "67%",
+                "$43,687",
+                "1,543"
+              ]
+            },
+            {
+              "cells": [
+                "Nicole Hoffman",
+                "89.7%",
+                "62%",
+                "$40,193",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Chen",
+                "91.4%",
+                "65%",
+                "$42,358",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Sophia Martinez",
+                "87.9%",
+                "58%",
+                "$37,947",
+                "1,419"
+              ]
+            },
+            {
+              "cells": [
+                "Brandon Wells",
+                "90.8%",
+                "64%",
+                "$41,674",
+                "1,537"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Park",
+                "92.1%",
+                "66%",
+                "$42,921",
+                "1,502"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Installation Scheduled (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Installation Scheduled (Count)",
+        "rightMax": 1400,
+        "rightTicks": [
+          0,
+          350,
+          700,
+          1050,
+          1400
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1115
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1069
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 996
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 950
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 828
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 869
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 959
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 997
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1111
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1078
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 971
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 938
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 835
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 861
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 982
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1012
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1101
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1084
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 951
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 921
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 848
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 857
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 999
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1032
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1087
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1085
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 937
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 899
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 862
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 858
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1007
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 200000,
+        "rightTicks": [
+          0,
+          66666.66666666667,
+          133333.33333333334,
+          200000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 87709
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 84065
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 78281
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 74695
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 65035
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 68253
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 75398
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 78370
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 87383
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 84723
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 76307
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 73752
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 65627
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 67646
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 77193
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 79545
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 86569
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 85222
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 74730
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 72360
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 66612
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 67310
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 78523
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 81126
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 85470
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 85345
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 73661
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 70629
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 67767
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 67440
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 79318
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "71,664"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:47"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "5,733"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "4,300"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Martinez",
+                "412",
+                "91%",
+                "88%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Chen",
+                "558",
+                "88%",
+                "85%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Thompson",
+                "489",
+                "88%",
+                "86%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "71,664 calls",
+      "pagerLabel": "1 of 7,166",
+      "calls": [
+        {
+          "time": "1/6/26 9:12 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 10:41 am",
+          "id": "A13C-4B92E1770F8A"
+        },
+        {
+          "time": "1/12/26 11:27 am",
+          "id": "C904-2E51DA38B7C6"
+        },
+        {
+          "time": "1/14/26 1:03 pm",
+          "id": "7B22-9F0C41E5A2D1"
+        },
+        {
+          "time": "1/16/26 2:36 pm",
+          "id": "E48A-6D13B90C7F52"
+        },
+        {
+          "time": "1/20/26 9:58 am",
+          "id": "3F71-8A2E5C country"
+        },
+        {
+          "time": "1/22/26 12:19 pm",
+          "id": "D05E-1C77F42B903A"
+        },
+        {
+          "time": "1/26/26 3:44 pm",
+          "id": "9A6B-52E08D1F4C77"
+        },
+        {
+          "time": "1/28/26 10:07 am",
+          "id": "64C1-B3F920E85A4D"
+        },
+        {
+          "time": "1/30/26 4:22 pm",
+          "id": "F2D8-70A19C36E5B4"
+        }
+      ],
+      "duration": "2:47",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:02",
+          "text": "Thank you for calling DIRECTV, this is Marcus. Who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling DIRECTV",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "00:09",
+          "text": "Hi Marcus, my name is Danielle Foster. I'm looking to set up live TV, I don't have any service right now.",
+          "highlights": [
+            "Danielle Foster"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "00:17",
+          "text": "Wonderful, welcome Danielle. Since you're brand new to us, let me ask what you love to watch so I match you to the right lineup.",
+          "highlights": [
+            "welcome Danielle",
+            "brand new to us"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "00:26",
+          "text": "Mostly sports. I want ESPN and NFL games, and honestly college football is a big one for my husband.",
+          "highlights": [
+            "ESPN and NFL games",
+            "college football"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "00:35",
+          "text": "Perfect, that points right to our MySports pack. It carries ESPN Unlimited, FS1, TNT, NFL Network, and over 400 college football games.",
+          "highlights": [
+            "MySports pack",
+            "400 college football games"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "00:45",
+          "text": "Okay, that sounds right. What does that run per month though? I want to keep it manageable.",
+          "highlights": [
+            "want to keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "00:52",
+          "text": "Absolutely. MySports is normally $64.99, but new subscribers get it at $44.99 for the first six months, so you get room to try it.",
+          "highlights": [
+            "$44.99 for the first six months"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "01:02",
+          "text": "Hm. The thing is, Xfinity quoted me a bundle and I'm getting a couple of quotes before I decide.",
+          "highlights": [
+            "Xfinity quoted me",
+            "getting a couple of quotes"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "01:11",
+          "text": "That's smart shopping. Where we tend to win is the sports depth, and right now if you add a Gemini device you also get twelve months of Netflix included, over $100 in value.",
+          "highlights": [
+            "twelve months of Netflix included"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "01:23",
+          "text": "Netflix included is nice. Do I get locals too? My husband likes the news in the morning.",
+          "highlights": [
+            "Do I get locals too"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "01:31",
+          "text": "Great question. We can pair MySports with MyNews in a Duo for $79.99 a month, which adds locals and channels like CNBC, FOX, CNN, and MSNBC.",
+          "highlights": [
+            "Duo for $79.99",
+            "adds locals"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "01:42",
+          "text": "Let me think. One worry, I don't want to be locked into some long agreement if it doesn't work out.",
+          "highlights": [
+            "don't want to be locked into some long agreement"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "01:50",
+          "text": "Totally fair. Our streaming service has no annual contract, so you can adjust or cancel your packs month to month. No handcuffs.",
+          "highlights": [
+            "no annual contract",
+            "month to month"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "01:59",
+          "text": "Okay, that eases my mind. And I'd want it working before this weekend, we've got people coming over for a game.",
+          "highlights": [
+            "before this weekend"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "02:08",
+          "text": "We can absolutely hit that. The Gemini streams over your internet, so installation is quick. Let me get you scheduled.",
+          "highlights": [
+            "Gemini streams over your internet"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "02:16",
+          "text": "Sounds good. What day can someone come out?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "02:21",
+          "text": "I have a Thursday 10 AM installation window open. I'll book the MySports and MyNews Duo with a Gemini and your Netflix on us.",
+          "highlights": [
+            "Thursday 10 AM installation",
+            "book the MySports and MyNews Duo"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "02:31",
+          "text": "Thursday at ten works great. Let me grab my email for you, it's danielle.foster@email.com.",
+          "highlights": [
+            "Thursday at ten works great"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "02:38",
+          "text": "Got it, confirmation is on its way. You're all set, Danielle, and welcome to the DIRECTV family.",
+          "highlights": [
+            "confirmation is on its way",
+            "welcome to the DIRECTV family"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "02:44",
+          "text": "Thank you so much, Marcus. Bye.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "02:47",
+          "text": "Thank you for choosing DIRECTV. Enjoy the game, take care.",
+          "highlights": [
+            "Thank you for choosing DIRECTV"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Subscriber",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Installation: Scheduled",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Sports Package",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Product: MySports Pack",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Offer: Netflix On Us Bundle",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Concern Raised",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "New prospect Danielle Foster called with no current service, looking for a live TV lineup built around sports, specifically ESPN, NFL games, and college football. Agent Marcus recommended the MySports pack at the $44.99 new-subscriber rate, then upgraded her to the MySports plus MyNews Duo at $79.99 to add locals and morning news, and layered in a Gemini device with twelve months of Netflix included. He resolved her budget, competitor, and no-contract concerns and scheduled a Thursday 10 AM installation ahead of her weekend deadline. Her email was captured for confirmation.",
+        "keyPoints": [
+          "New subscriber with no existing service",
+          "Wanted ESPN, NFL, and college football coverage",
+          "Recommended MySports plus MyNews Duo with Gemini device",
+          "Netflix On Us bundle used to beat the Xfinity quote",
+          "Confirmed no annual contract to ease commitment worry",
+          "Installation booked for Thursday 10 AM, email captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Installation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "45,148 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,515",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for texting DIRECTV. Are you interested in switching to our streaming TV service today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes I want to know about your packages. What do you have?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great. We offer flexible Genre Packs starting at $34.99 per month. Are you looking for sports, entertainment, news, or a combination?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "I really want sports. I need to watch college football and NFL games."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. Our MySports pack includes ESPN Unlimited, FS1, TNT, and NFL Network with over 400 college football games. It is $64.99 per month or $44.99 for the first 6 months. Does that sound good?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "That sounds good. How do I get started?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Excellent. I can get you set up. Would you prefer our Gemini streaming device or satellite TV service?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "What is the difference?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Gemini is our streaming device that works with your internet. Satellite works in any weather with no internet required. Which fits your setup better?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "I have good internet so streaming is fine."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Perfect. We can schedule your installation this week. How about Thursday, March 13 at 2 PM for your Gemini device setup?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "That works for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "Great. Your installation is confirmed for Thursday, March 13 at 2 PM. You will receive a text reminder the day before. Our team will call you at this number. Thanks for choosing DIRECTV."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Installation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Subscriber",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product: MySports Pack",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Device: Gemini Streaming",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area: Confirmed",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Promotional Rate: First 6 Months",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "13",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "(719) 554-8927",
+            "repeatCaller": "No",
+            "city": "Colorado Springs",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C814-2A9D83E4C7F1",
+          "time": "8/16/25 10:52 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C814-2A9D83E4C7F1",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C923-5B1F47A6D8E2",
+          "time": "8/16/25 10:48 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C923-5B1F47A6D8E2",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C741-9C2E5D3B6A14",
+          "time": "8/16/25 10:43 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C741-9C2E5D3B6A14",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "71,664 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 7,166",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Thanks for calling DIRECTV. This is Marcus. Are you looking to set up service today or do you have questions about our Genre Packs?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Yeah, hi. I'm looking at switching from cable. I saw you guys have a MySports pack with football games."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Absolutely. MySports is a great choice, especially for football fans. We've got over four hundred college football games plus ESPN, FS1, TNT, and NFL Network. Can I ask what matters most to you, sports, movies, or a mix of everything?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "Mostly sports. College football, the NFL on Sunday. That's really what I care about."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Perfect. So you're looking at MySports then. That's sixty four ninety nine a month, or forty four ninety nine for the first six months. Would you also want to add NFL RedZone for more football coverage?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "Yeah, that sounds good. What's the setup fee and when could you install?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Great. There's no setup fee this month as part of our current offer. We can get you installed this Thursday, January sixteenth, between two and four p.m. Does that window work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Thursday afternoon works. Yeah, I can do that."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Awesome. So just to confirm, we're scheduling a Gemini streaming device installation for Thursday, January sixteenth, two to four p.m. You'll get MySports at forty four ninety nine for six months, then sixty four ninety nine after. And we're adding MySports Extra with RedZone at thirteen ninety nine a month. What's the best phone number to reach you on the day of the installation?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:20 PM",
+              "text": "It's eight oh five, five five five, zero one two three."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:20 PM",
+              "text": "Perfect. Eight oh five, five five five, zero one two three. Our technician will call you Thursday morning to confirm. Is there anything else I can help you with today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:21 PM",
+              "text": "No, that's it. Thanks."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:22 PM",
+              "text": "Great. Thanks for choosing DIRECTV. You're all set. If you have any questions before Thursday, just call us back at eight seven seven, nine three six, two nine three three. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Installation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Subscriber",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product: MySports Pack",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Product: MySports Extra with RedZone",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Device: Gemini Streaming",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Offer: Six Month Promo Rate",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "10:28",
+            "destinationPhone": "877-936-2933",
+            "source": "877-DTV-CALL",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "805-555-4847",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B528-3D8AE425661C",
+          "time": "1/12/26 3:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B528-3D8AE425661C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C649-4F9BC736772E",
+          "time": "1/22/26 2:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C649-4F9BC736772E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D750-5G0CD847883F",
+          "time": "1/28/26 5:33 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D750-5G0CD847883F",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Hi, I'm DIRECTV's AI agent, here to help you build a personalized quote for the right Genre Pack and get you set up. Right now new customers can get 12 months of Netflix on us when they add a Gemini device to any Genre Pack, and MySports starts at $44.99 for the first 6 months. Would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time. What kind of content matters most to you (entertainment, live sports, news, kids, or Spanish-language)? How many TVs would you like connected? Do you prefer streaming over the internet with a Gemini device or a satellite dish that works without internet? When are you hoping to be up and running? And finally, what's your ZIP code so I can confirm availability in your area?",
+        "Estimate then book: Thanks, I've confirmed we serve your ZIP code. Based on what you shared, your plan would likely land in the $34.99 to $79.99 per month range depending on the packs and add-ons you choose. I'd recommend a quick call with a DIRECTV specialist to lock in your exact price and schedule your in-home installation. Could I set you up for Thursday at 2:00 PM? You'll get a reminder text before your appointment with a number to call if anything changes."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "DIRECTV_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "TV Packages & Genre Packs",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Sports & MySports",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Devices & Technology",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Reschedule Installation\",\"question\":\"I need to move my scheduled installation appointment. Can I do that?\",\"answer\":\"Absolutely, we can reschedule your in-home installation to a time that works better for you. Just let me know your preferred day and I'll set it up and send a reminder text.\"},{\"topic\":\"Add-On to Existing Plan\",\"question\":\"I already have MySports. Can I add NFL RedZone?\",\"answer\":\"Yes, NFL RedZone comes with MySports Extra for $13.99 per month, which adds onto your existing MySports pack. I can connect you with a specialist to add it to your account today.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What are Genre Packs?",
+              "answer": "Genre Packs are channel lineups built to match the content you love, minus everything else, starting at $34.99 per month. I'd be happy to help you find the right one and schedule your installation."
+            },
+            {
+              "question": "How much does DIRECTV cost?",
+              "answer": "Pricing depends on the packs and add-ons you choose, generally ranging from about $34.99 to $79.99 per month. A specialist can confirm your exact price during a quick consultation, want me to set that up?"
+            },
+            {
+              "question": "What's included in MyEntertainment?",
+              "answer": "MyEntertainment gives you 60+ channels with AMC+, HBO Max, Disney+, and Hulu, focused on entertainment, reality, and lifestyle. I can help you get it set up with an installation appointment."
+            },
+            {
+              "question": "Do you carry ESPN and NFL Network?",
+              "answer": "Yes, our MySports pack includes ESPN Unlimited, FS1, TNT, and NFL Network plus 400+ college football games. Let's find a time to get you connected."
+            },
+            {
+              "question": "Do you offer Spanish-language channels?",
+              "answer": "Yes, MiEspañol includes 60+ Spanish-language channels like ViX Premium, Univision, Telemundo, TUDN, and ESPN Deportes. I can walk you through it and book your installation."
+            },
+            {
+              "question": "Can I watch without internet?",
+              "answer": "Yes, our satellite service with the Genie HD DVR works in any kind of weather with no internet required. Would you like to schedule an in-home installation?"
+            },
+            {
+              "question": "What is the Gemini device?",
+              "answer": "The DIRECTV Gemini is a streaming device with a voice remote and features like Sports Central, Universal Search, DVR, and Multiview, leased for around $10 per month. I can help you add it and set up installation."
+            },
+            {
+              "question": "Is there a Netflix deal?",
+              "answer": "Yes, you get 12 months of Netflix included when you add a Gemini device to any Genre Pack, a value of over $100. Let's get you started with a consultation."
+            },
+            {
+              "question": "Do you have kids channels?",
+              "answer": "Yes, MyKids includes 10+ channels with Disney+, Cartoon Network, Boomerang, Discovery Family, and Nickelodeon. I can help you build a plan and book your installation."
+            },
+            {
+              "question": "What news channels do you offer?",
+              "answer": "MyNews includes 10+ channels with locals plus CNBC, FOX, CNN, and MSNBC, starting at $39.99 for the first 2 months. Would you like to schedule a setup?"
+            },
+            {
+              "question": "Can I combine packs?",
+              "answer": "Yes, our Duo bundles combine packs, like MyEntertainment plus MyNews for $74.99 per month or MySports plus MyNews for $79.99 per month. A specialist can tailor the right mix during your consultation."
+            },
+            {
+              "question": "What is MySports Extra?",
+              "answer": "MySports Extra is a mini-pack that adds 8 channels including MAVTV, Strike Zone, Discovery Turbo, and NFL RedZone onto MySports for $13.99 per month. I can help you add it when we book your installation."
+            },
+            {
+              "question": "Do you offer local sports networks?",
+              "answer": "Yes, MyHome Team adds regional sports networks like Altitude, Marquee, and Bally Sports for $19.99 per month, and channels vary by market. Share your ZIP and I'll confirm what's available."
+            },
+            {
+              "question": "How do I switch from cable?",
+              "answer": "Switching to DIRECTV is easy and many customers save compared to cable providers. I can confirm availability in your area and set up your installation, what's your ZIP code?"
+            },
+            {
+              "question": "Do you have a streaming app?",
+              "answer": "Yes, the DIRECTV App combines live TV, live sports, and free streaming, and it's included with your plan. Let's find the right pack and get you scheduled."
+            },
+            {
+              "question": "How long does installation take?",
+              "answer": "Installation time varies by setup, and our specialist will confirm the details for your home during scheduling. Want me to find an appointment time for you?"
+            },
+            {
+              "question": "Do you serve my area?",
+              "answer": "We serve customers nationwide, and availability for satellite or streaming depends on your location. Share your ZIP code and I'll confirm your options."
+            },
+            {
+              "question": "What movie channels do you have?",
+              "answer": "MyCinema is a mini-pack that adds 10 movie channels including INSP, GRIT, TCM, and Shudder for $10.99 per month onto other packs. I can help you add it during your consultation."
+            },
+            {
+              "question": "Is there a discount for new customers?",
+              "answer": "Yes, new customers can enjoy promotional rates like MySports at $44.99 for the first 6 months plus 12 months of Netflix with a Gemini. Let's schedule a consultation to lock in your offer."
+            },
+            {
+              "question": "How many TVs can I connect?",
+              "answer": "You can connect multiple TVs depending on your equipment setup, and a specialist will help you plan it out. Let me know how many rooms you'd like and I'll get you scheduled."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule installation\",\"follow_up_message\":\"Great news, we serve your area and I can get your in-home installation on the calendar. Does Thursday at 2:00 PM work, or would another day be better? You'll receive a reminder text beforehand.\"},{\"intent\":\"Request a quote\",\"follow_up_message\":\"Based on the packs you're interested in, your plan would likely fall in the $34.99 to $79.99 per month range. Let's set up a quick call with a specialist to confirm your exact price and reserve your installation. What day works best for you?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, I'm DIRECTV's AI agent. I can help you find the perfect Genre Pack and get your service installed. Would you like to get started?",
+        "goal": "Guide the customer to the right Genre Pack and device, then book an in-home installation with a DIRECTV specialist.",
+        "bookingType": "in-home installation appointment",
+        "offer": "Get 12 months of Netflix on us when you add a Gemini device to any Genre Pack",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "What kind of content matters most to you: entertainment, live sports, news, kids, or Spanish-language channels?",
+          "How many TVs would you like connected in your home?",
+          "Do you prefer streaming over the internet with a Gemini device, or a satellite dish that works without internet?",
+          "When are you hoping to be up and running?",
+          "What's your ZIP code so I can confirm availability in your area?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:59 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 3:59 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 3:59 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "DIRECTV",
+      "callerName": "Marcus Chen",
+      "callerPhone": "(702) 555-0847",
+      "campaign": "MySports College Football, Las Vegas Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Installation Lead",
+      "estimatedValue": "$1,847",
+      "googleSearch": "DIRECTV MySports college football ESPN",
+      "websiteSearch": "how to watch college football without cable",
+      "callingWebpage": "/sports/mysports",
+      "products": "MySports, Gemini Streaming Device",
+      "cartId": "DTV-9264L",
+      "serviceable": "Yes",
+      "email": "marcus.chen.702@email.com",
+      "street": "4521 Mountain Vista Drive",
+      "city": "Las Vegas",
+      "state": "NV",
+      "zip": "89134",
+      "digitalJourney": "/home › /sports › /sports/mysports › /devices/gemini",
+      "intent": "Wants to stream 400+ college football games plus ESPN Unlimited without switching providers, exploring MySports package.",
+      "coverage": "ZIP 89134 confirmed. Las Vegas serviceable",
+      "switchIntent": "High. College football season starting in 3 weeks, comparing DIRECTV MySports against current provider, wants installation locked in before opening weekend.",
+      "greeting": "Hi Marcus, this is Jennifer from DIRECTV. I see you're interested in our MySports package to catch all the college football this season. I'd love to get you set up with our Gemini streaming device and book your installation at a time that works best for you. When would be convenient this week?"
+    },
+    "smsScreenpop": {
+      "brandName": "DIRECTV",
+      "callerName": "Patricia Alvarez",
+      "callerPhone": "(713) 555-0623",
+      "campaign": "MiEspañol Spanish Channels, Houston Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Installation Lead",
+      "estimatedValue": "$2,156",
+      "googleSearch": "DIRECTV canales en español Univision Telemundo",
+      "websiteSearch": "paquetes DIRECTV idioma español precio",
+      "callingWebpage": "/miespaol/shop",
+      "products": "MiEspañol, MyNews Duo Package",
+      "cartId": "DTV-7521M",
+      "serviceable": "Yes",
+      "email": "patricia.alvarez.713@email.com",
+      "street": "8743 Bellaire Boulevard",
+      "city": "Houston",
+      "state": "TX",
+      "zip": "77036",
+      "digitalJourney": "/home › /miespaol › /packages › /support/sign-in",
+      "intent": "Spanish-speaking household seeking MiEspañol package with news channels. Wants 60+ Spanish-language channels including ViX Premium, Univision, Telemundo, and TUDN.",
+      "coverage": "ZIP 77036 confirmed. Houston serviceable",
+      "appointment": "In-home installation with technician. Saturday September 14, 2:00 PM",
+      "greeting": "¡Hola Patricia! This is Roberto from DIRECTV. We have your installation appointment confirmed for this Saturday at 2 PM to get you set up with MiEspañol and your news channels. Do you have any questions before the technician arrives? I'm here to help."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "DIRECTV",
+      "brandDomain": "www.directv.com",
+      "brandIcon": "📺",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "MySports 6 Month Offer",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "DIRECTV MySports college football",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Home / Packages / Genre Packs / MySports",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "MySports and MyNews Duo, Genie HD DVR",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "install_new_service",
+          "name": "Installation, New Service"
+        },
+        {
+          "id": "support_existing",
+          "name": "Customer Support, Existing Account"
+        },
+        {
+          "id": "general_sales",
+          "name": "General Sales Queue"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Thanks for calling DIRECTV. I see you're interested in MySports. Are you looking to add it to a current service package or start fresh with us today.",
+          "sigs": [],
+          "q": [
+            15,
+            65,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah I'm brand new to DIRECTV. I really want the MySports pack for college football and maybe throw in the news channels too. I've got no internet requirement situation at my house, so I'm wondering about satellite.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>New customer</strong>, interested in MySports"
+            },
+            {
+              "c": "blue",
+              "t": "Wants local news included"
+            },
+            {
+              "c": "orange",
+              "t": "Satellite option, no internet needed"
+            }
+          ],
+          "q": [
+            28,
+            52,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. So you'd like the MySports plus MyNews Duo package on satellite, and you'll need our Genie HD DVR for that setup. Just to confirm, you're in Santa Barbara. Are you ready to schedule a satellite installation appointment at your location.",
+          "sigs": [],
+          "q": [
+            72,
+            18,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah that sounds good. How fast can you get someone out here. I want to catch the college football games this Saturday if possible.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Ready to install</strong>, urgent timeframe"
+            },
+            {
+              "c": "purple",
+              "t": "Specific viewing event driving decision"
+            }
+          ],
+          "q": [
+            89,
+            7,
+            4
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent. I'm connecting you now to our Installation team for Santa Barbara. They handle new satellite service setups and can check availability for this Saturday. You're going to get the MySports plus MyNews Duo with Genie DVR. They'll take great care of you.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Installation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get your installation scheduled (Agent)\", \"get you set up with the Gemini (Agent)\", \"when can the technician come out (Caller)\", \"book the install date\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "01/09/26 2:41 pm"
+        },
+        {
+          "name": "Competitor Comparison (Xfinity)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"I have Xfinity right now (Caller)\", \"cheaper than Comcast (Caller)\", \"switching from U-verse (Caller)\", \"compared to Spectrum\"])",
+          "createdAt": "04/02/25 11:38 am",
+          "updatedAt": "12/18/25 10:07 am"
+        },
+        {
+          "name": "Genre Pack Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"tell me about the Genre Packs (Caller)\", \"interested in MyEntertainment (Caller)\", \"want the MySports pack (Caller)\", \"add MyNews to my plan\"])",
+          "createdAt": "02/21/25 3:55 pm",
+          "updatedAt": "01/06/26 4:22 pm"
+        },
+        {
+          "name": "Greeting & Compliance (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Call Opening & Compliance] < 60 and duration > 45 sec",
+          "createdAt": "05/09/25 8:20 am",
+          "updatedAt": "12/29/25 9:15 am"
+        },
+        {
+          "name": "Installation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"professional installation (Agent)\", \"satellite dish setup (Caller)\", \"self install the Gemini (Caller)\", \"installation appointment\"])",
+          "createdAt": "03/27/25 1:44 pm",
+          "updatedAt": "01/11/26 11:02 am"
+        },
+        {
+          "name": "Netflix Bundle Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"a year of Netflix (Caller)\", \"is Netflix included (Caller)\", \"Netflix on us (Agent)\", \"add the Netflix bundle\"])",
+          "createdAt": "06/12/25 10:05 am",
+          "updatedAt": "01/04/26 3:33 pm"
+        },
+        {
+          "name": "Objection Handling (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Objection Handling] < 65 and duration > 60 sec",
+          "createdAt": "04/18/25 2:12 pm",
+          "updatedAt": "12/22/25 1:48 pm"
+        },
+        {
+          "name": "Price Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"that's too expensive (Caller)\", \"any promotions right now (Caller)\", \"lower my monthly bill (Caller)\", \"the first six months price\"])",
+          "createdAt": "05/30/25 9:41 am",
+          "updatedAt": "01/08/26 10:29 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your monthly total would be (Agent)\", \"that comes to per month (Agent)\", \"the price for that pack is (Agent)\", \"plus taxes and fees\"])",
+          "createdAt": "03/03/25 4:17 pm",
+          "updatedAt": "01/12/26 9:58 am"
+        },
+        {
+          "name": "Upsell Offered (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Upsell & Cross-Sell] < 60 and duration > 45 sec",
+          "createdAt": "06/25/25 11:26 am",
+          "updatedAt": "01/07/26 2:14 pm"
+        }
+      ]
+    }
+  }
+}

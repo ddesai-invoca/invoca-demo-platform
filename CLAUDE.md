@@ -7428,8 +7428,160 @@ Verified live: the section renders at position 3 of 4 reading "2026 DALLAS INVOC
 opens to the new empty-state copy, and Team Demos and Samples on either side of it are
 unaffected (Team Demos still opens and lists its one real row, Discount Tire).
 
-⚠️ **NOTHING TAGS A DEMO INTO IT YET.** If the user later wants specific demos to show up here,
-or a way to move demos in, that is its own follow-up — the two declined options above.
+✅ **SUPERSEDED — the section is populated now.** This previously ended "NOTHING TAGS A DEMO
+INTO IT YET… that is its own follow-up". The follow-up arrived the same day; see the section
+directly below.
+
+## The 59-prospect Dallas Summit roster, and the EVENT store it needed (9/9/2026)
+
+Asked for with a spreadsheet attached (`Companies_-_2026_Dallas_Invoca_Summit_with_websites.xlsx`,
+59 rows of name + website): *"i want you to create all of these prospects, i have shared their
+name and URL, and i want you to only add them to the '2026 dallas Invoc Summit' drop down."*
+
+### ⚠️⚠️ NEITHER EXISTING STORE FITS A ROSTER, AND ONE OF THEM WOULD HAVE QUINTUPLED THE BUNDLE
+This is the decision the whole change rests on. There were two obvious homes and both are wrong:
+
+| store | why not |
+|---|---|
+| `src/data/generated/*.json` | loaded by an **EAGER `import.meta.glob`** and Zod-parsed at boot, so every file lands in the single JS bundle. Measured: profiles are **~155KB each**, so 59 of them is **~9MB on top of a 1.85MB bundle** — and the single bundle is load-bearing for the service worker. They would also all appear in the customer switcher and under "My demos", which is the opposite of the ask. |
+| `DATA_DIR/demos` | the RIGHT shape (fetched one at a time, shared by the team) but it is a **git-ignored disk**, so nothing generated locally ever reaches production. |
+
+So the profiles are committed under **`engine/event-seeds/`** — outside `src/`, where the glob
+cannot see them — and `engine/eventSeeds.ts` imports them into the library **at boot**, beside
+the dash sweep and the demo patches. They travel with a `git push` and cost the browser nothing
+until somebody opens one.
+⚠️ **EXISTING RECORDS ARE NEVER OVERWRITTEN, and "already in the store" is the guard rather than
+a marker file.** Both boot migrations use a marker; this must not, because a redeploy mid-
+conference would then clobber whatever an SE had just edited on a roster demo. Asserted by
+mutating a seeded demo and reimporting.
+⚠️ **Boot migrations run in `server.ts` ONLY** (the Vite dev server does not run them), which
+this file already records — so `npm run seed:events` exists to populate a local `.data` without
+booting the prod entry.
+
+### ⚠️⚠️ EVERY SEEDED ID IS PREFIXED `dallas-`, AND THE COLLISION IS REAL, NOT HYPOTHETICAL
+Two of the 59 — **AutoNation** and **Goosehead Insurance** — already exist as BUNDLED profiles
+under exactly the slug a clean name produces, and the shared library holds 200+ more demos whose
+ids nobody is checking against this list. An unprefixed collision **does not error**: the seeder
+finds the id taken and SKIPS it, so that prospect is silently absent from the conference roster,
+and a bundled profile sharing an id drops out of its own Launch section too. `dallasDemoId(slug)`
+in `src/data/eventDemos.ts` is the one definition. `audit:events` asserts the prefix is
+**load-bearing** — it fails if no roster slug clashes any more, so the prefix cannot come to look
+like dead ceremony and get dropped.
+
+### `DemoRecord.event` is what files a demo under its own dropdown
+Optional, so all 234 records already on the disk keep loading. `DemoSummary` is the record minus
+the heavy payload, so it reaches `/api/demos` for free. Launch groups on it:
+`d.event === DALLAS_EVENT ? "dallas" : mine ? "mine" : "team"` — an event demo is filed under its
+event **whoever owns it**, because the roster is the point, not whose copy it is.
+⚠️ **ONE DEFINITION OF THE KEY, `src/data/eventDemos.ts`** — the seeder WRITES it and Launch
+READS it, and two copies is how one side ends up reading a key nobody writes: the demo renders in
+**no section at all** and nothing errors. Same trap as `smsWorkflowScopePath`. The module carries
+no React import so `engine/` can use it (engine → src is the existing direction).
+⚠️ **PATCH preserves it** (it spreads the record), so an SE editing a roster demo keeps it in the
+roster. **A DUPLICATE deliberately does NOT** — `createDemo` never sets `event`, so a copy lands
+in "My demos", which is right: a duplicate is that SE's own working demo. Both asserted.
+⚠️ **The Dallas section KEEPS its "always show even when empty" flag** even now that it has rows.
+Its rows come from the SERVER, and with the library unreachable the app falls back to local
+profiles only — a conference roster that silently vanishes reads as the demos having been deleted
+rather than as an offline library.
+
+### The names are cleaned, and the spreadsheet name stays searchable
+The user's choice when offered verbatim vs cleaned. `prospect` is what every screen shows **and
+what the voice agent says out loud**, so "H. LEE MOFFITT CANCER CENTER AND RESEARCH INSTITUTE,
+INC." became **Moffitt Cancer Center** and 28 other rows lost an LLC/Inc./Corporation suffix or
+gained proper casing (`JPMC` → JPMorgan Chase, `Task Us` → TaskUs, `Health Markets` →
+HealthMarkets, `University of Texas Southwestern Medical Center` → UT Southwestern Medical
+Center).
+⚠️ **SINGLE-WORD BRAND CAPS ARE PRESERVED — DIRECTV, TRG, HCL, DECA, MB2, CHRISTUS.** The first
+version of the audit's ALL-CAPS check failed **DIRECTV**, i.e. reddened on correct data, which is
+how a check gets deleted as a nuisance. It requires MULTI-WORD all-caps now.
+⚠️ **`DemoRecord.listedAs` keeps the verbatim row searchable**, because the Launch filter is a
+substring match on the DISPLAYED name — so pasting "Acuity Eyecare Holdings, LLC" off the original
+list would have found nothing, the query being longer than "Acuity Eyecare". Read from the roster
+JSON by the seeder so the two cannot disagree, and **absent** where the name was not changed
+rather than duplicating the same string twice.
+⚠️ The roster (`scripts/dallas-roster.json`) is verified **row for row against the .xlsx** — all
+59 `listedAs` and all 59 URLs match column A and column B exactly, so the cleanup can be re-read
+against the source at any time.
+
+### Generating 59 of them: `npm run gen:events`
+⚠️ **RESUMABLE BY CONSTRUCTION, and that is not polish.** A prospect whose seed file already
+exists is skipped, so a run that dies at prospect 40 is restarted with the same command. The
+roster is a couple of hours of Opus; a rate limit or a dropped connection is a normal event over
+that window, not an exceptional one.
+⚠️ **A SHARED CURSOR, NOT FIXED-SIZE BATCHES.** A batch only finishes when its slowest member
+does, and research time swings with site size (this file already measures 60s vs 85s across two
+prospects), so batching spends a large fraction of the wall clock with idle slots.
+`--parallel N` × the engine's own 6-wide pool is the real concurrency — keep N low.
+⚠️ **`--limit` was used for a 3-prospect pilot before spending the rest**, on the user's own
+choice: the systemic risk here is the wiring, and finding it after 59 runs costs the whole roster.
+`--list` prints what is done and what is left.
+
+**`npm run audit:events` (also run by `npm run audit`)** — the roster half is 9 checks (count,
+unique slugs, valid ids, the prefix, complete rows, the prefix being load-bearing, no prefixed
+clash, multi-word caps, corporate suffixes); the seeder half RUNS the real `importEventSeeds`
+against a **throwaway `DATA_DIR`** (set before importing `demoStore`, which resolves it at module
+load) and reads the records back — event key present, `profile.id === id`, library metadata,
+an owner, `listedAs` agreeing with the roster, and a reimport adding nothing while an edited demo
+survives; then 10 wiring checks over comment-stripped source.
+⚠️ Each was broken on purpose and seen to fire: an ALL-CAPS name, a duplicate slug, removing the
+dallas grouping from Launch, and stubbing out `importEventSeeds()` in server.ts each turned one
+red, and all went green again on restore.
+
+### Result: 59 of 59, and the two defects the new prospects exposed
+**56 generated in 69.3 minutes at `--parallel 3`, 0 failures** (plus the 3-prospect pilot).
+Measured: ~190s per prospect against the canary's 151s solo, so 3-wide contention costs ~25%
+per run and still triples throughput. **4 API 500s, all on `qualityManagement`, all absorbed by
+`phase()`'s single retry** — verified afterwards that every one of the 59 carries a full 15-key
+`qualityManagement`, so nothing was silently thinned. All 59 Zod-parse, all 17 report slices
+present on every one, 59 unique names, and 58 of 59 derive a valid Signal AI Silver/Gold pair
+(Methodist Health System **fails closed** — no genuine keyword miss on its transcript, which is
+the honest documented outcome rather than an invented rail).
+
+⚠️⚠️ **THE 59 NEW PROSPECTS TURNED `audit:place` RED, AND BOTH CAUSES WERE REAL.** Worth
+recording because the roster acted as a much wider test of screens nobody had changed:
+
+**1. Seven prospects fell back to Santa Barbara** — the exact defect the 9/8 note is about,
+reappearing not as a regression but as the documented limit of substring matching. Every one
+named a real city that simply was not in `CITIES`: Katy, Tyler, Hershey, Nacogdoches, Asheville,
+Cerritos, Cornelia. Seven keys added, coordinates from **Places API (New)** `places:searchText`
+with a **state-qualified** query and every returned address checked — the bare-city ambiguity
+that put Washington in the wrong state and Duluth in Minnesota is what qualifying avoids.
+⚠️ The legacy `maps/api/place/textsearch` endpoint is **REQUEST_DENIED — "You're calling a legacy
+API"** on this project's key; only Places (New) is enabled, which is what `engine/places.ts`
+already uses. Same class of trap as the Geocoding API note.
+
+**2. `offerHook`'s free-booking rule was only on the `offer` branch, and a CAMPAIGN THEME walked
+past it.** Rentokil generated a campaign literally named **"Free Site Survey"** while its
+`bookingTerm` **is** "Site Survey", so the ad headline promised a free booking — precisely the
+claim the other branch refuses. The rule is about what the ad ASSERTS, so it cannot depend on
+which field the words came from; `promisesFreeBooking()` now gates both. Verified to fire:
+removing it reddens Rentokil again.
+
+⚠️ **AND ONE OF THE TWO FAILURES WAS THE CHECK, NOT THE DATA — the eighth probe fault in this
+file.** `audit:place`'s relevance test reported Acuity Eyecare's "Comprehensive Eye Exams &
+Medical Eye Care" as *unrelated* to "eye exam near me": `sig()` keeps words of 4+ letters, so
+"eye" is dropped, and "exams" is not "exam". Both sides are singularised now, and it still
+catches what it was written for — ungating the hero product reddens Roto-Rooter, American Home
+Shield, Christian Brothers Automotive and Daikin, so stemming did not neuter it.
+⚠️ A NINTH probe fault in the same pass: a one-off sweep of the 59 called `tierView(...).rows`,
+but `TierView` carries **`signals`**, and the resulting "Cannot read properties of undefined"
+across all 59 read exactly like a broken generation.
+
+⚠️ **THOSE OTHER SUITES ONLY SCAN `src/data/generated` (15 profiles), so the roster is NOT
+covered by them** — `audit:leads`, `calllog`, `leaddetail`, `clrecord` and `tiers` all report
+"all 15 profiles ok" with 59 new profiles on disk. `audit:place` and `audit:events` are the two
+that see the roster. Widening the rest is its own pass; the roster was instead checked directly
+(Zod, every slice, `qualityManagement` depth, the tier pairs, lead counts).
+
+⚠️ **THREE ROSTER NAMES ALSO EXIST ELSEWHERE, and all three are correct rather than duplicates.**
+`Valet Living` is a second, distinct library record (`dallas-valet-living` beside the pre-existing
+`valet-living`), and `AutoNation` / `Goosehead Insurance` sit alongside their BUNDLED profiles —
+which is what the id prefix guarantees, and it was verified by id rather than by name. ⚠️ A
+name-based leakage probe reported all three as "leaked into My demos" and was wrong; the section
+counts (My demos unchanged at 22 while Dallas went to 59) are what settled it.
+⚠️ **`AT&T Business` and `AT&T` are two rows in the source list with different URLs**, so they are
+deliberately two demos. The ampersand survives to the screen (verified: no `&amp;`).
 
 ## The SMS thread header shows a toll-free number, not the prospect's name (9/8/2026)
 

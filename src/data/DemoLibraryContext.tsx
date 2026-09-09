@@ -32,6 +32,13 @@ export interface DemoSummary {
   updatedAt: string;
   /* Set only when someone other than the creator (an admin) last edited it. */
   updatedBy?: DemoCreator;
+  /* Event roster this demo belongs to, when it belongs to one — see
+     src/data/eventDemos.ts. Flows through /api/demos for free, since the
+     server's DemoSummary is the record minus the heavy payload. */
+  event?: string;
+  /* The verbatim name from the list this roster was built from, when it differs
+     from `prospect` — searchable, so pasting the original still finds the row. */
+  listedAs?: string;
 }
 
 export interface DemoCustomizations {

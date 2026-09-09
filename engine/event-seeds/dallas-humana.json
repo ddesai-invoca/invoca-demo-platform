@@ -1,0 +1,5382 @@
+{
+  "id": "humana",
+  "customerName": "Humana",
+  "websiteUrl": "https://www.humana.com",
+  "brandDomain": "humana.com",
+  "networkName": "Invoca for Health Insurance",
+  "industry": "Medicare & Health Insurance",
+  "bookingTerm": "Enrollment Appointment",
+  "customerNoun": "Member",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 25000,
+      "yTicks": [
+        5000,
+        10000,
+        15000,
+        20000,
+        25000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 12847
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 19264
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 20138
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 21376
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 18216
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Enrollment Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Enrollment Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Medicare AEP 2026, Find Your Plan",
+          "marketingSearchTerm": "humana medicare advantage plans 2026",
+          "landingPageUrl": "https://www.humana.com/medicare/medicare-advantage-plans?utm_source=google&utm_medium=cpc&utm_campaign=aep_2026_find_plan",
+          "websiteJourney": "Home / Medicare / Medicare Advantage Plans",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "$0 Premium Giveback Search",
+          "marketingSearchTerm": "humana giveback plan social security",
+          "landingPageUrl": "https://www.humana.com/medicare/giveback-plans?utm_source=google&utm_medium=cpc&utm_campaign=giveback_search",
+          "websiteJourney": "Home / Medicare / Medicare Advantage Plans / $0 LPPO Giveback",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Medicare AEP 2026, Find Your Plan",
+          "marketingSearchTerm": "humana gold plus hmo",
+          "landingPageUrl": "https://www.humana.com/medicare/medicare-advantage-plans/gold-plus-hmo?utm_source=google&utm_medium=cpc&utm_campaign=aep_2026_find_plan",
+          "websiteJourney": "Home / Medicare / Medicare Advantage Plans / Humana Gold Plus HMO",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Full Access PPO, See Any Doctor",
+          "marketingSearchTerm": "humana full access ppo any doctor",
+          "landingPageUrl": "https://www.humana.com/medicare/medicare-advantage-plans/full-access-ppo?utm_source=bing&utm_medium=cpc&utm_campaign=full_access_ppo",
+          "websiteJourney": "Home / Medicare / Medicare Advantage Plans / Full Access PPO",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "D-SNP Eligibility Search",
+          "marketingSearchTerm": "humana d-snp eligibility medicaid",
+          "landingPageUrl": "https://www.humana.com/medicare/special-needs-plans/dual-eligible?utm_source=google&utm_medium=cpc&utm_campaign=dsnp_eligibility",
+          "websiteJourney": "Home / Medicare / Special Needs Plans / Dual-Eligible SNP",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Dental Quote in Your ZIP",
+          "marketingSearchTerm": "humana dental insurance cost",
+          "landingPageUrl": "https://www.humana.com/dental-insurance?utm_source=google&utm_medium=cpc&utm_campaign=dental_zip_quote",
+          "websiteJourney": "Home / Dental & Vision / Dental Insurance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Extend Bundle Savings",
+          "marketingSearchTerm": "humana extend dental vision hearing",
+          "landingPageUrl": "https://www.humana.com/dental-vision-hearing/extend?utm_source=bing&utm_medium=cpc&utm_campaign=extend_bundle",
+          "websiteJourney": "Home / Dental, Vision & Hearing / Humana Extend Bundle",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Medicare AEP 2026, Find Your Plan",
+          "marketingSearchTerm": "humana part d drug plan",
+          "landingPageUrl": "https://www.humana.com/medicare/prescription-drug-plans?utm_source=google&utm_medium=cpc&utm_campaign=aep_2026_find_plan",
+          "websiteJourney": "Home / Medicare / Prescription Drug Plans",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "$0 Premium Giveback Search",
+          "marketingSearchTerm": "humana $0 premium medicare plan near me",
+          "landingPageUrl": "https://www.humana.com/medicare/shop?utm_source=google&utm_medium=cpc&utm_campaign=giveback_search",
+          "websiteJourney": "Home / Shop / Get a Quote / Compare Plans",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "It's Your Medicare Moment",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.humana.com/medicare/medicare-advantage-plans?utm_source=facebook&utm_medium=paid_social&utm_campaign=medicare_moment",
+          "websiteJourney": "Home / Medicare / Medicare Advantage Plans",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Human Care, Simplified",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.humana.com/medicare?utm_source=instagram&utm_medium=paid_social&utm_campaign=human_care_simplified",
+          "websiteJourney": "Home / Medicare",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Talk to a Licensed Humana Agent 8am-8pm",
+          "marketingSearchTerm": "humana medicare agent near me",
+          "landingPageUrl": "https://www.humana.com/medicare/find-an-agent?utm_source=google&utm_medium=cpc&utm_campaign=licensed_agent_leads",
+          "websiteJourney": "Home / Medicare / Find an Agent",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Take the Guesswork Out of Medicare",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.humana.com/medicare/education/understanding-plan-types?utm_source=organic&utm_medium=seo&utm_campaign=guesswork_medicare",
+          "websiteJourney": "Home / Member Resources / Medicare Education",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Medigap Coverage Search",
+          "marketingSearchTerm": "humana medicare supplement medigap",
+          "landingPageUrl": "https://www.humana.com/medicare/medicare-supplement?utm_source=google&utm_medium=cpc&utm_campaign=medigap_search",
+          "websiteJourney": "Home / Medicare / Medicare Supplement (Medigap)",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Go365 Rewards Challenge",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.humana.com/member/go365?utm_source=facebook&utm_medium=paid_social&utm_campaign=go365_rewards",
+          "websiteJourney": "Home / Member Resources / Go365",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Dental Quote in Your ZIP",
+          "marketingSearchTerm": "humana vision insurance cost",
+          "landingPageUrl": "https://www.humana.com/vision-insurance?utm_source=bing&utm_medium=cpc&utm_campaign=dental_zip_quote",
+          "websiteJourney": "Home / Dental & Vision / Vision Insurance",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Understanding Plan Types & Costs",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.humana.com/medicare/education/plan-types-and-costs?utm_source=organic&utm_medium=seo&utm_campaign=plan_types_costs",
+          "websiteJourney": "Home / Member Resources / Medicare Education",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "It's Your Medicare Moment",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.humana.com/medicare/special-needs-plans?utm_source=instagram&utm_medium=paid_social&utm_campaign=medicare_moment",
+          "websiteJourney": "Home / Medicare / Special Needs Plans",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Your Plan, Your Benefits, Review for 2026",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.humana.com/member/myhumana?utm_source=organic&utm_medium=email&utm_campaign=review_for_2026",
+          "websiteJourney": "Home / Member Resources / MyHumana Login",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Institutional SNP Search",
+          "marketingSearchTerm": "humana i-snp nursing facility plan",
+          "landingPageUrl": "https://www.humana.com/medicare/special-needs-plans/institutional?utm_source=google&utm_medium=cpc&utm_campaign=isnp_search",
+          "websiteJourney": "Home / Medicare / Special Needs Plans / Institutional SNP",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Extend Bundle Savings",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.humana.com/dental-vision-hearing/extend?utm_source=facebook&utm_medium=paid_social&utm_campaign=extend_bundle",
+          "websiteJourney": "Home / Dental, Vision & Hearing / Humana Extend Bundle",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Get the Most Out of Medicare",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.humana.com/medicare/education/get-the-most?utm_source=organic&utm_medium=seo&utm_campaign=most_out_of_medicare",
+          "websiteJourney": "Home / Member Resources / Medicare Education",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Humana)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "72,032"
+            },
+            {
+              "label": "Enrollment Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Plan Enrolled (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$29,287,365"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "11,525"
+            },
+            {
+              "label": "MyHumana Account Support (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Claims & Billing Question (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Find a Doctor / Pharmacy (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Enrollment Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Enrollment Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Premium Quoted (Percent)",
+              "value": "58%"
+            },
+            {
+              "label": "Not Medicare Eligible (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Plan Enrolled (Percent)",
+              "value": "22%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Enrollment Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Enrollment Call (Count)",
+            "values": [
+              8417,
+              14203,
+              13891,
+              13462,
+              10534
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              5812,
+              9847,
+              9523,
+              9301,
+              7296
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              1203,
+              2047,
+              1982,
+              1894,
+              1518
+            ]
+          },
+          {
+            "name": "Plan Enrolled (Count)",
+            "values": [
+              2214,
+              3712,
+              3589,
+              3462,
+              2870
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Plan Enrolled (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 72032,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "28,417",
+                "44%",
+                "16%",
+                "$8,748,125"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "16,842",
+                "47%",
+                "20%",
+                "$6,220,696"
+              ]
+            },
+            {
+              "name": "Direct Mail",
+              "metrics": [
+                "12,318",
+                "51%",
+                "24%",
+                "$5,460,332"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "8,714",
+                "55%",
+                "30%",
+                "$4,828,058"
+              ]
+            },
+            {
+              "name": "YouTube",
+              "metrics": [
+                "5,741",
+                "61%",
+                "38%",
+                "$4,030,154"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Plan Enrolled (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 72032,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "34,218",
+                "45%",
+                "17%",
+                "$12,120,614"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "18,427",
+                "48%",
+                "21%",
+                "$7,145,412"
+              ]
+            },
+            {
+              "name": "Direct Mail",
+              "metrics": [
+                "9,812",
+                "52%",
+                "25%",
+                "$4,531,208"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "6,314",
+                "57%",
+                "29%",
+                "$3,383,104"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "3,261",
+                "63%",
+                "35%",
+                "$2,107,027"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Plan Enrolled (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 40109,
+          "rows": [
+            {
+              "name": "Medicare AEP 2026 Find Your Plan",
+              "metrics": [
+                "14,218",
+                "46%",
+                "18%",
+                "$4,728,116"
+              ]
+            },
+            {
+              "name": "$0 Premium Giveback Search",
+              "metrics": [
+                "9,742",
+                "49%",
+                "22%",
+                "$3,957,482"
+              ]
+            },
+            {
+              "name": "Full Access PPO See Any Doctor",
+              "metrics": [
+                "7,318",
+                "53%",
+                "26%",
+                "$3,515,209"
+              ]
+            },
+            {
+              "name": "Human Care, Simplified",
+              "metrics": [
+                "5,214",
+                "58%",
+                "30%",
+                "$2,889,314"
+              ]
+            },
+            {
+              "name": "Extend Bundle Savings",
+              "metrics": [
+                "3,617",
+                "64%",
+                "37%",
+                "$2,470,905"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Plan Enrolled (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25075,
+          "rows": [
+            {
+              "name": "humana medicare advantage plans 2026",
+              "metrics": [
+                "8,714",
+                "47%",
+                "19%",
+                "$3,059,114"
+              ]
+            },
+            {
+              "name": "humana $0 premium plan near me",
+              "metrics": [
+                "6,318",
+                "50%",
+                "23%",
+                "$2,684,028"
+              ]
+            },
+            {
+              "name": "humana gold plus hmo",
+              "metrics": [
+                "4,712",
+                "54%",
+                "27%",
+                "$2,350,116"
+              ]
+            },
+            {
+              "name": "humana dental insurance cost",
+              "metrics": [
+                "3,214",
+                "59%",
+                "31%",
+                "$1,840,073"
+              ]
+            },
+            {
+              "name": "humana extend dental vision hearing",
+              "metrics": [
+                "2,117",
+                "65%",
+                "39%",
+                "$1,526,041"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Enrollment Appointment Set (Industry) (Percent)",
+            "Plan Enrolled (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 72032,
+          "rows": [
+            {
+              "name": "Medicare Advantage (Part C)",
+              "metrics": [
+                "28,417",
+                "38%",
+                "16.0%",
+                "$8,416,265"
+              ]
+            },
+            {
+              "name": "Prescription Drug Plans (Part D)",
+              "metrics": [
+                "16,842",
+                "41%",
+                "20.0%",
+                "$6,220,696"
+              ]
+            },
+            {
+              "name": "Special Needs Plans (SNP)",
+              "metrics": [
+                "11,268",
+                "43%",
+                "24.0%",
+                "$4,994,288"
+              ]
+            },
+            {
+              "name": "Dental, Vision & Hearing",
+              "metrics": [
+                "8,947",
+                "46%",
+                "32.0%",
+                "$5,287,961"
+              ]
+            },
+            {
+              "name": "Medicare Supplement (Medigap)",
+              "metrics": [
+                "6,558",
+                "49%",
+                "36.1%",
+                "$4,368,155"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Plan Enrolled (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 72032,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "24,318",
+                "40%",
+                "17.0%",
+                "$7,653,454"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "16,742",
+                "43%",
+                "20.0%",
+                "$6,183,756"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "13,864",
+                "45%",
+                "23.0%",
+                "$5,890,083"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "9,847",
+                "48%",
+                "27.0%",
+                "$4,911,173"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "7,261",
+                "52%",
+                "34.7%",
+                "$4,648,899"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Plan Enrolled (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Medicare Advantage (Part C)",
+            "values": [
+              812,
+              1043,
+              978,
+              921,
+              793
+            ]
+          },
+          {
+            "name": "Prescription Drug Plans (Part D)",
+            "values": [
+              642,
+              748,
+              701,
+              663,
+              614
+            ]
+          },
+          {
+            "name": "Special Needs Plans (SNP)",
+            "values": [
+              498,
+              571,
+              548,
+              534,
+              553
+            ]
+          },
+          {
+            "name": "Dental, Vision & Hearing",
+            "values": [
+              524,
+              612,
+              583,
+              571,
+              573
+            ]
+          },
+          {
+            "name": "Medicare Supplement (Medigap)",
+            "values": [
+              438,
+              502,
+              481,
+              467,
+              477
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 72,032 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Margaret Ellison called to compare her current coverage against the Humana Full Access PPO Medicare Advantage plan after seeing a mailer for 2026. Agent Oscar confirmed her ZIP had a $0 premium option and walked her through in and out of network copays. She scheduled an enrollment appointment with a licensed agent for the following week.",
+          "date": "Jan 6, 9:14 AM",
+          "agent": "Oscar",
+          "duration": "2m 40s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Harold Bennett wanted a quote on the Humana Extend bundle so his dental, vision and hearing benefits would sit under one monthly payment. Agent Lila explained there were no waiting periods for preventive dental and confirmed pricing for his area. Harold booked an enrollment appointment to finalize the Extend plan.",
+          "date": "Feb 11, 1:22 PM",
+          "agent": "Lila",
+          "duration": "2m 08s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Doris Falkner asked how the $0 giveback plan puts money back into her Social Security check every month. Agent Rosey verified her eligibility, confirmed the local PPO included prescription drug coverage, and answered her questions about the monthly credit. Doris scheduled an enrollment appointment to switch to the giveback plan.",
+          "date": "Mar 3, 10:47 AM",
+          "agent": "Rosey",
+          "duration": "2m 55s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 10,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Gloria Mendez is newly eligible for Medicare and called to set up a review of her options, including the Humana Extend dental, vision and hearing bundle. Agent Lee collected her full name, date of birth, ZIP code and current prescriptions so a licensed agent could prepare plan comparisons. Gloria scheduled a new enrollment appointment for the following Tuesday.",
+          "date": "Apr 15, 3:31 PM",
+          "agent": "Lee",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Walter Simmons wanted to know if he qualified for a D-SNP since he receives Medicaid, and whether a Medicare Advantage plan would give him $0 copays on his prescriptions. Agent Mary confirmed his dual eligibility and explained the Healthy Options Allowance for over the counter items. Walter scheduled an enrollment appointment to complete the D-SNP application.",
+          "date": "May 8, 11:05 AM",
+          "agent": "Mary",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 13,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Betty Kowalski called with questions about the giveback plan and how the monthly credit would appear alongside her Social Security deposit. Agent Sue clarified the timing and confirmed her doctor accepted the plan. Betty agreed to move forward and scheduled an enrollment appointment.",
+          "date": "Jun 2, 2:19 PM",
+          "agent": "Sue",
+          "duration": "2m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 15,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Frank Delgado disputed a charge on his individual dental plan, saying he was billed twice for the same month. Agent Mike located the duplicate premium, opened a correction request and explained the refund would post in 24-48h. Frank stayed on his dental plan but no new appointment was booked.",
+          "date": "Jul 9, 4:03 PM",
+          "agent": "Mike",
+          "duration": "2m 01s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Ruth Castellano called to check whether her Humana Part D drug plan covered a newly prescribed medication. Agent Jennifer looked up the formulary and confirmed the drug sat on a higher tier with a copay. Ruth wanted to think it over, so no enrollment appointment was scheduled.",
+          "date": "Jul 21, 10:36 AM",
+          "agent": "Jennifer",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Eugene Pratt reported that the Healthy Options Allowance card on his D-SNP was declined at the pharmacy. Agent Rose verified the balance, found a temporary hold and reset the card. Eugene was frustrated but the issue was resolved without booking anything new.",
+          "date": "Aug 4, 1:58 PM",
+          "agent": "Rose",
+          "duration": "2m 14s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 25,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Nancy Whitfield called about an unexpected premium amount on her Part D prescription drug plan. Agent Oscar reviewed the billing history and explained a late enrollment adjustment had been applied. Nancy asked for a written breakdown and ended the call without scheduling an appointment.",
+          "date": "Aug 19, 9:52 AM",
+          "agent": "Oscar",
+          "duration": "1m 40s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Vernon Blake called after hours trying to reset his MyHumana login and check a claim status. The call rolled to voicemail and no agent was available. He left a callback number requesting help the next business day.",
+          "date": "Sep 1, 7:12 PM",
+          "agent": "No Agent",
+          "duration": "0m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Clara Hoffman called to cancel her standalone vision plan because she was moving onto a spouse's group coverage. Agent Lila processed the cancellation and confirmed the effective end date. No new plan was scheduled.",
+          "date": "Sep 16, 12:27 PM",
+          "agent": "Lila",
+          "duration": "1m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Raymond Foss complained that a specialist he wanted was no longer listed in his provider network. Agent Lee searched nearby in network options but Raymond was unhappy with the choices. He asked to file a formal complaint and declined to schedule anything.",
+          "date": "Sep 28, 3:44 PM",
+          "agent": "Lee",
+          "duration": "2m 30s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 35,
+          "summary": "Stanley Ruiz was upset that his new dental plan card had not arrived and he could not confirm his effective date. Agent Mary confirmed the plan was active and reissued the card, but Stanley remained frustrated about the delay. No appointment was booked on the call.",
+          "date": "Oct 5, 11:19 AM",
+          "agent": "Mary",
+          "duration": "1m 57s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 32,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Edith Marlowe disputed what she believed was a double charge on her Medicare Supplement premium. Agent Sue investigated but could not immediately locate a duplicate, which left Edith dissatisfied. She demanded escalation and the case was routed to billing review with no appointment scheduled.",
+          "date": "Oct 22, 4:38 PM",
+          "agent": "Sue",
+          "duration": "2m 06s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "medicare advantage",
+        "dental",
+        "giveback",
+        "part d",
+        "extend",
+        "d-snp"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Plan Type Interest",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Enrollment Appointment Date",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Appointment Time and Callback Details",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Document Next Steps and Welcome New Member",
+          "points": "10/10",
+          "status": "met"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Proactive greeting within 3 seconds",
+        "Full legal name captured correctly",
+        "ZIP code confirmed for plan availability",
+        "Member expressed interest in Medicare Advantage",
+        "Agent identified prospect as new to Humana",
+        "Phone number verified",
+        "Appointment scheduled for enrollment counseling",
+        "Agent confirmed caller was the actual member",
+        "Prospect inquired about zero premium options",
+        "Agent mentioned Go365 wellness rewards program",
+        "Member asked about dental coverage inclusion",
+        "Appointment callback window established",
+        "Agent used professional closing statement"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "No confirmation of appointment time slot clarity",
+        "Agent did not ask caller to verify ZIP code was primary residence",
+        "No explanation of what documentation to bring to appointment",
+        "Agent did not mention CenterWell pharmacy services",
+        "No offer to text appointment reminder",
+        "Caller not asked about current health insurance status",
+        "Agent did not explain the Medicare Annual Election Period deadline",
+        "No mention of Humana mobile app features",
+        "No summary of plan type narrowing before close",
+        "Caller not asked preferred contact method",
+        "Did not capture secondary contact name or number",
+        "No mention of Humana broker/agent license verification"
+      ],
+      "naSignals": [
+        "Order fulfillment status",
+        "Prescription refill tracking",
+        "Claims appeal process",
+        "Billing adjustment request",
+        "Member ID card delivery timeline",
+        "Prior authorization status check",
+        "Pharmacy formulary lookup"
+      ],
+      "prompts": [
+        {
+          "question": "Is the caller trying to solve a specific problem?",
+          "answer": "The caller is a new Medicare beneficiary exploring affordable coverage options and wants to understand which Humana plan with dental benefits might fit their needs before the Annual Election Period closes on December 7."
+        },
+        {
+          "question": "What are the caller's expectations?",
+          "answer": "The caller expects a straightforward conversation to learn about zero or low premium plans, confirm which plans cover dental care, and schedule a time to enroll with a licensed agent who can answer detailed questions."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address for appointment confirmation and follow-up materials, clearly restated the exact appointment time and callback procedure, and explained what documents or information to prepare before the enrollment appointment."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Good afternoon and thank you for calling Humana enrollment support. My name is Marcus Bell. May I have your name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:08",
+          "text": "Hi Marcus. This is Eleanor Vasquez."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:12",
+          "text": "Thank you Eleanor. I'm going to help you explore Humana Medicare plans available in your area. Are you calling about coverage for yourself?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:22",
+          "text": "Yes, that's right. I just turned 65 and I want to make sure I have good coverage with dental before the deadline."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:31",
+          "text": "Perfect. I'm glad you called. What ZIP code is your primary residence located in?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:38",
+          "text": "I live in Louisville, Kentucky. That's 40202."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:45",
+          "text": "Excellent Eleanor. We have excellent plan options in 40202. Are you interested in a Medicare Advantage plan that includes both medical coverage and dental, or would you prefer to look at separate plans?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:58",
+          "text": "I think the Medicare Advantage with dental sounds good. What's the cost?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:06",
+          "text": "Great question. Many of our Humana Medicare Advantage plans in your ZIP code have zero dollar monthly premiums and include dental coverage. We also include vision and hearing benefits on several options. I'd love to have one of our licensed enrollment agents walk you through your personalized options."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:24",
+          "text": "That sounds perfect. How do I schedule an appointment?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:30",
+          "text": "I can schedule you right now. What day works best for you this week to speak with an enrollment counselor?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:38",
+          "text": "Thursday afternoon would be great. I'm pretty flexible."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:45",
+          "text": "Perfect. I've scheduled you for Thursday, October 24th at 2:00 PM. One of our licensed Humana agents will call you at the number we have on file. Can you please confirm your phone number for the callback?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:57",
+          "text": "Sure. It's ****-****-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:02",
+          "text": "Thank you Eleanor. Your enrollment appointment is all set for Thursday at 2:00 PM. You'll receive a call from our licensed enrollment agent. They'll review your options, answer any questions about coverage, and help you select your plan. Welcome to Humana."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:14",
+          "text": "Thank you Marcus. I really appreciate the help."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:18",
+          "text": "You're welcome Eleanor. Have a great day."
+        }
+      ],
+      "aiSummary": "Eleanor Vasquez, a new 65-year-old Medicare beneficiary from Louisville, Kentucky (40202), called to explore Humana Medicare Advantage plans with dental coverage before the Annual Election Period deadline. Marcus Bell qualified her for coverage in her service area, discussed zero premium plan options, and successfully scheduled an enrollment appointment for Thursday, October 24th at 2:00 PM with a licensed enrollment counselor. The call demonstrated strong structure and plan qualification, though the agent did not capture Eleanor's email address for appointment confirmation materials or provide detailed information about what to prepare for the enrollment visit.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus great foundation on this intake call. You nailed the greeting, captured all the essential qualification details, and booked the appointment smoothly. Two coaching tips: first, always ask for the caller's email address so we can send appointment confirmation and plan comparison documents before the call. That builds confidence and sets up the agent for success. Second, take five seconds to tell Eleanor what to expect during her Thursday appointment and remind her to have any current insurance cards or prescriptions handy. Those two moves will reduce no-shows and improve member satisfaction scores."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "72,032"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$406.59"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$29,287,365"
+            }
+          ]
+        },
+        {
+          "title": "NEW MEMBER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Members (Count)",
+              "value": "43,219"
+            },
+            {
+              "label": "Caller Type: New Members (Percent)",
+              "value": "60%"
+            },
+            {
+              "label": "Enrollment Appointment: Scheduled (Count)",
+              "value": "30,253"
+            },
+            {
+              "label": "Enrollment Appointment: Scheduled (Percent)",
+              "value": "42%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING MEMBERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Member (Count)",
+              "value": "28,813"
+            },
+            {
+              "label": "Caller Type: Existing Member (Percent)",
+              "value": "40%"
+            },
+            {
+              "label": "Enrollment Appointment: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Enrollment Appointments)",
+          "chart": {
+            "legend": "Enrollment Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Broker / Affiliate",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Direct Mail",
+                "value": 51,
+                "display": "51%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 44,
+                "display": "44%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 38,
+                "display": "38%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Enrollment Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Enrollment Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "24,817",
+                  "33%",
+                  "$10,102,455"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "18,342",
+                  "38%",
+                  "$7,584,218"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "13,586",
+                  "44%",
+                  "$5,662,394"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct Mail",
+                  "9,241",
+                  "51%",
+                  "$3,806,133"
+                ]
+              },
+              {
+                "cells": [
+                  "Broker / Affiliate",
+                  "6,046",
+                  "58%",
+                  "$2,132,165"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 30000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000,
+              25000,
+              30000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 26483,
+                "display": "26,483"
+              },
+              {
+                "name": "organic",
+                "value": 17921,
+                "display": "17,921"
+              },
+              {
+                "name": "social",
+                "value": 12744,
+                "display": "12,744"
+              },
+              {
+                "name": "email",
+                "value": 8952,
+                "display": "8,952"
+              },
+              {
+                "name": "referral",
+                "value": 5932,
+                "display": "5,932"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Enrollment Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Enrollment Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "26,483",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "17,921",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "12,744",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "8,952",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "5,932",
+                  "57%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 20000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Medicare AEP 2026 Find Your Plan",
+                "value": 15284,
+                "display": "15,284"
+              },
+              {
+                "name": "$0 Premium Giveback Search",
+                "value": 11027,
+                "display": "11,027"
+              },
+              {
+                "name": "Full Access PPO See Any Doctor",
+                "value": 8341,
+                "display": "8,341"
+              },
+              {
+                "name": "Dental Quote in Your ZIP",
+                "value": 6158,
+                "display": "6,158"
+              },
+              {
+                "name": "Go365 Rewards Challenge",
+                "value": 4092,
+                "display": "4,092"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Enrollment Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Enrollment Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Medicare AEP 2026 Find Your Plan",
+                  "15,284",
+                  "31%",
+                  "$6,224,510"
+                ]
+              },
+              {
+                "cells": [
+                  "$0 Premium Giveback Search",
+                  "11,027",
+                  "37%",
+                  "$4,491,398"
+                ]
+              },
+              {
+                "cells": [
+                  "Full Access PPO See Any Doctor",
+                  "8,341",
+                  "43%",
+                  "$3,398,221"
+                ]
+              },
+              {
+                "cells": [
+                  "Dental Quote in Your ZIP",
+                  "6,158",
+                  "54%",
+                  "$2,508,443"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Humana Medicare Advantage plans 2026",
+                "value": 8417,
+                "display": "8,417"
+              },
+              {
+                "name": "Humana $0 premium plan near me",
+                "value": 6241,
+                "display": "6,241"
+              },
+              {
+                "name": "Humana Gold Plus HMO",
+                "value": 4382,
+                "display": "4,382"
+              },
+              {
+                "name": "Humana dental insurance cost",
+                "value": 3158,
+                "display": "3,158"
+              },
+              {
+                "name": "Humana Extend dental vision hearing",
+                "value": 2094,
+                "display": "2,094"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Enrollment Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Enrollment Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Humana Medicare Advantage plans 2026",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "Humana $0 premium plan near me",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "Humana Gold Plus HMO",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "Humana dental insurance cost",
+                  "55%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Members",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Enrollment Appointment: Scheduled (Percent)",
+          "Caller Type: New Members (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Medicare Advantage Plans",
+              "31,847",
+              "34%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Prescription Drug Plans (Part D)",
+              "17,264",
+              "39%",
+              "55%"
+            ]
+          },
+          {
+            "cells": [
+              "Dental & Vision Insurance",
+              "13,428",
+              "45%",
+              "63%"
+            ]
+          },
+          {
+            "cells": [
+              "Medicare Supplement (Medigap)",
+              "9,493",
+              "52%",
+              "61%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Enrollment Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Louisville KY Guidance Center",
+              "24,318",
+              "1,942",
+              "4%",
+              "35%"
+            ]
+          },
+          {
+            "cells": [
+              "Tampa FL Guidance Center",
+              "19,247",
+              "1,563",
+              "5%",
+              "40%"
+            ]
+          },
+          {
+            "cells": [
+              "San Antonio TX Guidance Center",
+              "16,584",
+              "1,318",
+              "6%",
+              "45%"
+            ]
+          },
+          {
+            "cells": [
+              "Phoenix AZ Guidance Center",
+              "11,883",
+              "940",
+              "7%",
+              "51%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Comparing Plan Options",
+            "values": [
+              2418,
+              2847,
+              2614,
+              2531,
+              2437
+            ]
+          },
+          {
+            "name": "Premium Above Budget",
+            "values": [
+              1942,
+              2184,
+              2073,
+              2051,
+              2014
+            ]
+          },
+          {
+            "name": "Awaiting Enrollment Period",
+            "values": [
+              1684,
+              1842,
+              1793,
+              1821,
+              1792
+            ]
+          },
+          {
+            "name": "Needs Spouse Approval",
+            "values": [
+              1072,
+              1184,
+              1163,
+              1158,
+              1164
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              742,
+              821,
+              814,
+              809,
+              809
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "28,813"
+          },
+          {
+            "label": "Enrollment Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Plan Enrolled (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$16,693,798"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Plan Enrolled (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,847,291"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Plan Enrolled (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,156,874"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Plan Enrolled (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,921,445"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Plan Enrolled (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,764,518"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Plan Enrolled (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,913,276"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Plan Enrolled (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,090,394"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Enrollment Appointment Scheduled (Percent)",
+            "Plan Enrolled (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 36247,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "9847",
+                "54%",
+                "29%",
+                "$5,247,183"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "7364",
+                "58%",
+                "35%",
+                "$4,568,904"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "6128",
+                "55%",
+                "31%",
+                "$3,741,256"
+              ]
+            },
+            {
+              "name": "Direct Traffic",
+              "metrics": [
+                "3584",
+                "62%",
+                "37%",
+                "$2,181,704"
+              ]
+            },
+            {
+              "name": "Affiliate & Broker",
+              "metrics": [
+                "1890",
+                "67%",
+                "41%",
+                "$1,054,751"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Enrollment Appointment Scheduled (Percent)",
+            "Plan Enrolled (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 35614,
+          "rows": [
+            {
+              "name": "Google Search",
+              "metrics": [
+                "8752",
+                "53%",
+                "28%",
+                "$4,613,847"
+              ]
+            },
+            {
+              "name": "Facebook/Instagram",
+              "metrics": [
+                "5639",
+                "56%",
+                "32%",
+                "$3,284,756"
+              ]
+            },
+            {
+              "name": "Email Campaign",
+              "metrics": [
+                "5231",
+                "59%",
+                "36%",
+                "$3,167,842"
+              ]
+            },
+            {
+              "name": "Landing Page Form",
+              "metrics": [
+                "4847",
+                "61%",
+                "38%",
+                "$2,856,431"
+              ]
+            },
+            {
+              "name": "Call Center IVR",
+              "metrics": [
+                "3344",
+                "64%",
+                "39%",
+                "$1,770,922"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Enrollment Appointment Scheduled (Percent)",
+            "Plan Enrolled (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 34129,
+          "rows": [
+            {
+              "name": "Medicare AEP 2026 Find Your Plan",
+              "metrics": [
+                "7856",
+                "52%",
+                "27%",
+                "$4,142,791"
+              ]
+            },
+            {
+              "name": "Full Access PPO See Any Doctor",
+              "metrics": [
+                "5473",
+                "57%",
+                "33%",
+                "$3,256,847"
+              ]
+            },
+            {
+              "name": "Human Care Simplified",
+              "metrics": [
+                "4128",
+                "59%",
+                "35%",
+                "$2,481,924"
+              ]
+            },
+            {
+              "name": "Extend Bundle Savings",
+              "metrics": [
+                "3692",
+                "62%",
+                "38%",
+                "$2,138,756"
+              ]
+            },
+            {
+              "name": "Talk to Licensed Humana Agent",
+              "metrics": [
+                "2384",
+                "65%",
+                "41%",
+                "$1,411,348"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Enrollment Appointment Scheduled (Percent)",
+            "Plan Enrolled (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 32847,
+          "rows": [
+            {
+              "name": "Humana Medicare Advantage plans 2026",
+              "metrics": [
+                "6384",
+                "51%",
+                "26%",
+                "$3,347,256"
+              ]
+            },
+            {
+              "name": "Humana $0 premium Medicare plan near me",
+              "metrics": [
+                "4927",
+                "58%",
+                "34%",
+                "$2,863,841"
+              ]
+            },
+            {
+              "name": "Humana Extend dental vision hearing",
+              "metrics": [
+                "3856",
+                "60%",
+                "37%",
+                "$2,281,756"
+              ]
+            },
+            {
+              "name": "Humana Gold Plus HMO",
+              "metrics": [
+                "3041",
+                "63%",
+                "39%",
+                "$1,758,347"
+              ]
+            },
+            {
+              "name": "Does Humana cover specific drug dentist",
+              "metrics": [
+                "2104",
+                "66%",
+                "42%",
+                "$1,242,598"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Enrollment Appointment Scheduled (Percent)",
+            "Plan Enrolled (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Medicare Advantage Part C",
+              "metrics": [
+                "11284",
+                "58%",
+                "35%",
+                "$6,547,892"
+              ]
+            },
+            {
+              "name": "Medicare Part D Prescription Drug Plans",
+              "metrics": [
+                "8736",
+                "54%",
+                "31%",
+                "$4,821,756"
+              ]
+            },
+            {
+              "name": "Dental Insurance Individual Family",
+              "metrics": [
+                "5487",
+                "59%",
+                "36%",
+                "$3,184,921"
+              ]
+            },
+            {
+              "name": "Medicare Supplement Medigap",
+              "metrics": [
+                "2156",
+                "61%",
+                "38%",
+                "$1,286,847"
+              ]
+            },
+            {
+              "name": "Vision Hearing and Bundles",
+              "metrics": [
+                "950",
+                "64%",
+                "41%",
+                "$571,382"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Plan Enrolled (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Medicare Advantage Part C",
+            "values": [
+              2247,
+              2318,
+              2156,
+              2089,
+              1911
+            ]
+          },
+          {
+            "name": "Medicare Part D Prescription Drug Plans",
+            "values": [
+              1456,
+              1512,
+              1348,
+              1289,
+              1087
+            ]
+          },
+          {
+            "name": "Dental Insurance Individual Family",
+            "values": [
+              985,
+              1027,
+              948,
+              864,
+              742
+            ]
+          },
+          {
+            "name": "Medicare Supplement Medigap",
+            "values": [
+              411,
+              428,
+              384,
+              347,
+              286
+            ]
+          },
+          {
+            "name": "Vision Hearing and Bundles",
+            "values": [
+              189,
+              201,
+              167,
+              142,
+              119
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Enrollment Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Enrollment Appointment Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Enrollment Appointment Scheduled (Count)",
+            "value": "8,964"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$16,847,291"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "847"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "18:47:33"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Enrollment Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Enrollment Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Enrollment Appointment Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$51,834"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Enrollment Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Enrollment Appointment Scheduled",
+            "values": [
+              73,
+              78,
+              75,
+              81,
+              77,
+              74,
+              79,
+              76,
+              82,
+              71,
+              75,
+              78,
+              80,
+              77,
+              76,
+              74,
+              81,
+              79,
+              75,
+              78,
+              72,
+              76,
+              81,
+              77,
+              74,
+              79,
+              76,
+              75,
+              73,
+              78,
+              74,
+              81,
+              174,
+              181,
+              168,
+              179,
+              185,
+              172,
+              176,
+              183,
+              179,
+              171,
+              177,
+              182,
+              175,
+              181,
+              168,
+              179,
+              174
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,219"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "681"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "659"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Enrollment Appointment Scheduled (Count)",
+        "xLabels": [
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23",
+          "01/24"
+        ],
+        "series": [
+          {
+            "name": "Medicare Advantage Plan Eligibility",
+            "values": [
+              8,
+              11,
+              7,
+              12,
+              10,
+              6
+            ]
+          },
+          {
+            "name": "$0 Premium Plan Details",
+            "values": [
+              12,
+              14,
+              11,
+              13,
+              15,
+              8
+            ]
+          },
+          {
+            "name": "Dental and Vision Coverage Questions",
+            "values": [
+              6,
+              9,
+              10,
+              14,
+              11,
+              5
+            ]
+          },
+          {
+            "name": "Prescription Drug Coverage Information",
+            "values": [
+              5,
+              7,
+              6,
+              11,
+              9,
+              4
+            ]
+          },
+          {
+            "name": "Go365 Wellness Rewards Program",
+            "values": [
+              4,
+              6,
+              5,
+              8,
+              7,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "66,269"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "48,261"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Enrollment Appointment Booked (Count)",
+            "value": "30,253"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$29,287,365"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Patricia Gomez",
+              "value": 216,
+              "display": "216"
+            },
+            {
+              "name": "James Okafor",
+              "value": 242,
+              "display": "242"
+            },
+            {
+              "name": "Diane Kowalski",
+              "value": 201,
+              "display": "201"
+            },
+            {
+              "name": "Rafael Torres",
+              "value": 169,
+              "display": "169"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Enrollment Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sheila Anderson",
+            "values": [
+              142,
+              156,
+              168,
+              181,
+              194
+            ]
+          },
+          {
+            "name": "Anil Patel",
+            "values": [
+              128,
+              139,
+              154,
+              167,
+              179
+            ]
+          },
+          {
+            "name": "Lorraine Kim",
+            "values": [
+              135,
+              147,
+              162,
+              174,
+              188
+            ]
+          },
+          {
+            "name": "David McCormick",
+            "values": [
+              131,
+              145,
+              159,
+              171,
+              185
+            ]
+          },
+          {
+            "name": "Yuki Tanaka",
+            "values": [
+              119,
+              132,
+              148,
+              161,
+              176
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Patricia Gomez",
+              "value": 56.7,
+              "display": "56.7%"
+            },
+            {
+              "name": "James Okafor",
+              "value": 55.1,
+              "display": "55.1%"
+            },
+            {
+              "name": "Diane Kowalski",
+              "value": 57.9,
+              "display": "57.9%"
+            },
+            {
+              "name": "Rafael Torres",
+              "value": 52.8,
+              "display": "52.8%"
+            },
+            {
+              "name": "Mohammed Hassan",
+              "value": 61.1,
+              "display": "61.1%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Enrollment Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "54.2%",
+                "28%",
+                "$380,518",
+                "1,412"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Gomez",
+                "56.7%",
+                "30%",
+                "$411,287",
+                "1,468"
+              ]
+            },
+            {
+              "cells": [
+                "James Okafor",
+                "55.1%",
+                "27%",
+                "$373,429",
+                "1,391"
+              ]
+            },
+            {
+              "cells": [
+                "Diane Kowalski",
+                "57.9%",
+                "31%",
+                "$431,556",
+                "1,524"
+              ]
+            },
+            {
+              "cells": [
+                "Rafael Torres",
+                "52.8%",
+                "26%",
+                "$354,682",
+                "1,343"
+              ]
+            },
+            {
+              "cells": [
+                "Mohammed Hassan",
+                "61.1%",
+                "35%",
+                "$483,671",
+                "1,487"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sheila Anderson",
+              "value": 92.4,
+              "display": "92.4%"
+            },
+            {
+              "name": "Anil Patel",
+              "value": 89.6,
+              "display": "89.6%"
+            },
+            {
+              "name": "Lorraine Kim",
+              "value": 91.3,
+              "display": "91.3%"
+            },
+            {
+              "name": "David McCormick",
+              "value": 87.8,
+              "display": "87.8%"
+            },
+            {
+              "name": "Yuki Tanaka",
+              "value": 90.7,
+              "display": "90.7%"
+            },
+            {
+              "name": "Susan DeRosa",
+              "value": 93.1,
+              "display": "93.1%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Enrollment Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sheila Anderson",
+                "92.4%",
+                "67%",
+                "$967,842",
+                "1,547"
+              ]
+            },
+            {
+              "cells": [
+                "Anil Patel",
+                "89.6%",
+                "63%",
+                "$897,354",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Lorraine Kim",
+                "91.3%",
+                "66%",
+                "$944,237",
+                "1,489"
+              ]
+            },
+            {
+              "cells": [
+                "David McCormick",
+                "87.8%",
+                "58%",
+                "$819,456",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Yuki Tanaka",
+                "90.7%",
+                "65%",
+                "$921,685",
+                "1,511"
+              ]
+            },
+            {
+              "cells": [
+                "Susan DeRosa",
+                "93.1%",
+                "68%",
+                "$991,704",
+                "1,541"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Enrollment Appointment Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Enrollment Appointment Booked (Count)",
+        "rightMax": 1400,
+        "rightTicks": [
+          0,
+          350,
+          700,
+          1050,
+          1400
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1122
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1075
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1001
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 955
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 832
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 873
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 964
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1002
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1117
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1083
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 976
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 943
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 839
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 865
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 987
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1017
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1107
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1090
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 956
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 925
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 852
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 861
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1004
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1037
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1093
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1091
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 942
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 903
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 867
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 862
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1012
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1400000,
+        "rightTicks": [
+          0,
+          466666.6666666667,
+          933333.3333333334,
+          1400000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1085657
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1040553
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 968967
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 924581
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 805018
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 844844
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 933275
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 970062
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1081625
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1048702
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 944531
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 912908
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 812334
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 837325
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 955495
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 984610
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1071554
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1054878
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 925014
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 895674
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 824527
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 833171
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 971964
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1004183
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1057941
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1056402
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 911778
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 874250
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 838824
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 834779
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 981939
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "72,032"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "6:47"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "5,763"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "4,322"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "85%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Margaret Chen",
+                "412",
+                "89%",
+                "84%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James Rodriguez",
+                "538",
+                "87%",
+                "86%",
+                "86%"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Kozlov",
+                "491",
+                "88%",
+                "85%",
+                "85%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "72,032 calls",
+      "pagerLabel": "1 of 7,203",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:23 am",
+          "id": "A21C-4E9B7A15C3F8"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C8D3-1F6A902B47E5"
+        },
+        {
+          "time": "1/14/26 11:18 am",
+          "id": "3B90-D74C5E812A9F"
+        },
+        {
+          "time": "1/16/26 12:35 pm",
+          "id": "7E42-6A1D93F80C57"
+        },
+        {
+          "time": "1/20/26 1:09 pm",
+          "id": "9F15-B283C7601E4A"
+        },
+        {
+          "time": "1/22/26 2:26 pm",
+          "id": "D604-58E1A9736FB2"
+        },
+        {
+          "time": "1/26/26 3:52 pm",
+          "id": "1A87-C3925F4E80D6"
+        },
+        {
+          "time": "1/28/26 4:33 pm",
+          "id": "6C29-70B4E15A9382"
+        },
+        {
+          "time": "1/30/26 5:14 pm",
+          "id": "E8B1-92F3705C6A14"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling Humana, a licensed sales agent speaking. My name is Denise. Who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling Humana",
+            "licensed sales agent"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:11",
+          "text": "Hi Denise, my name is Robert Feldman. I just turned 65 last month and I'm brand new to all of this Medicare stuff.",
+          "highlights": [
+            "brand new to all of this Medicare stuff"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:19",
+          "text": "Congratulations and welcome, Robert. I'd be glad to walk you through your options. Can you tell me a little about what you're looking for in a plan?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:27",
+          "text": "Well, I want something that covers my doctors, and honestly I take a couple of prescriptions, so drug coverage matters to me.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:35",
+          "text": "That's very common. A Medicare Advantage plan can bundle your medical and prescription coverage together. Do you have a ZIP code I can check for plans in your area?",
+          "highlights": [
+            "Medicare Advantage plan"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:44",
+          "text": "Sure, it's 40218. But before we go too far, what does this run a month? I'm on a fixed income and I want to keep it manageable.",
+          "highlights": [
+            "what does this run a month",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:53",
+          "text": "I completely understand, Robert. The good news is in your area we have several plans with a $0 monthly premium, including our Humana Gold Plus HMO, which includes prescription drug coverage.",
+          "highlights": [
+            "$0 monthly premium",
+            "Humana Gold Plus HMO"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:03",
+          "text": "Zero dollars? See, that's the thing. My neighbor is with Aetna and he keeps telling me their plan is better. How do I know I'm not missing something?",
+          "highlights": [
+            "My neighbor is with Aetna",
+            "their plan is better"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:13",
+          "text": "That's a fair question. What sets Humana apart is our broad, stable provider network and extras like dental, vision, and hearing built right in. I can compare your exact doctors and drugs side by side so you can see the difference clearly.",
+          "highlights": [
+            "broad, stable provider network",
+            "dental, vision, and hearing"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:25",
+          "text": "Okay, that would help. I also wanted to ask, do any of these put money back in my Social Security check? I saw something about that on TV.",
+          "highlights": [
+            "money back in my Social Security check"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:34",
+          "text": "They do. That's our $0 Local PPO giveback plan. It includes drug coverage and can put a portion of your Part B premium back into your monthly Social Security check. I can review that one for you as well.",
+          "highlights": [
+            "giveback plan",
+            "back into your monthly Social Security check"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:46",
+          "text": "That sounds good, but I don't want to feel locked into something I can't change later.",
+          "highlights": [
+            "don't want to feel locked into something"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:53",
+          "text": "You're never locked in, Robert. Medicare gives you enrollment windows each year to review and switch plans if your needs change, so you always have flexibility.",
+          "highlights": [
+            "never locked in",
+            "flexibility"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:02",
+          "text": "Alright, that puts me at ease. I'd probably want to go over the details with my wife before I decide anything, though.",
+          "highlights": [
+            "go over the details with my wife"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:10",
+          "text": "Absolutely, that's a smart idea. Let's set up an enrollment appointment where I can pull up your doctors, your medications, and both giveback and Gold Plus options with you and your wife on the line.",
+          "highlights": [
+            "set up an enrollment appointment"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:20",
+          "text": "That works. Could we do Thursday morning? She's free then.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:26",
+          "text": "Thursday at 10 AM is open. I have you booked for an enrollment appointment then. What's the best phone number and email to send the confirmation to?",
+          "highlights": [
+            "Thursday at 10 AM",
+            "booked for an enrollment appointment"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:33",
+          "text": "My cell is 502-555-0143 and email is rfeldman55 at gmail dot com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:38",
+          "text": "Perfect, you're all set, Robert. You'll get a confirmation shortly and I'll call you Thursday at 10. Thank you for choosing Humana, and welcome aboard.",
+          "highlights": [
+            "you're all set",
+            "Thank you for choosing Humana"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Member",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Enrollment Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Medicare Advantage",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Product: Giveback Plan",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Product: Part D Drug Coverage",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Concern Raised",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Robert Feldman, a new-to-Medicare caller who just turned 65, phoned Humana looking for a plan that covers his doctors and prescriptions while staying affordable on a fixed income. The licensed agent, Denise, checked his ZIP code and recommended the $0 premium Humana Gold Plus HMO along with the $0 Local PPO giveback plan that returns money to his Social Security check. She addressed his cost, competitor, and commitment concerns and scheduled an enrollment appointment so he could review options with his wife. Contact details were captured for the follow-up.",
+        "keyPoints": [
+          "New-to-Medicare caller, recently turned 65",
+          "Needs medical plus prescription drug coverage on a fixed income",
+          "Recommended Humana Gold Plus HMO and $0 giveback Local PPO",
+          "Handled Aetna comparison and lock-in worry",
+          "Wants to review with his wife before deciding",
+          "Enrollment appointment booked for Thursday 10 AM, phone and email captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Enrollment Appointment booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "45,380 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,538",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for reaching out to Humana. My name is Sarah. I'm here to help you find the right Medicare plan for 2026. Are you currently enrolled in a Humana plan?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "No, I'm new. I've got Original Medicare but I'm looking at Medicare Advantage options."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great. I'd love to help you explore our Medicare Advantage plans. Just to get started, what ZIP code are you in so I can see which plans are available near you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "I'm in Portland, Oregon. 97214."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. In your area we have several excellent options including our Humana Gold Plus HMO and Full Access PPO, both with $0 premiums in your ZIP. Are you looking for a plan that includes prescription drug coverage?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Yes, that's important. I take several medications regularly."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Understood. Our Medicare Advantage plans include Part D prescription drug coverage. Also, are you interested in dental, vision, or hearing coverage as well?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "Definitely dental and vision. I haven't had dental coverage in years."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Excellent. I'd recommend our Humana Extend bundle, which combines dental, vision, and hearing into one plan starting at just $40 per month with no waiting periods. Does that sound like something you'd want to learn more about?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "That does sound good. What are the copays like for dental?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "For preventive care like cleanings and exams, most visits are covered at $0. You'd have copays for major services like crowns, typically around $150 to $200. Would you like to schedule an enrollment appointment this week to review your options in detail?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Sure. What days work?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "I have availability Wednesday, March 12th at 2 PM Pacific Time with one of our licensed Humana agents. Does that work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:34 AM",
+              "text": "Yes, that's perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:35 AM",
+              "text": "Wonderful. Your enrollment appointment is set for Wednesday, March 12th at 2 PM Pacific Time. A licensed agent will call you at this number to discuss your Medicare Advantage and Extend bundle options. Our callback number is 877-936-2933. You're all set."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Enrollment Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Member",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Medicare Advantage with Prescription Drug Coverage",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Humana Extend Dental Vision Hearing Bundle",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Service Area Confirmed: Portland Oregon 97214",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided: $40 Monthly for Extend Bundle",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "(503) 555-0847",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "(503) 555-0847",
+            "repeatCaller": "No",
+            "city": "Portland",
+            "region": "OR",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "K829-3A7BC498F1D2",
+          "time": "8/16/25 10:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "K829-3A7BC498F1D2",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "M341-5F9E6C2B7A4D",
+          "time": "8/16/25 10:38 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "M341-5F9E6C2B7A4D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "T745-9D1C3E8F6B2A",
+          "time": "8/16/25 10:29 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "T745-9D1C3E8F6B2A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "72,032 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 7,203",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:34 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:34 PM",
+              "text": "Hello, thank you for calling Humana Medicare. This is Sarah speaking. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:34 PM",
+              "text": "Hi Sarah. Yeah, I'm trying to figure out what Medicare plans you have available in my area. I'm turning 65 next month."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:35 PM",
+              "text": "Congratulations on that milestone. I'd be happy to help you explore your options. Just to get started, what's your ZIP code?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:35 PM",
+              "text": "It's 78204, that's San Antonio, Texas."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:36 PM",
+              "text": "Perfect. San Antonio. So when you think about your healthcare needs over the next year, are you more interested in staying with your current doctors, or would you be open to seeing different providers?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:36 PM",
+              "text": "I want to keep seeing my doctors. My primary care doc and my cardiologist, they're really important to me."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:37 PM",
+              "text": "That makes total sense. In that case, our Humana Full Access PPO could be a great fit. It lets you see any doctor that accepts Medicare at the same copay whether they're in or out of network, with no referral required. And many of these plans are zero dollars a month premium."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:38 PM",
+              "text": "Okay, that sounds really good. And does it include prescription drug coverage?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:38 PM",
+              "text": "Yes, absolutely. Most of our Full Access PPO plans include prescription drug coverage built right in, so you don't need a separate Part D plan."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:39 PM",
+              "text": "Great. And what about dental and vision?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:39 PM",
+              "text": "Many plans do include dental and vision benefits. You can also look at adding our Humana Extend bundle, which combines dental, vision, and hearing into one plan with no waiting periods for preventive exams."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:40 PM",
+              "text": "That sounds perfect. What do I need to do next?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:40 PM",
+              "text": "I'd like to get you scheduled with one of our licensed Humana agents who can walk you through the exact plans available in your area and answer any specific questions. Does this Thursday or Friday work better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:41 PM",
+              "text": "Friday is better. What time?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:41 PM",
+              "text": "How does Friday, January seventeenth at ten thirty a.m. Central Time work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:41 PM",
+              "text": "Yes, that's perfect. Ten thirty a.m. on Friday."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:42 PM",
+              "text": "Excellent. So I've got you scheduled for an Enrollment Appointment on Friday, January seventeenth at ten thirty a.m. Central Time. An agent will call you back at this number to review your options. Your confirmation reference is E-A-four-two-one-seven. Thank you so much for choosing Humana."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:42 PM",
+              "text": "Thank you. I appreciate it."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Enrollment Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Member",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Full Access PPO",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Prescription Drug Coverage Required",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Dental and Vision Inquiry",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area Confirmed: San Antonio TX",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:34 pm",
+            "duration": "8:23",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "210-555-3847",
+            "repeatCaller": "No",
+            "city": "San Antonio",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B829-5E4F128A9C3D",
+          "time": "1/22/26 10:47 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B829-5E4F128A9C3D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C651-7D3A456B8E2F",
+          "time": "1/28/26 1:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C651-7D3A456B8E2F",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D742-9F6C789D1B4A",
+          "time": "1/30/26 3:52 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D742-9F6C789D1B4A",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Hi, I'm Humana's AI agent, and I can help you find a personalized Medicare or dental, vision and hearing plan quote for the 2026 plan year, many Medicare Advantage plans start at a $0 monthly premium with money put back in your Social Security check. Would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, first what coverage you're looking for (Medicare Advantage, Part D, Medigap, or dental, vision and hearing), then whether you currently have Medicare Parts A and B, then your age or date of birth, whether you also qualify for Medicaid, your target start date, and finally your ZIP code so I can confirm which plans are available in your area.",
+        "Estimate then book: Once I confirm we offer plans in your ZIP, I'll share a preliminary monthly premium range based on what you shared, then recommend a review with a licensed Humana sales agent for an exact quote and enrollment, I can set you up for a specific day and time, and you'll get a reminder text before your appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Humana_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Medicare Advantage Plans",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Dental, Vision & Hearing Plans",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Shop Plans by ZIP",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"plan review\",\"question\":\"Can I review my current Humana plan for the 2026 plan year?\",\"answer\":\"Yes, during the Annual Election Period from October 15 to December 7 you can review any changes to your benefits and switch plans if needed. I can book a review with a licensed Humana sales agent to walk through your options.\"},{\"topic\":\"member ID card\",\"question\":\"I never received my new Humana member ID card, what should I do?\",\"answer\":\"You can view and print a temporary card anytime through your MyHumana account, and a licensed agent can confirm your mailing details. Let me set up a quick call so we can make sure everything is up to date.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What is a Medicare Advantage plan?",
+              "answer": "A Medicare Advantage plan, also called Part C, includes all the benefits of Medicare Parts A and B, and most Humana plans add prescription drug coverage plus an annual out of pocket limit. I can book a quick review with a licensed Humana sales agent to find the right fit for you."
+            },
+            {
+              "question": "Do you have $0 premium plans?",
+              "answer": "Yes, many Humana Medicare Advantage plans carry a $0 monthly premium, and some $0 Local PPO plans even put money back in your Social Security check each month. Let's confirm your ZIP so a licensed agent can show what's available near you."
+            },
+            {
+              "question": "What is the difference between the Gold Plus HMO and Full Access PPO?",
+              "answer": "The Gold Plus HMO includes Parts A and B benefits with most plans adding drug coverage and an out of pocket limit, while the Full Access PPO lets you see any doctor that accepts Medicare at the same copay in or out of network with no referral. I can set up a review so an agent can compare them for your situation."
+            },
+            {
+              "question": "How much does a Humana dental plan cost?",
+              "answer": "Humana dental plans start at around $18 a month, with most plans becoming effective in about 5 to 7 days, and pricing depends on the plan and your area. Let me connect you with a licensed agent for an exact quote in your ZIP."
+            },
+            {
+              "question": "What is included in the Humana Extend bundle?",
+              "answer": "Humana Extend combines dental, vision and hearing into one plan with no waiting periods for preventive dental, vision and hearing exams, and one monthly payment instead of three. I can book a consultation to review the bundle options for you."
+            },
+            {
+              "question": "Does Humana cover my prescriptions?",
+              "answer": "Humana Part D and most Medicare Advantage plans include prescription drug coverage, often with $0 Tier 1 copays, and coverage varies by plan formulary. A licensed agent can check your specific medications during a quick review, shall I set that up?"
+            },
+            {
+              "question": "What is a D-SNP?",
+              "answer": "A Dual Eligible Special Needs Plan is a $0 premium plan for people who qualify for both Medicare and Medicaid, offering $0 copays for preventive services, vaccinations and hundreds of prescriptions, many with a Healthy Options Allowance for over the counter items. Let me confirm your eligibility with a licensed agent."
+            },
+            {
+              "question": "When can I enroll in a Medicare plan?",
+              "answer": "The Medicare Annual Election Period runs from October 15 to December 7, and other windows may apply based on your situation. I can book an appointment with a licensed Humana sales agent so you're ready when your window opens."
+            },
+            {
+              "question": "Do I need to keep my current doctor?",
+              "answer": "With a Full Access PPO you can see any doctor that accepts Medicare, and Humana supports broad, stable provider networks in 48 states so you have choices. Let me set up a review so an agent can confirm your doctors are covered."
+            },
+            {
+              "question": "What is the giveback plan?",
+              "answer": "The $0 Local PPO giveback plan includes prescription drug coverage and puts money back into your Social Security check every month. Availability depends on your ZIP, so let's confirm your area with a licensed agent."
+            },
+            {
+              "question": "How do I know which plan is right for me?",
+              "answer": "The best plan depends on your doctors, prescriptions, budget and whether you qualify for extra help, and a licensed Humana sales agent can walk you through it. I can schedule a personalized review, would that be helpful?"
+            },
+            {
+              "question": "Does Humana offer vision insurance?",
+              "answer": "Yes, Humana vision plans start at around $12 a month and cover preventive care and corrective options with plans to fit your lifestyle. Let me connect you with a licensed agent for exact pricing in your area."
+            },
+            {
+              "question": "What is Go365?",
+              "answer": "Go365 is a wellness program included with many Humana plans that rewards preventive actions and encourages proactive management of your health. I can book a review to show how it works with the plan you're considering."
+            },
+            {
+              "question": "Can I get both dental and vision together?",
+              "answer": "Yes, Humana offers dental as low as around $18 a month and vision as low as around $12 a month, available standalone or bundled to fit your budget. Let me set up a quick call to build a bundle for you."
+            },
+            {
+              "question": "What is Medigap or Medicare Supplement?",
+              "answer": "A Humana Medicare Supplement plan fills the gaps in Original Medicare like coinsurance, copays and deductibles, and lets you see any doctor that accepts Medicare. A licensed agent can quote your plan by age and area, shall I schedule that?"
+            },
+            {
+              "question": "How much is a Part D drug plan?",
+              "answer": "Standalone Humana Part D plans generally run around $25 to $60 a month depending on the plan, and many include $0 Tier 1 copays. Let me set up a review so an agent can match a plan to your medications."
+            },
+            {
+              "question": "Are Humana plans available in my state?",
+              "answer": "Humana serves members in 48 states with broad provider networks, and exact plans depend on your ZIP. Share your ZIP and I'll have a licensed agent confirm what's offered near you."
+            },
+            {
+              "question": "What is an I-SNP?",
+              "answer": "The Humana Institutional Special Needs Plan is available in 13 states and includes dental, vision and hearing benefits, transportation to eligible medical appointments, care manager support and music therapy sessions. Let me connect you with an agent to check eligibility."
+            },
+            {
+              "question": "How long until my dental coverage starts?",
+              "answer": "Most Humana dental plans become effective in about 5 to 7 days, and preventive dental in the Extend bundle has no waiting period. I can book a quick call to get you enrolled, would you like that?"
+            },
+            {
+              "question": "Can I talk to a real person?",
+              "answer": "Absolutely, licensed Humana sales agents are available Monday through Friday, 8 a.m. to 8 p.m., and I can book a time that works for you. What day and time should I set up your appointment?"
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule enrollment appointment\",\"follow_up_message\":\"Great, I have licensed Humana sales agents available Monday through Friday, 8 a.m. to 8 p.m. I can lock in Thursday at 10 a.m. for your enrollment appointment and send a reminder text with a number to call, does that time work?\"},{\"intent\":\"request a plan quote\",\"follow_up_message\":\"Thanks for sharing your ZIP, many Medicare Advantage plans in your area start at a $0 monthly premium. Let's set up a quick review with a licensed agent for your exact quote, are you available tomorrow afternoon?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, I'm Humana's AI agent. I can help you find a personalized Medicare, dental, vision or hearing plan for the 2026 plan year, and many Medicare Advantage plans start at a $0 monthly premium. Would you like to get started?",
+        "goal": "Guide the prospective member through a few qualifying questions, share a preliminary premium range, and book a virtual enrollment appointment with a licensed Humana sales agent.",
+        "bookingType": "virtual enrollment appointment",
+        "offer": "Many Medicare Advantage plans start at a $0 premium with money back on your Social Security check when you enroll during the Annual Election Period",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "What type of coverage are you looking for, Medicare Advantage, Part D prescription drug, Medicare Supplement, or dental, vision and hearing?",
+          "Do you currently have Medicare Parts A and B?",
+          "What is your age or date of birth so we can confirm eligibility?",
+          "Do you also qualify for Medicaid or receive extra help?",
+          "When would you like your new coverage to start?",
+          "What is your ZIP code so I can confirm which plans are available in your area?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:09 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:09 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:09 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Humana",
+      "callerName": "Margaret Chen",
+      "callerPhone": "(602) 555-0847",
+      "campaign": "Humana Gold Plus HMO, Phoenix Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Enrollment Appointment Lead",
+      "estimatedValue": "$1,847",
+      "googleSearch": "Humana Medicare Advantage plans 2026 Phoenix",
+      "websiteSearch": "Humana Gold Plus HMO coverage Arizona",
+      "callingWebpage": "/medicare/gold-plus-hmo",
+      "products": "Humana Gold Plus HMO, Humana Complete Dental PPO",
+      "cartId": "HUM-7342K",
+      "serviceable": "Yes",
+      "email": "margaret.chen@email.com",
+      "street": "4521 East Camelback Road",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zip": "85018",
+      "digitalJourney": "/home › /medicare › /medicare-advantage-plans › /gold-plus-hmo",
+      "intent": "Turning 65 this month, seeking comprehensive Medicare plan with included dental coverage and low monthly premium.",
+      "coverage": "ZIP 85018 confirmed, Phoenix serviceable",
+      "switchIntent": "High. Aging into Medicare now, needs coverage to start January 1, actively comparing plans this week.",
+      "greeting": "Hi Margaret, this is David from Humana. I see you were looking at our Gold Plus HMO plan with dental benefits. Can I walk you through how this plan covers your prescriptions and preventive care, and schedule an in-person enrollment appointment at your home this week?"
+    },
+    "smsScreenpop": {
+      "brandName": "Humana",
+      "callerName": "Robert Vasquez",
+      "callerPhone": "(210) 555-0923",
+      "campaign": "Humana Extend Bundle, San Antonio Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Enrollment Appointment Lead",
+      "estimatedValue": "$2,156",
+      "googleSearch": "Humana Extend dental vision hearing bundle cost",
+      "websiteSearch": "Humana dental vision hearing one plan San Antonio",
+      "callingWebpage": "/dental-vision-hearing/humana-extend",
+      "products": "Humana Extend Bundle, Humana Go365 Wellness Program",
+      "cartId": "HUM-5891P",
+      "serviceable": "Yes",
+      "email": "robert.vasquez@email.com",
+      "street": "7834 Westover Hills Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78251",
+      "digitalJourney": "/home › /dental-vision-hearing › /humana-extend › /shop-plans",
+      "intent": "Medicare member seeking combined dental, vision and hearing coverage in one plan with no waiting periods and single monthly payment.",
+      "coverage": "ZIP 78251 confirmed, San Antonio serviceable",
+      "appointment": "In-home enrollment appointment with Humana specialist, Thursday July 25, 2:00 PM",
+      "greeting": "Hi Robert, thanks for texting. This is Angela from Humana. I have your enrollment appointment set for this Thursday at 2 PM. Our specialist will show you how Extend saves you money on dental, vision and hearing in one plan. Any questions before we meet?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Humana",
+      "brandDomain": "www.humana.com",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (502) 555-0147",
+      "callerLocation": "Louisville, KY",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Medicare AEP 2026 Find Your Plan",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "Humana Medicare Advantage plans 2026",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/Medicare/Medicare-Advantage-Plans/Gold-Plus-HMO",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Gold Plus HMO, Extend Dental Vision Hearing Bundle",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Louisville, KY",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "enrollment_appt_new",
+          "name": "Enrollment Appointment, Medicare Advantage"
+        },
+        {
+          "id": "member_support_existing",
+          "name": "Existing Member Support"
+        },
+        {
+          "id": "general_inquiry_callback",
+          "name": "General Information Callback"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there. Thanks for calling Humana. I'm helping members and prospects find the right Medicare plan for their needs. Are you currently on a Medicare plan, or would you be looking to enroll for the first time?",
+          "sigs": [],
+          "q": [
+            35,
+            40,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Hi, no I'm not currently enrolled. I'm turning 65 next month and I'm really interested in learning more about your Gold Plus HMO plan. I saw something about dental and vision benefits too.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Not enrolled</strong>, turning 65"
+            },
+            {
+              "c": "green",
+              "t": "<strong>Gold Plus HMO</strong> interest"
+            },
+            {
+              "c": "blue",
+              "t": "Dental and vision add-on focus"
+            }
+          ],
+          "q": [
+            58,
+            22,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's wonderful, and congratulations on reaching Medicare eligibility. The Gold Plus HMO is a great choice with zero or low premiums depending on your zip code, and yes, most of our Gold Plus plans include dental, vision, and hearing benefits all in one. To help me find the best options for you in your area, what zip code do you live in?",
+          "sigs": [],
+          "q": [
+            72,
+            15,
+            13
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I'm in Louisville, 40202. I also want to make sure any plan I pick covers my doctor. Dr. Sarah Chen at Norton Healthcare is my primary care physician.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Louisville, KY zip confirmed"
+            },
+            {
+              "c": "orange",
+              "t": "Provider network verification required"
+            },
+            {
+              "c": "green",
+              "t": "Active PCP relationship"
+            }
+          ],
+          "q": [
+            84,
+            8,
+            8
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. Dr. Chen at Norton is in our provider network for Louisville. Based on what you've told me, you'd be a great fit for our enrollment team to walk you through plan options, check your eligibility for any giveback benefits, and lock in your coverage before the December 7th enrollment deadline. Can I connect you with one of our licensed enrollment specialists? They're available right now and can have you set up in about 20 minutes.",
+          "sigs": [],
+          "q": [
+            95,
+            3,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Enrollment Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule your enrollment appointment (Agent)\", \"let's get you enrolled today (Agent)\", \"book a time with a licensed agent (Agent)\", \"I'll lock in your enrollment (Agent)\"])",
+          "createdAt": "09/12/25 10:24 am",
+          "updatedAt": "01/08/26 2:47 pm"
+        },
+        {
+          "name": "$0 Premium Giveback Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"giveback plan (Caller)\", \"money back in my Social Security check (Caller)\", \"zero dollar premium (Caller)\", \"how much comes back each month (Caller)\"])",
+          "createdAt": "10/03/25 9:15 am",
+          "updatedAt": "01/11/26 11:02 am"
+        },
+        {
+          "name": "Competitor Plan Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Aetna Medicare (Caller)\", \"UnitedHealthcare plan (Caller)\", \"Cigna Medicare (Caller)\", \"Wellcare plan (Caller)\"])",
+          "createdAt": "08/22/25 3:41 pm",
+          "updatedAt": "12/19/25 4:33 pm"
+        },
+        {
+          "name": "Compliant Disclosure Read",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Compliance Disclosure] < 60 and duration > 45 sec",
+          "createdAt": "07/18/25 1:09 pm",
+          "updatedAt": "01/05/26 10:18 am"
+        },
+        {
+          "name": "Dental Vision Hearing Bundle Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Humana Extend (Caller)\", \"dental vision and hearing bundle (Caller)\", \"add dental coverage (Caller)\", \"vision plan for twelve dollars (Caller)\"])",
+          "createdAt": "09/30/25 8:52 am",
+          "updatedAt": "01/09/26 3:21 pm"
+        },
+        {
+          "name": "Enrollment Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Annual Election Period (Agent)\", \"review your plan options (Agent)\", \"when would you like to enroll (Agent)\", \"walk you through the 2026 plans (Agent)\"])",
+          "createdAt": "08/05/25 11:47 am",
+          "updatedAt": "12/28/25 9:44 am"
+        },
+        {
+          "name": "Licensed Agent Professionalism",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Agent Professionalism] < 60 and duration > 45 sec",
+          "createdAt": "07/22/25 2:33 pm",
+          "updatedAt": "01/07/26 1:12 pm"
+        },
+        {
+          "name": "Medicare Advantage Plan Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Medicare Advantage plan (Caller)\", \"Gold Plus HMO (Caller)\", \"Full Access PPO (Caller)\", \"Part C coverage (Caller)\"])",
+          "createdAt": "10/11/25 4:05 pm",
+          "updatedAt": "01/14/26 10:39 am"
+        },
+        {
+          "name": "Needs Assessment Completed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Member Needs Assessment] < 60 and duration > 45 sec",
+          "createdAt": "08/14/25 9:28 am",
+          "updatedAt": "01/06/26 3:55 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your monthly premium would be (Agent)\", \"the plan starts at (Agent)\", \"your copay for that would be (Agent)\", \"here is your quote in your ZIP (Agent)\"])",
+          "createdAt": "09/19/25 12:41 pm",
+          "updatedAt": "01/10/26 2:08 pm"
+        }
+      ]
+    }
+  }
+}

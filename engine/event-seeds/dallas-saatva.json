@@ -1,0 +1,5345 @@
+{
+  "id": "saatva",
+  "customerName": "Saatva",
+  "websiteUrl": "https://www.saatva.com",
+  "brandDomain": "saatva.com",
+  "networkName": "Invoca for Mattress Retail",
+  "industry": "luxury mattress and bedroom furnishings e-commerce",
+  "bookingTerm": "Viewing Room Visit",
+  "customerNoun": "Customer",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 8241
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 13472
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 12884
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 11763
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 9411
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Viewing Room Visit Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Viewing Room Visit Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Saatva, Branded Terms",
+          "marketingSearchTerm": "saatva classic review",
+          "landingPageUrl": "https://www.saatva.com/mattresses/saatva-classic?utm_source=google&utm_medium=cpc&utm_campaign=branded_terms",
+          "websiteJourney": "Home / Mattresses / Hybrid & Innerspring / Saatva Classic",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Best Mattress for Back Pain",
+          "marketingSearchTerm": "best mattress for back pain",
+          "landingPageUrl": "https://www.saatva.com/mattresses/saatva-rx?utm_source=google&utm_medium=cpc&utm_campaign=back_pain",
+          "websiteJourney": "Home / Mattresses / Memory Foam / Saatva Rx",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Luxury Mattress, Non-Brand Prospecting",
+          "marketingSearchTerm": "luxury mattress",
+          "landingPageUrl": "https://www.saatva.com/mattresses?utm_source=google&utm_medium=cpc&utm_campaign=nonbrand_prospecting",
+          "websiteJourney": "Home / Mattresses",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Mattress Sale, Labor Day",
+          "marketingSearchTerm": "saatva labor day sale",
+          "landingPageUrl": "https://www.saatva.com/sale?utm_source=bing&utm_medium=cpc&utm_campaign=labor_day_sale",
+          "websiteJourney": "Home / Labor Day Sale",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Organic Latex Prospecting",
+          "marketingSearchTerm": "organic latex mattress",
+          "landingPageUrl": "https://www.saatva.com/mattresses/saatva-latex-hybrid?utm_source=google&utm_medium=cpc&utm_campaign=latex_prospecting",
+          "websiteJourney": "Home / Mattresses / Natural Latex / Saatva Latex Hybrid",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Cooling Hybrid Non-Brand",
+          "marketingSearchTerm": "cooling mattress hybrid",
+          "landingPageUrl": "https://www.saatva.com/mattresses/memory-foam-hybrid?utm_source=bing&utm_medium=cpc&utm_campaign=cooling_hybrid",
+          "websiteJourney": "Home / Mattresses / Memory Foam / Memory Foam Hybrid",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Heavy Duty Mattress Prospecting",
+          "marketingSearchTerm": "best mattress for heavy people",
+          "landingPageUrl": "https://www.saatva.com/mattresses/saatva-hd?utm_source=google&utm_medium=cpc&utm_campaign=hd_prospecting",
+          "websiteJourney": "Home / Mattresses / Hybrid & Innerspring / Saatva HD",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Adjustable Firmness Prospecting",
+          "marketingSearchTerm": "adjustable firmness mattress",
+          "landingPageUrl": "https://www.saatva.com/mattresses/solaire?utm_source=google&utm_medium=cpc&utm_campaign=adjustable_firmness",
+          "websiteJourney": "Home / Mattresses / Adjustable Firmness / Solaire",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Made in the USA Craftsmanship",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.saatva.com/mattresses/saatva-classic?utm_source=instagram&utm_medium=paid_social&utm_campaign=made_in_usa",
+          "websiteJourney": "Home / Mattresses / Hybrid & Innerspring / Saatva Classic",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "365-Night Trial Retargeting",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.saatva.com/mattresses?utm_source=facebook&utm_medium=paid_social&utm_campaign=trial_retargeting",
+          "websiteJourney": "Home / Mattresses",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Sleep Sanctuary Lookalikes",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.saatva.com/furniture?utm_source=instagram&utm_medium=paid_social&utm_campaign=sleep_sanctuary_lal",
+          "websiteJourney": "Home / Furniture & Decor / Bed Frames / Santorini",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Zenhaven Flippable Latex",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.saatva.com/mattresses/zenhaven?utm_source=facebook&utm_medium=paid_social&utm_campaign=zenhaven_latex",
+          "websiteJourney": "Home / Mattresses / Natural Latex / Zenhaven",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Mattress Buying Guide",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.saatva.com/blog/mattress-buying-guide?utm_source=google&utm_medium=organic&utm_campaign=buying_guide",
+          "websiteJourney": "Home / Blog / Mattress Buying Guide",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Sleep Tips Blog Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.saatva.com/blog?utm_source=google&utm_medium=organic&utm_campaign=sleep_tips_hub",
+          "websiteJourney": "Home / Blog / Sleep Tips",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Viewing Room Locator SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.saatva.com/viewing-rooms?utm_source=google&utm_medium=organic&utm_campaign=viewing_room_locator",
+          "websiteJourney": "Home / Viewing Rooms",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Mattress Type Comparison",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.saatva.com/mattresses/compare?utm_source=google&utm_medium=organic&utm_campaign=type_comparison",
+          "websiteJourney": "Home / Mattresses / Comparison Tool",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Made in USA Non-Brand",
+          "marketingSearchTerm": "made in usa mattress",
+          "landingPageUrl": "https://www.saatva.com/why-saatva?utm_source=google&utm_medium=cpc&utm_campaign=made_in_usa_nonbrand",
+          "websiteJourney": "Home / Why Saatva",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Organic Sateen Sheets Promo",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.saatva.com/bedding/organic-sateen-sheet-set?utm_source=instagram&utm_medium=paid_social&utm_campaign=sateen_sheets",
+          "websiteJourney": "Home / Bedding / Sheets / Organic Sateen Sheet Set",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Adjustable Base Prospecting",
+          "marketingSearchTerm": "adjustable bed base",
+          "landingPageUrl": "https://www.saatva.com/furniture/adjustable-base-plus?utm_source=bing&utm_medium=cpc&utm_campaign=adjustable_base",
+          "websiteJourney": "Home / Furniture & Decor / Foundation & Adjustable Bases / Adjustable Base Plus",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "365 Night Trial SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.saatva.com/365-night-trial?utm_source=google&utm_medium=organic&utm_campaign=trial_seo",
+          "websiteJourney": "Home / 365-Night Trial",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Saatva)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "43,742"
+            },
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Purchase (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$21,060,966"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "6,999"
+            },
+            {
+              "label": "Order Status Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Delivery & Setup Call (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Warranty Support Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "48%"
+            },
+            {
+              "label": "Not Ready to Buy (Percent)",
+              "value": "14%"
+            },
+            {
+              "label": "Purchase (Percent)",
+              "value": "22%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sales Call (Count)",
+            "values": [
+              5218,
+              8472,
+              7916,
+              8033,
+              7104
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              2984,
+              4833,
+              4521,
+              4592,
+              4066
+            ]
+          },
+          {
+            "name": "Not Ready to Buy (Count)",
+            "values": [
+              872,
+              1411,
+              1318,
+              1339,
+              1184
+            ]
+          },
+          {
+            "name": "Purchase (Count)",
+            "values": [
+              1367,
+              2218,
+              2073,
+              2104,
+              1861
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43742,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "18,436",
+                "48%",
+                "15%",
+                "$6,738,412"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "9,214",
+                "52%",
+                "19%",
+                "$4,215,338"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "6,829",
+                "55%",
+                "22%",
+                "$3,584,221"
+              ]
+            },
+            {
+              "name": "Instagram",
+              "metrics": [
+                "5,347",
+                "58%",
+                "27%",
+                "$3,398,655"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "3,916",
+                "63%",
+                "33%",
+                "$3,124,340"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43742,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "16,842",
+                "49%",
+                "16%",
+                "$7,124,556"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "10,318",
+                "53%",
+                "20%",
+                "$4,538,221"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "7,529",
+                "56%",
+                "23%",
+                "$3,612,445"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "5,436",
+                "60%",
+                "28%",
+                "$3,205,118"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "3,617",
+                "64%",
+                "34%",
+                "$2,580,626"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 22262,
+          "rows": [
+            {
+              "name": "Saatva Branded Terms",
+              "metrics": [
+                "8,214",
+                "50%",
+                "17%",
+                "$3,054,221"
+              ]
+            },
+            {
+              "name": "Luxury Mattress Non-Brand Prospecting",
+              "metrics": [
+                "5,347",
+                "54%",
+                "21%",
+                "$2,458,332"
+              ]
+            },
+            {
+              "name": "Best Mattress for Back Pain",
+              "metrics": [
+                "3,918",
+                "57%",
+                "24%",
+                "$2,057,441"
+              ]
+            },
+            {
+              "name": "Labor Day Sale Up to $625 Off",
+              "metrics": [
+                "2,847",
+                "61%",
+                "29%",
+                "$1,808,225"
+              ]
+            },
+            {
+              "name": "365-Night Trial Retargeting",
+              "metrics": [
+                "1,936",
+                "65%",
+                "35%",
+                "$1,483,662"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 15853,
+          "rows": [
+            {
+              "name": "luxury mattress",
+              "metrics": [
+                "5,428",
+                "51%",
+                "18%",
+                "$2,138,442"
+              ]
+            },
+            {
+              "name": "best mattress for back pain",
+              "metrics": [
+                "3,847",
+                "55%",
+                "22%",
+                "$1,851,663"
+              ]
+            },
+            {
+              "name": "saatva classic review",
+              "metrics": [
+                "2,916",
+                "58%",
+                "25%",
+                "$1,595,882"
+              ]
+            },
+            {
+              "name": "organic latex mattress",
+              "metrics": [
+                "2,134",
+                "62%",
+                "29%",
+                "$1,355,221"
+              ]
+            },
+            {
+              "name": "mattress with 365 night trial",
+              "metrics": [
+                "1,528",
+                "66%",
+                "34%",
+                "$1,138,662"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Viewing Room Visit Set (Industry) (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Mattresses",
+              "metrics": [
+                "18,432",
+                "39%",
+                "17%",
+                "$7,318,455"
+              ]
+            },
+            {
+              "name": "Bedding",
+              "metrics": [
+                "9,214",
+                "43%",
+                "21%",
+                "$3,742,118"
+              ]
+            },
+            {
+              "name": "Furniture & Decor",
+              "metrics": [
+                "7,865",
+                "45%",
+                "25%",
+                "$4,655,290"
+              ]
+            },
+            {
+              "name": "Bundles",
+              "metrics": [
+                "5,318",
+                "47%",
+                "32%",
+                "$3,486,112"
+              ]
+            },
+            {
+              "name": "Adjustable Bases & Foundations",
+              "metrics": [
+                "2,913",
+                "49%",
+                "34%",
+                "$1,858,991"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43742,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "13,847",
+                "40%",
+                "17%",
+                "$5,284,116"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "11,238",
+                "42%",
+                "21%",
+                "$5,208,462"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "8,642",
+                "44%",
+                "23%",
+                "$4,371,720"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "6,415",
+                "45%",
+                "27%",
+                "$3,758,940"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "3,600",
+                "47%",
+                "31%",
+                "$2,437,728"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Purchase (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Mattresses",
+            "values": [
+              512,
+              748,
+              703,
+              667,
+              465
+            ]
+          },
+          {
+            "name": "Bedding",
+            "values": [
+              302,
+              456,
+              441,
+              402,
+              297
+            ]
+          },
+          {
+            "name": "Furniture & Decor",
+            "values": [
+              311,
+              462,
+              448,
+              410,
+              303
+            ]
+          },
+          {
+            "name": "Bundles",
+            "values": [
+              274,
+              408,
+              395,
+              362,
+              265
+            ]
+          },
+          {
+            "name": "Adjustable Bases & Foundations",
+            "values": [
+              158,
+              238,
+              231,
+              209,
+              156
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 43,742 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Priscilla Hwang called to compare the Saatva Classic against the Loom hybrid before buying a king. Oscar walked her through the dual-coil support and Euro pillow-top, then booked her a Viewing Room visit to feel the firmness in person. She left delighted and confirmed the appointment time.",
+          "date": "Feb 4, 2:42 PM",
+          "agent": "Oscar",
+          "duration": "2m 55s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Marcus Delaney wanted a cooling option and asked about the Latex Hybrid with organic natural latex over pocketed coils. Lila explained the 365-night home trial and scheduled a Viewing Room visit near his home. He was thrilled with the setup and free delivery details.",
+          "date": "Mar 12, 10:18 AM",
+          "agent": "Lila",
+          "duration": "2m 20s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Gloria Simmons called for the delivery status of her Saatva Adjustable Base Plus and asked about pairing it with her mattress. Rosey confirmed the shipping window and reviewed the massage and lighting features on the adjustable base. No new visit was booked since this was an existing order.",
+          "date": "Apr 7, 4:05 PM",
+          "agent": "Rosey",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "First-time caller Daniel Whitfield reached out to plan a Saatva Classic purchase and wanted to try it before deciding. Mary collected his name, email, and preferred location, then walked him through sizing and financing. She booked a new Viewing Room visit and confirmed his contact details for the follow-up.",
+          "date": "Jan 21, 11:37 AM",
+          "agent": "Mary",
+          "duration": "3m 10s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Angela Ruiz asked about the flippable Zenhaven and its two firmness options in natural latex. Lee described the dual-sided design and cooling benefits, then scheduled a Viewing Room visit so she could test both sides. She was happy to confirm the time.",
+          "date": "May 9, 1:22 PM",
+          "agent": "Lee",
+          "duration": "2m 34s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Todd Barrera called with a warranty question about a sagging edge on his older Saatva HD. Mike explained the lifetime warranty coverage and started an inspection request. Todd remained on his existing order, so no visit was scheduled.",
+          "date": "Jun 15, 9:44 AM",
+          "agent": "Mike",
+          "duration": "2m 02s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Nina Caldwell wanted to add the Organic Sateen Sheet Set and see fabric colors in person. Jennifer described the GOTS-certified cotton sateen and deep-pocket fitted sheet, then booked a Viewing Room visit. Nina confirmed the appointment before hanging up.",
+          "date": "Jul 2, 3:51 PM",
+          "agent": "Jennifer",
+          "duration": "1m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Robert Alvarez was frustrated that his delivery window shifted twice and wanted a firm date. Sue apologized, tracked the shipment, and escalated the delivery to the logistics team. The issue was open at the end of the call and no visit was booked.",
+          "date": "Aug 18, 12:09 PM",
+          "agent": "Sue",
+          "duration": "2m 41s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Karen Foster asked whether an adjustable base would fit her current bed frame before upgrading. Rose confirmed compatibility and booked a Viewing Room visit to demo the articulation and massage settings. Karen agreed to the scheduled time.",
+          "date": "Sep 5, 10:55 AM",
+          "agent": "Rose",
+          "duration": "2m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 25,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Victor Long disputed an Affirm financing charge that did not match his quoted total. Oscar reviewed the order and opened a billing correction case. Victor stayed unhappy and no new visit was scheduled.",
+          "date": "Sep 22, 5:14 PM",
+          "agent": "Oscar",
+          "duration": "1m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Denise Park called about a warranty claim for a defective seam on her mattress topper. Lila collected photos and filed the warranty request, but the resolution timeline upset her. She kept her existing order and did not book a visit.",
+          "date": "Oct 3, 8:37 AM",
+          "agent": "Lila",
+          "duration": "2m 27s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 34,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Sofia Grant wanted to feel the Saatva Latex Pillow and matching sheet options before ordering. Lee described the shredded latex core and organic cotton cover, then booked a Viewing Room visit despite some hesitation over pricing. She confirmed the appointment.",
+          "date": "Jan 29, 6:02 PM",
+          "agent": "Lee",
+          "duration": "1m 36s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Henry Osei called to cancel his Contour5 order after finding a longer delivery estimate than expected. Mike processed the cancellation and confirmed the refund window. Henry declined a Viewing Room visit and ended the call annoyed.",
+          "date": "Feb 26, 3:28 PM",
+          "agent": "Mike",
+          "duration": "1m 19s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 35,
+          "summary": "Beatrice Nolan called after hours to complain about a missed setup crew and left a voicemail. The message went unanswered by an agent and rolled to the queue. No visit was booked and the delivery complaint remained open.",
+          "date": "Mar 30, 7:48 PM",
+          "agent": "No Agent",
+          "duration": "0m 46s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Frank Delgado was upset that his warranty claim on a squeaky adjustable base was still pending. Sue reviewed the case notes and re-escalated it, but could not give a same-day fix. Frank stayed dissatisfied and did not schedule a visit.",
+          "date": "Apr 14, 2:03 PM",
+          "agent": "Sue",
+          "duration": "2m 08s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "saatva classic",
+        "latex",
+        "adjustable base",
+        "delivery",
+        "warranty",
+        "sheet"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 1:47 PM",
+      "duration": "2m 18s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Mattress Needs and Sleep Pain Points",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain 365 Night Trial and Free Delivery",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Viewing Room Visit Date and Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Next Steps",
+          "points": "0/10",
+          "status": "unmet"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller expressed interest in luxury mattress",
+        "Mentioned back pain concerns",
+        "Caller is a new customer",
+        "Confirmed ZIP code 94102",
+        "Scheduled viewing room appointment",
+        "Caller asked about trial period",
+        "Confirmed phone contact method",
+        "Agent explained free delivery and setup",
+        "Caller confirmed availability for visit",
+        "Agent used customer's name repeatedly",
+        "Caller ready to book immediately",
+        "Agent offered specific time slot",
+        "Caller acknowledged viewing room location"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "No reference to warranty information",
+        "Trial duration details not fully explained",
+        "Financing options not mentioned",
+        "Firmness preference not established",
+        "Product comparison not discussed",
+        "Current mattress pain points minimized",
+        "Sleep position not identified",
+        "Mattress size preference not confirmed",
+        "Follow up communication plan not stated",
+        "Bedding bundle options not offered",
+        "No brand education provided",
+        "No mention of organic or eco-materials",
+        "Return process not reviewed",
+        "Pillow or topper recommendations absent",
+        "Delivery timeframe not discussed"
+      ],
+      "naSignals": [
+        "Order number not applicable",
+        "Existing mattress return logistics N/A",
+        "Previous purchase history N/A",
+        "Subscription service N/A",
+        "Account already created N/A",
+        "Payment plan default N/A",
+        "Shipping address N/A",
+        "Product warranty claim N/A"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes, the customer has chronic lower back pain and is seeking a mattress that provides better support and relief. They mentioned waking up sore and looking for a luxury option that is made in the USA."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects to visit the Saatva Viewing Room in person to test mattresses before purchasing, and wants to understand the 365 night trial guarantee and free delivery service."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent could have captured the customer's email address and provided more detail about which mattress models address back pain specifically, such as the Saatva Rx, to prep the customer before their viewing room visit."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Saatva. This is Marcus speaking. How can I help you find your perfect mattress today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus, yes, I am interested in learning more about your mattresses. I have been having a lot of back pain lately and I think a new mattress might help."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:45",
+          "text": "I am sorry to hear you have been experiencing back pain. You called the right place. We specialize in luxury handcrafted mattresses and many of our customers find relief with Saatva. Can I get your name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:02",
+          "text": "Sure, it is Jennifer Martinez."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:08",
+          "text": "Thank you Jennifer. I have you as Jennifer Martinez. And where are you calling from today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:18",
+          "text": "I am in San Francisco. My ZIP code is 94102."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:25",
+          "text": "Perfect, San Francisco. We do have a Viewing Room in your area where you can come in and test out our mattresses in person. That is one of the best ways to find the right mattress for you. May I have your phone number to confirm your appointment?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:42",
+          "text": "Of course. It is ****"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:48",
+          "text": "Thank you Jennifer. Now, all of our mattresses are made fresh to order in the USA, and they come with a 365 night home trial. That means you can try it for a full year and if it is not right for you, we will pick it up for free and you get your money back."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:08",
+          "text": "That sounds amazing. I would love to visit the Viewing Room and try some out. When can I come in?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:18",
+          "text": "Excellent. Let me get you scheduled. We have availability this Saturday at 10 AM or Tuesday at 2 PM. Which works better for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:32",
+          "text": "Saturday at 10 AM works perfectly for me."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:39",
+          "text": "Great Jennifer. I have you scheduled for this Saturday at 10 AM at our San Francisco Viewing Room. Our team will be ready to show you our collection and help you find the perfect mattress for your back pain."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:58",
+          "text": "Perfect. Thank you so much Marcus. I look forward to visiting."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:05",
+          "text": "You are very welcome Jennifer. We look forward to seeing you this Saturday. Thank you for choosing Saatva, and have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Martinez, a new customer from San Francisco with chronic back pain, called to inquire about Saatva mattresses. Marcus Bell successfully captured her name, ZIP code, and phone number, then scheduled her for a viewing room appointment on Saturday at 10 AM. Marcus explained the 365 night trial and free delivery benefits. However, the agent did not capture Jennifer's email address or provide specific guidance about mattress models that address back pain, such as the Saatva Rx, which could have better prepared her for her visit.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great work on structuring this intake call and getting Jennifer scheduled efficiently. You nailed the greeting, qualification on her back pain concern, and the close. For next time, grab the email address before you hang up so we can send her pre-visit details and product education. Also, once you confirm she has back pain, mention the Saatva Rx specifically as a model to test on her visit. That personalization really helps customers feel heard and sets them up for a better showroom experience."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "43,742"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$481.48"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$21,060,966"
+            }
+          ]
+        },
+        {
+          "title": "NEW CUSTOMER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Customers (Count)",
+              "value": "27,841"
+            },
+            {
+              "label": "Caller Type: New Customers (Percent)",
+              "value": "64%"
+            },
+            {
+              "label": "Viewing Room Visit: Scheduled (Count)",
+              "value": "18,372"
+            },
+            {
+              "label": "Viewing Room Visit: Scheduled (Percent)",
+              "value": "42%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CUSTOMERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Customer (Count)",
+              "value": "15,901"
+            },
+            {
+              "label": "Caller Type: Existing Customer (Percent)",
+              "value": "36%"
+            },
+            {
+              "label": "Viewing Room Visit: Canceled (Percent)",
+              "value": "6%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Viewing Room Visits)",
+          "chart": {
+            "legend": "Viewing Room Visit: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Affiliate & Referral",
+                "value": 63,
+                "display": "63%"
+              },
+              {
+                "name": "Email & CRM",
+                "value": 51,
+                "display": "51%"
+              },
+              {
+                "name": "Paid Social",
+                "value": 44,
+                "display": "44%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 39,
+                "display": "39%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Viewing Room Visits)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Viewing Room Visit: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "15,284",
+                  "34%",
+                  "$6,984,215"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "11,637",
+                  "39%",
+                  "$5,521,480"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "7,952",
+                  "44%",
+                  "$4,012,330"
+                ]
+              },
+              {
+                "cells": [
+                  "Email & CRM",
+                  "5,418",
+                  "51%",
+                  "$2,743,905"
+                ]
+              },
+              {
+                "cells": [
+                  "Affiliate & Referral",
+                  "3,451",
+                  "63%",
+                  "$1,799,036"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 18000,
+            "axisTicks": [
+              0,
+              3000,
+              6000,
+              9000,
+              12000,
+              15000,
+              18000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "cpc",
+                "value": 16742,
+                "display": "16,742"
+              },
+              {
+                "name": "organic",
+                "value": 12318,
+                "display": "12,318"
+              },
+              {
+                "name": "social",
+                "value": 7214,
+                "display": "7,214"
+              },
+              {
+                "name": "email",
+                "value": 4853,
+                "display": "4,853"
+              },
+              {
+                "name": "referral",
+                "value": 2615,
+                "display": "2,615"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Viewing Room Visits)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Viewing Room Visit: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "cpc",
+                  "16,742",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic",
+                  "12,318",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "social",
+                  "7,214",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "4,853",
+                  "52%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "2,615",
+                  "61%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Saatva Branded Terms",
+                "value": 9842,
+                "display": "9,842"
+              },
+              {
+                "name": "New Year Sleep Sale",
+                "value": 6531,
+                "display": "6,531"
+              },
+              {
+                "name": "Best Mattress for Back Pain",
+                "value": 4918,
+                "display": "4,918"
+              },
+              {
+                "name": "Luxury Mattress Non-Brand Prospecting",
+                "value": 3742,
+                "display": "3,742"
+              },
+              {
+                "name": "365-Night Trial Retargeting",
+                "value": 2415,
+                "display": "2,415"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Viewing Room Visits)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Viewing Room Visit: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Saatva Branded Terms",
+                  "9,842",
+                  "35%",
+                  "$4,512,880"
+                ]
+              },
+              {
+                "cells": [
+                  "New Year Sleep Sale",
+                  "6,531",
+                  "41%",
+                  "$3,102,450"
+                ]
+              },
+              {
+                "cells": [
+                  "Best Mattress for Back Pain",
+                  "4,918",
+                  "47%",
+                  "$2,341,760"
+                ]
+              },
+              {
+                "cells": [
+                  "365-Night Trial Retargeting",
+                  "2,415",
+                  "58%",
+                  "$1,184,215"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 5000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "luxury mattress",
+                "value": 4218,
+                "display": "4,218"
+              },
+              {
+                "name": "best mattress for back pain",
+                "value": 3542,
+                "display": "3,542"
+              },
+              {
+                "name": "saatva classic review",
+                "value": 2915,
+                "display": "2,915"
+              },
+              {
+                "name": "organic latex mattress",
+                "value": 2238,
+                "display": "2,238"
+              },
+              {
+                "name": "cooling mattress hybrid",
+                "value": 1684,
+                "display": "1,684"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Viewing Room Visits)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Viewing Room Visit: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "luxury mattress",
+                  "36%"
+                ]
+              },
+              {
+                "cells": [
+                  "best mattress for back pain",
+                  "43%"
+                ]
+              },
+              {
+                "cells": [
+                  "saatva classic review",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "organic latex mattress",
+                  "60%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Customers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Viewing Room Visit: Scheduled (Percent)",
+          "Caller Type: New Customers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Mattresses",
+              "24,516",
+              "38%",
+              "68%"
+            ]
+          },
+          {
+            "cells": [
+              "Furniture & Decor",
+              "9,842",
+              "44%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Bedding",
+              "6,318",
+              "49%",
+              "57%"
+            ]
+          },
+          {
+            "cells": [
+              "Bundles",
+              "3,066",
+              "57%",
+              "52%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Viewing Room Visit: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Saatva Viewing Room New York",
+              "13,842",
+              "1,284",
+              "4%",
+              "37%"
+            ]
+          },
+          {
+            "cells": [
+              "Saatva Viewing Room Los Angeles",
+              "11,517",
+              "918",
+              "3%",
+              "41%"
+            ]
+          },
+          {
+            "cells": [
+              "Saatva Viewing Room Chicago",
+              "10,236",
+              "752",
+              "5%",
+              "45%"
+            ]
+          },
+          {
+            "cells": [
+              "Saatva Viewing Room Austin",
+              "8,147",
+              "545",
+              "3%",
+              "53%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1412,
+              1538,
+              1485,
+              1402,
+              1381
+            ]
+          },
+          {
+            "name": "Comparing Other Brands",
+            "values": [
+              1184,
+              1265,
+              1248,
+              1242,
+              1203
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              942,
+              1018,
+              985,
+              972,
+              936
+            ]
+          },
+          {
+            "name": "Needs Partner Approval",
+            "values": [
+              762,
+              815,
+              798,
+              785,
+              758
+            ]
+          },
+          {
+            "name": "Awaiting Financing Approval",
+            "values": [
+              628,
+              678,
+              662,
+              651,
+              620
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "17,497"
+          },
+          {
+            "label": "Viewing Room Visit Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Purchase (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$12,004,751"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$487,293"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$562,841"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$641,376"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$521,847"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$691,224"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$750,518"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Viewing Room Visit Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20418,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "4,283",
+                "58%",
+                "31%",
+                "$2,876,541"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "3,847",
+                "54%",
+                "33%",
+                "$2,187,384"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "3,156",
+                "55%",
+                "34%",
+                "$2,041,968"
+              ]
+            },
+            {
+              "name": "Direct Traffic",
+              "metrics": [
+                "2,891",
+                "57%",
+                "32%",
+                "$1,642,752"
+              ]
+            },
+            {
+              "name": "Email & CRM",
+              "metrics": [
+                "2,241",
+                "61%",
+                "37%",
+                "$1,728,408"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Viewing Room Visit Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 19847,
+          "rows": [
+            {
+              "name": "Google Search",
+              "metrics": [
+                "5,126",
+                "56%",
+                "30%",
+                "$2,784,341"
+              ]
+            },
+            {
+              "name": "Instagram & Facebook",
+              "metrics": [
+                "3,742",
+                "54%",
+                "32%",
+                "$2,128,957"
+              ]
+            },
+            {
+              "name": "Website Chat",
+              "metrics": [
+                "2,684",
+                "59%",
+                "35%",
+                "$1,987,246"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "2,415",
+                "58%",
+                "34%",
+                "$1,673,483"
+              ]
+            },
+            {
+              "name": "Organic Social",
+              "metrics": [
+                "1,847",
+                "62%",
+                "37%",
+                "$1,447,682"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Viewing Room Visit Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20351,
+          "rows": [
+            {
+              "name": "Luxury Mattress Non-Brand Prospecting",
+              "metrics": [
+                "3,248",
+                "52%",
+                "29%",
+                "$1,862,473"
+              ]
+            },
+            {
+              "name": "Best Mattress for Back Pain",
+              "metrics": [
+                "2,914",
+                "55%",
+                "32%",
+                "$1,984,627"
+              ]
+            },
+            {
+              "name": "365-Night Trial Retargeting",
+              "metrics": [
+                "2,537",
+                "59%",
+                "35%",
+                "$1,774,142"
+              ]
+            },
+            {
+              "name": "Labor Day Sale Up to $625 Off",
+              "metrics": [
+                "2,186",
+                "61%",
+                "36%",
+                "$1,651,384"
+              ]
+            },
+            {
+              "name": "Made in the USA Craftsmanship",
+              "metrics": [
+                "1,847",
+                "63%",
+                "38%",
+                "$1,476,821"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Viewing Room Visit Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20184,
+          "rows": [
+            {
+              "name": "luxury mattress",
+              "metrics": [
+                "2,847",
+                "51%",
+                "28%",
+                "$1,523,618"
+              ]
+            },
+            {
+              "name": "best mattress for back pain",
+              "metrics": [
+                "2,256",
+                "56%",
+                "33%",
+                "$1,684,752"
+              ]
+            },
+            {
+              "name": "cooling mattress hybrid",
+              "metrics": [
+                "1,834",
+                "59%",
+                "35%",
+                "$1,421,867"
+              ]
+            },
+            {
+              "name": "organic latex mattress",
+              "metrics": [
+                "1,563",
+                "61%",
+                "37%",
+                "$1,286,431"
+              ]
+            },
+            {
+              "name": "Saatva Classic review",
+              "metrics": [
+                "1,291",
+                "64%",
+                "39%",
+                "$1,087,248"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Viewing Room Visit Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Mattresses",
+              "metrics": [
+                "7,348",
+                "57%",
+                "34%",
+                "$5,127,384"
+              ]
+            },
+            {
+              "name": "Bundles",
+              "metrics": [
+                "4,127",
+                "58%",
+                "35%",
+                "$2,891,456"
+              ]
+            },
+            {
+              "name": "Bedding",
+              "metrics": [
+                "3,284",
+                "54%",
+                "31%",
+                "$1,921,483"
+              ]
+            },
+            {
+              "name": "Furniture & Decor",
+              "metrics": [
+                "2,156",
+                "55%",
+                "32%",
+                "$1,287,621"
+              ]
+            },
+            {
+              "name": "Adjustable Bases",
+              "metrics": [
+                "582",
+                "59%",
+                "36%",
+                "$376,807"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Purchase (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Mattresses",
+            "values": [
+              1247,
+              1316,
+              1408,
+              1294,
+              1232
+            ]
+          },
+          {
+            "name": "Bundles",
+            "values": [
+              723,
+              768,
+              821,
+              742,
+              681
+            ]
+          },
+          {
+            "name": "Bedding",
+            "values": [
+              518,
+              574,
+              652,
+              486,
+              419
+            ]
+          },
+          {
+            "name": "Furniture & Decor",
+            "values": [
+              372,
+              418,
+              486,
+              381,
+              327
+            ]
+          },
+          {
+            "name": "Adjustable Bases",
+            "values": [
+              127,
+              148,
+              172,
+              94,
+              71
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Viewing Room Visit Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Viewing Room Visit Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Viewing Room Visit Scheduled (Count)",
+            "value": "12,247"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$18,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "842"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Viewing Room Visit Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Viewing Room Visit Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Viewing Room Visit Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Viewing Room Visit Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Viewing Room Visit Scheduled",
+            "values": [
+              73,
+              76,
+              71,
+              79,
+              74,
+              77,
+              72,
+              75,
+              78,
+              76,
+              73,
+              71,
+              79,
+              75,
+              76,
+              74,
+              77,
+              72,
+              75,
+              79,
+              73,
+              76,
+              74,
+              71,
+              78,
+              75,
+              79,
+              77,
+              74,
+              176,
+              179,
+              171,
+              184,
+              178,
+              181,
+              175,
+              182,
+              179,
+              173,
+              180,
+              176,
+              178,
+              182,
+              177,
+              181,
+              174,
+              179,
+              183,
+              177
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,193"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "687"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "58%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "664"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Viewing Room Visit Scheduled (Count)",
+        "xLabels": [
+          "01/15",
+          "01/16",
+          "01/17",
+          "01/18",
+          "01/19",
+          "01/20"
+        ],
+        "series": [
+          {
+            "name": "Mattress Firmness Selection",
+            "values": [
+              11,
+              9,
+              8,
+              12,
+              10,
+              8
+            ]
+          },
+          {
+            "name": "Cooling Technology Features",
+            "values": [
+              8,
+              11,
+              9,
+              7,
+              10,
+              12
+            ]
+          },
+          {
+            "name": "Organic Material Certifications",
+            "values": [
+              6,
+              8,
+              11,
+              9,
+              7,
+              9
+            ]
+          },
+          {
+            "name": "Trial Period and Returns",
+            "values": [
+              7,
+              10,
+              6,
+              11,
+              9,
+              10
+            ]
+          },
+          {
+            "name": "Adjustable Base Compatibility",
+            "values": [
+              9,
+              6,
+              10,
+              8,
+              11,
+              7
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "40,243"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "29,308"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Viewing Room Visit Scheduled (Count)",
+            "value": "18,372"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$21,060,966"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Jessica Rivera",
+              "value": 203,
+              "display": "203"
+            },
+            {
+              "name": "David Thornton",
+              "value": 165,
+              "display": "165"
+            },
+            {
+              "name": "Amanda Walsh",
+              "value": 224,
+              "display": "224"
+            },
+            {
+              "name": "Kyle Patterson",
+              "value": 198,
+              "display": "198"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Viewing Room Visit Scheduled (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sophia Reeves",
+            "values": [
+              182,
+              206,
+              231,
+              267,
+              289
+            ]
+          },
+          {
+            "name": "James Mitchell",
+            "values": [
+              175,
+              198,
+              219,
+              251,
+              276
+            ]
+          },
+          {
+            "name": "Priya Desai",
+            "values": [
+              168,
+              189,
+              215,
+              243,
+              268
+            ]
+          },
+          {
+            "name": "Christopher Lee",
+            "values": [
+              154,
+              176,
+              201,
+              238,
+              264
+            ]
+          },
+          {
+            "name": "Elena Santos",
+            "values": [
+              139,
+              163,
+              189,
+              224,
+              251
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Jessica Rivera",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "David Thornton",
+              "value": 52.6,
+              "display": "52.6%"
+            },
+            {
+              "name": "Amanda Walsh",
+              "value": 58.1,
+              "display": "58.1%"
+            },
+            {
+              "name": "Kyle Patterson",
+              "value": 55.4,
+              "display": "55.4%"
+            },
+            {
+              "name": "Brandon Foster",
+              "value": 57.3,
+              "display": "57.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Viewing Room Visit Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "54.2%",
+                "28%",
+                "$447,891",
+                "1,387"
+              ]
+            },
+            {
+              "cells": [
+                "Jessica Rivera",
+                "56.8%",
+                "30%",
+                "$477,562",
+                "1,451"
+              ]
+            },
+            {
+              "cells": [
+                "David Thornton",
+                "52.6%",
+                "26%",
+                "$391,108",
+                "1,298"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Walsh",
+                "58.1%",
+                "32%",
+                "$529,744",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Kyle Patterson",
+                "55.4%",
+                "29%",
+                "$459,673",
+                "1,416"
+              ]
+            },
+            {
+              "cells": [
+                "Brandon Foster",
+                "57.3%",
+                "31%",
+                "$503,427",
+                "1,489"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sophia Reeves",
+              "value": 92.7,
+              "display": "92.7%"
+            },
+            {
+              "name": "James Mitchell",
+              "value": 89.4,
+              "display": "89.4%"
+            },
+            {
+              "name": "Priya Desai",
+              "value": 91.6,
+              "display": "91.6%"
+            },
+            {
+              "name": "Christopher Lee",
+              "value": 88.2,
+              "display": "88.2%"
+            },
+            {
+              "name": "Elena Santos",
+              "value": 90.3,
+              "display": "90.3%"
+            },
+            {
+              "name": "Victoria Park",
+              "value": 87.9,
+              "display": "87.9%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Viewing Room Visit Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sophia Reeves",
+                "92.7%",
+                "65%",
+                "$1,175,185",
+                "1,547"
+              ]
+            },
+            {
+              "cells": [
+                "James Mitchell",
+                "89.4%",
+                "61%",
+                "$1,023,556",
+                "1,423"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Desai",
+                "91.6%",
+                "63%",
+                "$1,099,841",
+                "1,508"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Lee",
+                "88.2%",
+                "59%",
+                "$962,704",
+                "1,369"
+              ]
+            },
+            {
+              "cells": [
+                "Elena Santos",
+                "90.3%",
+                "62%",
+                "$1,041,892",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Victoria Park",
+                "87.9%",
+                "58%",
+                "$921,638",
+                "1,412}],"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Viewing Room Visit Scheduled (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Viewing Room Visit Scheduled (Count)",
+        "rightMax": 900,
+        "rightTicks": [
+          0,
+          225,
+          450,
+          675,
+          900
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 681
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 653
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 608
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 580
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 505
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 530
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 586
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 609
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 679
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 658
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 593
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 573
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 510
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 526
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 600
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 618
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 672
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 662
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 581
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 562
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 518
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 523
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 610
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 630
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 664
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 663
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 572
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 549
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 527
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 524
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 606
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1000000,
+        "rightTicks": [
+          0,
+          333333.3333333333,
+          666666.6666666666,
+          1000000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 780711
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 748276
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 696798
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 664879
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 578900
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 607540
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 671131
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 697586
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 777812
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 754137
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 679225
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 656485
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 584161
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 602132
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 687110
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 708047
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 770570
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 758578
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 665191
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 644092
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 592929
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 599145
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 698953
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 722122
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 760780
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 759674
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 655673
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 628685
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 603211
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 600302
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 706131
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "43,742"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "5:47"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,499"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,625"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "83%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "83%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Chen",
+                "412",
+                "89%",
+                "85%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Johnson",
+                "387",
+                "84%",
+                "82%",
+                "81%"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Wright",
+                "401",
+                "85%",
+                "82%",
+                "84%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "43,742 calls",
+      "pagerLabel": "1 of 4,374",
+      "calls": [
+        {
+          "time": "1/5/26 9:14 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/7/26 10:41 am",
+          "id": "A2C9-4E1B77DA9032"
+        },
+        {
+          "time": "1/9/26 11:52 am",
+          "id": "3D14-9BCE0176FF21"
+        },
+        {
+          "time": "1/13/26 12:27 pm",
+          "id": "B8E0-6127AC30F5D4"
+        },
+        {
+          "time": "1/15/26 1:03 pm",
+          "id": "7F62-D40915BE2277"
+        },
+        {
+          "time": "1/19/26 1:38 pm",
+          "id": "C914-2A7E88B10346"
+        },
+        {
+          "time": "1/21/26 2:16 pm",
+          "id": "5A3D-EF0296147BB8"
+        },
+        {
+          "time": "1/23/26 3:09 pm",
+          "id": "E271-73C40A9D5162"
+        },
+        {
+          "time": "1/27/26 4:22 pm",
+          "id": "9B48-15DE60F2A7C3"
+        },
+        {
+          "time": "1/29/26 5:11 pm",
+          "id": "D6F3-8021BC49E0A5"
+        }
+      ],
+      "duration": "2:38",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling Saatva, this is Danielle. How can I help you sleep better today?",
+          "highlights": [
+            "Thank you for calling Saatva",
+            "How can I help you sleep better today?"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Danielle. This is my first time reaching out. I've been having a lot of lower back pain and I'm looking for a new mattress.",
+          "highlights": [
+            "first time reaching out",
+            "lower back pain"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "I'm sorry to hear about the back pain, we can definitely point you in the right direction. May I get your name to start?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:24",
+          "text": "Sure, it's Marcus Reyes.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:28",
+          "text": "Thanks Marcus. Do you know if you sleep on your back, side, or stomach, and do you share the bed?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:35",
+          "text": "Mostly on my back, and my wife sleeps on her side. She runs pretty warm at night too.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:43",
+          "text": "Got it. For chronic back pain I'd point you to the Saatva Rx, it's engineered specifically for that. For the cooling side, the Latex Hybrid sleeps very temperature-neutral.",
+          "highlights": [
+            "Saatva Rx",
+            "Latex Hybrid"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:54",
+          "text": "The Rx sounds interesting, but honestly what does that one run? I want to keep this manageable.",
+          "highlights": [
+            "what does that one run?",
+            "keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:02",
+          "text": "Completely understand. The Rx is on sale right now starting at $1,724 for a queen, and we offer Affirm financing so you can spread it out monthly. There's also a Labor Day style promotion running this month.",
+          "highlights": [
+            "on sale right now",
+            "Affirm financing"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:13",
+          "text": "Okay. I'll be honest, I've also been looking at Purple and one of the local mattress warehouses down the road, so I'm comparing a few before I decide.",
+          "highlights": [
+            "looking at Purple",
+            "comparing a few"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:22",
+          "text": "That's smart, and I'd encourage the comparison. What sets us apart is the 365-night home trial, free white glove delivery and setup, plus a lifetime warranty. Most of those competitors give you around 100 nights.",
+          "highlights": [
+            "365-night home trial",
+            "lifetime warranty"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:33",
+          "text": "That trial is reassuring. One thing though, I don't want to feel locked into anything if it doesn't work out for us.",
+          "highlights": [
+            "don't want to feel locked into anything"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:41",
+          "text": "No lock-in at all, Marcus. If it isn't right within the 365 nights, we arrange a free pickup and refund. You truly get a full year to decide.",
+          "highlights": [
+            "No lock-in at all",
+            "free pickup and refund"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:50",
+          "text": "That's good to hear. It'd help to actually feel the difference between the Rx and the Latex Hybrid before we spend that much.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:58",
+          "text": "Absolutely. We have a Viewing Room where you and your wife can lie on both models side by side. Would you like me to schedule a Viewing Room visit?",
+          "highlights": [
+            "Viewing Room",
+            "schedule a Viewing Room visit"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:07",
+          "text": "Yes, let's do that. I'd need to check with my wife on timing, but Thursday morning could work.",
+          "highlights": [
+            "check with my wife",
+            "Thursday morning"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:14",
+          "text": "Perfect. I have Thursday at 10 AM available. I'll put you and your wife down for the Rx and Latex Hybrid demo.",
+          "highlights": [
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:21",
+          "text": "Great, book it for 10.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:25",
+          "text": "Done. What's the best email and mobile number to send your confirmation and directions?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "2:30",
+          "text": "It's marcus.reyes@email.com, and my cell is 555-0173.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:34",
+          "text": "All set, Marcus. Your Viewing Room visit is booked for Thursday at 10 AM. Thank you for calling Saatva and we'll see you both then. Sleep well!",
+          "highlights": [
+            "Viewing Room visit is booked",
+            "Thank you for calling Saatva"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Customer",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Viewing Room Visit: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Back Pain Relief Intent",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Cooling Mattress Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Financing Inquiry (Affirm)",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Marcus Reyes, a new customer, called about chronic lower back pain and the need for a mattress that also sleeps cool for his side-sleeping wife. Agent Danielle recommended the Saatva Rx for back support and the Latex Hybrid for temperature regulation, addressing his budget with sale pricing and Affirm financing, easing his lock-in worry with the 365-night trial, and responding to his competitor comparison with Saatva's white glove delivery and lifetime warranty. She scheduled a Viewing Room visit so he and his wife could try both models. Contact details were captured for confirmation.",
+        "keyPoints": [
+          "New customer, first time contacting Saatva",
+          "Needs back pain relief plus a cooling option for his wife",
+          "Recommended Saatva Rx and Saatva Latex Hybrid",
+          "Handled budget, competitor, and lock-in concerns",
+          "Viewing Room visit booked for Thursday 10 AM",
+          "Captured email and mobile number for confirmation"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Viewing Room Visit booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "27,557 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,756",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for texting Saatva. I'm here to help you find the perfect mattress. Are you shopping for yourself or for a household member?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "For myself. I've been having back pain issues for a few years now"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "I'm sorry to hear that. We have several customers with similar concerns who've found relief with our mattresses. Have you tried a memory foam mattress before, or would this be your first time?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "Never tried memory foam actually. Always had a regular spring mattress"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Memory foam can be excellent for back pain support. We have the Saatva Rx, which is engineered specifically for chronic and severe back pain, and it's on sale right now. Does that sound like something you'd want to learn more about?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Yeah that sounds interesting. How much does it cost?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "For a queen size, the Saatva Rx is normally $3,248 but it's currently on sale for $2,898. Plus we offer a 365-night home trial, free delivery and setup, and free removal of your old mattress. What's your zip code so I can check delivery availability in your area?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "94102 in San Francisco"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Perfect. San Francisco is definitely in our delivery zone. I'd love to schedule you for a Viewing Room visit where you can try different mattresses in person, including the Saatva Rx. We have a location in downtown SF. Does this Saturday at 2 PM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "Saturday at 2 works great for me"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Excellent. I've scheduled your Viewing Room visit for Saturday March 15 at 2 PM at our San Francisco location. You'll receive a confirmation text shortly. Our team will be ready to help you try the Saatva Rx and answer any questions. See you then."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Great thanks so much"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "You're welcome. If you have any questions before your visit, just reply here or call us at 877-936-2933. Looking forward to seeing you Saturday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Viewing Room Visit: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Saatva Rx",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Pain Type: Chronic Back Pain",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Mattress Type: Memory Foam",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Delivery Zone Confirmed: San Francisco CA",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "415-823-5647",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "415-823-5647",
+            "repeatCaller": "No",
+            "city": "San Francisco",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Michael Torres",
+            "firstName": "Michael",
+            "lastName": "Torres",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A847-2BC93E5A41D6",
+          "time": "8/16/25 10:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A847-2BC93E5A41D6",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D723-9F4E7C165B2A",
+          "time": "8/16/25 10:39 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D723-9F4E7C165B2A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "E291-6D8A12F3C9E4",
+          "time": "8/16/25 10:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "E291-6D8A12F3C9E4",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "43,742 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,374",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thanks for calling Saatva. My name is Marcus. How can I help you find your perfect mattress today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Yeah, hi. I saw your ad about the Classic mattress and I'm really interested. I've got some back pain issues though."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Great question. I'm glad you reached out. So when you say back pain, is that something that's been bothering you for a while, or is it more recent?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "It's pretty chronic actually. I've had it for like three years now. My chiropractor mentioned I should look into a better mattress."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Perfect. That's really helpful to know. Have you had a chance to try out any mattresses recently, or would this be your first time testing a luxury mattress?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "No, I haven't really tried anything fancy. Just been using an old spring mattress that's probably ten years old."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Okay, I totally understand. Well, I think you'd be a great fit for our Saatva Rx mattress. It's specifically engineered for chronic back pain with memory foam over pocketed coils. Plus, we offer a full three hundred sixty five night home trial, so you can test it risk free."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "Oh wow, that sounds amazing. How much would that run me?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "The Saatva Rx ranges from about twenty forty nine dollars for a twin up to forty six forty eight for a split king. And right now we've got some sale pricing available too."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Okay, that's helpful. And you mentioned the trial period? What happens if I don't like it?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "So within that three hundred sixty five nights, if it's not the right fit, we'll pick it up for free and give you a full refund. No questions asked. We handle all the removal and setup."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "That's incredible. I think I'm ready to try it. What's the next step?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "Excellent. I'd love to get you scheduled for a Viewing Room Visit so you can actually feel the mattress in person before we deliver it. Are you in the Denver area?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:20 PM",
+              "text": "Yeah, I'm actually in Boulder, so Denver works great for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:20 PM",
+              "text": "Perfect. How about this Saturday, January eighteenth at two o'clock in the afternoon? Would that work for your schedule?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:21 PM",
+              "text": "Saturday at two o'clock is perfect. Should I bring anything or do anything to prepare?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:22 PM",
+              "text": "Just wear comfortable clothing so you can lie down and really test out the mattress. Our team will walk you through everything. Your Viewing Room Visit is confirmed for Saturday, January eighteenth at two PM at our Denver location. You'll get a reminder text, and if you have any questions before then, just call us back at eight seven seven, nine three six, twenty nine thirty three."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:23 PM",
+              "text": "Great, thank you so much. I really appreciate it."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:23 PM",
+              "text": "You're very welcome. We're excited to help you get better sleep. Thanks for choosing Saatva, and we'll see you Saturday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Viewing Room Visit: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product: Saatva Rx",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Pain Level: Chronic Back Pain",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Trial Period: Acknowledged",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area: Denver Metro",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "11:34",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice. Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "720-554-8847",
+            "repeatCaller": "No",
+            "city": "Boulder",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B829-3F7AE521984C",
+          "time": "1/15/26 3:45 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B829-3F7AE521984C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C156-4E8BD635A2F0",
+          "time": "1/14/26 2:28 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C156-4E8BD635A2F0",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D734-5F9CD742B8E1",
+          "time": "1/13/26 1:07 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D734-5F9CD742B8E1",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Introduce yourself as Saatva's AI agent here to help build a personalized mattress and sleep quote, mention that our Labor Day Sale currently takes up to $625 off select mattresses, and ask if they would like to get started.",
+        "Qualify one question at a time: Ask sequentially how many mattresses or pieces they need, the size or sizes they are shopping for (twin through split king), the material or model they prefer (innerspring hybrid, memory foam, natural latex, or adjustable), their ideal delivery timeline, and finally their ZIP code so you can confirm the nearest Viewing Room and delivery availability.",
+        "Estimate then book: Confirm you can serve their area and deliver to their ZIP, share a preliminary price range based on the model and size they described, recommend a Viewing Room visit with a sleep specialist for an exact quote and hands-on comparison, propose a specific day and time, and confirm they will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Saatva_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Shop Mattresses",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Viewing Room",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Book a Viewing Room Visit",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"trial\",\"question\":\"How does the 365 night home trial work if I want to return my mattress?\",\"answer\":\"You have a full 365 nights to sleep on your Saatva mattress at home, and if it is not right for you we arrange free removal and a refund. Just reach out and a specialist will start the return for you.\"},{\"topic\":\"order status\",\"question\":\"When will my Saatva Classic be delivered and set up?\",\"answer\":\"Every mattress is made fresh to order and typically ships within a few days, and our team includes free white glove delivery and setup plus removal of your old mattress. I can pull up your order and confirm the exact date if you share your order number.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What is the difference between the Saatva Classic and the Saatva Rx?",
+              "answer": "The Classic is our flagship innerspring hybrid with a Euro pillow-top and dual-coil support, while the Rx is a memory foam hybrid engineered specifically for chronic and severe back pain. A Viewing Room visit lets you compare both in person, and I would be glad to book that for you."
+            },
+            {
+              "question": "Which mattress is best for back pain?",
+              "answer": "Many customers with back concerns choose the Saatva Rx or the Saatva Classic for their targeted support. The best fit really depends on your body and sleep style, so I recommend a Viewing Room visit with a sleep specialist to confirm."
+            },
+            {
+              "question": "Do you have a cooling mattress?",
+              "answer": "Yes, our top cooling picks include the Saatva Latex Hybrid, the Contour5 all-foam, and the Memory Foam Hybrid. A specialist can help you feel the difference during a Viewing Room visit if you would like me to schedule one."
+            },
+            {
+              "question": "Are Saatva mattresses made in the USA?",
+              "answer": "Yes, every Saatva mattress is made fresh to order and assembled in the U.S. with globally-sourced premium materials. You can experience the craftsmanship firsthand at a Viewing Room, and I can help you book a time."
+            },
+            {
+              "question": "What sizes do you offer?",
+              "answer": "We offer twin, twin XL, full, queen, king, California king, and split king across our mattress lineup. Let me know your size and I can help you plan a Viewing Room visit to try it."
+            },
+            {
+              "question": "How much does the Saatva Classic cost?",
+              "answer": "Pricing varies by size and current promotions, so I would rather give you an accurate figure than a rough guess. If you share your size and ZIP code, I can arrange a Viewing Room visit where a specialist confirms exact pricing."
+            },
+            {
+              "question": "Do you offer financing?",
+              "answer": "Yes, we offer financing through Affirm so you can spread payments over time. A specialist can walk you through the options at your Viewing Room visit, which I am happy to schedule."
+            },
+            {
+              "question": "What is the home trial period?",
+              "answer": "Every Saatva mattress comes with a 365-night home trial so you can be sure it is right for you. I can share more details and set up a Viewing Room visit so you can feel it before you decide."
+            },
+            {
+              "question": "Is delivery and setup included?",
+              "answer": "Yes, we include free white glove delivery and setup plus free removal of your old mattress. Let me confirm your ZIP code and I can help you plan the next steps with a Viewing Room visit."
+            },
+            {
+              "question": "Do you have an organic mattress?",
+              "answer": "Yes, the Zenhaven and the Saatva Latex Hybrid use organic natural latex, and Zenhaven is dual-sided with two firmness options. A Viewing Room visit is a great way to compare them, and I can book that for you."
+            },
+            {
+              "question": "What is the warranty on a Saatva mattress?",
+              "answer": "Every Saatva mattress is backed by a lifetime warranty for lasting peace of mind. A specialist can explain the coverage in detail during a Viewing Room visit if you would like me to schedule one."
+            },
+            {
+              "question": "Do you have a mattress for heavier body types?",
+              "answer": "Yes, the Saatva HD is a heavy-duty hybrid built for higher body weights with reinforced edge support. I recommend trying it at a Viewing Room, and I can help you find a time."
+            },
+            {
+              "question": "Can I adjust the firmness of the mattress?",
+              "answer": "The Solaire is our adjustable air mattress with 50 precise firmness settings on each side. A Viewing Room visit lets you experience the settings in person, and I would be glad to book it."
+            },
+            {
+              "question": "Where is my nearest Viewing Room?",
+              "answer": "We have Viewing Rooms in many major metro areas, and I can find the closest one if you share your ZIP code. From there I can help you schedule your visit."
+            },
+            {
+              "question": "Do you sell bed frames and bases?",
+              "answer": "Yes, we offer upholstered and wood bed frames like the Santorini, Amalfi, and Copenhagen, plus the Adjustable Base Plus with massage and lighting. You can see them at a Viewing Room, and I can set that up for you."
+            },
+            {
+              "question": "What bedding do you carry?",
+              "answer": "We offer organic sateen sheet sets, latex pillows, and cooling graphite memory foam toppers among other items. A specialist can help you complete your setup during a Viewing Room visit."
+            },
+            {
+              "question": "Do you have any current sales?",
+              "answer": "Yes, our Labor Day Sale currently takes up to $625 off select mattresses. I can help you lock in the timing with a Viewing Room visit, so would you like me to find a slot?"
+            },
+            {
+              "question": "What is a bundle?",
+              "answer": "Our bundles pair a mattress with bedding or a base at a discount versus buying separately, including options like the Classic Bundle and the Back Pain Bundle. A specialist can tailor a bundle for you at a Viewing Room visit."
+            },
+            {
+              "question": "How is Saatva cheaper than other luxury brands?",
+              "answer": "We cut out the middlemen with our direct-to-consumer model, so you get the highest quality at the best possible value. You can feel that quality for yourself at a Viewing Room, and I can help you book a time."
+            },
+            {
+              "question": "How long does a Saatva mattress last?",
+              "answer": "Our handcrafted mattresses are built for durability and backed by a lifetime warranty. A specialist can talk through longevity for your chosen model at a Viewing Room visit, which I am happy to schedule."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the booking\",\"follow_up_message\":\"Great, I have you down for a Viewing Room visit with a sleep specialist. You will get a reminder text before your appointment with a number to call if anything changes.\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Thanks for the details. Based on the model and size you shared I can give you a preliminary range, and a specialist will confirm exact pricing and current savings at your Viewing Room visit. What day works best to get you booked?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Saatva's AI agent. I can help you build a personalized mattress quote and find the perfect fit. Would you like to get started?",
+        "goal": "Guide the customer to book an in-person Viewing Room visit with a sleep specialist who can confirm exact pricing and current savings.",
+        "bookingType": "in-person Viewing Room visit",
+        "offer": "Save up to $625 during our Labor Day Sale when you book today",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "How many mattresses or pieces are you shopping for?",
+          "What size or sizes are you considering, from twin through split king?",
+          "Do you prefer innerspring hybrid, memory foam, natural latex, or an adjustable model?",
+          "What is your ideal delivery timeline?",
+          "What is your ZIP code so I can confirm your nearest Viewing Room and delivery availability?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:28 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/9/26 4:28 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/9/26 4:28 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Saatva",
+      "callerName": "Marcus Chen",
+      "callerPhone": "(503) 555-0187",
+      "campaign": "Saatva Classic, Portland Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Viewing Room Visit Lead",
+      "estimatedValue": "$2,847",
+      "googleSearch": "luxury mattress for back pain Portland Oregon",
+      "websiteSearch": "Saatva Classic hybrid innerspring best price",
+      "callingWebpage": "/mattresses/hybrid-innerspring/saatva-classic",
+      "products": "Saatva Classic, Saatva Adjustable Base Plus",
+      "cartId": "SAT-6392K",
+      "serviceable": "Yes",
+      "email": "marcus.chen.sleep@email.com",
+      "street": "4521 NW Lovejoy Street",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97209",
+      "digitalJourney": "/home › /mattresses › /mattresses/hybrid-innerspring › /mattresses/hybrid-innerspring/saatva-classic",
+      "intent": "Looking for a premium innerspring mattress with cooling properties and a long trial period. Interested in visiting a Saatva Viewing Room to try before purchasing.",
+      "coverage": "ZIP 97209 confirmed, Portland serviceable",
+      "switchIntent": "High. Currently using a ten year old spring mattress with persistent back pain. Wants to schedule an in-home Viewing Room visit this week to test Saatva Classic and Adjustable Base Plus together.",
+      "greeting": "Hi Marcus, thanks for calling Saatva. I see you've been researching our Saatva Classic for back pain relief. I'd love to help you schedule a visit to our Portland Viewing Room where you can try the mattress in person and we can answer all your questions about our 365 night trial. Does this week work for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "Saatva",
+      "callerName": "Jennifer Watts",
+      "callerPhone": "(719) 555-0241",
+      "campaign": "Labor Day Sale. Up to $625 Off, Colorado Springs",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Viewing Room Visit Lead",
+      "estimatedValue": "$3,156",
+      "googleSearch": "cooling latex mattress organic natural materials",
+      "websiteSearch": "Zenhaven flippable latex mattress Labor Day sale",
+      "callingWebpage": "/sale",
+      "products": "Saatva Latex Hybrid, Organic Sateen Sheet Set",
+      "cartId": "SAT-8914M",
+      "serviceable": "Yes",
+      "email": "jennifer.watts.home@email.com",
+      "street": "8734 Autumn Ridge Drive",
+      "city": "Colorado Springs",
+      "state": "CO",
+      "zip": "80920",
+      "digitalJourney": "/home › /sale › /mattresses › /mattresses/natural-latex › /mattresses/natural-latex/saatva-latex-hybrid",
+      "intent": "Interested in organic natural latex hybrid mattress with cooling properties. Attracted by Labor Day sale pricing and wants to bundle bedding. First time exploring Saatva options.",
+      "coverage": "ZIP 80920 confirmed, Colorado Springs serviceable",
+      "appointment": "In-home Viewing Room visit with Saatva specialist, Thursday July 18, 2:00 PM",
+      "greeting": "Hi Jennifer. It's Sarah from Saatva. We have your Viewing Room visit scheduled for Thursday at 2 PM in Colorado Springs. We're so glad you're interested in our Saatva Latex Hybrid and Organic Sateen Sheets. The sale ends soon, so we'll get you the best pricing. Feel free to text with any questions before Thursday. See you soon."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Saatva",
+      "brandDomain": "www.saatva.com",
+      "brandIcon": "🛏️",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Best Mattress for Back Pain",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "best mattress for chronic back pain relief",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Home / Mattresses / Memory Foam / Saatva Rx",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Saatva Rx, Saatva Adjustable Base Plus",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "viewing_room_new_project",
+          "name": "Viewing Room Visit, New Sleep Solution"
+        },
+        {
+          "id": "product_support_existing",
+          "name": "Product Support, Existing Order"
+        },
+        {
+          "id": "general_inquiry_sales",
+          "name": "General Inquiry, Sleep Consultant"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Saatva. I see you were looking at our Saatva Rx mattress. Are you shopping for yourself, or are you helping someone else find the right mattress?",
+          "sigs": [],
+          "q": [
+            33,
+            33,
+            34
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Oh, hi. Yeah, it's for me. I've had really bad back pain for years and I'm tired of waking up sore. I've heard great things about Saatva. I'm in Santa Barbara and want to actually try before I buy, you know?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Chronic back pain</strong>, seeks trial"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Local</strong>, wants to test"
+            }
+          ],
+          "q": [
+            65,
+            15,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That makes total sense. The Saatva Rx is engineered specifically for back pain relief with our memory foam hybrid support. And I've got great news. We have a Viewing Room right in Santa Barbara where you can lie on the mattress and feel the difference. Plus, you get our full 365 night home trial with free delivery and setup. Does scheduling a time to visit the showroom sound good?",
+          "sigs": [],
+          "q": [
+            82,
+            8,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Really? There's actually one here? That's perfect. Yeah, I'd love to come in and try it out. How soon can I book something?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Confirmed Viewing Room visit</strong>, ready to book"
+            },
+            {
+              "c": "purple",
+              "t": "High intent, same day interest"
+            }
+          ],
+          "q": [
+            93,
+            4,
+            3
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent. I'm routing you now to our Viewing Room team in Santa Barbara. They'll get you set up with a time that works for you. They can also answer any questions about our 365 night trial, financing options with Affirm, and our handcrafted mattress selection. You're going to love what you feel.",
+          "sigs": [],
+          "q": [
+            95,
+            3,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Viewing Room Visit Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let me book your viewing room visit (Agent)\", \"I'd like to come in and try it (Caller)\", \"schedule your showroom appointment (Agent)\", \"reserve a time to lie on the mattress\"])",
+          "createdAt": "10/14/25 9:32 am",
+          "updatedAt": "01/12/26 2:18 pm"
+        },
+        {
+          "name": "365-Night Trial Objection Raised",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"what if I don't like the mattress (Caller)\", \"can I really return it after a year (Caller)\", \"is the home trial free (Caller)\", \"do you charge for mattress removal\"])",
+          "createdAt": "09/03/25 11:47 am",
+          "updatedAt": "12/29/25 4:05 pm"
+        },
+        {
+          "name": "Adjustable Base Upsell Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"tell me about the adjustable base plus (Caller)\", \"does it have massage and lighting (Caller)\", \"can I raise the head and foot (Caller)\", \"add the motorized base to my order (Agent)\"])",
+          "createdAt": "11/02/25 8:15 am",
+          "updatedAt": "01/08/26 10:22 am"
+        },
+        {
+          "name": "Back Pain Relief Mattress Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"best mattress for back pain (Caller)\", \"I have chronic back pain (Caller)\", \"the Saatva Rx for lower back (Agent)\", \"something for my herniated disc\"])",
+          "createdAt": "08/21/25 1:09 pm",
+          "updatedAt": "01/15/26 9:41 am"
+        },
+        {
+          "name": "Competitor Mattress Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"I was looking at Purple (Caller)\", \"how does this compare to Tempur-Pedic (Caller)\", \"Casper had a cheaper price (Caller)\", \"we're better value than a showroom brand (Agent)\"])",
+          "createdAt": "09/27/25 3:52 pm",
+          "updatedAt": "12/20/25 11:16 am"
+        },
+        {
+          "name": "Empathy And Rapport Score",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy And Rapport] < 60 and duration > 45 sec",
+          "createdAt": "07/30/25 10:04 am",
+          "updatedAt": "01/10/26 5:33 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the sale price for a king is (Agent)\", \"with the Labor Day discount that comes to (Agent)\", \"let me quote you the Saatva Classic (Agent)\", \"your total with financing would be\"]) and answered_by_agent",
+          "createdAt": "08/09/25 2:41 pm",
+          "updatedAt": "01/18/26 8:57 am"
+        },
+        {
+          "name": "Sleep Trial Terms Explained",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Trial And Warranty Coverage] < 60 and duration > 45 sec",
+          "createdAt": "07/18/25 9:26 am",
+          "updatedAt": "12/31/25 1:47 pm"
+        },
+        {
+          "name": "Viewing Room Visit Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"do you have a viewing room near me (Caller)\", \"where can I try the mattress in person (Caller)\", \"we have a viewing room in your area (Agent)\", \"come see it before you buy\"])",
+          "createdAt": "10/06/25 12:19 pm",
+          "updatedAt": "01/14/26 3:28 pm"
+        },
+        {
+          "name": "Warm Call Opening",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Call Opening Compliance] < 60 and duration > 30 sec",
+          "createdAt": "07/12/25 8:48 am",
+          "updatedAt": "01/06/26 4:12 pm"
+        }
+      ]
+    }
+  }
+}
