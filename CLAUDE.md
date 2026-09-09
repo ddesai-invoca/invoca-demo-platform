@@ -7495,7 +7495,26 @@ a standby cannot see production's 219 demos. Failover needs the store moved off 
 `engine/demoStore.ts` — the same migration this file already names as the real fix for
 zero-downtime deploys. It needs a store provisioned, which is the user's to do.
 
-## ⚠️ OPEN ITEMS as of 9/3/2026 (found this session, NOT yet fixed)
+## ⚠️ OPEN ITEMS as of 9/8/2026
+
+**0. THE STAGING SERVICE IS MID-CREATION, AND THE GIT STATE IS DELIBERATELY SPLIT.**
+- `origin/staging` exists at **9628972** (the environment work). `main` is **one commit
+  behind it and unpushed**, so production is still on `68c602c` and has none of it. That is
+  the intended state — staging gets it first — but it means `/api/status` on production does
+  NOT yet report `environment`, and nothing there is gated to production yet.
+- ⚠️ **`staging` IS A DEPLOY POINTER, NOT A BRANCH TO DEVELOP ON.** Keep working on `main`
+  locally; `git push origin HEAD:staging` deploys, `git push origin main` promotes. Do not
+  `git checkout staging`. `staging` being AHEAD of main is the normal state.
+- The Render Web Service itself was still being filled in when this session ended. Every
+  field value, the four autofills to correct, and the env vars to set and omit are in
+  **`docs/ENVIRONMENTS.md`** — read that before touching the dashboard.
+- ⚠️ **AN OPEN DECISION:** the user said they are **not** adding Google auth to staging. That
+  leaves every `/api/*` route reachable by anyone with the URL, and the exposure is COST (our
+  Anthropic, LiveKit and Places keys) rather than prospect data. The runbook gives the two
+  safe shapes — omit `ANTHROPIC_API_KEY` too (14 bundled prospects still render in full), or
+  add the two Google vars. **Not yet resolved; do not assume either.**
+
+## ⚠️ OPEN ITEMS carried from 9/3/2026 (NOT yet fixed)
 
 **1. ⚠️⚠️ AN ENDED CALL LEAVES THE AGENT IN THE ROOM, AND IT BILLS.** Measured live, twice.
 Navigating away from the call drops the CALLER (`hangUp` -> `destroyLive`) and the room goes
@@ -7707,6 +7726,14 @@ Left alone deliberately; decide whether it belongs in git.
 - Fully offline exact-copy pages (localize GT America + logo assets) if needed.
 
 ## Gotchas
+- ⚠️ **A STALE `nohup npm run dev` HOLDS PORT 5173 FOR DAYS, and killing it needs the
+  LISTENER, not every socket on the port.** Hit twice on 9/8/2026 (one process was 4d17h
+  old, another 7h28m). `lsof -ti tcp:5173` also lists a **Google Chrome network-service
+  helper** that merely has a connection open, so `kill $(lsof -ti tcp:5173)` takes out a
+  Chrome subprocess along with the server. Filter for the listener:
+  `lsof -nP -iTCP:5173 -sTCP:LISTEN -t`. Prefer `preview_start` over `nohup` so the server is
+  managed and does not outlive the work.
+
 - **Structured-output "grammar too large"**: generating the full profile in one structured
   call fails. The engine splits into separate calls (report, then dashboard). Keep any new
   screen's generation as its own call.

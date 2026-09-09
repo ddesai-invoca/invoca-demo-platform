@@ -32,6 +32,20 @@ do for you.
      it to whichever environment you want. Having a local `staging` checked out is how you end
      up committing to it by accident and then wondering why `main` is behind.
    - Build: `npm ci && npm run build`. Start: `npm start`. Same as production.
+   **The fields Render autofills, and the four to correct** (reviewed against the real
+   creation screen 9/8/2026):
+
+   | field | Render's autofill | use instead | why |
+   |---|---|---|---|
+   | Build Command | `npm install; npm run build` | `npm ci && npm run build` | The `;` runs the build **even when install fails**, so you debug a build error whose real cause was the install. And `npm ci` installs exactly the lockfile, so staging and production get identical trees — `npm install` can resolve different versions, which defeats the point of a gate. |
+   | Project / Environment | `My project / Production` | a new `Staging` environment, or blank | A staging service inside an environment named Production. Render attaches env groups per environment, so this is how production values reach staging later with nobody looking there. (`appEnv()` reads the service NAME, so the badge is unaffected either way.) |
+   | Health Check Path | placeholder only | type `/healthz` | The SIGTERM drain returns 503 on `/healthz` so Render stops routing before the process exits. With no path set Render does a TCP check and that whole mechanism does nothing. |
+   | Compute | whatever is preselected | match production | `tsc -b && vite build` is the step most likely to OOM on 512 MB. A staging service that cannot build what production builds proves nothing. |
+
+   Leave alone: Language `Node`, Root Directory empty, Start Command `npm run start`, Region
+   the same as production, Auto-Deploy `On Commit`, Pre-Deploy empty, Build Filters empty, and
+   no disk (see the disk note below).
+
 2. **Environment variables.** Copy production's, then change these:
 
    | variable | value on staging | why |
@@ -52,6 +66,36 @@ do for you.
      regenerating a demo whenever you want something to test against.
    - **its own small disk**, so demos persist on staging, entirely separate from production's.
      Costs a little and is worth it if you test against one prospect repeatedly.
+
+## Running staging WITHOUT the Google sign-in gate
+
+⚠️⚠️ **WITH `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` ABSENT THE GATE TURNS ITSELF OFF, AND
+EVERY `/api/*` ROUTE IS OPEN TO ANYONE WITH THE URL.** The boot log says so
+(`🔓 Auth gate OFF`), off-gate every caller is `Local Dev <local@dev>`, and the app works
+completely — which is exactly why this is easy to leave in place without noticing.
+
+⚠️ **THE EXPOSURE IS COST, NOT PROSPECT DATA.** With no disk the demo library starts empty, so
+there is nothing of a customer's to leak. What IS reachable spends real money on our own keys:
+`/api/generate`, `/api/chat`, `/api/analyze` and `/api/ai-assistant` on `ANTHROPIC_API_KEY`
+(and Ask AI on a voice workflow now runs **Opus 5 with adaptive thinking**, the most expensive
+call in the app), `/api/voice-preview` and `/api/livekit-token` on the LiveKit account, and
+`/api/zip` on the Places key. `*.onrender.com` hostnames are guessable and are scanned.
+Only `/healthz`, `/api/status` and `/api/canary` are public by design, and those are counts
+and booleans.
+
+Two ways to leave it open safely:
+
+- **Omit `ANTHROPIC_API_KEY` as well.** ⚠️ **STAGING STILL RENDERS 14 PROSPECTS IN FULL** — the
+  bundled `src/data/generated/*.json` are loaded by `import.meta.glob` at BUILD time, so every
+  dashboard, report, Signal screen and Salesforce page works with no disk, no library and no
+  API key. Only the AI features go dead (generation, the SMS/voice agents, Ask AI). For
+  testing screens, layout and CSS that is a complete environment and costs nothing to leave
+  open. Leave the LiveKit and Places keys off too and the surface is inert.
+- **Add the two Google vars after all.** Same OAuth client as production; you add
+  `https://<staging-host>/auth/callback` to its Authorized redirect URIs. Two minutes, and the
+  gate is on.
+
+Either is defensible. What is not defensible is the middle: open, with the AI keys set.
 
 ## Promoting a change
 
