@@ -7398,6 +7398,39 @@ it holds the app in the Browser pane. Navigate within it via `preview_eval`
   NEW data-driven feature into `engine/core.ts` so new prospects get it. Pure design
   changes are shared CSS and apply to everyone.
 
+## A fourth Launch-screen dropdown: "2026 Dallas Invoca Summit" (9/9/2026)
+
+Asked for directly: *"Can you another drop down under Team Demos call '2026 Dallas Invoca
+Summit'."* — a new section between **Team Demos** and **Samples** on the Launch screen's demo
+library.
+
+⚠️ **DELIBERATELY UNWIRED — asked, and the user's own answer.** Offered three ways to
+populate it (tag specific existing demos now, add a per-row "move to Dallas Summit" action, or
+just the empty section with wiring as a follow-up); the user picked the third. So `EntryGroup`
+gained a fourth member, `"dallas"`, that nothing currently assigns — no demo carries it, and
+there is no UI action that would.
+
+⚠️⚠️ **EVERY OTHER SECTION HIDES ITSELF WHEN EMPTY, so adding the group alone would have
+rendered NOTHING.** `GROUP_ORDER.map` already dropped a section with zero rows
+(`if (!rows.length) return null`), which is right for My/Team/Samples — an empty "Samples"
+would be a rendering bug — and wrong for a placeholder whose whole point is to be visible
+before anything is tagged into it. `GROUP_ORDER` entries now carry an optional third element,
+`alwaysShow`, set only on this one; the skip becomes `if (!rows.length && !alwaysShow) return
+null`.
+
+⚠️ **THE EMPTY-STATE COPY NEEDED ITS OWN BRANCH TOO.** `LibraryPicker`'s dropdown showed
+`Nothing matches "{query}"` whenever the filtered list was empty — correct for a real miss, and
+misleading here: with no query typed it would have printed `Nothing matches ""`, blaming a
+search that never happened. Branches on `entries.length === 0` (no rows exist at all, not just
+none matching) to show **"No demos in this section yet."** instead.
+
+Verified live: the section renders at position 3 of 4 reading "2026 DALLAS INVOCA SUMMIT · 0",
+opens to the new empty-state copy, and Team Demos and Samples on either side of it are
+unaffected (Team Demos still opens and lists its one real row, Discount Tire).
+
+⚠️ **NOTHING TAGS A DEMO INTO IT YET.** If the user later wants specific demos to show up here,
+or a way to move demos in, that is its own follow-up — the two declined options above.
+
 ## The SMS thread header shows a toll-free number, not the prospect's name (9/8/2026)
 
 Asked for directly, against the selected `.sms-namepill` element reading "Orlando Health":

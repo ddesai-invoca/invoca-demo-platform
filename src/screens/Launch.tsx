@@ -44,13 +44,22 @@ const BUILD_STEPS: { key: string; label: string; weight: number }[] = [
 const TOTAL_WEIGHT = BUILD_STEPS.reduce((s, st) => s + st.weight, 0);
 
 /* A row in the prospect list — either a shared-library demo (has a creator) or a
-   built-in/locally-cached sample (doesn't). */
-type EntryGroup = "mine" | "team" | "sample";
+   built-in/locally-cached sample (doesn't), or a demo tagged into an EVENT
+   section like "dallas" below (see the note there). */
+type EntryGroup = "mine" | "team" | "dallas" | "sample";
 
-/* Section order + headers — each is now its own dropdown. */
-const GROUP_ORDER: [EntryGroup, string][] = [
+/* Section order + headers — each is now its own dropdown.
+   ⚠️ THE THIRD ELEMENT IS "ALWAYS SHOW, EVEN EMPTY" — every other section omits
+   it and is hidden when it has no rows (see the `!rows.length` skip below). Asked
+   for directly: "add another dropdown under Team Demos called '2026 Dallas Invoca
+   Summit'" with no demos named for it yet, so without this flag the section would
+   render nothing and never appear at all — the opposite of a placeholder. Nothing
+   is tagged into the "dallas" group yet; this is the section only, deliberately
+   unwired (see the note on `LibraryPicker`'s empty state below). */
+const GROUP_ORDER: [EntryGroup, string, boolean?][] = [
   ["mine", "My demos"],
   ["team", "Team demos"],
+  ["dallas", "2026 Dallas Invoca Summit", true],
   ["sample", "Samples"],
 ];
 
@@ -100,7 +109,13 @@ function LibraryPicker({ label, entries, renderRow }: { label: string; entries: 
         {open && (
           <div className="prospect-dropdown">
             {filtered.length === 0 ? (
-              <div className="prospect-empty">Nothing matches "{query}"</div>
+              /* ⚠️ A SECTION WITH NO ROWS AT ALL (entries.length === 0, e.g. an
+                 "always show" placeholder like 2026 Dallas Invoca Summit) reads
+                 "Nothing matches ''" if it uses the search-miss copy — there was
+                 no search, so blaming the empty query is misleading. */
+              <div className="prospect-empty">
+                {entries.length === 0 ? "No demos in this section yet." : `Nothing matches "${query}"`}
+              </div>
             ) : (
               filtered.map((e) => renderRow(e))
             )}
@@ -432,9 +447,9 @@ export function Launch() {
               {me && <span className="launch-me">signed in as {me.name}</span>}
             </div>
             <div className="launch-pickers">
-              {GROUP_ORDER.map(([g, label]) => {
+              {GROUP_ORDER.map(([g, label, alwaysShow]) => {
                 const rows = entries.filter((e) => e.group === g);
-                if (!rows.length) return null;
+                if (!rows.length && !alwaysShow) return null;
                 return <LibraryPicker key={g} label={label} entries={rows} renderRow={renderRow} />;
               })}
             </div>
