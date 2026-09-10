@@ -53,11 +53,10 @@ import { SalesforceLeadDetail } from "./screens/SalesforceLeadDetail";
 import { SalesforceCallLogDetail } from "./screens/SalesforceCallLogDetail";
 import { GoogleSearch } from "./screens/GoogleSearch";
 import { Placeholder } from "./screens/Placeholder";
-import { ReadmeButton } from "./components/ReadmeButton";
 import { EnvBadge } from "./components/EnvBadge";
-import { FeedbackButton } from "./components/FeedbackButton";
-import { InboxButton } from "./components/InboxButton";
+import { LaunchMenu } from "./components/LaunchMenu";
 import { FeedbackBoard } from "./screens/FeedbackBoard";
+import { ReleaseNotes } from "./screens/ReleaseNotes";
 import { NAV } from "./components/nav";
 
 /* Some screens are EXACT static copies of real pages (the Invoca Exchange and
@@ -84,22 +83,18 @@ const BUILT: Record<string, ReactNode> = {
    standalone; the exact-copy marketing page still is. */
 const STANDALONE = new Set(["/invoca-exchange"]);
 
-/* The bottom-right pair on the launch form. Same allow-list as ReadmeButton: past
-   the launch form every screen is a replica of Invoca's product shown to a
-   prospect, and neither of these belongs on top of that. */
-const CORNER_ON = ["/", "/launch", "/feedback"];
+/* WHERE OUR OWN CHROME MAY APPEAR: the launch form only. Past it every screen is
+   a replica of Invoca's product shown to a prospect, and our buttons do not
+   belong on top of that. Unchanged when the bottom-right stack of three pills
+   became one top-right hamburger (9/10/2026) — if anything the rule matters MORE
+   there, since the top right of a replica is where real product chrome sits. */
+const MENU_ON = ["/", "/launch", "/feedback", "/release-notes"];
 function LaunchCorner() {
   const { pathname } = useLocation();
-  if (!CORNER_ON.includes(pathname)) return null;
-  return (
-    <div className="corner-stack">
-      {/* Admin only, and it hides itself: see InboxButton. Provisional placement,
-          which is why it is one line here rather than woven into Support. */}
-      <InboxButton />
-      <FeedbackButton />
-      <ReadmeButton />
-    </div>
-  );
+  if (!MENU_ON.includes(pathname)) return null;
+  /* Read.Me, Support and the admin Inbox all live inside it now. Add the next one
+     as an entry in its `items` array, not as a second button out here. */
+  return <LaunchMenu />;
 }
 
 export default function App() {
@@ -127,6 +122,10 @@ export default function App() {
               the TOOL, not about a prospect's demo, so wrapping it in the Invoca
               replica chrome would misrepresent what you are looking at. */}
           <Route path="/feedback" element={<FeedbackBoard />} />
+
+          {/* Release notes. Full-page and outside the shell for the same reason as
+              the feedback board — it is about the tool, not a prospect's demo. */}
+          <Route path="/release-notes" element={<ReleaseNotes />} />
 
           {/* Standalone full-page routes (no sidebar/topbar) — exact static copies */}
           {/* ⚠️ THE OLD EXACT-COPY OF invoca.com/integrations IS NOT DELETED — it still

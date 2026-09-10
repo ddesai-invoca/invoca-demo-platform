@@ -2,21 +2,28 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 /* =============================================================================
-   FeedbackButton — the "Support" button, beside Read.Me on the launch form
+   SupportModal — the "Support" form, opened from the launch menu
    -----------------------------------------------------------------------------
-   Opens a small form rather than routing away: someone with a thought about the
-   tool has it WHILE they are using it, and making them leave the page to file it
-   is how you get no feedback at all.
+   A small form rather than a route: someone with a thought about the tool has it
+   WHILE they are using it, and making them leave the page to file it is how you
+   get no feedback at all.
 
    Submitter identity is never asked for. It comes from the Google session on the
    server, so there is no name or email field to fill in, nothing to mistype, and
    the completion email has a real address to reach.
+
+   ⚠️⚠️ CONTROLLED, AND IT MUST BE MOUNTED OUTSIDE THE MENU PANEL. This was
+   `FeedbackButton` — its own trigger pill plus this modal — until the corner
+   stack became one hamburger (9/10/2026). The trigger now lives in the menu, but
+   the modal CANNOT: a dropdown unmounts its panel when it closes, and clicking
+   "Support" closes the menu, so a modal rendered inside the panel would be torn
+   down by the very click that opened it. `LaunchMenu` therefore holds the open
+   state and renders this as a SIBLING of the panel.
    ============================================================================= */
 
 type Kind = "feedback" | "feature";
 
-export function FeedbackButton() {
-  const [open, setOpen] = useState(false);
+export function SupportModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [kind, setKind] = useState<Kind>("feedback");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -55,7 +62,7 @@ export function FeedbackButton() {
   }, [open]);
 
   function close() {
-    setOpen(false); setError("");
+    onClose(); setError("");
     /* Reset only after a successful send. A failed submit keeps what they typed,
        because losing a paragraph of considered feedback to a network blip is the
        fastest way to never receive it again. */
@@ -101,12 +108,6 @@ export function FeedbackButton() {
 
   return (
     <>
-      <button className="fb-fab" onClick={() => setOpen(true)}
-        title="Get support, send feedback, or request a feature">
-        <span className="material-icons">support_agent</span>
-        Support
-      </button>
-
       {open && (
         <div className="fb-overlay" onClick={close}>
           <div className="fb-modal" role="dialog" aria-modal="true" aria-label="Support"
@@ -129,7 +130,7 @@ export function FeedbackButton() {
                 {attachWarning && <p className="fb-warn-line">{attachWarning}</p>}
                 <div className="fb-done-actions">
                   <button className="fb-secondary" onClick={() => { setSent(false); }}>Send another</button>
-                  <button className="fb-primary" onClick={() => { setOpen(false); setSent(false); navigate("/feedback"); }}>
+                  <button className="fb-primary" onClick={() => { onClose(); setSent(false); navigate("/feedback"); }}>
                     {admin ? "See all submissions" : "See what I've sent"}
                   </button>
                 </div>
@@ -207,7 +208,7 @@ export function FeedbackButton() {
 
                 <div className="fb-actions">
                   <a className="fb-link" href="/feedback"
-                    onClick={(e) => { e.preventDefault(); setOpen(false); navigate("/feedback"); }}>
+                    onClick={(e) => { e.preventDefault(); onClose(); navigate("/feedback"); }}>
                     {admin ? "See all submissions" : "See what I've sent"}
                   </a>
                   <span className="fb-actions-right">

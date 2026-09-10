@@ -14,7 +14,7 @@
     "start": "node --env-file-if-exists=.env --import tsx server.ts",
     "serve": "npm run build && npm start",
     "generate": "node --env-file-if-exists=.env engine/generate.ts",
-    "audit": "npm run typecheck && npm run audit:phases && npm run audit:voice && npm run audit:tiers && npm run audit:leads && npm run audit:calllog && npm run audit:leaddetail && npm run audit:clrecord && npm run audit:place && npm run audit:events && node --env-file-if-exists=.env --import tsx scripts/audit-seeds.ts",
+    "audit": "npm run typecheck && npm run audit:phases && npm run audit:voice && npm run audit:tiers && npm run audit:leads && npm run audit:calllog && npm run audit:leaddetail && npm run audit:clrecord && npm run audit:place && npm run audit:events && npm run audit:app && node --env-file-if-exists=.env --import tsx scripts/audit-seeds.ts",
     "audit:phases": "tsx scripts/audit-phases.ts",
     "audit:ai": "tsx scripts/audit-ai-rules.ts",
     "test:sw": "node scripts/sw-logic.test.mjs",
@@ -28,7 +28,8 @@
     "typecheck": "tsc -b",
     "gen:events": "node --env-file-if-exists=.env --import tsx scripts/generate-event-demos.ts",
     "seed:events": "node --env-file-if-exists=.env --import tsx -e \"import('./engine/eventSeeds.ts').then(m=>console.log(m.importEventSeeds()))\"",
-    "audit:events": "tsx scripts/audit-events.ts"
+    "audit:events": "tsx scripts/audit-events.ts",
+    "audit:app": "tsx scripts/audit-app.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.111.0",
