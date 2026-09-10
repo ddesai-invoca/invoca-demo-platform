@@ -57,6 +57,13 @@ const ADMIN_EMAILS = new Set(
     .map((e) => e.trim().toLowerCase()).filter(Boolean),
 );
 
+/** The admin addresses themselves, for the one thing that has to REACH an admin
+ *  rather than just authorise one: the new-feedback notification. Exported from
+ *  here so there is a single admin list — threading it through
+ *  `handleFeedbackApi` instead would mean both server.ts and the vite.config.ts
+ *  twin passing it, which is exactly where those two drift. */
+export const adminEmails = (): string[] => [...ADMIN_EMAILS];
+
 export const isAdmin = (user: DemoUser) =>
   /* trim() on THIS side too: the config side was already trimmed, so an email
      arriving with surrounding whitespace missed a list it was actually in. */

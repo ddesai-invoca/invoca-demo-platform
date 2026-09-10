@@ -92,7 +92,7 @@ function rawMessage(from: string, mail: Mail): string {
     : `=?UTF-8?B?${b64(mail.subject)}?=`;
   const boundary = "b" + Math.random().toString(36).slice(2);
   const headers = [
-    `From: ${from}`, `To: ${mail.to}`, `Reply-To: ${GMAIL_SENDER || from}`,
+    `From: ${from}`, `To: ${mail.to}`, `Reply-To: ${mail.replyTo || GMAIL_SENDER || from}`,
     `Subject: ${subject}`, "MIME-Version: 1.0",
   ];
   const body = mail.html
@@ -138,6 +138,12 @@ export interface Mail {
   subject: string;
   text: string;
   html?: string;
+  /* Optional, and it exists for ONE case: the new-item notice goes to the admin
+     but the obvious next action is replying to whoever sent it, so that mail
+     points Reply-To at the submitter. Defaults to the sending account, which is
+     what the completion email wants (a reply there should reach the maintainer,
+     not be sent to the person who is already the recipient). */
+  replyTo?: string;
 }
 
 /**
@@ -164,7 +170,7 @@ export async function sendMail(mail: Mail): Promise<{ sent: boolean; reason?: st
     if (gmailReady()) await sendViaGmail(mail);
     else await getTransport().sendMail({
       from: `"${FROM_NAME}" <${USER}>`,
-      replyTo: USER,
+      replyTo: mail.replyTo || USER,
       to: mail.to,
       subject: mail.subject,
       text: mail.text,
@@ -181,10 +187,62 @@ export async function sendMail(mail: Mail): Promise<{ sent: boolean; reason?: st
   }
 }
 
-/* ---- the one message this app sends ---------------------------------------- */
+/* ---- the two messages this app sends ---------------------------------------- */
 
 const esc = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+/** "Someone just sent something" — to the ADMIN, when a new item is submitted.
+ *
+ *  ⚠️ THIS EXISTS BECAUSE NOTHING TOLD THE MAINTAINER ANYTHING (added 9/10/2026).
+ *  The only mail this app sent was the COMPLETION notice, to the SUBMITTER, so the
+ *  sole signal that feedback had arrived was the Inbox badge on the live launch
+ *  screen. That badge is per-instance: working on localhost you see the local
+ *  store's count and never the live one. Measured when it was reported — 15 open
+ *  items on the live board, three of them colleagues' feedback sitting In review
+ *  for over two weeks, while the local badge read a reassuring 8 from test data.
+ */
+export function newItemEmail(opts: {
+  to: string; kind: string; title: string; body: string;
+  submitterName: string; submitterEmail: string; page?: string; boardUrl: string;
+}): Mail {
+  const what = opts.kind === "feature" ? "Feature request" : "Feedback";
+  const who = opts.submitterName || opts.submitterEmail;
+  const lines = [
+    `${who} sent ${opts.kind === "feature" ? "a feature request" : "feedback"}:`,
+    ``,
+    `  "${opts.title}"`,
+    ``,
+    opts.body,
+    ``,
+    ...(opts.page ? [`Sent from ${opts.page}`, ``] : []),
+    `Reply to this email to answer ${who} directly.`,
+    ``,
+    `Open the board: ${opts.boardUrl}`,
+  ];
+  const html =
+    `<div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:15px;line-height:1.6;color:#0a231e">` +
+    `<p><strong>${esc(who)}</strong> sent ${esc(what.toLowerCase())}:</p>` +
+    `<blockquote style="margin:16px 0;padding:12px 16px;background:#f8faf1;border-left:3px solid #00b388;border-radius:0 8px 8px 0">` +
+    `<strong>${esc(opts.title)}</strong><br><span style="color:#3d4d48">${esc(opts.body).replace(/\n/g, "<br>")}</span>` +
+    `</blockquote>` +
+    (opts.page ? `<p style="color:#626464;font-size:13px">Sent from <code>${esc(opts.page)}</code></p>` : "") +
+    `<p>Reply to this email to answer ${esc(who)} directly.</p>` +
+    `<p><a href="${esc(opts.boardUrl)}" style="color:#00a87f">Open the board</a></p>` +
+    `</div>`;
+  return {
+    to: opts.to,
+    /* The kind is in the subject so a rule can file them, and the title is what
+       makes the notification readable without opening anything. */
+    subject: `${what}: ${opts.title}`,
+    text: lines.join("\n"),
+    html,
+    /* ⚠️ REPLY GOES TO THE SUBMITTER, not to the sending account. Answering the
+       person who reported it is the whole next action, and this app sends FROM the
+       maintainer's own address — so without this, hitting Reply mails yourself. */
+    replyTo: opts.submitterEmail,
+  };
+}
 
 /** "Your request is done" — sent when an item first reaches a terminal status. */
 export function completionEmail(opts: {
