@@ -7,6 +7,7 @@ import { buildSmsBrain, resolveGreeting, smsWorkflowScopePath, type SmsWorkflowA
 import { tollFreeNumber } from "../data/smsContactNumber";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { SmsConversation, SmsTurn } from "../data/schema";
+import { useAutoGrow } from "../data/useAutoGrow";
 
 /* iPhone "Preview Agent" chat — modern iOS (dark mode) Messages mockup. The SE
    role-plays a customer texting in; the SMS agent replies live via /api/chat
@@ -199,6 +200,8 @@ export function PhonePreview({ onClose, mode = "modal", wf }: {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+  useAutoGrow(inputRef, input);
   const started = useRef(false);
   const baseRef = useRef<ConvBase | null>(null);
   const analyzeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -388,13 +391,19 @@ export function PhonePreview({ onClose, mode = "modal", wf }: {
             <div className="sms-inputbar">
               <button className="sms-plus" aria-label="Attach"><span className="material-icons">add</span></button>
               <div className="sms-field">
-                <input
+                <textarea
+                  ref={inputRef}
                   className="sms-input"
                   placeholder="Text Message · SMS"
                   value={input}
+                  rows={1}
                   autoFocus
                   onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={(e) => { if (e.key === "Enter") send(); }}
+                  /* An `<input>` had no way to grow at all, so the field can only
+                     grow by becoming a textarea — but a real iMessage compose box
+                     still sends on plain Return rather than inserting a line
+                     break, so Enter is prevented here and forwarded to send(). */
+                  onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); send(); } }}
                 />
                 {hasText ? (
                   <button className="sms-send" onClick={send} disabled={busy} aria-label="Send"><span className="material-icons">arrow_upward</span></button>

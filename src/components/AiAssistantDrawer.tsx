@@ -8,6 +8,7 @@ import { QuestionListTools } from "./QuestionListTools";
 import { stripGeneratedDashes, GREETING_PATH } from "../data/questionImport";
 import { defaultGreeting, resolveGreeting } from "../data/smsBrain";
 import { findTilePath } from "../data/findTilePath";
+import { useAutoGrow } from "../data/useAutoGrow";
 import { tileId } from "../data/tileId";
 
 /* The "Ask AI" drawer: slides in from the right over a dimmed backdrop. Scope is
@@ -197,6 +198,7 @@ export function AiAssistantDrawer() {
   const [prog, setProg] = useState<{ phase: string; pct: number; note?: string } | null>(null);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  useAutoGrow(inputRef, input);
   const listRef = useRef<HTMLDivElement>(null);
   const key = active?.key ?? "";
 
