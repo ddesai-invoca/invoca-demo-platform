@@ -7466,6 +7466,72 @@ suppressing the summary fetch: no numeric dot, a 10×10 plain dot, and the Inbox
 (three rows instead of four). No horizontal scroll; at 640px the chips stack above their text
 rather than leaving ~150px for the sentence.
 
+## AI SMS Conversation Intelligence's Marketing Data card now carries real attribution (9/11/2026)
+Asked for directly, against the selected `.sci-info-card`: *"add all the marketing data for this
+SMS Info, like all the data that you have added to the salesforce lead."* Before this the card
+had two generic fields (Destination Time Zone, SMS Session Status); it now carries the same
+eleven attribution fields the Salesforce Lead record's "Invoca Captured Attribution" section
+shows — same labels, same order, same derivation.
+
+⚠️⚠️ **DERIVED, REUSING `salesforceLeadDetail.ts` RATHER THAN A SECOND, INDEPENDENT COPY OF THE
+SAME LOGIC.** `smsInfoAttribution(profile, callerName)` (new, in that file) exports
+`lineOfBusiness` and reuses `categoryRows` / `strongLexical` / `categoryFor` / `offerFromCall` —
+the exact functions the Lead page's own attribution runs through — so the two screens are
+structurally incapable of computing two different answers for the same inputs. This is the same
+"one digitalInsights row taken whole" principle the Lead page's own header already states,
+applied a second time rather than re-derived.
+
+⚠️⚠️ **WHEN THE CALLER IS SOMEONE `salesforceLeads.ts` ALREADY NAMES, THIS IS LITERALLY THAT
+PERSON'S OWN LEAD RECORD, NOT A LOOK-ALIKE — and getting this right took two passes.**
+`salesforceLeadDetail(profile, leadSlug(first, last))` is called directly for a caller who
+matches a real Lead, so the two screens share their numbers by construction rather than by two
+derivations happening to agree.
+- **First pass matched only `smsScreenpop.callerName`, and it silently never fired.**
+  Verified on Shady Blinds: the seeded ACTIVE SMS conversation's caller is "Jessica Harper" —
+  but `smsScreenpop.callerName` on that profile is **"Marcus Bell"**; Jessica Harper is
+  `voiceScreenpop.callerName`. `salesforceLeads.ts`'s own header already documents that a
+  profile's named callers are scattered across FOUR sources (voice screen-pop, SMS screen-pop,
+  voice CI, SMS CI) — checking only one of them missed exactly the case that mattered on the
+  very first profile tested. Fixed to check both screen-pops' caller names.
+- **Second, unrelated bug in the same pass: matched against `info.displayName`, which is NOT
+  the caller's full name.** The engine invents `displayName` and `firstName`/`lastName`
+  independently ("J Harper" vs. "Jessica" + "Harper"), so comparing `displayName` against
+  `smsScreenpop.callerName` ("Jessica Harper") could never equal it even once the screen-pop
+  check was widened. Fixed to compare `` `${info.firstName} ${info.lastName}` `` instead.
+  ⚠️ **Neither bug was caught by a type or a build** — both were found by reading the rendered
+  page against that same caller's own Lead record and noticing the numbers disagreed, which is
+  the whole failure mode this feature exists to prevent. Verified after both fixes: Shady
+  Blinds' Jessica Harper reads Product of Interest "motorized shades", Marketing Campaign "The
+  Privacy Project", Marketing Search Terms "traditional colonial window shutters" on BOTH
+  screens, character for character.
+
+⚠️ **EVERY OTHER CALLER (an inactive shell, or a name neither screen-pop mentions) falls back
+to the SAME functions with a stable hash of that caller's own name** — still one coherent
+`digitalInsights` row, still the real category-matching order, still the recovered-or-blank
+promotion — just not claiming to be a specific person's CRM record. Verified on Orlando Health
+with a non-matching caller ("Jennifer Martinez"): the card renders a fully internally-coherent
+row (Line of Business "Healthcare", Product Category "Cancer Institute" agreeing with Product
+Name "Cancer Treatment", Marketing Source "Social Media" agreeing with Medium "Facebook" and a
+calling-page URL whose own `utm_source`/`utm_medium` match both), with no crash and no blank
+card.
+⚠️ **A KNOWN, ACCEPTED LIMIT: the fallback's product is not necessarily what THIS transcript is
+about.** Jennifer Martinez's transcript is about scheduling a mammogram; her card's Product of
+Interest reads "cancer treatment" (a stable pick off Orlando Health's own `smsScreenpop.products`
+list, not the transcript). Fixing this would need parsing the transcript itself for a topic,
+which no other field on this screen does either — the existing signals/key points are already
+independent of a structured "topic" field. Flagged rather than papered over with a heuristic.
+
+`products` and `productList` were exported from `salesforceLeads.ts` (previously private) so
+`smsInfoAttribution` can pick a product for a caller with no Lead of their own, using the exact
+same comma-split every real lead's product already goes through.
+
+No new CSS: `.sci-info-card` / `.sci-info-grid` are plain auto-sized flex/grid with no fixed
+height, so a card growing from 2 fields to 13 needed no layout change — verified by screenshot.
+
+Verified: `npm run audit:leaddetail` (15 profiles) and `npm run audit:leads` (15 profiles) both
+green — this reuses their functions but touches none of their own logic — and `tsc -b` clean.
+
+
 ## Read.Me + the in-app docs
 - A **row in the launch menu** (`src/components/LaunchMenu.tsx`), not its own button — see the
   hamburger section below. It was `ReadmeButton.tsx`, a fixed bottom-right pill styled

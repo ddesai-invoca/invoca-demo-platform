@@ -1,6 +1,6 @@
-import { liveBookedLead } from "./salesforceLiveLead";
+import { liveBookedLead, leadSlug } from "./salesforceLiveLead";
 import type { CustomerProfile, VoiceConversation } from "./schema";
-import { salesforceLeads, type SfLead } from "./salesforceLeads";
+import { salesforceLeads, products, productList, type SfLead } from "./salesforceLeads";
 import { salesforceCallLog } from "./salesforceCallLog";
 
 /* =============================================================================
@@ -208,8 +208,9 @@ export function offerFromCall(profile: CustomerProfile): string {
   return "";
 }
 
-/** "Invoca for Home Services" -> "Home Services". */
-function lineOfBusiness(profile: CustomerProfile): string {
+/** "Invoca for Home Services" -> "Home Services". Exported so `smsInfoAttribution`
+ *  below reuses the identical derivation rather than a second copy of it. */
+export function lineOfBusiness(profile: CustomerProfile): string {
   const n = String(profile.networkName ?? "").replace(/^invoca\s+for\s+/i, "").trim();
   return n || String(profile.industry ?? "");
 }
@@ -321,5 +322,72 @@ export function salesforceLeadDetail(
     owner: "Bill Hyatt",
     createdAt: lead.created,
     modifiedAt: lead.created,
+  };
+}
+
+/* =============================================================================
+   smsInfoAttribution — the SAME attribution on the SMS Info "Marketing Data" card
+   -----------------------------------------------------------------------------
+   Asked for directly: "add all the marketing data for this SMS Info, like all the
+   data that you have added to the salesforce lead." The card had two generic
+   fields (destination time zone, session status); this adds the real eleven —
+   same labels, same derivation, so a prospect who has just looked at the Lead
+   record does not find a second, different-looking answer here.
+
+   ⚠️⚠️ WHEN THE CALLER IS SOMEONE `salesforceLeads.ts` ALREADY NAMES, THIS IS
+   LITERALLY THAT SAME LEAD RECORD, NOT A LOOK-ALIKE. `salesforceLeads.ts` builds
+   its rows from FOUR sources — voice screen-pop, SMS screen-pop, voice CI, SMS
+   CI — because a profile's named callers are scattered across all four, and an
+   SMS conversation's caller is just as likely to be the VOICE screen-pop's
+   person as the SMS one's (verified on Shady Blinds: the seeded active SMS
+   conversation's caller, "Jessica Harper", is `voiceScreenpop.callerName`, not
+   `smsScreenpop.callerName`, which is "Marcus Bell"). Checking only the SMS
+   screen-pop missed exactly that case. Re-deriving a second, independent
+   attribution for a person who already has a real Lead risks the two
+   disagreeing — the "Medium: Bing, Source: Paid Search" failure this file's own
+   header warns about, one level up — so this checks BOTH screen-pops' caller
+   names and, on a match, routes through `salesforceLeadDetail` for that exact
+   person, sharing their numbers by construction.
+
+   ⚠️ EVERY OTHER CALLER (an inactive shell, or a captured chat with a name
+   neither screen-pop mentions) has no Lead record to borrow, so this falls
+   back to the SAME functions with a stable index derived from THAT caller's own
+   name — still one coherent `digitalInsights` row, still the same category and
+   promotion logic, just not claiming to be a specific person's CRM record. */
+export function smsInfoAttribution(profile: CustomerProfile, callerName: string): SfLeadAttribution {
+  const ss = profile.reports.smsScreenpop;
+  const vs = profile.reports.voiceScreenpop;
+  const name = String(callerName ?? "").trim();
+  const lower = name.toLowerCase();
+  if (name && (lower === ss?.callerName?.trim().toLowerCase() || lower === vs?.callerName?.trim().toLowerCase())) {
+    const parts = name.split(/\s+/);
+    const matched = salesforceLeadDetail(profile, leadSlug(parts[0], parts.slice(1).join(" ")));
+    if (matched) return matched.attribution;
+  }
+
+  const r = profile.reports;
+  const idx = hash(`sms-info-attr:${profile.id}:${name || "unknown"}`);
+
+  const rows = [...(r.digitalInsights?.rows ?? [])].sort((a, b) => filled(b) - filled(a));
+  const row = rows.length ? rows[idx % rows.length] : undefined;
+
+  const catRows = categoryRows(profile);
+  const list = productList(ss?.products);
+  const lowerList = products(ss?.products);
+  const product = list.length ? list[idx % list.length] : "";
+  const productLower = lowerList.length ? lowerList[idx % lowerList.length] : "";
+
+  return {
+    lineOfBusiness: lineOfBusiness(profile),
+    productOfInterest: productLower,
+    productCategory: strongLexical(catRows, product) || categoryFor(catRows, product, idx),
+    productName: product,
+    productPromotion: (r.agentConfig?.smsPlaybook?.offer || "").trim() || offerFromCall(profile),
+    marketingSource: row?.marketingSource ?? "",
+    marketingMedium: row?.marketingMedium ?? "",
+    marketingCampaign: row?.marketingCampaign ?? "",
+    marketingSearchTerms: row?.marketingSearchTerm ?? "",
+    websiteJourney: row?.websiteJourney ?? "",
+    websiteCallingPage: row?.landingPageUrl ?? "",
   };
 }

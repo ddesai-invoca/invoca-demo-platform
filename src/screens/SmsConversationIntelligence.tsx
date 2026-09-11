@@ -4,9 +4,10 @@ import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { Pill } from "../components/Pill";
 import { AgentStudioIcon } from "../components/nav";
-import type { SmsConversation, SmsInfo } from "../data/schema";
+import type { CustomerProfile, SmsConversation, SmsInfo } from "../data/schema";
 import { withoutAgentQaSignals } from "../data/aiSignals";
 import { usePageData, DashAssistant } from "../components/GeneratedTiles";
+import { smsInfoAttribution } from "../data/salesforceLeadDetail";
 
 /* The AI Agent glyph in the transcript/legend = the Invoca AI icon (same SVG as
    the sidebar Agent Studio icon), tinted Invoca purple (#855ede) — matches live. */
@@ -30,7 +31,23 @@ function InfoField({ label, value }: { label: string; value?: string }) {
     </div>
   );
 }
-function SmsInfoPanel({ info }: { info: SmsInfo }) {
+/* ⚠️⚠️ MARKETING DATA NOW CARRIES THE SAME ELEVEN ATTRIBUTION FIELDS THE SALESFORCE
+   LEAD RECORD SHOWS, asked for directly: "add all the marketing data for this SMS
+   Info, like all the data that you have added to the salesforce lead." Derived, not
+   generated — `smsInfoAttribution` (src/data/salesforceLeadDetail.ts) reuses the
+   EXACT same line-of-business/product-category/promotion/digitalInsights-row logic
+   the Lead page already uses, so the two screens cannot disagree. When this SMS's
+   own caller IS the SMS screen-pop's caller (the seeded example usually is), it is
+   literally that person's own Lead attribution, not a second independently-derived
+   copy of it. See that file's header for why. */
+function SmsInfoPanel({ info, profile }: { info: SmsInfo; profile: CustomerProfile }) {
+  /* ⚠️ THE FULL NAME, NOT `displayName` — the model writes those independently
+     ("J Harper" vs. firstName "Jessica" + lastName "Harper"), so matching on
+     displayName against `smsScreenpop.callerName` ("Jessica Harper") never hit,
+     and the identity-match branch below silently never fired. Caught by reading
+     the rendered page against the caller's own Lead record, not by a type. */
+  const callerFullName = `${info.firstName ?? ""} ${info.lastName ?? ""}`.trim();
+  const attribution = smsInfoAttribution(profile, callerFullName);
   return (
     <div className="sci-info-grid">
       <section className="sci-info-card">
@@ -70,6 +87,17 @@ function SmsInfoPanel({ info }: { info: SmsInfo }) {
         <div className="sci-fields">
           <InfoField label="DESTINATION TIME ZONE" value={info.destinationTimeZone} />
           <InfoField label="SMS SESSION STATUS" value={info.sessionStatus} />
+          <InfoField label="LINE OF BUSINESS" value={attribution.lineOfBusiness} />
+          <InfoField label="PRODUCT OF INTEREST" value={attribution.productOfInterest} />
+          <InfoField label="PRODUCT CATEGORY" value={attribution.productCategory} />
+          <InfoField label="PRODUCT NAME" value={attribution.productName} />
+          <InfoField label="PRODUCT PROMOTION" value={attribution.productPromotion} />
+          <InfoField label="MARKETING SOURCE" value={attribution.marketingSource} />
+          <InfoField label="MARKETING MEDIUM" value={attribution.marketingMedium} />
+          <InfoField label="MARKETING CAMPAIGN" value={attribution.marketingCampaign} />
+          <InfoField label="MARKETING SEARCH TERMS" value={attribution.marketingSearchTerms} />
+          <InfoField label="WEBSITE JOURNEY" value={attribution.websiteJourney} />
+          <InfoField label="WEBSITE CALLING PAGE" value={attribution.websiteCallingPage} />
         </div>
       </section>
       <section className="sci-info-card">
@@ -240,7 +268,7 @@ export function SmsConversationIntelligence() {
                 )}
               </>
             )}
-            {tab === "info" && (selected?.smsInfo ? <SmsInfoPanel info={selected.smsInfo} /> : <div className="sci-empty">No SMS info available.</div>)}
+            {tab === "info" && (selected?.smsInfo ? <SmsInfoPanel info={selected.smsInfo} profile={profile} /> : <div className="sci-empty">No SMS info available.</div>)}
             {tab === "comments" && <div className="sci-empty">No comments on this conversation.</div>}
           </div>
         </aside>

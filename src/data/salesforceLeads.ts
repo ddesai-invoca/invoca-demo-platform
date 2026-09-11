@@ -123,12 +123,14 @@ function created(raw: string | undefined, fallbackSeed: string): { text: string;
   return { text: "", key: -(hash(fallbackSeed) % 1000) };
 }
 
-/** "Motorized Shades, Plantation Shutters" -> ["Motorized Shades", "Plantation Shutters"]. */
-function productList(raw: string | undefined): string[] {
+/** "Motorized Shades, Plantation Shutters" -> ["Motorized Shades", "Plantation Shutters"].
+ *  Exported so `salesforceLeadDetail.ts` can pick a product for a caller who has no
+ *  Lead record of their own, using the SAME split every lead's own product goes through. */
+export function productList(raw: string | undefined): string[] {
   return String(raw ?? "").split(",").map((s) => s.trim()).filter(Boolean);
 }
 /** The same list lower-cased, which is the form the capture's own column shows. */
-function products(raw: string | undefined): string[] {
+export function products(raw: string | undefined): string[] {
   return productList(raw).map((s) => s.toLowerCase());
 }
 
