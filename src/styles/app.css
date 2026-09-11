@@ -195,9 +195,9 @@ td.signal-cell .material-icons { font-size: 20px; vertical-align: middle; }
 .dash-card-head { display: flex; align-items: center; padding: 16px 16px 12px; border-bottom: 1px solid rgba(0,0,0,.125); }
 .dash-card-title { font-size: 26.4px; font-weight: 400; color: #3d3d3d; }
 .dash-more { margin-left: auto; color: #adb5bd; font-size: 20px; cursor: pointer; }
-/* AI action icons (auto_awesome). Header icon is always visible; the tile icon
-   sits left of the kebab and only appears when the card/tile is hovered. */
-.title-actions .dash-ai-header { color: #2666f9; }
+/* AI action icons (auto_awesome). The tile icon sits left of the kebab and only
+   appears when the card/tile is hovered — the header's own copy was removed
+   9/11/2026 as a duplicate of TopBar's sparkle. */
 .dash-tile-actions { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; }
 .dash-tile-actions .dash-more { margin-left: 0; }
 .dash-tile-actions .chart-toggle { margin-left: 0; }

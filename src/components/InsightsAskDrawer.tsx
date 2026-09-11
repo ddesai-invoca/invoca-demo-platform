@@ -53,6 +53,11 @@ export function InsightsAskDrawer({
   const [q, setQ] = useState("");
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [busy, setBusy] = useState(false);
+  /* ⚠️ STREAMED (9/11/2026) — this drawer's model calls now run the same director
+     treatment (Opus + adaptive thinking + effort:"high") as every other Ask AI surface, so a
+     plain "Thinking…" bubble with no signal for 15-25s reads as a hang. `prog` holds the
+     latest SSE progress event; see AiAssistantDrawer for the identical reader. */
+  const [prog, setProg] = useState<{ phase: string; pct: number } | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const { pathname } = useLocation();
   const { profile, profileId } = useProfile();
@@ -119,27 +124,62 @@ export function InsightsAskDrawer({
         body: JSON.stringify({
           customerName, dashboardTitle: pageTitle, dataContext,
           question: text, focus: null, history: [], canCreateTiles: true,
+          stream: true,
         }),
       });
-      const d = await res.json();
-      if (!res.ok) throw new Error(d?.error || "Ask failed.");
+      if (!res.ok && !res.headers.get("content-type")?.includes("text/event-stream")) {
+        const d = await res.json().catch(() => null);
+        throw new Error(d?.error || "Ask failed.");
+      }
+
+      let result: any;
+      if (res.body) {
+        /* Same SSE reader AiAssistantDrawer uses: split on the blank line between events,
+           keep the trailing partial for the next chunk. */
+        const reader = res.body.getReader();
+        const dec = new TextDecoder();
+        let buf = "", err = "";
+        for (;;) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          buf += dec.decode(value, { stream: true });
+          const parts = buf.split("\n\n");
+          buf = parts.pop() ?? "";
+          for (const part of parts) {
+            const line = part.split("\n").find((l) => l.startsWith("data: "));
+            if (!line) continue;
+            let ev: any; try { ev = JSON.parse(line.slice(6)); } catch { continue; }
+            if (ev.type === "progress") setProg({ phase: ev.phase, pct: ev.pct });
+            else if (ev.type === "done") result = ev.result;
+            else if (ev.type === "error") err = ev.error;
+          }
+        }
+        if (err) throw new Error(err);
+        if (!result) throw new Error("The connection closed before the answer arrived. Please resend.");
+      } else {
+        const d = await res.json();
+        if (!res.ok) throw new Error(d?.error || "Ask failed.");
+        result = d.result;
+      }
+
       /* A "create" result has to be PLACED, not just described. Reporting the model's
          confirmation without calling addTile is the silent-success failure this repo
          keeps hitting: the drawer says "I added it" and nothing appears. */
-      if (d?.result?.kind === "create" && d.result.tile) {
-        const t = d.result.tile;
+      if (result?.kind === "create" && result.tile) {
+        const t = result.tile;
         place({
           tileType: t.tileType ?? "bar", title: t.title || text, note: t.note ?? "",
           kpis: t.kpis ?? [], xLabels: t.xLabels ?? [], series: t.series ?? [],
           slices: t.slices ?? [], columns: t.columns, rows: t.rows,
-        }, d.result.answer || "Added that tile.");
+        }, result.answer || "Added that tile.");
         return;
       }
-      setMsgs((m) => [...m, { role: "ai", text: d?.result?.answer || "…" }]);
+      setMsgs((m) => [...m, { role: "ai", text: result?.answer || "…" }]);
     } catch (e: unknown) {
       setMsgs((m) => [...m, { role: "ai", text: e instanceof Error ? e.message : "Something went wrong." }]);
     } finally {
       setBusy(false);
+      setProg(null);
     }
   }
 
@@ -179,7 +219,11 @@ export function InsightsAskDrawer({
               {msgs.map((m, i) => (
                 <p key={i} className={"iad-msg iad-msg--" + m.role}>{m.text}</p>
               ))}
-              {busy && <p className="iad-msg iad-msg--ai iad-msg--busy">Thinking…</p>}
+              {busy && (
+                <p className="iad-msg iad-msg--ai iad-msg--busy">
+                  {prog ? `${prog.phase}… ${Math.round(prog.pct)}%` : "Thinking…"}
+                </p>
+              )}
             </div>
           )}
         </div>

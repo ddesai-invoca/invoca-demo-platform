@@ -190,11 +190,13 @@ export function AiAssistantDrawer() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
-  /* ⚠️ THE PROGRESS BAR EXISTS BECAUSE ONE PAGE IS DELIBERATELY SLOW (9/3/2026). The voice
-     workflow's answer runs on Opus with adaptive thinking, which takes real seconds — asked
-     for explicitly: "It's ok if it takes a bit like it does for you, just put the progress
-     bar or a percentage." Absent on every other page, which still answers in one hop on
-     Haiku and gets the three-dot indicator as before. */
+  /* ⚠️ EVERY PAGE IS DELIBERATELY SLOW NOW (9/3/2026, widened 9/11/2026). Ask AI runs on
+     Opus with adaptive thinking everywhere, which takes real seconds — first asked for on
+     the voice workflow explicitly: "It's ok if it takes a bit like it does for you, just
+     put the progress bar or a percentage," then extended platform-wide so every surface
+     gets the same treatment rather than a fast/slow split whose failure mode was silent
+     partial answers. The three-dot indicator only shows before the first progress event
+     arrives. */
   const [prog, setProg] = useState<{ phase: string; pct: number; note?: string } | null>(null);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -297,8 +299,11 @@ export function AiAssistantDrawer() {
       }
       let dataContext = "";
       try { const j = JSON.stringify(eff); dataContext = j.length > 12000 ? j.slice(0, 12000) + "…(truncated)" : j; } catch { /* ignore */ }
-      /* The server decides the model from the same signal; this only decides the transport. */
-      const wantsStream = /"agent"\s*:/.test(dataContext);
+      /* ⚠️ ALWAYS STREAMS NOW (9/11/2026) — every "Ask AI" request runs the same director
+         model (engine/assistant.ts), which is streamed unconditionally on the server. This
+         used to test the page's data shape (`/"agent"\s*:/`) to match a Haiku/Opus split that
+         no longer exists; every page gets the same progress bar now. */
+      const wantsStream = true;
       const res = await fetch("/api/ai-assistant", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -315,9 +320,8 @@ export function AiAssistantDrawer() {
              variant, so a tile created there is actually drawn. */
           canCreateTiles: pathname.startsWith("/dashboards/") || pathname.startsWith("/reports/")
             || pathname.startsWith("/insights/"),
-          /* ⚠️ THE SAME TEST THE SERVER USES TO PICK THE MODEL — the page's DATA carrying an
-             `agent` key, not its pathname. Asking for the stream on a page the server will
-             answer on Haiku would show a progress bar for a request that has no phases. */
+          /* Always true now — see wantsStream above. Every request runs the director model
+             server-side and always streams. */
           stream: wantsStream,
           questionPath }),
       });

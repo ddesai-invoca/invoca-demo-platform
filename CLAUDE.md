@@ -7531,6 +7531,98 @@ height, so a card growing from 2 fields to 13 needed no layout change — verifi
 Verified: `npm run audit:leaddetail` (15 profiles) and `npm run audit:leads` (15 profiles) both
 green — this reuses their functions but touches none of their own logic — and `tsc -b` clean.
 
+## The dashboard header's own AI sparkle removed — one was already enough (9/11/2026)
+Asked for directly, against the selected `.dash-ai-header` sparkle in a dashboard's
+`title-actions` row: "Remove this AI icon as there is already one at the top of page."
+
+TopBar's own hover-revealed sparkle (`.tb-ai`) already opens the same Ask AI drawer on every
+page, dashboards included, so the header's copy was a second entry point to the identical
+feature, not a second capability. Removed from `DashHeaderActions.tsx` (the `openDrawer`
+destructure went with it, since nothing else used it) and its now-dead `.dash-ai-header` CSS
+rule from `app.css`. The **per-tile** sparkles (`DashTileAi`/`.dash-tile-actions`) are
+unrelated — they scope an edit to one tile rather than the whole page — and are untouched.
+
+Verified: `npm run typecheck` clean, `npm run audit:ai` green (nothing asserted the removed
+icon's presence), and live on Orlando Health's Marketing Performance dashboard — the header
+sparkle is gone, TopBar's own "Ask AI about this page" button still opens the drawer.
+
+## Every "Ask AI" surface now runs the voice workflow's director treatment (9/11/2026)
+Asked for directly, in the same message as the icon removal above: "for all the Ask AI,
+become a lot more robust, basically all the Ask AI on the platform should be just as robust
+as however you set up the Ask AI for the Voice Agent."
+
+⚠️⚠️ **INVESTIGATED FIRST, AND THE FINDING SHAPED THE WHOLE CHANGE: BOTH TIERS ALREADY LIVED
+IN ONE FUNCTION.** `engine/assistant.ts`'s `askAssistant()` already served every "Ask AI"
+surface platform-wide from one entry point, gated by a single boolean —
+`isVoiceAgentPage(dataContext) = /"agent"\s*:/.test(dataContext)` — that chose between a
+fast, cheap Haiku path (every other page) and a strong, streamed Opus path with adaptive
+thinking and `effort:"high"` (the voice workflow only). The frontend (`AiAssistantDrawer.tsx`)
+and both server endpoint twins (`server.ts`, `vite.config.ts`) already branched generically
+on a `stream` flag, so the progress-bar UI already existed and needed no new component. So
+this was never a rewrite — it was widening which requests take the strong path, and rewriting
+the prompt language that had been written specifically to restrain a WEAK model.
+
+**What changed, concretely:**
+1. **`isVoiceAgentPage()` no longer gates the model, effort or transport** — only the removed
+   `FAST_MODEL` (Haiku) path did that, and it is deleted. `DIRECTOR_MODEL` is renamed `MODEL`
+   (it is no longer one page's special case) and every request now runs Opus 5 with
+   `thinking: {type:"adaptive", display:"summarized"}` and `output_config.effort:"high"`,
+   streamed via `client.messages.stream()`.
+2. **`isVoiceAgentPage()` still exists**, narrowed to what it always should have meant: whether
+   `buildSystem()` splices in the voice-specific brief (`agent.greeting`, `informSteps`,
+   `serviceZips`, the voice list, …). Those fields genuinely do not exist on a page whose data
+   carries no `agent` key, and naming them anyway is the documented failure mode ("naming a
+   field that is not in the model's data is how it invents a path and writes the edit
+   somewhere else" — the exact bug recorded at the SMS greeting).
+3. **The generic "HARD RULES" section was rewritten out of its hedged, refusal-heavy form**,
+   for the same reason the director brief itself was rewritten on 9/3: `editGuard` already
+   makes CSS/layout/chart-type edits structurally impossible (no data value reaches a
+   `className` or `style`, chart type is chosen in JSX, `editGuard` drops a type flip or
+   structural change regardless of what the model returns), so repeating "YOU MAY NEVER X,
+   DECLINE via answer" for something the code already prevents reads as a weak model being
+   managed — and it had previously self-contradicted the capability line beside it (asked to
+   add a column, the model read the old prohibition and refused). The rules now say what IS
+   wired up, once, and trust the guard for the rest.
+4. **Both frontend drawers (`AiAssistantDrawer.tsx`, `InsightsAskDrawer.tsx`) always request
+   the stream now** — `wantsStream` was a test of the page's data shape matching the old
+   Haiku/Opus split; with one path for every page, that test would have silently left some
+   pages showing no progress bar for a 15-25s wait. `InsightsAskDrawer` gained the same SSE
+   reader `AiAssistantDrawer` already had (it had none before, only a static "Thinking…").
+
+⚠️⚠️ **THE COST/LATENCY TRADEOFF IS REAL AND STATED, NOT HIDDEN.** A one-line dashboard edit
+that used to answer in ~2-3s on Haiku now takes the same 15-25s the voice page always has,
+and costs Opus-tier tokens instead of Haiku's. Chosen deliberately over keeping the split,
+because the split's failure mode was invisible: a Haiku answer to a multi-part instruction
+looks like a normal, if partial, success, and only a careful SE comparing the request against
+what actually changed ever notices the gap. Every request streams with a real progress bar
+precisely so the new wait is never a silent spinner.
+
+⚠️ **`scripts/audit-ai-rules.ts`'s "THE VOICE AGENT DIRECTOR" section was rewritten, not
+just relaxed** — its dozen checks assumed the two-tier split and asserted the fast path
+existed, which is now backwards. The rewritten section asserts the opposite invariant: no
+`FAST_MODEL`/`if (!director)` path exists at all, `isVoiceAgentPage` is still called (scoping
+prompt content only), adaptive thinking and `effort:"high"` are unconditional, both drawers
+always request the stream, and a dropped stream still fails loudly rather than reading as a
+silent success. Two of the new checks were wrong on the first pass and are the record of it:
+the `effort` check matched this very section's own header prose (`` `effort:"high"` `` with no
+space, versus the real code's `effort: "high"` with one) until anchored to require the space,
+and the `InsightsAskDrawer` stream check matched an unrelated `dec.decode(value, {stream:
+true})` TextDecoder option until anchored to the request body's `canCreateTiles: true,\nstream:
+true,` pair. Both were caught by deliberately sabotaging the real code and confirming the
+check still passed — a check that cannot fail is worse than none, the same lesson this file
+has recorded from several other probes.
+
+Verified: `npm run typecheck` clean, `npx tsx scripts/audit-ai-rules.ts` green with every check
+in the rewritten section confirmed to FIRE by sabotaging the corresponding code (reintroducing
+`FAST_MODEL`, dropping `effort:"high"`, reverting either drawer's stream flag) and reverting.
+`npm run audit` unaffected — its only failures are the pre-existing generated-profile-data
+issues this file already tracks (signal tier pairs, conversion-story ordering on a handful of
+demos), unchanged by this work. Live in the browser: asking the Marketing Performance
+dashboard's Ask AI (Orlando Health) to "Bump Call Count to 9500 and Total Revenue to
+$2,000,000" showed "Sending to Claude Opus" and a live progress bar — the voice page's exact
+UI — then landed both edits, and the model additionally flagged (in "answer") that the
+breakdown tables still summed to the old total and offered to reconcile them, which is the
+kind of coordinated, multi-part reasoning a Haiku answer would not have caught.
 
 ## Read.Me + the in-app docs
 - A **row in the launch menu** (`src/components/LaunchMenu.tsx`), not its own button — see the

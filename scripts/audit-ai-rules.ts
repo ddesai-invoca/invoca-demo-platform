@@ -900,49 +900,59 @@ console.log("\nThe workflow tree's rows are symmetric and never crowded");
 }
 
 /* =============================================================================
-   THE VOICE AGENT DIRECTOR (9/3/2026)
+   ASK AI'S ONE DIRECTOR MODEL, PLATFORM-WIDE (9/3/2026, widened 9/11/2026)
    -----------------------------------------------------------------------------
-   The drawer on the voice workflow runs a much stronger model so an SE can describe agent
-   BEHAVIOUR and have it land. Three things have to stay true or the feature silently
-   degrades back to what it was, and none of them shows up as a type error:
-     • the strong model is reached at all (a stray edit to the gate sends every page to Haiku,
-       which answers the easy half of an instruction and stops);
-     • Haiku is NOT sent adaptive thinking or `effort` — it 400s on either, which would break
-       Ask AI on every dashboard in the app;
-     • the drawer streams exactly where the server reasons, or the SE watches a spinner for
-       twenty seconds with no idea whether it is working.
+   Every "Ask AI" surface runs the same strong model now — Opus, adaptive thinking,
+   effort:"high", streamed — so an SE describing a multi-part instruction on ANY page gets it
+   translated into coordinated edits rather than one plausible fragment. This replaced a
+   two-tier split (a fast/cheap Haiku path for most pages, the strong path only for the voice
+   workflow) whose failure mode was invisible: a partial Haiku answer to a multi-part
+   instruction looks like a normal success. Three things have to stay true or the feature
+   silently degrades, and none of them shows up as a type error:
+     • every request reaches the strong model (a stray edit reintroducing a fast/slow split
+       would silently make some pages worse again);
+     • the call streams (the SDK refuses a non-streaming call it estimates could exceed 10
+       minutes, which Opus plus adaptive thinking reaches);
+     • the frontend always requests the stream, so the SE sees the real progress bar rather
+       than a spinner with no signal for 15-25 seconds.
    ============================================================================= */
 {
   const a = readAny("engine/assistant.ts");
 
-  /^const DIRECTOR_MODEL = "claude-opus-5";$/m.test(a)
-    ? ok("the director runs on Opus 5")
-    : bad("the director model is missing or is no longer Opus 5");
+  /^const MODEL = "claude-opus-5";$/m.test(a)
+    ? ok("Ask AI runs on Opus 5")
+    : bad("the Ask AI model is missing or is no longer Opus 5");
 
-  /* ⚠️ ONE GATE, THREE READERS. The model choice, the transport and the prompt section must
-     all key off the SAME test, or the drawer promises what the model was never briefed to
-     do. Asserted as a called FUNCTION rather than three copies of the regex. */
-  (a.match(/isVoiceAgentPage\(/g) ?? []).length >= 3
-    ? ok("one gate decides the model, the prompt and the transport")
-    : bad("the voice-agent gate has been inlined again and the three can now drift");
+  /* ⚠️ NO FAST/CHEAP PATH SHOULD EXIST ANY MORE — a reintroduced two-tier split is exactly
+     the silent-degradation shape this section exists to catch. */
+  !/FAST_MODEL/.test(a) && !/if \(!director\)/.test(a)
+    ? ok("there is no separate fast/cheap model path — every page gets the same treatment")
+    : bad("a fast/cheap path has come back — some pages are silently getting a weaker model again");
 
-  /* ⚠️ THE FAST PATH MUST STAY FAST AND CHEAP. Every other screen in the app is on it. */
-  /if \(!director\) \{/.test(a) && /model: FAST_MODEL/.test(a)
-    ? ok("every other page still answers on Haiku")
-    : bad("the fast Haiku path is gone — every dashboard edit now costs Opus latency");
+  /* ⚠️ isVoiceAgentPage() STILL EXISTS, but only to gate the voice-specific PROMPT CONTENT
+     (fields like agent.greeting/informSteps that simply don't exist off that page's data) —
+     never the model, transport or effort. Naming those fields on a page whose data lacks
+     them is how the model invents a path and writes the edit somewhere else. */
+  /function isVoiceAgentPage\(/.test(a) && (a.match(/isVoiceAgentPage\(/g) ?? []).length >= 2
+    ? ok("the voice-agent gate still scopes the voice-specific prompt content")
+    : bad("isVoiceAgentPage is gone or no longer used to scope the voice brief");
 
-  /* ⚠️ HAIKU 400s ON BOTH OF THESE (engine/core.ts records the same for generation), so they
-     may only ever appear after the director branch has returned the fast path. */
-  const fastPath = a.slice(a.indexOf("if (!director)"), a.indexOf("/* ---- the director path"));
-  !/thinking:|effort:/.test(fastPath)
-    ? ok("adaptive thinking and effort stay off the Haiku call")
-    : bad("thinking/effort leaked onto the Haiku path — it 400s, breaking Ask AI everywhere");
+  /* ⚠️ ADAPTIVE THINKING AND effort ARE OPUS-ONLY — Haiku 400s on either. There is no more
+     Haiku path in this file, so both should simply always be present on the one model call
+     rather than conditioned on anything. */
+  /* ⚠️ REQUIRES A SPACE AFTER THE COLON, on purpose: this file's own header comment two
+     screens up writes `effort:"high"` (no space) as prose, and a looser regex matched that
+     instead of the real `output_config: { effort: "high", ... }` call — a check that passed
+     against documentation, not code. */
+  /thinking:\s*\{\s*type:\s*"adaptive"/.test(a) && /effort:\s+"high"/.test(a)
+    ? ok("every request gets adaptive thinking and effort:\"high\"")
+    : bad("adaptive thinking or effort:\"high\" is missing from the one model call");
 
   /* ⚠️ STREAMING IS A REQUIREMENT, NOT A NICETY: the SDK refuses a non-streaming call it
      estimates could exceed 10 minutes, which Opus plus adaptive thinking reaches. */
   /client\.messages\.stream\(/.test(a) && /finalMessage\(\)/.test(a)
-    ? ok("the director call streams")
-    : bad("the director call no longer streams — it will fail on long answers");
+    ? ok("the one model call streams")
+    : bad("the model call no longer streams — it will fail on long answers");
 
   /* ⚠️ "omitted" IS THE DEFAULT ON OPUS 5 and streams EMPTY thinking text, so the progress
      note would render blank and the bar would move on nothing. */
@@ -993,6 +1003,26 @@ console.log("\nThe workflow tree's rows are symmetric and never crowded");
   /aiad-prog-fill/.test(drawer2) && /aiad-prog-pct/.test(drawer2)
     ? ok("the drawer renders a bar and a percentage")
     : bad("the progress bar is gone");
+
+  /* ⚠️ THE DRAWERS MUST ALWAYS REQUEST THE STREAM NOW (9/11/2026) — there is no page whose
+     request answers fast enough not to need it any more, so a `wantsStream` test keyed on
+     the page's data shape (the old Haiku/Opus split) would silently leave some pages showing
+     no progress bar for a 15-25s wait. */
+  /const wantsStream = true;/.test(drawer2)
+    ? ok("AiAssistantDrawer always requests the stream")
+    : bad("AiAssistantDrawer is still conditionally requesting the stream");
+
+  const insightsDrawer = readAny("src/components/InsightsAskDrawer.tsx");
+  /* ⚠️ THE FILE ALSO CONTAINS AN UNRELATED `{ stream: true }` — the TextDecoder's OWN option
+     in its SSE reader (`dec.decode(value, { stream: true })`), which a bare `/stream:\s*true/`
+     matches regardless of whether the REQUEST actually asks for one. Anchored to the request
+     body, which is the only place `canCreateTiles: true` appears. */
+  /canCreateTiles: true,\s*\n\s*stream: true,/.test(insightsDrawer)
+    ? ok("InsightsAskDrawer requests the stream too")
+    : bad("InsightsAskDrawer never asks for a stream — it will hang silently for 15-25s");
+  /if \(err\) throw new Error\(err\);/.test(insightsDrawer) && /if \(!result\) throw new Error\("The connection closed/.test(insightsDrawer)
+    ? ok("InsightsAskDrawer also fails loudly on a dropped stream")
+    : bad("InsightsAskDrawer can read a dropped stream as a silent success");
 }
 
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");

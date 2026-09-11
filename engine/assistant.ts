@@ -16,46 +16,55 @@
                           tiles / the whole story). Never structure or styling.
      • kind:"editTile"  — a replacement spec for the focused AI-generated tile.
 
-   HARD RULE (enforced here + in the UI): the assistant edits DATA ONLY — values,
-   labels, titles, series numbers. It never changes layout, CSS, colors, keys, or
-   the shape/length of arrays the dashboard depends on. Fast Haiku model; key is
-   server-side only (called from the Vite dev endpoint / never in the browser).
+   HARD RULE (enforced structurally, not just asked for): the assistant edits DATA ONLY —
+   values, labels, titles, series numbers. There is no route from an edit to layout, CSS,
+   colors, keys, or the shape/length of arrays the dashboard depends on — `editGuard`
+   refuses those regardless of what the model returns. Key is server-side only (called from
+   the Vite dev endpoint / never in the browser).
    ============================================================================= */
 
 import Anthropic from "@anthropic-ai/sdk";
 import { VOICE_OPTIONS } from "../src/data/voiceOptions.ts";
 
-const FAST_MODEL = "claude-haiku-4-5-20251001";
-
 /* =============================================================================
-   THE VOICE AGENT DIRECTOR — a second, far stronger model for one kind of page
+   THE DIRECTOR MODEL — every "Ask AI" surface, platform-wide (9/11/2026)
    -----------------------------------------------------------------------------
-   Asked for 9/3/2026, from the voice workflow's Ask AI drawer: "you know how I can ask you
-   to change how the voice agent acts, and does, and what questions it asks, I want the ASK
-   AI to have all the abilities that you have to change the Voice AI behavior... It's ok if
-   it takes a bit like it does for you, just put the progress bar or a percentage."
+   Asked for 9/3/2026, from the voice workflow's Ask AI drawer, and widened 9/11/2026 to
+   the whole platform: "for all the Ask AI, become a lot more robust, basically all the Ask
+   AI on the platform should be just as robust as however you set up the Ask AI for the
+   Voice Agent."
 
-   ⚠️⚠️ **THE GAP WAS THE MODEL, NOT THE DATA MODEL — measured before changing anything.**
-   `agent.rules[]` already reaches the live call prompt verbatim ("CONVERSATION RULES
-   configured on this workflow"), `agent.informSteps[]` is the numbered flow, and the tree's
-   paths and chips are what the agent collects. `editGuard` already permits every one of
-   those to change LENGTH. So almost anything an SE can describe was already expressible —
-   what was missing was a model strong enough to translate "make it qualify on budget before
-   it books" into the right combination of six or seven edits across two halves of one
-   object. Haiku wrote one plausible edit and stopped.
+   ⚠️⚠️ **THE ORIGINAL GAP WAS THE MODEL, NOT THE DATA MODEL — measured before changing
+   anything.** `agent.rules[]` already reaches the live call prompt verbatim, `informSteps[]`
+   is the numbered flow, and the tree's paths and chips are what the agent collects.
+   `editGuard` already permits every one of those to change LENGTH. So almost anything an SE
+   can describe was already expressible — what was missing was a model strong enough to
+   translate one sentence into the six or seven coordinated edits it implies. Haiku wrote one
+   plausible edit and stopped. That is not a defect unique to the voice page: a dashboard
+   instruction like "reshape this into a Q4 slowdown story" is the same shape of problem —
+   several tiles, kept internally consistent — and deserved the same model.
 
-   ⚠️ **SO ONLY THIS ONE PAGE PAYS FOR IT.** Dashboards, reports and the tile builder keep
-   Haiku and stay instant — a "bump revenue to $1.2M" edit does not need reasoning and an
-   SE mid-demo should not wait for it. The gate is the same `"agent":` test that already
-   decides whether to describe the agent at all, so the drawer's promise, the prompt's
-   instructions and the model choice cannot drift apart.
+   ⚠️ **EVERY PAGE NOW PAYS THE SAME OPUS + THINKING + `effort:"high"` COST, AND THAT IS A
+   REAL LATENCY/PRICE TRADE, STATED RATHER THAN HIDDEN.** A one-line dashboard edit that used
+   to answer in ~2s on Haiku now takes the same 15-25s the voice page always has. Every
+   request streams with a real progress bar so that wait is never a silent spinner. Chosen
+   deliberately over keeping a fast/slow split, because the split's failure mode was
+   invisible: a Haiku answer to a multi-part instruction looks like a normal, if partial,
+   success, and only a careful SE comparing what they asked for against what changed ever
+   notices the gap.
 
    ⚠️ **ADAPTIVE THINKING AND `effort` ARE OPUS-ONLY** — Haiku 400s on either, which
-   `engine/core.ts` records for the generation pipeline. Both are set ONLY on this path.
+   `engine/core.ts` records for the generation pipeline. Both are safe now that every
+   request goes through this one model.
    ============================================================================= */
-const DIRECTOR_MODEL = "claude-opus-5";
+const MODEL = "claude-opus-5";
 
-/** Does this page carry a voice agent's configuration beside its diagram? */
+/** Does this page carry a voice agent's configuration beside its diagram?
+ *  ⚠️ No longer a model/transport gate — every page runs the same director model and
+ *  streams. This only decides whether `buildSystem` splices in the voice-specific brief:
+ *  those fields (`agent.greeting`, `informSteps`, `serviceZips`, …) simply don't exist on a
+ *  page whose data carries no `agent` key, and naming them anyway is how a model invents a
+ *  path and writes the edit somewhere else — the exact failure recorded at the SMS greeting. */
 function isVoiceAgentPage(dataContext: string): boolean {
   return /"agent"\s*:/.test(dataContext);
 }
@@ -249,7 +258,8 @@ function buildSystem(input: AssistantInput): string {
        one doing what was asked. The guards that actually matter are in code — `editGuard`
        refuses locked chrome and type flips, `specWithConfig` validates the voice, `toSteps`
        normalises a shape — so the prompt can now describe the machine honestly and let the
-       model use it.
+       model use it. The same philosophy is why the shared HARD RULES below (every page, not
+       just this one) no longer hedge with repeated refusal fences either.
        ⚠️ Gated on the DATA carrying an `agent` key, not on the pathname: an SMS workflow
        registers a tree with no agent slice, and naming fields that are not in the model's
        data is how it invents a path and writes the edit somewhere else. */
@@ -304,14 +314,19 @@ function buildSystem(input: AssistantInput): string {
     `TILE rules (kind create/editTile): pick tileType — "kpi" (2–4 headline numbers → kpis), "line" (trend over time → xLabels + series[].values), "bar" (comparison across categories → xLabels + series[].values), "pie" (share of a whole → slices). Give a clear title + one-line note. Leave the arrays you don't use empty.`,
     ``,
     `HARD RULES:`,
-    `- YOU MAY add and remove COLUMNS, TILES, chart SERIES, pie SLICES and axis POINTS, and change any number, percentage, label or title. "Show a massive dip on Jan 5th" means editing that series' value at that index.`,
-    `- YOU MAY NEVER change CSS, fonts, colours, spacing, or WHICH KIND of chart a built-in tile is (a line stays a line, a pie stays a pie). Those are not data. If asked, DECLINE via "answer" and say what you can change instead.`,
-    /* This line used to forbid every length change, which now CONTRADICTS the two
-       capability lines above it. A self-contradicting prompt is worse than either
-       rule alone: asked to add a column the model read the prohibition and refused,
-       so "add a Total Calls column" came back as a plain answer. Rewritten to state
-       the one thing that is still absolutely true — data only, never presentation. */
-    `- You may ONLY change DATA values, never PRESENTATION. Each edit path MUST point at a scalar leaf (a value, a label, a title) or an array of numbers. When you add or remove a chart series, a slice, an axis point or a table column, keep the SHAPE consistent: one value per axis point, one cell per column. NEVER add or remove JSON keys, never replace an object with something of a different type, and never touch layout, CSS, colours, fonts or styling. If asked to restyle, recolour, resize, or change WHICH KIND of chart a built-in tile is, DECLINE via "answer" and offer what you can do instead.`,
+    /* ⚠️⚠️ **STATED AS A DESCRIPTION OF THE MACHINE, NOT A LIST OF REFUSALS (9/11/2026,
+       the director brief above states the same rationale).** CSS, layout and chart type
+       are not hedges the model has to remember to decline — there is structurally no path
+       from an edit to a className or a style attribute, chart type is chosen in JSX, and
+       `editGuard` drops a type flip or a structural change before it ever reaches the page.
+       Repeating "YOU MAY NEVER X, DECLINE via answer" for something the code already makes
+       impossible reads as a weak model being managed, and it previously self-contradicted
+       the capability line below it: asked to add a column, the model read the old
+       prohibition and refused outright, so "add a Total Calls column" came back as a plain
+       answer. This says what IS wired up, once, and trusts the guard for the rest. */
+    `- ONLY data reaches the page: values, percentages, labels, titles, chart series, pie slices, axis points and table columns. That is the whole surface — there is no route from an edit to CSS, fonts, colours, spacing, layout, or WHICH KIND of chart a built-in tile is (a line stays a line, a pie stays a pie), so spend your effort on what the data should say rather than guarding its presentation.`,
+    `- Add and remove COLUMNS, TILES, chart SERIES, pie SLICES and axis POINTS freely, and change any number, percentage, label or title. "Show a massive dip on Jan 5th" means editing that series' value at that index. Each edit path points at a scalar leaf (a value, a label, a title) or an array of numbers; keep the SHAPE consistent when you add or remove one — one value per axis point, one cell per column. Never add or remove JSON keys and never replace an object with something of a different type.`,
+    `- If asked for something genuinely outside this (restyle, recolour, resize, change a chart's kind), say plainly in "answer" that this edits data only and offer what you can do instead — that is a fact about the surface, not a policy to defend.`,
     `- TABLE COLUMNS — you CAN add, remove, rename or move a table's columns. Two shapes qualify: the Digital Journey report ("dimensionColumns" + "rows" of interactions) and a dashboard breakdown table ("metricColumns" + "rows" with "metrics"). Return kind:"editColumn" and fill "column" ONLY; leave "edits" empty. When the user is focused on ONE table, the column op applies to THAT table.`,
     `  DO NOT copy the other columns' values. You supply only the operation; the app splices it into the existing rows and every other value is preserved automatically.`,
     `    insert — index = 0-based position the new column takes (0 puts it FIRST, left of everything). header = its name. toIndex = -1. values = ONE value per row, in the SAME order as "rows" in the DATA below. COUNT the rows and return exactly that many values. "values" MUST NOT be empty for an insert: an empty list produces a blank column and is a failed answer. This is the only part of the table you generate, so spend your effort here.`,
@@ -355,25 +370,8 @@ export async function askAssistant(
   const history = (input.history ?? []).slice(-8);
   const messages = [...history, { role: "user" as const, content: input.question }];
   const system = buildSystem(input);
-  const director = isVoiceAgentPage(input.dataContext);
 
-  /* ---- the fast path, unchanged ------------------------------------------------
-     Every screen but the voice workflow. One non-streaming Haiku call, no thinking, no
-     effort — exactly as before, so nothing outside that page got slower or costlier. */
-  if (!director) {
-    const resp = await client.messages.create({
-      model: FAST_MODEL,
-      max_tokens: 8000,
-      system,
-      output_config: { format: { type: "json_schema", schema: RESULT_SCHEMA } },
-      messages,
-    } as any);
-    const text = (resp.content.find((b: any) => b.type === "text") as any)?.text;
-    if (!text) throw new Error("Empty assistant response.");
-    return JSON.parse(text) as AssistantResult;
-  }
-
-  /* ---- the director path -------------------------------------------------------
+  /* ---- the one path, every page (9/11/2026) -------------------------------------
      ⚠️ **STREAMED, AND NOT ONLY FOR THE PROGRESS BAR.** The SDK refuses a non-streaming
      call it estimates could exceed 10 minutes, which is what `max_tokens` plus adaptive
      thinking on Opus reaches — the identical failure `engine/core.ts` records for the
@@ -390,7 +388,7 @@ export async function askAssistant(
   report({ phase: "Sending to Claude Opus", pct: 4 });
 
   const stream = client.messages.stream({
-    model: DIRECTOR_MODEL,
+    model: MODEL,
     max_tokens: 16000,
     system,
     thinking: { type: "adaptive", display: "summarized" },
