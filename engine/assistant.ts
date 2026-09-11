@@ -385,7 +385,9 @@ export async function askAssistant(
      account of what it is doing, which is a real signal rather than a spinner with a
      percentage painted on it. */
   const report = (p: AssistantProgress) => { try { onProgress?.(p); } catch { /* never let a UI callback break the answer */ } };
-  report({ phase: "Sending to Claude Opus", pct: 4 });
+  /* ⚠️ NAMES NO MODEL — an SE reading the drawer has no reason to see "Opus" on screen, and
+     naming it here would mean updating this string on the next model swap too. */
+  report({ phase: "Reading the request", pct: 4 });
 
   const stream = client.messages.stream({
     model: MODEL,
