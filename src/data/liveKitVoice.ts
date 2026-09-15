@@ -302,18 +302,36 @@ export function useLiveKitVoice(): LiveKitVoice {
       const call: LiveCall = { room, audioEl: null, meter: null };
       bind(call, RoomEvent, Track);
 
-      /* ⚠️ `room.connect()` RETRIES INTERNALLY AND CAN HANG INDEFINITELY, which on a
-         projector is worse than failing — observed as "Connecting…" forever with no error.
-         12s is generous for a healthy network and short enough that nobody is left guessing. */
-      await Promise.race([
-        room.connect(data.url, data.token),
-        new Promise((_, rej) => setTimeout(
-          () => rej(new Error("Could not reach the voice service. End the call and try again.")),
-          CONNECT_TIMEOUT_MS,
-        )),
-      ]);
-      await room.localParticipant.setMicrophoneEnabled(true);
-      call.meter = startMeter(room);
+      /* ⚠️⚠️ **EVERY FAILURE PAST THIS POINT MUST DISCONNECT THE ROOM ITSELF, AND NOT DOING SO
+         WAS A REAL LEAK (9/15/2026).** `live` is assigned only once the call is fully up, and
+         `destroyLive()` early-returns while it is null — so anything that threw AFTER
+         `room.connect()` had resolved left a CONNECTED room that nothing could ever hang up.
+         Measured in the Browser pane, which has no microphone: `setMicrophoneEnabled(true)`
+         threw "Permission denied", the outer catch called `destroyLive()`, that found
+         `live === null` and returned, and the caller stayed in the room as ACTIVE indefinitely.
+         End Call could not release it, and because LiveKit caps CONCURRENT inference
+         connections per plan it held a slot until somebody deleted the room by hand.
+         ⚠️ The timeout race has the SAME shape and is covered by the same catch: it rejects
+         while `room.connect()` is still in flight, so the room can come up moments later with
+         nobody holding a reference to it. `disconnect()` is safe on a room that never
+         connected, which is why this needs no flag tracking whether it did. */
+      try {
+        /* ⚠️ `room.connect()` RETRIES INTERNALLY AND CAN HANG INDEFINITELY, which on a
+           projector is worse than failing — observed as "Connecting…" forever with no error.
+           12s is generous for a healthy network and short enough that nobody is left guessing. */
+        await Promise.race([
+          room.connect(data.url, data.token),
+          new Promise((_, rej) => setTimeout(
+            () => rej(new Error("Could not reach the voice service. End the call and try again.")),
+            CONNECT_TIMEOUT_MS,
+          )),
+        ]);
+        await room.localParticipant.setMicrophoneEnabled(true);
+        call.meter = startMeter(room);
+      } catch (e) {
+        room.disconnect().catch(() => {});
+        throw e;
+      }
       live = call;
 
       /* If the agent is already here, nothing to wait for. */
