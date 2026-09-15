@@ -8,7 +8,7 @@ import { AgentStudioLayout } from "./AgentStudioLayout";
 import { VoicePreviewIllustration } from "../components/VoicePreviewIllustration";
 import { WorkflowChatPreview } from "../components/WorkflowChatPreview";
 import { VoiceCallLive } from "./VoiceCallLive";
-import { useLiveKitReady } from "../data/liveKitVoice";
+import { useLiveKitReady, preloadVoiceEngine } from "../data/liveKitVoice";
 import { WorkflowTree, type WorkflowTreeModel, type TreeBranch, type TreePath } from "../components/WorkflowTree";
 import { usePageData } from "../components/GeneratedTiles";
 import { AgentWorkflowDetails } from "./AgentWorkflowDetails";
@@ -477,7 +477,15 @@ export function AgentWorkflow() {
               user groups are the destinations — so the preview is honest and the departure
               from the capture is gone. `brainOpts.minimal` builds that flow. */}
           <button className="wf-preview"
-            onClick={() => (isSms ? setSmsPreview(true) : setVoicePreview(true))}>
+            onClick={() => {
+              if (isSms) { setSmsPreview(true); return; }
+              /* ⚠️ Start the `livekit-client` download NOW rather than on the click that
+                 starts the call — the drawer's only content is "start a test call", so this
+                 is the earliest honest signal that a call is coming. It warms the CHUNK only;
+                 see `preloadVoiceEngine` for why it must not pre-mint a token. */
+              preloadVoiceEngine();
+              setVoicePreview(true);
+            }}>
             Preview Workflow
           </button>
         </div>

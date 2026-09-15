@@ -196,6 +196,44 @@ function destroyLive() {
   c.room.disconnect().catch(() => {});
 }
 
+/**
+ * Fetch the `livekit-client` chunk BEFORE the SE clicks Start Call.
+ *
+ * ⚠️⚠️ **THIS DOES NOT UNDO THE LAZY IMPORT — it moves WHEN the chunk is fetched, not whether
+ * it ships separately.** The measurement at the top of this file still holds: importing
+ * `livekit-client` at module scope put the single bundle from 2,166,613 to 2,661,260 bytes
+ * (+124 KB gzipped) on EVERY screen, for a library only the voice call touches. Preloading
+ * keeps it a separate chunk and out of that bundle; it simply starts the download when the
+ * preview drawer opens rather than on the click that starts the call.
+ *
+ * ⚠️ **OPENING THE DRAWER IS THE SIGNAL, and it is a reliable one** — the drawer's only
+ * content is "Start a live test call", so an SE who opened it is about to call.
+ *
+ * ⚠️⚠️ **BE HONEST ABOUT THE SIZE OF THIS WIN: IT IS ~0.2s, ON THE FIRST CALL ONLY.** Measured
+ * on production 9/15/2026. The chunk is 493,428 bytes and fetches cold in **130-322ms**; on a
+ * warm cache it costs **1ms**, so after the first call of a session this saves nothing. The
+ * click-to-agent-speaking total was **4.5s**, of which the chunk was 1ms (cached) and minting
+ * the token 67ms — **the remaining ~4s is inside `room.connect()` plus LiveKit creating the
+ * room and dispatching the agent**, which is not ours to shorten. So this is worth keeping
+ * (it takes half a megabyte off the critical path of the first call after every deploy, which
+ * is exactly the call an SE makes when they open a demo) and it is NOT the reason a call takes
+ * four seconds. Do not cite it as one.
+ *
+ * ⚠️ **IT MUST NOT PRE-MINT A TOKEN, and that is a deliberate line.** `/api/livekit-token`
+ * CREATES the room, and LiveKit dispatches the agent at room creation — so warming that
+ * instead would launch an agent before the SE clicked, spend inference minutes and a
+ * concurrency slot, and leave a zombie room behind if they never called. Only the chunk is
+ * warmed here; nothing reaches LiveKit.
+ *
+ * Idempotent and fire-and-forget. The rejection is swallowed because a failed preload must
+ * not surface anywhere: `connect()` awaits the same import and reports the failure there,
+ * where there is a call to fail.
+ */
+let enginePreload: Promise<unknown> | null = null;
+export function preloadVoiceEngine(): void {
+  enginePreload ??= import("livekit-client").catch(() => null);
+}
+
 export function useLiveKitVoice(): LiveKitVoice {
   const [phase, setPhase] = useState<VoicePhase>("idle");
   const [turns, setTurns] = useState<VoiceTurn[]>([]);
