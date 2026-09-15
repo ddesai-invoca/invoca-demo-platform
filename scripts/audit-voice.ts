@@ -13,6 +13,9 @@
    tree — a check that never fires is indistinguishable from no check.
    ============================================================================= */
 import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { EventEmitter } from "node:events";
+import { ParticipantKind } from "../agent/node_modules/@livekit/rtc-node/dist/index.js";
+import { endWhenRoomEmpties, EMPTY_ROOM_GRACE_MS } from "../agent/roomLifecycle.js";
 import { isStructuralChange } from "../src/data/editGuard";
 import { voiceSystemPrompt, smsSystemPromptForAudit } from "../engine/chat";
 import { emptyWorkflowGreeting } from "../src/data/workflowChrome";
@@ -820,8 +823,120 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
   }
 }
 
+/* =============================================================================
+   THE ZOMBIE-SESSION CONTRACT (9/15/2026)
+   -----------------------------------------------------------------------------
+   An ended call used to leave its agent sitting in the room forever, retrying STT at
+   somebody who was never coming back. That is not merely untidy: LiveKit caps CONCURRENT
+   inference connections per plan, so each zombie permanently held one, and on the Build
+   plan's cap of 2 a single leak halved voice capacity while presenting as
+   `APIConnectionError` — a quota problem wearing a network problem's clothes.
+
+   ⚠️ THESE CHECKS RUN THE REAL FUNCTION against a fake room rather than grepping for it,
+   which is why `endWhenRoomEmpties` lives in its own module: `voiceAgent.js` calls
+   `cli.runApp()` at import, so it cannot be loaded here. This file's own history is the
+   argument — a grep once passed against `if (false && ...)`, and another matched a comment
+   instead of the code it was written for.
+   ============================================================================= */
+{
+  const GRACE = 40;
+  const CALLER = { kind: ParticipantKind.STANDARD };
+  const AGENT_PEER = { kind: ParticipantKind.AGENT };
+  const settle = () => new Promise((r) => setTimeout(r, GRACE + 60));
+
+  const harness = (peers: unknown[]) => {
+    const room = new EventEmitter() as EventEmitter & {
+      name: string; remoteParticipants: Map<string, unknown>;
+    };
+    room.name = "voice-audit-room";
+    room.remoteParticipants = new Map(peers.map((p, i) => [`p${i}`, p]));
+    const state = { closed: 0, shutdown: 0, cbs: [] as (() => Promise<void>)[] };
+    const ctx = {
+      room,
+      shutdown: () => { state.shutdown++; },
+      addShutdownCallback: (cb: () => Promise<void>) => state.cbs.push(cb),
+    };
+    endWhenRoomEmpties(ctx, { close: async () => { state.closed++; } }, GRACE);
+    return { room, state };
+  };
+
+  /* The behaviour the fix exists for. */
+  const gone = harness([CALLER]);
+  gone.room.remoteParticipants.clear();
+  gone.room.emit("participantDisconnected", CALLER);
+  await settle();
+  check(gone.state.closed === 1 && gone.state.shutdown === 1,
+    "the last caller leaving closes the session AND ends the job",
+    `closed=${gone.state.closed} shutdown=${gone.state.shutdown}`);
+
+  /* ⚠️ A blip must not kill a call that is about to resume. */
+  const back = harness([CALLER]);
+  back.room.remoteParticipants.clear();
+  back.room.emit("participantDisconnected", CALLER);
+  back.room.remoteParticipants.set("again", CALLER);
+  back.room.emit("participantConnected", CALLER);
+  await settle();
+  check(back.state.closed === 0 && back.state.shutdown === 0,
+    "a caller who reconnects inside the grace window keeps the call");
+
+  const two = harness([CALLER, CALLER]);
+  two.room.remoteParticipants.delete("p0");
+  two.room.emit("participantDisconnected", CALLER);
+  await settle();
+  check(two.state.closed === 0 && two.state.shutdown === 0,
+    "one of two callers leaving does not end the call");
+
+  /* ⚠️ Or a recorder / SIP leg would hold the room open forever. */
+  const onlyAgent = harness([CALLER, AGENT_PEER]);
+  onlyAgent.room.remoteParticipants.delete("p0");
+  onlyAgent.room.emit("participantDisconnected", CALLER);
+  await settle();
+  check(onlyAgent.state.closed === 1 && onlyAgent.state.shutdown === 1,
+    "an agent-kind peer does not count as a caller");
+
+  /* ⚠️⚠️ THE OBVIOUS BUG TO INTRODUCE HERE: the agent can join before the caller, so a room
+     is legitimately callerless for a moment at startup. Arming on an empty room rather than
+     on a disconnect EVENT would shut the job down before the demo began. */
+  const startup = harness([]);
+  await settle();
+  check(startup.state.closed === 0 && startup.state.shutdown === 0,
+    "an empty room at startup never arms the teardown");
+
+  const torn = harness([CALLER]);
+  torn.room.remoteParticipants.clear();
+  torn.room.emit("participantDisconnected", CALLER);
+  for (const cb of torn.state.cbs) await cb();
+  await settle();
+  check(torn.state.closed === 0 && torn.state.shutdown === 0,
+    "job shutdown cancels a pending teardown timer");
+
+  /* ⚠️ An unhandled rejection inside the timer would turn a leak into an outage. */
+  let rejShutdown = 0;
+  const rejRoom = new EventEmitter() as EventEmitter & { name: string; remoteParticipants: Map<string, unknown> };
+  rejRoom.name = "r";
+  rejRoom.remoteParticipants = new Map([["a", CALLER]]);
+  endWhenRoomEmpties(
+    { room: rejRoom, shutdown: () => { rejShutdown++; }, addShutdownCallback: () => {} },
+    { close: async () => { throw new Error("already closing"); } },
+    GRACE,
+  );
+  rejRoom.remoteParticipants.clear();
+  rejRoom.emit("participantDisconnected", CALLER);
+  await settle();
+  check(rejShutdown === 1, "a session.close() that rejects still ends the job");
+
+  check(EMPTY_ROOM_GRACE_MS === 10_000,
+    "the shipped grace window is 10s, not a test value", String(EMPTY_ROOM_GRACE_MS));
+
+  /* The flag half of the fix: the session closing must take the room with it. */
+  check(/deleteRoomOnClose:\s*true/.test(worker),
+    "the worker sets deleteRoomOnClose so a closed session leaves no room behind");
+  check(/endWhenRoomEmpties\(ctx, session\)/.test(worker),
+    "and arms the caller-left watchdog");
+}
+
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (107 checks + per-profile)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (117 checks + per-profile)");
 process.exit(failures ? 1 : 0);

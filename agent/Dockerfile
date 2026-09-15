@@ -25,7 +25,12 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 RUN npm ci --omit=dev 2>/dev/null || npm install --omit=dev
 
-COPY voiceAgent.js ./
+# ⚠️⚠️ **EVERY `.js` IN `agent/`, NOT JUST THE ENTRY POINT — and naming them one by one is how
+# this breaks.** This read `COPY voiceAgent.js ./` until 9/15/2026, when the zombie-session fix
+# split `roomLifecycle.js` out of the entry point: the image still built, and the worker then
+# died on startup importing a file that was never copied, which presents as voice being
+# completely dead rather than as a build error. A glob cannot forget the next module.
+COPY *.js ./
 
 # ⚠️ NOT ROOT. `node` is an unprivileged user the base image already provides; it owns /app so
 # the runtime can write its own caches.

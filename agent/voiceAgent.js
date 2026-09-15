@@ -1,6 +1,7 @@
 import { cli, defineAgent, inference, voice, WorkerOptions } from "@livekit/agents";
 import * as anthropic from "@livekit/agents-plugin-anthropic";
 import * as silero from "@livekit/agents-plugin-silero";
+import { endWhenRoomEmpties } from "./roomLifecycle.js";
 import { fileURLToPath } from "node:url";
 
 /* =============================================================================
@@ -144,7 +145,20 @@ export default defineAgent({
       vad: ctx.proc.userData.vad,
     });
 
-    await session.start({ agent, room: ctx.room });
+    await session.start({
+      agent,
+      room: ctx.room,
+      /* ⚠️⚠️ **`deleteRoomOnClose` DEFAULTS TO FALSE, AND THAT DEFAULT IS HALF THE ZOMBIE BUG.**
+         Without it a closed session leaves its room standing with this agent still in it — which
+         is exactly what was measured on 9/15/2026 after an unrecoverable STT error: "AgentSession
+         closed" in the log, and the room still listing 2 participants long afterwards. The room
+         cannot age out on its own either, because the agent's own presence keeps it non-empty, so
+         the only thing that ever cleared one was deleting it by hand. */
+      inputOptions: { deleteRoomOnClose: true },
+    });
+
+    /* Armed BEFORE the greeting: a caller who hangs up during it must still tear the room down. */
+    endWhenRoomEmpties(ctx, session);
 
     /* ⚠️ THE AGENT SPEAKS FIRST, and it must. The old pipeline opened with a greeting
        and the demo's whole first beat is the agent answering the phone; without this
