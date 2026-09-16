@@ -715,5 +715,36 @@ const cap = fs.readFileSync("scripts/capture-replica.js", "utf8");
 }
 
 if (skipped) console.log(`\n  ${skipped} capture(s) not on this machine — the wiring checks above still ran.`);
+/* ---- 10. a registry entry whose capture is absent must FAIL CLOSED ----------
+   Reported from production: Replicate said Complete and Book online opened a BLANK page. The
+   registry ships in the JS bundle while `public/replicas/*.html` is git-ignored, so on a deploy
+   the client asserted a static hit, framed `/replicas/aptive.html`, and `express.static` missed
+   — and the SPA catch-all returned `index.html` INTO THE IFRAME, i.e. the app rendering itself
+   with no route. Nothing errored anywhere, and the capture Browserless had just made sat unused
+   in the dynamic store. Three independent guards now, because any one of them alone leaves a
+   silent blank frame. */
+{
+  const srv = fs.readFileSync("server.ts", "utf8");
+  const vite = fs.readFileSync("vite.config.ts", "utf8");
+  const page = fs.readFileSync("src/screens/ReplicaPage.tsx", "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
+
+  (srv.match(/st && staticReady\(st\.file\)/g) || []).length === 2
+    ? ok("lookup: server.ts only claims a static hit when the capture is on disk (both branches)")
+    : no("lookup: server.ts still trusts the registry without checking the file");
+  (vite.match(/st && staticReady\(st\.file\)/g) || []).length === 2
+    ? ok("lookup: the dev twin applies the same rule (both branches)")
+    : no("lookup: vite.config.ts still trusts the registry blindly — the twins have drifted");
+  /app\.get\("\/replicas\/\*"[\s\S]{0,120}status\(404\)/.test(srv)
+    ? ok("serve: a missing capture 404s instead of falling through to the SPA shell")
+    : no("serve: /replicas/* still falls through to index.html — a blank iframe, not an error");
+  /* ⚠️ The ORDER matters as much as the route: after the catch-all it can never run. */
+  srv.indexOf('app.get("/replicas/*"') < srv.indexOf('app.get("*"')
+    ? ok("serve: the 404 guard is registered BEFORE the SPA catch-all")
+    : no("serve: the guard sits after the catch-all, so it never runs");
+  !/replicaFor|replicaBySlug/.test(page)
+    ? ok("page: the browser no longer decides from the bundled registry — it asks the server")
+    : no("page: ReplicaPage short-circuits on the registry again, which the client cannot verify");
+}
+
 console.log(bad ? `\n${bad} replica check(s) FAILED\n` : "\nAll replica checks passed\n");
 process.exit(bad ? 1 : 0);

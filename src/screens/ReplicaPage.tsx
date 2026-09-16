@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useQuoteCaptures } from "../data/QuoteCaptureContext";
-import { replicaBySlug, replicaFor, readReplicaForm, deriveFieldMap, replicaDocs, fitEmbeddedFrames } from "../data/replicaPages";
+import { readReplicaForm, deriveFieldMap, replicaDocs, fitEmbeddedFrames } from "../data/replicaPages";
 import { derive } from "../data/prospectPlace";
 import { useLocationOverride } from "../data/locationOverride";
 
@@ -257,10 +257,16 @@ export function ReplicaPageScreen() {
     let alive = true;
     setCaptured(undefined);
 
-    const staticHit = (() => {
-      try { return slug ? replicaBySlug(slug) : (url ? replicaFor(new URL(url).hostname) : null); } catch { return null; }
-    })();
-    if (staticHit) { setCaptured({ ...staticHit, source: "static" }); return; }
+    /* ⚠⚠ **THE SERVER DECIDES WHICH CAPTURE EXISTS — THE BROWSER CANNOT, AND ASSUMING IT
+       COULD IS WHAT PRODUCED A BLANK SCREEN ON PRODUCTION.** This used to short-circuit on the
+       BUNDLED registry (`replicaFor`/`replicaBySlug`) and never ask at all. That registry ships
+       in the JS; the capture files it names are git-ignored, so on a deploy the client asserted
+       a static hit, framed `/replicas/aptive.html`, and got the SPA shell back — the app
+       rendering itself inside the iframe, blank, while the capture Replicate had genuinely just
+       made sat unused in the dynamic store. Only the server can see its own disk, and its
+       lookup now checks the file before claiming a static hit, so one round trip is the whole
+       answer. The `undefined` ("still checking") state this already models is what makes the
+       extra hop invisible — the screen shows "Opening…" rather than a wrong verdict. */
     if (!slug && !url) { setCaptured(null); return; }
 
     const qs = slug ? `slug=${encodeURIComponent(slug)}` : `url=${encodeURIComponent(url)}`;

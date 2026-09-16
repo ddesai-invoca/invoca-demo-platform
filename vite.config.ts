@@ -29,7 +29,8 @@ function generateApi(apiKey: string | undefined): Plugin {
         try {
           let raw = ''
           for await (const chunk of req) raw += chunk
-          const { name, url } = JSON.parse(raw || '{}')
+          const body = JSON.parse(raw || '{}')
+          const { name, url } = body
           if (!name || !url) { sse({ type: 'error', error: 'Both a prospect name and a website URL are required.' }); return res.end() }
           if (!apiKey) { sse({ type: 'error', error: 'ANTHROPIC_API_KEY is not set. Add it to .env or export it before `npm run dev`.' }); return res.end() }
 
@@ -140,9 +141,13 @@ function replicateCaptureApi(): Plugin {
           const send = (body: unknown) => { res.setHeader('Content-Type', 'application/json'); res.end(JSON.stringify(body)) }
           const { replicaFor, replicaBySlug } = await import(pathToFileURL(path.resolve(process.cwd(), 'src/data/replicaPages.ts')).href)
           const { getReplicaForDomain, getReplicaBySlug } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/replicaStore.ts')).href)
+          /* ⚠️ SAME FAIL-CLOSED RULE AS server.ts — see the long note there. A registry entry
+             whose capture is not on this machine must fall through to the dynamic store, or the
+             page frames a path that does not exist. Dev serves them from public/. */
+          const staticReady = (file: string) => fs.existsSync(path.resolve(process.cwd(), 'public/replicas', file))
           if (slugQ) {
             const st = replicaBySlug(slugQ)
-            if (st) return send({ ok: true, source: 'static', file: st.file, sourceUrl: st.sourceUrl, capturedAt: st.capturedAt, label: st.label, fields: st.fields ?? null })
+            if (st && staticReady(st.file)) return send({ ok: true, source: 'static', file: st.file, sourceUrl: st.sourceUrl, capturedAt: st.capturedAt, label: st.label, fields: st.fields ?? null })
             const dyn = getReplicaBySlug(slugQ)
             if (dyn) return send({ ok: true, source: 'dynamic', file: dyn.file, sourceUrl: dyn.sourceUrl, capturedAt: dyn.capturedAt, label: dyn.label, fields: dyn.fields })
             return send({ ok: false })
@@ -150,7 +155,7 @@ function replicateCaptureApi(): Plugin {
           let host = ''
           try { host = new URL(url).hostname } catch { return send({ ok: false }) }
           const st = replicaFor(host)
-          if (st) return send({ ok: true, source: 'static', file: st.file, sourceUrl: st.sourceUrl, capturedAt: st.capturedAt, label: st.label, fields: st.fields ?? null })
+          if (st && staticReady(st.file)) return send({ ok: true, source: 'static', file: st.file, sourceUrl: st.sourceUrl, capturedAt: st.capturedAt, label: st.label, fields: st.fields ?? null })
           const dyn = getReplicaForDomain(host)
           if (dyn) return send({ ok: true, source: 'dynamic', file: dyn.file, sourceUrl: dyn.sourceUrl, capturedAt: dyn.capturedAt, label: dyn.label, fields: dyn.fields })
           return send({ ok: false })

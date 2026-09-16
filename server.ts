@@ -370,9 +370,19 @@ app.get("/api/replicate/lookup", async (req, res) => {
   const slugQ = req.query.slug ? String(req.query.slug) : "";
   const { replicaFor, replicaBySlug } = await import("./src/data/replicaPages.ts");
   const { getReplicaForDomain, getReplicaBySlug } = await import("./engine/replicaStore.ts");
+  /* ⚠⚠ **A STATIC ENTRY IS ONLY REAL IF ITS CAPTURE IS ON THIS MACHINE, and trusting the
+     registry blindly is what produced a BLANK SCREEN on production.** `public/replicas/*.html`
+     is git-ignored on purpose (megabytes, pruned after 10 days), so a deploy has the registry
+     but NOT the files. Lookup answered `source: "static", file: "aptive.html"`, the page framed
+     `/replicas/aptive.html`, express.static missed, and the SPA catch-all below served
+     `index.html` INTO THE IFRAME — the app rendering itself with no route, i.e. blank. Worse
+     than a 404, because nothing anywhere reported a failure: Replicate had genuinely captured
+     the page and its bytes were sitting unused in the dynamic store.
+     Checking the file makes the registry fail CLOSED, falling through to that store. */
+  const staticReady = (file: string) => fs.existsSync(path.join(DIST, "replicas", file));
   if (slugQ) {
     const st = replicaBySlug(slugQ);
-    if (st) return res.json({ ok: true, source: "static", file: st.file, sourceUrl: st.sourceUrl, capturedAt: st.capturedAt, label: st.label, fields: st.fields ?? null });
+    if (st && staticReady(st.file)) return res.json({ ok: true, source: "static", file: st.file, sourceUrl: st.sourceUrl, capturedAt: st.capturedAt, label: st.label, fields: st.fields ?? null });
     const dyn = getReplicaBySlug(slugQ);
     if (dyn) return res.json({ ok: true, source: "dynamic", file: dyn.file, sourceUrl: dyn.sourceUrl, capturedAt: dyn.capturedAt, label: dyn.label, fields: dyn.fields });
     return res.json({ ok: false });
@@ -380,7 +390,7 @@ app.get("/api/replicate/lookup", async (req, res) => {
   let host = "";
   try { host = new URL(url).hostname; } catch { return res.json({ ok: false }); }
   const st = replicaFor(host);
-  if (st) return res.json({ ok: true, source: "static", file: st.file, sourceUrl: st.sourceUrl, capturedAt: st.capturedAt, label: st.label, fields: st.fields ?? null });
+  if (st && staticReady(st.file)) return res.json({ ok: true, source: "static", file: st.file, sourceUrl: st.sourceUrl, capturedAt: st.capturedAt, label: st.label, fields: st.fields ?? null });
   const dyn = getReplicaForDomain(host);
   if (dyn) return res.json({ ok: true, source: "dynamic", file: dyn.file, sourceUrl: dyn.sourceUrl, capturedAt: dyn.capturedAt, label: dyn.label, fields: dyn.fields });
   return res.json({ ok: false });
@@ -420,6 +430,12 @@ app.post("/api/delete-profile", (req, res) => {
 
 // Static built app + SPA deep-link fallback (so /dashboards/marketing etc. work).
 app.use(express.static(DIST));
+/* ⚠⚠ **A MISSING CAPTURE 404s RATHER THAN BECOMING THE APP.** Reaching here means
+   express.static above did not find the file, and the SPA catch-all would otherwise hand back
+   `index.html` — which, framed by the replica screen, renders as a silent blank page instead of
+   a failure anyone can see. Registered before the catch-all and scoped to this one prefix, so
+   every real route still falls through to the SPA exactly as before. */
+app.get("/replicas/*", (_req, res) => res.status(404).type("text/plain").send("No such capture on this server."));
 app.get("*", (_req, res) => res.sendFile(path.join(DIST, "index.html")));
 
 const server = app.listen(PORT, () => {

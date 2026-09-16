@@ -8570,6 +8570,43 @@ precedence is local-then-shared, and Reset clears both.
 ⚠ Three were broken on purpose and seen to fire — renaming the key out of the sync prefix,
 inverting the precedence, and leaving the local copy behind.
 
+#### ⚠⚠ "Replicate said Complete and Book online opens a BLANK page" — on PRODUCTION only (9/15/2026)
+Reported the moment `BROWSERLESS_TOKEN` went live. The capture had genuinely been made; the
+screen framed a path that does not exist on a deploy, and **nothing anywhere reported a
+failure** — which is what made it blank rather than broken.
+
+The chain, confirmed on the live site rather than reasoned about:
+1. `replicaPages.ts` registers `aptivepestcontrol.com` → the STATIC `public/replicas/aptive.html`.
+2. `ReplicaPage` short-circuited on that registry **in the browser** and never asked the server.
+3. It framed `/replicas/aptive.html`.
+4. That file is **git-ignored on purpose** (megabytes; pruned after 10 days), so no deploy has it.
+5. `express.static` missed — and `app.get("*")` served **`index.html` INTO THE IFRAME**. Measured
+   live: that URL returned **200** carrying `<div id="root">` and `/assets/index-…`. The app
+   rendered itself inside the frame with no route: blank.
+6. Meanwhile the capture Browserless had just made sat unused in the dynamic store.
+
+⚠⚠ **THE ROOT CAUSE IS A CLIENT ASSERTING SOMETHING ONLY THE SERVER CAN KNOW.** A registry
+compiled into the bundle cannot tell you what is on the server's disk. Three guards now, because
+any one alone still leaves a silent blank frame:
+- **the page asks the server** — the `replicaFor`/`replicaBySlug` short-circuit is gone, and the
+  `undefined` "still checking" state it already modelled is what makes the extra hop invisible;
+- **lookup checks the file** before claiming a static hit (BOTH twins, BOTH branches), so the
+  registry fails CLOSED and falls through to the dynamic store;
+- **`/replicas/*` 404s** rather than reaching the SPA catch-all — registered BEFORE it, or it can
+  never run, which the audit pins separately from the route's existence.
+
+⚠ **A DEPLOY-ONLY BUG, AND THAT IS WHY IT SURVIVED EVERY LOCAL CHECK.** This machine has both
+captures, so the static path resolved and the page was correct here every single time. Reproduced
+by moving `public/replicas/aptive.html` aside: the page then framed the SPA shell exactly as
+production did, and after the fix served the real capture ("Build a Plan – Aptive Pest Control",
+1 form, 38 inputs). Restoring the file, the static path still works — both verified.
+⚠ **AND THE VITE CONFIG IS READ AT STARTUP**: the API fix looked like it had not worked until the
+dev server was restarted, which is this file's Node-cache caveat wearing a different hat.
+
+**`npm run audit:replicas` gained 5 checks** — both twins' branches, the 404 guard, its ORDER
+against the catch-all, and the page no longer reading the registry. Two were broken on purpose
+and seen to fire (moving the guard after the catch-all, restoring the short-circuit).
+
 #### The submit button WAS replicated — it was clipped out of its own frame (9/15/2026)
 Reported directly: *"you need to also make sure that the submission button is also always
 replicated, for example i dont see one for greenix"*, alongside *"if i hit submit, would you be
