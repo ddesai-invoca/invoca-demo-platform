@@ -9268,6 +9268,98 @@ either fence, breaking one twin's buffering header, and letting a dropped stream
 or the drawer reports success having changed nothing — the silent no-op this file has now
 recorded five times.
 
+### The voice Preview Workflow drawer has its own Ask AI + undo, on the LEFT (9/16/2026)
+Asked for directly, pointing at the SMS chat drawer's pair: *"just like how the SMS Agent preview
+workflow has a Ask AI and undo button in the preview workflow, do it for the Voice Agent preview
+workflow as well."*
+⚠️ **THE SIDE WAS CORRECTED ON THE SPOT.** It was first asked for "from the right" and built that
+way, then immediately corrected to *"the drawer should come on the left side of the screen"* —
+which is also what the existing `.aiad--left` note argues for, and the reason is the same one it
+records: the thing being configured sits on the right, so a right-hand panel lands on top of it
+and its backdrop dims and blocks it.
+
+The SMS chat has carried a sparkle and an undo in its header since 8/26. The voice Preview
+Workflow drawer had neither, so the only way to change what the voice agent says was the top-bar
+sparkle on the page BEHIND the drawer — reachable only by closing the thing you were looking at.
+
+⚠️⚠️ **IT TARGETS THIS PAGE'S OWN SCOPE, AND THAT IS THE ONE REAL DIFFERENCE FROM THE SMS PAIR.**
+`WorkflowChatPreview` has to carry a scope key, `registerBase` it, and keep its own undo stack,
+because the SMS agent's config lives on ANOTHER page (Preview Agent) and is shared by both
+previews. On a voice workflow there is no such split: `baseAgent` is merged into the very object
+the diagram is registered with, precisely so one instruction can reshape the tree and configure
+the agent together (see the 8/27 section above). So this pair registers nothing and synthesises
+nothing — `pageKey` is `${profileId}::${pathname}`, the same string `usePageData` builds, and the
+buttons are a second door onto the scope the top-bar sparkle already edits, opened from where the
+SE is actually standing. A pair that grew its own key would be editing a scope nothing renders,
+which is the silent no-op this file records six times.
+⚠️ **UNDO THEREFORE SHARES THE PAGE'S STACK, which is correct rather than a compromise.** One
+scope has one history, and a voice instruction lands on the tree AND the agent at once — two
+stacks could undo half of one instruction. Verified: the drawer's undo cleared `agent.greeting`
+and all five rules in a single step and went back to "Nothing to undo".
+
+⚠️ **`side: "left"` HAS TO BE PASSED, because the platform default is the right.** Omitting it is
+not a neutral choice — `AssistantFocus.side` is `"left"`-only and everything else in the app wants
+the right-hand panel with its backdrop — so the audit asserts the left POSITIVELY rather than by
+the absence of anything. On the left there is no backdrop, `pointer-events` sit only on the panel,
+and the voice drawer beside it stays lit and clickable, including mid-call.
+
+⚠️⚠️ **THE LEFT PANEL RESERVED 412px FOR A 400px CHAT, AND THE VOICE DRAWER IS 500px — so below
+about 920px it covered the very thing it had been moved left to keep visible.** Measured before
+the fix: 0 overlap at 1092 and 1024, **20px at 900** and **88px at 800**. `body:has(.vp-root)
+.aiad--left .aiad-panel` reserves 512 instead, which is 0 overlap at all four widths (at 800 the
+panel sits on its own 300px floor and the drawer starts at exactly 300; at 900 there are 12px of
+clearance).
+⚠️ **KEYED ON THE VOICE DRAWER BEING ON SCREEN, NOT ON WIDENING THE RESERVE FOR EVERYONE.** A
+global 512 would have changed the SMS chat's panel at every width under ~924 — a screen that is
+signed off. Verified on the SMS page at exactly 900px, the width where the two rules diverge:
+`.vp-root` absent, panel still 420, chat at 500, overlap 0. `:has()` is already used in this app
+for `HiddenTileStyles`, and it works here regardless of where the two drawers sit relative to each
+other in the DOM, which a sibling selector would not.
+
+⚠️ **GATED ON THE REGISTERED DATA'S SHAPE, NOT THE PATHNAME** — the same signal `pageHint` keys
+its empty state off. A CREATED workflow deliberately registers no `agent` half, so a sparkle there
+would offer to change what an agent says on a page whose whole state is that nothing is
+configured, inside a preview that is the minimal greet-classify-hand-off flow. Verified on a real
+created Voice workflow: its drawer header has ONLY the close button and zero sparkles.
+
+⚠️ **ITS OWN `.vp-icon-*` PREFIX, not the chat's `.wcp-icon-*`.** Every value is identical today,
+which is exactly what makes sharing tempting; one prefix per screen is what stops a value changed
+for one drawer restyling the other, and this repo has already paid for that once (79 `.cd-` rules
+deleted as collateral by a component rebuild). The blast radius was measured rather than assumed:
+rule counts per prefix across `app.css` show `vp` 16 -> 28 and **every other prefix unchanged**.
+⚠️ `.vp-title` gained `flex: 1`, because `.vp-head` is `justify-content: space-between` and
+without it four children spread themselves across the header instead of grouping the icons at the
+right.
+⚠️ **HIDDEN UNTIL THE HEADER IS HOVERED**, like the chat's: close is part of the captured drawer
+and these two are ours, so at rest the replica still reads as the capture.
+
+**`npm run audit:ai` gained 18 checks** (the pair renders, it targets the page's own key, that key
+still matches what `usePageData` builds, it opens an agent focus, it passes `side: "left"`, `left`
+is still the opt-in the focus offers, a left drawer still lets the preview take clicks, the 512px
+reserve exists and is keyed on the voice drawer, the chat's 412px is untouched, the SMS chat still
+opens left, the gate exists AND wraps the buttons, undo respects `readOnly`, no `.wcp-` borrowing,
+and the four CSS rules).
+⚠️ Six were broken on purpose and each fired: dropping `side`, ungating the pair, giving it a
+bespoke key, making it always visible, putting the reserve back to 412, and un-keying the rule.
+⚠️ **ONE CHECK WAS WRONG FIRST AND FAILED ON CORRECT CODE — the thirteenth probe fault in this
+file.** It tried to match `calc(100vw - 412px)` from the `.aiad--left .aiad-panel` selector
+onwards within a 400-character window, and that rule's own explanatory comment is longer than
+that. `412px` appears nowhere else in the stylesheet, so counting its occurrences is the honest
+test.
+
+**Verified in the browser with real hovers and clicks**, not by construction: at rest both are
+opacity 0 and only close is visible; hovering the header brings them to 1 and 0.35 (disabled undo)
+in `#2666f9` and `#15243e`, matching the chat's pair exactly; the sparkle opens
+`aiad aiad--open aiad--left` with **no backdrop**, the panel flush to the LEFT edge at 420px with
+the root's `pointer-events: none` and the panel's `auto`, sub-heading "Aptive voice agent" and the
+empty state "Build Aptive's voice agent". One instruction ("open with … and add a rule that it
+never quotes a price") **landed in the store** — `agent.greeting` set and `agent.rules` at 5 under
+`aptive::/agent-studio/agent/workflow/voice`, undo depth 1 — and the drawer's own undo took it
+back to nothing. Untouched and checked afterwards: the SMS chat's sparkle still opens LEFT at x=0
+with no backdrop and its panel still 420 at 900px, the voice diagram is still 12 nodes / 15 chips,
+the SMS diagram 6 / 2 with its minimap, and `/dashboards/marketing` is 17 cards / 5 donuts / KPI
+64,004 with **zero `.vp-` elements**.
+
 ## The search location is one the business actually has, and an SE can set it by ZIP (9/8/2026)
 
 Asked for from the Google Search screen, which was showing "Phoenix, AZ": *"In the past i

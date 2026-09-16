@@ -1329,9 +1329,33 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 }
 @keyframes vp-slide-in { from { transform: translateX(100%); } to { transform: translateX(0); } }
 .vp-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 24px; background: rgb(231,233,235); }
-.vp-title { font-size: 18px; font-weight: 700; color: var(--color-text-title); }
+.vp-title { flex: 1; font-size: 18px; font-weight: 700; color: var(--color-text-title); }
 .vp-close { background: none; border: none; cursor: pointer; color: #2666f9; display: flex; padding: 4px; }
 .vp-close .material-icons { font-size: 22px; }
+/* ---- The voice preview's OWN Ask AI + undo, beside its close ------------------------
+   The SMS chat drawer's pair (.wcp-icon-*) in this drawer's own palette and prefix. NOT
+   shared with it: one prefix per screen is what stops a value changed for one drawer
+   restyling the other, which this repo has already paid for once.
+   ⚠️ Hidden until the header is hovered, for the same reason the chat's are: close is part
+   of the captured drawer and these two are ours, so at rest the replica still reads as the
+   capture. They hold their layout space and only fade — that is what keeps an invisible
+   zone hoverable — and focus-visible reveals them for the keyboard. */
+.vp-actions { display: flex; align-items: center; gap: 2px; }
+.vp-icon {
+  background: none; border: none; cursor: pointer; padding: 4px; display: flex;
+  align-items: center; border-radius: 4px;
+}
+.vp-icon:hover { background: rgba(21, 36, 62, .08); }
+.vp-icon .material-icons { font-size: 20px; color: #15243e; }
+.vp-icon-ai .material-icons { color: #2666f9; }
+.vp-icon-off { opacity: .35; cursor: default; }
+.vp-icon-off:hover { background: none; }
+.vp-icon-hover { opacity: 0; transition: opacity .16s ease; }
+.vp-head:hover .vp-icon-hover,
+.vp-head:focus-within .vp-icon-hover { opacity: 1; }
+.vp-icon-hover:focus-visible { opacity: 1; }
+/* Disabled undo still dims further, so "nothing to undo" reads on hover. */
+.vp-head:hover .vp-icon-hover.vp-icon-off { opacity: .35; }
 /* ⚠️ TOP-ALIGNED, NOT CENTRED (8/26/2026). `justify-content: center` centred this in a
    drawer that runs from 20% down to the bottom, so the illustration sat well below the fold
    with a large dead gap under Start Call — the reference has it high, just under the header.
@@ -2990,6 +3014,16 @@ button.nav-item {
   width: min(420px, max(300px, calc(100vw - 412px)));
 }
 .aiad--left.aiad--open .aiad-panel { transform: translateX(0); }
+/* ⚠️ THE VOICE PREVIEW IS 100px WIDER THAN THE CHAT, so it needs 100px more reserved.
+   The rule above yields to a 400px chat; the voice Preview Workflow drawer is 500px, and
+   MEASURED against it the panel began covering the drawer it exists to sit beside — 20px of
+   overlap at a 900px viewport and 88px at 800px. Keyed off the voice drawer ACTUALLY BEING
+   ON SCREEN (`:has(.vp-root)`) rather than widening the reserve for everyone, so the SMS
+   chat's placement is byte-identical at every width. After: 12px of clearance at 900 and 0
+   overlap at 800, where the panel sits on its 300px floor. */
+body:has(.vp-root) .aiad--left .aiad-panel {
+  width: min(420px, max(300px, calc(100vw - 512px)));
+}
 /* Only the panel takes clicks, so the chat on the right stays live while this is open. */
 .aiad--left.aiad--open { pointer-events: none; }
 .aiad--left .aiad-panel { pointer-events: auto; }

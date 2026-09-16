@@ -11,6 +11,7 @@ import { VoiceCallLive } from "./VoiceCallLive";
 import { useLiveKitReady, preloadVoiceEngine } from "../data/liveKitVoice";
 import { WorkflowTree, type WorkflowTreeModel, type TreeBranch, type TreePath } from "../components/WorkflowTree";
 import { usePageData } from "../components/GeneratedTiles";
+import { useAiAssistant } from "../data/AiAssistantContext";
 import { AgentWorkflowDetails } from "./AgentWorkflowDetails";
 import { bookingSlots } from "../data/voiceBooking";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
@@ -393,6 +394,32 @@ export function AgentWorkflow() {
      different thing living in a different scope, and it has its own sparkle inside
      the Preview Workflow chat. */
   const tree = usePageData(baseTree);
+  /* ---- The Preview Workflow drawer's OWN Ask AI + undo (the voice side) -------------
+     Asked for directly: "just like how the SMS Agent preview workflow has a Ask AI and undo
+     button in the preview workflow, do it for the Voice Agent preview workflow as well, and
+     have the drawer come in from the right."
+
+     ⚠️⚠️ **IT TARGETS THIS PAGE'S OWN SCOPE, WHICH IS THE ONE REAL DIFFERENCE FROM THE SMS
+     PAIR.** `WorkflowChatPreview` has to carry a scope key because the SMS agent's config
+     lives on ANOTHER page (Preview Agent) — hence its `registerBase` and its separate undo
+     stack. On a voice workflow the agent's config IS this page's data: `baseAgent` is merged
+     into the very object registered above, precisely so one instruction can reshape the
+     diagram and configure the agent together. So there is nothing to register and nothing to
+     synthesise — the key is the page's own, and this pair is a second door onto the scope the
+     top-bar sparkle already edits, opened from where an SE is actually looking.
+     ⚠️ Undo therefore SHARES the page's stack, which is correct rather than a compromise: one
+     scope has one history, and a voice edit reaches the tree and the agent at once, so two
+     stacks could undo half of one instruction.
+     ⚠️ **AND IT OPENS ON THE LEFT, like the SMS chat's**: this drawer is on the right, so a
+     right-hand panel covers the very thing being configured. */
+  const { openDrawer, undo, canUndo, readOnly } = useAiAssistant();
+  const pageKey = `${profileId}::${pathname}`;
+  /* ⚠️ **GATED ON THE REGISTERED DATA'S SHAPE, NOT THE PATHNAME** — the same signal
+     `pageHint` keys its empty state off. A CREATED workflow deliberately registers no `agent`
+     half ("Build this voice agent" would be a promise on a page whose whole state is that
+     nothing is built), so a sparkle there would offer to change what an agent says when the
+     preview it sits in is the minimal greet-classify-hand-off flow. No agent, no pair. */
+  const voiceAgentConfigured = !!(tree as { agent?: unknown }).agent;
   /* ⚠️ THE TABS WERE TWO INERT BUTTONS with `active` hardcoded on Definition. Local state
      rather than a route: the real page keeps one URL per workflow, and a query parameter
      would have to be carried by every link that reaches this screen. */
@@ -515,7 +542,39 @@ export function AgentWorkflow() {
           <div className="vp-drawer" role="dialog" aria-modal="true">
             <div className="vp-head">
               <span className="vp-title">Preview: {workflowName} (Draft)</span>
-              <button className="vp-close" onClick={closeVoice} aria-label="Close preview"><span className="material-icons">close</span></button>
+              <div className="vp-actions">
+                {/* Hidden until the header is hovered, like the SMS chat's pair: close is
+                    part of the captured drawer, these two are OURS, and at rest the replica
+                    should still read as the capture.
+                    ⚠️ `side: "left"`, the same as the SMS chat's — asked for directly. The
+                    drawer being edited sits on the RIGHT, so a right-hand panel lands on top
+                    of it and its backdrop dims and blocks it; on the left it sits beside the
+                    preview with no backdrop, and only the panel takes clicks. */}
+                {voiceAgentConfigured && (
+                  <>
+                    <button
+                      className="vp-icon vp-icon-ai vp-icon-hover"
+                      onClick={() => openDrawer({ scope: "agent", key: pageKey,
+                                                  label: `${profile.customerName} voice agent`,
+                                                  side: "left" })}
+                      title="Ask AI - change what this agent says and does"
+                      aria-label="Ask AI to change what this agent says and does"
+                    >
+                      <span className="material-icons">auto_awesome</span>
+                    </button>
+                    <button
+                      className={"vp-icon vp-icon-hover" + (canUndo(pageKey) && !readOnly ? "" : " vp-icon-off")}
+                      onClick={() => canUndo(pageKey) && !readOnly && undo(pageKey)}
+                      disabled={!canUndo(pageKey) || readOnly}
+                      title={canUndo(pageKey) && !readOnly ? "Undo the last AI change to this agent" : "Nothing to undo"}
+                      aria-label="Undo the last AI change to this agent"
+                    >
+                      <span className="material-icons">undo</span>
+                    </button>
+                  </>
+                )}
+                <button className="vp-close" onClick={closeVoice} aria-label="Close preview"><span className="material-icons">close</span></button>
+              </div>
             </div>
             {inCall ? (
               /* ⚠️⚠️ **LIVEKIT IS THE ONLY ENGINE NOW (9/3/2026).** This used to fall back to

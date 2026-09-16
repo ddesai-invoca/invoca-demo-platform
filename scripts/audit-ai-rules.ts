@@ -1025,5 +1025,103 @@ console.log("\nThe workflow tree's rows are symmetric and never crowded");
     : bad("InsightsAskDrawer can read a dropped stream as a silent success");
 }
 
+console.log("\nThe Preview Workflow drawer's own Ask AI + undo (voice side)");
+{
+  /* Asked for directly (9/16/2026): the SMS preview chat has carried its own sparkle and
+     undo since 8/26, and the voice Preview Workflow drawer had neither — the only way to
+     change what the voice agent says was the top-bar sparkle on the page behind it.
+
+     ⚠️ THE TWO PAIRS ARE NOT THE SAME WIRING, and these checks pin the difference. The SMS
+     agent's config lives on ANOTHER page, so that drawer carries a scope key and calls
+     registerBase. A voice workflow's agent config IS this page's data (merged into the
+     object the diagram registers), so the voice pair targets the PAGE's own key and shares
+     its undo stack. A voice pair that grew its own key would be editing a scope nothing
+     renders — the silent no-op this file records six times. */
+  const wfSrc = readAny("src/screens/AgentWorkflow.tsx");
+  const wf = wfSrc.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  const css = readAny("src/styles/app.css");
+
+  /vp-icon vp-icon-ai vp-icon-hover/.test(wf)
+    ? ok("the voice preview header renders an Ask AI sparkle")
+    : bad("the voice Preview Workflow drawer has no Ask AI button");
+  /vp-icon-off/.test(wf) && /undo\(pageKey\)/.test(wf)
+    ? ok("it renders an undo beside it, keyed to the same scope")
+    : bad("the voice preview's undo is missing or points at another scope");
+
+  /* ⚠️ THE PAGE'S OWN KEY, and it must be built the way `usePageData` builds it or the pair
+     edits a scope the page never registered. */
+  /const pageKey = `\$\{profileId\}::\$\{pathname\}`/.test(wf)
+    ? ok("it targets this page's own scope key")
+    : bad("the voice pair no longer uses the page's own scope key");
+  /const key = `\$\{profileId\}::\$\{pathname\}`/.test(readAny("src/components/GeneratedTiles.tsx"))
+    ? ok("usePageData still builds that same key, so the two agree")
+    : bad("usePageData's key shape changed — the voice pair now edits nothing");
+  /openDrawer\(\{ scope: "agent", key: pageKey,/.test(wf)
+    ? ok("it opens the drawer on that key as an agent focus")
+    : bad("the voice sparkle no longer opens an agent focus on the page key");
+
+  /* ⚠️ ON THE LEFT, which is what was asked for — the same side the SMS chat uses, and for
+     the same reason: the drawer being configured sits on the RIGHT, so a right-hand panel
+     lands on top of it and its backdrop dims and blocks it. Omitting `side` would silently
+     fall back to the platform default, which IS the right, so this has to be asserted
+     positively rather than by the absence of anything. */
+  /side: "left"/.test(wf)
+    ? ok("the voice drawer opens on the LEFT, beside the preview it configures")
+    : bad("the voice sparkle no longer passes side: left — it will cover the preview");
+  /side\?: "left";/.test(readAny("src/data/AiAssistantContext.tsx"))
+    ? ok("`left` is still the opt-in the focus offers")
+    : bad("AssistantFocus.side changed shape — the left placement may no longer apply");
+  /\.aiad--left\.aiad--open \{ pointer-events: none; \}/.test(css)
+    ? ok("a left drawer still lets the preview beside it take clicks")
+    : bad("the left drawer now swallows clicks meant for the preview it sits beside");
+
+  /* ⚠️ THE VOICE DRAWER IS 500px, THE CHAT 400, so the left panel must reserve 100px more
+     when the voice one is up or it covers the drawer it sits beside — MEASURED at 20px of
+     overlap on a 900px viewport and 88px at 800px before this rule. Keyed off the voice
+     drawer being on screen, so the SMS chat's placement is untouched at every width. */
+  /body:has\(\.vp-root\) \.aiad--left \.aiad-panel \{\s*width: min\(420px, max\(300px, calc\(100vw - 512px\)\)\);/.test(css)
+    ? ok("the left panel reserves the voice drawer's full 500px while it is open")
+    : bad("the left panel still reserves only the chat's 400px — it will cover the voice drawer below ~920px");
+  /* ⚠️ THIS CHECK WAS WRONG FIRST and failed on correct code — it tried to match the 412px
+     from the `.aiad--left .aiad-panel` selector through to its width line, and that rule's
+     own explanatory comment is longer than the window the pattern allowed. `412px` appears
+     nowhere else in the stylesheet, so its mere presence is the invariant. */
+  (css.match(/calc\(100vw - 412px\)/g) || []).length === 1
+    ? ok("and the chat's own 412px reserve is unchanged")
+    : bad("the SMS chat's left-panel width moved — that screen is signed off");
+  /side: "left"/.test(readAny("src/components/WorkflowChatPreview.tsx"))
+    ? ok("the SMS chat still opens on the left too")
+    : bad("the SMS chat's drawer moved — it must stay left of the chat it exists to watch");
+
+  /* ⚠️ GATED ON THE REGISTERED DATA'S SHAPE. A created workflow registers no `agent` half,
+     so a sparkle there would offer to change what an agent says on a page whose whole state
+     is that nothing is configured. */
+  /const voiceAgentConfigured = !!\(tree as \{ agent\?: unknown \}\)\.agent;/.test(wf)
+    ? ok("the pair is gated on the page actually registering an agent half")
+    : bad("the voice pair is no longer gated on an agent being configured");
+  /\{voiceAgentConfigured && \(/.test(wf)
+    ? ok("and the gate really wraps the two buttons")
+    : bad("the gate is computed but nothing is behind it");
+
+  /readOnly/.test(wf) && /canUndo\(pageKey\) && !readOnly/.test(wf)
+    ? ok("undo stands down on a demo this SE cannot edit")
+    : bad("the voice undo ignores readOnly — it would no-op with no explanation");
+
+  /* ⚠️ ITS OWN PREFIX. Reusing `.wcp-icon` would mean a value changed for one drawer
+     restyles the other, which this repo has already paid for once (79 deleted `.cd-` rules). */
+  !/wcp-icon/.test(wf)
+    ? ok("it uses its own .vp- classes rather than the chat drawer's")
+    : bad("the voice header borrows .wcp-icon — one prefix per screen");
+  /\.vp-icon-hover \{ opacity: 0;/.test(css) && /\.vp-head:hover \.vp-icon-hover/.test(css)
+    ? ok("the pair is hidden until the header is hovered, like the chat's")
+    : bad("the voice pair is always visible — the captured header no longer reads as captured");
+  /\.vp-title \{ flex: 1;/.test(css)
+    ? ok(".vp-title takes the slack, so the icons group at the right")
+    : bad(".vp-title lost flex: 1 — space-between will spread the icons across the header");
+  /\.vp-actions \{/.test(css)
+    ? ok("the icons sit in their own row rather than inheriting the header's 12px gap")
+    : bad(".vp-actions is gone");
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");
 process.exit(fail ? 1 : 0);
