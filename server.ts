@@ -470,7 +470,10 @@ app.post("/api/replicate/capture", async (req, res) => {
 app.get("/api/replicate/lookup", async (req, res) => {
   const url = req.query.url ? String(req.query.url) : "";
   const slugQ = req.query.slug ? String(req.query.slug) : "";
-  const { replicaFor, replicaBySlug } = await import("./src/data/replicaPages.ts");
+  /* ⚠️ `replicaRegistry.ts`, NOT `replicaPages.ts` — that module is full of
+     `HTMLInputElement` and `Document`, and importing it here is what kept this whole
+     file out of `tsconfig.node.json` (and therefore out of every type check). */
+  const { replicaFor, replicaBySlug } = await import("./src/data/replicaRegistry.ts");
   const { getReplicaForDomain, getReplicaBySlug } = await import("./engine/replicaStore.ts");
   /* ⚠⚠ **A STATIC ENTRY IS ONLY REAL IF ITS CAPTURE IS ON THIS MACHINE, and trusting the
      registry blindly is what produced a BLANK SCREEN on production.** `public/replicas/*.html`
@@ -781,6 +784,14 @@ function scheduleCanary(): void {
   };
 
   setInterval(tick, TICK_MS).unref?.();
+  /* ⚠️⚠️ **THE CANARY NOT RUNNING IS ITSELF A FAILURE, AND NOTHING WAS CHECKING.**
+     `toPublic()` has always treated *missing* and *stale* as needing attention —
+     "a monitor whose 'nothing wrong' and 'not working' look identical is worse
+     than no monitor" — but that verdict was only ever computed when somebody
+     READ the endpoint. If the tick died, or generation quietly broke, the
+     endpoint sat there saying so and nobody was told. This evaluates it on the
+     same tick and reports at most once per ET day. */
+  setInterval(alertOnCanary, TICK_MS).unref?.();
   console.log(`🐤 Nightly canary armed for ~${HOUR}:00 America/New_York (budget ${BUDGET_SECONDS}s).`);
   /* Opt-in immediate run, for verifying the wiring without waiting for 2am. */
   if ((process.env.CANARY_ON_BOOT ?? "") === "1") {

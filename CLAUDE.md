@@ -230,7 +230,16 @@ cannot reach.
 
 #### The two automatic health signals
 - **The canary's own verdict now raises an alert**, read back out of `toPublic()` rather than
-  re-derived, so the Slack message and `/api/canary` cannot disagree about the same night. It
+  re-derived, so the Slack message and `/api/canary` cannot disagree about the same night.
+  ⚠️⚠️ **HALF OF THIS SILENTLY DID NOT SHIP IN THE FIRST PUSH (`c3d6749`), AND THE WAY IT WAS
+  FOUND IS THE POINT.** Splitting that commit meant replaying the alerting edits onto HEAD one
+  at a time, and one was missed: `setInterval(alertOnCanary, TICK_MS)`, the PERIODIC evaluation.
+  So the post-run call shipped and the arming did not — meaning a canary that **stopped running
+  altogether** (the *missing* / *stale* case, which is the whole "silence is not success" point)
+  would have reported nothing, while every other part of the feature looked present. Caught by
+  diffing every alerting marker between `HEAD:server.ts` and the working tree before the next
+  push, rather than by trusting the split. **Do that comparison after any hunk-level split of a
+  feature**: a dropped hunk is invisible in a passing build and a passing audit. It
   covers *missing* and *stale* too, which is the "silence is not success" case that previously
   required a human to load the endpoint. **At most once per ET day** — the funnel's 30-minute
   cooldown would otherwise allow ~48 notifications for a signal that changes once a night, and a
@@ -254,7 +263,44 @@ message can quote a prospect or a URL. `alertSummary()` is built for this endpoi
 it cannot be found in the summary. Passed IN by both twins like every other field, per the note at
 the top of `status.ts`.
 
-#### ⚠️⚠️ FOUND WHILE DOING THIS: `server.ts` IS NOT TYPECHECKED
+#### ✅ FIXED (9/16/2026): `server.ts` IS TYPE-CHECKED NOW
+The finding below stood for about an hour and cost a real bug in the meantime, so it earned
+its own fix. `tsconfig.node.json` now includes **`server.ts` and `googleAuth.ts`**, and
+`tsc -b --force` is clean with them in.
+
+⚠️⚠️ **THE BLOCKER WAS ONE IMPORT, AND THE FIX FOLLOWS A PATTERN THIS FILE ALREADY HAS.**
+43 of the 44 errors came from `server.ts:591`'s dynamic `import("./src/data/replicaPages.ts")`
+— a module full of `HTMLInputElement`, `Document` and `HTMLIFrameElement`, in a project that
+compiles with `lib: ["ES2023"]` and no DOM. `src/data/leadFields.ts` was extracted for exactly
+this reason once already (its own header says so, and `audit:replicas` records that importing
+`replicaPages.ts` from `engine/` "breaks `npm run typecheck` — sixteen errors"). So:
+**`src/data/replicaRegistry.ts`** now holds the static registry and its lookups
+(`ReplicaPage`, `REPLICAS`, `replicaFor`, `replicaExpired`, `replicaBySlug`, `replicaSlugs`),
+`replicaPages.ts` **re-exports** them so no existing importer changed, and both server twins
+import the registry. The field-map DERIVATION, which reads a live document, stays behind.
+⚠️ The other error was an unused `req` on `/auth/logout` (`noUnusedParameters`), renamed `_req`.
+
+⚠️⚠️ **WHAT THE GAP ACTUALLY COST, both in this repo's own history rather than in theory:**
+1. a required field added to `StatusInput` went unnoticed at the `deployStatus({...})` call
+   site in `server.ts`;
+2. while splitting the alerting commit, a **duplicated brace** in `server.ts` passed
+   `tsc -b` and surfaced only when the server was booted (`Expected "finally" but found
+   "}"`). A commit was minutes from shipping a file that cannot parse.
+**Both were reintroduced deliberately and are now caught** — `TS2345` for the missing field,
+`TS1472` for the brace.
+
+⚠️ **`audit:replicas` PINS BOTH HALVES, because either alone is worthless**: the include, and
+the server not importing a browser-only module. Five checks — server.ts and googleAuth.ts in
+the include, server.ts not importing `replicaPages.ts`, the registry staying DOM-free, and
+`replicaPages.ts` still re-exporting. Verified to fire: narrowing the include reddens 2,
+re-pointing the import reddens 1.
+⚠️⚠️ **AND THE FIRST VERSION OF THOSE CHECKS COULD NOT FAIL — the exact mistake this file
+already warns about, made again.** `audit-replicas.ts` counts with `let bad = 0` and reports
+through `no()`; the new block called `bad(...)`, so a failing check would have called a NUMBER
+and crashed the script instead of printing FAIL. Both sabotages "passed". That warning is
+already written down two sections above this one; read it before adding a check to that file.
+
+#### ⚠️⚠️ THE ORIGINAL FINDING, kept for the measurement: `server.ts` WAS NOT TYPECHECKED
 `tsconfig.node.json` includes only `["vite.config.ts", "engine"]`, so **the production entry point
 has never been type-checked** — `npm run build` runs `tsc -b` plus a client-only vite build, and
 neither reads it. Demonstrated rather than argued: adding a required field to `StatusInput`

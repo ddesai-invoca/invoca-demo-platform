@@ -503,6 +503,49 @@ const tool = fs.readFileSync("scripts/capture-replica.js", "utf8");
     ? ok("capture: the engine imports the DOM-free rules, not the DOM module")
     : no("capture: engine/replicaCapture.ts imports the DOM module — npm run typecheck will fail");
 
+/* ---- the PRODUCTION ENTRY POINT is type-checked, and stays that way ----------
+   ⚠️⚠️ **`server.ts` WAS EXCLUDED FROM EVERY TYPE CHECK UNTIL 9/16/2026.**
+   `tsconfig.node.json` listed only `["vite.config.ts", "engine"]`, and `npm run build`
+   is `tsc -b` plus a client-only vite build — so nothing read the file that runs in
+   production. Measured when it was turned on: **44 errors, 43 of them DOM types** pulled
+   in by one dynamic `import("./src/data/replicaPages.ts")`, a module full of
+   `HTMLInputElement` and `Document`.
+
+   What the gap actually cost, both real and both in this repo's own history: a required
+   field added to `StatusInput` went unnoticed at the call site in `server.ts`, and a
+   duplicated brace introduced while splitting a commit passed `tsc -b` and surfaced only
+   when somebody booted the server. Both are caught now — verified by reintroducing each.
+
+   These checks exist because the fix is TWO halves that must stay together: the include,
+   and the server not importing a browser-only module. Undo either and the other is
+   worthless. */
+console.log("\nThe production entry point is type-checked");
+{
+  const tscfg = fs.readFileSync("tsconfig.node.json", "utf8");
+  /^\s*"include":.*"server\.ts"/m.test(tscfg)
+    ? ok("tsconfig.node.json includes server.ts")
+    : no("server.ts is excluded from the type check again — it is the file that runs in production");
+  /^\s*"include":.*"googleAuth\.ts"/m.test(tscfg)
+    ? ok("and googleAuth.ts, which it imports")
+    : no("googleAuth.ts is excluded from the type check");
+
+  const srv = fs.readFileSync("server.ts", "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
+  !/replicaPages\.ts/.test(srv)
+    ? ok("server.ts imports the DOM-free registry, not the browser-side module")
+    : no("server.ts imports src/data/replicaPages.ts again — that is what excluded it from the type check");
+
+  const reg = fs.readFileSync("src/data/replicaRegistry.ts", "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
+  !/HTMLElement|HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement|HTMLIFrameElement|\bDocument\b|\bwindow\b/.test(reg)
+    ? ok("and that registry stays DOM-free, so it can never re-break the node project")
+    : no("src/data/replicaRegistry.ts now references the DOM — the node project has no DOM lib");
+
+  /* The re-export is what keeps every existing importer (the screen, this audit) working. */
+  const pages = fs.readFileSync("src/data/replicaPages.ts", "utf8");
+  /export \{ replicaFor, replicaExpired, replicaBySlug, replicaSlugs \} from "\.\/replicaRegistry\.ts"/.test(pages)
+    ? ok("replicaPages.ts still re-exports them, so no caller had to change")
+    : no("replicaPages.ts no longer re-exports the registry — existing importers will break");
+}
+
   /* ⚠️ A PAGE WITH NO LEAD FORM RETURNS ZERO RATHER THAN MARKING THE SEARCH BOX — the capture
      script refuses to write such a file, and this is the signal it refuses on. */
   const none = markLeadFields(`<!doctype html><html><body><form><input name="q" placeholder="Search"></form></body></html>`);

@@ -215,7 +215,7 @@ export function installAuth(app: Express) {
     }
   });
 
-  app.get("/auth/logout", (req: Request, res: Response) => {
+  app.get("/auth/logout", (_req: Request, res: Response) => {
     res.setHeader("Set-Cookie", `${COOKIE}=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax`);
     res.redirect("/auth/login");
   });

@@ -19,5 +19,13 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["vite.config.ts", "engine"]
+  /* ⚠️⚠️ `server.ts` AND `googleAuth.ts` ARE IN HERE NOW (9/16/2026), and they were not
+     before — so the PRODUCTION ENTRY POINT had never been type-checked. `npm run build`
+     is `tsc -b` plus a client-only vite build, and neither read it. Measured: the
+     exclusion was hiding 44 errors, 43 of them DOM types dragged in by one dynamic
+     import of `src/data/replicaPages.ts` (now `replicaRegistry.ts`, which is DOM-free).
+     What the gap actually cost: a required `StatusInput` field went unnoticed at the
+     call site, and a duplicated brace in `server.ts` passed `tsc -b` and surfaced only
+     when the server was booted. Do not narrow this back. */
+  "include": ["vite.config.ts", "server.ts", "googleAuth.ts", "engine"]
 }

@@ -139,7 +139,7 @@ function replicateCaptureApi(): Plugin {
           const url = u.searchParams.get('url') || ''
           const slugQ = u.searchParams.get('slug') || ''
           const send = (body: unknown) => { res.setHeader('Content-Type', 'application/json'); res.end(JSON.stringify(body)) }
-          const { replicaFor, replicaBySlug } = await import(pathToFileURL(path.resolve(process.cwd(), 'src/data/replicaPages.ts')).href)
+          const { replicaFor, replicaBySlug } = await import(pathToFileURL(path.resolve(process.cwd(), 'src/data/replicaRegistry.ts')).href)
           const { getReplicaForDomain, getReplicaBySlug } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/replicaStore.ts')).href)
           /* ⚠️ SAME FAIL-CLOSED RULE AS server.ts — see the long note there. A registry entry
              whose capture is not on this machine must fall through to the dynamic store, or the
