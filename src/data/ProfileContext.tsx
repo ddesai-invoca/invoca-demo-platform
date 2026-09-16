@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { CustomerProfile } from "./schema";
 import { PROFILE_LIST, DEFAULT_PROFILE_ID } from "./profiles";
+import { renameMarketingSources } from "./marketingSources";
 
 interface ProfileCtx {
   profile: CustomerProfile;
@@ -38,7 +39,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
     // profile shows fresh, while cache still supplies anything the glob hasn't
     // re-scanned yet (e.g. generated this session before a restart).
     const merged: Record<string, CustomerProfile> = {};
-    for (const p of [...loadCached(), ...PROFILE_LIST]) merged[p.id] = p;
+    for (const p of [...loadCached(), ...PROFILE_LIST]) merged[p.id] = renameMarketingSources(p);
     return Object.values(merged);
   });
 
@@ -57,7 +58,14 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
     try { localStorage.setItem(LS_ACTIVE, id); } catch { /* ignore */ }
   }
 
-  function addProfile(p: CustomerProfile) {
+  /* ⚠️⚠️ **THE TWO ENTRY POINTS ARE HERE AND THE INITIAL STATE ABOVE, AND BOTH MUST NORMALIZE.**
+     A profile reaches the store either from the registry/cache at boot or through this
+     function (a fresh generation, or a library demo opened by `DemoLibraryContext`). Renaming
+     in one and not the other is how a library demo would render Facebook while a bundled one
+     rendered Google LSA, with nothing on screen to say why. See `renameMarketingSources`; the
+     cached copy is written renamed, which is harmless because the function is idempotent. */
+  function addProfile(raw: CustomerProfile) {
+    const p = renameMarketingSources(raw);
     setProfiles((prev) => [...prev.filter((x) => x.id !== p.id), p]);
     try {
       const cached = loadCached().filter((x) => x.id !== p.id);

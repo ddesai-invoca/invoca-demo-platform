@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAgentWorkflows, createdWorkflowPath, type CreatedWorkflow } from "../data/agentWorkflows";
 import { WorkflowRowMenu } from "../components/WorkflowRowMenu";
+import { useExtraWorkflows } from "../data/quoteWorkflow";
 
 /* Agent Studio — one AI agent per customer with a Voice + SMS workflow.
    All names derive from the customer, so this re-skins for any prospect.
@@ -25,6 +26,9 @@ function stamp(iso: string): string {
 
 export function AgentStudio() {
   const { profile, profileId } = useProfile();
+  /* Includes any workflow created by an LSA quote request submitted during this demo,
+     newest first — one definition, so a slug that lists here also resolves elsewhere. */
+  const extraWfs = useExtraWorkflows(profile);
   const name = profile.customerName;
   const updated = "07/10/2026 1:46 PM";
   const { items: created, remove } = useAgentWorkflows(profileId);
@@ -36,7 +40,7 @@ export function AgentStudio() {
   const workflows = [
     { label: `Workflow: ${name} - Voice`, to: "/agent-studio/agent/workflow/voice", status: "Live", channel: "Voice", type: "Network", triggeredBy: "1 Campaign", updated, live: updated },
     { label: `Workflow: ${name} - SMS`, to: "/agent-studio/agent/workflow/sms", status: "Live", channel: "SMS", type: "Network", triggeredBy: "1 Campaign", updated, live: updated },
-    ...(profile.reports.extraWorkflows ?? []).map((w) => ({
+    ...extraWfs.map((w) => ({
       label: `Workflow: ${w.label}`,
       to: `/agent-studio/agent/workflow/${w.slug}`,
       status: w.status ?? "Live",

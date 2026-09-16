@@ -4,6 +4,7 @@ import { useProfile } from "../data/ProfileContext";
 import { CreateWorkflowModal } from "../components/CreateWorkflowModal";
 import { useAgentWorkflows, createdWorkflowPath } from "../data/agentWorkflows";
 import { WorkflowRowMenu } from "../components/WorkflowRowMenu";
+import { useExtraWorkflows } from "../data/quoteWorkflow";
 
 /* Shared chrome for the Agent Studio editor sub-pages (Agent Settings,
    Knowledge Sources, …): header + left sub-nav + sticky footer. The active
@@ -24,6 +25,9 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
   const [createOpen, setCreateOpen] = useState(false);
   const navigate = useNavigate();
   const { profile } = useProfile();
+  /* Includes any workflow created by an LSA quote request submitted during this demo,
+     newest first — one definition, so a slug that lists here also resolves elsewhere. */
+  const extraWfs = useExtraWorkflows(profile);
   const name = profile.customerName;
   const { pathname } = useLocation();
   const { items: created, create, remove } = useAgentWorkflows(profile.id);
@@ -32,7 +36,7 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
     { name: `${name} - Voice`, to: "/agent-studio/agent/workflow/voice", icon: "call", status: "Live", warn: false, id: "" },
     { name: `${name} - SMS`, to: "/agent-studio/agent/workflow/sms", icon: "chat", status: "Live", warn: false, id: "" },
     // per-prospect extras (Reyes Law's SMS nurture agent) — keep their own label
-    ...(profile.reports.extraWorkflows ?? []).map((w) => ({
+    ...extraWfs.map((w) => ({
       name: w.label,
       to: `/agent-studio/agent/workflow/${w.slug}`,
       icon: w.channel === "SMS" ? "chat" : "call",

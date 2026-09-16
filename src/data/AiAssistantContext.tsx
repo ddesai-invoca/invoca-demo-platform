@@ -145,6 +145,16 @@ interface Scope {
      `?wf=`: seeding it would leak one workflow's opener into the built-in agent and into
      every other workflow's chat. */
   greetingFallback?: string;
+  /* ⚠️⚠️ **THE FALLBACK OUTRANKS THE STORED GREETING FOR ONE WORKFLOW KIND (9/15/2026).**
+     `buildSmsBrain` lets a workflow that sets `openingMessageWins` jump ahead of
+     `smsPlaybook.greeting`, because its opener quotes what somebody typed into a form seconds
+     ago. The drawer re-implements that precedence to decide which line to SHOW, and it did not
+     know about the jump — so on the three profiles that ship a stored greeting (Aptive, Denver
+     Health, Marriott) the OPENING MESSAGE row read the generic line while the phone sent the
+     LSA one. Caught in the browser: the phone said "Hi Harold… You told us: 'Wasp nest…'" and
+     the row said "Hi, this is Aptive's AI agent." That is the drawer-shows-a-line-nobody-sends
+     defect this file already records twice; this flag is what keeps the two in step. */
+  greetingWins?: boolean;
 }
 /* `hidden` is part of the snapshot so Undo restores a tile you removed. Hiding is
    never destructive: the data stays exactly where it was and only the card stops
@@ -157,7 +167,7 @@ interface AiAssistantCtx {
   openDrawer: (focus?: AssistantFocus) => void;
   closeDrawer: () => void;
   active: Scope | null;
-  registerScope: (scope: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string; greetingFallback?: string }) => void;
+  registerScope: (scope: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string; greetingFallback?: string; greetingWins?: boolean }) => void;
   /* Make a key EDITABLE without making it the active scope. applyEdits refuses a
      key with no base, so a page editing another page's data must ensure that base
      exists first; a second registerScope would do it but is last-write-wins and
@@ -282,13 +292,13 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
   const openDrawer = useCallback((f?: AssistantFocus) => { setFocus(f ?? null); setOpen(true); }, []);
   const closeDrawer = useCallback(() => setOpen(false), []);
 
-  const registerScope = useCallback((s: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string; greetingFallback?: string }) => {
+  const registerScope = useCallback((s: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string; greetingFallback?: string; greetingWins?: boolean }) => {
     baseRef.current[s.key] = s.baseData;
     setActive((prev) => (
       prev && prev.key === s.key && prev.baseTitle === s.baseTitle && prev.questionPath === s.questionPath
-        && prev.greetingFallback === s.greetingFallback
+        && prev.greetingFallback === s.greetingFallback && prev.greetingWins === s.greetingWins
         ? prev
-        : { key: s.key, customerName: s.customerName, baseTitle: s.baseTitle, questionPath: s.questionPath, greetingFallback: s.greetingFallback }
+        : { key: s.key, customerName: s.customerName, baseTitle: s.baseTitle, questionPath: s.questionPath, greetingFallback: s.greetingFallback, greetingWins: s.greetingWins }
     ));
   }, []);
 

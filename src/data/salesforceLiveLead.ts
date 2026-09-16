@@ -1,6 +1,7 @@
 import type { SfLead } from "./salesforceLeads";
 import { resolvePlace } from "./voiceAiArtifacts";
 import type { CustomerProfile, VoiceConversation } from "./schema";
+import type { LsaQuote } from "./QuoteCaptureContext";
 
 /* =============================================================================
    The Salesforce Lead a BOOKED voice call creates
@@ -77,6 +78,57 @@ function hex(seed: string, n: number): string {
   let out = "";
   for (let i = 0; out.length < n; i++) out += hash(`${seed}:${i}`).toString(16).toUpperCase().padStart(8, "0");
   return out.slice(0, n);
+}
+
+/* =============================================================================
+   The Lead an LSA QUOTE REQUEST creates (9/12/2026)
+   -----------------------------------------------------------------------------
+   Asked for directly: *"When send is click, it should create a lead in salesforce."* The
+   second live source on this screen, and deliberately built the same way as the booked call
+   above so the Leads tab has ONE notion of "a lead the SE just created".
+
+   ⚠️ WHAT COMES FROM THE FORM vs WHAT IS INVENTED — the same split the booked lead states:
+   from the form, the name, the contact they gave, and the service they picked; invented but
+   consistent, the attribution id, and whichever of phone/email they did NOT provide.
+   ⚠️ AND IT FAILS CLOSED, for the same reason: half a name is not a lead, because the list
+   renders a first and last name in its widest column and the record page's title IS the person.
+   ============================================================================= */
+export function liveQuoteLead(profile: CustomerProfile, quotes?: LsaQuote[]): SfLead | null {
+  const q = (quotes ?? [])[0];
+  if (!q) return null;
+  const { first, last } = splitName(q.name || "");
+  if (!first || !last) return null;
+
+  const seed = `quote:${profile.id}:${q.id}`;
+  const email = q.how === "email" && q.contact.includes("@")
+    ? q.contact.trim()
+    : `${first.toLowerCase()}.${last.toLowerCase()}@gmail.com`;
+  /* ⚠️ THE 555 EXCHANGE when we have to invent one — a demo number must never be able to ring
+     a real business, the same care the search ad's call extension and the booked lead take. */
+  const phone = q.how === "sms" && /\d/.test(q.contact)
+    ? q.contact.trim()
+    : `(805) 555-${String(1000 + (hash(`p:${seed}`) % 9000))}`;
+  const product = q.service.trim();
+
+  return {
+    slug: leadSlug(first, last),
+    first,
+    last,
+    phone,
+    status: "New",
+    /* They chose how to be contacted, so this is a real answer rather than a default. */
+    smsOptIn: q.how === "sms" ? "Yes" : "No",
+    /* ⚠️ ONE PRODUCT, TWO CASES — never derived twice, the rule the booked lead already sets.
+       An empty Service is left empty rather than guessed: it is optional on the form, and the
+       record page renders a blank field honestly. */
+    product: product.toLowerCase(),
+    productName: product,
+    email,
+    attributionId: `${hex(`net:${seed}`, 4)}/${hex(`promo:${seed}`, 4)}/i-${hex(`u:${seed}`, 12).toLowerCase()}`,
+    created: new Date(q.iso).toLocaleDateString("en-US", { month: "numeric", day: "numeric", year: "numeric" }),
+    /* Above every derived row, same as the booked lead. */
+    sortKey: Number.MAX_SAFE_INTEGER,
+  };
 }
 
 /**

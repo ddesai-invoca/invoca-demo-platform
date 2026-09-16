@@ -7,6 +7,9 @@ import { readFileSync, readdirSync } from "node:fs";
 import { salesforceLeads } from "../src/data/salesforceLeads.ts";
 import { salesforceLeadDetail, offerFromCall, strongLexical, categoryRows } from "../src/data/salesforceLeadDetail.ts";
 import { salesforceCallLog } from "../src/data/salesforceCallLog.ts";
+import { leadSlug } from "../src/data/salesforceLiveLead.ts";
+import { derive as derivePlace } from "../src/data/prospectPlace.ts";
+import type { LsaQuote } from "../src/data/QuoteCaptureContext.ts";
 import type { CustomerProfile } from "../src/data/schema.ts";
 
 const dir = "src/data/generated";
@@ -132,7 +135,66 @@ expect("the CALLER'S budget is rejected",
 expect("a caller question is rejected",
   offerFromCall(withSignals([], ["Do you offer free virtual visits?"])) === "");
 
-if (!selfFail) console.log("self-test: the product and promotion checks reject the four shapes that broke real builds");
+/* ⚠️⚠️ **A LEAD SUBMITTED VIA THE LSA'S "GET QUOTE" DIALOG CARRIES LSA ATTRIBUTION** — asked for
+   directly: "When a lead is submitted via the LSAs I want the Invoca Captured Attribution have
+   LSA data for example the Marketing Source should say Local Services Ads." None of the checks
+   above exercise this: `salesforceLeadDetail` is called with no `quotes`, so an LSA-sourced
+   lead never enters that loop. This calls the REAL function with a real `LsaQuote`, on the
+   first profile on disk, and checks the exact contract rather than the shape of the code. */
+const mkQuote = (overrides: Partial<LsaQuote> = {}): LsaQuote => ({
+  id: "audit-quote-1", iso: new Date().toISOString(), business: base.customerName,
+  name: "Priya Ferreira", message: "Need service this week.", service: "",
+  how: "sms", contact: "(602) 555-0134", ...overrides,
+});
+const lsaQuote = mkQuote();
+const lsaSlug = leadSlug("Priya", "Ferreira");
+const lsaDetail = salesforceLeadDetail(base as CustomerProfile, lsaSlug, undefined, [lsaQuote]);
+const ad = derivePlace(base as CustomerProfile);
+
+expect("an LSA quote resolves to a lead at all", !!lsaDetail);
+if (lsaDetail) {
+  const la = lsaDetail.attribution;
+  expect('LSA lead: Marketing Source is "Local Services Ads"', la.marketingSource === "Local Services Ads");
+  expect('LSA lead: Marketing Medium is "lsa" (matches the real utm_medium on the Book online link)', la.marketingMedium === "lsa");
+  /* ⚠️ THE ROW IS COHERENT, NOT JUST THE ONE FIELD ASKED ABOUT — the whole reason this file's
+     own header insists on taking attribution WHOLE. Both values come from the exact function
+     the Google Search screen itself calls, so they can never disagree with the ad the "lead"
+     supposedly clicked. */
+  expect("LSA lead: Marketing Campaign matches the ad this lead actually came from", la.marketingCampaign === ad.adCampaign);
+  expect("LSA lead: Marketing Search Terms matches the real query, not a digitalInsights row", la.marketingSearchTerms === ad.query);
+  expect('LSA lead: Website Journey says the honest thing ("Google Local Services Ads listing")', la.websiteJourney === "Google Local Services Ads listing");
+  /* ⚠️ BLANK IS THE CORRECT ANSWER HERE, NOT A DEFECT — a Local Services ad's "Get quote"
+     dialog is answered on the search results page; nobody visits a landing page first. This
+     assertion exists so nobody "fixes" the blank by inventing one. */
+  expect("LSA lead: Website Calling Page is blank (no landing page was ever visited)", la.websiteCallingPage === "");
+  expect('LSA lead: Lead Source is "Web"', lsaDetail.leadSource === "Web");
+}
+
+/* ⚠️ THE CONTRAST CASE — A REPLICATE-PAGE WEB FORM MUST NOT GET LSA ATTRIBUTION. That
+   submission really is a generic site visit (just on the prospect's own replicated page), so
+   it must keep the ordinary digitalInsights-row attribution. Without this, a fix that applied
+   the LSA override to every quote regardless of `source` would pass every check above and
+   silently mislabel every Replicate-form lead as an LSA one. */
+const webQuote = mkQuote({ name: "Denise Okafor", contact: "denise.okafor@example.com", how: "email", source: "web" });
+const webSlug = leadSlug("Denise", "Okafor");
+const webDetail = salesforceLeadDetail(base as CustomerProfile, webSlug, undefined, [webQuote]);
+expect("a web-form quote resolves to a lead at all", !!webDetail);
+if (webDetail) {
+  expect("web-form lead: Marketing Source is NOT overridden to Local Services Ads", webDetail.attribution.marketingSource !== "Local Services Ads");
+  expect("web-form lead: Marketing Medium is NOT overridden to lsa", webDetail.attribution.marketingMedium !== "lsa");
+}
+
+/* ⚠️ AND A QUOTE CAPTURED BEFORE `source` EXISTED (so the field is `undefined`) MUST STILL GET
+   LSA ATTRIBUTION — the field defaults to "lsa", per its own comment in
+   QuoteCaptureContext.tsx, precisely so a quote already sitting in someone's 7-day localStorage
+   at deploy time keeps behaving exactly as it did. */
+const legacyQuote = mkQuote({ name: "Harlan Dietz", source: undefined });
+const legacySlug = leadSlug("Harlan", "Dietz");
+const legacyDetail = salesforceLeadDetail(base as CustomerProfile, legacySlug, undefined, [legacyQuote]);
+expect("a quote with no `source` (pre-existing in storage) still defaults to LSA attribution",
+  !!legacyDetail && legacyDetail.attribution.marketingSource === "Local Services Ads");
+
+if (!selfFail) console.log("self-test: the product and promotion checks reject the four shapes that broke real builds, and LSA attribution is scoped to LSA quotes only");
 bad += selfFail;
 
 console.log(bad ? `\n${bad} failure(s)` : `\nall ${files.length} profiles ok`);

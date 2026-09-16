@@ -1,4 +1,5 @@
-import { leadSlug, liveBookedLead } from "./salesforceLiveLead";
+import { leadSlug, liveBookedLead, liveQuoteLead } from "./salesforceLiveLead";
+import type { LsaQuote } from "./QuoteCaptureContext";
 import type { CustomerProfile, VoiceConversation } from "./schema";
 
 /* =============================================================================
@@ -167,6 +168,9 @@ export function salesforceLeads(
      row — which is the whole point: the SE makes the call, opens the Leads tab, and their
      caller is the newest lead. */
   voiceCalls?: VoiceConversation[],
+  /* Opt-in and last for the same reason: the quote requests submitted from the Google
+     Local Services ad, newest first. */
+  quotes?: LsaQuote[],
 ): SfLeadView {
   const r = profile.reports;
   const id = profile.id;
@@ -289,6 +293,19 @@ export function salesforceLeads(
     const at = leads.findIndex((l) => l.slug === live.lead.slug);
     if (at !== -1) leads.splice(at, 1);
     leads.unshift(live.lead);
+    if (leads.length > TARGET_LEADS) leads.length = TARGET_LEADS;
+  }
+
+  /* ⚠️ THE SECOND LIVE SOURCE: a quote request submitted from the Google LSA unit. Spliced
+     with the SAME replace-then-move rule as the booked call above rather than a second one —
+     an LSA requester can easily be a name already on the list, and a blind unshift is exactly
+     what put one person on two rows before. Applied AFTER the booked call so the most recent
+     thing the SE did is the top row. */
+  const quoteLead = liveQuoteLead(profile, quotes);
+  if (quoteLead) {
+    const at = leads.findIndex((l) => l.slug === quoteLead.slug);
+    if (at !== -1) leads.splice(at, 1);
+    leads.unshift(quoteLead);
     if (leads.length > TARGET_LEADS) leads.length = TARGET_LEADS;
   }
 

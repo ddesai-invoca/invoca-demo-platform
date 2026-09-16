@@ -428,6 +428,18 @@ export const SmsConversation = z.object({
   transcript: z.array(SmsTurn),              // [] for inactive
   signals: z.array(CISignal),                // [] for inactive (Analysis tab)
   smsInfo: SmsInfo.optional(),               // present for active
+  /* ⚠️⚠️ **APP-WRITTEN, NEVER GENERATED — and it MUST stay out of the generation schema.**
+     Set by `buildConversation` when the thread opened with a quote-request lead-in, which is
+     what files it under the "AI SMS Conversation Intelligence (LSA)" report instead of the
+     general one. `toSchema()` runs `sanitize()`, which marks every property required, so an
+     `.optional()` field in a GENERATED type is FORCED onto the model — it would then flag
+     seeded conversations as LSA ones and the LSA report would list threads no quote ever
+     produced. Same class as `InteractionRow.cells` and `VoiceConversation.outcome`; same fix,
+     `SMS_CI_GEN` omits it. Add anything else app-written to that omit in the same commit.
+     ⚠️ A quote submitted on a REPLICATED BOOKING PAGE (`source: "web"`) also lands here. The
+     beat is identical — a form submission the agent replies to — and the report keeps the name
+     it was asked for; only the lead-in's channel wording differs. */
+  lsa: z.boolean().optional(),
 });
 export const SmsConversationIntelligenceView = z.object({
   countLabel: z.string(),                    // "5,139 calls"
@@ -768,6 +780,17 @@ export const ExtraWorkflow = z.object({
      is not a state worth representing, and the locations are the thing an SE actually types.
      Absent on every existing workflow, so all of them still parse and still route. */
   bookingLocations: z.array(z.string()).optional(),
+  /* ⚠️⚠️ THE OPENER IS THIS WORKFLOW'S CONTENT, NOT A FALLBACK (9/12/2026).
+     `buildSmsBrain` ranks a stored `smsPlaybook.greeting` above a workflow's own
+     `openingMessage`, which is the correct fix for the 9/3 silent no-op — an SE's edited
+     greeting must beat a line authored into a workflow months earlier. A workflow GENERATED
+     from a live form submission inverts that: its opener quotes the words somebody typed
+     seconds ago, so the stored greeting is the stale one. Set ONLY by `quoteWorkflow`; absent
+     on every authored workflow, so none of them changes behaviour.
+     ⚠️ Safe as `.optional()` because `ExtraWorkflow` is NOT part of any generation schema —
+     `toSchema()`'s `sanitize()` would otherwise force it onto the model (the trap that made
+     the engine invent `InteractionRow.cells`). Verified: no engine phase writes extraWorkflows. */
+  openingMessageWins: z.boolean().optional(),
 });
 export type ExtraWorkflow = z.infer<typeof ExtraWorkflow>;
 

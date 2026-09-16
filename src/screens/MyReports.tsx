@@ -5,6 +5,7 @@ import type { GumloopArtifact } from "../data/schema";
 import { openArtifact, VOICE_AI_ROUTING_ID, VOICE_AI_SCREENPOP_ID, type ArtifactOverrides } from "../artifacts";
 import { hasTierReports } from "../data/signalTiers";
 import { useVoiceCapture } from "../data/VoiceCaptureContext";
+import { useSmsCapture } from "../data/SmsCaptureContext";
 import { latestTransferredCall, voiceAiRouting, voiceAiScreenpop } from "../data/voiceAiArtifacts";
 
 /* My Reports — the landing page for the Reports nav item. Lists a customer's
@@ -20,34 +21,55 @@ interface ReportRow {
   artifact?: GumloopArtifact;  // set → Gumloop leave-behind (opens in a new tab; status shown)
 }
 
+/* ⚠️ **THE PROSPECT'S NAME IS NOT IN THESE TITLES (9/15/2026).** Asked for directly:
+   *"remove (company name) for the report title for all prospects, for example AI SMS
+   Conversation Intelligence (Aptive) remove the (Aptive)."* Every row used to carry it, which
+   is redundant on a screen that only ever lists ONE prospect's reports — the network switcher
+   above already says whose account this is.
+   ⚠️ **THE OTHER PARENTHESES STAY, and they are a different thing entirely**: (Silver),
+   (Gold), (Voice AI) and (LSA) qualify WHICH report this is, not whose. Dropping those would
+   collapse four distinct rows into duplicates. `customerName` is gone from the signature
+   rather than left unused, since `noUnusedParameters` is on. */
 function reportsFor(
-  customerName: string,
   hasConversation: boolean,
   hasSmsConversation: boolean,
   hasVoiceConversation: boolean,
   artifacts: GumloopArtifact[],
   tiers: boolean,
   voiceAi: boolean,
+  hasLsaConversation: boolean,
 ): ReportRow[] {
   const rows: ReportRow[] = [
-    { name: `Digital Journey & Call Attribution Report (${customerName})`, type: "Interaction Details", createdAt: "6/25/26 7:35 am", to: "/reports/digital-insights" },
+    { name: "Digital Journey & Call Attribution Report", type: "Interaction Details", createdAt: "6/25/26 7:35 am", to: "/reports/digital-insights" },
   ];
   if (hasConversation) {
-    rows.push({ name: `Conversation Intelligence (${customerName})`, type: "Interaction Details", createdAt: "6/25/26 7:41 am", to: "/reports/conversation-intelligence" });
+    rows.push({ name: "Conversation Intelligence", type: "Interaction Details", createdAt: "6/25/26 7:41 am", to: "/reports/conversation-intelligence" });
   }
   /* ⚠️ HEALTH SPRING ONLY — the Signal AI Silver / Gold pair, added 8/24/2026 for an upsell
      conversation. Same template as the row above; what differs is which signals fire, what
      badges they carry, and which Gold-only panels exist. Gated on the prospect, so no other
      account grows two reports it did not ask for. */
   if (hasConversation && tiers) {
-    rows.push({ name: `Conversation Intelligence (${customerName}) (Silver)`, type: "Interaction Details", createdAt: "8/24/26 9:02 am", to: "/reports/conversation-intelligence/silver" });
-    rows.push({ name: `Conversation Intelligence (${customerName}) (Gold)`, type: "Interaction Details", createdAt: "8/24/26 9:04 am", to: "/reports/conversation-intelligence/gold" });
+    rows.push({ name: "Conversation Intelligence (Silver)", type: "Interaction Details", createdAt: "8/24/26 9:02 am", to: "/reports/conversation-intelligence/silver" });
+    rows.push({ name: "Conversation Intelligence (Gold)", type: "Interaction Details", createdAt: "8/24/26 9:04 am", to: "/reports/conversation-intelligence/gold" });
   }
   if (hasSmsConversation) {
-    rows.push({ name: `AI SMS Conversation Intelligence (${customerName})`, type: "Interaction Details", createdAt: "6/25/26 7:44 am", to: "/reports/sms-conversation-intelligence" });
+    rows.push({ name: "AI SMS Conversation Intelligence", type: "Interaction Details", createdAt: "6/25/26 7:44 am", to: "/reports/sms-conversation-intelligence" });
   }
+  /* ⚠️⚠️ **GATED ON A REAL QUOTE-REQUEST THREAD, NOT ON THE PROSPECT (9/15/2026).** Asked for
+     directly: *"push the conversation into reports as well, call it AI SMS Conversation
+     Intelligence (LSA)."* There is no seeded LSA example — the thread only exists once an SE
+     submits the form and replies to it in Preview Agent — so listing the row unconditionally
+     would put an EMPTY report in front of a prospect. Same reasoning as the (Voice AI) pair
+     above, which is gated on a transferred call rather than on the account.
+     ⚠️ It sits directly under the general SMS report because the two are siblings, and the
+     general one now EXCLUDES these threads — see the screen's own header. */
+  if (hasLsaConversation) {
+    rows.push({ name: "AI SMS Conversation Intelligence (LSA)", type: "Interaction Details", createdAt: "just now", to: "/reports/sms-conversation-intelligence/lsa" });
+  }
+
   if (hasVoiceConversation) {
-    rows.push({ name: `AI Voice Conversation Intelligence (${customerName})`, type: "Interaction Details", createdAt: "6/25/26 7:45 am", to: "/reports/voice-conversation-intelligence" });
+    rows.push({ name: "AI Voice Conversation Intelligence", type: "Interaction Details", createdAt: "6/25/26 7:45 am", to: "/reports/voice-conversation-intelligence" });
   }
   /* ⚠️ **THE (Voice AI) PAIR EXISTS ONLY AFTER A REAL TRANSFERRED CALL** (8/27/2026). They tell
      one continuous story with the call the SE just had: the routing demo replays that
@@ -64,7 +86,7 @@ function reportsFor(
   // Gumloop leave-behinds — open in a new browser tab once complete; status shows in the Schedule Status column.
   for (const a of artifacts) {
     rows.push({
-      name: `${a.name} (${customerName})`,
+      name: a.name,
       type: "AI Artifact",
       createdAt: a.createdAt ?? "—",
       artifact: a,
@@ -90,6 +112,8 @@ const TABS = ["Saved", "Requested", "Subscriptions"] as const;
 export function MyReports() {
   const { profile } = useProfile();
   const { capturedFor } = useVoiceCapture();
+  /* ⚠️ The (LSA) report exists only once a quote-request thread does — see `reportsFor`. */
+  const hasLsa = useSmsCapture().capturedFor(profile.id).some((c) => c.lsa);
   const [tab, setTab] = useState<(typeof TABS)[number]>("Saved");
   const [search, setSearch] = useState("");
 
@@ -104,7 +128,7 @@ export function MyReports() {
   /* ⚠️ GATED ON THE RENDERED SLICES, not merely on the call. A prospect with no seeded
      `voiceRoutingDemo` cannot produce one, and a row that opens nothing is worse than no row. */
   const hasVoiceAi = !!overrides.voiceRoutingDemo && !!overrides.voiceScreenpop;
-  const all = reportsFor(profile.customerName, !!profile.reports.conversationIntelligence, !!profile.reports.smsConversationIntelligence, !!profile.reports.voiceConversationIntelligence, profile.reports.gumloopArtifacts ?? [], hasTierReports(profile), hasVoiceAi);
+  const all = reportsFor(!!profile.reports.conversationIntelligence, !!profile.reports.smsConversationIntelligence, !!profile.reports.voiceConversationIntelligence, profile.reports.gumloopArtifacts ?? [], hasTierReports(profile), hasVoiceAi, hasLsa);
   const rows = search.trim()
     ? all.filter((r) => r.name.toLowerCase().includes(search.trim().toLowerCase()))
     : all;

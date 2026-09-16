@@ -16,7 +16,7 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
-import { CustomerProfile, DigitalInsightsReport, InteractionRow, DashboardView, KpiGroup, Breakdown, MultiSeriesChart, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, VoiceConversationIntelligenceView, VoiceConversation, AgentConfigView, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
+import { CustomerProfile, DigitalInsightsReport, InteractionRow, DashboardView, KpiGroup, Breakdown, MultiSeriesChart, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, SmsConversation, VoiceConversationIntelligenceView, VoiceConversation, AgentConfigView, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
 import { sweepValue } from "./dashSweep.ts";
 
 const QM_SCORE_MEAN = 71;   // true mean of the agent scorecard series
@@ -174,6 +174,37 @@ const NO_DASH_RULE =
   `a full stop, or a new sentence. Hyphens INSIDE a compound word are fine ` +
   `("pre-owned", "rear-ended", "24-48h"). This is not stylistic: dashes make the ` +
   `demo read as machine-generated.`;
+
+/* =============================================================================
+   The Marketing SOURCE rows name the two channels this platform can actually SHOW
+   -----------------------------------------------------------------------------
+   Asked for directly (9/12/2026): *"replace Youtube and facebook in the marketing source in
+   all the dashboards and replace it Google LSA and ChatGPT."* The demo now has a Google Local
+   Services ad screen and a ChatGPT sponsored-ad screen, and neither channel appeared in the
+   attribution data an SE opens straight afterwards.
+
+   ⚠️⚠️ **ONE STRING, THREE PROMPTS.** The Marketing Source rows are generated in three
+   separate phases — `dashboardChannels`, `opsDashboard` and `aiAgentConversion` — and a rule
+   pasted into two of them is how a prospect ends up with Google LSA on one dashboard and
+   Facebook on another, which is exactly the drift this file already records for the
+   conversion-term labels.
+
+   ⚠️ **SOURCE ONLY — Facebook is still a perfectly good MEDIUM**, and the rename layer in
+   `src/data/marketingSources.ts` is scoped the same way for the same reason (measured: those
+   words appear 370 times as a medium and 366 times inside a landing-page URL, against 97 as a
+   source). Say so explicitly or the model helpfully scrubs them everywhere.
+
+   ⚠️ Generation is instruct-then-enforce, as everywhere else here: this ASKS, and the load-time
+   rename makes sure — including for the ~380 profiles that already exist and for the shared
+   library on the server, which no prompt can reach. */
+function sourceRows(): string {
+  return `MARKETING SOURCE ROWS: two of the Marketing Source rows must be EXACTLY "Google LSA" `
+    + `and EXACTLY "ChatGPT" — this business advertises through Google Local Services Ads and `
+    + `through ChatGPT's sponsored answers, and both drive calls. The remaining source rows are `
+    + `this business's own real channels (e.g. Google, Bing, Direct, Organic Search, Referral). `
+    + `NEVER use "Facebook" or "YouTube" as a Marketing SOURCE. They remain fine as a Marketing `
+    + `MEDIUM and inside a landing-page URL's utm_source, which you must NOT change.`;
+}
 
 function reskin(name: string): string {
   return (
@@ -492,6 +523,7 @@ export function generateDashboardChannels(client: Anthropic, name: string, brief
       `- Source and Medium are COMPLETE partitions of the month: each one's Call Count column must sum to EXACTLY ${n(sc.calls)} and its revenue column to EXACTLY ${$(sc.revenue)}.\n` +
       `- Campaign and Search Term are the TOP 5 of a long tail, so each must sum to LESS than ${n(sc.calls)} calls and less than ${$(sc.revenue)} — never more, and never exactly the total.\n` +
       `- Search Term rows must be phrases a real customer would TYPE INTO GOOGLE (lowercase, e.g. "emergency plumber near me"), not product names or transcript words.\n` +
+      `${sourceRows()}\n` +
       `All numbers plausible for THIS business.`,
     12000
   );
@@ -608,6 +640,7 @@ function generateOpsDashboard(client: Anthropic, name: string, brief: string, bo
       `- webpagesTitle "Webpages driving New <CUST>s"; webpages.columns ["Product Category","Call Count","<BOOK>: Scheduled (Percent)","Caller Type: New <CUST>s (Percent)"], 4 rows = this business's product/service categories.\n` +
       `- locationTitle "Location Call Handling"; locationHandling.columns ["Location","Call Count","Call Not Answered (Count)","Voice Mail (Percent)","<BOOK>: Scheduled (Percent)"], 4 rows = this business's actual location type (stores/branches/showrooms/clinics/dealerships/gyms — use real-sounding location names for ${name}).\n` +
       `- noBookingChart: yLabel "Call Count", xLabels ${JSON.stringify(WEEK_LABELS)}, series = the 5 top reasons calls do NOT book for THIS business — each must be a genuine REASON (e.g. Price Above Budget, Comparing Providers, Timing Not Right, Needs Partner Approval, Outside Service Area), never the name of the booking itself. Values are weekly counts, and all 5 series together MUST sum to EXACTLY ${n(sc.calls - sc.consultations)} — the calls that did NOT book. Never more.\n` +
+      `${sourceRows()}\n` +
       `All numbers plausible and specific to ${name}. Every bar's value must be ≤ its chart's axisMax.`,
     22000
   );
@@ -632,6 +665,7 @@ function generateAiAgentConversionDashboard(client: Anthropic, name: string, bri
       `    Each: metricColumns ["Call Count","${bookingTerm} Scheduled (Percent)","${conversionTerm} (Percent)","Total Revenue (Sale Amount)"]; exactly 5 rows sorted by Call Count DESC (metrics aligned as [count, a %, a %, "$"+amount]); and donutTotal = an integer 15-30% LARGER than the sum of the 5 rows' Call Counts.\n` +
       `  • One with hasDonut:false: title & tableTitle "Conversions by Product Category", dimension "Product Category", metricColumns ["Call Count","${bookingTerm} Scheduled (Percent)","${conversionTerm} (Percent)","Total Revenue (Sale Amount)"], exactly 5 product/service-category rows for ${name}.\n` +
       `- productCategoryGraph: stacked bar. yLabel "${conversionTerm} (Count)". xLabels ${JSON.stringify(WEEK_LABELS)}. series = one per product category, SAME names and SAME ORDER as the Product Category table rows, and each series MUST sum to that row own ${conversionTerm} count (its Call Count x its percent). A series total that contradicts its table row is the most common bug here.\n` +
+      `${sourceRows()}\n` +
       `All numbers realistic and internally consistent. Re-skin every campaign, search term, and product category to ${name}'s actual business.`,
     9000,
     FAST_MODEL
@@ -697,10 +731,20 @@ function generateConversationIntelligence(client: Anthropic, name: string, brief
   );
 }
 
+/**
+ * ⚠️ The SMS sibling of `VOICE_CI_GEN`, and it exists for the identical reason: `sanitize()`
+ * marks every property required, so `SmsConversation.lsa` — which the APP sets when a thread
+ * opened with a quote-request lead-in — would be forced onto the model and seeded
+ * conversations would file themselves under the LSA report. Omit it here.
+ */
+const SMS_CI_GEN = SmsConversationIntelligenceView.extend({
+  conversations: z.array(SmsConversation.omit({ lsa: true })),
+});
+
 function generateSmsConversationIntelligence(client: Anthropic, name: string, brief: string, bookingTerm: string, customerNoun: string, sc: Scale) {
   return structured<z.infer<typeof SmsConversationIntelligenceView>>(
     client,
-    SmsConversationIntelligenceView,
+    SMS_CI_GEN,
     `Using this business brief, produce Invoca "AI SMS Conversation Intelligence" demo data for ${name} — a list of AI-SMS text conversations.\n\n` +
       `BRIEF:\n${brief}\n\n` +
       `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n` +

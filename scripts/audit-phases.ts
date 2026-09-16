@@ -47,7 +47,12 @@ if (poolStart < 0) {
 } else {
   const poolEnd = core.indexOf("]);", poolStart);
   const pool = core.slice(poolStart, poolEnd);
-  const poolKeys = [...pool.matchAll(/phase\(\s*"([^"]+)"/g)].map((m) => m[1]);
+  /* ⚠️ `maybe(` COUNTS TOO, AND FORGETTING IT BROKE THIS AUDIT ONCE. Agent-Studio-only
+     generations wrap the 13 skippable phases as `maybe("<key>", …)` instead of
+     `phase("<key>", …)`; matching only the latter dropped the count from 18 to 5, which
+     the self-check below correctly reported as a broken parse. The invariant is unchanged
+     — every phase in the pool, however it is wrapped — so this is re-aimed, not loosened. */
+  const poolKeys = [...pool.matchAll(/(?:phase|maybe)\(\s*"([^"]+)"/g)].map((m) => m[1]);
 
   checks++;
   if (poolKeys.length < 10) {

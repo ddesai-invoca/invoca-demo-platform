@@ -39,6 +39,7 @@ import { handleFeedbackApi } from "./engine/feedbackApi.ts";
 import { mailConfigured } from "./engine/mailer.ts";
 import { DATA_DIR, isPersistent } from "./engine/demoStore.ts";
 import { deployStatus } from "./engine/status.ts";
+import { renderConfigured } from "./engine/renderService.ts";
 import { runCanary, recordRun, toPublic as canaryPublic, BUDGET_SECONDS } from "./engine/canary.ts";
 import { migrateDemoDashes } from "./engine/dashSweep.ts";
 import { applyDemoPatches } from "./engine/demoPatches.ts";
@@ -80,6 +81,7 @@ app.get("/api/status", (_req, res) => res.json(deployStatus({
   mapboxTokenInServerEnv: !!process.env.VITE_MAPBOX_TOKEN,
   authGate: authEnabled,
   emailConfigured: mailConfigured(),
+  renderConfigured: renderConfigured(),
 })));
 
 /* PUBLIC NIGHTLY CANARY RESULT — timings + audit for the last generation run.
@@ -304,6 +306,96 @@ app.get("/api/place", async (req, res) => {
 });
 
 /* Mirrors the ogImageApi() plugin in vite.config.ts — keep the two in sync. */
+/* GET /api/replicate?url=… → the page itself as text/html (same-origin, so the Replicate
+   screen can wire its form); /api/replicate/probe?url=… → JSON metadata. engine/replicate.ts
+   does the work. Twin of the plugin in vite.config.ts — keep the two in sync. */
+async function replicateHandler(req: express.Request, res: express.Response, probe: boolean) {
+  const target = String(req.query.url || "");
+  const { fetchReplica } = await import("./engine/replicate.ts");
+  try {
+    const r = await fetchReplica(target);
+    if (probe) {
+      return res.json({ ok: true, finalUrl: r.finalUrl, title: r.title, forms: r.forms, formFields: r.formFields, bytes: r.bytes, ms: r.ms, via: r.via, fallbackReason: r.fallbackReason });
+    }
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
+    res.setHeader("Cache-Control", "no-store");
+    return res.send(r.html);
+  } catch (e: any) {
+    const msg = e?.message || "Could not replicate that page.";
+    if (probe) return res.status(400).json({ ok: false, error: msg });
+    return res.status(400).type("html")
+      .send(`<!doctype html><meta charset="utf-8"><body style="font:14px system-ui;padding:40px;color:#333">${msg}</body>`);
+  }
+}
+app.get("/api/replicate/probe", (req, res) => { void replicateHandler(req, res, true); });
+app.get("/api/replicate", (req, res) => { void replicateHandler(req, res, false); });
+
+/* ⚠️⚠️ **THE REPLICATE BUTTON'S REAL PATH: download a standalone HTML file, save it, open it.**
+   POST /api/replicate/capture {url} → checks the persistent store first (instant if this
+   domain was already captured, even after a restart — that IS the point of the store), else
+   runs the full browser capture and saves the result. GET /api/replicate/lookup?url=|slug=
+   resolves what `/replica` should show, checking the two built-in library captures
+   (`replicaFor`/`replicaBySlug`, shipped in the repo) before the dynamic store. GET
+   /api/replicas/dyn/:file streams a stored capture's bytes — distinct from the static
+   `/replicas/*` names served out of `public/`, so the two can never collide.
+   Twin of the plugin in vite.config.ts — keep the two in sync. */
+app.post("/api/replicate/capture", async (req, res) => {
+  const target = String(req.body?.url || "");
+  const { assertPublicUrl } = await import("./engine/replicate.ts");
+  const { captureReplica } = await import("./engine/replicaCapture.ts");
+  const { getReplicaForDomain, saveReplica } = await import("./engine/replicaStore.ts");
+  let host: string;
+  try { host = assertPublicUrl(target).hostname; } catch (e: any) {
+    return res.status(400).json({ ok: false, error: e?.message || "That is not a usable URL." });
+  }
+  const existing = getReplicaForDomain(host);
+  if (existing) return res.json({ ok: true, slug: existing.slug, domain: existing.domain, sourceUrl: existing.sourceUrl, capturedAt: existing.capturedAt, label: existing.label, cached: true });
+  try {
+    const r = await captureReplica(target);
+    if (!r.ok) return res.status(400).json({ ok: false, error: r.reasons.join("; ") });
+    const slug = new URL(r.finalUrl).hostname.replace(/^www\./, "").split(".")[0].replace(/[^a-z0-9-]+/gi, "-").toLowerCase();
+    const domain = new URL(r.finalUrl).hostname.replace(/^www\./, "");
+    const rec = saveReplica(
+      { slug, file: `${slug}.html`, domain, sourceUrl: r.finalUrl, capturedAt: new Date().toISOString().slice(0, 10), label: r.title.replace(/\s*[-|·].*$/, "").trim() || slug, fields: r.map },
+      r.html,
+    );
+    return res.json({ ok: true, slug: rec.slug, domain: rec.domain, sourceUrl: rec.sourceUrl, capturedAt: rec.capturedAt, label: rec.label, cached: false });
+  } catch (e: any) {
+    return res.status(400).json({ ok: false, error: e?.message || "Could not replicate that page." });
+  }
+});
+
+app.get("/api/replicate/lookup", async (req, res) => {
+  const url = req.query.url ? String(req.query.url) : "";
+  const slugQ = req.query.slug ? String(req.query.slug) : "";
+  const { replicaFor, replicaBySlug } = await import("./src/data/replicaPages.ts");
+  const { getReplicaForDomain, getReplicaBySlug } = await import("./engine/replicaStore.ts");
+  if (slugQ) {
+    const st = replicaBySlug(slugQ);
+    if (st) return res.json({ ok: true, source: "static", file: st.file, sourceUrl: st.sourceUrl, capturedAt: st.capturedAt, label: st.label, fields: st.fields ?? null });
+    const dyn = getReplicaBySlug(slugQ);
+    if (dyn) return res.json({ ok: true, source: "dynamic", file: dyn.file, sourceUrl: dyn.sourceUrl, capturedAt: dyn.capturedAt, label: dyn.label, fields: dyn.fields });
+    return res.json({ ok: false });
+  }
+  let host = "";
+  try { host = new URL(url).hostname; } catch { return res.json({ ok: false }); }
+  const st = replicaFor(host);
+  if (st) return res.json({ ok: true, source: "static", file: st.file, sourceUrl: st.sourceUrl, capturedAt: st.capturedAt, label: st.label, fields: st.fields ?? null });
+  const dyn = getReplicaForDomain(host);
+  if (dyn) return res.json({ ok: true, source: "dynamic", file: dyn.file, sourceUrl: dyn.sourceUrl, capturedAt: dyn.capturedAt, label: dyn.label, fields: dyn.fields });
+  return res.json({ ok: false });
+});
+
+app.get("/api/replicas/dyn/:file", async (req, res) => {
+  const { REPLICAS_DIR } = await import("./engine/replicaStore.ts");
+  const file = path.basename(String(req.params.file || ""));   // strip any path traversal
+  const full = path.join(REPLICAS_DIR, file);
+  if (!full.startsWith(REPLICAS_DIR + path.sep) || !fs.existsSync(full)) return res.status(404).end();
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.setHeader("Cache-Control", "no-store");
+  fs.createReadStream(full).pipe(res);
+});
+
 app.get("/api/og-image", async (req, res) => {
   try {
     const { fetchOgImage } = await import("./engine/ogImage.ts");

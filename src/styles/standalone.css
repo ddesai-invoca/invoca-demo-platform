@@ -561,6 +561,369 @@
   background: var(--gs-pill); border-radius: 20px; font-size: 14px; cursor: pointer;
 }
 
+/* ---- Local Services Ads (9/12/2026) ---------------------------------------
+   Google's OTHER paid unit, shown above the text ads for local trade
+   categories. MEASURED off a SingleFile capture of the real unit
+   ("Sponsored Plumbers | Duluth"), the same method the rest of this screen
+   used — every value below was read off the rendered capture's computed
+   styles. The ones that a screenshot gets wrong, and that a previous
+   screenshot-authored pass DID get wrong:
+     unit        652 wide, transparent — NO card, no border, no background
+     header      44 tall = a 36 flex row + 8 below it, and NO underline
+     heading     400 20px/28px Google Sans #e8e8e8  (NOT the 16px of
+                 .gs-spons-head, which the first pass borrowed whole)
+     kebab       18px, #9e9e9e, 4px after the heading text
+     CTA         205x36, transparent, 1px #444746, radius 9999, pad 7px 15px;
+                 icon 18px #a8c7fa + 4px + 500 14/20 Google Sans #a8c7fa
+     row         116 tall, padding 12px 10px 12px 0
+     thumb       92x92, radius 8, object-fit cover, 16px gap to the text
+     name        400 20px/24px Roboto #e8e8e8, nowrap + ellipsis
+     lines       400 14px/20px Roboto #bfbfbf — its OWN grey, neither --gs-2
+                 (#9e9e9e) nor --gs-mut (#bdc1c6)
+     status      ONLY the leading phrase is #6dd58c; the separator and the
+                 badge after it are #bfbfbf, exactly the split
+                 .gs-place-hours already does. A screenshot reads it as one
+                 green line, which is what the first pass built.
+     stars       a 68x11 gradient bar, filled #fdd663 over unfilled #80868b,
+                 so a 4.9 renders a PARTIAL last star
+     actions     flex, gap 24, justify flex-end, 5px below the row's content
+                 top; circle 44x44 radius 9999 1px #444746, icon #a8c7fa;
+                 label 500 14/18 Google Sans #a8c7fa, centred, 6px under it
+     divider     652x1 #444746, BETWEEN rows only (none after the last)
+     show more   a 372x40 pill (radius 20, #2c2e35, 500 14/20 Google Sans
+                 #e8e8e8) centred ON TOP of a full-width 1px #444746 rule
+                 that runs the whole 652; area 64 tall, rule at y=20
+   Only the photograph is not reproduced — see GoogleSearch.tsx for why. */
+.gs-lsa { width: var(--gs-col); }
+
+.gs-lsa-head { padding-bottom: 8px; }
+.gs-lsa-head-row {
+  display: flex; align-items: center; justify-content: space-between; height: 36px;
+}
+/* `min-width: 0` is what lets the text actually shrink inside the flex row — without it
+   a long heading refuses to ellipsise and pushes the CTA instead. */
+.gs-lsa-title {
+  display: flex; align-items: center; gap: 4px; margin: 0; min-width: 0;
+  font: 400 20px/28px "Google Sans", Roboto, Arial, sans-serif; color: var(--gs-fg);
+}
+.gs-lsa-title-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gs-lsa-kebab { display: inline-flex; color: var(--gs-2); cursor: pointer; }
+/* ⚠️ THE ICON SITS 12px FROM THE PILL'S OUTER EDGE — measured. That is `padding-left: 11`
+   plus the 1px border, not 12: the border counts, and a symmetric 15 put the glyph 4px too
+   far right. Google optically pulls a leading glyph inside its own padding this way.
+   `display: block` on the svg kills the inline baseline gap that shifted it further. */
+.gs-lsa-cta {
+  display: inline-flex; align-items: center; gap: 4px; flex: none;
+  padding: 7px 15px 7px 11px; border: 1px solid var(--gs-line); border-radius: 9999px;
+  background: none; color: var(--gs-act);
+  font: 500 14px/20px "Google Sans", Roboto, Arial, sans-serif; cursor: pointer;
+}
+.gs-lsa-cta svg, .gs-lsa-more-pill svg, .gs-lsa-kebab svg { display: block; }
+
+.gs-lsa-row { display: flex; padding: 12px 10px 12px 0; }
+.gs-lsa-rows .gs-lsa-row + .gs-lsa-row { border-top: 1px solid var(--gs-line); }
+/* The photo tile, at the capture's measured box. The prospect's is its own real
+   Places/og:image photo; the rival's is a curated per-vertical stock photo — see
+   GoogleSearch.tsx for why those two come from different sources.
+   ⚠️ `overflow: hidden` + object-fit: cover is what the capture does (its img is a
+   92x92 cover crop), so a portrait or panoramic source still fills the square. */
+.gs-lsa-thumb {
+  width: 92px; height: 92px; border-radius: 8px; flex: none; margin-right: 16px;
+  overflow: hidden; background: #303134;
+}
+.gs-lsa-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Fallback only: no photo available, or one that failed to load. */
+.gs-lsa-thumb-alt {
+  display: grid; place-items: center; color: var(--gs-nm); text-transform: uppercase;
+  font: 500 30px/1 "Google Sans", Roboto, Arial, sans-serif;
+}
+.gs-lsa-main { flex: 1 1 auto; min-width: 0; }
+.gs-lsa-name {
+  display: block; font: 400 20px/24px Roboto, Arial, sans-serif; color: var(--gs-fg);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.gs-lsa-line {
+  display: block; font: 400 14px/20px Roboto, Arial, sans-serif; color: #bfbfbf;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+/* Measured: the leading phrase only. The badge after it stays grey. */
+.gs-lsa-line b { color: #6dd58c; font-weight: 400; }
+.gs-lsa-sep { margin: 0 2px; }
+/* The real element is a gradient bar masked to stars, which is how a 4.9 shows
+   a partial last star. Reproduced with the glyphs this page already uses plus
+   background-clip, so the same partial fill falls out of the rating itself.
+   ⚠️ The colour is set on the element FIRST and only made transparent where
+   background-clip: text is supported, or an unsupported browser renders five
+   invisible stars. */
+.gs-lsa-stars {
+  display: inline-block; margin: 0 4px; color: #fdd663;
+  font-size: 13px; line-height: 20px; letter-spacing: .5px;
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .gs-lsa-stars {
+    background-image: linear-gradient(to right, #fdd663 var(--fill), #80868b var(--fill));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+}
+
+.gs-lsa-acts { display: flex; gap: 24px; justify-content: flex-end; flex: none; padding-top: 5px; }
+.gs-lsa-act { display: flex; flex-direction: column; align-items: center; }
+/* "Get quote" is a real <button> and "Book online" a real <a>; the browser's own button
+   styling has to come off or it sits a pixel out and picks up a system font — the same reset
+   `.gs-loc-pill` needed. The anchor needs the colour held too, since `.gs-page a` sets
+   `color: inherit` and the label's own `--gs-act` would otherwise be overridden. */
+button.gs-lsa-act, a.gs-lsa-act {
+  background: none; border: 0; padding: 0; font: inherit; font-family: inherit; cursor: pointer;
+}
+.gs-page a.gs-lsa-act, .gs-page a.gs-lsa-act:hover { text-decoration: none; }
+.gs-lsa-act-ic {
+  width: 44px; height: 44px; border-radius: 9999px; border: 1px solid var(--gs-line);
+  display: grid; place-items: center; color: var(--gs-act);
+}
+/* ⚠️ 72px IS WHAT REPRODUCES THE CAPTURE'S LINE BREAKS, and the break is the visible
+   thing: "Get quote" sits on one line there while "Book online" and "Get phone number"
+   both wrap to two. Our labels are a few px wider than Google's because "Google Sans"
+   is not bundled on this page (the one documented difference from the capture), so the
+   cap is set from OUR measured widths — 61.5 / 73.2 / 80 — rather than copying its 80. */
+.gs-lsa-act-label {
+  margin-top: 6px; max-width: 72px; text-align: center; color: var(--gs-act);
+  font: 500 14px/18px "Google Sans", Roboto, Arial, sans-serif;
+}
+
+/* The rule spans the full column; the pill is opaque and covers its middle. */
+.gs-lsa-more {
+  position: relative; height: 64px; display: flex; align-items: flex-start;
+  justify-content: center;
+}
+.gs-lsa-more::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 20px; height: 1px;
+  background: var(--gs-line);
+}
+.gs-lsa-more-pill {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  gap: 4px; width: 372px; height: 40px; border-radius: 20px; background: var(--gs-pill);
+  color: var(--gs-fg); font: 500 14px/20px "Google Sans", Roboto, Arial, sans-serif;
+  cursor: pointer;
+}
+.gs-lsa-more-pill svg { color: var(--gs-2); }
+
+/* ---- right-click "Book online" → set its destination (9/12/2026) -----------
+   ⚠️⚠️ **OURS, NOT GOOGLE'S — AND IT IS MEASURED AGAINST NOTHING, DELIBERATELY.**
+   Every other rule on this screen reproduces a captured value. This panel has no
+   counterpart in the capture because it is a DEMO-TOOL affordance, so it takes the
+   screen's own tokens (surface #1f1f1f like the quote dialog, --gs-line, --gs-act)
+   rather than inventing a palette, and it only ever exists after a right-click —
+   the page at rest still diffs clean against the capture.
+   ⚠️ `gs-lnk` was grepped across every screen and the stylesheet before it was
+   written, per the one-prefix-per-screen rule. */
+.gs-lnk {
+  position: fixed; z-index: 9998; padding: 12px;
+  background: #1f1f1f; border: 1px solid var(--gs-line); border-radius: 8px;
+  box-shadow: 0 5px 26px rgba(0, 0, 0, .5), 0 20px 28px rgba(0, 0, 0, .5);
+  font: 400 13px/18px Roboto, Arial, sans-serif; color: var(--gs-fg);
+}
+.gs-lnk-title {
+  margin-bottom: 8px; font: 400 14px/20px "Google Sans", Roboto, Arial, sans-serif;
+  color: var(--gs-nm);
+}
+.gs-lnk-input {
+  width: 100%; height: 34px; padding: 0 10px; box-sizing: border-box;
+  background: none; border: 1px solid var(--gs-line); border-radius: 4px;
+  color: var(--gs-fg); font: 400 13px/18px Roboto, Arial, sans-serif; outline: none;
+}
+.gs-lnk-input:focus { border-color: var(--gs-act); }
+.gs-lnk-input::placeholder { color: var(--gs-2); }
+.gs-lnk-err { margin-top: 6px; color: #f28b82; }
+/* The default is long, so it wraps and breaks anywhere rather than widening the panel. */
+.gs-lnk-note { margin-top: 6px; color: var(--gs-2); }
+.gs-lnk-note span { overflow-wrap: anywhere; }
+/* ⚠️⚠️ **`flex-wrap: wrap` IS THE BACKSTOP, NOT THE FIX — the fix is giving the progress bar
+   its own row (see the JSX) so this row's width no longer depends on whether a fetch is in
+   flight.** Kept anyway: four buttons (Reset/Cancel/Save plus a wide "Replicating…") at a
+   narrow panel width, or a long label from a future addition, should wrap onto a second line
+   INSIDE the panel rather than push past its rounded border the way the progress bar used to.
+   Reported directly: "the replicate button goes outside the box." */
+.gs-lnk-acts { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; margin-top: 10px; }
+.gs-lnk-btn {
+  height: 28px; padding: 0 12px; border: 1px solid var(--gs-line); border-radius: 9999px;
+  background: none; color: var(--gs-act);
+  font: 500 13px/18px "Google Sans", Roboto, Arial, sans-serif; cursor: pointer;
+}
+.gs-lnk-save { background: var(--gs-act); border-color: var(--gs-act); color: #202124; }
+/* Replicate sits at the LEFT of the row, away from Save — it builds a page and re-points the
+   link, which is a different kind of action from the two that just close the menu. */
+.gs-lnk-rep { margin-right: auto; }
+/* ⚠️⚠️ **ONCE THE CAPTURE HAS LANDED THE BUTTON STOPS BEING AN ACTION AND BECOMES THE
+   RECEIPT** — asked for directly ("once its done, just show complete, but dont go to it").
+   Green rather than the faded grey a `:disabled` rule would imply, because the state is
+   success rather than unavailability; `.gs-lnk-btn` deliberately has no `:disabled` opacity,
+   so "Complete" reads at full strength while still refusing a second click. */
+.gs-lnk-rep.gs-lnk-done { color: #6dd58c; border-color: #6dd58c; cursor: default; }
+/* ⚠️ **WRITTEN (0,2,0), NOT AS A BARE CLASS.** `.gs-lnk-prog-pct` pins `width: 34px` (room
+   for a percentage) and is defined LATER in this file, so a single-class rule here would TIE
+   and lose on source order — "Complete" would be clipped into 34px while this rule read
+   perfectly. The same tie `.ts-tablewrap .ts-table` and `.wf-leaf .wf-leaf-add` exist to win. */
+.gs-lnk-prog .gs-lnk-prog-done { width: auto; color: #6dd58c; }
+/* ⚠️⚠️ **A DETERMINATE BAR NOW, AND ITS OWN FULL-WIDTH ROW — asked for directly, in place of
+   the indeterminate sliding animation plus a raw elapsed-seconds counter.** `pct` is an
+   ESTIMATE (see the comment beside where it's computed in GoogleSearch.tsx) eased the same
+   way the Launch screen's own build-progress bar is, so the fill genuinely reports the number
+   beside it rather than sliding at a constant, meaningless speed. */
+.gs-lnk-prog { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+.gs-lnk-prog-bar {
+  position: relative; flex: 1 1 auto; height: 3px; border-radius: 2px;
+  background: var(--gs-line); overflow: hidden;
+}
+.gs-lnk-prog-fill {
+  display: block; height: 100%; border-radius: 2px; background: var(--gs-act);
+  transition: width 200ms ease-out;
+}
+.gs-lnk-prog-pct {
+  flex: 0 0 auto; width: 34px; text-align: right;
+  font-variant-numeric: tabular-nums; color: var(--gs-2); font-size: 12px;
+}
+/* ⚠️ Respect a reduced-motion preference: the fill still reaches its real width immediately
+   rather than easing there, so nothing appears to animate on its own. */
+@media (prefers-reduced-motion: reduce) {
+  .gs-lnk-prog-fill { transition: none; }
+}
+.gs-lnk-save:disabled { opacity: .45; cursor: default; }
+
+/* ---- "Get quote" → the Send request dialog (9/12/2026) ---------------------
+   MEASURED off a capture taken with the dialog open. Its content lives in a
+   sandboxed iframe, so the srcdoc had to be extracted and served to be read at
+   all — see the note in GoogleSearch.tsx, which also lists every value below.
+   ⚠️ The dialog's surface is #1f1f1f, the FRAME's own body colour — not the
+   page's #22242a. */
+.gs-q-scrim {
+  position: fixed; inset: 0; z-index: 9997; background: rgba(0, 0, 0, .6);
+  display: flex; align-items: center; justify-content: center;
+}
+.gs-q {
+  width: 700px; max-width: calc(100vw - 32px); max-height: min(752px, calc(100vh - 32px));
+  background: #1f1f1f; border-radius: 8px; overflow: hidden;
+  display: flex; flex-direction: column;
+  box-shadow: 0 5px 26px rgba(0, 0, 0, .5), 0 20px 28px rgba(0, 0, 0, .5);
+}
+.gs-q-head { display: flex; align-items: center; height: 64px; flex: none; padding-left: 20px; }
+.gs-q-back {
+  width: 48px; height: 48px; flex: none; display: grid; place-items: center;
+  background: none; border: 0; border-radius: 50%; color: var(--gs-nm); cursor: pointer;
+}
+.gs-q-back:hover { background: rgba(232, 234, 237, .08); }
+.gs-q-title {
+  margin: 0 24px 0 20px; font: 400 18px/24px "Google Sans", Roboto, Arial, sans-serif;
+  color: var(--gs-nm); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+/* The body scrolls; the header and footer do not. */
+.gs-q-body { flex: 1 1 auto; overflow-y: auto; padding: 8px 24px 0; }
+.gs-q-foot {
+  flex: none; height: 52px; display: flex; align-items: center; gap: 10px; padding: 0 24px;
+}
+
+/* business block */
+.gs-q-biz { display: flex; gap: 12px; padding-bottom: 12px; }
+.gs-q-thumb {
+  width: 52px; height: 65px; flex: none; border-radius: 8px; overflow: hidden;
+  display: grid; place-items: center;
+}
+.gs-q-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gs-q-thumb-alt {
+  color: var(--gs-nm); text-transform: uppercase;
+  font: 500 22px/1 "Google Sans", Roboto, Arial, sans-serif;
+}
+.gs-q-biz-main { min-width: 0; }
+.gs-q-biz-name {
+  font: 400 18px/24px "Google Sans", Roboto, Arial, sans-serif; color: var(--gs-fg);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.gs-q-biz-row {
+  display: flex; align-items: center; gap: 4px; height: 22px;
+  font: 400 14px/18px Roboto, Arial, sans-serif; color: var(--gs-fg);
+}
+.gs-q-biz-meta { gap: 6px; }
+.gs-q-biz-meta svg { color: #8ab4f8; flex: none; }
+
+/* sections + fields */
+.gs-q-sec { padding-top: 10px; }
+.gs-q-label {
+  font: 400 16px/23px Roboto, Arial, sans-serif; color: var(--gs-fg); padding: 0 8px;
+}
+/* The MDC notched outline, as measured: 1px #bdc1c6 at radius 4. */
+.gs-q-field {
+  position: relative; margin: 0 8px; border: 1px solid #bdc1c6; border-radius: 4px;
+  background: none; display: flex; align-items: center;
+}
+.gs-q-field:focus-within { border-color: #8ab4f8; box-shadow: inset 0 0 0 1px #8ab4f8; }
+.gs-q-field textarea, .gs-q-field input, .gs-q-field select {
+  width: 100%; background: none; border: 0; outline: none; color: #e8eaed;
+  font: 400 16px/24px Roboto, Arial, sans-serif; padding: 16px;
+}
+.gs-q-field textarea { height: 96px; resize: none; }
+.gs-q-field ::placeholder { color: #9aa0a6; }
+.gs-q-field-area { height: 128px; align-items: flex-start; }
+/* Name and phone are HALF the column, measured 313 of 652. */
+.gs-q-half { width: 313px; max-width: 100%; }
+.gs-q-field.gs-q-half input { height: 54px; padding: 0 16px; }
+.gs-q-select select {
+  appearance: none; height: 54px; padding: 0 44px 0 16px; cursor: pointer;
+  /* The frame renders on #1f1f1f, so the native option list must too. */
+  color-scheme: dark;
+}
+.gs-q-chev {
+  position: absolute; right: 12px; display: inline-flex; color: var(--gs-nm);
+  pointer-events: none;
+}
+.gs-q-help {
+  display: flex; justify-content: space-between; gap: 12px; padding: 4px 16px 0;
+  font: 400 12px/14px Roboto, Arial, sans-serif; color: #9aa0a6;
+}
+
+/* radios */
+.gs-q-radio {
+  display: flex; align-items: center; gap: 12px; height: 48px; margin: 0 8px; cursor: pointer;
+  font: 400 14px/20px Roboto, Arial, sans-serif; color: #bfbfbf;
+}
+.gs-q-radio input { position: absolute; opacity: 0; pointer-events: none; }
+.gs-q-radio-ring {
+  width: 20px; height: 20px; flex: none; margin: 0 10px; border-radius: 50%;
+  border: 2px solid #bfbfbf; display: grid; place-items: center;
+}
+.gs-q-radio input:checked + .gs-q-radio-ring { border-color: #8ab4f8; }
+.gs-q-radio input:checked + .gs-q-radio-ring::after {
+  content: ""; width: 10px; height: 10px; border-radius: 50%; background: #8ab4f8;
+}
+
+.gs-q-legal {
+  margin: 12px 8px 16px; font: 400 12px/16px Roboto, Arial, sans-serif; color: #bfbfbf;
+}
+.gs-q-legal a { color: var(--gs-link); cursor: pointer; }
+
+/* footer buttons — measured 321x36 each, 10px apart, spanning the 652 column */
+.gs-q-btn {
+  flex: 1 1 0; height: 36px; border-radius: 36px; cursor: pointer;
+  background: #1f1f1f; border: 1px solid #3c4043; color: #8ab4f8;
+  font: 400 14px/18px "Google Sans", Roboto, Arial, sans-serif;
+}
+.gs-q-btn:hover:not(:disabled) { background: rgba(138, 180, 248, .08); }
+.gs-q-btn-fill { background: #8ab4f8; border-color: transparent; color: #1f1f1f; }
+.gs-q-btn-fill:hover:not(:disabled) { background: #a6c6fa; }
+.gs-q-btn:disabled { opacity: .38; cursor: default; }
+.gs-q-btn-wide { flex: 0 0 auto; padding: 0 24px; margin-left: auto; }
+
+/* the sent state — AUTHORED, not measured (see GoogleSearch.tsx) */
+.gs-q-sent { padding: 24px 8px 8px; text-align: center; }
+.gs-q-sent-ic {
+  width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 14px;
+  display: grid; place-items: center; background: rgba(138, 180, 248, .16); color: #8ab4f8;
+}
+.gs-q-sent-h { margin: 0; font: 400 18px/24px "Google Sans", Roboto, Arial, sans-serif; color: var(--gs-fg); }
+.gs-q-sent-p { margin: 8px auto 0; max-width: 460px; font-size: 14px; line-height: 20px; color: #bfbfbf; }
+/* ⚠️ `.gs-q-sent-next` — the line naming the Salesforce lead and SMS workflow — is DELETED,
+   not hidden: "Remove the 'In the Platform' message." Same reasoning as the replica screen's
+   removed bars — this dialog is Google's screen, and a line naming our own internal plumbing
+   was the one seam in it. The lead and workflow are still created; onSend is unchanged. */
+
 /* ---- the local pack ------------------------------------------------------ */
 /* 876 wide, deliberately wider than the 652 results column, which is how the
    real pack overhangs to the right. */
@@ -668,3 +1031,25 @@
 .gs-foot-mid a { color: var(--gs-link); cursor: pointer; }
 .gs-foot-links { display: flex; gap: 26px; font-size: 14px; margin-top: 18px; }
 .gs-foot-links a { cursor: pointer; }
+
+/* ---- /replica/:slug — the prospect's own booking page, wired in (9/12/2026) --
+   ⚠️ OURS, NOT THEIRS. Everything below is the thin bar ABOVE the replica; the
+   captured page brings its own complete stylesheet and must not be touched by
+   anything here, which is why every rule is scoped under `.rep-root` and none of
+   them is a bare element selector. Grepped for `rep-` before writing. */
+.rep-root { position: fixed; inset: 0; display: flex; flex-direction: column; background: #fff; }
+/* ⚠️ `.rep-bar` (the top "Replica of…" strip, with its Back button) and `.rep-sent` (the green
+   "Lead created for X" banner, with its Open Leads / Open Agent Studio buttons) are DELETED,
+   not hidden — asked for directly: "removed these 2 bars as they are not a part of the page."
+   Both were our own chrome laid over a page whose entire point is to look like the prospect's
+   real site. `.rep-back`, `.rep-what`, `.rep-dim`, `.rep-chip` and `.rep-go` went with them,
+   since nothing else used them. `.rep-err` / `.rep-note` stay — those are genuine failure
+   states (no form, a blocked fetch), a different situation from a successful, silent submit. */
+.rep-note {
+  flex: 0 0 auto; padding: 8px 14px; background: #fff8e1; color: #7a5800;
+  font: 400 13px/18px Lato, system-ui, sans-serif;
+}
+.rep-err { flex: 0 0 auto; padding: 8px 14px; background: #fff4ef; color: #b33b00; font: 400 13px/18px Lato, sans-serif; }
+/* The capture fills whatever is left. `border: 0` because a default iframe border
+   would draw a line the real site does not have. */
+.rep-frame { flex: 1 1 auto; width: 100%; border: 0; }

@@ -20,6 +20,7 @@ import { voiceCopy } from "../data/voiceCopy";
 import type { VoiceUseCase } from "../data/voiceUseCases";
 import { isProspect } from "../data/prospect";
 import { smsWorkflowAgentOf } from "../data/smsBrain";
+import { useExtraWorkflows } from "../data/quoteWorkflow";
 
 /* Agent Studio → a workflow's Definition (flow diagram). Opened from a workflow
    in the left sub-nav. Template flow (Conversation Start → classify intent →
@@ -302,12 +303,15 @@ function UndoIcon() {
 
 export function AgentWorkflow() {
   const { profile, profileId } = useProfile();
+  /* Includes any workflow created by an LSA quote request submitted during this demo,
+     newest first — one definition, so a slug that lists here also resolves elsewhere. */
+  const extraWfs = useExtraWorkflows(profile);
   const { channel, id } = useParams();
   const { pathname } = useLocation();
   /* The route param is a slug, not just sms|voice: extra workflows add their
      own (e.g. "sms-nurture"). Resolve those first so they don't fall through to
      the built-in SMS tree. */
-  const extra = (profile.reports.extraWorkflows ?? []).find((w) => w.slug === channel);
+  const extra = extraWfs.find((w) => w.slug === channel);
   /* A workflow the SE created with the Create Workflow modal. `/workflow/new/:id` is its
      own route, so `id` is set only here and every other path behaves exactly as before. */
   const { byId } = useAgentWorkflows(profile.id);

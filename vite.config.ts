@@ -94,6 +94,119 @@ function deleteProfileApi(): Plugin {
   }
 }
 
+/* GET /api/replicate?url=… → the page itself as text/html (served same-origin so the
+   Replicate screen can wire its form), and /api/replicate/probe?url=… → JSON metadata.
+   engine/replicate.ts does the work; this is the transport. Mirrored in server.ts. */
+/* ⚠️ MIRRORS server.ts — keep the two in sync. Same three routes: POST capture, GET lookup,
+   GET the stored file's bytes. */
+function replicateCaptureApi(): Plugin {
+  return {
+    name: 'invoca-replicate-capture-api',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        const u = new URL(req.url || '', 'http://x')
+
+        if (req.method === 'POST' && u.pathname === '/api/replicate/capture') {
+          let raw = ''
+          for await (const chunk of req) raw += chunk
+          const { url: target } = JSON.parse(raw || '{}')
+          const send = (code: number, body: unknown) => {
+            res.statusCode = code
+            res.setHeader('Content-Type', 'application/json')
+            res.end(JSON.stringify(body))
+          }
+          const { assertPublicUrl } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/replicate.ts')).href)
+          let host: string
+          try { host = assertPublicUrl(target).hostname } catch (e: any) { return send(400, { ok: false, error: e?.message || 'That is not a usable URL.' }) }
+          const { getReplicaForDomain, saveReplica } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/replicaStore.ts')).href)
+          const existing = getReplicaForDomain(host)
+          if (existing) return send(200, { ok: true, slug: existing.slug, domain: existing.domain, sourceUrl: existing.sourceUrl, capturedAt: existing.capturedAt, label: existing.label, cached: true })
+          try {
+            const { captureReplica } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/replicaCapture.ts')).href)
+            const r = await captureReplica(target)
+            if (!r.ok) return send(400, { ok: false, error: r.reasons.join('; ') })
+            const slug = new URL(r.finalUrl).hostname.replace(/^www\./, '').split('.')[0].replace(/[^a-z0-9-]+/gi, '-').toLowerCase()
+            const domain = new URL(r.finalUrl).hostname.replace(/^www\./, '')
+            const rec = saveReplica({ slug, file: `${slug}.html`, domain, sourceUrl: r.finalUrl, capturedAt: new Date().toISOString().slice(0, 10), label: r.title.replace(/\s*[-|·].*$/, '').trim() || slug, fields: r.map }, r.html)
+            return send(200, { ok: true, slug: rec.slug, domain: rec.domain, sourceUrl: rec.sourceUrl, capturedAt: rec.capturedAt, label: rec.label, cached: false })
+          } catch (e: any) {
+            return send(400, { ok: false, error: e?.message || 'Could not replicate that page.' })
+          }
+        }
+
+        if (req.method === 'GET' && u.pathname === '/api/replicate/lookup') {
+          const url = u.searchParams.get('url') || ''
+          const slugQ = u.searchParams.get('slug') || ''
+          const send = (body: unknown) => { res.setHeader('Content-Type', 'application/json'); res.end(JSON.stringify(body)) }
+          const { replicaFor, replicaBySlug } = await import(pathToFileURL(path.resolve(process.cwd(), 'src/data/replicaPages.ts')).href)
+          const { getReplicaForDomain, getReplicaBySlug } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/replicaStore.ts')).href)
+          if (slugQ) {
+            const st = replicaBySlug(slugQ)
+            if (st) return send({ ok: true, source: 'static', file: st.file, sourceUrl: st.sourceUrl, capturedAt: st.capturedAt, label: st.label, fields: st.fields ?? null })
+            const dyn = getReplicaBySlug(slugQ)
+            if (dyn) return send({ ok: true, source: 'dynamic', file: dyn.file, sourceUrl: dyn.sourceUrl, capturedAt: dyn.capturedAt, label: dyn.label, fields: dyn.fields })
+            return send({ ok: false })
+          }
+          let host = ''
+          try { host = new URL(url).hostname } catch { return send({ ok: false }) }
+          const st = replicaFor(host)
+          if (st) return send({ ok: true, source: 'static', file: st.file, sourceUrl: st.sourceUrl, capturedAt: st.capturedAt, label: st.label, fields: st.fields ?? null })
+          const dyn = getReplicaForDomain(host)
+          if (dyn) return send({ ok: true, source: 'dynamic', file: dyn.file, sourceUrl: dyn.sourceUrl, capturedAt: dyn.capturedAt, label: dyn.label, fields: dyn.fields })
+          return send({ ok: false })
+        }
+
+        const m = u.pathname.match(/^\/api\/replicas\/dyn\/(.+)$/)
+        if (req.method === 'GET' && m) {
+          const { REPLICAS_DIR } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/replicaStore.ts')).href)
+          const file = path.basename(m[1])
+          const full = path.join(REPLICAS_DIR, file)
+          if (!full.startsWith(REPLICAS_DIR + path.sep) || !fs.existsSync(full)) { res.statusCode = 404; return res.end() }
+          res.setHeader('Content-Type', 'text/html; charset=utf-8')
+          res.setHeader('Cache-Control', 'no-store')
+          return fs.createReadStream(full).pipe(res)
+        }
+
+        next()
+      })
+    },
+  }
+}
+
+function replicateApi(): Plugin {
+  return {
+    name: 'invoca-replicate-api',
+    configureServer(server) {
+      server.middlewares.use('/api/replicate', async (req, res) => {
+        const u = new URL(req.url || '', 'http://x')
+        const target = u.searchParams.get('url') || ''
+        const probe = u.pathname.startsWith('/probe')
+        const mod = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/replicate.ts')).href)
+        try {
+          const r = await mod.fetchReplica(target)
+          if (probe) {
+            res.setHeader('Content-Type', 'application/json')
+            return res.end(JSON.stringify({ ok: true, finalUrl: r.finalUrl, title: r.title, forms: r.forms, formFields: r.formFields, bytes: r.bytes, ms: r.ms, via: r.via, fallbackReason: r.fallbackReason }))
+          }
+          res.setHeader('Content-Type', 'text/html; charset=utf-8')
+          res.setHeader('Cache-Control', 'no-store')
+          return res.end(r.html)
+        } catch (e: any) {
+          const msg = e?.message || 'Could not replicate that page.'
+          if (probe) {
+            res.statusCode = 400
+            res.setHeader('Content-Type', 'application/json')
+            return res.end(JSON.stringify({ ok: false, error: msg }))
+          }
+          res.statusCode = 400
+          res.setHeader('Content-Type', 'text/html; charset=utf-8')
+          return res.end(`<!doctype html><meta charset="utf-8"><body style="font:14px system-ui;padding:40px;color:#333">${msg}</body>`)
+        }
+      })
+    },
+  }
+}
+
 /* Dev-only endpoint: POST /api/chat { brain, messages, voice? } returns the
    agent's next reply (fast Haiku model). Powers the iPhone "Preview Agent" SMS
    chat and, with voice:true, the live Voice-agent phone call. */
@@ -208,6 +321,7 @@ function statusApi(): Plugin {
             googlePlacesKey: !!env.GOOGLE_PLACES_API_KEY,
             mapboxTokenInServerEnv: !!env.VITE_MAPBOX_TOKEN,
             emailConfigured: !!(env.SMTP_USER && env.SMTP_APP_PASSWORD),
+            renderConfigured: Boolean(env.BROWSERLESS_TOKEN || process.env.BROWSERLESS_TOKEN),
             authGate: authEnabled,
           })))
         } catch (e: any) {
@@ -533,6 +647,8 @@ export default defineConfig(({ mode }) => {
       react(),
       generateApi(apiKey),
       deleteProfileApi(),
+      replicateCaptureApi(),   // BEFORE replicateApi() — its /api/replicate prefix-match would otherwise swallow /api/replicate/capture and /lookup
+      replicateApi(),
       placeApi(),
       ogImageApi(),
       demoLibraryApi(),

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ProfileProvider } from "./data/ProfileContext";
 import { SmsCaptureProvider } from "./data/SmsCaptureContext";
 import { VoiceCaptureProvider } from "./data/VoiceCaptureContext";
+import { QuoteCaptureProvider } from "./data/QuoteCaptureContext";
 import { AiAssistantProvider } from "./data/AiAssistantContext";
 import { DemoLibraryProvider } from "./data/DemoLibraryContext";
 import { AppShell } from "./layout/AppShell";
@@ -51,6 +52,7 @@ import { SalesforceLeads } from "./screens/SalesforceLeads";
 import { SalesforceCallLog } from "./screens/SalesforceCallLog";
 import { SalesforceLeadDetail } from "./screens/SalesforceLeadDetail";
 import { SalesforceCallLogDetail } from "./screens/SalesforceCallLogDetail";
+import { ReplicaPageScreen } from "./screens/ReplicaPage";
 import { GoogleSearch } from "./screens/GoogleSearch";
 import { Placeholder } from "./screens/Placeholder";
 import { EnvBadge } from "./components/EnvBadge";
@@ -103,6 +105,7 @@ export default function App() {
       <DemoLibraryProvider>
       <SmsCaptureProvider>
       <VoiceCaptureProvider>
+      <QuoteCaptureProvider>
       <AiAssistantProvider>
       <BrowserRouter>
         {/* ⚠️⚠️ INSIDE THE ROUTER BUT OUTSIDE `<Routes>`, and NOT inside `LaunchCorner`.
@@ -156,6 +159,11 @@ export default function App() {
               sponsored slot, and the click carries the paid parameters into
               their site. Standalone, because it is not an Invoca screen. */}
           <Route path="/google-search" element={<GoogleSearch />} />
+          {/* The prospect's own booking page, replicated — opened by Replicate in the
+              Book online menu. Standalone like the search screen: it is somebody else's
+              site, so it must not render inside Invoca chrome. */}
+          <Route path="/replica" element={<ReplicaPageScreen />} />
+          <Route path="/replica/:slug" element={<ReplicaPageScreen />} />
 
           {/* Preview Agent (SMS) — opens in its own browser tab from Agent Workflow */}
           <Route path="/agent-studio/agent/preview" element={<SmsPreviewPage />} />
@@ -184,6 +192,9 @@ export default function App() {
             <Route path="/reports/conversation-intelligence/silver" element={<ConversationIntelligence tier="silver" />} />
             <Route path="/reports/conversation-intelligence/gold" element={<ConversationIntelligence tier="gold" />} />
             <Route path="/reports/sms-conversation-intelligence" element={<SmsConversationIntelligence />} />
+            {/* The quote-request threads, listed as "AI SMS Conversation Intelligence (LSA)".
+                Same component, opt-in filter — see its own header. */}
+            <Route path="/reports/sms-conversation-intelligence/lsa" element={<SmsConversationIntelligence only="lsa" />} />
             <Route path="/reports/voice-conversation-intelligence" element={<VoiceConversationIntelligence />} />
             <Route path="/reports/artifact/:id" element={<ArtifactView />} />
             {/* Dashboards nav → Manage list; individual dashboards open from there */}
@@ -230,6 +241,7 @@ export default function App() {
         <LaunchCorner />
       </BrowserRouter>
       </AiAssistantProvider>
+      </QuoteCaptureProvider>
       </VoiceCaptureProvider>
       </SmsCaptureProvider>
       </DemoLibraryProvider>

@@ -4,6 +4,7 @@ import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { AiAssistantDrawer } from "../components/AiAssistantDrawer";
 import { PhonePreview } from "./PhonePreview";
+import { useExtraWorkflows } from "../data/quoteWorkflow";
 
 /* Standalone browser-tab version of the "Preview Agent" SMS chat. The Agent
    Workflow's Preview Agent button opens this route in a new tab (window.open)
@@ -26,13 +27,16 @@ import { PhonePreview } from "./PhonePreview";
    would open nothing. */
 export function SmsPreviewPage() {
   const { profile, profileId } = useProfile();
+  /* Includes any workflow created by an LSA quote request submitted during this demo,
+     newest first — one definition, so a slug that lists here also resolves elsewhere. */
+  const extraWfs = useExtraWorkflows(profile);
   const { pathname } = useLocation();
   const { openDrawer, undo, canUndo, readOnly } = useAiAssistant();
   /* ?wf=<slug> selects an extra workflow's agent (e.g. Reyes Law's SMS nurture)
      so the tab previews THAT playbook rather than the default sales one. */
   const [params] = useSearchParams();
   const wf = params.get("wf");
-  const label = (profile.reports.extraWorkflows ?? []).find((w) => w.slug === wf)?.label;
+  const label = extraWfs.find((w) => w.slug === wf)?.label;
 
   /* The same key the rest of the app uses, so this page has its own edits and its
      own undo stack and can never touch another screen. */

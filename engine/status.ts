@@ -44,6 +44,9 @@ export interface StatusInput {
   mapboxTokenInServerEnv: boolean;
   authGate: boolean;
   emailConfigured: boolean;
+  /* Is Replicate rendering pages in a real browser, or serving the fast copy? A boolean, so
+     it stays safe on this PUBLIC endpoint — it names no token and no URL. */
+  renderConfigured: boolean;
 }
 
 export function deployStatus(input: StatusInput) {
@@ -87,6 +90,7 @@ export function deployStatus(input: StatusInput) {
          it actually measures rather than for what you wish it meant. */
       mapboxTokenInServerEnv: input.mapboxTokenInServerEnv,
       livekitConfigured: input.livekitConfigured,
+      renderConfigured: input.renderConfigured,
       authGate: input.authGate,
     },
   };

@@ -4,6 +4,7 @@ import { useVoiceCapture } from "../data/VoiceCaptureContext";
 import { SldsIcon } from "../components/SldsIcon";
 import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
 import { salesforceLeads } from "../data/salesforceLeads";
+import { useQuoteCaptures } from "../data/QuoteCaptureContext";
 
 /* =============================================================================
    Leads -> Lead Intelligence View — screen 3 of 4
@@ -75,7 +76,10 @@ export function SalesforceLeads() {
      ten it has always been. */
   const { capturedFor } = useVoiceCapture();
   const voiceCalls = capturedFor(profileId);
-  const view = salesforceLeads(profile, voiceCalls);
+  /* ⚠️ AND A QUOTE REQUEST SUBMITTED FROM THE GOOGLE LSA UNIT DOES THE SAME. Both live
+     sources are threaded in, or the list resolves without the row the SE just created. */
+  const quotes = useQuoteCaptures().capturedFor(profileId);
+  const view = salesforceLeads(profile, voiceCalls, quotes);
 
   return (
     <div className="sfh-root">

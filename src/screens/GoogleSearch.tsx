@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useLocationOverride } from "../data/locationOverride";
+import { useQuoteCaptures } from "../data/QuoteCaptureContext";
+import { bookingPath } from "../data/bookingPath";
+import { useBookingOverride, type BookingOverride } from "../data/bookingOverride";
 import {
   derive, trackedSiteUrl, tileXY, MAPBOX_TOKEN, Z, TS,
 } from "../data/prospectPlace";
@@ -65,6 +68,30 @@ const P: Record<string, string> = {
   minus: "M5 12h14",
 };
 
+/* =============================================================================
+   THE LSA UNIT'S ICONS — FILLED, and extracted VERBATIM from the capture
+   -----------------------------------------------------------------------------
+   ⚠️⚠️ **THESE ARE DELIBERATELY NOT THE THIN STROKE GLYPHS `P` HOLDS.** That set exists
+   because the app's own filled Material icons read too heavy for this page's CHROME (the
+   search pill, the tabs). The LSA unit is the opposite case: its icons ARE Google's filled
+   Material set, measured off the capture at `fill: rgb(168,199,250)` — so the real paths are
+   lifted whole, per the standing "USE THE REAL ICONS" rule, and rendered with `<Icon fill />`.
+   Re-drawing them as outlines would be approximating an icon we have verbatim.
+   ============================================================================= */
+const LSA_P: Record<string, string> = {
+  /* "Get quote" and the header's "Get competitive quotes" — the same 18px glyph in both. */
+  quote: "M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H4V4h16v12z M6 12h12v2H6zm0-3h12v2H6zm0-3h12v2H6z",
+  calendar: "M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z",
+  /* 20px in the capture where the other two are 18px, and left that way. */
+  phone: "M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z",
+  moreVert: "M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z",
+  expandMore: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z",
+  /* The quote dialog's own glyphs, from the same capture. */
+  arrowBack: "M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z",
+  people: "M15 8c0-1.42-.5-2.73-1.33-3.76.42-.14.86-.24 1.33-.24 2.21 0 4 1.79 4 4s-1.79 4-4 4c-.43 0-.84-.09-1.23-.21-.03-.01-.06-.02-.1-.03A5.98 5.98 0 0 0 15 8zm1.66 5.13C18.03 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.58-3.47-6.34-3.87zM9 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 9c-2.7 0-5.8 1.29-6 2.01V18h12v-1c-.2-.71-3.3-2-6-2M9 4c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4zm0 9c2.67 0 8 1.34 8 4v3H1v-3c0-2.66 5.33-4 8-4z",
+  check: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z",
+};
+
 function Icon({ d, size = 18, fill = false }: { d: string; size?: number; fill?: boolean }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true"
@@ -119,6 +146,57 @@ function paidClickUrl(domain: string, campaign: string, query: string, seed: str
   u.searchParams.set("utm_term", query);
   u.searchParams.set("utm_content", "text_ad_1");
   u.searchParams.set("gclid", gclid(seed));
+  return u.toString();
+}
+
+/* =============================================================================
+   "Book online" — a tracked handoff, and deliberately nothing more (9/12/2026)
+   -----------------------------------------------------------------------------
+   ⚠️⚠️ **MEASURED: GOOGLE DOES NOT HOST THIS FORM.** In the capture, "Book online" is an
+   `<a href>` to `google.com/localservices/booking?ebd=<base64>`, and that blob decodes to the
+   advertiser's OWN booking system plus a Reserve-with-Google token. Of the eight advertisers
+   in the capture: **six go to ServiceTitan** (`book.servicetitan.com/<tenant-id>`), Roto-Rooter
+   goes to its own `rotorooter.com/schedule-service/?zipCode=…`, and one goes to a third-party
+   form builder. Every destination carries `rwg_token=AE37R_…`.
+
+   ⚠️⚠️ **SO THERE IS NO BOOKING FORM TO REPLICATE, AND THAT IS WHY THIS BEAT ENDS AT THE
+   CLICK.** Two separate reasons, both measured:
+     1. Even among ServiceTitan advertisers the form is per-TENANT — services, fields and
+        branding are configured per business, so one replica matches none of them.
+     2. ServiceTitan is a HOME-SERVICES product, and only **2 of the 15 prospects** on disk are
+        home services. The other 13 are healthcare, hotels, auto, insurance, senior living,
+        retail and moving; Orlando Health does not book through ServiceTitan.
+   A generic booking page was designed and rejected for the same reason a generic one always is
+   here: it would be a form nobody's prospect actually uses, presented as theirs.
+
+   ⚠️ **AND NOTHING COMES BACK, WHICH IS HONEST RATHER THAN A GAP.** A real third-party form is
+   cross-origin, submitting it would create a real booking at a real business, and `rwg_token`
+   is Google's tag, not Invoca's. What makes a form submission reach Invoca in the real world is
+   **InvocaJS deployed on the advertiser's own booking page** — the hidden field it injects —
+   which is a property of that page, not of this click. So the click is tagged (`oppref`, the
+   same token every outbound link on this screen carries) and the story stops there.
+
+   ⚠️ The `rwg_token` is FABRICATED per prospect for exactly the reason `gclid` already is on
+   this screen: it is the parameter that marks a booking click as coming from the ad, so a demo
+   URL that omitted it would be missing the thing being demonstrated. Deterministic, so the URL
+   an SE opens twice is the same URL.
+   ============================================================================= */
+function bookingHandoffUrl(domain: string, campaign: string, seed: string): string {
+  const u = new URL(trackedSiteUrl(domain));      // carries oppref already
+  /* ⚠️⚠️ **THE BOOKING PAGE, NOT THE HOME PAGE — see `bookingPath`.** Reported directly:
+     *"the book online link is just taking them to their website, it needs to take them to the
+     actual page to what happens when they click book online, for example when you click on the
+     book online for Roto Rooter it takes them to URL: www.rotorooter.com/schedule-service/…
+     and not the home page."* Correct, and the decoded `ebd=` blobs say the same: the handoff
+     lands on the advertiser's own BOOKING page. Unknown prospect -> "/", which is the home
+     page and is never a 404. */
+  u.pathname = bookingPath(domain);
+  u.searchParams.set("utm_source", "google");
+  /* Local Services Ads are their own medium — not `cpc`, which the text ad already uses. */
+  u.searchParams.set("utm_medium", "lsa");
+  u.searchParams.set("utm_campaign", slugify(campaign));
+  u.searchParams.set("utm_content", "book_online");
+  u.searchParams.set("rwg_token", `AE37R_${gclid(`rwg:${seed}`).slice(8, 44)}`);
   return u.toString();
 }
 
@@ -395,6 +473,868 @@ function OrganicResult({ r }: { r: Organic }) {
   );
 }
 
+/* ---------------------------------------------------- Local Services Ads */
+
+/* =============================================================================
+   Local Services Ads — two rows before the first Sponsored Results block
+   -----------------------------------------------------------------------------
+   Asked for directly, from a screenshot of a real LSA unit ("Sponsored Plumbers
+   | Duluth"): Google's OTHER paid unit, shown above the text ads, for local
+   trade categories (Google Guarantee-style). The prospect leads it, the same
+   rule every other paid slot on this page follows; the second row is one of
+   the SAME invented rivals the local pack already builds (`rivals[0]`), so
+   this isn't a third set of invented business names.
+
+   ⚠️⚠️ **THE HEADER NOUN IS A TRADE-PROFESSIONAL PLURAL ("Plumbers",
+   "Electricians"), NOT `d.seg`.** `d.seg` is a product/category noun
+   ("Window Treatments", "Vision Care") built for ad copy elsewhere on this
+   page, and reads wrong as "Sponsored Window Treatmentss | Duluth" — wrong
+   word class AND wrong pluralisation. `providerNoun()` below is a keyword
+   table over `profile.industry`, the same shape as `vocabFor` in
+   insightsCatalog.ts, with a generic `${seg} Providers` fallback so a
+   vertical not in the table still reads as a real business category rather
+   than crashing or printing nothing.
+
+   ⚠️⚠️ **MEASURED OFF A REAL CAPTURE (9/12/2026), NOT THE SCREENSHOT.** A first pass
+   authored this from the screenshot alone and was wrong in six ways that a picture cannot
+   settle — every one of them is now a measured value, listed at the `.gs-lsa-*` rules in
+   standalone.css. The ones worth naming here because they are invisible in a screenshot:
+     • the heading is **20px Google Sans**, not the 16px the "Sponsored Results" heading uses,
+       and it carries **no underline** — the first version borrowed `.gs-spons-head` whole;
+     • the status line is **NOT all green**. Only the leading phrase ("Open 24 hours") is
+       `#6dd58c`; the ` · ` and the badge after it are `#bfbfbf` — the same split
+       `.gs-place-hours b` already does one section down, which the screenshot reads as a
+       single green line;
+     • the secondary text is **`#bfbfbf`**, which is neither `--gs-2` (#9e9e9e) nor
+       `--gs-mut`; the LSA unit simply uses its own grey;
+     • "Show more" is a **372x40 pill centred ON TOP of a full-width 1px rule**, not a
+       standalone pill — the rule runs the whole 652 and the pill covers its middle.
+
+   ⚠️ **THE PHOTOS ARE REAL TOO (9/12/2026).** The capture's rows carry 92x92
+   `object-fit: cover` photographs, and so do these — the prospect's own via Places, the
+   rival's from a curated per-vertical table. See `LSA_PHOTO` below for where each comes
+   from and why they are two different sources. This block previously argued for an
+   initial-letter tile instead; that is now only the last-resort fallback.
+   ============================================================================= */
+const PROVIDER_NOUN: [RegExp, string][] = [
+  [/plumb/i, "Plumbers"],
+  [/electric/i, "Electricians"],
+  [/hvac|heating|air condition/i, "HVAC Companies"],
+  [/roof/i, "Roofers"],
+  [/pest/i, "Pest Control Companies"],
+  [/mov(e|ing)/i, "Moving Companies"],
+  [/lock/i, "Locksmiths"],
+  [/garage door/i, "Garage Door Companies"],
+  [/tree/i, "Tree Services"],
+  [/window|blind|shutter|treatment/i, "Window Treatment Companies"],
+  [/security|alarm/i, "Security Companies"],
+  [/law|legal|attorney/i, "Lawyers"],
+  [/insur/i, "Insurance Agents"],
+  [/financ|advisor|wealth/i, "Financial Advisors"],
+  [/real estate|realt/i, "Real Estate Agents"],
+  [/auto|tire|car (dealer|repair)/i, "Auto Repair Shops"],
+  [/dental|dentist/i, "Dentists"],
+  [/health|medical|clinic|hospital|physician|doctor/i, "Doctors"],
+  [/senior|home care|caregiv/i, "Home Care Providers"],
+  [/pool/i, "Pool Services"],
+  [/paint/i, "Painters"],
+  [/landscap|lawn/i, "Landscapers"],
+  [/carpet|floor/i, "Flooring Companies"],
+  [/clean/i, "Cleaning Companies"],
+];
+
+function providerNoun(industry: string, seg: string): string {
+  for (const [re, noun] of PROVIDER_NOUN) if (re.test(industry)) return noun;
+  /* ⚠️ `${seg} Providers` ALONE PRINTED "Sponsored Hotels Providers | Santa Barbara" on
+     Marriott. `industrySeg` returns a category noun that is ALREADY PLURAL about half the
+     time ("Hotels", "Health Systems", "Care Services"), and the header wants a plural — so
+     an already-plural seg is the answer as it stands, and only a singular one ("Vision
+     Care") needs the suffix. `ss` is excluded so a word like "Fitness" is not read as plural. */
+  return /s$/i.test(seg) && !/ss$/i.test(seg) ? seg : `${seg} Providers`;
+}
+
+/* =============================================================================
+   THE ROW PHOTOS — real, and sourced differently for the two rows on purpose
+   -----------------------------------------------------------------------------
+   Asked for directly (9/12/2026), replacing the initial-letter tiles this shipped with:
+   "I want the thumbnail pictures to be real pictures, so ofcourse for the prospect it
+   should be a real pic, but for the made up ad in the 2nd row, you can choose whatever
+   relevant real pic."
+
+   ⚠️⚠️ **THE PROSPECT'S PHOTO IS THE PROSPECT'S OWN, VIA THE CHAIN ChatGptAd ALREADY
+   USES** — `/api/place` (a real Google Places listing photo of the actual business),
+   then `/api/og-image`, then the letter tile. Both endpoints already exist on BOTH
+   server twins and `engine/places.ts` already REJECTS a listing whose name does not
+   match the prospect, which is what stops this showing some other company's storefront.
+   Measured live: AutoNation, Orlando Health and Roto-Rooter all return a real photo.
+
+   ⚠️⚠️ **THE RIVAL'S IS A STOCK PHOTO, AND IT MUST NOT COME FROM PLACES.** Querying
+   Places for an INVENTED name ("Miami Automotive Retail") would either find nothing or,
+   worse, attach a real local business's photograph to a business this demo made up —
+   the misattribution `nameMatches` exists to prevent. So the second row draws from a
+   curated per-vertical table instead: nobody's specific storefront, just the trade.
+
+   ⚠️ **FREE-LICENCE UNSPLASH IDS ONLY.** Every id below was harvested from Unsplash's
+   own search and filtered to `images.unsplash.com/photo-…`; Unsplash+ results
+   (`plus.unsplash.com/premium_photo-…`) are deliberately excluded because that tier
+   carries a different licence. All 25 were verified to load at the exact 184x184 params
+   used here — a 404 would silently fall back to the letter tile and look like the
+   feature not working. */
+const LSA_PHOTO: Record<string, string> = {
+  "Plumbers": "1676210134188-4c05dd172f89",
+  "Electricians": "1682345262055-8f95f3c513ea",
+  "HVAC Companies": "1698479603408-1a66a6d9e80f",
+  "Roofers": "1635424824849-1b09bdcc55b1",
+  "Pest Control Companies": "1581578017093-cd30fce4eeb7",
+  "Moving Companies": "1730154838368-c37b1fdebcf6",
+  "Locksmiths": "1609770231080-e321deccc34c",
+  "Garage Door Companies": "1647843097965-3686dadb7b84",
+  "Tree Services": "1626828476637-5bd713ef9f22",
+  "Window Treatment Companies": "1609534117141-ff9f20450902",
+  "Security Companies": "1496368077930-c1e31b4e5b44",
+  "Lawyers": "1758518731462-d091b0b4ed0d",
+  "Insurance Agents": "1562564055-71e051d33c19",
+  "Financial Advisors": "1628348068343-c6a848d2b6dd",
+  "Real Estate Agents": "1770199105692-9e52ff137cad",
+  "Auto Repair Shops": "1615906655593-ad0386982a0f",
+  "Dentists": "1598256989800-fe5f95da9787",
+  "Doctors": "1612349317150-e413f6a5b16d",
+  "Home Care Providers": "1762955911431-4c44c7c3f408",
+  "Pool Services": "1558617320-e695f0d420de",
+  "Painters": "1717281234297-3def5ae3eee1",
+  "Landscapers": "1558904541-efa843a96f01",
+  "Flooring Companies": "1585128792020-803d29415281",
+  "Cleaning Companies": "1740657254989-42fe9c3b8cce",
+  /* Any vertical not in the table (`${seg} Providers`) gets a neutral open-for-business
+     storefront rather than a trade it does not practise. */
+  _default: "1575663620136-5ebbfcc2c597",
+  /* ⚠️ A SEPARATE GENERIC FOR THE PROSPECT'S FALLBACK, and it exists to stop a COLLISION:
+     with one generic, a prospect that has no real photo drew the same image as the rival
+     directly beneath it — two identical photos side by side, which is worse than the letter
+     tile it replaced. Service vans read as a local-services business without naming one. */
+  _prospect: "1587813369290-091c9d432daf",
+};
+
+const unsplash = (id: string) => `https://images.unsplash.com/photo-${id}?w=184&h=184&fit=crop&q=80`;
+
+/** The rival's photo for a vertical, at the tile's own 2x size. */
+function stockPhoto(noun: string): string {
+  return unsplash(LSA_PHOTO[noun] ?? LSA_PHOTO._default);
+}
+
+/** The stand-in when the prospect has no real photo — never the rival's image. */
+function prospectStockPhoto(): string {
+  return unsplash(LSA_PHOTO._prospect);
+}
+
+/* =============================================================================
+   ⚠️⚠️ A LOGO IS NOT A PHOTO, AND THE og:image FALLBACK IS FULL OF THEM
+   -----------------------------------------------------------------------------
+   Measured across the library, of the 8 prospects whose site returns an og:image at all:
+   Roto-Rooter's is its LOGO, Goosehead's a logo mark, National Van Lines' a logo, and
+   Continuing Life's a "Great Place To Work" AWARD BADGE. `og:image` is authored for a WIDE
+   link-preview card, so square-cropping one slices the wordmark in half — it reads as a
+   broken tile, not as a business.
+
+   ⚠️ **THIS IS NOT A HYPOTHETICAL PATH.** Places answering is what keeps those four off the
+   screen today, and a server with no Places key configured is a SUPPORTED state — in which
+   EVERY prospect falls through to og:image and four of eight show a cropped logo. So the
+   fallback is guarded: an og:image that names itself a logo/badge/icon is skipped in favour
+   of the vertical's stock photo, which always reads as a real trade photo.
+
+   ⚠️ **AND THE GUARD IS DELIBERATELY NOT A PRECEDENCE CHANGE.** Preferring og:image whenever
+   it does NOT look like a logo was tried on paper and rejected against the same measurement:
+   for all seven prospects carrying both sources the Places photo is the better 92x92, and the
+   two worst og images (Comfort Keepers' banner cropping to "…e Care …vates …man Spirit",
+   Aptive's to "ptive") have innocent filenames — `og-img.jpg` and `image.jpg` — that no
+   filename rule can catch. Places stays first. */
+const LOGOISH = /logo|wordmark|brandmark|badge|favicon|sprite|seal|award|certified|gptw|great[-_]?place/i;
+
+function looksLikeLogo(url: string): boolean {
+  try { return LOGOISH.test(new URL(url).pathname); } catch { return LOGOISH.test(url); }
+}
+
+/* "6800" -> "6.8K", "4000" -> "4K", "845" -> "845" — the capture's own shape. */
+function formatReviewCount(n: number): string {
+  if (n < 1000) return String(n);
+  const k = n / 1000;
+  return `${Number.isInteger(k) ? k.toFixed(0) : k.toFixed(1)}K`;
+}
+
+/* Both halves of the green status line are real, generic Google Guarantee-style
+   verification badges — never a specific real accreditation body (the capture's
+   own "BBB A+ rated" / "Bryant factory authorized" name real, specific programs,
+   which would be inventing a credential for a fictional business). */
+const LSA_STATUS: [string, string][] = [
+  ["Open now", "Licensed & insured"],
+  ["Open 24 hours", "Background checked"],
+  ["Open now", "Locally owned & operated"],
+  ["Open 24 hours", "Same-day service available"],
+];
+
+interface LsaProvider { name: string; rating: string; prospect: boolean }
+
+/**
+ * @param noun          the vertical, which picks the rival's stock photo
+ * @param prospectPhoto the prospect's OWN photo once /api/place (or og:image) answers;
+ *                      undefined until then, and the tile falls back rather than flashing
+ */
+function lsaRow(pv: LsaProvider, noun: string, prospectPhoto?: string) {
+  const seed = pv.name;
+  const reviews = 400 + (hash(`${seed}::lsa-reviews`) % 8800);
+  const years = 5 + (hash(`${seed}::lsa-years`) % 38);
+  const [openPhrase, badge] = LSA_STATUS[hash(`${seed}::lsa-status`) % LSA_STATUS.length];
+  const hue = hash(`${seed}::lsa-hue`) % 360;
+  return {
+    ...pv, reviews: formatReviewCount(reviews), years, openPhrase, badge,
+    /* The quote dialog's "Contacted by N people in the last week". The capture reads a
+       round 100; hashed here so two businesses do not claim the same number. */
+    contacted: 20 + (hash(`${seed}::lsa-contacted`) % 180),
+    /* ⚠️ THE PROSPECT'S OWN PHOTO ALWAYS WINS; the vertical's stock photo is only the
+       stand-in when there is no real one. Measured across the library: 12 of 15 prospects
+       resolve a genuine Places photo, and the 3 that do not are Shady Blinds, Surfside
+       Healthcare and Marriott — two of which are FICTIONAL businesses, i.e. exactly the
+       "made up" case a stock photo was authorised for, and the third names reservation
+       centres rather than a hotel (which is why it falls back on location too). A generic
+       trade photo claims nothing about them; a letter tile beside a photograph just looks
+       unfinished. */
+    photo: pv.prospect ? (prospectPhoto ?? prospectStockPhoto()) : stockPhoto(noun),
+    thumbBg: `hsl(${hue}, 32%, 24%)`,
+  };
+}
+
+/**
+ * The 92x92 photo tile.
+ *
+ * ⚠️ THE LETTER TILE IS NOW ONLY A FALLBACK, not the design: it renders when there is no
+ * photo to show (no Places key configured, a prospect Places cannot match, or an image that
+ * fails to load). A broken-image glyph in a demo is worse than a deliberate-looking tile.
+ */
+function LsaThumb({ src, name, bg }: { src?: string; name: string; bg: string }) {
+  const [failed, setFailed] = useState(false);
+  if (!src || failed) {
+    return (
+      <span className="gs-lsa-thumb gs-lsa-thumb-alt" style={{ background: bg }} aria-hidden="true">
+        {name[0]}
+      </span>
+    );
+  }
+  return (
+    <span className="gs-lsa-thumb">
+      <img src={src} alt="" loading="lazy" onError={() => setFailed(true)} />
+    </span>
+  );
+}
+
+/* One action: the measured 44px circle over a centred 14/18 label.
+   ⚠️ INTERACTIVE ONLY WHEN IT REALLY GOES SOMEWHERE — "Get quote" opens the dialog and
+   "Book online" is a tracked handoff to the advertiser's own booking page. "Get phone number"
+   has no captured destination and stays an inert span, the same rule the inert place actions
+   on this page already follow: a control that looks clickable and does nothing is worse than
+   one that plainly does not.
+   ⚠️ AND ONLY ON THE PROSPECT'S ROW. The rival is an invented business with an invented
+   domain, so linking its booking button would open a 404 — the same reason its ad headline is
+   inert while the prospect's is a real link. */
+function LsaAct({ d, size, label, onClick, href, onContextMenu, title }: {
+  d: string; size: number; label: string; onClick?: () => void; href?: string;
+  /* ⚠️ BOTH OPT-IN AND DEFAULTED ABSENT, so every other action renders exactly as before —
+     only the prospect's "Book online" passes them. See `BookingLinkMenu`. */
+  onContextMenu?: (e: React.MouseEvent) => void; title?: string;
+}) {
+  const inner = (
+    <>
+      <span className="gs-lsa-act-ic"><Icon d={d} size={size} fill /></span>
+      <span className="gs-lsa-act-label">{label}</span>
+    </>
+  );
+  if (href) {
+    return (
+      <a className="gs-lsa-act gs-lsa-act-on" href={href} target="_blank" rel="noopener noreferrer"
+        onContextMenu={onContextMenu} title={title}>
+        {inner}
+      </a>
+    );
+  }
+  return onClick
+    ? <button className="gs-lsa-act gs-lsa-act-on" onClick={onClick}>{inner}</button>
+    : <span className="gs-lsa-act">{inner}</span>;
+}
+
+function LsaRow({ row, noun, city, onQuote, bookHref, onBookMenu }: {
+  row: ReturnType<typeof lsaRow>; noun: string; city: string; onQuote?: () => void;
+  /* The advertiser's own booking page, tracked — see bookingHandoffUrl. */
+  bookHref?: string;
+  /* Right-click on the prospect's "Book online" — see BookingLinkMenu. */
+  onBookMenu?: (e: React.MouseEvent) => void;
+}) {
+  /* ⚠️ THE ACTION SET VARIES PER ADVERTISER IN THE CAPTURE — its first row carries two
+     buttons and its second three, which is what gives the unit its real texture. The
+     prospect gets the full set (Get quote is the one this demo is about); the rival gets
+     the two-button version, so the pair reproduces that shape rather than two identical rows. */
+  return (
+    <div className="gs-lsa-row">
+      <LsaThumb src={row.photo} name={row.name} bg={row.thumbBg} />
+      <div className="gs-lsa-main">
+        <span className="gs-lsa-name">{row.name}</span>
+        {/* ⚠️ The rating, the count and the category are ONE line, all #bfbfbf; only the
+            stars carry colour. `--fill` drives the partial star, the way the real
+            gradient bar does — see the .gs-lsa-stars rule. */}
+        <span className="gs-lsa-line">
+          {row.rating}
+          <span className="gs-lsa-stars" aria-hidden="true"
+            style={{ "--fill": `${(parseFloat(row.rating) / 5) * 100}%` } as React.CSSProperties}>
+            ★★★★★
+          </span>
+          ({row.reviews}) <span className="gs-lsa-sep">·</span> {noun}
+        </span>
+        <span className="gs-lsa-line">
+          {row.years}+ years in business <span className="gs-lsa-sep">·</span> Serves {city}
+        </span>
+        {/* Leading phrase green, the rest grey — measured, not the all-green the
+            screenshot reads as. */}
+        <span className="gs-lsa-line">
+          <b>{row.openPhrase}</b> <span className="gs-lsa-sep">·</span> {row.badge}
+        </span>
+      </div>
+      <div className="gs-lsa-acts">
+        {row.prospect && <LsaAct d={LSA_P.quote} size={18} label="Get quote" onClick={onQuote} />}
+        <LsaAct d={LSA_P.calendar} size={18} label="Book online"
+          href={row.prospect ? bookHref : undefined}
+          onContextMenu={row.prospect ? onBookMenu : undefined}
+          /* ⚠️ THE ONLY THING ADVERTISING THE RIGHT-CLICK, and it is a native tooltip so the
+             page at rest is still byte-for-byte the capture. Precedent on this very screen:
+             "Use precise location" carries one for the same reason. */
+          title={row.prospect ? "Right-click to change where this link goes" : undefined} />
+        <LsaAct d={LSA_P.phone} size={20} label="Get phone number" />
+      </div>
+    </div>
+  );
+}
+
+/* =============================================================================
+   "Get quote" — the Send request dialog (9/12/2026)
+   -----------------------------------------------------------------------------
+   Asked for directly: "Build what happens when someone clicks the 'Get Quote' button."
+
+   MEASURED off a second SingleFile capture taken with the dialog OPEN
+   (`reference/google-search/lsa-quote-v1.html`), the same method the unit itself used.
+
+   ⚠️⚠️ **THE DIALOG'S CONTENT IS INSIDE AN IFRAME, AND ITS SANDBOX OMITS
+   `allow-same-origin`** — so `contentDocument` is null and nothing in it can be measured
+   from the parent. SingleFile stores the frame in a **`srcdoc` attribute** (1,002,710
+   chars here), so the way in is to EXTRACT that to its own file and serve it, exactly as
+   CLAUDE.md already records for the ThoughtSpot frame. Stripping the sandbox to get in is
+   both the wrong instinct and blocked. ⚠️ And measure the frame at **700x748**, the size
+   the iframe actually gets in the parent — its layout is responsive, so measuring it at
+   the browser's own width would have recorded a column width the dialog never renders.
+
+   Measured values, all of them:
+     scrim      rgba(0,0,0,.6), fixed, z 9997
+     dialog     700 wide x 752, CENTRED both axes, radius 8, overflow hidden,
+                shadow `0 5px 26px rgba(0,0,0,.5), 0 20px 28px rgba(0,0,0,.5)`
+     surface    #1f1f1f — the FRAME's own body colour, NOT the page's #22242a
+     header     64 tall; back button 48x48 at x=20,y=8 (icon 24); title x=88,
+                400 18/24 Google Sans #dadce0
+     body       content inset 24 each side (652 wide), first block 8px under the header
+     business   photo 52x65 radius 8 overflow hidden, 12px gap, text column at x=88;
+                name 400 18/24 Google Sans #e8e8e8; rating/meta 400 14/18 Roboto #e8e8e8;
+                the two meta icons 16px #8ab4f8
+     labels     400 16px Roboto #e8e8e8
+     field      MDC notched outline: 1px #bdc1c6, radius 4; text 400 16/24 Roboto #e8eaed
+     message    outlined box 636x128, textarea padded 0 16
+     helper     400 12/14 Roboto #9aa0a6, with the counter right-aligned
+     name/phone 313 wide (half column), 56 tall
+     radio      40x40 target, 20x20 ring 2px #8ab4f8, 10x10 dot; label 400 14/20 #bfbfbf
+     legal      400 12/16 Roboto #bfbfbf, links #99c3ff
+     footer     52 tall; two buttons 321x36, 10px apart, spanning the 652
+     No thanks  bg #1f1f1f, 1px #3c4043, radius 36, pad 0 23, 14/18 Google Sans #8ab4f8
+     Send       bg #8ab4f8, no border, radius 36, pad 0 24, 14/18 Google Sans #1f1f1f
+
+   ⚠️ **THE CAPTURE'S SELECT IS IN ITS FOCUSED STATE** (blue floating label, blue outline)
+   because it had focus when the page was saved. A freshly opened dialog has nothing
+   focused, so the resting grey is what is built here and the blue is the `:focus` rule.
+
+   ⚠️ **WHAT HAPPENS AFTER "Send" IS NOT IN THE CAPTURE**, so the confirmation is AUTHORED,
+   not measured — and it is deliberately built from the dialog's own already-measured parts
+   (same header, same business block, same button) rather than inventing new Google chrome.
+   Capture the real one and this should be replaced.
+   ============================================================================= */
+
+interface QuoteTarget {
+  name: string; rating: string; reviews: string; photo?: string; thumbBg: string;
+  /** "Contacted by N people in the last week" — hashed per business, like every other figure here. */
+  contacted: number;
+}
+
+function QuoteDialog({ target, services, onClose, onSend }: {
+  target: QuoteTarget; services: string[]; onClose: () => void;
+  onSend: (q: { name: string; message: string; service: string; how: "sms" | "email"; contact: string }) => void;
+}) {
+  const [message, setMessage] = useState("");
+  const [service, setService] = useState("");
+  const [name, setName] = useState("");
+  const [how, setHow] = useState<"sms" | "email">("sms");
+  const [contact, setContact] = useState("");
+  const [sent, setSent] = useState(false);
+  const firstRef = useRef<HTMLTextAreaElement | null>(null);
+
+  /* Escape closes, and the message field takes focus on open — it is the one field the
+     dialog exists to collect, and the Send button is disabled until it has content. */
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", onKey);
+    const t = setTimeout(() => firstRef.current?.focus(), 60);
+    return () => { window.removeEventListener("keydown", onKey); clearTimeout(t); };
+  }, [onClose]);
+
+  /* Measured: Send is the filled button and the form is not submittable empty. The real
+     dialog shows "Type a message to continue" as the message field's helper, which is the
+     same rule stated in words. */
+  const canSend = message.trim().length > 0 && name.trim().length > 0 && contact.trim().length > 0;
+
+  const biz = (
+    <div className="gs-q-biz">
+      <span className="gs-q-thumb" style={{ background: target.thumbBg }}>
+        {target.photo
+          ? <img src={target.photo} alt="" />
+          : <span className="gs-q-thumb-alt">{target.name[0]}</span>}
+      </span>
+      <div className="gs-q-biz-main">
+        <div className="gs-q-biz-name">{target.name}</div>
+        <div className="gs-q-biz-row">
+          {target.rating}
+          <span className="gs-lsa-stars" aria-hidden="true"
+            style={{ "--fill": `${(parseFloat(target.rating) / 5) * 100}%` } as React.CSSProperties}>
+            ★★★★★
+          </span>
+          ({target.reviews})
+        </div>
+        <div className="gs-q-biz-row gs-q-biz-meta">
+          <Icon d={LSA_P.quote} size={16} fill />Typically replies in a few min
+        </div>
+        <div className="gs-q-biz-row gs-q-biz-meta">
+          <Icon d={LSA_P.people} size={16} fill />Contacted by {target.contacted} people in the last week
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="gs-q-scrim" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+      <div className="gs-q" role="dialog" aria-modal="true"
+        aria-label={`Send request to ${target.name}`}>
+        <div className="gs-q-head">
+          <button className="gs-q-back" onClick={onClose} aria-label="Back">
+            <Icon d={LSA_P.arrowBack} size={24} fill />
+          </button>
+          <h2 className="gs-q-title">
+            {sent ? "Request sent" : `Send request to ${target.name}`}
+          </h2>
+        </div>
+
+        {sent ? (
+          /* ⚠️ AUTHORED, NOT MEASURED — see the note above. Built from the dialog's own
+             parts so it cannot drift from the form it replaces. */
+          <>
+            <div className="gs-q-body">
+              {biz}
+              <div className="gs-q-sent">
+                <span className="gs-q-sent-ic"><Icon d={LSA_P.check} size={24} fill /></span>
+                <p className="gs-q-sent-h">Your request was sent</p>
+                <p className="gs-q-sent-p">
+                  {target.name} typically replies in a few minutes. You will hear back
+                  {how === "sms" ? " by text or phone call" : " by email"} at {contact}.
+                </p>
+              </div>
+            </div>
+            <div className="gs-q-foot">
+              <button className="gs-q-btn gs-q-btn-fill gs-q-btn-wide" onClick={onClose}>Done</button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="gs-q-body">
+              {biz}
+
+              <div className="gs-q-sec">
+                <div className="gs-q-label">Your message</div>
+                <div className="gs-q-field gs-q-field-area">
+                  <textarea ref={firstRef} maxLength={600} value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Give details like what you need done and how soon you need it" />
+                </div>
+                <div className="gs-q-help">
+                  <span>{message.trim() ? " " : "Type a message to continue"}</span>
+                  <span>{message.length}/600</span>
+                </div>
+              </div>
+
+              <div className="gs-q-sec">
+                <div className="gs-q-label">Service (optional)</div>
+                <div className="gs-q-field gs-q-select">
+                  <select value={service} onChange={(e) => setService(e.target.value)}
+                    aria-label="Choose the service you need">
+                    <option value="">Choose the service you need</option>
+                    {services.map((s) => <option key={s} value={s}>{s}</option>)}
+                  </select>
+                  <span className="gs-q-chev"><Icon d={LSA_P.expandMore} size={24} fill /></span>
+                </div>
+              </div>
+
+              <div className="gs-q-sec">
+                <div className="gs-q-label">Name</div>
+                <div className="gs-q-field gs-q-half">
+                  <input maxLength={50} value={name} placeholder="Name"
+                    onChange={(e) => setName(e.target.value)} />
+                </div>
+                <div className="gs-q-help gs-q-half">
+                  <span>{name.trim() ? " " : "Enter your name"}</span>
+                  <span>{name.length}/50</span>
+                </div>
+              </div>
+
+              <div className="gs-q-sec">
+                <div className="gs-q-label">How would you like to hear back?</div>
+                {([["sms", "SMS or phone call"], ["email", "Email"]] as const).map(([v, label]) => (
+                  <label className="gs-q-radio" key={v}>
+                    <input type="radio" name="gs-q-how" checked={how === v}
+                      onChange={() => { setHow(v); setContact(""); }} />
+                    <span className="gs-q-radio-ring" aria-hidden="true" />
+                    {label}
+                  </label>
+                ))}
+                <div className="gs-q-field gs-q-half">
+                  <input value={contact} onChange={(e) => setContact(e.target.value)}
+                    placeholder={how === "sms" ? "Phone Number" : "Email"}
+                    inputMode={how === "sms" ? "tel" : "email"} />
+                </div>
+                <div className="gs-q-help gs-q-half">
+                  <span>{contact.trim() ? " "
+                    : how === "sms" ? "Enter a valid phone number" : "Enter a valid email"}</span>
+                </div>
+              </div>
+
+              {/* Verbatim from the capture — it is Google's own disclosure, not copy we write. */}
+              <p className="gs-q-legal">
+                Google will pass the information you’ve submitted, including contact information
+                provided above to the business you have selected, subject to Google’s{" "}
+                <a>privacy policy</a> and <a>data use terms</a>. You’ll receive recurring messages.
+                Text STOP to cancel. Message &amp; data rates may apply. This site is protected by
+                reCAPTCHA and the Google <a>Privacy Policy</a> and <a>Terms of Service</a> apply.
+              </p>
+            </div>
+
+            <div className="gs-q-foot">
+              <button className="gs-q-btn" onClick={onClose}>No thanks</button>
+              <button className="gs-q-btn gs-q-btn-fill" disabled={!canSend}
+                onClick={() => {
+                  /* ⚠️ RECORDED BEFORE THE CONFIRMATION IS SHOWN. The two things this creates
+                     — a Salesforce lead and an SMS workflow — are what the beat is for, and
+                     the SE often closes this tab the moment they read "Request sent". */
+                  onSend({ name: name.trim(), message: message.trim(), service, how, contact: contact.trim() });
+                  setSent(true);
+                }}>Send</button>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/** The whole unit: header, the rows, and the "Show more" pill over its rule. */
+/* =============================================================================
+   Right-click "Book online" -> point it anywhere (9/12/2026)
+   -----------------------------------------------------------------------------
+   Asked for directly: *"when i right click on the book online it gives the user the option to
+   enter the URL where they want the button to take them to when its click, so there will def
+   be a default place it goes, but the user can also change it."*
+
+   ⚠️⚠️ **A RIGHT-CLICK IS THE WHOLE REASON THIS CAN EXIST ON A REPLICA SCREEN.** Every pixel
+   here is measured against a capture of the real Google unit, and this file's own rule is that
+   an affordance of OURS must not change what a prospect sees. At rest this adds nothing — no
+   control, no marker, not even when an override is in force — so the unit still diffs clean
+   against the capture. Same argument as the hover-revealed Ask AI sparkle in the top bar.
+
+   ⚠️ **THE INPUT OPENS PRE-FILLED WITH WHERE THE BUTTON GOES RIGHT NOW**, so the common edit
+   (take the default and change one path segment) is a tweak rather than a retype, and the SE
+   can always read the current destination even when they came only to check it.
+
+   ⚠️ **THE DEFAULT IS SHOWN UNDERNEATH WHENEVER AN OVERRIDE IS IN FORCE.** Nothing else on
+   screen says the link has been re-pointed, so this line and the Reset beside it are the only
+   way back — hiding what was replaced is what would make the override a trap a week later.
+   ============================================================================= */
+function BookingLinkMenu({ at, current, fallback, onSet, onClear, onClose }: {
+  at: { x: number; y: number };
+  current: string;
+  /** The tracked default, shown only when the SE has replaced it. */
+  fallback: string | null;
+  onSet: (raw: string) => string | null;
+  onClear: () => void;
+  onClose: () => void;
+}) {
+  const [value, setValue] = useState(current);
+  const [err, setErr] = useState("");
+  /* Replicate ENDS here now: it saves the link and reports "Complete" rather than
+     navigating, so the panel needs a third state beside idle and fetching. */
+  const [done, setDone] = useState(false);
+  /* Replicate does the whole capture HERE, so the wait happens where the SE just clicked and
+     the page is on disk by the time anyone opens it. It used to navigate to the replica at the
+     end; now it saves the link instead (see the success branch below), so this panel is the
+     only place the progress is ever reported. */
+  const [fetching, setFetching] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
+  const panelRef = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  /* ⚠️ SELECT ALL, THEN SCROLL BACK TO THE START — and the scroll has to be set explicitly.
+     A plain `.select()` leaves the caret at the END and the field follows it, so a tracked
+     default (which is mostly query string) opened showing `…&rwg_token=AE37R_…` with the
+     domain — the one part the SE is looking for — out of view. Selecting BACKWARD is the
+     documented way to put the focus at 0, and measured here it is not enough on its own:
+     direction came back "backward" with `scrollLeft` still at 16. So the assignment is what
+     actually does the work; the direction is kept because it is the honest intent. */
+  useEffect(() => {
+    const el = inputRef.current;
+    if (!el) return;
+    el.focus();
+    el.setSelectionRange(0, el.value.length, "backward");
+    el.scrollLeft = 0;
+  }, []);
+
+  /* ⚠️ POINTERDOWN IN THE CAPTURE PHASE. On bubble, the next right-click on the same button
+     closes the panel here and the button's own handler immediately reopens it, so it can never
+     be dismissed by the control that opened it — the identical trap already recorded for the
+     Signal sidebar flyout and the Create-Workflow combobox. */
+  useEffect(() => {
+    const away = (e: PointerEvent) => {
+      if (!panelRef.current?.contains(e.target as Node)) onClose();
+    };
+    document.addEventListener("pointerdown", away, true);
+    return () => document.removeEventListener("pointerdown", away, true);
+  }, [onClose]);
+
+  const replicate = async () => {
+    const target = value.trim();
+    if (!target || fetching) return;
+    setErr("");
+    setDone(false);
+    setFetching(true);
+    const t0 = Date.now();
+    /* ⚠️ A LIVE COUNTER, NOT A SPINNER. A capture already on disk answers in well under a
+       second; a fresh one is a real browser loading the page and downloading its assets, which
+       is 30-90 seconds. A static spinner leaves the SE unable to tell "working" from "hung". */
+    const tick = setInterval(() => setElapsed(Date.now() - t0), 50);
+    try {
+      /* ⚠️⚠️ **ONE CALL DOES BOTH JOBS.** The server checks its persistent store first — if
+         this domain was captured before (even in a previous session, even after a restart) it
+         answers immediately; only a domain nobody has captured triggers an actual browser load.
+         That single round trip is the whole feature: no separate "is this cached" check on our
+         side to keep in sync with the server's. */
+      const r = await fetch("/api/replicate/capture", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: target }),
+      });
+      const j = await r.json().catch(() => ({}));
+      clearInterval(tick);
+      setFetching(false);
+      /* ⚠️ A FAILURE STAYS HERE rather than navigating to a broken page. The SE can fix the URL
+         in the box they are already looking at. */
+      if (!j?.ok) { setErr(j?.error || "Could not replicate that page."); return; }
+      /* ⚠️⚠️ **IT SAVES THE LINK INSTEAD OF NAVIGATING — asked for directly:** "once its
+         done, just show complete, but dont go to it, auto save the page, so when the user
+         click book online it goes to the replicated page." Opening the replica here threw the
+         SE off the search screen they were demoing from, and left them to come back and set
+         the link by hand; the capture is on disk either way, so the useful end of the action
+         is the DESTINATION being set, not a page they have already decided to show later.
+         ⚠️ **THROUGH `onSet`, NOT A SECOND WRITER.** It is the same store the typed URL uses,
+         so this inherits the validation, the per-prospect key, the persistence and the Reset
+         that puts the tracked default back — and the "Default: …" line appears underneath the
+         moment it lands, which is what tells the SE the link was actually re-pointed. */
+      const replica = `/replica?url=${encodeURIComponent(target)}`;
+      const msg = onSet(replica);
+      if (msg) { setErr(msg); return; }
+      /* ⚠⚠ **THE BOX HAS TO BECOME THE REPLICA TOO, AND LEAVING IT ALONE WAS A REAL BUG.**
+         Reported as "it still takes me to the real website": the SE replicated, the link WAS
+         re-pointed — and then clicked **Save**, which stores whatever is in the input, i.e. the
+         original site URL, silently clobbering the replica that had just landed. That click is
+         the natural next move now that the panel STAYS OPEN instead of navigating away, so the
+         old flow never exposed it. It also broke this panel's own rule that the field shows
+         where the button goes RIGHT NOW. With the box holding the replica, Save re-saves the
+         same thing, reopening shows it, and there is no way to overwrite it by accident.
+         ⚠ `setValue` fires no `onChange`, so the Complete state deliberately survives this —
+         only a human editing the field clears it. */
+      setValue(replica);
+      setDone(true);
+    } catch {
+      clearInterval(tick);
+      setFetching(false);
+      setErr("Could not reach that page.");
+    }
+  };
+
+  const save = () => {
+    const msg = onSet(value);
+    if (msg) { setErr(msg); return; }
+    onClose();
+  };
+
+  /* Clamped so a right-click near the right or bottom edge does not open a panel half
+     off-screen. Fixed positioning, anchored to the cursor, like any context menu. */
+  const W = 380;
+  const left = Math.min(at.x, Math.max(8, window.innerWidth - W - 8));
+  const top = Math.min(at.y, Math.max(8, window.innerHeight - 168));
+
+  /* ⚠️⚠️ **A COMPLETION PERCENTAGE, ESTIMATED THE SAME WAY THE LAUNCH SCREEN'S BUILD BAR
+     ALREADY IS — asked for directly, in place of the raw elapsed-seconds counter.** There is
+     no byte count to measure a real percentage against (a capture is "the browser is somewhere
+     in a 7-90 second render", not a download with a Content-Length), so a real percentage
+     would have to be invented regardless of the label. `Launch.tsx` solved exactly this for
+     generation progress: ease toward a ceiling asymptotically so the bar always creeps forward
+     and never looks frozen, and never claim 100 before the real response arrives. Same
+     `1 - e^(-t/ramp)` curve, capped at 99 while still fetching. `RAMP_MS` is tuned to this
+     feature's own measured range rather than copied — a cached hit answers in well under a
+     second (the bar barely moves before the panel closes), a fresh render is 7-90s, so 25s
+     gets the bar into the 80s by the time a slow capture is still only half done, instead of
+     pinning near 0 for the whole wait or maxing out long before it finishes. */
+  const RAMP_MS = 25_000;
+  const pct = fetching ? Math.min(99, Math.round((1 - Math.exp(-elapsed / RAMP_MS)) * 100)) : 0;
+
+  return (
+    <div ref={panelRef} className="gs-lnk" style={{ left, top, width: W }}
+      role="dialog" aria-label="Book online link">
+      <div className="gs-lnk-title">Book online opens</div>
+      <input
+        ref={inputRef}
+        className="gs-lnk-input"
+        value={value}
+        spellCheck={false}
+        aria-label="Destination URL"
+        placeholder="https://example.com/book"
+        onChange={(e) => { setValue(e.target.value); setErr(""); setDone(false); }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") save();
+          if (e.key === "Escape") onClose();
+        }}
+      />
+      {/* ⚠️ SHOWN, NOT SWALLOWED — a rejected URL has to say which rule it broke, or the Save
+          that appears to do nothing reads as the feature being broken. */}
+      {err && <div className="gs-lnk-err">{err}</div>}
+      {fallback && !err && (
+        <div className="gs-lnk-note">Default: <span>{fallback}</span></div>
+      )}
+      {/* ⚠️⚠️ **ITS OWN ROW, FULL WIDTH — NOT SQUEEZED INTO THE BUTTON ROW.** It used to sit
+          beside Replicate inside `.gs-lnk-acts`, and the panel is 380px wide: Replicate
+          ("Replicating…") plus a 96px bar plus its label plus Cancel plus Save added up to
+          more than the 356px of padded content, with no wrap set — so the row simply ran past
+          the panel's own rounded border. Reported directly: "the replicate button goes outside
+          the box." Giving the bar a full-width row of its own, above the buttons, means the
+          button row's width never depends on whether a fetch is in flight. */}
+      {/* ⚠️ **THE BAR FINISHES AT 100 RATHER THAN DISAPPEARING.** A progress bar that vanishes
+          at the end is indistinguishable from one that was cancelled, and this flow no longer
+          navigates away to prove it worked — so the same row stays put, fills, and says so. */}
+      {(fetching || done) && (
+        <div className="gs-lnk-prog" aria-live="polite">
+          <span className="gs-lnk-prog-bar">
+            <span className="gs-lnk-prog-fill" style={{ width: done ? "100%" : `${pct}%` }} />
+          </span>
+          {done
+            ? <span className="gs-lnk-prog-pct gs-lnk-prog-done">Complete</span>
+            : <span className="gs-lnk-prog-pct">{pct}%</span>}
+        </div>
+      )}
+      <div className="gs-lnk-acts">
+        {/* ⚠️ OFFERED ONLY WHEN A CAPTURE EXISTS FOR THIS PROSPECT. A Replicate button that
+            opened a "nobody has captured this yet" page would be a dead control, which this
+            repo forbids — the route still fails closed if somebody types the URL. */}
+        {/* ⚠️ REPLICATE USES THE URL IN THE BOX, not a pre-registered page. That was asked for
+            directly — "i paste a URL and when user clicks Replicate, it should replicate the
+            page" — and the earlier version silently opened a capture regardless of what was
+            typed, which is the worst kind of wrong: it looks like it worked. `/replica` decides
+            whether to serve a browser-made capture (better, where we have one for that host) or
+            to fetch the page live, and says which on screen. */}
+        <button className={"gs-lnk-btn gs-lnk-rep" + (done ? " gs-lnk-done" : "")}
+          title={done
+            ? "Book online now opens this replica"
+            : "Build a working copy of this page, with its form wired into the demo"}
+          disabled={!value.trim() || fetching || done}
+          onClick={() => void replicate()}>
+          {fetching ? "Replicating…" : done ? "Complete" : "Replicate"}
+        </button>
+        {/* Only offered once there is something to undo, so an untouched menu is two buttons. */}
+        {fallback && (
+          <button className="gs-lnk-btn" onClick={() => { onClear(); onClose(); }}>Reset</button>
+        )}
+        <button className="gs-lnk-btn" onClick={onClose}>Cancel</button>
+        <button className="gs-lnk-btn gs-lnk-save" onClick={save} disabled={!value.trim()}>Save</button>
+      </div>
+    </div>
+  );
+}
+
+function LsaUnit({ rows, noun, city, services, onSend, bookHref, bookDefault, book }: {
+  rows: ReturnType<typeof lsaRow>[]; noun: string; city: string; services: string[];
+  onSend: (q: { name: string; message: string; service: string; how: "sms" | "email"; contact: string }) => void;
+  bookHref: string;
+  /** The tracked default, for the menu's "Default:" line. */
+  bookDefault: string;
+  book: BookingOverride;
+}) {
+  const [quoteFor, setQuoteFor] = useState<ReturnType<typeof lsaRow> | null>(null);
+  const [menuAt, setMenuAt] = useState<{ x: number; y: number } | null>(null);
+  return (
+    <div className="gs-lsa">
+      <div className="gs-lsa-head">
+        <div className="gs-lsa-head-row">
+          {/* ⚠️ THE HEADING IS ONE LINE, as measured (the header is a fixed 36 + 8). Our
+              provider nouns run longer than the capture's "Plumbers" — "Window Treatment
+              Companies | Santa Barbara" wrapped to two lines and grew the header — so the
+              TEXT ellipsises and the kebab stays put, the same nowrap treatment the row's
+              business name already carries. */}
+          <h3 className="gs-lsa-title">
+            <span className="gs-lsa-title-text">Sponsored {noun} | {city}</span>
+            <span className="gs-lsa-kebab"><Icon d={LSA_P.moreVert} size={18} fill /></span>
+          </h3>
+          <button className="gs-lsa-cta">
+            <Icon d={LSA_P.quote} size={18} fill />Get competitive quotes
+          </button>
+        </div>
+      </div>
+      <div className="gs-lsa-rows">
+        {rows.map((r) => (
+          <LsaRow key={r.name} row={r} noun={noun} city={city} bookHref={bookHref}
+            onQuote={r.prospect ? () => setQuoteFor(r) : undefined}
+            onBookMenu={(e) => {
+              e.preventDefault();          // our menu instead of the browser's
+              setMenuAt({ x: e.clientX, y: e.clientY });
+            }} />
+        ))}
+      </div>
+      {/* The rule runs the full column and the pill sits ON it, covering the middle. */}
+      <div className="gs-lsa-more">
+        <span className="gs-lsa-more-pill">
+          Show more<Icon d={LSA_P.expandMore} size={20} fill />
+        </span>
+      </div>
+
+      {menuAt && (
+        <BookingLinkMenu at={menuAt} current={bookHref}
+          fallback={book.url ? bookDefault : null}
+          onSet={book.set} onClear={book.clear} onClose={() => setMenuAt(null)} />
+      )}
+
+      {quoteFor && (
+        <QuoteDialog services={services} onClose={() => setQuoteFor(null)} onSend={onSend}
+          target={{
+            name: quoteFor.name, rating: quoteFor.rating, reviews: quoteFor.reviews,
+            photo: quoteFor.photo, thumbBg: quoteFor.thumbBg, contacted: quoteFor.contacted,
+          }} />
+      )}
+    </div>
+  );
+}
+
 /* ------------------------------------------------------------- the screen */
 
 /* =============================================================================
@@ -476,6 +1416,39 @@ export function GoogleSearch() {
   const loc = useLocationOverride(profile.id);
   const d = derive(profile, loc.place ?? undefined);
   const [query, setQuery] = useState(d.query);
+
+  /* ⚠️ THE SE'S OWN URL WINS OVER THE BOOKING-PATH TABLE, and the default is still computed
+     so the menu can show what was replaced and Reset can restore it. Same shape as `loc`
+     above: the hook holds the choice, the screen decides what to do with it. */
+  const book = useBookingOverride(profile.id);
+  const bookDefault = bookingHandoffUrl(d.domain, d.adCampaign, profile.id);
+
+  /* ⚠️ THE PROSPECT'S REAL PHOTO FOR THE LSA ROW, on the SAME chain ChatGptAd uses and for
+     its stated reason: Places FIRST (a real listing photo of the actual business, and
+     `engine/places.ts` rejects a name mismatch so it cannot be somebody else's storefront),
+     then og:image, which is unreliable precisely for the enterprise prospects that matter
+     because their sites 403 a server-side fetch. Null all the way through is fine — the
+     tile falls back to its initial square rather than showing a broken image. */
+  const [lsaPhoto, setLsaPhoto] = useState<string | null>(null);
+  useEffect(() => {
+    let live = true;
+    setLsaPhoto(null);                      // a prospect switch must not keep the old photo
+    (async () => {
+      try {
+        const q = new URLSearchParams({ name: profile.customerName, city: d.shortCity });
+        const j = await (await fetch(`/api/place?${q}`)).json();
+        if (live && j.place?.photoUrl) { setLsaPhoto(j.place.photoUrl); return; }
+      } catch { /* fall through to og:image */ }
+      if (!d.domain) return;
+      try {
+        const j = await (await fetch(`/api/og-image?domain=${encodeURIComponent(d.domain)}`)).json();
+        /* A logo or an award badge cropped into a 92px photo slot reads as broken, so it is
+           skipped and the stock trade photo stands in instead — see looksLikeLogo above. */
+        if (live && j.url && !looksLikeLogo(j.url)) setLsaPhoto(j.url);
+      } catch { /* falls back to the stock photo, then the initial tile */ }
+    })();
+    return () => { live = false; };
+  }, [profile.customerName, d.shortCity, d.domain]);
 
   /* ⚠️ THE CLICK NAMES THE CAMPAIGN THAT ACTUALLY MATCHED, not simply row 0. `adCreative`
      pairs the search term to a campaign by word overlap and the headline leads with that
@@ -619,6 +1592,46 @@ export function GoogleSearch() {
   };
   const places: Place[] = [packPlace(0), packPlace(1), packPlace(2), packPlace(0, true)];
 
+  /* The LSA unit: the prospect, then one of the same invented rivals `places`
+     already carries — reusing `d.places[1].rating` (the rating `derive()` gave
+     that same rival) rather than inventing a second, disagreeing figure. */
+  /* =============================================================================
+     Sending the quote request is what creates the two things in the platform
+     -----------------------------------------------------------------------------
+     Asked for directly: *"When send is click, it should create a lead in salesforce, and
+     also create a SMS Workflow based on what is shared in the form."*
+
+     ⚠️ **STORED ONCE, READ BY BOTH.** The submission goes into `QuoteCaptureContext` — the
+     SMS/Voice capture stores' third sibling — and the Leads tab and Agent Studio each DERIVE
+     their view from it (`liveQuoteLead`, `quoteWorkflow`). Writing a lead and a workflow
+     separately at submit time would be two records of one event, free to drift; this way
+     there is one record and two readers.
+     ⚠️ **AND IT IS USUALLY A DIFFERENT TAB.** The search screen is opened from the top bar's
+     Network chip and the platform is left behind it, so the store writes synchronously and
+     the context listens for `storage` — otherwise the lead and the workflow would not appear
+     until somebody refreshed. */
+  const { add: addQuote } = useQuoteCaptures();
+  const recordQuote = (q: {
+    name: string; message: string; service: string; how: "sms" | "email"; contact: string;
+  }) => {
+    addQuote(profile.id, {
+      id: String(Date.now()),
+      iso: new Date().toISOString(),
+      business: profile.customerName,
+      /* Google's LSA lead payload names the consumer's city and the form never asks for it,
+         so it comes from the location this ad was served in — the same value the unit prints
+         as "Serves <city>", and the one an SE can re-point with the ZIP pill. */
+      location: d.shortCity,
+      ...q,
+    });
+  };
+
+  const lsaNoun = providerNoun(profile.industry, d.seg);
+  const lsaRows = [
+    lsaRow({ name: profile.customerName, rating: d.places[0].rating, prospect: true }, lsaNoun, lsaPhoto ?? undefined),
+    lsaRow({ name: rivals[0].name, rating: d.places[1]?.rating ?? "4.7", prospect: false }, lsaNoun),
+  ];
+
   const dirDomain = `${d.shortCity.toLowerCase().replace(/[^a-z0-9]+/g, "")}directory.com`;
   const guideDomain = `guideto${d.shortCity.toLowerCase().replace(/[^a-z0-9]+/g, "")}.com`;
   const base = query.replace(/^best\s+/i, "").replace(/\s+near me$/i, "");
@@ -693,6 +1706,15 @@ export function GoogleSearch() {
           <LocationPill loc={loc} />
           <span className="gs-kebab"><Icon d={P.kebab} size={16} /></span>
         </div>
+
+        {/* ⚠️ THE SERVICE LIST IS THE PROSPECT'S OWN PRODUCT CATEGORIES. The capture's
+            dropdown was closed when it was saved, so its options are NOT measured — but
+            "the service you need" is exactly what `Conversions by Product Category`
+            already holds for every prospect, so this re-skins for free and can never
+            offer a service the business does not sell. */}
+        <LsaUnit rows={lsaRows} noun={lsaNoun} city={d.shortCity}
+          services={[d.hero, ...d.others].filter(Boolean)} onSend={recordQuote}
+          bookDefault={bookDefault} bookHref={book.url ?? bookDefault} book={book} />
 
         <h2 className="gs-spons-head">Sponsored Results</h2>
         {topAds.map((a) => <AdBlock key={a.brand + a.title} ad={a} />)}

@@ -242,7 +242,12 @@ export function AiAssistantDrawer() {
        Preview Agent opened for such a workflow the row therefore showed a DERIVED default the
        agent never sends, and the prompt handed the model that same wrong text as the current
        opening message. Now the three terms match the phone's, in the same order. */
-    const raw = (getByPath(data, GREETING_PATH) as string)
+    /* ⚠️ THE ORDER MIRRORS `buildSmsBrain`'s, INCLUDING ITS ONE JUMP-THE-QUEUE CASE. A
+       workflow that sets `openingMessageWins` (today: one generated from a live LSA quote
+       request) outranks a stored `smsPlaybook.greeting` on the phone, so it must here as well,
+       or this row shows a line the agent does not send. */
+    const raw = (active.greetingWins ? active.greetingFallback : "")
+      || (getByPath(data, GREETING_PATH) as string)
       || active.greetingFallback
       || defaultGreeting(active.customerName, data?.smsPlaybook);
     return { raw, display: resolveGreeting(raw, profile) };

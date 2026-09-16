@@ -236,7 +236,19 @@ export function buildSmsBrain(
        or its Details tab rewrites the opener, this is the line the phone actually sends.
        Putting it first would have re-created the very precedence bug fixed on 9/3: a
        workflow-side value outranking a greeting a human explicitly set. */
-    openingMessage: ac?.smsPlaybook?.greeting?.trim()
+    /* ⚠️⚠️ ONE WORKFLOW KIND JUMPS THE QUEUE, AND ONLY ONE (9/12/2026). A workflow generated
+       from a live LSA quote request sets `openingMessageWins`, because its opener quotes what
+       somebody typed into the form SECONDS ago — where the rule below exists to stop a line
+       authored MONTHS ago beating an SE's edit. Measured: 3 of 15 profiles ship a stored
+       `smsPlaybook.greeting` (Aptive, Denver Health, Marriott), and without this the whole
+       "the agent replies to what you typed" beat would open with the generic line on exactly
+       those three — a silent no-op of the kind this file already records five times.
+       ⚠️ An edit made ON that workflow still wins over its generated opener: `wfAgent.greeting`
+       is checked first, so Ask AI and the Details tab keep working as they do everywhere. */
+    openingMessage: (wf?.openingMessageWins
+      ? (wfAgent?.greeting?.trim() || wf?.openingMessage)
+      : undefined)
+      || ac?.smsPlaybook?.greeting?.trim()
       || wfAgent?.greeting?.trim()
       || wf?.openingMessage
       || defaultGreeting(profile.customerName, ac?.smsPlaybook),

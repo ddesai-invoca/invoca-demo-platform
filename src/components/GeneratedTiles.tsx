@@ -28,6 +28,9 @@ export interface PageDataOptions {
   /* The agent's real opening line when nothing is stored — an extra workflow's own scripted
      one. Opt-in; see the note on `Scope.greetingFallback`. */
   greetingFallback?: string;
+  /* True when that fallback OUTRANKS a stored `smsPlaybook.greeting` — see
+     `Scope.greetingWins`. Opt-in, so every other screen is unchanged. */
+  greetingWins?: boolean;
 }
 export function useDashboardData<T>(base: T, opts?: PageDataOptions): T {
   const { pathname } = useLocation();
@@ -36,10 +39,11 @@ export function useDashboardData<T>(base: T, opts?: PageDataOptions): T {
   const key = `${profileId}::${pathname}`;
   const questionPath = opts?.questionPath;
   const greetingFallback = opts?.greetingFallback;
+  const greetingWins = opts?.greetingWins;
   useEffect(() => {
     if (base == null) return;
-    registerScope({ key, customerName: profile.customerName, baseTitle: (base as any)?.title ?? "", baseData: base, questionPath, greetingFallback });
-  }, [key, base, profile.customerName, registerScope, questionPath, greetingFallback]);
+    registerScope({ key, customerName: profile.customerName, baseTitle: (base as any)?.title ?? "", baseData: base, questionPath, greetingFallback, greetingWins });
+  }, [key, base, profile.customerName, registerScope, questionPath, greetingFallback, greetingWins]);
   const eff = effectiveData(key);
   return (eff ?? base) as T;
 }

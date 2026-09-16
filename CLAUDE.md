@@ -7624,6 +7624,1011 @@ UI — then landed both edits, and the model additionally flagged (in "answer") 
 breakdown tables still summed to the old total and offered to reconcile them, which is the
 kind of coordinated, multi-part reasoning a Haiku answer would not have caught.
 
+## Local Services Ads on the Google Search screen (9/12/2026)
+Asked for first with a screenshot — a real LSA unit ("Sponsored Plumbers | Duluth", two rows,
+each with a rating/review count/years-in-business/status line and Get quote / Book online / Get
+phone number actions), "build 2 rows of LSA before the first marketing campaign similar to this
+page" — then rebuilt against a SingleFile **capture** of the same unit (see the next block).
+`GoogleSearch.tsx` (`.gs-lsa-*` in `standalone.css`), inserted between the location chip and the
+first `Sponsored Results` heading (the text-ad block). It is Google's OTHER paid unit: the one
+that runs above the text ads for local trade categories.
+
+⚠️⚠️ **THE PROSPECT LEADS IT, AND THE SECOND ROW IS A RIVAL THE SCREEN ALREADY BUILT** — not
+a third set of invented names. `rivals[0]` and its rating (`d.places[1].rating`) already exist
+for the local pack; the LSA rows reuse them rather than inventing a disagreeing figure.
+
+⚠️⚠️ **THE HEADER NOUN IS A TRADE-PROFESSIONAL PLURAL, NOT `d.seg`.** `d.seg` is a
+product/category noun built for the ad copy elsewhere on this screen ("Window Treatments",
+"Vision Care") and reads wrong as "Sponsored Window Treatmentss | Duluth" — wrong word class
+and wrong pluralisation. `providerNoun()` is a keyword table over `profile.industry` (the same
+shape as `vocabFor` in `insightsCatalog.ts`), with a generic `${seg} Providers` fallback so a
+vertical not in the table still reads as a real category. Verified across three very different
+verticals: Shady Blinds → "Window Treatment Companies", Orlando Health → "Doctors", AutoNation
+→ "Auto Repair Shops" — all correct, all in Santa Barbara / Orlando / Miami respectively.
+
+### ⚠️⚠️ REBUILT FROM A REAL CAPTURE THE SAME DAY, AND THE SCREENSHOT VERSION WAS WRONG SIX WAYS
+The first pass was authored from the screenshot, reusing PlaceRow's classes on the reasoning
+that it was "structurally the same kind of row". A SingleFile capture of the real unit arrived
+an hour later (`reference/google-search/lsa-v1.html`) — "make sure it matches perfectly, CSS,
+the Icons, alignment" — and measuring it the way the rest of this screen was measured found six
+things a picture cannot settle. **Every one is now a measured value**, listed in full at the
+`.gs-lsa-*` rules:
+
+| | screenshot pass | measured |
+|---|---|---|
+| heading | 16px, borrowed `.gs-spons-head` **with its underline** | **20px** Google Sans, **no underline** |
+| name | 18px Google Sans (`.gs-place-name`) | **20px/24px Roboto** |
+| secondary text | `--gs-2` `#9e9e9e` | **`#bfbfbf`** — the unit's own grey, neither `--gs-2` nor `--gs-mut` |
+| status line | whole line green | **only the leading phrase** is `#6dd58c`; the `·` and badge are `#bfbfbf` |
+| thumbnail | 64x64 | **92x92**, radius 8 |
+| "Show more" | a standalone pill | a **372x40 pill centred ON a full-width 1px rule** |
+
+⚠️⚠️ **THE STATUS-LINE COLOUR IS THE ONE WORTH REMEMBERING.** A screenshot reads
+"Open 24 hours · Emergency heating services" as one green line, and it is not: the capture's
+DOM nests the leading phrase in its own span at `#6dd58c` while the separator and badge stay
+`#bfbfbf` — exactly the split `.gs-place-hours b` already does one section down. Colour that a
+human eye reads off a JPEG is a guess; the computed style is not.
+
+⚠️ **AND IT NO LONGER REUSES PlaceRow's CLASSES.** Once measured, `.gs-place-name` (18px Google
+Sans) and `.gs-place-stars` were simply different values, so sharing them would have meant
+either wrong type here or editing classes another section is signed off on — the "a change for
+one screen stays on that screen" rule. The LSA unit has its own `.gs-lsa-*` set throughout.
+
+⚠️ **THE ICONS ARE GOOGLE'S OWN, EXTRACTED VERBATIM** (`LSA_P` in `GoogleSearch.tsx`), per the
+standing use-the-real-icons rule: filled 24x24 Material paths for the quote bubble, calendar,
+phone, the `more_vert` kebab and the `expand_more` chevron. ⚠️ **They are deliberately NOT the
+thin stroke glyphs `P` holds** — that set exists because the filled icons read too heavy for
+this page's CHROME, whereas the LSA unit's icons genuinely ARE the filled set at
+`fill: #a8c7fa`. Rendered with `<Icon fill />`, which the component already supported.
+
+⚠️ **THE STARS ARE A PARTIAL-FILL GRADIENT, because the real ones are.** The capture draws a
+68x11 bar with `linear-gradient(to right, #fdd663 …, #80868b …)`, which is how a 4.7 shows a
+partially filled last star. Reproduced with this page's own glyphs plus `background-clip: text`
+driven by a `--fill` custom property computed from the rating — with the colour set on the
+element first and only made transparent inside an `@supports` guard, or a browser without
+`background-clip: text` would render five invisible stars.
+
+⚠️ **THE ACTION SET VARIES PER ROW ON PURPOSE.** The capture's first row carries two buttons and
+its second three; that unevenness is part of how the real unit reads. The prospect gets the full
+three (Get quote is the one this demo is about) and the rival two.
+
+### The thumbnails are REAL photos, from two different sources on purpose (9/12/2026)
+This shipped with hashed-colour initial squares and the reasoning that inventing a photo for a
+fictional business was the "wrong kind of convincing". Overruled, directly: *"I want the
+thumbnail pictures to be real pictures, so ofcourse for the prospect it should be a real pic,
+but for the made up ad in the 2nd row, you can choose whatever relevant real pic."*
+
+⚠️⚠️ **THE PROSPECT'S IS THE PROSPECT'S OWN, ON THE CHAIN `ChatGptAd` ALREADY USES** —
+`/api/place` (a real Google Places listing photo of the actual business), then `/api/og-image`,
+then a stand-in. Both endpoints already existed on BOTH server twins, so this needed no new
+infrastructure, and `engine/places.ts` already REJECTS a listing whose name does not match the
+prospect — which is exactly what stops the tile showing some other company's storefront.
+**Measured across the library: 12 of 15 prospects resolve a genuine Places photo**, complete
+with that business's real rating and review count.
+
+⚠️⚠️ **THE RIVAL'S MUST NOT COME FROM PLACES, and that is the whole reason it is a stock
+photo.** Querying Places for an INVENTED name ("Miami Automotive Retail") would either find
+nothing or, far worse, attach a real local business's photograph to a business this demo made
+up — the misattribution `nameMatches` exists to prevent. So row 2 draws from a curated
+per-vertical table (`LSA_PHOTO`): nobody's specific storefront, just the trade.
+
+⚠️ **FREE-LICENCE UNSPLASH ONLY.** Every id was harvested from Unsplash's own search and
+filtered to `images.unsplash.com/photo-…`; Unsplash+ results (`plus.unsplash.com/premium_photo-…`)
+are excluded because that tier carries a different licence. All 25 were verified to load at the
+exact 184x184 params used — a 404 would silently fall back and read as the feature not working.
+
+⚠️ **THE PROSPECT'S FALLBACK IS A DIFFERENT GENERIC FROM THE RIVAL'S, and that collision
+actually happened.** With one generic photo, a prospect with no real listing (Shady Blinds)
+drew the SAME image as the rival directly beneath it — two identical photos stacked, which is
+worse than the letter tile it replaced. `_prospect` (service vans) is separate from `_default`
+(a storefront), so the two rows can never collide. The three prospects that take this path are
+Shady Blinds, Surfside Healthcare and Marriott — two of them FICTIONAL businesses, i.e. exactly
+the "made up" case a stock photo was authorised for.
+
+⚠️ **THE LETTER TILE SURVIVES AS THE LAST RESORT ONLY** — no photo at all, or an image that
+fails to load — because a broken-image glyph mid-demo is worse than a deliberate-looking tile.
+
+#### ⚠️⚠️ "Can you grab the image the prospect actually uses?" — measured, and the answer is no
+Asked directly, and worth recording because the obvious answer is wrong. `og:image` IS the
+picture the company chose for itself (`engine/ogImage.ts` says exactly that), and it is already
+the fallback — so "prefer it over Places" looks like a free win. **Rendering both columns at
+92x92 side by side killed it:**
+
+| | Places | their own og:image |
+|---|---|---|
+| coverage | **12 of 15** | 8 of 15 — the enterprise sites (AutoNation, Orlando Health, Mattress Firm, Marriott, Denver Health, Key-Whitman) 403 a server-side fetch |
+| Roto-Rooter | van + technician | its **LOGO** |
+| Goosehead | storefront signage | a **logo mark** |
+| National Van Lines | truck + driver | its **LOGO** |
+| Continuing Life | community exterior | a **"Great Place To Work" AWARD BADGE** |
+| Comfort Keepers | office exterior | banner cropping to "…e Care …vates …man Spirit" |
+| Aptive | building | banner cropping to "ptive" |
+
+**Places wins for all seven prospects that carry both.** The reason is structural: `og:image` is
+authored for a WIDE link-preview card, so square-cropping one slices the wordmark in half. And a
+`logo|badge` filename filter cannot rescue the idea — the two WORST og images are named
+`og-img.jpg` and `image.jpg`.
+
+⚠️ **SO THE PRECEDENCE DID NOT CHANGE; ONLY THE FALLBACK WAS GUARDED.** `looksLikeLogo()` now
+skips an og:image that names itself a logo/badge/icon/award and takes the stock trade photo
+instead. **That path is reachable, not hypothetical: a server with no Places key is a supported
+state, and in it EVERY prospect falls through to og:image** — four of eight would show a cropped
+logo. Verified by stubbing `/api/place` empty in the browser: Roto-Rooter then renders the
+plumber stock photo rather than its cropped logo, and with Places live it is back to its own van
+photo, unchanged.
+⚠️ **A STATED LIMIT:** Goosehead's og:image is a content-hash filename (`52e9612c….png`), so no
+filename rule can catch it. It is a logo, and if Places ever fails for that prospect it will be
+cropped. Caught only by a real image inspection, which is not worth building for one case.
+
+⚠️ **AND A GRAMMAR BUG THE PHOTOS EXPOSED: "Sponsored Hotels Providers | Santa Barbara".**
+`providerNoun`'s fallback appended "Providers" to `industrySeg`, which is ALREADY PLURAL about
+half the time ("Hotels", "Health Systems", "Care Services"). An already-plural seg is the answer
+as it stands; only a singular one ("Vision Care") takes the suffix.
+
+⚠️ **THE GREEN STATUS LINE NAMES NO REAL ACCREDITATION BODY.** The capture's own rows read
+"BBB A+ rated" and "Generac authorized dealer" — a real certifying body and a real manufacturer
+program, on REAL businesses. Inventing either for a fictional rival would be fabricating a
+credential, so `LSA_STATUS` uses generic, genuinely Google-Guarantee-shaped badges instead:
+"Licensed & insured", "Background checked", "Locally owned & operated", "Same-day service
+available".
+
+⚠️ **REVIEW COUNTS, YEARS IN BUSINESS AND THE STATUS LINE ARE ALL HASHED PER BUSINESS NAME**,
+so an SE revisiting sees the same numbers rather than ones that move under them — the same
+determinism rule every other invented figure on this screen already follows (the gclid, the
+tracking phone number, the competitor names).
+
+**Verified: a 66-property diff against the capture came back EMPTY** — unit box and transparency,
+header height and the absence of an underline, heading/name/line/label/pill fonts and colours,
+the CTA's radius, border, padding and 12px icon inset, row height and padding, the 92x92/8px
+thumb and its 16px gap, the three 20px lines, the green/grey status split, the actions' 24px gap
+and flex-end alignment, the 44x44 circles at y=17, the label line-breaks ("Get quote" one line,
+the other two wrapping), the between-rows divider and its absence after the last row, and the
+pill's 372x40/20px/`#2c2e35` box centred at x=140 over a `top: 20px` 1px `#444746` rule.
+⚠️ **Two of the three apparent mismatches in that run were PROBE faults, not code** — reading
+the actions' wrapper box instead of the circle inside it, and dot-accessing `top` on a
+`getComputedStyle(el, '::before')` object (which returns 0; `getPropertyValue('top')` returns
+the real `20px`). Ninth and tenth probe-not-code faults recorded in this file.
+
+Also verified across three very different verticals (Shady Blinds, Orlando Health, AutoNation):
+the header noun, city and both rows render correctly, the rest of the page (Sponsored Results,
+Places/local pack, organic results, footer) is unchanged, the block fits the 652px column with
+no horizontal overflow, and `npm run typecheck` is clean.
+⚠️ The capture is kept at `reference/google-search/lsa-v1.html` so these values can be
+re-checked; the transient stripped copy went in `public/__m/`, which is git-ignored precisely
+for that ("extracted capture frames, measured then deleted") and was deleted after measuring.
+
+## "Get quote" opens the Send request dialog (9/12/2026)
+Asked for directly: *"Build what happens when someone clicks the 'Get Quote' button."* Measured
+off a SECOND capture taken with the dialog open (`reference/google-search/lsa-quote-v1.html`).
+`QuoteDialog` in `GoogleSearch.tsx`, `.gs-q-*` in `standalone.css`.
+
+⚠️⚠️ **THE DIALOG LIVES IN A SANDBOXED IFRAME, SO NONE OF IT IS MEASURABLE FROM THE PARENT.**
+Its `sandbox` omits `allow-same-origin`, so `contentDocument` is null — the same wall
+CLAUDE.md already records for the ThoughtSpot frame, and the fix is the same: SingleFile
+stores the frame in a **`srcdoc` attribute** (1,002,710 chars here), so extract that to its
+own file and serve it, at which point every computed style is readable. **Stripping the
+sandbox to get in is both the wrong instinct and blocked.**
+⚠️ **AND MEASURE THE FRAME AT THE SIZE IT ACTUALLY GETS — 700x748.** Its layout is
+responsive: read at the browser's own width it lays out 800 wide and reports a column width
+the dialog never renders. The iframe's size in the parent is the only correct viewport.
+
+⚠️ **THE DIALOG'S SURFACE IS `#1f1f1f`, NOT THE PAGE'S `#22242a`.** That is the frame's own
+body colour, and the container behind it (`.qk7LXc`, which IS #22242a) is completely covered.
+Reading the outer container would have painted the dialog the wrong grey.
+
+Everything else measured and reproduced: scrim `rgba(0,0,0,.6)`; dialog 700 wide, centred both
+axes, radius 8, shadow `0 5px 26px / 0 20px 28px rgba(0,0,0,.5)`; header 64 with a 48x48 back
+button at x=20 and the title at x=88 in `400 18/24 Google Sans #dadce0`; body inset 24 (652
+content); the business block's 52x65 radius-8 photo with a 12px gap and the text column at
+x=88; MDC notched outline `1px #bdc1c6` at radius 4; message box 636x128; helper/counter
+`400 12/14 Roboto #9aa0a6`; name and phone at **313** (half the column); radios 40x40 with a
+20x20 ring `2px #8ab4f8` and a 10x10 dot; legal `400 12/16 #bfbfbf` with `#99c3ff` links;
+footer 52 with two 321x36 buttons 10px apart — "No thanks" outlined `1px #3c4043` ink `#8ab4f8`,
+"Send" filled `#8ab4f8` on `#1f1f1f`, both radius 36.
+**A 52-property diff against the capture came back empty.**
+
+⚠️ **THE CAPTURE'S SELECT IS IN ITS FOCUSED STATE** (blue label and outline) because it held
+focus when the page was saved — so the resting grey is what is built, and blue is the
+`:focus-within` rule. A freshly opened dialog focuses the MESSAGE field, which is the one
+thing the dialog exists to collect.
+
+⚠️⚠️ **THE SERVICE LIST IS THE PROSPECT'S OWN PRODUCT CATEGORIES.** The capture's dropdown was
+closed when saved, so its options are NOT measured — but "the service you need" is exactly what
+`Conversions by Product Category` already holds, so this re-skins for free and can never offer
+a service the business does not sell. Verified: Roto-Rooter offers Plumbing / Drains / Water
+Damage / Commercial, Orlando Health offers Cancer Institute / Heart & Vascular Institute /
+Orthopedic Institute / Women's Institute.
+
+⚠️⚠️ **WHAT HAPPENS AFTER "Send" IS NOT IN THE CAPTURE, SO THE CONFIRMATION IS AUTHORED AND
+SAYS SO IN THE CODE.** It is deliberately assembled from the dialog's OWN measured parts (the
+same header, the same business block, the same button) rather than inventing new Google chrome
+— the rule the CI tier report already paid for ("anything added back has to exist on the real
+report first"). Replace it if a capture of the real one turns up.
+
+⚠️ **THE OTHER TWO ACTIONS STAY INERT.** "Book online" and "Get phone number" have no captured
+destination, so they remain spans rather than buttons — a control that looks clickable and goes
+nowhere is the same lie the inert place actions on this page already avoid. Only "Get quote"
+became a `<button>`, and it needed the browser's button styling reset or it sits a pixel out in
+a system font (the reset `.gs-loc-pill` already needed).
+
+Verified with real clicks: the dialog opens re-skinned to the prospect (its real Places photo,
+rating and review count), Send is disabled until message + name + contact are filled, the
+counters track (94/600, 14/50), sending shows the confirmation echoing the real contact method
+and number, and Done / Escape / a scrim click all close it and it reopens empty. The unit
+underneath is untouched at 652x341.
+
+## Sending the quote request creates a Salesforce lead AND an SMS workflow (9/12/2026)
+Asked for directly: *"When send is click, it should create a lead in salesforce, and also
+create a SMS Workflow based on what is shared in the form… Duplicate the SMS workflow, keep
+everything the same, the only difference will be the Preview Agent and Preview Workflow. the
+opening message and follow up messages are customized based on what was typed in the form
+fields: Your message, Service and Name."*
+
+⚠️⚠️ **ONE RECORD, TWO READERS.** The submission goes into `QuoteCaptureContext` — the third
+sibling of the SMS and Voice capture stores, same localStorage shape, same 7-day TTL, same
+`storage` listener — and the Leads tab and Agent Studio each DERIVE their view from it
+(`liveQuoteLead` in `salesforceLiveLead.ts`, `quoteWorkflow` in `quoteWorkflow.ts`). Writing a
+lead and a workflow separately at submit time would be two records of one event, free to drift.
+⚠️ **AND THE SEARCH SCREEN IS USUALLY A DIFFERENT TAB** (it opens from the top bar's Network
+chip), which is why the store writes synchronously and listens for `storage` — otherwise
+neither the lead nor the workflow would appear until somebody refreshed.
+
+### The lead
+Built beside `liveBookedLead` and spliced with the **same replace-then-move rule**, not a
+second one: an LSA requester can easily be a name already on the list, and a blind `unshift` is
+what put one person on two rows before. Lead Source is **"Web"**, not "Inbound Call" — they
+typed into an ad, they did not ring — and the Description carries what they wrote plus the
+service and how they asked to be contacted. No address: the form never asked for one, and
+inventing a street for somebody who only gave a phone number would fabricate the one field a
+rep would act on.
+⚠️ **`salesforceLeadDetail` HAD TO BE THREADED TOO.** It resolves a slug against
+`salesforceLeads`, so called without the quotes the record page opens "Lead not found" on the
+row the SE just created — the exact failure that file already records for the Calendar chip.
+
+### The workflow
+⚠️⚠️ **THE TREE IS DELIBERATELY THE STANDARD ONE.** `branches: []` makes `extraTree` render
+exactly the four locked chrome boxes and the two locked leaves — i.e. the shape the built-in
+SMS workflow draws. The instruction was "keep everything the same"; inventing use cases is the
+one thing that would have made it NOT a duplicate. Everything that differs is conversation.
+Each form field does a different job and none is dropped: **Name** — the agent greets a person;
+**Message** — quoted back in the opener (that is what makes it read as a reply rather than a
+broadcast) and handed to the model as the job to scope; **Service** — optional, so every use of
+it is guarded, and it picks the qualifying questions.
+
+⚠️⚠️ **`openingMessageWins` EXISTS BECAUSE THE FEATURE WAS OTHERWISE A SILENT NO-OP ON THREE
+PROSPECTS.** `buildSmsBrain` ranks a stored `smsPlaybook.greeting` ABOVE a workflow's own
+`openingMessage` — correct for the 9/3 bug, where a line authored months ago was beating an
+SE's edit. A workflow generated from a form inverts that: its opener quotes words typed seconds
+ago. **Measured: 3 of 15 profiles ship a stored greeting (Aptive, Denver Health, Marriott)**,
+and on those the whole beat would have opened with the generic line. Flagged on the workflow
+rather than re-ordering the precedence for everyone, so every authored workflow is untouched,
+and an edit made ON the generated workflow still wins (`wfAgent.greeting` is checked first) so
+Ask AI and the Details tab keep working.
+⚠️ Safe as an `.optional()` schema field because `ExtraWorkflow` is **not** part of any
+generation schema — `sanitize()` would otherwise force it onto the model, the trap that made
+the engine invent `InteractionRow.cells`. Verified no engine phase writes `extraWorkflows`.
+
+⚠️ **ONE DEFINITION, SIX READERS — `useExtraWorkflows`.** The Agent Studio table, the sub-nav,
+the workflow page, Preview Agent, Preview Workflow and the preview page's title each resolved
+`profile.reports.extraWorkflows` separately; a generated workflow listing in one and resolving
+in none is a dead row mid-demo. All six now call one hook. ⚠️ The hook lives in
+`quoteWorkflow.ts` and imports the context, never the reverse — the other direction is a
+runtime cycle of exactly the kind `leadSlug` was moved to kill.
+
+**Verified end to end on Aptive** (chosen *because* it ships its own greeting): submitting
+"carpenter ants along the back deck…" with the service "Recurring Residential Pest Plans"
+produced — Dana Whitfield as the top lead with the form's own phone, the list still 10, the
+record page resolving with Lead Source "Web" and the message in Description; and
+"Aptive - SMS - Quote Request (Dana)" in the Agent Studio table, the sub-nav and its own
+workflow page with the standard locked chrome. **Reading the `/api/chat` request body** (the
+reliable test this file insists on) shows the customized opener, all 7 form-derived steps and a
+system prompt quoting their words; the agent then took the address without re-asking the
+problem and offered two windows. The stored Aptive greeting is "Hi, this is Aptive's AI
+agent…" — proving the flag is what makes the opener reach the phone. A prospect with no
+submission is unchanged: Orlando Health still lists exactly its own seven workflows.
+`audit:ai`, `audit:leads`, `audit:leaddetail`, `audit:calllog`, `audit:clrecord` and
+`audit:place` all green, typecheck clean.
+
+## Replicate renders in a REAL browser, off-box, because uptime beats accuracy (9/13/2026)
+Reported after a live test of `https://ridgeline-roofing.com/`: *"assets weren't loaded, like the
+video playing in the background of the form; the formatting of the header is off; Icon SVG are
+missing… instead of replicating with speed, i rather do accuracy."* Then, on how: *"top priority
+is that the site should always be up and not go down."*
+`engine/renderService.ts` + the render-first path in `engine/replicate.ts`.
+
+⚠️⚠️ **ALL THREE SYMPTOMS WERE ONE CAUSE, MEASURED.** That page carries **21 `data-src`
+attributes and 62 `loading="lazy"` images**, so nothing has a real `src` until its JavaScript
+runs; its icons are JS-injected (**zero inline `<svg>`** in the served HTML); and its layout
+needs JS-applied classes. After letting a browser run it: **104 of 104 images resolve**, the
+background video gains a source, and the header lays out correctly. Screenshots of both were
+compared side by side before any code was written.
+
+⚠️⚠️ **AND A FOURTH CAUSE THE CAPTURE PATH SHARED: 37 STYLESHEETS, ONLY 17 READABLE.** The
+capture script stripped `<link rel=stylesheet>` and inlined only the sheets it could read from
+script — throwing away the 20 cross-origin ones, which is its own version of the broken header.
+**A stylesheet loads cross-origin perfectly well; CORS only governs READING its rules.** The
+links now stay, and the inlined copy is belt-and-braces. Both paths fixed.
+
+⚠️⚠️ **THE RENDERER RUNS OFF-BOX, AND THE "FALLBACK" I FIRST PROPOSED WOULD NOT HAVE PROTECTED
+ANYTHING.** Render enforces memory **per container**, so a Chromium in this service counts
+against the same limit as Node; when that limit is crossed the kernel kills the process and **no
+`catch` block runs** — the platform restarts and every SE mid-demo drops. A `try/catch` around
+the renderer handles crashes, timeouts and blocks, none of which was the stated risk. The only
+structural answer is to put the browser in somebody else's container, which makes the worst case
+"a less accurate replica" rather than "a down platform". Said plainly to the user rather than
+shipping the weaker mitigation.
+
+⚠️ **BROWSERLESS `/content`, WHICH MEANS NO NPM DEPENDENCY.** It takes a URL and returns rendered
+HTML, so this is a `fetch` — no Playwright, no puppeteer-core, no Chromium download. Same
+reasoning that rejected a 26MB SDK for one button in `engine/voicePreview.ts`. Free tier is 1k
+units/month with no card, which covers this comfortably. `BROWSERLESS_URL` can point at a
+self-hosted instance later without touching code.
+
+⚠️ **UNCONFIGURED IS A SUPPORTED STATE.** With no `BROWSERLESS_TOKEN` the fast fetch is used
+exactly as before — nothing is gated on somebody buying anything — and the screen SAYS it is the
+fast copy. That matters: a page missing its lazy images looks like a badly built replica rather
+than a fallback, and the SE has no way to tell, which is how this feature lost trust the first
+time. Every degraded path carries its reason to the banner.
+
+⚠️⚠️ **A CIRCUIT BREAKER, BECAUSE A DEAD RENDERER WOULD OTHERWISE COST EVERY SE THE FULL
+TIMEOUT.** Three consecutive failures and it stops asking for five minutes, then lets one probe
+through. Verified with a deliberately bad token: requests 1–3 fall back in ~200–760ms each
+naming "the token was rejected", the breaker opens, and request 4 skips the service entirely.
+Without it every click would sit for 20 seconds against a service that is down.
+
+⚠️ **`waitUntil: "networkidle2"` PLUS `bestAttempt: true`.** Lazy images and injected SVG arrive
+AFTER `load`, so waiting for the network to quieten is what buys the accuracy; `bestAttempt`
+returns what it has rather than nothing, because a marketing page with a chat widget or an
+analytics beacon may never go fully idle and a perfectly good render would otherwise be thrown
+away on a timeout.
+
+⚠️ **A BODY UNDER 500 BYTES IS TREATED AS A BLOCKED STUB** and falls back, per Browserless's own
+bot-detection note. Sites that 403/429 a datacenter IP (AutoNation, Orlando Health) still fail —
+`/unblock` with residential proxies is the paid answer and is not wired up.
+
+⚠️ **`/api/status` GAINED `renderConfigured` — a BOOLEAN.** That endpoint is PUBLIC, so it names
+no token and no URL, the same rule the other integration flags follow.
+
+⚠️⚠️ **A TALL VIEWPORT BROKE THE HERO, AND IT WAS MY OWN OPTIMISATION.** Trying to drag more
+below-the-fold lazy images into range with `viewport: {height: 2400}` won four extra images and
+wrecked the page: ridgeline-roofing.com sizes its hero in `vh`, so a 2400px-tall viewport made
+the hero 2400px tall and two carousel slides' text rendered on top of each other — **the exact
+"formatting of the header is off" complaint, reintroduced by a performance tweak.** Caught by
+screenshotting the served result against the live site rather than trusting the element counts,
+which looked fine (`swiper-slide-active` was 1 in every variant). **1440x900 is the viewport;
+fidelity is the whole point of this path.**
+
+⚠️ **THE OPTION SET WAS MEASURED, NOT ASSUMED** — three renders of the same page against the
+real service: `networkidle2 + bestAttempt` 14.0s, `domcontentloaded + 4s wait` **7.0s for
+byte-identical output**, the tall-viewport variant 7.1s with a broken hero. A marketing page
+with a chat widget never goes network-idle, so `networkidle2` just burns the timeout and
+`bestAttempt` returns what it had anyway.
+
+**Verified live on the reported URL** once `BROWSERLESS_TOKEN` was set: the replica is a faithful
+copy of ridgeline-roofing.com — green inspection form in the hero, "KEEPING THE SOUTHEAST
+COVERED", roof photograph, nav, chat widget — and the banner reads "rendered in a browser".
+⚠️ **ITS FORM IS WPFORMS, WHOSE FIELD NAMES ARE OPAQUE** (`wpforms[fields][23]`), and
+`deriveFieldMap` mapped all six purely from their LABELS. That is the case a name-based table
+could never have covered, and the reason the classifier reads the rendered DOM. Filling it and
+clicking its own **Submit** created the lead with the message and ZIP 85018 resolved to Phoenix.
+
+**`npm run audit:replicas` gained 11 checks** covering the half that matters: unconfigured
+reports itself and still serves a page, a rejected token degrades **every time** rather than
+erroring, the breaker trips, short-circuits while tripped and recovers, a working service is
+actually used, `sanitizeReplica` keeps stylesheet links / drops preloads / strips form actions /
+adds `<base href>`, and the capture tool no longer strips stylesheets.
+⚠️⚠️ **THEY RUN AGAINST A MOCKED `fetch`, AND THE FIRST VERSION DID NOT — reporting three
+failures that were entirely the probe's fault.** It used `https://example.com/`, which is not
+reachable from this environment, so `fetchReplica` threw and three checks "failed" on correct
+code. An audit that depends on somebody else's site is flaky by construction; this is the same
+rule `audit:advanced` already follows for Gong.
+⚠️ A fourth probe fault in the same pass: the mock page was ~200 bytes, which the stub guard
+correctly rejects, so the happy-path check failed for a reason unrelated to the code. Fixtures
+have to clear the thresholds the code enforces.
+
+## Replicate — the prospect's OWN booking page, with its form wired in (9/12/2026)
+Asked for from the Book online menu: *"add another button called replicate, and what it does is,
+it replicates the given webpage with the form on it, so that way when the form is completed and
+'submitted' on the fake replicated website then it can actually take the information from the
+form and do stuff with it. like create a SMS workflow with the information from lead form."*
+`scripts/capture-replica.js` → `public/replicas/<slug>.html` → `src/data/replicaPages.ts` →
+`/replica/:slug`.
+
+⚠️⚠️ **THIS IS NOT WHAT WAS REJECTED TWO SECTIONS DOWN, AND THE DIFFERENCE IS THE WHOLE POINT.**
+That section killed replicating *ServiceTitan's* form — one form matching nobody, on a product
+only 2 of 15 prospects use. Replicating **whatever is at the URL** is per-prospect by
+construction, which is exactly the objection ("every prospect has a different form") that killed
+the earlier idea.
+
+⚠️⚠️ **A SERVER CANNOT DO THIS, AND IT WAS MEASURED BEFORE A LINE WAS WRITTEN.** These forms are
+JavaScript widgets:
+
+| | `curl` | a real browser |
+|---|---|---|
+| Aptive `/build-a-plan/` | **0 forms** | **1 form, 38 inputs** (the real First/Last/Email/Phone/Zip) |
+| AutoNation | **403** | loads fine, 59/59 readable stylesheets |
+| 10 prospect booking pages | **1 of 10** had a real lead field | — |
+
+So "fetch and replicate on demand" would hand an SE a formless, unstyled page — silently — for
+about nine prospects in ten. Captures are made ONCE by a browser and ship in the repo; **the SE
+installs nothing and clicks one button**, which was the constraint that ruled out asking every SE
+to install SingleFile.
+
+⚠️⚠️ **THE CAPTURE IS NEUTRALISED AT SOURCE AND AGAIN AT SERVE, AND THAT IS NOT BELT-AND-BRACES
+PEDANTRY.** AutoNation's is a **Salesforce Web-to-Lead** form (`00N1U00000Utmts` and friends are
+Salesforce custom field ids) and Aptive's posts to Aptive's own lead API. A replica that kept its
+`action` would **file a real lead at the prospect's own company** the first time it was demoed —
+the one failure here that cannot be taken back. The serializer strips
+`action`/`method`/`target`/`onsubmit`, every `formaction`, every `on*` attribute, all scripts and
+all iframes; `ReplicaPage` re-strips on load and `preventDefault()`s every submit;
+`audit:replicas` asserts it **over the files on disk**, not over the code meant to have cleaned
+them. Verified to fire by putting an action back on a capture.
+
+⚠️⚠️ **THE IFRAME IS SAME-ORIGIN, WHICH IS THE ENTIRE MECHANISM.** The capture is served from
+`public/replicas/` by our own server, so `contentDocument` is reachable and the parent binds to
+the real form. That is the exact inverse of the ThoughtSpot and LSA-quote frames this file
+documents as unreadable — those are cross-origin. **Never add a `sandbox` that omits
+`allow-same-origin`**; every interception would silently stop and the form would just do nothing.
+
+⚠️⚠️ **TWO THINGS A CAPTURE FREEZES THAT COST REAL DEBUGGING TIME, both now handled:**
+- **A DISABLED CONTROL.** AutoNation's submit is captured as `<input type="button" disabled>` —
+  its own JS enables it once the form validates, and the capture has no JS. **A disabled element
+  dispatches no click at all**, so the listener attached perfectly and never fired, which reads
+  exactly like broken wiring. `wireFrame` removes `disabled` from controls it has just decided
+  to wire.
+- **A BUTTON THAT IS NOT A SUBMIT.** That same control is `type="button"`, driven by the removed
+  script, so it fires no submit event. `wireFrame` bridges click → submit for controls whose
+  label or name looks like one.
+
+⚠️ **LINKS ARE MADE INERT AT SERVE, NOT IN THE CAPTURE.** The page is full of real navigation
+that would take the SE to the live site mid-demo; the capture stays a true copy and the behaviour
+lives in `wireFrame`.
+
+⚠️ **SUBMIT FEEDS THE EXISTING PIPELINE — nothing new was built for the "do stuff with it"
+half.** The form's own field names are mapped by `replicaPages.fields` (no normalising at capture
+time, so the copy stays faithful) into the same `LsaQuote` the LSA dialog writes, so a submit
+produces the Salesforce lead, the customised SMS workflow and the Interactions payload exactly as
+a quote does. **`LsaQuote.source` distinguishes them**, optional and defaulting to `"lsa"` because
+the store is persisted and the measured LSA wording must not move.
+⚠️ **THE ZIP IS RESOLVED TO A CITY** through the same `/api/zip` the precise-location pill uses
+(30328 → Sandy Springs), because the captured payload names a place, not a postcode — and it
+falls back to the raw ZIP rather than making a submit wait on a network call.
+⚠️ **TWO OPENER SHAPES, because one did not fit both.** A web-form quote did not arrive "on
+Google", and these forms often have **no free-text box at all** (Aptive's has five fields and none
+is a message) — a fixed opener greeted a real person with `You told us: ""`. The quote is included
+only when there is one. ⚠️ And the two intros are whole SENTENCES rather than a shared stem: built
+as `this is <name> ${tail}.` the web variant read *"this is AutoNation thanks for reaching out"*.
+
+⚠️ **AUTONATION'S REPLICA IS NOT ITS `bookingPath` PAGE, deliberately.** `/appointment` is a
+multi-step scheduler behind a consent gate whose contact fields never appear on step one, so a
+capture of it shows a form an SE cannot fill. The replica is `/an-fleet-services`, a genuine
+single-page lead form. The two fields answer different questions — `bookingPath` is "where does
+Book online go", `replicaPages` is "which page can we actually replicate".
+
+⚠️ **SIZE: 1.7MB and 2.9MB.** Static files, never bundled, but this is a per-prospect feature
+rather than something to run across all 145.
+⚠️ **Needs internet at demo time** — assets resolve from the prospect's CDN via `<base href>`,
+the same property the saved Invoca Exchange page has.
+⚠️ **A CAPTURE FREEZES THE CAPTURING BROWSER'S STATE**, including hidden tracking fields
+(Aptive's came out carrying a `gclid` and `utm_campaign`). Harmless here — they are our own
+demo's fabricated values — but capture in a clean tab and never while signed in to anything.
+
+⚠️ **A DEV-ONLY `/api/replica-capture` ENDPOINT WAS BUILT AND THEN DELETED.** POSTing the HTML to
+the dev server is tidier than a download, and `curl` confirmed it worked — but from a real capture
+it fails with a bare `TypeError: Failed to fetch`, because every page worth capturing is HTTPS and
+the browser blocks mixed content to `http://localhost`. It could only ever be reached from an HTTP
+page, and a dev server that writes files from an unauthenticated body is not worth carrying for
+nothing. The capture is a download instead.
+
+**`npm run audit:replicas` is 28 checks** (also in `npm run audit`): per capture — no live
+script, no iframe, **no form action**, no inline handler, no `formaction`, a form present, a
+doctype, a `<base href>`, inlined CSS, every mapped field actually present in that HTML, a filled
+form yielding a lead and an empty one refused; plus the serving layer still re-stripping,
+preventing default and re-enabling disabled controls, and the capture tool still neutralising.
+⚠️ Its script counter **strips HTML comments first** — Aptive's page carries three commented-out
+`<script>` tags and a naive count reports a clean capture as dirty, the same fix `audit:place`
+needed.
+
+**Verified end to end with real clicks**: Replicate opens Aptive's actual booking page under our
+own bar; filling First/Last/Email/Phone/Zip and clicking **Contact Me** created the lead and
+"Aptive - SMS - Quote Request (Dana)" appeared in Agent Studio. On AutoNation, filling the fleet
+form and clicking its own **Request a Quote** produced *"Lead created for Marcus Bell"* with
+Company and Fleet size chips, `location: "Sandy Springs"` resolved from ZIP 30328, and the
+comments field carried into the SMS opener. A prospect with no capture (Roto-Rooter) is offered
+**no Replicate button at all**, and the route fails closed if the URL is typed.
+⚠️ **ONE DEBUGGING DETOUR WORTH NOT REPEATING: a stale module.** The click bridge was tested
+against a dev-server module that predated the edit and appeared not to work at all; instrumenting
+`wireFrame` to report what it wired showed `buttons: 2` after a reload. This file already records
+the Node-cache version of this trap for `engine/*`; the browser HMR version is the same lesson.
+
+## Marketing Source names the channels the demo can SHOW: Google LSA and ChatGPT (9/12/2026)
+Asked for from a Marketing Source breakdown: *"can you replace Youtube and facebook in the
+marketing source in all the dashboards and replace it Google LSA and ChatGPT."* Right change for
+a reason worth stating: this platform now demos a **Google Local Services ad** and a **ChatGPT
+sponsored ad**, and neither channel appeared anywhere in the attribution data an SE opens
+straight afterwards. `src/data/marketingSources.ts` + `sourceRows()` in `engine/core.ts`.
+
+⚠️⚠️ **A STRING REPLACE WOULD HAVE BEEN BADLY WRONG, AND THE MEASUREMENT IS WHY.** Across the
+145 profiles on disk these two words appear **370 times as a Marketing MEDIUM and 366 times
+inside a landing-page URL** (`utm_source=facebook`) against **97 in a source breakdown**. A
+medium legitimately IS "Facebook". So the rename walks structurally to the positions that MEAN
+Marketing Source — breakdowns whose `dimensionColumn` says so, and the ops section whose table's
+first column does — and `dimensionColumn` is the identifier rather than the title for the same
+reason Location Comparison finds its columns by header instead of by index.
+
+⚠️⚠️ **DONE AT LOAD, NOT AS A DATA MIGRATION.** 145 profiles carry these values locally and the
+shared library holds ~234 more that no local edit reaches. Same call `withoutAgentQaSignals`
+records — "changing the prompts alone would have fixed nothing an SE could see" — so
+`renameMarketingSources` runs as a profile enters `ProfileContext` and every screen is right by
+construction, live demos included. The engine asks for the new names too, so a prospect
+generated from now on is born correct and the rename is a no-op for it.
+⚠️ **BOTH ENTRY POINTS NORMALIZE** — the initial state (registry + localStorage cache) and
+`addProfile` (a fresh generation, or a library demo). Doing one and not the other is how a
+library demo renders Facebook while a bundled one renders Google LSA.
+
+⚠️⚠️ **`digitalInsights` IS DELIBERATELY UNTOUCHED, and that was measured rather than assumed.**
+The Digital Journey report prints **Marketing Source, Marketing Medium and the Full Landing Page
+URL in ONE VISIBLE ROW**, and on a Facebook source row all three say so (medium "Facebook" on 37
+of 38, `utm_source=facebook` on the same 37). Renaming only the source would print
+`Google LSA | Facebook | …utm_source=facebook` on one line — the contradiction this file already
+records twice. Moving the whole tuple means inventing utm conventions for ChatGPT that nothing
+in the demo emits, which is a decision to ask for. **It costs less than it looks: the two slices
+already use different source vocabularies** (Aptive's dashboard reads Google / Bing / Direct /
+Facebook / YouTube while its journey rows read Organic / Paid Search / Social Media), so they
+were never aligned and this introduces no new drift.
+
+⚠️ **EXACT VALUES ONLY.** A source row reading "Paid Social (Facebook/Instagram)" or
+"Facebook / Instagram" is a COMBINED channel; calling it "Google LSA" would be wrong rather than
+renamed. Measured: 8 such rows against 94 standalone ones.
+⚠️ **FACEBOOK -> GOOGLE LSA, WHICH INVERTS THE ORDER THE REQUEST LISTED.** Taken positionally it
+would be YouTube -> Google LSA; the measurement argues the other way — Facebook appears in 86
+profiles' source breakdowns and YouTube in 16, so this is what actually puts the channel we just
+built a screen for in front of most prospects. One line to flip.
+⚠️ **RENAME ONLY, NEVER AN INSERT.** A breakdown's rows are a partition whose metrics sum to the
+prospect's own call total. Relabelling preserves every sum by construction; adding a row would
+not. **Consequence, stated: 56 of 145 profiles carry neither value and so gain neither name.**
+
+⚠️ **ONE RULE, THREE PROMPTS.** Source rows are generated by `dashboardChannels`, `opsDashboard`
+AND `aiAgentConversion`; a rule pasted into two of them is how one dashboard says Google LSA and
+another says Facebook. `sourceRows()` is injected into all three and the audit fails below three.
+
+**`npm run audit:sources` (also in `npm run audit`) is 11 checks** over all 145 profiles: the
+exact-match rule and its refusal of compounds, the mapping, that **nothing outside a source
+position moved** (mediums, landing URLs, journey rows, row counts and every metric byte-identical),
+that no source row still reads Facebook/YouTube, idempotence, the untouched-profile identity path,
+and the prompt carrying the rule at all three sites while still permitting the MEDIUM.
+⚠️ Each was broken on purpose and seen to fire: widening to a substring match (the compound check
+reddens), dropping the ops chart from the rename (36 leaks + 41 survivors), and removing the rule
+from one prompt.
+⚠️⚠️ **TWO OF THOSE CHECKS FAILED ON CORRECT CODE FIRST — the eleventh and twelfth probe faults
+in this file.** One asserted every ops chart bar appears in its own table, which **five profiles
+never satisfied**: Hopscotch Primary Care's chart says "Paid Social" where its table says
+"Facebook (Paid Social)". That is a GENERATOR bug predating this work (the rename leaves both
+untouched, since both are compounds), so the check now measures "the rename must not make
+divergence worse" and the real defect is filed separately. The other looked for the prompt's
+finished sentence in `engine/core.ts` and found nothing, because the rule is built across a
+template-literal break (`` `…Marketing ` + `MEDIUM…` ``); adjacent literals are joined before
+matching now.
+
+Verified in the browser: Aptive's Calls by Source reads Google / Bing / Direct / **Google LSA** /
+**ChatGPT**, summing to its own 64,004 KPI exactly, with the Medium table untouched — and the two
+new rows land as the smallest-volume, highest-converting ones (58.2% and 64.5% against Google's
+44.3%), which is the "volume is not value" story this file already enforces. AutoNation's
+Marketing & Operations Source **table and its chart moved together**, no Facebook or YouTube
+anywhere on either page. Mattress Firm's Digital Journey report still shows Facebook as source
+AND medium on the same row, untouched on purpose.
+
+## The LSA conversation opens with Google's lead payload (9/12/2026)
+Asked for with a capture of the real thing attached — an **Interactions** report for a pest
+control advertiser (`reference/google-search/lsa-interactions-v1.html`): *"for the LSA
+submission, when setting up the SMS agent the first message only in the interaction report
+should always be 'You have received a new message from a customer via Google Local Services
+Ads. Customer Name: …, Location: …, Service: …, Message: … [Notes from LSA: This customer has
+requested a quote].'"* `lsaLeadMessage` in `quoteWorkflow.ts`, rendered by `buildConversation`.
+
+⚠️⚠️ **IT IS AN INBOUND MESSAGE, NOT THE AGENT'S GREETING — and the capture is what settles
+that.** It sits on the **Consumer** side of the thread, and the agent's own first reply follows
+it ("Thank you for contacting <business>. Reply STOP at any time to opt out…"). It has to be
+inbound: the text is addressed to the BUSINESS ("You have received…"), so making it the opener
+would be texting the customer a notification about themselves. Only the first message changes,
+exactly as asked — `quoteWorkflow`'s customized opener is untouched.
+
+⚠️⚠️ **IN THE REPORT, NEVER ON THE PHONE — which is why it is a parameter to
+`buildConversation` rather than a seeded `messages` entry.** The payload arrives on the
+business's inbound channel; the consumer never sees it, and putting a notification about
+themselves into the iPhone mockup would break the one screen that has to stay a believable
+iMessage thread. The phone renders `messages`; the capture renders this in front of them.
+Verified both ways: the report's first turn is the payload and the phone's first bubble is the
+agent's opener, with the payload string absent from the preview's DOM entirely.
+
+⚠️⚠️ **AN EMPTY SLOT KEEPS ITS LABEL, AND THAT IS MEASURED RATHER THAN TIDIED.** The captured
+payload reads `Customer Name: , Location: Lowell` — that advertiser's feed carried no name and
+the label stayed with nothing after it. Reproducing that is also what makes the field addition
+below safe. **The string is asserted character-for-character against the capture** (extracted
+from the saved HTML, not transcribed from the screenshot).
+
+⚠️ **`LsaQuote.location` IS NEW AND OPTIONAL, because the store is PERSISTED.** Google's payload
+names the consumer's city and the quote form never asks for one, so it comes from the search
+screen's own location (`d.shortCity` — the same value the unit prints as "Serves <city>", and
+the one the ZIP pill can re-point). Optional because a quote captured before this field existed
+is still in localStorage for up to seven days; it renders as the empty slot the real payload
+already uses, so an old record degrades into a correct-looking message rather than `undefined`.
+
+⚠️ **`smsInfo.totalMessages` COUNTS THE TRANSCRIPT, NOT `messages`.** With a lead-in the two
+differ by one, and an SMS Info card that disagrees with the transcript beside it is exactly what
+a prospect notices before we do. The lead-in also takes the earliest timestamp, with the rest of
+the thread shifted a minute, so the order on screen is the order it happened.
+
+⚠️ **THE HOOK IS CALLED UNCONDITIONALLY.** `wf && quoteForWorkflow(useQuoteCaptures()…)` reads
+naturally and puts a hook behind a condition, which React forbids and which would break the
+moment an SE opened a different preview. The slug is tested after the hook, not around it.
+
+⚠️ **A SIDE EFFECT WORTH HAVING: the payload reaches `/api/analyze`,** since signals are
+extracted from `conv.transcript`. Measured on a real submission, the Analysis tab came back with
+"Service Area Confirmed: Phoenix", "Service Type: Recurring Residential Pest Plans" and "Pest
+Type Identified: Carpenter Ants" — all grounded in the form, none of which the chat alone said.
+
+Verified end to end by submitting a real quote through the dialog (Aptive, Phoenix): the record
+stored `location: "Phoenix"`; the Interactions report's first turn is the payload on the Consumer
+side, character-identical to the template with all four fields filled; the phone shows only the
+agent's opener; `totalMessages` reads 4 against a 4-turn transcript. **Untouched and checked: the
+built-in agent's preview (no `?wf=`) still captures a 3-turn conversation beginning with its own
+stored greeting and no lead-in.** `audit:ai` and `audit:place` green, typecheck clean.
+⚠️ A note for the next person driving this form in a browser: the contact field's centre sits
+under the dialog's sticky footer until the body is scrolled, so a click at its centre hits the
+footer. That is ordinary scrollable-dialog behaviour, not a defect — scroll first.
+
+## "Book online" is a tracked handoff, and the beat ENDS there (9/12/2026)
+Asked as a question — *"each prospect has a unique form, so what do you recommend?"* — and
+settled by measuring the capture rather than guessing. **This section exists so the "let's
+build the booking form" idea is not relitigated; it was considered, costed and rejected.**
+
+⚠️⚠️ **GOOGLE DOES NOT HOST THIS FORM.** In `reference/google-search/lsa-quote-v1.html`,
+"Book online" is an `<a href>` to `google.com/localservices/booking?ebd=<base64>`, and that
+blob decodes to the advertiser's OWN booking system plus a Reserve-with-Google token:
+
+| advertiser | destination |
+|---|---|
+| 6 of 8 | **ServiceTitan** — `book.servicetitan.com/<tenant-id>` |
+| Roto-Rooter | its own page — `rotorooter.com/schedule-service/?zipCode=30318&gad=789-200-3717` |
+| 1 | a third-party form builder — `form.recreateai.com/?rai_pak=<uuid>` |
+
+Every destination carries `rwg_token=AE37R_…`.
+
+⚠️⚠️ **SO THERE IS NO SINGLE FORM TO REPLICATE — two independent reasons, both measured:**
+  1. **Per-TENANT variance.** Even among ServiceTitan advertisers the services, fields and
+     branding are configured per business, so one replica matches none of them. (Raised by the
+     user, and correct.)
+  2. **WRONG VERTICAL FOR ALMOST EVERYONE.** ServiceTitan is a home-services product, and only
+     **2 of the 15 profiles on disk are home services** — the other 13 are healthcare, hotels,
+     auto, insurance, senior living, retail and moving. Orlando Health does not book through
+     ServiceTitan.
+
+⚠️ **A NEUTRAL, PROSPECT-BRANDED BOOKING PAGE WAS DESIGNED AND ALSO REJECTED** — by the user,
+and it was the right call: it would be a form nobody's prospect actually uses, presented as
+theirs, which is the same failure mode as every other invented-content refusal in this file.
+
+⚠️⚠️ **AND NOTHING CAN COME BACK FROM THE REAL FORM, WHICH IS HONEST RATHER THAN A GAP.** The
+question asked was whether the click could carry a tag that pushes the submission back into the
+demo. It cannot: those URLs are live tenants belonging to REAL named businesses (Keep Smiling
+Plumbing, Cool Air Mechanical, Plumb Works are all in the capture) so submitting one books an
+actual service call; a third-party page is cross-origin with no `postMessage` contract and no
+webhook we can receive; and `rwg_token` is Google's tag, not Invoca's.
+**What makes a form submission reach Invoca in the real world is `InvocaJS` deployed on the
+advertiser's own booking page** — it finds the form in the DOM, injects a hidden field carrying
+the Invoca id, and captures the values client-side. That is a property of THAT page, not of this
+click, and it is a selling point rather than a limitation. The tag half already exists here:
+every outbound link on this screen carries `oppref`.
+
+**What was built instead:** `bookingHandoffUrl()` — the prospect's own site with `oppref`,
+`utm_medium=lsa`, `utm_content=book_online` and a deterministic `rwg_token`. ⚠️ The token is
+fabricated for exactly the reason `gclid` already is on this screen: it is the parameter that
+marks a booking click as coming from the ad, so omitting it would drop the thing being
+demonstrated.
+⚠️ **PROSPECT ROW ONLY.** The rival is an invented business with an invented domain, so its
+"Book online" stays an inert span — linking it would open a 404, the same reason its ad headline
+is inert while the prospect's is a real link. "Get phone number" stays inert on both rows: no
+captured destination.
+
+Verified: the prospect's button is an `<a target="_blank" rel="noopener noreferrer">` carrying
+all five parameters, the rival's and both "Get phone number" are still spans, and an 11-property
+re-measure shows the unit unchanged (341 tall, rows 116, circles 44x44 at y=17, actions ending
+at 642, label still `500 14/18 #a8c7fa` on two lines with no underline).
+
+### ⚠️⚠️ CORRECTED SAME DAY — it was landing on the HOME page, which is not what the real one does
+Reported directly: *"the book online link is just taking them to their website, it needs to take
+them to the actual page to what happens when they click book online, for example when you click
+on the book online for Roto Rooter it takes them to URL:
+`www.rotorooter.com/schedule-service/?zipCode=30328&gad=138-660-5452&rwg_token=AE37R_…` and not
+the home page."* Right, and the decoded `ebd=` blobs above say the same thing — the handoff lands
+on the advertiser's own BOOKING page. `bookingHandoffUrl` was setting every parameter correctly
+onto the front door. `src/data/bookingPath.ts` is a `domain -> path` table it now consults.
+
+⚠️⚠️ **A TABLE, NOT RUNTIME DISCOVERY, AND THAT WAS MEASURED RATHER THAN ASSUMED.** The obvious
+build is the `engine/ogImage.ts` pattern: fetch the site at view time and find the booking link.
+Probed across the library, it fails for exactly the prospects that matter — **AutoNation 403,
+Mattress Firm 403, Orlando Health 429**, the same enterprise blocking `ogImage` already records —
+and three more are SPAs whose CTA is not in the served HTML. A BROWSER reaches all six (that is
+how their paths were resolved), a server cannot, so runtime discovery would quietly drop the
+biggest brands to the home page. A demo link must also not depend on whether somebody else's site
+answers a fetch mid-pitch.
+
+| resolved by | |
+|---|---|
+| server fetch | rotorooter.com **`/schedule-service/`**, aptivepestcontrol.com `/build-a-plan/`, keywhitman.com `/lasik/schedule-online/`, nationalvanlines.com `/free-moving-quote/` |
+| a browser (these 403/429 a server) | autonation.com `/appointment`, orlandohealth.com `/request-an-appointment`, mattressfirm.com `/en-us/stores/` |
+| read off the rendered page (SPAs) | comfortkeepers.com `/care-assessment/`, vectorsecurity.com `/services/` |
+
+⚠️⚠️ **ROTO-ROOTER IS THE CONTROL, AND IT MATCHES THE REAL DESTINATION CHARACTER FOR
+CHARACTER.** The discovery found `/schedule-service/` independently, which is the path in the
+live Google LSA link quoted above — that is the evidence the rest of the table is the right KIND
+of page rather than a plausible-looking contact form.
+
+⚠️ **PATHS ONLY, NEVER A QUERY STRING.** The real URL also carries `zipCode=30328` and `gad=…`,
+but those are ADVERTISER-SPECIFIC parameters Google fills in for a page that accepts them;
+appending a zipCode to a prospect whose booking page has no such field would be inventing an
+integration. The generic tokens (`oppref`, the utm set, `rwg_token`) are still appended for every
+prospect, because those are Google's and Invoca's own.
+
+⚠️ **AN UNKNOWN PROSPECT FALLS BACK TO "/" — the home page, which is never a 404.** The platform
+generates new prospects constantly and none of them is in this table; **Goosehead is in it today**
+(the discovery found no booking link on that site at all). A guessed path (`/book`, `/schedule`)
+404s in front of a customer, which is worse than landing one click away.
+
+Verified in the browser on four prospects: Roto-Rooter renders
+`https://rotorooter.com/schedule-service/?oppref=…&utm_medium=lsa&utm_content=book_online&rwg_token=AE37R_…`,
+Orlando Health `/request-an-appointment`, and Goosehead falls back to `https://goosehead.com/`
+with `oppref` and the `rwg_token` still attached. The unit is unchanged (341 tall, 652 wide, rows
+116, thumb 92x92, 5 actions of which exactly 1 is a link). `bookingPath` normalises protocol,
+`www.` and case (unit-checked); `audit:place` green, typecheck clean.
+
+### Right-click it and the SE picks the destination (9/12/2026)
+Asked for straight after the table landed: *"when i right click on the book online it gives the
+user the option to enter the URL where they want the button to take them to when its click, so
+there will def be a default place it goes, but the user can also change it."*
+`src/data/bookingOverride.ts` (the store, `.gs-lnk-*` for the panel).
+
+⚠️⚠️ **THIS IS WHAT MAKES `bookingPath` A DEFAULT RATHER THAN A CEILING.** That table is
+hand-resolved, so it can only ever cover prospects somebody has looked up — and the platform
+generates new ones constantly, booking pages move, and a regional franchise books somewhere the
+national site does not. Every one of those is an SE with the right URL in their clipboard and,
+until this, no way to use it.
+
+⚠️⚠️ **A RIGHT-CLICK IS THE ONLY REASON THIS CAN LIVE ON A REPLICA SCREEN.** Every pixel of the
+unit is measured against a capture, and the standing rule is that an affordance of ours must not
+change what a prospect sees. At rest this adds nothing — no control, no marker, **not even when
+an override is in force** — so the unit still diffs clean (re-measured after: 652x341, rows 116,
+thumb 92x92, circles 44x44, 5 actions, 1 link). Same argument as the hover-revealed Ask AI
+sparkle. The one concession to discoverability is a native `title` on the link, which is what
+"Use precise location" already does on this same screen.
+
+⚠️⚠️ **AN OVERRIDE OPENS VERBATIM — IT DOES NOT GET THE TRACKING ENVELOPE, and that is a
+deliberate trade.** The default is wrapped in `oppref` + the utm set + `rwg_token` because that
+is the demo's own point. An overridden URL is not: the instruction was "take them to this URL",
+and what an SE pastes is very often a real booking link copied complete with its own parameters
+(the real Roto-Rooter destination carries `zipCode` and `gad`). Rewriting a pasted link's query
+is how you break one, and appending ours beside theirs reads as a bug the moment they look at
+the address bar. **Consequence, stated: an overridden link carries no `oppref` unless the SE
+includes one.** The menu shows the default underneath so what was replaced is never hidden.
+
+⚠️ **PROSPECT'S ROW ONLY.** `onContextMenu` and `title` are opt-in props on `LsaAct`, defaulted
+absent, passed only by the prospect's "Book online" — verified live: of the five actions exactly
+one carries them, the rival's is still an inert `<span>`, and right-clicking it does not open the
+panel. "Get quote" opens the dialog and "Get phone number" has no destination, so neither takes
+one either.
+
+⚠️ **PER PROSPECT, PERSISTED, NO TTL** — the same shape and reasoning as `locationOverride`, and
+verified live: an override set on Roto-Rooter survives a reload and does NOT follow a switch to
+Orlando Health, which still resolves its own `/request-an-appointment` default.
+
+⚠️ **ONLY http AND https ARE STORED**, checked at the one place that writes and again on read.
+The value goes straight into an `href`, so a `javascript:` URL would be script on our own origin.
+⚠️⚠️ **THE SCHEME TEST IS `scheme://`, NOT A BARE COLON — the first version refused a good URL.**
+`[a-z0-9+.-]*` happily matches `example.com`, so `example.com:8080/book` was read as the scheme
+"example.com:" and rejected. Requiring the slashes still catches both dangerous shapes by two
+different routes: an opaque `javascript:alert(1)` gets the `https://` prefix and `new URL` throws
+on its non-numeric "port", while `javascript://…` keeps its protocol and the allow-list refuses
+it. Both measured, along with a hostname-needs-a-dot rule (a bare `rotorooter` is a typo here,
+not an intranet host, and finding out mid-demo is worse than being told now).
+
+⚠️ **THE INPUT SELECTS ALL AND SCROLLS BACK TO THE START, and `setSelectionRange(…, "backward")`
+IS NOT ENOUGH ON ITS OWN.** A plain `.select()` leaves the caret at the end and the field follows
+it, so the tracked default — which is mostly query string — opened showing `…&rwg_token=AE37R_…`
+with the domain out of view. Measured after switching to a backward selection: direction came
+back `"backward"` and `scrollLeft` was still 16. The explicit `el.scrollLeft = 0` is what does
+the work.
+
+⚠️ **OUTSIDE-CLICK IS POINTERDOWN IN THE CAPTURE PHASE**, per the trap the Signal flyout and the
+Create-Workflow combobox already record.
+
+⚠️⚠️ **AND ONE "BUG" WAS THE TEST HARNESS — the eleventh in this file.** Enter appeared to do
+nothing: the panel stayed open, no error, nothing stored, while a real click on Save worked
+perfectly. The Browser pane's `computer {action:"key", text:"Return"}` dispatches a **trusted
+keydown with an EMPTY `key` and `code`** (logged from a capture-phase listener), so
+`e.key === "Enter"` can never match. **Never conclude a key handler is broken from that tool
+alone** — dispatch a real `KeyboardEvent` instead, which is how both Enter (saves and closes)
+and Escape (closes) were actually confirmed.
+
+Verified end to end with real right-clicks, real typing and real clicks: the panel opens at the
+cursor prefilled with where the button goes now; `rotorooter` is refused with "That does not look
+like a full web address" and stores nothing; `book.servicetitan.com/tenant/9f2b?campaignId=demo`
+saves as `https://…` with their own query intact and the link re-points immediately; reopening
+shows Reset plus the full default underneath; Escape, an outside click and Cancel all close; and
+Reset restores the tracked default and clears the key. `audit:place` and `audit:ai` green,
+typecheck clean.
+
+#### Replicate ENDS in the menu now: Complete, saved, and no navigation (9/15/2026)
+Asked for directly: *"when i click replicate, show the progress bar like its doing now, but once
+its done, just show complete, but dont go to it, auto save the page, so when the user click book
+online it goes to the replicated page."*
+
+The capture already happened before the old version navigated — that is why the wait is in this
+panel at all — so opening the replica was the one part that cost something: it threw the SE off
+the search screen they were demoing from, and left them to come back and re-point Book online by
+hand. The capture is on disk either way, so the useful end of the action is the DESTINATION being
+set. On success it now calls `onSet("/replica?url=…")` and reports Complete; the panel stays open.
+
+⚠⚠ **IT WRITES THROUGH `onSet`, NOT A SECOND WRITER**, so it inherits the store's validation, the
+per-prospect key, the persistence and the **Reset** that puts the tracked default back — and the
+"Default: …" line appears underneath the moment it lands, which is what tells the SE the link was
+genuinely re-pointed rather than merely claimed to be.
+
+⚠⚠ **AND THAT IS EXACTLY WHERE IT WOULD HAVE SILENTLY FAILED.** `normalizeUrl` refuses a hostname
+with no dot (a real rule: "rotorooter" is a typo, not an intranet host), and a `/replica?url=…`
+path has no host at all — so the save would have come back "That does not look like a full web
+address" and the SE would see an error where a receipt belongs. Worse, the obvious workaround of
+storing `${location.origin}/replica…` fails the SAME rule on **localhost** while working on the
+live site, i.e. broken for every SE testing it and fine in production. A **same-origin path branch**
+now returns the value verbatim, above every other rule.
+⚠ **`//host/path` IS EXCLUDED** — a protocol-relative URL is somebody else's origin wearing a
+path's clothes. One leading slash cannot carry a scheme, so `javascript:` stays unreachable by
+that branch and the existing guard still owns every other shape.
+
+⚠⚠ **AND THE BOX HAS TO BECOME THE REPLICA TOO — leaving it alone was a REAL BUG, reported as
+"it still takes me to the real website".** The link genuinely WAS re-pointed; then **Save** stores
+whatever sits in the input, which was still the ORIGINAL site URL, silently clobbering the replica
+that had just landed. Confirmed from the SE's own stored state: `bookingUrl` held the raw
+`https://www.greenixpc.com/contact-us` while a capture of that very page sat on disk. That click
+is the natural next move now that the panel **stays open** instead of navigating away, so the old
+flow could never expose it — **a change that removes a navigation can make a pre-existing button
+reachable at a moment it was never meant for.** It also broke this panel's own rule that the field
+shows where the button goes RIGHT NOW. `setValue(replica)` on success fixes all of it: Save
+re-saves the same thing, reopening shows it, and there is no way to overwrite it by accident.
+⚠ `setValue` fires no `onChange`, so Complete deliberately survives it — only a human editing the
+field clears the receipt.
+
+⚠ **THE BAR FINISHES AT 100 RATHER THAN DISAPPEARING.** A progress bar that vanishes at the end is
+indistinguishable from one that was cancelled, and this flow no longer navigates away to prove it
+worked — so the same row stays, fills, and reads **Complete**, with the button doing the same.
+⚠ **`.gs-lnk-prog-done` IS WRITTEN `.gs-lnk-prog .gs-lnk-prog-done` (0,2,0).** `.gs-lnk-prog-pct`
+pins `width: 34px` (room for a percentage) and is defined LATER in the file, so a bare class would
+TIE and lose on source order — "Complete" clipped to 34px while the rule read perfectly. Same tie
+`.ts-tablewrap .ts-table` and `.wf-leaf .wf-leaf-add` exist to win. Verified `scrollWidth ===
+clientWidth` on the rendered label.
+⚠ **Complete is GREEN, not a faded `:disabled`** — the state is success, not unavailability.
+`.gs-lnk-btn` deliberately carries no `:disabled` opacity, so it reads at full strength while
+still refusing a second click. **Typing a new URL clears the receipt**, or Complete would be
+describing a capture of a different page.
+
+**`npm run audit:replicas` gained 9 checks**: the box becomes the replica so a following Save
+cannot clobber it, the replica path stores verbatim with its query untouched, `//host/path` is not treated as same-origin, both `javascript:` shapes are still
+refused, the needs-a-dot rule still fires, the success path calls `onSet` with the replica route,
+it no longer navigates, the Complete state exists, and editing the URL clears it.
+⚠ Verified to FIRE by disabling the path branch and by restoring the navigate (3 red), then
+restored to green.
+
+**Verified live on Aptive** with real right-clicks and clicks: Replicate ran to 100%, the page
+stayed on `/google-search`, the bar and the button both read Complete in `#6dd58c` with no
+clipping, `invoca-demo:booking-url::aptive` held `/replica?url=…`, and "Default: …" appeared
+underneath. Book online then opened the replica — Aptive's real form, **1 form / 38 inputs** — the
+override survived a reload, and **Reset restored the tracked `oppref` link and cleared the key**.
+The unit itself is unchanged: 652x341, 5 actions of which exactly 1 is a link.
+
+#### And the saved link travels with the DEMO now, not just the browser (9/15/2026)
+Asked for straight after: *"it should always stay and save even when the users closes it and
+opens it the next day."*
+
+⚠️ **THE NEXT-DAY HALF ALREADY HELD, and saying so is the honest start.** localStorage has no
+expiry and this store never had a TTL. What made it look otherwise was **me clicking Reset at the
+end of the previous verification** and leaving the demo in that state — the SE then saw the real
+URL and reasonably read it as the save not sticking. **Finish a verification in the state the
+feature is meant to be in**, or the last thing you prove is the teardown.
+
+What localStorage genuinely could NOT do is leave the machine: a colleague opening the same demo,
+the same SE on a second laptop, or the live site after a link was saved on localhost, all fell
+back to the tracked default with nothing on screen to say why.
+
+⚠⚠ **SO THE VALUE RIDES THE OVERRIDE LAYER THAT ALREADY TRAVELS — no server change, no schema
+change, no migration.** `AiAssistantContext`'s store is keyed `<demoId>::<path>`, is written to
+localStorage on every change, is PATCHed onto the shared demo record debounced and owner-only, and
+is re-hydrated by `hydrateDemo` for anyone who opens that demo. The link is written there as
+`bookingUrl` under **`<profileId>::/google-search`** (`bookingScopeKey`, one definition — it is
+half of a key the sync slices on, and two copies is how one side writes a key nobody reads).
+⚠ **A LIBRARY DEMO'S `profile.id` IS ITS DEMO ID**, which is the whole reason a key built from
+`profile.id` lands inside the `<demoId>::` prefix the PATCH effect slices on. A key built any
+other way is never synced and **nothing reports it** — which is what the audit pins.
+
+⚠ **`registerBase`, NEVER `registerScope`** — the latter is last-write-wins and would repoint
+whatever sparkle the SE has open at this screen's one field. And the base is seeded `""`, so the
+first save is a string-to-string write rather than the `undefined -> string` TYPE FLIP `editGuard`
+refuses — the trap the greeting, `serviceZips` and the voice picker each had to be let through by
+name. Writing through `applyEdits` also inherits `readOnly` on somebody else's demo for free.
+
+⚠⚠ **THE LOCAL KEY SURVIVES AS THE FALLBACK, AND IT IS LOAD-BEARING RATHER THAN LEGACY.**
+`applyEdits` returns 0 for a demo the SE may not edit and for a bundled profile that is no library
+demo at all — both are real, and in both the SE still needs to point the link at a replica for the
+conversation they are having. **Precedence is local, then shared**, and a successful shared save
+CLEARS the local copy: a local value therefore exists only when the shared write was refused, i.e.
+only when it is genuinely that SE's own and should win on their own machine. Without the clear, an
+owner re-pointing the link on one laptop would leave the other reading a stale local copy forever.
+⚠ **Reset clears BOTH, unconditionally**, or the old link is back on the next render.
+
+**`npm run audit:replicas` gained 8 more checks** (16 in total for this feature): the scope key is
+`<profileId>::<path>`, it is a bare pathname, the base is seeded `""`, it registers a base and not
+a scope, a save tries the durable layer first, a successful shared save clears the local copy, the
+precedence is local-then-shared, and Reset clears both.
+⚠ Three were broken on purpose and seen to fire — renaming the key out of the sync prefix,
+inverting the precedence, and leaving the local copy behind.
+
+#### The submit button WAS replicated — it was clipped out of its own frame (9/15/2026)
+Reported directly: *"you need to also make sure that the submission button is also always
+replicated, for example i dont see one for greenix"*, alongside *"if i hit submit, would you be
+able to see the values of these fields."*
+
+⚠⚠ **I HAD ALREADY MIS-REPORTED THIS ONCE, AND THE MISTAKE IS THE ONE THIS FILE KEEPS
+RECORDING.** I said the Greenix replica rendered "0 form fields in the DOM" — measured on the
+replica frame's document only. Walking one level further finds **1 form, 25 inputs and a real
+Submit** inside the HubSpot embed. `replicaDocs` had always handled that (its own header names
+greenixpc.com as the reason it exists); my probe did not. **When a probe says a page has nothing,
+walk further in before believing it** — the same shape as the record tiles, the nav bar and the
+`background-image` marks.
+
+**The real defect was geometry.** Measured on that replica: the HubSpot frame renders **402x498**
+while its own document is **600** tall, putting Submit at **527** — 29px past the bottom edge,
+with no scrollbar to reach it. A third-party embed is normally grown by its own script posting a
+height to the host page, and that script is precisely what a replica strips, so the frame stays
+frozen at whatever height it was captured with. The button was captured, neutralised, wired and
+working; it simply was not on screen.
+
+`fitEmbeddedFrames(doc)` grows every same-origin **form** frame to its content height, called on
+bind and again at 600ms once fonts and images have settled. Measured after: the frame is 600 and
+Submit sits **219px inside it**.
+⚠ **IT ONLY EVER GROWS** — shrinking would clip an embed deliberately taller than its document,
+and nothing here knows which is which. ⚠ **FORM FRAMES ONLY** — a chat widget or an ad iframe
+reports a tall document too, and stretching those pushes the real page apart for nothing.
+
+**So yes, a submit delivers the values — verified with a real click rather than asserted.** Filled
+the nested HubSpot form and pressed its own Submit: a lead was captured reading name
+"Dana Whitfield", contact "(602) 555-0147", `location: "Phoenix"` (ZIP 85018 resolved through
+`/api/zip`), `source: "web"` — and **"Aptive - SMS - Quote Request (Dana)" appeared in the Agent
+Studio table**, so the whole replicate → lead → workflow chain runs from a form inside a frame.
+⚠⚠ **A PROBE FAULT WORTH RECORDING, because it looked exactly like a bug in the field map.** The
+first submit stored `contact: "+1"`. HubSpot's phone widget is TWO inputs — a visible `type=tel`
+with **no name** (id `phone-8e0d2466…`, which is what the stored field map points at) and a
+HIDDEN `name="phone"` twin its script normally syncs. My fill targeted `input[name^=phone]` and
+hit the hidden one, so the read returned the visible field's placeholder `+1`. Typing into the
+field a human actually uses returns the number in full. **Fill what the map names, not what the
+name looks like.**
+
+⚠ **AND A WEB-FORM LEAD WAS LISTING UNDER AN LSA TRIGGER.** `triggeredBy` was pinned to
+"Google Local Services ad — quote request submitted", so a lead filled in on the prospect's own
+replicated booking page showed that in Agent Studio's **Triggered By** column — contradicting the
+page the SE had just submitted in front of the room. It reads `q.source`, the same flag the
+opener's channel phrase already uses, rather than a second one that can drift out of step.
+
+**`npm run audit:replicas` gained 6 checks**: the fit exists, only grows, is form-frames-only,
+runs twice, clears its timer, and the trigger line names the real source. Three were broken on
+purpose and seen to fire (letting it shrink, letting it stretch every iframe, restoring the
+hardcoded trigger).
+
+**Verified end to end against the real server, not by construction.** Saving wrote
+`customizations.overrides["/google-search"].bookingUrl` into `.data/demos/aptive.json` with
+`updatedAt` bumped; **deleting every local trace** (the store key and the legacy key), reloading,
+and reopening the demo from the Launch library brought the link back **from the record** and Book
+online rendered `/replica?url=…` again. Reset then wrote `bookingUrl: ""` through to that same
+file and the link returned to the tracked `oppref` default. The unit is unchanged at 652x341 with
+5 actions, exactly 1 a link — and Aptive is left **saved**, pointing at its replica.
+
 ## Read.Me + the in-app docs
 - A **row in the launch menu** (`src/components/LaunchMenu.tsx`), not its own button — see the
   hamburger section below. It was `ReadmeButton.tsx`, a fixed bottom-right pill styled

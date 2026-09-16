@@ -8,6 +8,8 @@ import { tollFreeNumber } from "../data/smsContactNumber";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { SmsConversation, SmsTurn } from "../data/schema";
 import { useAutoGrow } from "../data/useAutoGrow";
+import { useExtraWorkflows, quoteForWorkflow, lsaLeadMessage } from "../data/quoteWorkflow";
+import { useQuoteCaptures } from "../data/QuoteCaptureContext";
 
 /* iPhone "Preview Agent" chat — modern iOS (dark mode) Messages mockup. The SE
    role-plays a customer texting in; the SMS agent replies live via /api/chat
@@ -50,13 +52,24 @@ function newConvBase(): ConvBase {
   return { id: genId(), now: new Date(), callerId: `805-555-${String(1000 + Math.floor(Math.random() * 9000)).slice(0, 4)}` };
 }
 
-function buildConversation(messages: Msg[], base: ConvBase): SmsConversation {
+/* ⚠️⚠️ **`leadIn` IS IN THE REPORT AND NEVER ON THE PHONE, which is the whole point of passing
+   it here rather than seeding it into `messages`.** Google's LSA lead payload arrives on the
+   business's inbound channel, so the Interactions report shows it as the consumer's first
+   message — but the consumer never sees it, and putting a notification about themselves into
+   the iPhone mockup would break the one screen that has to stay a believable iMessage thread.
+   The phone renders `messages`; the capture renders this in front of them. See
+   `lsaLeadMessage`. */
+function buildConversation(messages: Msg[], base: ConvBase, leadIn?: string): SmsConversation {
   const { id, now, callerId } = base;
-  const transcript: SmsTurn[] = messages.map((m, i) => ({
+  const turns: SmsTurn[] = messages.map((m, i) => ({
     speaker: m.role === "assistant" ? "agent" : "consumer",
-    time: clock(new Date(now.getTime() + i * 60000)),
+    /* +1 when there is a lead-in, so its own timestamp stays the earliest in the thread. */
+    time: clock(new Date(now.getTime() + (i + (leadIn ? 1 : 0)) * 60000)),
     text: m.content,
   }));
+  const transcript: SmsTurn[] = leadIn
+    ? [{ speaker: "consumer", time: clock(now), text: leadIn }, ...turns]
+    : turns;
   const nm = extractName(messages);
   return {
     id,
@@ -65,11 +78,18 @@ function buildConversation(messages: Msg[], base: ConvBase): SmsConversation {
     date: longDate(now),
     transcript,
     signals: [],
+    /* ⚠️ The lead-in is only ever built from a submitted quote request, so its presence IS
+       the marker — see `SmsConversation.lsa`. Absent (not `false`) otherwise, so a normal
+       capture is byte-identical to what it was before this field existed. */
+    ...(leadIn ? { lsa: true as const } : {}),
     smsInfo: {
       callRecordId: id,
       smsStartTime: startTime(now),
       destinationPhone: "877-936-2933",
-      totalMessages: String(messages.length),
+      /* ⚠️ THE TRANSCRIPT'S LENGTH, NOT `messages`' — with an LSA lead-in the two differ, and
+         an SMS Info card that disagrees with the transcript beside it is the kind of thing a
+         prospect notices before we do. */
+      totalMessages: String(transcript.length),
       source: "877-936-2933",
       promoNumberDescription: "SMS",
       smsEngaged: "Yes",
@@ -131,6 +151,9 @@ function BatteryIcon() {
    drawer. `title` gives the drawer a real scope label (agentConfig has none). */
 function useBrain(wfSlug?: string | null) {
   const { profile, profileId } = useProfile();
+  /* Includes any workflow created by an LSA quote request submitted during this demo,
+     newest first — one definition, so a slug that lists here also resolves elsewhere. */
+  const extraWfs = useExtraWorkflows(profile);
   const { effectiveData } = useAiAssistant();
   const base = useMemo(() => ({
     title: `Preview Agent — what the ${profile.customerName} SMS agent asks`,
@@ -140,7 +163,7 @@ function useBrain(wfSlug?: string | null) {
      what the agent asks, so it is the one place the paste / import / use-case
      controls belong. */
   const wf = wfSlug
-    ? (profile.reports.extraWorkflows ?? []).find((w) => w.slug === wfSlug)
+    ? extraWfs.find((w) => w.slug === wfSlug)
     : undefined;
   /* ⚠️⚠️ **THE WORKFLOW PAGE'S OWN `agent` HALF, READ BACK ACROSS A TAB BOUNDARY (9/8/2026).**
      Ask AI on an SMS extra workflow page now configures that workflow's opener and its ordered
@@ -174,6 +197,9 @@ function useBrain(wfSlug?: string | null) {
   const ac = usePageData(base, {
     questionPath: QUESTIONS_PATH,
     greetingFallback: wfAgent?.greeting ?? wf?.openingMessage,
+    /* ⚠️ An LSA quote workflow's opener beats a stored greeting on the phone, so it has to
+       beat it in the drawer's row too — see `Scope.greetingWins`. */
+    greetingWins: !!wf?.openingMessageWins,
   });
   /* Shape comes from data/smsBrain.ts, shared with the SMS workflow page's
      "Preview Workflow" chat drawer. Both are previews of ONE agent, so they must
@@ -195,6 +221,15 @@ export function PhonePreview({ onClose, mode = "modal", wf }: {
   const { profile } = useProfile();
   const { upsertCaptured, patchCaptured } = useSmsCapture();
   const brain = useBrain(wf);
+  /* An LSA quote workflow's thread opens with the payload Google posted to the business —
+     see `lsaLeadMessage`. Undefined for every other workflow and for the built-in agent, so
+     nothing else's capture changes shape.
+     ⚠️ THE HOOK IS CALLED UNCONDITIONALLY and the slug is tested afterwards; `wf &&
+     quoteForWorkflow(...)` around the hook call would make it conditional, which React
+     forbids and which would break the moment the SE opened a different preview. */
+  const quotes = useQuoteCaptures().capturedFor(profile.id);
+  const quote = wf ? quoteForWorkflow(wf, quotes) : undefined;
+  const leadIn = quote ? lsaLeadMessage(quote) : undefined;
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -326,7 +361,7 @@ export function PhonePreview({ onClose, mode = "modal", wf }: {
   useEffect(() => {
     if (!messages.some((m) => m.role === "user")) return;
     if (!baseRef.current) baseRef.current = newConvBase();
-    const conv = buildConversation(messages, baseRef.current);
+    const conv = buildConversation(messages, baseRef.current, leadIn);
     upsertCaptured(profile.id, conv);
 
     if (analyzeTimer.current) clearTimeout(analyzeTimer.current);

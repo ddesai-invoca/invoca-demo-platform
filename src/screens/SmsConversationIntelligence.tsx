@@ -111,15 +111,36 @@ function SmsInfoPanel({ info, profile }: { info: SmsInfo; profile: CustomerProfi
   );
 }
 
-export function SmsConversationIntelligence() {
+/**
+ * @param only  Opt-in. `"lsa"` renders ONLY quote-request threads (the
+ *              "AI SMS Conversation Intelligence (LSA)" report); omitted renders the general
+ *              report, which now EXCLUDES them.
+ *
+ * ⚠️⚠️ **THE TWO REPORTS ARE EXCLUSIVE, AND THAT IS A DECISION.** Asked for directly: *"push
+ * the conversation into reports as well, call it AI SMS Conversation Intelligence (LSA)."*
+ * Listing a thread in BOTH reports would read as a duplicate rather than as two views, and the
+ * general report would keep drifting as an SE rehearses the LSA beat. So a quote-request thread
+ * files itself under (LSA) and leaves the general report exactly as it was before the LSA work
+ * existed.
+ *
+ * ⚠️ **ONE COMPONENT, AN OPT-IN PROP — not a second screen.** Both reports are the same
+ * three-column report down to the tabs; a copy would drift on the first fix. Same pattern
+ * `ConversationIntelligence`'s `tier` prop uses, and `only` defaults to undefined so the
+ * existing route is untouched.
+ */
+export function SmsConversationIntelligence({ only }: { only?: "lsa" } = {}) {
   const { profile } = useProfile();
   const { capturedFor } = useSmsCapture();
   /* Registers this page as the AI scope and returns the slice with any
      edits made ON THIS PAGE overlaid (see usePageData). */
   const view = usePageData(profile.reports.smsConversationIntelligence);
 
-  const captured = capturedFor(profile.id);
-  const seed = view?.conversations ?? [];
+  const all = capturedFor(profile.id);
+  /* ⚠️ THE SEED IS DROPPED ON THE (LSA) REPORT, and it has to be: those examples are generated
+     general SMS threads, so listing them under a report whose whole claim is "these came from a
+     quote request" would put three threads there that no form ever produced. */
+  const captured = only === "lsa" ? all.filter((c) => c.lsa) : all.filter((c) => !c.lsa);
+  const seed = only === "lsa" ? [] : (view?.conversations ?? []);
   // Captured conversations accumulate at the top (newest first); seed examples
   // fill in below. The list scrolls, so no hard cap.
   /* ⚠️ `withoutAgentQaSignals` strips "(QA) …" signals: no human agent answered these,
@@ -132,11 +153,20 @@ export function SmsConversationIntelligence() {
 
   const selected = conversations.find((c) => c.id === selectedId) ?? firstActive;
 
-  if (!view && captured.length === 0) {
+  if ((only === "lsa" || !view) && captured.length === 0) {
     return (
       <div className="report-surface">
-        <div className="placeholder"><h2>No SMS conversations</h2>
-          <p className="muted">This report isn't set up for {profile.customerName} yet.</p></div>
+        <div className="placeholder">
+          <h2>{only === "lsa" ? "No quote-request conversations" : "No SMS conversations"}</h2>
+          {/* ⚠️ The (LSA) row only lists once a thread exists, so this is the typed-the-URL
+              case. Naming the actual precondition beats "isn't set up yet", which would read
+              as the report being broken rather than as the beat not having been run. */}
+          <p className="muted">
+            {only === "lsa"
+              ? "Submit a quote request from the Google Local Services ad, then reply to it in Preview Agent and the conversation lands here."
+              : `This report isn't set up for ${profile.customerName} yet.`}
+          </p>
+        </div>
       </div>
     );
   }

@@ -4,6 +4,7 @@ import { useVoiceCapture } from "../data/VoiceCaptureContext";
 import { SldsIcon } from "../components/SldsIcon";
 import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
 import { salesforceLeadDetail } from "../data/salesforceLeadDetail";
+import { useQuoteCaptures } from "../data/QuoteCaptureContext";
 
 /* =============================================================================
    Lead record page — what clicking a name on the Leads list opens
@@ -61,7 +62,10 @@ export function SalesforceLeadDetail() {
   const { capturedFor } = useVoiceCapture();
   const voiceCalls = capturedFor(profileId);
   const { slug = "" } = useParams();
-  const d = salesforceLeadDetail(profile, slug, voiceCalls);
+  /* The quotes too: without them this resolves the slug against a list that does not contain
+     the quote-request lead, and the row the SE just clicked opens "Lead not found". */
+  const quotes = useQuoteCaptures().capturedFor(profileId);
+  const d = salesforceLeadDetail(profile, slug, voiceCalls, quotes);
 
   /* ⚠️ FAILS CLOSED on a slug this prospect has no lead for — the same rule the
      created-workflow route documents. A plausible page for a lead that does not

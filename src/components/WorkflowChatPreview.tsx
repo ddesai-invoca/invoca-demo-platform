@@ -4,6 +4,7 @@ import { useAiAssistant } from "../data/AiAssistantContext";
 import { buildSmsBrain, askSmsAgent, resolveGreeting, SMS_AGENT_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { AgentConfigView } from "../data/schema";
+import { useExtraWorkflows } from "../data/quoteWorkflow";
 
 /* =============================================================================
    WorkflowChatPreview — the "Preview Workflow" chat drawer on an SMS workflow
@@ -86,6 +87,9 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
   minimal?: boolean;
 }) {
   const { profile, profileId } = useProfile();
+  /* Includes any workflow created by an LSA quote request submitted during this demo,
+     newest first — one definition, so a slug that lists here also resolves elsewhere. */
+  const extraWfs = useExtraWorkflows(profile);
   const { effectiveData, registerBase, openDrawer, undo, canUndo, readOnly } = useAiAssistant();
 
   /* The SMS agent's questions live under the PREVIEW AGENT page's scope, so an
@@ -110,7 +114,7 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
   }, [effectiveData, agentKey, profile.reports.agentConfig]);
 
   const wf = wfSlug
-    ? (profile.reports.extraWorkflows ?? []).find((w) => w.slug === wfSlug)
+    ? extraWfs.find((w) => w.slug === wfSlug)
     : undefined;
   /* ⚠️ **A MINIMAL PREVIEW MUST NOT INHERIT THE CONFIGURED AGENT.** Same reasoning as
      `useBrain`'s minimal branch on the voice side: the prospect's playbook, questions and

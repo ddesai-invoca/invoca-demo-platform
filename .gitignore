@@ -39,3 +39,14 @@ agent/package-lock.json
 # LiveKit agent secrets handed to `lk agent create --secrets-file` — never commit these.
 agent/*.secrets.env
 agent/secrets.env
+
+# Replica captures — GENERATED, and deliberately not committed.
+#
+# A frozen capture embeds its CSS, fonts and images, so it is measured in megabytes (aviandco
+# is 17.8MB) and is DELETED after 10 days by `npm run capture:prune`. Committing one would put
+# that weight in git history permanently — git never forgets a blob, so a file we intend to
+# throw away in 10 days would cost the repo its full size forever.
+#
+# Nothing here was ever committed, so this only stops an accidental `git add -A`. To ship a
+# specific capture on purpose (a small `--linked` one), add it explicitly with `git add -f`.
+public/replicas/*.html
