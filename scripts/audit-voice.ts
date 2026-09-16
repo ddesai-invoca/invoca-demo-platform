@@ -627,6 +627,20 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
     "no two voices share an id");
   check(VOICE_OPTIONS.every((v) => new RegExp(`^${v.id}\\b`, "i").test(v.label)),
     "each label names its own voice, so the picker cannot mislabel one");
+  /* ⚠️ NO VENDOR OR MODEL IN THE PICKER (9/16/2026), asked for directly: "remove the vendor
+     name and just keep the Name of the voice". Every one of the six is Aura-2, so the suffix
+     was six identical parentheticals, and a third party's brand on a control an SE clicks
+     mid-demo invites a question the demo is not about. The gateway string is unaffected —
+     `liveKitVoiceModel` still builds it from the id, which is checked just below. */
+  const VENDOR = /deepgram|aura|livekit|eleven\s*labs|cartesia|rime|inworld|fish\s*audio/i;
+  check(VOICE_OPTIONS.every((v) => !VENDOR.test(v.label)),
+    "no voice label carries a vendor or model name");
+  /* ⚠️ THE CHARACTER LINE IS ON SCREEN TOO, directly under the picker — Thalia's read
+     "Deepgram's own pick for casual chat and IVR", so stripping only the labels left the
+     vendor two lines below the control it had just been removed from. Asked for as "remove
+     deepgram wording for everywhere", and everywhere means every string the picker renders. */
+  check(VOICE_OPTIONS.every((v) => !VENDOR.test(v.note)),
+    "no voice character note carries a vendor or model name either");
 
   /* The composite string is what the worker parses; verified against the installed SDK,
      which sets `opts.voice` from exactly this shape. */
@@ -938,5 +952,5 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (117 checks + per-profile)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (119 checks + per-profile)");
 process.exit(failures ? 1 : 0);

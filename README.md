@@ -45,7 +45,7 @@ environment variables set in Render (never committed):
 | Var | Purpose |
 | --- | --- |
 | `ANTHROPIC_API_KEY` | Required — all AI features |
-| `ELEVENLABS_API_KEY` / `DEEPGRAM_API_KEY` | Optional — premium Voice-agent TTS |
+| `LIVEKIT_URL` / `LIVEKIT_API_KEY` / `LIVEKIT_API_SECRET` | The voice agent — all three, or live test calls are refused |
 | `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | Enables the sign-in gate |
 | `ALLOWED_EMAIL_DOMAIN` | Who may sign in (default `invoca.com`) |
 | `SESSION_SECRET` | Signs the login cookie |

@@ -33,9 +33,21 @@
 export interface VoiceOption {
   /** The short id we store on the agent config, e.g. "thalia". */
   id: string;
-  /** What the picker shows, matching the real page's "Thalia (Deepgram Aura 2)". */
+  /** ⚠️⚠️ **THE VOICE'S NAME ALONE — a deliberate departure from the screenshot (9/16/2026).**
+     These read "Thalia (Deepgram Aura 2)" on the real page and did here too, until it was
+     asked for directly: *"For the Agent Voice dropdown, remove the vendor name and just keep
+     the Name of the voice."* The model and the provider are plumbing an SE does not choose —
+     the six are all Aura-2 either way, so the suffix was six identical parentheticals — and a
+     third party's brand on a picker mid-demo invites a question the demo is not about.
+     ⚠️ **DISPLAY ONLY.** `id` is what is stored, allow-listed and sent to the gateway, so
+     nothing about the call changes with this string; `audit:voice` asserts the label still
+     begins with the id so the two cannot drift apart. */
   label: string;
-  /** Deepgram's own one-line character description, shown under the picker. */
+  /** ⚠️ **THE CHARACTER LINE, AND IT NAMES NO VENDOR EITHER (9/16/2026).** Asked for straight
+     after the labels: *"remove deepgram wording for everywhere."* It renders directly under
+     the picker, so a vendor's name here put back on screen exactly what the labels had just
+     dropped. The descriptions are still the provider's own words about each voice; only the
+     attribution is gone. `audit:voice` scans these as well as the labels. */
   note: string;
   gender: "Feminine" | "Masculine";
 }
@@ -46,37 +58,37 @@ const LK_MODEL = "deepgram/aura-2";
 export const VOICE_OPTIONS: VoiceOption[] = [
   {
     id: "thalia",
-    label: "Thalia (Deepgram Aura 2)",
-    note: "Clear, confident, energetic — Deepgram's own pick for casual chat and IVR.",
+    label: "Thalia",
+    note: "Clear, confident, energetic — made for casual chat and IVR.",
     gender: "Feminine",
   },
   {
     id: "andromeda",
-    label: "Andromeda (Deepgram Aura 2)",
+    label: "Andromeda",
     note: "Casual and expressive, suited to customer service.",
     gender: "Feminine",
   },
   {
     id: "arcas",
-    label: "Arcas (Deepgram Aura 2)",
+    label: "Arcas",
     note: "Natural and smooth, clear and comfortable for service roles.",
     gender: "Masculine",
   },
   {
     id: "harmonia",
-    label: "Harmonia (Deepgram Aura 2)",
+    label: "Harmonia",
     note: "Empathetic, clear and calm, for customer service.",
     gender: "Feminine",
   },
   {
     id: "neptune",
-    label: "Neptune (Deepgram Aura 2)",
+    label: "Neptune",
     note: "Professional, patient and polite.",
     gender: "Masculine",
   },
   {
     id: "athena",
-    label: "Athena (Deepgram Aura 2)",
+    label: "Athena",
     note: "Calm, smooth and professional, with a mature tone.",
     gender: "Feminine",
   },

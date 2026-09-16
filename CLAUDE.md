@@ -1224,6 +1224,71 @@ toolbar all present, **zero `.wfd-` elements**) and the SMS workflow's own tab (
 own trigger line, no voice picker, no dead controls). `audit:ai` and `audit:phases` green, `tsc`
 clean on both projects.
 
+#### The picker shows the voice's NAME ONLY — no vendor, no model (9/16/2026)
+Asked for directly against the Agent Voice dropdown: *"remove the vendor name and just keep the
+Name of the voice."* So "Thalia (Deepgram Aura 2)" is now **"Thalia"**, and the same for all six.
+
+⚠️ **A DELIBERATE DEPARTURE FROM THE SCREENSHOT, which the note above is otherwise strict
+about.** Two reasons it is the right one to make: all six voices are Aura-2, so the suffix was
+six identical parentheticals carrying no information an SE chooses between; and a third party's
+brand on a control clicked in front of a prospect invites a question the demo is not about.
+
+⚠️⚠️ **DISPLAY ONLY, AND THAT IS WHAT MAKES IT SAFE.** `VoiceOption.label` has exactly three
+readers, all in `AgentWorkflowDetails` (the `<option>` text and the play button's title and
+aria-label). Everything that decides what the agent SOUNDS like keys off `id` — what is stored
+on `agent.voice`, what `engine/voicePreview.ts` allow-lists, what `liveKitVoiceModel` builds
+`deepgram/aura-2:<id>` from, and what `mintVoiceToken` puts in the dispatch metadata. Verified
+with a real pick: choosing Arcas stored **`arcas`**, not the label, and the play button followed.
+⚠️ **THE REQUEST CONTRADICTED ITSELF AND THE INTENT WON.** It also said *"just do Deepgram"* —
+which IS the vendor, and would have rendered six identically-labelled options. Flagged in the
+reply rather than implemented.
+⚠️ **STILL SHOWING THE VENDOR, ONE LINE BELOW: the character note.** Thalia's reads "…—
+Deepgram's own pick for casual chat and IVR", and it renders directly under the picker. It is
+`VoiceOption.note`, not the dropdown, so it was left alone rather than quietly widening the ask;
+raised with the user.
+
+#### Then: the vendor is gone from every RENDERED surface (9/16/2026)
+Asked for straight after: *"remove deepgram wording for everywhere."* Swept the whole repo and
+classified every hit, because "everywhere" cannot mean the model string — see below.
+
+**Changed, because a user sees it:**
+| | |
+|---|---|
+| `VoiceOption.note` (Thalia) | "…— **Deepgram's own pick** for casual chat and IVR" -> "…— made for casual chat and IVR". It renders directly under the picker, so stripping only the labels had left the vendor two lines beneath the control it was just removed from |
+| `public/readme.html` | the `DEEPGRAM_API_KEY` / `ELEVENLABS_*` env rows, **which were also STALE** |
+| `README.md` | same row, same staleness |
+
+⚠️⚠️ **THOSE DOC ROWS WERE WRONG AS WELL AS VENDOR-NAMED, which is why removing them is a fix
+rather than a redaction.** Both vendors were deleted on 9/3 — `engine/tts.ts` is gone, `/api/tts`
+404s, and `audit:voice` already asserts neither key is read anywhere — yet the in-app Read.Me
+page (served at `/readme.html`, opened from the launch menu) still documented them as "For
+voice, pick with `TTS_PROVIDER`". `ARCHITECTURE.md`, the markdown source of truth, had already
+been corrected; the HTML had drifted from it for two weeks.
+⚠️ **AND REMOVING THEM LEFT THE VOICE ENGINE UNDOCUMENTED**, so a `LIVEKIT_URL` +
+`LIVEKIT_API_KEY` + `LIVEKIT_API_SECRET` row replaces them — the table had **zero** LiveKit rows
+before. Deleting the only voice vars and leaving a gap is a worse doc than the stale one.
+
+⚠️⚠️ **NOT CHANGED, AND THE FIRST ITEM IS LOAD-BEARING: `deepgram/aura-2:<voice>` IS THE WIRE
+FORMAT.** `LK_MODEL`, `agent/voiceAgent.js`'s `TTS_MODEL` / `STT_MODEL`, the dispatch metadata
+and every audit assertion over them stay exactly as they are. It is a MODEL NAME inside
+LiveKit's inference gateway, the way `claude-haiku-4-5` names a model — we hold no credential
+for it — and this file already records that a bare `deepgram/aura-2` names NO voice, so dropping
+the provider prefix is a call that connects and never speaks.
+⚠️ **Code comments, `CLAUDE.md`, `ARCHITECTURE.md` and the audit's own scan messages keep the
+word too.** Those explain why the vendors are gone and assert they stay gone; this file already
+records the lesson that the vendor scan had to strip comments first because *"a check that
+reddens on a correct file gets deleted as a nuisance"*. Redacting the record would make the next
+reader re-derive it.
+
+**`audit:voice` is 119 checks** (was 117): no voice **label** and no voice **note** may carry a
+vendor or model name (`deepgram|aura|livekit|eleven labs|cartesia|rime|inworld|fish audio`) —
+one shared `VENDOR` pattern, so the two cannot drift. Each was verified to FIRE by putting the
+old string back. The pre-existing "each label names its own voice" check still holds, because a
+bare name still starts with its own id.
+**Verified in the browser:** the Details tab's whole `innerText` matches no vendor at all, and
+the in-app Read.Me's Technical-detail tab shows the LiveKit row with no `TTS_PROVIDER` and no
+vendor key.
+
 ### A booked call creates the Salesforce Lead, and the Calendar chip opens it (9/3/2026)
 Asked for directly: *"which the voice agent books the appointment and it shows up in salesforce
 calendar, i also want you to create that new lead in the leads tab and also when i click on
