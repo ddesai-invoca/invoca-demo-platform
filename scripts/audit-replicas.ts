@@ -637,7 +637,10 @@ const cap = fs.readFileSync("scripts/capture-replica.js", "utf8");
   /^\/[a-z-]+$/.test(BOOKING_SCOPE_PATH)
     ? ok("override: it is keyed by a bare pathname, which is what the server stores")
     : no(`override: ${BOOKING_SCOPE_PATH} is not a bare pathname`);
-  /registerBase\(key, \{ \[BOOKING_FIELD\]: "" \}\)/.test(bo)
+  /* ⚠️ RE-AIMED, NOT LOOSENED: the base gained the after-submit field, so both are seeded "".
+     The invariant is unchanged — every field this hook writes must exist in the base, or the
+     first write is an undefined -> string flip. */
+  /registerBase\(key, \{ \[BOOKING_FIELD\]: "", \[THANKS_FIELD\]: "" \}\)/.test(bo)
     ? ok('override: the base is seeded "" so the first save is not an undefined -> string flip')
     : no("override: no base is registered — applyEdits refuses a key with no base");
   !/registerScope\(/.test(bo)
@@ -649,10 +652,11 @@ const cap = fs.readFileSync("scripts/capture-replica.js", "utf8");
   /writeLocal\(profileId, null\);\s*\/\/ one source of truth/.test(bo)
     ? ok("override: a successful shared save clears the local copy (no two disagreeing sources)")
     : no("override: the local copy survives a shared save and can go stale");
-  /return \{ url: local \?\? shared, set, clear \};/.test(bo)
+  /return \{ url: local \?\? shared, set, thankYou, setThankYou, clear \};/.test(bo)
     ? ok("override: local wins over shared — which is only set when the shared write was refused")
     : no("override: the precedence changed; a viewer's own link can be ignored");
-  /applyEdits\(key, \[\{ path: BOOKING_FIELD, value: JSON\.stringify\(""\) \}\]\);\s*writeLocal\(profileId, null\);/.test(bo)
+  /* Reset now clears BOTH fields plus the local copy — same invariant, three parts. */
+  /path: BOOKING_FIELD, value: JSON\.stringify\(""\)[\s\S]{0,120}writeLocal\(profileId, null\);/.test(bo)
     ? ok("override: Reset clears BOTH copies, so the default cannot come back on the next render")
     : no("override: Reset leaves one copy behind");
 
@@ -744,6 +748,57 @@ if (skipped) console.log(`\n  ${skipped} capture(s) not on this machine — the 
   !/replicaFor|replicaBySlug/.test(page)
     ? ok("page: the browser no longer decides from the bundled registry — it asks the server")
     : no("page: ReplicaPage short-circuits on the registry again, which the client cannot verify");
+}
+
+/* ---- 11. what the page says after a submit ---------------------------------
+   Asked directly: *"are you able to also replicate what happens when someone click submit…
+   sometimes it goes to a different page, or sometimes it just says thank you."* Two answers,
+   and the SECOND check is the one that keeps the first honest: a site whose confirmation is
+   delivered by JavaScript must produce NOTHING rather than an invented "Thanks!". */
+{
+  const rp = fs.readFileSync("src/data/replicaPages.ts", "utf8");
+  const pg = fs.readFileSync("src/screens/ReplicaPage.tsx", "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
+  const gs = fs.readFileSync("src/screens/GoogleSearch.tsx", "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
+  const bo = fs.readFileSync("src/data/bookingOverride.ts", "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
+  const eg = fs.readFileSync("src/data/editGuard.ts", "utf8");
+
+  /* ⚠️ The three guards that stop a reveal firing on something that is not a confirmation:
+     it must be hidden, carry real words, and hold no form fields. */
+  /if \(!isHidden\(el\)\) continue;/.test(rp)
+    ? ok("confirm: only a HIDDEN block counts (an already-visible one is page furniture)")
+    : no("confirm: it would reveal something the page was already showing");
+  /trim\(\)\.length < 12\) continue;/.test(rp)
+    ? ok("confirm: a styled-but-empty shell is refused (HubSpot leaves one)")
+    : no("confirm: an empty box can be revealed, which reads as the page breaking");
+  /el\.querySelector\("input, textarea, select"\)\) continue;/.test(rp)
+    ? ok("confirm: a node still holding form fields is not a confirmation")
+    : no("confirm: it can reveal the form it was meant to replace");
+  /if \(!best \|\| el\.contains\(best\)\) best = el;/.test(rp)
+    ? ok("confirm: the OUTERMOST match wins, so the body copy is not lost")
+    : no("confirm: it keeps an inner node — the heading without 'what happens next'");
+  /return false;\s*$/m.test(rp.slice(rp.indexOf("export function revealConfirmation")))
+    ? ok("confirm: it reports failure so the caller can fall back rather than guess")
+    : no("confirm: revealConfirmation cannot signal that the page has none");
+
+  /if \(!created\) return;/.test(pg)
+    ? ok("confirm: a refused submit shows no thank-you (never claim success)")
+    : no("confirm: it can thank someone while telling them the submit failed");
+  /if \(thanksRef\.current\) \{ frame\.src = thanksRef\.current; return; \}/.test(pg)
+    ? ok("after-submit: the SE's own page wins over a block we merely recognised")
+    : no("after-submit: the explicit instruction does not take precedence");
+  /const thanksRef = useRef\(""\)/.test(pg)
+    ? ok("after-submit: read through a ref, so resolving it does not re-wire every form")
+    : no("after-submit: a closure read would be empty exactly when it matters");
+
+  /onSetThankYou/.test(gs) && /gs-lnk-after/.test(gs)
+    ? ok("after-submit: the Book online menu carries the field, not a second surface")
+    : no("after-submit: there is no way to set it");
+  /\/\^thankYouUrl\$\/i/.test(eg)
+    ? ok("after-submit: the guard allows the first write on a demo that predates the field")
+    : no("after-submit: the first save is an undefined -> string flip and will be refused");
+  (bo.match(/THANKS_FIELD, value: JSON\.stringify\(""\)/g) || []).length === 1
+    ? ok("after-submit: Reset clears it too, so no page outlives the link it belonged to")
+    : no("after-submit: Reset leaves a stale after-submit page behind");
 }
 
 console.log(bad ? `\n${bad} replica check(s) FAILED\n` : "\nAll replica checks passed\n");

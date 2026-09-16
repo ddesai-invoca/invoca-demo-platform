@@ -1064,7 +1064,7 @@ function QuoteDialog({ target, services, onClose, onSend }: {
    screen says the link has been re-pointed, so this line and the Reset beside it are the only
    way back — hiding what was replaced is what would make the override a trap a week later.
    ============================================================================= */
-function BookingLinkMenu({ at, current, fallback, onSet, onClear, onClose }: {
+function BookingLinkMenu({ at, current, fallback, onSet, onClear, onClose, thankYou, onSetThankYou }: {
   at: { x: number; y: number };
   current: string;
   /** The tracked default, shown only when the SE has replaced it. */
@@ -1072,12 +1072,24 @@ function BookingLinkMenu({ at, current, fallback, onSet, onClear, onClose }: {
   onSet: (raw: string) => string | null;
   onClear: () => void;
   onClose: () => void;
+  /* ⚠⚠ **WHERE THE REPLICA GOES AFTER A SUBMIT — the SE's answer for a form whose real
+     confirmation a replica cannot reproduce.** Where the page already SHIPS its confirmation
+     hidden in the markup (Aptive does) the replica reveals that on its own and this stays
+     empty; it is for the other two cases, measured on the captures we have: a HubSpot or
+     Marketo form whose message is delivered by JS (Greenix), and a form that redirects to a
+     separate thank-you page. Neither is discoverable from the capture, and inventing a
+     company's confirmation copy is what this repo refuses everywhere — so the SE, who knows
+     the real page, supplies it. */
+  thankYou: string | null;
+  onSetThankYou: (raw: string) => string | null;
 }) {
   const [value, setValue] = useState(current);
   const [err, setErr] = useState("");
   /* Replicate ENDS here now: it saves the link and reports "Complete" rather than
      navigating, so the panel needs a third state beside idle and fetching. */
   const [done, setDone] = useState(false);
+  const [thanks, setThanks] = useState(thankYou ?? "");
+  const [thanksMsg, setThanksMsg] = useState("");
   /* Replicate does the whole capture HERE, so the wait happens where the SE just clicked and
      the page is on disk by the time anyone opens it. It used to navigate to the replica at the
      end; now it saves the link instead (see the success branch below), so this panel is the
@@ -1244,6 +1256,29 @@ function BookingLinkMenu({ at, current, fallback, onSet, onClear, onClose }: {
             : <span className="gs-lnk-prog-pct">{pct}%</span>}
         </div>
       )}
+      {/* ⚠️ **A SECOND ROW, NOT A SECOND MENU.** Both fields describe the same page, and the SE
+          is already here having just replicated it — a separate surface for "what happens after
+          submit" is one more place to forget. Saved on blur so a half-typed URL is never stored;
+          the message says which outcome it got, because a silent save is indistinguishable from
+          a refused one on a demo the SE cannot edit. */}
+      <div className="gs-lnk-after">
+        <label className="gs-lnk-after-lbl" htmlFor="gs-lnk-thanks">After submit, show</label>
+        <input
+          id="gs-lnk-thanks"
+          className="gs-lnk-input"
+          value={thanks}
+          spellCheck={false}
+          placeholder="Optional — the page's own thank-you URL"
+          onChange={(e) => { setThanks(e.target.value); setThanksMsg(""); }}
+          onBlur={() => {
+            const v = thanks.trim();
+            if (!v || v === (thankYou ?? "")) return;
+            const msg = onSetThankYou(v);
+            setThanksMsg(msg ?? "Saved");
+          }}
+        />
+        {thanksMsg && <div className={thanksMsg === "Saved" ? "gs-lnk-note" : "gs-lnk-err"}>{thanksMsg}</div>}
+      </div>
       <div className="gs-lnk-acts">
         {/* ⚠️ OFFERED ONLY WHEN A CAPTURE EXISTS FOR THIS PROSPECT. A Replicate button that
             opened a "nobody has captured this yet" page would be a dead control, which this
@@ -1320,6 +1355,7 @@ function LsaUnit({ rows, noun, city, services, onSend, bookHref, bookDefault, bo
 
       {menuAt && (
         <BookingLinkMenu at={menuAt} current={bookHref}
+          thankYou={book.thankYou} onSetThankYou={book.setThankYou}
           fallback={book.url ? bookDefault : null}
           onSet={book.set} onClear={book.clear} onClose={() => setMenuAt(null)} />
       )}

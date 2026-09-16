@@ -228,6 +228,101 @@ export function replicaDocs(doc: Document): Document[] {
   return out;
 }
 
+/* =============================================================================
+   What the page itself says after a submit
+   -----------------------------------------------------------------------------
+   Asked directly: *"are you able to also replicate what happens when someone click submit.
+   like sometime it goes to a different page, or sometimes it just says thank you etc."*
+
+   ⚠⚠ **MANY SITES ALREADY SHIP THEIR CONFIRMATION IN THE PAGE, HIDDEN**, and where they do
+   this is a faithful replication rather than an invention: Aptive's capture carries a real
+   `hidden` panel reading "Thank You! A pest control specialist will contact you shortly… What
+   happens next…". Revealing it is exactly what the site's own script does; the words are the
+   prospect's own.
+
+   ⚠⚠ **AND MANY DO NOT, WHICH IS WHY THIS MUST FAIL CLOSED.** Measured across the captures:
+   Greenix's HubSpot form carries only the CSS that would STYLE a `.submitted-message` — the text
+   arrives from HubSpot's JS after the POST, and a replica strips JS — while Reyes Law and
+   AutoNation carry no trace at all. Showing a generic "Thanks!" there would be inventing a
+   company's own confirmation copy, which this repo refuses everywhere else. No block, no change:
+   the submit stays silent exactly as it does today, and the SE can point at the real thank-you
+   page instead (see the "After submit" field on the Book online menu).
+   ============================================================================= */
+const CONFIRM_HINT = /(thank[-_ ]?you|form[-_ ]?success|success[-_ ]?message|submitted[-_ ]?message|confirmation|form[-_ ]?sent)/i;
+
+/** Is this element hidden right now, by any of the three routes a site actually uses? */
+function isHidden(el: HTMLElement): boolean {
+  if (el.hasAttribute("hidden")) return true;
+  if (el.getAttribute("aria-hidden") === "true") return true;
+  const cs = el.ownerDocument.defaultView?.getComputedStyle(el);
+  return !!cs && (cs.display === "none" || cs.visibility === "hidden");
+}
+
+/**
+ * The page's own hidden confirmation, or null when it does not have one.
+ * Exported so the audit tests the real rule against the real captures.
+ */
+export function findConfirmation(doc: Document): HTMLElement | null {
+  const seen = doc.querySelectorAll<HTMLElement>("[class],[id],[data-testid]");
+  let best: HTMLElement | null = null;
+  for (const el of Array.from(seen)) {
+    const key = `${el.className || ""} ${el.id || ""} ${el.getAttribute("data-testid") || ""}`;
+    if (!CONFIRM_HINT.test(key)) continue;
+    if (el.tagName === "FORM" || el.querySelector("input, textarea, select")) continue;
+    if (!isHidden(el)) continue;
+    /* ⚠️ **IT HAS TO CARRY REAL WORDS.** A styled-but-empty shell (HubSpot leaves one) and a
+       bare icon wrapper both match the class hint and would reveal a blank box — which reads as
+       the page breaking on submit, the worst of the three outcomes. */
+    if ((el.textContent || "").trim().length < 12) continue;
+    /* ⚠️ **PREFER THE OUTERMOST MATCH, AND THE TEST READS THE OTHER WAY ROUND.** The heading,
+       the icon and the body copy are usually separate matching nodes inside ONE panel; keeping
+       the innermost would reveal "Thank You!" and lose "what happens next". So `el` only wins
+       when it CONTAINS the incumbent. (Written inverted first: `best.contains(el)` replaces the
+       panel with its own child — harmless on Aptive, whose children are not independently
+       hidden, and wrong on any page whose inner block is.) */
+    if (!best || el.contains(best)) best = el;
+  }
+  return best;
+}
+
+/**
+ * Reveal that confirmation and retire the form, the way the site's own script would.
+ * Returns false when the page has none, so the caller can fall back rather than guess.
+ */
+export function revealConfirmation(doc: Document, fullName?: string): boolean {
+  const panel = findConfirmation(doc);
+  if (!panel) return false;
+  panel.removeAttribute("hidden");
+  panel.removeAttribute("aria-hidden");
+  /* `important`, because whatever hid it is usually a stylesheet rule rather than an inline
+     style, and a plain assignment loses to it silently. */
+  panel.style.setProperty("display", "block", "important");
+  panel.style.setProperty("visibility", "visible", "important");
+
+  /* The form it replaces goes away — a thank-you panel sitting above a still-editable form
+     reads as the submit not having happened. */
+  for (const form of Array.from(doc.querySelectorAll<HTMLElement>("form"))) {
+    if (!panel.contains(form)) form.style.setProperty("display", "none", "important");
+  }
+
+  /* ⚠️ **A SLOT THE PAGE LEFT FOR THE NAME IS FILLED, AND ONLY WHEN IT IS EMPTY.** Aptive's
+     panel carries `<span class="aptive-form__thankyou-name"></span>` for its own script to fill.
+     It is their template's own slot, so using it is still replication rather than invention —
+     and an EMPTY element is the guard: anything already carrying text is left alone. */
+  /* ⚠️ **THE NAME COMES FROM THE MAPPED LEAD, NOT THE RAW FIELD BAG.** `values` is keyed by
+     the form's OWN input names (`firstName`, `hs-firstname`, `wpforms[fields][3]`…), so there is
+     no `values.name` to read — written that way first, and the slot silently stayed empty.
+     `readReplicaForm` is what already resolves those through the field map. */
+  const first = (fullName || "").trim().split(/\s+/)[0];
+  if (first) {
+    for (const slot of Array.from(panel.querySelectorAll<HTMLElement>("[class*='name' i]"))) {
+      if ((slot.textContent || "").trim() === "" && !slot.querySelector("*")) { slot.textContent = first; break; }
+    }
+  }
+  panel.scrollIntoView({ block: "center" });
+  return true;
+}
+
 /**
  * Grow every embedded FORM frame to the height of its own content, and return how many moved.
  *

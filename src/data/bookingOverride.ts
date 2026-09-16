@@ -78,6 +78,11 @@ export const bookingScopeKey = (profileId: string) => `${profileId}::${BOOKING_S
  *  write rather than the `undefined -> string` TYPE FLIP `editGuard` refuses — the trap the
  *  greeting, `serviceZips` and the voice picker each had to be let through by name. */
 const BOOKING_FIELD = "bookingUrl";
+/* The page the replica should show after a successful submit — the SE's answer for a form
+   whose real confirmation is delivered by JavaScript a replica cannot run, or which redirects
+   to a separate thank-you page. Same stored object as the booking link: they describe one
+   page, and a second store would be a second thing to forget to clear. */
+const THANKS_FIELD = "thankYouUrl";
 
 function read(profileId: string): string | null {
   try {
@@ -152,7 +157,11 @@ export interface BookingOverride {
   url: string | null;
   /** Store what they typed. Returns an error message, or null on success. */
   set: (raw: string) => string | null;
-  /** Back to the default booking link. */
+  /** Where the replica goes after a successful submit, or null for the page's own behaviour. */
+  thankYou: string | null;
+  /** Store that. Returns an error message, or null on success. */
+  setThankYou: (raw: string) => string | null;
+  /** Back to the default booking link — and to the page's own post-submit behaviour. */
   clear: () => void;
 }
 
@@ -169,12 +178,21 @@ export function useBookingOverride(profileId: string): BookingOverride {
   /* ⚠️ `applyEdits` REFUSES A KEY WITH NO BASE, so the base has to exist before the first
      save — and it must be `registerBase`, never `registerScope`, which is last-write-wins and
      would repoint whatever sparkle the SE has open at this screen's one field. */
-  useEffect(() => { registerBase(key, { [BOOKING_FIELD]: "" }); }, [key, registerBase]);
+  useEffect(() => { registerBase(key, { [BOOKING_FIELD]: "", [THANKS_FIELD]: "" }); }, [key, registerBase]);
 
   /* ⚠️ RE-VALIDATED ON READ like the local copy is: this arrives from a shared record that
      other people (and a future us) can write, and it is rendered straight into an `href`. */
-  const raw = (effectiveData(key) as Record<string, unknown> | undefined)?.[BOOKING_FIELD];
-  const shared = typeof raw === "string" && raw ? normalizeUrl(raw).url : null;
+  const stored = effectiveData(key) as Record<string, unknown> | undefined;
+  const readField = (f: string) => {
+    const v = stored?.[f];
+    return typeof v === "string" && v ? normalizeUrl(v).url : null;
+  };
+  const shared = readField(BOOKING_FIELD);
+  /* ⚠️ NO LOCAL FALLBACK FOR THIS ONE, deliberately. The booking link needs one because an SE
+     must be able to re-point it on a demo they cannot edit; a post-submit page is part of how
+     the demo is BUILT, so it belongs to the demo or nowhere — and a copy that lived only in one
+     browser would be the stale-second-source this file's precedence note exists to avoid. */
+  const thankYou = readField(THANKS_FIELD);
 
   const set = useCallback((rawIn: string): string | null => {
     const { url: next, error } = normalizeUrl(rawIn);
@@ -193,13 +211,31 @@ export function useBookingOverride(profileId: string): BookingOverride {
     return null;
   }, [applyEdits, key, profileId]);
 
+  const setThankYou = useCallback((rawIn: string): string | null => {
+    const { url: next, error } = normalizeUrl(rawIn);
+    if (!next) return error;
+    /* Refused (someone else's demo, or a bundled profile) reports honestly rather than
+       pretending: there is nowhere durable to put it, and a silent no-op here would show up
+       as the replica ignoring the page mid-demo. */
+    if (applyEdits(key, [{ path: THANKS_FIELD, value: JSON.stringify(next) }]) === 0) {
+      return "This demo cannot be edited, so the after-submit page could not be saved.";
+    }
+    return null;
+  }, [applyEdits, key]);
+
   const clear = useCallback(() => {
     /* BOTH, unconditionally. Reset means "back to the tracked default", and leaving either
        copy behind would put the old link straight back on the next render. */
-    applyEdits(key, [{ path: BOOKING_FIELD, value: JSON.stringify("") }]);
+    /* ⚠️ BOTH FIELDS. Reset is "undo my customisation of this link", and leaving a thank-you
+       page behind that points somewhere the restored default never reaches is the same kind of
+       stale leftover the local copy is cleared to avoid. */
+    applyEdits(key, [
+      { path: BOOKING_FIELD, value: JSON.stringify("") },
+      { path: THANKS_FIELD, value: JSON.stringify("") },
+    ]);
     writeLocal(profileId, null);
     setLocal(null);
   }, [applyEdits, key, profileId]);
 
-  return { url: local ?? shared, set, clear };
+  return { url: local ?? shared, set, thankYou, setThankYou, clear };
 }

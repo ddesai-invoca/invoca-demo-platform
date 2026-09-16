@@ -8570,6 +8570,63 @@ precedence is local-then-shared, and Reset clears both.
 ⚠ Three were broken on purpose and seen to fire — renaming the key out of the sync prefix,
 inverting the precedence, and leaving the local copy behind.
 
+#### What the page says after a submit — revealed where it exists, pointed at where it does not (9/16/2026)
+Asked directly: *"are you able to also replicate what happens when someone click submit. like
+sometime it goes to a different page, or sometimes it just says thank you etc."* Answered by
+MEASURING the captures rather than guessing, and the three outcomes are genuinely different:
+
+| capture | after submit | in the capture? |
+|---|---|---|
+| Aptive | an inline thank-you panel with "What happens next" | **yes** — real markup carrying `hidden=""` |
+| Greenix | a HubSpot inline message | **no** — only the CSS that would STYLE `.submitted-message`; the text comes from HubSpot's JS |
+| Reyes Law, AutoNation | unknown | no trace either way |
+
+**1. Where the page ships its own confirmation, the replica reveals it** — `findConfirmation` +
+`revealConfirmation`. This is replication, not invention: the words are the prospect's own and
+revealing them is exactly what the site's script does. Aptive renders "Thank You! Dana — A pest
+control specialist will contact you shortly…" with its own next-steps list, and the form is
+hidden underneath, because a thank-you panel above a still-editable form reads as the submit not
+having happened.
+⚠ **THREE GUARDS KEEP IT FROM FIRING ON SOMETHING ELSE:** the node must be HIDDEN (an already
+visible one is page furniture), must carry ≥12 characters of text (HubSpot leaves a styled EMPTY
+shell, and revealing a blank box reads as the page breaking), and must hold no form fields.
+⚠ **AND IT MUST FAIL CLOSED**, which is most of the design: Greenix produces zero candidates in
+the rendered DOM, so nothing happens and the submit stays silent exactly as before. A generic
+"Thanks!" there would be inventing a company's own confirmation copy.
+⚠ **A REFUSED SUBMIT SHOWS NOTHING.** `onSubmit` returns whether a lead was created, and the
+reveal is gated on it — otherwise the screen thanks someone while an error says it failed.
+⚠ **THE NAME SLOT IS THE PAGE'S OWN.** Aptive leaves `<span class="…thankyou-name"></span>` for
+its script; filling an EMPTY such element is still replication. ⚠ It reads the MAPPED lead, not
+the raw field bag — written as `values.name` first, which silently left it blank because `values`
+is keyed by the form's own input names (`firstName`, `hs-firstname`, `wpforms[fields][3]`).
+
+**2. Where it does not, the SE points at the real page** — an "After submit, show" field on the
+same Book online menu, stored beside the booking link in the SAME object (they describe one page;
+a second store is a second thing to forget to clear). On a successful submit the frame navigates
+there, resolved through the same lookup the main frame uses, so a captured page is instant and an
+uncaptured one still works through the live fetch.
+⚠ **RESOLVED WHEN THE PAGE OPENS, READ THROUGH A REF.** Looking it up on submit would put a round
+trip in the one moment anyone is watching; and putting it in the bind effect's deps would RE-WIRE
+every form each time it resolved — while a plain closure read would be the empty string exactly
+when it matters, since the lookup lands after the first bind.
+⚠ **`thankYouUrl` HAD TO JOIN `CREATABLE_WHEN_ABSENT`.** A demo that saved a booking link before
+this field existed has an override of `{ bookingUrl }` alone, so the first write on exactly those
+demos is an `undefined -> string` flip — it would have worked on a fresh demo and silently failed
+on the ones most likely to be set up already. Fourth time this trap is recorded here.
+⚠ **THE SE'S PAGE WINS OVER A BLOCK WE MERELY RECOGNISED**, and **Reset clears both** — a
+post-submit page outliving the link it belonged to is the same stale leftover.
+⚠ **NO LOCAL FALLBACK FOR THIS ONE, deliberately**, unlike the booking link: a post-submit page is
+part of how the demo is BUILT, so it belongs to the demo or nowhere. A refusal says so rather than
+no-opping.
+
+**`npm run audit:replicas` gained 11 checks**; two were broken on purpose and seen to fire (the
+empty-shell guard, the created-lead gate). ⚠ Three EXISTING checks had to be **re-aimed** when the
+store gained a second field — same invariants, new shape.
+
+**Verified with real clicks on both paths**: Aptive's own panel appears with the form hidden and
+the name filled; Greenix finds nothing and stays silent; and with an after-submit page set, a
+Reyes Law submit created the lead AND swapped the frame to that page's capture.
+
 #### ⚠⚠ "Replicate said Complete and Book online opens a BLANK page" — on PRODUCTION only (9/15/2026)
 Reported the moment `BROWSERLESS_TOKEN` went live. The capture had genuinely been made; the
 screen framed a path that does not exist on a deploy, and **nothing anywhere reported a

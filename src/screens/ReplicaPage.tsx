@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useQuoteCaptures } from "../data/QuoteCaptureContext";
-import { readReplicaForm, deriveFieldMap, replicaDocs, fitEmbeddedFrames } from "../data/replicaPages";
+import { readReplicaForm, deriveFieldMap, replicaDocs, fitEmbeddedFrames, revealConfirmation } from "../data/replicaPages";
+import { useBookingOverride } from "../data/bookingOverride";
 import { derive } from "../data/prospectPlace";
 import { useLocationOverride } from "../data/locationOverride";
 
@@ -230,6 +231,36 @@ export function ReplicaPageScreen() {
   const [params] = useSearchParams();
   const navigate = useNavigate();
   const { profile } = useProfile();
+  /* The SE's "after submit, show this page", set on the Book online menu — see that panel. */
+  const { thankYou } = useBookingOverride(profile.id);
+  /* ⚠⚠ **RESOLVED WHEN THE PAGE OPENS, NOT WHEN SUBMIT IS PRESSED.** Looking it up on submit
+     would put a round trip (and possibly a live fetch) between the click and the confirmation,
+     which is the one moment of this beat anyone is watching. Resolving up front makes the
+     submit a single src assignment. */
+  const [thanksSrc, setThanksSrc] = useState("");
+  useEffect(() => {
+    if (!thankYou) { setThanksSrc(""); return; }
+    let alive = true;
+    fetch(`/api/replicate/lookup?url=${encodeURIComponent(thankYou)}`)
+      .then((r) => r.json())
+      .then((j) => {
+        if (!alive) return;
+        /* A capture if one exists, otherwise the live fetch — the same two sources the main
+           frame already uses, so a thank-you page needs no separate capture step to work. */
+        setThanksSrc(j?.ok
+          ? (j.source === "static" ? `/replicas/${j.file}` : `/api/replicas/dyn/${j.file}`)
+          : `/api/replicate?url=${encodeURIComponent(thankYou)}`);
+      })
+      .catch(() => { if (alive) setThanksSrc(`/api/replicate?url=${encodeURIComponent(thankYou)}`); });
+    return () => { alive = false; };
+  }, [thankYou]);
+
+  /* ⚠⚠ **READ THROUGH A REF, NOT A DEPENDENCY.** The submit handlers are bound once per frame
+     load; adding `thanksSrc` to that effect would RE-WIRE every form each time the lookup
+     resolves, and the resolution lands AFTER the first bind — so a value read from the closure
+     would be the empty string exactly when it matters. The ref is read at click time. */
+  const thanksRef = useRef("");
+  useEffect(() => { thanksRef.current = thanksSrc; }, [thanksSrc]);
   const { add: addQuote } = useQuoteCaptures();
   const loc = useLocationOverride(profile.id);
   const d = derive(profile, loc.place ?? undefined);
@@ -324,9 +355,9 @@ export function ReplicaPageScreen() {
          JavaScript reveals them. Reporting the text count said "32 fields" over a page with
          nothing on it, which is the precise failure this screen is supposed to prevent. */
       setMapped([...fields.name, fields.phone, fields.email, fields.zip, fields.message].filter(Boolean).length);
-      const onSubmit = async (values: Record<string, string>) => {
+      const onSubmit = async (values: Record<string, string>): Promise<boolean> => {
         const read = readReplicaForm(fields, values);
-        if (!read.ok) { setErr("That form did not include a name and a way to reach them, so no lead was created."); return; }
+        if (!read.ok) { setErr("That form did not include a name and a way to reach them, so no lead was created."); return false; }
         setErr("");
         /* ⚠️ THE ZIP BECOMES A CITY, because the lead payload names a place and the captured
            real one reads "Location: Lowell". Falls back to the raw ZIP rather than making the
@@ -352,8 +383,33 @@ export function ReplicaPageScreen() {
           how: read.phone ? "sms" : "email", contact: read.phone || read.email,
           location: where, source: "web",
         });
+        return true;
       };
-      for (const d of docs) wireFrame(d, onSubmit);
+      /* ⚠⚠ **THE REVEAL IS PER DOCUMENT, WHICH IS WHY IT IS WRAPPED HERE RATHER THAN INSIDE
+         `onSubmit`.** A captured form can live in an embedded frame (greenixpc.com's does), and
+         the confirmation that belongs to it lives in THAT document — the shared `onSubmit`
+         closure has no idea which one was actually submitted. Each frame is wired with its own
+         wrapper, so whichever the SE fills is the one that answers.
+         ⚠️ **THE LEAD IS CREATED FIRST AND THE REVEAL CANNOT AFFECT IT.** `onSubmit` is async and
+         is deliberately not awaited: the Salesforce lead and its SMS workflow are what the beat
+         is FOR, and a DOM helper throwing must never be able to take them down with it. */
+      for (const d of docs) {
+        wireFrame(d, (values) => {
+          /* ⚠⚠ **ONLY SAY THANK YOU IF A LEAD WAS ACTUALLY CREATED.** A submit with no usable
+             name or contact is refused above and reports why; revealing the page's own
+             confirmation over that error would have the screen thanking someone while telling
+             them it failed — the never-claim-success rule this repo applies everywhere. */
+          void onSubmit(values).then((created) => {
+            if (!created) return;
+            /* ⚠️ **THE SE'S OWN PAGE WINS OVER THE PAGE'S HIDDEN ONE.** Setting "after submit"
+               is an explicit instruction about this exact moment; a confirmation block we
+               merely recognised is the fallback for when nobody gave one. */
+            if (thanksRef.current) { frame.src = thanksRef.current; return; }
+            const read = readReplicaForm(fields, values);
+            try { revealConfirmation(d, read.name); } catch { /* the page simply keeps its form */ }
+          });
+        });
+      }
       /* ⚠⚠ **AND THE EMBED HAS TO BE TALL ENOUGH TO SHOW ITS OWN SUBMIT BUTTON.** A captured
          third-party form frame keeps the height its host script last set, and the script that
          would grow it is stripped — on greenixpc.com that left Submit 29px below the frame's

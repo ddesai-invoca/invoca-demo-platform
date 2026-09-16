@@ -789,6 +789,15 @@ button.gs-lsa-act, a.gs-lsa-act {
 }
 .gs-lnk-save:disabled { opacity: .45; cursor: default; }
 
+/* The "After submit" row — a second field in the same panel, set apart by a rule and a label
+   so it reads as a different question from the destination above it rather than a second
+   attempt at the same one. */
+.gs-lnk-after { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--gs-line); }
+.gs-lnk-after-lbl {
+  display: block; margin-bottom: 4px; color: var(--gs-2);
+  font: 400 12px/16px Roboto, Arial, sans-serif;
+}
+
 /* ---- "Get quote" → the Send request dialog (9/12/2026) ---------------------
    MEASURED off a capture taken with the dialog open. Its content lives in a
    sandboxed iframe, so the srcdoc had to be extracted and served to be read at

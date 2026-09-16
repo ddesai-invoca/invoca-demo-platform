@@ -160,6 +160,14 @@ const CREATABLE_WHEN_ABSENT = [
      Safe to allow because `specWithConfig` validates the value against VOICE_OPTIONS:
      the guard decides whether a write is structural, not whether it is a real voice. */
   /^agent\.voice$/i,
+  /* ⚠️ **THE REPLICA'S "AFTER SUBMIT" PAGE.** It shares one stored object with the booking
+     link, and a demo that saved a booking link BEFORE this field existed has an override of
+     `{ bookingUrl }` alone — so the first thank-you write on exactly those demos is an
+     undefined -> string flip and would be refused, i.e. the field would work on a fresh demo
+     and silently fail on the ones most likely to have been set up already. Same trap the
+     greeting, `serviceZips` and the voice picker each had to be let through by name. The value
+     is validated by `normalizeUrl` before it ever reaches here. */
+  /^thankYouUrl$/i,
 ];
 
 /**
