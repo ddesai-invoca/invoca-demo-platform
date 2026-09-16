@@ -47,6 +47,19 @@ export interface StatusInput {
   /* Is Replicate rendering pages in a real browser, or serving the fast copy? A boolean, so
      it stays safe on this PUBLIC endpoint — it names no token and no URL. */
   renderConfigured: boolean;
+  /**
+   * The alert funnel's own summary (`engine/alerts.ts::alertSummary`).
+   *
+   * ⚠️⚠️ **PASSED IN, LIKE EVERY OTHER FIELD, AND FOR THE REASON AT THE TOP OF THIS
+   * FILE.** `status.ts` reads nothing from `process.env` itself — the first version did
+   * and reported two real keys as absent on the dev server, because Vite exposes `.env`
+   * through `loadEnv()` rather than `process.env`. Importing `alerts.ts` here would also
+   * drag the whole mailer and demo-store graph into a module that exists to be cheap.
+   * ⚠️ **COUNTS AND SIGNATURES ONLY.** `alertSummary()` is built for this endpoint and
+   * deliberately carries no message text and no context — a detail line can quote a
+   * prospect or a URL, and this route is PUBLIC. `audit:alerts` asserts that.
+   */
+  alerts: unknown;
 }
 
 export function deployStatus(input: StatusInput) {
@@ -77,6 +90,13 @@ export function deployStatus(input: StatusInput) {
     node: process.version,
     demos,
     storage: { persistent: isPersistent(DATA_DIR), error: storageError },
+    /**
+     * ⚠️ WHAT HAS BEEN GOING WRONG, AS COUNTS — the half of monitoring that is
+     * readable from outside the gate. `needsAttention` on `/api/canary` already
+     * answers "did last night's generation break"; this answers "is anything
+     * failing right now", without a session and without naming anybody.
+     */
+    alerts: input.alerts,
     integrations: {
       anthropicKey: input.anthropicKey,
       /* Whether feedback completion emails can send. A BOOLEAN, never the address:

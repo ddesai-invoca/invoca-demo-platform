@@ -15,6 +15,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type {
   LocalAudioTrack, Participant, RemoteTrack, Room, RoomEvent, Track, TranscriptionSegment,
 } from "livekit-client";
+/* ⚠️ A VALUE import, not type-only: the watchdog's give-up path reports itself. Tiny
+   and has no dependencies of its own, so it costs the eager bundle nothing measurable. */
+import { reportClientError } from "./clientErrors";
 
 /* =============================================================================
    liveKitVoice.ts — the streaming engine behind the live Voice-agent call
@@ -404,6 +407,23 @@ export function useLiveKitVoice(): LiveKitVoice {
             if (agentGrace) { clearInterval(agentGrace); agentGrace = null; }
             noticeSink?.(null);
             errorSink?.("The voice agent did not join in time. It should be warm now, so end the call and start it again. If it fails a second time, the voice worker may actually be down.");
+            /* ⚠️⚠️ **THIS IS THE VOICE HEALTH CHECK, and it is the honest one.**
+               `/api/status`'s `livekitConfigured` only proves the three keys exist; it
+               says nothing about whether a worker is REGISTERED under this
+               environment's agent name, and the worker ships by `lk agent deploy`
+               rather than `git push`, so a stale or missing one is invisible from
+               here. LiveKit's server SDK exposes no worker registry to ask, and
+               guessing at one would be a check that cannot be verified.
+               What IS ground truth is this moment: 30 seconds elapsed and nothing
+               joined the room. Every documented cold start is over by then, so this
+               is either a genuinely dead worker or a wake-up far outside LiveKit's
+               own stated window — both worth being told about. Reported through the
+               SAME client reporter as a render error, so it needs no new endpoint. */
+            reportClientError({
+              where: "voice-agent-missing",
+              name: "AgentNeverJoined",
+              message: `No agent joined within ${(AGENT_JOIN_TIMEOUT_MS + AGENT_GRACE_MS) / 1000}s`,
+            });
           };
           /* ⚠️ THE INTERVAL IS ARMED BEFORE THE FIRST TICK, NOT AFTER. `tick` can finish the
              countdown on its very first run (the agent landed, or the clock is already spent),

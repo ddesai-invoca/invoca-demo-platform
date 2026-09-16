@@ -9,7 +9,7 @@
      • Anyone signed in can LIST and VIEW every demo (shared team library).
      • Only the creator can EDIT or DELETE their own demo.
      • Anyone can DUPLICATE someone else's demo — the copy is theirs to edit.
-     • PROJECT ADMINS can EDIT and DELETE anyone's demo (see ADMIN_EMAILS), so
+     • PROJECT ADMINS can EDIT and DELETE anyone's demo (the list is in `admins.ts`), so
        whoever runs the platform can fix a colleague's demo in place instead of
        leaving them a duplicate they then have to re-share.
 
@@ -24,6 +24,7 @@
    ============================================================================= */
 
 import { type DemoRecord, deleteDemo, getDemo, listDemos, saveDemo, uniqueId } from "./demoStore.ts";
+import { isAdminEmail } from "./admins.ts";
 
 export interface DemoUser { email: string; name: string }
 
@@ -37,37 +38,19 @@ const owns = (rec: DemoRecord, user: DemoUser) =>
 
 /* PROJECT ADMINS — write access to every demo, not just their own.
 
-   The list is the built-in ADMINS below PLUS anything in the DEMO_ADMIN_EMAILS
-   env var (comma separated). Additive, deliberately: replacing the built-in list
-   means `DEMO_ADMIN_EMAILS=bill@invoca.com`, meant as "Bill too", silently
-   strips the project admin of access to everyone's demos — the exact problem
-   this feature exists to fix, reintroduced by a config typo. To remove a
-   built-in admin, edit this constant.
-
-   Read at module load, so changing the var needs a server restart (on Render, a
-   restart — not a redeploy). Matching is case-insensitive and tolerates spaces.
+   ⚠️ **THE LIST ITSELF MOVED TO `engine/admins.ts` (9/16/2026)**, so the alert funnel can
+   read it without a `demoApi -> alerts -> demoApi` cycle. Everything about it is unchanged
+   and documented there: built-in constant PLUS an additive `DEMO_ADMIN_EMAILS`, read at
+   module load, case-insensitive. `adminEmails` is re-exported here so existing callers
+   (`feedbackApi`, `audit:app`) keep importing it from where they always did — one list,
+   two spellings of the same import.
 
    Admin is deliberately NOT ownership: an admin editing your demo does not
    become its creator (see the PATCH branch), so the library keeps showing whose
    demo it is and the owner keeps their own rights to it. */
-const ADMINS = ["ddesai@invoca.com"];
+export { adminEmails } from "./admins.ts";
 
-const ADMIN_EMAILS = new Set(
-  [...ADMINS, ...(process.env.DEMO_ADMIN_EMAILS ?? "").split(",")]
-    .map((e) => e.trim().toLowerCase()).filter(Boolean),
-);
-
-/** The admin addresses themselves, for the one thing that has to REACH an admin
- *  rather than just authorise one: the new-feedback notification. Exported from
- *  here so there is a single admin list — threading it through
- *  `handleFeedbackApi` instead would mean both server.ts and the vite.config.ts
- *  twin passing it, which is exactly where those two drift. */
-export const adminEmails = (): string[] => [...ADMIN_EMAILS];
-
-export const isAdmin = (user: DemoUser) =>
-  /* trim() on THIS side too: the config side was already trimmed, so an email
-     arriving with surrounding whitespace missed a list it was actually in. */
-  ADMIN_EMAILS.has((user.email ?? "").trim().toLowerCase());
+export const isAdmin = (user: DemoUser) => isAdminEmail(user.email);
 
 /* The single write rule. Both PATCH and DELETE go through this so they can never
    drift apart. */

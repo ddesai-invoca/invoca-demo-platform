@@ -1,5 +1,6 @@
 import { useEffect, type ReactNode } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { ScreenBoundary } from "./components/DashboardBoundary";
 import { ProfileProvider } from "./data/ProfileContext";
 import { SmsCaptureProvider } from "./data/SmsCaptureContext";
 import { VoiceCaptureProvider } from "./data/VoiceCaptureContext";
@@ -116,6 +117,16 @@ export default function App() {
             phone preview, Google Search and the Salesforce pages all render outside the
             shell, so a TopBar chip would miss them as well. */}
         <EnvBadge />
+        {/* ⚠️⚠️ **EVERY ROUTE GETS A NET, INCLUDING THE SHELL'S OWN CHROME (9/16/2026).**
+            `DashboardBoundary` lives INSIDE `AppShell`, around its `<Outlet/>` — so it
+            catches a screen, and catches nothing thrown by the TopBar, the Sidebar, or any
+            of the standalone routes above (Launch, the phone preview, Google Search, the
+            four Salesforce screens, `/replica`). Any of those throwing blanked the whole
+            app and reported nothing.
+            ⚠️ Nesting is deliberate: React uses the NEAREST boundary, so an in-shell screen
+            still gets `DashboardBoundary`'s Undo fallback and this one only ever handles
+            what that cannot reach. */}
+        <ScreenBoundary>
         <Routes>
           {/* Launch screen (new prospect / revisit) — full-page, outside the shell */}
           <Route path="/" element={<Launch />} />
@@ -235,6 +246,7 @@ export default function App() {
             ))}
           </Route>
         </Routes>
+        </ScreenBoundary>
         {/* Outside <Routes> so it renders on every screen, Launch included -- but inside
             <BrowserRouter>, because they read the path to stay off the prospect-facing
             pages. Both live in one fixed corner stack so they cannot overlap. */}

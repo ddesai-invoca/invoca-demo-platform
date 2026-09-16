@@ -9,6 +9,14 @@ import './styles/app.css'
 import './styles/ts.css'
 import './styles/standalone.css'
 import App from './App.tsx'
+import { installClientErrorReporting } from './data/clientErrors.ts'
+
+/* ---- the browser reports its own failures ----------------------------------
+   ⚠️ INSTALLED BEFORE THE ROOT RENDERS, deliberately: an exception thrown while the
+   app is mounting is exactly the failure nobody would otherwise hear about, and a
+   hook installed after `createRoot(...).render()` would miss it. See
+   `src/data/clientErrors.ts` for the dedupe and why both channels are hooked. */
+installClientErrorReporting()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

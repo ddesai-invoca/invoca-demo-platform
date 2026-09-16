@@ -305,6 +305,48 @@ function ogImageApi(): Plugin {
   }
 }
 
+/* Dev twin of POST /api/client-error — see the long note in server.ts for why the
+   endpoint exists, why it sits outside the auth gate and why every field is capped.
+
+   ⚠️ IT HAS TO EXIST HERE TOO, even though nobody watches alerts on a laptop: the
+   client hook posts unconditionally, and a dev server with no such route answers the
+   SPA's index.html with a 200, so the browser would report "sent" for a report that
+   went nowhere. Locally the funnel logs rather than sending (non-production), which
+   is exactly what makes the wiring testable without a channel. */
+function clientErrorApi(): Plugin {
+  return {
+    name: 'invoca-client-error-api',
+    configureServer(server) {
+      server.middlewares.use('/api/client-error', async (req, res, next) => {
+        if (req.method !== 'POST') return next()
+        try {
+          const chunks: Buffer[] = []
+          for await (const c of req) chunks.push(c as Buffer)
+          const raw = Buffer.concat(chunks).toString('utf8').slice(0, 8192)
+          const b = JSON.parse(raw || '{}') as Record<string, unknown>
+          const str = (v: unknown, n: number) => (typeof v === 'string' ? v.slice(0, n) : '')
+          const route = str(b.route, 120) || 'unknown'
+          const name = str(b.name, 80) || 'Error'
+          const { alert } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/alerts.ts')).href)
+          void alert({
+            key: `client:${route}:${name}`,
+            title: `Client error on ${route}`,
+            detail: `${name}: ${str(b.message, 300)}`,
+            context: {
+              route,
+              caught: str(b.where, 40) || 'window',
+              prospect: str(b.prospect, 60) || undefined,
+              stack: str(b.stack, 600) || undefined,
+            },
+          })
+        } catch { /* a reporter must never throw */ }
+        res.statusCode = 204
+        res.end()
+      })
+    },
+  }
+}
+
 /* GET /api/status — the same public deploy-status payload the prod server serves,
    from the same module, so the two can't drift. Locally the RENDER_* fields come
    back null, which is exactly how you tell a dev server from the real deploy. */
@@ -317,6 +359,7 @@ function statusApi(): Plugin {
         try {
           const { deployStatus } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/status.ts')).href)
           const { authEnabled } = await import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href)
+          const { alertSummary } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/alerts.ts')).href)
           const env = loadEnv('development', process.cwd(), '')
           res.statusCode = 200
           res.setHeader('Content-Type', 'application/json')
@@ -328,6 +371,7 @@ function statusApi(): Plugin {
             emailConfigured: !!(env.SMTP_USER && env.SMTP_APP_PASSWORD),
             renderConfigured: Boolean(env.BROWSERLESS_TOKEN || process.env.BROWSERLESS_TOKEN),
             authGate: authEnabled,
+            alerts: alertSummary(),
           })))
         } catch (e: any) {
           console.error('[status] failed:', e)
@@ -659,6 +703,7 @@ export default defineConfig(({ mode }) => {
       demoLibraryApi(),
     feedbackApi(),
       statusApi(),
+      clientErrorApi(),
       chatApi(apiKey),
       assistantApi(apiKey),
       analyzeApi(apiKey),

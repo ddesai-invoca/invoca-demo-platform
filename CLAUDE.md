@@ -123,6 +123,230 @@ Measured: 201.6s on a real run (budget 300s), 20 phases captured, 0 audit failur
 to `main` — main auto-deploys, and a 2am agent must not deploy. See
 [[invoca-demo-status-and-next-step]] in user memory for the routine id.
 
+### Error handling: one funnel, and the rate limiting that makes it readable (9/16/2026)
+Asked for directly: *"I want to get notified when anything goes wrong with the platform, the
+small things like a feature is not working to bigger things like voice agent is not working or
+the whole platform is down."* Then, on how: *"the best way to do it, not the easiest"*, with
+**Slack** as the channel.
+
+**MEASURED FIRST, and the gap was not where it looked.** The pieces were mostly here — the
+canary already models generation health correctly, `engine/mailer.ts` already sends — and what
+was missing was somewhere for a failure to GO:
+
+| | state before |
+|---|---|
+| server errors | **21 `console.error` sites, and console was the only destination.** Render keeps the logs; somebody has to go and look |
+| the browser | **completely dark**: no `window.onerror`, no `unhandledrejection`, and `DashboardBoundary` caught render errors and told NOBODY |
+| unhandled throws | no `uncaughtException`, no `unhandledRejection`, **no Express error handler at all** |
+| the canary's verdict | computed only when somebody READ `/api/canary` — if the tick died, the endpoint said so and nothing was told |
+
+⚠️⚠️ **THE ONE FACT THAT SHAPES ALL OF IT: YOU CANNOT DETECT YOUR OWN OUTAGE FROM INSIDE THE
+BOX.** The canary, `/api/status` and the mailer all run in the web process, so "the platform is
+down" needs a watcher outside Render (that half is the user's to turn on — see the end). Every
+other case can be reported from inside, and now is.
+
+#### `engine/alerts.ts` — the funnel
+⚠️⚠️ **THE RATE LIMITING IS THE FEATURE, NOT A NICETY.** An error in a hot path fires per
+request, and a channel that delivers five hundred copies of one fault is a channel you mute —
+after which the platform is *less* monitored than with nothing, because now you believe it is
+covered. Three layers: dedupe by **signature** (a stable `key`, not the message — a message
+interpolates ids); a re-send after the 30-minute cooldown carrying "fired N times since the last
+alert", so a persistent fault escalates rather than going quiet; and a **global ceiling** of 12
+an hour, past which one "being rate limited" notice is sent and the rest are counted.
+⚠️ **SLACK IS A WEBHOOK URL AND NOTHING MORE**, which is what keeps an approval off the critical
+path. `docs/INTEGRATIONS.md` records a CLOSED request for exactly this — *"Slack notification
+when my demo finishes generating"*, rejected because *"it needs a Slack app and workspace
+approval"* — but that was for `search:read`. Posting to one channel can come from an
+incoming-webhook app (small approval), Slack's own **email-to-channel address (no approval at
+all**, and it arrives through the mailer path), or a Workflow Builder webhook. The code cannot
+tell them apart. Email is the FALLBACK, not a second channel: two channels for one fault is two
+things to mute.
+⚠️ A **dead webhook falls back to email** rather than losing the alert — a revoked webhook is
+exactly the quiet breakage that would otherwise take the whole channel with it.
+⚠️ **NON-PRODUCTION LOGS INSTEAD OF SENDING** (`ALLOW_ALERTS=1` overrides), the same rule and
+the same reasoning as `sendMail`.
+
+⚠️⚠️ **THE COOLDOWN IS PERSISTED TO `DATA_DIR/alerts.json`, AND THAT IS WHAT SURVIVES A CRASH
+LOOP.** `uncaughtException` alerts and then exits; the host restarts; with in-memory state only,
+the same fault notifies on every boot — the storm the dedupe exists to prevent, arriving by a
+different door.
+
+**`engine/admins.ts` is new: the admin list was EXTRACTED from `demoApi.ts`** so the funnel can
+read it without a `demoApi -> alerts -> demoApi` cycle, since an alert has to be callable from
+anywhere a failure happens — including a failed demo write. `demoApi` re-exports `adminEmails`,
+so `feedbackApi` and `audit:app` are unchanged. Same reasoning that moved `leadSlug` and
+`isProspect`.
+
+#### The three bugs the audit found in my own funnel
+Worth recording because each was invisible to a type check and two were invisible to reading:
+1. **`repeats` was off by one, and was two different definitions.** Returning `since - 1` made a
+   first report read 0, and therefore made the *second* occurrence of a quiet fault also read 0 —
+   indistinguishable from "never happened before". It counts occurrences now and `render()`
+   decides when to print.
+2. **The title was uncapped.** The detail and context values were capped from the start; the
+   title, which is where an exception message most often lands, was not. A 5,000-character title
+   produced a 5,000-character Slack message.
+3. **Repeat counts were lost across a restart**, because the state was only persisted when a
+   notification was sent. The escalation line is most valuable for a long-lived quiet fault, and
+   that was the exact case that lost it. A throttled write (60s) keeps both: counts survive a
+   restart, and a storm costs one write a minute. **Consequence, stated:** occurrences inside one
+   throttle window can be lost to a restart. That is a count slightly low, never a missed
+   notification, because `notifiedAt` is written the moment one goes out.
+
+#### `POST /api/client-error` — a broken screen reports itself
+⚠️⚠️ **REGISTERED BEFORE `installAuth`, WHICH IS A DELIBERATE TRADE.** Behind the gate, an
+expired session turns the report into a 302 to Google and the error is lost — and a session
+expiring mid-demo is exactly when things break. So every consequence is handled instead: the body
+is capped at 8KB, every field truncated, the signature NAMESPACED `client:` so a caller cannot
+forge a server-side one, and the funnel's hourly ceiling means the worst an abuser achieves is a
+handful of messages followed by suppression. It answers 204 whatever happens — a reporter that can
+fail gives the page a second error to handle, on a path that only runs when something is already
+wrong.
+⚠️ **DEDUPED ON THE CLIENT TOO, and that is not belt-and-braces.** A React render loop fires the
+same error hundreds of times a second; the server's cooldown stops the *notifications*, and only a
+local guard stops the *traffic* — from the browser, during a demo, on the machine already
+struggling. Verified live: the second throw of the same signature produced **zero** further
+requests.
+⚠️ **BOTH GLOBAL CHANNELS ARE HOOKED.** A rejected promise never reaches `onerror`, and this app
+is almost entirely async — every `/api/*` call, the SSE stream, the LiveKit connection. Hooking
+only the synchronous one would have missed the failures most likely to happen.
+⚠️ **A BROKEN IMAGE IS NOT A PLATFORM FAILURE.** A failed asset also fires `"error"`, with no
+`error` object and the ELEMENT as the target; unfiltered, every 404 favicon would report as a
+fault. Verified live: a missing image produced zero reports.
+⚠️ **`keepalive: true`**, because a crash is often followed by a navigation and an in-flight fetch
+dies with the page.
+
+#### The boundary was swallowing errors, and it only covered half the app
+⚠️⚠️ `DashboardBoundary` caught the throw, rendered a tidy Undo button and **reported it
+nowhere** — the one place in the app that KNOWS a render failed was also the one certain not to
+say so. It has a `componentDidCatch` now, carrying the route and the prospect (which demo was
+open is the first thing anybody would ask, and what makes it reproducible).
+⚠️⚠️ **AND IT ONLY EVER WRAPPED `AppShell`'s `<Outlet/>`** — so Launch, the Preview Agent phone,
+Google Search, the four Salesforce screens and `/replica` had **no boundary at all**, and neither
+did the shell's own TopBar and Sidebar. A throw in any of those blanked the whole app. A new
+`ScreenBoundary` wraps the entire route tree; nesting is deliberate, since React uses the NEAREST
+boundary, so an in-shell screen still gets the Undo fallback and this one only handles what that
+cannot reach.
+
+#### The two automatic health signals
+- **The canary's own verdict now raises an alert**, read back out of `toPublic()` rather than
+  re-derived, so the Slack message and `/api/canary` cannot disagree about the same night. It
+  covers *missing* and *stale* too, which is the "silence is not success" case that previously
+  required a human to load the endpoint. **At most once per ET day** — the funnel's 30-minute
+  cooldown would otherwise allow ~48 notifications for a signal that changes once a night, and a
+  daily signal that pages twice an hour is a daily signal you mute. `etParts` was hoisted out of
+  `scheduleCanary` so both use one answer to "what ET day is it".
+- **Voice: the watchdog reports when no agent ever joins.** ⚠️⚠️ **AND IT IS DELIBERATELY NOT A
+  WORKER-REGISTRY CHECK.** `/api/status`'s `livekitConfigured` only proves three keys exist; it
+  says nothing about a worker being registered under this environment's `voiceAgentName()`, and
+  the worker ships by `lk agent deploy` rather than `git push`, so a stale one is invisible. But
+  `livekit-server-sdk` exposes no worker registry to ask, and inventing one would be a check that
+  cannot be verified — the trap this file records repeatedly. What IS ground truth is the moment
+  30 seconds elapse with nothing in the room: every documented cold start is over by then, so it
+  is a dead worker or a wake-up far outside LiveKit's stated window, and both are worth knowing.
+  It reports through the same client reporter, so it needed no new endpoint.
+
+#### `/api/status` carries the counts
+⚠️ **COUNTS AND SIGNATURES ONLY, NEVER THE DETAIL** — that route is PUBLIC, and the standing rule
+is counts and booleans. `"chat-500"` is safe; the message that produced it is not, because a
+message can quote a prospect or a URL. `alertSummary()` is built for this endpoint and
+`audit:alerts` asserts the redaction by alerting with a prospect name in the detail and checking
+it cannot be found in the summary. Passed IN by both twins like every other field, per the note at
+the top of `status.ts`.
+
+#### ⚠️⚠️ FOUND WHILE DOING THIS: `server.ts` IS NOT TYPECHECKED
+`tsconfig.node.json` includes only `["vite.config.ts", "engine"]`, so **the production entry point
+has never been type-checked** — `npm run build` runs `tsc -b` plus a client-only vite build, and
+neither reads it. Demonstrated rather than argued: adding a required field to `StatusInput`
+compiled clean, and `server.ts` was calling `deployStatus({...})` without it. Measured with it
+temporarily included: **45 errors — 1 real (that missing field, now fixed), 1 trivial (an unused
+param in `googleAuth.ts`), and ~43 DOM-type errors from ONE import**, `server.ts:491`'s dynamic
+`import("./src/data/replicaPages.ts")` — a module `engine/replicaCapture.ts` already warns about
+by name ("that module is full of `HTMLInputElement`"). So the fix is not a two-line include: it
+needs that lookup moved out of a browser-side module, or a third tsconfig with the DOM lib.
+**Left as a flagged finding rather than restructured mid-build**, and it belongs high on the
+error-handling list, because an untypechecked production entry is a source of exactly the runtime
+errors this work exists to catch.
+
+#### Then: every failure path wired, through ONE helper (9/16/2026)
+The gap left by the first pass, and it was the important one. **18 `console.error` sites in
+`server.ts`, 5 alerts** — and the 13 that mattered all CATCH and respond, so they never reach
+the Express error handler either. Generation, chat, analyze, the demo library, the feedback
+board, Gong, Drive, the ZIP lookup, the voice preview, the LiveKit token mint. Two replicate
+paths logged **nothing at all**, which is worse than a bare log: not even a line to find later.
+
+⚠️⚠️ **A HELPER (`routeFailed`) RATHER THAN 13 PAIRED CALLS, AND THAT IS THE WHOLE POINT.** Two
+statements that must always appear together will eventually appear apart, and the failure is
+invisible: the endpoint still answers, the log still has its line, and nobody is told — which is
+precisely the state this work started from. One function cannot log without alerting.
+
+⚠️⚠️ **THE LEVELS ARE THE DIFFERENCE BETWEEN A CHANNEL YOU READ AND ONE YOU MUTE.** Not
+everything pages:
+| path | level | why |
+|---|---|---|
+| generation, chat, analyze, demos, feedback, LiveKit token | **page** | ours, and broken means a feature is down |
+| **generate-persist** | **page** | the prospect was DELIVERED and then lost — silent data loss |
+| chat / ai-assistant when `isOverloaded(e)` | **record** | a 529 is expected, self-correcting, and already surfaced as "briefly overloaded, please resend" |
+| replicate (both paths) | **record** | usually the TARGET site blocking a datacenter IP (AutoNation and Orlando Health both do) — not ours, not actionable at 2am |
+| Gong, ZIP, voice preview | **record** | one integration or one control degrades |
+
+⚠️ **THE CANARY TICK NOW REPORTS ITS OWN THROW.** It was covered only indirectly: no run
+recorded means `toPublic()` reports *stale* the next day. True, but a day late.
+
+⚠️ **THE DEV TWIN IS DELIBERATELY NOT WIRED.** Alerting is a production concern and local logs
+rather than sends, so 13 more `alert()` calls in `vite.config.ts` would be churn for no signal.
+That asymmetry is principled rather than an oversight — unlike `/api/client-error`, which IS in
+both twins, because the client posts unconditionally and a missing route would answer with
+`index.html` and read as success.
+
+**`npm run audit:alerts` is 47 checks**, and it is the reason to trust any of the above.
+⚠️⚠️ **IT DELIVERS TO A LOCAL HTTP SERVER IT STANDS UP ITSELF.** The dedupe, the cooldown and the
+ceiling are only observable once a send SUCCEEDS — with no channel configured every call returns
+`sent: false` and every check would pass against a funnel that dedupes nothing. That is the
+tautological-check trap this file records three times over, so the fake webhook is not
+convenience, it is the only way the assertions mean anything.
+⚠️ It also checks the **wiring**, because a perfect funnel nobody calls is the silent no-op this
+file records six times: both process handlers, the crash alert being AWAITED (a floating promise
+dies with the process, so the most important notification is the one that would never leave), the
+Express handler's **four-argument arity** (Express decides by arity — a three-argument one is
+ordinary middleware and silently never runs) and its registration AFTER the catch-all, both twins
+serving the endpoint, the boundary reporting, and the route tree actually being wrapped.
+⚠️ Five sabotages were each verified to fire: removing the dedupe (7 red), disabling persistence
+(1), removing the ceiling (4), leaking the detail into the summary (1), and removing the
+non-production gate (1).
+⚠️⚠️ **AND IT CHECKS THE REMAINDER, NOT A CALL COUNT.** Counting `routeFailed` sites would pass
+the day somebody adds a 16th handler that quietly goes back to a bare `console.error`. Instead
+every surviving `console.error` in `server.ts` must match a short allow-list of things that
+legitimately are not routes (the helper itself, the two crash handlers, canary scaffolding, the
+boot seeder). Verified by putting one route back to a bare log: it reddens and **names the file
+and line**.
+
+**Verified live in the browser**, not by construction: a thrown `TypeError` and a rejected
+`RangeError` both reached the funnel and appear on `/api/status` as `client:/:TypeError` and
+`client:/:RangeError`, with the dev-server log showing the signature, title and detail and
+correctly declining to send because this is local.
+
+**And verified end to end against the PRODUCTION entry point** (`npm start` with a stand-in
+webhook on localhost, so no real credential was involved), both levels through real endpoints:
+- `/api/replicate/probe` with an unreachable URL — the route genuinely threw, `routeFailed`
+  logged `api:replicate`, it was counted on `/api/status`, and **nothing was posted**, which is
+  what `record` means;
+- `/api/client-error` — posted, carrying route, `caught: boundary`, the prospect, the user agent
+  and the environment tag.
+`/api/status` then read `channel: "slack"` with both signatures and their counts and **no detail**.
+⚠️ `/api/analyze` with no API key was tried first and correctly alerted NOTHING — it guards on
+the missing key and returns early rather than throwing. A guard is not a failure.
+⚠️ **NOT verified by a forced render crash**: the boundary's report path is checked by the audit
+and shares the reporter proved above, but no screen was made to throw for real. Say so rather than
+implying otherwise.
+
+**Still needs credentials the assistant cannot create** — and until then the funnel degrades
+honestly (`channel: "none"` on `/api/status`, everything logged): a `SLACK_WEBHOOK_URL` or a
+channel email address, Render's own deploy/service-failure notifications turned on, and an
+external HTTP monitor on `/healthz` with a **2-failure threshold** (the drain returns 503 for ~40s
+on every deploy, so a 1-strike monitor pages on every push). Sentry, for grouped stack traces with
+source maps, is the other half of "best" and is not built.
+
 ### "Lead Form Performance Summary" — Marketing Performance dashboard
 A KPI card directly UNDER "Call Performance Summary", same 4-tile shape so the two
 read as a channel pair: Lead Form Count · the prospect's engagement-rate tile · the
