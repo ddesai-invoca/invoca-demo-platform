@@ -46,6 +46,21 @@ export function FeedbackBoard() {
   const [busyId, setBusyId] = useState("");
   const [toast, setToast] = useState("");
   const [filter, setFilter] = useState<string>("All");
+  /* ---- the note that goes out WITH the completion email (9/16/2026) ----------
+     Asked for directly: "allow me to add a comment when i change status of any
+     Feedback & feature requests to complete before the email gets send out, and the
+     email includes the comment."
+
+     ⚠️⚠️ **THE COMMENT IS `rec.note`, NOT A NEW FIELD — because the plumbing already
+     existed and nothing could reach it.** PATCH has always accepted `note`, the board
+     has always rendered it, and `completionEmail` has always included it in both the
+     text and the HTML. What was missing was any way to WRITE one: the status `<select>`
+     PATCHed `{ status }` alone, so the field was effectively dead. Adding a second
+     `completionComment` would have duplicated a path that works.
+     ⚠️ **ONE PATCH, WHICH IS WHY THE COMMENT CANNOT ARRIVE AFTER THE EMAIL.** The
+     handler assigns `rec.note` BEFORE it builds the mail, so sending them together is
+     ordering-correct by construction rather than by luck — `audit:app` pins that order. */
+  const [composing, setComposing] = useState<{ item: Item; text: string } | null>(null);
   /* Feedback/support and feature requests are triaged differently: one is "is
      something broken", the other is a backlog. Mixing them in one list means
      reading past the wrong kind to find the one you came for. */
@@ -66,13 +81,17 @@ export function FeedbackBoard() {
 
   useEffect(() => { void load(); }, [load]);
 
-  async function setStatus(item: Item, status: string) {
+  async function setStatus(item: Item, status: string, note?: string) {
     setBusyId(item.id);
+    setComposing(null);
     try {
       const res = await fetch(`/api/feedback/${item.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status }),
+        /* `note` is omitted unless the composer produced one, so every other status
+           change leaves an existing note exactly as it was. Sending `note: ""` would
+           silently wipe it. */
+        body: JSON.stringify(note === undefined ? { status } : { status, note }),
       });
       const d = await res.json();
       if (!res.ok) throw new Error(d?.error || "Could not update.");
@@ -212,13 +231,67 @@ export function FeedbackBoard() {
                   <label>
                     Status
                     <select value={i.status} disabled={busyId === i.id}
-                      onChange={(e) => void setStatus(i, e.target.value)}>
+                      onChange={(e) => {
+                        const next = e.target.value;
+                        /* ⚠️ ONLY WHEN AN EMAIL WILL ACTUALLY GO OUT. "Complete" is the
+                           one terminal status (`TERMINAL` in feedbackStore), and
+                           `notifiedAt` means this person has already been told — so
+                           re-completing an already-notified item saves straight through
+                           rather than offering to write a comment nobody will receive. */
+                        if (next === "Complete" && !i.notifiedAt) {
+                          setComposing({ item: i, text: i.note ?? "" });
+                          return;
+                        }
+                        void setStatus(i, next);
+                      }}>
                       {statuses.map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
                   </label>
                   {busyId === i.id && <span className="fbb-busy">saving…</span>}
                   {i.status === "Complete" && !i.notifiedAt && emailEnabled &&
                     <span className="fbb-hint">not emailed</span>}
+                </div>
+              )}
+
+              {composing?.item.id === i.id && (
+                <div className="fbb-say">
+                  <label className="fbb-say-lbl" htmlFor={`say-${i.id}`}>
+                    {/* Say who reads it and what happens, rather than "add a comment".
+                        An admin should not have to guess whether this is internal. */}
+                    {emailEnabled
+                      ? `Anything to tell ${i.submitter.name.split(/\s+/)[0]}? It goes in the email.`
+                      : `Anything to add? Email is not configured, so this is saved on the item.`}
+                  </label>
+                  <textarea
+                    id={`say-${i.id}`}
+                    className="fbb-say-box"
+                    rows={3}
+                    maxLength={4000}
+                    autoFocus
+                    placeholder="Optional. For example: shipped today, the dropdown now shows just the voice name."
+                    value={composing.text}
+                    onChange={(e) => setComposing({ item: i, text: e.target.value })}
+                    onKeyDown={(e) => { if (e.key === "Escape") setComposing(null); }}
+                  />
+                  <div className="fbb-say-act">
+                    <button className="fbb-say-send" disabled={busyId === i.id}
+                      onClick={() => void setStatus(i, "Complete", composing.text.trim())}>
+                      {emailEnabled ? "Mark complete & email" : "Mark complete"}
+                    </button>
+                    <button className="fbb-say-cancel" onClick={() => setComposing(null)}>Cancel</button>
+                  </div>
+                  {/* Optional is optional, and it says so — an empty note simply omits
+                      that line from the email, which `completionEmail` already handles.
+                      ⚠️ IT HAS TO HONOUR `emailEnabled` TOO. The first version said "send the
+                      email without a comment" unconditionally, directly under a label that
+                      had just explained email is not configured — the two lines contradicted
+                      each other on any server without a mailer. Caught by reading the rendered
+                      panel, not by a type. */}
+                  <p className="fbb-say-note">
+                    {emailEnabled
+                      ? "Leave it blank to send the email without a comment."
+                      : "Leave it blank to just mark it complete."}
+                  </p>
                 </div>
               )}
             </article>

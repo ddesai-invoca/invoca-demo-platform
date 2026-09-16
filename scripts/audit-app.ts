@@ -295,5 +295,58 @@ fbSrc.indexOf("saveFeedback(rec)") < fbSrc.indexOf("newItemEmail(")
   ? ok("the item is saved before the notice is attempted")
   : bad("the notice is attempted before the item is saved — a mail failure could lose it");
 
+/* ---- the completion comment goes out WITH the email -------------------------
+   Asked for directly (9/16/2026): "allow me to add a comment when i change status of
+   any Feedback & feature requests to complete before the email gets send out, and the
+   email includes the comment."
+
+   ⚠️⚠️ **THE ORDERING IS THE WHOLE CORRECTNESS ARGUMENT, and it is one line apart in
+   the handler.** `rec.note` is assigned from the request body BEFORE the terminal-status
+   block builds the mail, so the comment and the email are one atomic PATCH. Move the
+   note assignment below that block and the feature still "works" — the comment saves,
+   the board shows it, the status changes — and the email goes out WITHOUT it, every
+   time, silently. That is the only way this can break, so it is what these checks pin. */
+console.log("\nThe completion comment reaches the email");
+{
+  const api = code("engine/feedbackApi.ts");
+  const iNote = api.indexOf("rec.note = body.note");
+  const iMail = api.indexOf("completionEmail(");
+  iNote > 0 && iMail > 0 && iNote < iMail
+    ? ok("the note is stored BEFORE the completion email is built")
+    : bad("the note is assigned after the mail is built — the email would go out without the comment");
+
+  /* One field, not two. The plumbing already existed end to end; a second
+     `completionComment` would have duplicated a working path. */
+  /note: rec\.note/.test(api)
+    ? ok("and that same note is what the email is handed")
+    : bad("completionEmail is no longer given rec.note");
+
+  const mail = read("engine/mailer.ts");
+  /\.\.\.\(opts\.note \? \[``, opts\.note\] : \[\]\)/.test(mail)
+    ? ok("the text body includes it, and omits the line entirely when it is blank")
+    : bad("the plain-text email no longer carries the note");
+  /opts\.note \? `<br><span[^`]*\$\{esc\(opts\.note\)\}/.test(mail)
+    ? ok("the HTML body includes it, escaped")
+    : bad("the HTML email no longer carries the note, or stopped escaping it");
+
+  const board = code("src/screens/FeedbackBoard.tsx");
+  /if \(next === "Complete" && !i\.notifiedAt\)/.test(board)
+    ? ok("picking Complete opens the composer instead of saving straight through")
+    : bad("the board no longer asks for a comment when completing");
+  /* ⚠️ Already-notified items must NOT offer a comment: no second email is sent, so the
+     panel would be promising something that cannot happen. */
+  /!i\.notifiedAt/.test(board)
+    ? ok("but not for an item whose submitter has already been emailed")
+    : bad("it would offer a comment on an item that will send no email");
+  /JSON\.stringify\(note === undefined \? \{ status \} : \{ status, note \}\)/.test(board)
+    ? ok("every other status change omits `note`, so an existing one is never wiped")
+    : bad("the board may send note: \"\" on an unrelated status change and erase a comment");
+  /* The panel must not promise an email on a server that has no mailer — all three
+     lines (label, button, hint) branch on `emailEnabled`. The hint did not, at first. */
+  (board.match(/emailEnabled/g) || []).length >= 4
+    ? ok("its copy honours whether email is actually configured")
+    : bad("some of the composer's copy promises an email regardless of configuration");
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll app-chrome checks passed\n");
 process.exit(fail ? 1 : 0);

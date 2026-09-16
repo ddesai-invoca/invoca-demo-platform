@@ -7629,6 +7629,55 @@ city keys added 9/9, and is marked Complete.
     triggered it, or the admin sees an error for an item that already saved.
   - The title is user text and goes into HTML email: it is escaped (verified).
 
+### A comment goes out with the "your request is done" email (9/16/2026)
+Asked for directly: *"allow me to add a comment when i change status of any Feedback & feature
+requests to complete before the email gets send out, and the email includes the comment."*
+
+⚠️⚠️ **MOST OF THIS ALREADY EXISTED AND NOTHING COULD REACH IT.** `PATCH /api/feedback/:id` has
+always accepted `note`, the board has always rendered it (`.fbb-note`, "Note: …"), and
+`completionEmail` has always included it in BOTH the text and the escaped HTML. What was missing
+was any way to WRITE one: the status `<select>` PATCHed `{ status }` alone, so the field was
+effectively dead code. So this is a UI change plus a check, not a new field — a second
+`completionComment` would have duplicated a path that already works end to end.
+
+⚠️⚠️ **ONE PATCH, WHICH IS THE WHOLE CORRECTNESS ARGUMENT, and it rests on ONE LINE'S POSITION.**
+The handler assigns `rec.note` from the body BEFORE the terminal-status block builds the mail, so
+the comment and the email are atomic by construction rather than by ordering luck. **Move that
+assignment below the block and the feature still looks like it works** — the comment saves, the
+board shows it, the status changes — and the email goes out without it, every time, silently.
+That is the only way this can break, so `audit:app` pins the order by comparing the two indexes
+in the source. Verified: moving it reddens.
+
+⚠️ **`note` IS OMITTED FROM EVERY OTHER STATUS CHANGE.** Sending `note: ""` on a move to "In
+progress" would erase a comment somebody had already written. The board sends `{ status }` alone
+unless the composer produced something.
+⚠️ **AN ALREADY-NOTIFIED ITEM GETS NO COMPOSER.** `notifiedAt` means that person has been told
+and no second email will be sent, so offering to write one would promise something that cannot
+happen. It saves straight through instead.
+⚠️ **THE COMPOSER'S COPY HONOURS `emailEnabled`, ALL THREE LINES OF IT** — the label, the button
+and the hint. The first version branched the label and the button and left the hint saying "Leave
+it blank to send the email without a comment", directly under a label that had just explained
+email is not configured. Two lines contradicting each other on any server without a mailer,
+caught by reading the rendered panel rather than by a type.
+⚠️ Optional, and it says so; an empty note simply omits that line, which the mail builder already
+handled. Escape closes the composer, Cancel leaves the status untouched (the `<select>` is
+controlled by item state, so it snaps back).
+⚠️ Its own `.fbb-say-*` prefix rather than the submit modal's `.fb-*` — different surface, and
+one prefix per screen is what stops a change to one restyling the other.
+
+**`npm run audit:app` gained 8 checks**; three were broken on purpose and each fired: moving the
+note assignment after the mail, sending `note: ""` on any change, and offering the composer on an
+already-notified item.
+
+**Verified end to end in the real UI**, against the production entry point with `local@dev`
+granted admin through the additive `DEMO_ADMIN_EMAILS` env var (no code edit, per the note on the
+admin list): picking Complete opened the composer without saving, the `<select>` still read "New",
+typing a comment and clicking through stored `status: Complete` with the note on the record, the
+card then rendered it, and the toast reported honestly — *"Marked complete, but the email did not
+send (local does not send email)"*. `completionEmail` was called with the note; both bodies carry
+it and a blank note omits the line. ⚠️ The test item was restored to `New` with its note and
+history cleared afterwards.
+
 ## One hamburger, top right: the launch menu (9/10/2026)
 
 Asked for directly: *"the buttons on the bottom [are] good, but there are more things that i
