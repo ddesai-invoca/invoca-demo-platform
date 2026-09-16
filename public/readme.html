@@ -271,11 +271,11 @@ footer {
     <button class="tab" id="t-biz" role="tab" aria-selected="true" aria-controls="p-biz">
       <span class="tnum">1</span> The short version
     </button>
-    <button class="tab" id="t-eng" role="tab" aria-selected="false" aria-controls="p-eng">
-      <span class="tnum">2</span> Technical detail
-    </button>
     <button class="tab" id="t-how" role="tab" aria-selected="false" aria-controls="p-how">
-      <span class="tnum">3</span> How was this created
+      <span class="tnum">2</span> How was this created
+    </button>
+    <button class="tab" id="t-eng" role="tab" aria-selected="false" aria-controls="p-eng">
+      <span class="tnum">3</span> Technical detail
     </button>
   </div>
 </div>
@@ -529,7 +529,229 @@ footer {
   </section>
 </div>
 
-<!-- ================== TAB 2: TECHNICAL DETAIL ================== -->
+<!-- ================== TAB 2: HOW WAS THIS CREATED ================== -->
+<div class="panel" id="p-how" role="tabpanel" aria-labelledby="t-how" hidden>
+
+  <p class="lede">
+    Nothing here was built from scratch. The tool is assembled out of standard, off-the-shelf
+    services, each doing one job. That is what let it go from an idea to something the team uses
+    without a platform team, a data centre, or a procurement cycle.
+  </p>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>How it gets built and published</h2></div>
+    <div class="sec-rule"></div>
+
+    <figure class="figure">
+      <svg viewBox="0 0 1080 575" role="img"
+           aria-label="Three steps build and publish the tool: Claude Code writes the code, GitHub stores it, and Render publishes it to the live website the team opens. The live tool then calls twelve managed services, grouped by building a demo, running a demo, and keeping it running.">
+        <defs>
+          <marker id="h-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#00b388"/>
+          </marker>
+          <filter id="h-sh" x="-14%" y="-14%" width="128%" height="128%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0a231e" flood-opacity="0.10"/>
+          </filter>
+        </defs>
+
+        <g filter="url(#h-sh)">
+          <rect x="20" y="60" width="228" height="120" rx="13" fill="#ffffff" stroke="#a5dfc9"/>
+          <rect x="300" y="60" width="228" height="120" rx="13" fill="#ffffff" stroke="#d8ded9"/>
+          <rect x="580" y="60" width="228" height="120" rx="13" fill="#ffffff" stroke="#d8ded9"/>
+          <rect x="860" y="60" width="200" height="120" rx="13" fill="#0a231e"/>
+        </g>
+
+        <circle cx="48" cy="90" r="14" fill="#00b388"/>
+        <text x="48" y="95" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+        <text x="76" y="95" font-size="15" font-weight="600" fill="#0a231e">Claude Code</text>
+        <text x="44" y="128" font-size="12.5" fill="#626464">Writes the code, working from</text>
+        <text x="44" y="148" font-size="12.5" fill="#626464">captures of the real Invoca</text>
+        <text x="44" y="168" font-size="12.5" fill="#626464">screens being replicated.</text>
+
+        <circle cx="328" cy="90" r="14" fill="#00b388"/>
+        <text x="328" y="95" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+        <text x="356" y="95" font-size="15" font-weight="600" fill="#0a231e">GitHub</text>
+        <text x="324" y="128" font-size="12.5" fill="#626464">Stores the code. Every change</text>
+        <text x="324" y="148" font-size="12.5" fill="#626464">is recorded, so anything can</text>
+        <text x="324" y="168" font-size="12.5" fill="#626464">be traced or undone.</text>
+
+        <circle cx="608" cy="90" r="14" fill="#00b388"/>
+        <text x="608" y="95" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+        <text x="636" y="95" font-size="15" font-weight="600" fill="#0a231e">Render</text>
+        <text x="604" y="128" font-size="12.5" fill="#626464">Hosts the website. A change</text>
+        <text x="604" y="148" font-size="12.5" fill="#626464">saved to GitHub publishes</text>
+        <text x="604" y="168" font-size="12.5" fill="#626464">itself within a few minutes.</text>
+
+        <text x="884" y="103" font-size="15" font-weight="600" fill="#ffffff">The live tool</text>
+        <text x="884" y="132" font-size="12.5" fill="#9fc4b8">What the team opens</text>
+        <text x="884" y="152" font-size="12.5" fill="#9fc4b8">in their browser.</text>
+
+        <path d="M248,120 H294" fill="none" stroke="#00b388" stroke-width="2" marker-end="url(#h-ah)"/>
+        <path d="M528,120 H574" fill="none" stroke="#00b388" stroke-width="2" marker-end="url(#h-ah)"/>
+        <path d="M808,120 H854" fill="none" stroke="#00b388" stroke-width="2" marker-end="url(#h-ah)"/>
+
+        <path d="M960,180 V206" fill="none" stroke="#00b388" stroke-width="2" marker-end="url(#h-ah)"/>
+        <text x="20" y="238" font-size="15" font-weight="600" fill="#0a231e">and the live tool calls these managed services:</text>
+
+        <rect x="20" y="256" width="332" height="270" rx="14" fill="#f5f8f6" stroke="#e3e8e4"/>
+        <circle cx="42" cy="278" r="4" fill="#00b388"/>
+        <text x="54" y="282" font-size="12.5" font-weight="700" fill="#0a231e">Building a demo</text>
+        <rect x="34" y="304" width="304" height="46" rx="9" fill="#ffffff" stroke="#e6e9e5"/>
+        <text x="46" y="324" font-size="12.5" font-weight="600" fill="#0a231e">Anthropic (Claude)</text>
+        <text x="46" y="341" font-size="11.5" fill="#626464">Writes the prospect's data, screens and scripts.</text>
+        <rect x="34" y="358" width="304" height="46" rx="9" fill="#ffffff" stroke="#e6e9e5"/>
+        <text x="46" y="378" font-size="12.5" font-weight="600" fill="#0a231e">Gong</text>
+        <text x="46" y="395" font-size="11.5" fill="#626464">Reads real calls with that prospect for context.</text>
+        <rect x="34" y="412" width="304" height="46" rx="9" fill="#ffffff" stroke="#e6e9e5"/>
+        <text x="46" y="432" font-size="12.5" font-weight="600" fill="#0a231e">Google Drive</text>
+        <text x="46" y="449" font-size="11.5" fill="#626464">Reads a strategy document you point it at.</text>
+        <rect x="34" y="466" width="304" height="46" rx="9" fill="#ffffff" stroke="#e6e9e5"/>
+        <text x="46" y="486" font-size="12.5" font-weight="600" fill="#0a231e">Browserless</text>
+        <text x="46" y="503" font-size="11.5" fill="#626464">Opens a real web page so its form can be copied.</text>
+
+        <rect x="374" y="256" width="332" height="270" rx="14" fill="#f5f8f6" stroke="#e3e8e4"/>
+        <circle cx="396" cy="278" r="4" fill="#00b388"/>
+        <text x="408" y="282" font-size="12.5" font-weight="700" fill="#0a231e">Running a demo</text>
+        <rect x="388" y="304" width="304" height="46" rx="9" fill="#ffffff" stroke="#e6e9e5"/>
+        <text x="400" y="324" font-size="12.5" font-weight="600" fill="#0a231e">LiveKit</text>
+        <text x="400" y="341" font-size="11.5" fill="#626464">The AI agent's ears and voice on a live call.</text>
+        <rect x="388" y="358" width="304" height="46" rx="9" fill="#ffffff" stroke="#e6e9e5"/>
+        <text x="400" y="378" font-size="12.5" font-weight="600" fill="#0a231e">Google Places</text>
+        <text x="400" y="395" font-size="11.5" fill="#626464">The prospect's real photo, rating and address.</text>
+        <rect x="388" y="412" width="304" height="46" rx="9" fill="#ffffff" stroke="#e6e9e5"/>
+        <text x="400" y="432" font-size="12.5" font-weight="600" fill="#0a231e">Mapbox</text>
+        <text x="400" y="449" font-size="11.5" fill="#626464">Draws any map that appears in a demo.</text>
+        <rect x="388" y="466" width="304" height="46" rx="9" fill="#ffffff" stroke="#e6e9e5"/>
+        <text x="400" y="486" font-size="12.5" font-weight="600" fill="#0a231e">Render disk</text>
+        <text x="400" y="503" font-size="11.5" fill="#626464">Keeps the shared demo library the team sees.</text>
+
+        <rect x="728" y="256" width="332" height="270" rx="14" fill="#f5f8f6" stroke="#e3e8e4"/>
+        <circle cx="750" cy="278" r="4" fill="#00b388"/>
+        <text x="762" y="282" font-size="12.5" font-weight="700" fill="#0a231e">Keeping it running</text>
+        <rect x="742" y="304" width="304" height="46" rx="9" fill="#ffffff" stroke="#e6e9e5"/>
+        <text x="754" y="324" font-size="12.5" font-weight="600" fill="#0a231e">Google sign-in</text>
+        <text x="754" y="341" font-size="11.5" fill="#626464">Only @invoca.com accounts get in.</text>
+        <rect x="742" y="358" width="304" height="46" rx="9" fill="#ffffff" stroke="#e6e9e5"/>
+        <text x="754" y="378" font-size="12.5" font-weight="600" fill="#0a231e">Slack</text>
+        <text x="754" y="395" font-size="11.5" fill="#626464">Where the tool reports anything that breaks.</text>
+        <rect x="742" y="412" width="304" height="46" rx="9" fill="#ffffff" stroke="#e6e9e5"/>
+        <text x="754" y="432" font-size="12.5" font-weight="600" fill="#0a231e">Better Stack</text>
+        <text x="754" y="449" font-size="11.5" fill="#626464">Checks the site from outside, day and night.</text>
+        <rect x="742" y="466" width="304" height="46" rx="9" fill="#ffffff" stroke="#e6e9e5"/>
+        <text x="754" y="486" font-size="12.5" font-weight="600" fill="#0a231e">Gmail</text>
+        <text x="754" y="503" font-size="11.5" fill="#626464">Emails you when your feature request is done.</text>
+
+        <text x="20" y="556" font-size="12" fill="#8a9490">No servers to manage and no vendor built anything for us: every box is an off-the-shelf service doing one job.</text>
+      </svg>
+    </figure>
+    <figcaption>
+      <b>Three steps, then it is live.</b> There is no manual deployment and no release process to
+      coordinate: saving a change is what publishes it. Everything below the line is a service the
+      tool calls when it needs it, and most of them fail soft: with no Gong credential or no
+      Browserless token, that one capability is simply skipped and the rest of the demo is
+      unaffected. The exceptions are Claude, which is what writes a new prospect at all, and the
+      disk, without which the shared library falls back to the bundled examples.
+    </figcaption>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>What the demo uses to run</h2></div>
+    <div class="sec-rule"></div>
+    <p>
+      Each of these does one specific job &mdash; some while a demo is being built or shown, the
+      rest keeping the tool itself running. They are all standard services with published,
+      documented interfaces, so none of them required anything custom to be built.
+    </p>
+    <div class="kgrid">
+      <div class="kcard">
+        <span class="ktag">The content</span>
+        <h4>Anthropic API (Claude)</h4>
+        <p>Writes the whole prospect: dashboards, transcripts, campaign names, the agent's script.
+        It also powers the in-demo "Ask AI" panel, which re-words any screen on the spot.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">The voice</span>
+        <h4>LiveKit</h4>
+        <p>Gives the prospect's AI agent ears and a speaking voice, so you can hold a real
+        conversation with it on a call rather than only exchanging text. You choose which voice
+        it uses on the workflow's Details tab, and hear it before you call.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">The front door</span>
+        <h4>Google sign-in</h4>
+        <p>Restricts the tool to <code>@invoca.com</code> accounts. Anyone outside Invoca who
+        opens the link is turned away at sign-in.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">The real details</span>
+        <h4>Google Places</h4>
+        <p>Supplies the prospect's genuine storefront photo, star rating and address, which is what
+        makes the generated ChatGPT ad screen look like the real listing.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">The maps</span>
+        <h4>Mapbox</h4>
+        <p>Draws any map that appears in a demo, including the location shown alongside the
+        prospect in the ChatGPT placement.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">The real conversations</span>
+        <h4>Gong</h4>
+        <p>Searches the calls Invoca has actually had with that prospect and feeds what was said
+        into the generation, so the demo leans on their real priorities rather than a guess. A cold
+        prospect with no recorded calls simply returns nothing.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">Your own notes</span>
+        <h4>Google Drive</h4>
+        <p>Reads a strategy document you point the tool at, so an account plan can steer which
+        screens and signals the demo leads with. You connect your own Drive once; nobody else's is
+        readable.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">The prospect's own page</span>
+        <h4>Browserless</h4>
+        <p>Opens the prospect's real booking page in a browser off our own server, so the page can
+        be replicated complete with the form on it. Running a browser inside the tool itself is what
+        this avoids, because a heavy page could then take the whole platform down.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">The shared library</span>
+        <h4>Render's disk</h4>
+        <p>Stores every saved demo, which is what makes the library shared: a demo one person builds
+        is the same demo everyone else opens, rather than living in one browser.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">When it breaks</span>
+        <h4>Slack</h4>
+        <p>Where the platform reports its own failures, from one broken feature to the whole site
+        being unreachable. Deliberately one channel, rate-limited, so it stays worth reading.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">The outside check</span>
+        <h4>Better Stack</h4>
+        <p>Checks the site from outside our own hosting every few minutes, day and night. This is
+        the only way an outage can be reported at all, since anything inside the tool has stopped
+        too.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">The reply</span>
+        <h4>Gmail</h4>
+        <p>Sends the email telling you a feature request you filed is done, with whatever note was
+        written when it was closed.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">Why it matters</span>
+        <h4>Everything is replaceable</h4>
+        <p>Each service is reached through a small, isolated piece of code, so swapping one out is a
+        contained change &mdash; as happened when two voice vendors were dropped in favour of routing
+        all speech through LiveKit alone.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================== TAB 3: TECHNICAL DETAIL ================== -->
 <div class="panel" id="p-eng" role="tabpanel" aria-labelledby="t-eng" hidden>
 
   <p class="lede">
@@ -927,7 +1149,10 @@ npm run dev            <span class="cm"># localhost:5173 - Vite serves the UI AN
         <tr><td><code>GMAIL_REFRESH_TOKEN</code> + <code>GMAIL_SENDER</code></td><td>For feedback emails</td><td>Sends the "your request is done" note through the Gmail API, reusing the sign-in OAuth client. Minted once at <code>/auth/gmail</code></td></tr>
         <tr><td><code>SMTP_USER</code> + <code>SMTP_APP_PASSWORD</code></td><td>Fallback</td><td>Only where the Workspace permits app passwords; Invoca's does not</td></tr>
         <tr><td><code>DATA_DIR</code></td><td>No</td><td>Overrides the demo-storage path</td></tr>
+        <tr><td><code>SLACK_WEBHOOK_URL</code></td><td>For alerting</td><td>Where a failure is reported. Absent, the funnel falls back to email, then to logging only</td></tr>
+        <tr><td><code>ALLOW_ALERTS</code></td><td>No</td><td><code>1</code> forces alerts to send outside production; otherwise non-production logs them instead</td></tr>
         <tr><td><code>CANARY</code> / <code>CANARY_HOUR_ET</code> / <code>CANARY_ON_BOOT</code></td><td>No</td><td>Nightly self-check</td></tr>
+        <tr><td><code>DRAIN_TIMEOUT_MS</code></td><td>No</td><td>How long a shutdown waits for in-flight requests (default 10s)</td></tr>
       </tbody>
     </table></div>
     <p><code>.env</code> is git-ignored. Confirm before every commit that it has not been staged.</p>
@@ -971,7 +1196,123 @@ git push origin main                                      <span class="cm"># tri
   </section>
 
   <section>
-    <div class="sec-head"><span class="sec-num">04</span><h2>Known limitations</h2></div>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Error handling and uptime</h2></div>
+    <div class="sec-rule"></div>
+    <p class="lede">
+      Every failure the platform can detect reports itself to one Slack channel. The one thing it
+      cannot report is its own outage, because everything capable of sending a message lives inside
+      the process that has stopped &mdash; so that half is watched from outside.
+    </p>
+
+    <h3>The funnel: <code>engine/alerts.ts</code></h3>
+    <p>
+      One entry point, <code>alert({ key, title, detail, context, level })</code>, used by every
+      reporting path below. The channel is <code>SLACK_WEBHOOK_URL</code> if set, otherwise the
+      feedback mailer, otherwise <code>none</code> &mdash; and with no channel at all it still runs
+      and logs, so nothing is gated on the webhook existing. A dead webhook falls back to email
+      rather than losing the alert.
+    </p>
+    <p>
+      <strong>The rate limiting is the feature, not a nicety.</strong> An error in a hot path fires
+      per request, and a channel that delivers five hundred copies of one fault is a channel you
+      mute &mdash; after which the platform is <em>less</em> monitored than with nothing, because
+      now you believe it is covered. Four layers:
+    </p>
+    <ul>
+      <li><strong>Dedupe by signature.</strong> The stable <code>key</code>, never the message text, which interpolates ids and would defeat the dedupe on every occurrence.</li>
+      <li><strong>A 30-minute cooldown with escalation.</strong> Repeats inside the window are counted, and the next message carries how many times it has fired since the last one, so a persistent fault escalates rather than going quiet.</li>
+      <li><strong>A global ceiling of 12 an hour.</strong> Past it, one "being rate limited" notice goes out and the rest are counted.</li>
+      <li><strong>State persisted to <code>DATA_DIR/alerts.json</code></strong>, written at most once a minute. That is what survives a crash loop: with in-memory state only, a fault that kills the process notifies again on every boot &mdash; the storm the dedupe exists to prevent, arriving by a different door.</li>
+    </ul>
+    <p>
+      Outside production it logs instead of sending (<code>ALLOW_ALERTS=1</code> overrides), the
+      same rule and the same reasoning as <code>sendMail</code>: a staging service built by copying
+      production's environment must not page anybody.
+    </p>
+    <p><strong>Two levels, and the difference is between a channel you read and one you mute:</strong></p>
+    <div class="tw"><table>
+      <thead><tr><th>Level</th><th>Meaning</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td><code>page</code></td><td>Ours, and broken means a feature is down</td><td>Generation, chat, analyze, the demo library, the feedback board, the LiveKit token mint. Also a demo that was delivered and then failed to save, which is silent data loss</td></tr>
+        <tr><td><code>record</code></td><td>Expected, self-correcting, or somebody else's</td><td>An AI provider returning 529 (already surfaced in the UI as "briefly overloaded"), a prospect's own site blocking a datacenter IP during a replicate, one degraded integration</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>What is wired to it</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Source</th><th>Catches</th><th>Where</th></tr></thead>
+      <tbody>
+        <tr><td><code>routeFailed()</code></td><td>A route handler that catches and responds, so it never reaches the error handler. 15 call sites</td><td><code>server.ts</code></td></tr>
+        <tr><td>Express error handler</td><td>An uncaught throw in a request</td><td><code>server.ts</code>, registered after the catch-all route</td></tr>
+        <tr><td>Process handlers</td><td><code>uncaughtException</code> and <code>unhandledRejection</code></td><td><code>server.ts</code></td></tr>
+        <tr><td><code>POST /api/client-error</code></td><td>A screen breaking mid-demo: <code>window.onerror</code>, a rejected promise, or a React error boundary</td><td><code>src/data/clientErrors.ts</code>, <code>DashboardBoundary</code> / <code>ScreenBoundary</code></td></tr>
+        <tr><td>Nightly canary verdict</td><td>Overnight generation producing bad data, <em>or not having run at all</em></td><td><code>alertOnCanary()</code> in <code>server.ts</code></td></tr>
+        <tr><td>Voice watchdog</td><td>No agent ever joining a test call</td><td>Reported through the same client reporter</td></tr>
+      </tbody>
+    </table></div>
+    <p>
+      <strong>Why a helper rather than 15 paired calls.</strong> Two statements that must always
+      appear together will eventually appear apart, and the failure is invisible: the endpoint still
+      answers, the log still has its line, and nobody is told &mdash; which is precisely the state
+      this work started from. One function cannot log without alerting, and
+      <code>npm run audit:alerts</code> checks the <em>remainder</em>: every surviving
+      <code>console.error</code> in <code>server.ts</code> must match a short allow-list of things
+      that legitimately are not routes.
+    </p>
+    <p>
+      Three details worth not undoing. The crash alert is <strong>awaited</strong> (capped at 3s)
+      before <code>process.exit</code>, because a floating promise dies with the process and that is
+      the most important notification there is. The Express handler takes <strong>four
+      arguments</strong> &mdash; Express selects error handlers by arity, so a three-argument one is
+      ordinary middleware that silently never runs. And <code>/api/client-error</code> is registered
+      <strong>before the auth gate</strong>, since behind it an expired session turns the report into
+      a redirect and the error is lost, which is exactly when things break; the body is capped, every
+      field truncated, and the signature namespaced <code>client:</code> so a caller cannot forge a
+      server-side one.
+    </p>
+    <p>
+      The browser dedupes locally as well (one signature per minute, 20 per page load, sent with
+      <code>keepalive</code>). That is not belt-and-braces: a React render loop fires the same error
+      hundreds of times a second, and the server's cooldown stops the <em>notifications</em> while
+      only a local guard stops the <em>traffic</em> &mdash; from the browser, during a demo, on the
+      machine already struggling.
+    </p>
+
+    <h3>Uptime: the half that cannot come from inside the app</h3>
+    <p>
+      <code>GET /healthz</code> answers <code>ok</code>, and <code>503</code> once the process is
+      draining. Everything watching it is configured outside this repo and all of it delivers to the
+      same Slack channel:
+    </p>
+    <ul>
+      <li><strong>An external HTTP monitor on <code>/healthz</code></strong>, currently Better Stack's free tier. <strong>Set the confirmation threshold to 2 failures, not 1.</strong> The shutdown drain deliberately returns <code>503</code> for up to ~40 seconds on every deploy, so a one-strike monitor pages on every push and gets muted within a week.</li>
+      <li><strong>A keyword check on <code>/api/status</code></strong> for <code>storage.persistent</code>, which is how the demo library's disk silently detaching gets noticed. Both endpoints are public precisely so a monitor needs no credential.</li>
+      <li><strong>Render's own notifications</strong> for a failed deploy or a service failure, which is the one class of problem the app cannot report because it never started.</li>
+    </ul>
+
+    <h3>Reading it from outside the gate</h3>
+    <p>
+      <code>GET /api/status</code> carries an <code>alerts</code> object: the active
+      <code>channel</code>, distinct signatures and total occurrences in the last 24 hours, the top
+      signatures with their counts, how many were suppressed, and how many have ever been seen.
+    </p>
+    <p>
+      <strong>Counts and signatures only, never the detail.</strong> That route is public, so the
+      standing rule is counts and booleans: <code>chat-500</code> is safe to publish, the message
+      that produced it is not, because a message can quote a prospect or a URL. The audit asserts
+      the redaction by alerting with a prospect name in the detail and checking it cannot be found
+      in the summary.
+    </p>
+    <p>
+      One naming trap: <code>slackConfigured</code> in the same payload is
+      <code>SLACK_BOT_TOKEN</code>, used for pulling conversation context, and has nothing to do
+      with alerting. The field that answers "will a failure reach anybody" is
+      <code>alerts.channel</code>.
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>Known limitations</h2></div>
     <div class="sec-rule"></div>
     <div class="kgrid">
       <div class="kcard">
@@ -1018,125 +1359,6 @@ git push origin main                                      <span class="cm"># tri
   </section>
 </div>
 
-<!-- ================== TAB 3: HOW WAS THIS CREATED ================== -->
-<div class="panel" id="p-how" role="tabpanel" aria-labelledby="t-how" hidden>
-
-  <p class="lede">
-    Nothing here was built from scratch. The tool is assembled out of standard, off-the-shelf
-    services, each doing one job. That is what let it go from an idea to something the team uses
-    without a platform team, a data centre, or a procurement cycle.
-  </p>
-
-  <section>
-    <div class="sec-head"><span class="sec-num">01</span><h2>How it gets built and published</h2></div>
-    <div class="sec-rule"></div>
-
-    <figure class="figure">
-      <svg viewBox="0 0 1080 250" role="img"
-           aria-label="Three steps: Claude Code writes the code, GitHub stores it, and Render publishes it to the live website that the team opens.">
-        <defs>
-          <marker id="h-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M0,0 L10,5 L0,10 z" fill="#00b388"/>
-          </marker>
-          <filter id="h-sh" x="-14%" y="-14%" width="128%" height="128%">
-            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0a231e" flood-opacity="0.10"/>
-          </filter>
-        </defs>
-
-        <g filter="url(#h-sh)">
-          <rect x="20" y="60" width="228" height="120" rx="13" fill="#ffffff" stroke="#a5dfc9"/>
-          <rect x="300" y="60" width="228" height="120" rx="13" fill="#ffffff" stroke="#d8ded9"/>
-          <rect x="580" y="60" width="228" height="120" rx="13" fill="#ffffff" stroke="#d8ded9"/>
-          <rect x="860" y="60" width="200" height="120" rx="13" fill="#0a231e"/>
-        </g>
-
-        <circle cx="48" cy="90" r="14" fill="#00b388"/>
-        <text x="48" y="95" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
-        <text x="76" y="95" font-size="15" font-weight="600" fill="#0a231e">Claude Code</text>
-        <text x="44" y="128" font-size="12.5" fill="#626464">Writes the code, working from</text>
-        <text x="44" y="148" font-size="12.5" fill="#626464">captures of the real Invoca</text>
-        <text x="44" y="168" font-size="12.5" fill="#626464">screens being replicated.</text>
-
-        <circle cx="328" cy="90" r="14" fill="#00b388"/>
-        <text x="328" y="95" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
-        <text x="356" y="95" font-size="15" font-weight="600" fill="#0a231e">GitHub</text>
-        <text x="324" y="128" font-size="12.5" fill="#626464">Stores the code. Every change</text>
-        <text x="324" y="148" font-size="12.5" fill="#626464">is recorded, so anything can</text>
-        <text x="324" y="168" font-size="12.5" fill="#626464">be traced or undone.</text>
-
-        <circle cx="608" cy="90" r="14" fill="#00b388"/>
-        <text x="608" y="95" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
-        <text x="636" y="95" font-size="15" font-weight="600" fill="#0a231e">Render</text>
-        <text x="604" y="128" font-size="12.5" fill="#626464">Hosts the website. A change</text>
-        <text x="604" y="148" font-size="12.5" fill="#626464">saved to GitHub publishes</text>
-        <text x="604" y="168" font-size="12.5" fill="#626464">itself within a few minutes.</text>
-
-        <text x="884" y="103" font-size="15" font-weight="600" fill="#ffffff">The live tool</text>
-        <text x="884" y="132" font-size="12.5" fill="#9fc4b8">What the team opens</text>
-        <text x="884" y="152" font-size="12.5" fill="#9fc4b8">in their browser.</text>
-
-        <path d="M248,120 H294" fill="none" stroke="#00b388" stroke-width="2" marker-end="url(#h-ah)"/>
-        <path d="M528,120 H574" fill="none" stroke="#00b388" stroke-width="2" marker-end="url(#h-ah)"/>
-        <path d="M808,120 H854" fill="none" stroke="#00b388" stroke-width="2" marker-end="url(#h-ah)"/>
-
-        <text x="20" y="228" font-size="12" fill="#8a9490">No servers to manage: each step is a managed service doing one job.</text>
-      </svg>
-    </figure>
-    <figcaption>
-      <b>Three steps, then it is live.</b> There is no manual deployment and no release process to
-      coordinate: saving a change is what publishes it.
-    </figcaption>
-  </section>
-
-  <section>
-    <div class="sec-head"><span class="sec-num">02</span><h2>What the demo uses to run</h2></div>
-    <div class="sec-rule"></div>
-    <p>
-      Each of these does one specific job inside a demo. They are all standard services with
-      published, documented interfaces, so none of them required anything custom to be built.
-    </p>
-    <div class="kgrid">
-      <div class="kcard">
-        <span class="ktag">The content</span>
-        <h4>Anthropic API (Claude)</h4>
-        <p>Writes the whole prospect: dashboards, transcripts, campaign names, the agent's script.
-        It also powers the in-demo "Ask AI" panel, which re-words any screen on the spot.</p>
-      </div>
-      <div class="kcard">
-        <span class="ktag">The voice</span>
-        <h4>LiveKit</h4>
-        <p>Gives the prospect's AI agent ears and a speaking voice, so you can hold a real
-        conversation with it on a call rather than only exchanging text. You choose which voice
-        it uses on the workflow's Details tab, and hear it before you call.</p>
-      </div>
-      <div class="kcard">
-        <span class="ktag">The front door</span>
-        <h4>Google sign-in</h4>
-        <p>Restricts the tool to <code>@invoca.com</code> accounts. Anyone outside Invoca who
-        opens the link is turned away at sign-in.</p>
-      </div>
-      <div class="kcard">
-        <span class="ktag">The real details</span>
-        <h4>Google Places</h4>
-        <p>Supplies the prospect's genuine storefront photo, star rating and address, which is what
-        makes the generated ChatGPT ad screen look like the real listing.</p>
-      </div>
-      <div class="kcard">
-        <span class="ktag">The maps</span>
-        <h4>Mapbox</h4>
-        <p>Draws any map that appears in a demo, including the location shown alongside the
-        prospect in the ChatGPT placement.</p>
-      </div>
-      <div class="kcard">
-        <span class="ktag">Why it matters</span>
-        <h4>Everything is replaceable</h4>
-        <p>Each service is reached through a small, isolated piece of code. Swapping one out, as
-        already happens between the two voice providers, is a contained change.</p>
-      </div>
-    </div>
-  </section>
-</div>
-
 </div>
 
 <footer>
@@ -1147,7 +1369,7 @@ git push origin main                                      <span class="cm"># tri
 </footer>
 
 <script>
-/* Two audience tabs. One panel visible at a time, arrow keys move between them,
+/* Three audience tabs. One panel visible at a time, arrow keys move between them,
    and aria-selected drives the styling so the DOM stays the source of truth. */
 (function tabs() {
   var buttons = [].slice.call(document.querySelectorAll('[role="tab"]'));

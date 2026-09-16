@@ -151,6 +151,11 @@ Verified by grepping for outbound `fetch` calls in `engine/` and `server.ts`.
 | **Google OAuth** | `googleAuth.ts:101` → `oauth2.googleapis.com/token` | free | **Live.** |
 | **Mapbox** | browser, via `src/data/prospectPlace.ts` (`VITE_MAPBOX_TOKEN`) | free tier | **Live.** The only key that is deliberately public — it is a browser-side map-tile token. |
 | **The prospect's own website** | `engine/ogImage.ts:62` | free | **Live.** Fetches the homepage once to scrape a logo. |
+| **Gong** | `engine/gongApi.ts` → `api.gong.io/v2/calls` | included in Invoca's own Gong plan | **Live where credentials are set.** Searches call titles for the prospect, newest windows first, and cross-checks the CRM account's domain before trusting a match. No credential, no calls. |
+| **Google Drive** | `engine/driveApi.ts` → `www.googleapis.com/drive/v3` · `engine/driveLink.ts` → `docs.google.com/.../export` | free | **Live.** Per-user OAuth for a private doc; the public export URL needs no credential at all. |
+| **Gmail** | `engine/mailer.ts` → `gmail.googleapis.com` | free | **Live.** Feedback notifications only, on a refresh token minted once at `/auth/gmail`. |
+| **Slack** | `engine/alerts.ts` → the `SLACK_WEBHOOK_URL` webhook | free | **Live.** Outbound only, one channel. Falls back to email, then to logging. |
+| **Browserless** | `engine/renderService.ts` → `production-sfo.browserless.io/content` | free tier, ~1k units/month | **Live where a token is set.** Renders a prospect's page in a real browser off-box so Replicate captures its lazy images and injected markup. Unconfigured falls back to a plain fetch. |
 
 > **⚠️ Two corrections to the brief for this document, both material:**
 >
@@ -319,7 +324,10 @@ browser bundle. `VITE_MAPBOX_TOKEN` is the sole intentional exception (a public 
 | `VITE_MAPBOX_TOKEN` | For the map screens | Public by design |
 | `DEMO_ADMIN_EMAILS` | No | Who may edit any demo |
 | `DATA_DIR` | No | Overrides the demo-storage path |
+| `SLACK_WEBHOOK_URL` | For alerting | Where a failure is reported; falls back to email, then to logging only |
+| `ALLOW_ALERTS` | No | `1` forces alerts to send outside production |
 | `CANARY` / `CANARY_HOUR_ET` / `CANARY_ON_BOOT` | No | Nightly self-check (see below) |
+| `DRAIN_TIMEOUT_MS` | No | How long a shutdown waits for in-flight requests (default 10s) |
 
 `.env` is git-ignored. Confirm before every commit that it has not been staged.
 
@@ -379,7 +387,110 @@ against what you pushed.
 
 ---
 
-## 6. Roadmap / Status
+## 6. Error Handling & Uptime
+
+Every failure the platform can detect reports itself to one Slack channel. The one thing it
+cannot report is its own outage, because everything capable of sending a message lives inside the
+process that has stopped — so that half is watched from outside.
+
+### The funnel — `engine/alerts.ts`
+
+One entry point, `alert({ key, title, detail, context, level })`, used by every reporting path
+below. The channel is `SLACK_WEBHOOK_URL` if set, otherwise the feedback mailer, otherwise `none`
+— and with no channel at all it still runs and logs, so nothing is gated on the webhook existing.
+A dead webhook falls back to email rather than losing the alert.
+
+**The rate limiting is the feature, not a nicety.** An error in a hot path fires per request, and
+a channel that delivers five hundred copies of one fault is a channel you mute — after which the
+platform is *less* monitored than with nothing, because now you believe it is covered.
+
+- **Dedupe by signature** — the stable `key`, never the message text, which interpolates ids and
+  would defeat the dedupe on every occurrence.
+- **A 30-minute cooldown with escalation** — repeats inside the window are counted, and the next
+  message says how many times it has fired since the last one, so a persistent fault escalates
+  rather than going quiet.
+- **A global ceiling of 12 an hour** — past it, one "being rate limited" notice goes out and the
+  rest are counted.
+- **State persisted to `DATA_DIR/alerts.json`**, written at most once a minute. That is what
+  survives a crash loop: with in-memory state only, a fault that kills the process notifies again
+  on every boot — the storm the dedupe exists to prevent, arriving by a different door.
+
+Outside production it logs instead of sending (`ALLOW_ALERTS=1` overrides), the same rule as
+`sendMail`: a staging service built by copying production's environment must not page anybody.
+
+Two levels, and the difference is between a channel you read and one you mute. `page` means ours
+and a feature is down (generation, chat, analyze, the demo library, the feedback board, the
+LiveKit token mint, and a demo delivered then lost, which is silent data loss). `record` means
+expected, self-correcting, or somebody else's (an AI provider 529 already surfaced in the UI, a
+prospect's own site blocking a datacenter IP during a replicate, one degraded integration).
+
+### What is wired to it
+
+| Source | Catches | Where |
+| --- | --- | --- |
+| `routeFailed()` | A route handler that catches and responds, so it never reaches the error handler. 15 call sites | `server.ts` |
+| Express error handler | An uncaught throw in a request | `server.ts`, after the catch-all route |
+| Process handlers | `uncaughtException` and `unhandledRejection` | `server.ts` |
+| `POST /api/client-error` | A screen breaking mid-demo: `window.onerror`, a rejected promise, or a React error boundary | `src/data/clientErrors.ts`, `DashboardBoundary` / `ScreenBoundary` |
+| Nightly canary verdict | Overnight generation producing bad data, *or not having run at all* | `alertOnCanary()` in `server.ts` |
+| Voice watchdog | No agent ever joining a test call | The same client reporter |
+
+**Why a helper rather than 15 paired calls.** Two statements that must always appear together will
+eventually appear apart, and the failure is invisible: the endpoint still answers, the log still
+has its line, and nobody is told — which is precisely the state this work started from. One
+function cannot log without alerting, and `npm run audit:alerts` (54 checks) verifies the
+*remainder*: every surviving `console.error` in `server.ts` must match a short allow-list of
+things that legitimately are not routes.
+
+Three details worth not undoing:
+
+1. The crash alert is **awaited** (capped at 3s) before `process.exit`, because a floating promise
+   dies with the process and that is the most important notification there is.
+2. The Express handler takes **four arguments** — Express selects error handlers by arity, so a
+   three-argument one is ordinary middleware that silently never runs.
+3. `/api/client-error` is registered **before the auth gate**, since behind it an expired session
+   turns the report into a redirect and the error is lost, which is exactly when things break. The
+   body is capped, every field truncated, and the signature namespaced `client:` so a caller
+   cannot forge a server-side one.
+
+The browser dedupes locally as well (one signature per minute, 20 per page load, sent with
+`keepalive`). Not belt-and-braces: a React render loop fires the same error hundreds of times a
+second, and the server's cooldown stops the *notifications* while only a local guard stops the
+*traffic*.
+
+### Uptime — the half that cannot come from inside the app
+
+`GET /healthz` answers `ok`, and `503` once the process is draining. Everything watching it is
+configured outside this repo, and all of it delivers to the same Slack channel:
+
+- **An external HTTP monitor on `/healthz`** (currently Better Stack's free tier). **Set the
+  confirmation threshold to 2 failures, not 1.** The shutdown drain deliberately returns `503` for
+  up to ~40 seconds on every deploy, so a one-strike monitor pages on every push and gets muted
+  within a week.
+- **A keyword check on `/api/status`** for `storage.persistent`, which is how the demo library's
+  disk silently detaching gets noticed. Both endpoints are public precisely so a monitor needs no
+  credential.
+- **Render's own notifications** for a failed deploy or a service failure — the one class of
+  problem the app cannot report, because it never started.
+
+### Reading it from outside the gate
+
+`GET /api/status` carries an `alerts` object: the active `channel`, distinct signatures and total
+occurrences in the last 24 hours, the top signatures with their counts, how many were suppressed,
+and how many have ever been seen.
+
+**Counts and signatures only, never the detail.** That route is public, so the standing rule is
+counts and booleans: `chat-500` is safe to publish, the message that produced it is not, because a
+message can quote a prospect or a URL. The audit asserts the redaction by alerting with a prospect
+name in the detail and checking it cannot be found in the summary.
+
+⚠️ One naming trap: `slackConfigured` in the same payload is `SLACK_BOT_TOKEN`, used for pulling
+conversation context, and has nothing to do with alerting. The field that answers "will a failure
+reach anybody" is `alerts.channel`.
+
+---
+
+## 7. Roadmap / Status
 
 | Feature | Status | Notes |
 | --- | --- | --- |
@@ -406,7 +517,7 @@ against what you pushed.
 
 ---
 
-## 7. Open Questions / Risks
+## 8. Open Questions / Risks
 
 **1. The sign-in gate fails open.** From `DEPLOY.md` and `googleAuth.ts`: the gate is active
 only when *both* `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` are present. If either is
