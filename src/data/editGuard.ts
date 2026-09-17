@@ -260,6 +260,30 @@ export function isLockedEdit(data: unknown, path: string): boolean {
   return !!parent && typeof parent === "object" && (parent as { locked?: unknown }).locked === true;
 }
 
+/**
+ * Split one batch of edits between the page's own scope and a LINKED one.
+ *
+ * ⚠️⚠️ **THE PREFIX DECIDES WHICH SCOPE OWNS THE FIELD, and getting it wrong stores a second
+ * copy.** The Preview Agent's Ask AI can edit the SMS workflow (9/17/2026); left on the page's
+ * own key, a `workflow.…` path would be saved in the PREVIEW's scope — a duplicate of a
+ * question the diagram draws from elsewhere, which is the duplicated-field trap behind all
+ * three of the 8/27 voice bugs. Stripped and routed, the edit lands on the one owner.
+ *
+ * ⚠️ PURE AND EXPORTED so the audit can call it with real inputs. It lived inline in the
+ * drawer first, where the only possible check was "does a router exist" — which passed against
+ * a router that had been made to route nothing.
+ */
+export function routeEdits<T extends { path: string }>(edits: T[], linkAs?: string):
+  { mine: T[]; theirs: T[] } {
+  if (!linkAs) return { mine: edits, theirs: [] };
+  const pre = `${linkAs}.`;
+  return {
+    mine: edits.filter((e) => !e.path.startsWith(pre)),
+    theirs: edits.filter((e) => e.path.startsWith(pre))
+      .map((e) => ({ ...e, path: e.path.slice(pre.length) })),
+  };
+}
+
 /* =============================================================================
    FOCUSED EDITS MUST LAND ON THE FOCUSED TILE.
    -----------------------------------------------------------------------------

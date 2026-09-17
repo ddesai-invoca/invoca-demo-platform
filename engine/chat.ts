@@ -56,6 +56,19 @@ export interface VoicePath {
   }[];
 }
 
+/** One node of the configured SMS workflow. Mirrors `SmsFlowNode` in `workflowDrawers.ts`. */
+export interface SmsFlowNode {
+  title: string;
+  action: string;
+  question?: string;
+  fallback?: string;
+  instruction?: string;
+  destination?: string;
+  signal?: string;
+  collect?: string[];
+  answers?: SmsFlowNode[];
+}
+
 export interface ChatBrain {
   customerName: string;
   industry?: string;
@@ -82,6 +95,22 @@ export interface ChatBrain {
    * untouched workflow gets nothing appended and reads exactly as its author wrote it.
    */
   overrides?: { questions?: string[]; rules?: string[] };
+  /**
+   * The BUILT-IN SMS workflow's own configuration — the six-row diagram an operator builds in
+   * Agent Studio, as the flow this agent must follow.
+   *
+   * ⚠️⚠️ **BEFORE THIS, THE DIAGRAM REACHED THE AGENT NOWHERE (9/17/2026).** Asked for
+   * directly: "if there are changes in the workflow, it also changes it in actual preview agent
+   * or preview workflow." Every configured field — the qualify questions, the four inform
+   * instructions, the escalation text, both intents' looks-like and rules, each node's collect
+   * list — was invisible to the phone, so an SE could build the whole workflow and the preview
+   * would ignore it.
+   * ⚠️ Derived client-side through the SAME resolver the drawers use, so the agent is told
+   * exactly what the SE reads on screen rather than a second interpretation of the config.
+   */
+  workflow?: {
+    intents: { title: string; looksLike: string; rules: string[]; flow: SmsFlowNode[] }[];
+  };
   /**
    * The extra workflow's ORDERED FLOW (`reports.extraWorkflows[].playbookSteps`, or whatever
    * the workflow page's Ask AI has edited it to).
@@ -290,6 +319,92 @@ function stepsBlock(brain: ChatBrain): string {
   ].join("\n");
 }
 
+/**
+ * The configured workflow, rendered as the flow the agent must follow.
+ *
+ * ⚠️ NESTED AND EXPLICITLY CONDITIONAL ("If they answer …"), because a flat list of every node
+ * loses the one thing the diagram encodes: which question follows which answer.
+ */
+function workflowBlock(brain: ChatBrain): string {
+  const wf = brain.workflow;
+  if (!wf?.intents?.length) return "";
+  const node = (n: SmsFlowNode, depth: number): string[] => {
+    const pad = "  ".repeat(depth + 1);
+    const out: string[] = [];
+    const head = `${pad}${n.title} — action: ${n.action}`;
+    out.push(head);
+    if (n.question) out.push(`${pad}  ASK, in your own words but to this effect: "${n.question}"`);
+    if (n.fallback) out.push(`${pad}  If you cannot tell from their answer: ${n.fallback}`);
+    if (n.instruction) out.push(`${pad}  DO THIS: ${n.instruction}`);
+    if (n.collect?.length) out.push(`${pad}  Gather while you are here: ${n.collect.join(", ")}.`);
+    if (n.destination) out.push(`${pad}  Where to send them: ${n.destination}`);
+    for (const a of n.answers ?? []) {
+      out.push(`${pad}  If they answer "${a.title}":`);
+      out.push(...node(a, depth + 2));
+    }
+    return out;
+  };
+  /* ⚠️⚠️ IT ENRICHES THE SALES FLOW, IT DOES NOT REPLACE IT — and the wording has to say so.
+     The generated SMS prompt is a SALES arc (open, qualify, estimate, schedule, confirm); this
+     is a ROUTING flow. Declaring "THIS SECTION WINS" beside it, the way `overrideBlock` does
+     for a hand-written playbook, would produce two competing flows for one conversation — the
+     self-contradicting prompt this file already records twice. And replacing the sales arc
+     outright would turn every prospect's SMS demo into a routing conversation, losing the
+     qualify-quote-book beat that is the whole point of the channel. */
+  const lines: string[] = [
+    `CONFIGURED WORKFLOW — an operator built this in Agent Studio for THIS agent, so it is what`,
+    `they want you to do. Use it for classification and routing, and follow the questions and`,
+    `instructions on the path you land in. It does not replace the conversation flow above:`,
+    `where a question appears in both, ask it ONCE.`,
+    ``,
+    `First, decide which intent the consumer has:`,
+  ];
+  wf.intents.forEach((i, n) => {
+    lines.push(`${n + 1}. ${i.title}${i.looksLike ? ` — ${i.looksLike}` : ""}`);
+    for (const r of i.rules ?? []) lines.push(`   - ${r}`);
+  });
+  lines.push(``, `Then follow that intent's flow, ONE step at a time, and never skip ahead:`);
+  for (const i of wf.intents) {
+    if (!i.flow.length) continue;
+    lines.push(`${i.title}:`);
+    for (const n of i.flow) lines.push(...node(n, 0));
+  }
+  return lines.join("\n");
+}
+
+/**
+ * The playbook's qualifying questions, minus anything the workflow already gathers.
+ *
+ * ⚠️⚠️ **WITHOUT THIS THE AGENT ASKS TWICE, AND THAT EXACT BUG IS ALREADY RECORDED HERE FOR
+ * VOICE** ("the voice agent was re-asking ZIP and name"): the service-area check and the path's
+ * own collect list were two independent blocks nobody reconciled. The SMS workflow's nodes
+ * collect a ZIP and a name too, so feeding the playbook's script in untouched reproduces it.
+ *
+ * ⚠️ **CONSERVATIVE AND STRUCTURAL, NOT SEMANTIC.** It drops a question only when the workflow
+ * demonstrably gathers that same datum — a zip or a name — because those are the two that
+ * actually recur. Anything else (timeline, property details, budget) is genuinely a second
+ * question and is left alone. Same conservatism as `dedupeCollect`.
+ */
+function dedupeQuestions(brain: ChatBrain, questions: string[]): string[] {
+  const wf = brain.workflow;
+  if (!wf?.intents?.length) return questions;
+  const gathered: string[] = [];
+  const walk = (n: SmsFlowNode) => {
+    gathered.push(...(n.collect ?? []), n.question ?? "");
+    (n.answers ?? []).forEach(walk);
+  };
+  wf.intents.forEach((i) => i.flow.forEach(walk));
+  const all = gathered.join(" ").toLowerCase();
+  const asksZip = /\bzip\b|\bpostcode\b|\bpostal code\b/.test(all);
+  const asksName = /\bname\b/.test(all);
+  return questions.filter((q) => {
+    const t = q.toLowerCase();
+    if (asksZip && /\bzip\b|\bpostcode\b|\bpostal code\b/.test(t)) return false;
+    if (asksName && /\b(full name|your name|first name|last name)\b/.test(t)) return false;
+    return true;
+  });
+}
+
 function buildSystem(brain: ChatBrain, voice: boolean): string {
   /* A workflow-supplied playbook wins over the generated persona, with our
      channel format rules appended so the phone UI stays renderable. */
@@ -351,9 +466,9 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
   const goal = p?.goal?.trim() || `answer questions, qualify the customer, and schedule a ${bookingType}`;
   const offer = p?.offer?.trim() || "";
   const providesEstimate = p?.providesEstimate ?? false;
-  const questions = p?.qualifyingQuestions?.length
+  const questions = dedupeQuestions(brain, p?.qualifyingQuestions?.length
     ? p.qualifyingQuestions
-    : ["what they're looking for and any key details", "their timeline", "their ZIP code, to confirm service availability"];
+    : ["what they're looking for and any key details", "their timeline", "their ZIP code, to confirm service availability"]);
   /* NUMBERED, not bulleted. The Preview Agent's AI drawer lets an SE set exactly
      which questions the phone asks; a bullet list plus "adapt naturally" read as
      a menu, and the agent skipped straight to the second question. Numbering them
@@ -384,6 +499,9 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
       : `- Do not invent specific prices; pricing/details are handled at the ${bookingType}.`,
     `- Refer to what you're scheduling as a "${bookingType}".`,
     `- Only discuss ${brain.customerName}'s products and services. If asked something off-topic, gently steer back.`,
+    /* ⚠️ AFTER the flow and STYLE, BEFORE the brand rules — it is configuration for this agent,
+       so it belongs with the other operator-set sections rather than buried under them. */
+    workflowBlock(brain) ? `\n${workflowBlock(brain)}` : ``,
     rules ? `\nBRAND CONVERSATION RULES (follow these; they carry brand-specific offers, terms, and numbers):\n${rules}` : ``,
     qa ? `\nAPPROVED Q&A (use these as ground truth for common questions):\n${qa}` : ``,
     knowledge ? `\nKNOWLEDGE SOURCES (what you learned the business from):\n${knowledge}` : ``,

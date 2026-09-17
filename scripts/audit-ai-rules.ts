@@ -11,7 +11,7 @@
    ============================================================================= */
 import fs from "node:fs";
 import path from "node:path";
-import { isLockedEdit, isStructuralChange } from "../src/data/editGuard.ts";
+import { isLockedEdit, isStructuralChange, routeEdits } from "../src/data/editGuard.ts";
 import { treeToVoicePaths } from "../src/data/voicePaths.ts";
 import { collectNames } from "../src/data/workflowDrawers.ts";
 import { emptyWorkflowTree, extraTree, ZERO_TRIGGER, INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF } from "../src/data/workflowChrome.ts";
@@ -21,7 +21,8 @@ import { smsDrawerFor, drawerFor, SMS_ACTION_LABEL, SMS_ACTION_DESCRIPTION, SMS_
   ACTION_DESCRIPTION, ACTION_PROMPT, SMS_ACTION_OPTIONS, SMS_CALLBACK_SIGNAL,
   SMS_DESTINATION_PROMPT, SMS_ROUTE_DESTINATION, SMS_ESCALATE_DESTINATION,
   actionCopy, collectOnSwitch, nodeActionFields, signalOptions, infoFieldOptions,
-  SMS_DESTINATION_PLACEHOLDER, type ActionKind } from "../src/data/workflowDrawers.ts";
+  SMS_DESTINATION_PLACEHOLDER, smsWorkflowFlow, type ActionKind } from "../src/data/workflowDrawers.ts";
+import { buildSmsBrain, SMS_WORKFLOW_SCOPE_PATH, SMS_AGENT_SCOPE_PATH } from "../src/data/smsBrain.ts";
 import { buildSmsBrain, smsWorkflowAgentOf, smsWorkflowScopePath,
   type SmsWorkflowAgent } from "../src/data/smsBrain.ts";
 import { smsSystemPromptForAudit } from "../engine/chat.ts";
@@ -719,7 +720,10 @@ console.log("\nAsk AI configures an SMS extra workflow, not just its diagram");
     ? ok("and hands the EFFECTIVE half to the Preview Workflow chat")
     : bad("Preview Workflow reads the raw workflow, so an edited opener would not show there");
   const phone = readAny("src/screens/PhonePreview.tsx");
-  /smsWorkflowScopePath\(wf\.slug\)/.test(phone) && /buildSmsBrain\(profile, ac, wf, wfAgent\)/.test(phone)
+  /* ⚠️ THE ARITY IS NOT THE INVARIANT — this pinned the exact call `buildSmsBrain(profile, ac,
+     wf, wfAgent)` and went red the day a fifth argument was added for the built-in workflow's
+     own config. What matters is that the tab reads that scope and hands the half to the brain. */
+  /smsWorkflowScopePath\(wf\.slug\)/.test(phone) && /buildSmsBrain\(profile, ac, wf, wfAgent/.test(phone)
     ? ok("and the Preview Agent tab reads that scope back across the tab boundary")
     : bad("the Preview Agent tab never reads the workflow's agent half — the edit is a no-op there");
   /* ⚠️⚠️ **THE DRAWER'S GREETING ROW MUST SHOW THE EFFECTIVE OPENER, and the first build of
@@ -1746,6 +1750,151 @@ console.log("\nThe built-in SMS workflow template");
     /openId={openCombo}/.test(drawerSrc) && !/const \[pick, setPick\]/.test(drawerSrc)
       ? ok("one open-picker id, so opening one list closes the others")
       : bad("the pickers track their open state separately again");
+  }
+
+  /* ---- the config is bi-directional (9/17/2026) ------------------------------------
+     Asked for directly: "can we make the config bi directional, so if there are changes in the
+     workflow, it also changes it in actual preview agent or preview workflow, and vice versa, if
+     i use ask AI to make changes, it should make those changes in the workflow."
+     ⚠️ MEASURED FIRST: the built-in workflow reached the agent NOWHERE. */
+  {
+    const phone = readCode("src/screens/PhonePreview.tsx");
+    const chat = readCode("src/components/WorkflowChatPreview.tsx");
+    const drawer = readCode("src/components/AiAssistantDrawer.tsx");
+    const ctxSrc = readCode("src/data/AiAssistantContext.tsx");
+
+    /* ⚠️⚠️ THE FLOW IS DERIVED THROUGH THE DRAWER BUILDER, so the agent is told exactly what the
+       SE reads on screen. A second walk of the config is how the two come to disagree. */
+    const flow = smsWorkflowFlow(p, tree as never, cfg);
+    (flow?.intents?.length === 2 && flow.intents[0].flow.length === 1)
+      ? ok("the workflow's own config derives into a flow the agent can be given")
+      : bad("the workflow no longer derives into a flow");
+    const root = flow!.intents[0].flow[0];
+    (root.question === cfg.qualify.root.question && root.action === "Qualify")
+      ? ok("the derived flow carries the node's configured question and its action")
+      : bad("the derived flow has drifted from the node's own config");
+    const kid = root.answers?.[0];
+    (kid?.answers?.[0]?.instruction === cfg.inform.serviceableYes
+      && (kid?.answers?.[0]?.collect?.length ?? 0) > 0)
+      ? ok("and the inform instruction and collect list three rows down")
+      : bad("the deeper rows' instructions or collect lists are missing from the flow");
+    (flow!.intents[0].looksLike === cfg.intents.sales.looksLike)
+      ? ok("both intents' classification copy reaches the flow")
+      : bad("the intents' looks-like copy is missing");
+
+    /* ⚠️ AN EDIT MOVES IT — the whole point. */
+    {
+      const edited = JSON.parse(JSON.stringify(cfg)) as typeof cfg;
+      edited.qualify.root.question = "Probe: termites?";
+      edited.inform.serviceableYes = "Probe: a tech calls within the hour.";
+      const f2 = smsWorkflowFlow(p, tree as never, edited)!;
+      const r2 = f2.intents[0].flow[0];
+      (r2.question === "Probe: termites?"
+        && r2.answers![0].answers![0].instruction === "Probe: a tech calls within the hour.")
+        ? ok("editing a node's question or instruction moves what the agent is told")
+        : bad("an edited node does not change the agent's flow");
+    }
+
+    /* ⚠️ IT REACHES THE PROMPT, and an EXTRA workflow's does not (it states its own flow). */
+    const brain = buildSmsBrain(p, p.reports.agentConfig!, undefined, null, flow);
+    (brain as { workflow?: unknown }).workflow
+      ? ok("the built-in workflow's flow is on the brain the previews send")
+      : bad("the flow never reaches the brain");
+    const extraBrain = buildSmsBrain(p, p.reports.agentConfig!,
+      { slug: "x", label: "x", channel: "SMS", status: "Live", triggeredBy: "x",
+        startLabel: "x", branches: [] } as never, null, flow);
+    !(extraBrain as { workflow?: unknown }).workflow
+      ? ok("an extra workflow gets none of it, so one conversation never has two flows")
+      : bad("an extra workflow is handed a second flow as well as its own");
+    const prompt = smsSystemPromptForAudit(brain as never);
+    (/CONFIGURED WORKFLOW/.test(prompt) && prompt.includes(cfg.qualify.root.question)
+      && prompt.includes(cfg.inform.serviceableYes))
+      ? ok("the prompt carries the configured workflow, questions and instructions included")
+      : bad("the configured workflow is missing from the built prompt");
+    /* ⚠️ AND IT MUST NOT CLAIM TO WIN. Declaring precedence beside the sales arc would be two
+       competing flows for one conversation — the self-contradicting prompt this file records. */
+    (/does not replace the conversation flow above/.test(prompt)
+      && !/CONFIGURED WORKFLOW[\s\S]{0,240}THIS SECTION WINS/.test(prompt))
+      ? ok("the workflow block enriches the sales flow rather than declaring it wins")
+      : bad("the workflow block fights the conversation flow it sits beside");
+    const bare = smsSystemPromptForAudit(buildSmsBrain(p, p.reports.agentConfig!) as never);
+    !/CONFIGURED WORKFLOW/.test(bare)
+      ? ok("a brain with no workflow builds the prompt exactly as before")
+      : bad("the workflow block leaks into a prompt that has no workflow");
+
+    /* ⚠️⚠️ NOTHING IS ASKED TWICE. The voice agent's re-asking of ZIP and name is already in
+       this file; the workflow's nodes collect a zip, so feeding the script in untouched
+       reproduces it on SMS. */
+    {
+      const qs = p.reports.agentConfig!.smsPlaybook!.qualifyingQuestions;
+      const withWf = smsSystemPromptForAudit(brain as never);
+      const zipQ = qs.find((q) => /zip/i.test(q));
+      (zipQ && !withWf.includes(zipQ) && bare.includes(zipQ))
+        ? ok("a question the workflow already collects is dropped from the numbered script")
+        : bad("the agent asks for something the workflow already gathered");
+      const keep = qs.filter((q) => !/zip/i.test(q));
+      keep.every((q) => withWf.includes(q))
+        ? ok("every genuinely distinct question survives the dedupe")
+        : bad("the dedupe is eating questions the workflow does not cover");
+    }
+
+    /* ---- the plumbing, both ways ---- */
+    const oneKey = /SMS_WORKFLOW_SCOPE_PATH = "\/agent-studio\/agent\/workflow\/sms"/
+      .test(readCode("src/data/smsBrain.ts"));
+    (oneKey && phone.includes("SMS_WORKFLOW_SCOPE_PATH") && chat.includes("SMS_WORKFLOW_SCOPE_PATH"))
+      ? ok("one definition of the workflow's scope key, read by both previews")
+      : bad("a preview builds the workflow scope key itself — one side will read a key nobody writes");
+    (/smsWorkflowFlow\(/.test(phone) && /smsWorkflowFlow\(/.test(chat))
+      ? ok("both previews derive the flow, so they cannot disagree about the agent")
+      : bad("only one preview obeys the workflow");
+    /workflow: undefined/.test(chat)
+      ? ok("a created (empty) workflow's preview is still given no flow")
+      : bad("an empty workflow previews a flow its diagram shows nothing of");
+
+    /* ⚠️⚠️ ASK AI'S EDITS GO TO THE SCOPE THAT OWNS THE FIELD, NOT A SECOND COPY. */
+    (/linkKey\?: string;/.test(ctxSrc) && /linkAs\?: string;/.test(ctxSrc))
+      ? ok("a scope can name another scope its Ask AI may also edit")
+      : bad("the linked scope is gone, so Ask AI can only edit its own page");
+    /prev\.linkKey === s\.linkKey && prev\.linkAs === s\.linkAs/.test(ctxSrc)
+      && /linkKey: s\.linkKey, linkAs: s\.linkAs/.test(ctxSrc)
+      ? ok("registerScope carries the link in BOTH the equality test and the object")
+      : bad("registerScope drops the link silently — it type-checks and never arrives");
+    /* ⚠️ THE REAL FUNCTION, not a grep for one. The first version of this check asked only
+       whether a router existed, and passed against a router edited to route nothing. */
+    {
+      const batch = [
+        { path: "smsPlaybook.qualifyingQuestions", value: "[]" },
+        { path: "workflow.sms.qualify.root.question", value: "\"q\"" },
+      ];
+      const { mine, theirs } = routeEdits(batch, "workflow");
+      (mine.length === 1 && mine[0].path === "smsPlaybook.qualifyingQuestions"
+        && theirs.length === 1 && theirs[0].path === "sms.qualify.root.question")
+        ? ok("a workflow-prefixed edit is stripped and routed to the scope that owns it")
+        : bad("a workflow edit made from the preview is stored as a copy in the preview's scope");
+      const none = routeEdits(batch, undefined);
+      (none.mine.length === 2 && none.theirs.length === 0)
+        ? ok("a page with no linked scope keeps every edit, so no other screen changes")
+        : bad("routing fires on a page that declared no link");
+      /* ⚠️ A PATH THAT MERELY STARTS WITH THE WORD IS NOT A PREFIX MATCH. */
+      const near = routeEdits([{ path: "workflowNotes" }], "workflow");
+      near.mine.length === 1
+        ? ok("the prefix test needs the dot, so `workflowNotes` stays on this page")
+        : bad("the prefix match is a bare substring and would steal a sibling field");
+      /applyEditsRouted\(/.test(drawer) && /routeEdits\(edits, active\.linkAs\)/.test(drawer)
+        ? ok("and the drawer applies its batches through it")
+        : bad("the drawer no longer routes its edits");
+    }
+    /\[active\.linkAs\]: linked/.test(drawer)
+      ? ok("and the model is shown that scope's data under the prefix it must use")
+      : bad("the model cannot see the workflow it is being asked to change");
+    /* ⚠️ THE CONTEXT CAP ATE IT ONCE — 12,012 characters, the workflow sliced off the end and
+       the JSON left unterminated. */
+    /const CAP = 40000;/.test(drawer) && /\{ \[active\.linkAs\]: _dropped, \.\.\.own \}/.test(drawer)
+      ? ok("the context cap fits the workflow, and degrades by dropping it rather than slicing")
+      : bad("the context can be truncated into malformed JSON again");
+    phone.includes("linkAs: \"workflow\"") && !/linkAs: "workflow"[\s\S]{0,80}branches/.test(phone)
+      ? ok("the preview exposes the workflow's TEXT config, not structural control of the tree")
+      : bad("the preview's Ask AI can restructure the diagram, which the geometry cannot draw");
   }
 
   /* ---- the sixth row's geometry ---- */

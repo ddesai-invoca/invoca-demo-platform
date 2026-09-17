@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
-import { buildSmsBrain, askSmsAgent, resolveGreeting, SMS_AGENT_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
+import { buildSmsBrain, askSmsAgent, resolveGreeting, SMS_AGENT_SCOPE_PATH, SMS_WORKFLOW_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
+import { smsWorkflowFlow } from "../data/workflowDrawers";
+import { smsConfigFor, type SmsConfig } from "../data/smsTemplate";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { AgentConfigView } from "../data/schema";
 import { useExtraWorkflows } from "../data/quoteWorkflow";
@@ -120,6 +122,21 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
      `useBrain`'s minimal branch on the voice side: the prospect's playbook, questions and
      offer are all correct for the configured workflow and all wrong for one with no actions.
      `voiceMinimal` picks the empty-workflow flow in `buildSystem` for either channel. */
+  /**
+   * ⚠️ THE BUILT-IN WORKFLOW'S OWN CONFIG, read from the page this drawer is opened FROM — so
+   * "Preview Workflow" obeys the diagram beside it. Same read as the Preview Agent tab does
+   * cross-page, through the one shared key, rather than a prop threaded down for one field.
+   */
+  const wfTree = !wfSlug
+    ? (effectiveData(`${profileId}::${SMS_WORKFLOW_SCOPE_PATH}`) as
+        { branches?: unknown[]; sms?: unknown } | undefined)
+    : undefined;
+  const flow = useMemo(() => {
+    if (!wfTree?.branches?.length) return null;
+    const cfg = { ...smsConfigFor(profile), ...((wfTree.sms as object) ?? {}) } as SmsConfig;
+    try { return smsWorkflowFlow(profile, wfTree as never, cfg); } catch { return null; }
+  }, [profile, wfTree]);
+
   const brain = useMemo(
     () => (minimal
       /* ⚠️ `steps` IS CLEARED HERE TOO. A minimal preview drops `customSystem` and `playbook`
@@ -127,9 +144,9 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
          leaving it in would have an empty workflow work through a flow its diagram shows
          nothing of, which is the exact mismatch this branch exists to prevent. */
       ? { ...buildSmsBrain(profile, agentConfig, wf, wfAgent), voiceMinimal: true, openingMessage: undefined,
-          customSystem: undefined, playbook: undefined, steps: undefined }
-      : buildSmsBrain(profile, agentConfig, wf, wfAgent)),
-    [minimal, profile, agentConfig, wf, wfAgent],
+          customSystem: undefined, playbook: undefined, steps: undefined, workflow: undefined }
+      : buildSmsBrain(profile, agentConfig, wf, wfAgent, flow)),
+    [minimal, profile, agentConfig, wf, wfAgent, flow],
   );
 
   const [messages, setMessages] = useState<Msg[]>([]);

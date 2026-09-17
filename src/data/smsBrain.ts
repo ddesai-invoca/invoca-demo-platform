@@ -29,6 +29,17 @@
 
 import type { CustomerProfile, AgentConfigView } from "./schema";
 
+/** Mirrors `SmsWorkflowFlow` in `workflowDrawers.ts`, declared here so the brain type is local. */
+export interface SmsFlowNodeShape {
+  title: string; action: string;
+  question?: string; fallback?: string; instruction?: string;
+  destination?: string; signal?: string; collect?: string[];
+  answers?: SmsFlowNodeShape[];
+}
+export interface SmsWorkflowFlowShape {
+  intents: { title: string; looksLike: string; rules: string[]; flow: SmsFlowNodeShape[] }[];
+}
+
 type Profile = CustomerProfile;
 /* PARTIAL on purpose. `agentConfig` is optional on the profile, so PhonePreview's
    base object is built with `...(profile.reports.agentConfig ?? {})` and every
@@ -65,6 +76,8 @@ export interface SmsBrain {
    * exactly as they were signed off.
    */
   overrides?: { questions?: string[]; rules?: string[] };
+  /** The built-in workflow's configured flow — see the argument note on `buildSmsBrain`. */
+  workflow?: SmsWorkflowFlowShape;
   /**
    * The extra workflow's ORDERED FLOW, appended to its own playbook.
    *
@@ -209,8 +222,24 @@ export function buildSmsBrain(
   ac: AgentConfig,
   wf?: ExtraWorkflow,
   wfAgent?: SmsWorkflowAgent | null,
+  /**
+   * The BUILT-IN workflow's own configuration, so the diagram reaches the agent.
+   *
+   * ⚠️⚠️ **THE WHOLE POINT OF THE 9/17/2026 CHANGE.** Asked for directly: "if there are changes
+   * in the workflow, it also changes it in actual preview agent or preview workflow." Before it,
+   * this function read `agentConfig` and an extra workflow's own prompt and NOTHING from the
+   * six-row template, so every configured question, instruction, intent and collect list was
+   * invisible to the phone.
+   * ⚠️ Passed IN rather than derived here, exactly as `wfAgent` is: the caller is the page that
+   * holds the effective tree, and deriving it here would mean this module importing the drawer
+   * builder for one field.
+   * ⚠️ Absent for an EXTRA workflow, which states its own flow in `systemPrompt`/`playbookSteps`
+   * — two flows for one conversation is the contradiction this file keeps recording.
+   */
+  workflow?: SmsWorkflowFlowShape | null,
 ): SmsBrain {
   return {
+    ...(workflow && !wf ? { workflow } : {}),
     customSystem: wf?.systemPrompt,
     /* Precedence: an extra workflow's scripted line wins (it is the whole point of
        that workflow), then whatever the SE or the AI set, then the derived default.
@@ -275,6 +304,14 @@ export function buildSmsBrain(
 /** The scope key whose AI edits define the SMS agent's questions. Both previews
  *  point at the Preview Agent page, so an edit made there governs both. */
 export const SMS_AGENT_SCOPE_PATH = "/agent-studio/agent/preview";
+/**
+ * The BUILT-IN SMS workflow page's scope, whose tree and `sms` config now drive the agent.
+ *
+ * ⚠️ ONE DEFINITION, THREE READERS — this page writes it and both previews read it. Two copies
+ * of a key string is how one side ends up reading a key nobody writes, which is the exact trap
+ * `smsWorkflowScopePath` was extracted to avoid for the extra workflows.
+ */
+export const SMS_WORKFLOW_SCOPE_PATH = "/agent-studio/agent/workflow/sms";
 
 /* Shared /api/chat call with the same transient-failure backoff both previews
    need, and the same markdown strip (the model occasionally emits ** or ` and a

@@ -3,8 +3,10 @@ import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { usePageData } from "../components/GeneratedTiles";
 import { useAiAssistant } from "../data/AiAssistantContext";
-import { buildSmsBrain, resolveGreeting, smsWorkflowScopePath, type SmsWorkflowAgent } from "../data/smsBrain";
+import { buildSmsBrain, resolveGreeting, smsWorkflowScopePath, SMS_WORKFLOW_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
 import { tollFreeNumber } from "../data/smsContactNumber";
+import { smsWorkflowFlow } from "../data/workflowDrawers";
+import { smsConfigFor, type SmsConfig } from "../data/smsTemplate";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { SmsConversation, SmsTurn } from "../data/schema";
 import { useAutoGrow } from "../data/useAutoGrow";
@@ -196,6 +198,21 @@ function useBrain(wfSlug?: string | null) {
      is what the row has to show. */
   const ac = usePageData(base, {
     questionPath: QUESTIONS_PATH,
+    /**
+     * ⚠️⚠️ **ASK AI HERE CAN EDIT THE WORKFLOW ITSELF (9/17/2026), which is the other half of
+     * "make the config bi directional".** Its edits land on the workflow's OWN scope, so they
+     * redraw the diagram rather than storing a second copy of a question here.
+     *
+     * ⚠️ **THE TEXT FIELDS ONLY, DELIBERATELY NARROWER THAN THE TREE.** `sms` carries every
+     * question, fallback, instruction and intent — so "ask about termites first" reaches the
+     * node an SE would have typed it into. `branches` is NOT exposed: handing a second page
+     * structural control of the tree means the model can change its DEPTH, and the six-row
+     * geometry has no row to draw a seventh in, so nodes would be stored and never rendered —
+     * the silent no-op this file keeps recording. Restructuring stays on the workflow page,
+     * where the diagram is on screen while you do it.
+     * ⚠️ Built-in workflow only: an extra workflow has no `sms` config of its own.
+     */
+    ...(!wf ? { linkKey: `${profileId}::${SMS_WORKFLOW_SCOPE_PATH}`, linkAs: "workflow" } : {}),
     greetingFallback: wfAgent?.greeting ?? wf?.openingMessage,
     /* ⚠️ An LSA quote workflow's opener beats a stored greeting on the phone, so it has to
        beat it in the drawer's row too — see `Scope.greetingWins`. */
@@ -207,7 +224,38 @@ function useBrain(wfSlug?: string | null) {
      would drift on the first edit. What differs is only HOW each screen obtains
      the config — this one registers an AI scope (it is the page whose drawer edits
      the questions), the workflow drawer must not. See smsBrain.ts. */
-  return buildSmsBrain(profile, ac, wf, wfAgent);
+  /**
+   * ⚠️⚠️ **THE BUILT-IN WORKFLOW'S OWN CONFIG, READ THE SAME CROSS-PAGE WAY `wfAgent` IS
+   * (9/17/2026).** Asked for directly: "if there are changes in the workflow, it also changes it
+   * in actual preview agent or preview workflow." The mechanism was already here — this page has
+   * read an EXTRA workflow's scope since 9/8 — and the built-in one simply was not being read,
+   * so the whole six-row template was invisible to the phone.
+   *
+   * ⚠️ `effectiveData` REGISTERS NOTHING, so this cannot repoint this page's own scope; the
+   * sparkle here still edits the agent's own fields. An unedited workflow has no override key
+   * and this resolves to the template's base, which is what makes an edit — from Ask AI or from
+   * a drawer — take effect the moment it lands, in either direction.
+   * ⚠️ ONLY FOR THE BUILT-IN WORKFLOW (`!wf`): an extra workflow states its own flow in
+   * `systemPrompt`/`playbookSteps`, and sending both would be two flows for one conversation.
+   */
+  const wfTree = !wf
+    ? (effectiveData(`${profileId}::${SMS_WORKFLOW_SCOPE_PATH}`) as
+        { branches?: unknown[]; sms?: unknown } | undefined)
+    : undefined;
+  const flow = useMemo(() => {
+    if (!wfTree?.branches?.length) return null;
+    const cfg = { ...smsConfigFor(profile), ...((wfTree.sms as object) ?? {}) } as SmsConfig;
+    try {
+      return smsWorkflowFlow(profile, wfTree as never, cfg);
+    } catch {
+      /* ⚠️ A STORED TREE FROM AN OLDER SHAPE MUST NOT TAKE THE PHONE DOWN. The agent falling
+         back to its generated flow is a degraded demo; a thrown error inside `useBrain` is a
+         blank preview, and this reads a scope another page owns. */
+      return null;
+    }
+  }, [profile, wfTree]);
+
+  return buildSmsBrain(profile, ac, wf, wfAgent, flow);
 }
 
 /* mode "modal" = the in-app overlay (legacy); mode "page" = a standalone browser

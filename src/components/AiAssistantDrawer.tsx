@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { columnEdits } from "../data/columnEdits";
-import { getByPath , constrainToFocus } from "../data/editGuard";
+import { getByPath , constrainToFocus, routeEdits } from "../data/editGuard";
 import { QuestionListTools } from "./QuestionListTools";
 import { stripGeneratedDashes, GREETING_PATH } from "../data/questionImport";
 import { defaultGreeting, resolveGreeting } from "../data/smsBrain";
@@ -274,6 +274,22 @@ export function AiAssistantDrawer() {
   async function send() {
     const q = input.trim();
     if (!q || busy || !active) return;
+    /**
+     * Apply a batch that may target TWO scopes.
+     *
+     * ⚠️⚠️ **THE PREFIX IS STRIPPED AND THE EDIT GOES TO THE SCOPE THAT OWNS THE FIELD.** Left
+     * on `active.key`, a `workflow.…` path would be stored in the Preview Agent's own scope —
+     * a second copy of a question the diagram draws from somewhere else, which is the
+     * duplicated-field trap this repo has paid for three times. Routed, the edit lands on the
+     * workflow's scope and the diagram redraws from the one value.
+     * ⚠️ Returns the TOTAL applied, so the drawer's "I made N changes" stays true across both.
+     */
+    const applyEditsRouted = (edits: { path: string; value: string }[]): number => {
+      const { mine, theirs } = routeEdits(edits, active.linkAs);
+      let n = mine.length ? applyEdits(active.key, mine) : 0;
+      if (theirs.length && active.linkKey) n += applyEdits(active.linkKey, theirs);
+      return n;
+    };
     setInput(""); setError("");
     const history = messages.map((m) => ({ role: m.role, content: m.content }));
     setMessages((prev) => [...prev, { role: "user", content: q }]);
@@ -302,8 +318,42 @@ export function AiAssistantDrawer() {
         if (!playbook.greeting) playbook.greeting = greeting.raw;
         eff = { ...cur, smsPlaybook: playbook };
       }
+      /* ⚠️⚠️ SHOW THE MODEL THE WORKFLOW IT CAN SEE ON THE OTHER TAB, under its own prefix.
+         Same reasoning as the greeting fold directly above — "if a value is on screen but not
+         in `dataContext`, the model will write it somewhere else" — but here the value belongs
+         to ANOTHER scope, so the prefix is what lets the edits be routed back to it rather than
+         stored as a second copy in this page's scope. */
+      if (active.linkKey && active.linkAs) {
+        const linked = effectiveData(active.linkKey);
+        if (linked && typeof linked === "object") {
+          eff = { ...(eff as object), [active.linkAs]: linked };
+        }
+      }
+      /**
+       * ⚠️⚠️ **THE 12,000-CHAR CAP SILENTLY ATE THE WORKFLOW, AND A SLICED JSON IS MALFORMED
+       * JSON (9/17/2026).** Caught in the browser the first time Ask AI was asked to change a
+       * workflow question: the payload came out at exactly 12,012 characters — the cap plus the
+       * marker — so the `workflow` half, appended last, was cut off entirely and the model was
+       * handed an unterminated object. It could not have edited what it could not see.
+       *
+       * ⚠️ RAISED TO 40k, WHICH IS STILL SMALL. Every request runs the director model (Opus,
+       * streamed); Aptive's agent config alone is ~12KB of prose, so 12k was already clipping
+       * pages before anything was folded in. The cap exists to bound cost, not to fit a shape.
+       * ⚠️ AND IT DEGRADES BY DROPPING THE LINKED HALF FIRST, so what remains is always VALID
+       * JSON describing this page's own data — a page whose context is malformed is worse than
+       * one that is merely missing an optional section, because the model then misreads
+       * everything rather than one field.
+       */
       let dataContext = "";
-      try { const j = JSON.stringify(eff); dataContext = j.length > 12000 ? j.slice(0, 12000) + "…(truncated)" : j; } catch { /* ignore */ }
+      const CAP = 40000;
+      try {
+        let j = JSON.stringify(eff);
+        if (j.length > CAP && active.linkAs && eff && typeof eff === "object") {
+          const { [active.linkAs]: _dropped, ...own } = eff as Record<string, unknown>;
+          j = JSON.stringify(own);
+        }
+        dataContext = j.length > CAP ? j.slice(0, CAP) + "…(truncated)" : j;
+      } catch { /* ignore */ }
       /* ⚠️ ALWAYS STREAMS NOW (9/11/2026) — every "Ask AI" request runs the same director
          model (engine/assistant.ts), which is streamed unconditionally on the server. This
          used to test the page's data shape (`/"agent"\s*:/`) to match a Haiku/Opus split that
@@ -387,7 +437,7 @@ export function AiAssistantDrawer() {
         if (!edits) {
           push("This page's table doesn't support adding or removing columns.", "info");
         } else {
-          const n = applyEdits(active.key, edits);
+          const n = applyEditsRouted(edits);
           /* AN EMPTY COLUMN MUST NOT READ AS SUCCESS. The model is inconsistent about
              filling `values`: the same request produced 20 values one run and NONE the
              next, which added a correctly-placed but entirely blank column. Silence
@@ -463,7 +513,7 @@ export function AiAssistantDrawer() {
         if (pinned.dropped) {
           console.warn(`[ai] dropped ${pinned.dropped} edit(s) that fell outside the focused tile "${focus?.path}"`);
         }
-        const n = applyEdits(active.key, pinned.edits);
+        const n = applyEditsRouted(pinned.edits);
         /* Say when part of it was refused rather than reporting a clean success:
            the user is focused on ONE tile and an edit aimed elsewhere is exactly the
            bug this guard exists to stop. */

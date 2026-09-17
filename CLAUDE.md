@@ -1700,6 +1700,112 @@ the repo. ⚠️ Five were broken on purpose and each fired — restoring the ta
 un-gating the lock, reordering the list, emptying the callback collect, and merging the two
 destination strings.
 
+##### The config is bi-directional: the workflow IS the agent's config (9/17/2026)
+Asked for directly: *"can we make the config bi directional, so if there are changes in the
+workflow, it also changes it in actual preview agent or preview workflow, and vice versa, if i use
+ask AI to make changes, it should make those changes in the workflow."*
+
+⚠️⚠️ **MEASURED FIRST, AND THE GAP WAS TOTAL: THE BUILT-IN SMS WORKFLOW REACHED THE AGENT
+NOWHERE.** `buildSmsBrain` read `agentConfig`, an extra workflow's own prompt and (for an extra
+workflow) its `wfAgent` half — so every field of the six-row template was invisible to the phone:
+three qualify questions, four inform instructions, the escalation text, both intents' looks-like
+and rules, every node's collect chips, the destination and the signal. An SE could configure the
+entire diagram and both previews would ignore all of it.
+⚠️ **THE VOICE PAGE ALREADY WORKED THIS WAY**, which is the pattern mirrored rather than invented:
+its call reads the WORKFLOW page's scope and merges `effTree.agent` into the spec. The mechanism
+for reading another page's scope was also already here — the Preview Agent has read an EXTRA
+workflow's scope since 9/8. The built-in one simply was not being read.
+
+⚠️⚠️ **NOT A SYNC BETWEEN TWO COPIES — ONE HOME PER FIELD, READ BY BOTH SURFACES.** Asked whether
+the overlap should be resolved by precedence, the answer was *"whatever was edited most recently"*.
+With one home that is automatic and needs no timestamps: the last write to the single value is what
+the agent uses, and neither surface can discard the other's edit. Two stores kept in step would be
+the duplicated-field trap behind all three of the 8/27 voice bugs. The store carries no timestamps
+at all, so the alternative would have meant persisting them into the demo record for a conflict
+that, with one home, cannot arise.
+
+**What has which home, measured rather than assumed:**
+| | home | overlap |
+|---|---|---|
+| the three qualify questions, four inform instructions, escalation text, both intents, each node's collect list, destination, signal | the **workflow** (`sms.*` + the tree) | — |
+| greeting, brand rules, goal, booking type, offer, Q&A, knowledge | the **agent** (`agentConfig`) | — |
+| the qualification script (`smsPlaybook.qualifyingQuestions`) | the agent | **complementary, not duplicate** — the tree's questions ROUTE, the script QUALIFIES |
+
+⚠️⚠️ **IT IS DERIVED THROUGH `smsDrawerFor`, NOT BY A SECOND WALK OF THE CONFIG.** That function
+already knows where every node's text lives — the template's tables for the eight it configures,
+the flat `extra__` keys for anything switched or added — so the agent is told, by construction,
+exactly what an SE reads in the drawer. A second derivation is how the two come to disagree.
+
+⚠️⚠️ **THE WORKFLOW ENRICHES THE SALES FLOW; IT DOES NOT REPLACE IT, AND THE WORDING HAS TO SAY
+SO.** The generated SMS prompt is a SALES arc (open, qualify, estimate, schedule, confirm); the
+workflow is a ROUTING flow. Declaring "THIS SECTION WINS" beside it, the way `overrideBlock` does
+for a hand-written playbook, gives one conversation two competing flows — the self-contradicting
+prompt this file already records twice. And replacing the sales arc outright would turn EVERY
+prospect's SMS demo into a routing conversation, losing the qualify-quote-book beat that is the
+point of the channel. The block says outright that it does not replace the flow above and that a
+question appearing in both is asked once. `audit:ai` fails if it starts claiming precedence.
+
+⚠️⚠️ **AND NOTHING IS ASKED TWICE — the same bug this file already records for voice** ("the voice
+agent was re-asking ZIP and name": the service-area check and the path's collect list were two
+blocks nobody reconciled). The workflow's nodes collect a zip and a name, so feeding the script in
+untouched reproduces it on SMS. `dedupeQuestions` drops a scripted question only when the workflow
+demonstrably gathers that same datum — measured on Aptive, 5 questions to 4, the ZIP one dropped
+and the four genuinely distinct ones (pests, size, interior/exterior, timeline) kept. Conservative
+and structural, never semantic, exactly like `dedupeCollect`.
+
+#### The reverse direction: Ask AI on the Preview Agent edits the workflow
+`Scope.linkKey` / `linkAs` name another scope a page's Ask AI may also edit. The model is shown
+that scope's data under the prefix, and `routeEdits` strips the prefix and applies those edits to
+**that** scope — so an instruction typed into the Preview Agent moves the DIAGRAM instead of
+storing a second copy of a question beside it.
+⚠️ **THE TEXT FIELDS ONLY, WHICH IS NARROWER THAN THE "reword + add answers" THAT WAS ASKED FOR,
+AND DELIBERATELY SO.** `sms` carries every question, fallback, instruction and intent, so "ask
+about termites first" reaches the node an SE would have typed it into. `branches` is NOT exposed:
+a second page with structural control can change the tree's DEPTH, and the six-row geometry has no
+row to draw a seventh in, so those nodes would be stored and never rendered — the silent no-op
+this file keeps recording. Restructuring stays on the workflow page, where the diagram is on
+screen while you do it. **Say so rather than implying the wider version shipped.**
+
+#### Three defects found while building it, two by reading and one in the browser
+⚠️⚠️ **1. `registerScope` DROPPED THE LINK SILENTLY.** Its body builds the active scope object
+field by field, so a new field has to appear TWICE — in the equality test and in the object — and
+omitting the second half type-checks perfectly while the drawer receives `undefined` forever.
+Caught by reading that function rather than by the compiler. The check pins both halves.
+⚠️⚠️ **2. THE 12,000-CHARACTER CONTEXT CAP ATE THE WORKFLOW, AND A SLICED JSON IS MALFORMED
+JSON.** Caught in the browser on the first real Ask AI request: the payload came out at exactly
+**12,012** characters — the cap plus its marker — so the `workflow` half, appended last, was cut
+off entirely and the model was handed an unterminated object. It could not have edited what it
+could not see, and the failure looks like the feature not working. Raised to 40k (Aptive's agent
+config alone is ~12KB of prose, so pages were already being clipped before anything was folded
+in), and it now degrades by **dropping the linked half first**, so what remains is always valid
+JSON about the page's own data.
+⚠️ **3. A CHECK THAT COULD NOT FAIL.** The router's first check grepped for "does a router
+exist" and passed against a router edited to route nothing. `routeEdits` was extracted as a pure
+function so the audit calls it with real batches — including `workflowNotes`, which must NOT be
+stolen by a `workflow` prefix.
+
+**`audit:ai` gained 24 checks** (115 for this feature): the flow derives and carries each node's
+question, action, instruction and collect list three rows down; both intents' copy reaches it;
+editing a node moves what the agent is told; it reaches the brain and the prompt; an EXTRA workflow
+gets none of it; a brain with no workflow builds the old prompt byte for byte; the block does not
+claim precedence; the dedupe drops a covered question and keeps every distinct one; one definition
+of the scope key read by both previews; an empty workflow still gets no flow; `registerScope`
+carries the link in both places; `routeEdits` strips and routes, respects a page with no link, and
+needs the dot; and the context cap fits the workflow and degrades by dropping it.
+⚠️ Six were broken on purpose; four fired immediately and **two were presence-greps that did not**
+— both were rewritten, one into the real-function test above. ⚠️ One EXISTING check had to be
+re-aimed: it pinned `buildSmsBrain(profile, ac, wf, wfAgent)` exactly and went red the moment a
+fifth argument arrived. The arity was never the invariant.
+
+**Verified in the browser, by reading the `/api/chat` REQUEST BODY rather than trusting a drawer**
+— the test this file insists on. Editing "All Sales Inquiry Users" to *"Before anything else: are
+you dealing with termites?"* through the real drawer put that string in `brain.workflow` on BOTH
+previews: Preview Workflow on the same page, and the Preview Agent tab reading it across the page
+boundary. Then the reverse: Ask AI on the Preview Agent, asked to change the first qualifying
+question, wrote **`sms.qualify.root.question` into the WORKFLOW's scope** with **no copy in the
+preview's own scope**, and the diagram's drawer opened showing the new question. The page's undo
+took every step back and left no override behind.
+
 ##### Every field in an action drawer is editable, and the dropdown is on all of them (9/17/2026)
 Asked for with **both LOCKED chrome drawers selected**: *"you need to add the drop and the screen
 to any action context drawer, any time its a action drawer with that drop it should have those

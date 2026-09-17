@@ -655,6 +655,89 @@ function actionSlotFor(tree: WorkflowTreeModel, nodeId: string):
   return { path, index, nodes: arr as Record<string, unknown>[] };
 }
 
+/* =============================================================================
+   THE WORKFLOW AS THE AGENT'S FLOW (9/17/2026)
+   -----------------------------------------------------------------------------
+   Asked for directly: *"can we make the config bi directional, so if there are changes in the
+   workflow, it also changes it in actual preview agent or preview workflow."*
+
+   ⚠️⚠️ **MEASURED FIRST: THE BUILT-IN SMS WORKFLOW REACHED THE AGENT NOWHERE.** `buildSmsBrain`
+   reads `agentConfig`, an extra workflow's own prompt and (for an extra workflow) its `wfAgent`
+   half — so every one of the six-row template's configured fields was invisible to the phone:
+   three qualify questions, four inform instructions, the escalation text, both intents'
+   looks-like and rules, every node's collect chips, the destination and the signal. An SE could
+   configure the whole diagram and the preview would ignore all of it.
+   ⚠️ **THE VOICE PAGE ALREADY WORKS THIS WAY**, which is the pattern being mirrored: its call
+   reads the WORKFLOW page's scope (`treeScopeKey`) and merges `effTree.agent` into the spec, so
+   an edit there already changes the call.
+
+   ⚠️⚠️ **IT IS DERIVED THROUGH `smsDrawerFor`, NOT BY A SECOND WALK OF THE CONFIG.** That
+   function already knows where every node's text lives — the template's tables for the eight it
+   configures, the flat `extra__` keys for anything switched or added — and getting that wrong in
+   a second place is how the agent ends up told something different from what the drawer shows.
+   So the agent is told, by construction, exactly what an SE reads in the drawer.
+   ============================================================================= */
+
+/** One node of the configured flow, as the agent is told about it. */
+export interface SmsFlowNode {
+  title: string;
+  action: string;
+  question?: string;
+  fallback?: string;
+  instruction?: string;
+  destination?: string;
+  signal?: string;
+  collect?: string[];
+  answers?: SmsFlowNode[];
+}
+export interface SmsWorkflowFlow {
+  intents: { title: string; looksLike: string; rules: string[]; flow: SmsFlowNode[] }[];
+}
+
+/**
+ * The built-in SMS workflow's own configuration, shaped for the prompt.
+ *
+ * ⚠️ Returns null for a tree that is not the six-row template (an authored extra workflow, a
+ * created one, or the voice tree), so nothing else on the platform changes.
+ */
+export function smsWorkflowFlow(
+  profile: CustomerProfile,
+  tree: WorkflowTreeModel,
+  cfg: SmsConfig,
+): SmsWorkflowFlow | null {
+  if (tree.variant !== "sms" || !tree.branches?.length) return null;
+  const at = (id: string): SmsFlowNode | null => {
+    const node = nodeAt(tree, id);
+    if (!node) return null;
+    const d = smsDrawerFor(profile, tree, id, cfg);
+    if (d?.kind !== "action") return null;
+    const kids = Array.isArray(node.paths) ? (node.paths as unknown[]) : [];
+    const answers = kids
+      .map((_, i) => at(`${id.startsWith("leaf") ? "path" : "sub"}-${id.split("-").slice(1).join("-")}-${i}`))
+      .filter((x): x is SmsFlowNode => !!x);
+    return {
+      title: String(node.title ?? ""),
+      action: SMS_ACTION_LABEL[d.action],
+      ...(d.question ? { question: d.question } : {}),
+      ...(d.fallback ? { fallback: d.fallback } : {}),
+      ...(d.handling ? { instruction: d.handling } : {}),
+      ...(d.destination ? { destination: d.destination } : {}),
+      ...(d.signal ? { signal: d.signal } : {}),
+      ...(d.collect?.length ? { collect: d.collect.map((f) => f.name) } : {}),
+      ...(answers.length ? { answers } : {}),
+    };
+  };
+  const intents = tree.branches.map((b, bi) => {
+    const side = bi === 0 ? "sales" : "support";
+    const it = cfg.intents[side as "sales" | "support"];
+    const flow = (b.leaves ?? [])
+      .map((_, li) => at(`leaf-${bi}-${li}`))
+      .filter((x): x is SmsFlowNode => !!x);
+    return { title: String(b.title ?? ""), looksLike: it?.looksLike ?? "", rules: it?.rules ?? [], flow };
+  });
+  return intents.some((i) => i.flow.length) ? { intents } : null;
+}
+
 export function smsDrawerFor(
   profile: CustomerProfile,
   tree: WorkflowTreeModel,

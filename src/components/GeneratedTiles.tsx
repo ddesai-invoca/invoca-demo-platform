@@ -31,6 +31,10 @@ export interface PageDataOptions {
   /* True when that fallback OUTRANKS a stored `smsPlaybook.greeting` — see
      `Scope.greetingWins`. Opt-in, so every other screen is unchanged. */
   greetingWins?: boolean;
+  /* Another scope this page's Ask AI may also edit, and the prefix its data appears under in
+     the model's context. Opt-in; see the note on `Scope.linkKey`. */
+  linkKey?: string;
+  linkAs?: string;
 }
 export function useDashboardData<T>(base: T, opts?: PageDataOptions): T {
   const { pathname } = useLocation();
@@ -40,10 +44,12 @@ export function useDashboardData<T>(base: T, opts?: PageDataOptions): T {
   const questionPath = opts?.questionPath;
   const greetingFallback = opts?.greetingFallback;
   const greetingWins = opts?.greetingWins;
+  const linkKey = opts?.linkKey;
+  const linkAs = opts?.linkAs;
   useEffect(() => {
     if (base == null) return;
-    registerScope({ key, customerName: profile.customerName, baseTitle: (base as any)?.title ?? "", baseData: base, questionPath, greetingFallback, greetingWins });
-  }, [key, base, profile.customerName, registerScope, questionPath, greetingFallback, greetingWins]);
+    registerScope({ key, customerName: profile.customerName, baseTitle: (base as any)?.title ?? "", baseData: base, questionPath, greetingFallback, greetingWins, linkKey, linkAs });
+  }, [key, base, profile.customerName, registerScope, questionPath, greetingFallback, greetingWins, linkKey, linkAs]);
   const eff = effectiveData(key);
   return (eff ?? base) as T;
 }
