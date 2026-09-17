@@ -1032,8 +1032,15 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
      anchored to a scroll container move with it. They anchor to this box instead. */
   border: 1px solid #e7eaee; border-radius: 8px; overflow: hidden;
   background-color: #fff;
-  background-image: radial-gradient(#d7dbe0 1.1px, transparent 1.1px);
-  background-size: 20px 20px;
+  /* ⚠️ MEASURED OFF THE REAL CANVAS (9/17/2026), reported as "too far apart and too dark".
+     react-flow renders its dot pattern as `<pattern width={gap*zoom}>` with `<circle
+     r={size*zoom/2}>`; the capture is at zoom 0.5 with width=8 and r=0.25, so the authored
+     values are a **16px gap** and a **1px dot** in `#91919A`. Ours was a 20px gap and a 1.1px
+     RADIUS — a 2.2px dot, nearly three times the area — which is what read as coarse and heavy
+     even in a paler grey. The finer, tighter grid is both closer together and visually lighter,
+     which is the whole of the report.
+     ⚠️ NOT SCOPED TO ONE TREE: the canvas is shared chrome and was wrong on every workflow
+     page, so fixing it here fixes the voice diagram and the seven extra workflows too. */
 }
 .wf-tree { position: relative; width: 760px; height: 470px; margin: 30px auto; }
 /* Reserves the SCALED footprint of a computed-layout tree so `margin: auto`
@@ -1046,8 +1053,35 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
    then had to subtract on top of its own inset — 44px of a 620px canvas spent twice over,
    which is part of why the diagram rendered smaller than its box. The room under the last row
    is BOTTOM_PAD, in design units, so it scales with the tree instead of eating the frame. */
-.wf-scroll { position: absolute; inset: 0; overflow: auto; }
-.wf-fit { position: relative; }
+/* ⚠️ `cursor: grab` IS THE REAL PANE'S OWN (measured: `.react-flow__pane.draggable{cursor:grab}`),
+   and it is the only thing that advertises the drag. A node sets its own `pointer` and wins by
+   being the deeper element, so the affordance never lies about what is under the cursor.
+   ⚠️ `user-select` is dropped only WHILE panning, so text on the diagram stays selectable at
+   rest — killing it outright would be a side effect nobody asked for. */
+.wf-scroll {
+  position: absolute; inset: 0; cursor: grab;
+  /* ⚠️⚠️ **HIDDEN, NOT AUTO — "No scroll bars", and the real pane has none** because it
+     transform-pans rather than scrolling. Hiding them costs nothing that was being used: the
+     wheel is intercepted by `useFitScale` for ZOOM (non-passive, `preventDefault`), so the bars
+     were the only scroll affordance, and dragging replaces them. An `overflow: hidden` box is
+     still scrollable FROM SCRIPT, which is what keeps the zoom anchor and Fit to view working
+     unchanged. */
+  overflow: hidden;
+  /* ⚠️ THE DOTS LIVE HERE, NOT ON `.wf-canvas`, SO THEY CAN TRAVEL WITH THE DIAGRAM. The pan is
+     published as two custom properties on this element, and react-flow shifts its own background
+     pattern by the viewport translate the same way — measured `patternTransform=translate(-5,-5)`
+     in the capture, which is that pan modulo the gap. `.wf-scroll` is `inset: 0`, so the grid
+     covers exactly the area it did on the canvas. */
+  background-image: radial-gradient(#91919a 0.5px, transparent 0.5px);
+  background-size: 16px 16px;
+  background-position: var(--wf-px, 0px) var(--wf-py, 0px);
+}
+.wf-scroll.wf-panning { cursor: grabbing; user-select: none; }
+/* ⚠️ THE PAN IS A TRANSLATE ON THE FIT BOX, composed with the fit SCALE on `.wf-tree` inside it.
+   Two elements, two transforms: this one can be dragged anywhere without touching the scale the
+   zoom buttons own. Unbounded on purpose — the real page lets you push the diagram clean off the
+   edge, and "Fit to view" is the way back. */
+.wf-fit { position: relative; transform: translate(var(--wf-px, 0px), var(--wf-py, 0px)); }
 .wf-lines { position: absolute; left: 0; top: 0; overflow: visible; }
 .wf-l { stroke: #c7ccd4; stroke-width: 2; fill: none; }
 .wf-l-green { stroke: #2fae4e; }
@@ -1115,6 +1149,95 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
    fully visible outside the box rather than being cut off, which is what made it obvious. */
 .wf-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .wf-chip { background: rgba(255,255,255,.7); border: 1px solid #cfe6d6; color: #3d5c46; font-size: 11px; border-radius: 999px; padding: 3px 10px; }
+
+/* =============================================================================
+   THE BUILT-IN SMS WORKFLOW'S OWN PALETTE (`.wf-v2`, measured 9/17/2026)
+   -----------------------------------------------------------------------------
+   Capture: `reference/agent-workflow/sms-tree-v2.html`, which serialises its emotion CSS, so
+   every value below is a real computed style rather than a screenshot reading.
+
+   ⚠️⚠️ **SCOPED, BECAUSE `.wf-node`, `.wf-chip` AND `.wf-leaf-*` ARE SHARED.** The voice tree
+   and seven authored extra workflows draw those same classes, and restyling them for a change
+   asked about the built-in SMS diagram is exactly what the one-screen rule forbids — this repo
+   has already lost 79 `.cd-*` rules as collateral once.
+
+   ⚠️⚠️ **A CARD IS TINTED BY ITS ACTION, AT 8%, WITH A 5px LEFT EDGE AND NO OTHER BORDER.**
+   That is the product's whole system, and `tone` could not express it: one word for the card,
+   no ink for the text. Hence `actionKind` and the three `.wf-act-*` rules.
+   ============================================================================= */
+.wf-v2 .wf-node {
+  /* radius 6 not 8, border #E7E9EB not #d9dee4, padding 12 not 10/14, and NO shadow at all —
+     the real cards are flat and separated by their border alone. */
+  border-radius: 6px; border-color: #e7e9eb; padding: 12px; box-shadow: none;
+}
+/* Title and description are the SAME 16px; only the weight differs, and the description is the
+   title's own ink rather than a muted grey. */
+.wf-v2 .wf-node-title, .wf-v2 .wf-leaf-title { font-size: 16px; line-height: 20px; }
+.wf-v2 .wf-leaf-title { margin-bottom: 6px; }
+.wf-v2 .wf-node-sub {
+  font-size: 16px; line-height: 20px; color: var(--color-text-title); margin-top: 0;
+  /* ⚠️ FLUSH LEFT, NOT INDENTED UNDER THE TITLE TEXT. Measured: the description's left edge and
+     the title icon's left edge are both the card's own 12px padding. Ours indented it 24px to
+     clear the icon, which the real node does not do. */
+  padding-left: 0;
+}
+.wf-v2 .wf-leaf-action { font-size: 16px; line-height: 20px; gap: 8px; }
+
+/* Conversation Start is the platform's own titan blue-10, not our paler mix. */
+.wf-v2.wf-tree .wf-start { background: #d4e0fe; border-color: #e7e9eb; }
+
+/* ⚠️ THE CHIP IS NEUTRAL AND FULLY ROUNDED — 12px on #E7E9EB at radius 100px, with NO border.
+   Ours was 11px white-on-green-border, which tinted every pill to the old green leaf. */
+.wf-v2 .wf-chip {
+  background: #e7e9eb; border: none; color: var(--color-text-title);
+  font-size: 12px; border-radius: 100px; padding: 3px 10px;
+}
+
+/* ---- the three action tints, measured ------------------------------------- */
+.wf-v2 .wf-act-qualify  { background: rgba(208,193,242,.08); border: none; border-left: 5px solid #d0c1f2; }
+.wf-v2 .wf-act-inform   { background: rgba(38,102,249,.08);  border: none; border-left: 5px solid #2666f9; }
+.wf-v2 .wf-act-escalate { background: rgba(255,112,69,.08);  border: none; border-left: 5px solid #ff7045; }
+/* The action text AND its glyph take a dark ink of the same hue. */
+.wf-v2 .wf-act-qualify  .wf-leaf-action { color: #440066; }
+.wf-v2 .wf-act-inform   .wf-leaf-action { color: #11228c; }
+.wf-v2 .wf-act-escalate .wf-leaf-action { color: #b33b00; }
+/* ⚠️ THE GLYPH SITS IN A 26px BOX OF THE SAME HUE AT 12%, radius 3px — not a bare icon.
+   `currentColor` on the svg is what makes one ink rule above cover both. */
+.wf-v2 .wf-leaf-action .wf-svg-ic {
+  box-sizing: content-box; width: 18px; height: 18px; padding: 4px; border-radius: 3px; flex: none;
+}
+.wf-v2 .wf-act-qualify  .wf-leaf-action .wf-svg-ic { background: rgba(208,193,242,.12); }
+.wf-v2 .wf-act-inform   .wf-leaf-action .wf-svg-ic { background: rgba(38,102,249,.12); }
+.wf-v2 .wf-act-escalate .wf-leaf-action .wf-svg-ic { background: rgba(255,112,69,.12); }
+
+/* ⚠️⚠️ THE OTHER TWO ACTIONS THE DROPDOWN OFFERS (9/17/2026), and their hues are DERIVED FROM
+   THE PALETTE RATHER THAN INVENTED. The capture's own titan variables show the system exactly:
+   every measured ink is its hue's `-100` token — Qualify purple-20 `#d0c1f2` / purple-100
+   `#440066`, Inform blue-50 `#2666f9` / blue-100 `#11228c`, Escalate orange-50 `#ff7045` /
+   orange-100 `#b33b00`. So Inform & Route is teal-40 `#33e5c9` / teal-100 `#007e73` — and
+   `#33e5c9` is exactly what the Create Workflow capture independently measured for that action —
+   and Schedule Callback is green-50 `#2cbf58` / green-100 `#0d5400`.
+   ⚠️ NO CAPTURE SHOWS A NODE CARRYING EITHER, because the dropdown was never applied in any of
+   the five. The 8% / 12% / 5px treatment is the measured one; only the hue is placed by the
+   palette. Replace if a capture ever shows such a card. */
+.wf-v2 .wf-act-informroute { background: rgba(51,229,201,.08); border: none; border-left: 5px solid #33e5c9; }
+.wf-v2 .wf-act-callback    { background: rgba(44,191,88,.08);  border: none; border-left: 5px solid #2cbf58; }
+.wf-v2 .wf-act-informroute .wf-leaf-action { color: #007e73; }
+.wf-v2 .wf-act-callback    .wf-leaf-action { color: #0d5400; }
+.wf-v2 .wf-act-informroute .wf-leaf-action .wf-svg-ic { background: rgba(51,229,201,.12); }
+.wf-v2 .wf-act-callback    .wf-leaf-action .wf-svg-ic { background: rgba(44,191,88,.12); }
+
+/* ---- connectors: 1px, and the colour of the node they point at ------------- */
+.wf-v2 .wf-l { stroke-width: 1; stroke: #d0d3d8; }
+.wf-v2 .wf-l-act-qualify  { stroke: #d0c1f2; }
+.wf-v2 .wf-l-act-inform   { stroke: #2666f9; }
+.wf-v2 .wf-l-act-escalate { stroke: #ff7045; }
+
+/* ⚠️ THE TINT MUST BEAT THE OLD TONE CLASSES, which the template still sets so that a tree
+   rendered WITHOUT the v2 scope (a snapshot, a test) still reads sensibly. `.wf-leaf-orange` is
+   (0,1,0) and so is `.wf-act-escalate`; scoping under `.wf-v2` makes these (0,2,0) and they win
+   outright rather than by source order — the tie `.ts-tablewrap .ts-table` exists to avoid. */
+
 /* Voice flow tree: taller (intent subtitles + chips on both leaves) and neutral
    chips (so the Support leaf's chips aren't green-tinted). */
 /* Voice tree matched to Invoca's real Voice workflow: 248px nodes, wider/taller
@@ -5700,10 +5823,50 @@ body:has(.vp-root) .aiad--left .aiad-panel {
    the minimum the real ones show for an empty rule. */
 .wnd-ta { min-height: 60px; padding: 6px 8px; line-height: 23px; resize: none; }
 .wnd-ta--rule { margin-top: 0; }
+/* An answer row is an input with an × beside it, so the input must not add the 9px the
+   standalone fields carry — `.wnd-rulerow` already owns that gap. Same fix as `--rule` above. */
+.wnd-input--row { margin-top: 0; }
+
+/* The SMS trigger drawer lists what is wired under its count line: one row per form, one for
+   the inbound number. Measured off `sms-drawer-trigger.html` — the same 16px body text as the
+   count above it, at the title ink, stacked with no bullet or rule. */
+.wnd-rows { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+.wnd-row { font-size: 16px; line-height: 23px; color: var(--color-text-title); }
 .wnd-input:focus, .wnd-ta:focus { outline: none; border-color: #2666f9; }
 
 .wnd-combo { display: flex; align-items: center; justify-content: space-between; height: 35px; padding: 6px 8px; cursor: default; }
 .wnd-combo--empty > span { color: #66708e; }
+
+/* ⚠️ THE ACTION PICKER (9/17/2026). `--btn` only resets the browser's own button chrome so the
+   trigger sits exactly where the read-only combobox does — every other value is inherited from
+   `.wnd-combo`, so the two cannot drift apart. */
+.wnd-combo--btn { text-align: left; cursor: pointer; }
+.wnd-pick { position: relative; }
+/* ⚠️ GEOMETRY IS THE SCREENSHOT PLUS THIS APP'S OWN ALREADY-MEASURED COMBOBOX POPUP (options
+   32 tall at `6px 16px`, 16/400, paper radius 3, the MUI elevation shadow). The open listbox is
+   in NO capture — all five saved with `aria-expanded=false` — so it is flagged rather than
+   presented as measured, exactly as the Create Workflow channel popup is. */
+.wnd-picklist {
+  position: absolute; z-index: 5; left: 0; right: 0; top: calc(100% + 2px);
+  margin: 0; padding: 8px 0; list-style: none; max-height: 374px; overflow-y: auto;
+  background: #fff; border-radius: 3px;
+  box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+}
+.wnd-pickopt { height: 32px; padding: 6px 16px; box-sizing: border-box; font-size: 16px; line-height: 20px; cursor: pointer; }
+.wnd-pickopt:hover { background: #d4e0fe; }
+/* The selected row keeps the platform's own selected wash, which is `#d4e0fe` everywhere. */
+.wnd-pickopt--on { background: #d4e0fe; }
+
+/* ⚠️⚠️ SCHEDULE CALLBACK'S SIGNAL IS A FIXED CHIP, NOT A FIELD. Measured off the capture's own
+   titan tokens: 20px tall, radius 100px (`--titan-radius-pill`), blue-100 `#11228c` on blue-20
+   `#b0cdff`, 12px/16px with 12px of label padding. Deliberately NOT `.wnd-chip`, which is the
+   What-To-Collect pill at 24px on `#e7e9eb` with an × — a different thing that happens to look
+   nearby. */
+.wnd-signal {
+  display: inline-flex; align-items: center; margin-top: 9px;
+  height: 20px; padding: 0 12px; border-radius: 100px;
+  background: #b0cdff; color: #11228c; font-size: 12px; line-height: 16px;
+}
 
 /* A rule row is a textarea with an × to its right. */
 .wnd-rulerow { display: flex; align-items: flex-start; gap: 12px; margin-top: 9px; }
@@ -5727,6 +5890,13 @@ body:has(.vp-root) .aiad--left .aiad-panel {
   background: rgb(231,233,235); color: var(--color-text-title); font-size: 12px;
 }
 .wnd-chip svg { color: #66708e; }
+/* The chip's × is a real button now. Inherits the chip's own glyph colour, so the resting look
+   is unchanged from when it was decorative. */
+.wnd-chip-x { background: none; border: none; padding: 0; margin: 0; display: flex; cursor: pointer; color: #66708e; }
+/* ⚠️ SAYS SO rather than rendering an empty popup — a prospect with no Signal Manager slice has
+   no signals to offer, and an empty box reads as the picker being broken. */
+.wnd-pickopt--none { color: #66708e; cursor: default; }
+.wnd-pickopt--none:hover { background: none; }
 
 .wnd-btn {
   height: 36px; padding: 8px 12px; border-radius: 3px; cursor: pointer;

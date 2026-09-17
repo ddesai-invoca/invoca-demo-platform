@@ -1,6 +1,7 @@
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import type { CustomerProfile } from "./schema";
 import { voiceSpecFor, specWithConfig, type VoiceAgentConfig } from "./voiceAgentSpec";
+import { collectFor, collectPool, type SmsCollectKey, type SmsConfig, type SmsQualifyNode } from "./smsTemplate";
 
 /* =============================================================================
    workflowDrawers.ts — what each node of the flow diagram opens
@@ -34,13 +35,41 @@ export interface CollectField {
   help: string;
 }
 
-export type ActionKind = "qualify" | "inform" | "escalate";
+/**
+ * THE PRODUCT'S FIVE ACTIONS, in the order the Action dropdown lists them.
+ *
+ * ⚠️⚠️ MEASURED 9/17/2026 from five captures of ONE drawer with the combobox switched between
+ * them (`reference/agent-workflow/sms-action-*.html`) — so each action's SHAPE is read off the
+ * real thing rather than inferred from its name, and they differ more than the names suggest.
+ * ⚠️ THE OPTION LIST AND ITS ORDER COME FROM A SCREENSHOT, NOT THE CAPTURES: every one of the
+ * five has `aria-expanded=false`, so the open listbox never serialised. Same provenance split
+ * the Create Workflow channel combobox already records.
+ */
+export type ActionKind = "callback" | "qualify" | "inform" | "informRoute" | "escalate";
+/**
+ * The three the VOICE captures measured, and all a voice tree ever carries.
+ *
+ * ⚠️ THE VOICE COPY IS NOT THE SMS COPY (four strings differ, see the tables below), and NOTHING
+ * has measured a voice drawer offering `Schedule Callback` or a separate `Inform & Route` — on
+ * voice, the `inform` action IS labelled "Inform & Route". Keeping the voice tables keyed on
+ * this narrower type is what stops someone assuming the voice page offers five.
+ */
+export type VoiceActionKind = "qualify" | "inform" | "escalate";
+const VOICE_KINDS: VoiceActionKind[] = ["qualify", "inform", "escalate"];
+export const isVoiceKind = (k: ActionKind): k is VoiceActionKind =>
+  (VOICE_KINDS as ActionKind[]).includes(k);
 
 export interface TriggerDrawer {
   kind: "trigger";
   title: "Triggered by";
   /** The bold line. The real one counts campaigns, forms AND inbound SMS. */
   summary: string;
+  /* ⚠️ THE SMS DRAWER LISTS WHAT IS ACTUALLY WIRED, under the count: one row per form and one
+     for the inbound number ("Form: Voice to SMS Not Serviceable", "Inbound SMS: +1..."). The
+     voice capture has none, so this is optional and the voice drawer is unchanged. */
+  rows?: string[];
+  /** Three links on SMS (campaigns / forms / promo numbers), two on voice. Measured. */
+  links?: string[];
 }
 
 export interface IntentDrawer {
@@ -51,6 +80,9 @@ export interface IntentDrawer {
   looksLike: string;
   /** ⚠️ CAN BE EMPTY, and the real Need Support capture IS: three blank rule rows. */
   rules: string[];
+  /** SMS only; absent on voice, which keeps the read-only shells. */
+  edits?: DrawerEdits;
+  channel?: "sms" | "voice";
 }
 
 export interface ActionDrawer {
@@ -63,29 +95,237 @@ export interface ActionDrawer {
   fallback?: string;
   /* inform / escalate */
   handling?: string;
+  /** Voice only. An SMS inform drawer has no phone row at all — see the table above. */
   phone?: string;
+  /** The destination label, on the two actions that have one. */
+  destinationPrompt?: string;
+  /** Its own value and placeholder — a text input, not a picker. See the note on the table. */
+  destination?: string;
+  destinationPlaceholder?: string;
+  /** The chosen signal, and what this prospect has to choose from. */
+  signal?: string;
+  signalChoices?: string[];
   collect?: CollectField[];
+  /** Every info field this prospect can add, for the Add Info Field picker. */
+  infoChoices?: CollectField[];
+  edits?: DrawerEdits;
+  channel?: "sms" | "voice";
+  /* ⚠️ THE ANSWERS' OWN NODES, so Apply can rewrite a title without destroying the node around
+     it — its action, its icon, its chips and its own children. Without this, renaming one answer
+     would flatten the branch underneath it. */
+  segmentNodes?: Record<string, unknown>[];
+  /**
+   * Where this node itself lives, so changing its ACTION can rewrite the node.
+   *
+   * ⚠️⚠️ IT WRITES THE CONTAINING ARRAY, WHICH IS THE ONE WRITE SHAPE ALREADY PROVEN HERE.
+   * `edits.segments` has written `…paths` as a whole array of NODES since this drawer shipped,
+   * so reusing it costs no new risk — where a per-field path like `…paths.2.action` would sit
+   * one level deeper than anything the stored override is known to contain, and `setByPath`
+   * refuses a missing intermediate key SILENTLY (the bug that ate `sms.extra.*` this morning).
+   * Spreading the old node also keeps its title, its children and its lock by construction.
+   */
+  actionSlot?: { path: string; index: number; nodes: Record<string, unknown>[] };
+}
+
+/**
+ * Where each editable field writes back, as a dot-path into the page's registered object.
+ *
+ * ⚠️ **WITHOUT THIS, APPLY IS A LIE.** The drawer has no idea what scope it is in; the builder
+ * does. Carrying the paths on the drawer keeps the component dumb and means a field that has no
+ * home simply has no path and renders read-only, rather than accepting a keystroke that goes
+ * nowhere. Absent entirely on the voice drawers, which stay read-only.
+ */
+export interface DrawerEdits {
+  question?: string;
+  fallback?: string;
+  /** Two of the three fields that were inert placeholders until 9/17/2026. The third, the
+      collect list, writes through `actionSlot` because it IS the node's own `chips`. */
+  destination?: string;
+  signal?: string;
+  /** The Answers/Segments list — a path to the TREE's own child nodes, not a copy of them. */
+  segments?: string;
+  handling?: string;
+  looksLike?: string;
+  rules?: string;
 }
 
 export type NodeDrawer = TriggerDrawer | IntentDrawer | ActionDrawer;
 
+/* =============================================================================
+   THE SMS PAGE'S OWN COPY — measured 9/17/2026 off twelve captures of a real SMS workflow
+   (`reference/agent-workflow/sms-drawer-*.html`), each saved with one drawer open.
+
+   ⚠️⚠️ **IT IS NOT THE VOICE COPY, AND THAT IS WHY THESE TABLES EXIST.** The SMS drawers were
+   switched off on this diagram until now partly because nobody had captured them; the
+   assumption was that the three shells would carry the same words. Four of them do not:
+
+     | | voice (measured 8/26) | SMS (measured 9/17) |
+     |---|---|---|
+     | inform description | "The agent will answer the caller's question and transfer them to the right queue when routing is needed." | **"Provide information to the caller."** |
+     | inform prompt | "How should the agent inform and route callers?" | **"How should the agent inform users?"** |
+     | escalate description | "...escalate by transferring to the queue configured below." | **"...escalate based on the rules and destination configured below."** |
+     | qualify description | "...answers, and your agent will route each user based on..." | **"...answers — your agent will route each user based on..."** |
+
+   ⚠️ **AND AN SMS INFORM DRAWER HAS NO PHONE FIELD AT ALL.** The voice one asks "What phone
+   number should the agent transfer callers to?"; the SMS one goes straight from the instruction
+   box to Signal and What To Collect. The SMS ESCALATE drawer does have a destination — "Where
+   should the agent escalate unresolved users?" — but it is an empty combobox in the capture, not
+   a number. So `phone` is left undefined on every SMS drawer and the row is omitted.
+   ============================================================================= */
+
+/* ⚠️ THE ACTION COMBOBOX READS "Inform" ON SMS, not "Inform & Route" — and this was nearly
+   missed because SingleFile writes UNQUOTED attributes, so `value=Inform` does not match a
+   `value="..."` search and the field read as empty. Same trap this repo already records for the
+   Aptive form capture and the insights SVG. */
+export const SMS_ACTION_LABEL: Record<ActionKind, string> = {
+  callback: "Schedule Callback",
+  qualify: "Qualify",
+  inform: "Inform",
+  informRoute: "Inform & Route",
+  escalate: "Support & Escalate",
+};
+/** The order the dropdown lists them in — from the screenshot, see the note on `ActionKind`. */
+export const SMS_ACTION_OPTIONS: ActionKind[] =
+  ["callback", "qualify", "inform", "informRoute", "escalate"];
+export const SMS_ACTION_DESCRIPTION: Record<ActionKind, string> = {
+  callback: "Your agent will find a time and send the user a priority number to call back during business hours. This carries over all digital attribution from the initial text engagement (and the call that originally triggered the SMS).",
+  qualify: "Your agent will ask a specific question to determine which path a user should take. Define the question and the possible answers — your agent will route each user based on how they respond.",
+  inform: "Provide information to the caller.",
+  informRoute: "The agent will answer the users' question and guide them to the right next step — a link, phone number, or resource.",
+  escalate: "The agent will try to resolve the user's issue using your knowledge base. If it can't, it will escalate based on the rules and destination configured below.",
+};
+/**
+ * ⚠️⚠️ `callback` IS ABSENT ON PURPOSE AND THE TYPE SAYS SO: the Schedule Callback drawer has
+ * NO free-text box at all — Description, then its fixed Signal, then What To Collect. A
+ * `Record<ActionKind, string>` here would have forced a prompt label to be invented for it.
+ */
+export const SMS_ACTION_PROMPT: Record<Exclude<ActionKind, "callback">, string> = {
+  qualify: "What question do you want the AI Agent to ask in order to qualify?",
+  inform: "How should the agent inform users?",
+  informRoute: "How should the agent inform and route users?",
+  escalate: "How should the agent handle escalation requests?",
+};
+/**
+ * The destination row, which only TWO of the five have — and they word it differently.
+ * ⚠️ `inform` has no destination row at all, which is what separates it from `informRoute`.
+ */
+export const SMS_ESCALATE_DESTINATION = "Where should the agent escalate unresolved users?";
+export const SMS_ROUTE_DESTINATION = "Where should the agent send users?";
+export const SMS_DESTINATION_PROMPT: Partial<Record<ActionKind, string>> = {
+  informRoute: SMS_ROUTE_DESTINATION,
+  escalate: SMS_ESCALATE_DESTINATION,
+};
+/**
+ * ⚠️⚠️ **THE DESTINATION IS A TEXT INPUT, AND THIS CORRECTS A CONTROL WE HAD INVENTED.** The note
+ * in CLAUDE.md said the SMS escalate drawer offers "an empty combobox", and we rendered
+ * `Select a destination...`. The markup says otherwise in BOTH the original capture and the
+ * five Action ones: `<input name=destination type=text>` carrying these placeholders, disabled
+ * in the configured captures and enabled in the switched ones. A URL or a phone number is
+ * exactly what you would type rather than pick, so the input is also the reading that makes
+ * sense of the placeholder.
+ */
+export const SMS_DESTINATION_PLACEHOLDER: Partial<Record<ActionKind, string>> = {
+  informRoute: "e.g. https://yourwebsite.com/signup or +1-800-555-0100",
+  escalate: "e.g. https://yourwebsite.com/support or +1-800-555-0100",
+};
+
+/**
+ * The two option lists the captures do NOT contain — both autocompletes were closed when saved
+ * (`signal-select`, `addInfoField-select`), so their contents come from the PROSPECT, which is
+ * how everything else on this page is derived.
+ *
+ * ⚠️ SIGNALS ARE THE PROSPECT'S OWN, off the Signal Manager screen's list, so a signal offered
+ * here is one that account actually has. A prospect with no `signalManager` slice offers none
+ * rather than an invented set.
+ */
+export const signalOptions = (p: CustomerProfile): string[] =>
+  (p.reports.signalManager?.signals ?? []).map((s) => s.name);
+
+/**
+ * ⚠️ THE INFO FIELDS ARE THE SMS POOL, PLUS `Consumer Name` — which is not in the pool (that
+ * splits first and last) but IS what the Schedule Callback capture shows seeded, with its own
+ * help text. Deduped by name, so a field already on a node always has a help line to render.
+ */
+export function infoFieldOptions(p: CustomerProfile): CollectField[] {
+  const pool = Object.values(collectPool(p)).map((f) => ({ name: f.name, help: f.help }));
+  const all = [CONSUMER_NAME, ...pool];
+  return all.filter((f, i) => all.findIndex((x) => x.name === f.name) === i);
+}
+/**
+ * ⚠️⚠️ SCHEDULE CALLBACK'S SIGNAL IS A FIXED CHIP, NOT A PICKER. Measured: a filled MUI info
+ * chip reading this, with the label "Signal" and **no "(optional)"** — where all four other
+ * actions render `Signal (optional)` above an empty "Select a signal..." combobox. That action
+ * always fires this one signal, so there is nothing to choose.
+ */
+export const SMS_CALLBACK_SIGNAL = "SMS Scheduled Callback";
+
+/**
+ * The node fields each action writes, so a card's ACTION TEXT and its drawer's label are one
+ * value rather than two that can drift (the defect fixed earlier today).
+ *
+ * ⚠️⚠️ THE TINTS ARE TITAN TOKENS, AND THE SYSTEM IS `hue` + ITS OWN `-100` INK — confirmed
+ * against the capture's own variables: Qualify purple-20 `#d0c1f2` / purple-100 `#440066`,
+ * Inform blue-50 `#2666f9` / blue-100 `#11228c`, Escalate orange-50 `#ff7045` / orange-100
+ * `#b33b00`. So the two new ones are DERIVED from the same palette rather than invented:
+ * Inform & Route teal-40 `#33e5c9` (which is exactly the value the Create Workflow capture
+ * measured for that action, independently) and Schedule Callback green-50 `#2cbf58`.
+ * ⚠️ NO CAPTURE SHOWS A NODE CARRYING EITHER NEW ACTION — the dropdown was never applied in any
+ * of the five — so the hues are read off the palette, not off such a card. Replace them if a
+ * capture ever shows one.
+ */
+export const NODE_ACTION: Record<ActionKind, {
+  actionIcon: "phone" | "callSplit" | "info" | "altRoute" | "headsetMic";
+  tone: "green" | "orange" | "blue" | "grey";
+}> = {
+  callback: { actionIcon: "phone", tone: "green" },
+  qualify: { actionIcon: "callSplit", tone: "blue" },
+  inform: { actionIcon: "info", tone: "blue" },
+  informRoute: { actionIcon: "altRoute", tone: "green" },
+  escalate: { actionIcon: "headsetMic", tone: "orange" },
+};
+/** Everything a node carries for an action, built from ONE source per field. */
+export const nodeActionFields = (k: ActionKind) => ({
+  action: SMS_ACTION_LABEL[k], actionKind: k, ...NODE_ACTION[k],
+});
+
 /** Invoca's own copy for each action, verbatim from the three Action captures. */
-export const ACTION_LABEL: Record<ActionKind, string> = {
+export const ACTION_LABEL: Record<VoiceActionKind, string> = {
   qualify: "Qualify",
   inform: "Inform & Route",
   escalate: "Support & Escalate",
 };
-export const ACTION_DESCRIPTION: Record<ActionKind, string> = {
+export const ACTION_DESCRIPTION: Record<VoiceActionKind, string> = {
   qualify: "Your agent will ask a specific question to determine which path a user should take. Define the question and the possible answers, and your agent will route each user based on how they respond.",
   inform: "The agent will answer the caller's question and transfer them to the right queue when routing is needed.",
   escalate: "The agent will try to resolve the caller's issue using your knowledge base. If it can't, it will escalate by transferring to the queue configured below.",
 };
 /** The label above the free-text box changes with the action. Measured on all three. */
-export const ACTION_PROMPT: Record<ActionKind, string> = {
+export const ACTION_PROMPT: Record<VoiceActionKind, string> = {
   qualify: "What question do you want the AI Agent to ask in order to qualify?",
   inform: "How should the agent inform and route callers?",
   escalate: "How should the agent handle escalation requests?",
 };
+/**
+ * The copy for one action on one channel, in ONE place.
+ *
+ * ⚠️ THE DRAWER MUST NOT INDEX THE VOICE TABLES WITH AN SMS-ONLY KIND. A voice tree only ever
+ * carries the three voice kinds (`deriveTree` builds it from `voiceCopy`), so the fallback here
+ * is unreachable today — it exists so that a node which somehow carried one would render the SMS
+ * copy rather than `undefined`, which is what would put "undefined" on screen mid-demo.
+ */
+export function actionCopy(channel: "sms" | "voice", k: ActionKind): {
+  label: string; description: string; prompt: string | null;
+} {
+  if (channel === "voice" && isVoiceKind(k)) {
+    return { label: ACTION_LABEL[k], description: ACTION_DESCRIPTION[k], prompt: ACTION_PROMPT[k] };
+  }
+  return {
+    label: SMS_ACTION_LABEL[k],
+    description: SMS_ACTION_DESCRIPTION[k],
+    prompt: k === "callback" ? null : SMS_ACTION_PROMPT[k],
+  };
+}
+
 export const PHONE_PROMPT: Record<"inform" | "escalate", string> = {
   inform: "What phone number should the agent transfer callers to?",
   escalate: "What phone number should unresolved callers be transferred to?",
@@ -113,10 +353,28 @@ const CONSUMER_NAME: CollectField = { name: "Consumer Name", help: "The full nam
  * would put pills on a node the product draws without any.
  */
 export const COLLECT_FOR: Record<ActionKind, CollectField[]> = {
+  /* ⚠️ MEASURED: switching the action to Schedule Callback seeds What To Collect with exactly
+     Consumer Name, where switching to the other three leaves it EMPTY. */
+  callback: [CONSUMER_NAME],
   qualify: [],
   inform: [CONSUMER_ZIP, CONSUMER_NAME],
+  informRoute: [CONSUMER_ZIP, CONSUMER_NAME],
   escalate: [CONSUMER_NAME],
 };
+/**
+ * What What-To-Collect holds straight after the action is SWITCHED — which is not the same
+ * question as `COLLECT_FOR`.
+ *
+ * ⚠️⚠️ MEASURED, AND IT IS A RESET. The same node, same Inform action, showed **eleven** collect
+ * fields when its drawer was opened fresh and **zero** once the combobox had been switched — so
+ * changing the action clears that action's configuration rather than carrying the old one over.
+ * `COLLECT_FOR` is what OUR TEMPLATE configures per action (it drives the pills the diagram
+ * draws); this is the product's own default for a just-changed action. Conflating the two would
+ * make a switch to Inform silently inherit the template's zip+name list.
+ */
+export const collectOnSwitch = (k: ActionKind): CollectField[] =>
+  (k === "callback" ? [CONSUMER_NAME] : []);
+
 /** Just the labels, for the diagram's pills. */
 export const collectNames = (a: ActionKind): string[] => COLLECT_FOR[a].map((f) => f.name);
 
@@ -279,5 +537,323 @@ export function drawerFor(
   }
 
   /* Conversation Start opens nothing — the real page has no drawer for it. */
+  return null;
+}
+
+/* =============================================================================
+   THE BUILT-IN SMS WORKFLOW'S DRAWERS
+   -----------------------------------------------------------------------------
+   ⚠️ **A SEPARATE BUILDER, NOT A BRANCH INSIDE `drawerFor`.** That function derives everything
+   from a VoiceAgentSpec — a greeting, routing steps, a ZIP allow-list — none of which an SMS
+   workflow has. Threading a channel flag through it would mean every one of its branches
+   growing an `if`, on a function whose whole job is voice. The two share the drawer TYPES and
+   the component, which is where sharing actually pays.
+
+   ⚠️ **THE NODE IDS ARE POSITIONAL, AND THE TABLES BELOW SAY SO OUT LOUD.** The template's
+   shape is fixed (one sales intent, one user group, two segments, two leaves each), so
+   `path-0-0-1` unambiguously means "the existing-customer side". An id outside these tables —
+   which is what an SE adding a third answer produces — falls through to an UNCONFIGURED drawer
+   with empty fields rather than borrowing another node's copy. Honest, and it is also what the
+   product shows for a segment nobody has configured yet.
+   ============================================================================= */
+
+/** Which Qualify node each clickable id is, and where its answers live in the tree. */
+const SMS_QUALIFY: Record<string, { key: SmsQualifyNode; segments: string }> = {
+  "leaf-0-0": { key: "root", segments: "branches.0.leaves.0.paths" },
+  "path-0-0-0": { key: "newSide", segments: "branches.0.leaves.0.paths.0.paths" },
+  "path-0-0-1": { key: "existingSide", segments: "branches.0.leaves.0.paths.1.paths" },
+};
+/** Which Inform leaf each clickable id is. */
+const SMS_INFORM: Record<string, { key: keyof SmsConfig["inform"]; collect: SmsCollectKey }> = {
+  "sub-0-0-0-0": { key: "serviceableYes", collect: "serviceableYes" },
+  "sub-0-0-0-1": { key: "serviceableNo", collect: "serviceableNo" },
+  "sub-0-0-1-0": { key: "foundYes", collect: "foundYes" },
+  "sub-0-0-1-1": { key: "foundNo", collect: "foundNo" },
+};
+
+/** Walk a dot-path (arrays included) into the effective tree. ONE definition, several readers. */
+function readPath(tree: WorkflowTreeModel, path: string): unknown {
+  return path.split(".").reduce<unknown>((acc, k) => {
+    if (acc == null) return acc;
+    const rec = acc as Record<string, unknown>;
+    return Array.isArray(rec) ? rec[Number(k)] : rec[k];
+  }, tree as unknown);
+}
+
+/**
+ * Where a node sits in its own containing array, derived from its positional id.
+ *
+ * ⚠️⚠️ **EVERY ACTION NODE GETS ONE, INCLUDING THE LOCKED CHROME LEAVES (9/17/2026).** Asked for
+ * directly, with both locked drawers selected: *"you need to add the drop and the screen to any
+ * action context drawer… and make sure all those fields in the drawer is editable as well."*
+ * The first build refused a `locked` node on the strength of the standing rule that the four
+ * chrome boxes cannot be edited — but that rule is about their **NAMES**, which is what was
+ * actually reported back in August ("those can't be change / edit" against the box titles), and
+ * `editGuard` still refuses `.title` and `.subtitle` on them. Their ACTION is configuration, and
+ * on this instruction it is the SE's to change.
+ * ⚠️ **CONSEQUENCE, STATED: `editGuard.LOCKED_KEYS` COVERS `.action` AND CANNOT SEE THIS WRITE**,
+ * because it matches a path ending in `.action` while this writes the containing ARRAY. So the
+ * lock on a locked leaf's action is now only as strong as this function — the titles are still
+ * guarded in the guard itself, where they belong.
+ */
+/** The node a positional id names, for any of the three rows that carry one. */
+function nodeAt(tree: WorkflowTreeModel, nodeId: string): Record<string, unknown> | undefined {
+  const leaf = nodeId.match(/^leaf-(\d+)-(\d+)$/);
+  if (leaf) {
+    return tree.branches[Number(leaf[1])]?.leaves?.[Number(leaf[2])] as
+      unknown as Record<string, unknown> | undefined;
+  }
+  const seg = nodeId.match(/^(?:path|sub)-(\d+)-(\d+)-(\d+)(?:-(\d+))?$/);
+  if (!seg) return undefined;
+  const [, b, l, pi, si] = seg;
+  const base = tree.branches[Number(b)]?.leaves?.[Number(l)]?.paths;
+  const n = si != null ? base?.[Number(pi)]?.paths?.[Number(si)] : base?.[Number(pi)];
+  return n as unknown as Record<string, unknown> | undefined;
+}
+
+/**
+ * The action a node is actually set to.
+ *
+ * ⚠️⚠️ **THE NODE IS THE ONLY SOURCE, AND THE TABLES BELOW MUST NOT SHADOW IT.** Caught in the
+ * browser the first time the picker applied: `sub-0-0-0-0` is listed in `SMS_INFORM`, whose fast
+ * path hardcoded `action: "inform"` — so a node switched to Schedule Callback drew correctly and
+ * REOPENED AS INFORM. That is the same two-sources-of-truth defect as this morning's, through a
+ * different door, and the tables are the door. They now supply only WHERE THE TEXT LIVES, and
+ * only while the action they were written for is still the one set.
+ */
+function kindOfNode(node: Record<string, unknown> | undefined): ActionKind | undefined {
+  if (!node) return undefined;
+  const k = node.actionKind as ActionKind | undefined;
+  if (k) return k;
+  const a = String(node.action ?? "");
+  /* ⚠️ ORDER MATTERS: "Inform & Route" contains "inform". */
+  return /qualify/i.test(a) ? "qualify"
+    : /escalate/i.test(a) ? "escalate"
+    : /callback/i.test(a) ? "callback"
+    : /route/i.test(a) ? "informRoute" : "inform";
+}
+
+function actionSlotFor(tree: WorkflowTreeModel, nodeId: string):
+  { path: string; index: number; nodes: Record<string, unknown>[] } | undefined {
+  const leaf = nodeId.match(/^leaf-(\d+)-(\d+)$/);
+  const seg = nodeId.match(/^(?:path|sub)-(\d+)-(\d+)-(\d+)(?:-(\d+))?$/);
+  let path: string | undefined;
+  let index = -1;
+  if (leaf) { path = `branches.${leaf[1]}.leaves`; index = Number(leaf[2]); }
+  else if (seg) {
+    const [, b, l, pi, si] = seg;
+    path = si != null
+      ? `branches.${b}.leaves.${l}.paths.${pi}.paths`
+      : `branches.${b}.leaves.${l}.paths`;
+    index = Number(si ?? pi);
+  }
+  if (!path) return undefined;
+  const arr = readPath(tree, path);
+  if (!Array.isArray(arr)) return undefined;
+  const node = arr[index] as Record<string, unknown> | undefined;
+  if (!node) return undefined;
+  return { path, index, nodes: arr as Record<string, unknown>[] };
+}
+
+export function smsDrawerFor(
+  profile: CustomerProfile,
+  tree: WorkflowTreeModel,
+  nodeId: string,
+  cfg: SmsConfig,
+): NodeDrawer | null {
+  const ch = "sms" as const;
+
+  if (nodeId === "trigger") {
+    /* ⚠️ THE ROWS AND THE THIRD LINK ARE THE CAPTURE'S. Its two forms are named after what
+       hands off to this workflow, which for us is the voice agent's two dead ends — the same
+       two the Orlando Health work already models — and the inbound number uses the reserved
+       555 exchange on the prospect's own area code rather than the capture's real one. */
+    const area = (profile.reports.voiceScreenpop?.callerPhone ?? "").match(/(\d{3})/)?.[1] ?? "805";
+    return {
+      kind: "trigger", title: "Triggered by", summary: tree.triggeredBy,
+      rows: [
+        "Form: Voice to SMS Not Serviceable",
+        "Form: Voice to SMS No CRM Match",
+        `Inbound SMS: +1${area}5550142`,
+      ],
+      links: ["Go to campaigns", "Go to forms", "Go to promo numbers"],
+    };
+  }
+
+  const bi = nodeId.startsWith("intent-") ? Number(nodeId.slice(7)) : -1;
+  if (bi >= 0) {
+    const b = tree.branches[bi];
+    if (!b) return null;
+    const side = bi === 0 ? "sales" : "support";
+    const it = cfg.intents[side];
+    return {
+      kind: "intent", title: "Intent Details", name: b.title,
+      looksLike: it.looksLike, rules: it.rules, channel: ch,
+      edits: { looksLike: `sms.intents.${side}.looksLike`, rules: `sms.intents.${side}.rules` },
+    };
+  }
+
+  /* Resolved once, and it outranks every table below. */
+  const selfNode = nodeAt(tree, nodeId);
+  const selfKind = kindOfNode(selfNode);
+
+  /**
+   * ⚠️⚠️ THE THREE FIELDS THAT USED TO BE DEAD PLACEHOLDERS, keyed per node and computed ONCE so
+   * that every branch below gets them — the template's four nodes, the two locked chrome leaves
+   * and anything an SE adds. All three use the FLAT `extra__` keys rather than a slot inside
+   * `sms.qualify`/`sms.inform`: those tables have no room for a node they never created, and a
+   * nested path is the silent no-op `setByPath` produces when an intermediate key is missing.
+   */
+  const xt = (f: string) => `sms.extra__${nodeId}__${f}`;
+  const xv = (f: string) => cfg[`extra__${nodeId}__${f}`];
+  const extraEdits = { destination: xt("destination"), signal: xt("signal") };
+  /**
+   * ⚠️⚠️ **THE COLLECT LIST IS THE NODE'S OWN `chips`, NOT A SECOND COPY IN THE CONFIG — and the
+   * first build got this wrong in exactly the way this file already warns about.** Stored under
+   * an `extra__…__collect` key, an SE could add a field in the drawer and the DIAGRAM'S PILLS
+   * would not move: two sources for one fact, "a node advertising collecting one thing while its
+   * drawer's What To Collect said another". `chips` is already what the diagram draws, already
+   * exempt from the array-length rule, and now also what the drawer reads and writes — one
+   * value, through the same `actionSlot` array write the action itself uses.
+   */
+  const nodeChips = Array.isArray(selfNode?.chips) ? (selfNode!.chips as string[]) : undefined;
+  const extraFields = (kind: ActionKind, fallbackCollect: CollectField[]) => {
+    const names = nodeChips;
+    const opts = infoFieldOptions(profile);
+    const help = (n: string) => opts.find((o) => o.name === n)?.help ?? "";
+    return {
+      ...(SMS_DESTINATION_PROMPT[kind]
+        ? { destinationPrompt: SMS_DESTINATION_PROMPT[kind],
+            destination: String(xv("destination") ?? ""),
+            destinationPlaceholder: SMS_DESTINATION_PLACEHOLDER[kind] }
+        : {}),
+      signal: String(xv("signal") ?? ""),
+      signalChoices: signalOptions(profile),
+      infoChoices: opts,
+      /* A stored list wins; otherwise the template's own configured fields. */
+      collect: names ? names.map((n) => ({ name: n, help: help(n) })) : fallbackCollect,
+    };
+  };
+
+  const q = SMS_QUALIFY[nodeId];
+  if (q && selfKind === "qualify") {
+    /* ⚠️ THE ANSWERS COME FROM THE TREE, ALWAYS — the same rule `drawerFor` settled on 8/27.
+       The tree handed in here is the page's EFFECTIVE object, so it already carries anything
+       Ask AI or a previous Apply changed; a second list would disagree the first time either
+       was touched. */
+    const at = readPath(tree, q.segments);
+    const nodes = Array.isArray(at) ? (at as Record<string, unknown>[]) : [];
+    const segments = nodes.map((x) => String(x?.title ?? ""));
+    return {
+      kind: "action", title: "Action", action: "qualify", channel: ch,
+      question: cfg.qualify[q.key].question,
+      segments,
+      fallback: cfg.qualify[q.key].fallback,
+      segmentNodes: nodes,
+      edits: {
+        question: `sms.qualify.${q.key}.question`,
+        fallback: `sms.qualify.${q.key}.fallback`,
+        segments: q.segments,
+        /* Carried even though a Qualify renders neither, so switching the action to one that
+           DOES have them finds somewhere to write without rebuilding the drawer. */
+        ...extraEdits,
+      },
+      actionSlot: actionSlotFor(tree, nodeId),
+      ...extraFields("qualify", []),
+    };
+  }
+
+  const inf = SMS_INFORM[nodeId];
+  if (inf && selfKind === "inform") {
+    return {
+      kind: "action", title: "Action", action: "inform", channel: ch,
+      handling: cfg.inform[inf.key],
+      /* ⚠️ NO `phone`: an SMS inform drawer has no phone row — measured on all four. */
+      edits: { handling: `sms.inform.${inf.key}`, ...extraEdits },
+      actionSlot: actionSlotFor(tree, nodeId),
+      ...extraFields("inform", collectFor(profile, inf.collect)),
+    };
+  }
+
+  /* The support user group. The only escalate node this template has. */
+  if (nodeId === "leaf-1-0" && selfKind === "escalate") {
+    return {
+      kind: "action", title: "Action", action: "escalate", channel: ch,
+      handling: cfg.escalate,
+      edits: { handling: "sms.escalate", ...extraEdits },
+      actionSlot: actionSlotFor(tree, nodeId),
+      ...extraFields("escalate", []),
+    };
+  }
+
+  /* ⚠️⚠️ **AN ADDED SEGMENT'S DRAWER DESCRIBES THE NODE'S OWN ACTION (9/17/2026).** Reported:
+     "the Action in this example [is] Qualify, it should match the action in the context drawer."
+     Measured before the fix — every one of the eight template nodes agreed, and both SE-added
+     ones read **Qualify on the node and Inform in the drawer**, because this branch hardcoded
+     `action: "inform"` for any id the two tables above do not list. That is the diagram and the
+     drawer disagreeing about the same node, which is the failure this whole feature exists to
+     prevent and which CLAUDE.md records four times over.
+
+     The node itself is the single source: `actionKind` if it carries one (the template and
+     `repairSmsSegments` both set it), else its own action wording. */
+  /* ⚠️ ALSO REACHED BY A TEMPLATE NODE WHOSE ACTION WAS CHANGED, not only by an added one — the
+     tables above now stand down when the node no longer carries the action they were written
+     for, and this is where such a node lands. Its text then lives in the flat `extra__` keys,
+     which is right: `sms.inform.serviceableYes` is the wrong slot for a Schedule Callback,
+     which has no instruction text at all. */
+  const idx = nodeId.match(/^(path|sub|leaf)-(\d+)-(\d+)(?:-(\d+))?(?:-(\d+))?$/);
+  if (idx) {
+    const kindWord = idx[1];
+    const node = selfNode;
+    const act = selfKind;
+    if (!node || !act) return null;
+    const [b, l, pi] = kindWord === "leaf"
+      ? [idx[2], idx[3], undefined]
+      : [idx[2], idx[3], idx[4]];
+    /* ⚠️ THE TEXT FIELDS ARE KEYED ON THE NODE ID, because the template has no slot for a
+       segment it never created. Without somewhere to write, the drawer would render a disabled
+       empty box with no explanation — "worse than an absent one", which this repo already paid
+       for once on the SMS custom-greeting control. */
+    const at = (f: string) => `sms.extra__${nodeId}__${f}`;
+    /* ⚠️⚠️ **`?? {}` BECAUSE A SAVED OVERRIDE CAN PREDATE THIS FIELD, and without it the first
+       click on an added segment threw `Cannot read properties of undefined` — which the error
+       boundary then answered by tearing down the whole diagram, so EVERY node stopped opening,
+       not just that one. Any demo with an SMS override saved before `extra` existed would have
+       hit it. The same class of bug `usePageDataWithLabels` records: "an override saved before a
+       label key existed falls back to the default instead of rendering undefined." */
+    const val = (f: string) => cfg[`extra__${nodeId}__${f}`];
+    if (act === "qualify") {
+      /* ⚠️ ITS ANSWERS ARE ITS OWN CHILD NODES, and the path to them is derivable from the id —
+         so `Add` works on a segment an SE added just as it does on the template's own. A SUB
+         node gets none: it is the last row the diagram draws, so a child would be stored and
+         never rendered, which is the silent no-op this file keeps warning about. */
+      /* A `leaf` keeps its own `paths`; a `path` gets `…paths.P.paths`; a `sub` gets none,
+         because it is the last row the diagram draws. */
+      const segPath = kindWord === "leaf" ? `branches.${b}.leaves.${l}.paths`
+        : kindWord === "path" ? `branches.${b}.leaves.${l}.paths.${pi}.paths`
+        : undefined;
+      const kids = (node.paths ?? []) as unknown as Record<string, unknown>[];
+      return {
+        kind: "action", title: "Action", action: "qualify", channel: ch,
+        question: String(val("question") ?? ""),
+        segments: kids.map((k) => String(k?.title ?? "")),
+        segmentNodes: kids,
+        fallback: String(val("fallback") ?? ""),
+        edits: { question: at("question"), fallback: at("fallback"),
+          ...(segPath ? { segments: segPath } : {}), ...extraEdits },
+        actionSlot: actionSlotFor(tree, nodeId),
+        ...extraFields("qualify", []),
+      };
+    }
+    return {
+      kind: "action", title: "Action", action: act, channel: ch,
+      handling: String(val("handling") ?? ""),
+      actionSlot: actionSlotFor(tree, nodeId),
+      ...extraFields(act, collectOnSwitch(act)),
+      edits: { handling: at("handling"), ...extraEdits },
+    };
+  }
+
+  /* Conversation Start opens nothing, exactly as on the voice page. */
   return null;
 }

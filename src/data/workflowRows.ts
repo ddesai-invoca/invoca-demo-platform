@@ -1,4 +1,3 @@
-import type { WorkflowTreeModel } from "../components/WorkflowTree";
 
 /* =============================================================================
    workflowRows.ts — WHERE EACH ROW OF THE WORKFLOW DIAGRAM SITS
@@ -17,8 +16,23 @@ import type { WorkflowTreeModel } from "../components/WorkflowTree";
 export const GEO = {
   /* ⚠️ `leafBus` and `path` are the FOURTH ROW, and `pathHeight` is only used when a leaf
      actually has paths — so a tree without them keeps its signed-off canvas height exactly. */
-  sms:   { nodeW: 220, gap: 26, trigger: 8, start: 122, intent: 240, subBus: 300, leaf: 344, leafBus: 462, path: 500, height: 470, pathHeight: 660, triggerW: 200, startW: 230 },
-  voice: { nodeW: 248, gap: 32, trigger: 8, start: 176, intent: 344, subBus: 470, leaf: 528, leafBus: 660, path: 700, height: 700, pathHeight: 880, triggerW: 248, startW: 248 },
+  /* ⚠️ `pathBus` and `sub` are the SIXTH ROW, and `subHeight` is only used when a PATH itself
+     has children — so a tree without them keeps its signed-off canvas height exactly, the same
+     opt-in rule `leafBus`/`path` already follow one row up. Derived as one more `path`-to-`sub`
+     pitch, matching the gap this variant already puts between the leaf row and the path row. */
+  sms:   { nodeW: 220, gap: 26, trigger: 8, start: 122, intent: 240, subBus: 300, leaf: 344, leafBus: 462, path: 500, pathBus: 618, sub: 656, height: 470, pathHeight: 660, subHeight: 816, triggerW: 200, startW: 230 },
+  /* ⚠️⚠️ **THE MEASURED SMS PAGE, AND IT IS NOT `sms` (9/17/2026).**
+     `reference/agent-workflow/sms-tree.html` puts every node at **248 wide on a 296 pitch**
+     (248 + 48) with a uniform **168 row pitch** — read off the react-flow transforms, and
+     corroborated by its edge paths, which run between node CENTRES at x = left + 124. Node
+     heights fall out of the same edges: trigger 93, Conversation Start 69, intent 93, segment 81.
+     So the real SMS page is far closer to our `voice` geometry than to `sms`.
+     ⚠️ **A THIRD ENTRY RATHER THAN A CORRECTION TO `sms`, and that is deliberate.** `sms` is
+     drawn by seven signed-off extra workflows (Orlando Health's five ER trees, Avi & Co - New,
+     the generated quote-request ones); editing it would restyle all of them for a change asked
+     about the built-in workflow. Opt in per model, the rule this component already follows. */
+  smsV2: { nodeW: 248, gap: 48, trigger: 8, start: 176, intent: 344, subBus: 470, leaf: 512, leafBus: 644, path: 680, pathBus: 812, sub: 848, height: 700, pathHeight: 880, subHeight: 1052, triggerW: 248, startW: 248 },
+  voice: { nodeW: 248, gap: 32, trigger: 8, start: 176, intent: 344, subBus: 470, leaf: 528, leafBus: 660, path: 700, pathBus: 832, sub: 872, height: 700, pathHeight: 880, subHeight: 1052, triggerW: 248, startW: 248 },
 } as const;
 
 /**
@@ -44,13 +58,16 @@ export const GEO = {
 const MIN_GAP = 30;
 
 /** Node heights, one per ROW — see `levelRow` for why a row has a single height. */
-export interface RowHeights { trigger: number; start: number; intent: number; leaf: number }
+export interface RowHeights { trigger: number; start: number; intent: number; leaf: number; path?: number }
 
 /** Every y the diagram needs, in design units. */
 export interface RowLayout {
   triggerBottom: number; startTop: number; startBottom: number; busY: number;
   intentTop: number; intentBottom: number; subBusY: number;
   leafTop: number; leafBottom: number; leafBusY: number; pathTop: number;
+  /* The sixth row. Zero unless a path actually has children — see `rowAt`'s own warning about
+     asking it for a row this tree never draws. */
+  pathBottom: number; pathBusY: number; subTop: number;
 }
 
 /**
@@ -76,9 +93,9 @@ export interface RowLayout {
  * down for a bus that is never rendered. Caught while checking the arithmetic, not on screen.
  */
 export function rowLayout(
-  variant: WorkflowTreeModel["variant"],
+  variant: keyof typeof GEO,
   h: RowHeights,
-  opts: { split: boolean; paths: boolean },
+  opts: { split: boolean; paths: boolean; subs?: boolean },
 ): RowLayout {
   const g = GEO[variant];
   let shift = 0;
@@ -99,6 +116,13 @@ export function rowLayout(
   const leafBottom = leafTop + h.leaf;
   const leafBusY = opts.paths ? rowAt(g.leafBus, leafBottom) : 0;
   const pathTop = opts.paths ? rowAt(g.path, leafBusY) : 0;
+  /* ⚠️ GATED ON `subs`, NOT ON `paths`. Every tree with a use-case row would otherwise grow two
+     rows it never draws, because `rowAt` mutates the shared shift — the trap this file already
+     records for the sub-bus. `h.path` falls back to the leaf height for the frame before the
+     sixth row has been measured. */
+  const pathBottom = opts.subs ? pathTop + (h.path ?? h.leaf) : 0;
+  const pathBusY = opts.subs ? rowAt(g.pathBus, pathBottom) : 0;
+  const subTop = opts.subs ? rowAt(g.sub, pathBusY) : 0;
   return { triggerBottom, startTop, startBottom, busY, intentTop, intentBottom, subBusY,
-    leafTop, leafBottom, leafBusY, pathTop };
+    leafTop, leafBottom, leafBusY, pathTop, pathBottom, pathBusY, subTop };
 }

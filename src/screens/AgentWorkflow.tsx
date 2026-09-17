@@ -16,6 +16,8 @@ import { AgentWorkflowDetails } from "./AgentWorkflowDetails";
 import { bookingSlots } from "../data/voiceBooking";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
 import { drawerFor } from "../data/workflowDrawers";
+import { SMS_TRIGGER, smsBranches, smsConfigFor, repairSmsSegments } from "../data/smsTemplate";
+import { smsDrawerFor } from "../data/workflowDrawers";
 import { voiceSpecFor, agentConfigOf } from "../data/voiceAgentSpec";
 import { voiceCopy } from "../data/voiceCopy";
 import type { VoiceUseCase } from "../data/voiceUseCases";
@@ -174,35 +176,35 @@ function deriveTree(
   channelLabel: string,
 ): WorkflowTreeModel {
   const c = voiceCopy(profile);
-  const bookingTerm = profile.bookingTerm;
 
   if (isSms) {
     const smsShaped = SMS_SHAPE.find((o) => isProspect(profile, o.prospect))?.tree();
     if (smsShaped) return { variant: "sms", startLabel: `${channelLabel} · classify intent`,
       ...smsShaped };
+    /* ⚠️⚠️ **THE BUILT-IN SMS TREE IS THE MEASURED SIX-ROW TEMPLATE NOW (9/17/2026)**, asked
+       for directly with thirteen captures of a real Greenix SMS workflow: "this is the workflow
+       i want to replicate for all prospects." What it replaced was a three-row tree ending in
+       `Schedule ${bookingTerm}` / Support & Escalate — which was itself measured, off an older
+       capture, and is kept nowhere: the new shape IS this page now.
+
+       ⚠️ **SCOPED TO THE BUILT-IN WORKFLOW, ON THE USER'S OWN CALL when asked.** The seven
+       authored extra workflows (Orlando Health's five ER trees, Avi & Co - New, the generated
+       quote-request ones) keep their own shapes, because those were authored for specific
+       scenarios and flattening them onto one template would throw that away. They render
+       through `extraTree`, which this does not touch.
+
+       ⚠️ `geo: "smsV2"` is the measured geometry of the real page — 248px nodes on a 296
+       column pitch and a 168 row pitch — and is opt-in for exactly the same reason: the extra
+       workflows stay on `sms`, which is what they were signed off at. See `workflowRows.ts`. */
     return {
       variant: "sms",
-      triggeredBy: ZERO_TRIGGER,
+      geo: "smsV2",
+      triggeredBy: SMS_TRIGGER,
       startLabel: `${channelLabel} · classify intent`,
-      /* Same chrome lock: ZERO_TRIGGER is the product's exact wording, so it was
+      /* Same chrome lock: the trigger line is the product's exact wording, so it was
          inconsistent for the AI to be able to rewrite it while the intents were refused. */
       chromeLocked: true,
-      branches: [
-        {
-          title: INTENT_SALES, icon: "cart", locked: true,
-          leaves: [{
-            title: `All ${INTENT_SALES} Users`,
-            /* Still per prospect: the ACTION is a configured queue action, not chrome. */
-            action: `Schedule ${bookingTerm}`,
-            tone: "green",
-            chips: ["Consumer Name", c.newChips[0]],
-          }],
-        },
-        {
-          title: INTENT_SUPPORT, icon: "headset", locked: true,
-          leaves: [{ title: SUPPORT_LEAF, action: "Support & Escalate", tone: "orange" }],
-        },
-      ],
+      branches: smsBranches(profile),
     };
   }
 
@@ -389,11 +391,37 @@ export function AgentWorkflow() {
       : extra?.bookingLocations?.length ? { agent: { greeting: extra.openingMessage ?? "" } }
       : extra && isSms ? { agent: smsWorkflowAgentOf(extra) }
       : {}),
+    /* ⚠️⚠️ **THE BUILT-IN SMS WORKFLOW REGISTERS AN `sms` HALF, AND THAT IS WHAT LETS THE
+       DRAWERS' Apply ACTUALLY SAVE (9/17/2026).** Asked for directly with the captures: the
+       fields are editable and Apply persists. `applyEdits` writes into the object the page
+       registers, so a field the drawers edit has to be IN it — otherwise Apply writes a path
+       nothing reads and reports success, the silent no-op recorded six times in CLAUDE.md.
+       Riding the page's existing scope also hands these edits persistence per demo, an undo
+       step, and the `readOnly` refusal on somebody else's demo, all for free.
+
+       ⚠️ **ONLY THE BUILT-IN TREE, and only what the diagram cannot draw.** An authored extra
+       workflow has its own `systemPrompt` and its own shape, so it gets none of this; and the
+       segment titles are deliberately absent, because those are the child NODES — see the
+       note on `SmsConfig`. */
+    ...(isSms && !extra && !created ? { sms: smsConfigFor(profile) } : {}),
   }), [created, extra, profile, isSms, channelLabel, workflowName, baseAgent]);
   /* This page's sparkle edits the DIAGRAM, and only the diagram. The SMS agent is a
      different thing living in a different scope, and it has its own sparkle inside
      the Preview Workflow chat. */
-  const tree = usePageData(baseTree);
+  /* ⚠️ THE BUILT-IN SMS TREE ONLY. An authored extra workflow and a freshly created one both
+     render an SMS diagram too, and neither is this template: their nodes carry actions with no
+     captured drawer. One flag, read by the node-click gate, the drawer builder and Apply, so
+     those three can never disagree about which diagram is on screen. */
+  const smsTemplated = isSms && !extra && !created;
+  const rawTree = usePageData(baseTree);
+  /* ⚠️ REPAIRS SEGMENTS WRITTEN BEFORE A NEW ANSWER INHERITED ITS SIBLINGS' ACTION. Read-time,
+     identity-preserving, and scoped to the built-in template — see `repairSmsSegments`. */
+  const tree = useMemo(
+    () => (smsTemplated
+      ? { ...rawTree, branches: repairSmsSegments(rawTree.branches ?? []) }
+      : rawTree),
+    [rawTree, smsTemplated],
+  );
   /* ---- The Preview Workflow drawer's OWN Ask AI + undo (the voice side) -------------
      Asked for directly: "just like how the SMS Agent preview workflow has a Ask AI and undo
      button in the preview workflow, do it for the Voice Agent preview workflow as well, and
@@ -412,8 +440,9 @@ export function AgentWorkflow() {
      stacks could undo half of one instruction.
      ⚠️ **AND IT OPENS ON THE LEFT, like the SMS chat's**: this drawer is on the right, so a
      right-hand panel covers the very thing being configured. */
-  const { openDrawer, undo, canUndo, readOnly } = useAiAssistant();
+  const { openDrawer, undo, canUndo, readOnly, applyEdits } = useAiAssistant();
   const pageKey = `${profileId}::${pathname}`;
+  const smsBase = useMemo(() => smsConfigFor(profile), [profile]);
   /* ⚠️ **GATED ON THE REGISTERED DATA'S SHAPE, NOT THE PATHNAME** — the same signal
      `pageHint` keys its empty state off. A CREATED workflow deliberately registers no `agent`
      half ("Build this voice agent" would be a promise on a page whose whole state is that
@@ -664,19 +693,46 @@ export function AgentWorkflow() {
       <div className={"wf-canvas" + (isSms
         ? (tree.branches.some((b) => b.leaves.some((l) => l.paths?.length)) ? " wf-canvas-tall" : "")
         : " wf-canvas-voice")}>
-        {/* ⚠️ VOICE ONLY, and this was caught by looking. The captures are all of a VOICE
-              workflow, and handing `onNode` to every tree made the SMS diagram clickable too —
-              where its "Schedule <bookingTerm>" leaf has no captured action type and fell
-              through to "Inform & Route", i.e. a drawer confidently naming the wrong action.
-              A change asked for on one screen stays on that screen; give me an SMS capture and
-              this becomes `onNode={setOpenNode}` unconditionally. */}
-            <WorkflowTree model={tree} onNode={isSms ? undefined : setOpenNode} />
+        {/* ⚠️⚠️ **THE SMS CAPTURE ARRIVED, SO THIS IS CLICKABLE NOW (9/17/2026)** — twelve of
+              them, one per node. The note this replaces said exactly that: "give me an SMS
+              capture and this becomes `onNode={setOpenNode}` unconditionally." It is still not
+              quite unconditional, and the reason is the same one it was gated for originally:
+              an AUTHORED extra workflow's leaves carry actions with no captured drawer ("Book
+              Appointment", "Refer to Primary Care"), so they would fall through to a drawer
+              confidently naming the wrong action. The built-in template's nodes all map to a
+              captured drawer, so those open; an extra workflow's still do not. */}
+            <WorkflowTree model={tree} onNode={smsTemplated || !isSms ? setOpenNode : undefined} />
         {/* ⚠️ THE DRAWER IS RESOLVED FROM THE EFFECTIVE TREE, so a node the AI renamed opens a
             drawer naming the same thing. `drawerFor` returns null for a node the real page has
             no drawer for — Conversation Start — and nothing opens rather than an empty panel. */}
         {(() => {
-          const d = openNode ? drawerFor(profile, tree, openNode) : null;
-          return d ? <WorkflowNodeDrawer d={d} onClose={() => setOpenNode(null)} /> : null;
+          const d = !openNode ? null
+            /* ⚠️⚠️ **THE EFFECTIVE CONFIG, NOT THE BASE — and reading the base here would have
+               been a silent no-op of exactly the kind this feature exists to avoid.** `tree` is
+               what `usePageData` returns, so its `sms` half already carries every Apply and every
+               Ask AI edit; `smsBase` is the template's untouched defaults. Hand the drawer the
+               base and it opens showing the pre-edit text, Apply then writes that stale copy
+               back, and an edit made a minute ago is silently undone. Same trap `drawerFor`
+               records for the voice spec. */
+            /* ⚠️ THE BASE IS SPREAD UNDER THE STORED CONFIG, not just used when it is missing.
+               A demo whose override was saved before a field existed would otherwise hand the
+               drawer a config with that key absent — which is exactly how a click on an added
+               segment threw and took the whole diagram down with it. Shallow is enough: every
+               key of `SmsConfig` is replaced wholesale when it is edited, never half-written. */
+            : smsTemplated ? smsDrawerFor(profile, tree, openNode,
+                { ...smsBase, ...((tree as { sms?: Partial<typeof smsBase> }).sms ?? {}) })
+            : drawerFor(profile, tree, openNode);
+          return d ? (
+            <WorkflowNodeDrawer d={d} onClose={() => setOpenNode(null)}
+              /* ⚠️ APPLY WRITES THROUGH `applyEdits` INTO THIS PAGE'S OWN SCOPE, which is what
+                 gives a drawer edit persistence per demo, an undo step on the page's stack, and
+                 the refusal on somebody else's demo — none of which a bespoke writer would get.
+                 Passed only for the built-in SMS template: every other drawer stays read-only,
+                 which is what keeps the signed-off voice ones byte-identical. */
+              onApply={smsTemplated ? (es) => {
+                applyEdits(pageKey, es.map((e) => ({ path: e.path, value: JSON.stringify(e.value) })));
+              } : undefined} />
+          ) : null;
         })()}
 
         {/* The zoom cluster is rendered by WorkflowTree, which owns the scale. */}

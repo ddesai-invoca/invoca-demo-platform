@@ -16,6 +16,12 @@ import { treeToVoicePaths } from "../src/data/voicePaths.ts";
 import { collectNames } from "../src/data/workflowDrawers.ts";
 import { emptyWorkflowTree, extraTree, ZERO_TRIGGER, INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF } from "../src/data/workflowChrome.ts";
 import { rowLayout } from "../src/data/workflowRows.ts";
+import { smsBranches, smsConfigFor, repairSmsSegments, SMS_TRIGGER } from "../src/data/smsTemplate.ts";
+import { smsDrawerFor, drawerFor, SMS_ACTION_LABEL, SMS_ACTION_DESCRIPTION, SMS_ACTION_PROMPT,
+  ACTION_DESCRIPTION, ACTION_PROMPT, SMS_ACTION_OPTIONS, SMS_CALLBACK_SIGNAL,
+  SMS_DESTINATION_PROMPT, SMS_ROUTE_DESTINATION, SMS_ESCALATE_DESTINATION,
+  actionCopy, collectOnSwitch, nodeActionFields, signalOptions, infoFieldOptions,
+  SMS_DESTINATION_PLACEHOLDER, type ActionKind } from "../src/data/workflowDrawers.ts";
 import { buildSmsBrain, smsWorkflowAgentOf, smsWorkflowScopePath,
   type SmsWorkflowAgent } from "../src/data/smsBrain.ts";
 import { smsSystemPromptForAudit } from "../engine/chat.ts";
@@ -32,6 +38,16 @@ const files = fs.readdirSync(SCREENS).filter((f) => f.endsWith(".tsx"));
 const read = (f: string) => fs.readFileSync(path.join(SCREENS, f), "utf8");
 /** Read anything in the repo — the voice-lock checks below span components/ and data/. */
 const readAny = (f: string) => fs.readFileSync(f, "utf8");
+/**
+ * The same file with its comments gone.
+ *
+ * ⚠️ BECAUSE A CHECK THAT REDDENS ON ITS OWN DOCUMENTATION GETS DELETED AS A NUISANCE. Several
+ * notes in this codebase legitimately QUOTE the string they exist to forbid — "the invented
+ * `Select a destination...` combobox" is a comment recording a correction, not the control
+ * coming back. Same fix `audit:place` and the vendor scan already carry.
+ */
+const readCode = (f: string) =>
+  readAny(f).replace(/\/\*[\s\S]*?\*\//g, " ").replace(/^\s*\/\/.*$/gm, " ");
 /** Every profile on disk, bundled or in the local demo library — same pattern audit-place.ts uses. */
 function load(dir: string, unwrap: (j: any) => any) {
   if (!fs.existsSync(dir)) return [];
@@ -137,17 +153,37 @@ console.log("\nThe SMS workflow template's node names are locked");
     ? ok('"Triggered by" and "Conversation Start" are renderer literals')
     : bad("the trigger / conversation-start titles are no longer literals in WorkflowTree");
 
-  /* The SMS block must use the constants, not the prospect's queue names. */
-  const sms = wf.slice(wf.indexOf("if (isSms)"), wf.indexOf("const shaped = SHAPE"));
-  sms.includes("title: INTENT_SALES") && sms.includes("title: INTENT_SUPPORT")
+  /* ⚠️⚠️ **RE-AIMED 9/17/2026, NOT LOOSENED — AND IT NOW BUILDS THE TREE.** These three read
+     the SMS block out of `AgentWorkflow.tsx` and grepped it for `title: INTENT_SALES`, which
+     went red the moment the built-in tree moved into `smsTemplate.ts`. That module is pure
+     data with no JSX, so node can import it and the checks can assert the REAL tree instead of
+     its source text — the same upgrade the extra-workflow checks got when `extraTree` moved,
+     and it is strictly stronger: a grep passes against `if (false && ...)`. */
+  /* A REAL profile, not a fixture: the template derives its nouns and chips from one, so a
+     hand-made object would prove the shape and not the re-skin. */
+  const smsProfile = CustomerProfile.parse(
+    JSON.parse(readAny("src/data/generated/orlando-health.json")),
+  );
+  const smsTree = smsBranches(smsProfile);
+  smsTree[0]?.title === INTENT_SALES && smsTree[1]?.title === INTENT_SUPPORT
     ? ok("the SMS intents come from the fixed constants")
-    : bad("the SMS intent titles are not the fixed constants");
-  /\btitle:\s*c\.(newQ|supQ)\b/.test(sms)
+    : bad(`the SMS intent titles are not the fixed constants (${smsTree.map((b) => b.title).join(" / ")})`);
+  const smsSrc = readAny("src/data/smsTemplate.ts");
+  /\btitle:\s*c\.(newQ|supQ)\b/.test(smsSrc)
     ? bad("an SMS intent title is derived from the prospect's queues again (c.newQ / c.supQ)")
     : ok("no SMS intent title is derived from a prospect queue");
-  sms.includes("locked: true")
+  smsTree.every((b) => b.locked)
     ? ok("the SMS intent nodes are marked locked")
     : bad("the SMS intent nodes are not marked locked — the AI could rename them");
+  smsTree.every((b) => b.leaves.every((l) => l.locked))
+    ? ok("both SMS user-group leaves are locked too")
+    : bad("an SMS user-group leaf is not locked — the AI could rename the chrome");
+  /* ⚠️ AND THE SEGMENTS BELOW THE CHROME MUST STAY EDITABLE, or locking the four boxes would
+     have frozen the configuration this diagram exists to show. */
+  const seg = smsTree[0]?.leaves?.[0]?.paths ?? [];
+  seg.length === 2 && seg.every((s2) => !s2.locked && (s2.paths?.length ?? 0) === 2)
+    ? ok("the segments below the chrome are editable and each forks again")
+    : bad("the SMS sales branch is not two editable segments that each fork again");
 
   /* ⚠️ THE VOICE TREE IS LOCKED TOO NOW (8/26/2026), which OVERTURNS the note that used to
      sit in CLAUDE.md saying the voice intents were measured off Invoca's own Voice workflow
@@ -155,9 +191,13 @@ console.log("\nThe SMS workflow template's node names are locked");
      shows the SAME two words as SMS, so that reading was wrong. Every voice tree now uses the
      constants — the derived default AND the National Van Lines split override, which is
      exactly the place a stale copy of a template survives. */
+  /* ⚠️ THE COUNT DROPPED FROM 8 TO 6 BY DESIGN: the built-in SMS tree's two declarations moved
+     to `smsTemplate.ts` (asserted above, by building it), leaving the voice default and the
+     three SHAPE overrides in this file. Re-aimed with the move rather than relaxed — the
+     invariant is that no tree names its own intents, and both halves are still checked. */
   const intents = [...wf.matchAll(/title:\s*INTENT_(?:SALES|SUPPORT)[^\n]*/g)].map((m) => m[0]);
-  intents.length >= 8
-    ? ok(`all five trees declare both intents from the constants (${intents.length})`)
+  intents.length >= 6
+    ? ok(`every tree in AgentWorkflow declares both intents from the constants (${intents.length})`)
     : bad(`only ${intents.length} intent titles use the constants — a tree names its own`);
   intents.every((l) => l.includes("locked: true"))
     ? ok("every intent node carrying a constant is also locked")
@@ -1121,6 +1161,617 @@ console.log("\nThe Preview Workflow drawer's own Ask AI + undo (voice side)");
   /\.vp-actions \{/.test(css)
     ? ok("the icons sit in their own row rather than inheriting the header's 12px gap")
     : bad(".vp-actions is gone");
+}
+
+/* =============================================================================
+   THE BUILT-IN SMS WORKFLOW: six rows, and drawers that really save (9/17/2026)
+   ============================================================================= */
+console.log("\nThe built-in SMS workflow template");
+{
+  const p = CustomerProfile.parse(JSON.parse(readAny("src/data/generated/aptive.json")));
+  const cfg = smsConfigFor(p);
+  const tree = { variant: "sms" as const, geo: "smsV2" as const, triggeredBy: SMS_TRIGGER,
+    startLabel: "SMS · classify intent", chromeLocked: true, branches: smsBranches(p) };
+
+  /* ---- the shape, against the capture ---- */
+  const sales = tree.branches[0].leaves[0];
+  (sales.paths?.length === 2 && sales.paths.every((x) => x.paths?.length === 2))
+    ? ok("three levels below the intent, as the capture draws them")
+    : bad("the sales branch is not two forks of two");
+  const leaves = sales.paths?.flatMap((x) => x.paths ?? []) ?? [];
+  leaves.length === 4 && leaves.every((l) => l.action === "Inform")
+    ? ok("four Inform leaves on the bottom row")
+    : bad("the bottom row is not four Inform leaves");
+  /* ⚠️ MEASURED: `found = false`'s drawer carries no What To Collect list, so its node draws no
+     chips. An invented list is the diagram advertising a collection the drawer does not have. */
+  (leaves[3].chips ?? []).length === 0 && (leaves[0].chips ?? []).length > 0
+    ? ok("the last leaf carries no chips, as captured, while the others do")
+    : bad("chip presence on the bottom row does not match the capture");
+  /* ⚠️ VERBATIM, UNEVEN SPACING INCLUDED — `found= true` and `found = false`. */
+  leaves[2].title === "found= true" && leaves[3].title === "found = false"
+    ? ok("the condition labels keep the capture's own spacing")
+    : bad("a condition label was tidied — the replica is drifting from the capture");
+
+  /* ---- re-skinned, not Greenix ---- */
+  const all = JSON.stringify([tree, cfg]);
+  /\bgreenix/i.test(all)
+    ? bad("Greenix's own name leaked into another prospect's template")
+    : ok("nothing in the template names Greenix");
+  /(844-233-7378|833-729-4353|8887181241)/.test(all)
+    ? bad("one of Greenix's real support numbers is in the template")
+    : ok("Greenix's real phone numbers are gone");
+  /* ⚠️ THE USER'S OWN CALL when asked: drop the MCP references rather than minting a
+     `<slug>_check_zip_serviceable` for 145 prospects that have no such integration. */
+  /_mcp|mcp tool|greenhl|search_website/i.test(all)
+    ? bad("an MCP tool reference survived — the user asked for these to be dropped")
+    : ok("no MCP tool names anywhere in the template");
+  /555-0\d{3}/.test(JSON.stringify(cfg))
+    ? ok("phone numbers use the reserved 555 exchange")
+    : bad("the template's phone numbers are not on the 555 exchange");
+  const noun = p.customerNoun;
+  sales.paths?.[0]?.title.includes(noun) && sales.paths?.[1]?.title.includes(noun)
+    ? ok(`the two answers re-skin to the prospect's own noun (${noun})`)
+    : bad("the new/existing answers do not use the prospect's customerNoun");
+
+  /* ---- the drawers ---- */
+  const dTrig = smsDrawerFor(p, tree, "trigger", cfg);
+  const dInt = smsDrawerFor(p, tree, "intent-0", cfg);
+  const dQual = smsDrawerFor(p, tree, "leaf-0-0", cfg);
+  const dInf = smsDrawerFor(p, tree, "sub-0-0-0-0", cfg);
+  const dEsc = smsDrawerFor(p, tree, "leaf-1-0", cfg);
+  smsDrawerFor(p, tree, "start", cfg) === null
+    ? ok("Conversation Start opens nothing, exactly as on the voice page")
+    : bad("Conversation Start opens a drawer the real page does not have");
+  (dTrig?.kind === "trigger" && dTrig.rows?.length === 3 && dTrig.links?.length === 3)
+    ? ok("the trigger drawer lists its forms and number, with three links")
+    : bad("the SMS trigger drawer is missing its rows or its third link");
+  (dQual?.kind === "action" && dQual.action === "qualify" && dQual.segments?.length === 2)
+    ? ok("the Qualify drawer's answers come from the tree's own child nodes")
+    : bad("the Qualify drawer's segments are not the tree's children");
+  /* ⚠️ MEASURED: an SMS Inform drawer has NO phone row; the escalate one has a destination. */
+  (dInf?.kind === "action" && dInf.phone === undefined && (dInf.collect?.length ?? 0) > 0)
+    ? ok("the SMS Inform drawer has no phone row but does collect fields")
+    : bad("the SMS Inform drawer still renders a phone row");
+  (dEsc?.kind === "action" && dEsc.phone === undefined && !!dEsc.destinationPrompt)
+    ? ok("the SMS escalate drawer asks for a destination, not a number")
+    : bad("the SMS escalate drawer is not shaped like the capture");
+  /* ⚠️ THE FOUR STRINGS THAT DIFFER FROM VOICE. Sharing one table would put "transfer them to
+     the right queue" on a text conversation. */
+  SMS_ACTION_DESCRIPTION.inform === "Provide information to the caller."
+    && SMS_ACTION_PROMPT.inform === "How should the agent inform users?"
+    && SMS_ACTION_LABEL.inform === "Inform"
+    && SMS_ACTION_DESCRIPTION.inform !== ACTION_DESCRIPTION.inform
+    && SMS_ACTION_PROMPT.inform !== ACTION_PROMPT.inform
+    ? ok("the SMS copy is the measured SMS copy, not the voice copy")
+    : bad("the SMS drawer copy has drifted back towards the voice strings");
+
+  /* ---- editable only where it can save ---- */
+  [dInt, dQual, dInf, dEsc].every((x) => x && "edits" in x && !!x.edits)
+    ? ok("every configurable SMS drawer carries write-back paths")
+    : bad("an SMS drawer is editable with nowhere to write — Apply would be a lie");
+  /* ⚠️ THE TEST IS "NO WRITE PATHS", NOT "AN `edits` KEY SET TO undefined" — the first version
+     of this check asked `"edits" in added`, which is FALSE when the builder simply omits the key,
+     i.e. exactly the state it was trying to confirm. It failed on correct code. */
+  const noWrites = (x: unknown) => !((x as { edits?: unknown })?.edits);
+  /* ⚠️ RE-AIMED 9/17/2026, NOT LOOSENED. This asked for a READ-ONLY DRAWER on an id that is not
+     in the tree, which was the old fallback's behaviour; the drawer now resolves the node from
+     the tree and so opens NOTHING for an id that names no node — the stronger outcome, and the
+     one this check's own failure message already allowed. The invariant was never "a drawer
+     appears", it is "no node borrows another node's write paths". */
+  const ghost = smsDrawerFor(p, tree, "path-0-0-9", cfg);
+  const borrowed = JSON.stringify((ghost as { edits?: unknown } | null)?.edits ?? {});
+  (ghost === null || (noWrites(ghost) && !borrowed.includes("paths.0")))
+    ? ok("an id that names no node opens nothing rather than borrowing another node's copy")
+    : bad("an unconfigured segment claims another node's write paths");
+  /* ⚠️ THE SEGMENT PATH POINTS AT THE TREE, NOT A COPY OF THE TITLES. */
+  (dQual?.kind === "action" && dQual.edits?.segments === "branches.0.leaves.0.paths")
+    ? ok("Add writes the tree's own child nodes, so a new answer draws as a node")
+    : bad("the segments path does not point at the tree's children");
+  (dQual?.kind === "action" && (dQual.segmentNodes?.length ?? 0) === 2)
+    ? ok("the answers' own nodes ride along, so renaming one cannot flatten its branch")
+    : bad("segmentNodes is missing — a rename would destroy the branch under it");
+  /* ⚠️ THE VOICE DRAWERS STAY READ-ONLY, which is what `edits` gates. */
+  {
+    const vTree = { variant: "voice" as const, triggeredBy: "2 campaigns and 0 forms",
+      startLabel: "Voice · classify intent", branches: [] as never[] };
+    const v = drawerFor(p, { ...vTree, branches: smsBranches(p) }, "leaf-0-0");
+    (!!v && noWrites(v))
+      ? ok("a voice drawer carries no write paths, so it renders read-only as before")
+      : bad("a voice drawer gained write paths — those screens were signed off read-only");
+  }
+
+  /* ---- the measured palette (9/17/2026) ---------------------------------------
+     Reported: "the boxes and pills are not the right color", "the background dots are too far
+     apart and also make them lighter", and the intents "are missing their description". Every
+     value below came off `reference/agent-workflow/sms-tree-v2.html`, which serialises its
+     emotion CSS, so these are real computed styles rather than screenshot readings. */
+  {
+    const css = readAny("src/styles/app.css");
+    const v2 = css.slice(css.indexOf(".wf-v2 .wf-node {"));
+    /* A card is tinted by its ACTION: the hue at 8%, a 5px left edge, no other border. */
+    const tint = (k: string, hue: string) =>
+      new RegExp(`\\.wf-v2 \\.wf-act-${k}\\s*\\{[^}]*rgba\\(${hue},\\.08\\)[^}]*border-left: 5px solid #`).test(v2);
+    tint("qualify", "208,193,242") && tint("inform", "38,102,249") && tint("escalate", "255,112,69")
+      ? ok("each action tints its card at 8% with a 5px left edge, as measured")
+      : bad("an action tint is not the measured 8% + 5px edge");
+    /(#440066)/.test(v2) && /(#11228c)/.test(v2) && /(#b33b00)/.test(v2)
+      ? ok("the action text takes the measured dark ink of its own hue")
+      : bad("an action ink is missing — the measured inks are #440066 / #11228c / #b33b00");
+    /\.wf-v2 \.wf-act-\w+ \.wf-leaf-action \.wf-svg-ic \{ background: rgba\([\d,]+,\.12\)/.test(v2)
+      ? ok("the glyph sits in a box of its hue at 12%")
+      : bad("the icon box is not the hue at 12%");
+    /* The chip is neutral and fully rounded — ours had been white on a green border. */
+    /\.wf-v2 \.wf-chip \{[^}]*background: #e7e9eb;[^}]*border: none;[^}]*font-size: 12px;[^}]*border-radius: 100px/.test(v2)
+      ? ok("the chip is #E7E9EB at 12px and radius 100px with no border")
+      : bad("the chip does not match the measured pill");
+    /\.wf-v2 \.wf-node \{[^}]*border-radius: 6px;[^}]*border-color: #e7e9eb;[^}]*box-shadow: none/.test(v2)
+      ? ok("the card is radius 6, #E7E9EB, and flat")
+      : bad("the card radius / border / shadow is not the measured one");
+    /\.wf-v2\.wf-tree \.wf-start \{ background: #d4e0fe/.test(v2)
+      ? ok("Conversation Start is the platform's own #D4E0FE")
+      : bad("Conversation Start is not #D4E0FE");
+    /* The description: same 16px as the title, its ink, flush left, two-line clamp. */
+    /\.wf-v2 \.wf-node-sub \{[^}]*font-size: 16px;[^}]*color: var\(--color-text-title\);[^}]*padding-left: 0/.test(v2)
+      ? ok("the intent description is 16px at the title's ink, flush left")
+      : bad("the intent description is still the small muted indented one");
+    /-webkit-line-clamp: 2/.test(css)
+      ? ok("it clamps to two lines, which is where the ellipsis comes from")
+      : bad("the two-line clamp is gone — a paragraph would render in full");
+    /* Connectors: 1px, coloured by the node they point at. */
+    /\.wf-v2 \.wf-l \{ stroke-width: 1; stroke: #d0d3d8/.test(v2)
+      && /\.wf-v2 \.wf-l-act-inform\s*\{ stroke: #2666f9/.test(v2)
+      ? ok("connectors are 1px and take their target's colour")
+      : bad("connectors are not the measured 1px / target-coloured");
+    /* The dots. */
+    /radial-gradient\(#91919a 0\.5px, transparent 0\.5px\)/.test(css) && /background-size: 16px 16px/.test(css)
+      ? ok("the canvas dots are a 1px #91919A dot on a 16px grid")
+      : bad("the canvas dots are not the measured gap and size");
+
+    /* ⚠️⚠️ THE NON-REGRESSION THAT MATTERS: the SHARED classes must be untouched, because the
+       voice tree and seven authored extra workflows draw them. */
+    const base = css.slice(css.indexOf(".wf-node { position: absolute"), css.indexOf(".wf-v2 .wf-node {"));
+    /border-radius: 8px/.test(base) && /box-shadow: 0 1px 3px/.test(base) && /#d9dee4/.test(base)
+      ? ok("the shared .wf-node keeps its own radius, shadow and border")
+      : bad("the shared .wf-node was restyled — that reaches the voice tree and every extra workflow");
+    /\.wf-chip \{ background: rgba\(255,255,255,\.7\)/.test(base)
+      ? ok("the shared .wf-chip is unchanged")
+      : bad("the shared .wf-chip was restyled");
+    /* Arrowheads are an ATTRIBUTE, so they cannot be scoped in CSS — they must be opt-in. */
+    /const lineFor = \(k\?: string, arrows = true\)/.test(readAny("src/components/WorkflowTree.tsx"))
+      ? ok("arrowheads are opt-in, so no other diagram grows them")
+      : bad("arrowheads are unconditional — every workflow diagram would gain them");
+
+    /* ⚠️ ONE SOURCE: the node's description IS the drawer's, or the two disagree the first time
+       either is edited — the failure this whole feature exists to avoid. */
+    const d0 = smsDrawerFor(p, tree, "intent-0", cfg);
+    (d0?.kind === "intent" && tree.branches[0].subtitle === d0.looksLike && !!d0.looksLike)
+      ? ok("the intent node's description is the very string its drawer shows")
+      : bad("the node description and the drawer's have drifted apart");
+  }
+
+  /* ---- content-sized terminals, and repairing a stale answer (9/17/2026) --------
+     Reported: "the boxes should not be all sizes, they change based on the number of pills", and
+     an answer added in a Qualify drawer came out saying Inform, white and untinted. */
+  {
+    const tsx = readAny("src/components/WorkflowTree.tsx");
+    /* ⚠️ MEASURED: the real bottom row is 152 / 152 / 176 / 78 — every node sizes to its own
+       content, and the one with no pills is less than half its neighbours. Rows ABOVE still
+       level, because a row's bottom is where the next row's stems start. */
+    /const levelRow = \(els: \(HTMLDivElement \| null\)\[\], fallback: number, level = true\)/.test(tsx)
+      && /if \(level\) live\.forEach/.test(tsx)
+      ? ok("levelRow can be told not to apply, which is what leaves the last row content-sized")
+      : bad("levelRow always applies — the last row would be levelled to its tallest node again");
+    /const lastRow = anySubs \? "sub" : anyPaths \? "path" : "leaf"/.test(tsx)
+      ? ok("which row is last is computed from the tree, not named")
+      : bad("the last row is hardcoded — a tree of a different depth would level the wrong one");
+    /const lvl = \(row: string\) => !\(v2 && row === lastRow\)/.test(tsx)
+      ? ok("only the measured SMS page skips levelling, so the voice tree keeps its level row")
+      : bad("the skip is not scoped to v2 — the voice tree's six use cases would go ragged");
+
+    /* ⚠️ A NEW ANSWER INHERITS ITS SIBLINGS' ACTION. Peers under one question agree on what they
+       do, which is why the answers of a Qualify are Qualifies and theirs are Informs. */
+    const wnd = readAny("src/components/WorkflowNodeDrawer.tsx");
+    /const sibling = was\?\.\[0\]/.test(wnd) && /action: sibling\.action/.test(wnd)
+      ? ok("Apply gives a brand-new answer its siblings' action, not a hardcoded Inform")
+      : bad("a new answer is still hardcoded — it would read Inform in a row of Qualifies");
+
+    /* ---- repairSmsSegments, against real shapes ---- */
+    const stale = [{ title: "Test", action: "Inform", tone: "blue" }] as never[];
+    const withSibs = [
+      { title: "New", action: "Qualify", actionIcon: "callSplit", actionKind: "qualify", tone: "blue" },
+      ...stale,
+    ] as never[];
+    const rep = repairSmsSegments([{ title: "I", leaves: [{ title: "L", action: "Qualify", paths: withSibs }] }] as never);
+    const fixed = (rep[0].leaves[0].paths ?? [])[1] as { action?: string; actionKind?: string };
+    fixed?.actionKind === "qualify" && fixed?.action === "Qualify"
+      ? ok("a stale answer takes its configured sibling's action and kind")
+      : bad(`a stale answer was not repaired from its sibling (${JSON.stringify(fixed)})`);
+    /* No sibling to copy: fall back to what the node itself says rather than inventing. */
+    const alone = repairSmsSegments([{ title: "I", leaves: [{ title: "L", action: "Qualify", paths: stale }] }] as never);
+    ((alone[0].leaves[0].paths ?? [])[0] as { actionKind?: string })?.actionKind === "inform"
+      ? ok("with no sibling it infers the kind from the action's own wording")
+      : bad("a lone stale answer was not given a kind");
+    /* ⚠️ IDENTITY WHEN NOTHING NEEDS REPAIR, or this would re-render on every pass. */
+    const clean = smsBranches(p);
+    repairSmsSegments(clean) === clean
+      ? ok("a tree that needs no repair comes back as the same object")
+      : bad("repairSmsSegments copies a clean tree — that is a re-render every pass");
+  }
+
+  /* ---- drag the whitespace to move the diagram (9/17/2026) --------------------
+     Asked for directly: "give the user the ability to click on any white space in the workflow
+     box and move the diagram around." The real pane does this and carries `cursor: grab`. */
+  {
+    const tsx = readAny("src/components/WorkflowTree.tsx");
+    const css = readAny("src/styles/app.css");
+    /\.wf-scroll \{[^}]*cursor: grab/.test(css) && /\.wf-scroll\.wf-panning \{ cursor: grabbing/.test(css)
+      ? ok("the scroller advertises the drag with grab / grabbing, as the real pane does")
+      : bad("the pan affordance is missing — nothing tells anyone the whitespace is draggable");
+    /\.wf-scroll\.wf-panning \{[^}]*user-select: none/.test(css)
+      ? ok("text selection is suppressed only WHILE panning")
+      : bad("a pan would select text across the diagram, or selection is killed at rest");
+    /* ⚠️⚠️ THE ONE THAT MATTERS: a pointerdown on a node, a zoom button or the minimap must be
+       left alone, or a drag would swallow the click that opens a drawer. */
+    /closest\("\.wf-node, \.wf-zoom, \.wf-minimap"\)\) return;/.test(tsx)
+      ? ok("a pointerdown on a node or a control is left alone, so nodes stay clickable")
+      : bad("the pan does not exempt nodes and controls — it would eat their clicks");
+    /e\.pointerType === "touch"\) return;/.test(tsx)
+      ? ok("touch is left to the browser, so a gesture cannot move the diagram twice")
+      : bad("touch is handled here as well as natively — one gesture would pan twice");
+    /e\.button !== 0/.test(tsx)
+      ? ok("only the primary button pans")
+      : bad("a right-click or middle-click would start a pan");
+    /try \{ el\.setPointerCapture\(e\.pointerId\); \} catch/.test(tsx)
+      ? ok("the pointer capture is guarded, so a vanished pointer cannot throw mid-gesture")
+      : bad("setPointerCapture is unguarded — it throws if the pointer is already gone");
+    /* ⚠️ IMPERATIVE, NOT STATE: a setState per drag start would re-render the whole tree
+       mid-gesture for the sake of one cursor. */
+    /el\.classList\.add\("wf-panning"\)/.test(tsx) && !/useState.*panning/i.test(tsx)
+      ? ok("the panning class is toggled imperatively, so a drag causes no re-render")
+      : bad("panning is held in state — every drag would re-render the diagram");
+    /* ⚠️⚠️ **RE-AIMED, AND THE OLD ASSERTION WAS THE WRONG INVARIANT (9/17/2026).** It pinned the
+       pan to `scrollLeft`, which a screen recording of the real page then disproved: the diagram
+       can be dragged clean past the edge, leaving bare canvas behind it, and a scroll offset can
+       only ever travel inside the content. What actually has to hold is that the pan is its OWN
+       transform on `.wf-fit` and does not touch the fit SCALE on `.wf-tree`. */
+    /setPan\(d\.px \+ \(e\.clientX - d\.x\), d\.py \+ \(e\.clientY - d\.y\)\)/.test(tsx)
+      ? ok("the drag moves its own pan, unbounded, so the diagram can leave the frame")
+      : bad("the drag no longer sets the free pan");
+    /transform: `scale\(\$\{scale\}\)`/.test(tsx)
+      ? ok("the fit scale still owns `.wf-tree`'s transform, untouched by the pan")
+      : bad("the pan and the fit scale are fighting over one transform");
+    /\.wf-fit \{[^}]*transform: translate\(var\(--wf-px, 0px\), var\(--wf-py, 0px\)\)/.test(css)
+      ? ok("the pan is a translate on the fit box, driven by custom properties")
+      : bad("the pan translate is gone from .wf-fit");
+    /* No scrollbars, which is what was asked for — and the box must still scroll from script,
+       because that is what the zoom anchor and Fit to view use. */
+    /\.wf-scroll \{[^}]*overflow: hidden/.test(css)
+      ? ok("the scroller shows no bars, as the real pane does not")
+      : bad("the scrollbars are back");
+    /* The dots travel with the diagram, as react-flow's own background pattern does. */
+    /\.wf-scroll \{[^}]*background-position: var\(--wf-px, 0px\) var\(--wf-py, 0px\)/.test(css)
+      ? ok("the dot grid moves with the pan")
+      : bad("the dots stay put while the diagram moves under them");
+    /* ⚠️ THE ZOOM ANCHOR HAS TO KNOW ABOUT THE PAN, or zooming after a drag snaps the diagram
+       back by the pan distance and the node under the cursor slides away. */
+    /cx: \(el\.scrollLeft \+ px - pan\.current\.x\) \/ from/.test(tsx)
+      ? ok("the zoom anchor subtracts the pan, so zooming after a drag holds its focal point")
+      : bad("the zoom anchor ignores the pan — a zoom after a drag would jump");
+    /* ⚠️ AND FIT TO VIEW IS THE ONLY WAY BACK once the diagram has been pushed off the edge. */
+    /setPan\(0, 0\);/.test(tsx)
+      ? ok("Fit to view clears the pan, which is the way back from an off-screen drag")
+      : bad("Fit to view leaves the pan — a diagram dragged away could not be recovered");
+  }
+
+  /* ---- the drawer's action is the NODE's action (9/17/2026) --------------------
+     Reported: "the Action in this example [is] Qualify, it should match the action in the
+     context drawer." Measured before the fix: all eight template nodes agreed and both
+     SE-added ones read Qualify on the node and Inform in the drawer. */
+  {
+    /* An added answer, exactly as Apply writes one: inherits its siblings' Qualify. */
+    const added = JSON.parse(JSON.stringify(tree)) as typeof tree;
+    const sibs = added.branches[0].leaves[0].paths!;
+    sibs.push({ ...sibs[0], title: "Added", paths: undefined } as never);
+    const ids: [string, string][] = [
+      ["leaf-0-0", "qualify"], ["leaf-1-0", "escalate"],
+      ["path-0-0-0", "qualify"], ["path-0-0-1", "qualify"],
+      ["sub-0-0-0-0", "inform"], ["sub-0-0-1-1", "inform"],
+      ["path-0-0-2", "qualify"],
+    ];
+    const wrong = ids.filter(([id, want]) => {
+      const d = smsDrawerFor(p, added, id, cfg);
+      return !(d?.kind === "action" && d.action === want);
+    });
+    wrong.length === 0
+      ? ok("every node's drawer describes that node's own action, added segments included")
+      : bad(`${wrong.length} node(s) open a drawer for the wrong action: ${wrong.map(([i]) => i).join(", ")}`);
+    /* ⚠️ THE ADDED NODE'S ANSWERS ARE ITS OWN CHILDREN, at a path derived from its id, so `Add`
+       works there too rather than being a dead control. */
+    const dAdded = smsDrawerFor(p, added, "path-0-0-2", cfg);
+    (dAdded?.kind === "action" && dAdded.edits?.segments === "branches.0.leaves.0.paths.2.paths")
+      ? ok("an added Qualify node's Add writes its own children")
+      : bad("an added Qualify node has no segments path — Add would be inert");
+    /* ⚠️⚠️ FLAT KEYS, NOT NESTED, and this is the bug that cost the most time: `setByPath`
+       refuses a path whose INTERMEDIATE key is missing and only creates the LAST one, so
+       `sms.extra.<id>__question` vanished silently on any demo that already had an SMS
+       override — no error, no refusal, Apply reporting success. */
+    (dAdded?.kind === "action" && dAdded.edits?.question === "sms.extra__path-0-0-2__question")
+      ? ok("an added segment's text writes to a FLAT key on sms, whose parent always exists")
+      : bad(`the added segment's write path is nested again (${dAdded?.kind === "action" ? dAdded.edits?.question : "?"})`);
+    !/extra: Record<string, string>/.test(readAny("src/data/smsTemplate.ts"))
+      ? ok("there is no nested `extra` map to walk into")
+      : bad("the nested extra map is back — writes to it are a silent no-op on existing demos");
+    /^sms\.extra__/.test("sms.extra__path-0-0-2__question")
+      && !isStructuralChange(undefined, "hi", "sms.extra__path-0-0-2__question")
+      ? ok("the first text typed into an added segment is allowed through the guard")
+      : bad("editGuard blocks the first write to an added segment");
+    /* ⚠️ AND THE CONFIG READ TOLERATES AN OVERRIDE SAVED BEFORE A FIELD EXISTED — without the
+       base spread, one click on an added segment threw and the boundary tore down the whole
+       diagram, so EVERY node stopped opening. */
+    /\{ \.\.\.smsBase, \.\.\.\(\(tree as \{ sms\?: Partial<typeof smsBase> \}\)\.sms \?\? \{\}\) \}/
+      .test(readAny("src/screens/AgentWorkflow.tsx"))
+      ? ok("the base is spread under the stored config, so a missing field cannot throw")
+      : bad("a demo whose override predates a field would crash the diagram on a node click");
+  }
+
+  /* ---- the Action dropdown's five actions (9/17/2026) ----------------------------
+     Measured from five captures of ONE drawer with the combobox switched between them. The
+     option LIST and its order are from a screenshot — every capture saved with the list closed
+     (`aria-expanded=false`), so there is no listbox markup anywhere. */
+  {
+    const css = readAny("src/styles/app.css");
+    const drawerSrc = readAny("src/components/WorkflowNodeDrawer.tsx");
+    const treeSrc = readAny("src/components/WorkflowTree.tsx");
+    const dr = readAny("src/data/workflowDrawers.ts");
+
+    /* the five, in the screenshot's order */
+    JSON.stringify(SMS_ACTION_OPTIONS) ===
+      JSON.stringify(["callback", "qualify", "inform", "informRoute", "escalate"])
+      ? ok("the dropdown offers the five actions in the order the screenshot lists them")
+      : bad(`the action list or its order has drifted: ${SMS_ACTION_OPTIONS.join(", ")}`);
+    JSON.stringify(SMS_ACTION_OPTIONS.map((k) => SMS_ACTION_LABEL[k])) ===
+      JSON.stringify(["Schedule Callback", "Qualify", "Inform", "Inform & Route", "Support & Escalate"])
+      ? ok("each option reads the label the capture carries")
+      : bad("an action's label is not the measured one");
+
+    /* ⚠️⚠️ THE SHAPES DIFFER MORE THAN THE NAMES DO, and this is the heart of the feature.
+       Built by putting each kind on a real node and asking for its drawer. */
+    const shaped = (k: ActionKind) => {
+      const t = JSON.parse(JSON.stringify(tree)) as typeof tree;
+      const node = t.branches[0].leaves[0].paths![0].paths![0] as Record<string, unknown>;
+      Object.assign(node, nodeActionFields(k));
+      const d = smsDrawerFor(p, t, "sub-0-0-0-0", cfg);
+      return d?.kind === "action" ? d : null;
+    };
+    const callback = shaped("callback");
+    const route = shaped("informRoute");
+    const inform = shaped("inform");
+    const esc = shaped("escalate");
+
+    /* ⚠️ SCHEDULE CALLBACK HAS NO INSTRUCTION BOX AT ALL — Description, its fixed signal, then
+       What To Collect. `SMS_ACTION_PROMPT` has no key for it and the type says so. */
+    (!("callback" in SMS_ACTION_PROMPT) && actionCopy("sms", "callback").prompt === null)
+      ? ok("Schedule Callback has no instruction prompt, as measured")
+      : bad("a prompt label has been invented for Schedule Callback");
+    (callback?.action === "callback" && !callback.destinationPrompt)
+      ? ok("Schedule Callback carries no destination row")
+      : bad("Schedule Callback grew a destination row");
+    SMS_CALLBACK_SIGNAL === "SMS Scheduled Callback"
+      ? ok("Schedule Callback's fixed signal is the measured string")
+      : bad("the callback signal string has drifted");
+    /* ⚠️ ITS SIGNAL IS A CHIP, NOT A PICKER, and its label carries no "(optional)". */
+    (/kind === "callback" \? \(/.test(drawerSrc) && /wnd-signal/.test(drawerSrc)
+      && /\.wnd-signal\s*\{/.test(css))
+      ? ok("the callback signal renders as a fixed chip rather than a combobox")
+      : bad("Schedule Callback's signal is a picker again");
+    JSON.stringify(collectOnSwitch("callback").map((f) => f.name)) === JSON.stringify(["Consumer Name"])
+      ? ok("switching to Schedule Callback seeds What To Collect with Consumer Name")
+      : bad("the callback collect default is not the measured Consumer Name");
+    (["qualify", "inform", "informRoute", "escalate"] as ActionKind[])
+      .every((k) => collectOnSwitch(k).length === 0)
+      ? ok("switching to any other action leaves What To Collect empty, as measured")
+      : bad("an action other than callback seeds collect fields on switch");
+
+    /* ⚠️ ONLY TWO OF THE FIVE HAVE A DESTINATION, and they word it differently. */
+    (route?.destinationPrompt === SMS_ROUTE_DESTINATION
+      && esc?.destinationPrompt === SMS_ESCALATE_DESTINATION
+      && SMS_ROUTE_DESTINATION !== SMS_ESCALATE_DESTINATION)
+      ? ok("Inform & Route and Support & Escalate each carry their own destination wording")
+      : bad("the two destination rows have been merged or reworded");
+    (!inform?.destinationPrompt && !SMS_DESTINATION_PROMPT.inform && !SMS_DESTINATION_PROMPT.qualify)
+      ? ok("plain Inform still has no destination row, which is what separates it from Inform & Route")
+      : bad("Inform grew a destination row");
+
+    /* every description verbatim */
+    const descs: [ActionKind, string][] = [
+      ["callback", "Your agent will find a time and send the user a priority number to call back during business hours. This carries over all digital attribution from the initial text engagement (and the call that originally triggered the SMS)."],
+      ["informRoute", "The agent will answer the users' question and guide them to the right next step — a link, phone number, or resource."],
+      ["inform", "Provide information to the caller."],
+    ];
+    descs.every(([k, v]) => SMS_ACTION_DESCRIPTION[k] === v)
+      ? ok("each new action's Description is the capture's own copy")
+      : bad("an action Description has drifted from the capture");
+    SMS_ACTION_PROMPT.informRoute === "How should the agent inform and route users?"
+      ? ok("Inform & Route asks the SMS question, not the voice one")
+      : bad("Inform & Route's prompt is not the measured SMS wording");
+
+    /* ⚠️⚠️ THE NODE'S ACTION TEXT *IS* THE DRAWER'S LABEL, by construction rather than by care. */
+    (SMS_ACTION_OPTIONS as ActionKind[]).every((k) => nodeActionFields(k).action === SMS_ACTION_LABEL[k])
+      ? ok("a node's action text is the same value as its drawer's label for all five")
+      : bad("a node's action text can disagree with its drawer's label again");
+
+    /* ⚠️⚠️ THE ID TABLES MUST NOT SHADOW THE NODE — the bug the first working build shipped:
+       `sub-0-0-0-0` is in `SMS_INFORM`, so a node switched to Schedule Callback drew correctly
+       and REOPENED AS INFORM. */
+    callback?.action === "callback"
+      ? ok("a template node switched to another action opens THAT action's drawer")
+      : bad("an id table is shadowing the node's own action again");
+    /* and the wording fallback must not let "Inform & Route" fall into plain inform */
+    {
+      const t = JSON.parse(JSON.stringify(tree)) as typeof tree;
+      const n = t.branches[0].leaves[0].paths![0].paths![0] as Record<string, unknown>;
+      n.action = "Inform & Route"; delete n.actionKind;
+      const d = smsDrawerFor(p, t, "sub-0-0-0-0", cfg);
+      (d?.kind === "action" && d.action === "informRoute")
+        ? ok("a node whose wording says Inform & Route is not read as plain Inform")
+        : bad("the wording fallback swallows Inform & Route into inform");
+    }
+
+    /* ⚠️⚠️ RE-AIMED THE SAME DAY IT WAS WRITTEN, ON THE USER'S OWN INSTRUCTION — *"add the drop
+       and the screen to ANY action context drawer… and make sure all those fields in the drawer
+       is editable as well"*, with both LOCKED chrome drawers selected. So a locked leaf now DOES
+       offer the picker, and the check has to assert what the lock still means rather than what
+       it used to: the four boxes' NAMES stay un-editable, which is what was actually reported
+       back in August, and `editGuard` still refuses those. Deleting the check instead would
+       have left nothing watching either half. */
+    const lockedLeaf = smsDrawerFor(p, tree, "leaf-1-0", cfg);
+    (lockedLeaf?.kind === "action" && !!lockedLeaf.actionSlot)
+      ? ok("every action drawer offers the picker, locked chrome leaves included")
+      : bad("a locked leaf still has no action picker");
+    (isLockedEdit(tree, "branches.1.leaves.0.title")
+      && isLockedEdit(tree, "branches.1.leaves.0.subtitle"))
+      ? ok("a locked leaf's NAME is still refused, which is what the lock was always about")
+      : bad("the chrome boxes can be renamed again");
+    (inform?.actionSlot?.path === "branches.0.leaves.0.paths.0.paths"
+      && inform?.actionSlot?.index === 0)
+      ? ok("a configurable node's slot points at its own containing array")
+      : bad("the action slot does not resolve to the node's own position");
+    /* ⚠️ THE WRITE IS THE CONTAINING ARRAY, the one shape already proven by `segments`. */
+    /actionSlot\.path|const \{ path, index, nodes \} = d\.actionSlot/.test(drawerSrc)
+      ? ok("the action writes through the containing array rather than a deeper per-field path")
+      : bad("the action write no longer goes through the proven array path");
+
+    /* the picker is read-only where there is nowhere to write (every voice drawer) */
+    /const canPick = live && !!d\.actionSlot;/.test(drawerSrc)
+      ? ok("the picker needs a slot, so the voice drawers keep their static combobox")
+      : bad("the action picker is no longer gated on having somewhere to write");
+    /* ⚠️ the voice copy tables stay keyed on the three the voice captures measured */
+    /ACTION_LABEL: Record<VoiceActionKind, string>/.test(dr)
+      ? ok("the voice tables are keyed on the three voice kinds, so none was invented for voice")
+      : bad("voice copy has been invented for the SMS-only actions");
+
+    /* the two new tints, scoped, plus the lowercase class */
+    (/\.wf-v2 \.wf-act-informroute\s*\{/.test(css) && /\.wf-v2 \.wf-act-callback\s*\{/.test(css)
+      && /#33e5c9/i.test(css) && /#2cbf58/i.test(css) && /#007e73/i.test(css) && /#0d5400/i.test(css))
+      ? ok("both new actions are tinted from the titan palette, scoped to .wf-v2")
+      : bad("a new action's tint is missing or unscoped");
+    /wf-act-\$\{k\.toLowerCase\(\)\}/.test(treeSrc)
+      ? ok("the action class is lowercased, so informRoute cannot yield a camelCase selector")
+      : bad("actClass no longer lowercases, so .wf-act-informRoute would never match");
+
+    /* the captures are in the repo */
+    (["schedule-callback", "qualify", "inform", "inform-route", "support-escalate"]
+      .every((n) => fs.existsSync(`reference/agent-workflow/sms-action-${n}.html`)))
+      ? ok("all five Action captures are in the repo")
+      : bad("an Action capture is missing from reference/agent-workflow");
+  }
+
+  /* ---- every field in an action drawer is editable (9/17/2026) ---------------------
+     Asked for with both LOCKED chrome drawers selected: "add the drop and the screen to any
+     action context drawer… and make sure all those fields in the drawer is editable as well". */
+  {
+    const drawerSrc = readAny("src/components/WorkflowNodeDrawer.tsx");
+    const guard = readAny("src/data/editGuard.ts");
+
+    /* ⚠️⚠️ THE DESTINATION IS A TEXT INPUT, NOT THE COMBOBOX WE HAD INVENTED. Measured
+       `<input name=destination type=text>` with these placeholders in BOTH the original capture
+       and the switched ones. */
+    (SMS_DESTINATION_PLACEHOLDER.escalate === "e.g. https://yourwebsite.com/support or +1-800-555-0100"
+      && SMS_DESTINATION_PLACEHOLDER.informRoute === "e.g. https://yourwebsite.com/signup or +1-800-555-0100")
+      ? ok("the destination carries the capture's own placeholder for each action")
+      : bad("a destination placeholder is not the measured one");
+    !/Select a destination\.\.\./.test(readCode("src/components/WorkflowNodeDrawer.tsx"))
+      ? ok("the invented 'Select a destination...' combobox is gone")
+      : bad("the destination is a fabricated combobox again");
+
+    const esc = smsDrawerFor(p, tree, "leaf-1-0", cfg);
+    (esc?.kind === "action" && esc.destinationPlaceholder && esc.edits?.destination
+      && /^sms\.extra__leaf-1-0__destination$/.test(esc.edits.destination))
+      ? ok("the destination has somewhere to write, on a flat key whose parent exists")
+      : bad("the destination is editable with nowhere to write, or writes to a nested path");
+
+    /* ⚠️ THE SIGNAL OPTIONS ARE THE PROSPECT'S OWN, off the Signal Manager list. */
+    const sigs = signalOptions(p);
+    (sigs.length >= 5 && esc?.kind === "action"
+      && JSON.stringify(esc.signalChoices) === JSON.stringify(sigs))
+      ? ok(`the signal picker offers this prospect's own ${sigs.length} signals`)
+      : bad("the signal options are not the prospect's own");
+    (esc?.kind === "action" && esc.edits?.signal === "sms.extra__leaf-1-0__signal")
+      ? ok("the chosen signal has somewhere to write")
+      : bad("the signal picker writes nowhere");
+    {
+      /* a prospect with no Signal Manager slice offers none rather than inventing a list */
+      const bare = JSON.parse(JSON.stringify(p)) as typeof p;
+      delete (bare.reports as { signalManager?: unknown }).signalManager;
+      signalOptions(bare).length === 0
+        ? ok("a prospect with no Signal Manager offers no signals rather than invented ones")
+        : bad("signals are invented for a prospect that has none");
+    }
+
+    /* ⚠️⚠️ THE COLLECT LIST *IS* THE NODE'S `chips`, NOT A SECOND COPY — the first build stored
+       it under its own key and the DIAGRAM'S PILLS DID NOT MOVE when a field was added, which is
+       the two-sources-for-one-fact failure this file records repeatedly. */
+    (!/extra__\$\{nodeId\}__collect|edits\.collect/.test(readAny("src/data/workflowDrawers.ts"))
+      && /next\.chips = draft\.collect/.test(drawerSrc))
+      ? ok("the collect list writes the node's own chips, so the pills always agree with it")
+      : bad("What To Collect is stored apart from the pills again");
+    !/__collect\$/.test(guard)
+      ? ok("no dead guard pattern left behind for the retired collect key")
+      : bad("the guard still carries a pattern for a key nothing writes");
+    /* the chips the template configures still reach the drawer, with their help text */
+    const inf = smsDrawerFor(p, tree, "sub-0-0-0-0", cfg);
+    (inf?.kind === "action" && (inf.collect?.length ?? 0) >= 4
+      && inf.collect!.every((f) => !!f.help))
+      ? ok("a template node's configured collect fields still render with their help text")
+      : bad("a configured collect field lost its help line");
+    /* ⚠️ AND EVERY ONE OF THEM IS REMOVABLE — the × was drawn from the start and did nothing. */
+    /wnd-chip-x/.test(drawerSrc) && /\.wnd-chip-x\s*\{/.test(readAny("src/styles/app.css"))
+      ? ok("each collect chip's × is a real button")
+      : bad("the collect chip's × is decorative again");
+    /* an already-added field is not offered twice */
+    /\.filter\(\(n\) => !\(live && !!d\.actionSlot \? draft\.collect : /.test(drawerSrc)
+      ? ok("a field already on the node is not offered again")
+      : bad("the info-field picker can add the same field twice");
+    infoFieldOptions(p).some((f) => f.name === "Consumer Name")
+      ? ok("Consumer Name is offered, as the Schedule Callback capture shows it seeded")
+      : bad("the measured Consumer Name field is not offered");
+
+    /* ONE combobox component for all three, and all three close on pick */
+    (drawerSrc.match(/<Combo\s/g) ?? []).length === 3
+      ? ok("one Combo serves the action, the signal and the info field")
+      : bad("the three pickers are no longer one component");
+    (drawerSrc.match(/setOpenCombo\(null\)/g) ?? []).length >= 3
+      ? ok("every picker closes when something is chosen")
+      : bad("a picker stays open after a selection");
+    /openId={openCombo}/.test(drawerSrc) && !/const \[pick, setPick\]/.test(drawerSrc)
+      ? ok("one open-picker id, so opening one list closes the others")
+      : bad("the pickers track their open state separately again");
+  }
+
+  /* ---- the sixth row's geometry ---- */
+  {
+    let bad6 = 0, shortest = Infinity;
+    for (const t of [40, 65, 93, 140, 400]) for (const st of [40, 69, 120]) {
+      for (const it of [46, 93, 180]) for (const lf of [56, 81, 160]) {
+        const R = rowLayout("smsV2", { trigger: t, start: st, intent: it, leaf: lf, path: lf },
+          { split: false, paths: true, subs: true });
+        const gaps = [R.startTop - R.triggerBottom, R.busY - R.startBottom,
+          R.intentTop - R.busY, R.leafTop - R.intentBottom, R.leafBusY - R.leafBottom,
+          R.pathTop - R.leafBusY, R.pathBusY - R.pathBottom, R.subTop - R.pathBusY];
+        for (const g of gaps) { if (g < 0) bad6++; shortest = Math.min(shortest, g); }
+      }
+    }
+    bad6 === 0 && shortest >= 0
+      ? ok(`no connector inverts on the six-row tree (135 combinations, shortest ${shortest})`)
+      : bad(`${bad6} inverted connectors on the six-row tree (shortest ${shortest})`);
+    /* ⚠️ THE SIXTH ROW IS GATED, or every tree with a use-case row would grow two rows it never
+       draws — `rowAt` mutates the shared shift, the trap this file already records. */
+    const off = rowLayout("sms", { trigger: 65, start: 65, intent: 64, leaf: 88 },
+      { split: false, paths: true });
+    off.pathBusY === 0 && off.subTop === 0 && off.pathBottom === 0
+      ? ok("a tree with no sub-row gets no sixth-row geometry at all")
+      : bad("the sixth row is computed for a tree that does not draw it");
+  }
 }
 
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");

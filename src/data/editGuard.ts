@@ -82,6 +82,10 @@ const LENGTH_IS_CONTENT = [
      unable to add one. Still scoped to `agent.` — a bare /steps$/ would widen rule 2 across
      any other screen that happens to hold a `steps` array. */
   /^agent\.(rules|informSteps|serviceZips|steps)$/i,
+  /* ⚠️ SCOPED TO `sms.` FOR THE SAME REASON `agent.` IS. The built-in SMS workflow's Intent
+     Details drawer adds and removes conversation rules, so that list's length IS its content —
+     but a bare /rules$/ would widen rule 2 across every other screen carrying a `rules` array. */
+  /^sms\.intents\.(sales|support)\.rules$/i,
   /* THE DIGITAL JOURNEY REPORT'S LEADING COLUMNS. Adding, removing, renaming or
      moving one is a normal thing to want of a demo table ("put a Location column
      before Marketing Source"), and it used to be declined as structural.
@@ -142,6 +146,10 @@ const LENGTH_IS_CONTENT = [
    allowing arbitrary key creation is how the assistant starts inventing fields the
    renderer never reads. */
 const CREATABLE_WHEN_ABSENT = [
+  /* ⚠️ THE FIRST TEXT AN SE TYPES INTO AN ADDED SEGMENT. These keys do not exist until one is
+     written, so every first write is `undefined -> string`. Flat on `sms` rather than nested,
+     because `setByPath` will not create a missing intermediate — see the note in smsTemplate. */
+  /^sms\.extra__[A-Za-z0-9_-]+$/,
   /\bgreeting$/i,
   /* A prospect with no configured service area has NEITHER of these, so the first "only serve
      ZIPs 30097 and 30096" is an undefined -> value write. `agentConfigOf` omits them rather

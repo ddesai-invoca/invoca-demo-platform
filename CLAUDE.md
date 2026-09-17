@@ -1210,11 +1210,592 @@ gets an editable diagram. `SHAPE` holds per-prospect shape defaults (National Va
 Lines' two-team split, previously a 100-line component, is now a branch with two
 leaves). `extraTree` maps an extra workflow's flatter branches onto the same model.
 
+### The built-in SMS workflow is the measured six-row template, for every prospect (9/17/2026)
+Asked for directly, with **thirteen SingleFile captures of a real Greenix SMS workflow attached**:
+*"this is the workflow i want to replicate for all prospects"*, plus *"the fields in the drawers
+are greyed out but i want you to make them white"* and *"add the 'add' functionality"*. Answers to
+the three questions asked before building: **Apply really saves**, **the built-in workflow only**
+(authored extras keep their own shapes), and **drop the MCP references**.
+
+Every capture is in `reference/agent-workflow/sms-*.html` — the tree plus one per drawer, and the
+EMPTY Qualify template that shows the editable state. `src/data/smsTemplate.ts` is the spine.
+
+⚠️⚠️ **THE PRODUCT'S OWN MODEL IS RECURSIVE, AND THE CAPTURE SAYS SO OUTRIGHT.** Every node below
+an intent is the same react-flow type — `react-flow__node-segment` — whether it is "All Sales
+Inquiry Users", "New Customer, No" or "Serviceable=true". So there is no leaf-versus-path
+distinction in the product; there is one kind of node that nests. Ours stopped at two levels
+(`leaves` -> `paths`), so this needed exactly **one** more (`TreePath.paths`), not a rewrite:
+
+```
+Triggered by            y=0     "0 Campaigns, 2 Forms, and 1 Inbound SMS"
+Conversation Start      y=168   "SMS · classify intent"
+Sales Inquiry           y=336   Need Support
+All Sales Inquiry Users y=504   All Support Users      Qualify / Support & Escalate
+New <Noun>, No          y=672   Existing <Noun>, Yes   both Qualify
+Serviceable=true/false  y=840   found= true / false    all four Inform
+```
+
+⚠️⚠️ **THE GEOMETRY IS `smsV2`, A THIRD GEO ENTRY — NOT A CORRECTION TO `sms`.** Read off the
+react-flow transforms: **248px nodes on a 296 pitch** (248 + 48) and a **uniform 168 row pitch**,
+corroborated by the edge paths, which run between node CENTRES at `left + 124` and also give the
+node heights (trigger 93, start 69, intent 93, segment 81). So the real SMS page is far closer to
+our `voice` geometry than to `sms`. `sms` is left alone because **seven signed-off extra workflows
+draw it** (Orlando Health's five ER trees, Avi & Co - New, the generated quote-request ones), and
+editing it would restyle all of them for a change asked about the built-in workflow.
+
+⚠️⚠️ **A LATENT BUG THE DEEPER TREE EXPOSED: THE TOP OF THE TREE WAS CENTRED ON THE CANVAS, NOT ON
+ITS OWN BUS.** The branch bus has always spanned `firstCx`..`lastCx` (the two intent centres) while
+the stem feeding it dropped at `W / 2`. Those coincide only on a tree whose branches carry the same
+number of terminals — which every SMS tree did, one per branch. With four terminals under Sales and
+one under Support the trigger sat **222px left of the bus it connects to**. The capture settles the
+rule: its Triggered by is at x=938, exactly the midpoint of its two intent centres (568 and 1308)
+and NOT of its columns (716). `topCx` fixes it, and it is a **no-op on a symmetric tree** —
+verified on the voice tree BEFORE changing it (trigger, bus centre and stem all read 840 already),
+which is what keeps the signed-off diagrams still.
+
+⚠️ **THE PATH ROW IS DEDUPED AND CENTRED NOW TOO.** It rendered one node per COLUMN keyed on the
+flat slot index, correct only while a path IS a terminal; once a path has children it spans several
+columns and the node drew once per child. Same `new Map` dedupe and `*Cx` midpoint the leaf row
+already used. The leaf->path bus likewise spans **path centres** rather than the outermost terminal
+columns — the capture's own edges run leaf centre -> path centre (x=568 to x=272).
+
+⚠️ **CHIPS CAP AT FOUR, THEN `...`** — measured, and all five chips on a capped node carry
+byte-identical classes, so the ellipsis is an ordinary chip rather than a muted variant. Rendering
+all ten made a node three times its height and dragged its whole levelled row with it.
+
+⚠️ **THREE ICONS EXTRACTED VERBATIM**, per the standing use-the-real-icons rule: `callSplit`
+(Qualify) and `info` (Inform) did not exist here at all, and the support glyph is **`headsetMic`,
+not the `headset` we already ship** — that one has no mic boom. `headset` is untouched because the
+voice tree draws it.
+
+#### The drawers: measured copy, and an Apply that really saves
+⚠️⚠️ **THE SMS COPY IS NOT THE VOICE COPY, WHICH IS WHY THESE TABLES ARE SEPARATE.** Four strings
+differ, and the structure differs too:
+| | voice (8/26) | SMS (9/17) |
+|---|---|---|
+| inform label | "Inform & Route" | **"Inform"** |
+| inform description | "The agent will answer the caller's question and transfer them…" | **"Provide information to the caller."** |
+| inform prompt | "How should the agent inform and route callers?" | **"How should the agent inform users?"** |
+| escalate description | "…escalate by transferring to the queue configured below." | **"…escalate based on the rules and destination configured below."** |
+| inform fields | a phone number | **no phone row at all** — straight to Signal + What To Collect |
+| escalate destination | a phone number | **a text input**, "Where should the agent escalate unresolved users?" (❌ this row read "an empty combobox" until 9/17/2026 — corrected below) |
+| trigger drawer | count + 2 links | count + **the forms and inbound number listed** + 3 links |
+
+⚠️ **THE `Inform` LABEL WAS NEARLY MISSED BECAUSE SingleFile WRITES UNQUOTED ATTRIBUTES.** The
+combobox carries `value=Inform`, which a `value="..."` search does not match, so the field read as
+empty and the drawer kept the voice label. Same trap this file already records for the Aptive form
+capture and the insights SVG.
+
+⚠️⚠️ **EDITABLE ONLY WHERE IT IS TOLD WHERE TO WRITE.** The grey the user described is the REAL
+product's read-only state (measured: every field in the twelve configured captures carries
+`disabled`, 12 `Mui-disabled` classes, and **no footer at all**); the empty template is the white
+one, with an Add button and Cancel / Apply. Ours were already `background: #fff` — what was missing
+was that every control was `readOnly` and `Add` was an `e.preventDefault()` stub. Editing is now
+gated on `onApply` **plus** the drawer carrying `edits` write-paths, so a field with no home cannot
+accept a keystroke that goes nowhere — the silent no-op recorded six times in this file. That gate
+is also what keeps the **voice drawers byte-identical**: they were signed off read-only and nobody
+asked to change them (asserted).
+
+⚠️⚠️ **THE SEGMENTS ARE THE CHILD NODES, SO `Add` WRITES THE TREE.** A Qualify node's
+Answers/Segments ARE the boxes on the row below — `workflowDrawers` has read them from the tree
+since 8/27 with the note that says why. So `SmsConfig` deliberately holds **no** `segments`: the
+only things registered are the fields the diagram cannot draw (questions, fallbacks, the four
+instruction blocks, the escalation text, the intent descriptions and rules). Apply writes segment
+changes to `branches.…paths` as whole NODES, carrying `segmentNodes` along so renaming one answer
+cannot flatten the branch underneath it — verified: after adding a third answer, `paths.0.paths`
+still held `Serviceable=true` / `Serviceable=false`.
+
+⚠️ **APPLY RIDES `applyEdits` INTO THE PAGE'S OWN SCOPE**, which is what hands these edits
+persistence per demo, an undo step on the page's stack and the `readOnly` refusal on somebody
+else's demo, none of which a bespoke writer would get. `sms.intents.*.rules` joined
+`LENGTH_IS_CONTENT`, **scoped to `sms.`** for the same reason `agent.` is: a bare `/rules$/` would
+widen rule 2 across every screen carrying a `rules` array.
+⚠️ **THE DRAWER READS THE EFFECTIVE CONFIG, NOT THE BASE.** Handing it `smsBase` would open it on
+the template's defaults, and Apply would then write that stale copy back over an edit made a minute
+earlier. Same trap `drawerFor` records for the voice spec.
+⚠️ **CANCEL REALLY DISCARDS** — every edit lands in a local draft keyed on the drawer's identity,
+so a mid-demo keystroke costs nothing and reopening a node never shows the last one's half-typed
+text.
+
+#### What was re-skinned, and what was refused
+⚠️ **GREENIX'S TWO REAL SUPPORT NUMBERS ARE GONE** (844-233-7378, 833-729-4353), rebuilt on the
+prospect's own area code with the reserved 555 exchange — the same rule the Google Search ad's call
+extension follows. So is its inbound number.
+⚠️ **THE MCP TOOL NAMES ARE GONE, on the user's own call when asked.** The capture instructs the
+agent to call `greenix_check_zip_serviceable_greenhl` and `greenix_search_customer_greenhl`; a
+`<slug>_check_zip_serviceable` on 145 prospects would be inventing an integration none of them has.
+The instruction survives in plain English, which is what the field is for.
+⚠️ **THREE COLLECT FIELDS WERE DROPPED RATHER THAN TRANSLATED.** "Pest Types" carries a
+pest-control meaning no other vertical has, and "Property Type"/"Business Type" are a
+residential-versus-commercial split that reads wrong for a hospital or a hotel. What survives is
+either platform chrome or genuinely derived from the prospect, so every entry reads correctly on all
+145 profiles. Same refusal as the ZIP3 guess and the fabricated accreditations.
+⚠️ **THE CONDITION LABELS ARE VERBATIM, UNEVEN SPACING INCLUDED** — `found= true` and
+`found = false`, one space before the equals on one and after it on the other. That is what the SE
+typed and what the product draws; tidying it is the replica drifting from the thing it replicates.
+Asserted, and the check fires.
+
+**`npm run audit:ai` gained 24 checks** covering the shape against the capture, the re-skin (no
+Greenix name, no real numbers, no MCP tool names, the 555 exchange, the prospect's own noun), each
+drawer's structure, the editable gate in both directions, and a **135-combination sweep of the
+six-row layout** asserting no connector inverts and that a tree WITHOUT a sub-row gets no
+sixth-row geometry at all (`rowAt` mutates the shared shift — the trap already recorded for the
+sub-bus). Five sabotages were verified to fire: tidying a condition label, restoring the voice copy,
+putting the phone row back, reintroducing an MCP name, and flattening the recursion.
+⚠️ **TWO OF THE NEW CHECKS FAILED ON CORRECT CODE FIRST — the fourteenth and fifteenth probe faults
+in this file.** Both asked `"edits" in x`, which is FALSE when the builder simply omits the key,
+i.e. exactly the read-only state they were written to confirm.
+⚠️ **AND THREE CHECKS HAD TO BE RE-AIMED, NOT LOOSENED.** Three existing ones pinned the SMS intent
+titles by grepping `AgentWorkflow.tsx`; the template moved to its own module, so they now BUILD the
+tree and read it, which is strictly stronger (a grep passes against `if (false && ...)`). The
+intent-count check went 8 -> 6 for the same reason. `audit:ai` also caught the template declaring
+its own copies of the four chrome names instead of importing them from `workflowChrome.ts`.
+
+**Verified in the browser**, at 1600px: 12 nodes on 6 rows at a uniform 168 pitch, 248px wide, a
+296 column pitch, every parent centred over its own children, trigger/stem/bus-centre all 962,
+whole tree fitting with no scroll. The Qualify drawer opens re-skinned ("Are you a new or existing
+Aptive homeowner?"), all fields editable; **Add appended an answer, Apply created a real node
+(12 -> 13) that survived a reload**, and the page's undo took it back to 12 and cleared the
+override. Cancel discarded a pending Add. The four other drawer kinds each match their capture.
+**Untouched and checked: the voice tree (12 nodes) and all three of its drawers, still entirely
+read-only, two trigger links, no rows.**
+
+#### Then: the measured palette, the dots, and the missing intent descriptions (9/17/2026)
+Three things reported against the first build, with a fresh capture attached
+(`reference/agent-workflow/sms-tree-v2.html`, which serialises its emotion CSS — so everything
+below is a real computed style rather than a screenshot reading):
+*"1. the boxes and pills are not the right color. 2. the background dots are too far apart and
+also make them lighter. 3. The Sales Inquiry and Need Support are missing their description,
+which should match what's in the box when clicked."*
+
+⚠️⚠️ **A NODE IS TINTED BY ITS ACTION, AND `tone` COULD NOT EXPRESS THAT.** The product's whole
+system is one hue per action: the card is that hue at **8%** with a **5px solid LEFT edge** at
+full strength and **no other border**, the glyph sits in a **26px box of the same hue at 12%**,
+and the action text and glyph take a **dark ink** of it. `tone` is one word for a whole card and
+carries no ink, so `TreePath.actionKind` / `TreeLeaf.actionKind` were added (opt-in) and the
+three `.wf-act-*` rules read them:
+| action | hue (8% fill + 5px edge) | icon box (12%) | text + glyph ink |
+|---|---|---|---|
+| Qualify | `#D0C1F2` | `rgba(208,193,242,.12)` | `#440066` |
+| Inform | `#2666F9` | `rgba(38,102,249,.12)` | `#11228C` |
+| Support & Escalate | `#FF7045` | `rgba(255,112,69,.12)` | `#B33B00` |
+
+Those inks are the platform's own — `#440066` and `#B33B00` already appear on the Integrations
+badges and `.wf-leaf-orange`. ⚠️ **AND `Inform` IS BLUE HERE, NOT THE TEAL** the Create Workflow
+note recorded for "Inform & Route" on the voice page; a different action with a different colour,
+so both notes stand.
+
+Other measured corrections to the card: radius **6** not 8, border **`#E7E9EB`** not `#d9dee4`,
+padding **12** not `10px 14px`, and **no shadow at all** — the real cards are flat and separated
+by their border alone. Conversation Start is **`#D4E0FE`**, the platform's titan blue-10. The chip
+is **12px on `#E7E9EB` at radius 100px with no border**, where ours was 11px white-on-green — so
+every pill had been tinted to the old green leaf. Connectors are **1px**, take **the colour of
+the node they point at** (neutral `#D0D3D8` into the two intents, the action hue below that), and
+each ends in a closed **arrowhead**.
+
+⚠️⚠️ **ALL OF IT IS SCOPED TO `.wf-v2`, BECAUSE `.wf-node`, `.wf-chip` AND `.wf-leaf-*` ARE
+SHARED.** The voice tree and seven authored extra workflows draw those same classes; restyling
+them for a change asked about the built-in SMS diagram is what cost this repo 79 `.cd-*` rules
+once already. `audit:ai` pins the shared rules as unchanged, and that check fires.
+⚠️ **ARROWHEADS HAD TO BE OPT-IN IN THE COMPONENT, NOT JUST IN CSS.** `marker-end` is an
+ATTRIBUTE, so no stylesheet scope can keep it off another diagram — `lineFor(kind, arrows)` gates
+it, and without that the voice tree and all seven extras grew arrowheads. Caught by measuring the
+voice tree after the change, not by reading the diff.
+
+⚠️ **THE DOTS WERE BOTH TOO COARSE AND TOO HEAVY, AND THE FIX IS ONE MEASUREMENT.** react-flow
+draws its grid as `<pattern width={gap*zoom}><circle r={size*zoom/2}>`; the capture is at zoom
+0.5 with `width=8` and `r=0.25`, so the authored values are a **16px gap** and a **1px dot** in
+**`#91919A`**. Ours was a 20px gap with a **1.1px RADIUS** — a 2.2px dot, nearly three times the
+area — which is what read as coarse and heavy even in a paler grey. The finer, tighter grid is
+simultaneously closer together and visually lighter, which is the whole of the report.
+⚠️ **NOT SCOPED:** the canvas is shared chrome and was wrong on every workflow page, so this
+fixes the voice diagram and the extra workflows too.
+
+⚠️ **THE INTENT DESCRIPTION IS THE DRAWER'S OWN STRING, CLAMPED IN CSS.** 16px/400 at the title's
+ink (not a muted grey), **flush left** — measured: the description's left edge and the title
+icon's are both the card's own 12px padding, where ours indented 24px to clear the icon — and
+`-webkit-line-clamp: 2`, which is where the "..." comes from. Clamped rather than cut in the data
+because the FULL text is what the Intent Details drawer renders and what the agent's prompt is
+built from; truncating the string would have shortened all three at once. `audit:ai` asserts the
+node's subtitle IS the drawer's `looksLike`, so the two cannot drift.
+
+**`audit:ai` gained 14 more checks** for the palette, the dots, the description and the
+shared-class non-regression. Three sabotages were verified to fire: restyling the shared
+`.wf-node`, coarsening the dots, and dropping the intent subtitle.
+**Verified in the browser** on Aptive and Orlando Health: every measured value matches
+(8%/12%/edge/ink per action, chip, card, start, 1px target-coloured connectors with arrowheads on
+exactly the 11 drops the capture has, 16px/1px/#91919A dots), and the intents carry their
+re-skinned description. **Untouched and checked: the voice tree** (8px radius, its own shadow,
+14px titles, 11px chips, 2px grey lines, **zero** arrowheads, no `.wf-v2`) **and Orlando Health's
+authored ER workflow** (10 nodes, 0 action tints, 0 markers).
+
+⚠️ **A PRE-EXISTING FAIL-OPEN NOTICED WHILE TESTING, NOT FIXED AND NOT MINE:** opening an extra
+workflow's URL whose slug no longer resolves — a generated quote-request workflow whose 7-day
+capture has expired, say — falls through to the BUILT-IN SMS workflow rather than the
+"Workflow not found" state a created workflow's unknown id gets. The heading does say
+"<Prospect> - SMS", so it is not claiming to be the missing workflow, but the route is
+fail-open where the created-workflow route is fail-closed.
+
+##### And two bugs the palette pass left behind (9/17/2026)
+⚠️⚠️ **THE LAST ROW MUST NOT BE LEVELLED, AND THE CAPTURE OVERRULES THE 9/8 SYMMETRY FIX FOR IT.**
+Reported: *"the boxes should not be all sizes, they change based on the number of pills row. so in
+this example there isnt any pills so it should be shorter."* Measured on the real bottom row:
+**152 / 152 / 176 / 78** — every node sizes to its own content, `found = false` has no pills and
+is less than half its neighbours, and even the three five-chip nodes differ because their chips
+wrap to different numbers of rows. Ours levelled the row to its tallest and gave that node
+**206px of mostly empty card**.
+
+The 9/8 rule still stands for every row ABOVE: a row's bottom is where the next row's stems start,
+so siblings hanging off one bus must share a baseline or their connectors cannot be equal.
+**Nothing hangs below the last row**, so levelling it buys nothing and costs the shape — and the
+capture agrees twice over, because its upper rows are equal-height anyway (their content is
+equal). `levelRow` takes a `level` flag, `lastRow` is computed from the tree's own depth rather
+than named, and the skip is **scoped to `v2`** so the voice tree's six use cases still sit at one
+height (verified: all six still 162 with `min-height` applied).
+
+⚠️⚠️ **A NEW ANSWER INHERITS ITS SIBLINGS' ACTION.** Reported: an answer added in the "All Sales
+Inquiry Users" **Qualify** drawer came out reading **Inform**, white and untinted. Both halves had
+one cause — Apply's default for a brand-new node was a hardcoded `{ action: "Inform" }` with **no
+`actionKind`**, and the tint is keyed on the kind, so the card lost its colour as well as its
+label. Siblings are the right source because they are peers under one question: the answers of a
+Qualify are Qualifies and the answers of one of THOSE are Informs, which is exactly the shape the
+capture draws. Falls back to Inform only when there is no sibling to copy.
+
+⚠️ **AND `repairSmsSegments` FIXES THE ONES ALREADY STORED, AT READ TIME.** The override store is
+per demo and syncs to the shared record, so a node written by the old code can reach a colleague's
+browser where no migration ever ran — the same argument `toSteps` and the marketing-source rename
+already make. A stale node is identified by the **absence of `actionKind`**, which is reliable
+because the template has always set it, so the only way one reaches the store without it is the
+old Apply path. It copies the first configured sibling, falls back to the action's own wording when
+there is none, and **returns the same object when nothing needs repairing** so it never costs a
+re-render. It also self-heals: the drawer reads the effective tree, so the next Apply writes the
+corrected action back. Verified on the reported nodes — two `Test` answers stored as `Inform` with
+no kind now render **Qualify** in lilac with the 5px `#D0C1F2` edge.
+
+**`audit:ai` gained 7 checks** here (45 for this feature): the level flag and its v2 scope, the
+computed `lastRow`, Apply's sibling inheritance, and `repairSmsSegments` against a real stale
+shape, a lone stale node, and a clean tree (identity). Three sabotages verified to fire: levelling
+the last row again, hardcoding a new answer's action, and making the repair copy a clean tree.
+**Verified in the browser:** the bottom row measures 206 / 206 / 206 / **76**, a new answer added
+under "New Homeowner, No" comes out **Inform** and 76px rather than levelled to its neighbours'
+206, and the voice tree's last row is still levelled.
+
+##### Drag the whitespace to move the diagram (9/17/2026)
+Asked for directly: *"give the user the ability to click on any white space in the workflow box
+and move the diagram around."* The real page does this and says so — measured in
+`sms-tree-v2.html`, its pane carries `cursor: grab` (`.react-flow__pane.draggable`).
+
+⚠️⚠️ **IT IS A FREE PAN ON ITS OWN TRANSFORM — AND THE FIRST VERSION, WHICH MOVED THE SCROLL
+OFFSET, WAS WRONG IN A WAY ONLY A SCREEN RECORDING SHOWED.** Scrolling works and clamps for free,
+but it can only ever travel INSIDE the content: you can never leave empty canvas on one side while
+the diagram runs off the other. The user's video does exactly that — the tree dragged right until
+its left half is bare canvas and Need Support is clipped off the right edge — so the real thing is
+unbounded, and "it clamps for free" was a feature of the wrong mechanism rather than a property of
+the real page.
+
+The pan is now `translate(var(--wf-px), var(--wf-py))` on **`.wf-fit`**, composed with — not
+replacing — the fit SCALE on `.wf-tree` inside it. Two elements, two transforms, so the drag has no
+limits and the scale the zoom buttons own is untouched. ⚠️ **AND THE ZOOM ANCHOR HAD TO LEARN ABOUT
+IT:** `zoomTo` works out the focal content point from the scroll offset, so without subtracting the
+pan, zooming after a drag snapped the diagram back by the pan distance and the node under the
+cursor slid away — the exact thing that anchor exists to prevent. Measured after the fix: 3px of
+drift across a zoom step, which is rounding.
+⚠️ **A CLAIM IN THE FIRST VERSION OF THIS NOTE WAS SIMPLY FALSE:** it said the wheel already
+scrolled this box, so a drag and a two-finger scroll would agree. The wheel is intercepted by
+`useFitScale` with a non-passive listener and `preventDefault` to ZOOM; it has never scrolled.
+
+⚠️⚠️ **WHITESPACE ONLY, WHICH IS WHAT KEEPS THE NODES CLICKABLE.** A pointerdown on a node, the
+zoom cluster or the minimap returns immediately, so opening a drawer is still one click and a drag
+can never swallow it. And because the pointer is CAPTURED from the start, a drag that begins on
+whitespace and ends over a node fires no click on that node either. Verified both ways: dragging
+from a node leaves the scroll offset untouched, and clicking one still opens its drawer.
+
+⚠️ **TOUCH IS LEFT TO THE BROWSER.** Handling it here as well as natively would move the diagram
+twice per gesture, so `pointerType === "touch"` bails and `touch-action` is deliberately not set.
+⚠️ **THE CLASS IS TOGGLED IMPERATIVELY**, not held in state: a `setState` per drag start would
+re-render the whole tree mid-gesture for the sake of one cursor.
+⚠️ **`setPointerCapture` IS IN A `try`.** It throws if the pointer is no longer active by the time
+the handler runs, and a pan that can throw would take the diagram down with it; without the
+capture the drag still works while the cursor stays inside the box, so failing there degrades
+rather than breaks.
+
+⚠️ **NOT SCOPED TO ONE TREE, and that is deliberate.** The canvas is shared chrome and the real
+product pans on every workflow page, so the voice diagram and the seven authored extra workflows
+get it too. It changes no layout and no colour — only the cursor — so it is additive rather than a
+restyle. Verified panning on both the SMS and the voice canvas.
+⚠️⚠️ **NO SCROLLBARS — asked for explicitly, and nothing was lost by hiding them.** `.wf-scroll`
+is `overflow: hidden` now. The bars had looked like the only thing advertising that the diagram
+runs past its frame, which is why the first version kept them; the drag replaces that, and the
+wheel was never scrolling in the first place (see above), so they were serving nothing but their
+own affordance. ⚠️ **AN `overflow: hidden` BOX IS STILL SCROLLABLE FROM SCRIPT**, which is what
+keeps the zoom anchor and Fit to view working unchanged — verified: setting `scrollLeft` reads
+back, and a fit still centres to the computed midpoint (158 of 158 on a 720px frame).
+⚠️ **THE DOTS TRAVEL WITH THE DIAGRAM.** They moved from `.wf-canvas` to `.wf-scroll`, where the
+pan variables live, and its `background-position` reads them — which is what react-flow does with
+its own pattern (`patternTransform=translate(-5,-5)` in the capture, the pan modulo the 8px gap).
+⚠️ **"Fit to view" CLEARS THE PAN**, and it is the only way back once the diagram has been pushed
+clean off the edge — which a free pan deliberately allows.
+⚠️ A node dragged under the zoom cluster is occluded by it, as on the real page, which lets those
+controls overlay the canvas corner. That is not a hit-testing failure; it cost one wrong diagnosis
+while verifying, because `elementFromPoint` returns the button rather than the node there.
+
+**`audit:ai` gained 13 checks**: the grab/grabbing cursors, selection suppressed only while
+panning, the node/control exemption, the touch bail, the primary-button test, the guarded capture,
+the imperative class, the unbounded pan, the fit scale still owning `.wf-tree`, the translate on
+`.wf-fit`, `overflow: hidden`, the dots reading the pan, the zoom anchor subtracting it, and Fit to
+view clearing it. ⚠️ **ONE EXISTING CHECK HAD TO BE RE-AIMED AND IT CAUGHT ITSELF:** it pinned the
+pan to `scrollLeft`, so it went red the moment the mechanism changed — which is the check doing its
+job, but the INVARIANT it asserted was the wrong one, because the video disproved the mechanism
+rather than the code drifting from it.
+**Verified with real drags at 1200px**: a drag of +221/+120 pushed the diagram right and down with
+bare canvas behind it and the dot grid travelling with it (`background-position: 221px 120px`)
+while the scroll offsets stayed 0 — something the old scroll-based pan could not do at all. No
+scrollbar on either canvas (0px gutter). A real click on a panned node still opened its own drawer,
+dragging FROM a node still changed nothing, zooming after a drag held its focal point to 3px, and
+Fit to view returned the pan and the dots to 0. **The voice canvas pans too and is otherwise
+untouched** — 12 nodes, 8px radius, 2px strokes, no arrowheads, no `.wf-v2`.
+
+##### The node's Action and the drawer's Action are one answer (9/17/2026)
+Reported against a node reading Inform whose drawer had Qualify selected: *"the 'Action' in this
+example Qualify, it should match the action in the context drawer."* Reproduced exactly before
+changing anything — **all eight template nodes agreed, and the two the SE had ADDED (`Test`,
+`Test 2`) read Qualify on the card and Inform in the drawer.**
+
+⚠️⚠️ **CAUSE: `smsDrawerFor` HAD TWO SOURCES OF TRUTH FOR ONE FACT.** The template's nodes are
+listed in the `SMS_QUALIFY` / `SMS_INFORM` id tables, and any id absent from both fell through to
+a fallback that **hardcoded `action: "inform"`** — so an added node's colour came from its own
+`actionKind` (the tint, fixed the day before) while its drawer came from a constant. The fallback
+now RESOLVES THE NODE FROM THE TREE and takes `node.actionKind`, falling back to the wording of
+its own `action` string, so the card and the drawer read the same field and cannot disagree. The
+id tables survive only as the fast path for the eight template nodes.
+⚠️ **AN ADDED QUALIFY'S ANSWERS ARE ITS OWN CHILDREN**, at `branches.B.leaves.L.paths.P.paths`
+derived from the id, so `Add` works there too rather than being a dead control. A **sub** node
+gets no segments path at all: it is the last row the diagram draws, so a child would be stored
+and never rendered.
+
+⚠️⚠️ **THE STORED-FIELD RULE THIS COST, AND IT IS GENERAL RATHER THAN ABOUT THIS SCREEN: A NEW
+FIELD MUST SIT AT A PATH WHOSE PARENTS ALREADY EXIST IN THE STORED OVERRIDE, OR WRITES TO IT ARE
+SILENTLY LOST.** `setByPath` refuses a missing INTERMEDIATE key (`if (!(k in cur)) return source`)
+and only ever creates the LAST segment, and `applyEdits` operates on the STORED override rather
+than the merged base. So `sms.extra.<nodeId>__question` wrote nothing on any demo whose override
+already had `sms` but no `sms.extra` — **Apply reported success, the drawer closed, and the text
+was gone on reload.** Flattened to `sms.extra__<nodeId>__<field>`, one level under a key that
+always exists; `SmsConfig` types it as ``[extra: `extra__${string}`]: string | undefined``. There
+is deliberately **no nested `extra` map** to walk into, and `audit:ai` asserts one is not
+reintroduced.
+⚠️ **AND READING IT MUST TOLERATE AN OVERRIDE SAVED BEFORE THE FIELD EXISTED.** Without the base
+spread under the stored config, one click on an added segment threw
+`Cannot read properties of undefined` — and because `DashboardBoundary` catches the render, the
+error tore down the whole diagram, so **EVERY node stopped opening**, not just that one. The
+drawer is handed `{ ...smsBase, ...(tree.sms ?? {}) }`.
+
+**`audit:ai` gained 6 checks** (51 for this feature): every node's drawer describes that node's
+own action INCLUDING an added one, an added Qualify's Add writes its own children, its text
+writes to a flat key, no nested `extra` map exists, `editGuard` allows the first write, and the
+base is spread under the stored config. ⚠️ Each was broken on purpose and seen to fire — and
+**one EXISTING check had to be re-aimed rather than loosened**: it asserted a READ-ONLY DRAWER for
+an id naming no node, which was the old fallback's behaviour, where the drawer now opens NOTHING
+at all. That is the stronger outcome and the one its own failure message already allowed; the
+invariant was never "a drawer appears", it is "no node borrows another node's write paths", and
+the re-aimed check was verified to still catch a borrowed path.
+
+**Verified in the browser:** all ten nodes now agree, an added node's question and fallback
+survive a reload, the page's undo removes them, and the SE's own `Test` / `Test 2` nodes are
+intact and reading Qualify on both the card and the drawer.
+##### The Action dropdown is real, and its five actions are five different drawers (9/17/2026)
+Asked for with five captures attached, one per option: *"These are all the actions, that the user
+can select from the drop down. Create these."* They are **Schedule Callback, Qualify, Inform,
+Inform & Route, Support & Escalate** — and they are not five labels over one shape.
+
+⚠️⚠️ **PROVENANCE, AND IT IS SPLIT: THE SHAPES ARE MEASURED, THE LIST IS A SCREENSHOT.** All five
+captures (`reference/agent-workflow/sms-action-*.html`) saved with the combobox **closed**
+(`aria-expanded=false` in every one), so no listbox markup exists anywhere and the option set and
+its ORDER come from the screenshot alone. The popup's geometry is that screenshot plus this app's
+own already-measured combobox popup (options 32 tall at `6px 16px`, 16/400, paper radius 3, the
+MUI shadow). Flagged rather than presented as measured, exactly as the Create Workflow channel
+combobox already is. What the captures DO give, verbatim, is each action's drawer:
+
+| action | prompt box | destination | Signal | What To Collect |
+|---|---|---|---|---|
+| **Schedule Callback** | **none at all** | none | **a FIXED chip, `SMS Scheduled Callback`, no "(optional)"** | yes, seeded **Consumer Name** |
+| **Qualify** | "What question…to qualify?" | none | **none** | **none** |
+| Inform | "How should the agent inform users?" | none | optional | yes |
+| **Inform & Route** | "…inform and route users?" | **"Where should the agent send users?"** | optional | yes |
+| Support & Escalate | "…handle escalation requests?" | "Where should the agent escalate unresolved users?" | optional | yes |
+
+⚠️⚠️ **QUALIFY IS THE ONLY ONE WITH NO SIGNAL AND NO WHAT-TO-COLLECT**, which reads as an
+omission until you see why: it is the BRANCHING action and the other four are terminal. And
+**Schedule Callback's Signal is not a field** — measured as a filled MUI info chip (20px tall,
+radius 100px, blue-100 `#11228c` on blue-20 `#b0cdff`, 12/16), because that action always fires
+that one signal, so there is nothing to choose. A `Record<ActionKind, string>` for the prompt
+would have forced a label to be invented for it, so the type is
+`Record<Exclude<ActionKind, "callback">, string>` and `actionCopy` returns `prompt: null`.
+
+⚠️⚠️ **CHANGING THE ACTION RESETS THAT ACTION'S FIELDS, AND THAT IS MEASURED RATHER THAN CHOSEN.**
+The same node, same Inform action, showed **eleven** collect fields when its drawer was opened
+fresh and **zero** once the combobox had been switched, with the instruction box back to its
+placeholder. So `collectOnSwitch` is a SEPARATE question from `COLLECT_FOR`: the latter is what
+our template configures per action (it drives the diagram's pills), the former is the product's
+default for a just-changed action — empty for four of them, Consumer Name for the callback.
+Conflating the two would make a switch to Inform silently inherit the template's zip+name list.
+⚠️ **IT DOES NOT RESTORE ON SWITCHING BACK**, which is also measured (Inform was the original
+action and still came back empty). Everything lives in the DRAFT, so Cancel is the way back and a
+mis-click costs nothing — verified: three switches then Cancel left the node exactly as it was.
+
+⚠️⚠️ **THE TINTS ARE DERIVED FROM THE PALETTE, NOT INVENTED — the capture's own titan variables
+close the system.** Every measured ink is its hue's `-100` token: Qualify purple-20 `#d0c1f2` /
+purple-100 `#440066`, Inform blue-50 `#2666f9` / blue-100 `#11228c`, Escalate orange-50 `#ff7045`
+/ orange-100 `#b33b00`. So Inform & Route is **teal-40 `#33e5c9` / teal-100 `#007e73`** — and
+`#33e5c9` is exactly what the Create Workflow capture independently measured for that action, two
+signals agreeing — and Schedule Callback is **green-50 `#2cbf58` / green-100 `#0d5400`**, which is
+also the green this repo already draws for a scheduling leaf.
+⚠️ **NO CAPTURE SHOWS A NODE CARRYING EITHER NEW ACTION**, because the dropdown was never applied
+in any of the five. The 8% / 12% / 5px treatment is measured; only the hue is placed by the
+palette. Replace if a capture ever shows such a card.
+⚠️ `actClass` **lowercases** now, so `informRoute` yields `.wf-act-informroute` rather than a
+camelCase selector nobody would grep for. A no-op for the three kinds that predate it.
+
+#### Three things that would each have shipped a silent defect
+⚠️⚠️ **1. THE ID TABLES SHADOWED THE NODE, AND IT WAS THIS MORNING'S BUG THROUGH A NEW DOOR.**
+Caught in the browser on the first working Apply: `sub-0-0-0-0` is listed in `SMS_INFORM`, whose
+fast path hardcoded `action: "inform"` — so a node switched to Schedule Callback **drew correctly
+and reopened as Inform**. The tables now stand down when the node no longer carries the action
+they were written for (`kindOfNode` outranks every one of them), and such a node falls through to
+the generic branch, where its text lives in the flat `extra__` keys. That is right rather than a
+compromise: `sms.inform.serviceableYes` is the wrong slot for an action with no instruction text
+at all. **Four audit checks catch this regression.**
+⚠️⚠️ **2. A LOCKED NODE MUST GET NO PICKER, AND THE GUARD COULD NOT HAVE STOPPED IT.**
+`editGuard.LOCKED_KEYS` matches a path ending in `.action`, but the action writes the containing
+ARRAY — so a locked leaf's action would have sailed straight past it. `actionSlotFor` refuses a
+node with `locked: true`, so there is no slot, no picker and no write, and the two chrome leaves
+keep the read-only combobox they were signed off with. Verified: "All Sales Inquiry Users" and
+"All Support Users" show a static combobox, a configurable node shows the picker. **Do not add
+another writer for a node's action without repeating that test.**
+⚠️⚠️ **3. THE WRITE REUSES THE ONE SHAPE ALREADY PROVEN HERE.** `edits.segments` has written
+`…paths` as a whole array of NODES since this drawer shipped, so the action change writes the
+containing array with the node spread and replaced. A per-field path like `…paths.2.action` sits
+one level deeper than anything the stored override is known to contain, and `setByPath` refuses a
+missing intermediate key **silently** — this morning's `sms.extra.*` bug wearing a different hat.
+Spreading also keeps the node's title, its lock and its own children by construction.
+⚠️ **A BLANK ANSWER IS NO LONGER WRITTEN AS A NODE.** Switching to Qualify shows two empty answer
+rows, as the capture does; without filtering them at Apply, browsing the dropdown would leave
+empty boxes on the diagram. It also fixes the pre-existing case of `Add` then Apply with nothing
+typed.
+⚠️ **CONSEQUENCE, STATED AND NOT MEASURED: switching a Qualify away from Qualify keeps its
+children.** The product very likely drops them, but no capture shows it, and silently destroying a
+configured subtree because somebody browsed a dropdown is the worse failure — the same stance
+"delete a tile HIDES it" already takes. The diagram will draw those children under a terminal
+action until this is settled by a capture.
+
+**`audit:ai` gained 22 checks** (73 for this feature): the five options and their order, each
+label, each new Description verbatim, Inform & Route's SMS prompt, callback having no prompt and
+no destination, its fixed chip and its seeded collect, the other four seeding none, the two
+destination wordings being distinct while plain Inform has none, a node's action text being the
+same VALUE as its drawer label for all five, a switched template node opening its own drawer, the
+wording fallback not swallowing "Inform & Route" into inform, a locked node getting no slot, a
+configurable node's slot resolving to its own position, the write going through the array, the
+picker being gated on having somewhere to write, the voice tables staying keyed on the three voice
+kinds, both tints being scoped titan values, the lowercased class, and all five captures being in
+the repo. ⚠️ Five were broken on purpose and each fired — restoring the table shadowing (4 red),
+un-gating the lock, reordering the list, emptying the callback collect, and merging the two
+destination strings.
+
+##### Every field in an action drawer is editable, and the dropdown is on all of them (9/17/2026)
+Asked for with **both LOCKED chrome drawers selected**: *"you need to add the drop and the screen
+to any action context drawer, any time its a action drawer with that drop it should have those
+screen and options, and make sure all those fields in the drawer is edititable as well."*
+
+⚠️⚠️ **THIS DELIBERATELY RELAXES THE LOCK, AND ONLY FOR THE ACTION.** The build an hour earlier
+refused a `locked` node a picker, on the strength of the standing rule that the four chrome boxes
+cannot be edited. That rule is about their **NAMES** — which is what was actually reported in
+August, against the box titles — and `editGuard` still refuses `.title` and `.subtitle` on them.
+Their ACTION is configuration, and on this instruction it is the SE's to change. **Consequence,
+stated: `editGuard.LOCKED_KEYS` covers `.action` and cannot see this write**, because it matches a
+path ending in `.action` while the write is the containing ARRAY — so that half of the lock now
+lives in `actionSlotFor` rather than in the guard. The audit check written an hour before this was
+**re-aimed rather than deleted**: it now asserts the picker IS offered on a locked leaf and that
+the leaf's name is still refused, so both halves stay watched.
+
+⚠️⚠️ **THE DESTINATION IS A TEXT INPUT, AND WE HAD INVENTED A COMBOBOX FOR IT.** The table above
+said "an empty combobox" and we rendered `Select a destination...`. The markup says otherwise in
+**both** the original capture and all five Action ones: `<input name=destination type=text>`,
+disabled in the configured captures and enabled in the switched ones, carrying
+`e.g. https://yourwebsite.com/support or +1-800-555-0100` (and `…/signup…` for Inform & Route).
+A URL or a phone number is what you type rather than pick, which is also what makes sense of the
+placeholder. Corrected, with the placeholders measured per action.
+
+**The other two were real autocompletes whose option lists are not in any capture** — both saved
+closed (`signal-select`, `addInfoField-select`) — so they come from the PROSPECT, the way
+everything else on this page is derived:
+| field | options |
+|---|---|
+| Signal | that prospect's **own signals**, off the Signal Manager list (Aptive: 10). A prospect with no `signalManager` slice offers **none** rather than an invented set, and the list says "Nothing to choose from" rather than rendering an empty box |
+| Add Info Field | the SMS **collect pool**, plus `Consumer Name` — which is not in the pool (that splits first and last) but IS what the Schedule Callback capture shows seeded, with its own help text |
+
+⚠️⚠️ **THE COLLECT LIST *IS* THE NODE'S `chips`, AND THE FIRST BUILD GOT THIS WRONG IN THE WAY
+THIS FILE ALREADY WARNS ABOUT.** Stored under its own `extra__…__collect` key it worked in the
+drawer and **the diagram's pills did not move** — two sources for one fact, exactly "a node
+advertising collecting one thing while its drawer's What To Collect said another". `chips` is
+already what the diagram draws and already exempt from the array-length rule, so it is now what
+the drawer reads and writes too, through the same `actionSlot` array write the action uses. One
+value, one place; the `editGuard` pattern added for the retired key was **reverted rather than
+left as a dead rule**, and the audit fails if either comes back.
+⚠️ **EACH CHIP'S × IS A REAL BUTTON NOW.** It was drawn from the start and did nothing — the
+dead-control shape this repo keeps paying for. An already-added field is also not offered again,
+since the same field twice on one node is not a state the product can mean.
+
+⚠️ **ONE `Combo` COMPONENT SERVES ALL THREE PICKERS**, because all three are the same MUI
+autocomplete in the capture and three copies would drift on the first fix. One `openCombo` id
+rather than three booleans, so opening one list closes the others — and **all three close on
+pick**, which the signal one did not until a browser test caught it leaving its list open.
+⚠️ Switching the action resets the destination, the signal AND the collect list with the rest,
+since all three are that action's configuration.
+
+**`audit:ai` gained 18 checks** (91 for this feature): both destination placeholders, the invented
+combobox being gone, each of the three having somewhere to write on a flat key whose parent
+exists, the signal options being the prospect's own and empty for a prospect with none, the
+collect list writing the node's chips, no dead guard pattern, a template node keeping its
+configured fields and help text, the × being real, no duplicate offer, `Consumer Name` being
+offered, one `Combo`, every picker closing on pick, and one open-picker id.
+⚠️ Five were broken on purpose and each fired: storing collect apart from the pills, inventing
+signal options, making the × decorative, allowing a duplicate, and nesting the destination path.
+⚠️⚠️ **AND ONE NEW CHECK FAILED ON CORRECT CODE — the fourteenth probe fault here.** It forbade
+`Select a destination...` and reddened on **its own comment** recording the correction. `readCode`
+now strips comments before matching, the same fix `audit:place` and the vendor scan already carry.
+
+**Verified in the browser with real interaction**: both of the selected locked drawers now show
+the picker with **zero inert comboboxes** — "All Sales Inquiry Users" with all five inputs
+editable, "All Support Users" with three pickers and a real destination input carrying its
+measured placeholder. On the support leaf: the signal list offered Aptive's own 10, the info list
+offered 9 then **8** (the added one filtered out), the destination took typed text, Apply moved
+the **node's pills** to match, and all of it **survived a reload**; the × removed a field and
+Apply took the pills with it; the page's undo walked every step back to the template with **no
+leftover keys**. The template's own Inform drawer still renders its 8 configured fields with their
+help lines and its configured instruction text, with the node's pills still capped at 4 + `...`.
+**Untouched and checked: the voice drawers** — 0 pickers, every combobox static, every input
+read-only, no chip ×.
+
+**Verified in the browser with real clicks**, at 1446px on Aptive: the list opens with all five in
+order at 32px/`6px 16px`/16px with Inform marked selected, a second click on the trigger CLOSES it
+(the capture-phase handler doing its job), picking Schedule Callback rerenders the drawer to its
+measured shape (zero textareas, `Signal` with no "(optional)", the chip at 20px/100px in
+`#b0cdff`/`#11228c`, Consumer Name prefilled), and Apply turned "Serviceable=true" green
+(`5px solid rgb(44,191,88)`, 8% ground, `rgb(13,84,0)` ink) with its chips reset to Consumer Name.
+It **survived a reload and reopened as Schedule Callback**, the page's undo restored it to Inform
+with all four chips and the `...` cap, and Cancel discarded three switches. The other three shapes
+each render their own measured fields. **Untouched and checked: the voice tree** — 12 nodes, no
+`.wf-v2`, no arrowheads, **no picker on any drawer**, and its voice-only phone row still reading
+"What phone number should unresolved callers be transferred to?".
+
 ### ⚠️ THE SMS WORKFLOW'S FOUR NODE NAMES ARE FIXED, AND LOCKED (8/24/2026)
 The real Invoca page does not let a user rename them, so the template must not either. They
 are always **"Triggered by"**, **"Conversation Start"**, **"Sales Inquiry"** and
-**"Need Support"** for every prospect, plus the support leaf **"All Support Users"** and the
-trigger line **"0 Campaigns, 0 Forms, and 0 Inbound SMS"**.
+**"Need Support"** for every prospect, plus the support leaf **"All Support Users"**.
+❌ **THE TRIGGER LINE THIS SECTION PINNED IS SUPERSEDED (9/17/2026).** It read "0 Campaigns, 0
+Forms, and 0 Inbound SMS", which is right for a workflow nobody has wired and is still what
+`ZERO_TRIGGER` gives a CREATED one. The built-in template now carries the captured line for a LIVE
+SMS workflow — **"0 Campaigns, 2 Forms, and 1 Inbound SMS"** (`SMS_TRIGGER`). See the section
+above. The four NODE NAMES are unchanged and still locked.
 
 ⚠️ **TWO OF THE FOUR WERE NEVER AT RISK** — "Triggered by" and "Conversation Start" are
 literals in `WorkflowTree.tsx`. The INTENT names were being derived from each prospect's own
