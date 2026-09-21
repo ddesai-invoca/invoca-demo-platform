@@ -55,6 +55,12 @@ interface Ctx {
   me: DemoCreator | null;
   /** Project admin: may edit and delete every demo, not only their own. */
   admin: boolean;
+  /** A one-time "you're now an admin" notice, true until this person dismisses it.
+   *  See engine/adminNotices.ts — the server decides who is owed one and when it
+   *  has been seen, the same "server decides, client just renders" split as `admin`
+   *  itself. */
+  adminNotice: boolean;
+  dismissAdminNotice: () => Promise<void>;
   demos: DemoSummary[];
   loading: boolean;
   available: boolean;
@@ -120,17 +126,19 @@ async function api<T>(path: string, init?: RequestInit): Promise<T | null> {
 export function DemoLibraryProvider({ children }: { children: ReactNode }) {
   const [me, setMe] = useState<DemoCreator | null>(null);
   const [admin, setAdmin] = useState(false);
+  const [adminNotice, setAdminNotice] = useState(false);
   const [demos, setDemos] = useState<DemoSummary[]>([]);
   const [loading, setLoading] = useState(true);
   const [available, setAvailable] = useState(true);
 
   const refresh = useCallback(async () => {
-    const data = await api<{ demos: DemoSummary[]; user: DemoCreator; admin?: boolean }>("/api/demos");
+    const data = await api<{ demos: DemoSummary[]; user: DemoCreator; admin?: boolean; adminNotice?: boolean }>("/api/demos");
     if (!data) { setAvailable(false); setLoading(false); return; }
     setAvailable(true);
     setDemos(data.demos ?? []);
     if (data.user) setMe(data.user);
     setAdmin(!!data.admin);
+    setAdminNotice(!!data.adminNotice);
     setLoading(false);
   }, []);
 
@@ -161,6 +169,17 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
   );
 
   const openDemo = useCallback((id: string) => api<LoadedDemo>(`/api/demos/${id}`), []);
+
+  /* ⚠️ CLEARED LOCALLY BEFORE THE REQUEST RESOLVES. The popup's own "Got it" click is
+     the one moment nobody wants a network hiccup to leave the modal stuck on screen —
+     dismissal is a one-way, idempotent fact from here on regardless of whether the ack
+     reaches the server this second or on a retry. `api()`'s own retry-on-GET rule does
+     not cover this POST, which is fine: worst case a slow ack means the notice can come
+     back once on a reload, never that it fails to go away now. */
+  const dismissAdminNotice = useCallback(async () => {
+    setAdminNotice(false);
+    await fetch("/api/admin-notice/ack", { method: "POST" }).catch(() => { /* best effort */ });
+  }, []);
 
   const createDemo = useCallback(async (profile: unknown, customizations?: DemoCustomizations) => {
     const r = await api<{ demo: DemoSummary }>("/api/demos", { method: "POST", body: JSON.stringify({ profile, customizations }) });
@@ -233,7 +252,7 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
   }, [demos, profiles, openDemo, addProfile]);
 
   return (
-    <Ctx.Provider value={{ me, admin, demos, loading, available, refresh, isMine, canManage, openDemo, createDemo, duplicateDemo, deleteDemo, saveCustomizations }}>
+    <Ctx.Provider value={{ me, admin, adminNotice, dismissAdminNotice, demos, loading, available, refresh, isMine, canManage, openDemo, createDemo, duplicateDemo, deleteDemo, saveCustomizations }}>
       {children}
     </Ctx.Provider>
   );

@@ -4,7 +4,7 @@ import { useAiAssistant } from "./AiAssistantContext";
 import { SMS_AGENT_SCOPE_PATH } from "./smsBrain";
 import { treeToVoicePaths, VOICE_WORKFLOW_SCOPE_PATH } from "./voicePaths";
 import { emptyWorkflowGreeting } from "./workflowChrome";
-import { voiceSpecFor, specWithConfig, type VoiceAgentConfig , DEFAULT_ESCALATE_HANDLING } from "./voiceAgentSpec";
+import { voiceSpecFor, specWithConfig, type VoiceAgentConfig , DEFAULT_ESCALATE_HANDLING, DEFAULT_SUPPORT_INTENT } from "./voiceAgentSpec";
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import type { VoiceConversation, VoiceTurn } from "./schema";
 
@@ -214,6 +214,13 @@ export function useBrain(opts?: BrainOpts) {
        same reason the steps are: those replace the routing machinery rather than trimming it. */
     voiceEscalate: minimal || booking || !spec?.escalateHandling
       || spec.escalateHandling === DEFAULT_ESCALATE_HANDLING ? undefined : spec.escalateHandling,
+    /* ⚠️ THE SUPPORT INTENT, ON THE SAME RULE AS THE ESCALATION ABOVE: sent only when it
+       DIFFERS from what the drawer used to hardcode, so an agent nobody has edited emits the
+       exact prompt it did before these two fields existed. */
+    voiceSupportIntent: minimal || booking || !spec?.supportIntent
+      || spec.supportIntent === DEFAULT_SUPPORT_INTENT ? undefined : spec.supportIntent,
+    voiceSupportRules: minimal || booking || !spec?.supportRules?.length
+      ? undefined : spec.supportRules,
     /* Per-prospect routing for the voice prompt. Same source the workflow
        diagram uses (voiceRoutingDemo.queues), so the spoken call and the
        diagram name the same teams. Without this the prompt fell back to

@@ -161,6 +161,7 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
     /* The action is part of the draft, so switching it is discarded by Cancel like any edit. */
     action: ("action" in d ? d.action : "inform") as ActionKind,
     destination: ("destination" in d ? d.destination : "") ?? "",
+    phone: ("phone" in d ? d.phone : "") ?? "",
     signal: ("signal" in d ? d.signal : "") ?? "",
     collect: [...(("collect" in d ? d.collect : []) ?? [])].map((f) => f.name),
     question: ("question" in d ? d.question : "") ?? "",
@@ -194,7 +195,7 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
     setDraft((prev) => ({ ...prev, action: k, question: "", fallback: "", handling: "",
       /* The destination, the signal and the collect list are this action's configuration too,
          so they reset with the rest — measured, 11 collect fields to 0. */
-      destination: "", signal: "",
+      destination: "", signal: "", phone: "",
       collect: collectOnSwitch(k).map((f) => f.name),
       segments: k === "qualify" ? ["", ""] : [] }));
   };
@@ -241,7 +242,14 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
           ? draft.handling.split("\n").map((l) => l.trim()).filter(Boolean)
           : draft.handling });
     }
-    str("destination"); str("signal");
+    str("signal");
+    if (edits.phone && draft.phone !== initial.phone) {
+      out.push({ path: edits.phone, value: draft.phone });
+    }
+    /* ⚠️ THE DESTINATION GOES THROUGH THE NODE ON VOICE — see `destinationOnNode`. It is
+       handled with the action and the chips below, in the one containing-array write, so
+       three changes to one node cost one edit rather than three. */
+    if (!(d.kind === "action" && d.destinationOnNode)) str("destination");
     /* ⚠️ THE COLLECT LIST IS A LIST, so it is compared as one — and it is what the diagram's
        pills read, so a change here visibly resizes the node. */
 
@@ -288,7 +296,8 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
     if (d.kind === "action" && d.actionSlot) {
       const actionChanged = draft.action !== d.action;
       const collectChanged = JSON.stringify(draft.collect) !== JSON.stringify(initial.collect);
-      if (actionChanged || collectChanged) {
+      const routeChanged = !!d.destinationOnNode && draft.destination !== initial.destination;
+      if (actionChanged || collectChanged || routeChanged) {
         const { path, index, nodes } = d.actionSlot;
         out.push({
           path,
@@ -301,6 +310,12 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
                new action's defaults, so one assignment serves both cases — and an empty list
                removes the key rather than storing `[]`, because Qualify draws no pills at all. */
             if (draft.collect.length) next.chips = draft.collect; else delete next.chips;
+            /* ⚠️ THE CARD RENDERS `Route to <route>` INSTEAD OF the action, so clearing it has
+               to remove the key rather than store "" — an empty route would draw "Route to ". */
+            if (routeChanged) {
+              if (draft.destination.trim()) next.route = draft.destination.trim();
+              else delete next.route;
+            }
             return next;
           }),
         });
@@ -496,9 +511,18 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
                   {phone !== undefined && isVoiceKind(kind) ? (
                     <>
                       <label className="wnd-label wnd-label--info">
-                        {PHONE_PROMPT[kind as "inform" | "escalate"]}<InfoDot />
+                        {PHONE_PROMPT[kind as "informRoute" | "escalate"]}<InfoDot />
                       </label>
-                      <input className="wnd-input" readOnly value={phone} />
+                      {/* ⚠️ EDITABLE WHEN IT HAS A HOME (9/21/2026). It was unconditionally
+                          `readOnly` against a derived `demoPhone(...)`, so the one row on a
+                          voice action drawer that names a real destination could not be
+                          changed — a dead control beside four live ones. */}
+                      <input className="wnd-input"
+                        value={live && edits?.phone ? draft.phone : phone}
+                        placeholder={d.phonePlaceholder}
+                        readOnly={!(live && edits?.phone)}
+                        onChange={live && edits?.phone
+                          ? (e) => set("phone", e.target.value) : undefined} />
                     </>
                   ) : null}
                   {/* ⚠️⚠️ AN INPUT, NOT A PICKER — measured `<input name=destination type=text>`
@@ -509,8 +533,8 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
                       <label className="wnd-label wnd-label--info">{dest}<InfoDot /></label>
                       <input className="wnd-input" value={live ? draft.destination : (d.destination ?? "")}
                         placeholder={switched ? SMS_DESTINATION_PLACEHOLDER[kind] : d.destinationPlaceholder}
-                        readOnly={!(live && edits?.destination)}
-                        onChange={live && edits?.destination
+                        readOnly={!(live && (edits?.destination || d.destinationOnNode))}
+                        onChange={live && (edits?.destination || d.destinationOnNode)
                           ? (e) => set("destination", e.target.value) : undefined} />
                     </>
                   ) : null}

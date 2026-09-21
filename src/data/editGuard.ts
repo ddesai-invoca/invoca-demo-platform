@@ -81,7 +81,10 @@ const LENGTH_IS_CONTENT = [
      facility" are the whole feature, and a fixed length leaves it able to reword a step and
      unable to add one. Still scoped to `agent.` — a bare /steps$/ would widen rule 2 across
      any other screen that happens to hold a `steps` array. */
-  /^agent\.(rules|informSteps|serviceZips|steps)$/i,
+  /* ⚠️ `supportRules` JOINED THEM 9/21/2026, when the Need Support intent drawer stopped
+     being read-only. Its list starts EMPTY on every prospect, so "add a rule" there is both
+     an undefined -> array write (covered below) and a length change. */
+  /^agent\.(rules|supportRules|informSteps|serviceZips|steps)$/i,
   /* ⚠️ SCOPED TO `sms.` FOR THE SAME REASON `agent.` IS. The built-in SMS workflow's Intent
      Details drawer adds and removes conversation rules, so that list's length IS its content —
      but a bare /rules$/ would widen rule 2 across every other screen carrying a `rules` array. */
@@ -168,6 +171,16 @@ const CREATABLE_WHEN_ABSENT = [
      Safe to allow because `specWithConfig` validates the value against VOICE_OPTIONS:
      the guard decides whether a write is structural, not whether it is a real voice. */
   /^agent\.voice$/i,
+  /* ⚠️ THE VOICE DRAWERS' PER-NODE FIELDS (9/21/2026) — a use case's own instruction, its
+     transfer number and its signal. Flat on `agent` for the reason the SMS ones are flat on
+     `sms`: `setByPath` refuses a path whose INTERMEDIATE key is missing and only ever creates
+     the last segment, so anything nested would be dropped SILENTLY on every demo whose stored
+     override does not already reach it. None of these keys exists until an SE types in that
+     node, so every first write is `undefined -> string`. */
+  /^agent\.extra__[A-Za-z0-9_-]+$/,
+  /* ⚠️ THE SUPPORT INTENT'S OWN COPY, which no prospect carries: it was hardcoded in
+     `workflowDrawers.ts` until its drawer became editable, so the first edit creates it. */
+  /^agent\.(supportIntent|supportRules)$/i,
   /* ⚠️ **THE REPLICA'S "AFTER SUBMIT" PAGE.** It shares one stored object with the booking
      link, and a demo that saved a booking link BEFORE this field existed has an override of
      `{ bookingUrl }` alone — so the first thank-you write on exactly those demos is an

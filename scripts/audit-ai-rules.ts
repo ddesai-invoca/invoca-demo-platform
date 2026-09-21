@@ -26,7 +26,7 @@ import { smsDrawerFor, drawerFor, SMS_ACTION_LABEL, SMS_ACTION_DESCRIPTION, SMS_
 import { buildSmsBrain, SMS_WORKFLOW_SCOPE_PATH, SMS_AGENT_SCOPE_PATH } from "../src/data/smsBrain.ts";
 import { buildSmsBrain, smsWorkflowAgentOf, smsWorkflowScopePath,
   type SmsWorkflowAgent } from "../src/data/smsBrain.ts";
-import { smsSystemPromptForAudit } from "../engine/chat.ts";
+import { smsSystemPromptForAudit, __buildVoiceSystemForTest } from "../engine/chat.ts";
 import { CustomerProfile } from "../src/data/schema.ts";
 import { sweepValue } from "../engine/dashSweep.ts";
 import { tollFreeNumber } from "../src/data/smsContactNumber.ts";
@@ -1982,12 +1982,35 @@ console.log("\nThe built-in SMS workflow template");
         ? ok("the shared routing-steps box names what belongs in it when unset")
         : bad("an unconfigured instruction box renders blank with no hint");
     }
-    /* the routing steps are ONE shared flow, written back as the list that field is */
+    /* ⚠️⚠️ **RE-AIMED 9/21/2026, NOT LOOSENED.** This used to assert every use case writes the
+       SAME shared `agent.informSteps` list — which was the exact bug reported: editing one
+       use case's instruction rewrote it on every other one, because there was only one flat
+       list for all of them to share. The invariant that survives is stronger: a use case's
+       instruction now writes its OWN flat key, as a string (not the shared array), and that
+       string has to actually reach the built PROMPT for the node that has it and be absent
+       from a node that does not — proven by building the real prompt, not by reading a path
+       string. */
     {
-      const uc = drawerFor(p, vTree as never, "path-0-0-0");
-      (uc?.kind === "action" && uc.edits?.handling === "agent.informSteps" && uc.handlingList)
-        ? ok("a use case's instruction writes the shared step list, as a list")
-        : bad("a use case writes per-node text the prompt never reads, or writes a string");
+      const uc0 = drawerFor(p, vTree as never, "path-0-0-0");
+      (uc0?.kind === "action" && typeof uc0.edits?.handling === "string"
+        && /^agent\.extra__path-0-0-0__handling$/.test(uc0.edits.handling) && !uc0.handlingList)
+        ? ok("a use case's instruction writes its OWN per-node key, as a string")
+        : bad("a use case writes the shared step list again, or as an array");
+
+      const paths = treeToVoicePaths({
+        variant: "voice",
+        agent: { "extra__path-0-0-0__handling": "SENTINEL_INSTRUCTION_ONLY_ON_PATH_0" },
+        branches: [{ title: "Sales Inquiry", leaves: [{ title: "All Sales Inquiry Users", action: "Qualify",
+          paths: [
+            { title: "A", action: "Inform & Route", chips: ["Consumer Name"], route: "Team A" },
+            { title: "B", action: "Inform & Route", chips: ["Consumer Name"], route: "Team B" },
+          ] }] }],
+      } as never);
+      const prompt = __buildVoiceSystemForTest({ customerName: "Audit Co", voicePaths: paths } as never);
+      const hits = prompt.split("SENTINEL_INSTRUCTION_ONLY_ON_PATH_0").length - 1;
+      hits === 1
+        ? ok("and that instruction reaches the built prompt, exactly once, on its own node")
+        : bad(`a per-node instruction reached the prompt ${hits} times, not exactly once`);
     }
 
     /* ⚠️⚠️ AND THE TREE ITSELF IS UNTOUCHED — the one thing that was asked to stay put. */

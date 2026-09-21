@@ -437,7 +437,12 @@ function demoLibraryApi(): Plugin {
     configureServer(server) {
       server.middlewares.use(async (req, res, next) => {
         const url = req.url || ''
-        if (!url.startsWith('/api/me') && !url.startsWith('/api/demos')) return next()
+        /* ⚠️ WIDENED 9/21/2026 to admit /api/admin-notice/ack alongside /api/me
+           and /api/demos — handleDemoApi owns all three, and a narrower prefix
+           here silently 404s a route the production twin already serves (that
+           one forwards every /api/* path and lets handleDemoApi return null). */
+        if (!url.startsWith('/api/me') && !url.startsWith('/api/demos')
+          && !url.startsWith('/api/admin-notice')) return next()
         try {
           let raw = ''
           if (req.method !== 'GET' && req.method !== 'DELETE') for await (const chunk of req) raw += chunk

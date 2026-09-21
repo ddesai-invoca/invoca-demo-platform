@@ -57,6 +57,7 @@ import { ReplicaPageScreen } from "./screens/ReplicaPage";
 import { GoogleSearch } from "./screens/GoogleSearch";
 import { Placeholder } from "./screens/Placeholder";
 import { EnvBadge } from "./components/EnvBadge";
+import { AdminNoticeModal } from "./components/AdminNoticeModal";
 import { LaunchMenu } from "./components/LaunchMenu";
 import { FeedbackBoard } from "./screens/FeedbackBoard";
 import { ReleaseNotes } from "./screens/ReleaseNotes";
@@ -117,6 +118,12 @@ export default function App() {
             phone preview, Google Search and the Salesforce pages all render outside the
             shell, so a TopBar chip would miss them as well. */}
         <EnvBadge />
+        {/* ⚠️ SAME REASONING AS `EnvBadge` DIRECTLY ABOVE: inside the router but
+            outside `<Routes>`, so it can render whichever route someone lands on
+            right after signing in — including the standalone ones a route-scoped
+            mount would miss entirely. It renders nothing until the server says
+            there is a notice to show (`DemoLibraryContext.adminNotice`). */}
+        <AdminNoticeModal />
         {/* ⚠️⚠️ **EVERY ROUTE GETS A NET, INCLUDING THE SHELL'S OWN CHROME (9/16/2026).**
             `DashboardBoundary` lives INSIDE `AppShell`, around its `<Outlet/>` — so it
             catches a screen, and catches nothing thrown by the TopBar, the Sidebar, or any

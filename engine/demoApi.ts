@@ -15,6 +15,7 @@
 
    Routes (all under /api):
      GET    /api/me                    → the signed-in user
+     POST   /api/admin-notice/ack      → dismiss the one-time "you're now an admin" popup
      GET    /api/demos                 → summaries (no heavy payload)
      POST   /api/demos                 → create (creator = caller)
      GET    /api/demos/:id             → full demo
@@ -25,6 +26,7 @@
 
 import { type DemoRecord, deleteDemo, getDemo, listDemos, saveDemo, uniqueId } from "./demoStore.ts";
 import { isAdminEmail } from "./admins.ts";
+import { pendingAdminNotice, ackAdminNotice } from "./adminNotices.ts";
 
 export interface DemoUser { email: string; name: string }
 
@@ -100,10 +102,20 @@ export async function handleDemoApi(
 ): Promise<ApiResult | null> {
   const p = urlPath.split("?")[0].replace(/\/+$/, "");
 
-  if (p === "/api/me" && method === "GET") return ok({ user, admin: isAdmin(user) });
+  if (p === "/api/me" && method === "GET")
+    return ok({ user, admin: isAdmin(user), adminNotice: pendingAdminNotice(user.email) });
+
+  /* ⚠️ ONE-TIME "you're now an admin" popup — see adminNotices.ts. Its own route
+     rather than folding the ack into a PATCH somewhere, because dismissing it is
+     not an edit to any demo; it belongs to the SIGNED-IN USER, not a record. */
+  if (p === "/api/admin-notice/ack" && method === "POST") {
+    ackAdminNotice(user.email);
+    return ok({ ok: true });
+  }
 
   if (p === "/api/demos") {
-    if (method === "GET") return ok({ demos: listDemos(), user, admin: isAdmin(user) });
+    if (method === "GET")
+      return ok({ demos: listDemos(), user, admin: isAdmin(user), adminNotice: pendingAdminNotice(user.email) });
     if (method === "POST") {
       const profile = body?.profile;
       if (!profile?.customerName) return err(400, "A generated profile is required.");

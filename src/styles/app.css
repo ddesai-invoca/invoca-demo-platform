@@ -3267,6 +3267,41 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 .fb-x { appearance: none; border: 0; background: none; cursor: pointer; color: #6b7280; padding: 4px; border-radius: 6px; display: flex; }
 .fb-x:hover { background: #f3f4f6; color: #0a231e; }
 
+/* ── AdminNoticeModal: the one-time "you're now an admin" popup ────────────
+   Own `.adm-*` prefix (never `.fb-*`) — the feedback modal's classes are
+   signed off for that screen, and a shared prefix is how a later value change
+   here restyles it too. Same overlay/rise language as `.fb-*`, Invoca's own
+   platform blue (#2666f9, the Add Tile / chart accent) rather than the
+   feedback modal's teal, because this is a platform-wide system notice, not a
+   feedback form. */
+.adm-overlay {
+  position: fixed; inset: 0; z-index: 1400; background: rgba(10, 20, 40, .46);
+  display: flex; align-items: center; justify-content: center; padding: 24px;
+  animation: fb-fade .16s ease-out;
+}
+.adm-modal {
+  width: 420px; max-width: 100%; text-align: center;
+  background: #fff; border-radius: 14px; padding: 28px 26px 24px;
+  box-shadow: 0 24px 60px -20px rgba(10, 20, 40, .45);
+  animation: fb-rise .2s cubic-bezier(.4, 0, .2, 1);
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+.adm-badge {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: #d4e0fe; color: #11228c;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px;
+}
+.adm-title { font-size: 18px; font-weight: 700; color: #15243e; letter-spacing: -.01em; margin: 0 0 8px; }
+.adm-body { font-size: 14px; line-height: 1.5; color: #5b6577; margin: 0 0 18px; }
+.adm-btn {
+  appearance: none; border: 0; cursor: pointer; font: inherit; font-size: 14px; font-weight: 700;
+  background: #2666f9; color: #fff; border-radius: 9px; padding: 10px 28px;
+  transition: background .16s ease;
+}
+.adm-btn:hover { background: #1c53e9; }
+.adm-btn:focus-visible { outline: 2px solid #11228c; outline-offset: 2px; }
+
 .fb-kind { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 16px; }
 .fb-kind-btn {
   appearance: none; cursor: pointer; font: inherit; text-align: left;

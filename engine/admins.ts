@@ -26,7 +26,17 @@
 
    Read at module load, so changing the var needs a server restart (on Render, a
    restart — not a redeploy). Matching is case-insensitive and tolerates spaces. */
-const ADMINS = ["ddesai@invoca.com"];
+const ADMINS = [
+  "ddesai@invoca.com",
+  /* Added 9/21/2026, at the user's request: "add all these people and make them
+     admins as well so they can see the support request for everyone." */
+  "ddubinsky@invoca.com",
+  "bmccarty@invoca.com",
+  "djuengst@invoca.com",
+  "kjellick@invoca.com",
+  "kpaklaian@invoca.com",
+  "mfidler@invoca.com",
+];
 
 const ADMIN_EMAILS = new Set(
   [...ADMINS, ...(process.env.DEMO_ADMIN_EMAILS ?? "").split(",")]

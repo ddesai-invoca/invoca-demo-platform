@@ -1,6 +1,6 @@
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import type { CustomerProfile } from "./schema";
-import { voiceSpecFor, specWithConfig, DEFAULT_ESCALATE_HANDLING, type VoiceAgentConfig } from "./voiceAgentSpec";
+import { voiceSpecFor, specWithConfig, DEFAULT_ESCALATE_HANDLING, DEFAULT_SUPPORT_INTENT, type VoiceAgentConfig } from "./voiceAgentSpec";
 import { collectFor, collectPool, type SmsCollectKey, type SmsConfig, type SmsQualifyNode } from "./smsTemplate";
 
 /* =============================================================================
@@ -47,15 +47,26 @@ export interface CollectField {
  */
 export type ActionKind = "callback" | "qualify" | "inform" | "informRoute" | "escalate";
 /**
- * The three the VOICE captures measured, and all a voice tree ever carries.
+ * The three the VOICE captures measured — the kinds voice has its OWN copy for.
  *
- * ⚠️ THE VOICE COPY IS NOT THE SMS COPY (four strings differ, see the tables below), and NOTHING
- * has measured a voice drawer offering `Schedule Callback` or a separate `Inform & Route` — on
- * voice, the `inform` action IS labelled "Inform & Route". Keeping the voice tables keyed on
- * this narrower type is what stops someone assuming the voice page offers five.
+ * ⚠️ THE VOICE COPY IS NOT THE SMS COPY; four strings differ, see the tables below.
+ *
+ * ⚠️⚠️ **THE ROUTING KIND IS `informRoute` ON VOICE, AND IT USED TO BE `inform` (9/21/2026).**
+ * The voice captures label that action **"Inform & Route"** — the same words SMS gives
+ * `informRoute` — so while voice called it `inform`, the picker rendered TWO options reading
+ * "Inform & Route" (voice's `inform` and SMS's `informRoute`), the open list marked the wrong
+ * one selected, and picking it wrote a DIFFERENT kind from the one already set. Measured in
+ * the browser on a real use case. Naming the kind after what the product calls it makes all
+ * five labels distinct on both channels, and the node text is unchanged either way because
+ * both resolve to "Inform & Route".
+ *
+ * ⚠️ **VOICE OFFERS ALL FIVE ACTIONS NOW**, asked for directly ("the dropdowns should have all
+ * the actions"). Three carry the measured voice copy; `callback` and the plain `inform` fall
+ * back to the SMS wording, which is Invoca's own product copy for those actions — just
+ * measured on the SMS page, since no voice capture shows either. Flagged rather than invented.
  */
-export type VoiceActionKind = "qualify" | "inform" | "escalate";
-const VOICE_KINDS: VoiceActionKind[] = ["qualify", "inform", "escalate"];
+export type VoiceActionKind = "qualify" | "informRoute" | "escalate";
+const VOICE_KINDS: VoiceActionKind[] = ["qualify", "informRoute", "escalate"];
 export const isVoiceKind = (k: ActionKind): k is VoiceActionKind =>
   (VOICE_KINDS as ActionKind[]).includes(k);
 
@@ -80,7 +91,11 @@ export interface IntentDrawer {
   looksLike: string;
   /** ⚠️ CAN BE EMPTY, and the real Need Support capture IS: three blank rule rows. */
   rules: string[];
-  /** SMS only; absent on voice, which keeps the read-only shells. */
+  /**
+   * ⚠️ **BOTH CHANNELS NOW (9/21/2026).** This said "SMS only; absent on voice, which keeps the
+   * read-only shells" — and the voice intent drawer really was five read-only boxes, measured
+   * in the browser, on the one screen where the words it shows ARE the agent's prompt.
+   */
   edits?: DrawerEdits;
   channel?: "sms" | "voice";
 }
@@ -135,6 +150,21 @@ export interface ActionDrawer {
    * Spreading the old node also keeps its title, its children and its lock by construction.
    */
   actionSlot?: { path: string; index: number; nodes: Record<string, unknown>[] };
+  /**
+   * The destination is the NODE'S OWN `route`, written through `actionSlot`.
+   *
+   * ⚠️⚠️ **VOICE ONLY, AND IT IS WHY THE VOICE DESTINATION IS NOT A FLAT `extra__` KEY.** A
+   * voice use case already carries its destination: `route` is what the card renders as
+   * "Route to Billing" AND what `treeToVoicePaths` hands the prompt as the route's `team`.
+   * Storing a second copy beside it is the two-sources-of-truth failure this file records for
+   * the pills — the drawer would say one desk and the card and the agent another. So the
+   * destination row writes `route` on the node, through the same containing-array write the
+   * action and the chips already use. SMS keeps its flat key, because an SMS destination is a
+   * URL or a phone number that nothing else on the diagram draws.
+   */
+  destinationOnNode?: boolean;
+  /** The phone row is editable when it has a home; read-only otherwise. */
+  phonePlaceholder?: string;
 }
 
 /**
@@ -157,6 +187,8 @@ export interface DrawerEdits {
   handling?: string;
   looksLike?: string;
   rules?: string;
+  /** The voice transfer number. SMS has no phone row at all. */
+  phone?: string;
 }
 
 export type NodeDrawer = TriggerDrawer | IntentDrawer | ActionDrawer;
@@ -220,6 +252,16 @@ export const SMS_ACTION_PROMPT: Record<Exclude<ActionKind, "callback">, string> 
  * ⚠️ `inform` has no destination row at all, which is what separates it from `informRoute`.
  */
 export const SMS_ESCALATE_DESTINATION = "Where should the agent escalate unresolved users?";
+/**
+ * The voice destination row's label.
+ *
+ * ⚠️ **NOT MEASURED — no voice drawer capture survives in `reference/`, which is why the voice
+ * drawers had no destination row at all until 9/21/2026.** The ROW is not invented: the card
+ * plainly reads "Route to Billing", so the node has a destination and the drawer was the only
+ * place that did not show it. The WORDING is ours, phrased as the product phrases the two SMS
+ * ones. Replace it if a capture of a voice Inform & Route drawer ever turns up.
+ */
+export const VOICE_ROUTE_DESTINATION = "Which team should the agent route callers to?";
 export const SMS_ROUTE_DESTINATION = "Where should the agent send users?";
 export const SMS_DESTINATION_PROMPT: Partial<Record<ActionKind, string>> = {
   informRoute: SMS_ROUTE_DESTINATION,
@@ -301,18 +343,18 @@ export const nodeActionFields = (k: ActionKind) => ({
 /** Invoca's own copy for each action, verbatim from the three Action captures. */
 export const ACTION_LABEL: Record<VoiceActionKind, string> = {
   qualify: "Qualify",
-  inform: "Inform & Route",
+  informRoute: "Inform & Route",
   escalate: "Support & Escalate",
 };
 export const ACTION_DESCRIPTION: Record<VoiceActionKind, string> = {
   qualify: "Your agent will ask a specific question to determine which path a user should take. Define the question and the possible answers, and your agent will route each user based on how they respond.",
-  inform: "The agent will answer the caller's question and transfer them to the right queue when routing is needed.",
+  informRoute: "The agent will answer the caller's question and transfer them to the right queue when routing is needed.",
   escalate: "The agent will try to resolve the caller's issue using your knowledge base. If it can't, it will escalate by transferring to the queue configured below.",
 };
 /** The label above the free-text box changes with the action. Measured on all three. */
 export const ACTION_PROMPT: Record<VoiceActionKind, string> = {
   qualify: "What question do you want the AI Agent to ask in order to qualify?",
-  inform: "How should the agent inform and route callers?",
+  informRoute: "How should the agent inform and route callers?",
   escalate: "How should the agent handle escalation requests?",
 };
 /**
@@ -336,8 +378,8 @@ export function actionCopy(channel: "sms" | "voice", k: ActionKind): {
   };
 }
 
-export const PHONE_PROMPT: Record<"inform" | "escalate", string> = {
-  inform: "What phone number should the agent transfer callers to?",
+export const PHONE_PROMPT: Record<"informRoute" | "escalate", string> = {
+  informRoute: "What phone number should the agent transfer callers to?",
   escalate: "What phone number should unresolved callers be transferred to?",
 };
 
@@ -430,7 +472,14 @@ function areaCodeOf(p: Profile): string {
  * as on SMS. What must never be stored per node is anything the agent actually reads, or the
  * drawer would show an edit the call ignores.
  */
-const voiceExtraEdits = (nodeId: string) => ({ signal: `agent.extra__${nodeId}__signal` });
+const voiceExtraEdits = (nodeId: string) => ({
+  signal: `agent.extra__${nodeId}__signal`,
+  /* ⚠️ THE TRANSFER NUMBER HAS A HOME NOW (9/21/2026). It was `demoPhone(areaCodeOf(profile))`
+     rendered into a READ-ONLY input — a field on screen that no edit could reach, on a drawer
+     whose every other row had just been made editable. It is per node because the captures
+     show it per action drawer, and it reaches the prompt through `treeToVoicePaths`. */
+  phone: `agent.extra__${nodeId}__phone`,
+});
 const vx = (tree: WorkflowTreeModel, nodeId: string, f: string) =>
   (tree as WorkflowTreeModel & { agent?: Record<string, unknown> })
     .agent?.[`extra__${nodeId}__${f}`];
@@ -448,10 +497,26 @@ const vx = (tree: WorkflowTreeModel, nodeId: string, f: string) =>
  * string it is an array -> string type flip, which `editGuard` refuses — loudly, at least, but
  * the edit would still be lost.
  */
-function voiceInformEdits(tree: WorkflowTreeModel, nodeId: string, profile: Profile) {
+function voiceInformEdits(
+  tree: WorkflowTreeModel,
+  nodeId: string,
+  profile: Profile,
+  node: Record<string, unknown> | undefined,
+) {
+  /* ⚠️⚠️ **PER NODE, FALLING BACK TO THE SHARED FLOW — AND THE SHARED-ONLY VERSION WAS A REAL
+     PARITY GAP (9/21/2026).** Every use case wrote `agent.informSteps`, which is ONE list, so
+     editing the instruction on "Billing question" silently rewrote it on "Ready to book now"
+     too. That was recorded as a stated consequence rather than a bug, and it is the one thing
+     SMS does per node that voice did not — on SMS each inform leaf has its own text.
+     The node's own instruction wins when it has one; otherwise the shared routing steps show,
+     exactly as before. So an agent nobody has edited is byte-identical, and the first edit to
+     a use case stops being an edit to all of them. */
+  const own = String(vx(tree, nodeId, "handling") ?? "");
   return {
-    edits: { handling: "agent.informSteps", ...voiceExtraEdits(nodeId) },
-    handlingList: true as const,
+    edits: { handling: `agent.extra__${nodeId}__handling`, ...voiceExtraEdits(nodeId) },
+    /* The spread sits LAST at every call site, so this wins over the shared routing steps
+       exactly when this node has an instruction of its own. */
+    ...(own ? { handling: own } : {}),
     /* ⚠️⚠️ **UNSET IS THE NORM HERE, AND A BARE EMPTY BOX READS AS BROKEN.** `informSteps` is
        only the service-area gate, so a prospect that serves everywhere has none — measured, 10
        of the 15 profiles on disk. Reported as "all the fields are empty" against the last row.
@@ -460,6 +525,13 @@ function voiceInformEdits(tree: WorkflowTreeModel, nodeId: string, profile: Prof
     handlingPlaceholder:
       "e.g. 1. Ask for their ZIP code and confirm you serve the area.  2. Ask for their full name.",
     actionSlot: actionSlotFor(tree, nodeId),
+    /* ⚠️ THE DESTINATION IS THE CARD'S OWN "Route to ..." — see `destinationOnNode`. */
+    destinationPrompt: VOICE_ROUTE_DESTINATION,
+    destination: String(node?.route ?? ""),
+    destinationPlaceholder: "e.g. Billing, or New Customer Sales",
+    destinationOnNode: true as const,
+    phone: String(vx(tree, nodeId, "phone") ?? demoPhone(areaCodeOf(profile))),
+    phonePlaceholder: "e.g. +1-800-555-0100",
     signal: String(vx(tree, nodeId, "signal") ?? ""),
     signalChoices: signalOptions(profile),
     infoChoices: infoFieldOptions(profile),
@@ -515,18 +587,34 @@ export function drawerFor(
        is why 11 of 12 prospects showed a "Consumer Name" pill and never asked for a name.
        `deriveVoiceSpec` absorbed that list verbatim, so the drawer and the spoken prompt now
        render ONE rule set. Do not reintroduce a fallback here. */
+    /* ⚠️⚠️ **BOTH INTENT DRAWERS ARE EDITABLE NOW (9/21/2026), AND THEY WERE THE LAST
+       READ-ONLY SURFACE ON THIS PAGE.** Measured in the browser: five textareas, every one
+       `readOnly`, with a live "Add" button below them that wrote nothing. Every field here
+       already had a home the PROMPT reads — `agent.intent` is the sales intent's own
+       description (and the node's subtitle is `spec.intent.split("\n")[0]`, so one edit moves
+       the drawer, the card and the call together) and `agent.rules` is the conversation-rules
+       list `buildVoiceSystem` renders. So this was a missing pair of paths, not a missing
+       feature. */
     if (isSales) {
       return { kind: "intent", title: "Intent Details", name: b.title,
-        looksLike: spec.intent, rules: spec.rules };
+        looksLike: spec.intent, rules: spec.rules, channel: "voice",
+        edits: { looksLike: "agent.intent", rules: "agent.rules" } };
     }
     return {
       kind: "intent", title: "Intent Details", name: b.title,
-      looksLike: `Contacts seeking help with an existing product or service, such as troubleshooting, billing questions, or account changes.`,
+      channel: "voice",
+      /* ⚠️ THE SUPPORT INTENT NEEDED ITS OWN HOMES, because it never had any: its description
+         was a LITERAL in this file and its rules were a hardcoded `[]`. Making the boxes
+         editable without somewhere to write is the dead-control failure this repo keeps
+         paying for, so `agent.supportIntent` / `agent.supportRules` exist and the prompt
+         renders them. Unset, both resolve to exactly what was hardcoded here. */
+      edits: { looksLike: "agent.supportIntent", rules: "agent.supportRules" },
+      looksLike: spec.supportIntent ?? DEFAULT_SUPPORT_INTENT,
       /* ⚠️ THE SUPPORT INTENT SHIPS WITH NO RULES, rather than inventing support policy
          nobody configured. The DRAWER renders that as the product's own empty state ("No
          conversation rules defined yet"); an earlier note here said three blank rows, which
          was a capture of someone having pressed Add three times rather than the default. */
-      rules: [],
+      rules: spec.supportRules ?? [],
     };
   }
 
@@ -535,8 +623,14 @@ export function drawerFor(
     const b = tree.branches[Number(leaf[1])];
     const l = b?.leaves[Number(leaf[2])];
     if (!l) return null;
-    const action: ActionKind = /escalate/i.test(l.action) ? "escalate"
-      : /qualify/i.test(l.action) ? "qualify" : "inform";
+    /* ⚠️⚠️ **THE NODE'S OWN KIND WINS, AND RE-DERIVING IT FROM THE TEXT WAS THE SMS BUG
+       THROUGH THE VOICE DOOR (9/21/2026).** This read the action STRING and could only ever
+       answer escalate / qualify / inform — so once the picker could switch a voice leaf to
+       Schedule Callback or Inform & Route, the node drew the new action and its drawer
+       REOPENED on the old one. `kindOfNode` reads `actionKind` first and falls back to the
+       wording, which is the same single source `smsDrawerFor` was fixed to use. */
+    const action: ActionKind =
+      kindOfNode(l as unknown as Record<string, unknown>) ?? "informRoute";
     if (action === "qualify") {
       /* ⚠️ **THE ANSWERS COME FROM THE LEAF'S PATH NODES, ALWAYS (8/27/2026).** This used to
          prefer `spec.segments` whenever a spec existed and read the tree only as a fallback —
@@ -578,11 +672,20 @@ export function drawerFor(
            editable without a home would have turned that into a dead control. Unset, it
            resolves to the same wording, so an untouched agent is byte-identical. */
         handling: spec.escalateHandling ?? DEFAULT_ESCALATE_HANDLING,
-        phone: demoPhone(areaCodeOf(profile)),
+        /* ⚠️ THE ESCALATION INSTRUCTION STAYS SHARED, and that is correct rather than an
+           oversight: there is exactly ONE support leaf on a voice tree, so `agent.escalateHandling`
+           is already per node. The use cases below Inform & Route are the many, which is why
+           those got their own key and this did not. */
+        phone: String(vx(tree, nodeId, "phone") ?? demoPhone(areaCodeOf(profile))),
+        phonePlaceholder: "e.g. +1-800-555-0100",
         collect: nodeCollect(profile, l as unknown as Record<string, unknown>, "escalate"),
         channel: "voice",
         edits: { handling: "agent.escalateHandling", ...voiceExtraEdits(nodeId) },
         actionSlot: actionSlotFor(tree, nodeId),
+        destinationPrompt: VOICE_ROUTE_DESTINATION,
+        destination: String((l as unknown as Record<string, unknown>).route ?? ""),
+        destinationPlaceholder: "e.g. Tier 2 Support",
+        destinationOnNode: true as const,
         signal: String(vx(tree, nodeId, "signal") ?? ""),
         signalChoices: signalOptions(profile),
         infoChoices: infoFieldOptions(profile),
@@ -591,10 +694,9 @@ export function drawerFor(
     if (spec) {
       return { kind: "action", title: "Action", action,
         handling: spec.informSteps.join("\n"),
-        phone: demoPhone(areaCodeOf(profile)),
-        collect: nodeCollect(profile, l as unknown as Record<string, unknown>, "inform"),
+        collect: nodeCollect(profile, l as unknown as Record<string, unknown>, "informRoute"),
         channel: "voice",
-        ...voiceInformEdits(tree, nodeId, profile) };
+        ...voiceInformEdits(tree, nodeId, profile, l as unknown as Record<string, unknown>) };
     }
     return {
       kind: "action", title: "Action", action,
@@ -617,21 +719,20 @@ export function drawerFor(
     const pth = tree.branches[Number(pathId[1])]?.leaves[Number(pathId[2])]?.paths?.[Number(pathId[3])];
     if (!pth) return null;
     if (spec) {
-      return { kind: "action", title: "Action", action: "inform",
+      return { kind: "action", title: "Action", action: "informRoute",
         handling: spec.informSteps.join("\n"),
-        phone: demoPhone(areaCodeOf(profile)),
         /* ⚠️⚠️ **THIS USE CASE'S OWN FIELDS, NOT A GENERIC TABLE.** Reported directly against
            the last row: the node drew "Consumer Name, Service Address, Timeline" while its
            drawer listed `COLLECT_FOR.inform` — Consumer Zip, Consumer Name — so the diagram
            and the drawer described the same node differently, which is the failure this file
            records for the pills already. The node's chips ARE its collect list, and they are
            what `treeToVoicePaths` hands the prompt, so reading them here makes all three agree. */
-        collect: nodeCollect(profile, pth as unknown as Record<string, unknown>, "inform"),
+        collect: nodeCollect(profile, pth as unknown as Record<string, unknown>, "informRoute"),
         channel: "voice",
-        ...voiceInformEdits(tree, nodeId, profile) };
+        ...voiceInformEdits(tree, nodeId, profile, pth as unknown as Record<string, unknown>) };
     }
     return {
-      kind: "action", title: "Action", action: "inform",
+      kind: "action", title: "Action", action: "informRoute",
       handling: [
         `1. Ask the caller for their zip code and capture it.`,
         area ? `2. Check the zip code against our current service area: ${area}.` : `2. Confirm the caller is in a serviceable area.`,

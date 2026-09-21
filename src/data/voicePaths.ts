@@ -31,8 +31,10 @@ import { collectNames } from "./workflowDrawers";
    ============================================================================= */
 
 /** Which action a leaf is performing, from the words the product puts on it. */
-function actionKindOf(action: string): "qualify" | "inform" | "escalate" {
-  return /escalate/i.test(action) ? "escalate" : /qualify/i.test(action) ? "qualify" : "inform";
+function actionKindOf(action: string): "qualify" | "informRoute" | "escalate" {
+  /* ⚠️ `informRoute` IS WHAT THE VOICE ROUTING ACTION IS CALLED (9/21/2026) — the product
+     labels it "Inform & Route" and `COLLECT_FOR` is keyed on that. */
+  return /escalate/i.test(action) ? "escalate" : /qualify/i.test(action) ? "qualify" : "informRoute";
 }
 
 /** The scope key the voice workflow page registers its diagram under. */
@@ -51,7 +53,22 @@ export const VOICE_WORKFLOW_SCOPE_PATH = "/agent-studio/agent/workflow/voice";
 export function treeToVoicePaths(tree: WorkflowTreeModel | undefined | null): VoicePath[] {
   const branches = tree?.branches ?? [];
   const paths: VoicePath[] = [];
-  for (const b of branches) {
+  /* ⚠️⚠️ **THE PER-NODE DRAWER FIELDS LIVE ON `agent`, FLAT, KEYED BY THE NODE'S OWN ID
+     (9/21/2026).** A use case's instruction and its transfer number are configured in that
+     node's drawer, and until now neither reached the call: the instruction wrote the SHARED
+     `agent.informSteps` (so editing one use case rewrote them all) and the phone was a
+     read-only derived number. They are read here rather than in `drawerFor` so the DIAGRAM,
+     the DRAWER and the PROMPT resolve one value — the rule that put the collect list on the
+     node's own chips.
+     ⚠️ The ids are positional and must match `WorkflowTree`'s own (`leaf-B-L`, `path-B-L-P`),
+     because that is what the drawer writes under. A mismatch here is silent: the drawer saves,
+     the agent never hears it. */
+  const ag = (tree as { agent?: Record<string, unknown> } | null | undefined)?.agent;
+  const extra = (nodeId: string, f: string): string | undefined => {
+    const v = ag?.[`extra__${nodeId}__${f}`];
+    return typeof v === "string" && v.trim() ? v.trim() : undefined;
+  };
+  for (const [bi, b] of branches.entries()) {
     const intent = (b?.title ?? "").trim();
     if (!intent) continue;
     /* ⚠️ A LEAF WITH PATHS CONTRIBUTES ITS PATHS, NOT ITSELF (8/26/2026). The diagram grew a
@@ -60,8 +77,8 @@ export function treeToVoicePaths(tree: WorkflowTreeModel | undefined | null): Vo
        behave exactly as before — the precise silent no-op deriving the prompt from the tree
        was built to close, reappearing one row further down. */
     const routes = (b.leaves ?? [])
-      .flatMap((l) => (l?.paths?.length
-        ? l.paths.map((pth) => ({
+      .flatMap((l, li) => (l?.paths?.length
+        ? l.paths.map((pth, pi) => ({
             /* ⚠️ **THE PATH'S OWN DESTINATION IS THE TEAM (8/27/2026), falling back to the
                leaf's group.** The leaf title became locked chrome ("All Sales Inquiry Users"),
                and this file's own note recorded the consequence: the tree stopped carrying a
@@ -73,6 +90,8 @@ export function treeToVoicePaths(tree: WorkflowTreeModel | undefined | null): Vo
             need: (pth?.title ?? "").trim(),
             action: (pth?.action ?? "").trim() || "route them",
             collect: (pth?.chips ?? []).map((c) => (c ?? "").trim()).filter(Boolean),
+            instruction: extra(`path-${bi}-${li}-${pi}`, "handling"),
+            phone: extra(`path-${bi}-${li}-${pi}`, "phone"),
           }))
         : [{
             team: (l?.title ?? "").trim(),
@@ -86,6 +105,8 @@ export function treeToVoicePaths(tree: WorkflowTreeModel | undefined | null): Vo
             collect: (l?.chips?.length
               ? l.chips
               : collectNames(actionKindOf(l?.action ?? ""))).map((c) => (c ?? "").trim()).filter(Boolean),
+            instruction: extra(`leaf-${bi}-${li}`, "handling"),
+            phone: extra(`leaf-${bi}-${li}`, "phone"),
           }]))
       .filter((r) => r.team);
     if (!routes.length) continue;   // a branch that routes nowhere is not a path

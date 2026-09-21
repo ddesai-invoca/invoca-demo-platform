@@ -53,6 +53,18 @@ export interface VoicePath {
     need?: string;
     action: string;      // leaf action — what the agent does there
     collect: string[];   // leaf chips  — what to gather BEFORE handing off
+    /**
+     * This use case's OWN instruction, from its drawer's instruction box.
+     *
+     * ⚠️⚠️ **PER NODE (9/21/2026). IT USED TO BE ONE SHARED LIST AND THAT WAS A REAL
+     * SILENT BUG:** every voice use case's drawer wrote `agent.informSteps`, so an SE who
+     * typed an instruction on "Billing question" rewrote it on "Ready to book now" too.
+     * Absent means this node has none and the shared routing steps still govern, so an
+     * agent nobody has edited is byte-identical.
+     */
+    instruction?: string;
+    /** The transfer number for this route, when its drawer names one. */
+    phone?: string;
   }[];
 }
 
@@ -215,6 +227,16 @@ export interface ChatBrain {
    * that gap rather than to reword anybody's agent.
    */
   voiceEscalate?: string;
+  /**
+   * The SUPPORT intent's own description and conversation rules, from its drawer.
+   *
+   * ⚠️ BOTH ARE NEW (9/21/2026) AND BOTH ARE ABSENT UNLESS EDITED. The Need Support drawer
+   * was five READ-ONLY boxes whose contents were hardcoded in `workflowDrawers.ts`, so the
+   * agent had never been told any of it. Rendering them only when set keeps every untouched
+   * agent's prompt byte-identical.
+   */
+  voiceSupportIntent?: string;
+  voiceSupportRules?: string[];
   /* Per-prospect VOICE routing, from reports.voiceRoutingDemo.queues plus the
      prospect's booking term and product categories. Without it the voice prompt
      used to fall back to hardcoded retail language: it asked every caller for an
@@ -760,9 +782,27 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
       } else if (!answered) {
         lines.push(`   - Ask what they need, in their own words.`);
       }
+      /* ⚠️⚠️ **A USE CASE'S OWN INSTRUCTION AND TRANSFER NUMBER REACH THE CALL (9/21/2026).**
+         Both are configured in that node's drawer and neither used to be rendered anywhere —
+         the instruction wrote a shared list and the phone was a read-only derived number, so
+         two of the five rows on a voice action drawer changed nothing the agent said. Printed
+         under the route they belong to, and only when the node actually carries one, so a
+         workflow nobody has edited emits exactly the block it always did. */
+      const nodeLines = (r2: (typeof p.routes)[number], indent: string): string[] => {
+        const out: string[] = [];
+        if (r2.instruction) {
+          out.push(`${indent}Follow these instructions for this route, in order, and do not skip one:`);
+          for (const st of r2.instruction.split("\n").map((x) => x.trim()).filter(Boolean)) {
+            out.push(`${indent}  ${st}`);
+          }
+        }
+        if (r2.phone) out.push(`${indent}Transfer this route to ${r2.phone}.`);
+        return out;
+      };
       if (p.routes.length === 1) {
         const r2 = p.routes[0];
         lines.push(`   - Then ${r2.action.toLowerCase()}, confirm, and transfer them to the team that handles ${p.intent}.`);
+        lines.push(...nodeLines(r2, "   - "));
       } else {
         lines.push(`   - Then hand off to whichever of these fits what they told you, confirming before you transfer:`);
         /* ⚠️ THE DIAGRAM DOES NOT ENCODE *WHY* A BRANCH SPLITS, so the criterion is not
@@ -775,6 +815,7 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
           } else {
             lines.push(`      • ${r2.team} — ${r2.action}`);
           }
+          lines.push(...nodeLines(r2, "        "));
         }
       }
       lines.push(``);
@@ -786,6 +827,16 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
        real workflow. Caught by reading the built prompt rather than the diff. */
     ...(brain.voiceEscalate
       ? [`WHEN THE CALLER NEEDS THE SUPPORT TEAM: ${brain.voiceEscalate}`, ``]
+      : []),
+    /* ⚠️ THE SUPPORT INTENT'S OWN WORDS, when an SE has typed any — how to recognise it and
+       the rules that govern it. Rendered next to the escalation instruction because that is
+       the same path of the call. */
+    ...(brain.voiceSupportIntent
+      ? [`RECOGNISING A SUPPORT CALLER: ${brain.voiceSupportIntent}`, ``]
+      : []),
+    ...(brain.voiceSupportRules?.length
+      ? [`RULES FOR THE SUPPORT PATH:`,
+         ...brain.voiceSupportRules.map((r) => `- ${r}`), ``]
       : []),
   ] : [
     `CALL FLOW, adapt naturally to what the caller says:`,
