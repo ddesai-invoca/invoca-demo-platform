@@ -207,6 +207,14 @@ export interface ChatBrain {
    * a model ends up splitting the difference.
    */
   voiceSteps?: string[];
+  /**
+   * What the agent does on the support path, when an operator has changed it from the default.
+   *
+   * ⚠️ ABSENT UNLESS EDITED, so every untouched agent's prompt is byte-identical — the drawer
+   * showed this sentence long before the prompt did, and the point of the field is to close
+   * that gap rather than to reword anybody's agent.
+   */
+  voiceEscalate?: string;
   /* Per-prospect VOICE routing, from reports.voiceRoutingDemo.queues plus the
      prospect's booking term and product categories. Without it the voice prompt
      used to fall back to hardcoded retail language: it asked every caller for an
@@ -772,6 +780,13 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
       lines.push(``);
       return lines;
     }),
+    /* ⚠️⚠️ THE ESCALATION INSTRUCTION HAS TO REACH **THIS** FLOW TOO, and the first attempt put
+       it only in the hardcoded one below — which is emitted exactly when a prospect has NO use
+       cases, i.e. for none of them. The drawer's field would have been a dead control on every
+       real workflow. Caught by reading the built prompt rather than the diff. */
+    ...(brain.voiceEscalate
+      ? [`WHEN THE CALLER NEEDS THE SUPPORT TEAM: ${brain.voiceEscalate}`, ``]
+      : []),
   ] : [
     `CALL FLOW, adapt naturally to what the caller says:`,
     `1. OPEN: greet them as ${poss(brain.customerName)} AI assistant and ask whether they are calling to book ${aOrAn(book)} ${book}, or need help as an existing ${who}. Phrase it naturally for this business. Wait for their answer.`,
@@ -791,7 +806,10 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
     `PATH B: EXISTING ${who.toUpperCase()}`,
     `   a. Ask for whatever reference they have so the team can find them: the name on the account, and a reference or account number if they have one. Do NOT invent a required format.`,
     `   b. Then ask what the issue is, in their own words.`,
-    `   c. Do NOT try to solve it. Once you have who they are AND what the issue is, offer to connect them to ${r.supportQueue}, confirm, then transfer ("Transferring you now.").`,
+    /* ⚠️ THE OPERATOR'S OWN ESCALATION INSTRUCTION, when they have set one, right where the
+       support path is described. Absent unless edited, so the default flow is unchanged. */
+    ...(brain.voiceEscalate ? [`   c. ${brain.voiceEscalate}`]
+      : [`   c. Do NOT try to solve it. Once you have who they are AND what the issue is, offer to connect them to ${r.supportQueue}, confirm, then transfer ("Transferring you now.").`]),
     `      If it clearly is not a ${r.supportQueue} matter, route to ${r.generalQueue ?? r.supportQueue} instead.`,
     ``,
   ];

@@ -12,6 +12,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { isLockedEdit, isStructuralChange, routeEdits } from "../src/data/editGuard.ts";
+import { voiceSpecFor } from "../src/data/voiceAgentSpec.ts";
 import { treeToVoicePaths } from "../src/data/voicePaths.ts";
 import { collectNames } from "../src/data/workflowDrawers.ts";
 import { emptyWorkflowTree, extraTree, ZERO_TRIGGER, INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF } from "../src/data/workflowChrome.ts";
@@ -1274,14 +1275,20 @@ console.log("\nThe built-in SMS workflow template");
   (dQual?.kind === "action" && (dQual.segmentNodes?.length ?? 0) === 2)
     ? ok("the answers' own nodes ride along, so renaming one cannot flatten its branch")
     : bad("segmentNodes is missing — a rename would destroy the branch under it");
-  /* ⚠️ THE VOICE DRAWERS STAY READ-ONLY, which is what `edits` gates. */
+  /* ⚠️⚠️ RE-AIMED 9/21/2026, ON REQUEST — the voice drawers were read-only because nobody had
+     asked, and this check pinned that. Asked for directly ("i dont see the updated stuff in the
+     voice workflow"), so the invariant moves from "no write paths" to "every write path goes
+     to a home the AGENT actually reads". That is the thing worth guarding: the voice page has
+     registered its `agent` half since 8/27, so a field could always have been given a home —
+     what must never happen is a field given a home the prompt ignores. */
   {
     const vTree = { variant: "voice" as const, triggeredBy: "2 campaigns and 0 forms",
       startLabel: "Voice · classify intent", branches: [] as never[] };
     const v = drawerFor(p, { ...vTree, branches: smsBranches(p) }, "leaf-0-0");
-    (!!v && noWrites(v))
-      ? ok("a voice drawer carries no write paths, so it renders read-only as before")
-      : bad("a voice drawer gained write paths — those screens were signed off read-only");
+    (v?.kind === "action" && v.edits?.question === "agent.qualifyQuestion"
+      && v.edits?.fallback === "agent.qualifyFallback")
+      ? ok("a voice Qualify writes to the agent's own config, which the call reads back")
+      : bad("a voice drawer writes somewhere the agent never reads");
   }
 
   /* ---- the measured palette (9/17/2026) ---------------------------------------
@@ -1895,6 +1902,104 @@ console.log("\nThe built-in SMS workflow template");
     phone.includes("linkAs: \"workflow\"") && !/linkAs: "workflow"[\s\S]{0,80}branches/.test(phone)
       ? ok("the preview exposes the workflow's TEXT config, not structural control of the tree")
       : bad("the preview's Ask AI can restructure the diagram, which the geometry cannot draw");
+  }
+
+  /* ---- the voice workflow's drawers, on request (9/21/2026) ------------------------
+     "i dont see the updated stuff in the voice workflow" — the picker, editable fields and
+     Add, mirrored onto voice. The tree itself must NOT change: that was the one constraint. */
+  {
+    /* ⚠️ A REAL VOICE TREE, not the SMS template. The first version of these checks reused
+       `smsBranches`, whose path nodes carry no chips — so the per-node collect check compared
+       against an empty list and failed on correct code. Same shape as `auditTreePaths` in
+       audit-voice.ts, which exists for exactly this reason. */
+    const vspec = voiceSpecFor(p);
+    const ucNode = (u: { title: string; collect: string[]; route?: string }) => ({
+      title: u.title, action: "Inform & Route", chips: u.collect,
+      ...(u.route ? { route: u.route } : {}),
+    });
+    const vTree = { variant: "voice" as const, triggeredBy: "2 campaigns and 0 forms",
+      startLabel: "Voice · classify intent",
+      branches: [
+        { title: "Sales Inquiry", subtitle: vspec.intent.split("\n")[0],
+          leaves: [{ title: "All Sales Inquiry Users", action: "Qualify",
+            paths: vspec.useCases.sales.map(ucNode) }] },
+        { title: "Need Support", subtitle: "Existing customer",
+          leaves: [{ title: "All Support Users", action: "Support & Escalate" }] },
+      ] };
+    const q = drawerFor(p, vTree as never, "leaf-0-0");
+    const esc = drawerFor(p, vTree as never, "leaf-1-0");
+    const page = readCode("src/screens/AgentWorkflow.tsx");
+    const spec = readCode("src/data/voiceAgentSpec.ts");
+    const chatSrc = readCode("engine/chat.ts");
+
+    /* every voice action drawer can be applied at all */
+    /onApply=\{smsTemplated \|\| \(!isSms && !created\)/.test(page)
+      ? ok("the built-in voice workflow's drawers can Apply")
+      : bad("voice drawers are read-only again, or a created workflow gained an Apply");
+    (q?.kind === "action" && !!q.actionSlot && esc?.kind === "action" && !!esc.actionSlot)
+      ? ok("both voice chrome leaves offer the action picker, as on SMS")
+      : bad("a voice leaf has no action slot");
+    (q?.kind === "action" && q.edits?.segments === "branches.0.leaves.0.paths"
+      && (q.segmentNodes?.length ?? 0) > 0)
+      ? ok("Add on a voice Qualify writes the tree's own child nodes")
+      : bad("Add on voice writes a list of strings, so a new answer would not draw");
+
+    /* ⚠️⚠️ EVERY WRITE GOES SOMEWHERE THE AGENT READS — the whole point, and the thing that
+       separates this from a drawer full of controls that change nothing spoken. */
+    (esc?.kind === "action" && esc.edits?.handling === "agent.escalateHandling")
+      ? ok("the escalation instruction has a home instead of being a literal in the drawer")
+      : bad("the escalation instruction is a dead control again");
+    /escalateHandling\?: string;/.test(spec) && /DEFAULT_ESCALATE_HANDLING/.test(spec)
+      ? ok("and one definition of its default, shared by the drawer and the prompt")
+      : bad("the escalation default is duplicated or gone");
+    /* ⚠️ IT MUST REACH THE **PATHS-DRIVEN** FLOW. The first build put it only in the hardcoded
+       fallback, which is emitted exactly when a prospect has no use cases — i.e. for none of
+       them, making the field dead on every real workflow. */
+    (chatSrc.match(/brain\.voiceEscalate/g) ?? []).length >= 2
+      ? ok("the escalation instruction reaches both the configured and the fallback flow")
+      : bad("the escalation instruction only reaches one flow — dead on the other");
+    /* ⚠️⚠️ A USE CASE'S DRAWER DESCRIBES **THAT** USE CASE. Reported against the last row: the
+       node drew "Consumer Name, Service Address, Timeline" and its drawer listed the generic
+       Consumer Zip / Consumer Name, so the diagram and the drawer disagreed about one node. */
+    {
+      const uc0 = drawerFor(p, vTree as never, "path-0-0-0");
+      const uc1 = drawerFor(p, vTree as never, "path-0-0-1");
+      const chipsOf = (id: string) => {
+        const seg = id.match(/^path-(\d+)-(\d+)-(\d+)$/)!;
+        return (vTree.branches[+seg[1]].leaves[+seg[2]].paths?.[+seg[3]] as { chips?: string[] })?.chips ?? [];
+      };
+      (uc0?.kind === "action"
+        && JSON.stringify(uc0.collect?.map((f) => f.name)) === JSON.stringify(chipsOf("path-0-0-0")))
+        ? ok("a use case's What To Collect is its own node's chips")
+        : bad("a use case's drawer lists a generic collect table, contradicting its node");
+      (uc0?.kind === "action" && uc1?.kind === "action"
+        && JSON.stringify(uc0.collect) !== JSON.stringify(uc1.collect))
+        ? ok("and two different use cases show two different lists")
+        : bad("every use case shows the same collect list");
+      /* ⚠️ THE SHARED STEP BOX IS USUALLY EMPTY — `informSteps` is only the service-area gate,
+         so 10 of the 15 profiles have none. A bare empty box reads as broken. */
+      (uc0?.kind === "action" && !!uc0.handlingPlaceholder)
+        ? ok("the shared routing-steps box names what belongs in it when unset")
+        : bad("an unconfigured instruction box renders blank with no hint");
+    }
+    /* the routing steps are ONE shared flow, written back as the list that field is */
+    {
+      const uc = drawerFor(p, vTree as never, "path-0-0-0");
+      (uc?.kind === "action" && uc.edits?.handling === "agent.informSteps" && uc.handlingList)
+        ? ok("a use case's instruction writes the shared step list, as a list")
+        : bad("a use case writes per-node text the prompt never reads, or writes a string");
+    }
+
+    /* ⚠️⚠️ AND THE TREE ITSELF IS UNTOUCHED — the one thing that was asked to stay put. */
+    const css = readAny("src/styles/app.css");
+    !/\.wf-act-[a-z]+\s*\{/.test(css.replace(/\.wf-v2 \.wf-act-[a-z]+/g, ""))
+      ? ok("the SMS action tints are still scoped to .wf-v2, so voice nodes are unstyled by them")
+      : bad("an action tint escaped .wf-v2 and would repaint the voice tree");
+    /* ⚠️ `marker-end` IS AN ATTRIBUTE, so no stylesheet scope can keep it off another diagram —
+       only this conditional can. Measured in the browser too: the voice tree renders 0 markers. */
+    /\.\.\.\(arrows \? \{ markerEnd:/.test(readCode("src/components/WorkflowTree.tsx"))
+      ? ok("arrowheads are still opt-in, so the voice diagram keeps none")
+      : bad("arrowheads are no longer gated and would appear on the voice tree");
   }
 
   /* ---- the sixth row's geometry ---- */

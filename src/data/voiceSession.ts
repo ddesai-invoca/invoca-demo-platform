@@ -4,7 +4,7 @@ import { useAiAssistant } from "./AiAssistantContext";
 import { SMS_AGENT_SCOPE_PATH } from "./smsBrain";
 import { treeToVoicePaths, VOICE_WORKFLOW_SCOPE_PATH } from "./voicePaths";
 import { emptyWorkflowGreeting } from "./workflowChrome";
-import { voiceSpecFor, specWithConfig, type VoiceAgentConfig } from "./voiceAgentSpec";
+import { voiceSpecFor, specWithConfig, type VoiceAgentConfig , DEFAULT_ESCALATE_HANDLING } from "./voiceAgentSpec";
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import type { VoiceConversation, VoiceTurn } from "./schema";
 
@@ -209,6 +209,11 @@ export function useBrain(opts?: BrainOpts) {
        workflow's flow is self-contained and says so in its own hard rules. */
     voiceRules: minimal || booking ? undefined : spec?.rules,
     voiceSteps: minimal || booking ? undefined : spec?.informSteps,
+    /* ⚠️ SENT ONLY WHEN IT DIFFERS FROM THE DEFAULT, so an untouched agent's prompt is
+       byte-identical to before this field existed. Absent on a minimal or booking flow for the
+       same reason the steps are: those replace the routing machinery rather than trimming it. */
+    voiceEscalate: minimal || booking || !spec?.escalateHandling
+      || spec.escalateHandling === DEFAULT_ESCALATE_HANDLING ? undefined : spec.escalateHandling,
     /* Per-prospect routing for the voice prompt. Same source the workflow
        diagram uses (voiceRoutingDemo.queues), so the spoken call and the
        diagram name the same teams. Without this the prompt fell back to

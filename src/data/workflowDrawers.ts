@@ -1,6 +1,6 @@
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import type { CustomerProfile } from "./schema";
-import { voiceSpecFor, specWithConfig, type VoiceAgentConfig } from "./voiceAgentSpec";
+import { voiceSpecFor, specWithConfig, DEFAULT_ESCALATE_HANDLING, type VoiceAgentConfig } from "./voiceAgentSpec";
 import { collectFor, collectPool, type SmsCollectKey, type SmsConfig, type SmsQualifyNode } from "./smsTemplate";
 
 /* =============================================================================
@@ -108,6 +108,16 @@ export interface ActionDrawer {
   collect?: CollectField[];
   /** Every info field this prospect can add, for the Add Info Field picker. */
   infoChoices?: CollectField[];
+  /**
+   * The instruction box writes back as an ARRAY of lines, not a string.
+   *
+   * ⚠️ The voice routing steps live in `agent.informSteps`, which IS a list. Sent as a string
+   * that is an array -> string TYPE FLIP, which `editGuard` refuses — so the edit would be
+   * lost. Opt-in, so the SMS drawers (whose handling really is one string) are unchanged.
+   */
+  handlingList?: boolean;
+  /** Shown when the instruction box is empty, which for the shared routing steps is usual. */
+  handlingPlaceholder?: string;
   edits?: DrawerEdits;
   channel?: "sms" | "voice";
   /* ⚠️ THE ANSWERS' OWN NODES, so Apply can rewrite a title without destroying the node around
@@ -410,6 +420,66 @@ function areaCodeOf(p: Profile): string {
  * descriptions and rules are built from `agentConfig`'s own brand rules and service area, so
  * a drawer cannot contradict what the Preview Agent screen says about the same agent.
  */
+/**
+ * The voice drawers' per-node fields that have no slot of their own.
+ *
+ * ⚠️ FLAT ON `agent`, which the voice page always registers, for the same reason the SMS ones
+ * are flat on `sms`: `setByPath` refuses a path whose intermediate key is missing, so one level
+ * under a key that always exists is the only reliable target.
+ * ⚠️ The SIGNAL is display-only configuration on both channels — it reaches no prompt, exactly
+ * as on SMS. What must never be stored per node is anything the agent actually reads, or the
+ * drawer would show an edit the call ignores.
+ */
+const voiceExtraEdits = (nodeId: string) => ({ signal: `agent.extra__${nodeId}__signal` });
+const vx = (tree: WorkflowTreeModel, nodeId: string, f: string) =>
+  (tree as WorkflowTreeModel & { agent?: Record<string, unknown> })
+    .agent?.[`extra__${nodeId}__${f}`];
+
+/**
+ * The editable half of a voice Inform & Route drawer.
+ *
+ * ⚠️⚠️ **THE ROUTING STEPS ARE ONE SHARED FLOW, NOT PER-NODE TEXT, AND THE WRITE HAS TO SAY SO.**
+ * Every use case renders `spec.informSteps` — there is one call flow, and each use case follows
+ * it. So an edit goes to `agent.informSteps`, which is where the PROMPT reads it from; storing a
+ * per-node copy would show beautifully in the drawer and change nothing the agent says. The
+ * visible consequence, stated rather than discovered: editing the instruction on one use case
+ * changes it on all of them, because it is one flow.
+ * ⚠️ `handlingList` tells the drawer to write it back as the ARRAY that field is. Sent as a
+ * string it is an array -> string type flip, which `editGuard` refuses — loudly, at least, but
+ * the edit would still be lost.
+ */
+function voiceInformEdits(tree: WorkflowTreeModel, nodeId: string, profile: Profile) {
+  return {
+    edits: { handling: "agent.informSteps", ...voiceExtraEdits(nodeId) },
+    handlingList: true as const,
+    /* ⚠️⚠️ **UNSET IS THE NORM HERE, AND A BARE EMPTY BOX READS AS BROKEN.** `informSteps` is
+       only the service-area gate, so a prospect that serves everywhere has none — measured, 10
+       of the 15 profiles on disk. Reported as "all the fields are empty" against the last row.
+       A placeholder says the field is unconfigured rather than missing, and names what belongs
+       in it, which is what every SMS drawer already does. */
+    handlingPlaceholder:
+      "e.g. 1. Ask for their ZIP code and confirm you serve the area.  2. Ask for their full name.",
+    actionSlot: actionSlotFor(tree, nodeId),
+    signal: String(vx(tree, nodeId, "signal") ?? ""),
+    signalChoices: signalOptions(profile),
+    infoChoices: infoFieldOptions(profile),
+  };
+}
+
+/**
+ * A node's collect list, read off the node itself.
+ *
+ * ⚠️ THE CHIPS THE DIAGRAM DRAWS ARE THE LIST — so the drawer, the diagram and the prompt all
+ * read one value. Falls back to the action's table only for a node that carries none, which is
+ * what the support leaf does.
+ */
+function nodeCollect(profile: Profile, node: Record<string, unknown> | undefined, act: ActionKind): CollectField[] {
+  const chips = Array.isArray(node?.chips) ? (node!.chips as string[]) : undefined;
+  if (!chips?.length) return COLLECT_FOR[act];
+  const opts = infoFieldOptions(profile);
+  return chips.map((n) => ({ name: n, help: opts.find((o) => o.name === n)?.help ?? "" }));
+}
+
 export function drawerFor(
   profile: Profile,
   tree: WorkflowTreeModel,
@@ -480,21 +550,51 @@ export function drawerFor(
         kind: "action", title: "Action", action,
         question: spec.qualifyQuestion,
         segments: answers,
+        segmentNodes: (l.paths ?? []) as unknown as Record<string, unknown>[],
         fallback: spec.qualifyFallback,
+        channel: "voice",
+        /* ⚠️⚠️ EACH FIELD TO ITS REAL HOME, and these two already have one: `agent.*` is what
+           the page registers beside the tree and what `specWithConfig` merges back into the
+           spec, so an edit here reaches the actual CALL — the same path Ask AI has written
+           since 8/27. A per-node copy would show in the drawer and change nothing spoken. */
+        edits: {
+          question: "agent.qualifyQuestion",
+          fallback: "agent.qualifyFallback",
+          segments: `branches.${leaf[1]}.leaves.${leaf[2]}.paths`,
+          ...voiceExtraEdits(nodeId),
+        },
+        actionSlot: actionSlotFor(tree, nodeId),
+        signal: String(vx(tree, nodeId, "signal") ?? ""),
+        signalChoices: signalOptions(profile),
+        infoChoices: infoFieldOptions(profile),
       };
     }
     if (action === "escalate") {
       return {
         kind: "action", title: "Action", action,
-        handling: `Do not attempt to resolve the caller's question. Immediately let the caller know you're connecting them with a member of the support team, then transfer the call.`,
+        /* ⚠️ THE ESCALATION INSTRUCTION NOW HAS A REAL HOME (`agent.escalateHandling`) AND
+           REACHES THE PROMPT. It was a literal in this file — so before this, the drawer was
+           already showing the agent a sentence nobody had told it, and making the field
+           editable without a home would have turned that into a dead control. Unset, it
+           resolves to the same wording, so an untouched agent is byte-identical. */
+        handling: spec.escalateHandling ?? DEFAULT_ESCALATE_HANDLING,
         phone: demoPhone(areaCodeOf(profile)),
-        collect: COLLECT_FOR.escalate,
+        collect: nodeCollect(profile, l as unknown as Record<string, unknown>, "escalate"),
+        channel: "voice",
+        edits: { handling: "agent.escalateHandling", ...voiceExtraEdits(nodeId) },
+        actionSlot: actionSlotFor(tree, nodeId),
+        signal: String(vx(tree, nodeId, "signal") ?? ""),
+        signalChoices: signalOptions(profile),
+        infoChoices: infoFieldOptions(profile),
       };
     }
     if (spec) {
       return { kind: "action", title: "Action", action,
         handling: spec.informSteps.join("\n"),
-        phone: demoPhone(areaCodeOf(profile)), collect: COLLECT_FOR.inform };
+        phone: demoPhone(areaCodeOf(profile)),
+        collect: nodeCollect(profile, l as unknown as Record<string, unknown>, "inform"),
+        channel: "voice",
+        ...voiceInformEdits(tree, nodeId, profile) };
     }
     return {
       kind: "action", title: "Action", action,
@@ -519,7 +619,16 @@ export function drawerFor(
     if (spec) {
       return { kind: "action", title: "Action", action: "inform",
         handling: spec.informSteps.join("\n"),
-        phone: demoPhone(areaCodeOf(profile)), collect: COLLECT_FOR.inform };
+        phone: demoPhone(areaCodeOf(profile)),
+        /* ⚠️⚠️ **THIS USE CASE'S OWN FIELDS, NOT A GENERIC TABLE.** Reported directly against
+           the last row: the node drew "Consumer Name, Service Address, Timeline" while its
+           drawer listed `COLLECT_FOR.inform` — Consumer Zip, Consumer Name — so the diagram
+           and the drawer described the same node differently, which is the failure this file
+           records for the pills already. The node's chips ARE its collect list, and they are
+           what `treeToVoicePaths` hands the prompt, so reading them here makes all three agree. */
+        collect: nodeCollect(profile, pth as unknown as Record<string, unknown>, "inform"),
+        channel: "voice",
+        ...voiceInformEdits(tree, nodeId, profile) };
     }
     return {
       kind: "action", title: "Action", action: "inform",

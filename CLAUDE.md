@@ -1700,6 +1700,91 @@ the repo. ⚠️ Five were broken on purpose and each fired — restoring the ta
 un-gating the lock, reordering the list, emptying the callback collect, and merging the two
 destination strings.
 
+##### The VOICE workflow's drawers get the same treatment (9/21/2026)
+Reported: *"i dont see the updated stuff in the voice workflow — 1. updated context drawer 2. have
+the ability of add 3. action drop down"*, with one constraint: *"the one thing i dont want you to
+change is the actual tree that has been created."*
+
+⚠️ **THEY WERE READ-ONLY BECAUSE NOBODY HAD ASKED, NOT BECAUSE THEY COULD NOT WRITE.** The voice
+page has registered its `agent` half beside the tree since 8/27 — that is how Ask AI configures
+that agent — so the write targets already existed and only the drawers' `edits` paths were
+missing. `onApply` was passed for `smsTemplated` alone; it now also covers the built-in voice
+workflow, and still NOT an authored extra or a created one, neither of which has a config slot
+for a node the template never made.
+
+⚠️⚠️ **EVERY EDITABLE FIELD WRITES TO A HOME THE AGENT ACTUALLY READS.** That is the whole
+difference between this and a drawer full of controls that change nothing spoken:
+| field | home | reaches the call via |
+|---|---|---|
+| the Qualify question / reprompt | `agent.qualifyQuestion` / `agent.qualifyFallback` | `specWithConfig` |
+| a Qualify's answers (and `Add`) | the tree's own `paths` | `treeToVoicePaths` |
+| a use case's instruction | `agent.informSteps` | the CALL FLOW's steps block |
+| What To Collect | **the node's own `chips`** | `treeToVoicePaths` |
+| the escalation instruction | `agent.escalateHandling` (new) | the support line, both flows |
+
+⚠️⚠️ **THE ROUTING STEPS ARE ONE SHARED FLOW, NOT PER-NODE TEXT.** Every use case renders
+`spec.informSteps`, because there is one call flow and each use case follows it. So the edit goes
+to that one home — **consequence, stated: editing the instruction on one use case changes it on
+all of them.** A per-node copy would look perfect in the drawer and change nothing the agent says.
+
+⚠️⚠️ **THE ESCALATION INSTRUCTION WAS A LITERAL INSIDE `workflowDrawers.ts`**, so the drawer had
+been showing an instruction the PROMPT never carried — the drawer-describes-what-the-agent-does-
+not shape this file already records three times. It now has a home defaulting to the same wording
+(`DEFAULT_ESCALATE_HANDLING`, one definition shared by the drawer and the prompt), so an untouched
+agent is byte-identical.
+⚠️ **AND THE FIRST ATTEMPT PUT IT ONLY IN THE HARDCODED FALLBACK FLOW — which is emitted exactly
+when a prospect has NO use cases, i.e. for none of them.** The field would have been a dead
+control on every real workflow. Caught by reading the built prompt, not the diff; it now renders
+in the paths-driven flow too, and `audit:ai` counts both sites.
+
+#### Then: the last row's drawers described a different node (9/21/2026)
+Reported straight after, against a use case: *"all the context drawer in the last layer, all the
+fields are empty, it should match what is happening in the last layer."* Three things were wrong,
+and the first is the one that matters:
+1. ⚠️⚠️ **WHAT TO COLLECT WAS A GENERIC TABLE ON EVERY USE CASE.** The node drew "Consumer Name,
+   Service Address, Timeline" while its drawer listed `COLLECT_FOR.inform` — Consumer Zip,
+   Consumer Name. Two descriptions of one node, which is the pills failure this file records
+   already. `nodeCollect` reads the node's own chips, so the diagram, the drawer and the prompt
+   are one value; two different use cases now show two different lists.
+2. **THE INSTRUCTION BOX WAS BLANK, AND THAT IS USUAL RATHER THAN BROKEN.** `informSteps` is only
+   the service-area gate, so a prospect that serves everywhere has none — **measured: 10 of the 15
+   profiles on disk.** A bare empty box reads as a defect, so it carries a placeholder naming what
+   belongs in it, exactly as every SMS drawer does.
+3. **THE NODE'S DESTINATION IS STILL NOT SHOWN.** The card reads "Route to Service Appointment,
+   New Customer" and the drawer has no destination row. The measured voice drawer has a phone row
+   and no destination row, and **no voice drawer capture survives in `reference/`**, so adding one
+   would be inventing a control. Flagged rather than built.
+⚠️ Also open: "All Support Users" draws no chips while its drawer shows Consumer Name (the
+fallback for a node carrying none, and the prompt does collect a name there) — so the chip is
+arguably missing from the NODE. Left alone; it is the row above the one reported.
+
+⚠️⚠️ **THE TREE ITSELF IS UNTOUCHED, WHICH WAS THE CONSTRAINT.** Measured before and after: 12
+nodes, 15 chips, **zero** `.wf-v2`, **zero** arrowheads, 8px radius, its own green, 2px strokes,
+minimap present. Every edit was in the drawer builder, never the renderer, and two checks pin it —
+the SMS action tints stay scoped to `.wf-v2`, and `marker-end` stays opt-in (an ATTRIBUTE, so no
+stylesheet scope could keep arrowheads off another diagram).
+
+⚠️ **ONE FIELD IS STORED CORRECTLY AND IS CURRENTLY SILENT, AND IT IS A PRODUCT DECISION, NOT A
+BUG TO PAPER OVER.** `voiceQualify` is suppressed whenever the greeting already contains a "?",
+by the rule that stops the agent asking twice — and **every profile sampled has a greeting that
+asks**. So editing the Qualify question saves and changes nothing audible until the greeting stops
+asking. Pre-existing (Ask AI has had the same caveat since 8/27), but making the field editable
+turns a stale display into an edit that appears to do nothing. Raised with the user rather than
+guessed at; relaxing the suppression risks the double question the rule exists to prevent.
+
+**`audit:ai` gained 12 checks**: the voice drawers can Apply at all, both chrome leaves offer the
+picker, Add writes the tree's child nodes, the escalation has a home and reaches BOTH flows, one
+definition of its default, a use case's instruction writes the shared list AS a list, a use case's
+collect is its own node's chips, two use cases differ, the unset box names itself, the SMS tints
+stay scoped, and arrowheads stay opt-in.
+⚠️ Three were broken on purpose and each fired. ⚠️ **ONE EXISTING CHECK WAS RE-AIMED, NOT
+DELETED** — it asserted a voice drawer carries NO write paths, which was the old scope; it now
+asserts every write path goes somewhere the agent reads, which is the invariant that survives.
+⚠️ **AND TWO NEW CHECKS FAILED ON CORRECT CODE FIRST**, both fixture faults: one matched
+`lineFor(` where the declaration is `lineFor = (`, and one built its tree from `smsBranches`,
+whose path nodes carry no chips — so the per-node collect check compared against an empty list.
+`audit-voice.ts` already carries `auditTreePaths` for exactly this reason; use a real voice tree.
+
 ##### The config is bi-directional: the workflow IS the agent's config (9/17/2026)
 Asked for directly: *"can we make the config bi directional, so if there are changes in the
 workflow, it also changes it in actual preview agent or preview workflow, and vice versa, if i use

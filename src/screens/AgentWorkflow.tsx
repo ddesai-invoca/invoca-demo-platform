@@ -727,9 +727,15 @@ export function AgentWorkflow() {
               /* ⚠️ APPLY WRITES THROUGH `applyEdits` INTO THIS PAGE'S OWN SCOPE, which is what
                  gives a drawer edit persistence per demo, an undo step on the page's stack, and
                  the refusal on somebody else's demo — none of which a bespoke writer would get.
-                 Passed only for the built-in SMS template: every other drawer stays read-only,
-                 which is what keeps the signed-off voice ones byte-identical. */
-              onApply={smsTemplated ? (es) => {
+                 ⚠️ **THE VOICE WORKFLOW WAS ADDED 9/21/2026, ON REQUEST** — its drawers were
+                 read-only because nobody had asked, not because they could not write: the page
+                 has registered its `agent` half beside the tree since 8/27, which is how Ask AI
+                 already configures that agent. So the write targets existed and only the
+                 drawers' `edits` paths were missing.
+                 ⚠️ STILL ABSENT for an authored extra workflow and a created one: neither has a
+                 config slot for a node the template never made, so an edit there would have
+                 nowhere to land. */
+              onApply={smsTemplated || (!isSms && !created) ? (es) => {
                 applyEdits(pageKey, es.map((e) => ({ path: e.path, value: JSON.stringify(e.value) })));
               } : undefined} />
           ) : null;

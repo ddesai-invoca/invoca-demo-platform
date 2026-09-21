@@ -231,7 +231,16 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
       const path = edits[k];
       if (path && draft[k] !== initial[k]) out.push({ path, value: draft[k] });
     };
-    str("question"); str("fallback"); str("handling"); str("looksLike");
+    str("question"); str("fallback"); str("looksLike");
+    /* ⚠️ THE INSTRUCTION IS A LIST ON THE VOICE DRAWERS. `agent.informSteps` is an array, and
+       writing a string there is a type flip the guard refuses — the edit would be lost. */
+    if (edits.handling && draft.handling !== initial.handling) {
+      const listy = d.kind === "action" && d.handlingList;
+      out.push({ path: edits.handling,
+        value: listy
+          ? draft.handling.split("\n").map((l) => l.trim()).filter(Boolean)
+          : draft.handling });
+    }
     str("destination"); str("signal");
     /* ⚠️ THE COLLECT LIST IS A LIST, so it is compared as one — and it is what the diagram's
        pills read, so a change here visibly resizes the node. */
@@ -477,6 +486,7 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
                           the six numbered routing steps and the two-line escalation instruction
                           each get the height they need without a per-action modifier. */}
                       <AutoTa value={live ? draft.handling : (d.handling ?? "")} maxLines={10}
+                        placeholder={d.handlingPlaceholder}
                         onChange={live && edits?.handling ? (v) => set("handling", v) : undefined} />
                     </>
                   ) : null}
