@@ -1,0 +1,5308 @@
+{
+  "id": "united-veterinary-care",
+  "customerName": "United Veterinary Care",
+  "websiteUrl": "https://www.unitedveterinarycare.com",
+  "brandDomain": "unitedveterinarycare.com",
+  "networkName": "Invoca for Veterinary Care",
+  "industry": "Veterinary Care",
+  "bookingTerm": "Appointment",
+  "customerNoun": "Client",
+  "generation": {
+    "at": "2026-09-22T15:20:07.569Z",
+    "scope": "full"
+  },
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 12000,
+      "yTicks": [
+        0,
+        3000,
+        6000,
+        9000,
+        12000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 6842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 11238
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 10417
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 9986
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 10361
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Emergency Vet Near Me",
+          "marketingSearchTerm": "emergency vet near me",
+          "landingPageUrl": "https://unitedveterinarycare.com/locations/urgent-care?utm_source=google&utm_medium=cpc&utm_campaign=emergency_vet",
+          "websiteJourney": "Home / Our Locations / Urgent & Emergency Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "New Client Free Exam",
+          "marketingSearchTerm": "free first vet exam",
+          "landingPageUrl": "https://unitedveterinarycare.com/culture/new-client-offer?utm_source=google&utm_medium=cpc&utm_campaign=free_exam",
+          "websiteJourney": "Home / UVC Culture / New Client Free Exam",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Spay & Neuter Special",
+          "marketingSearchTerm": "dog spay cost near me",
+          "landingPageUrl": "https://unitedveterinarycare.com/services/surgery/spay-neuter?utm_source=google&utm_medium=cpc&utm_campaign=spay_neuter",
+          "websiteJourney": "Home / Our Locations / Surgery",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Emergency Vet Near Me",
+          "marketingSearchTerm": "urgent care veterinarian open now",
+          "landingPageUrl": "https://unitedveterinarycare.com/locations/urgent-care?utm_source=bing&utm_medium=cpc&utm_campaign=emergency_vet",
+          "websiteJourney": "Home / Our Locations / Urgent & Emergency Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Pet Dental Cleaning",
+          "marketingSearchTerm": "pet dental cleaning price",
+          "landingPageUrl": "https://unitedveterinarycare.com/services/dentistry/cohat?utm_source=google&utm_medium=cpc&utm_campaign=dental",
+          "websiteJourney": "Home / Our Locations / Diagnostics & Dentistry",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Puppy Shots",
+          "marketingSearchTerm": "affordable puppy shots",
+          "landingPageUrl": "https://unitedveterinarycare.com/services/wellness/vaccines?utm_source=google&utm_medium=cpc&utm_campaign=vaccines",
+          "websiteJourney": "Home / Our Locations / Preventive & Wellness Care",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local SEO Hospital Pages",
+          "marketingSearchTerm": "vet near me",
+          "landingPageUrl": "https://unitedveterinarycare.com/locations?utm_source=google&utm_medium=organic",
+          "websiteJourney": "Home / Our Locations / Hospital Finder",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local SEO Hospital Pages",
+          "marketingSearchTerm": "veterinary hospital near me",
+          "landingPageUrl": "https://unitedveterinarycare.com/locations/florida?utm_source=google&utm_medium=organic",
+          "websiteJourney": "Home / Our Locations / Florida / Hospital Page",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Cat Vaccines Clinic",
+          "marketingSearchTerm": "cat vaccines clinic",
+          "landingPageUrl": "https://unitedveterinarycare.com/services/wellness/feline-vaccines?utm_source=bing&utm_medium=cpc&utm_campaign=feline_vaccines",
+          "websiteJourney": "Home / Our Locations / Preventive & Wellness Care",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Pet Wellness Month",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://unitedveterinarycare.com/services/wellness/annual-plan?utm_source=facebook&utm_medium=social&utm_campaign=wellness_month",
+          "websiteJourney": "Home / Our Locations / Preventive & Wellness Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Meet Our Vets",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://unitedveterinarycare.com/about/leadership?utm_source=instagram&utm_medium=social&utm_campaign=meet_our_vets",
+          "websiteJourney": "Home / About United Veterinary Care / Leadership Team",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Brand Search",
+          "marketingSearchTerm": "united veterinary care locations",
+          "landingPageUrl": "https://unitedveterinarycare.com/locations?utm_source=google&utm_medium=organic",
+          "websiteJourney": "Home / Our Locations / Hospital Finder",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Emergency Vet Near Me",
+          "marketingSearchTerm": "emergency vet palm beach",
+          "landingPageUrl": "https://unitedveterinarycare.com/locations/florida/palm-beach-gardens?utm_source=google&utm_medium=cpc&utm_campaign=emergency_vet",
+          "websiteJourney": "Home / Our Locations / Florida / Urgent & Emergency Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "New Client Free Exam",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://unitedveterinarycare.com/culture/new-client-offer?utm_source=facebook&utm_medium=social&utm_campaign=free_exam",
+          "websiteJourney": "Home / UVC Culture / New Client Free Exam",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Laser Surgery",
+          "marketingSearchTerm": "pet laser surgery near me",
+          "landingPageUrl": "https://unitedveterinarycare.com/services/surgery/laser?utm_source=google&utm_medium=cpc&utm_campaign=laser_surgery",
+          "websiteJourney": "Home / Our Locations / Surgery",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local SEO Hospital Pages",
+          "marketingSearchTerm": "diagnostic bloodwork for dogs",
+          "landingPageUrl": "https://unitedveterinarycare.com/services/diagnostics/bloodwork?utm_source=google&utm_medium=organic",
+          "websiteJourney": "Home / Our Locations / Diagnostics & Dentistry",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "LinkedIn",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Partner With UVC",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://unitedveterinarycare.com/process?utm_source=linkedin&utm_medium=social&utm_campaign=partner_with_uvc",
+          "websiteJourney": "Home / Process / Partner Inquiry",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Pet Wellness Month",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://unitedveterinarycare.com/services/wellness/exam?utm_source=instagram&utm_medium=social&utm_campaign=wellness_month",
+          "websiteJourney": "Home / Our Locations / Preventive & Wellness Care",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Microchipping",
+          "marketingSearchTerm": "microchip my dog cost",
+          "landingPageUrl": "https://unitedveterinarycare.com/services/wellness/microchip?utm_source=google&utm_medium=cpc&utm_campaign=microchip",
+          "websiteJourney": "Home / Our Locations / Preventive & Wellness Care",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "LinkedIn",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Careers in Veterinary Medicine",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://unitedveterinarycare.com/culture/careers?utm_source=linkedin&utm_medium=social&utm_campaign=careers",
+          "websiteJourney": "Home / UVC Culture / Careers",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (United Veterinary Care)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "38,309"
+            },
+            {
+              "label": "New Client Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "New Client (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,452,405"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "6,129"
+            },
+            {
+              "label": "Prescription Refill Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing & Records Call (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Existing Client Support Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Client Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Client Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "55%"
+            },
+            {
+              "label": "Non-Qualified Inquiry (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "New Client (Percent)",
+              "value": "38%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Client Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Client Call (Count)",
+            "values": [
+              6142,
+              7028,
+              6894,
+              6231,
+              5885
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              4018,
+              4602,
+              4511,
+              4088,
+              3851
+            ]
+          },
+          {
+            "name": "Non-Qualified Inquiry (Count)",
+            "values": [
+              876,
+              1004,
+              984,
+              891,
+              842
+            ]
+          },
+          {
+            "name": "New Client (Count)",
+            "values": [
+              2776,
+              3181,
+              3118,
+              2821,
+              2661
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38309,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "13,847",
+                "54%",
+                "31%",
+                "$1,247,918"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "9,214",
+                "61%",
+                "37%",
+                "$829,455"
+              ]
+            },
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "7,326",
+                "58%",
+                "42%",
+                "$661,204"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "4,918",
+                "66%",
+                "49%",
+                "$442,169"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "3,004",
+                "63%",
+                "58%",
+                "$271,659"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38309,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "14,562",
+                "55%",
+                "30%",
+                "$1,318,447"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "10,337",
+                "60%",
+                "36%",
+                "$921,653"
+              ]
+            },
+            {
+              "name": "Local Listings",
+              "metrics": [
+                "6,948",
+                "57%",
+                "43%",
+                "$614,229"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "3,879",
+                "64%",
+                "51%",
+                "$348,916"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "2,583",
+                "62%",
+                "57%",
+                "$249,160"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20145,
+          "rows": [
+            {
+              "name": "New Client Free Exam",
+              "metrics": [
+                "6,847",
+                "56%",
+                "33%",
+                "$612,439"
+              ]
+            },
+            {
+              "name": "Emergency Vet Near Me",
+              "metrics": [
+                "5,213",
+                "62%",
+                "39%",
+                "$487,215"
+              ]
+            },
+            {
+              "name": "Spay & Neuter Special",
+              "metrics": [
+                "3,689",
+                "59%",
+                "45%",
+                "$331,684"
+              ]
+            },
+            {
+              "name": "Pet Wellness Month",
+              "metrics": [
+                "2,564",
+                "65%",
+                "52%",
+                "$224,506"
+              ]
+            },
+            {
+              "name": "Annual Wellness Reminders",
+              "metrics": [
+                "1,832",
+                "63%",
+                "61%",
+                "$158,392"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 15817,
+          "rows": [
+            {
+              "name": "vet near me",
+              "metrics": [
+                "5,438",
+                "55%",
+                "32%",
+                "$498,317"
+              ]
+            },
+            {
+              "name": "emergency vet near me",
+              "metrics": [
+                "4,127",
+                "61%",
+                "38%",
+                "$392,146"
+              ]
+            },
+            {
+              "name": "free first vet exam",
+              "metrics": [
+                "2,916",
+                "58%",
+                "44%",
+                "$267,538"
+              ]
+            },
+            {
+              "name": "dog spay cost near me",
+              "metrics": [
+                "1,984",
+                "64%",
+                "51%",
+                "$178,429"
+              ]
+            },
+            {
+              "name": "pet dental cleaning price",
+              "metrics": [
+                "1,352",
+                "62%",
+                "60%",
+                "$121,674"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Set (Industry) (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Preventive & Wellness Care",
+              "metrics": [
+                "12,847",
+                "52%",
+                "28%",
+                "$855,142"
+              ]
+            },
+            {
+              "name": "General/Sick Veterinary Medicine",
+              "metrics": [
+                "9,673",
+                "57%",
+                "35%",
+                "$804,913"
+              ]
+            },
+            {
+              "name": "Urgent & Emergency Care",
+              "metrics": [
+                "7,214",
+                "61%",
+                "41%",
+                "$703,268"
+              ]
+            },
+            {
+              "name": "Surgery",
+              "metrics": [
+                "5,182",
+                "66%",
+                "49%",
+                "$602,905"
+              ]
+            },
+            {
+              "name": "Diagnostics & Dentistry",
+              "metrics": [
+                "3,393",
+                "71%",
+                "60%",
+                "$486,177"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38309,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "13,472",
+                "44%",
+                "29%",
+                "$921,164"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "9,218",
+                "48%",
+                "35%",
+                "$762,548"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "6,743",
+                "52%",
+                "41%",
+                "$654,319"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "5,481",
+                "58%",
+                "48%",
+                "$623,547"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "3,395",
+                "63%",
+                "61%",
+                "$490,827"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Client (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Preventive & Wellness Care",
+            "values": [
+              612,
+              798,
+              824,
+              791,
+              572
+            ]
+          },
+          {
+            "name": "General/Sick Veterinary Medicine",
+            "values": [
+              548,
+              731,
+              762,
+              703,
+              642
+            ]
+          },
+          {
+            "name": "Urgent & Emergency Care",
+            "values": [
+              472,
+              634,
+              662,
+              618,
+              572
+            ]
+          },
+          {
+            "name": "Surgery",
+            "values": [
+              408,
+              542,
+              571,
+              528,
+              490
+            ]
+          },
+          {
+            "name": "Diagnostics & Dentistry",
+            "values": [
+              326,
+              438,
+              459,
+              421,
+              392
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 38,309 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Sarah Whitfield called to set up her new puppy's first wellness exam and a core vaccine package. Agent Lila walked her through the DHPP and rabies bundle, confirmed pricing, and booked an appointment at the Palm Beach Gardens hospital. Sarah was thrilled and added the puppy to the annual wellness plan.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Lila",
+          "duration": "2m 45s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 87,
+          "summary": "Daniel Ortega asked about the cost of a dog spay procedure for his young Labrador. Agent Oscar explained the anesthesia, monitoring, and recovery included in the spay surgery quote and answered questions about pre-surgical bloodwork. Daniel scheduled the surgery for the following week.",
+          "date": "Feb 11, 1:22 PM",
+          "agent": "Oscar",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 81,
+          "summary": "Emily Carson wanted to book a dental cleaning for her senior cat and asked whether dental X-rays were included. Agent Rosey confirmed the COHAT covers scaling, polishing, and imaging under anesthesia, then reserved a morning slot. Emily appreciated the clear explanation and confirmed the appointment.",
+          "date": "Mar 4, 9:47 AM",
+          "agent": "Rosey",
+          "duration": "2m 31s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Marcus Bell, a first-time pet parent new to the area, called to schedule the New Client Free Exam for his rescue dog. Agent Mary collected his contact details, pet history, and preferred hospital, then explained what the wellness exam would cover. She booked the visit and noted a possible vaccine update at the same appointment.",
+          "date": "Apr 9, 3:05 PM",
+          "agent": "Mary",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 14,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Rachel Nguyen called to schedule the feline vaccine package for her two indoor cats. Agent Sue confirmed the FVRCP and rabies coverage plus the wellness screening and found back-to-back slots. Rachel booked both appointments without hesitation.",
+          "date": "May 15, 11:38 AM",
+          "agent": "Sue",
+          "duration": "2m 09s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Thomas Reed called to check on the status of a prescription refill for his dog's heart medication. Agent Lee located the order and explained it needed a veterinarian's approval before pickup. Thomas was mildly annoyed at the delay but agreed to wait for the confirmation call.",
+          "date": "May 28, 4:41 PM",
+          "agent": "Lee",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Jessica Palmer wanted to add a microchip for her newly adopted kitten. Agent Mike explained the implant and registration process and pricing, then scheduled a quick appointment. Jessica confirmed the visit and asked about combining it with a wellness check.",
+          "date": "Jun 3, 2:42 PM",
+          "agent": "Mike",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Karen Sloan disputed a charge on her recent dental cleaning invoice, saying she expected a lower estimate. Agent Jennifer reviewed the itemized bill and explained the dental X-ray line that was added during the procedure. Karen remained frustrated and asked for a manager to review the charge.",
+          "date": "Jul 8, 10:29 AM",
+          "agent": "Jennifer",
+          "duration": "2m 38s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Brian Holloway called about bringing his dog in for emergency care after a limping injury. Agent Rose triaged the situation and explained the urgent care wait time was longer than usual. Brian was upset about the wait and said he might drive to another hospital instead.",
+          "date": "Jul 22, 6:15 PM",
+          "agent": "Rose",
+          "duration": "1m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Karen Foster called to book a spay surgery for her cat but was confused about the pre-surgery fasting instructions. Agent Oscar clarified the overnight guidelines and scheduled the procedure. The call had some back and forth, but Karen confirmed the appointment before hanging up.",
+          "date": "Aug 5, 9:12 AM",
+          "agent": "Oscar",
+          "duration": "2m 51s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Patricia Grimes called because her dog's microchip did not appear when a shelter scanned it. Agent Lila explained the registration lookup process and offered to reverify the implant on file. Patricia was frustrated the record was not showing and asked for a callback with confirmation.",
+          "date": "Aug 19, 1:58 PM",
+          "agent": "Lila",
+          "duration": "2m 04s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Greg Mancini called to cancel his dog's upcoming wellness exam because of a scheduling conflict. Agent Lee processed the cancellation and offered alternative dates, but Greg declined to rebook right away. He said he would call back later in the month.",
+          "date": "Sep 2, 3:44 PM",
+          "agent": "Lee",
+          "duration": "1m 21s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 32,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Angela Reyes called after hours about a possible emergency with her cat that had stopped eating. The call rolled to voicemail and no agent was available to triage the situation. She left a message asking for an urgent callback and sounded very worried.",
+          "date": "Sep 16, 8:37 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Steven Park called to complain about a charge related to a vaccine visit he felt was never fully explained. Agent Mary tried to review the invoice line items, but Steven interrupted several times and demanded a refund. The call ended without resolution and was escalated for follow-up.",
+          "date": "Oct 1, 11:55 AM",
+          "agent": "Mary",
+          "duration": "3m 18s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Melissa Dunn called furious about the total cost of a recent emergency visit for her dog, saying the estimate she was quoted was far lower. Agent Jennifer attempted to break down the triage and stabilization charges, but Melissa refused to accept the explanation. She threatened to leave a negative review before hanging up.",
+          "date": "Oct 14, 5:09 PM",
+          "agent": "Jennifer",
+          "duration": "2m 22s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "vaccine",
+        "spay",
+        "dental",
+        "wellness exam",
+        "microchip",
+        "emergency"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 18s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Pet Type and Wellness Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Explain New Client Free Exam Offer",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule and Confirm Appointment Date and Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Offer Microchipping or Wellness Plan",
+          "points": "0/10",
+          "status": "unmet"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller is a new client",
+        "Pet owner seeks preventive care",
+        "Caller mentions recent puppy purchase",
+        "Caller is interested in vaccination package",
+        "Caller wants to schedule immediately",
+        "Caller confirms address in service area",
+        "Caller repeats appointment date back",
+        "Caller has transportation available",
+        "Caller mentions multiple pets",
+        "Agent offers new client free exam",
+        "Agent provides clear next steps",
+        "Agent maintains professional tone",
+        "Caller seems satisfied with booking"
+      ],
+      "unmetSignals": [
+        "Caller expresses cost concerns",
+        "Caller asks about payment plans",
+        "Caller mentions pet behavioral issues",
+        "Caller asks about emergency hours",
+        "Caller requests specific veterinarian",
+        "Caller inquires about online medical records",
+        "Caller mentions prior vet experience",
+        "Caller asks about wellness membership options",
+        "Caller discusses pet health history in detail",
+        "Caller seeks second opinion"
+      ],
+      "naSignals": [
+        "Caller requests order status",
+        "Caller needs billing support",
+        "Caller asks about return policy",
+        "Caller inquires about shipping timeframe",
+        "Caller seeks refund authorization",
+        "Caller needs invoice correction",
+        "Caller asks about product warranty"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller is a new pet parent with a recently acquired puppy and wants to schedule a wellness exam and initial vaccination package to ensure the puppy receives proper preventive care."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects to book an appointment quickly, access the new client free exam offer, and receive guidance on core vaccinations and routine health screening."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address for appointment confirmations and follow-up wellness reminders. Additionally, the agent could have described the benefits of the annual wellness plan or mentioned microchipping to enhance the new client experience."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Thank you for calling United Veterinary Care. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:16",
+          "text": "Hi, I just got a new puppy and I want to bring her in for an exam and shots. Can I schedule an appointment?"
+        },
+        {
+          "speaker": "agent",
+          "time": "00:28",
+          "text": "That's wonderful. Congratulations on your new puppy. I'd be happy to get her scheduled. First, can I get your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:38",
+          "text": "Yes, it's Sarah Michelle Chen."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:44",
+          "text": "Thank you, Sarah. And what's your puppy's name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:50",
+          "text": "Her name is Bella."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:54",
+          "text": "Bella is a beautiful name. As a first time visit with us, I want to let you know that Bella's wellness exam is completely free. We'll do a full nose to tail evaluation with one of our veterinarians. After that, we can discuss the core vaccination package which typically runs around one hundred fifteen dollars."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:12",
+          "text": "Oh, that's great. How long does the appointment usually take?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:18",
+          "text": "The first appointment usually takes about thirty minutes to forty five minutes total. We'll collect all of Bella's medical history and then the vet will do a thorough exam. What ZIP code are you located in?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:30",
+          "text": "I'm in the thirty three forty eight zero area. Is that near one of your hospitals?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:38",
+          "text": "Yes, that's our Palm Beach Gardens location. Perfect. And can I get your phone number to confirm the appointment details?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:48",
+          "text": "Sure, it's ****. "
+        },
+        {
+          "speaker": "agent",
+          "time": "01:52",
+          "text": "Great. And when would work best for you? We have availability this Thursday at ten AM or Friday at two PM."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:02",
+          "text": "Thursday at ten AM works perfectly for me."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:08",
+          "text": "Excellent. So we have Bella scheduled for Thursday, October twenty fifth at ten AM at our Palm Beach Gardens hospital for a new client wellness exam and vaccination consultation. Is there anything else I can help you with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:22",
+          "text": "No, that's all. Thank you so much."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:26",
+          "text": "You're welcome, Sarah. We look forward to meeting you and Bella. Have a great day."
+        }
+      ],
+      "aiSummary": "Sarah Chen called to schedule a wellness appointment for her newly acquired puppy, Bella. Marcus successfully booked her for a new client free wellness exam plus vaccination consultation at the Palm Beach Gardens location on Thursday at ten AM. The call demonstrated proper greeting, name and contact capture, service area confirmation, and appointment scheduling. However, the email address was not collected for confirmation and follow-up communications, and the agent did not mention add-on services such as microchipping or annual wellness plan options.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great structure on this intake call. Your greeting was warm, you explained the free new client exam clearly, and you nailed the appointment details. Two coaching points for next time: grab the caller's email address for appointment reminders and follow-up wellness resources. Also, once you confirm the vaccination need, try a soft mention of our microchipping service or annual wellness plan to add value for new families. Keep up the solid work."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "38,309"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$90.12"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,452,405"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "15,927"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "42%"
+            },
+            {
+              "label": "Appointment: Scheduled (Count)",
+              "value": "22,219"
+            },
+            {
+              "label": "Appointment: Scheduled (Percent)",
+              "value": "58%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "22,382"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "58%"
+            },
+            {
+              "label": "Appointment: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Appointments)",
+          "chart": {
+            "legend": "Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Referral",
+                "value": 59,
+                "display": "59%"
+              },
+              {
+                "name": "ChatGPT",
+                "value": 55,
+                "display": "55%"
+              },
+              {
+                "name": "Google LSA",
+                "value": 51,
+                "display": "51%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 45,
+                "display": "45%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "13,842",
+                  "38%",
+                  "$1,248,320"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "9,517",
+                  "45%",
+                  "$857,640"
+                ]
+              },
+              {
+                "cells": [
+                  "Google LSA",
+                  "7,236",
+                  "51%",
+                  "$651,900"
+                ]
+              },
+              {
+                "cells": [
+                  "ChatGPT",
+                  "4,689",
+                  "55%",
+                  "$422,530"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "3,025",
+                  "59%",
+                  "$272,015"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 16000,
+            "axisTicks": [
+              0,
+              4000,
+              8000,
+              12000,
+              16000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 14208,
+                "display": "14,208"
+              },
+              {
+                "name": "Organic",
+                "value": 9864,
+                "display": "9,864"
+              },
+              {
+                "name": "Local Services",
+                "value": 6721,
+                "display": "6,721"
+              },
+              {
+                "name": "Social",
+                "value": 4382,
+                "display": "4,382"
+              },
+              {
+                "name": "Email",
+                "value": 3134,
+                "display": "3,134"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "14,208",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "9,864",
+                  "48%"
+                ]
+              },
+              {
+                "cells": [
+                  "Local Services",
+                  "6,721",
+                  "53%"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "4,382",
+                  "57%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "3,134",
+                  "62%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "New Client Free Exam",
+                "value": 8124,
+                "display": "8,124"
+              },
+              {
+                "name": "Emergency Vet Near Me",
+                "value": 6057,
+                "display": "6,057"
+              },
+              {
+                "name": "Spay & Neuter Special",
+                "value": 4318,
+                "display": "4,318"
+              },
+              {
+                "name": "Pet Wellness Month",
+                "value": 2689,
+                "display": "2,689"
+              },
+              {
+                "name": "Partner With UVC",
+                "value": 1946,
+                "display": "1,946"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "New Client Free Exam",
+                  "8,124",
+                  "43%",
+                  "$728,415"
+                ]
+              },
+              {
+                "cells": [
+                  "Emergency Vet Near Me",
+                  "6,057",
+                  "49%",
+                  "$549,830"
+                ]
+              },
+              {
+                "cells": [
+                  "Spay & Neuter Special",
+                  "4,318",
+                  "54%",
+                  "$389,240"
+                ]
+              },
+              {
+                "cells": [
+                  "Pet Wellness Month",
+                  "2,689",
+                  "61%",
+                  "$241,560"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 6000,
+            "axisTicks": [
+              0,
+              1500,
+              3000,
+              4500,
+              6000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "vet near me",
+                "value": 5842,
+                "display": "5,842"
+              },
+              {
+                "name": "emergency vet near me",
+                "value": 4317,
+                "display": "4,317"
+              },
+              {
+                "name": "free first vet exam",
+                "value": 3128,
+                "display": "3,128"
+              },
+              {
+                "name": "dog spay cost near me",
+                "value": 2254,
+                "display": "2,254"
+              },
+              {
+                "name": "pet dental cleaning price",
+                "value": 1689,
+                "display": "1,689"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "vet near me",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "emergency vet near me",
+                  "50%"
+                ]
+              },
+              {
+                "cells": [
+                  "free first vet exam",
+                  "56%"
+                ]
+              },
+              {
+                "cells": [
+                  "dog spay cost near me",
+                  "62%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Appointment: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Preventive & Wellness Care",
+              "12,417",
+              "45%",
+              "52%"
+            ]
+          },
+          {
+            "cells": [
+              "Surgery",
+              "8,932",
+              "51%",
+              "44%"
+            ]
+          },
+          {
+            "cells": [
+              "Urgent & Emergency Care",
+              "6,214",
+              "56%",
+              "38%"
+            ]
+          },
+          {
+            "cells": [
+              "Diagnostics & Dentistry",
+              "4,108",
+              "63%",
+              "33%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Palm Beach Gardens Animal Hospital",
+              "11,842",
+              "947",
+              "6%",
+              "46%"
+            ]
+          },
+          {
+            "cells": [
+              "Jupiter Veterinary Clinic",
+              "8,317",
+              "612",
+              "5%",
+              "52%"
+            ]
+          },
+          {
+            "cells": [
+              "Wellington Pet Hospital",
+              "5,689",
+              "388",
+              "4%",
+              "57%"
+            ]
+          },
+          {
+            "cells": [
+              "Boca Raton Animal Care",
+              "3,472",
+              "214",
+              "3%",
+              "63%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              892,
+              1014,
+              938,
+              876,
+              862
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              742,
+              831,
+              806,
+              758,
+              759
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              612,
+              678,
+              651,
+              640,
+              633
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              486,
+              534,
+              512,
+              508,
+              498
+            ]
+          },
+          {
+            "name": "Needs Family Approval",
+            "values": [
+              348,
+              392,
+              381,
+              372,
+              367
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "15,324"
+          },
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "58%"
+          },
+          {
+            "label": "New Client (Percent)",
+            "value": "41%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,967,871"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$89,543"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$124,687"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$156,421"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$287,634"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "46%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$542,876"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "51%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$767,110"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18247,
+          "rows": [
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "4847",
+                "64%",
+                "38%",
+                "$447,982"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "3456",
+                "61%",
+                "42%",
+                "$318,765"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "2934",
+                "58%",
+                "39%",
+                "$256,892"
+              ]
+            },
+            {
+              "name": "Google",
+              "metrics": [
+                "2187",
+                "54%",
+                "35%",
+                "$189,456"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "1542",
+                "51%",
+                "28%",
+                "$142,884"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18891,
+          "rows": [
+            {
+              "name": "Voice",
+              "metrics": [
+                "5432",
+                "62%",
+                "41%",
+                "$502,768"
+              ]
+            },
+            {
+              "name": "Search",
+              "metrics": [
+                "3876",
+                "59%",
+                "37%",
+                "$356,234"
+              ]
+            },
+            {
+              "name": "Mobile App",
+              "metrics": [
+                "2645",
+                "56%",
+                "40%",
+                "$243,987"
+              ]
+            },
+            {
+              "name": "Web Form",
+              "metrics": [
+                "1829",
+                "53%",
+                "32%",
+                "$168,543"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "1173",
+                "49%",
+                "25%",
+                "$98,127"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18564,
+          "rows": [
+            {
+              "name": "Emergency Vet Near Me Special",
+              "metrics": [
+                "3654",
+                "67%",
+                "44%",
+                "$337,892"
+              ]
+            },
+            {
+              "name": "Free New Client Wellness Exam",
+              "metrics": [
+                "2847",
+                "62%",
+                "48%",
+                "$262,157"
+              ]
+            },
+            {
+              "name": "Spay & Neuter Cost Comparison",
+              "metrics": [
+                "2156",
+                "58%",
+                "38%",
+                "$198,765"
+              ]
+            },
+            {
+              "name": "Annual Wellness Plan Promotion",
+              "metrics": [
+                "1834",
+                "55%",
+                "33%",
+                "$168,934"
+              ]
+            },
+            {
+              "name": "Urgent Care Same Day Available",
+              "metrics": [
+                "1456",
+                "51%",
+                "26%",
+                "$134,321"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 17892,
+          "rows": [
+            {
+              "name": "Emergency vet near me",
+              "metrics": [
+                "2143",
+                "68%",
+                "45%",
+                "$197,654"
+              ]
+            },
+            {
+              "name": "Free first vet exam",
+              "metrics": [
+                "1876",
+                "64%",
+                "49%",
+                "$172,987"
+              ]
+            },
+            {
+              "name": "Dog spay cost near me",
+              "metrics": [
+                "1542",
+                "59%",
+                "40%",
+                "$141,876"
+              ]
+            },
+            {
+              "name": "Cat vaccines clinic",
+              "metrics": [
+                "1287",
+                "54%",
+                "32%",
+                "$118,543"
+              ]
+            },
+            {
+              "name": "Urgent care veterinarian open now",
+              "metrics": [
+                "987",
+                "48%",
+                "24%",
+                "$90,876"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Preventive & Wellness Care",
+              "metrics": [
+                "4923",
+                "62%",
+                "43%",
+                "$453,892"
+              ]
+            },
+            {
+              "name": "Surgery Services",
+              "metrics": [
+                "3876",
+                "58%",
+                "39%",
+                "$356,754"
+              ]
+            },
+            {
+              "name": "Urgent & Emergency Care",
+              "metrics": [
+                "3142",
+                "55%",
+                "36%",
+                "$289,876"
+              ]
+            },
+            {
+              "name": "Diagnostics & Dentistry",
+              "metrics": [
+                "2187",
+                "51%",
+                "31%",
+                "$201,543"
+              ]
+            },
+            {
+              "name": "General Sick Care & Medications",
+              "metrics": [
+                "1196",
+                "47%",
+                "25%",
+                "$110,234"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Client (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Preventive & Wellness Care",
+            "values": [
+              821,
+              1043,
+              956,
+              1089,
+              1014
+            ]
+          },
+          {
+            "name": "Surgery Services",
+            "values": [
+              632,
+              746,
+              698,
+              821,
+              779
+            ]
+          },
+          {
+            "name": "Urgent & Emergency Care",
+            "values": [
+              542,
+              698,
+              634,
+              712,
+              556
+            ]
+          },
+          {
+            "name": "Diagnostics & Dentistry",
+            "values": [
+              421,
+              534,
+              478,
+              512,
+              442
+            ]
+          },
+          {
+            "name": "General Sick Care & Medications",
+            "values": [
+              218,
+              287,
+              254,
+              312,
+              125
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "317"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$2,156,739"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "863"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$172,846"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Appointment Scheduled",
+            "values": [
+              76,
+              72,
+              81,
+              74,
+              78,
+              79,
+              75,
+              82,
+              77,
+              73,
+              80,
+              76,
+              74,
+              81,
+              78,
+              75,
+              79,
+              83,
+              174,
+              189,
+              176,
+              182,
+              179,
+              185,
+              188,
+              181,
+              177,
+              184,
+              179,
+              186,
+              182,
+              191,
+              187,
+              179,
+              185,
+              183,
+              177,
+              189,
+              181,
+              176,
+              188,
+              184,
+              179,
+              187,
+              182,
+              185,
+              178,
+              183,
+              180
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,156"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "11,247"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "743"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "59%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "719"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Appointment Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "New Client Wellness Exam",
+            "values": [
+              8,
+              11,
+              9,
+              14,
+              12,
+              2
+            ]
+          },
+          {
+            "name": "Vaccine Due Reminder",
+            "values": [
+              6,
+              9,
+              7,
+              11,
+              8,
+              1
+            ]
+          },
+          {
+            "name": "Spay or Neuter Surgery Inquiry",
+            "values": [
+              5,
+              8,
+              6,
+              10,
+              7,
+              1
+            ]
+          },
+          {
+            "name": "Urgent Care Availability",
+            "values": [
+              4,
+              6,
+              5,
+              9,
+              6,
+              1
+            ]
+          },
+          {
+            "name": "Dental Cleaning or Laser Surgery",
+            "values": [
+              3,
+              5,
+              4,
+              7,
+              5,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "35,244"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "28,732"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Appointment Booked (Count)",
+            "value": "22,219"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$3,452,405"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Jessica Ramos",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "David Kowalski",
+              "value": 241,
+              "display": "241"
+            },
+            {
+              "name": "Patricia Okonkwo",
+              "value": 203,
+              "display": "203"
+            },
+            {
+              "name": "Kevin Burnett",
+              "value": 164,
+              "display": "164"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Dr. Amanda Rodriguez",
+            "values": [
+              287,
+              341,
+              398,
+              419,
+              476
+            ]
+          },
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              279,
+              334,
+              383,
+              412,
+              458
+            ]
+          },
+          {
+            "name": "James Patterson",
+            "values": [
+              263,
+              318,
+              372,
+              401,
+              437
+            ]
+          },
+          {
+            "name": "Lisa Chen",
+            "values": [
+              251,
+              306,
+              357,
+              389,
+              421
+            ]
+          },
+          {
+            "name": "Robert Vasquez",
+            "values": [
+              241,
+              294,
+              342,
+              371,
+              398
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Jessica Ramos",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "David Kowalski",
+              "value": 53.1,
+              "display": "53.1%"
+            },
+            {
+              "name": "Patricia Okonkwo",
+              "value": 57.9,
+              "display": "57.9%"
+            },
+            {
+              "name": "Kevin Burnett",
+              "value": 61.4,
+              "display": "61.4%"
+            },
+            {
+              "name": "Douglas Mackenzie",
+              "value": 52.7,
+              "display": "52.7%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "54.2%",
+                "28%",
+                "$523,847",
+                "1,347"
+              ]
+            },
+            {
+              "cells": [
+                "Jessica Ramos",
+                "56.8%",
+                "30%",
+                "$578,392",
+                "1,429"
+              ]
+            },
+            {
+              "cells": [
+                "David Kowalski",
+                "53.1%",
+                "27%",
+                "$489,654",
+                "1,401"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Okonkwo",
+                "57.9%",
+                "31%",
+                "$604,215",
+                "1,388"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Burnett",
+                "61.4%",
+                "35%",
+                "$721,483",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Douglas Mackenzie",
+                "52.7%",
+                "26%",
+                "$467,921",
+                "1,389"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Dr. Amanda Rodriguez",
+              "value": 94.1,
+              "display": "94.1%"
+            },
+            {
+              "name": "Sarah Mitchell",
+              "value": 91.3,
+              "display": "91.3%"
+            },
+            {
+              "name": "James Patterson",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "Lisa Chen",
+              "value": 88.5,
+              "display": "88.5%"
+            },
+            {
+              "name": "Robert Vasquez",
+              "value": 87.2,
+              "display": "87.2%"
+            },
+            {
+              "name": "Emily Hartwell",
+              "value": 90.4,
+              "display": "90.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Dr. Amanda Rodriguez",
+                "94.1%",
+                "67%",
+                "$901,234",
+                "1,547"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "91.3%",
+                "65%",
+                "$878,567",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "James Patterson",
+                "89.7%",
+                "63%",
+                "$847,291",
+                "1,498"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Chen",
+                "88.5%",
+                "61%",
+                "$819,384",
+                "1,467"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Vasquez",
+                "87.2%",
+                "59%",
+                "$781,246",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Emily Hartwell",
+                "90.4%",
+                "64%",
+                "$862,102",
+                "1,535"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Appointment Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Appointment Booked (Count)",
+        "rightMax": 1100,
+        "rightTicks": [
+          0,
+          275,
+          550,
+          825,
+          1100
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 824
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 790
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 735
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 702
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 611
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 641
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 708
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 736
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 821
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 796
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 717
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 693
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 616
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 635
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 725
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 747
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 814
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 801
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 702
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 680
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 625
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 632
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 738
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 762
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 803
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 802
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 692
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 663
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 636
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 633
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 739
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 200000,
+        "rightTicks": [
+          0,
+          66666.66666666667,
+          133333.33333333334,
+          200000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 127978
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 122661
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 114222
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 108990
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 94896
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 99591
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 110015
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 114351
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 127502
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 123621
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 111342
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 107614
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 95758
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 98704
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 112634
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 116066
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 126315
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 124349
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 109041
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 105582
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 97196
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 98215
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 114576
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 118374
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 124711
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 124529
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 107481
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 103057
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 98881
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 98404
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 115749
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "38,309"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:47"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,065"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,299"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "83%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Maria Gonzalez",
+                "412",
+                "91%",
+                "89%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "James Chen",
+                "387",
+                "86%",
+                "86%",
+                "81%"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Okonkwo",
+                "298",
+                "87%",
+                "86%",
+                "83%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "38,309 calls",
+      "pagerLabel": "1 of 3,831",
+      "calls": [
+        {
+          "time": "1/3/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/7/26 9:22 am",
+          "id": "A31C-4E9D0176BB42"
+        },
+        {
+          "time": "1/9/26 10:41 am",
+          "id": "C88E-2A5F0913DD70"
+        },
+        {
+          "time": "1/12/26 11:05 am",
+          "id": "D19A-6B3C0855EF19"
+        },
+        {
+          "time": "1/14/26 12:33 pm",
+          "id": "B72F-9C1E0447AA88"
+        },
+        {
+          "time": "1/16/26 1:18 pm",
+          "id": "E4A0-3D8B0621CC55"
+        },
+        {
+          "time": "1/21/26 2:04 pm",
+          "id": "7F6D-1E2A0538BF03"
+        },
+        {
+          "time": "1/23/26 3:29 pm",
+          "id": "9C2B-5A7D0164EE21"
+        },
+        {
+          "time": "1/28/26 4:12 pm",
+          "id": "3E8F-8B4C0299DA67"
+        },
+        {
+          "time": "1/30/26 5:41 pm",
+          "id": "6D1A-2F9E0713CB40"
+        }
+      ],
+      "duration": "2:22",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling United Veterinary Care, this is Marcus, how can I help you and your pet today?",
+          "highlights": [
+            "Thank you for calling United Veterinary Care",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Marcus, I just adopted a puppy and I'm looking for a vet. I've never been to one of your hospitals before.",
+          "highlights": [
+            "I just adopted a puppy",
+            "never been to one of your hospitals before"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:15",
+          "text": "Congratulations on the new puppy. As a first-time pet parent with us, your new client wellness exam is actually free. May I get your name?",
+          "highlights": [
+            "new client wellness exam is actually free"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:24",
+          "text": "That's great. My name is Danielle Foster, and the puppy is a little beagle named Biscuit.",
+          "highlights": [
+            "Danielle Foster"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:32",
+          "text": "Lovely, Danielle. For a new puppy we'd start with that wellness exam and the core vaccination package, the DHPP and rabies series. Is Biscuit up to date on any shots?",
+          "highlights": [
+            "core vaccination package"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:42",
+          "text": "None yet. What does the vaccine package run? I want to keep this manageable while I'm getting Biscuit settled.",
+          "highlights": [
+            "What does the vaccine package run",
+            "keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:52",
+          "text": "Completely understandable. The core vaccination package runs between $95 and $150, and since the first exam is free, you're only paying for the shots on that visit.",
+          "highlights": [
+            "between $95 and $150",
+            "first exam is free"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:02",
+          "text": "Okay. Honestly the clinic down the road quoted me a flat rate and I'm calling around a couple of places before I decide.",
+          "highlights": [
+            "the clinic down the road quoted me",
+            "calling around a couple of places"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:13",
+          "text": "That's smart to compare. What sets us apart is the free first exam plus our licensed vets do a full nose-to-tail assessment, so you're getting more than just the shots for that price.",
+          "highlights": [
+            "free first exam",
+            "full nose-to-tail assessment"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:24",
+          "text": "That does sound like better value. How soon could you actually see her?",
+          "highlights": [
+            "better value"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:34",
+          "text": "We have openings this week. If we get the puppy series started now, we can space the boosters out so it stays affordable month to month.",
+          "highlights": [
+            "openings this week"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:44",
+          "text": "Perfect. And down the line I'll need her spayed too, is that something you do?",
+          "highlights": [
+            "I'll need her spayed too"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:53",
+          "text": "Absolutely, spay surgery runs $250 to $650 depending on size, and we'll revisit that once she's a bit older. For now let's get the wellness exam and vaccines booked.",
+          "highlights": [
+            "spay surgery runs $250 to $650"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:02",
+          "text": "Sounds good, though I should check with my husband on the exact day before I lock anything in.",
+          "highlights": [
+            "check with my husband"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:08",
+          "text": "No problem, I can pencil you in for Thursday at 10 AM and hold it. If the day changes just call us back and we'll move it.",
+          "highlights": [
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:15",
+          "text": "Thursday at 10 works, let's do it. Thank you so much, Marcus.",
+          "highlights": [
+            "Thursday at 10 works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:22",
+          "text": "You're all set, Danielle. We'll see you and Biscuit Thursday at 10 AM. Thank you for choosing United Veterinary Care, have a wonderful day.",
+          "highlights": [
+            "You're all set",
+            "Thank you for choosing United Veterinary Care"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Intent: Puppy Vaccines",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Intent: Spay/Neuter Inquiry",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Foster, a first-time pet parent, called United Veterinary Care about care for her newly adopted beagle puppy, Biscuit. Agent Marcus explained the free new client wellness exam and recommended the core DHPP and rabies vaccination package, and addressed her budget and competitor concerns by highlighting the free exam and full nose-to-tail assessment. Danielle also raised interest in a future spay surgery, and after asking to confirm the day with her husband, agreed to hold the appointment. Marcus scheduled the wellness exam and vaccines for Thursday at 10 AM.",
+        "keyPoints": [
+          "New client with newly adopted puppy named Biscuit",
+          "Needs wellness exam and core vaccination package",
+          "Free first exam offered to offset budget concern",
+          "Compared pricing with a nearby clinic",
+          "Future spay surgery discussed for later",
+          "Appointment booked for Thursday at 10 AM"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Appointment booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "24,135 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,413",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for texting United Veterinary Care. This is Maya. I see you're interested in scheduling an appointment for your pet. What's your pet's name and species today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi Maya. I have a golden retriever named Bailey. She's about 2 years old and she hasn't had a checkup in over a year."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great to meet you Bailey's family. A wellness exam is perfect for keeping her healthy. Is this your first visit to one of our United Veterinary Care hospitals?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "Yes, first time. I just moved to the area and found you guys online. I heard about the free first exam offer."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "That's wonderful. Yes, we offer a free new client wellness exam when you book other services with us. Would Bailey need her vaccinations updated today as well?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Yes definitely. I think she needs her rabies and DHPP vaccines. She's had them before but it's been a while."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Perfect. So we're looking at a free wellness exam plus our core vaccination package for dogs. That's the DHPP and rabies vaccines. The package typically runs about 115 dollars. Does that work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "That sounds good. When could I bring her in?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Excellent. We have availability this Saturday, March 15th at 10:00 AM at our Palm Beach Gardens location. Does that day and time work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "Saturday at 10 AM works perfectly. What do I need to bring?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Great. Just bring Bailey and any previous medical records if you have them. We'll need to collect some contact info when you arrive. Your appointment is confirmed for Saturday, March 15th at 10:00 AM. You'll receive a reminder text tomorrow. Our main line is 877-936-2933 if you need to reschedule. See you soon."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Perfect. Thanks Maya. Looking forward to it."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "You're welcome. Take care of Bailey and we'll see you both on Saturday. Bye."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Wellness Exam and Vaccination",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Location: Palm Beach Gardens",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided: 115 dollars",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Pet Type: Dog",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "561-883-4429",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "561-883-4429",
+            "repeatCaller": "No",
+            "city": "Palm Beach Gardens",
+            "region": "FL",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Mitchell",
+            "firstName": "Sarah",
+            "lastName": "Mitchell",
+            "gender": "Female",
+            "destinationTimeZone": "Eastern Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A7K2-2B4F8E63A1DC",
+          "time": "8/15/25 9:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A7K2-2B4F8E63A1DC",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B9M3-4D7C5E91F2A8",
+          "time": "8/14/25 11:18 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B9M3-4D7C5E91F2A8",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "F6T8-9A3B2C5D4E7F",
+          "time": "8/13/25 7:34 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "F6T8-9A3B2C5D4E7F",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "38,309 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,831",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thanks for calling United Veterinary Care in Tampa. My name is Jessica. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Yeah, hi. I've got a new puppy and I need to get him in for his first exam and shots. Do you guys offer a free first visit or anything?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Absolutely. We do offer a free new client wellness exam for first time pet parents. That's great news. What's your puppy's name?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "His name is Buddy. He's a golden retriever and he's about eight weeks old."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Buddy, that's a great name. Congratulations on the new addition. So for Buddy's first visit, we'll do a free nose to tail exam, and then we'll talk about his core vaccine package, which is our DHPP and rabies protection. That typically runs about one hundred twenty dollars. Does that sound okay?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Yeah, that sounds good. When could we come in?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "I have some great availability this week. How about Saturday, January eighteenth at two o'clock in the afternoon?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Saturday works perfect for us. Two PM is good."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:20 PM",
+              "text": "Perfect. So I have you down for Saturday, January eighteenth at two PM for Buddy's new client wellness exam and his core vaccine package. Just to confirm, what's the best phone number to reach you on the day of your appointment?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:21 PM",
+              "text": "It's eight one three, five five five, zero two two seven."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:22 PM",
+              "text": "Got it. Eight one three, five five five, zero two two seven. We'll send you a reminder about twenty four hours before your appointment, and if you have any questions before Saturday, just give us a call back at eight seven seven, nine three six, twenty nine thirty three. We're really excited to meet you and Buddy."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:23 PM",
+              "text": "Awesome, thank you so much."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:24 PM",
+              "text": "You're welcome. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Core Vaccination Package (Dog)",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided: $120",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area: Tampa",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Pet Type: Dog (Puppy)",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "5:47",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "813-555-0227",
+            "repeatCaller": "No",
+            "city": "Tampa",
+            "region": "FL",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Martinez",
+            "firstName": "Sarah",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Eastern Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B521-7D3AC628E1F5",
+          "time": "1/18/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B521-7D3AC628E1F5",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C834-9B2FD447A6K9",
+          "time": "1/22/26 11:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C834-9B2FD447A6K9",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D746-5E8BC91D2L3M",
+          "time": "1/28/26 6:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D746-5E8BC91D2L3M",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Hi, I'm United Veterinary Care's AI assistant, and I can help you get a personalized care quote and reserve a visit at your nearest UVC hospital. New pet parents can claim a Free First Wellness Exam. Would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, what type of pet you have and its age and weight, what care you need such as a wellness exam, vaccines, spay or neuter, dental cleaning, or urgent care, whether your pet is currently a UVC patient, how soon you'd like to be seen, and your ZIP code so I can confirm the nearest UVC hospital serves your area.",
+        "Estimate then book: Once I confirm a UVC hospital serves your ZIP, I'll share a preliminary price range based on what you told me, then recommend a consultation with one of our veterinarians for an exact treatment plan. I'll propose a specific day and time, and you'll receive a reminder text before your appointment with a number to call if anything changes."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "United_Veterinary_Care_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Our Locations",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Services & Specialties",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "New Client Free Exam Offer",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"reschedule\",\"question\":\"I need to move my dog's dental cleaning to next week, can you help?\",\"answer\":\"Absolutely, I can find a new time at your UVC hospital for your dog's dental cleaning. Let me pull up the schedule and offer you the next available openings.\"},{\"topic\":\"prescription refill\",\"question\":\"Can I get a refill on my cat's medication?\",\"answer\":\"Yes, our veterinary team can process prescription and medication fills for existing patients. I can note your request and have the hospital confirm the refill and pickup time.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you offer a free first exam?",
+              "answer": "Yes, first-time pet parents can receive a Free New Client Wellness Exam when paired with other services. I can help you book that visit at your nearest UVC hospital."
+            },
+            {
+              "question": "How much does a spay or neuter cost?",
+              "answer": "Spay and neuter pricing varies by your pet's size, weight, and health needs. The best next step is a consultation where a veterinarian can give you an exact quote, and I can schedule that for you."
+            },
+            {
+              "question": "Do you treat cats and dogs?",
+              "answer": "Yes, our UVC hospitals care for both cats and dogs across wellness, surgery, dental, and urgent care. Would you like me to book an appointment for your pet?"
+            },
+            {
+              "question": "Can my puppy get its shots with you?",
+              "answer": "Yes, we offer core vaccination packages for puppies along with a wellness check. Let me find an appointment time at a UVC hospital near you."
+            },
+            {
+              "question": "Do you do dental cleanings?",
+              "answer": "We offer full dental cleanings including scaling, polishing, an oral exam, and dental X-rays under anesthesia. I can schedule a dental consultation so a veterinarian can assess your pet first."
+            },
+            {
+              "question": "How much are vaccines?",
+              "answer": "Vaccine pricing depends on which package your pet needs and whether it is a dog or cat. A wellness visit lets our team confirm the right vaccines, and I can book that for you."
+            },
+            {
+              "question": "Do you have same-day appointments?",
+              "answer": "Many of our hospitals offer same-day urgent care visits for non-life-threatening conditions. Share your ZIP code and I'll check availability at the nearest UVC hospital."
+            },
+            {
+              "question": "What should I do in an emergency?",
+              "answer": "For emergencies our teams provide triage, stabilization, and critical care. Tell me your ZIP code and I'll direct you to the closest UVC hospital that can see your pet right away."
+            },
+            {
+              "question": "Do you offer a wellness plan or membership?",
+              "answer": "Yes, we offer an Annual Wellness Plan on a monthly subscription that bundles exams, vaccines, and routine screening. I can set up a visit to review the plan details with you."
+            },
+            {
+              "question": "Where are your locations?",
+              "answer": "We have over 60 UVC hospitals across 13 states. Share your ZIP code and I'll find the closest one and book your appointment."
+            },
+            {
+              "question": "Can I get bloodwork done for my pet?",
+              "answer": "Yes, we offer diagnostic bloodwork panels including CBC and chemistry screening. A veterinarian will confirm which panel fits your pet during the visit I can schedule."
+            },
+            {
+              "question": "Do you microchip pets?",
+              "answer": "Yes, we provide microchipping with a permanent ID implant and registration. I can add that to a wellness appointment for you."
+            },
+            {
+              "question": "How much is an X-ray?",
+              "answer": "Digital radiology pricing depends on the imaging needed for your pet. Our team can confirm the exact cost at your visit, and I can book that appointment now."
+            },
+            {
+              "question": "Do you offer laser surgery?",
+              "answer": "Yes, select UVC hospitals offer soft-tissue laser surgery for reduced bleeding and faster recovery. A surgical consultation is the best next step, and I can schedule one for you."
+            },
+            {
+              "question": "My pet seems sick, can you see them?",
+              "answer": "Yes, our general and urgent care teams can evaluate sick pets. Share your ZIP code and I'll find the soonest opening at a nearby UVC hospital."
+            },
+            {
+              "question": "How much does a wellness exam cost?",
+              "answer": "A standard wellness exam falls within a modest range, and new pet parents may qualify for a free first exam. I can confirm details and book your visit."
+            },
+            {
+              "question": "Do you take walk-ins?",
+              "answer": "Availability varies by hospital, so booking ahead is the surest way to be seen. Give me your ZIP code and I'll reserve a time for you."
+            },
+            {
+              "question": "Can I book an appointment online?",
+              "answer": "Yes, I can book it for you right now through text. Just tell me your pet's needs and your ZIP code to get started."
+            },
+            {
+              "question": "What areas do you serve?",
+              "answer": "UVC operates hospitals across 13 states. Share your ZIP code and I'll confirm the nearest hospital and get you scheduled."
+            },
+            {
+              "question": "How soon can my pet be seen?",
+              "answer": "Openings vary by hospital and service type, and urgent needs are often accommodated same day. Tell me your ZIP code and I'll check the earliest available appointment."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the booking\",\"follow_up_message\":\"Great, I have an opening this Thursday at 2:00 PM for your pet's wellness exam at your nearest UVC hospital. Shall I lock that in and send you a reminder text before the visit?\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Based on what you shared, I can give you a preliminary price range, and a veterinarian will confirm the exact cost at your consultation. Would you like me to book that consultation now so you get a precise quote?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, I'm United Veterinary Care's AI assistant. I can help you get a personalized care quote and book a visit at your nearest UVC hospital, and new pet parents may qualify for a Free First Wellness Exam.",
+        "goal": "Qualify the pet parent's needs and book an in-clinic appointment at the nearest United Veterinary Care hospital.",
+        "bookingType": "in-clinic appointment",
+        "offer": "Free First Wellness Exam for new pet parents when booked today",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "What type of pet do you have, and what is its age and weight?",
+          "What kind of care does your pet need, for example a wellness exam, vaccines, spay or neuter, dental cleaning, or urgent care?",
+          "Is your pet already a patient at a United Veterinary Care hospital, or is this a first visit?",
+          "How soon would you like to be seen?",
+          "What is your ZIP code so I can confirm the nearest UVC hospital serves your area?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:20 am"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:20 am"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/22/26 11:20 am"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "United Veterinary Care",
+      "callerName": "Sarah Mitchell",
+      "callerPhone": "(407) 555-0187",
+      "campaign": "Emergency Vet Near Me, Orlando Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$385",
+      "googleSearch": "emergency vet near me open now",
+      "websiteSearch": "urgent care veterinarian Orlando available today",
+      "callingWebpage": "/our-locations/florida/orlando-emergency-clinic",
+      "products": "Emergency/Critical Care Visit, Diagnostic Bloodwork Panel",
+      "cartId": "UVC-8742M",
+      "serviceable": "Yes",
+      "email": "sarah.mitchell.407@email.com",
+      "street": "2847 Edgewater Drive",
+      "city": "Orlando",
+      "state": "FL",
+      "zip": "32804",
+      "digitalJourney": "/home › /our-locations › /florida › /orlando-emergency-clinic",
+      "intent": "Caller's dog is limping and vomiting. Needs same-day emergency evaluation and diagnostics to rule out internal injury or blockage.",
+      "coverage": "ZIP 32804 confirmed, Orlando serviceable",
+      "switchIntent": "Very High. Dog showing distress signs since this morning. Caller is anxious and seeking immediate care. Will schedule emergency visit if available within 2 hours.",
+      "greeting": "Hi Sarah, this is Michael at United Veterinary Care in Orlando. I see your dog is having some concerning symptoms today. We can get him evaluated in our emergency clinic and run diagnostics right away. Can I book you in for our next available urgent slot?"
+    },
+    "smsScreenpop": {
+      "brandName": "United Veterinary Care",
+      "callerName": "James Rodriguez",
+      "callerPhone": "(480) 555-0251",
+      "campaign": "New Client Free Exam, Phoenix Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$612",
+      "googleSearch": "free first vet exam near me",
+      "websiteSearch": "new client veterinary wellness package Phoenix",
+      "callingWebpage": "/uvc-culture",
+      "products": "New Client Wellness Exam, Core Vaccination Package",
+      "cartId": "UVC-3156K",
+      "serviceable": "Yes",
+      "email": "james.rodriguez.480@email.com",
+      "street": "1523 North 32nd Street",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zip": "85008",
+      "digitalJourney": "/home › /uvc-culture › /our-locations › /arizona › /phoenix-main-clinic",
+      "intent": "First-time pet owner with new puppy. Interested in free initial exam plus core vaccination package and establishing ongoing wellness care plan.",
+      "coverage": "ZIP 85008 confirmed, Phoenix serviceable",
+      "appointment": "New Client Wellness Exam with puppy vaccination planning. Sat Jun 14, 2:30 PM",
+      "greeting": "Hi James, this is Dr. Patel's team at United Veterinary Care Phoenix. Your appointment is all set for Saturday at 2:30 PM. We will do your puppy's free wellness exam and discuss vaccines and a preventive care plan. Looking forward to meeting you both. Any questions before Saturday?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "United Veterinary Care",
+      "brandDomain": "www.unitedveterinarycare.com",
+      "brandIcon": "🐾",
+      "callerPhone": "+1 (561) 555-0147",
+      "callerLocation": "Palm Beach Gardens, FL",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "New Client Free Exam",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "free first vet exam near me",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Home / UVC Culture / New Client Offer",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Preventive & Wellness Care, Spay/Neuter Surgery",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Palm Beach Gardens, FL",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "appointment_new_wellness",
+          "name": "Appointment Booking, New Client Wellness"
+        },
+        {
+          "id": "support_existing_client",
+          "name": "Support, Existing Client Services"
+        },
+        {
+          "id": "emergency_triage",
+          "name": "Emergency & Urgent Care Intake"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling United Veterinary Care. I'm an AI assistant helping route your call today. Are you calling to schedule a wellness exam or vaccines for your pet?",
+          "sigs": [],
+          "q": [
+            15,
+            50,
+            35
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, I have a new puppy and I saw you offer a free first exam. I'm interested in that and also want to get him started on his vaccination series.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>New puppy</strong> first visit"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Free wellness exam</strong> and vaccines"
+            },
+            {
+              "c": "green",
+              "t": "Preventive care focused"
+            }
+          ],
+          "q": [
+            72,
+            18,
+            10
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's wonderful. The free exam is a great way to get started with us. Are you a new client at any of our hospital locations, and would you prefer an appointment in the next few days or next week?",
+          "sigs": [],
+          "q": [
+            84,
+            10,
+            6
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I'm completely new to United Veterinary Care. I'd love to come in this week if possible. Do you have openings on Wednesday or Thursday?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>New client</strong> confirmed"
+            },
+            {
+              "c": "blue",
+              "t": "Urgent scheduling need - <strong>this week</strong>"
+            },
+            {
+              "c": "orange",
+              "t": "Ready to book appointment"
+            }
+          ],
+          "q": [
+            93,
+            4,
+            3
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm routing you now to our Appointment Booking team who can confirm your puppy's first wellness exam and vaccination appointment for Wednesday or Thursday. They'll get you all set with the free new client exam. One moment please.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"you're all booked (Agent)\", \"let's get your visit scheduled (Agent)\", \"book that appointment (Caller)\", \"see you on (Agent)\"])",
+          "createdAt": "02/14/25 9:32 am",
+          "updatedAt": "01/12/26 3:18 pm"
+        },
+        {
+          "name": "Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"do you have any openings (Caller)\", \"what times are available (Caller)\", \"can I bring my dog in (Caller)\", \"schedule an exam (Caller)\"])",
+          "createdAt": "03/05/25 11:04 am",
+          "updatedAt": "12/18/25 2:47 pm"
+        },
+        {
+          "name": "Competitor Clinic Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Banfield (Caller)\", \"VCA (Caller)\", \"my other vet (Caller)\", \"cheaper clinic down the road (Caller)\"])",
+          "createdAt": "04/10/25 8:21 am",
+          "updatedAt": "11/22/25 4:55 pm"
+        },
+        {
+          "name": "Dental Cleaning Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"dental cleaning (Caller)\", \"teeth cleaning for my dog (Caller)\", \"COHAT (Agent)\", \"dental X-rays (Agent)\"])",
+          "createdAt": "05/20/25 1:17 pm",
+          "updatedAt": "01/08/26 10:09 am"
+        },
+        {
+          "name": "Emergency Care Intent",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"this is an emergency (Caller)\", \"my pet is bleeding (Caller)\", \"urgent care (Caller)\", \"can you see him right now (Caller)\"])",
+          "createdAt": "03/28/25 4:42 pm",
+          "updatedAt": "01/15/26 9:26 am"
+        },
+        {
+          "name": "Empathy and Bedside Manner",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy and Bedside Manner] < 60 and duration > 45 sec",
+          "createdAt": "06/12/25 10:38 am",
+          "updatedAt": "12/30/25 1:12 pm"
+        },
+        {
+          "name": "Hold Time Handling",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Hold Time Handling] < 60 and duration > 45 sec",
+          "createdAt": "07/03/25 2:55 pm",
+          "updatedAt": "01/05/26 11:47 am"
+        },
+        {
+          "name": "New Client Offer Mentioned",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[New Client Free Exam Offer] < 60 and duration > 45 sec",
+          "createdAt": "08/18/25 9:14 am",
+          "updatedAt": "01/20/26 4:03 pm"
+        },
+        {
+          "name": "Price Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"how much does it cost (Caller)\", \"that's too expensive (Caller)\", \"do you have any specials (Caller)\", \"is there a payment plan (Caller)\"])",
+          "createdAt": "09/09/25 3:29 pm",
+          "updatedAt": "12/11/25 8:52 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the total would be (Agent)\", \"that will run you (Agent)\", \"the estimate for the spay is (Agent)\", \"the dental cleaning price is (Agent)\"])",
+          "createdAt": "10/22/25 12:06 pm",
+          "updatedAt": "01/18/26 2:34 pm"
+        }
+      ]
+    }
+  }
+}

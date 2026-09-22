@@ -1,0 +1,5356 @@
+{
+  "id": "citizens-bank",
+  "customerName": "Citizens Bank",
+  "websiteUrl": "https://www.citizensbank.com",
+  "brandDomain": "citizensbank.com",
+  "networkName": "Invoca for Banking",
+  "industry": "Retail & Commercial Banking",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Customer",
+  "generation": {
+    "at": "2026-09-22T15:06:55.985Z",
+    "scope": "full"
+  },
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 25000,
+      "yTicks": [
+        5000,
+        10000,
+        15000,
+        20000,
+        25000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 18742
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 19318
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 20156
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 18927
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 17575
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "FastLine HELOC, Money in 2 Weeks",
+          "marketingSearchTerm": "citizens fastline home equity",
+          "landingPageUrl": "https://www.citizensbank.com/home-equity/heloc?utm_source=google&utm_medium=cpc&utm_campaign=fastline_heloc",
+          "websiteJourney": "Home / Personal / Home Loans / HELOC",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Switch & Save Checking",
+          "marketingSearchTerm": "citizens bank checking account",
+          "landingPageUrl": "https://www.citizensbank.com/checking?utm_source=google&utm_medium=cpc&utm_campaign=switch_save_checking",
+          "websiteJourney": "Home / Personal / Checking Accounts / Open a Checking Account",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Multi-Year Approval, Pay for College",
+          "marketingSearchTerm": "citizens undergraduate student loan",
+          "landingPageUrl": "https://www.citizensbank.com/student-lending/undergraduate?utm_source=google&utm_medium=cpc&utm_campaign=multi_year_approval",
+          "websiteJourney": "Home / Personal / Student Loans / Undergraduate",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "FastLine HELOC, Money in 2 Weeks",
+          "marketingSearchTerm": "best heloc no closing costs",
+          "landingPageUrl": "https://www.citizensbank.com/home-equity/heloc?utm_source=bing&utm_medium=cpc&utm_campaign=fastline_heloc",
+          "websiteJourney": "Home / Personal / Home Loans / HELOC",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Citizens Checkup",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.citizensbank.com/savings/cd-rates?utm_source=organic&utm_medium=seo&utm_campaign=citizens_checkup",
+          "websiteJourney": "Home / Personal / Savings Accounts / Certificates of Deposit",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Round Ups Savings",
+          "marketingSearchTerm": "citizens bank cd rates",
+          "landingPageUrl": "https://www.citizensbank.com/savings?utm_source=google&utm_medium=cpc&utm_campaign=round_ups_savings",
+          "websiteJourney": "Home / Personal / Savings Accounts / Savings",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Made Ready",
+          "marketingSearchTerm": "citizens bank refinance mortgage",
+          "landingPageUrl": "https://www.citizensbank.com/home-loans/refinance?utm_source=google&utm_medium=cpc&utm_campaign=made_ready_brand",
+          "websiteJourney": "Home / Personal / Home Loans / Refinance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Made Ready",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.citizensbank.com/home-equity/heloc?utm_source=organic&utm_medium=seo&utm_campaign=made_ready_brand",
+          "websiteJourney": "Home / Personal / Home Loans / HELOC",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Switch & Save Checking",
+          "marketingSearchTerm": "how to switch direct deposit",
+          "landingPageUrl": "https://www.citizensbank.com/checking?utm_source=bing&utm_medium=cpc&utm_campaign=switch_save_checking",
+          "websiteJourney": "Home / Personal / Checking Accounts / Open a Checking Account",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Summit Reserve Launch",
+          "marketingSearchTerm": "citizens cash back credit card",
+          "landingPageUrl": "https://www.citizensbank.com/credit-cards/compare?utm_source=google&utm_medium=cpc&utm_campaign=summit_reserve_launch",
+          "websiteJourney": "Home / Personal / Credit Cards / Compare Credit Cards",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Multi-Year Approval, Pay for College",
+          "marketingSearchTerm": "citizens student loan refinance",
+          "landingPageUrl": "https://www.citizensbank.com/student-lending/refinance?utm_source=google&utm_medium=cpc&utm_campaign=multi_year_approval",
+          "websiteJourney": "Home / Personal / Student Loans / Refinance",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Round Ups Savings",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.citizensbank.com/savings?utm_source=instagram&utm_medium=paid_social&utm_campaign=round_ups_savings",
+          "websiteJourney": "Home / Personal / Savings Accounts / Savings",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "FastLine HELOC, Money in 2 Weeks",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.citizensbank.com/home-equity/heloc?utm_source=facebook&utm_medium=paid_social&utm_campaign=fastline_heloc",
+          "websiteJourney": "Home / Personal / Home Loans / HELOC",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Made Ready",
+          "marketingSearchTerm": "citizens bank near me",
+          "landingPageUrl": "https://www.citizensbank.com/branch-locator?utm_source=google&utm_medium=cpc&utm_campaign=made_ready_brand",
+          "websiteJourney": "Home / Personal / Find a Branch",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Citizens Checkup",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.citizensbank.com/wealth-management/advisors?utm_source=organic&utm_medium=seo&utm_campaign=citizens_checkup",
+          "websiteJourney": "Home / Personal / Investing & Wealth Management / Advisors",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Summit Reserve Launch",
+          "marketingSearchTerm": "citizens summit reserve card",
+          "landingPageUrl": "https://www.citizensbank.com/credit-cards/summit-reserve?utm_source=bing&utm_medium=cpc&utm_campaign=summit_reserve_launch",
+          "websiteJourney": "Home / Personal / Credit Cards / Compare Credit Cards",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Switch & Save Checking",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.citizensbank.com/checking/quest?utm_source=organic&utm_medium=seo&utm_campaign=switch_save_checking",
+          "websiteJourney": "Home / Personal / Checking Accounts / Quest Checking",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Made Ready",
+          "marketingSearchTerm": "citizens bank login",
+          "landingPageUrl": "https://www.citizensbank.com/login?utm_source=google&utm_medium=cpc&utm_campaign=made_ready_brand",
+          "websiteJourney": "Home / Log in / Online Banking",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Multi-Year Approval, Pay for College",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.citizensbank.com/student-lending/undergraduate?utm_source=instagram&utm_medium=paid_social&utm_campaign=multi_year_approval",
+          "websiteJourney": "Home / Student / Student Products",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Summit Reserve Launch",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.citizensbank.com/credit-cards/summit-reserve?utm_source=facebook&utm_medium=paid_social&utm_campaign=summit_reserve_launch",
+          "websiteJourney": "Home / Personal / Credit Cards / Compare Credit Cards",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Citizens Checkup",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.citizensbank.com/home-loans/mortgage?utm_source=organic&utm_medium=seo&utm_campaign=citizens_checkup",
+          "websiteJourney": "Home / Personal / Home Loans / Mortgages",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Round Ups Savings",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.citizensbank.com/savings/money-market?utm_source=instagram&utm_medium=paid_social&utm_campaign=round_ups_savings",
+          "websiteJourney": "Home / Personal / Savings Accounts / Money Market",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Citizens Bank)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "74,289"
+            },
+            {
+              "label": "New Account Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Account Opened (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$61,212,247"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "11,886"
+            },
+            {
+              "label": "Account Servicing (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Online Banking Support (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Branch and ATM Locator (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Account Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Account Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Rates Discussed (Percent)",
+              "value": "58%"
+            },
+            {
+              "label": "Unqualified Inquiry (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Account Opened (Percent)",
+              "value": "28%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Account Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Account Inquiry (Count)",
+            "values": [
+              9847,
+              14209,
+              13562,
+              13118,
+              11667
+            ]
+          },
+          {
+            "name": "Rates Discussed (Count)",
+            "values": [
+              6742,
+              9831,
+              9417,
+              9088,
+              8010
+            ]
+          },
+          {
+            "name": "Unqualified Inquiry (Count)",
+            "values": [
+              1412,
+              2038,
+              1947,
+              1853,
+              1665
+            ]
+          },
+          {
+            "name": "Account Opened (Count)",
+            "values": [
+              3247,
+              4762,
+              4518,
+              4389,
+              3885
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74289,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "24,183",
+                "44%",
+                "21%",
+                "$14,927,183"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "18,642",
+                "47%",
+                "25%",
+                "$13,684,552"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "14,517",
+                "50%",
+                "30%",
+                "$12,806,441"
+              ]
+            },
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "9,338",
+                "54%",
+                "36%",
+                "$9,878,229"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "7,609",
+                "62%",
+                "45%",
+                "$9,915,842"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74289,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "22,714",
+                "43%",
+                "20%",
+                "$13,542,118"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "17,983",
+                "46%",
+                "24%",
+                "$12,884,663"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "13,662",
+                "50%",
+                "29%",
+                "$11,738,529"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "11,247",
+                "55%",
+                "34%",
+                "$11,472,915"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "8,683",
+                "61%",
+                "43%",
+                "$11,574,022"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38731,
+          "rows": [
+            {
+              "name": "Made Ready (Brand)",
+              "metrics": [
+                "12,847",
+                "40%",
+                "18%",
+                "$6,824,517"
+              ]
+            },
+            {
+              "name": "Switch & Save Checking",
+              "metrics": [
+                "9,463",
+                "44%",
+                "23%",
+                "$6,392,884"
+              ]
+            },
+            {
+              "name": "FastLine HELOC, Money in 2 Weeks",
+              "metrics": [
+                "7,218",
+                "49%",
+                "28%",
+                "$5,948,213"
+              ]
+            },
+            {
+              "name": "Multi-Year Approval, Pay for College",
+              "metrics": [
+                "5,342",
+                "54%",
+                "33%",
+                "$5,183,662"
+              ]
+            },
+            {
+              "name": "Round Ups Savings",
+              "metrics": [
+                "3,861",
+                "60%",
+                "41%",
+                "$4,656,329"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 28042,
+          "rows": [
+            {
+              "name": "citizens bank checking account",
+              "metrics": [
+                "8,942",
+                "42%",
+                "19%",
+                "$5,183,442"
+              ]
+            },
+            {
+              "name": "citizens heloc rates",
+              "metrics": [
+                "6,713",
+                "46%",
+                "24%",
+                "$4,726,118"
+              ]
+            },
+            {
+              "name": "citizens bank cd rates",
+              "metrics": [
+                "5,127",
+                "50%",
+                "29%",
+                "$4,138,672"
+              ]
+            },
+            {
+              "name": "citizens student loans",
+              "metrics": [
+                "4,286",
+                "55%",
+                "34%",
+                "$3,682,915"
+              ]
+            },
+            {
+              "name": "citizens fastline home equity",
+              "metrics": [
+                "2,974",
+                "62%",
+                "43%",
+                "$3,047,283"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Checking Accounts",
+              "metrics": [
+                "21,847",
+                "42%",
+                "18.6%",
+                "$11,847,326"
+              ]
+            },
+            {
+              "name": "Home Loans",
+              "metrics": [
+                "17,326",
+                "48%",
+                "24.5%",
+                "$13,326,891"
+              ]
+            },
+            {
+              "name": "Savings, Money Market & CDs",
+              "metrics": [
+                "14,562",
+                "51%",
+                "29.5%",
+                "$12,118,447"
+              ]
+            },
+            {
+              "name": "Credit Cards",
+              "metrics": [
+                "11,938",
+                "55%",
+                "36.7%",
+                "$12,092,138"
+              ]
+            },
+            {
+              "name": "Student Loans",
+              "metrics": [
+                "8,616",
+                "61%",
+                "44.3%",
+                "$11,827,445"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 74289,
+          "rows": [
+            {
+              "name": "Northeast",
+              "metrics": [
+                "23,417",
+                "44%",
+                "20.8%",
+                "$14,438,926"
+              ]
+            },
+            {
+              "name": "Mid-Atlantic",
+              "metrics": [
+                "17,842",
+                "49%",
+                "25.6%",
+                "$13,371,842"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "13,268",
+                "53%",
+                "29.8%",
+                "$11,467,318"
+              ]
+            },
+            {
+              "name": "South",
+              "metrics": [
+                "11,436",
+                "57%",
+                "34.7%",
+                "$11,842,715"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "8,326",
+                "63%",
+                "41.4%",
+                "$10,091,446"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Account Opened (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Checking Accounts",
+            "values": [
+              612,
+              878,
+              901,
+              864,
+              800
+            ]
+          },
+          {
+            "name": "Home Loans",
+            "values": [
+              588,
+              912,
+              934,
+              921,
+              887
+            ]
+          },
+          {
+            "name": "Savings, Money Market & CDs",
+            "values": [
+              601,
+              928,
+              947,
+              921,
+              904
+            ]
+          },
+          {
+            "name": "Credit Cards",
+            "values": [
+              642,
+              934,
+              951,
+              932,
+              927
+            ]
+          },
+          {
+            "name": "Student Loans",
+            "values": [
+              541,
+              812,
+              834,
+              821,
+              809
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 74,289 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 91,
+          "summary": "Marcus Halloway called to review his retirement savings and asked to speak with an advisor about Wealth Management. Agent Lila walked through his financial goals and scheduled an investing and wealth management consultation at his local branch. Marcus confirmed the time and thanked her for the clear explanation.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Lila",
+          "duration": "2m 48s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 85,
+          "summary": "Diana Prewitt asked about FastLine HELOC rates and how quickly she could access funds for a kitchen remodel. Agent Oscar explained the no-impact rate check and the two week funding window, then booked a HELOC consultation with a home lending officer. Diana was pleased with the fast process.",
+          "date": "Feb 3, 1:37 PM",
+          "agent": "Oscar",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 80,
+          "summary": "Gregory Nunes, an existing customer, questioned the monthly fee on his Quest Checking account. Agent Mary reviewed his balance and explained the waiver requirements, then confirmed the fee would not apply going forward. Gregory appreciated the quick resolution and kept his checking account open.",
+          "date": "Mar 11, 9:52 AM",
+          "agent": "Mary",
+          "duration": "1m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Sophia Reyes, a new customer, called to open a checking account and wanted help choosing the right option. Agent Rosey collected her contact details, income information, and preferred branch, then scheduled an account opening consultation. Sophia confirmed her appointment and asked about mobile deposit features.",
+          "date": "Apr 8, 3:21 PM",
+          "agent": "Rosey",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Anthony Delgado wanted to refinance his current mortgage to lower his monthly payment. Agent Lee reviewed his existing loan and explained rate and term options, then scheduled a mortgage refinance consultation. Anthony agreed to gather his documents before the meeting.",
+          "date": "May 2, 11:08 AM",
+          "agent": "Lee",
+          "duration": "2m 57s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 15,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Priya Malhotra called about an undergraduate private student loan for her daughter. Agent Jennifer explained Multi-Year Approval and the zero origination fee, then booked a student loan consultation with a lending specialist. Priya said the single application feature was exactly what she needed.",
+          "date": "Jun 15, 4:46 PM",
+          "agent": "Jennifer",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 17,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 62,
+          "summary": "Eleanor Voss inquired about Private Bank services and private wealth planning for her family assets. Agent Mike outlined the relationship banking benefits and scheduled a private wealth consultation with an advisor. Eleanor confirmed the appointment but asked for follow up materials by email.",
+          "date": "Jul 9, 10:33 AM",
+          "agent": "Mike",
+          "duration": "2m 41s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Raymond Coyle called to check the status of his FastLine HELOC application, which he submitted two weeks ago. Agent Sue located the file and explained it was still in underwriting pending an appraisal. Raymond was frustrated about the delay but accepted the timeline update.",
+          "date": "Feb 21, 2:19 PM",
+          "agent": "Sue",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Tanya Boothe disputed a charge on her Cash Back Plus Mastercard that she did not recognize. Agent Oscar opened a dispute case and issued a temporary credit while the investigation continued. Tanya remained uneasy about the timeline but agreed to monitor her credit card statement.",
+          "date": "Aug 4, 12:07 PM",
+          "agent": "Oscar",
+          "duration": "2m 26s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 27,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Bernard Kessler complained that his mortgage refinance closing had been pushed back twice. Agent Lee reviewed the file and apologized, explaining a missing document was holding up the process. Bernard was clearly annoyed and demanded a callback from a supervisor.",
+          "date": "Sep 12, 3:54 PM",
+          "agent": "Lee",
+          "duration": "3m 18s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Helen Dorsett called to cancel her Summit Reserve credit card because she felt the annual fee was too high. Agent Mary explained the rewards and event access but could not change her mind, so the cancellation was processed. Helen kept her other credit card and ended the call abruptly.",
+          "date": "Mar 27, 9:19 AM",
+          "agent": "Mary",
+          "duration": "2m 04s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Curtis Farley reported that the Round Ups feature on his savings account had stopped transferring money. Agent Rose checked the settings and found the linked debit card had expired. Curtis was irritated that no one had notified him and asked for the missed transfers to be corrected.",
+          "date": "Oct 5, 1:11 PM",
+          "agent": "Rose",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Vanessa Ortega called about a billing error on her student loan refinance payment that was drafted twice. Agent Sue confirmed the duplicate draft and started a refund request. Vanessa was upset and said the overdraft it caused had created serious problems.",
+          "date": "Jan 22, 4:38 PM",
+          "agent": "Sue",
+          "duration": "2m 52s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Dennis Yarrow called after hours to complain about a hold placed on his money market account and reached voicemail. He left an angry message demanding an immediate callback and threatening to close all of his accounts. No agent was available to assist him at the time.",
+          "date": "Apr 30, 6:47 PM",
+          "agent": "No Agent",
+          "duration": "0m 51s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Loretta Sampson called to dispute several overdraft fees on her checking account and was transferred twice before reaching help. Agent Mike reviewed the account but could only reverse one of the four fees. Loretta was very dissatisfied and said she would file a formal complaint.",
+          "date": "May 18, 10:56 AM",
+          "agent": "Mike",
+          "duration": "3m 24s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "heloc",
+        "student loan",
+        "checking",
+        "credit card",
+        "refinance",
+        "savings"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 18, 2:28 PM",
+      "duration": "2m 41s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area/ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Product of Interest",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Consultation Expectations",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Schedule Consultation Date/Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Offer Next Steps",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Greeting with name and role",
+        "Customer expressed openness to consultation",
+        "Mentioned homeownership status",
+        "Confirmed ZIP code for service area",
+        "Identified HELOC interest",
+        "Confirmed preferred contact method",
+        "Provided consultation availability",
+        "Accepted scheduling suggestion",
+        "Confirmed appointment details",
+        "Clarified product benefits",
+        "Asked clarifying question about home value",
+        "Polite closing",
+        "Customer thanked agent"
+      ],
+      "unmetSignals": [
+        "Email address captured",
+        "Consultation timeline explained",
+        "Rate expectations set",
+        "Credit pre-qualification offered",
+        "Documentation requirements discussed",
+        "Competitor comparison addressed",
+        "Mobile app login option presented",
+        "Account opening timeline mentioned",
+        "Direct deposit incentive offered",
+        "Follow-up email confirmation sent"
+      ],
+      "naSignals": [
+        "Existing mortgage account verified",
+        "Prior loan status reviewed",
+        "Balance transfer discussed",
+        "Payment schedule confirmed",
+        "Billing address updated",
+        "Refinance timeline expedited",
+        "Appraisal ordered",
+        "Closing cost estimate provided"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller is a homeowner interested in accessing home equity through a HELOC to fund a renovation project. They want to understand rates and the application timeline."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a straightforward consultation process and wants to learn how quickly they could have access to funds. They also mentioned wanting to avoid lengthy approval timelines."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the customer's email address for follow-up confirmation and should have been more explicit about what to expect during the consultation visit, including documentation to bring and estimated approval timeline."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon, thank you for calling Citizens Bank. My name is Marcus Bell. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:25",
+          "text": "Hi Marcus, I'm calling because I own a home and I've been hearing about your FastLine HELOC product. I'm interested in learning more."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:35",
+          "text": "Wonderful. A home equity line of credit is a great option for homeowners. Before we dive into details, I'd like to gather some information. May I have your full name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:45",
+          "text": "Of course. It's Jennifer Hartley. H-A-R-T-L-E-Y."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:53",
+          "text": "Thank you, Jennifer. And what's the best phone number to reach you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:59",
+          "text": "Sure, it's ****-***-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:06",
+          "text": "Perfect. And Jennifer, what ZIP code is your home located in?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:12",
+          "text": "It's 02134, in the Boston area."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:18",
+          "text": "Excellent, we absolutely serve that area. And you mentioned the FastLine HELOC. Are you looking to do a home renovation, or do you have another use in mind for the funds?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:28",
+          "text": "A renovation, yes. We want to update the kitchen and add a deck. Probably need around thirty to forty thousand."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:38",
+          "text": "That's a great project. Our FastLine product is designed to get funds to you in as little as two weeks, and you can check your rate with no impact to your credit score. Do you have a rough idea of your home's current value?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:51",
+          "text": "I think it's worth around five hundred fifty thousand, maybe a bit more. We bought it eight years ago."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:02",
+          "text": "That's helpful. Jennifer, I'd like to schedule you for a quick consultation with one of our HELOC specialists. They can review your specific situation and give you a formal rate quote. How does Thursday morning next week look for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:14",
+          "text": "Thursday morning works great. What time would work best?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:21",
+          "text": "How about ten AM? That gives you plenty of time to ask questions. We'll have all your information here when you call in."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:29",
+          "text": "Perfect. Thank you so much, Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:35",
+          "text": "You're very welcome, Jennifer. To confirm, we have you scheduled for Thursday at ten AM for your HELOC consultation. We'll be expecting your call. Thank you for choosing Citizens Bank. Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Hartley, a homeowner in Boston, called to learn about Citizens Bank's FastLine HELOC product for a kitchen renovation and deck addition with a target loan amount of thirty to forty thousand dollars. Marcus successfully gathered her name, phone number, and home ZIP code, confirmed service area eligibility, and identified her approximate home value of five hundred fifty thousand. He scheduled a consultation with a HELOC specialist for Thursday morning at ten AM but did not capture her email address for confirmation or clearly explain what documentation and details to prepare for the consultation appointment.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great job building rapport with Jennifer and moving the call to a scheduled consultation. Your greeting was professional, you confirmed the service area quickly, and you set clear expectations around the two-week FastLine timeline. Two coaching notes. First, always capture the email address even if the customer seems focused on the phone consultation, it's a safety net for your confirmation and follow-up. Second, spend thirty seconds at the close walking through what Jennifer should expect or bring to the Thursday call like recent mortgage statement or proof of homeownership. Small detail, big trust builder."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "74,289"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$823.97"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$61,212,247"
+            }
+          ]
+        },
+        {
+          "title": "NEW CUSTOMER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Customers (Count)",
+              "value": "41,802"
+            },
+            {
+              "label": "Caller Type: New Customers (Percent)",
+              "value": "56%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "35,659"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "48%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CUSTOMERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Customer (Count)",
+              "value": "32,487"
+            },
+            {
+              "label": "Caller Type: Existing Customer (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "ChatGPT",
+                "value": 59,
+                "display": "59%"
+              },
+              {
+                "name": "Direct",
+                "value": 53,
+                "display": "53%"
+              },
+              {
+                "name": "Google LSA",
+                "value": 46,
+                "display": "46%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 38,
+                "display": "38%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "28,417",
+                  "27%",
+                  "$22,184,517"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "17,842",
+                  "38%",
+                  "$14,318,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Google LSA",
+                  "12,638",
+                  "46%",
+                  "$10,472,108"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "9,214",
+                  "53%",
+                  "$8,051,339"
+                ]
+              },
+              {
+                "cells": [
+                  "ChatGPT",
+                  "6,178",
+                  "59%",
+                  "$6,185,841"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 30000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000,
+              25000,
+              30000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 26314,
+                "display": "26,314"
+              },
+              {
+                "name": "Organic",
+                "value": 18472,
+                "display": "18,472"
+              },
+              {
+                "name": "Paid Social",
+                "value": 13205,
+                "display": "13,205"
+              },
+              {
+                "name": "Email",
+                "value": 9617,
+                "display": "9,617"
+              },
+              {
+                "name": "Referral",
+                "value": 6681,
+                "display": "6,681"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "26,314",
+                  "25%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "18,472",
+                  "36%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "13,205",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "9,617",
+                  "54%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "6,681",
+                  "63%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 15000,
+            "axisTicks": [
+              0,
+              2500,
+              5000,
+              7500,
+              10000,
+              12500,
+              15000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Made Ready",
+                "value": 14382,
+                "display": "14,382"
+              },
+              {
+                "name": "FastLine HELOC Money in 2 Weeks",
+                "value": 11247,
+                "display": "11,247"
+              },
+              {
+                "name": "Switch & Save Checking",
+                "value": 8916,
+                "display": "8,916"
+              },
+              {
+                "name": "Multi-Year Approval Pay for College",
+                "value": 6528,
+                "display": "6,528"
+              },
+              {
+                "name": "Round Ups Savings",
+                "value": 4193,
+                "display": "4,193"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Made Ready",
+                  "14,382",
+                  "31%",
+                  "$11,847,326"
+                ]
+              },
+              {
+                "cells": [
+                  "FastLine HELOC Money in 2 Weeks",
+                  "11,247",
+                  "42%",
+                  "$12,318,904"
+                ]
+              },
+              {
+                "cells": [
+                  "Switch & Save Checking",
+                  "8,916",
+                  "49%",
+                  "$5,214,773"
+                ]
+              },
+              {
+                "cells": [
+                  "Multi-Year Approval Pay for College",
+                  "6,528",
+                  "58%",
+                  "$4,876,215"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 6000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000,
+              6000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "citizens bank checking account",
+                "value": 5847,
+                "display": "5,847"
+              },
+              {
+                "name": "citizens heloc rates",
+                "value": 4392,
+                "display": "4,392"
+              },
+              {
+                "name": "citizens student loans",
+                "value": 3618,
+                "display": "3,618"
+              },
+              {
+                "name": "citizens bank cd rates",
+                "value": 2974,
+                "display": "2,974"
+              },
+              {
+                "name": "citizens fastline home equity",
+                "value": 2186,
+                "display": "2,186"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "citizens bank checking account",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "citizens heloc rates",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "citizens student loans",
+                  "52%"
+                ]
+              },
+              {
+                "cells": [
+                  "citizens bank cd rates",
+                  "61%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Customers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Customers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Checking Accounts",
+              "19,428",
+              "30%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Home Loans",
+              "14,682",
+              "39%",
+              "54%"
+            ]
+          },
+          {
+            "cells": [
+              "Student Loans",
+              "9,317",
+              "47%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Savings, Money Market & CDs",
+              "6,241",
+              "56%",
+              "49%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Boston Downtown Crossing Branch",
+              "8,214",
+              "742",
+              "6%",
+              "34%"
+            ]
+          },
+          {
+            "cells": [
+              "Philadelphia Center City Branch",
+              "6,872",
+              "518",
+              "5%",
+              "41%"
+            ]
+          },
+          {
+            "cells": [
+              "Providence Financial District Branch",
+              "5,341",
+              "361",
+              "4%",
+              "48%"
+            ]
+          },
+          {
+            "cells": [
+              "Manhattan Midtown Branch",
+              "4,128",
+              "247",
+              "3%",
+              "57%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Comparing Other Banks",
+            "values": [
+              2038,
+              2214,
+              2317,
+              2156,
+              2117
+            ]
+          },
+          {
+            "name": "Rate Above Expectations",
+            "values": [
+              1742,
+              1893,
+              1978,
+              1864,
+              1840
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              1438,
+              1562,
+              1611,
+              1547,
+              1526
+            ]
+          },
+          {
+            "name": "Needs Co-applicant Approval",
+            "values": [
+              1184,
+              1247,
+              1318,
+              1264,
+              1228
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              842,
+              918,
+              967,
+              924,
+              895
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "29,716"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Account Opened (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$34,890,981"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "27%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,847,290"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,156,840"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "36%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,847,125"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,234,670"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,127,845"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Account Opened (Percent)",
+              "value": "39%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,876,420"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 28,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "8,427",
+                "58%",
+                "28%",
+                "$7,189,620"
+              ]
+            },
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "6,834",
+                "59%",
+                "31%",
+                "$6,531,474"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "5,291",
+                "54%",
+                "34%",
+                "$5,321,654"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "4,856",
+                "55%",
+                "36%",
+                "$5,156,320"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "4,308",
+                "52%",
+                "38%",
+                "$4,791,913"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "10,247",
+                "57%",
+                "29%",
+                "$8,612,306"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "7,439",
+                "55%",
+                "31%",
+                "$6,987,341"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "5,821",
+                "54%",
+                "35%",
+                "$6,125,435"
+              ]
+            },
+            {
+              "name": "Display",
+              "metrics": [
+                "3,914",
+                "51%",
+                "37%",
+                "$4,289,718"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "2,295",
+                "49%",
+                "40%",
+                "$2,876,181"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 22,
+          "rows": [
+            {
+              "name": "Made Ready Brand",
+              "metrics": [
+                "7,156",
+                "56%",
+                "30%",
+                "$6,298,440"
+              ]
+            },
+            {
+              "name": "Switch & Save Checking",
+              "metrics": [
+                "5,892",
+                "57%",
+                "32%",
+                "$6,045,888"
+              ]
+            },
+            {
+              "name": "FastLine HELOC Money in 2 Weeks",
+              "metrics": [
+                "4,743",
+                "54%",
+                "35%",
+                "$5,607,231"
+              ]
+            },
+            {
+              "name": "Multi-Year Approval Pay for College",
+              "metrics": [
+                "3,847",
+                "52%",
+                "37%",
+                "$4,213,679"
+              ]
+            },
+            {
+              "name": "Citizens Checkup Financial Health",
+              "metrics": [
+                "2,816",
+                "48%",
+                "39%",
+                "$3,152,087"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20,
+          "rows": [
+            {
+              "name": "Citizens Bank checking account",
+              "metrics": [
+                "5,234",
+                "59%",
+                "27%",
+                "$4,156,708"
+              ]
+            },
+            {
+              "name": "Citizens HELOC rates",
+              "metrics": [
+                "4,108",
+                "56%",
+                "33%",
+                "$4,523,667"
+              ]
+            },
+            {
+              "name": "Citizens FastLine home equity",
+              "metrics": [
+                "3,621",
+                "54%",
+                "36%",
+                "$4,289,415"
+              ]
+            },
+            {
+              "name": "Citizens student loans",
+              "metrics": [
+                "2,947",
+                "52%",
+                "38%",
+                "$3,421,926"
+              ]
+            },
+            {
+              "name": "best HELOC no closing costs",
+              "metrics": [
+                "2,156",
+                "48%",
+                "41%",
+                "$2,654,803"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Account Opened (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Home Loans",
+              "metrics": [
+                "8,692",
+                "58%",
+                "29%",
+                "$7,412,348"
+              ]
+            },
+            {
+              "name": "Checking Accounts",
+              "metrics": [
+                "7,345",
+                "59%",
+                "30%",
+                "$6,491,850"
+              ]
+            },
+            {
+              "name": "Credit Cards",
+              "metrics": [
+                "5,218",
+                "55%",
+                "32%",
+                "$4,876,192"
+              ]
+            },
+            {
+              "name": "Savings Accounts & CDs",
+              "metrics": [
+                "4,891",
+                "53%",
+                "35%",
+                "$4,567,234"
+              ]
+            },
+            {
+              "name": "Student Loans",
+              "metrics": [
+                "3,570",
+                "50%",
+                "37%",
+                "$2,543,357"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Account Opened (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Home Loans",
+            "values": [
+              721,
+              689,
+              712,
+              641,
+              588
+            ]
+          },
+          {
+            "name": "Checking Accounts",
+            "values": [
+              659,
+              632,
+              718,
+              589,
+              571
+            ]
+          },
+          {
+            "name": "Credit Cards",
+            "values": [
+              462,
+              418,
+              489,
+              436,
+              402
+            ]
+          },
+          {
+            "name": "Savings Accounts & CDs",
+            "values": [
+              412,
+              389,
+              431,
+              357,
+              334
+            ]
+          },
+          {
+            "name": "Student Loans",
+            "values": [
+              438,
+              356,
+              397,
+              289,
+              246
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "26%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "351"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "31"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              73,
+              76,
+              71,
+              79,
+              74,
+              77,
+              75,
+              72,
+              78,
+              76,
+              74,
+              77,
+              73,
+              75,
+              79,
+              76,
+              74,
+              78,
+              72,
+              75,
+              77,
+              76,
+              74,
+              79,
+              75,
+              77,
+              73,
+              76,
+              75,
+              78,
+              74,
+              82,
+              187,
+              192,
+              181,
+              198,
+              184,
+              191,
+              188,
+              195,
+              189,
+              186,
+              194,
+              187,
+              190,
+              198,
+              185,
+              192,
+              189
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,186"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "11,347"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "743"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "63%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "728"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "98%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "HELOC Rates and Terms",
+            "values": [
+              8,
+              11,
+              2,
+              10,
+              9,
+              12
+            ]
+          },
+          {
+            "name": "Checking Account Features",
+            "values": [
+              7,
+              9,
+              8,
+              6,
+              11,
+              10
+            ]
+          },
+          {
+            "name": "Student Loan Refinance Options",
+            "values": [
+              6,
+              8,
+              9,
+              7,
+              10,
+              8
+            ]
+          },
+          {
+            "name": "Mortgage Rate Inquiry",
+            "values": [
+              9,
+              10,
+              11,
+              8,
+              12,
+              11
+            ]
+          },
+          {
+            "name": "Credit Card Benefits Comparison",
+            "values": [
+              5,
+              7,
+              6,
+              9,
+              8,
+              10
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "68,346"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "52,003"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Booked (Count)",
+            "value": "35,659"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$61,212,247"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Rodriguez",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Jennifer Walsh",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "David Chen",
+              "value": 241,
+              "display": "241"
+            },
+            {
+              "name": "Patricia Okafor",
+              "value": 204,
+              "display": "204"
+            },
+            {
+              "name": "Kevin Hatton",
+              "value": 156,
+              "display": "156"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Amanda Strickland",
+            "values": [
+              156,
+              184,
+              201,
+              238,
+              267
+            ]
+          },
+          {
+            "name": "James Morrison",
+            "values": [
+              142,
+              167,
+              195,
+              223,
+              251
+            ]
+          },
+          {
+            "name": "Rachel Kowalski",
+            "values": [
+              128,
+              151,
+              178,
+              204,
+              237
+            ]
+          },
+          {
+            "name": "Timothy Valdez",
+            "values": [
+              134,
+              159,
+              186,
+              219,
+              248
+            ]
+          },
+          {
+            "name": "Sophia Lindqvist",
+            "values": [
+              119,
+              143,
+              167,
+              198,
+              228
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Rodriguez",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Jennifer Walsh",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "David Chen",
+              "value": 52.3,
+              "display": "52.3%"
+            },
+            {
+              "name": "Patricia Okafor",
+              "value": 58.1,
+              "display": "58.1%"
+            },
+            {
+              "name": "Kevin Hatton",
+              "value": 61.4,
+              "display": "61.4%"
+            },
+            {
+              "name": "Lance Greyson",
+              "value": 55.6,
+              "display": "55.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Rodriguez",
+                "54.2%",
+                "28%",
+                "$699,847",
+                "1,447"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Walsh",
+                "56.8%",
+                "29%",
+                "$718,562",
+                "1,423"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "52.3%",
+                "26%",
+                "$644,108",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Okafor",
+                "58.1%",
+                "31%",
+                "$773,415",
+                "1,465"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Hatton",
+                "61.4%",
+                "35%",
+                "$878,691",
+                "1,389"
+              ]
+            },
+            {
+              "cells": [
+                "Lance Greyson",
+                "55.6%",
+                "27%",
+                "$681,734",
+                "1,444"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Amanda Strickland",
+              "value": 92.3,
+              "display": "92.3%"
+            },
+            {
+              "name": "James Morrison",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "Rachel Kowalski",
+              "value": 91.2,
+              "display": "91.2%"
+            },
+            {
+              "name": "Timothy Valdez",
+              "value": 88.4,
+              "display": "88.4%"
+            },
+            {
+              "name": "Sophia Lindqvist",
+              "value": 90.1,
+              "display": "90.1%"
+            },
+            {
+              "name": "Gregory Patel",
+              "value": 87.8,
+              "display": "87.8%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Amanda Strickland",
+                "92.3%",
+                "67%",
+                "$1,547,283",
+                "1,542"
+              ]
+            },
+            {
+              "cells": [
+                "James Morrison",
+                "89.7%",
+                "64%",
+                "$1,423,617",
+                "1,498"
+              ]
+            },
+            {
+              "cells": [
+                "Rachel Kowalski",
+                "91.2%",
+                "66%",
+                "$1,504,968",
+                "1,516"
+              ]
+            },
+            {
+              "cells": [
+                "Timothy Valdez",
+                "88.4%",
+                "62%",
+                "$1,352,847",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Sophia Lindqvist",
+                "90.1%",
+                "65%",
+                "$1,459,274",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Gregory Patel",
+                "87.8%",
+                "58%",
+                "$1,316,425",
+                "1,468"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Booked (Count)",
+        "rightMax": 1700,
+        "rightTicks": [
+          0,
+          425,
+          850,
+          1275,
+          1700
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1322
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1267
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1180
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1125
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 980
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 1028
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1136
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1181
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1317
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1277
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1150
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1111
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 989
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 1019
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1163
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1199
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1305
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1284
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1126
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 1090
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 1003
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 1014
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1183
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1222
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1288
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1286
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 1110
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 1064
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 1021
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 1016
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1203
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 2800000,
+        "rightTicks": [
+          0,
+          933333.3333333334,
+          1866666.6666666667,
+          2800000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 2269085
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 2174815
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 2025195
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1932426
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 1682531
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 1765771
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1950597
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 2027485
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 2260658
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 2191847
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1974122
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1908028
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 1697824
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 1750055
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1997038
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 2057892
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 2239609
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 2204755
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1933331
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 1872010
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 1723307
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 1741374
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 2031460
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 2098799
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 2211157
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 2207941
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 1905667
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 1827230
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 1753189
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 1744735
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 2052314
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "74,289"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "5,943"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "4,457"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "85%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "84%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Margaret Chen",
+                "412",
+                "89%",
+                "86%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "David Kowalski",
+                "368",
+                "86%",
+                "83%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "Jessica Ramirez",
+                "391",
+                "86%",
+                "83%",
+                "85%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "74,289 calls",
+      "pagerLabel": "1 of 7,429",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:23 am",
+          "id": "A21C-4E9B7F03A18D"
+        },
+        {
+          "time": "1/13/26 10:41 am",
+          "id": "C84D-2F17B9E0C452"
+        },
+        {
+          "time": "1/15/26 11:08 am",
+          "id": "9B3E-6A2D1F84C907"
+        },
+        {
+          "time": "1/16/26 12:32 pm",
+          "id": "D47A-8C5E3B01F26A"
+        },
+        {
+          "time": "1/20/26 1:14 pm",
+          "id": "3E92-7B0C4A19D835"
+        },
+        {
+          "time": "1/22/26 2:39 pm",
+          "id": "F108-5D3A9C27E640"
+        },
+        {
+          "time": "1/27/26 3:52 pm",
+          "id": "6C5B-1A8F02D47E39"
+        },
+        {
+          "time": "1/29/26 4:26 pm",
+          "id": "B903-9E4C7A15F208"
+        },
+        {
+          "time": "1/30/26 5:11 pm",
+          "id": "7A4F-3C81B29D0E56"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling Citizens Bank, this is Marcus. Who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling Citizens Bank",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Marcus, my name is Danielle Prescott. I'm actually new to Citizens, I don't have an account yet. I've been looking into pulling some equity out of my home to redo a kitchen.",
+          "highlights": [
+            "new to Citizens",
+            "pulling some equity out of my home"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:19",
+          "text": "Welcome, Danielle, happy to help you get started. It sounds like a home equity line of credit could be a great fit. May I ask roughly how much you're hoping to borrow?",
+          "highlights": [
+            "home equity line of credit"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:29",
+          "text": "Probably around forty thousand. But honestly I want to keep the upfront stuff manageable, what does something like that run in terms of the closing costs?",
+          "highlights": [
+            "want to keep the upfront stuff manageable",
+            "what does something like that run"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:39",
+          "text": "That's a fair question. Our Citizens FastLine HELOC keeps costs low, and you can check your rate with no impact to your credit score before committing to anything. Many customers get funded in as little as two weeks.",
+          "highlights": [
+            "Citizens FastLine HELOC",
+            "no impact to your credit score"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:52",
+          "text": "Two weeks is good. The thing is, the credit union down the road quoted me something already, so I'm getting a couple of quotes before I decide.",
+          "highlights": [
+            "the credit union down the road quoted me something",
+            "getting a couple of quotes"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:02",
+          "text": "That makes complete sense, and I'd encourage you to compare. Where Citizens tends to stand out is the speed of funding and the soft credit check up front, so you can see real numbers without any commitment.",
+          "highlights": [
+            "without any commitment"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:14",
+          "text": "Okay. And I'm a little wary of locking myself into something. I don't want to feel stuck if my plans change.",
+          "highlights": [
+            "don't want to feel stuck"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:22",
+          "text": "Understood. With FastLine it's a line of credit, so you draw only what you need when you need it. There's flexibility built in, you're never obligated to use the full amount.",
+          "highlights": [
+            "you draw only what you need",
+            "never obligated to use the full amount"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:33",
+          "text": "That's reassuring. One more thing, while I have you, I might also want to look at a better savings account for the leftover renovation money.",
+          "highlights": [
+            "a better savings account"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:42",
+          "text": "Absolutely. Our Citizens Savings Account has a Round Ups feature that rounds up your debit purchases to help you save automatically. I can have an advisor walk you through both in one sitting.",
+          "highlights": [
+            "Citizens Savings Account",
+            "Round Ups feature"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:54",
+          "text": "That would actually be really helpful, to do it all at once.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:59",
+          "text": "Great. Let me capture a bit of information so I can set up a consultation with a lending specialist. Could I get the best phone number and email for you?",
+          "highlights": [
+            "set up a consultation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:08",
+          "text": "Sure, it's 401 555 0172, and my email is danielle.prescott@email.com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:16",
+          "text": "Perfect, thank you. I have an opening this Thursday at 10 AM at our Providence branch, or we can do a phone review if that's easier. Which works better?",
+          "highlights": [
+            "Thursday at 10 AM",
+            "Providence branch"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:26",
+          "text": "Thursday at 10 works. Let's do it in person at the branch.",
+          "highlights": [
+            "Thursday at 10 works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:31",
+          "text": "You're all set, Danielle. Your consultation is booked for Thursday at 10 AM in Providence to review the FastLine HELOC and a savings option.",
+          "highlights": [
+            "Your consultation is booked for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:37",
+          "text": "Wonderful, thank you so much for your help.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:40",
+          "text": "My pleasure. Thank you for choosing Citizens, and we'll see you Thursday. Take care.",
+          "highlights": [
+            "Thank you for choosing Citizens",
+            "see you Thursday"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Customer",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Product Intent: HELOC / Home Equity",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Product Intent: Savings Account",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price / Cost Objection",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Prescott, a new prospect without an existing Citizens account, called about pulling roughly forty thousand dollars of equity from her home to fund a kitchen renovation. Marcus recommended the Citizens FastLine HELOC, emphasizing low closing costs, a no-impact rate check, funding in as little as two weeks, and draw-as-you-need flexibility, and also introduced the Citizens Savings Account with Round Ups for her leftover funds. He handled her cost, competitor, and commitment concerns, captured her phone and email, and scheduled an in-person consultation. The consultation was booked for Thursday at 10 AM at the Providence branch.",
+        "keyPoints": [
+          "New customer with no existing Citizens account",
+          "Wants a HELOC of about $40,000 for a kitchen renovation",
+          "Recommended Citizens FastLine HELOC and Citizens Savings Account with Round Ups",
+          "Addressed cost, competitor credit union quote, and lock-in worries",
+          "Captured phone (401 555 0172) and email",
+          "Consultation booked for Thursday at 10 AM in Providence"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM, Providence branch"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "46,802 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,680",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. This is Sarah from Citizens Bank. Thanks for reaching out about our home equity options. Can I help you explore a HELOC or home equity loan today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yeah, I'm interested in a HELOC. Looking to do some renovations on my place."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great. Home improvement projects are a popular use for our FastLine HELOC. Quick question. Do you own your home outright, or do you have an existing mortgage balance?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "I have a mortgage. About 200k left on it."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. And roughly what is your home's current value in your area?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Around 450k I'd say."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Excellent. That gives you solid equity to work with. Our FastLine HELOC can get money in as little as two weeks with no impact to your credit score when you check rates. How much were you looking to borrow for the renovations?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "Maybe 40 to 50k to start."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "That's very doable. Based on your home value and existing mortgage, you'd likely qualify for well above that amount. I'd like to get you set up with a consultation with one of our loan specialists. They can give you exact numbers and rate options. Does Thursday afternoon work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "Yeah Thursday works. What time?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Perfect. How about 2 PM Thursday, March 13th? Our specialist will call you at the number you're texting from and walk you through the full process."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Sounds good. 2 PM works."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "Excellent. You're all set for Thursday, March 13th at 2 PM. You'll receive a confirmation email shortly and a reminder text 24 hours before. If you have any questions before then, call us at 1-877-CITIZENS. Thanks for choosing Citizens Bank."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: FastLine HELOC",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Service Area Confirmed: Home Equity",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Loan Amount: 40-50k",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "13",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "415-329-7648",
+            "repeatCaller": "No",
+            "city": "San Francisco",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Michael Torres",
+            "firstName": "Michael",
+            "lastName": "Torres",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "K847-234GB563891C",
+          "time": "8/16/25 10:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "K847-234GB563891C",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "R923-445HC674102D",
+          "time": "8/16/25 10:39 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "R923-445HC674102D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "T156-667ID785213E",
+          "time": "8/16/25 10:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "T156-667ID785213E",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "74,289 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 7,429",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hi there, thanks for calling Citizens Bank. My name is Marcus. Are you calling about a new account or an existing product today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Yeah, hi. I'm looking to switch my checking account. I've been with another bank for years but I heard about your EverValue Checking."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "Great, I'm glad you found us. So you're interested in switching to Citizens EverValue Checking. Just to understand your needs better, how many times would you say you use your debit card each month?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "Oh, probably fifteen to twenty times. I use it for groceries, gas, coffee, that kind of thing."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Perfect. And do you currently receive direct deposit into your account?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "Yes, my paycheck goes in twice a month. Why do you ask?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:53 PM",
+              "text": "Excellent. That's one way we can waive the five dollar monthly fee on EverValue Checking. And since you're switching, I'd love to help you get started. Do you have time for a quick consultation where we can walk through the process and get you set up?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:54 PM",
+              "text": "How long would that take? I'm at work right now."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "Usually about twenty to thirty minutes. We can do it over the phone whenever works best for you. How about tomorrow morning at nine thirty AM?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:56 PM",
+              "text": "Tomorrow at nine thirty works for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:57 PM",
+              "text": "Wonderful. I'm scheduling a consultation for tomorrow, January sixteenth, at nine thirty AM Eastern Time. You'll hear from a specialist who can open your account and answer any other questions you have. We'll call you back at this number to confirm. Is this the best number to reach you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:58 PM",
+              "text": "Yes, this is my cell phone. Sounds good."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:59 PM",
+              "text": "Perfect. Just to recap, you're switching to EverValue Checking with direct deposit waiving the monthly fee. Your consultation is tomorrow at nine thirty AM. Thanks for calling Citizens Bank, and we look forward to having you as a customer."
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:00 PM",
+              "text": "Thank you, I appreciate it."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: EverValue Checking",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Direct Deposit Confirmed",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Conversion: Account Switch",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Monthly Fee Waived",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:47 pm",
+            "duration": "13:02",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "206-554-8847",
+            "repeatCaller": "No",
+            "city": "Seattle",
+            "region": "WA",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B823-7F1A4C6E92B5",
+          "time": "1/18/26 10:34 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B823-7F1A4C6E92B5",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C651-9D2F3A8E71C4",
+          "time": "1/22/26 3:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C651-9D2F3A8E71C4",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D745-8B4F2E9A63D1",
+          "time": "1/27/26 1:55 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D745-8B4F2E9A63D1",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro plus offer: Hi, I'm Citizens Bank's AI assistant, and I can help you find the right account, loan, or card and set up a personalized consultation with a Citizens banker. We're currently featuring FastLine HELOC with money in as little as two weeks and no impact to your credit for a rate check, so would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, what you're looking for (checking, savings, credit card, home loan, or student loan), the approximate amount or balance involved, your general timeline, whether you already bank with Citizens, and finally your ZIP code so I can confirm services and branches in your area.",
+        "Estimate then book: Once I confirm we serve your ZIP, I'll share a preliminary rate or fee range based on what you shared, then recommend a consultation with a Citizens banker for exact terms, propose a specific day and time, and confirm you'll receive a reminder text before your appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Citizens_Bank_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Personal Banking Products",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Home Loans and HELOC",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Branch or ATM",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"loan status\",\"question\":\"How do I check the status of my mortgage or student loan application?\",\"answer\":\"You can track your application anytime through online banking using the Access My Mortgage or Access My Student Loan log in. I can also set up a quick consultation with a banker to walk you through the next steps.\"},{\"topic\":\"reschedule\",\"question\":\"I need to move my banker appointment to a different day, can you help?\",\"answer\":\"Absolutely, I can reschedule your consultation to a time that works better and send you a reminder text beforehand. What day and time would you prefer?\"}]}",
+          "qaPairs": [
+            {
+              "question": "What checking accounts does Citizens Bank offer?",
+              "answer": "We offer EverValue Checking, Quest Checking, and Private Client Checking to fit different needs, and monthly fees are often waivable. I can set up a consultation with a banker to help you pick the best fit."
+            },
+            {
+              "question": "How do I open a checking account?",
+              "answer": "You can start online or in a branch, and a banker can guide you through the whole process. Would you like me to book a quick consultation to get you started?"
+            },
+            {
+              "question": "What is the FastLine HELOC?",
+              "answer": "FastLine is our simpler, faster Home Equity Line of Credit with money in as little as two weeks and rate checks that don't impact your credit score. Let's schedule a consultation so a banker can review your options."
+            },
+            {
+              "question": "What are your current HELOC rates?",
+              "answer": "HELOC rates are variable and depend on your details, so I can't quote an exact rate here. A banker can give you precise terms during a consultation, which I'd be happy to book."
+            },
+            {
+              "question": "Do you offer student loans?",
+              "answer": "Yes, we offer Undergraduate, Graduate, and Parent loans, plus refinancing options for students, medical residents, and parents. A consultation with a banker can help you find the right one."
+            },
+            {
+              "question": "What is Multi-Year Approval on student loans?",
+              "answer": "Multi-Year Approval lets one application potentially cover every school year, with a 99% approval rate on future funding requests for approved borrowers. I can book a consultation to explain how it works for you."
+            },
+            {
+              "question": "What savings accounts do you have?",
+              "answer": "We offer Savings Accounts, Money Market Accounts, CDs, and IRA Savings and CDs, and our Round Ups feature helps you save automatically. Let's set up a consultation to compare them."
+            },
+            {
+              "question": "What is the minimum to open a CD?",
+              "answer": "Our Online CD has a $1,000 minimum with terms typically ranging from 6 to 60 months. A banker can review current rates with you during a consultation."
+            },
+            {
+              "question": "What credit cards does Citizens offer?",
+              "answer": "We offer the Cash Back Plus Mastercard, the Everyday and Rewards Mastercard, and the premium Summit Reserve Card. I can book a consultation so a banker can match a card to your spending."
+            },
+            {
+              "question": "Can a Citizens card help me build credit?",
+              "answer": "Yes, Citizens reports account information to the credit bureaus, so on-time payments can help build credit. Let's schedule a consultation to find the right card for you."
+            },
+            {
+              "question": "Do you offer mortgage refinancing?",
+              "answer": "Yes, we offer both rate and term and cash-out refinancing on existing mortgages. A banker can review current rates during a consultation I can set up for you."
+            },
+            {
+              "question": "How do I refinance my student loans?",
+              "answer": "We can consolidate existing student debt into one payment, with a special option for medical residents. I'd be glad to book a consultation to review your situation."
+            },
+            {
+              "question": "Where is the nearest branch or ATM?",
+              "answer": "If you share your ZIP code, I can confirm the branches and ATMs near you. Would you also like to book a consultation with a banker there?"
+            },
+            {
+              "question": "Do you offer wealth management?",
+              "answer": "Yes, our advisors provide financial planning and brokerage services through Citizens. I can arrange a consultation with an advisor to discuss your goals."
+            },
+            {
+              "question": "What is Round Ups?",
+              "answer": "Round Ups rounds up your debit card purchases to the nearest dollar to help you save automatically. A banker can set this up with you during a consultation."
+            },
+            {
+              "question": "Can I bank online and on mobile?",
+              "answer": "Yes, Citizens offers full online and mobile banking so you can manage accounts anytime. A banker can help you get set up during a consultation."
+            },
+            {
+              "question": "What is Private Client Checking?",
+              "answer": "It's a premium relationship account with a dedicated advisor and rate bonuses, with a monthly fee that can be waived. Let's book a consultation to see if you qualify."
+            },
+            {
+              "question": "Do you offer business banking?",
+              "answer": "Yes, we offer small business banking, lending, cash flow management, and credit cards. I can set up a consultation with a business banker for you."
+            },
+            {
+              "question": "How much does a checking account cost?",
+              "answer": "Monthly fees vary by account and are often waivable with qualifying balances or deposits, so exact costs depend on your setup. A banker can walk you through the details during a consultation."
+            },
+            {
+              "question": "Can I speak with someone in person?",
+              "answer": "Of course, I can book an in-branch or virtual consultation with a Citizens banker at a time that works for you. What day and time would you prefer?"
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the consultation\",\"follow_up_message\":\"Great, I have you down for a consultation with a Citizens banker. I'll send a reminder text before your appointment with a number to call if anything changes.\"},{\"intent\":\"request a rate quote\",\"follow_up_message\":\"Thanks for sharing those details. Rates depend on your full profile, so let's book a quick consultation where a banker can give you exact terms. What day and time works best?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, I'm Citizens Bank's AI assistant. I can help you find the right account, loan, or card and set up a consultation with a Citizens banker.",
+        "goal": "Guide the customer to book a consultation with a Citizens banker for the product they're interested in.",
+        "bookingType": "virtual consultation with a Citizens banker",
+        "offer": "Check your FastLine HELOC rate with no impact to your credit score",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "What are you interested in today, checking, savings, a credit card, a home loan, or a student loan?",
+          "What approximate amount or balance are you working with?",
+          "What's your general timeline for getting set up?",
+          "Do you already bank with Citizens?",
+          "What's your ZIP code so I can confirm the products and branches available in your area?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:06 am"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:06 am"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/22/26 11:06 am"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Citizens Bank",
+      "callerName": "Sarah Mitchell",
+      "callerPhone": "(215) 555-0147",
+      "campaign": "FastLine HELOC, Philadelphia Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$18,750",
+      "googleSearch": "Citizens FastLine HELOC rates Philadelphia",
+      "websiteSearch": "home equity line of credit fast approval no closing costs",
+      "callingWebpage": "/personal/home-loans/heloc",
+      "products": "Citizens FastLine HELOC, Fixed-Rate Mortgage",
+      "cartId": "CB-7429M",
+      "serviceable": "Yes",
+      "email": "sarah.mitchell@email.com",
+      "street": "4827 Chestnut Avenue",
+      "city": "Philadelphia",
+      "state": "PA",
+      "zip": "19103",
+      "digitalJourney": "/home › /personal › /home-loans › /personal/home-loans/heloc",
+      "intent": "Needs to access home equity to fund kitchen renovation, interested in fast funding with minimal closing costs.",
+      "coverage": "ZIP 19103 confirmed, Philadelphia serviceable",
+      "switchIntent": "High, renovation contractor selected, needs funds within four weeks.",
+      "greeting": "Hi Sarah, this is Marcus from Citizens Bank. I see you were looking into our FastLine HELOC option to fund your home project. I'd love to walk you through how quickly we can get you approved and funded. Would you have 15 minutes to discuss your options today?"
+    },
+    "smsScreenpop": {
+      "brandName": "Citizens Bank",
+      "callerName": "David Chen",
+      "callerPhone": "(303) 555-0089",
+      "campaign": "Student Loan Refinance, Denver Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$34,200",
+      "googleSearch": "Citizens Bank student loan refinance lower rates",
+      "websiteSearch": "consolidate graduate school loans one payment Denver",
+      "callingWebpage": "/personal/student-loans/refinance",
+      "products": "Student Loan Refinance, Citizens Quest Checking",
+      "cartId": "CB-5612K",
+      "serviceable": "Yes",
+      "email": "david.chen@email.com",
+      "street": "2341 South Gaylord Street",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80210",
+      "digitalJourney": "/home › /personal › /student-loans › /personal/student-loans/refinance",
+      "intent": "Seeking to refinance multiple graduate school loans into single payment with lower interest rate to improve monthly cash flow.",
+      "coverage": "ZIP 80210 confirmed, Denver serviceable",
+      "appointment": "Student loan consultation with refinance specialist, Thu Jul 18, 2:00 PM",
+      "greeting": "Hi David, it's Jennifer from Citizens Bank. Great news, we've got you all set for your student loan consultation this Thursday at 2 PM with our refinance specialist. If you have any questions before then or want to chat about your options, I'm here to help."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Citizens Bank",
+      "brandDomain": "www.citizensbank.com",
+      "brandIcon": "🏦",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "FastLine HELOC, Money in 2 Weeks",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "Citizens HELOC rates no closing costs",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/personal/home-loans/heloc",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "HELOC and Mortgage Refinance",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "heloc_consultation_new",
+          "name": "HELOC Consultation, New Applicant"
+        },
+        {
+          "id": "mortgage_support",
+          "name": "Mortgage & Refinance Support"
+        },
+        {
+          "id": "general_banking",
+          "name": "General Banking Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Citizens Bank. I see you were looking at our FastLine HELOC options. Are you exploring a home equity line for a specific project or purpose right now?",
+          "sigs": [],
+          "q": [
+            25,
+            40,
+            35
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, we're thinking about a kitchen renovation and maybe some roof work on our home. We've been with Citizens for a few years so I wasn't sure if that made us eligible for anything special.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Home renovation</strong> - kitchen and roof"
+            },
+            {
+              "c": "blue",
+              "t": "Existing customer relationship"
+            },
+            {
+              "c": "orange",
+              "t": "Multiple projects underway"
+            }
+          ],
+          "q": [
+            35,
+            35,
+            30
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's great. A kitchen and roof project is exactly what our FastLine HELOC works well for. Since you're already a Citizens customer, that actually helps. Can I ask roughly what your total project budget is, and do you own your home outright or still have a mortgage?",
+          "sigs": [],
+          "q": [
+            50,
+            25,
+            25
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We still owe on the mortgage, probably around 200 grand left. The renovation is maybe 75 to 80 thousand total. We'd like to get started soon if the rates are decent.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "Project budget 75k to 80k"
+            },
+            {
+              "c": "blue",
+              "t": "Existing mortgage with equity available"
+            },
+            {
+              "c": "purple",
+              "t": "Time sensitive, prefers quick approval"
+            }
+          ],
+          "q": [
+            80,
+            10,
+            10
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. Based on what you've shared, you're a strong fit for our FastLine program. You could potentially have funds in as little as two weeks, and there's no impact to your credit score just to check your rate. I'm going to connect you with our HELOC specialist team who can give you a personalized quote and walk through the full process. They'll take great care of you.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get that appointment set (Agent)\", \"schedule a time with a banker (Agent)\", \"book my appointment (Caller)\", \"come into the branch (Caller)\"])",
+          "createdAt": "03/12/25 10:15 am",
+          "updatedAt": "01/08/26 2:30 pm"
+        },
+        {
+          "name": "Account Verification Completed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Account Verification] < 60 and duration > 45 sec",
+          "createdAt": "05/20/25 9:00 am",
+          "updatedAt": "12/15/25 11:45 am"
+        },
+        {
+          "name": "Checking Account Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"open a checking account (Caller)\", \"EverValue checking (Caller)\", \"Quest checking (Caller)\", \"everyday checking account (Caller)\"])",
+          "createdAt": "04/02/25 8:30 am",
+          "updatedAt": "01/05/26 3:20 pm"
+        },
+        {
+          "name": "Competitor Bank Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Bank of America (Caller)\", \"Chase offers (Caller)\", \"Wells Fargo rate (Caller)\", \"better rate at another bank (Caller)\"])",
+          "createdAt": "06/11/25 1:15 pm",
+          "updatedAt": "01/12/26 9:50 am"
+        },
+        {
+          "name": "Compliance Disclosure Given",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "2 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Compliance Disclosures] < 60 and duration > 45 sec",
+          "createdAt": "02/18/25 10:40 am",
+          "updatedAt": "12/22/25 4:05 pm"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"speak with a banker (Caller)\", \"meet with an advisor (Agent)\", \"sit down with someone (Caller)\", \"financial checkup (Agent)\"])",
+          "createdAt": "03/28/25 11:20 am",
+          "updatedAt": "01/09/26 10:10 am"
+        },
+        {
+          "name": "Empathy and Rapport",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy and Rapport] < 60 and duration > 45 sec",
+          "createdAt": "05/06/25 2:00 pm",
+          "updatedAt": "01/03/26 8:45 am"
+        },
+        {
+          "name": "FastLine HELOC Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"FastLine HELOC (Caller)\", \"home equity line of credit (Caller)\", \"tap into my equity (Caller)\", \"money in two weeks (Agent)\"])",
+          "createdAt": "07/14/25 9:30 am",
+          "updatedAt": "01/15/26 1:25 pm"
+        },
+        {
+          "name": "Fee Objection Raised",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"monthly maintenance fee (Caller)\", \"waive the fee (Caller)\", \"why am I being charged (Caller)\", \"overdraft fee (Caller)\"])",
+          "createdAt": "08/01/25 3:45 pm",
+          "updatedAt": "01/18/26 11:00 am"
+        },
+        {
+          "name": "Rate Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your APR would be (Agent)\", \"the rate today is (Agent)\", \"quote you a rate (Agent)\", \"annual percentage rate (Agent)\"])",
+          "createdAt": "04/22/25 10:05 am",
+          "updatedAt": "01/20/26 2:15 pm"
+        }
+      ]
+    }
+  }
+}

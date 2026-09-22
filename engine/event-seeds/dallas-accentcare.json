@@ -1,0 +1,5308 @@
+{
+  "id": "accentcare",
+  "customerName": "AccentCare",
+  "websiteUrl": "https://www.accentcare.com",
+  "brandDomain": "accentcare.com",
+  "networkName": "Invoca for Home Health",
+  "industry": "Home Health & Hospice Care",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Patient",
+  "generation": {
+    "at": "2026-09-22T15:04:06.962Z",
+    "scope": "full"
+  },
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 8214
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 14382
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 13927
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 12641
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 11146
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Home Health Near Me",
+          "marketingSearchTerm": "home health care near me",
+          "landingPageUrl": "https://www.accentcare.com/continuum-of-care/home-health/?utm_source=google&utm_medium=cpc&utm_campaign=home_health_near_me",
+          "websiteJourney": "Home / Explore Services / Home Health",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Hospice Care City",
+          "marketingSearchTerm": "hospice care dallas tx",
+          "landingPageUrl": "https://www.accentcare.com/continuum-of-care/hospice/?utm_source=google&utm_medium=cpc&utm_campaign=hospice_care_city",
+          "websiteJourney": "Home / Explore Services / Hospice",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "In-Home Senior Care",
+          "marketingSearchTerm": "in-home personal care for elderly",
+          "landingPageUrl": "https://www.accentcare.com/continuum-of-care/personal-care/?utm_source=google&utm_medium=cpc&utm_campaign=in_home_senior_care",
+          "websiteJourney": "Home / Explore Services / Personal Care Services",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Skilled Nursing At Home",
+          "marketingSearchTerm": "skilled nursing at home medicare",
+          "landingPageUrl": "https://www.accentcare.com/continuum-of-care/home-health/?utm_source=bing&utm_medium=cpc&utm_campaign=skilled_nursing_home",
+          "websiteJourney": "Home / Explore Services / Home Health",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Palliative Care Awareness",
+          "marketingSearchTerm": "palliative vs hospice care",
+          "landingPageUrl": "https://www.accentcare.com/continuum-of-care/palliative-care/?utm_source=google&utm_medium=cpc&utm_campaign=palliative_care_awareness",
+          "websiteJourney": "Home / Explore Services / Palliative Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Find Care Now",
+          "marketingSearchTerm": "companion care for seniors",
+          "landingPageUrl": "https://www.accentcare.com/find-care/?utm_source=google&utm_medium=cpc&utm_campaign=find_care_now",
+          "websiteJourney": "Home / Find Care Now / Location Finder",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Medicare Home Health",
+          "marketingSearchTerm": "does medicare cover home health",
+          "landingPageUrl": "https://www.accentcare.com/continuum-of-care/home-health/?utm_source=bing&utm_medium=cpc&utm_campaign=medicare_home_health",
+          "websiteJourney": "Home / Explore Services / Home Health",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Dementia Caregiver Support",
+          "marketingSearchTerm": "caregiver for parent with dementia",
+          "landingPageUrl": "https://www.accentcare.com/continuum-of-care/personal-care/?utm_source=google&utm_medium=cpc&utm_campaign=dementia_caregiver_support",
+          "websiteJourney": "Home / Explore Services / Personal Care Services",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Home Therapy After Surgery",
+          "marketingSearchTerm": "physical therapy at home after surgery",
+          "landingPageUrl": "https://www.accentcare.com/continuum-of-care/home-health/?utm_source=google&utm_medium=cpc&utm_campaign=home_therapy_surgery",
+          "websiteJourney": "Home / Explore Services / Home Health",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Understanding Hospice",
+          "marketingSearchTerm": "signs it's time for hospice",
+          "landingPageUrl": "https://www.accentcare.com/insights/understanding-hospice/?utm_source=google&utm_medium=organic&utm_campaign=understanding_hospice",
+          "websiteJourney": "Home / Gain Insights / Living with Illness / Understanding Hospice",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Early Signs of Alzheimer's",
+          "marketingSearchTerm": "early signs of alzheimer's",
+          "landingPageUrl": "https://www.accentcare.com/insights/early-signs-alzheimers/?utm_source=google&utm_medium=organic&utm_campaign=early_signs_alzheimers",
+          "websiteJourney": "Home / Gain Insights / Caregiving and Family Support / Early Signs of Alzheimer's",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Grief Support Content",
+          "marketingSearchTerm": "grief and bereavement support",
+          "landingPageUrl": "https://www.accentcare.com/continuum-of-care/hospice/bereavement/?utm_source=google&utm_medium=organic&utm_campaign=grief_support",
+          "websiteJourney": "Home / Explore Services / Hospice / Bereavement Support",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "AccentCare Reviews",
+          "marketingSearchTerm": "accentcare hospice reviews",
+          "landingPageUrl": "https://www.accentcare.com/about-us/?utm_source=bing&utm_medium=cpc&utm_campaign=accentcare_reviews",
+          "websiteJourney": "Home / About Us",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "RightPath Navigation",
+          "marketingSearchTerm": "how to choose home care",
+          "landingPageUrl": "https://www.accentcare.com/rightpath/?utm_source=google&utm_medium=organic&utm_campaign=rightpath_navigation",
+          "websiteJourney": "Home / Find Care Now / RightPath Care Navigation",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Faces of Excellence",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.accentcare.com/insights/inside-accentcare/?utm_source=facebook&utm_medium=social&utm_campaign=faces_of_excellence",
+          "websiteJourney": "Home / Gain Insights / Inside AccentCare",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Purpose-Driven Care",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.accentcare.com/continuum-of-care/?utm_source=instagram&utm_medium=social&utm_campaign=purpose_driven_care",
+          "websiteJourney": "Home / Explore Services / Continuum of Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Value-Based Care Partnership",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.accentcare.com/partners/?utm_source=facebook&utm_medium=social&utm_campaign=value_based_care",
+          "websiteJourney": "Home / About Us / Partnerships / ProviderLink",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "LinkedIn",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Value-Based Care Partnership",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.accentcare.com/partners/providerlink/?utm_source=linkedin&utm_medium=social&utm_campaign=value_based_care",
+          "websiteJourney": "Home / About Us / Partnerships / ProviderLink",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Caregiver Hiring",
+          "marketingSearchTerm": "caregiver jobs near me",
+          "landingPageUrl": "https://www.accentcare.com/careers/?utm_source=google&utm_medium=cpc&utm_campaign=caregiver_hiring",
+          "websiteJourney": "Home / Find Careers / Working at AccentCare",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Faces of Excellence",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.accentcare.com/careers/?utm_source=instagram&utm_medium=social&utm_campaign=faces_of_excellence",
+          "websiteJourney": "Home / Find Careers / Working at AccentCare",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Resource Library",
+          "marketingSearchTerm": "home care resources for families",
+          "landingPageUrl": "https://www.accentcare.com/resources/?utm_source=google&utm_medium=organic&utm_campaign=resource_library",
+          "websiteJourney": "Home / Access Resources / Resource Library",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "In-Home Senior Care",
+          "marketingSearchTerm": "companion care for seniors",
+          "landingPageUrl": "https://www.accentcare.com/continuum-of-care/personal-care/?utm_source=bing&utm_medium=cpc&utm_campaign=in_home_senior_care",
+          "websiteJourney": "Home / Explore Services / Personal Care Services",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (AccentCare)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "47,302"
+            },
+            {
+              "label": "Care Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Admission (Percent)",
+              "value": "21%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$41,620,032"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "7,568"
+            },
+            {
+              "label": "Billing & Insurance Question (Percent)",
+              "value": "7%"
+            },
+            {
+              "label": "Careers Inquiry (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Existing Client Support (Percent)",
+              "value": "4%"
+            }
+          ]
+        },
+        {
+          "title": "Care Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Care Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "15%"
+            },
+            {
+              "label": "Admission (Percent)",
+              "value": "21%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Care Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Care Inquiry (Count)",
+            "values": [
+              5842,
+              8913,
+              8506,
+              8247,
+              8226
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              2814,
+              4382,
+              4201,
+              4015,
+              3982
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              1042,
+              1613,
+              1538,
+              1477,
+              1432
+            ]
+          },
+          {
+            "name": "Admission (Count)",
+            "values": [
+              1462,
+              2238,
+              2131,
+              2067,
+              2035
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 47302,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "18,742",
+                "38%",
+                "16%",
+                "$13,984,712"
+              ]
+            },
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "11,318",
+                "42%",
+                "20%",
+                "$9,382,554"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "9,264",
+                "45%",
+                "23%",
+                "$8,829,441"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "4,987",
+                "49%",
+                "27%",
+                "$5,582,003"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "2,991",
+                "54%",
+                "31%",
+                "$3,841,322"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 47302,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "21,436",
+                "39%",
+                "17%",
+                "$15,224,118"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "12,187",
+                "44%",
+                "21%",
+                "$10,698,472"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "6,841",
+                "47%",
+                "24%",
+                "$6,861,337"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "4,112",
+                "51%",
+                "29%",
+                "$4,982,761"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "2,726",
+                "55%",
+                "34%",
+                "$3,853,344"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 47302,
+          "rows": [
+            {
+              "name": "Home Health Near Me",
+              "metrics": [
+                "6,842",
+                "38%",
+                "18%",
+                "$5,106,332"
+              ]
+            },
+            {
+              "name": "In-Home Senior Care",
+              "metrics": [
+                "5,318",
+                "42%",
+                "21%",
+                "$4,627,915"
+              ]
+            },
+            {
+              "name": "Hospice Care Near Me",
+              "metrics": [
+                "4,187",
+                "46%",
+                "24%",
+                "$4,165,884"
+              ]
+            },
+            {
+              "name": "Understanding Hospice",
+              "metrics": [
+                "2,914",
+                "50%",
+                "29%",
+                "$3,500,921"
+              ]
+            },
+            {
+              "name": "RightPath Care Navigation",
+              "metrics": [
+                "1,876",
+                "54%",
+                "35%",
+                "$2,721,447"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 47302,
+          "rows": [
+            {
+              "name": "home health care near me",
+              "metrics": [
+                "5,214",
+                "37%",
+                "17%",
+                "$3,672,118"
+              ]
+            },
+            {
+              "name": "hospice care near me",
+              "metrics": [
+                "3,987",
+                "41%",
+                "20%",
+                "$3,303,442"
+              ]
+            },
+            {
+              "name": "in-home personal care for elderly",
+              "metrics": [
+                "3,142",
+                "45%",
+                "23%",
+                "$2,996,884"
+              ]
+            },
+            {
+              "name": "does medicare cover home health",
+              "metrics": [
+                "2,376",
+                "49%",
+                "28%",
+                "$2,756,331"
+              ]
+            },
+            {
+              "name": "caregiver for parent with dementia",
+              "metrics": [
+                "1,689",
+                "53%",
+                "34%",
+                "$2,379,207"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 47302,
+          "rows": [
+            {
+              "name": "Home Health",
+              "metrics": [
+                "15,842",
+                "39%",
+                "16.5%",
+                "$10,938,412"
+              ]
+            },
+            {
+              "name": "Personal Care",
+              "metrics": [
+                "12,318",
+                "42%",
+                "19.0%",
+                "$9,795,206"
+              ]
+            },
+            {
+              "name": "Hospice",
+              "metrics": [
+                "9,764",
+                "44%",
+                "21.5%",
+                "$8,807,144"
+              ]
+            },
+            {
+              "name": "Palliative Care",
+              "metrics": [
+                "5,932",
+                "47%",
+                "26.2%",
+                "$6,504,983"
+              ]
+            },
+            {
+              "name": "AccentCare Medical Group",
+              "metrics": [
+                "3,446",
+                "52%",
+                "38.4%",
+                "$5,574,287"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 47302,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "14,218",
+                "34%",
+                "16.5%",
+                "$9,824,116"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "11,342",
+                "37%",
+                "19.5%",
+                "$9,259,882"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "9,067",
+                "39%",
+                "21.5%",
+                "$8,162,047"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "7,438",
+                "42%",
+                "24.5%",
+                "$7,627,441"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "5,237",
+                "46%",
+                "30.6%",
+                "$6,746,546"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Admission (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Home Health",
+            "values": [
+              408,
+              612,
+              588,
+              561,
+              443
+            ]
+          },
+          {
+            "name": "Personal Care",
+            "values": [
+              372,
+              548,
+              531,
+              502,
+              387
+            ]
+          },
+          {
+            "name": "Hospice",
+            "values": [
+              331,
+              493,
+              476,
+              451,
+              352
+            ]
+          },
+          {
+            "name": "Palliative Care",
+            "values": [
+              244,
+              364,
+              351,
+              334,
+              261
+            ]
+          },
+          {
+            "name": "AccentCare Medical Group",
+            "values": [
+              208,
+              311,
+              299,
+              284,
+              222
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 47,302 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 91,
+          "summary": "Diane Coleman called to arrange hospice care for her father, who was recently discharged from the hospital with a terminal diagnosis. Agent Oscar explained the routine home care benefit under Medicare and walked her through what the nurse and aide visits would include. He scheduled a hospice consultation for the family this week.",
+          "date": "Jan 6, 2:42 PM",
+          "agent": "Oscar",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 86,
+          "summary": "Robert Alvarez phoned after his mother's hospital discharge to set up home health skilled nursing for wound care and vitals monitoring. Agent Lila confirmed the physician order was on file and reviewed the therapy add-ons available. She booked a home health consultation and confirmed the intake nurse would follow up.",
+          "date": "Feb 11, 10:18 AM",
+          "agent": "Lila",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 81,
+          "summary": "Karen Whitfield called to check the visit schedule for her mother's home health physical therapy sessions after hip surgery. Agent Rosey confirmed the next two appointments and explained how the gait training plan would progress. The caller was reassured and no new booking was needed.",
+          "date": "Mar 4, 4:09 PM",
+          "agent": "Rosey",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Miguel Santos, a new caller, phoned to arrange personal care for his wife who needs help with bathing, dressing, and meal prep. Agent Mary collected his full address, insurance details, and preferred schedule during the intake. She scheduled a personal care consultation and confirmed the care coordinator would call to finalize the plan.",
+          "date": "Mar 19, 11:33 AM",
+          "agent": "Mary",
+          "duration": "3m 21s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Angela Reyes called about palliative care for her husband while he continues chemotherapy. Agent Lee explained how symptom and pain management works alongside curative treatment and that it is often insurance covered. He scheduled a palliative care consultation with the care team.",
+          "date": "Apr 8, 1:14 PM",
+          "agent": "Lee",
+          "duration": "2m 30s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Thomas Nguyen disputed a billing statement for recent home health visits he believed Medicare should have covered. Agent Sue reviewed the charges line by line and opened a review with the billing department. The caller stayed frustrated but agreed to wait for the follow-up.",
+          "date": "Apr 22, 9:47 AM",
+          "agent": "Sue",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Patricia Long called to set up physical therapy at home after knee surgery to rebuild strength and prevent falls. Agent Mike verified her referral and described the mobility and rehab plan. He scheduled a consultation with the home health therapy team.",
+          "date": "May 5, 3:38 PM",
+          "agent": "Mike",
+          "duration": "2m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Gregory Foster called because comfort equipment for his mother's palliative care had not been delivered as promised. Agent Jennifer apologized, tracked the order, and escalated to the equipment vendor. The delivery issue remained open at the end of the call.",
+          "date": "May 27, 12:22 PM",
+          "agent": "Jennifer",
+          "duration": "2m 40s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Denise Carter called to arrange companion and personal care for her elderly mother, including medication reminders and errands. Agent Rose explained the hourly options and safety supervision services. She scheduled a personal care consultation for the household.",
+          "date": "Jun 9, 10:55 AM",
+          "agent": "Rose",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Harold Simmons complained that his personal care aide arrived late two days in a row and left early. Agent Oscar apologized, documented the complaint, and opened a service review with the branch supervisor. The caller was still dissatisfied when the call ended.",
+          "date": "Jun 24, 4:51 PM",
+          "agent": "Oscar",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Sandra Bell called to cancel her father's home health services because the family had moved him to a facility. Agent Lila confirmed the discharge steps and the final visit date. No further care was scheduled.",
+          "date": "Jul 3, 1:29 PM",
+          "agent": "Lila",
+          "duration": "1m 37s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 43,
+          "summary": "Marcus Reed disputed a billing charge for hospice supplies he thought were included in the Medicare benefit. Agent Mary explained the coverage but could not resolve it on the call and submitted a review request. The caller remained upset about the charge.",
+          "date": "Jul 21, 11:06 AM",
+          "agent": "Mary",
+          "duration": "2m 19s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Evelyn Ross complained about repeated scheduling confusion with her mother's physical therapy visits and missed appointments. Agent Lee apologized and tried to rebuild the schedule but the caller declined to commit to new dates. The issue was logged for supervisor follow-up.",
+          "date": "Aug 12, 3:44 PM",
+          "agent": "Lee",
+          "duration": "3m 02s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Frank Delgado called after hours asking about bereavement and grief support following his wife's hospice care last year. The call rolled to voicemail and no agent was available to assist. He left a message requesting a callback about support groups.",
+          "date": "Sep 2, 6:18 PM",
+          "agent": "No Agent",
+          "duration": "0m 46s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Nancy Powell raised serious concerns about communication and visit consistency during her father's hospice care. Agent Sue documented each complaint in detail and escalated to clinical leadership for review. The caller ended the call angry and requested a manager callback.",
+          "date": "Oct 1, 9:33 AM",
+          "agent": "Sue",
+          "duration": "3m 24s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "hospice",
+        "home health",
+        "physical therapy",
+        "palliative",
+        "personal care",
+        "billing"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 18, 2:28 PM",
+      "duration": "2m 39s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Primary Care Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Document Patient Insurance Status",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Intake Consultation",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Next Steps",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer Bereavement Resources (if applicable)",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Friendly opening",
+        "Clear service options offered",
+        "Patient ZIP code confirmed",
+        "Medicare coverage mentioned",
+        "Next day callback scheduled",
+        "Consultation appointment confirmed",
+        "Professional tone maintained",
+        "Active listening demonstrated",
+        "Compassionate language used",
+        "Service area verified",
+        "Follow-up process explained",
+        "Patient name documented",
+        "Time frame set for care visit"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Insurance details not fully documented",
+        "Expected visit duration not mentioned",
+        "Caregiver support options not explored",
+        "Palliative care option not mentioned",
+        "Home assessment process not explained",
+        "Payment options not discussed",
+        "Care coordinator contact details not provided",
+        "Referral source not asked",
+        "Post-intake support resources not offered"
+      ],
+      "naSignals": [
+        "Medication refill request",
+        "Billing inquiry",
+        "Previous service complaint",
+        "Equipment delivery status",
+        "Cancellation request",
+        "Return or cancellation policy",
+        "Prior authorization status"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes, the caller's mother recently had a stroke and needs skilled nursing and physical therapy at home while she recovers. She requires assistance with mobility and daily living activities."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a consultation visit within the next two days to assess their mother's needs and outline the care plan and associated costs."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have captured the caller's email address for the intake confirmation and provided clearer guidance on what to expect during the home assessment visit, including estimated duration and which clinical team members would attend."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon, this is Marcus with AccentCare. Thank you for calling in today. How can I help you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:26",
+          "text": "Hi Marcus, yes. My mother had a stroke about a week ago, and she just came home from the hospital. We need some help with her care at home. She's having trouble walking and she needs assistance with bathing and getting dressed."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:48",
+          "text": "I'm very sorry to hear about your mother's stroke. We absolutely can help with that. We specialize in home health and skilled nursing care for exactly this type of situation. To get started, may I have your mother's full name, please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:02",
+          "text": "Her name is Margaret Anne Sullivan."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:07",
+          "text": "Thank you, Margaret Anne Sullivan. And just to confirm, you're calling as her family member or caregiver?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:15",
+          "text": "Yes, I'm her daughter. My name is Jennifer Sullivan."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:21",
+          "text": "Perfect, Jennifer. So I see Margaret would benefit from our skilled nursing and physical therapy services. What ZIP code is Margaret's home in?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:35",
+          "text": "She's in 78704, that's Austin, Texas."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:42",
+          "text": "Excellent. We absolutely serve the Austin area. Now, does Margaret have Medicare or other insurance coverage?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:53",
+          "text": "Yes, she has Medicare and a supplemental plan. She should be covered for most of the care."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:04",
+          "text": "That's great. Medicare typically covers skilled nursing visits and physical therapy for post-acute rehabilitation. So what I'd like to do is schedule a consultation visit with one of our care coordinators. They can come assess Margaret's specific needs and walk you through the plan. Would tomorrow afternoon work, or would you prefer later in the week?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:27",
+          "text": "Tomorrow afternoon would be perfect. What time should we expect someone?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:35",
+          "text": "Great. We can do a consultation visit tomorrow afternoon. One of our coordinators will call you about an hour before to confirm the time. They'll do a full assessment of Margaret's needs and talk about the care plan. Does that work?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:51",
+          "text": "Yes, that sounds good. So tomorrow. Thank you so much."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:03",
+          "text": "You're very welcome, Jennifer. We're looking forward to helping Margaret get back on her feet. Thank you for choosing AccentCare, and we'll be in touch tomorrow afternoon. Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Sullivan called on behalf of her mother, Margaret Anne Sullivan, who recently discharged from the hospital following a stroke and requires skilled nursing and physical therapy services at home in Austin, Texas (ZIP 78704). Marcus confirmed AccentCare's service availability in the area, verified Medicare and supplemental insurance coverage, and successfully scheduled a consultation visit for the following afternoon. The intake was professional and compassionate, though the agent did not capture Jennifer's contact email address or provide detailed expectations about the assessment process.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great call structure and empathetic tone with Jennifer. You nailed the greeting, captured all the essential details, and moved smoothly into scheduling. Two coaching points for next time: grab the caller's email address during the intake so our team has it for the confirmation, and take 10 seconds to set clear expectations about what the home assessment visit will cover and how long it typically takes. This builds confidence and reduces no-shows. Well done overall."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "47,302"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$879.88"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$41,620,032"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "30,674"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "65%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "19,394"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "41%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "16,628"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Referral",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "ChatGPT",
+                "value": 49,
+                "display": "49%"
+              },
+              {
+                "name": "Google LSA",
+                "value": 44,
+                "display": "44%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 38,
+                "display": "38%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "18,412",
+                  "32%",
+                  "$16,204,118"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "11,247",
+                  "38%",
+                  "$9,901,552"
+                ]
+              },
+              {
+                "cells": [
+                  "Google LSA",
+                  "8,653",
+                  "44%",
+                  "$7,612,340"
+                ]
+              },
+              {
+                "cells": [
+                  "ChatGPT",
+                  "5,381",
+                  "49%",
+                  "$4,733,006"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "3,609",
+                  "58%",
+                  "$3,169,016"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 20000,
+            "axisTicks": [
+              0,
+              4000,
+              8000,
+              12000,
+              16000,
+              20000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 19873,
+                "display": "19,873"
+              },
+              {
+                "name": "Organic Search",
+                "value": 12046,
+                "display": "12,046"
+              },
+              {
+                "name": "Social Media",
+                "value": 7215,
+                "display": "7,215"
+              },
+              {
+                "name": "Referral",
+                "value": 5338,
+                "display": "5,338"
+              },
+              {
+                "name": "Email",
+                "value": 2830,
+                "display": "2,830"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "19,873",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "12,046",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "7,215",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "5,338",
+                  "50%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "2,830",
+                  "61%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 9000,
+            "axisTicks": [
+              0,
+              1500,
+              3000,
+              4500,
+              6000,
+              7500,
+              9000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Home Health Near Me",
+                "value": 8214,
+                "display": "8,214"
+              },
+              {
+                "name": "Hospice Care Dallas",
+                "value": 6102,
+                "display": "6,102"
+              },
+              {
+                "name": "In-Home Senior Care",
+                "value": 4873,
+                "display": "4,873"
+              },
+              {
+                "name": "Palliative Care Support",
+                "value": 3547,
+                "display": "3,547"
+              },
+              {
+                "name": "Understanding Hospice",
+                "value": 2048,
+                "display": "2,048"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Home Health Near Me",
+                  "8,214",
+                  "34%",
+                  "$6,847,205"
+                ]
+              },
+              {
+                "cells": [
+                  "Hospice Care Dallas",
+                  "6,102",
+                  "41%",
+                  "$5,102,338"
+                ]
+              },
+              {
+                "cells": [
+                  "In-Home Senior Care",
+                  "4,873",
+                  "47%",
+                  "$4,073,491"
+                ]
+              },
+              {
+                "cells": [
+                  "Palliative Care Support",
+                  "3,547",
+                  "56%",
+                  "$2,965,842"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "home health care near me",
+                "value": 3412,
+                "display": "3,412"
+              },
+              {
+                "name": "hospice care near me",
+                "value": 2687,
+                "display": "2,687"
+              },
+              {
+                "name": "in-home senior care",
+                "value": 2104,
+                "display": "2,104"
+              },
+              {
+                "name": "skilled nursing at home medicare",
+                "value": 1562,
+                "display": "1,562"
+              },
+              {
+                "name": "caregiver for parent with dementia",
+                "value": 1089,
+                "display": "1,089"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "home health care near me",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "hospice care near me",
+                  "42%"
+                ]
+              },
+              {
+                "cells": [
+                  "in-home senior care",
+                  "48%"
+                ]
+              },
+              {
+                "cells": [
+                  "skilled nursing at home medicare",
+                  "57%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Home Health",
+              "17,842",
+              "34%",
+              "68%"
+            ]
+          },
+          {
+            "cells": [
+              "Personal Care",
+              "13,205",
+              "39%",
+              "64%"
+            ]
+          },
+          {
+            "cells": [
+              "Hospice",
+              "9,876",
+              "45%",
+              "71%"
+            ]
+          },
+          {
+            "cells": [
+              "Palliative Care",
+              "6,379",
+              "55%",
+              "66%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Dallas, TX Branch",
+              "15,247",
+              "984",
+              "4%",
+              "35%"
+            ]
+          },
+          {
+            "cells": [
+              "Los Angeles, CA Branch",
+              "12,893",
+              "812",
+              "3%",
+              "40%"
+            ]
+          },
+          {
+            "cells": [
+              "Phoenix, AZ Branch",
+              "10,764",
+              "1,203",
+              "5%",
+              "44%"
+            ]
+          },
+          {
+            "cells": [
+              "Atlanta, GA Branch",
+              "8,398",
+              "785",
+              "4%",
+              "52%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1684,
+              1592,
+              1538,
+              1502,
+              1526
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              1342,
+              1318,
+              1289,
+              1301,
+              1267
+            ]
+          },
+          {
+            "name": "Insurance Not Accepted",
+            "values": [
+              1187,
+              1142,
+              1138,
+              1109,
+              1113
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              902,
+              871,
+              864,
+              845,
+              839
+            ]
+          },
+          {
+            "name": "Needs Family Approval",
+            "values": [
+              742,
+              718,
+              706,
+              689,
+              684
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "18,921"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Admission (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$23,723,418"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Admission (Percent)",
+              "value": "19%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,847,620"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Admission (Percent)",
+              "value": "27%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,162,385"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Admission (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,148,927"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Admission (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,541,346"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Admission (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,824,516"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Admission (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,198,624"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21847,
+          "rows": [
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "4863",
+                "58%",
+                "24%",
+                "$5,182,944"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "3947",
+                "61%",
+                "31%",
+                "$4,752,819"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "3421",
+                "54%",
+                "28%",
+                "$3,964,276"
+              ]
+            },
+            {
+              "name": "Google Ads",
+              "metrics": [
+                "3128",
+                "52%",
+                "32%",
+                "$4,318,527"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "2562",
+                "51%",
+                "41%",
+                "$5,504,852"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21356,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "5847",
+                "53%",
+                "26%",
+                "$6,213,448"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "4136",
+                "57%",
+                "29%",
+                "$4,891,537"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "3284",
+                "54%",
+                "34%",
+                "$5,247,163"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "2459",
+                "55%",
+                "37%",
+                "$4,358,924"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "1947",
+                "49%",
+                "42%",
+                "$3,011,346"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21648,
+          "rows": [
+            {
+              "name": "Home Health Near Me",
+              "metrics": [
+                "3742",
+                "52%",
+                "22%",
+                "$3,684,152"
+              ]
+            },
+            {
+              "name": "Hospice Care Consultation",
+              "metrics": [
+                "3156",
+                "56%",
+                "29%",
+                "$4,127,384"
+              ]
+            },
+            {
+              "name": "In-Home Senior Care Support",
+              "metrics": [
+                "2814",
+                "57%",
+                "33%",
+                "$4,539,618"
+              ]
+            },
+            {
+              "name": "Understanding Your Care Options",
+              "metrics": [
+                "2447",
+                "54%",
+                "37%",
+                "$4,284,756"
+              ]
+            },
+            {
+              "name": "Post-Acute Care Planning",
+              "metrics": [
+                "1863",
+                "51%",
+                "44%",
+                "$3,803,509"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21502,
+          "rows": [
+            {
+              "name": "home health care near me",
+              "metrics": [
+                "2847",
+                "51%",
+                "23%",
+                "$2,756,384"
+              ]
+            },
+            {
+              "name": "hospice care services",
+              "metrics": [
+                "2396",
+                "54%",
+                "28%",
+                "$3,318,746"
+              ]
+            },
+            {
+              "name": "skilled nursing at home",
+              "metrics": [
+                "1984",
+                "56%",
+                "31%",
+                "$2,947,518"
+              ]
+            },
+            {
+              "name": "in-home personal care for elderly",
+              "metrics": [
+                "1653",
+                "55%",
+                "36%",
+                "$3,481,272"
+              ]
+            },
+            {
+              "name": "palliative care options",
+              "metrics": [
+                "1341",
+                "53%",
+                "42%",
+                "$3,218,597"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Admission (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Home Health and Skilled Nursing",
+              "metrics": [
+                "5683",
+                "59%",
+                "31%",
+                "$7,251,463"
+              ]
+            },
+            {
+              "name": "Hospice Care",
+              "metrics": [
+                "4921",
+                "57%",
+                "35%",
+                "$6,384,218"
+              ]
+            },
+            {
+              "name": "Personal Care Services",
+              "metrics": [
+                "4127",
+                "54%",
+                "32%",
+                "$5,628,741"
+              ]
+            },
+            {
+              "name": "Palliative Care",
+              "metrics": [
+                "2834",
+                "52%",
+                "29%",
+                "$3,041,856"
+              ]
+            },
+            {
+              "name": "Medical Social Work and Care Coordination",
+              "metrics": [
+                "1356",
+                "48%",
+                "27%",
+                "$1,417,140"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Admission (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Home Health and Skilled Nursing",
+            "values": [
+              438,
+              512,
+              481,
+              596,
+              439
+            ]
+          },
+          {
+            "name": "Hospice Care",
+            "values": [
+              389,
+              467,
+              524,
+              431,
+              478
+            ]
+          },
+          {
+            "name": "Personal Care Services",
+            "values": [
+              328,
+              401,
+              387,
+              456,
+              392
+            ]
+          },
+          {
+            "name": "Palliative Care",
+            "values": [
+              214,
+              267,
+              249,
+              315,
+              298
+            ]
+          },
+          {
+            "name": "Medical Social Work and Care Coordination",
+            "values": [
+              96,
+              142,
+              127,
+              168,
+              143
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "349"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "27"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              73,
+              76,
+              71,
+              78,
+              75,
+              72,
+              74,
+              79,
+              71,
+              77,
+              73,
+              75,
+              78,
+              72,
+              76,
+              74,
+              71,
+              79,
+              175,
+              182,
+              178,
+              185,
+              179,
+              181,
+              183,
+              176,
+              179,
+              184,
+              181,
+              177,
+              180,
+              188,
+              186,
+              179,
+              183,
+              187,
+              182,
+              185,
+              189,
+              181,
+              178,
+              184,
+              186,
+              179,
+              181,
+              183,
+              177,
+              180,
+              185
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,156"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "714"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "62%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "697"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Hospice Care Options",
+            "values": [
+              8,
+              11,
+              9,
+              12,
+              10,
+              7
+            ]
+          },
+          {
+            "name": "Home Health Skilled Nursing",
+            "values": [
+              6,
+              9,
+              8,
+              11,
+              7,
+              9
+            ]
+          },
+          {
+            "name": "Palliative Care Support",
+            "values": [
+              5,
+              7,
+              6,
+              8,
+              9,
+              12
+            ]
+          },
+          {
+            "name": "Personal Care Services",
+            "values": [
+              7,
+              10,
+              11,
+              9,
+              6,
+              8
+            ]
+          },
+          {
+            "name": "Medicare Coverage & Billing",
+            "values": [
+              2,
+              3,
+              4,
+              6,
+              8,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "43,518"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "31,456"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Booked (Count)",
+            "value": "19,394"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$41,620,032"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Jennings",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Patricia Okonkwo",
+              "value": 197,
+              "display": "197"
+            },
+            {
+              "name": "David Holloway",
+              "value": 243,
+              "display": "243"
+            },
+            {
+              "name": "Jennifer Vasquez",
+              "value": 156,
+              "display": "156"
+            },
+            {
+              "name": "Robert Chen",
+              "value": 202,
+              "display": "202"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              142,
+              156,
+              171,
+              189,
+              203
+            ]
+          },
+          {
+            "name": "James Rodriguez",
+            "values": [
+              128,
+              147,
+              165,
+              182,
+              201
+            ]
+          },
+          {
+            "name": "Amanda Foster",
+            "values": [
+              136,
+              151,
+              169,
+              188,
+              218
+            ]
+          },
+          {
+            "name": "Michael Torres",
+            "values": [
+              131,
+              149,
+              168,
+              191,
+              209
+            ]
+          },
+          {
+            "name": "Lisa Patel",
+            "values": [
+              119,
+              138,
+              156,
+              179,
+              197
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Thomas Bryant",
+              "value": 52.4,
+              "display": "52.4%"
+            },
+            {
+              "name": "Caroline Price",
+              "value": 53.8,
+              "display": "53.8%"
+            },
+            {
+              "name": "Gregory Walsh",
+              "value": 54.6,
+              "display": "54.6%"
+            },
+            {
+              "name": "Michelle Santos",
+              "value": 55.2,
+              "display": "55.2%"
+            },
+            {
+              "name": "Edward Harrison",
+              "value": 56.9,
+              "display": "56.9%"
+            },
+            {
+              "name": "Victoria Andrews",
+              "value": 57.3,
+              "display": "57.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Thomas Bryant",
+                "52.4%",
+                "28%",
+                "$824,617",
+                "1,419"
+              ]
+            },
+            {
+              "cells": [
+                "Caroline Price",
+                "53.8%",
+                "29%",
+                "$847,283",
+                "1,387"
+              ]
+            },
+            {
+              "cells": [
+                "Gregory Walsh",
+                "54.6%",
+                "31%",
+                "$891,726",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Santos",
+                "55.2%",
+                "32%",
+                "$927,438",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Edward Harrison",
+                "56.9%",
+                "34%",
+                "$989,641",
+                "1,538"
+              ]
+            },
+            {
+              "cells": [
+                "Victoria Andrews",
+                "57.3%",
+                "35%",
+                "$1,012,847",
+                "1,521"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Mitchell",
+              "value": 91.2,
+              "display": "91.2%"
+            },
+            {
+              "name": "James Rodriguez",
+              "value": 90.7,
+              "display": "90.7%"
+            },
+            {
+              "name": "Amanda Foster",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "Michael Torres",
+              "value": 89.8,
+              "display": "89.8%"
+            },
+            {
+              "name": "Lisa Patel",
+              "value": 88.9,
+              "display": "88.9%"
+            },
+            {
+              "name": "Kevin Ortiz",
+              "value": 93.4,
+              "display": "93.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "91.2%",
+                "63%",
+                "$1,859,427",
+                "1,543"
+              ]
+            },
+            {
+              "cells": [
+                "James Rodriguez",
+                "90.7%",
+                "61%",
+                "$1,795,384",
+                "1,529"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Foster",
+                "92.1%",
+                "67%",
+                "$1,947,268",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Torres",
+                "89.8%",
+                "59%",
+                "$1,723,956",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Patel",
+                "88.9%",
+                "58%",
+                "$1,698,742",
+                "1,501"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Ortiz",
+                "93.4%",
+                "65%",
+                "$1,906,359",
+                "1,517"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Booked (Count)",
+        "rightMax": 900,
+        "rightTicks": [
+          0,
+          225,
+          450,
+          675,
+          900
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 719
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 689
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 642
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 613
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 534
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 560
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 618
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 643
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 716
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 695
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 626
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 605
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 539
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 555
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 633
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 652
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 710
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 699
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 613
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 594
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 547
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 552
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 644
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 665
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 701
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 700
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 604
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 579
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 556
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 553
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 638
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1900000,
+        "rightTicks": [
+          0,
+          633333.3333333334,
+          1266666.6666666667,
+          1900000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1542818
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1478722
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1376991
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1313914
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 1144003
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 1200601
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1326269
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1378548
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1537089
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1490302
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1342265
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1297325
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 1154401
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 1189915
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1357846
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1399222
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1522777
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1499079
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1314529
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 1272835
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 1171728
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 1184012
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1381250
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1427036
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1503432
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1501245
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 1295720
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 1242389
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 1192046
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 1186297
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1395426
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "47,302"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,784"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,838"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "85%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Martinez",
+                "412",
+                "91%",
+                "87%",
+                "88%"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "385",
+                "86%",
+                "84%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Williams",
+                "328",
+                "87%",
+                "84%",
+                "85%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "47,302 calls",
+      "pagerLabel": "1 of 4,730",
+      "calls": [
+        {
+          "time": "1/6/26 8:52 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:37 am",
+          "id": "A231-6B90C4E71F5A"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C8D4-3E27A9061B8C"
+        },
+        {
+          "time": "1/14/26 11:18 am",
+          "id": "7B02-D5F19E44A730"
+        },
+        {
+          "time": "1/16/26 12:26 pm",
+          "id": "E940-18AC7F6220DB"
+        },
+        {
+          "time": "1/20/26 1:09 pm",
+          "id": "22F7-9C03B5E8A16D"
+        },
+        {
+          "time": "1/22/26 2:33 pm",
+          "id": "5A6E-40D2C7183F9B"
+        },
+        {
+          "time": "1/26/26 3:47 pm",
+          "id": "D18C-6F5920A3E74C"
+        },
+        {
+          "time": "1/28/26 4:22 pm",
+          "id": "93BF-2E71D6805CAA"
+        },
+        {
+          "time": "1/30/26 5:14 pm",
+          "id": "6C05-8B4F13792ED0"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:03",
+          "text": "Thank you for calling AccentCare, this is Denise on the care team. How can I help you today?",
+          "highlights": [
+            "Thank you for calling AccentCare",
+            "this is Denise on the care team"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:11",
+          "text": "Hi Denise. My name is Robert Hale. My mother was just discharged from the hospital and I'm trying to figure out what kind of in-home care she needs.",
+          "highlights": [
+            "My name is Robert Hale"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:21",
+          "text": "I'm sorry to hear she's been in the hospital, Robert. I'd be glad to help. Can you tell me a little about what she's dealing with day to day?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:31",
+          "text": "She had a fall and hip surgery, so she needs help getting around, and honestly some help with bathing and meals too. She lives alone.",
+          "highlights": [
+            "hip surgery"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:42",
+          "text": "That's very common after a surgery like that. It sounds like a mix of skilled care and personal care. Our Home Health service can send a nurse and a physical therapist for her recovery, and Personal Care can help with bathing, dressing, and meal prep.",
+          "highlights": [
+            "Home Health service",
+            "Personal Care"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:56",
+          "text": "Okay. What does the personal care side run? I want to keep this manageable, I'm covering a lot of her bills right now.",
+          "highlights": [
+            "What does the personal care side run",
+            "I want to keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:07",
+          "text": "Completely understand. Personal Care typically runs around twenty-eight to forty dollars an hour depending on the hours you need. The good news is the Home Health portion, the nursing and therapy, is usually covered by Medicare after a hospital stay like hers.",
+          "highlights": [
+            "twenty-eight to forty dollars an hour",
+            "usually covered by Medicare"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:22",
+          "text": "That helps. I'll be honest, I got a quote from another agency down the road and I'm comparing a couple of options before I commit.",
+          "highlights": [
+            "I got a quote from another agency down the road",
+            "comparing a couple of options"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:33",
+          "text": "That's a smart thing to do, and I'm happy to walk you through exactly what's included so you can compare fairly. One thing families appreciate with us is that the same team coordinates the nursing, therapy, and personal care, so you're not juggling separate providers.",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "1:47",
+          "text": "That coordination piece matters. One more thing, my sister and I share the decisions, so I'd want to run any plan by her before we sign anything.",
+          "highlights": [
+            "I'd want to run any plan by her before we sign anything"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:58",
+          "text": "Absolutely, there's no obligation to start today. What I'd suggest is a free in-home consultation where our nurse assesses your mom's needs and builds a care plan you and your sister can review together.",
+          "highlights": [
+            "free in-home consultation",
+            "no obligation to start today"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:10",
+          "text": "That sounds reasonable. Could we do it later this week?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:16",
+          "text": "We can. I have Thursday at 10 AM open. I'll capture your mom's address and your cell so our care coordinator can confirm. Does Thursday work?",
+          "highlights": [
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:26",
+          "text": "Thursday at 10 works. Her address is 412 Elm Court, and my cell is 214-555-0173.",
+          "highlights": [
+            "Thursday at 10 works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:34",
+          "text": "Perfect, I've scheduled your consultation for Thursday at 10 AM. You'll get a confirmation text shortly. Thank you for trusting AccentCare, Robert, and I hope your mom's recovery goes smoothly.",
+          "highlights": [
+            "I've scheduled your consultation for Thursday at 10 AM",
+            "Thank you for trusting AccentCare"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Home Health Recovery",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Intent: Personal Care Inquiry",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Medicare Coverage Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity Detected",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Robert Hale called on behalf of his mother, who was recently discharged after hip surgery and now needs help recovering at home. Denise identified a combination of Home Health skilled nursing and physical therapy alongside Personal Care for bathing, dressing, and meal prep. She addressed his cost concern by explaining hourly Personal Care pricing and that Medicare typically covers the Home Health portion, and reassured him there was no obligation despite his comparison shopping and need to consult his sister. A free in-home consultation was scheduled for Thursday at 10 AM.",
+        "keyPoints": [
+          "New patient inquiry for a parent recovering from hip surgery",
+          "Needs skilled nursing, physical therapy, and personal care assistance",
+          "Recommended Home Health and Personal Care services",
+          "Addressed price concern and confirmed likely Medicare coverage",
+          "Handled competitor comparison and shared decision with sister",
+          "Consultation booked for Thursday at 10 AM with address and cell captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "29,800 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,980",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for reaching out to AccentCare. I'm here to help you find the right care for you or your loved one. Can you tell me a bit about what brings you in today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi, my dad just got home from surgery and he's having trouble walking. We need physical therapy but I'm not sure where to start."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "I'm sorry to hear about your dad's surgery. We specialize in in-home physical therapy to help with recovery. Is your dad in the Dallas area?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:25 AM",
+              "text": "Yes, we're in Plano, Texas."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:26 AM",
+              "text": "Perfect. We serve Plano. Now, how soon would your dad like to start physical therapy? Is this something needed within the next few days?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "Yes, as soon as possible. His surgery was 2 weeks ago and the doctor said he could start now."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Great. In-home physical therapy visits are typically around 150 to 200 dollars per session. Does your dad have Medicare or private insurance?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "He has Medicare. Will that cover it?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "Excellent question. Medicare often covers skilled home health services including PT. We can verify that for you. Would your dad be able to meet with our care coordinator on Tuesday March 12th between 10 AM and 2 PM to get started with an assessment?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:34 AM",
+              "text": "Tuesday works. Anytime in the morning would be best."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:35 AM",
+              "text": "Perfect. I'm scheduling your dad for a home health assessment on Tuesday March 12th at 10 AM. A care coordinator will come by to evaluate his needs and get him set up with physical therapy. Can we confirm the home address is 412 Oakwood Drive in Plano?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:37 AM",
+              "text": "Yes that's correct."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:38 AM",
+              "text": "Wonderful. We'll see your dad on Tuesday March 12th at 10 AM. If you have any questions, you can reach our team at 972-555-0147. Thanks for choosing AccentCare."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:39 AM",
+              "text": "Thank you so much."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation Scheduled",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Physical Therapy Post-Surgical Recovery",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Insurance Verified: Medicare",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area Confirmed: Plano Texas",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided: 150 to 200 per Visit",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "972-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "512-441-8724",
+            "repeatCaller": "No",
+            "city": "Plano",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Mitchell",
+            "firstName": "Sarah",
+            "lastName": "Mitchell",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A829-3BC745E91F2A",
+          "time": "8/16/25 10:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A829-3BC745E91F2A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B743-5D2E8601AF9C",
+          "time": "8/16/25 10:38 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B743-5D2E8601AF9C",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D961-7C4A2B6E5D38",
+          "time": "8/16/25 10:29 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D961-7C4A2B6E5D38",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "47,302 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,730",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Thank you for calling AccentCare. This is Margaret. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Hi, I'm calling because my mom is recovering from a hip replacement surgery and she's having a really hard time getting around the house."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "I'm so sorry to hear that. We specialize in helping patients like your mom get back on their feet. Are you looking for help with physical therapy, personal care, or both?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:51 PM",
+              "text": "I think she needs physical therapy. She's got a walker but she's scared to move around, you know?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:52 PM",
+              "text": "That's completely understandable. Post-surgical recovery can be challenging. What city is your mom located in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:54 PM",
+              "text": "We're in Phoenix, Arizona."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "Perfect. We have physical therapists available in Phoenix. Our home health physical therapy typically runs about one hundred fifty to two hundred dollars per visit, and we can usually start within a few days. Does that sound like something your mom would be interested in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:57 PM",
+              "text": "Yes, that would be great. How soon can someone come out?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:58 PM",
+              "text": "Excellent. I can schedule a consultation for next Tuesday, January twenty-first at ten o'clock in the morning. Would that work for your mom?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:00 PM",
+              "text": "Yeah, that works perfectly. What do I need to do to get ready?"
+            },
+            {
+              "speaker": "agent",
+              "time": "3:01 PM",
+              "text": "Great. Our therapist will call the day before to confirm the appointment. Your confirmation number is ACC-five four three two one, and if you need to reschedule, just call us back at eight seven seven, nine three six, twenty-nine thirty-three. Is there anything else I can help with today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:03 PM",
+              "text": "No, I think that's everything. Thank you so much."
+            },
+            {
+              "speaker": "agent",
+              "time": "3:04 PM",
+              "text": "You're very welcome. We look forward to helping your mom get back to her normal activities. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Identified: Home Health Physical Therapy",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: Phoenix, Arizona",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Post-Surgical Recovery Use Case",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Pricing Provided: 150-200 per visit",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:47 pm",
+            "duration": "6:28",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "602-448-5876",
+            "repeatCaller": "No",
+            "city": "Phoenix",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Martinez",
+            "firstName": "Sarah",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B528-3D1AE425891C",
+          "time": "1/18/26 11:34 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B528-3D1AE425891C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C641-4E2BF536902D",
+          "time": "1/22/26 3:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C641-4E2BF536902D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D752-5F3CG647013E",
+          "time": "1/27/26 1:56 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D752-5F3CG647013E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Introduce yourself as AccentCare's AI care assistant helping arrange a personalized, no-cost in-home care consultation, mention that most services are covered by Medicare, Medicaid, or private insurance, and ask if they would like to get started.",
+        "Qualify one question at a time: Ask, one at a time, who the care is for and their relationship to that person, the type of care needed (personal care, home health, palliative, or hospice), the current situation or timeline for starting care, whether Medicare or insurance is involved, and finally the ZIP code to confirm services are available in their community.",
+        "Estimate then book: Confirm AccentCare serves their ZIP code, explain that most care is covered by Medicare, Medicaid, or insurance and that a care specialist will review exact costs and coverage during the consultation, propose a specific day and time for an in-home care consultation, and confirm they will receive a reminder text with a number to call before the appointment."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "AccentCare_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Explore Services (Continuum of Care)",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find Care Now (Location Finder)",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Request a Service",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"reschedule\",\"question\":\"I need to change the day my aide comes this week, can you help?\",\"answer\":\"Absolutely, I can update your care schedule. Let me confirm the patient's name and the new day and time you would prefer, then a care coordinator will confirm the change.\"},{\"topic\":\"care plan status\",\"question\":\"Has the nurse finalized my mother's home health care plan yet?\",\"answer\":\"I can check the status of your mother's care plan and have her assigned care team reach out with an update. Let me confirm her name and date of birth so I can pull up her record.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you offer care in my area?",
+              "answer": "AccentCare provides in-home care in communities nationwide. Share your ZIP code and I can confirm availability, then set up a free consultation to discuss your needs."
+            },
+            {
+              "question": "How much does in-home personal care cost?",
+              "answer": "Costs vary based on the level of care and how many hours are needed, and many services are covered by Medicare, Medicaid, or insurance. A care specialist can review exact costs during a free in-home consultation, which I can schedule for you."
+            },
+            {
+              "question": "Does Medicare cover home health?",
+              "answer": "Medicare often covers skilled home health services such as nursing and therapy when eligibility criteria are met. Let us confirm your coverage during a consultation, which I can book right now."
+            },
+            {
+              "question": "What is the difference between palliative care and hospice?",
+              "answer": "Palliative care relieves symptoms and improves quality of life alongside curative treatment, while hospice focuses on comfort and dignity at end of life. A care specialist can explain which fits your situation during a free consultation."
+            },
+            {
+              "question": "What types of care do you provide?",
+              "answer": "AccentCare offers personal care, home health, palliative care, and hospice across a full continuum of care. I can set up a consultation to match you with the right level of support."
+            },
+            {
+              "question": "Can you help care for my parent with dementia?",
+              "answer": "Yes, our caregivers support families managing dementia with personal care, safety supervision, and companionship. Let us schedule a consultation to build a plan for your parent."
+            },
+            {
+              "question": "How soon can care start?",
+              "answer": "In many cases care can begin quickly after an assessment. Share your ZIP code and I will book a consultation so a specialist can outline next steps."
+            },
+            {
+              "question": "What is personal care versus home health?",
+              "answer": "Personal care is non-medical help with daily living like bathing and meal prep, while home health includes skilled nursing and therapy. A consultation can help determine which you need, and I can schedule one today."
+            },
+            {
+              "question": "Do you provide physical therapy at home?",
+              "answer": "Yes, we offer in-home physical, occupational, and speech therapy as part of home health. Let us book a consultation to review your recovery goals."
+            },
+            {
+              "question": "What does hospice care include?",
+              "answer": "Hospice includes nurse and aide visits, chaplain support, medications and equipment for comfort, and grief support for the family. A specialist can walk you through everything during a consultation I can arrange."
+            },
+            {
+              "question": "Is grief support available for families?",
+              "answer": "Yes, bereavement and grief support are typically included with hospice for the family. I can connect you with a care specialist during a consultation to learn more."
+            },
+            {
+              "question": "Can you help with just companionship and errands?",
+              "answer": "Yes, our companion and homemaker care covers companionship, medication reminders, errands, and transportation. Let us set up a consultation to tailor the support."
+            },
+            {
+              "question": "How do I know if it is time for hospice?",
+              "answer": "Signs can include frequent hospitalizations, declining ability to perform daily tasks, or a focus shifting to comfort. A care specialist can assess this compassionately during a consultation I can schedule."
+            },
+            {
+              "question": "Do you accept Medicaid?",
+              "answer": "Many of our services are covered by Medicaid depending on your state and eligibility. Let us confirm your coverage during a free consultation."
+            },
+            {
+              "question": "What is RightPath Care Navigation?",
+              "answer": "RightPath is our data-driven assessment that matches patients to the appropriate level of care at no separate fee. I can book a consultation so a specialist can guide you through it."
+            },
+            {
+              "question": "Can you provide 24-hour or live-in care?",
+              "answer": "Yes, we offer extended and live-in personal care options based on your needs. Let us schedule a consultation to build the right schedule for your family."
+            },
+            {
+              "question": "Who will be caring for my loved one?",
+              "answer": "Care is delivered by trained, screened caregivers and clinicians matched to your needs. A care specialist can introduce the team during a consultation I can arrange for you."
+            },
+            {
+              "question": "Do you offer palliative care alongside treatment?",
+              "answer": "Yes, palliative care works alongside curative treatment to manage symptoms and pain. Let us set up a consultation to coordinate with your treatment plan."
+            },
+            {
+              "question": "Can care be provided after surgery?",
+              "answer": "Yes, our home health team supports post-surgical recovery with skilled nursing and therapy at home. I can book a consultation to plan your recovery care."
+            },
+            {
+              "question": "How do I get started?",
+              "answer": "The best first step is a free in-home consultation with a care specialist. Share your ZIP code and a good day and time, and I will get it scheduled for you."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the consultation\",\"follow_up_message\":\"Thanks for reaching out to AccentCare. I can set up a free in-home care consultation with a specialist. What ZIP code is the care for, and what day and time work best for you?\"},{\"intent\":\"request coverage and cost information\",\"follow_up_message\":\"Great question. Most AccentCare services are covered by Medicare, Medicaid, or insurance, and a care specialist can review your exact coverage during a free consultation. Would you like me to schedule that for you now?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is AccentCare's AI care assistant. I can help arrange a free in-home care consultation and answer questions about personal care, home health, palliative care, and hospice. Would you like to get started?",
+        "goal": "Guide the family to schedule a free in-home care consultation with an AccentCare specialist to determine the right level of care and coverage.",
+        "bookingType": "in-home care consultation",
+        "offer": "",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Who is the care for, and what is your relationship to them?",
+          "What type of care are you looking for: personal care, home health, palliative care, or hospice?",
+          "What is the current situation and how soon would you like care to begin?",
+          "Is Medicare, Medicaid, or private insurance involved in covering the care?",
+          "What ZIP code is the care needed in so I can confirm services are available in your community?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:04 am"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:04 am"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/22/26 11:04 am"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "AccentCare",
+      "callerName": "Margaret Chen",
+      "callerPhone": "(503) 555-0847",
+      "campaign": "Hospice Care, Portland Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$3,625",
+      "googleSearch": "hospice care Portland Oregon",
+      "websiteSearch": "end of life care near me",
+      "callingWebpage": "/continuum-of-care/hospice",
+      "products": "Hospice Care, Bereavement Support",
+      "cartId": "AC-7392M",
+      "serviceable": "Yes",
+      "email": "margaret.chen.1954@email.com",
+      "street": "2847 NW Lovejoy Street",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97209",
+      "digitalJourney": "/home › /continuum-of-care › /continuum-of-care/hospice › /find-care-now",
+      "intent": "Seeking compassionate end of life care and comfort support for elderly parent with terminal diagnosis",
+      "coverage": "ZIP 97209 confirmed, Portland serviceable",
+      "switchIntent": "Very High. Family meeting scheduled for this week. Needs care coordinator contact by Friday to finalize plan.",
+      "greeting": "Hi Margaret, thanks for calling AccentCare. I see you're looking into hospice care options for your family. We specialize in compassionate end of life support right here in Portland. Can I schedule you for a consultation with one of our care specialists to discuss your parent's needs?"
+    },
+    "smsScreenpop": {
+      "brandName": "AccentCare",
+      "callerName": "Robert Martinez",
+      "callerPhone": "(210) 555-0521",
+      "campaign": "Home Health Services, San Antonio Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$4,150",
+      "googleSearch": "skilled nursing home care San Antonio Texas",
+      "websiteSearch": "physical therapy at home after surgery",
+      "callingWebpage": "/continuum-of-care/home-health",
+      "products": "Home Health Skilled Nursing, Physical Therapy",
+      "cartId": "AC-5821K",
+      "serviceable": "Yes",
+      "email": "robert.martinez.71@email.com",
+      "street": "1523 Woodbury Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78209",
+      "digitalJourney": "/home › /continuum-of-care › /continuum-of-care/home-health › /find-care-now",
+      "intent": "Recovering from knee surgery and needs in home physical therapy and wound care monitoring during rehabilitation period",
+      "coverage": "ZIP 78209 confirmed, San Antonio serviceable",
+      "appointment": "In home physical therapy and nursing assessment, Thu Jul 18, 2:00 PM",
+      "greeting": "Hi Robert, this is Jessica from AccentCare. Great news, we've scheduled your in home consultation for Thursday at 2 PM. Our physical therapist and nurse will assess your recovery and create your personalized care plan. Questions before then? Reply anytime."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "AccentCare",
+      "brandDomain": "www.accentcare.com",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (972) 555-0147",
+      "callerLocation": "Plano, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Home Health Care Near Me",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "skilled nursing care at home in Plano",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/continuum-of-care/home-health/",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Home Health, Physical Therapy at Home",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Plano, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_skilled_nursing",
+          "name": "Consultation, Skilled Nursing"
+        },
+        {
+          "id": "support_existing_patient",
+          "name": "Support, Existing Patient"
+        },
+        {
+          "id": "general_intake",
+          "name": "General Care Intake"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hello, thanks for calling AccentCare. I'm here to help you find the right care solution. Are you looking for services for yourself or a loved one?",
+          "sigs": [],
+          "q": [
+            25,
+            40,
+            35
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "It's for my mom. She just got out of the hospital after knee surgery and needs help with recovery and physical therapy at home.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Post-surgical recovery</strong> with skilled nursing"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Physical therapy</strong> at home"
+            },
+            {
+              "c": "orange",
+              "t": "Recent hospital discharge"
+            }
+          ],
+          "q": [
+            45,
+            30,
+            25
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I'm glad we can help with her recovery. Our home health and physical therapy services are perfect for post-surgical care. Just to confirm, does your mom have Medicare or private insurance coverage?",
+          "sigs": [],
+          "q": [
+            62,
+            18,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, she has Medicare. We're in the Plano area. How quickly can someone visit her at home to set up a care plan?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Medicare eligible</strong>"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Plano, TX</strong> service area"
+            },
+            {
+              "c": "purple",
+              "t": "Urgent timeline requested"
+            }
+          ],
+          "q": [
+            88,
+            8,
+            4
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. Our team can typically schedule an initial assessment within one to two business days. Let me connect you with our Consultation team who specializes in skilled nursing and therapy. They'll create a personalized care plan for your mom's recovery. One moment please.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"get you scheduled (Agent)\", \"book the consultation (Agent)\", \"set up an in-home assessment\", \"schedule a nurse visit (Caller)\"])",
+          "createdAt": "11/14/24 9:12 am",
+          "updatedAt": "01/15/26 3:40 pm"
+        },
+        {
+          "name": "Care Plan Explained Clearly",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Care Plan Clarity] < 60 and duration > 45 sec",
+          "createdAt": "03/22/25 10:15 am",
+          "updatedAt": "12/18/25 2:05 pm"
+        },
+        {
+          "name": "Compassion & Empathy Quality",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Compassion & Empathy] < 60 and duration > 45 sec",
+          "createdAt": "02/10/25 8:30 am",
+          "updatedAt": "01/12/26 11:20 am"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"another home health agency (Caller)\", \"we're calling Amedisys too (Caller)\", \"Compassus quoted us (Caller)\", \"we're comparing providers (Caller)\"])",
+          "createdAt": "05/06/25 1:45 pm",
+          "updatedAt": "12/29/25 9:10 am"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"talk through care options (Agent)\", \"in-home assessment (Agent)\", \"what level of care (Caller)\", \"discuss a care plan\"])",
+          "createdAt": "01/20/25 4:22 pm",
+          "updatedAt": "01/05/26 10:50 am"
+        },
+        {
+          "name": "HIPAA & Privacy Compliance",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[HIPAA Compliance] < 60 and duration > 45 sec",
+          "createdAt": "04/18/25 9:00 am",
+          "updatedAt": "11/30/25 3:15 pm"
+        },
+        {
+          "name": "Hospice Care Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"hospice care (Caller)\", \"end of life care (Caller)\", \"comfort care for my dad (Caller)\", \"signs it's time for hospice\"])",
+          "createdAt": "12/03/24 11:05 am",
+          "updatedAt": "01/09/26 4:30 pm"
+        },
+        {
+          "name": "Insurance & Medicare Coverage",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"does Medicare cover (Caller)\", \"is this covered by insurance (Caller)\", \"we have Medicaid (Caller)\", \"what's my out of pocket\"])",
+          "createdAt": "06/12/25 2:20 pm",
+          "updatedAt": "01/14/26 8:45 am"
+        },
+        {
+          "name": "Personal Care Upsell Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"companion care (Caller)\", \"help with bathing and dressing (Caller)\", \"a live-in caregiver (Caller)\", \"meal prep and light housekeeping\"])",
+          "createdAt": "07/09/25 10:40 am",
+          "updatedAt": "12/22/25 1:30 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the hourly rate (Caller)\", \"how much per visit (Caller)\", \"the cost would be (Agent)\", \"our rate is (Agent)\"])",
+          "createdAt": "08/15/25 3:55 pm",
+          "updatedAt": "01/03/26 9:25 am"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,5365 @@
+{
+  "id": "behavioral-health-group",
+  "customerName": "Behavioral Health Group",
+  "websiteUrl": "https://www.bhgrecovery.com",
+  "brandDomain": "bhgrecovery.com",
+  "networkName": "Invoca for Behavioral Health",
+  "industry": "Outpatient addiction treatment and behavioral healthcare",
+  "bookingTerm": "Intake Appointment",
+  "customerNoun": "Patient",
+  "generation": {
+    "at": "2026-09-22T15:04:13.772Z",
+    "scope": "full"
+  },
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 12000,
+      "yTicks": [
+        0,
+        3000,
+        6000,
+        9000,
+        12000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 6142
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 10873
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 10521
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 11247
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 10125
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Intake Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Intake Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Opioid Treatment Near Me, Same-Day",
+          "marketingSearchTerm": "opioid treatment center near me",
+          "landingPageUrl": "https://www.bhgrecovery.com/get-started?utm_source=google&utm_medium=cpc&utm_campaign=opioid_treatment_nearme",
+          "websiteJourney": "Home / Treatment / Medications",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Methadone Treatment [State]",
+          "marketingSearchTerm": "methadone clinic dallas",
+          "landingPageUrl": "https://www.bhgrecovery.com/treatment/medications/methadone?utm_source=google&utm_medium=cpc&utm_campaign=methadone_state",
+          "websiteJourney": "Home / Treatment / Medications / Methadone",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Suboxone Clinic [City]",
+          "marketingSearchTerm": "suboxone doctor near me",
+          "landingPageUrl": "https://www.bhgrecovery.com/treatment/medications/buprenorphine?utm_source=google&utm_medium=cpc&utm_campaign=suboxone_city",
+          "websiteJourney": "Home / Treatment / Medications / Buprenorphine",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Same-Day Access",
+          "marketingSearchTerm": "same day addiction treatment",
+          "landingPageUrl": "https://www.bhgrecovery.com/locations?utm_source=google&utm_medium=cpc&utm_campaign=same_day_access",
+          "websiteJourney": "Home / Locations",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "MAT Program Near Me",
+          "marketingSearchTerm": "mat program near me",
+          "landingPageUrl": "https://www.bhgrecovery.com/treatment?utm_source=bing&utm_medium=cpc&utm_campaign=mat_program_nearme",
+          "websiteJourney": "Home / Treatment / MAT Bundle",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Fentanyl Help",
+          "marketingSearchTerm": "how to stop taking fentanyl",
+          "landingPageUrl": "https://www.bhgrecovery.com/addictions/fentanyl?utm_source=google&utm_medium=cpc&utm_campaign=fentanyl_help",
+          "websiteJourney": "Home / Treatment / Addictions We Treat / Fentanyl",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Vivitrol Options",
+          "marketingSearchTerm": "vivitrol shot cost",
+          "landingPageUrl": "https://www.bhgrecovery.com/treatment/medications/naltrexone?utm_source=google&utm_medium=cpc&utm_campaign=vivitrol_options",
+          "websiteJourney": "Home / Treatment / Medications / Naltrexone",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Heroin Addiction Help",
+          "marketingSearchTerm": "heroin addiction help",
+          "landingPageUrl": "https://www.bhgrecovery.com/addictions/heroin?utm_source=google&utm_medium=cpc&utm_campaign=heroin_help",
+          "websiteJourney": "Home / Treatment / Addictions We Treat / Heroin",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Find a Location",
+          "marketingSearchTerm": "outpatient rehab near me",
+          "landingPageUrl": "https://www.bhgrecovery.com/locations?utm_source=organic&utm_medium=organic&utm_campaign=find_a_location",
+          "websiteJourney": "Home / Locations",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Recovery Resource Hub",
+          "marketingSearchTerm": "suboxone vs methadone",
+          "landingPageUrl": "https://www.bhgrecovery.com/patients/understanding-addiction?utm_source=organic&utm_medium=organic&utm_campaign=resource_hub",
+          "websiteJourney": "Home / Patients / Understanding Addiction",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Recovery Resource Hub",
+          "marketingSearchTerm": "kratom withdrawal help",
+          "landingPageUrl": "https://www.bhgrecovery.com/addictions/kratom-7oh?utm_source=organic&utm_medium=organic&utm_campaign=resource_hub",
+          "websiteJourney": "Home / Treatment / Addictions We Treat / Kratom and 7-OH",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Insurance Coverage",
+          "marketingSearchTerm": "does medicaid cover addiction treatment",
+          "landingPageUrl": "https://www.bhgrecovery.com/patients/insurance-and-payment?utm_source=organic&utm_medium=organic&utm_campaign=insurance_coverage",
+          "websiteJourney": "Home / Patients / Insurance and Payment",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Prescription Opioid Program",
+          "marketingSearchTerm": "prescription painkiller addiction treatment",
+          "landingPageUrl": "https://www.bhgrecovery.com/addictions/prescription-opioids?utm_source=google&utm_medium=cpc&utm_campaign=rx_opioid",
+          "websiteJourney": "Home / Treatment / Addictions We Treat / Prescription Opioids",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Medicaid Changes, We Can Help",
+          "marketingSearchTerm": "medicaid coverage changes addiction",
+          "landingPageUrl": "https://www.bhgrecovery.com/patients/insurance-and-payment?utm_source=organic&utm_medium=organic&utm_campaign=medicaid_changes",
+          "websiteJourney": "Home / Patients / Insurance and Payment",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Hope Starts Here",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.bhgrecovery.com/get-started?utm_source=facebook&utm_medium=paid_social&utm_campaign=hope_starts_here",
+          "websiteJourney": "Home / Patients / Get Started",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Real Recovery",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.bhgrecovery.com/patients/recovery-stories?utm_source=instagram&utm_medium=paid_social&utm_campaign=real_recovery",
+          "websiteJourney": "Home / Patients / Recovery Stories",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "National Recovery Month",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.bhgrecovery.com/patients/get-started?utm_source=facebook&utm_medium=paid_social&utm_campaign=recovery_month",
+          "websiteJourney": "Home / Patients / Get Started",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Co-Occurring Care",
+          "marketingSearchTerm": "dual diagnosis treatment near me",
+          "landingPageUrl": "https://www.bhgrecovery.com/addictions/co-occurring-mental-health?utm_source=google&utm_medium=cpc&utm_campaign=co_occurring",
+          "websiteJourney": "Home / Treatment / Addictions We Treat / Co-Occurring Mental Health",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Refer a Patient",
+          "marketingSearchTerm": "how to refer patient addiction treatment",
+          "landingPageUrl": "https://www.bhgrecovery.com/partners/ways-to-refer?utm_source=organic&utm_medium=organic&utm_campaign=refer_a_patient",
+          "websiteJourney": "Home / Partners / Ways to Refer",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "What to Expect at Intake",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.bhgrecovery.com/patients/get-started?utm_source=instagram&utm_medium=paid_social&utm_campaign=what_to_expect",
+          "websiteJourney": "Home / Patients / Get Started",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Hope Starts Here",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.bhgrecovery.com/treatment?utm_source=facebook&utm_medium=paid_social&utm_campaign=hope_starts_here",
+          "websiteJourney": "Home / Treatment / Counseling",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Tianeptine Program",
+          "marketingSearchTerm": "tianaa addiction help",
+          "landingPageUrl": "https://www.bhgrecovery.com/addictions/tianeptine?utm_source=bing&utm_medium=cpc&utm_campaign=tianeptine",
+          "websiteJourney": "Home / Treatment / Addictions We Treat / Tianaa",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Behavioral Health Group)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "38,359"
+            },
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "27%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$7,096,673"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "6,137"
+            },
+            {
+              "label": "Insurance and Payment Inquiry (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Existing Patient Support Call (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "General Information Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Patient Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Cost and Coverage Discussed (Percent)",
+              "value": "40%"
+            },
+            {
+              "label": "Not Qualified for Care (Percent)",
+              "value": "17%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "27%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Patient Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Patient Call (Count)",
+            "values": [
+              4187,
+              7364,
+              7891,
+              7142,
+              5638
+            ]
+          },
+          {
+            "name": "Cost and Coverage Discussed (Count)",
+            "values": [
+              2014,
+              3542,
+              3791,
+              3428,
+              2688
+            ]
+          },
+          {
+            "name": "Not Qualified for Care (Count)",
+            "values": [
+              831,
+              1463,
+              1567,
+              1419,
+              1122
+            ]
+          },
+          {
+            "name": "New Patient (Count)",
+            "values": [
+              1342,
+              2371,
+              2538,
+              2296,
+              1810
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38359,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "15,213",
+                "44%",
+                "19%",
+                "$2,178,455"
+              ]
+            },
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "9,847",
+                "48%",
+                "24%",
+                "$1,824,320"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "6,428",
+                "51%",
+                "28%",
+                "$1,335,210"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "4,352",
+                "55%",
+                "33%",
+                "$989,540"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "2,519",
+                "61%",
+                "41%",
+                "$769,148"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38359,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "14,872",
+                "45%",
+                "20%",
+                "$2,415,330"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "8,913",
+                "49%",
+                "25%",
+                "$1,612,884"
+              ]
+            },
+            {
+              "name": "Local Services Ads",
+              "metrics": [
+                "6,241",
+                "52%",
+                "29%",
+                "$1,205,470"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "5,317",
+                "56%",
+                "34%",
+                "$1,043,215"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "3,016",
+                "62%",
+                "42%",
+                "$819,774"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38359,
+          "rows": [
+            {
+              "name": "Opioid Treatment Near Me, Same-Day",
+              "metrics": [
+                "6,842",
+                "43%",
+                "21%",
+                "$1,142,318"
+              ]
+            },
+            {
+              "name": "Suboxone Clinic [City]",
+              "metrics": [
+                "5,127",
+                "47%",
+                "25%",
+                "$878,455"
+              ]
+            },
+            {
+              "name": "Hope Starts Here",
+              "metrics": [
+                "3,984",
+                "51%",
+                "29%",
+                "$693,240"
+              ]
+            },
+            {
+              "name": "Methadone Treatment [State]",
+              "metrics": [
+                "2,913",
+                "55%",
+                "33%",
+                "$512,880"
+              ]
+            },
+            {
+              "name": "Refer a Patient",
+              "metrics": [
+                "1,708",
+                "63%",
+                "44%",
+                "$348,915"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38359,
+          "rows": [
+            {
+              "name": "opioid treatment center near me",
+              "metrics": [
+                "4,218",
+                "44%",
+                "22%",
+                "$704,215"
+              ]
+            },
+            {
+              "name": "methadone clinic near me",
+              "metrics": [
+                "3,192",
+                "48%",
+                "26%",
+                "$512,880"
+              ]
+            },
+            {
+              "name": "suboxone doctor near me",
+              "metrics": [
+                "2,437",
+                "52%",
+                "30%",
+                "$371,240"
+              ]
+            },
+            {
+              "name": "same day addiction treatment",
+              "metrics": [
+                "1,684",
+                "57%",
+                "35%",
+                "$248,315"
+              ]
+            },
+            {
+              "name": "does medicaid cover addiction treatment",
+              "metrics": [
+                "968",
+                "64%",
+                "45%",
+                "$152,480"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Intake Appointment Set (Industry) (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Medications (MOUD/MAT)",
+              "metrics": [
+                "14,237",
+                "44%",
+                "18%",
+                "$1,740,277"
+              ]
+            },
+            {
+              "name": "Counseling",
+              "metrics": [
+                "9,412",
+                "46%",
+                "25%",
+                "$1,581,216"
+              ]
+            },
+            {
+              "name": "Intensive Outpatient Program (IOP)",
+              "metrics": [
+                "6,873",
+                "48%",
+                "31%",
+                "$1,502,355"
+              ]
+            },
+            {
+              "name": "Addictions We Treat Programs",
+              "metrics": [
+                "4,921",
+                "51%",
+                "38.5%",
+                "$1,307,550"
+              ]
+            },
+            {
+              "name": "Recovery Support Services",
+              "metrics": [
+                "2,916",
+                "55%",
+                "48.5%",
+                "$965,275"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 38359,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "13,842",
+                "42%",
+                "22%",
+                "$2,057,877"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "8,967",
+                "45%",
+                "26%",
+                "$1,587,411"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "6,514",
+                "47%",
+                "29%",
+                "$1,318,522"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "5,238",
+                "49%",
+                "33%",
+                "$1,196,468"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "3,798",
+                "52%",
+                "36%",
+                "$936,395"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Medications (MOUD/MAT)",
+            "values": [
+              402,
+              566,
+              548,
+              561,
+              486
+            ]
+          },
+          {
+            "name": "Counseling",
+            "values": [
+              351,
+              512,
+              498,
+              505,
+              487
+            ]
+          },
+          {
+            "name": "Intensive Outpatient Program (IOP)",
+            "values": [
+              318,
+              466,
+              452,
+              461,
+              434
+            ]
+          },
+          {
+            "name": "Addictions We Treat Programs",
+            "values": [
+              281,
+              412,
+              401,
+              408,
+              393
+            ]
+          },
+          {
+            "name": "Recovery Support Services",
+            "values": [
+              208,
+              308,
+              301,
+              305,
+              293
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 38,359 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 91,
+          "summary": "Maria Gonzalez called asking for same-day access to start Suboxone treatment at the nearest clinic. Agent Lila confirmed an open same-day intake slot, verified her location, and walked her through what to bring. Maria scheduled her new patient intake appointment for that afternoon.",
+          "date": "Jan 6, 9:14 AM",
+          "agent": "Lila",
+          "duration": "2m 40s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 86,
+          "summary": "David Ramirez wanted to begin methadone maintenance and asked whether his Medicaid plan would cover the program. Agent Mary confirmed his coverage was accepted and explained daily dispensing. David booked a new patient intake appointment and felt reassured about cost.",
+          "date": "Feb 11, 1:38 PM",
+          "agent": "Mary",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 82,
+          "summary": "Angela Brooks called to ask about the Vivitrol shot cost and whether Medicaid would pay for the monthly injection. Agent Oscar explained the naltrexone program and coverage details clearly. Angela wanted to discuss it with family first and did not schedule an intake appointment yet.",
+          "date": "Mar 3, 10:52 AM",
+          "agent": "Oscar",
+          "duration": "2m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 77,
+          "summary": "Robert Chen called as a new patient to start methadone treatment and asked how the intake process works. Agent Rosey collected his contact details, insurance information, and preferred clinic, then explained the medical evaluation and care plan. Robert scheduled his new patient intake appointment for the next morning.",
+          "date": "Apr 9, 3:47 PM",
+          "agent": "Rosey",
+          "duration": "3m 18s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 72,
+          "summary": "Latoya Jackson reached out for help with heroin dependence and asked about same-day access to care. Agent Lee confirmed a same-day opening and reviewed the MAT program with counseling included. Latoya booked her intake appointment and thanked the agent for the quick response.",
+          "date": "May 15, 8:29 AM",
+          "agent": "Lee",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 15,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Michael Turner called to reschedule an existing group counseling session because of a work conflict. Agent Sue found a later slot the same week and updated his record. This was an existing patient scheduling change, so no new intake appointment was created.",
+          "date": "Jun 2, 12:05 PM",
+          "agent": "Sue",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Sarah Nguyen was deciding between Suboxone and a Vivitrol program and wanted guidance on which fit her situation. Agent Mike explained the differences and helped her choose to start with an assessment. Sarah scheduled a new patient intake appointment to begin treatment.",
+          "date": "Jul 8, 4:22 PM",
+          "agent": "Mike",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 59,
+          "summary": "Kevin O'Brien disputed a self-pay charge on his monthly statement that he believed was already covered. Agent Jennifer reviewed the billing history and opened a case for the finance team to investigate. Kevin remained frustrated and no appointment was booked.",
+          "date": "Aug 14, 11:31 AM",
+          "agent": "Jennifer",
+          "duration": "3m 12s",
+          "scorecards": 7,
+          "comments": 2,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Priya Patel called about co-occurring anxiety alongside her opioid use disorder and asked if both could be treated together. Agent Rose explained the dual diagnosis approach and available counseling. Priya scheduled a new patient intake appointment despite some hesitation about the wait.",
+          "date": "Sep 1, 2:16 PM",
+          "agent": "Rose",
+          "duration": "2m 44s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 51,
+          "summary": "Thomas Reed complained that his take-home methadone doses were delayed and he could not reach his clinic. Agent Oscar apologized, checked the dispensing notes, and escalated to the clinic manager. Thomas stayed upset and this was a service issue, not a new intake.",
+          "date": "Oct 5, 9:58 AM",
+          "agent": "Oscar",
+          "duration": "2m 21s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 47,
+          "summary": "Jessica Moore called to cancel an upcoming intake appointment because she found a clinic closer to home. Agent Lila confirmed the cancellation and offered to transfer her records. No new appointment was scheduled on this call.",
+          "date": "Jan 22, 5:03 PM",
+          "agent": "Lila",
+          "duration": "1m 29s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 43,
+          "summary": "Brandon Cole complained about long wait times in the dosing line and inconsistent counseling schedules. Agent Lee listened and logged the feedback for the clinic director. Brandon was dissatisfied and did not book anything new.",
+          "date": "Feb 27, 7:41 AM",
+          "agent": "Lee",
+          "duration": "2m 09s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Denise Walker left a voicemail after hours asking whether recent Medicaid changes would affect her coverage and cost. The call rolled to voicemail and no agent answered. A callback was queued but nothing was scheduled.",
+          "date": "Mar 19, 6:52 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Gregory Adams angrily disputed a charge and said his insurance should have covered his Suboxone visit fees. Agent Jennifer tried to explain the self-pay balance but he interrupted repeatedly. The call ended without resolution and no appointment.",
+          "date": "Apr 30, 1:19 PM",
+          "agent": "Jennifer",
+          "duration": "2m 55s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Nicole Foster complained that her counselor kept changing and she felt no continuity in her care. Agent Sue apologized and offered to note the concern, but Nicole remained frustrated. She hung up without scheduling any follow up.",
+          "date": "May 24, 10:37 AM",
+          "agent": "Sue",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "intake",
+        "suboxone",
+        "methadone",
+        "vivitrol",
+        "medicaid",
+        "same-day"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Primary Substance of Concern",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area Availability",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Intake Appointment Date and Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Next Steps and What to Bring",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Document Insurance Status or Self-Pay Intent",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Empathetic tone",
+        "Clear greeting with facility name",
+        "Open-ended question about substance",
+        "Confirmed caller location",
+        "Provided appointment date",
+        "Confirmed callback number",
+        "Professional demeanor",
+        "Offered same-day access",
+        "Identified treatment modality interest",
+        "Explained intake process briefly",
+        "Acknowledged opioid use disorder",
+        "Reassured about non-judgmental care",
+        "Confirmed appointment via summary"
+      ],
+      "unmetSignals": [
+        "Did not capture email address",
+        "Failed to explain what to bring to appointment",
+        "Did not discuss insurance verification timeline",
+        "Missed opportunity to address stigma directly",
+        "Did not mention counseling component",
+        "Unclear about medication options",
+        "Did not confirm transportation needs",
+        "Failed to provide clinic location details",
+        "Missed follow-up contact confirmation",
+        "No mention of recovery support services"
+      ],
+      "naSignals": [
+        "Order tracking",
+        "Delivery window",
+        "Return or cancellation policy",
+        "Warranty information",
+        "Billing dispute resolution",
+        "Prior authorization status",
+        "Pharmacy coordination"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller is struggling with fentanyl dependence and seeking medication-assisted treatment to stabilize and reduce cravings. They want to know if same-day or near-immediate intake is possible."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a non-judgmental environment, quick access to treatment without long waitlists, and clear guidance on what happens at their first intake appointment."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have captured the caller's email address for appointment confirmation, explained what documents or insurance information to bring, and explicitly mentioned the combination of medication plus counseling that is part of BHG's integrated model."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Behavioral Health Group. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi, yes, I'm looking for help with opioid addiction. I'm using fentanyl and I'm ready to get treatment."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:42",
+          "text": "I'm really glad you reached out. You're calling the right place. We specialize in medication-assisted treatment for opioid use disorder. Can I get your name first?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:54",
+          "text": "It's Jennifer. Jennifer Martinez."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:01",
+          "text": "Thank you, Jennifer. How long have you been struggling with fentanyl use?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:09",
+          "text": "About two years now. It started with pain medication and then switched to street fentanyl. I need help."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:22",
+          "text": "Jennifer, I hear you, and I'm glad you're taking this step. We have programs specifically for fentanyl addiction, and we offer medications like buprenorphine or methadone combined with counseling. What city or area are you calling from?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:38",
+          "text": "I'm in the Denver area. Is that somewhere you serve?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:45",
+          "text": "Yes, absolutely. We have a clinic in Denver that can see you very soon. Do you have a phone number where we can reach you to confirm your appointment?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:58",
+          "text": "Sure, it's ****-***-****"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:05",
+          "text": "Perfect. And Jennifer, have you thought about whether you'd prefer to use insurance or self-pay for your treatment?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:14",
+          "text": "I have Medicaid. Will that work?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:22",
+          "text": "Absolutely. Medicaid covers our treatment. I'm going to schedule you for an intake appointment this Friday at 10 AM at our Denver clinic. You'll meet with our intake specialist, and we'll do a full medical evaluation and get you started on a medication plan. Is that day and time okay?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:37",
+          "text": "Yes, Friday at 10 AM works great. Thank you."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:43",
+          "text": "You're welcome, Jennifer. We look forward to seeing you. Have a good day."
+        }
+      ],
+      "aiSummary": "Jennifer Martinez called seeking medication-assisted treatment for fentanyl use disorder after two years of struggling with addiction that began with prescription opioids. Marcus Bell confirmed BHG serves the Denver area, gathered Jennifer's contact information, and scheduled her for a Friday 10 AM intake appointment at the Denver clinic. Jennifer has Medicaid coverage, which Marcus confirmed is accepted. The call was professional and welcoming, though Marcus did not capture Jennifer's email address or provide detailed information about what to bring to her appointment or the full integrated treatment model combining medication and counseling.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great opening and solid warmth with Jennifer. You did an excellent job acknowledging her courage and confirming our location immediately. Two coaching notes for next time, please. First, always capture an email address so we can send appointment details and pre-intake forms electronically. Second, take 30 more seconds to briefly explain what to expect at intake and what documents she should bring, especially since this is her first time with BHG. This sets expectation and reduces no-shows. You did handle the insurance question well. Well done."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "38,359"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$185.01"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$7,096,673"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "24,533"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "64%"
+            },
+            {
+              "label": "Intake Appointment: Scheduled (Count)",
+              "value": "18,029"
+            },
+            {
+              "label": "Intake Appointment: Scheduled (Percent)",
+              "value": "47%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "13,826"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "36%"
+            },
+            {
+              "label": "Intake Appointment: Canceled (Percent)",
+              "value": "9%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Intake Appointments)",
+          "chart": {
+            "legend": "Intake Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Referral",
+                "value": 57,
+                "display": "57%"
+              },
+              {
+                "name": "ChatGPT",
+                "value": 53,
+                "display": "53%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 48,
+                "display": "48%"
+              },
+              {
+                "name": "Google LSA",
+                "value": 43,
+                "display": "43%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Intake Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Intake Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "14,207",
+                  "39%",
+                  "$2,573,411"
+                ]
+              },
+              {
+                "cells": [
+                  "Google LSA",
+                  "9,842",
+                  "43%",
+                  "$1,842,006"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "6,738",
+                  "48%",
+                  "$1,281,447"
+                ]
+              },
+              {
+                "cells": [
+                  "ChatGPT",
+                  "4,519",
+                  "53%",
+                  "$842,318"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "3,053",
+                  "57%",
+                  "$557,491"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 16000,
+            "axisTicks": [
+              0,
+              4000,
+              8000,
+              12000,
+              16000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 13927,
+                "display": "13,927"
+              },
+              {
+                "name": "Organic",
+                "value": 8412,
+                "display": "8,412"
+              },
+              {
+                "name": "Paid Social",
+                "value": 6318,
+                "display": "6,318"
+              },
+              {
+                "name": "Referral",
+                "value": 5741,
+                "display": "5,741"
+              },
+              {
+                "name": "Direct",
+                "value": 3961,
+                "display": "3,961"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Intake Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Intake Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "13,927",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "8,412",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "6,318",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "5,741",
+                  "54%"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "3,961",
+                  "63%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Opioid Treatment Near Me Same-Day",
+                "value": 7214,
+                "display": "7,214"
+              },
+              {
+                "name": "Suboxone Clinic Locator",
+                "value": 5338,
+                "display": "5,338"
+              },
+              {
+                "name": "Hope Starts Here",
+                "value": 4127,
+                "display": "4,127"
+              },
+              {
+                "name": "Methadone Treatment Finder",
+                "value": 3516,
+                "display": "3,516"
+              },
+              {
+                "name": "Refer a Patient",
+                "value": 2489,
+                "display": "2,489"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Intake Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Intake Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Opioid Treatment Near Me Same-Day",
+                  "7,214",
+                  "40%",
+                  "$1,334,591"
+                ]
+              },
+              {
+                "cells": [
+                  "Suboxone Clinic Locator",
+                  "5,338",
+                  "46%",
+                  "$987,443"
+                ]
+              },
+              {
+                "cells": [
+                  "Hope Starts Here",
+                  "4,127",
+                  "52%",
+                  "$763,509"
+                ]
+              },
+              {
+                "cells": [
+                  "Methadone Treatment Finder",
+                  "3,516",
+                  "61%",
+                  "$650,447"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "opioid treatment center near me",
+                "value": 3842,
+                "display": "3,842"
+              },
+              {
+                "name": "methadone clinic near me",
+                "value": 3127,
+                "display": "3,127"
+              },
+              {
+                "name": "suboxone doctor near me",
+                "value": 2564,
+                "display": "2,564"
+              },
+              {
+                "name": "same day addiction treatment",
+                "value": 1938,
+                "display": "1,938"
+              },
+              {
+                "name": "vivitrol shot cost",
+                "value": 1412,
+                "display": "1,412"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Intake Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Intake Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "opioid treatment center near me",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "methadone clinic near me",
+                  "47%"
+                ]
+              },
+              {
+                "cells": [
+                  "suboxone doctor near me",
+                  "53%"
+                ]
+              },
+              {
+                "cells": [
+                  "same day addiction treatment",
+                  "64%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Intake Appointment: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Medications (MOUD/MAT)",
+              "11,238",
+              "40%",
+              "68%"
+            ]
+          },
+          {
+            "cells": [
+              "Counseling",
+              "6,417",
+              "46%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Intensive Outpatient Program",
+              "4,853",
+              "52%",
+              "57%"
+            ]
+          },
+          {
+            "cells": [
+              "Addictions We Treat",
+              "3,629",
+              "63%",
+              "52%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Intake Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "BHG Dallas Treatment Center",
+              "8,742",
+              "812",
+              "6%",
+              "41%"
+            ]
+          },
+          {
+            "cells": [
+              "BHG Houston Treatment Center",
+              "6,318",
+              "549",
+              "5%",
+              "47%"
+            ]
+          },
+          {
+            "cells": [
+              "BHG Phoenix Treatment Center",
+              "4,927",
+              "387",
+              "4%",
+              "53%"
+            ]
+          },
+          {
+            "cells": [
+              "BHG Nashville Treatment Center",
+              "3,614",
+              "241",
+              "3%",
+              "62%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1214,
+              1187,
+              1143,
+              1168,
+              1130
+            ]
+          },
+          {
+            "name": "Insurance Not Accepted",
+            "values": [
+              1038,
+              987,
+              994,
+              951,
+              948
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              812,
+              798,
+              783,
+              771,
+              763
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              672,
+              658,
+              641,
+              629,
+              614
+            ]
+          },
+          {
+            "name": "Needs Family Approval",
+            "values": [
+              512,
+              498,
+              487,
+              471,
+              461
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "15,344"
+          },
+          {
+            "label": "Intake Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "New Patient (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$4,045,104"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "21%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$187,440"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$312,680"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "39%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$445,920"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$198,550"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$354,280"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$546,234"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Intake Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18127,
+          "rows": [
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "4,287",
+                "58%",
+                "22%",
+                "$932,840"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "3,652",
+                "61%",
+                "28%",
+                "$1,028,560"
+              ]
+            },
+            {
+              "name": "Google",
+              "metrics": [
+                "3,104",
+                "52%",
+                "31%",
+                "$784,704"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "2,415",
+                "49%",
+                "35%",
+                "$639,975"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "1,886",
+                "44%",
+                "42%",
+                "$659,125"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Intake Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18404,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "5,239",
+                "57%",
+                "24%",
+                "$1,218,672"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "3,861",
+                "54%",
+                "29%",
+                "$1,087,256"
+              ]
+            },
+            {
+              "name": "Social Paid",
+              "metrics": [
+                "2,948",
+                "51%",
+                "33%",
+                "$874,320"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "2,164",
+                "46%",
+                "37%",
+                "$718,468"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "1,132",
+                "42%",
+                "41%",
+                "$146,388"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Intake Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18651,
+          "rows": [
+            {
+              "name": "Suboxone Clinic Near Me",
+              "metrics": [
+                "3,724",
+                "59%",
+                "21%",
+                "$924,812"
+              ]
+            },
+            {
+              "name": "Same Day Addiction Treatment",
+              "metrics": [
+                "3,186",
+                "54%",
+                "27%",
+                "$818,306"
+              ]
+            },
+            {
+              "name": "Hope Starts Here",
+              "metrics": [
+                "2,847",
+                "52%",
+                "32%",
+                "$851,264"
+              ]
+            },
+            {
+              "name": "Find a Location",
+              "metrics": [
+                "2,103",
+                "48%",
+                "36%",
+                "$687,282"
+              ]
+            },
+            {
+              "name": "Medication Assisted Treatment Program Near Me",
+              "metrics": [
+                "1,584",
+                "43%",
+                "44%",
+                "$763,240"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Intake Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 17892,
+          "rows": [
+            {
+              "name": "methadone clinic near me",
+              "metrics": [
+                "2,864",
+                "60%",
+                "20%",
+                "$685,760"
+              ]
+            },
+            {
+              "name": "suboxone doctor near me",
+              "metrics": [
+                "2,517",
+                "56%",
+                "26%",
+                "$742,998"
+              ]
+            },
+            {
+              "name": "opioid treatment center near me",
+              "metrics": [
+                "2,291",
+                "52%",
+                "31%",
+                "$729,140"
+              ]
+            },
+            {
+              "name": "same day addiction treatment",
+              "metrics": [
+                "1,846",
+                "48%",
+                "37%",
+                "$621,962"
+              ]
+            },
+            {
+              "name": "how to stop taking fentanyl",
+              "metrics": [
+                "1,423",
+                "41%",
+                "45%",
+                "$659,705"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Intake Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Medication-Assisted Treatment Bundle",
+              "metrics": [
+                "4,186",
+                "61%",
+                "19%",
+                "$1,127,784"
+              ]
+            },
+            {
+              "name": "Intensive Outpatient Program",
+              "metrics": [
+                "3,548",
+                "57%",
+                "28%",
+                "$1,023,140"
+              ]
+            },
+            {
+              "name": "Buprenorphine Treatment",
+              "metrics": [
+                "3,127",
+                "54%",
+                "35%",
+                "$1,012,755"
+              ]
+            },
+            {
+              "name": "Individual Behavioral Counseling",
+              "metrics": [
+                "2,841",
+                "48%",
+                "39%",
+                "$899,405"
+              ]
+            },
+            {
+              "name": "Fentanyl Addiction Treatment Program",
+              "metrics": [
+                "1,642",
+                "42%",
+                "47%",
+                "$982,020"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Medication-Assisted Treatment Bundle",
+            "values": [
+              159,
+              198,
+              175,
+              201,
+              194
+            ]
+          },
+          {
+            "name": "Intensive Outpatient Program",
+            "values": [
+              245,
+              267,
+              233,
+              251,
+              246
+            ]
+          },
+          {
+            "name": "Buprenorphine Treatment",
+            "values": [
+              318,
+              287,
+              301,
+              329,
+              341
+            ]
+          },
+          {
+            "name": "Individual Behavioral Counseling",
+            "values": [
+              294,
+              312,
+              268,
+              335,
+              352
+            ]
+          },
+          {
+            "name": "Fentanyl Addiction Treatment Program",
+            "values": [
+              371,
+              348,
+              356,
+              392,
+              385
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,427"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Intake Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Intake Appointment Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Intake Appointment Scheduled (Count)",
+            "value": "9,847"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$6,752,855"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "814"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "18:47:32"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Intake Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Intake Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Intake Appointment Scheduled (Count)",
+            "value": "31"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$184,596"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Intake Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Intake Appointment Scheduled",
+            "values": [
+              78,
+              72,
+              81,
+              76,
+              79,
+              83,
+              74,
+              77,
+              80,
+              72,
+              81,
+              75,
+              79,
+              76,
+              82,
+              78,
+              73,
+              81,
+              74,
+              77,
+              80,
+              76,
+              82,
+              79,
+              75,
+              31,
+              28,
+              24,
+              19,
+              22,
+              17,
+              178,
+              187,
+              182,
+              191,
+              185,
+              189,
+              176,
+              183,
+              188,
+              181,
+              184,
+              179,
+              186,
+              191,
+              178,
+              182,
+              187,
+              185
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,243"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "742"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "60%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "723"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Intake Appointment Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Suboxone Dosing & Refills",
+            "values": [
+              8,
+              11,
+              9,
+              7,
+              10,
+              12
+            ]
+          },
+          {
+            "name": "Buprenorphine Treatment Options",
+            "values": [
+              6,
+              9,
+              11,
+              8,
+              10,
+              9
+            ]
+          },
+          {
+            "name": "Same-Day Intake & Assessment",
+            "values": [
+              2,
+              4,
+              3,
+              1,
+              5,
+              6
+            ]
+          },
+          {
+            "name": "Fentanyl Addiction Treatment",
+            "values": [
+              5,
+              8,
+              7,
+              9,
+              6,
+              10
+            ]
+          },
+          {
+            "name": "Medication-Assisted Treatment Costs",
+            "values": [
+              7,
+              6,
+              9,
+              8,
+              11,
+              7
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "35,290"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "26,660"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Intake Appointment Booked (Count)",
+            "value": "18,029"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$7,096,673"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 300,
+          "axisTicks": [
+            0,
+            75,
+            150,
+            225,
+            300
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 217,
+              "display": "217"
+            },
+            {
+              "name": "Alexis Reyes",
+              "value": 184,
+              "display": "184"
+            },
+            {
+              "name": "David Kowalski",
+              "value": 209,
+              "display": "209"
+            },
+            {
+              "name": "Jennifer Wu",
+              "value": 191,
+              "display": "191"
+            },
+            {
+              "name": "Robert Hutchins",
+              "value": 253,
+              "display": "253"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Intake Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              156,
+              172,
+              195,
+              218,
+              241
+            ]
+          },
+          {
+            "name": "James Corbett",
+            "values": [
+              148,
+              159,
+              181,
+              204,
+              226
+            ]
+          },
+          {
+            "name": "Michelle Santos",
+            "values": [
+              137,
+              153,
+              172,
+              198,
+              219
+            ]
+          },
+          {
+            "name": "Tyler Peterson",
+            "values": [
+              142,
+              161,
+              189,
+              211,
+              237
+            ]
+          },
+          {
+            "name": "Victoria Lopez",
+            "values": [
+              151,
+              168,
+              194,
+              216,
+              240
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Brandon Fields",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Kevin Tran",
+              "value": 55.8,
+              "display": "55.8%"
+            },
+            {
+              "name": "Natasha Volkov",
+              "value": 56.5,
+              "display": "56.5%"
+            },
+            {
+              "name": "Eric Daniels",
+              "value": 57.9,
+              "display": "57.9%"
+            },
+            {
+              "name": "Patricia Goldman",
+              "value": 59.3,
+              "display": "59.3%"
+            },
+            {
+              "name": "Christopher Walsh",
+              "value": 61.1,
+              "display": "61.1%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Intake Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Brandon Fields",
+                "54.2%",
+                "28%",
+                "$522,642",
+                "1,479"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Tran",
+                "55.8%",
+                "29%",
+                "$539,186",
+                "1,428"
+              ]
+            },
+            {
+              "cells": [
+                "Natasha Volkov",
+                "56.5%",
+                "31%",
+                "$568,277",
+                "1,382"
+              ]
+            },
+            {
+              "cells": [
+                "Eric Daniels",
+                "57.9%",
+                "32%",
+                "$574,819",
+                "1,403"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Goldman",
+                "59.3%",
+                "33%",
+                "$591,198",
+                "1,451"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Walsh",
+                "61.1%",
+                "35%",
+                "$622,441",
+                "1,497"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Mitchell",
+              "value": 92.7,
+              "display": "92.7%"
+            },
+            {
+              "name": "James Corbett",
+              "value": 91.4,
+              "display": "91.4%"
+            },
+            {
+              "name": "Michelle Santos",
+              "value": 90.8,
+              "display": "90.8%"
+            },
+            {
+              "name": "Tyler Peterson",
+              "value": 89.3,
+              "display": "89.3%"
+            },
+            {
+              "name": "Victoria Lopez",
+              "value": 88.1,
+              "display": "88.1%"
+            },
+            {
+              "name": "Daniel Huang",
+              "value": 87.6,
+              "display": "87.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Intake Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "92.7%",
+                "65%",
+                "$929,544",
+                "1,543"
+              ]
+            },
+            {
+              "cells": [
+                "James Corbett",
+                "91.4%",
+                "63%",
+                "$883,516",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Santos",
+                "90.8%",
+                "61%",
+                "$846,729",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Tyler Peterson",
+                "89.3%",
+                "59%",
+                "$812,693",
+                "1,455"
+              ]
+            },
+            {
+              "cells": [
+                "Victoria Lopez",
+                "88.1%",
+                "58%",
+                "$793,804",
+                "1,528"
+              ]
+            },
+            {
+              "cells": [
+                "Daniel Huang",
+                "87.6%",
+                "57%",
+                "$770,387",
+                "1,397"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Intake Appointment Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Intake Appointment Booked (Count)",
+        "rightMax": 900,
+        "rightTicks": [
+          0,
+          225,
+          450,
+          675,
+          900
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 669
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 641
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 597
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 570
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 496
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 520
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 575
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 598
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 667
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 646
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 582
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 562
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 500
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 516
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 589
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 607
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 660
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 650
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 570
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 552
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 508
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 513
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 599
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 619
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 652
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 651
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 562
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 538
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 517
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 514
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 589
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 400000,
+        "rightTicks": [
+          0,
+          133333.33333333334,
+          266666.6666666667,
+          400000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 263068
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 252139
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 234792
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 224037
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 195065
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 204715
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 226143
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 235058
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 262091
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 254113
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 228871
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 221208
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 196838
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 202893
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 231528
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 238583
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 259651
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 255610
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 224142
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 217032
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 199792
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 201887
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 235518
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 243326
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 256352
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 255979
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 220934
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 211841
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 203257
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 202276
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 237934
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "38,359"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "6:47"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,069"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,302"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "412",
+                "91%",
+                "88%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James Rodriguez",
+                "389",
+                "87%",
+                "85%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Chen",
+                "356",
+                "89%",
+                "85%",
+                "87%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "38,359 calls",
+      "pagerLabel": "1 of 3,836",
+      "calls": [
+        {
+          "time": "1/6/26 8:52 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:47 am",
+          "id": "A31C-4D9E7B2160AF"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C82D-19A5F6E3D470"
+        },
+        {
+          "time": "1/14/26 11:18 am",
+          "id": "6E40-2B7CA9014FDE"
+        },
+        {
+          "time": "1/16/26 12:33 pm",
+          "id": "D97A-5F0E82C71B36"
+        },
+        {
+          "time": "1/20/26 1:09 pm",
+          "id": "3B58-E4170C9AD682"
+        },
+        {
+          "time": "1/22/26 2:24 pm",
+          "id": "9F16-7A3D0EB25C41"
+        },
+        {
+          "time": "1/26/26 3:47 pm",
+          "id": "14C7-6D82F09EA357"
+        },
+        {
+          "time": "1/28/26 4:38 pm",
+          "id": "B203-8E1F5A7C0946"
+        },
+        {
+          "time": "1/30/26 5:11 pm",
+          "id": "7A9E-0C43D26F81B5"
+        }
+      ],
+      "duration": "2:34",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling Behavioral Health Group, this is Maria on the recovery line. How can I help you today?",
+          "highlights": [
+            "Thank you for calling Behavioral Health Group",
+            "this is Maria"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi, um, I've never done anything like this before. I've been using fentanyl and I really need to get some help before it gets worse.",
+          "highlights": [
+            "never done anything like this before",
+            "using fentanyl"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:18",
+          "text": "I'm really glad you called, and I want you to know you did the right thing reaching out. Can I start with your first and last name?",
+          "highlights": [
+            "glad you called"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:26",
+          "text": "Yeah, it's Daniel Foster.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:30",
+          "text": "Thank you, Daniel. And so I can point you to the right care, how long have you been using and are you dealing with any withdrawal right now?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:39",
+          "text": "About two years now. The withdrawals hit hard if I stop, that's honestly what keeps pulling me back in.",
+          "highlights": [
+            "two years",
+            "withdrawals hit hard"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:48",
+          "text": "That is exactly what our Fentanyl Addiction Treatment Program addresses. Most patients start on a medication like buprenorphine, our Suboxone program, paired with counseling to steady the cravings and stop the withdrawal cycle.",
+          "highlights": [
+            "Fentanyl Addiction Treatment Program",
+            "buprenorphine",
+            "Suboxone program"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:00",
+          "text": "Okay, that sounds like what I need. But money is tight right now, what does something like that run me?",
+          "highlights": [
+            "money is tight",
+            "what does something like that run me"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:09",
+          "text": "Totally fair question. Most of our patients are covered through Medicaid, Medicare, or commercial insurance, so out of pocket is often very little. If you're self-pay, the medication and counseling bundle runs roughly five to eight hundred a month, and we can review options at intake.",
+          "highlights": [
+            "covered through Medicaid",
+            "review options at intake"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:22",
+          "text": "Alright. I did call a clinic across town, but they told me there was a waitlist and I couldn't be seen for like two weeks.",
+          "highlights": [
+            "called a clinic across town",
+            "waitlist"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:31",
+          "text": "I hear that a lot, and it's frustrating. We don't do waitlists. Most patients begin treatment right away with same-day access to care, so we can get you in far sooner than that.",
+          "highlights": [
+            "We don't do waitlists",
+            "same-day access to care"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:41",
+          "text": "That's a relief. One more thing, I've been dealing with a lot of anxiety on top of all this. Is that something you handle too, or do I need somewhere else for that?",
+          "highlights": [
+            "anxiety on top of all this"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:51",
+          "text": "We handle that right here through our Co-Occurring Mental Health Treatment, so your recovery and your anxiety are treated together in one plan. No need to go anywhere else.",
+          "highlights": [
+            "Co-Occurring Mental Health Treatment"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:00",
+          "text": "Good, because I really don't want to bounce around between places.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:05",
+          "text": "You won't have to. Let's get you set up with a New Patient Intake and Assessment. I have Thursday at 10 AM open at our clinic. Does that work for you?",
+          "highlights": [
+            "New Patient Intake and Assessment",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:13",
+          "text": "Yeah, Thursday at 10 works.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:16",
+          "text": "Perfect, I've got you booked. What's the best phone number to send your confirmation and intake details to?",
+          "highlights": [
+            "I've got you booked"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:22",
+          "text": "It's 214-555-0182.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:27",
+          "text": "Got it, Daniel. You're confirmed for Thursday at 10 AM, and I'll text the details and what to bring.",
+          "highlights": [
+            "confirmed for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:31",
+          "text": "Thank you, this takes a weight off.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:34",
+          "text": "You're very welcome, and you've taken a brave first step. We'll see you Thursday. Take good care of yourself until then.",
+          "highlights": [
+            "brave first step",
+            "We'll see you Thursday"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intake Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Insurance and Payment Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "MAT Program Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Fentanyl Treatment Intent",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Same-Day Access Requested",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Co-Occurring Care Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Daniel Foster, a new patient, called seeking help for a two-year fentanyl dependence and disclosed accompanying anxiety. Agent Maria recommended the Fentanyl Addiction Treatment Program using buprenorphine (Suboxone) paired with counseling, plus Co-Occurring Mental Health Treatment to address the anxiety in the same plan. She addressed his cost concern by explaining insurance and self-pay options, reassured him there is no waitlist unlike the clinic he had called across town, and scheduled a New Patient Intake and Assessment for Thursday at 10 AM. His contact number was captured for confirmation.",
+        "keyPoints": [
+          "New patient, first time seeking treatment",
+          "Two-year fentanyl use with hard withdrawals",
+          "Recommended buprenorphine/Suboxone MAT plus counseling",
+          "Cost concern handled with Medicaid, Medicare, and self-pay options",
+          "Competing clinic had a two-week waitlist; BHG offered same-day access",
+          "Co-occurring anxiety folded into one treatment plan",
+          "Intake Appointment booked for Thursday 10 AM; phone number captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Intake Appointment booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "24,166 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,417",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. This is Sarah from Behavioral Health Group. We help people with substance use disorders get access to medication and counseling. Do you or someone you care about need help with addiction treatment?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:23 AM",
+              "text": "Yeah, I've been struggling with opioids for a while now. I want to get clean but I don't know where to start."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:24 AM",
+              "text": "I'm really glad you reached out. We can help. Are you currently using any medications like methadone, buprenorphine, or anything else to manage cravings?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "No, I'm not on anything. I've just been trying to quit on my own but it's not working."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "That takes courage. Many people find that medication combined with counseling is the most effective path. Have you ever heard of buprenorphine or Suboxone?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "I've heard of Suboxone. Isn't that expensive?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Suboxone treatment typically runs between 150 and 400 dollars per month depending on your dosing, plus visit fees. Most of our patients use Medicaid, Medicare, or commercial insurance though. Do you have insurance?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Yeah, I have Medicaid. That should cover it right?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Great. Medicaid covers our treatment programs. I'd like to get you started with a new patient intake and assessment. That's a medical evaluation where we create a care plan for you. We have same day appointments available. Are mornings or afternoons better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:36 AM",
+              "text": "Mornings work better for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:37 AM",
+              "text": "Perfect. We have an opening tomorrow, March 11th at 9:30 AM at our clinic. Does that work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:39 AM",
+              "text": "Yeah, that works. What do I need to bring?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:40 AM",
+              "text": "Just bring a photo ID and your Medicaid card. Your appointment is scheduled for tomorrow March 11th at 9:30 AM. You'll speak with our medical team who will evaluate you and discuss your treatment options. If you need to reach us before then, call 877-936-2933. Looking forward to helping you on your recovery journey."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:42 AM",
+              "text": "Thank you so much. I really appreciate this."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Intake Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Buprenorphine Treatment",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Insurance: Medicaid",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Substance: Opioids",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate Provided",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "415-832-7649",
+            "repeatCaller": "No",
+            "city": "Portland",
+            "region": "OR",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A743-28BC569E41F2",
+          "time": "3/10/26 2:45 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A743-28BC569E41F2",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B821-64DA19F7E5C3",
+          "time": "3/10/26 8:12 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B821-64DA19F7E5C3",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D956-71FCAE2B89D0",
+          "time": "3/10/26 11:33 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D956-71FCAE2B89D0",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "38,359 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,836",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Thank you for calling Behavioral Health Group. This is Marcus. Are you calling about medication assisted treatment or one of our other recovery programs today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Yeah, hi. I'm dealing with a fentanyl addiction and I've heard you guys can help with same day treatment."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "I'm glad you reached out. We absolutely can help, and many of our patients do start treatment the same day they call. Just so I understand your situation better, have you ever been through addiction treatment before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "No, this is my first time looking for help."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Okay, that's helpful to know. A lot of our new patients start with an intake assessment where we'll talk about your history and get you set up with one of our evidence based medications. Do you have insurance, or would you be self pay?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "I have Medicaid. Does that cover it?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Great, Medicaid covers our medication assisted treatment programs in most cases. Your out of pocket costs would be minimal or none depending on your state. Have you already decided which medication you'd prefer, like buprenorphine, or would you want to discuss options at your intake appointment?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "I'm not sure. What would you recommend for fentanyl?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "For fentanyl addiction, we typically recommend buprenorphine or naltrexone. Buprenorphine is a partial agonist, so it's office based with take home dosing once you're stable. Naltrexone is a non narcotic blocker with no misuse potential. Your doctor will help you choose at intake. Can you come in tomorrow morning at ten AM?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "Tomorrow morning works. Yeah, that's perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Excellent. Let me confirm your appointment. That's tomorrow, January 16th at 10 AM for your new patient intake assessment. We're located at 452 Commerce Drive in Denver. Please plan to spend about an hour with us. Do you have any questions before we hang up?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "No, I think I'm good. Thanks a lot."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "You're welcome. We're really glad you called. If you need to reschedule or have any questions before your appointment, just call us back at 877-936-2933. We'll see you tomorrow at 10 AM."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Great, thank you."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Take care."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Intake Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Fentanyl Addiction Identified",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Buprenorphine Interest Expressed",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Insurance Verified: Medicaid",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Same Day Treatment Discussed",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "6:47",
+            "destinationPhone": "877-936-2933",
+            "source": "(877) 936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "(303) 555-8847",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "James Martinez",
+            "firstName": "James",
+            "lastName": "Martinez",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B829-3F4ED621B4C9",
+          "time": "1/22/26 2:45 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B829-3F4ED621B4C9",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C546-7G8HI923D5K2",
+          "time": "1/28/26 11:30 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C546-7G8HI923D5K2",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D734-9J1LM847P6Q8",
+          "time": "1/31/26 3:22 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D734-9J1LM847P6Q8",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Introduce yourself as Behavioral Health Group's AI agent here to answer questions and help start a personalized treatment plan, mention that most patients begin treatment right away with same-day access and no waitlists, and ask if they would like to get started today.",
+        "Qualify one question at a time: Ask only one question per message, covering which substance or addiction they need help with, whether this is for themselves or a loved one, which medication or treatment they are interested in (methadone, buprenorphine/Suboxone, or Vivitrol), their insurance or payment method (Medicaid, Medicare, commercial, or self-pay), their availability, and their ZIP code to confirm a nearby accredited center.",
+        "Confirm then book: Confirm there is a Joint Commission-accredited BHG center serving their ZIP code, explain that costs are typically covered by Medicaid, Medicare, or commercial insurance and that a specialist will review coverage during intake, propose a specific same-day or next-day intake appointment time, and confirm they will receive a reminder text with a clinic phone number to call before the appointment."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Behavioral_Health_Group_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Treatment & Medications",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Locations",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Insurance and Payment",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Reschedule\",\"question\":\"I am already a patient and need to move my counseling appointment. Can you help?\",\"answer\":\"Absolutely, I can help you reschedule your counseling session at your home center. Let me know your preferred day and time and I will confirm the next available opening.\"},{\"topic\":\"Take-home dosing\",\"question\":\"When can I qualify for take-home doses of my buprenorphine?\",\"answer\":\"Take-home dosing depends on your progress and time in treatment, and your care team reviews eligibility during your regular visits. I can schedule a check-in with your provider to discuss your take-home options.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you offer same-day treatment?",
+              "answer": "Yes, most patients begin treatment right away with same-day access to care and no waitlists. I can set up an intake appointment for you today at a nearby center."
+            },
+            {
+              "question": "What medications do you use for opioid addiction?",
+              "answer": "We offer FDA-approved medications including methadone, buprenorphine/Suboxone, and naltrexone/Vivitrol, combined with counseling and support. A specialist will recommend the best option for you during your intake appointment."
+            },
+            {
+              "question": "Do you take Medicaid?",
+              "answer": "Yes, most of our care is billed to Medicaid, Medicare, or commercial insurance, and our team can verify your coverage. Let me get you scheduled so a specialist can confirm your benefits."
+            },
+            {
+              "question": "How much does treatment cost?",
+              "answer": "Costs vary based on your treatment plan and insurance, and most patients pay little to nothing out of pocket with coverage. A specialist will review exact costs with you at your intake appointment, so let me get you scheduled."
+            },
+            {
+              "question": "Where is the closest clinic to me?",
+              "answer": "We have 110+ accredited centers across 20+ states, so there is likely one near you. Share your ZIP code and I will confirm the closest center and book your intake."
+            },
+            {
+              "question": "What is methadone treatment?",
+              "answer": "Methadone is a daily dispensed medication that acts on the same brain receptors as opioids to reduce cravings and stabilize brain chemistry. A provider can explain if it is right for you at your intake appointment."
+            },
+            {
+              "question": "What is the difference between Suboxone and methadone?",
+              "answer": "Suboxone is a partial-agonist option with lower overdose risk and possible take-home dosing, while methadone is a daily dispensed full agonist. Our specialists will help you choose the best fit during intake."
+            },
+            {
+              "question": "Can you help with fentanyl addiction?",
+              "answer": "Yes, we have a condition-specific medication protocol for high-potency synthetic opioid dependence like fentanyl. I can book you an intake appointment to get started."
+            },
+            {
+              "question": "Do you treat heroin addiction?",
+              "answer": "Yes, we offer targeted maintenance and counseling pathways for heroin use disorder. Let me schedule your intake appointment so you can begin care."
+            },
+            {
+              "question": "Can you help with kratom or 7-OH withdrawal?",
+              "answer": "Yes, we have a program that addresses kratom withdrawal symptoms, timeline, and treatment options. I can set up an intake appointment to get you support."
+            },
+            {
+              "question": "What happens at the new patient intake?",
+              "answer": "Intake includes a medical evaluation, care planning, and an introduction to our services and medications. I can book that appointment for you now, often same day."
+            },
+            {
+              "question": "Do you offer counseling too?",
+              "answer": "Yes, we provide individual and group counseling alongside medication as part of our integrated model. You can meet with a counselor as part of your treatment plan set up at intake."
+            },
+            {
+              "question": "What is an Intensive Outpatient Program?",
+              "answer": "Our IOP offers structured multi-hour weekly programming for higher-acuity needs while you continue living at home. A specialist can determine if IOP is right for you at your intake appointment."
+            },
+            {
+              "question": "Is treatment confidential?",
+              "answer": "Yes, your care and information are kept private and handled by our licensed professionals. Let me schedule a confidential intake appointment for you."
+            },
+            {
+              "question": "Can I get treatment for a family member?",
+              "answer": "Yes, we help patients and their loved ones get started with care. Share a few details and I can book an intake appointment for them."
+            },
+            {
+              "question": "Do you treat co-occurring mental health conditions?",
+              "answer": "Yes, we offer dual-diagnosis care that addresses substance use alongside conditions like anxiety and depression. A provider will assess your needs during intake."
+            },
+            {
+              "question": "Do I need an appointment or can I walk in?",
+              "answer": "You can call or walk in, and most patients begin treatment right away with same-day access. I can also book an intake appointment now to make your visit smoother."
+            },
+            {
+              "question": "What is Vivitrol?",
+              "answer": "Vivitrol is a non-narcotic monthly injection that blocks opioids with no misuse potential. A specialist can discuss whether it fits your plan at your intake appointment."
+            },
+            {
+              "question": "Are your clinics accredited?",
+              "answer": "Yes, we are the largest network of Joint Commission-accredited outpatient treatment centers in the United States. I can book your intake at an accredited center near you."
+            },
+            {
+              "question": "How do I get started?",
+              "answer": "Getting started is easy and often same day. Just share your ZIP code and preferred time and I will book your intake appointment at the nearest center."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule an intake appointment\",\"follow_up_message\":\"Great news, there is an accredited BHG center near you with same-day availability. I have you down for an intake appointment, and you will get a reminder text with the clinic number to call beforehand.\"},{\"intent\":\"Request coverage and cost details\",\"follow_up_message\":\"Most of our care is covered by Medicaid, Medicare, or commercial insurance, and a specialist will verify your exact benefits at intake. Let me lock in a same-day or next-day intake appointment so you can get started.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Behavioral Health Group's AI agent. I can answer your questions and help you get started with care today, often with same-day access and no waitlists. Would you like to get started?",
+        "goal": "Guide patients and their loved ones to book a same-day or next-day intake appointment at the nearest accredited BHG center.",
+        "bookingType": "same-day in-person intake appointment",
+        "offer": "Same-day access to care with no waitlists when you start today",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Which substance or addiction are you seeking help with (for example opioids, fentanyl, heroin, prescription opioids, or kratom)?",
+          "Is this treatment for you or for a loved one?",
+          "Are you interested in a specific medication like methadone, buprenorphine/Suboxone, or Vivitrol, or would you like a specialist to recommend one?",
+          "How will you be covering treatment (Medicaid, Medicare, commercial insurance, or self-pay)?",
+          "When would you like to come in, today or another day this week?",
+          "What is your ZIP code so I can confirm the closest accredited BHG center?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:04 am"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:04 am"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/22/26 11:04 am"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Behavioral Health Group",
+      "callerName": "Marcus Chen",
+      "callerPhone": "(619) 555-0147",
+      "campaign": "Buprenorphine Treatment, San Diego Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Intake Appointment Lead",
+      "estimatedValue": "$3,650",
+      "googleSearch": "Suboxone clinic near me San Diego",
+      "websiteSearch": "buprenorphine treatment same day",
+      "callingWebpage": "/treatment/medications/buprenorphine",
+      "products": "Buprenorphine/Suboxone Treatment, Individual Behavioral Counseling",
+      "cartId": "BHG-7284M",
+      "serviceable": "Yes",
+      "email": "marcus.chen.1987@email.com",
+      "street": "4521 Ocean View Boulevard",
+      "city": "San Diego",
+      "state": "CA",
+      "zip": "92113",
+      "digitalJourney": "/home › /treatment/medications › /treatment/medications/buprenorphine › /locations",
+      "intent": "Seeking office-based opioid treatment with take-home medication option and counseling support for prescription pain pill dependence",
+      "coverage": "ZIP 92113 confirmed, San Diego serviceable",
+      "switchIntent": "High, currently in early withdrawal, employer offers limited EAP benefits, wants to start treatment within 2 days and maintain work schedule",
+      "greeting": "Hi Marcus, thanks for calling Behavioral Health Group. I see you're interested in our Buprenorphine program here in San Diego with same-day access. We can get you scheduled for an intake appointment today. Would Thursday morning or afternoon work better for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "Behavioral Health Group",
+      "callerName": "Jennifer Rollins",
+      "callerPhone": "(336) 555-0189",
+      "campaign": "Fentanyl Addiction Program, Greensboro Awareness",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Intake Appointment Lead",
+      "estimatedValue": "$4,225",
+      "googleSearch": "how to stop taking fentanyl safely",
+      "websiteSearch": "fentanyl addiction treatment near me NC",
+      "callingWebpage": "/treatment/addictions-we-treat/fentanyl",
+      "products": "Fentanyl Addiction Treatment Program, Medication-Assisted Treatment Bundle",
+      "cartId": "BHG-9156J",
+      "serviceable": "Yes",
+      "email": "jen.rollins.2006@email.com",
+      "street": "827 Friendly Avenue",
+      "city": "Greensboro",
+      "state": "NC",
+      "zip": "27401",
+      "digitalJourney": "/home › /treatment/addictions-we-treat › /treatment/addictions-we-treat/fentanyl › /patients/get-started",
+      "intent": "Concerned family member seeking specialized fentanyl addiction treatment with integrated medication and counseling for relative with recent overdose scare",
+      "coverage": "ZIP 27401 confirmed, Greensboro serviceable",
+      "appointment": "In-clinic intake assessment with addiction medicine specialist, Thu Jul 18, 2:30 PM",
+      "greeting": "Hi Jennifer, this is Dr. Sarah Martinez with Behavioral Health Group in Greensboro. We have your intake appointment confirmed for Thursday at 2:30 PM. Our fentanyl program combines safe medication with counseling support. Feel free to call with any questions before then, or text me if you need directions to our clinic."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Behavioral Health Group",
+      "brandDomain": "www.bhgrecovery.com",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Ventura, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "Suboxone Clinic Same-Day Access",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "Suboxone doctor near me",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Treatment / Medications / Buprenorphine",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Buprenorphine Treatment, New Patient Intake & Assessment",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Ventura, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "intake_appointment_new",
+          "name": "Intake Appointment, New Patient"
+        },
+        {
+          "id": "existing_patient_support",
+          "name": "Existing Patient Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry & Location Finder"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi, thanks for calling Behavioral Health Group. This is Maya. I see you're interested in our buprenorphine program. Are you looking to start treatment for yourself, or are you calling on behalf of someone else?",
+          "sigs": [],
+          "q": [
+            25,
+            35,
+            40
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "It's for me. I've been taking prescription opioids for a few years and it's gotten out of hand. I heard Suboxone can help, and I'm ready to get started.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Prescription opioid dependence</strong> - motivated for treatment"
+            },
+            {
+              "c": "green",
+              "t": "<strong>Buprenorphine / Suboxone interest</strong> - expressed readiness"
+            },
+            {
+              "c": "blue",
+              "t": "Self, direct patient"
+            }
+          ],
+          "q": [
+            48,
+            28,
+            24
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's a really positive step. I'm glad you reached out. Just to make sure we get you to the right team, do you have insurance coverage, or are you planning to pay out of pocket?",
+          "sigs": [],
+          "q": [
+            62,
+            18,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I have Medicaid. And honestly, I'm looking to come in as soon as possible. Do you have same-day appointments?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Medicaid insured</strong> - coverage confirmed"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>High urgency</strong> - same-day request"
+            },
+            {
+              "c": "green",
+              "t": "Ready to commit to intake"
+            }
+          ],
+          "q": [
+            85,
+            8,
+            7
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. We can absolutely get you started today. Let me connect you with our intake coordinator right now. They'll do a quick medical evaluation, answer your questions about buprenorphine dosing and our counseling program, and schedule your first medication visit. Hold tight.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Intake Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get you scheduled for intake (Agent)\", \"we can start you today (Agent)\", \"come in for your assessment (Agent)\", \"book your first appointment (Agent)\"])",
+          "createdAt": "11/14/24 9:22 am",
+          "updatedAt": "01/22/26 3:41 pm"
+        },
+        {
+          "name": "Compassion and Empathy Demonstrated",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Patient Care Quality] < 60 and duration > 45 sec",
+          "createdAt": "02/09/25 10:05 am",
+          "updatedAt": "01/15/26 1:18 pm"
+        },
+        {
+          "name": "Competitor Clinic Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"another methadone clinic (Caller)\", \"the other treatment center (Caller)\", \"closer to my house (Caller)\", \"a cheaper program (Caller)\"])",
+          "createdAt": "03/18/25 2:47 pm",
+          "updatedAt": "01/09/26 11:32 am"
+        },
+        {
+          "name": "Fentanyl Treatment Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"help with fentanyl (Caller)\", \"hooked on fentanyl (Caller)\", \"stop using fentanyl (Caller)\", \"fentanyl withdrawal (Caller)\"])",
+          "createdAt": "04/22/25 8:14 am",
+          "updatedAt": "01/20/26 4:07 pm"
+        },
+        {
+          "name": "HIPAA and Privacy Compliance",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Compliance Adherence] < 60 and duration > 45 sec",
+          "createdAt": "01/28/25 3:33 pm",
+          "updatedAt": "01/12/26 9:56 am"
+        },
+        {
+          "name": "Insurance and Payment Explained",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Insurance Verification] < 60 and duration > 45 sec",
+          "createdAt": "05/07/25 11:41 am",
+          "updatedAt": "01/18/26 2:29 pm"
+        },
+        {
+          "name": "Intake Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"how do I get started (Caller)\", \"can I walk in today (Caller)\", \"same day appointment (Caller)\", \"new patient intake (Agent)\"])",
+          "createdAt": "12/03/24 10:52 am",
+          "updatedAt": "01/25/26 12:14 pm"
+        },
+        {
+          "name": "Medicaid Coverage Concern",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"do you take Medicaid (Caller)\", \"will my insurance cover it (Caller)\", \"losing my Medicaid (Caller)\", \"how much out of pocket (Caller)\"])",
+          "createdAt": "06/19/25 1:26 pm",
+          "updatedAt": "01/14/26 10:48 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the self pay rate is (Agent)\", \"the monthly cost is (Agent)\", \"the Vivitrol injection costs (Agent)\", \"weekly dosing fee (Agent)\"])",
+          "createdAt": "07/25/25 9:38 am",
+          "updatedAt": "01/21/26 3:55 pm"
+        },
+        {
+          "name": "Suboxone vs Methadone Question",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Suboxone or methadone (Caller)\", \"which medication is better (Caller)\", \"difference between buprenorphine (Caller)\", \"is methadone right for me (Caller)\"])",
+          "createdAt": "08/11/25 2:09 pm",
+          "updatedAt": "01/17/26 11:03 am"
+        }
+      ]
+    }
+  }
+}

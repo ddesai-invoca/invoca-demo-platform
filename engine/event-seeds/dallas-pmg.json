@@ -1,0 +1,5329 @@
+{
+  "id": "pmg",
+  "customerName": "PMG",
+  "websiteUrl": "https://www.pmg.com",
+  "brandDomain": "pmg.com",
+  "networkName": "Invoca for Marketing Services",
+  "industry": "Advertising and marketing services (media, data, creative, martech)",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Client",
+  "generation": {
+    "at": "2026-09-22T15:16:00.009Z",
+    "scope": "full"
+  },
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 700,
+      "yTicks": [
+        0,
+        175,
+        350,
+        525,
+        700
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 512
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 548
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 601
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 573
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 526
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Engineered for Impact",
+          "marketingSearchTerm": "independent advertising agency",
+          "landingPageUrl": "https://www.pmg.com/what-we-do?utm_source=google&utm_medium=cpc&utm_campaign=engineered_for_impact",
+          "websiteJourney": "Home / What We Do / Marketing Orchestration",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "The Growth Engine",
+          "marketingSearchTerm": "enterprise media buying agency",
+          "landingPageUrl": "https://www.pmg.com/what-we-do/marketing-orchestration?utm_source=google&utm_medium=cpc&utm_campaign=growth_engine",
+          "websiteJourney": "Home / What We Do / Marketing Orchestration",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Meet Alli",
+          "marketingSearchTerm": "marketing analytics platform",
+          "landingPageUrl": "https://www.pmg.com/about/alli?utm_source=google&utm_medium=cpc&utm_campaign=meet_alli",
+          "websiteJourney": "Home / About PMG / Alli",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Growth-Obsessed",
+          "marketingSearchTerm": "full-funnel media agency",
+          "landingPageUrl": "https://www.pmg.com/what-we-do/intelligence-core?utm_source=bing&utm_medium=cpc&utm_campaign=growth_obsessed",
+          "websiteJourney": "Home / What We Do / Intelligence Core",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Retail Media Push",
+          "marketingSearchTerm": "retail media agency amazon",
+          "landingPageUrl": "https://www.pmg.com/what-we-do/commerce-retail-media?utm_source=google&utm_medium=cpc&utm_campaign=retail_media",
+          "websiteJourney": "Home / What We Do / Marketing Orchestration",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "PMG Agency Defense",
+          "marketingSearchTerm": "pmg advertising agency",
+          "landingPageUrl": "https://www.pmg.com/?utm_source=google&utm_medium=cpc&utm_campaign=pmg_brand_defense",
+          "websiteJourney": "Home / About PMG",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Intelligence to Momentum",
+          "marketingSearchTerm": "data-driven creative agency",
+          "landingPageUrl": "https://www.pmg.com/what-we-do/signal-led-creativity?utm_source=google&utm_medium=cpc&utm_campaign=intel_to_momentum",
+          "websiteJourney": "Home / What We Do / Signal-Led Creativity",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Engineered for Impact",
+          "marketingSearchTerm": "performance marketing agency for brands",
+          "landingPageUrl": "https://www.pmg.com/what-we-do?utm_source=bing&utm_medium=cpc&utm_campaign=engineered_for_impact",
+          "websiteJourney": "Home / What We Do / Marketing Orchestration",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Martech Audit",
+          "marketingSearchTerm": "martech adtech audit consultant",
+          "landingPageUrl": "https://www.pmg.com/what-we-do/growth-blueprinting?utm_source=google&utm_medium=cpc&utm_campaign=martech_audit",
+          "websiteJourney": "Home / What We Do / Growth Blueprinting",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "See Alli in Action",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.pmg.com/about/alli?utm_source=instagram&utm_medium=paid_social&utm_campaign=see_alli",
+          "websiteJourney": "Home / About PMG / Alli",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Growth-Obsessed",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.pmg.com/our-work?utm_source=facebook&utm_medium=paid_social&utm_campaign=growth_obsessed",
+          "websiteJourney": "Home / Our Work",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "The Growth Engine",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.pmg.com/what-we-do/momentum-lab?utm_source=instagram&utm_medium=paid_social&utm_campaign=growth_engine",
+          "websiteJourney": "Home / What We Do / Momentum Lab",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Insights and News",
+          "marketingSearchTerm": "best digital marketing agency for enterprise",
+          "landingPageUrl": "https://www.pmg.com/insights?utm_source=organic&utm_medium=organic&utm_campaign=insights",
+          "websiteJourney": "Home / Insights & News",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Alli Platform SEO",
+          "marketingSearchTerm": "agency of record for enterprise brands",
+          "landingPageUrl": "https://www.pmg.com/about/alli?utm_source=organic&utm_medium=organic&utm_campaign=alli_seo",
+          "websiteJourney": "Home / About PMG / Alli",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Our Work SEO",
+          "marketingSearchTerm": "data-driven creative agency",
+          "landingPageUrl": "https://www.pmg.com/our-work?utm_source=organic&utm_medium=organic&utm_campaign=work_seo",
+          "websiteJourney": "Home / Our Work",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Category Disruption",
+          "marketingSearchTerm": "business transformation agency",
+          "landingPageUrl": "https://www.pmg.com/what-we-do/growth-blueprinting?utm_source=google&utm_medium=cpc&utm_campaign=category_disruption",
+          "websiteJourney": "Home / What We Do / Growth Blueprinting",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "See Alli in Action",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.pmg.com/about/alli?utm_source=facebook&utm_medium=paid_social&utm_campaign=see_alli",
+          "websiteJourney": "Home / About PMG / Alli",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Careers Content",
+          "marketingSearchTerm": "pmg graduate leadership program",
+          "landingPageUrl": "https://www.pmg.com/careers?utm_source=organic&utm_medium=organic&utm_campaign=careers",
+          "websiteJourney": "Home / Team & Culture / Careers",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Growth-Obsessed",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.pmg.com/team-culture?utm_source=instagram&utm_medium=paid_social&utm_campaign=growth_obsessed",
+          "websiteJourney": "Home / Team & Culture",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Retail Media Push",
+          "marketingSearchTerm": "commerce media agency",
+          "landingPageUrl": "https://www.pmg.com/what-we-do/commerce-retail-media?utm_source=bing&utm_medium=cpc&utm_campaign=retail_media",
+          "websiteJourney": "Home / What We Do / Marketing Orchestration",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Insights and News",
+          "marketingSearchTerm": "full-funnel media strategy",
+          "landingPageUrl": "https://www.pmg.com/insights?utm_source=organic&utm_medium=organic&utm_campaign=insights",
+          "websiteJourney": "Home / Insights & News",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (PMG)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "2,165"
+            },
+            {
+              "label": "New Business Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Engagement Won (Percent)",
+              "value": "4%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,956,507"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "346"
+            },
+            {
+              "label": "Existing Client Support (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Careers Inquiry (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Billing Question (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Business Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Business Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "40%"
+            },
+            {
+              "label": "Not a Fit (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Engagement Won (Percent)",
+              "value": "4%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Business Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Business Inquiry (Count)",
+            "values": [
+              342,
+              389,
+              401,
+              358,
+              329
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              168,
+              182,
+              191,
+              166,
+              159
+            ]
+          },
+          {
+            "name": "Not a Fit (Count)",
+            "values": [
+              89,
+              97,
+              104,
+              96,
+              90
+            ]
+          },
+          {
+            "name": "Engagement Won (Count)",
+            "values": [
+              15,
+              19,
+              21,
+              17,
+              15
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Engagement Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2165,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "812",
+                "22%",
+                "2.8%",
+                "$1,558,392"
+              ]
+            },
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "561",
+                "24%",
+                "3.6%",
+                "$1,381,204"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "358",
+                "25%",
+                "4.5%",
+                "$1,102,655"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "264",
+                "27%",
+                "5.7%",
+                "$1,026,417"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "170",
+                "29%",
+                "7.1%",
+                "$887,839"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Engagement Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2165,
+          "rows": [
+            {
+              "name": "Paid Search (cpc)",
+              "metrics": [
+                "905",
+                "21%",
+                "3.0%",
+                "$1,742,318"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "498",
+                "24%",
+                "3.8%",
+                "$1,398,225"
+              ]
+            },
+            {
+              "name": "Local Services Ads",
+              "metrics": [
+                "372",
+                "26%",
+                "4.6%",
+                "$1,187,442"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "241",
+                "28%",
+                "5.9%",
+                "$918,634"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "149",
+                "30%",
+                "7.4%",
+                "$709,888"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Engagement Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2165,
+          "rows": [
+            {
+              "name": "Engineered for Impact",
+              "metrics": [
+                "421",
+                "20%",
+                "3.1%",
+                "$842,556"
+              ]
+            },
+            {
+              "name": "Growth-Obsessed",
+              "metrics": [
+                "318",
+                "23%",
+                "4.0%",
+                "$701,338"
+              ]
+            },
+            {
+              "name": "Meet Alli",
+              "metrics": [
+                "256",
+                "25%",
+                "4.8%",
+                "$588,204"
+              ]
+            },
+            {
+              "name": "The Growth Engine",
+              "metrics": [
+                "187",
+                "27%",
+                "6.0%",
+                "$432,915"
+              ]
+            },
+            {
+              "name": "PMG Brand Defense",
+              "metrics": [
+                "132",
+                "30%",
+                "7.6%",
+                "$319,662"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Engagement Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2165,
+          "rows": [
+            {
+              "name": "independent advertising agency",
+              "metrics": [
+                "214",
+                "19%",
+                "3.2%",
+                "$451,882"
+              ]
+            },
+            {
+              "name": "enterprise media buying agency",
+              "metrics": [
+                "168",
+                "22%",
+                "4.1%",
+                "$372,614"
+              ]
+            },
+            {
+              "name": "full-funnel media agency",
+              "metrics": [
+                "131",
+                "25%",
+                "5.0%",
+                "$298,455"
+              ]
+            },
+            {
+              "name": "retail media agency amazon",
+              "metrics": [
+                "97",
+                "28%",
+                "6.2%",
+                "$221,338"
+              ]
+            },
+            {
+              "name": "pmg advertising agency",
+              "metrics": [
+                "68",
+                "31%",
+                "8.0%",
+                "$164,927"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Engagement Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Marketing Orchestration",
+              "metrics": [
+                "682",
+                "22%",
+                "2.9%",
+                "$1,372,845"
+              ]
+            },
+            {
+              "name": "Intelligence Core",
+              "metrics": [
+                "521",
+                "25%",
+                "3.6%",
+                "$1,298,410"
+              ]
+            },
+            {
+              "name": "Signal-Led Creativity",
+              "metrics": [
+                "438",
+                "23%",
+                "4.2%",
+                "$1,236,920"
+              ]
+            },
+            {
+              "name": "Growth Blueprinting",
+              "metrics": [
+                "317",
+                "27%",
+                "5.1%",
+                "$1,091,255"
+              ]
+            },
+            {
+              "name": "Momentum Lab",
+              "metrics": [
+                "207",
+                "24%",
+                "6.8%",
+                "$957,077"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Engagement Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2165,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "638",
+                "21%",
+                "3.0%",
+                "$1,301,275"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "512",
+                "24%",
+                "3.5%",
+                "$1,231,880"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "447",
+                "23%",
+                "4.0%",
+                "$1,229,540"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "348",
+                "26%",
+                "4.9%",
+                "$1,163,255"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "220",
+                "25%",
+                "6.8%",
+                "$1,030,557"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Engagement Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Marketing Orchestration",
+            "values": [
+              4,
+              5,
+              3,
+              4,
+              4
+            ]
+          },
+          {
+            "name": "Intelligence Core",
+            "values": [
+              3,
+              4,
+              5,
+              3,
+              4
+            ]
+          },
+          {
+            "name": "Signal-Led Creativity",
+            "values": [
+              4,
+              3,
+              4,
+              3,
+              4
+            ]
+          },
+          {
+            "name": "Growth Blueprinting",
+            "values": [
+              3,
+              3,
+              4,
+              3,
+              3
+            ]
+          },
+          {
+            "name": "Momentum Lab",
+            "values": [
+              2,
+              3,
+              3,
+              3,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 2,165 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Feld, VP of Marketing at a national retail brand, called to explore full-funnel media buying and retail media support on Amazon. Oscar walked him through PMG's Marketing Orchestration pillar and booked a strategy consultation with an account lead. Marcus confirmed the time and shared his enterprise media budget range.",
+          "date": "Feb 4, 10:18 AM",
+          "agent": "Oscar",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Priya Raman, a growth lead at a SaaS company, requested a live demo of the Alli platform after reading a PMG insights article. Lila explained the Foundation, Intelligence, and Engine layers and scheduled a consultation with a platform specialist. Priya was enthusiastic about seeing Alli in action.",
+          "date": "Mar 9, 1:42 PM",
+          "agent": "Lila",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "David Osei, a director at an enterprise CPG brand, called to request a martech and adtech audit of his current stack. Rosey outlined PMG's audit scope and pricing approach and booked a consultation with a Growth Blueprinting strategist. David appreciated the clear next steps.",
+          "date": "Apr 15, 3:05 PM",
+          "agent": "Rosey",
+          "duration": "2m 58s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 10,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Sofia Marchetti, a new prospect from a DTC apparel brand, called to schedule a consultation about full-funnel media and data-informed creative production. Lee collected her company name, role, budget, and goals as intake details, then booked the consultation. Sofia confirmed she would bring her CMO to the call.",
+          "date": "May 6, 11:27 AM",
+          "agent": "Lee",
+          "duration": "3m 24s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Grace Liang, an existing client, wanted to add dynamic creative production to her current retainer. Mary reviewed her active scope and scheduled a consultation with the creative team to plan the expansion. Grace was pleased with the responsiveness.",
+          "date": "Jun 3, 9:51 AM",
+          "agent": "Mary",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Tom Bradley, a brand manager, called to check the status of deliverables for his ongoing creative campaign. Sue looked up the project timeline and confirmed the assets were in final review. Tom was satisfied but wanted faster updates going forward.",
+          "date": "Jan 22, 2:14 PM",
+          "agent": "Sue",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Nina Alvarez, a client analyst, called with a question about accessing reporting dashboards in the Alli platform. Mike reset her permissions and walked her through the login. The issue was resolved on the call.",
+          "date": "Jul 18, 4:36 PM",
+          "agent": "Mike",
+          "duration": "1m 39s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Robert Kwan called to dispute a monthly invoice tied to a percentage-of-media-spend arrangement. Jennifer explained the billing structure and escalated the line item to the finance team for review. Robert remained unsure about the charges.",
+          "date": "Aug 11, 10:02 AM",
+          "agent": "Jennifer",
+          "duration": "2m 21s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Emily Ford asked for a status update on her outstanding retail media audit report. Rose confirmed the audit was still in analysis and gave a delivery estimate. Emily was frustrated by the delay and asked for a firm date.",
+          "date": "Sep 2, 1:19 PM",
+          "agent": "Rose",
+          "duration": "1m 55s",
+          "scorecards": 7,
+          "comments": 2,
+          "negativeSentiment": 26,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "James Whitfield, an existing client, complained that recent media buying results were underperforming his targets. Oscar reviewed the account and scheduled a performance review with the media lead. James stayed skeptical about the turnaround.",
+          "date": "Sep 24, 3:47 PM",
+          "agent": "Oscar",
+          "duration": "2m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Karen Mills called to schedule a consultation about loyalty and community solutions for her retail program. Lila answered her questions despite Karen's hesitation about budget and booked the consultation. Karen agreed to move forward tentatively.",
+          "date": "Oct 7, 11:11 AM",
+          "agent": "Lila",
+          "duration": "2m 09s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Derek Shaw called to cancel an agility sprint engagement mid-project. Lee documented the cancellation request and explained the wind-down terms. Derek was unhappy about the remaining commitment.",
+          "date": "Oct 19, 9:33 AM",
+          "agent": "Lee",
+          "duration": "1m 27s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "An unidentified caller left a voicemail asking about pricing for enterprise media management but did not leave a full callback number. The call rolled to voicemail after hours. No agent was available to assist.",
+          "date": "Jan 29, 6:52 PM",
+          "agent": "No Agent",
+          "duration": "0m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 25,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Laura Benton called frustrated about repeated delays in her Alli platform onboarding. Mary apologized and escalated the onboarding ticket to the implementation team. Laura remained dissatisfied with the pace.",
+          "date": "Feb 27, 4:08 PM",
+          "agent": "Mary",
+          "duration": "2m 51s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Victor Ramos called angry about being billed for extra creative revision rounds he felt were promised for free. Sue reviewed the scope of work and offered to escalate the billing dispute. Victor demanded a manager callback and ended the call upset.",
+          "date": "Mar 21, 12:40 PM",
+          "agent": "Sue",
+          "duration": "3m 06s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "alli",
+        "retail media",
+        "audit",
+        "creative",
+        "consultation",
+        "media buying"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 41s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Primary Business Challenge",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area and Geography",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Budget Range or Service Tier",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Next Steps and Timeline",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Document Call Notes",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller expressed interest in data unification",
+        "Mentioned current martech platform pain points",
+        "Budget awareness demonstrated",
+        "Service area confirmed within region",
+        "Consultation date selected",
+        "Caller engaged throughout call",
+        "Agent maintained professional tone",
+        "Call routed efficiently from IVR",
+        "Appointment confirmed by caller",
+        "New prospect profile",
+        "Enterprise brand indicators mentioned",
+        "Follow-up materials requested",
+        "Caller asked about Alli platform"
+      ],
+      "unmetSignals": [
+        "Email address not captured on first attempt",
+        "Caller hesitated on service tier discussion",
+        "Timeline expectations not set clearly",
+        "ROI metrics not discussed",
+        "Competitive alternative hinted at",
+        "Decision maker role unclear",
+        "Budget approval process not explored",
+        "Implementation timeline not detailed",
+        "Strategic objectives vague",
+        "Integration requirements unaddressed",
+        "Data privacy concerns not addressed",
+        "Specific KPIs for engagement not established"
+      ],
+      "naSignals": [
+        "Order status inquiry",
+        "Invoice or billing question",
+        "Previous contract renewal",
+        "Delivery or deployment timeline for existing service",
+        "Refund or credit request",
+        "Account migration in progress",
+        "Service cancellation discussion",
+        "Upsell to additional platform tier",
+        "Existing client retention call",
+        "Premium support upgrade",
+        "Contract amendment discussion",
+        "Quarterly business review scheduling"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller mentioned struggling with disconnected data sources across multiple marketing platforms and expressed frustration with manual reporting. They need unified intelligence to optimize spend across channels."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a consultation to explore how Alli's Foundation layer could consolidate their martech stack. They want to understand pricing for a mid-market engagement and timeline for implementation."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have confirmed the caller's email before ending the call, as it was not captured. Additionally, setting explicit expectations about the consultation format and what the caller should prepare would strengthen the follow-up experience."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon, thank you for calling PMG. This is Marcus speaking. May I ask who I'm speaking with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus, this is Jennifer Chen from Momentum Creative. We're a mid-size brand marketing team looking at agency partnerships."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:42",
+          "text": "Great to connect with you, Jennifer. Thanks for reaching out. Can you tell me a bit about what brings you to PMG today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:55",
+          "text": "We currently manage media across Google, Meta, and Amazon separately. Our reporting is scattered, and we're losing visibility on cross-channel performance. We've heard PMG has a platform that unifies all of that."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:12",
+          "text": "You're absolutely right. Our Alli platform brings together data, intelligence, and execution in one place. So your data sources, measurement, and insights all live in a single source of truth. That's exactly what many of our enterprise clients struggle with. Are you in the Denver metro area?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:32",
+          "text": "Actually, we're in Boulder. Does PMG service that area?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:40",
+          "text": "Perfect. Yes, absolutely. We have a hub office in Denver, and we service all of Colorado and the surrounding Mountain West region. So you're definitely within our service area."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:53",
+          "text": "Excellent. And what kind of investment are we looking at for something like this?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:05",
+          "text": "Great question. For a mid-size organization like yours running across three major channels, we'd typically look at a retainer-based engagement somewhere in the 35 to 60 thousand dollar range per month, depending on your media spend and the scope of our involvement. But we'd want to understand your specific situation in a consultation first."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:27",
+          "text": "That's helpful. I'm interested in scheduling a consultation. When could we meet?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:38",
+          "text": "Wonderful. I can get you on the calendar with one of our strategy leads. How does next Tuesday at 10 AM work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:50",
+          "text": "Perfect. That works great for my schedule."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:58",
+          "text": "Excellent, Jennifer. I've got you down for Tuesday at 10 AM. You'll receive a calendar invite and a brief prep guide with some questions to think through before the call. That'll help us make the most of your time. Looking forward to connecting, and we'll talk soon."
+        },
+        {
+          "speaker": "caller",
+          "time": "03:16",
+          "text": "Sounds good. Thanks, Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:22",
+          "text": "Thank you, Jennifer. Have a great rest of your day."
+        }
+      ],
+      "aiSummary": "Jennifer Chen from Momentum Creative, a mid-size brand marketing firm in Boulder, called to explore PMG's unified data and intelligence capabilities. She described pain points with fragmented reporting across Google, Meta, and Amazon media channels and sought a solution for cross-channel visibility. Marcus confirmed service area coverage, provided a realistic budget range of 35 to 60 thousand dollars monthly, and scheduled a consultation for the following Tuesday. The call was structured professionally, though the agent did not capture Jennifer's email address for follow-up confirmation.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, nice job anchoring Jennifer with the service area confirmation and budget clarity early. Your pace and professionalism came through. Two coaching notes for next time: capture the email before closing the call, even if it's just a read-back of what's in the system. Second, take 15 seconds to set expectations about the consultation format so she arrives prepared and knows what to bring. Small touches that elevate the handoff significantly."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "2,165"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$2751.27"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,956,507"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "1,343"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "62%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "520"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "24%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "822"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "9%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Referral",
+                "value": 42,
+                "display": "42%"
+              },
+              {
+                "name": "ChatGPT",
+                "value": 33,
+                "display": "33%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 26,
+                "display": "26%"
+              },
+              {
+                "name": "Google LSA",
+                "value": 21,
+                "display": "21%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "742",
+                  "16%",
+                  "$1,978,455"
+                ]
+              },
+              {
+                "cells": [
+                  "Google LSA",
+                  "561",
+                  "21%",
+                  "$1,542,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "413",
+                  "26%",
+                  "$1,128,940"
+                ]
+              },
+              {
+                "cells": [
+                  "ChatGPT",
+                  "268",
+                  "33%",
+                  "$786,332"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "181",
+                  "42%",
+                  "$519,900"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 800,
+            "axisTicks": [
+              0,
+              200,
+              400,
+              600,
+              800
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 758,
+                "display": "758"
+              },
+              {
+                "name": "Paid Social",
+                "value": 512,
+                "display": "512"
+              },
+              {
+                "name": "Organic",
+                "value": 401,
+                "display": "401"
+              },
+              {
+                "name": "Email",
+                "value": 289,
+                "display": "289"
+              },
+              {
+                "name": "Referral",
+                "value": 205,
+                "display": "205"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "758",
+                  "15%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "512",
+                  "20%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "401",
+                  "25%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "289",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "205",
+                  "40%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 600,
+            "axisTicks": [
+              0,
+              150,
+              300,
+              450,
+              600
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Engineered for Impact",
+                "value": 487,
+                "display": "487"
+              },
+              {
+                "name": "Meet Alli",
+                "value": 372,
+                "display": "372"
+              },
+              {
+                "name": "The Growth Engine",
+                "value": 298,
+                "display": "298"
+              },
+              {
+                "name": "Growth-Obsessed",
+                "value": 214,
+                "display": "214"
+              },
+              {
+                "name": "PMG Agency Defense",
+                "value": 156,
+                "display": "156"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Engineered for Impact",
+                  "487",
+                  "17%",
+                  "$1,232,650"
+                ]
+              },
+              {
+                "cells": [
+                  "Meet Alli",
+                  "372",
+                  "22%",
+                  "$948,320"
+                ]
+              },
+              {
+                "cells": [
+                  "The Growth Engine",
+                  "298",
+                  "28%",
+                  "$742,180"
+                ]
+              },
+              {
+                "cells": [
+                  "Growth-Obsessed",
+                  "214",
+                  "36%",
+                  "$531,470"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 250,
+            "axisTicks": [
+              0,
+              50,
+              100,
+              150,
+              200,
+              250
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "independent advertising agency",
+                "value": 214,
+                "display": "214"
+              },
+              {
+                "name": "enterprise media buying agency",
+                "value": 176,
+                "display": "176"
+              },
+              {
+                "name": "full-funnel media agency",
+                "value": 142,
+                "display": "142"
+              },
+              {
+                "name": "retail media agency amazon",
+                "value": 108,
+                "display": "108"
+              },
+              {
+                "name": "martech adtech audit consultant",
+                "value": 73,
+                "display": "73"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "independent advertising agency",
+                  "18%"
+                ]
+              },
+              {
+                "cells": [
+                  "enterprise media buying agency",
+                  "24%"
+                ]
+              },
+              {
+                "cells": [
+                  "full-funnel media agency",
+                  "29%"
+                ]
+              },
+              {
+                "cells": [
+                  "retail media agency amazon",
+                  "37%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Marketing Orchestration",
+              "687",
+              "16%",
+              "55%"
+            ]
+          },
+          {
+            "cells": [
+              "Intelligence Core",
+              "561",
+              "23%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Growth Blueprinting",
+              "465",
+              "29%",
+              "66%"
+            ]
+          },
+          {
+            "cells": [
+              "Signal-Led Creativity",
+              "452",
+              "38%",
+              "70%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Dallas HQ",
+              "712",
+              "61",
+              "4%",
+              "17%"
+            ]
+          },
+          {
+            "cells": [
+              "New York Hub",
+              "598",
+              "47",
+              "3%",
+              "22%"
+            ]
+          },
+          {
+            "cells": [
+              "London Hub",
+              "471",
+              "39",
+              "5%",
+              "28%"
+            ]
+          },
+          {
+            "cells": [
+              "Austin Hub",
+              "384",
+              "26",
+              "2%",
+              "35%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              88,
+              91,
+              95,
+              86,
+              82
+            ]
+          },
+          {
+            "name": "Comparing Agencies",
+            "values": [
+              74,
+              80,
+              78,
+              81,
+              75
+            ]
+          },
+          {
+            "name": "Needs Executive Approval",
+            "values": [
+              62,
+              68,
+              71,
+              65,
+              65
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              52,
+              55,
+              58,
+              54,
+              55
+            ]
+          },
+          {
+            "name": "Outside Scope of Services",
+            "values": [
+              40,
+              44,
+              43,
+              42,
+              41
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "866"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Engagement Won (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$3,395,209"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Engagement Won (Percent)",
+              "value": "24%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$287,441"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Engagement Won (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$445,680"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Engagement Won (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$512,993"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Engagement Won (Percent)",
+              "value": "27%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$358,275"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Engagement Won (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$521,819"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Engagement Won (Percent)",
+              "value": "42%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$669,001"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Engagement Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 987,
+          "rows": [
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "278",
+                "61%",
+                "28%",
+                "$876,245"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "187",
+                "58%",
+                "31%",
+                "$712,894"
+              ]
+            },
+            {
+              "name": "Google Organic",
+              "metrics": [
+                "142",
+                "52%",
+                "25%",
+                "$419,753"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "98",
+                "48%",
+                "34%",
+                "$287,461"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "73",
+                "44%",
+                "39%",
+                "$215,381"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Engagement Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 989,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "298",
+                "59%",
+                "27%",
+                "$894,537"
+              ]
+            },
+            {
+              "name": "Generative AI Platform",
+              "metrics": [
+                "187",
+                "58%",
+                "31%",
+                "$712,894"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "142",
+                "52%",
+                "25%",
+                "$419,753"
+              ]
+            },
+            {
+              "name": "Direct Web",
+              "metrics": [
+                "109",
+                "47%",
+                "35%",
+                "$301,648"
+              ]
+            },
+            {
+              "name": "Referral Partner",
+              "metrics": [
+                "73",
+                "44%",
+                "39%",
+                "$215,381"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Engagement Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 996,
+          "rows": [
+            {
+              "name": "Engineered for Impact: Brand",
+              "metrics": [
+                "234",
+                "57%",
+                "26%",
+                "$705,892"
+              ]
+            },
+            {
+              "name": "Intelligence to Momentum: Enterprise",
+              "metrics": [
+                "189",
+                "54%",
+                "30%",
+                "$658,471"
+              ]
+            },
+            {
+              "name": "Meet Alli See Alli in Action",
+              "metrics": [
+                "156",
+                "51%",
+                "33%",
+                "$541,380"
+              ]
+            },
+            {
+              "name": "Growth Obsessed: Performance",
+              "metrics": [
+                "98",
+                "49%",
+                "35%",
+                "$287,461"
+              ]
+            },
+            {
+              "name": "The Growth Engine: Transformation",
+              "metrics": [
+                "71",
+                "45%",
+                "41%",
+                "$209,387"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Engagement Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 987,
+          "rows": [
+            {
+              "name": "independent advertising agency",
+              "metrics": [
+                "167",
+                "56%",
+                "28%",
+                "$502,843"
+              ]
+            },
+            {
+              "name": "enterprise media buying agency",
+              "metrics": [
+                "134",
+                "53%",
+                "31%",
+                "$428,567"
+              ]
+            },
+            {
+              "name": "data driven creative agency",
+              "metrics": [
+                "98",
+                "51%",
+                "33%",
+                "$321,754"
+              ]
+            },
+            {
+              "name": "retail media agency Amazon",
+              "metrics": [
+                "76",
+                "48%",
+                "36%",
+                "$223,892"
+              ]
+            },
+            {
+              "name": "marketing analytics platform",
+              "metrics": [
+                "61",
+                "43%",
+                "41%",
+                "$179,301"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Engagement Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Intelligence Core: Data & Measurement",
+              "metrics": [
+                "267",
+                "59%",
+                "29%",
+                "$842,563"
+              ]
+            },
+            {
+              "name": "Marketing Orchestration: Full Funnel",
+              "metrics": [
+                "198",
+                "55%",
+                "32%",
+                "$687,309"
+              ]
+            },
+            {
+              "name": "Signal Led Creativity: Dynamic Creative",
+              "metrics": [
+                "156",
+                "51%",
+                "34%",
+                "$541,847"
+              ]
+            },
+            {
+              "name": "Growth Blueprinting: Strategy & Transformation",
+              "metrics": [
+                "134",
+                "47%",
+                "37%",
+                "$445,387"
+              ]
+            },
+            {
+              "name": "Momentum Lab: Innovation & Agility",
+              "metrics": [
+                "111",
+                "42%",
+                "39%",
+                "$378,103"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Engagement Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Intelligence Core: Data & Measurement",
+            "values": [
+              23,
+              31,
+              28,
+              26,
+              19
+            ]
+          },
+          {
+            "name": "Marketing Orchestration: Full Funnel",
+            "values": [
+              20,
+              26,
+              23,
+              21,
+              24
+            ]
+          },
+          {
+            "name": "Signal Led Creativity: Dynamic Creative",
+            "values": [
+              18,
+              25,
+              22,
+              20,
+              18
+            ]
+          },
+          {
+            "name": "Growth Blueprinting: Strategy & Transformation",
+            "values": [
+              16,
+              21,
+              19,
+              17,
+              13
+            ]
+          },
+          {
+            "name": "Momentum Lab: Innovation & Agility",
+            "values": [
+              14,
+              18,
+              16,
+              15,
+              10
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "378"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$4,218,945"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "31"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$298,417"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              73,
+              78,
+              75,
+              81,
+              76,
+              72,
+              79,
+              74,
+              77,
+              80,
+              73,
+              75,
+              76,
+              72,
+              78,
+              81,
+              74,
+              79,
+              176,
+              183,
+              179,
+              188,
+              181,
+              174,
+              189,
+              177,
+              185,
+              182,
+              186,
+              179,
+              184,
+              192,
+              178,
+              187,
+              185,
+              180,
+              191,
+              176,
+              183,
+              189,
+              177,
+              186,
+              179,
+              188,
+              182,
+              185,
+              177,
+              181,
+              184
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,162"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "86%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "712"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "687"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "96%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Full-Funnel Media Strategy",
+            "values": [
+              8,
+              11,
+              9,
+              3,
+              12,
+              10
+            ]
+          },
+          {
+            "name": "Intelligence & Data Platform Integration",
+            "values": [
+              7,
+              9,
+              8,
+              2,
+              11,
+              9
+            ]
+          },
+          {
+            "name": "Creative Production & Dynamic Ads",
+            "values": [
+              6,
+              10,
+              7,
+              4,
+              10,
+              8
+            ]
+          },
+          {
+            "name": "Retail Media & E-commerce Optimization",
+            "values": [
+              9,
+              8,
+              10,
+              1,
+              9,
+              11
+            ]
+          },
+          {
+            "name": "Martech Audit & Automation",
+            "values": [
+              5,
+              7,
+              6,
+              3,
+              8,
+              7
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "1,992"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "1,256"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Booked (Count)",
+            "value": "520"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$5,956,507"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Jessica Rodriguez",
+              "value": 216,
+              "display": "216"
+            },
+            {
+              "name": "Anil Patel",
+              "value": 164,
+              "display": "164"
+            },
+            {
+              "name": "Sarah Whitmore",
+              "value": 241,
+              "display": "241"
+            },
+            {
+              "name": "David Okonkwo",
+              "value": 203,
+              "display": "203"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Jennifer Huang",
+            "values": [
+              68,
+              72,
+              84,
+              91,
+              107
+            ]
+          },
+          {
+            "name": "Marcus Adeyemi",
+            "values": [
+              54,
+              68,
+              77,
+              89,
+              98
+            ]
+          },
+          {
+            "name": "Rachel Montgomery",
+            "values": [
+              61,
+              70,
+              82,
+              96,
+              104
+            ]
+          },
+          {
+            "name": "Thomas Bergström",
+            "values": [
+              52,
+              65,
+              74,
+              87,
+              101
+            ]
+          },
+          {
+            "name": "Amelia Foster",
+            "values": [
+              59,
+              71,
+              79,
+              92,
+              103
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Jessica Rodriguez",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "Anil Patel",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "Sarah Whitmore",
+              "value": 61.3,
+              "display": "61.3%"
+            },
+            {
+              "name": "David Okonkwo",
+              "value": 57.6,
+              "display": "57.6%"
+            },
+            {
+              "name": "Patricia Gomez",
+              "value": 55.4,
+              "display": "55.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "54.2%",
+                "28%",
+                "$1,847,312",
+                "1,419"
+              ]
+            },
+            {
+              "cells": [
+                "Jessica Rodriguez",
+                "56.8%",
+                "29%",
+                "$1,723,965",
+                "1,483"
+              ]
+            },
+            {
+              "cells": [
+                "Anil Patel",
+                "52.1%",
+                "27%",
+                "$1,582,841",
+                "1,337"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Whitmore",
+                "61.3%",
+                "31%",
+                "$1,944,027",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "David Okonkwo",
+                "57.6%",
+                "30%",
+                "$1,798,446",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Gomez",
+                "55.4%",
+                "28%",
+                "$1,631,193",
+                "1,356"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Jennifer Huang",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Marcus Adeyemi",
+              "value": 89.3,
+              "display": "89.3%"
+            },
+            {
+              "name": "Rachel Montgomery",
+              "value": 93.1,
+              "display": "93.1%"
+            },
+            {
+              "name": "Thomas Bergström",
+              "value": 87.4,
+              "display": "87.4%"
+            },
+            {
+              "name": "Amelia Foster",
+              "value": 90.6,
+              "display": "90.6%"
+            },
+            {
+              "name": "Christopher Drake",
+              "value": 92.2,
+              "display": "92.2%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Huang",
+                "91.7%",
+                "64%",
+                "$2,847,531",
+                "1,547"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Adeyemi",
+                "89.3%",
+                "61%",
+                "$2,563,428",
+                "1,489"
+              ]
+            },
+            {
+              "cells": [
+                "Rachel Montgomery",
+                "93.1%",
+                "66%",
+                "$2,968,104",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Thomas Bergström",
+                "87.4%",
+                "58%",
+                "$2,371,955",
+                "1,404"
+              ]
+            },
+            {
+              "cells": [
+                "Amelia Foster",
+                "90.6%",
+                "63%",
+                "$2,641,389",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Drake",
+                "92.2%",
+                "65%",
+                "$2,755,427",
+                "1,512"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Booked (Count)",
+        "rightMax": 100,
+        "rightTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 19
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 19
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 17
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 17
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 15
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 15
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 17
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 17
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 19
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 19
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 17
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 16
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 15
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 15
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 17
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 18
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 19
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 19
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 17
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 16
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 15
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 15
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 17
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 18
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 19
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 19
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 16
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 16
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 15
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 15
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 12
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 300000,
+        "rightTicks": [
+          0,
+          100000,
+          200000,
+          300000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 220802
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 211629
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 197069
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 188042
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 163725
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 171825
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 189810
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 197292
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 219982
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 213286
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 192100
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 185668
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 165213
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 170296
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 194330
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 200251
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 217934
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 214542
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 188130
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 182163
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 167693
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 169451
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 197679
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 204232
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 215165
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 214852
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 185438
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 177806
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 170601
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 169778
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 199723
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "2,165"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "173"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "130"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "85%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "687",
+                "89%",
+                "86%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James Rodriguez",
+                "754",
+                "87%",
+                "84%",
+                "86%"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Chen",
+                "724",
+                "88%",
+                "85%",
+                "85%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "2,165 calls",
+      "pagerLabel": "1 of 217",
+      "calls": [
+        {
+          "time": "1/6/26 9:12 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 10:41 am",
+          "id": "A3C1-6B29D4F1082A"
+        },
+        {
+          "time": "1/13/26 11:27 am",
+          "id": "D82E-4491AA07C3B5"
+        },
+        {
+          "time": "1/15/26 1:03 pm",
+          "id": "9B44-72F1C0E5519D"
+        },
+        {
+          "time": "1/16/26 2:38 pm",
+          "id": "C107-3D8B15A9E402"
+        },
+        {
+          "time": "1/20/26 8:54 am",
+          "id": "E5A0-9C1467BD230F"
+        },
+        {
+          "time": "1/22/26 12:19 pm",
+          "id": "71FD-2A88E4013C6B"
+        },
+        {
+          "time": "1/26/26 3:47 pm",
+          "id": "4F98-58D2C7A0916E"
+        },
+        {
+          "time": "1/28/26 4:22 pm",
+          "id": "B6D3-1E90F7524A88"
+        },
+        {
+          "time": "1/30/26 5:11 pm",
+          "id": "2C8A-90B471FE6D53"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling PMG, this is Marcus on the growth team. How can I help you today?",
+          "highlights": [
+            "Thank you for calling PMG",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Marcus, my name is Danielle Foster. I head up marketing for a mid-sized outdoor apparel brand and we're looking for an agency to take over our media.",
+          "highlights": [
+            "Danielle Foster"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:18",
+          "text": "Great to meet you, Danielle. We work with a lot of growth-stage brands. Can you tell me a bit about what channels you're running and where you feel the gaps are?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:28",
+          "text": "Sure. Right now we're heavy on paid search and Meta, and we just started on Amazon. Honestly our reporting is a mess and nobody can tell me what's actually working.",
+          "highlights": [
+            "paid search and Meta",
+            "Amazon"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:39",
+          "text": "That's a common pain point. Our Intelligence Core would unify all of that into a single source of truth, and our Full-Funnel Media Management team would run the channels with always-on optimization. You'd see it all through Alli, our operating system.",
+          "highlights": [
+            "Intelligence Core",
+            "Full-Funnel Media Management",
+            "Alli"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:54",
+          "text": "Okay, that sounds like what we need. But I have to ask, what does something like that run? We're a lean team and I want to keep it manageable.",
+          "highlights": [
+            "what does something like that run",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:05",
+          "text": "Totally fair. Full-funnel media is typically a percentage of your media spend, often starting around twenty-five thousand a month, and the data platform layers on top. We scope it to your spend so you're not overpaying early on.",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "1:18",
+          "text": "That's helpful. I'll be honest, we're getting a couple of quotes right now. There's a smaller shop down the street quoting us quite a bit less.",
+          "highlights": [
+            "getting a couple of quotes",
+            "quoting us quite a bit less"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:29",
+          "text": "I appreciate the transparency. Where we tend to separate is the technology. Alli lets us model outcomes and validate strategy before we commit your budget, so you're not paying to learn. Smaller shops usually can't offer that measurement rigor.",
+          "highlights": [
+            "model outcomes and validate strategy",
+            "measurement rigor"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:43",
+          "text": "That does matter to us. One more thing though, I don't want to get locked into some long agreement before I know it's working.",
+          "highlights": [
+            "don't want to get locked into some long agreement"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:53",
+          "text": "Understood. We can start with a scoped engagement so you can see the results before expanding. Many clients begin with a martech audit or an agility sprint and grow from there.",
+          "highlights": [
+            "scoped engagement",
+            "martech audit or an agility sprint"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:05",
+          "text": "Okay, that eases my mind. Could we also talk about creative? Our ads look tired and that might be part of the problem.",
+          "highlights": [
+            "also talk about creative"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:14",
+          "text": "Absolutely. Our Signal-Led Creativity team handles data-informed brand storytelling and dynamic creative, so we can fold that into the conversation. Let me set you up with a strategy consultation with one of our growth leads.",
+          "highlights": [
+            "Signal-Led Creativity",
+            "strategy consultation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:26",
+          "text": "Yes, let's do that. I'd want my co-founder on the call too if possible.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:31",
+          "text": "Perfect. I have Thursday at 10 AM open. I'll send an invite to you and your co-founder. What's the best email for you, Danielle?",
+          "highlights": [
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:37",
+          "text": "It's danielle at summitroute dot com. Thanks Marcus.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:40",
+          "text": "You're all set for Thursday at 10 AM. Thanks for calling PMG, Danielle, we look forward to it.",
+          "highlights": [
+            "all set for Thursday at 10 AM",
+            "Thanks for calling PMG"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Full-Funnel Media",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Intent: Alli Platform",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: Creative Services",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Sensitivity Raised",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Foster, head of marketing for a mid-sized outdoor apparel brand, called PMG seeking an agency to take over her media and fix fragmented reporting. Marcus recommended the Intelligence Core data platform, Full-Funnel Media Management, and the Alli operating system, and addressed her concerns about cost, a lower competitor quote, and long commitments by proposing a scoped engagement. He also introduced Signal-Led Creativity when she raised tired ad creative. A strategy consultation was scheduled for Thursday at 10 AM with Danielle and her co-founder.",
+        "keyPoints": [
+          "New client: outdoor apparel brand exploring an agency switch",
+          "Needs: unified reporting, media management across search, Meta, and Amazon",
+          "Recommended Intelligence Core, Full-Funnel Media, and Alli platform",
+          "Handled price, competitor quote, and contract concerns with a scoped start",
+          "Added Signal-Led Creativity after caller raised creative refresh",
+          "Consultation booked for Thursday 10 AM, email captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "1,364 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 136",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for reaching out to PMG. This is Sarah with our Growth Blueprinting team. We help enterprise brands like yours unlock measurable business growth through data-driven strategy and full-funnel execution. Do you have a few minutes to chat about what's bringing you in today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yeah sure. We're looking to refresh our marketing tech stack. We're currently running multiple platforms and there's a lot of redundancy."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "That's super common with enterprise teams. So you're dealing with data silos and visibility gaps across your channels right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "Exactly. We need someone who can audit what we have and recommend a better strategy."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect. We actually specialize in Martech and Adtech audits and then build transformation roadmaps on top of that. Quick question. which channels are you currently investing most heavily in? Search, social, programmatic, or retail media?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "All of them honestly. Paid search and social are the biggest spends though."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Got it. And are you working with an agency of record right now, or managing most of this in-house?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "Mostly in-house with some freelance support. We don't have a dedicated agency partner."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "That explains the stack fragmentation. Here's what I'm thinking. We could run a comprehensive Martech and Adtech audit plus develop a full Business Transformation Roadmap customized to your media mix. That typically takes 4 to 6 weeks and gives you a clear path forward. Would next Tuesday, March 18th at 2 PM Pacific work for an initial strategy consultation with our Intelligence Core team?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "Yeah that works. What's the scope and investment for something like that?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "The audit and roadmap engagement typically ranges from 75K to 250K depending on the complexity of your current martech stack and the scope of strategic recommendations. We'll confirm exact scope and investment during the consultation. I've blocked you in for Tuesday, March 18th at 2 PM PT. You'll get a calendar invite and a reminder text 24 hours before. Any questions before we wrap up?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "No that sounds good. Looking forward to it."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "Excellent. We're excited to help you streamline and accelerate growth. Our team will reach out at 2 PM PT on the 18th. If anything changes, just call us back at 877-936-2933. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Martech and Adtech Audit",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Business Transformation Roadmap",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Primary Channel: Paid Search and Paid Social",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Current State: In-House with Freelance Support",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimated Investment: 75K to 250K",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "13",
+            "source": "650-447-3821",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "650-447-3821",
+            "repeatCaller": "No",
+            "city": "San Francisco",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Michael Chen",
+            "firstName": "Michael",
+            "lastName": "Chen",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A847-2B5D418C74E9",
+          "time": "8/16/25 9:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A847-2B5D418C74E9",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B923-7C4A9F2E6D1B",
+          "time": "8/16/25 8:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B923-7C4A9F2E6D1B",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D465-8E7F3A1C9B42",
+          "time": "8/16/25 7:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D465-8E7F3A1C9B42",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "2,165 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 217",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thanks for calling PMG. This is Marcus. Are you calling about our Intelligence Core platform or one of our other service offerings today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Yeah, hi Marcus. I'm really interested in learning more about your data measurement platform. We're looking for something that can unify all our marketing data."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Perfect. That sounds like our Unified Data and Measurement Platform might be a great fit. Quick question, are you currently working with an agency on your marketing right now, or are you looking to bring everything in house?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "We've got some agency support, but we're not totally happy with the integration. We want to consolidate everything into one view."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "I totally get that. That's what we built the platform to do. So what's your current annual marketing spend across all channels, roughly?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "We're probably running about five million a year across paid search, social, and some retail media."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Great. That's a solid budget to optimize. One more thing, are you an Apple, Beats, Zoom, or similar enterprise brand, or are you in a different vertical?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "No, we're in the tech space but not at that level. Mid market B2B SaaS."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Perfect. We work with a lot of B2B SaaS clients and love that vertical. Here's what I'd love to do. I'd like to set up a thirty minute consultation with one of our strategy leads who focuses on the Intelligence Core platform. They can walk you through the architecture and show you how we'd integrate your data sources. Does next Tuesday at two PM Pacific work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Yeah, Tuesday at two works great for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Awesome. So I've got you down for Tuesday, January twenty-first at two PM Pacific Time. One of our team members will dial you back at the number you just called from. We'll send a calendar invite to your email too if you want to share that."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Perfect. Looking forward to it."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Excellent. Just to confirm, you're all set for Tuesday the twenty-first at two PM. Our team will call you back. If you need to reschedule, just reply to that calendar invite or call us back at eight seven seven, nine three six, twenty nine thirty three. Thanks so much, and we'll talk soon."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Great, thanks Marcus. Bye."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "Take care."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Platform: Unified Data and Measurement",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Annual Budget Established",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Vertical: B2B SaaS",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Area: Multi-channel Integration",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "7:23",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "415-829-4447",
+            "repeatCaller": "No",
+            "city": "San Francisco",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Wu",
+            "firstName": "Jennifer",
+            "lastName": "Wu",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B824-7A1FE521634E",
+          "time": "1/18/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B824-7A1FE521634E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C641-9F3EE712845B",
+          "time": "1/22/26 10:34 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C641-9F3EE712845B",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D957-2B6CC438719A",
+          "time": "1/29/26 1:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D957-2B6CC438719A",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: I'm PMG's AI agent, here to help you scope a personalized engagement estimate and connect you with a growth strategist. Right now we're offering a complimentary martech and adtech audit for new enterprise clients who book this quarter, would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, which pillar you need most (Intelligence Core, Marketing Orchestration, Signal-Led Creativity, Momentum Lab, or Growth Blueprinting), your approximate monthly media spend or budget range, your primary channels (Paid Search, Paid Social, Retail Media, or Programmatic), your desired start timeline, and the region or headquarters location of your brand so we can align the right hub team.",
+        "Estimate then book: Once I confirm we support your region, I'll share a preliminary range based on what you shared (for example, full-funnel media management often starts around 10 to 18 percent of media spend), then I'll recommend a consultation with a strategy specialist for an exact scope. I can propose Thursday at 10:00 AM, and you'll get a reminder text before the meeting with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "PMG_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "What We Do",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Alli & Technology",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Let's Connect",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"engagement status\",\"question\":\"Where does my full-funnel media optimization stand this month?\",\"answer\":\"Your dedicated pod runs always-on optimization and posts real-time impact inside Alli, and I can have your strategist walk you through the latest dashboard on a quick call.\"},{\"topic\":\"reschedule\",\"question\":\"Can I move my quarterly business review to next week?\",\"answer\":\"Absolutely, I can shift your quarterly review to a new day and time, and you'll receive a reminder text beforehand with a number to call if anything changes.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What does PMG actually do?",
+              "answer": "PMG is an independent advertising and platform company that unites strategy, media, data, creative, and technology to drive measurable growth. The best next step is a consultation with a strategist to map it to your goals."
+            },
+            {
+              "question": "What is Alli?",
+              "answer": "Alli is PMG's proprietary operating system that unifies hundreds of data sources, models outcomes before you commit budget, and automates execution in real time. I'd love to book a consultation so a specialist can show it in action."
+            },
+            {
+              "question": "Do you work with enterprise brands?",
+              "answer": "Yes, PMG serves leading global brands across many categories and reports 90 percent client retention. Let's set up a consultation to discuss your brand's needs."
+            },
+            {
+              "question": "What are your five service pillars?",
+              "answer": "They are Intelligence Core, Marketing Orchestration, Signal-Led Creativity, Momentum Lab, and Growth Blueprinting, all powered by Alli. A quick consultation can pinpoint which pillars fit you best."
+            },
+            {
+              "question": "How much does an engagement cost?",
+              "answer": "Pricing depends on scope, channels, and media spend, so we tailor every engagement. I can book a consultation where a specialist gives you an exact scope and range."
+            },
+            {
+              "question": "Can you manage our paid search and paid social?",
+              "answer": "Yes, PMG runs full-funnel media across Google, Meta, TikTok, and Amazon with always-on optimization. Let's schedule a consultation to align on channels and goals."
+            },
+            {
+              "question": "Do you handle Amazon and retail media?",
+              "answer": "Yes, we build commerce-connected retail media strategies as an Amazon Advanced Partner. A consultation is the best way to scope your retail media plan."
+            },
+            {
+              "question": "Can you help with creative and content?",
+              "answer": "Our Signal-Led Creativity pillar covers data-informed brand storytelling, creator strategy, and dynamic creative production. Let's book a consultation to review your creative needs."
+            },
+            {
+              "question": "Do you offer a martech or adtech audit?",
+              "answer": "Yes, we run martech and adtech audits to find gaps and opportunities in your stack. I can schedule a consultation to get that started."
+            },
+            {
+              "question": "How fast can you launch a campaign?",
+              "answer": "Our Momentum Lab uses agility sprints with rapid test-and-learn frameworks to move quickly. A consultation will help us set a realistic timeline for you."
+            },
+            {
+              "question": "Are you a Google or Meta partner?",
+              "answer": "Yes, PMG is a Google Premier Partner, Meta Disruptor Partner, TikTok Badged Partner, and Amazon Advanced Partner. Let's set up a consultation to put those partnerships to work."
+            },
+            {
+              "question": "Do you provide analytics and measurement?",
+              "answer": "Our Intelligence Core unifies data, media, and audience intelligence with integrated planning and measurement. I'd recommend a consultation to see how it maps to your KPIs."
+            },
+            {
+              "question": "Can you be our agency of record?",
+              "answer": "PMG partners with brands as a long-term growth engine across strategy, media, and creative. A consultation is the best way to explore an agency of record relationship."
+            },
+            {
+              "question": "Where are your offices located?",
+              "answer": "PMG operates 13 global hub offices with more than 1,000 team members worldwide. Let's book a consultation and we'll align you with the right hub team."
+            },
+            {
+              "question": "Do you help with business transformation?",
+              "answer": "Our Growth Blueprinting pillar builds business transformation roadmaps and category disruption strategies. A consultation will let a strategist scope this for you."
+            },
+            {
+              "question": "What kind of results do you deliver?",
+              "answer": "We focus on measurable business growth and always-on optimization, backed by 90 percent client retention. Let's schedule a consultation to discuss the outcomes you want."
+            },
+            {
+              "question": "Can you help with influencer or creator marketing?",
+              "answer": "Yes, we build creator strategy and amplification programs as part of Signal-Led Creativity. A quick consultation will help us scope your creator campaign."
+            },
+            {
+              "question": "Do you offer loyalty or community solutions?",
+              "answer": "Yes, our Growth Blueprinting pillar includes loyalty and community solutions. I can book a consultation so a specialist can tailor a plan."
+            },
+            {
+              "question": "How do we get started?",
+              "answer": "The first step is a consultation with a PMG strategist to understand your goals and scope the right approach. I can propose a day and time right now."
+            },
+            {
+              "question": "Can you show me Alli in a demo?",
+              "answer": "Yes, we can walk you through Alli in a live session so you see the data, intelligence, and engine layers. Let's book a consultation to get that scheduled."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the consultation\",\"follow_up_message\":\"Great, I have you down for a virtual consultation with a PMG growth strategist. You'll get a reminder text before the meeting with a number to call if you need to adjust.\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Thanks for the details on your channels and budget. Based on what you shared I can give a preliminary range on our call, so let's book a consultation where a specialist confirms your exact scope.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is PMG's AI agent. I can help you scope a personalized engagement and connect you with a growth strategist. Would you like to get started?",
+        "goal": "Guide enterprise prospects to book a virtual consultation with a PMG growth strategist for an exact scope and range.",
+        "bookingType": "virtual consultation",
+        "offer": "Complimentary martech and adtech audit when you book this quarter",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "Which pillar do you need most: Intelligence Core, Marketing Orchestration, Signal-Led Creativity, Momentum Lab, or Growth Blueprinting?",
+          "What is your approximate monthly media spend or budget range?",
+          "Which channels matter most: Paid Search, Paid Social, Retail Media, or Programmatic?",
+          "When would you like to start?",
+          "What region or headquarters location is your brand based in so we can align the right hub team?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:16 am"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:16 am"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/22/26 11:16 am"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "PMG",
+      "callerName": "Rachel Martinez",
+      "callerPhone": "(312) 555-0847",
+      "campaign": "Full-Funnel Media Management, Chicago Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$47,250",
+      "googleSearch": "independent advertising agency Chicago enterprise brands",
+      "websiteSearch": "full-funnel media management platform",
+      "callingWebpage": "/what-we-do/marketing-orchestration",
+      "products": "Full-Funnel Media Management, Unified Data & Measurement Platform",
+      "cartId": "PMG-9384K",
+      "serviceable": "Yes",
+      "email": "rachel.martinez@brandco.com",
+      "street": "2847 North Sheffield Avenue",
+      "city": "Chicago",
+      "state": "IL",
+      "zip": "60614",
+      "digitalJourney": "/home › /what-we-do › /what-we-do/marketing-orchestration › /what-we-do/intelligence-core",
+      "intent": "Enterprise brand seeking integrated media buying and data measurement platform to optimize multi-channel campaigns and improve marketing ROI",
+      "coverage": "ZIP 60614 confirmed. Chicago serviceable",
+      "switchIntent": "High. Brand is in active RFP process, evaluating agencies, wants strategy discussion and platform demo this week",
+      "greeting": "Hi Rachel, this is Jordan from PMG. Thanks for reaching out about our Full-Funnel Media Management and data platform solutions. I'd love to schedule a consultation with our strategy team to explore how we can drive measurable growth for your brand. Does later this week work for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "PMG",
+      "callerName": "David Chen",
+      "callerPhone": "(415) 555-0623",
+      "campaign": "Martech Audit Services, San Francisco Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$58,900",
+      "googleSearch": "martech adtech audit consultant San Francisco",
+      "websiteSearch": "marketing technology stack assessment",
+      "callingWebpage": "/what-we-do/growth-blueprinting",
+      "products": "Martech/Adtech Audit, Business Transformation Roadmap",
+      "cartId": "PMG-7521M",
+      "serviceable": "Yes",
+      "email": "david.chen@innovatecorp.com",
+      "street": "1625 Market Street, Suite 450",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94103",
+      "digitalJourney": "/home › /what-we-do/growth-blueprinting › /about-pmg › /let-s-connect",
+      "intent": "Marketing leader needs comprehensive audit of current martech and adtech ecosystem to identify inefficiencies, consolidation opportunities, and strategic transformation roadmap",
+      "coverage": "ZIP 94103 confirmed. San Francisco serviceable",
+      "appointment": "Martech audit strategy session with transformation consultant, Thu Jul 18, 2:00 PM",
+      "greeting": "Hi David, thanks so much for texting us. Looking forward to our martech audit strategy session on Thursday at 2 PM. Our consultant will review your current tech stack and share initial insights. Let me know if you have any questions before then. Best, Marcus at PMG"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "PMG",
+      "brandDomain": "www.pmg.com",
+      "brandIcon": "📊",
+      "callerPhone": "+1 (310) 555-0148",
+      "callerLocation": "Los Angeles, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "Intelligence to Momentum",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "data-driven creative agency for enterprise brands",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/what-we-do/signal-led-creativity",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Signal-Led Creativity, Unified Data & Measurement Platform",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Los Angeles, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "new_project_consultation",
+          "name": "Consultation. New Project"
+        },
+        {
+          "id": "existing_client_support",
+          "name": "Account Management. Existing Client"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "Business Development"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling PMG. I see you've been looking at our Signal-Led Creativity services. Are you looking to work with an agency on a new campaign or project?",
+          "sigs": [],
+          "q": [
+            45,
+            35,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, we're a mid-sized CPG brand based here in LA and we need help with <strong>data-informed brand storytelling</strong> and some <strong>creator amplification</strong> for a new product launch coming up in Q2.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>New product launch</strong>, Q2 timeline"
+            },
+            {
+              "c": "green",
+              "t": "<strong>Signal-Led Creativity</strong>, two service areas"
+            },
+            {
+              "c": "blue",
+              "t": "Mid-sized CPG, Los Angeles"
+            }
+          ],
+          "q": [
+            68,
+            22,
+            10
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. That sounds like a great fit for our approach. So you're looking for data-informed storytelling plus creator strategy for this Q2 launch. Are you currently working with another agency, or would this be a new partnership entirely?",
+          "sigs": [],
+          "q": [
+            76,
+            18,
+            6
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Brand new partnership. We've been in-house on creative for a while but we know we need real data backing and creator reach to move the needle on this one. Budget is probably in the 80 to 120 range for the whole engagement.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>New partnership</strong>, no incumbent"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>Budget range</strong> USD 80K to 120K"
+            },
+            {
+              "c": "green",
+              "t": "Wants data-backed strategy"
+            }
+          ],
+          "q": [
+            92,
+            5,
+            3
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent. That scope and budget are right in line with what we do on Signal-Led Creativity and creator strategy. I'm going to connect you with our New Project team who specialize in exactly this type of work. They'll walk through our approach and get you booked in for a discovery session. Let me get you transferred over now.",
+          "sigs": [],
+          "q": [
+            95,
+            3,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "signal = \"Consultation Booked\" or signal = \"Kickoff Scheduled\"",
+          "createdAt": "03/12/25 9:14 am",
+          "updatedAt": "12/19/25 4:38 pm"
+        },
+        {
+          "name": "Alli Platform Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"tell me about Alli (Caller)\", \"how does your platform work (Caller)\", \"your proprietary operating system\", \"see Alli in action (Caller)\"])",
+          "createdAt": "04/02/25 10:47 am",
+          "updatedAt": "11/30/25 2:05 pm"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"we're using another agency (Caller)\", \"compared to our current agency of record (Caller)\", \"looking at other independent agencies\", \"already working with a media partner (Caller)\"])",
+          "createdAt": "02/18/25 1:22 pm",
+          "updatedAt": "10/14/25 9:51 am"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule a consultation (Agent)\", \"book a discovery call (Agent)\", \"set up a strategy session (Agent)\", \"walk you through our approach\"])",
+          "createdAt": "01/29/25 8:36 am",
+          "updatedAt": "12/03/25 3:19 pm"
+        },
+        {
+          "name": "Discovery Questions Asked",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Discovery Excellence] < 60 and duration > 45 sec",
+          "createdAt": "05/09/25 11:03 am",
+          "updatedAt": "12/28/25 10:12 am"
+        },
+        {
+          "name": "Next Steps Confirmed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Call Follow Up] < 60 and duration > 45 sec",
+          "createdAt": "06/21/25 2:40 pm",
+          "updatedAt": "12/22/25 1:47 pm"
+        },
+        {
+          "name": "Pricing Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"what's your monthly retainer (Caller)\", \"that sounds expensive (Caller)\", \"percentage of media spend (Caller)\", \"what does it cost (Caller)\"])",
+          "createdAt": "03/27/25 9:58 am",
+          "updatedAt": "11/18/25 4:22 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"send you a proposal (Agent)\", \"the monthly retainer would be (Agent)\", \"our project fee starts at (Agent)\", \"scope of work pricing\"])",
+          "createdAt": "04/15/25 12:31 pm",
+          "updatedAt": "12/11/25 11:29 am"
+        },
+        {
+          "name": "Retail Media Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"Amazon retail media (Caller)\", \"commerce connected media (Caller)\", \"selling on marketplaces (Caller)\", \"retail media network (Caller)\"])",
+          "createdAt": "05/30/25 3:14 pm",
+          "updatedAt": "12/07/25 9:03 am"
+        },
+        {
+          "name": "Value Proposition Delivered",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Value Messaging] < 60 and duration > 45 sec",
+          "createdAt": "02/06/25 10:19 am",
+          "updatedAt": "12/30/25 2:56 pm"
+        }
+      ]
+    }
+  }
+}

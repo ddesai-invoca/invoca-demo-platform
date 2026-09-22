@@ -1,0 +1,5298 @@
+{
+  "id": "first-command-financial-services",
+  "customerName": "First Command Financial Services",
+  "websiteUrl": "https://www.firstcommand.com",
+  "brandDomain": "firstcommand.com",
+  "networkName": "Invoca for Financial Services",
+  "industry": "Military Financial Planning & Advisory",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Client",
+  "generation": {
+    "at": "2026-09-22T15:11:44.862Z",
+    "scope": "full"
+  },
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 12000,
+      "yTicks": [
+        0,
+        3000,
+        6000,
+        9000,
+        12000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 6842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 11238
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 10517
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 11164
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 8675
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Financially Squared Away",
+          "marketingSearchTerm": "military financial advisor",
+          "landingPageUrl": "firstcommand.com/financial-advising-planning/?utm_source=google&utm_medium=cpc&utm_campaign=financially_squared_away",
+          "websiteJourney": "Home / Services / Financial Advising & Planning",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "BRS Ready",
+          "marketingSearchTerm": "blended retirement system advice",
+          "landingPageUrl": "firstcommand.com/coaching-center/military-life/brs-lump-sum-options/?utm_source=google&utm_medium=cpc&utm_campaign=brs_ready",
+          "websiteJourney": "Home / Tools & Advice / Coaching Center",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Mission: Retirement",
+          "marketingSearchTerm": "tsp rollover to ira",
+          "landingPageUrl": "firstcommand.com/investing-saving/?utm_source=google&utm_medium=cpc&utm_campaign=mission_retirement",
+          "websiteJourney": "Home / Services / Investing & Saving",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Military Friendly Advisor",
+          "marketingSearchTerm": "financial advisor near military base",
+          "landingPageUrl": "firstcommand.com/about-us/first-command-difference/?utm_source=bing&utm_medium=cpc&utm_campaign=military_friendly_advisor",
+          "websiteJourney": "Home / About / The First Command Difference",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Squared Away From Day One",
+          "marketingSearchTerm": "roth ira for service members",
+          "landingPageUrl": "firstcommand.com/investing-saving/?utm_source=google&utm_medium=cpc&utm_campaign=squared_away_day_one",
+          "websiteJourney": "Home / Services / Investing & Saving",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Serve Those Who Serve",
+          "marketingSearchTerm": "military life insurance",
+          "landingPageUrl": "firstcommand.com/insurance/?utm_source=google&utm_medium=cpc&utm_campaign=serve_those_who_serve",
+          "websiteJourney": "Home / Services / Insurance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Serve Those Who Serve",
+          "marketingSearchTerm": "sgli vs private life insurance",
+          "landingPageUrl": "firstcommand.com/insurance/?utm_source=bing&utm_medium=cpc&utm_campaign=serve_those_who_serve",
+          "websiteJourney": "Home / Services / Insurance / Term Life",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "VA Home Loan Ready",
+          "marketingSearchTerm": "va home loan military bank",
+          "landingPageUrl": "firstcommand.com/banking/?utm_source=google&utm_medium=cpc&utm_campaign=va_home_loan_ready",
+          "websiteJourney": "Home / Services / Banking / Mortgages",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Coaching Center SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "firstcommand.com/coaching-center/military-life/brs-lump-sum-options/?utm_source=organic&utm_medium=organic",
+          "websiteJourney": "Home / Tools & Advice / Coaching Center / Military Life",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Coaching Center SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "firstcommand.com/financial-advising-planning/?utm_source=organic&utm_medium=organic",
+          "websiteJourney": "Home / Services / Financial Advising & Planning",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Social",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Planning With Purpose",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "firstcommand.com/financial-advising-planning/?utm_source=facebook&utm_medium=paidsocial&utm_campaign=planning_with_purpose",
+          "websiteJourney": "Home / Services / Financial Advising & Planning",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Social",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Military Life Series",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "firstcommand.com/coaching-center/?utm_source=instagram&utm_medium=paidsocial&utm_campaign=military_life_series",
+          "websiteJourney": "Home / Tools & Advice / Coaching Center",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Social",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Serve Those Who Serve",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "firstcommand.com/insurance/?utm_source=facebook&utm_medium=paidsocial&utm_campaign=serve_those_who_serve",
+          "websiteJourney": "Home / Services / Insurance",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Mission: Retirement",
+          "marketingSearchTerm": "veteran retirement planning",
+          "landingPageUrl": "firstcommand.com/financial-advising-planning/?utm_source=google&utm_medium=cpc&utm_campaign=mission_retirement",
+          "websiteJourney": "Home / Services / Financial Advising & Planning",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "College Bound",
+          "marketingSearchTerm": "529 plan military family",
+          "landingPageUrl": "firstcommand.com/investing-saving/?utm_source=google&utm_medium=cpc&utm_campaign=college_bound",
+          "websiteJourney": "Home / Services / Investing & Saving / 529 Plans",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Coaching Center SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "firstcommand.com/banking/?utm_source=organic&utm_medium=organic",
+          "websiteJourney": "Home / Services / Banking / CDs",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Financially Squared Away",
+          "marketingSearchTerm": "first command reviews",
+          "landingPageUrl": "firstcommand.com/about-us/first-command-difference/?utm_source=bing&utm_medium=cpc&utm_campaign=financially_squared_away",
+          "websiteJourney": "Home / About / The First Command Difference",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Social",
+          "marketingMedium": "LinkedIn",
+          "marketingCampaign": "BRS Ready",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "firstcommand.com/coaching-center/military-life/brs-lump-sum-options/?utm_source=linkedin&utm_medium=paidsocial&utm_campaign=brs_ready",
+          "websiteJourney": "Home / Tools & Advice / Coaching Center / Military Life",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Squared Away From Day One",
+          "marketingSearchTerm": "financial planning for military families",
+          "landingPageUrl": "firstcommand.com/financial-advising-planning/?utm_source=google&utm_medium=cpc&utm_campaign=squared_away_day_one",
+          "websiteJourney": "Home / Services / Financial Advising & Planning",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Social",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Planning With Purpose",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "firstcommand.com/investing-saving/?utm_source=instagram&utm_medium=paidsocial&utm_campaign=planning_with_purpose",
+          "websiteJourney": "Home / Services / Investing & Saving / IRAs",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Coaching Center SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "firstcommand.com/insurance/?utm_source=organic&utm_medium=organic",
+          "websiteJourney": "Home / Services / Insurance / Disability Income",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Social",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Military Life Series",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "firstcommand.com/careers/?utm_source=facebook&utm_medium=paidsocial&utm_campaign=military_life_series",
+          "websiteJourney": "Home / Careers",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (First Command Financial Services)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "37,989"
+            },
+            {
+              "label": "Advisory Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "New Client (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$22,418,153"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "6,078"
+            },
+            {
+              "label": "Existing Account Servicing (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing Inquiry (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "General Information (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Advisory Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Advisory Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Unqualified Prospect (Percent)",
+              "value": "11%"
+            },
+            {
+              "label": "New Client (Percent)",
+              "value": "18%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Advisory Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Advisory Inquiry (Count)",
+            "values": [
+              4213,
+              7102,
+              6987,
+              7241,
+              6368
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              1904,
+              3218,
+              3102,
+              3341,
+              2871
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              552,
+              934,
+              897,
+              961,
+              835
+            ]
+          },
+          {
+            "name": "New Client (Count)",
+            "values": [
+              903,
+              1524,
+              1467,
+              1571,
+              1373
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 37989,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "13,842",
+                "36%",
+                "13.5%",
+                "$6,184,220"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "9,517",
+                "39%",
+                "16.3%",
+                "$5,087,280"
+              ]
+            },
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "6,733",
+                "42%",
+                "19.2%",
+                "$4,253,970"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "4,201",
+                "45%",
+                "23.5%",
+                "$3,257,100"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "3,696",
+                "49%",
+                "30%",
+                "$3,635,583"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 37989,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "15,218",
+                "37%",
+                "14.1%",
+                "$6,995,960"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "8,942",
+                "40%",
+                "16.5%",
+                "$4,838,000"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "6,127",
+                "43%",
+                "19.5%",
+                "$3,925,575"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "4,388",
+                "46%",
+                "23.5%",
+                "$3,402,300"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "3,314",
+                "50%",
+                "29.9%",
+                "$3,256,318"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 37989,
+          "rows": [
+            {
+              "name": "Financially Squared Away",
+              "metrics": [
+                "7,842",
+                "36%",
+                "14%",
+                "$3,590,460"
+              ]
+            },
+            {
+              "name": "Planning With Purpose",
+              "metrics": [
+                "5,431",
+                "39%",
+                "16.5%",
+                "$2,938,880"
+              ]
+            },
+            {
+              "name": "BRS Ready",
+              "metrics": [
+                "4,118",
+                "42%",
+                "19%",
+                "$2,572,780"
+              ]
+            },
+            {
+              "name": "Mission: Retirement",
+              "metrics": [
+                "3,204",
+                "45%",
+                "23%",
+                "$2,432,100"
+              ]
+            },
+            {
+              "name": "Military Friendly Advisor",
+              "metrics": [
+                "2,417",
+                "49%",
+                "28%",
+                "$2,206,020"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 37989,
+          "rows": [
+            {
+              "name": "military financial advisor",
+              "metrics": [
+                "4,318",
+                "35%",
+                "13.5%",
+                "$1,903,495"
+              ]
+            },
+            {
+              "name": "blended retirement system advice",
+              "metrics": [
+                "3,102",
+                "38%",
+                "16%",
+                "$1,626,880"
+              ]
+            },
+            {
+              "name": "va home loan military bank",
+              "metrics": [
+                "2,451",
+                "41%",
+                "19%",
+                "$1,533,140"
+              ]
+            },
+            {
+              "name": "roth ira for service members",
+              "metrics": [
+                "1,842",
+                "45%",
+                "23%",
+                "$1,399,200"
+              ]
+            },
+            {
+              "name": "military life insurance",
+              "metrics": [
+                "1,377",
+                "49%",
+                "28.5%",
+                "$1,281,840"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Financial Advising & Planning",
+              "metrics": [
+                "11,842",
+                "34%",
+                "13%",
+                "$4,997,315"
+              ]
+            },
+            {
+              "name": "Banking",
+              "metrics": [
+                "9,417",
+                "37%",
+                "16%",
+                "$4,962,187"
+              ]
+            },
+            {
+              "name": "Insurance",
+              "metrics": [
+                "8,236",
+                "40%",
+                "19%",
+                "$5,104,882"
+              ]
+            },
+            {
+              "name": "Investing & Saving",
+              "metrics": [
+                "5,318",
+                "43%",
+                "23%",
+                "$4,038,411"
+              ]
+            },
+            {
+              "name": "Retirement & BRS Coaching",
+              "metrics": [
+                "3,176",
+                "47%",
+                "31%",
+                "$3,315,358"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 37989,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "12,684",
+                "35%",
+                "13%",
+                "$5,393,118"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "9,213",
+                "38%",
+                "16%",
+                "$4,841,257"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "7,542",
+                "41%",
+                "19%",
+                "$4,672,905"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "5,318",
+                "44%",
+                "23%",
+                "$4,031,466"
+              ]
+            },
+            {
+              "name": "Overseas Installations",
+              "metrics": [
+                "3,232",
+                "49%",
+                "33%",
+                "$3,479,407"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Client (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Financial Advising & Planning",
+            "values": [
+              291,
+              318,
+              322,
+              305,
+              306
+            ]
+          },
+          {
+            "name": "Banking",
+            "values": [
+              287,
+              301,
+              312,
+              298,
+              310
+            ]
+          },
+          {
+            "name": "Insurance",
+            "values": [
+              302,
+              314,
+              321,
+              308,
+              321
+            ]
+          },
+          {
+            "name": "Investing & Saving",
+            "values": [
+              231,
+              248,
+              256,
+              244,
+              245
+            ]
+          },
+          {
+            "name": "Retirement & BRS Coaching",
+            "values": [
+              187,
+              201,
+              208,
+              196,
+              206
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 37,989 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Staff Sergeant Marcus Delgado called to set up his complimentary comprehensive financial plan after a recent PCS move. Agent Oscar walked him through budgeting and retirement goals, then booked a consultation with an advisor near his new base. Marcus left the call financially squared away and eager to start.",
+          "date": "Jan 6, 9:14 AM",
+          "agent": "Oscar",
+          "duration": "2m 48s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Jenna Whitfield, a Navy spouse, asked about opening a Roth IRA for herself and her husband. Agent Lila explained the contribution limits and no account fee, then scheduled a planning consultation to review their retirement mix. Jenna was thrilled with the clarity.",
+          "date": "Feb 11, 1:37 PM",
+          "agent": "Lila",
+          "duration": "2m 19s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 83,
+          "summary": "Airman First Class Devon Pruitt wanted guidance on his BRS lump sum options ahead of a career decision. Agent Rosey outlined the tradeoffs and connected him with a retirement transition coach. Devon booked a follow-up consultation to finalize his election.",
+          "date": "Mar 3, 10:52 AM",
+          "agent": "Rosey",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 9,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "New prospect Caroline Estrada called to schedule her first appointment with a First Command advisor after seeing a Military Friendly ad. Agent Lee collected her contact details, spouse information, and financial goals, then booked her complimentary financial plan consultation. Caroline confirmed the time and thanked Lee for the smooth intake.",
+          "date": "Apr 8, 4:21 PM",
+          "agent": "Lee",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 10,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Retired Colonel Harold Simms asked about supplementing his SGLI with a private term life policy. Agent Mary reviewed monthly premium ranges and set up a consultation to compare coverage. Harold appreciated the options and agreed to meet an advisor.",
+          "date": "May 14, 11:08 AM",
+          "agent": "Mary",
+          "duration": "2m 41s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Sergeant Alicia Ford inquired about a VA home loan through First Command Bank for a house near Fort Hood. Agent Mike explained rate ranges and closing cost expectations, then took her details for a mortgage specialist callback. She did not schedule a planning consultation on this call.",
+          "date": "Jun 2, 3:16 PM",
+          "agent": "Mike",
+          "duration": "2m 57s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 15,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 62,
+          "summary": "Brandon Keeler wanted to open a 529 college savings plan for his two children. Agent Sue explained the low minimums and tax advantages and booked a consultation to align it with his broader financial plan. Brandon was satisfied with the next steps.",
+          "date": "Jun 19, 9:47 AM",
+          "agent": "Sue",
+          "duration": "2m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Priya Nandakumar called to check the status of her CD that was about to mature. Agent Jennifer confirmed the renewal date and current APY tiers but Priya declined to reinvest immediately. No consultation was scheduled.",
+          "date": "Jul 7, 2:04 PM",
+          "agent": "Jennifer",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Corporal Trey Bishop asked about a TSP rollover to an IRA before separating from service. Agent Rose explained the process but the call dropped some detail and he wanted to think it over. He did not book a consultation.",
+          "date": "Jul 22, 10:33 AM",
+          "agent": "Rose",
+          "duration": "1m 39s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Danielle Cross called about a billing dispute on her checking account monthly fee that she thought was waived. Agent Mike researched the charge and opened a service ticket. Danielle remained frustrated that it was not resolved on the call.",
+          "date": "Aug 9, 1:22 PM",
+          "agent": "Mike",
+          "duration": "2m 26s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Ex-Petty Officer Randall Muse wanted to cancel his whole life insurance policy due to budget concerns. Agent Lila tried to explain the cash value but Randall insisted on cancellation paperwork. The call ended without a retention or consultation.",
+          "date": "Aug 25, 4:49 PM",
+          "agent": "Lila",
+          "duration": "2m 08s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 43,
+          "summary": "Gwen Marlow called upset that her disability income insurance claim documents had not been processed. Agent Oscar apologized and escalated the case but could not give a firm timeline. Gwen stayed dissatisfied.",
+          "date": "Sep 4, 11:19 AM",
+          "agent": "Oscar",
+          "duration": "2m 51s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "Nathan Ortega wanted his auto loan payoff quote but the account verification kept failing. Agent Sue struggled to locate the loan and the caller grew impatient. No resolution and no consultation were reached.",
+          "date": "Sep 18, 3:41 PM",
+          "agent": "Sue",
+          "duration": "1m 27s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Tabitha Reyes complained that a promised financial plan follow-up never happened and that no advisor returned her calls. Agent Lee tried to recover the relationship but Tabitha was angry and demanded a manager. The call ended tense.",
+          "date": "Sep 30, 10:07 AM",
+          "agent": "Lee",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 39,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "An unidentified caller left a voicemail asking about term life coverage options and a possible VA home loan refinance. No agent was available and the message rolled to voicemail. No callback details were captured clearly.",
+          "date": "Oct 5, 5:28 PM",
+          "agent": "No Agent",
+          "duration": "0m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "financial plan",
+        "roth ira",
+        "term life",
+        "brs",
+        "va home loan",
+        "cd"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Service Interest (Financial Coaching/Investing/Insurance/Banking)",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Military Affiliation or Eligibility",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Next Steps and Timeline",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer Complimentary Financial Plan Information",
+          "points": "10/10",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller is active duty military",
+        "Expressed interest in retirement planning",
+        "Asked about BRS options",
+        "Caller has a family with children",
+        "Caller mentioned salary and assets",
+        "Agreed to consultation appointment",
+        "Caller was polite and engaged",
+        "Agent used military terminology correctly",
+        "Call routed to correct advisor branch",
+        "Caller confirmed availability for consultation",
+        "Agent explained complimentary planning benefit",
+        "Caller expressed time constraint awareness",
+        "Caller lives in service area"
+      ],
+      "unmetSignals": [
+        "Did not capture email during call",
+        "Did not explain post-call follow up timeline",
+        "Caller hesitated on specific retirement goals",
+        "Did not discuss insurance needs",
+        "Did not mention TSP or IRA rollover options",
+        "Did not qualify for managed portfolio service tier",
+        "Did not capture preferred contact method",
+        "Did not offer to mail additional materials",
+        "Caller did not commit to reviewing materials before appointment",
+        "Did not discuss other family members' coverage",
+        "Did not capture employer information",
+        "Did not mention First Command Bank products",
+        "Did not discuss long term care planning",
+        "Did not clarify if caller researched competitors",
+        "Did not offer webinar or coaching center resources"
+      ],
+      "naSignals": [
+        "No existing account to review",
+        "No prior service history with First Command",
+        "Not a policy renewal conversation",
+        "Did not discuss claims or policy changes",
+        "No product swap or upgrade discussion",
+        "No billing or payment issues",
+        "No referral request made"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller is an active duty service member concerned about optimizing his Blended Retirement System lump sum election and creating a long term retirement strategy. He wants to ensure his family is protected and his savings are growing appropriately."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a free financial planning consultation where a dedicated advisor will review his military retirement options, discuss how to supplement SGLI with private life insurance if needed, and create a goals based roadmap for his family's financial future."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address to send a pre consultation summary and appointment confirmation. Additionally, explaining the specific timeline for when the advisor will contact him and what materials to review beforehand would set clearer expectations."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon, thank you for calling First Command Financial Services. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus, yes. I'm an Army officer, been in about eight years, and I've been thinking I really need to get my finances squared away before things get more complicated. My wife and I have two kids now."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:45",
+          "text": "Congratulations on your family. I'm glad you reached out. We specialize in financial coaching specifically for military families and active duty personnel. Can I get your full name first?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:58",
+          "text": "Sure, it's James Mitchell."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:04",
+          "text": "Thank you, James. And what's the main area you'd like to focus on right now? Is it retirement planning, investing, insurance, or maybe our banking services?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:18",
+          "text": "Honestly, I'm most concerned about retirement right now. I'm trying to understand the BRS lump sum options when I eventually separate, and I want to make sure my family is protected financially."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:35",
+          "text": "That's very smart thinking. Blended Retirement System strategy and life insurance protection are two of the areas where we help our military clients most. What's your duty ZIP code so I can make sure we have an advisor in your area?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:50",
+          "text": "I'm stationed at Fort Stewart in Georgia. That's 31314."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:01",
+          "text": "Perfect, Fort Stewart is in our service area. We have advisors right there who work with Army personnel regularly. How would you prefer we get in touch to book your complimentary financial planning consultation?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:14",
+          "text": "A phone call would be best. I'm kind of busy with work, but I can take a quick call next week. Can you schedule something for Tuesday or Wednesday?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:26",
+          "text": "Absolutely. I've got you down for a consultation with one of our financial coaches next Tuesday at 2 PM. He'll walk through your BRS options, talk about protecting your family, and create a roadmap for your financial future. Thanks for calling, James, and welcome to First Command."
+        }
+      ],
+      "aiSummary": "James Mitchell, an active duty Army officer stationed at Fort Stewart, called to schedule a complimentary financial planning consultation. He expressed interest in understanding his Blended Retirement System lump sum options and ensuring his family of four is properly protected. The agent Marcus Bell collected his information and scheduled a consultation for the following Tuesday at 2 PM with a local financial advisor. The call was structured well with proper greeting and close, though the agent did not capture James's email address for follow up materials or provide a clear explanation of next steps before the scheduled appointment.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great work on this call. You identified his military affiliation immediately, used proper terminology around BRS, and closed with a confirmed appointment time. One thing for next time: grab his email before you hang up so we can send him a pre consultation summary and appointment reminder. Also, take 10 more seconds to walk through what our advisor will prepare for Tuesday. That sets expectations and builds confidence. Otherwise, solid intake work here."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "37,989"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$590.12"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$22,418,153"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "22,415"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "59%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "14,436"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "38%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "15,574"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Referral",
+                "value": 52,
+                "display": "52%"
+              },
+              {
+                "name": "ChatGPT",
+                "value": 45,
+                "display": "45%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 39,
+                "display": "39%"
+              },
+              {
+                "name": "Google LSA",
+                "value": 34,
+                "display": "34%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "13,842",
+                  "29%",
+                  "$8,142,668"
+                ]
+              },
+              {
+                "cells": [
+                  "Google LSA",
+                  "9,517",
+                  "34%",
+                  "$5,318,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "6,428",
+                  "39%",
+                  "$3,564,215"
+                ]
+              },
+              {
+                "cells": [
+                  "ChatGPT",
+                  "4,893",
+                  "45%",
+                  "$2,987,411"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "3,309",
+                  "52%",
+                  "$2,405,417"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 16000,
+            "axisTicks": [
+              0,
+              4000,
+              8000,
+              12000,
+              16000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 15284,
+                "display": "15,284"
+              },
+              {
+                "name": "Paid Social",
+                "value": 9142,
+                "display": "9,142"
+              },
+              {
+                "name": "Organic",
+                "value": 6428,
+                "display": "6,428"
+              },
+              {
+                "name": "Email",
+                "value": 4218,
+                "display": "4,218"
+              },
+              {
+                "name": "Referral",
+                "value": 2917,
+                "display": "2,917"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "15,284",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "9,142",
+                  "35%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "6,428",
+                  "40%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "4,218",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "2,917",
+                  "51%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 9000,
+            "axisTicks": [
+              0,
+              3000,
+              6000,
+              9000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Financially Squared Away",
+                "value": 8214,
+                "display": "8,214"
+              },
+              {
+                "name": "Planning With Purpose",
+                "value": 6142,
+                "display": "6,142"
+              },
+              {
+                "name": "BRS Ready",
+                "value": 4873,
+                "display": "4,873"
+              },
+              {
+                "name": "Mission: Retirement",
+                "value": 3518,
+                "display": "3,518"
+              },
+              {
+                "name": "Serve Those Who Serve",
+                "value": 2241,
+                "display": "2,241"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Financially Squared Away",
+                  "8,214",
+                  "31%",
+                  "$2,948,215"
+                ]
+              },
+              {
+                "cells": [
+                  "Planning With Purpose",
+                  "6,142",
+                  "36%",
+                  "$2,214,668"
+                ]
+              },
+              {
+                "cells": [
+                  "BRS Ready",
+                  "4,873",
+                  "41%",
+                  "$1,782,415"
+                ]
+              },
+              {
+                "cells": [
+                  "Mission: Retirement",
+                  "3,518",
+                  "47%",
+                  "$1,342,118"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 5000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "military financial advisor",
+                "value": 4218,
+                "display": "4,218"
+              },
+              {
+                "name": "Blended Retirement System advice",
+                "value": 3142,
+                "display": "3,142"
+              },
+              {
+                "name": "military life insurance",
+                "value": 2514,
+                "display": "2,514"
+              },
+              {
+                "name": "TSP rollover to IRA",
+                "value": 1842,
+                "display": "1,842"
+              },
+              {
+                "name": "VA home loan military bank",
+                "value": 1318,
+                "display": "1,318"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "military financial advisor",
+                  "32%"
+                ]
+              },
+              {
+                "cells": [
+                  "Blended Retirement System advice",
+                  "37%"
+                ]
+              },
+              {
+                "cells": [
+                  "military life insurance",
+                  "43%"
+                ]
+              },
+              {
+                "cells": [
+                  "TSP rollover to IRA",
+                  "49%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Financial Advising & Planning",
+              "12,842",
+              "33%",
+              "62%"
+            ]
+          },
+          {
+            "cells": [
+              "Investing & Saving",
+              "9,517",
+              "38%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Insurance",
+              "7,428",
+              "44%",
+              "54%"
+            ]
+          },
+          {
+            "cells": [
+              "Banking",
+              "5,218",
+              "51%",
+              "48%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Fort Worth HQ Office",
+              "11,428",
+              "942",
+              "6%",
+              "34%"
+            ]
+          },
+          {
+            "cells": [
+              "Fort Liberty Office",
+              "8,214",
+              "618",
+              "5%",
+              "39%"
+            ]
+          },
+          {
+            "cells": [
+              "San Diego Office",
+              "6,517",
+              "471",
+              "4%",
+              "45%"
+            ]
+          },
+          {
+            "cells": [
+              "Colorado Springs Office",
+              "4,218",
+              "287",
+              "3%",
+              "52%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1342,
+              1518,
+              1428,
+              1384,
+              1170
+            ]
+          },
+          {
+            "name": "Comparing Advisors",
+            "values": [
+              1082,
+              1214,
+              1148,
+              1098,
+              975
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              942,
+              1048,
+              1024,
+              998,
+              906
+            ]
+          },
+          {
+            "name": "Needs Spouse Approval",
+            "values": [
+              742,
+              818,
+              792,
+              768,
+              722
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              468,
+              518,
+              498,
+              488,
+              462
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "15,196"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "New Client (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$12,778,347"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "24%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$892,156"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,247,388"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,589,642"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "26%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,156,284"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,185,927"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Client (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,706,950"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18247,
+          "rows": [
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "4847",
+                "58%",
+                "28%",
+                "$1,584,391"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "3562",
+                "54%",
+                "32%",
+                "$1,174,144"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "2896",
+                "56%",
+                "35%",
+                "$1,051,840"
+              ]
+            },
+            {
+              "name": "Google",
+              "metrics": [
+                "2341",
+                "53%",
+                "31%",
+                "$725,975"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "1850",
+                "51%",
+                "38%",
+                "$719,470"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18340,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "5203",
+                "55%",
+                "29%",
+                "$1,508,878"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "3478",
+                "57%",
+                "34%",
+                "$1,182,652"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "2891",
+                "52%",
+                "31%",
+                "$896,225"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "2156",
+                "58%",
+                "36%",
+                "$777,216"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "1468",
+                "50%",
+                "40%",
+                "$737,684"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 17864,
+          "rows": [
+            {
+              "name": "Planning with Purpose",
+              "metrics": [
+                "2847",
+                "54%",
+                "30%",
+                "$834,742"
+              ]
+            },
+            {
+              "name": "Financially Squared Away",
+              "metrics": [
+                "2564",
+                "56%",
+                "33%",
+                "$856,368"
+              ]
+            },
+            {
+              "name": "BRS Ready",
+              "metrics": [
+                "2198",
+                "55%",
+                "31%",
+                "$718,425"
+              ]
+            },
+            {
+              "name": "Military Friendly Advisor",
+              "metrics": [
+                "1652",
+                "53%",
+                "35%",
+                "$579,380"
+              ]
+            },
+            {
+              "name": "Mission Retirement",
+              "metrics": [
+                "1289",
+                "51%",
+                "38%",
+                "$512,647"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 9156,
+          "rows": [
+            {
+              "name": "military financial advisor",
+              "metrics": [
+                "1847",
+                "57%",
+                "31%",
+                "$572,547"
+              ]
+            },
+            {
+              "name": "BRS lump sum options",
+              "metrics": [
+                "1562",
+                "55%",
+                "34%",
+                "$531,858"
+              ]
+            },
+            {
+              "name": "financial planning for military families",
+              "metrics": [
+                "1284",
+                "54%",
+                "36%",
+                "$463,152"
+              ]
+            },
+            {
+              "name": "TSP rollover to IRA",
+              "metrics": [
+                "1056",
+                "52%",
+                "37%",
+                "$390,672"
+              ]
+            },
+            {
+              "name": "military life insurance",
+              "metrics": [
+                "892",
+                "50%",
+                "40%",
+                "$328,480"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Client (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Financial Coaching and Advisory",
+              "metrics": [
+                "3847",
+                "61%",
+                "32%",
+                "$3,897,504"
+              ]
+            },
+            {
+              "name": "Investing and Savings",
+              "metrics": [
+                "3214",
+                "58%",
+                "35%",
+                "$3,489,810"
+              ]
+            },
+            {
+              "name": "Insurance",
+              "metrics": [
+                "4156",
+                "54%",
+                "31%",
+                "$2,896,360"
+              ]
+            },
+            {
+              "name": "Banking",
+              "metrics": [
+                "2847",
+                "52%",
+                "33%",
+                "$1,847,392"
+              ]
+            },
+            {
+              "name": "Mortgage and Lending",
+              "metrics": [
+                "1132",
+                "47%",
+                "38%",
+                "$647,281"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Client (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Financial Coaching and Advisory",
+            "values": [
+              384,
+              471,
+              402,
+              389,
+              357
+            ]
+          },
+          {
+            "name": "Investing and Savings",
+            "values": [
+              347,
+              398,
+              368,
+              374,
+              342
+            ]
+          },
+          {
+            "name": "Insurance",
+            "values": [
+              432,
+              486,
+              407,
+              418,
+              371
+            ]
+          },
+          {
+            "name": "Banking",
+            "values": [
+              294,
+              352,
+              298,
+              321,
+              279
+            ]
+          },
+          {
+            "name": "Mortgage and Lending",
+            "values": [
+              156,
+              178,
+              142,
+              168,
+              134
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "349"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$2,847,156"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "36%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "186,429"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              74,
+              76,
+              79,
+              75,
+              77,
+              78,
+              76,
+              79,
+              74,
+              77,
+              78,
+              75,
+              79,
+              76,
+              74,
+              78,
+              79,
+              75,
+              77,
+              74,
+              76,
+              78,
+              77,
+              75,
+              79,
+              76,
+              74,
+              77,
+              78,
+              75,
+              74,
+              76,
+              182,
+              184,
+              179,
+              186,
+              181,
+              183,
+              185,
+              179,
+              182,
+              184,
+              180,
+              183,
+              179,
+              181,
+              184,
+              182,
+              180
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,183"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "89%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "743"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "62%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "724"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Retirement and BRS Planning",
+            "values": [
+              9,
+              11,
+              8,
+              14,
+              12,
+              10
+            ]
+          },
+          {
+            "name": "Life and Disability Insurance",
+            "values": [
+              6,
+              4,
+              7,
+              11,
+              8,
+              9
+            ]
+          },
+          {
+            "name": "Investment and Savings Strategy",
+            "values": [
+              3,
+              2,
+              4,
+              8,
+              6,
+              5
+            ]
+          },
+          {
+            "name": "Home Loan and Mortgage Guidance",
+            "values": [
+              1,
+              3,
+              2,
+              5,
+              7,
+              4
+            ]
+          },
+          {
+            "name": "College Savings and 529 Plans",
+            "values": [
+              4,
+              6,
+              5,
+              9,
+              10,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "34,950"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "24,693"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Booked (Count)",
+            "value": "14,436"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$22,418,153"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Wheeler",
+              "value": 217,
+              "display": "217"
+            },
+            {
+              "name": "Jennifer Alvarez",
+              "value": 189,
+              "display": "189"
+            },
+            {
+              "name": "Robert Chen",
+              "value": 243,
+              "display": "243"
+            },
+            {
+              "name": "Amanda Vasquez",
+              "value": 156,
+              "display": "156"
+            },
+            {
+              "name": "Christopher Nash",
+              "value": 201,
+              "display": "201"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "David Keller",
+            "values": [
+              147,
+              165,
+              181,
+              203,
+              228
+            ]
+          },
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              132,
+              154,
+              172,
+              195,
+              219
+            ]
+          },
+          {
+            "name": "Kevin O'Brien",
+            "values": [
+              118,
+              141,
+              163,
+              186,
+              212
+            ]
+          },
+          {
+            "name": "Lisa Chen",
+            "values": [
+              125,
+              148,
+              169,
+              194,
+              223
+            ]
+          },
+          {
+            "name": "James Patterson",
+            "values": [
+              141,
+              159,
+              178,
+              201,
+              226
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Wheeler",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Jennifer Alvarez",
+              "value": 56.7,
+              "display": "56.7%"
+            },
+            {
+              "name": "Robert Chen",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "Amanda Vasquez",
+              "value": 58.3,
+              "display": "58.3%"
+            },
+            {
+              "name": "Christopher Nash",
+              "value": 55.9,
+              "display": "55.9%"
+            },
+            {
+              "name": "Patricia Gomez",
+              "value": 57.4,
+              "display": "57.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Wheeler",
+                "54.2%",
+                "28%",
+                "$580,847",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Alvarez",
+                "56.7%",
+                "29%",
+                "$639,724",
+                "1,488"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Chen",
+                "52.1%",
+                "26%",
+                "$547,292",
+                "1,359"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Vasquez",
+                "58.3%",
+                "31%",
+                "$667,559",
+                "1,468"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Nash",
+                "55.9%",
+                "30%",
+                "$601,415",
+                "1,357"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Gomez",
+                "57.4%",
+                "32%",
+                "$658,243",
+                "1,289"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "David Keller",
+              "value": 93.1,
+              "display": "93.1%"
+            },
+            {
+              "name": "Sarah Mitchell",
+              "value": 91.4,
+              "display": "91.4%"
+            },
+            {
+              "name": "Kevin O'Brien",
+              "value": 89.7,
+              "display": "89.7%"
+            },
+            {
+              "name": "Lisa Chen",
+              "value": 92.3,
+              "display": "92.3%"
+            },
+            {
+              "name": "James Patterson",
+              "value": 90.8,
+              "display": "90.8%"
+            },
+            {
+              "name": "Michael Torres",
+              "value": 88.4,
+              "display": "88.4%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "David Keller",
+                "93.1%",
+                "67%",
+                "$1,501,624",
+                "1,529"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "91.4%",
+                "64%",
+                "$1,369,872",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin O'Brien",
+                "89.7%",
+                "61%",
+                "$1,214,583",
+                "1,436"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Chen",
+                "92.3%",
+                "66%",
+                "$1,467,291",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "James Patterson",
+                "90.8%",
+                "63%",
+                "$1,321,547",
+                "1,441"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Torres",
+                "88.4%",
+                "59%",
+                "$1,173,944",
+                "1,398"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Booked (Count)",
+        "rightMax": 700,
+        "rightTicks": [
+          0,
+          175,
+          350,
+          525,
+          700
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 535
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 513
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 478
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 456
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 397
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 417
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 460
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 478
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 533
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 517
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 466
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 450
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 401
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 413
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 471
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 486
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 528
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 520
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 456
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 442
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 407
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 411
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 479
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 495
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 522
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 521
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 450
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 431
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 414
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 412
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 477
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1100000,
+        "rightTicks": [
+          0,
+          366666.6666666667,
+          733333.3333333334,
+          1100000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 831021
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 796496
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 741700
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 707725
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 616204
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 646689
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 714379
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 742539
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 827935
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 802734
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 722995
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 698789
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 621804
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 640933
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 731388
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 753674
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 820226
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 807461
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 708056
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 685598
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 631137
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 637754
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 743994
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 768656
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 809806
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 808628
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 697924
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 669198
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 642081
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 638985
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 751644
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "37,989"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:37"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,039"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,279"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "85%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "82%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Martinez",
+                "412",
+                "89%",
+                "88%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James Kowalski",
+                "538",
+                "86%",
+                "85%",
+                "81%"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Chen",
+                "389",
+                "86%",
+                "85%",
+                "81%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "37,989 calls",
+      "pagerLabel": "1 of 3,799",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:14 am",
+          "id": "A21C-4E9B7710C3A6"
+        },
+        {
+          "time": "1/13/26 10:41 am",
+          "id": "C88D-1F2A9E4B7705"
+        },
+        {
+          "time": "1/15/26 11:02 am",
+          "id": "B44E-90D3C1728AF5"
+        },
+        {
+          "time": "1/16/26 12:29 pm",
+          "id": "E17A-6B5D82F04C19"
+        },
+        {
+          "time": "1/20/26 1:53 pm",
+          "id": "D93F-274C6A9E1B80"
+        },
+        {
+          "time": "1/22/26 2:38 pm",
+          "id": "7C6B-3E81F0A29D54"
+        },
+        {
+          "time": "1/26/26 3:17 pm",
+          "id": "9F2A-58C7E3B10D46"
+        },
+        {
+          "time": "1/28/26 4:05 pm",
+          "id": "1A8D-C4F97E20B653"
+        },
+        {
+          "time": "1/30/26 5:22 pm",
+          "id": "6E4C-B19D730F82A5"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling First Command Financial Services, this is Marcus, a financial coach for military families. How can I help you today?",
+          "highlights": [
+            "Thank you for calling First Command Financial Services",
+            "financial coach for military families"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Marcus. I'm active duty Army, about four years in, and I feel like I'm behind on getting my finances squared away. A buddy told me you all work with military folks.",
+          "highlights": [
+            "active duty Army",
+            "behind on getting my finances squared away"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:21",
+          "text": "You came to the right place. We specialize in coaching service members and their families. Can I get your name to get started?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:29",
+          "text": "Sure, it's Tyler Brooks. I'm a first time client, never worked with an advisor before.",
+          "highlights": [
+            "Tyler Brooks",
+            "first time client"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:37",
+          "text": "Great to meet you, Tyler. What are the main things on your mind? Retirement, savings, insurance?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:45",
+          "text": "Mostly the Blended Retirement System. I don't really understand my TSP or whether I should be doing a Roth. And honestly my only life insurance is SGLI right now.",
+          "highlights": [
+            "Blended Retirement System",
+            "only life insurance is SGLI"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:58",
+          "text": "Those are exactly the areas we coach on. I'd recommend we start with a Comprehensive Financial Plan, which is complimentary for active duty, then look at a Roth IRA and some term life coverage to supplement your SGLI.",
+          "highlights": [
+            "Comprehensive Financial Plan",
+            "complimentary for active duty",
+            "term life coverage"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:11",
+          "text": "Okay, the plan being free is good to hear. But the term life, what does that run a month? I want to keep it manageable on an E-5 paycheck.",
+          "highlights": [
+            "what does that run a month",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:23",
+          "text": "Completely fair. Term life for someone your age typically lands around twenty five to sixty dollars a month depending on the coverage amount, and we build it to fit your budget, not the other way around.",
+          "highlights": [
+            "twenty five to sixty dollars a month"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:35",
+          "text": "That's reasonable. I'll be honest though, I was also looking at USAA and one of those online brokerages for the investing side. Why go with you instead?",
+          "highlights": [
+            "looking at USAA and one of those online brokerages"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:46",
+          "text": "Good question. Those are fine for do-it-yourself, but our difference is a dedicated coach who sits down with you, builds the whole plan around military life, deployments, PCS moves, the BRS, and keeps reviewing it with you over time. You're not on your own.",
+          "highlights": [
+            "a dedicated coach",
+            "built around military life"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:00",
+          "text": "That coaching piece is what I'm missing. One thing though, I'd want to run this by my wife before we commit to any insurance. She handles a lot of our budget.",
+          "highlights": [
+            "run this by my wife before we commit"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:11",
+          "text": "Absolutely, and she's welcome to join the consultation. The financial plan is no obligation, so nothing gets committed until you both feel good about it. Can I set you up with a complimentary consultation this week?",
+          "highlights": [
+            "she's welcome to join the consultation",
+            "no obligation",
+            "complimentary consultation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:23",
+          "text": "Yeah, let's do it. Thursday morning would work if you have something.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:29",
+          "text": "I've got you booked Thursday at 10 AM with one of our advisors near your installation. I'll send a confirmation to your email and text. Anything else for you, Tyler?",
+          "highlights": [
+            "booked Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:37",
+          "text": "No, that covers it. Thanks Marcus.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:40",
+          "text": "Thank you for your service and for calling First Command. We'll see you and your wife Thursday. Take care.",
+          "highlights": [
+            "Thank you for your service",
+            "see you and your wife Thursday"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Blended Retirement System",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Product: Term Life Insurance",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Product: Roth IRA / TSP",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Mentioned",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Tyler Brooks, an active duty Army service member and first time client, called seeking help with the Blended Retirement System, his TSP, and life insurance beyond his SGLI. The coach, Marcus, recommended starting with a complimentary Comprehensive Financial Plan, a Roth IRA, and term life coverage sized to Tyler's budget. Marcus addressed a monthly cost concern, a comparison against USAA and online brokerages, and Tyler's wish to include his wife before committing. A complimentary consultation was scheduled for Thursday at 10 AM near Tyler's installation.",
+        "keyPoints": [
+          "New client, active duty Army, roughly four years in service",
+          "Needs: BRS guidance, TSP and Roth clarity, life insurance beyond SGLI",
+          "Recommended complimentary Comprehensive Financial Plan, Roth IRA, and term life",
+          "Handled price concern, USAA and online brokerage comparison, and spouse involvement",
+          "Consultation booked Thursday at 10 AM with confirmation by email and text",
+          "Spouse invited to join, plan positioned as no obligation"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "23,933 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,393",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for reaching out to First Command Financial Services. Are you active duty, a veteran, or family member of someone who serves?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "I'm active duty Army. Been in for 4 years now."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great to hear. Thank you for your service. I'm here to help you get financially squared away. Are you currently thinking about your retirement planning, investing options, or protecting your family with insurance?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "Mainly retirement. My BRS window is coming up and I'm not sure which lump sum option to take."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "That's a smart move to plan ahead. The lump sum decision can really shape your long-term security. Are you leaning toward a full lump sum, a partial, or still exploring what makes sense for your situation?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:27 AM",
+              "text": "Not sure yet. I want to understand the options better before deciding."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:28 AM",
+              "text": "Perfect. That's exactly what our BRS Transition Coaching is designed for. One of our Financial Advisors can walk through the numbers with you and help you make the right choice. Would next Tuesday the 18th at 10 AM work for a consultation, or would Wednesday the 19th be better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "Tuesday would be great."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:30 AM",
+              "text": "Excellent. Let me confirm. Tuesday, March 18th at 10 AM. Our advisor will reach out to you by phone at this number to go over your BRS lump sum options in detail. Does that work?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "Yes, that works. Thanks."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "You're all set. We'll call you Tuesday at 10 AM. If you have any questions before then, feel free to call us at 877-936-2933. Looking forward to helping you plan for success."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Sounds good. Thanks."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: BRS Retirement Coaching",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Military Status: Active Duty",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Lump Sum Options",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimated Value: $3,275 Consultation Fee",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "13",
+            "source": "(505) 642-8847",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "(505) 642-8847",
+            "repeatCaller": "No",
+            "city": "Albuquerque",
+            "region": "NM",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A742-29BC5D8E1F47",
+          "time": "3/9/26 11:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A742-29BC5D8E1F47",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B831-4A6C93D2E5BC",
+          "time": "3/8/26 2:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B831-4A6C93D2E5BC",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D965-71E3FB4C6A92",
+          "time": "3/7/26 9:37 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D965-71E3FB4C6A92",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "37,989 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 3,799",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 2:47 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:47 PM",
+              "text": "Hello, thanks for calling First Command Financial Services. My name is Sarah. Are you a service member, veteran, or military family member today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:48 PM",
+              "text": "Yeah, I'm active duty Air Force stationed at Nellis. Been meaning to look into retirement planning but I'm kind of lost with all the BRS options."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:49 PM",
+              "text": "Great, I'm glad you reached out. The Blended Retirement System can feel overwhelming, but we help active duty folks like you navigate it all the time. Have you already elected into the BRS, or are you still thinking about whether to opt in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:50 PM",
+              "text": "I opted in about eight months ago, so yeah I'm already contributing to my TSP account. I guess I'm mainly trying to figure out if I should be doing more on the side with regular savings or investments."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:51 PM",
+              "text": "Perfect. That's a smart question. Before we dig into a full strategy, do you have dependents or a family, or are you single right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:52 PM",
+              "text": "I've got a wife and two kids, so we definitely want to make sure we're covered financially."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:53 PM",
+              "text": "Absolutely. Family coverage changes everything when it comes to life insurance and overall planning. That's actually something we'd cover in a comprehensive financial plan. Quick question, do you currently have supplemental life insurance outside of your SGLI, or is SGLI your only coverage?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:54 PM",
+              "text": "Just SGLI right now. I know that's probably not enough given the family size, but I haven't had time to look into other options."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:55 PM",
+              "text": "That's really common, and it's exactly the kind of gap we help close. Here's what I'd recommend. Let's get you scheduled for a complimentary financial plan consultation with one of our advisors. They specialize in active duty situations just like yours and can walk through your BRS strategy, life insurance needs, and a full investment roadmap. Would Wednesday, January twenty-second at nine thirty a.m. Pacific Time work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:57 PM",
+              "text": "Yeah, that should be fine. What time zone are you in? I want to make sure I don't mess up the time."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:58 PM",
+              "text": "Great question. We're going to schedule you with an advisor in the Mountain Time zone, so that's one hour ahead of you. So your call will be at ten thirty a.m. Nevada time on January twenty-second. You'll get a reminder email the day before, and you can also reach our office at eight seven seven, nine three six, twenty nine thirty three if you need to reschedule. Does your phone number eight zero two, five five five, nine eight seven two sound right?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "3:00 PM",
+              "text": "Yeah, that's perfect. Thanks Sarah, I really appreciate the help."
+            },
+            {
+              "speaker": "agent",
+              "time": "3:01 PM",
+              "text": "You're so welcome. We really appreciate your service, and we're looking forward to helping you get financially squared away. You'll hear from us soon. Thanks for calling First Command."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Interest: Life Insurance",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Service Interest: BRS Coaching",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Family Dependent: Yes",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Concern: Coverage Gap",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 2:47 pm",
+            "duration": "4:14",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "802-555-9872",
+            "repeatCaller": "No",
+            "city": "Las Vegas",
+            "region": "NV",
+            "phoneType": "Mobile",
+            "displayName": "Captain James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B623-5A1FE847291C",
+          "time": "1/08/26 11:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B623-5A1FE847291C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C741-3D2BC5F961E8",
+          "time": "1/22/26 3:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C741-3D2BC5F961E8",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D845-7E4FG621H738",
+          "time": "1/28/26 1:44 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D845-7E4FG621H738",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Introduce yourself as First Command Financial Services's AI agent here to help service members and military families get financially squared away, mention that comprehensive financial coaching is complimentary for active-duty military and their immediate family, and ask if they'd like to get started.",
+        "Qualify one question at a time: Ask, one question at a time, about their military status (active duty, veteran, or family member), which pillar they need help with (financial coaching, investing and saving, insurance, or banking), their primary goal such as retirement, BRS transition, or education savings, their preferred timeline to begin, and the ZIP code or installation nearest them so we can match a local advisor.",
+        "Overview then book: Confirm we serve their area through a nearby office or virtually, give a general overview of how a personalized plan would address their goals without quoting exact fees, recommend a complimentary consultation with a First Command Financial Advisor, propose a specific day and time, and confirm they'll receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "First_Command_Financial_Services_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Financial Advising & Planning",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Coaching Center",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Get Started",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"account access\",\"question\":\"How do I log in to view my managed portfolio and statements?\",\"answer\":\"You can log in or register through the Log In link at the top of our site to view your portfolio, statements, and plan progress. If you're having trouble, your advisor's office can help you get set up.\"},{\"topic\":\"reschedule review\",\"question\":\"I need to move my annual portfolio review with my advisor to a different day.\",\"answer\":\"No problem, we can reschedule your review to a time that works for you. Let me know a preferred day and time and I'll coordinate with your advisor's office.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you really offer free financial planning for military members?",
+              "answer": "Yes, comprehensive financial coaching is complimentary for active-duty military and their immediate family. I'd be glad to set you up with a complimentary consultation with an advisor to get started."
+            },
+            {
+              "question": "Can you help me with my Blended Retirement System decisions?",
+              "answer": "Absolutely, our advisors specialize in BRS transition coaching, including lump-sum options and pension elections. Let's schedule a consultation so an advisor can review your specific situation."
+            },
+            {
+              "question": "Should I keep SGLI or get private life insurance?",
+              "answer": "Many service members choose to supplement SGLI with personal term coverage that stays with them after service. An advisor can compare your options in a consultation, would you like me to book one?"
+            },
+            {
+              "question": "Do you help with rolling my TSP into an IRA?",
+              "answer": "Yes, our advisors can walk you through TSP rollover options and how they fit your retirement goals. I can schedule a consultation to review the best path for you."
+            },
+            {
+              "question": "What kind of investment accounts do you offer?",
+              "answer": "We offer IRAs, mutual fund and systematic investment accounts, 529 college savings plans, and managed investment accounts. An advisor can recommend the right mix in a complimentary consultation."
+            },
+            {
+              "question": "Do you offer Roth IRAs for service members?",
+              "answer": "Yes, we offer both Traditional and Roth IRAs for tax-advantaged retirement savings. Let's set up a consultation so an advisor can help you open and fund the right one."
+            },
+            {
+              "question": "Can you help me save for my kids' college?",
+              "answer": "Yes, our 529 College Savings Plans are a tax-advantaged way to save for education. An advisor can tailor a plan in a consultation, shall I book one for you?"
+            },
+            {
+              "question": "What insurance products do you provide?",
+              "answer": "We offer term life, permanent or whole life, disability income, and long-term care insurance. An advisor can review your coverage needs in a complimentary consultation."
+            },
+            {
+              "question": "Does First Command Bank offer VA home loans?",
+              "answer": "Yes, First Command Bank provides VA and conventional home financing for military families, and it is Member FDIC. I can schedule a consultation to discuss your home loan options."
+            },
+            {
+              "question": "Do you offer checking and savings accounts?",
+              "answer": "Yes, First Command Bank offers FDIC-insured checking, savings and money market accounts, and CDs. An advisor can help you choose the right accounts in a consultation."
+            },
+            {
+              "question": "How much does a financial plan cost?",
+              "answer": "Comprehensive planning is complimentary for active-duty military and their immediate family, and pricing varies for others based on scope. The best next step is a consultation where an advisor can go over the details."
+            },
+            {
+              "question": "Do you have an office near my base?",
+              "answer": "We operate over 175 offices around the world, many located near military installations. Share your ZIP code and I'll help match you with a nearby advisor and book a consultation."
+            },
+            {
+              "question": "I'm a veteran, can you still help me?",
+              "answer": "Absolutely, we serve active-duty military, veterans, and their families from the start of a career to retirement and beyond. Let's schedule a consultation to review your goals."
+            },
+            {
+              "question": "Can we meet virtually instead of in person?",
+              "answer": "Yes, we offer virtual consultations as well as in-office meetings near installations. Let me know your preference and I'll book a time that works for you."
+            },
+            {
+              "question": "What is the First Command difference?",
+              "answer": "We've provided over 60 years of financial coaching focused on America's military, helping families become financially disciplined and confident. An advisor can show you how in a complimentary consultation."
+            },
+            {
+              "question": "How do I get started as a new client?",
+              "answer": "The easiest way is a complimentary consultation with a First Command Financial Advisor. Share your ZIP code and a preferred time and I'll get it scheduled."
+            },
+            {
+              "question": "Can you help me build a budget?",
+              "answer": "Yes, budgeting is a core part of our goals-based financial plans. Let's set up a consultation so an advisor can build a roadmap with you."
+            },
+            {
+              "question": "Do you offer managed portfolios with an advisor?",
+              "answer": "Yes, our ongoing advisory service provides continuous portfolio management with a dedicated advisor and periodic reviews. I can book a consultation to explain how it works."
+            },
+            {
+              "question": "What do I need to bring to my first meeting?",
+              "answer": "It helps to have a general idea of your income, savings, and goals, but your advisor will guide you through everything. Let's get your complimentary consultation on the calendar first."
+            },
+            {
+              "question": "How long does a consultation take?",
+              "answer": "An initial consultation is typically a focused conversation about your goals and situation. I can book one at a time that's convenient, what day works best for you?"
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the consultation\",\"follow_up_message\":\"Great, I have you set for a complimentary consultation with a First Command Financial Advisor. You'll get a reminder text before your appointment with a number to call if anything changes.\"},{\"intent\":\"request a personalized plan overview\",\"follow_up_message\":\"Thanks for sharing your goals. The best next step is a complimentary consultation where an advisor can build a personalized plan, would a weekday morning or afternoon work better for you?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is First Command Financial Services's AI agent. I help service members, veterans, and military families get financially squared away, and comprehensive coaching is complimentary for active-duty military and their immediate family. Would you like to get started?",
+        "goal": "Guide military members and their families to book a complimentary consultation with a First Command Financial Advisor.",
+        "bookingType": "virtual consultation",
+        "offer": "Complimentary financial coaching for active-duty military and their immediate family",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Are you active-duty military, a veteran, or a family member?",
+          "Which area can we help with: financial coaching, investing and saving, insurance, or banking?",
+          "What's your primary goal, such as retirement, BRS transition, or college savings?",
+          "What's your ideal timeline to get started?",
+          "What's your ZIP code or nearest installation so we can match you with a local advisor?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:11 am"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:11 am"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/22/26 11:11 am"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "First Command Financial Services",
+      "callerName": "Captain James Rodriguez",
+      "callerPhone": "(210) 555-0147",
+      "campaign": "BRS Transition Coaching, San Antonio Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$3,250",
+      "googleSearch": "Blended Retirement System lump sum options",
+      "websiteSearch": "BRS transition coaching military advisor",
+      "callingWebpage": "/financial-advising-planning/",
+      "products": "Retirement/BRS Transition Coaching, Ongoing Advisory Service",
+      "cartId": "FC-7429M",
+      "serviceable": "Yes",
+      "email": "james.rodriguez.captain@email.com",
+      "street": "4521 Military Ridge Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78234",
+      "digitalJourney": "/home › /services › /financial-advising-planning › /coaching-center/military-life/brs-lump-sum-options/",
+      "intent": "Active duty officer seeking expert guidance on BRS pension election and lump sum rollover options before separation in 18 months.",
+      "coverage": "ZIP 78234 confirmed, San Antonio serviceable",
+      "switchIntent": "High. Officer separating soon, wants to lock in comprehensive retirement plan with dedicated advisor before leaving service.",
+      "greeting": "Hi Captain Rodriguez, this is Sarah with First Command Financial Services. I see you're exploring your Blended Retirement System options. We specialize in helping military officers navigate lump sum elections and transition to civilian life with confidence. Can we schedule a consultation with one of our military-focused advisors this week?"
+    },
+    "smsScreenpop": {
+      "brandName": "First Command Financial Services",
+      "callerName": "Lieutenant Sarah Chen",
+      "callerPhone": "(757) 555-0083",
+      "campaign": "529 College Savings Plan, Norfolk Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$1,875",
+      "googleSearch": "529 college savings plan military family tax advantages",
+      "websiteSearch": "education savings account military children",
+      "callingWebpage": "/investing-saving/",
+      "products": "529 College Savings Plan, Comprehensive Financial Plan",
+      "cartId": "FC-5614K",
+      "serviceable": "Yes",
+      "email": "sarah.chen.ltjg@email.com",
+      "street": "8247 Nautical Court",
+      "city": "Norfolk",
+      "state": "VA",
+      "zip": "23510",
+      "digitalJourney": "/home › /services › /investing-saving › /coaching-center/military-life/ › /products/529-plans/",
+      "intent": "Military parent of two school-age children seeking tax-advantaged education savings strategy with affordable monthly contributions aligned to military lifestyle.",
+      "coverage": "ZIP 23510 confirmed, Norfolk serviceable",
+      "appointment": "Financial planning consultation with Education Specialist, Tuesday July 23, 2:00 PM",
+      "greeting": "Hi Lieutenant Chen, this is Marcus from First Command Financial Services. Thanks for reaching out about 529 education savings. We've got you scheduled for a consultation on Tuesday at 2 PM with our education planning specialist. Feel free to text me any questions before then, and we'll make sure your kids' college fund gets squared away."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "First Command Financial Services",
+      "brandDomain": "www.firstcommand.com",
+      "brandIcon": "💼",
+      "callerPhone": "+1 (210) 555-0142",
+      "callerLocation": "San Antonio, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "Military Life Series",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "financial advisor military families",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/financial-advising-planning/",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Financial Advising & Planning, Comprehensive Financial Plan",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "San Antonio, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_new_advisory",
+          "name": "Consultation. New Advisory Client"
+        },
+        {
+          "id": "existing_client_support",
+          "name": "Existing Client Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry Routing"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling First Command Financial Services. I'm an AI assistant here to help you get to the right team. Are you calling about financial planning or one of our other services today?",
+          "sigs": [],
+          "q": [
+            25,
+            35,
+            40
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, hi. I'm active duty Navy and I'm really just getting started with my career. I want to make sure I'm handling my finances correctly from day one.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Active duty</strong> looking to establish a financial foundation"
+            },
+            {
+              "c": "blue",
+              "t": "Early career, looking for guidance and structure"
+            },
+            {
+              "c": "orange",
+              "t": "Emphasis on getting things right <strong>from the start</strong>"
+            }
+          ],
+          "q": [
+            55,
+            20,
+            25
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's great, and thank you for your service. So you're interested in getting a financial game plan in place. Are you looking at something like a comprehensive financial plan that would cover budgeting, saving, and retirement strategy, or are you thinking about specific products like investing accounts or insurance?",
+          "sigs": [],
+          "q": [
+            72,
+            12,
+            16
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Honestly, I'm not sure where to start. I have some questions about the Blended Retirement System and maybe some term life insurance to supplement what I have through SGLI. But I need someone to walk me through all of it, you know?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>BRS</strong> guidance and <strong>term life</strong> coverage interest"
+            },
+            {
+              "c": "purple",
+              "t": "Seeks holistic advisory relationship and education"
+            },
+            {
+              "c": "blue",
+              "t": "Needs comprehensive coaching, not just product sales"
+            }
+          ],
+          "q": [
+            88,
+            7,
+            5
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm routing you right now to our Consultation team for New Advisory Clients. They specialize in exactly this situation. military advisors who can walk you through BRS options, insurance strategy, and build you a complete financial plan. You're in great hands. One of our advisors will be with you in just a moment.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get your appointment set (Agent)\", \"book my consultation (Caller)\", \"schedule time with an advisor (Agent)\", \"put me on the calendar (Caller)\"])",
+          "createdAt": "11/14/24 9:12 am",
+          "updatedAt": "01/09/26 2:41 pm"
+        },
+        {
+          "name": "Advisor Compliance Adherence (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Advisor Compliance] < 60 and duration > 45 sec",
+          "createdAt": "12/03/24 10:27 am",
+          "updatedAt": "12/18/25 4:03 pm"
+        },
+        {
+          "name": "BRS Transition Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"blended retirement system (Caller)\", \"BRS lump sum (Caller)\", \"pension election (Agent)\", \"continuation pay (Caller)\"])",
+          "createdAt": "01/22/25 1:45 pm",
+          "updatedAt": "11/30/25 8:52 am"
+        },
+        {
+          "name": "Competitor Named",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"USAA (Caller)\", \"Navy Federal (Caller)\", \"already have an advisor (Caller)\", \"Edward Jones (Caller)\"])",
+          "createdAt": "02/08/25 3:19 pm",
+          "updatedAt": "12/29/25 11:14 am"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"complimentary financial plan (Agent)\", \"meet with a financial advisor (Agent)\", \"financial coaching session (Agent)\"])",
+          "createdAt": "11/27/24 8:33 am",
+          "updatedAt": "01/12/26 9:57 am"
+        },
+        {
+          "name": "Empathy and Rapport (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy and Rapport] < 60 and duration > 45 sec",
+          "createdAt": "12/12/24 2:06 pm",
+          "updatedAt": "01/05/26 3:22 pm"
+        },
+        {
+          "name": "Insurance Coverage Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"term life insurance (Caller)\", \"supplement my SGLI (Caller)\", \"disability income coverage (Caller)\", \"whole life policy (Caller)\"])",
+          "createdAt": "01/09/25 11:41 am",
+          "updatedAt": "12/22/25 1:38 pm"
+        },
+        {
+          "name": "Needs Discovery Completed (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Needs Discovery] < 60 and duration > 45 sec",
+          "createdAt": "11/19/24 10:04 am",
+          "updatedAt": "01/15/26 4:47 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your monthly premium would be (Agent)\", \"advisory fee of (Agent)\", \"the annual rate is (Agent)\", \"here's your quote (Agent)\"])",
+          "createdAt": "02/17/25 9:28 am",
+          "updatedAt": "01/18/26 10:11 am"
+        },
+        {
+          "name": "VA Home Loan Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"VA home loan (Caller)\", \"mortgage pre-approval (Caller)\", \"refinance my home (Caller)\", \"closing costs (Caller)\"])",
+          "createdAt": "03/04/25 12:53 pm",
+          "updatedAt": "01/20/26 8:39 am"
+        }
+      ]
+    }
+  }
+}

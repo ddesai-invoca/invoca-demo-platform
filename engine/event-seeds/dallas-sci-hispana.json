@@ -1,0 +1,5354 @@
+{
+  "id": "sci-hispana",
+  "customerName": "SCI Hispana",
+  "websiteUrl": "https://www.sci-corp.com",
+  "brandDomain": "sci-corp.com",
+  "networkName": "Invoca for Deathcare Services",
+  "industry": "Funeral, Cremation, and Cemetery Services",
+  "bookingTerm": "Arrangement Consultation",
+  "customerNoun": "Family",
+  "generation": {
+    "at": "2026-09-22T15:17:27.329Z",
+    "scope": "full"
+  },
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 10842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 11317
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 11564
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 10928
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 10670
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Arrangement Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Arrangement Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Cremacion Cerca de Mi, Dignity Memorial",
+          "marketingSearchTerm": "servicios funerarios en espanol",
+          "landingPageUrl": "https://www.sci-corp.com/es/cremacion?utm_source=google&utm_medium=cpc&utm_campaign=cremacion_cerca",
+          "websiteJourney": "Home / Services / Cremation",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Planificacion Funeraria Accesible",
+          "marketingSearchTerm": "cuanto cuesta un funeral",
+          "landingPageUrl": "https://www.sci-corp.com/es/planes?utm_source=google&utm_medium=cpc&utm_campaign=planificacion_accesible",
+          "websiteJourney": "Home / Plan Ahead / Preneed Packages",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Preneed Tranquilidad",
+          "marketingSearchTerm": "planes funerarios prepagados",
+          "landingPageUrl": "https://www.sci-corp.com/es/plan-adelante?utm_source=bing&utm_medium=cpc&utm_campaign=preneed_tranquilidad",
+          "websiteJourney": "Home / Plan Ahead / Preneed Packages",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Cremacion Cerca de Mi, Dignity Memorial",
+          "marketingSearchTerm": "cremacion directa precio",
+          "landingPageUrl": "https://www.sci-corp.com/es/cremacion-directa?utm_source=google&utm_medium=cpc&utm_campaign=cremacion_cerca",
+          "websiteJourney": "Home / Services / Cremation",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Guias de Planificacion",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sci-corp.com/es/recursos/guia-de-costos?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Grief Support / Resources",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Honramos Su Legado",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sci-corp.com/es/celebracion-de-vida?utm_source=facebook&utm_medium=social&utm_campaign=honramos_su_legado",
+          "websiteJourney": "Home / Services / Funerals",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Beneficios Funerarios Veteranos",
+          "marketingSearchTerm": "beneficios funerarios veteranos",
+          "landingPageUrl": "https://www.sci-corp.com/es/veteranos?utm_source=google&utm_medium=cpc&utm_campaign=beneficios_veteranos",
+          "websiteJourney": "Home / Services / Funerals",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Lotes de Cementerio",
+          "marketingSearchTerm": "lotes de cementerio en venta",
+          "landingPageUrl": "https://www.sci-corp.com/es/cementerio/propiedad?utm_source=google&utm_medium=cpc&utm_campaign=lotes_cementerio",
+          "websiteJourney": "Home / Cemetery / Plots & Property",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Celebre una Vida Bien Vivida",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sci-corp.com/es/celebracion-de-vida?utm_source=instagram&utm_medium=social&utm_campaign=celebre_vida",
+          "websiteJourney": "Home / Services / Funerals",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Blog de Apoyo en el Duelo",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sci-corp.com/es/apoyo-duelo?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Grief Support / Resources",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Planificacion Funeraria Accesible",
+          "marketingSearchTerm": "casas funerarias cerca de mi",
+          "landingPageUrl": "https://www.sci-corp.com/es/localizar-proveedor?utm_source=bing&utm_medium=cpc&utm_campaign=planificacion_accesible",
+          "websiteJourney": "Home / Find a Provider / Local Funeral Home",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Preneed Tranquilidad",
+          "marketingSearchTerm": "pre planear funeral",
+          "landingPageUrl": "https://www.sci-corp.com/es/plan-adelante?utm_source=google&utm_medium=cpc&utm_campaign=preneed_tranquilidad",
+          "websiteJourney": "Home / Plan Ahead / Preneed Packages",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Planee con Anticipacion, Proteja a los Suyos",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sci-corp.com/es/plan-adelante?utm_source=facebook&utm_medium=social&utm_campaign=planee_con_anticipacion",
+          "websiteJourney": "Home / Plan Ahead / Preneed Packages",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Calculadora de Costos Funerarios",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sci-corp.com/es/recursos/calculadora?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Grief Support / Resources",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Cremacion Cerca de Mi, Dignity Memorial",
+          "marketingSearchTerm": "urnas para cenizas",
+          "landingPageUrl": "https://www.sci-corp.com/es/productos/urnas?utm_source=google&utm_medium=cpc&utm_campaign=cremacion_cerca",
+          "websiteJourney": "Home / Products / Caskets & Urns",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Lotes de Cementerio",
+          "marketingSearchTerm": "criptas de mausoleo precio",
+          "landingPageUrl": "https://www.sci-corp.com/es/cementerio/mausoleo?utm_source=google&utm_medium=cpc&utm_campaign=lotes_cementerio",
+          "websiteJourney": "Home / Cemetery / Plots & Property",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Honramos Su Legado",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sci-corp.com/es/servicios?utm_source=instagram&utm_medium=social&utm_campaign=honramos_su_legado",
+          "websiteJourney": "Home / Services / Funerals",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Guias de Planificacion",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sci-corp.com/es/recursos/guia-preneed?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Plan Ahead / Preneed Packages",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Beneficios Funerarios Veteranos",
+          "marketingSearchTerm": "marcadores de tumba granito",
+          "landingPageUrl": "https://www.sci-corp.com/es/productos/marcadores?utm_source=bing&utm_medium=cpc&utm_campaign=beneficios_veteranos",
+          "websiteJourney": "Home / Products / Caskets & Urns",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Regrese para Completar Su Plan",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sci-corp.com/es/plan-adelante?utm_source=facebook&utm_medium=retargeting&utm_campaign=regrese_para_completar",
+          "websiteJourney": "Home / Plan Ahead / Preneed Packages",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Contenido de Obituarios",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.sci-corp.com/es/obituarios?utm_source=organic&utm_medium=seo",
+          "websiteJourney": "Home / Grief Support / Resources",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (SCI Hispana)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "43,389"
+            },
+            {
+              "label": "Arrangement Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Service Arranged (Percent)",
+              "value": "27%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$86,053,895"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "6,942"
+            },
+            {
+              "label": "Grief Support Inquiry (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing Question (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Obituary Information (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Arrangement Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Arrangement Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "61%"
+            },
+            {
+              "label": "Not Ready to Plan (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Service Arranged (Percent)",
+              "value": "27%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Arrangement Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Arrangement Inquiry (Count)",
+            "values": [
+              5842,
+              8213,
+              7986,
+              7674,
+              6732
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              4231,
+              5984,
+              5772,
+              5563,
+              4917
+            ]
+          },
+          {
+            "name": "Not Ready to Plan (Count)",
+            "values": [
+              1538,
+              2147,
+              2083,
+              1986,
+              1792
+            ]
+          },
+          {
+            "name": "Service Arranged (Count)",
+            "values": [
+              1874,
+              2643,
+              2571,
+              2458,
+              2169
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Service Arranged (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43389,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "15,847",
+                "48%",
+                "22%",
+                "$25,614,338"
+              ]
+            },
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "11,238",
+                "51%",
+                "25%",
+                "$20,682,455"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "7,914",
+                "54%",
+                "29%",
+                "$16,873,092"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "5,472",
+                "57%",
+                "34%",
+                "$13,644,187"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "2,918",
+                "62%",
+                "42%",
+                "$9,239,823"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Service Arranged (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43389,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "18,264",
+                "47%",
+                "21%",
+                "$28,174,559"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "10,417",
+                "50%",
+                "26%",
+                "$19,893,116"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "6,853",
+                "53%",
+                "30%",
+                "$15,098,742"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "4,528",
+                "56%",
+                "35%",
+                "$11,642,088"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "3,327",
+                "64%",
+                "45%",
+                "$11,245,390"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Service Arranged (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 24414,
+          "rows": [
+            {
+              "name": "Honramos Su Legado",
+              "metrics": [
+                "8,247",
+                "46%",
+                "22%",
+                "$13,318,442"
+              ]
+            },
+            {
+              "name": "Cremacion Cerca de Mi",
+              "metrics": [
+                "6,138",
+                "49%",
+                "26%",
+                "$11,719,308"
+              ]
+            },
+            {
+              "name": "Planifique Hoy, Proteja Su Familia",
+              "metrics": [
+                "4,529",
+                "52%",
+                "30%",
+                "$9,978,144"
+              ]
+            },
+            {
+              "name": "Servicios Funerarios Asequibles",
+              "metrics": [
+                "3,314",
+                "55%",
+                "34%",
+                "$8,275,921"
+              ]
+            },
+            {
+              "name": "Tranquilidad Anticipada",
+              "metrics": [
+                "2,186",
+                "61%",
+                "41%",
+                "$6,579,238"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Service Arranged (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20874,
+          "rows": [
+            {
+              "name": "funeral homes near me",
+              "metrics": [
+                "7,143",
+                "47%",
+                "23%",
+                "$12,063,447"
+              ]
+            },
+            {
+              "name": "servicios funerarios en español",
+              "metrics": [
+                "5,428",
+                "50%",
+                "27%",
+                "$10,764,182"
+              ]
+            },
+            {
+              "name": "cremation cost near me",
+              "metrics": [
+                "3,917",
+                "53%",
+                "31%",
+                "$8,913,558"
+              ]
+            },
+            {
+              "name": "prepaid funeral plans",
+              "metrics": [
+                "2,634",
+                "56%",
+                "35%",
+                "$6,770,144"
+              ]
+            },
+            {
+              "name": "cementerio cerca de mi",
+              "metrics": [
+                "1,752",
+                "62%",
+                "43%",
+                "$5,529,871"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Arrangement Consultation Set (Industry) (Percent)",
+            "Service Arranged (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Cremation Services",
+              "metrics": [
+                "13,842",
+                "44%",
+                "20%",
+                "$18,342,155"
+              ]
+            },
+            {
+              "name": "Funeral Services",
+              "metrics": [
+                "11,257",
+                "48%",
+                "25%",
+                "$23,187,442"
+              ]
+            },
+            {
+              "name": "Cemetery Property",
+              "metrics": [
+                "8,914",
+                "46%",
+                "29%",
+                "$19,884,317"
+              ]
+            },
+            {
+              "name": "Advance/Preneed Planning",
+              "metrics": [
+                "5,673",
+                "51%",
+                "35%",
+                "$14,562,908"
+              ]
+            },
+            {
+              "name": "Memorial Products",
+              "metrics": [
+                "3,703",
+                "55%",
+                "44%",
+                "$10,077,073"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Service Arranged (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 43389,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "14,127",
+                "45%",
+                "21%",
+                "$22,143,617"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "10,842",
+                "49%",
+                "25%",
+                "$19,884,205"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "8,216",
+                "47%",
+                "29%",
+                "$17,216,448"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "6,318",
+                "52%",
+                "34%",
+                "$15,442,733"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "3,886",
+                "56%",
+                "43%",
+                "$11,366,892"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Service Arranged (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Cremation Services",
+            "values": [
+              548,
+              562,
+              571,
+              534,
+              553
+            ]
+          },
+          {
+            "name": "Funeral Services",
+            "values": [
+              561,
+              573,
+              568,
+              552,
+              560
+            ]
+          },
+          {
+            "name": "Cemetery Property",
+            "values": [
+              512,
+              527,
+              519,
+              508,
+              519
+            ]
+          },
+          {
+            "name": "Advance/Preneed Planning",
+            "values": [
+              396,
+              402,
+              398,
+              391,
+              399
+            ]
+          },
+          {
+            "name": "Memorial Products",
+            "values": [
+              324,
+              331,
+              327,
+              321,
+              326
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 43,389 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Elena Ramírez called to arrange a direct cremation for her late father. Oscar reviewed the simple cremation package and included transport and permits, then scheduled an arrangement consultation at the nearby Dignity Memorial provider. Elena felt reassured and confirmed the visit for the following morning.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "2m 45s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Carlos Mendoza called to set up a preneed prepaid plan for himself and his wife so pricing would be locked in. Lila explained the insurance-funded options and transferability, then booked an arrangement consultation to finalize the paperwork. Carlos was very satisfied with the guidance.",
+          "date": "Feb 11, 3:32 PM",
+          "agent": "Lila",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Verónica Salazar called to check the status of a custom engraved urn she had ordered for her mother's ashes. Rosey confirmed the engraving was complete and the urn would ship within two business days. Verónica thanked her and no further action was needed.",
+          "date": "Mar 4, 11:50 AM",
+          "agent": "Rosey",
+          "duration": "1m 38s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Marisol Fuentes called for the first time to schedule a consultation about cremation and preneed options for her ailing mother. Lee collected her contact details and preferred provider location, answered her initial pricing questions, and scheduled an arrangement consultation. Marisol appreciated the patient, bilingual support.",
+          "date": "Apr 9, 9:27 AM",
+          "agent": "Lee",
+          "duration": "3m 18s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 72,
+          "summary": "Jorge Herrera called to discuss purchasing a single burial plot at the cemetery. Rosey explained the land right pricing and perpetual care fund, then scheduled an arrangement consultation to walk the grounds. Jorge was pleased and confirmed the appointment time.",
+          "date": "May 15, 1:44 PM",
+          "agent": "Rosey",
+          "duration": "2m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Ana Castillo called with a question about a billing statement for her mother's memorial service. Mary reviewed the itemized charges and clarified an officiant coordination fee. Ana understood the explanation but wanted a copy emailed for her records.",
+          "date": "May 28, 4:11 PM",
+          "agent": "Mary",
+          "duration": "2m 03s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 64,
+          "summary": "Roberto Nieves called to ask about veterans burial benefits for his late father. Mike explained the flag and honors coordination plus VA benefits assistance, then scheduled an arrangement consultation. Roberto felt supported and confirmed the visit.",
+          "date": "Jun 3, 10:55 AM",
+          "agent": "Mike",
+          "duration": "2m 50s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 59,
+          "summary": "Patricia Vargas called upset that the granite grave marker installation was delayed past the promised date. Sue apologized, checked the installation schedule, and arranged a callback with the local provider. Patricia remained frustrated but accepted the follow-up.",
+          "date": "Jun 21, 2:09 PM",
+          "agent": "Sue",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Daniel Ortega called to arrange a cremation with a memorial service for his late brother. Jennifer walked through the package with a rental casket and viewing, then scheduled an arrangement consultation. Daniel booked the visit though he asked for more time to decide on details.",
+          "date": "Jul 8, 12:36 PM",
+          "agent": "Jennifer",
+          "duration": "3m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 51,
+          "summary": "Lucía Domínguez called about a cracked bronze marker that was still under the workmanship guarantee. Lee logged the repair request and opened a case with the memorial products team. Lucía was unhappy about the wait but agreed to the process.",
+          "date": "Jul 25, 3:58 PM",
+          "agent": "Lee",
+          "duration": "1m 55s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 47,
+          "summary": "Miguel Reyes called to cancel a preneed plan and request a refund after a family relocation. Mary explained the cancellation terms and refund timeline. Miguel was dissatisfied with the processing period and asked to escalate.",
+          "date": "Aug 12, 10:22 AM",
+          "agent": "Mary",
+          "duration": "2m 14s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 43,
+          "summary": "Gabriela Ponce called to complain about poor communication during her father's funeral arrangements. Rose listened to her concerns and documented the service breakdown for the provider manager. Gabriela remained upset and requested a formal follow-up.",
+          "date": "Aug 30, 1:17 PM",
+          "agent": "Rose",
+          "duration": "2m 41s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 34,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 40,
+          "summary": "An after-hours call from Héctor Aguilar rolled to voicemail. He left a message asking about cremation pricing and veterans benefits for his uncle. No agent was available and the message was queued for a morning callback.",
+          "date": "Sep 9, 7:48 PM",
+          "agent": "No Agent",
+          "duration": "0m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "Sofía Márquez disputed a billing charge she says was never authorized on the cemetery invoice. Sue reviewed the account but could not resolve the discrepancy on the call. Sofía was angry and demanded the charge be removed immediately.",
+          "date": "Sep 26, 11:03 AM",
+          "agent": "Sue",
+          "duration": "2m 30s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Fernando Cruz called angry about an unreturned urn and repeated delays following his mother's cremation service. Mike tried to locate the order but the record was incomplete. Fernando threatened to file a complaint and ended the call unresolved.",
+          "date": "Oct 4, 4:39 PM",
+          "agent": "Mike",
+          "duration": "3m 24s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "cremation",
+        "burial",
+        "preneed",
+        "urn",
+        "veterans",
+        "billing"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 18, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Identify Service Type Needed",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Explain Arrangement Consultation Process",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Document Special Requests or Preferences",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Identified as new customer",
+        "Caller expressed immediate need for cremation services",
+        "Confirmed service area coverage",
+        "Provided arrangement consultation overview",
+        "Scheduled appointment within 24 hours",
+        "Agent used empathetic tone",
+        "Caller provided full legal name",
+        "Verified ZIP code in service area",
+        "Caller stated budget awareness",
+        "Offered flexible appointment times",
+        "Agent confirmed callback method",
+        "Caller confirmed understanding of next steps",
+        "Escalation offered but declined"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Phone number not captured",
+        "Did not ask about family size or attendees",
+        "Did not clarify if preneed or at need",
+        "Did not mention veterans benefits option",
+        "Did not offer financial planning discussion",
+        "Did not capture preferred contact method",
+        "Did not mention keepsake or memorial options",
+        "Did not confirm second caller present",
+        "Did not ask about religious or cultural preferences",
+        "Did not mention grief support resources",
+        "Did not capture vehicle or accessibility needs",
+        "Did not discuss timeline urgency",
+        "Did not offer document preparation guidance",
+        "Did not mention advance plan discounts",
+        "Did not assess if caller has other funeral homes contacted",
+        "Did not offer Spanish language specialist",
+        "Did not mention price comparison resources",
+        "Did not ask if caller working with hospice",
+        "Did not clarify insurance or prepaid plan questions",
+        "Did not ask about cemetery vs. direct cremation intent",
+        "Did not offer virtual consultation option",
+        "Did not mention urn or keepsake selection",
+        "Did not ask for referral source confirmation",
+        "Did not discuss payment plan options",
+        "Did not mention pet cremation if applicable"
+      ],
+      "naSignals": [
+        "Discussed casket selection options",
+        "Reviewed embalming services",
+        "Discussed cemetery plot options",
+        "Mentioned headstone or grave marker products",
+        "Discussed mausoleum crypt availability",
+        "Addressed obituary placement services",
+        "Discussed merchandise inventory or samples",
+        "Reviewed previous service records",
+        "Discussed billing or payment processing",
+        "Mentioned delivery or transportation logistics",
+        "Addressed service cancellation or modifications",
+        "Discussed refund or credit policies",
+        "Discussed shipping of cremation remains",
+        "Mentioned after service follow up communication",
+        "Mentioned merchandise warranty or guarantees",
+        "Discussed seasonal or holiday service scheduling",
+        "Addressed special event venue coordination",
+        "Mentioned merchandise customization turnaround",
+        "Discussed previous arrangement history",
+        "Reviewed file documentation completeness",
+        "Discussed merchandise in stock status",
+        "Mentioned third party vendor coordination",
+        "Addressed discount or promotion eligibility",
+        "Discussed merchandise comparison or upgrades",
+        "Mentioned service date conflicts or availability"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller recently lost a loved one and needs to arrange cremation services urgently. They are seeking guidance on the arrangement consultation process and want to schedule an appointment as soon as possible."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a straightforward, compassionate intake that will help them understand the cremation options and next steps. They are budget conscious and want to know what to bring and prepare for the in person consultation."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the phone number and email address before closing to ensure proper follow up and reduce friction at the consultation. Additionally, confirming whether this is an at need or preneed situation would have helped set clearer expectations."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon, thank you for calling Dignity Memorial. My name is Marcus Bell. May I have your name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus, my name is Patricia Ramos."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:35",
+          "text": "Patricia, thank you for calling. I'm so sorry to hear you're going through this. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:45",
+          "text": "Yes, we lost my mother a few days ago. We're looking to arrange cremation services and I wasn't sure where to start."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:58",
+          "text": "Patricia, I'm very sorry for your loss. You've called the right place. We're here to help you every step of the way. To get started, what is your mother's full name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:12",
+          "text": "Her name was Elena Ramos, R-A-M-O-S."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:22",
+          "text": "Thank you, Patricia. And what ZIP code are you located in?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:30",
+          "text": "We're in the 78201 area in San Antonio."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:38",
+          "text": "Perfect. We do serve that area very well. Patricia, what I'd like to do is schedule you for an arrangement consultation with one of our family service advisors. They'll walk through all the cremation options, answer any questions you have about our services, and help you select what's right for your family. Does that sound good?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:00",
+          "text": "Yes, that sounds perfect. When can we come in?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:10",
+          "text": "We have availability tomorrow morning at 9 a.m. or tomorrow afternoon at 2 p.m. What works better for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:28",
+          "text": "Tomorrow at 2 p.m. works better for us."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:40",
+          "text": "Excellent, Patricia. I have you scheduled for tomorrow, October 19th at 2 p.m. at our San Antonio location. Please bring any documents you have for your mother, and our advisor will take it from there. You're all set."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:58",
+          "text": "Thank you Marcus. We really appreciate your help."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:08",
+          "text": "You're very welcome, Patricia. Again, my deepest sympathies to you and your family. We'll see you tomorrow at 2 p.m."
+        }
+      ],
+      "aiSummary": "Patricia Ramos called Dignity Memorial to arrange cremation services for her recently deceased mother, Elena Ramos. Marcus Bell conducted a compassionate intake call, confirmed the family's location in the 78201 ZIP code in San Antonio, and successfully scheduled an arrangement consultation for the following day at 2 p.m. The call was structured and empathetic, though contact information was not captured, which may create follow up friction before the appointment.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, excellent work on the structure and tone of this call. Your greeting was warm and your empathy with Patricia was genuine. One thing to improve next time: always capture at least an email or callback number before closing, even if the caller has an appointment scheduled. This ensures we can proactively reach out if there are delays or important details to confirm. Also, a quick question about whether this is at need vs. preneed would have helped the advisor prepare better. Keep up the great work."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "43,389"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$1983.31"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$86,053,895"
+            }
+          ]
+        },
+        {
+          "title": "NEW FAMILY ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Families (Count)",
+              "value": "27,905"
+            },
+            {
+              "label": "Caller Type: New Families (Percent)",
+              "value": "64%"
+            },
+            {
+              "label": "Arrangement Consultation: Scheduled (Count)",
+              "value": "20,393"
+            },
+            {
+              "label": "Arrangement Consultation: Scheduled (Percent)",
+              "value": "47%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING FAMILIES & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Family (Count)",
+              "value": "15,484"
+            },
+            {
+              "label": "Caller Type: Existing Family (Percent)",
+              "value": "36%"
+            },
+            {
+              "label": "Arrangement Consultation: Canceled (Percent)",
+              "value": "8%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Arrangement Consultations)",
+          "chart": {
+            "legend": "Arrangement Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "ChatGPT",
+                "value": 59,
+                "display": "59%"
+              },
+              {
+                "name": "Bing",
+                "value": 54,
+                "display": "54%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 49,
+                "display": "49%"
+              },
+              {
+                "name": "Google LSA",
+                "value": 44,
+                "display": "44%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Arrangement Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Arrangement Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "15,842",
+                  "38%",
+                  "$31,428,764"
+                ]
+              },
+              {
+                "cells": [
+                  "Google LSA",
+                  "11,318",
+                  "44%",
+                  "$22,517,338"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "7,456",
+                  "49%",
+                  "$14,892,551"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing",
+                  "5,127",
+                  "54%",
+                  "$10,246,129"
+                ]
+              },
+              {
+                "cells": [
+                  "ChatGPT",
+                  "3,646",
+                  "59%",
+                  "$6,969,113"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 20000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 18742,
+                "display": "18,742"
+              },
+              {
+                "name": "Organic",
+                "value": 10318,
+                "display": "10,318"
+              },
+              {
+                "name": "Social",
+                "value": 6554,
+                "display": "6,554"
+              },
+              {
+                "name": "Email/CRM",
+                "value": 4281,
+                "display": "4,281"
+              },
+              {
+                "name": "Referral",
+                "value": 3494,
+                "display": "3,494"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Arrangement Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Arrangement Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "18,742",
+                  "36%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "10,318",
+                  "43%"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "6,554",
+                  "48%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "4,281",
+                  "54%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "3,494",
+                  "61%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2500,
+              5000,
+              7500,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Cremación Cerca de Mí",
+                "value": 8914,
+                "display": "8,914"
+              },
+              {
+                "name": "Planeación Funeraria Accesible",
+                "value": 6742,
+                "display": "6,742"
+              },
+              {
+                "name": "Honramos Su Legado",
+                "value": 5318,
+                "display": "5,318"
+              },
+              {
+                "name": "Tranquilidad con Plan Anticipado",
+                "value": 4127,
+                "display": "4,127"
+              },
+              {
+                "name": "Celebre una Vida Bien Vivida",
+                "value": 2986,
+                "display": "2,986"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Arrangement Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Arrangement Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Cremación Cerca de Mí",
+                  "8,914",
+                  "37%",
+                  "$12,847,336"
+                ]
+              },
+              {
+                "cells": [
+                  "Planeación Funeraria Accesible",
+                  "6,742",
+                  "44%",
+                  "$9,318,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Honramos Su Legado",
+                  "5,318",
+                  "50%",
+                  "$7,914,558"
+                ]
+              },
+              {
+                "cells": [
+                  "Tranquilidad con Plan Anticipado",
+                  "4,127",
+                  "58%",
+                  "$6,127,331"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "servicios funerarios en español",
+                "value": 6218,
+                "display": "6,218"
+              },
+              {
+                "name": "funeral homes near me",
+                "value": 5142,
+                "display": "5,142"
+              },
+              {
+                "name": "cremation cost near me",
+                "value": 3914,
+                "display": "3,914"
+              },
+              {
+                "name": "prepaid funeral plans",
+                "value": 2847,
+                "display": "2,847"
+              },
+              {
+                "name": "cemetery plots for sale",
+                "value": 1986,
+                "display": "1,986"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Arrangement Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Arrangement Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "servicios funerarios en español",
+                  "39%"
+                ]
+              },
+              {
+                "cells": [
+                  "funeral homes near me",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "cremation cost near me",
+                  "52%"
+                ]
+              },
+              {
+                "cells": [
+                  "prepaid funeral plans",
+                  "59%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Families",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Arrangement Consultation: Scheduled (Percent)",
+          "Caller Type: New Families (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Funeral Services",
+              "14,238",
+              "38%",
+              "66%"
+            ]
+          },
+          {
+            "cells": [
+              "Cremation Services",
+              "11,842",
+              "44%",
+              "71%"
+            ]
+          },
+          {
+            "cells": [
+              "Cemetery Property",
+              "7,516",
+              "49%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Advance/Preneed Planning",
+              "5,127",
+              "57%",
+              "74%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Arrangement Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Funeraria del Ángel Houston",
+              "8,942",
+              "742",
+              "5%",
+              "39%"
+            ]
+          },
+          {
+            "cells": [
+              "Funeraria del Ángel Los Ángeles",
+              "7,318",
+              "561",
+              "4%",
+              "45%"
+            ]
+          },
+          {
+            "cells": [
+              "Funeraria del Ángel Miami",
+              "5,127",
+              "398",
+              "6%",
+              "51%"
+            ]
+          },
+          {
+            "cells": [
+              "Funeraria del Ángel San Antonio",
+              "3,846",
+              "247",
+              "3%",
+              "58%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Comparing Providers",
+            "values": [
+              986,
+              1412,
+              1338,
+              1294,
+              1184
+            ]
+          },
+          {
+            "name": "Price Above Budget",
+            "values": [
+              812,
+              1247,
+              1186,
+              1142,
+              1100
+            ]
+          },
+          {
+            "name": "Timing Not Immediate Need",
+            "values": [
+              642,
+              987,
+              934,
+              918,
+              837
+            ]
+          },
+          {
+            "name": "Needs Family Approval",
+            "values": [
+              571,
+              872,
+              831,
+              804,
+              764
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              468,
+              712,
+              678,
+              651,
+              626
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "17,356"
+          },
+          {
+            "label": "Arrangement Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Service Arranged (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$49,050,720"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Service Arranged (Percent)",
+              "value": "24%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,127,840"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Service Arranged (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$6,852,195"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Service Arranged (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$7,942,320"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Service Arranged (Percent)",
+              "value": "26%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$5,193,604"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Service Arranged (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$8,127,564"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Service Arranged (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$16,807,197"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Arrangement Consultation Scheduled (Percent)",
+            "Service Arranged (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20189,
+          "rows": [
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "6,847",
+                "59%",
+                "38%",
+                "$15,248,162"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "4,253",
+                "52%",
+                "35%",
+                "$10,373,876"
+              ]
+            },
+            {
+              "name": "Google",
+              "metrics": [
+                "3,642",
+                "58%",
+                "32%",
+                "$8,621,484"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "1,876",
+                "54%",
+                "28%",
+                "$3,854,912"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "742",
+                "48%",
+                "22%",
+                "$1,951,686"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Arrangement Consultation Scheduled (Percent)",
+            "Service Arranged (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20189,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "7,451",
+                "58%",
+                "36%",
+                "$16,841,320"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "4,683",
+                "55%",
+                "34%",
+                "$11,287,964"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "2,918",
+                "56%",
+                "31%",
+                "$6,752,348"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "1,562",
+                "52%",
+                "27%",
+                "$4,389,224"
+              ]
+            },
+            {
+              "name": "Display",
+              "metrics": [
+                "475",
+                "46%",
+                "21%",
+                "$1,779,664"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Arrangement Consultation Scheduled (Percent)",
+            "Service Arranged (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20189,
+          "rows": [
+            {
+              "name": "Preneed Peace of Mind",
+              "metrics": [
+                "5,284",
+                "60%",
+                "39%",
+                "$12,854,736"
+              ]
+            },
+            {
+              "name": "Cremation Services Near Me",
+              "metrics": [
+                "4,127",
+                "55%",
+                "35%",
+                "$10,124,688"
+              ]
+            },
+            {
+              "name": "Honramos Su Legado",
+              "metrics": [
+                "3,596",
+                "54%",
+                "31%",
+                "$8,376,192"
+              ]
+            },
+            {
+              "name": "Affordable Funeral Planning",
+              "metrics": [
+                "2,847",
+                "51%",
+                "28%",
+                "$6,342,104"
+              ]
+            },
+            {
+              "name": "Celebrate a Life Well Lived",
+              "metrics": [
+                "1,502",
+                "48%",
+                "24%",
+                "$3,352,896"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Arrangement Consultation Scheduled (Percent)",
+            "Service Arranged (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20189,
+          "rows": [
+            {
+              "name": "cremation cost near me",
+              "metrics": [
+                "3,847",
+                "61%",
+                "40%",
+                "$9,246,864"
+              ]
+            },
+            {
+              "name": "how much does a funeral cost",
+              "metrics": [
+                "2,963",
+                "57%",
+                "36%",
+                "$7,218,456"
+              ]
+            },
+            {
+              "name": "funeral homes near me",
+              "metrics": [
+                "2,584",
+                "55%",
+                "32%",
+                "$6,182,976"
+              ]
+            },
+            {
+              "name": "pre plan funeral services",
+              "metrics": [
+                "1,742",
+                "52%",
+                "29%",
+                "$4,637,328"
+              ]
+            },
+            {
+              "name": "servicios funerarios en espanol",
+              "metrics": [
+                "1,324",
+                "49%",
+                "25%",
+                "$3,127,104"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Arrangement Consultation Scheduled (Percent)",
+            "Service Arranged (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Cremation Services",
+              "metrics": [
+                "6,284",
+                "62%",
+                "41%",
+                "$18,764,592"
+              ]
+            },
+            {
+              "name": "Preneed Planning",
+              "metrics": [
+                "4,127",
+                "58%",
+                "36%",
+                "$10,836,936"
+              ]
+            },
+            {
+              "name": "Funeral Services",
+              "metrics": [
+                "3,642",
+                "54%",
+                "31%",
+                "$8,394,756"
+              ]
+            },
+            {
+              "name": "Cemetery Property",
+              "metrics": [
+                "1,863",
+                "51%",
+                "27%",
+                "$5,293,848"
+              ]
+            },
+            {
+              "name": "Memorial Products",
+              "metrics": [
+                "1,440",
+                "48%",
+                "22%",
+                "$5,760,588"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Service Arranged by Product Category",
+          "tableTitle": "Service Arranged by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": []
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Service Arranged (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Cremation Services",
+            "values": [
+              987,
+              1456,
+              1398,
+              1287,
+              1184
+            ]
+          },
+          {
+            "name": "Preneed Planning",
+            "values": [
+              624,
+              748,
+              791,
+              667,
+              570
+            ]
+          },
+          {
+            "name": "Funeral Services",
+            "values": [
+              512,
+              698,
+              723,
+              598,
+              511
+            ]
+          },
+          {
+            "name": "Cemetery Property",
+            "values": [
+              294,
+              356,
+              398,
+              321,
+              235
+            ]
+          },
+          {
+            "name": "Memorial Products",
+            "values": [
+              187,
+              248,
+              267,
+              326,
+              172
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Arrangement Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Arrangement Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Arrangement Consultation Scheduled (Count)",
+            "value": "11,947"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$71,824,639"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "18:47:12"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Arrangement Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Arrangement Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Arrangement Consultation Scheduled (Count)",
+            "value": "1,204"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$8,849,516"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Arrangement Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Arrangement Consultation Scheduled",
+            "values": [
+              74,
+              78,
+              76,
+              81,
+              73,
+              79,
+              75,
+              82,
+              78,
+              76,
+              80,
+              77,
+              79,
+              83,
+              76,
+              81,
+              74,
+              78,
+              82,
+              75,
+              79,
+              77,
+              81,
+              76,
+              80,
+              173,
+              179,
+              168,
+              182,
+              176,
+              171,
+              187,
+              194,
+              189,
+              198,
+              185,
+              191,
+              196,
+              188,
+              193,
+              187,
+              195,
+              189,
+              197,
+              192,
+              186,
+              194,
+              191,
+              198
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,283"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "716"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "699"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "98%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Arrangement Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Direct Cremation Services Inquiry",
+            "values": [
+              8,
+              12,
+              7,
+              11,
+              9,
+              10
+            ]
+          },
+          {
+            "name": "Preneed Planning Questions",
+            "values": [
+              5,
+              9,
+              6,
+              8,
+              4,
+              7
+            ]
+          },
+          {
+            "name": "Cemetery Plot Availability",
+            "values": [
+              3,
+              7,
+              5,
+              9,
+              6,
+              8
+            ]
+          },
+          {
+            "name": "Memorial Product Options",
+            "values": [
+              6,
+              11,
+              8,
+              12,
+              7,
+              9
+            ]
+          },
+          {
+            "name": "Funeral Service Coordination",
+            "values": [
+              9,
+              14,
+              11,
+              13,
+              10,
+              12
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "39,918"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "30,156"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Arrangement Consultation Booked (Count)",
+            "value": "20,393"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$86,053,895"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Delgado",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Sophia Ruiz",
+              "value": 185,
+              "display": "185"
+            },
+            {
+              "name": "James Cortez",
+              "value": 242,
+              "display": "242"
+            },
+            {
+              "name": "Alejandra Mendez",
+              "value": 201,
+              "display": "201"
+            },
+            {
+              "name": "Diego Fernandez",
+              "value": 167,
+              "display": "167"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Arrangement Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Elena Vasquez",
+            "values": [
+              268,
+              315,
+              342,
+              391,
+              428
+            ]
+          },
+          {
+            "name": "Rafael Ortega",
+            "values": [
+              247,
+              289,
+              318,
+              366,
+              407
+            ]
+          },
+          {
+            "name": "Carla Romero",
+            "values": [
+              221,
+              261,
+              298,
+              341,
+              389
+            ]
+          },
+          {
+            "name": "Miguel Santos",
+            "values": [
+              198,
+              234,
+              276,
+              319,
+              367
+            ]
+          },
+          {
+            "name": "Isabella Herrera",
+            "values": [
+              156,
+              184,
+              219,
+              261,
+              308
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Delgado",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Sophia Ruiz",
+              "value": 55.8,
+              "display": "55.8%"
+            },
+            {
+              "name": "James Cortez",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "Alejandra Mendez",
+              "value": 57.3,
+              "display": "57.3%"
+            },
+            {
+              "name": "Diego Fernandez",
+              "value": 53.6,
+              "display": "53.6%"
+            },
+            {
+              "name": "Antonio Vargas",
+              "value": 56.9,
+              "display": "56.9%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Arrangement Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Delgado",
+                "54.2%",
+                "27%",
+                "$1,653,847",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Sophia Ruiz",
+                "55.8%",
+                "29%",
+                "$1,822,556",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "James Cortez",
+                "52.1%",
+                "26%",
+                "$1,597,334",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Alejandra Mendez",
+                "57.3%",
+                "31%",
+                "$1,934,218",
+                "1,511"
+              ]
+            },
+            {
+              "cells": [
+                "Diego Fernandez",
+                "53.6%",
+                "28%",
+                "$1,739,072",
+                "1,478"
+              ]
+            },
+            {
+              "cells": [
+                "Antonio Vargas",
+                "56.9%",
+                "30%",
+                "$1,878,445",
+                "1,493"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Elena Vasquez",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Rafael Ortega",
+              "value": 89.3,
+              "display": "89.3%"
+            },
+            {
+              "name": "Carla Romero",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "Miguel Santos",
+              "value": 87.8,
+              "display": "87.8%"
+            },
+            {
+              "name": "Isabella Herrera",
+              "value": 90.4,
+              "display": "90.4%"
+            },
+            {
+              "name": "Carmen Gonzalez",
+              "value": 88.6,
+              "display": "88.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Arrangement Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Elena Vasquez",
+                "91.7%",
+                "67%",
+                "$4,281,556",
+                "1,544"
+              ]
+            },
+            {
+              "cells": [
+                "Rafael Ortega",
+                "89.3%",
+                "64%",
+                "$3,847,218",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Carla Romero",
+                "92.1%",
+                "66%",
+                "$4,156,772",
+                "1,523"
+              ]
+            },
+            {
+              "cells": [
+                "Miguel Santos",
+                "87.8%",
+                "58%",
+                "$3,542,389",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Isabella Herrera",
+                "90.4%",
+                "63%",
+                "$3,968,145",
+                "1,511"
+              ]
+            },
+            {
+              "cells": [
+                "Carmen Gonzalez",
+                "88.6%",
+                "61%",
+                "$3,879,334",
+                "1,502"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Arrangement Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Arrangement Consultation Booked (Count)",
+        "rightMax": 1000,
+        "rightTicks": [
+          0,
+          250,
+          500,
+          750,
+          1000
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 756
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 725
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 675
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 644
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 561
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 589
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 650
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 676
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 753
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 730
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 658
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 636
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 566
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 583
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 665
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 686
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 746
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 734
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 644
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 624
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 575
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 581
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 677
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 699
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 737
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 736
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 635
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 609
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 584
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 582
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 677
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 3900000,
+        "rightTicks": [
+          0,
+          1300000,
+          2600000,
+          3900000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 3189942
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 3057415
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 2847076
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 2716659
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 2365349
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 2482370
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 2742203
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 2850295
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 3178096
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 3081360
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 2775276
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 2682359
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 2386848
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 2460276
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 2807492
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 2893041
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 3148505
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 3099506
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 2717930
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 2631723
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 2422673
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 2448072
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 2855883
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 2950550
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 3108506
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 3103985
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 2679040
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 2568771
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 2464682
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 2452797
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 2885215
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "43,389"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:17"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,471"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,603"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "88%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Maria Rodriguez",
+                "412",
+                "91%",
+                "90%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "James Mitchell",
+                "518",
+                "88%",
+                "87%",
+                "86%"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Gonzalez",
+                "389",
+                "87%",
+                "86%",
+                "84%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "43,389 calls",
+      "pagerLabel": "1 of 4,339",
+      "calls": [
+        {
+          "time": "1/6/26 9:14 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 10:41 am",
+          "id": "A2C4-3E91DF70A1B8"
+        },
+        {
+          "time": "1/12/26 11:03 am",
+          "id": "9D3E-6B24C1F80572"
+        },
+        {
+          "time": "1/14/26 12:27 pm",
+          "id": "4E88-A70C5D31E9F2"
+        },
+        {
+          "time": "1/16/26 1:52 pm",
+          "id": "B1F7-2C09E845760A"
+        },
+        {
+          "time": "1/20/26 2:18 pm",
+          "id": "7A05-D6F1930B4C2E"
+        },
+        {
+          "time": "1/22/26 3:09 pm",
+          "id": "C3D9-58E207A1FB64"
+        },
+        {
+          "time": "1/26/26 3:47 pm",
+          "id": "E62A-19B4C7D0538F"
+        },
+        {
+          "time": "1/28/26 4:31 pm",
+          "id": "18F4-0A2D6E93B7C5"
+        },
+        {
+          "time": "1/30/26 5:12 pm",
+          "id": "5B7C-F3910D82A46E"
+        }
+      ],
+      "duration": "2:22",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Dignity Memorial, our SCI Hispana family care line. My name is Rosa. How may I help you honor your loved one today?",
+          "highlights": [
+            "Thank you for calling Dignity Memorial",
+            "How may I help you honor your loved one today"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Rosa. My name is Daniel Vega. My father passed away yesterday and we have never done this before, so I honestly do not know where to start.",
+          "highlights": [
+            "My name is Daniel Vega",
+            "never done this before"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:19",
+          "text": "Daniel, I am so very sorry for the loss of your father. Please know we will walk with you through every step. Had your family thought about a burial service or a cremation?",
+          "highlights": [
+            "so very sorry for the loss of your father"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:31",
+          "text": "We think cremation, but my dad was Catholic and my mom still wants a service where people can come and say goodbye. Is that something you can do together?",
+          "highlights": [
+            "We think cremation",
+            "a service where people can come"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:43",
+          "text": "Absolutely. That would be our Cremation with Memorial Service. It includes the cremation, a viewing or memorial gathering, a rental casket, and we coordinate a Catholic officiant for you.",
+          "highlights": [
+            "Cremation with Memorial Service",
+            "coordinate a Catholic officiant"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:56",
+          "text": "Okay. And what does that run? I want to take care of him properly, but I also need to keep it manageable for the family right now.",
+          "highlights": [
+            "what does that run",
+            "keep it manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:06",
+          "text": "I understand completely. That package typically falls between $3,500 and $5,500 depending on the memorial details, and I can help you build it so it fits what your family is comfortable with.",
+          "highlights": [
+            "between $3,500 and $5,500"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:18",
+          "text": "That is fair. I will be honest, I am getting a couple of quotes. The place off Main called it a simple cremation for way less, but it sounded like there was no service at all.",
+          "highlights": [
+            "getting a couple of quotes",
+            "no service at all"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:29",
+          "text": "That is a smart thing to do. A direct cremation is lower cost because there is no gathering. With us the memorial, the officiant, and the tribute are all included and handled by one team, so nothing falls on you.",
+          "highlights": [
+            "direct cremation",
+            "all included and handled by one team"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:41",
+          "text": "That makes sense. One thing though, I would really need to talk this over with my mom and my sister before we commit to anything.",
+          "highlights": [
+            "talk this over with my mom and my sister"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:50",
+          "text": "Of course, and there is no obligation to decide today. The best next step is an Arrangement Consultation where all of you can sit with a counselor, review options, and see everything in writing.",
+          "highlights": [
+            "no obligation to decide today",
+            "Arrangement Consultation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:01",
+          "text": "Yes, let us do that. Could we come in Thursday morning? My sister is off work then.",
+          "highlights": [
+            "let us do that",
+            "Thursday morning"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:08",
+          "text": "I have you scheduled for an Arrangement Consultation this Thursday at 10 AM. I have Daniel Vega and your callback number ending 4-1-8-2. We will see you and your family then.",
+          "highlights": [
+            "scheduled for an Arrangement Consultation this Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:18",
+          "text": "Thank you Rosa, that is a real relief.",
+          "highlights": [
+            "that is a real relief"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:21",
+          "text": "You are welcome, Daniel. We are honored to care for your father. Take care until Thursday.",
+          "highlights": [
+            "We are honored to care for your father"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Family",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Arrangement Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Cremation Intent",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Memorial Service Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Price Concern Raised",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Bilingual Care Request",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Daniel Vega, a first-time caller whose father passed away the previous day, reached out to the SCI Hispana family care line unsure of where to begin. He and his mother wanted a cremation paired with a Catholic memorial service, and agent Rosa recommended the Cremation with Memorial Service package including a coordinated Catholic officiant. After addressing his cost concern, a competing direct cremation quote, and his need to consult his mother and sister, Rosa scheduled an Arrangement Consultation for Thursday at 10 AM and captured his callback number.",
+        "keyPoints": [
+          "New family, first arrangement, father passed the prior day",
+          "Wanted cremation with a Catholic memorial gathering",
+          "Recommended Cremation with Memorial Service, $3,500 to $5,500, officiant included",
+          "Handled price concern, a competitor direct cremation quote, and family decision-making",
+          "Arrangement Consultation booked for Thursday 10 AM",
+          "Captured caller name Daniel Vega and callback number ending 4182"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Arrangement Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "27,335 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,734",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hello, thank you for contacting Dignity Memorial. My name is Maria. Are you planning a service for a loved one today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes, my father passed away yesterday. We need help with arrangements."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "I am so sorry for your loss. We are here to help you through this difficult time. Can you tell me which city or area you are located in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:25 AM",
+              "text": "We are in Phoenix, Arizona."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:26 AM",
+              "text": "Thank you. We serve the Phoenix area with several locations. Are you interested in cremation services, a traditional funeral, or would you like to explore all options?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "We are thinking about cremation with a memorial service."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "That is a wonderful choice. A cremation with memorial service typically ranges from 3,500 to 5,500 dollars and includes the cremation, viewing or service, and coordination. Does that sound like what your family needs?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "Yes, that sounds right. How soon can we schedule this?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "We can schedule your arrangement consultation as soon as tomorrow. Would Thursday, March 12th at 2:00 PM work for your family to meet with our arrangement counselor?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:34 AM",
+              "text": "Yes, Thursday at 2:00 PM works perfectly."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:35 AM",
+              "text": "Wonderful. I have you scheduled for Thursday, March 12th at 2:00 PM at our Phoenix downtown location. You will receive a reminder text shortly. Our main line is 602-555-0147 if you have any questions before your appointment."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:37 AM",
+              "text": "Thank you so much. We appreciate your help."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:38 AM",
+              "text": "You are very welcome. Our deepest condolences to your family. We look forward to serving you on Thursday. Have a good day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Arrangement Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Family",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Selected: Cremation with Memorial",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: Phoenix, Arizona",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimated Price Range: 3500 to 5500 dollars",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Appointment Date Confirmed: March 12 at 2 PM",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "13",
+            "source": "602-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "602-555-0147",
+            "repeatCaller": "No",
+            "city": "Phoenix",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "Robert Martinez",
+            "firstName": "Robert",
+            "lastName": "Martinez",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C893-2A7DB41F8E6C",
+          "time": "8/16/25 10:48 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C893-2A7DB41F8E6C",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C745-5E91C3D2A9F4",
+          "time": "8/16/25 10:36 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C745-5E91C3D2A9F4",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C612-7F4A6B8C2E19",
+          "time": "8/16/25 10:23 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C612-7F4A6B8C2E19",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "43,389 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,339",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/14/26 4:12 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Thank you for calling Dignity Memorial. My name is Carlos. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Hi Carlos. Yes, I'm calling because my father passed away this morning, and I need to make some arrangements."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "I'm very sorry for your loss. I'm here to help. First, would you prefer a traditional funeral service with viewing and ceremony, or would cremation be more appropriate for your family?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "We're thinking cremation, but we'd like to have a small memorial service with it."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "That's a beautiful option. Many families choose cremation with a memorial service. Can you tell me what city or area you're located in?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "We're in San Antonio, Texas."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Perfect. We have a lovely facility in San Antonio. Now, are you looking for something simple and direct, or would you like us to handle all the details including the ceremony setup?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "We'd like the full service. Can you give me an idea of what that would cost?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Certainly. A cremation with memorial service package typically runs between thirty five hundred and fifty five hundred dollars, depending on the options you choose. That includes the cremation itself, the memorial venue, and our coordination with an officiant."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Okay, that sounds reasonable. What's the next step?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:20 PM",
+              "text": "The next step is to schedule an arrangement consultation with one of our family service specialists. They'll go over all the details, answer any questions, and help you plan the service. Are you available to come in tomorrow at two PM?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:21 PM",
+              "text": "Tomorrow at two works great for us."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:22 PM",
+              "text": "Excellent. That's tomorrow, January fifteenth at two PM at our San Antonio location. A specialist will meet with you there. We'll also send you a confirmation text. Is the best number to reach you five one two, five five five, eight eight four seven?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:23 PM",
+              "text": "Yes, that's correct."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:24 PM",
+              "text": "Perfect. Thank you so much for calling, and we'll see you tomorrow at two PM. If anything changes, just call us back at our main line. Again, my condolences to you and your family."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:24 PM",
+              "text": "Thank you, Carlos. We appreciate it."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Arrangement Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Family",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Selected: Cremation with Memorial",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Location Confirmed: San Antonio, TX",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Price Range Quoted: 3500 to 5500 dollars",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Callback Number Confirmed",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/14/26 4:12 pm",
+            "duration": "12:34",
+            "destinationPhone": "877-936-2933",
+            "source": "8005551234",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "5125558847",
+            "repeatCaller": "No",
+            "city": "San Antonio",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Maria Gonzalez",
+            "firstName": "Maria",
+            "lastName": "Gonzalez",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B823-4A7FE521891C",
+          "time": "1/18/26 11:47 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B823-4A7FE521891C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C956-6D2AB743912E",
+          "time": "1/22/26 2:33 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C956-6D2AB743912E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D147-8F5CK934AC2B",
+          "time": "1/27/26 3:56 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D147-8F5CK934AC2B",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Hello, I am SCI Hispana's AI assistant and I can help you get a personalized quote and connect you with a caring specialist. Right now families who plan ahead can lock in today's pricing on a preneed plan, would you like to get started?",
+        "Qualify one question at a time: I will ask a few short questions, one at a time, so I understand your needs: which service you are considering (funeral, cremation, cemetery property, or advance planning), whether this is for an immediate need or preplanning, any preferences for casket, urn, or memorial products, your preferred timeline, and finally your ZIP code so I can confirm a provider near you.",
+        "Estimate then book: Once I confirm we serve your ZIP code, I will share a preliminary price range based on what you shared, then recommend a private arrangement consultation with a specialist for an exact quote, propose a specific day and time, and confirm you will receive a reminder text before your appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "SCI_Hispana_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Services & Care Options",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Provider",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Plan Ahead",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"preneed plan status\",\"question\":\"Can you tell me if my prepaid plan is fully paid and transferable?\",\"answer\":\"I can look into your preneed plan and confirm your balance and transfer options. Let me connect you with your specialist so we can review the details and answer any questions.\"},{\"topic\":\"reschedule consultation\",\"question\":\"I need to move my arrangement consultation to another day, can you help?\",\"answer\":\"Of course, I can help you reschedule your arrangement consultation to a time that works better for your family. What day and time would you prefer, and I will confirm a specialist is available.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How much does a cremation cost?",
+              "answer": "Pricing depends on whether you choose a simple cremation or a cremation with a memorial service, and it can vary by location. I can arrange a consultation with a specialist who will provide an exact quote for your family."
+            },
+            {
+              "question": "What is the difference between direct cremation and cremation with a memorial?",
+              "answer": "Direct cremation is a simple option with no ceremony, while cremation with a memorial adds a viewing or service and coordination of an officiant. A specialist can walk you through both options during a consultation."
+            },
+            {
+              "question": "Do you offer services in Spanish?",
+              "answer": "Yes, we proudly offer fully bilingual services and staff who can support your family in Spanish. Let me set up a consultation with a Spanish-speaking specialist for you."
+            },
+            {
+              "question": "How much is a traditional funeral?",
+              "answer": "A traditional full-service funeral includes embalming, a viewing, the ceremony, casket, and staff coordination, and pricing varies by selection and location. I would be glad to book a consultation so a specialist can give you an accurate quote."
+            },
+            {
+              "question": "Can I preplan my own funeral?",
+              "answer": "Yes, advance planning lets you make your wishes known and lock in today's pricing so your family is protected. Let me schedule a planning consultation with a specialist for you."
+            },
+            {
+              "question": "Do you sell cemetery plots?",
+              "answer": "Yes, we offer burial plots, mausoleum crypts, and cremation niches at our cemetery properties. A specialist can review availability and pricing during a consultation."
+            },
+            {
+              "question": "What veterans benefits are available?",
+              "answer": "We assist veteran families with flag presentation, military honors coordination, and VA benefits guidance. I can arrange a consultation with a specialist who handles veterans services."
+            },
+            {
+              "question": "How soon can services be arranged for an immediate need?",
+              "answer": "We are able to begin care right away and guide your family through each step with compassion. Let me connect you with a specialist as soon as possible to make arrangements."
+            },
+            {
+              "question": "Can I transfer a prepaid plan from another provider?",
+              "answer": "In many cases preneed plans are transferable, and a specialist can review the details with you. I would be happy to book a consultation to go over your options."
+            },
+            {
+              "question": "What types of caskets do you offer?",
+              "answer": "We offer a range of steel and hardwood caskets with various interiors and finishes, plus premium selections. A specialist can show you the full selection during your consultation."
+            },
+            {
+              "question": "Do you offer urns and keepsakes?",
+              "answer": "Yes, we carry a variety of urns as well as memorial keepsakes and jewelry such as fingerprint pendants. Let me arrange a consultation so you can view the options."
+            },
+            {
+              "question": "Can you help with a celebration of life event?",
+              "answer": "Yes, we create personalized celebration of life events with tribute videos, venue, and catering coordination. A specialist can help design a meaningful tribute during a consultation."
+            },
+            {
+              "question": "Where are you located?",
+              "answer": "We have caring providers in many communities, and I can help you find the one nearest you. Share your ZIP code and I will confirm a location and set up a consultation."
+            },
+            {
+              "question": "How do I get a headstone or grave marker?",
+              "answer": "We offer granite and bronze markers with custom engraving and installation. A specialist can review designs and pricing with you during a consultation."
+            },
+            {
+              "question": "Can I make monthly payments on an advance plan?",
+              "answer": "Advance planning plans often offer flexible payment options that fit your budget. Let me book a consultation so a specialist can explain the plans available to you."
+            },
+            {
+              "question": "What is included in a graveside service?",
+              "answer": "A graveside service typically includes the casket, plot, the ceremony at the graveside, and opening and closing of the grave. A specialist can tailor this and provide an exact quote during a consultation."
+            },
+            {
+              "question": "Do you help write an obituary?",
+              "answer": "Yes, our team can help your family prepare and publish a heartfelt obituary. Let me set up a consultation where a specialist can assist with the details."
+            },
+            {
+              "question": "Is embalming required?",
+              "answer": "Embalming is not always required and depends on the type of service you choose. A specialist can explain your options clearly during a consultation."
+            },
+            {
+              "question": "Do you provide grief support resources?",
+              "answer": "Yes, we offer grief support resources and guidance for families after a loss. I can share these and arrange a consultation with a caring specialist."
+            },
+            {
+              "question": "How do I get started planning ahead?",
+              "answer": "Getting started is simple and begins with a short consultation to understand your wishes. Let me find a time that works and connect you with a specialist."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule an arrangement consultation\",\"follow_up_message\":\"Thank you for reaching out to SCI Hispana. I have a caring specialist available to meet with your family, would Thursday at 2:00 PM work for your arrangement consultation? You will receive a reminder text beforehand with a number to call.\"},{\"intent\":\"request a quote for cremation or funeral services\",\"follow_up_message\":\"I would be glad to help you get an accurate quote. Based on what you shared I can give a preliminary range, and a specialist will confirm exact pricing during a short consultation, is tomorrow morning or afternoon better for you?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hello, I am SCI Hispana's AI assistant and I am here to help your family with a personalized quote and to connect you with a caring specialist. May I ask a few quick questions to get started?",
+        "goal": "Guide the family to book an arrangement consultation with a specialist who will provide an exact quote and compassionate guidance.",
+        "bookingType": "in-person arrangement consultation",
+        "offer": "Plan ahead now and lock in today's pricing on a preneed plan",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "Which service are you considering: funeral, cremation, cemetery property, or advance planning?",
+          "Is this for an immediate need or are you planning ahead?",
+          "Do you have any preferences for a casket, urn, or memorial products?",
+          "What is your preferred timeline for the service or plan?",
+          "What is your ZIP code so I can confirm a caring provider near you?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:17 am"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:17 am"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/22/26 11:17 am"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "SCI Hispana",
+      "callerName": "María Elena Rodríguez",
+      "callerPhone": "(210) 555-0187",
+      "campaign": "Cremation Services, San Antonio Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Arrangement Consultation Lead",
+      "estimatedValue": "$4,285",
+      "googleSearch": "cremation services near me San Antonio",
+      "websiteSearch": "affordable cremation with memorial service",
+      "callingWebpage": "/cremation-services",
+      "products": "Cremation with Memorial Service, Cremation Urn",
+      "cartId": "SCI-7493M",
+      "serviceable": "Yes",
+      "email": "mrodriguez.elena@email.com",
+      "street": "2847 Espada Road",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78228",
+      "digitalJourney": "/home › /cremation-services › /cremation-with-memorial › /products/urns",
+      "intent": "Exploring cremation with memorial service options for mother who passed last week, needs guidance on full package pricing and timeline",
+      "coverage": "ZIP 78228 confirmed, San Antonio serviceable",
+      "switchIntent": "High, family gathering this weekend, wants arrangement consultation with specialist within 24 hours to finalize ceremony details",
+      "greeting": "Hi María, thank you for calling SCI Hispana. I see you're interested in our Cremation with Memorial Service. I'd love to help you plan a beautiful tribute for your mother. Would Thursday morning work for an in-home arrangement consultation with one of our specialists to walk through all the options?"
+    },
+    "smsScreenpop": {
+      "brandName": "SCI Hispana",
+      "callerName": "Carlos Mendoza",
+      "callerPhone": "(623) 555-0642",
+      "campaign": "Preneed Planning, Phoenix Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Arrangement Consultation Lead",
+      "estimatedValue": "$6,750",
+      "googleSearch": "preneed funeral plans Arizona",
+      "websiteSearch": "prepaid funeral planning locked in pricing",
+      "callingWebpage": "/plan-ahead/preneed-packages",
+      "products": "Preneed Prepaid Plan, Traditional Full Service Funeral",
+      "cartId": "SCI-5821K",
+      "serviceable": "Yes",
+      "email": "carlos.mendoza1967@email.com",
+      "street": "3412 North 35th Avenue",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zip": "85019",
+      "digitalJourney": "/home › /plan-ahead › /preneed-packages › /services/traditional-funeral",
+      "intent": "Interest in preneed prepaid funeral plan with locked in pricing, wants to protect family from future costs and ensure personal wishes are documented",
+      "coverage": "ZIP 85019 confirmed, Phoenix serviceable",
+      "appointment": "In-home arrangement consultation with preneed specialist, Fri Jul 18, 2:00 PM",
+      "greeting": "Hola Carlos. This is Roberto from SCI Hispana. Thank you for texting us about preneed planning. We have you scheduled for Friday at 2 PM with our specialist to review prepaid plan options that lock in today's pricing. Do you have any questions before then, or would you like to reschedule?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "SCI Hispana",
+      "brandDomain": "www.sci-corp.com",
+      "brandIcon": "🕊️",
+      "callerPhone": "+1 (210) 555-0847",
+      "callerLocation": "San Antonio, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "Servicios Funerarios en Español",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "cremation cost San Antonio",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Home / Services / Cremation",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Direct Cremation, Cremation with Memorial Service",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "San Antonio, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "arrangement_consultation_new",
+          "name": "Arrangement Consultation, New Service"
+        },
+        {
+          "id": "existing_arrangements_support",
+          "name": "Existing Arrangements Support"
+        },
+        {
+          "id": "general_inquiry_support",
+          "name": "General Inquiry Support"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hello, thank you for calling SCI Hispana. I'm Alex. I see you were looking at our cremation services. Are you calling to learn more about options for a family member today?",
+          "sigs": [],
+          "q": [
+            25,
+            35,
+            40
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, my mother passed away last week and we're trying to figure out the best way to honor her. We want something meaningful but also affordable.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Recent loss</strong>, seeking guidance"
+            },
+            {
+              "c": "blue",
+              "t": "Value and <strong>affordability</strong> priority"
+            },
+            {
+              "c": "orange",
+              "t": "Memorial service interest"
+            }
+          ],
+          "q": [
+            45,
+            30,
+            25
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I'm so sorry for your loss. We have beautiful options that can work within different budgets. Would a service with a memorial gathering be something your family would want, or would you prefer a simpler direct cremation?",
+          "sigs": [],
+          "q": [
+            60,
+            20,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I think we'd like to have a small memorial service where people can gather and remember her. Maybe something with about thirty family members.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Cremation with memorial</strong> confirmed"
+            },
+            {
+              "c": "purple",
+              "t": "Moderate gathering, approximately 30 guests"
+            },
+            {
+              "c": "green",
+              "t": "Ready to discuss <strong>arrangements</strong>"
+            }
+          ],
+          "q": [
+            88,
+            8,
+            4
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. That sounds like a beautiful way to celebrate her life. I'm going to connect you with our Arrangement Consultation team right now. They'll help you customize every detail, from the service location to memorial products like urns or keepsakes, and they'll go over all the pricing. One moment please.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Arrangement Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule a consultation (Caller)\", \"come in to make the arrangements (Agent)\", \"book a time to meet (Agent)\", \"set up an appointment to plan the service (Caller)\"])",
+          "createdAt": "09/12/25 10:22 am",
+          "updatedAt": "01/14/26 3:47 pm"
+        },
+        {
+          "name": "Arrangement Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"make the arrangements (Caller)\", \"plan a service (Agent)\", \"discuss the final arrangements (Agent)\", \"go over the options with the family (Caller)\"])",
+          "createdAt": "08/03/25 9:05 am",
+          "updatedAt": "12/19/25 11:31 am"
+        },
+        {
+          "name": "Compassionate Tone Demonstrated",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Family Care Quality] < 60 and duration > 45 sec",
+          "createdAt": "10/07/25 2:18 pm",
+          "updatedAt": "01/09/26 8:52 am"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"another funeral home (Caller)\", \"Neptune Society (Caller)\", \"cheaper somewhere else (Caller)\", \"the provider down the street (Caller)\"])",
+          "createdAt": "07/21/25 4:44 pm",
+          "updatedAt": "11/28/25 1:12 pm"
+        },
+        {
+          "name": "Cremation Service Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"direct cremation (Caller)\", \"simple cremation (Caller)\", \"cremation with a memorial (Caller)\", \"how much for cremation (Caller)\"])",
+          "createdAt": "09/29/25 11:50 am",
+          "updatedAt": "01/06/26 10:03 am"
+        },
+        {
+          "name": "Needs Assessment Completed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Needs Assessment] < 60 and duration > 45 sec",
+          "createdAt": "08/15/25 3:33 pm",
+          "updatedAt": "12/30/25 9:19 am"
+        },
+        {
+          "name": "Preneed Options Presented",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Advance Planning Review] < 60 and duration > 45 sec",
+          "createdAt": "10/22/25 1:07 pm",
+          "updatedAt": "01/12/26 2:41 pm"
+        },
+        {
+          "name": "Price Sensitivity Expressed",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"too expensive (Caller)\", \"can we afford that (Caller)\", \"is there a payment plan (Caller)\", \"we are on a tight budget (Caller)\"])",
+          "createdAt": "07/09/25 10:14 am",
+          "updatedAt": "12/03/25 4:26 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the total cost would be (Agent)\", \"our package price is (Agent)\", \"that comes to (Agent)\", \"the estimate for the service is (Agent)\"])",
+          "createdAt": "09/04/25 8:41 am",
+          "updatedAt": "01/11/26 11:58 am"
+        },
+        {
+          "name": "Veterans Benefits Inquiry",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"veterans benefits (Caller)\", \"military honors (Caller)\", \"VA burial benefits (Caller)\", \"he was a veteran (Caller)\"])",
+          "createdAt": "08/27/25 12:29 pm",
+          "updatedAt": "12/22/25 3:05 pm"
+        }
+      ]
+    }
+  }
+}

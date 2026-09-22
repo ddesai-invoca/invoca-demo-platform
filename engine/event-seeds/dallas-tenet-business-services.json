@@ -1,0 +1,5332 @@
+{
+  "id": "tenet-business-services",
+  "customerName": "Tenet Business Services",
+  "websiteUrl": "https://www.tenethealth.com",
+  "brandDomain": "tenethealth.com",
+  "networkName": "Invoca for Healthcare Revenue Cycle Management",
+  "industry": "Healthcare Revenue Cycle Management and Business Process Outsourcing",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Client",
+  "generation": {
+    "at": "2026-09-22T15:18:54.797Z",
+    "scope": "full"
+  },
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 800,
+      "yTicks": [
+        0,
+        200,
+        400,
+        600,
+        800
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 561
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 648
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 672
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 634
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 504
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AI-Powered Revenue Cycle",
+          "marketingSearchTerm": "revenue cycle management companies",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/services/revenue-cycle-management?utm_source=paidsearch&utm_medium=cpc&utm_campaign=ai_powered_revenue_cycle",
+          "websiteJourney": "Home / Services / Revenue Cycle Management",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Zero-Denial Playbook",
+          "marketingSearchTerm": "denials management services",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/services/ar-and-denials?utm_source=paidsearch&utm_medium=cpc&utm_campaign=zero_denial_playbook",
+          "websiteJourney": "Home / Services / A/R and Denials",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Cash Acceleration for Health Systems",
+          "marketingSearchTerm": "hospital RCM outsourcing",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/industries/hospitals-and-health-systems?utm_source=paidsearch&utm_medium=cpc&utm_campaign=cash_acceleration",
+          "websiteJourney": "Home / Industries / Hospitals and Health Systems",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "End-to-End RCM Confidence",
+          "marketingSearchTerm": "medical coding outsourcing",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/services/revenue-integrity/coding?utm_source=bing&utm_medium=cpc&utm_campaign=end_to_end_rcm",
+          "websiteJourney": "Home / Services / Revenue Integrity / Coding",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "From Access to Zero Balance",
+          "marketingSearchTerm": "patient access services vendor",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/services/patient-access?utm_source=paidsearch&utm_medium=cpc&utm_campaign=access_to_zero_balance",
+          "websiteJourney": "Home / Services / Patient Access",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "The Modern Revenue Cycle",
+          "marketingSearchTerm": "clinical documentation improvement services",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/services/revenue-integrity/cdi?utm_source=paidsearch&utm_medium=cpc&utm_campaign=modern_revenue_cycle",
+          "websiteJourney": "Home / Services / Revenue Integrity / CDI",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Recover More, Faster",
+          "marketingSearchTerm": "reduce hospital claim denials",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/services/ar-and-denials/appeals?utm_source=bing&utm_medium=cpc&utm_campaign=recover_more_faster",
+          "websiteJourney": "Home / Services / A/R and Denials / Appeals",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Value-Based Care, Simplified",
+          "marketingSearchTerm": "value-based care management vendor",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/services/value-based-care/population-health?utm_source=paidsearch&utm_medium=cpc&utm_campaign=vbc_simplified",
+          "websiteJourney": "Home / Services / Value-Based Care / Population Health",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Recover More, Faster",
+          "marketingSearchTerm": "physician billing outsourcing",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/industries/physician-groups?utm_source=paidsearch&utm_medium=cpc&utm_campaign=recover_more_faster",
+          "websiteJourney": "Home / Industries / Physician Groups",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "AI-Powered Revenue Cycle",
+          "marketingSearchTerm": "healthcare BPO revenue cycle",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/services?utm_source=bing&utm_medium=cpc&utm_campaign=ai_powered_revenue_cycle",
+          "websiteJourney": "Home / Services",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "End-to-End RCM Confidence",
+          "marketingSearchTerm": "insurance eligibility verification software",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/services/patient-access/eligibility?utm_source=paidsearch&utm_medium=cpc&utm_campaign=end_to_end_rcm",
+          "websiteJourney": "Home / Services / Patient Access / Eligibility",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Conifer Brand SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.tenethealth.com/conifer?utm_source=organic&utm_medium=organic&utm_campaign=brand_seo",
+          "websiteJourney": "Home / About / What We Do / Conifer Health Solutions",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "RCM Insights Content",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/insights/zero-denial-whitepaper?utm_source=organic&utm_medium=organic&utm_campaign=insights_content",
+          "websiteJourney": "Home / Insights / Resources",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "CDM Management SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/services/revenue-integrity/cdm-management?utm_source=organic&utm_medium=organic&utm_campaign=cdm_seo",
+          "websiteJourney": "Home / Services / Revenue Integrity / CDM Management",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Value-Based Care, Simplified",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/services/value-based-care?utm_source=social&utm_medium=instagram&utm_campaign=vbc_simplified",
+          "websiteJourney": "Home / Services / Value-Based Care",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Cash Acceleration for Health Systems",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/industries/health-plans?utm_source=social&utm_medium=facebook&utm_campaign=cash_acceleration",
+          "websiteJourney": "Home / Industries / Health Plans",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "The Modern Revenue Cycle",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/insights/adventist-health-case-study?utm_source=social&utm_medium=facebook&utm_campaign=modern_revenue_cycle",
+          "websiteJourney": "Home / Insights / Case Studies",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "HIM Services SEO",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/services/health-information-management?utm_source=organic&utm_medium=organic&utm_campaign=him_seo",
+          "websiteJourney": "Home / Services / Health Information Management",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "From Access to Zero Balance",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/services/patient-collections?utm_source=social&utm_medium=instagram&utm_campaign=access_to_zero_balance",
+          "websiteJourney": "Home / Services / Patient Collections and Communications",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Zero-Denial Playbook",
+          "marketingSearchTerm": "charge capture cdm management",
+          "landingPageUrl": "https://www.tenethealth.com/conifer/services/revenue-integrity?utm_source=paidsearch&utm_medium=cpc&utm_campaign=zero_denial_playbook",
+          "websiteJourney": "Home / Services / Revenue Integrity",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Tenet Business Services)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "2,368"
+            },
+            {
+              "label": "Sales Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "4%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$25,184,415"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "379"
+            },
+            {
+              "label": "Existing Client Support Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Implementation & Onboarding (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "General Inquiry (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "24%"
+            },
+            {
+              "label": "Non-Qualified Prospect (Percent)",
+              "value": "15%"
+            },
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "4%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sales Inquiry (Count)",
+            "values": [
+              372,
+              428,
+              401,
+              419,
+              369
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              108,
+              121,
+              114,
+              119,
+              106
+            ]
+          },
+          {
+            "name": "Non-Qualified Prospect (Count)",
+            "values": [
+              68,
+              74,
+              72,
+              75,
+              66
+            ]
+          },
+          {
+            "name": "Contract Signed (Count)",
+            "values": [
+              17,
+              21,
+              19,
+              22,
+              16
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2368,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "812",
+                "21.8%",
+                "2.6%",
+                "$5,585,300"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "561",
+                "23.5%",
+                "3.4%",
+                "$5,032,600"
+              ]
+            },
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "447",
+                "24.6%",
+                "4.5%",
+                "$5,298,900"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "319",
+                "25.8%",
+                "5.6%",
+                "$4,761,200"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "229",
+                "27.2%",
+                "7.4%",
+                "$4,506,415"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2368,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "878",
+                "20.6%",
+                "2.7%",
+                "$6,356,900"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "592",
+                "23.2%",
+                "3.5%",
+                "$5,562,375"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "401",
+                "25.1%",
+                "4.7%",
+                "$5,033,140"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "287",
+                "26.4%",
+                "5.9%",
+                "$4,502,600"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "210",
+                "28.1%",
+                "6.7%",
+                "$3,729,400"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1423,
+          "rows": [
+            {
+              "name": "Recover More, Faster",
+              "metrics": [
+                "438",
+                "21.2%",
+                "2.5%",
+                "$2,914,300"
+              ]
+            },
+            {
+              "name": "AI-Powered Revenue Cycle",
+              "metrics": [
+                "361",
+                "23.4%",
+                "3.5%",
+                "$3,443,600"
+              ]
+            },
+            {
+              "name": "End-to-End RCM Confidence",
+              "metrics": [
+                "284",
+                "24.8%",
+                "4.6%",
+                "$3,444,900"
+              ]
+            },
+            {
+              "name": "Zero-Denial Playbook",
+              "metrics": [
+                "197",
+                "26.1%",
+                "5.8%",
+                "$2,913,100"
+              ]
+            },
+            {
+              "name": "Cash Acceleration for Health Systems",
+              "metrics": [
+                "143",
+                "27.9%",
+                "7.0%",
+                "$2,648,200"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 954,
+          "rows": [
+            {
+              "name": "revenue cycle management companies",
+              "metrics": [
+                "312",
+                "20.8%",
+                "2.6%",
+                "$2,119,000"
+              ]
+            },
+            {
+              "name": "hospital rcm outsourcing",
+              "metrics": [
+                "241",
+                "23.1%",
+                "3.7%",
+                "$2,383,900"
+              ]
+            },
+            {
+              "name": "denials management services",
+              "metrics": [
+                "178",
+                "24.6%",
+                "4.9%",
+                "$2,384,700"
+              ]
+            },
+            {
+              "name": "medical coding outsourcing",
+              "metrics": [
+                "129",
+                "25.9%",
+                "6.0%",
+                "$2,118,200"
+              ]
+            },
+            {
+              "name": "reduce hospital claim denials",
+              "metrics": [
+                "94",
+                "27.6%",
+                "7.5%",
+                "$1,854,100"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "End-to-End Revenue Cycle Management",
+              "metrics": [
+                "682",
+                "23.2%",
+                "2.6%",
+                "$4,772,915"
+              ]
+            },
+            {
+              "name": "Accounts Receivable & Denials Management",
+              "metrics": [
+                "561",
+                "24.6%",
+                "3.4%",
+                "$5,041,880"
+              ]
+            },
+            {
+              "name": "Patient Access & Financial Clearance",
+              "metrics": [
+                "487",
+                "24.2%",
+                "4.3%",
+                "$5,573,640"
+              ]
+            },
+            {
+              "name": "Clinical Revenue Integrity & Coding",
+              "metrics": [
+                "371",
+                "23.7%",
+                "5.1%",
+                "$5,038,225"
+              ]
+            },
+            {
+              "name": "Population Health & Value-Based Care",
+              "metrics": [
+                "267",
+                "24.7%",
+                "6.7%",
+                "$4,757,755"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 2368,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "648",
+                "23.1%",
+                "2.6%",
+                "$4,507,315"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "552",
+                "23.2%",
+                "3.4%",
+                "$5,038,240"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "478",
+                "23.4%",
+                "4.2%",
+                "$5,302,655"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "401",
+                "23.9%",
+                "5.0%",
+                "$5,303,980"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "289",
+                "28.4%",
+                "6.6%",
+                "$5,032,225"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Contract Signed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "End-to-End Revenue Cycle Management",
+            "values": [
+              4,
+              3,
+              5,
+              3,
+              3
+            ]
+          },
+          {
+            "name": "Accounts Receivable & Denials Management",
+            "values": [
+              3,
+              5,
+              4,
+              4,
+              3
+            ]
+          },
+          {
+            "name": "Patient Access & Financial Clearance",
+            "values": [
+              4,
+              5,
+              4,
+              4,
+              4
+            ]
+          },
+          {
+            "name": "Clinical Revenue Integrity & Coding",
+            "values": [
+              3,
+              4,
+              5,
+              3,
+              4
+            ]
+          },
+          {
+            "name": "Population Health & Value-Based Care",
+            "values": [
+              3,
+              4,
+              3,
+              4,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 2,368 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Whitfield, CFO at a regional health system, called about outsourcing denials management and appeals for his hospital group. Oscar walked him through root-cause analysis and prevention workflows, then scheduled a consultation with a revenue cycle specialist. Marcus was impressed and confirmed the meeting.",
+          "date": "Feb 4, 10:12 AM",
+          "agent": "Oscar",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Dana Alvarez, VP of value-based care at a physician group, asked about population health and care coordination services. Lila explained risk stratification and quality-measure reporting, then booked a consultation to review PMPM pricing. Dana was enthusiastic about the fit.",
+          "date": "Mar 9, 1:48 PM",
+          "agent": "Lila",
+          "duration": "2m 47s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Gregory Sun, revenue cycle director, called to check the status of a medical coding compliance audit report that was in progress. Rosey confirmed the DRG validation was on track and shared the delivery timeline. Gregory was satisfied with the update.",
+          "date": "Jan 21, 9:33 AM",
+          "agent": "Rosey",
+          "duration": "1m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 10,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Priya Nair, controller at a newly acquired hospital, called to schedule an end-to-end revenue cycle management consultation. Lee collected her contact details, net patient revenue figures, and current pain points, then booked the consultation with an RCM advisor. Priya appreciated the thorough intake.",
+          "date": "Apr 15, 3:21 PM",
+          "agent": "Lee",
+          "duration": "3m 18s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Thomas Reed, practice manager, wanted a quote for insurance eligibility and benefit verification services. Mary explained per-transaction pricing and real-time payer checks, then scheduled a consultation. Thomas agreed to move forward.",
+          "date": "May 6, 11:05 AM",
+          "agent": "Mary",
+          "duration": "2m 14s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 13,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Karen Boyle, patient financial services lead, disputed a billing invoice for patient collections that seemed higher than her contracted percentage. Sue reviewed the account and opened a billing adjustment case. Karen remained cautious but calmer by the end.",
+          "date": "Feb 18, 2:37 PM",
+          "agent": "Sue",
+          "duration": "2m 41s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Nathan Cole, HIM manager, called about outsourcing medical coding for a backlog of facility charts. Mike outlined per-chart pricing and turnaround, then booked a consultation with a coding lead. Nathan scheduled the meeting.",
+          "date": "Jun 2, 4:09 PM",
+          "agent": "Mike",
+          "duration": "2m 29s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Angela Ruiz, IT director, reported an integration issue with the eligibility verification feed after a recent system update. Jennifer logged the technical ticket and escalated to the implementation team. Angela wanted a faster resolution.",
+          "date": "Jul 11, 10:44 AM",
+          "agent": "Jennifer",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Daniel Pope, CFO, called to cancel a charge description master management engagement, citing budget cuts. Rose confirmed the cancellation terms and documented the request. Daniel was firm but civil throughout the call.",
+          "date": "Aug 7, 3:52 PM",
+          "agent": "Rose",
+          "duration": "1m 40s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Sofia Grant, quality director, inquired about clinical documentation improvement services and physician query workflows. Oscar described concurrent chart review and scheduled a consultation. Sofia booked the follow-up.",
+          "date": "Mar 27, 12:19 PM",
+          "agent": "Oscar",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Brian Kelly, billing supervisor, complained that denials management appeals were taking too long and hurting cash flow. Lila apologized, reviewed the account, and opened an escalation. Brian stayed frustrated by the end.",
+          "date": "Sep 3, 9:16 AM",
+          "agent": "Lila",
+          "duration": "2m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Melissa Ford, controller, disputed a billing statement for third-party collections fees she did not recognize. Mary pulled the contract and promised a written breakdown. Melissa was unhappy about the delay.",
+          "date": "Jun 24, 1:07 PM",
+          "agent": "Mary",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Victor Hale, revenue cycle VP, called angry about a spike in claim denials since onboarding. Lee acknowledged the denials trend and escalated to the account manager. Victor demanded a callback within 24 hours.",
+          "date": "Oct 1, 4:38 PM",
+          "agent": "Lee",
+          "duration": "2m 22s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 37,
+          "summary": "An unidentified caller from a physician practice left a voicemail asking about population health management pricing but did not leave a callback number. The message rolled to voicemail after hours. No agent was available to assist.",
+          "date": "May 19, 6:51 PM",
+          "agent": "No Agent",
+          "duration": "0m 44s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Rachel Simmons, office manager, called to complain about repeated errors in patient statements and poor communication from her assigned team. Sue apologized and logged a formal complaint for review. Rachel threatened to end the contract.",
+          "date": "Jul 29, 11:33 AM",
+          "agent": "Sue",
+          "duration": "3m 11s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "denials",
+        "coding",
+        "eligibility",
+        "consultation",
+        "billing",
+        "population health"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 18s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Healthcare Entity Type",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Verify Insurance Eligibility Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Assess Current RCM Vendor Satisfaction",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "0/10",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller identified as new prospect",
+        "Multi-location health system implied",
+        "Interest in revenue cycle optimization",
+        "Request for consultation stated clearly",
+        "Availability for meeting confirmed",
+        "Caller engaged throughout",
+        "Professional tone maintained",
+        "Call routed to correct specialist",
+        "Timeframe for follow up established",
+        "Caller name provided",
+        "Healthcare revenue focus mentioned",
+        "Consultation date accepted",
+        "Positive closing sentiment"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Phone number not recorded",
+        "Current denial rate not discussed",
+        "Claims volume not quantified",
+        "Specific RCM pain points not detailed",
+        "Existing coding audit status unknown",
+        "CDI program needs not explored",
+        "Patient collections performance not reviewed",
+        "Charge capture accuracy not assessed",
+        "Accounts receivable days not mentioned",
+        "Budget parameters not discussed",
+        "Decision maker authority not confirmed",
+        "Implementation timeline not explored",
+        "Competitive vendor names not mentioned",
+        "Timeline for service transition not discussed"
+      ],
+      "naSignals": [
+        "Service completion date",
+        "Patient billing satisfaction score",
+        "Claims processing turn around time",
+        "Collection recovery rate achieved",
+        "Denials rate improvement target",
+        "Network provider credentialing status",
+        "Third party payer relationships",
+        "Active patient outreach campaigns",
+        "Compliance audit findings",
+        "HIM record release status"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller represents a new independent urgent care clinic group expanding from single to three locations. They are looking for revenue cycle management services to handle patient eligibility verification, insurance benefit checks, and billing operations as they scale."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller expects a consultation with a specialist to review Conifer's patient access solutions and end-to-end RCM capabilities. They need to understand pricing and timeline for implementation before opening the additional two locations in Q1."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured the caller's email address for scheduling confirmation and sent a pre-consultation questionnaire. Asking about current claim denial rates and patient collections performance would have better qualified the opportunity and tailored the specialist's approach."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Thank you for calling Conifer Health Solutions. This is Marcus Bell. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:08",
+          "text": "Hi Marcus. My name is Sarah Chen. I'm the operations manager at Premier Urgent Care Group. We're currently operating one location in Austin, and we're opening two more clinics in the Dallas area within the next few months. We need help with our patient billing and insurance verification."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:26",
+          "text": "Thanks Sarah. Premier Urgent Care sounds like a great fit for what we do. Just to confirm, you're looking for revenue cycle management services to support your patient access and billing operations as you expand?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:38",
+          "text": "Exactly. We're handling most of that internally right now, but it's becoming a bottleneck. We need professionals who can verify insurance benefits quickly and manage our billing workflow efficiently."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:50",
+          "text": "I completely understand. That's where Conifer can really add value. Before I connect you with a specialist, let me grab a few quick details. You mentioned one location in Austin and two planned locations in Dallas. Are all three locations in Texas?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:04",
+          "text": "Yes, all in Texas. Austin headquarters, then the new clinics in the Dallas suburbs, probably Frisco and Plano areas. We're also planning to add one more location in Houston by mid-year."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:18",
+          "text": "Got it. Four locations total, all Texas. That's helpful context. And Sarah, can I capture your best contact number for our scheduling team?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:28",
+          "text": "Sure, it's ****, please keep that on file."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:35",
+          "text": "Perfect, I've got that. One more thing for our records. What's the best email address to reach you at, Sarah?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:42",
+          "text": "Oh, just send anything to the general clinic line for now. I'm juggling a lot this week. Marcus, when do you think someone could meet with us?"
+        },
+        {
+          "speaker": "agent",
+          "time": "01:55",
+          "text": "I appreciate that. Our consultants typically have availability within 3 to 5 business days. Let me see what we can schedule. Are mornings or afternoons better for your team?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:04",
+          "text": "Mornings work best for us. Ideally next Tuesday or Wednesday if you have something."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:12",
+          "text": "Excellent. I'll have our revenue cycle specialist reach out to you by end of day tomorrow to confirm a time slot for next Tuesday or Wednesday morning. Sarah, is there anything else I can help clarify before we wrap up?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:24",
+          "text": "No, that sounds perfect. Thanks Marcus."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:28",
+          "text": "Thank you for choosing Conifer Health Solutions. We look forward to meeting with you soon. Have a great day, Sarah."
+        }
+      ],
+      "aiSummary": "Sarah Chen from Premier Urgent Care Group, an independent three-location urgent care operator in Texas, called to inquire about Conifer's patient access and revenue cycle management services. The clinic is expanding from one Austin location to additional sites in Dallas and Houston and needs professional support for insurance benefit verification and billing operations. Marcus gathered key location and service information, confirmed the consultation need, and scheduled a follow-up appointment with a revenue cycle specialist for next week. The call was well structured with proper greeting and close, though email contact information was not fully captured for direct scheduling confirmation.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great job structuring this call and moving Sarah toward a consultation efficiently. Your confirmation questions were clear and kept the momentum going. Two quick coaching notes for next time. One, when a prospect gives you hesitation on email, gently push back and get it anyway. A direct email helps the specialist personalize the pre-call questionnaire and increases show-up rate. Two, it would have been valuable to ask Sarah one quick qualifier like their current monthly patient volume or claims count so the specialist can arrive more prepared and better estimate the value of our solutions. Otherwise, smooth handling."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "2,368"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$10635.31"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$25,184,415"
+            }
+          ]
+        },
+        {
+          "title": "NEW CLIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Clients (Count)",
+              "value": "852"
+            },
+            {
+              "label": "Caller Type: New Clients (Percent)",
+              "value": "36%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "568"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "24%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CLIENTs & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Client (Count)",
+              "value": "1,516"
+            },
+            {
+              "label": "Caller Type: Existing Client (Percent)",
+              "value": "64%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "9%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "ChatGPT",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "Google LSA",
+                "value": 34,
+                "display": "34%"
+              },
+              {
+                "name": "Referral",
+                "value": 29,
+                "display": "29%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 24,
+                "display": "24%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "823",
+                  "18%",
+                  "$8,745,220"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "611",
+                  "24%",
+                  "$6,412,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "447",
+                  "29%",
+                  "$4,758,315"
+                ]
+              },
+              {
+                "cells": [
+                  "Google LSA",
+                  "304",
+                  "34%",
+                  "$3,255,140"
+                ]
+              },
+              {
+                "cells": [
+                  "ChatGPT",
+                  "183",
+                  "41%",
+                  "$2,012,860"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 1000,
+            "axisTicks": [
+              0,
+              200,
+              400,
+              600,
+              800,
+              1000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 947,
+                "display": "947"
+              },
+              {
+                "name": "Organic",
+                "value": 612,
+                "display": "612"
+              },
+              {
+                "name": "LinkedIn ABM",
+                "value": 401,
+                "display": "401"
+              },
+              {
+                "name": "Email Nurture",
+                "value": 248,
+                "display": "248"
+              },
+              {
+                "name": "Industry Events",
+                "value": 160,
+                "display": "160"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "947",
+                  "17%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "612",
+                  "23%"
+                ]
+              },
+              {
+                "cells": [
+                  "LinkedIn ABM",
+                  "401",
+                  "28%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email Nurture",
+                  "248",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "Industry Events",
+                  "160",
+                  "39%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 600,
+            "axisTicks": [
+              0,
+              100,
+              200,
+              300,
+              400,
+              500,
+              600
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Recover More, Faster",
+                "value": 512,
+                "display": "512"
+              },
+              {
+                "name": "AI-Powered Revenue Cycle",
+                "value": 388,
+                "display": "388"
+              },
+              {
+                "name": "End-to-End RCM Confidence",
+                "value": 291,
+                "display": "291"
+              },
+              {
+                "name": "Zero-Denial Playbook",
+                "value": 214,
+                "display": "214"
+              },
+              {
+                "name": "Cash Acceleration for Health Systems",
+                "value": 147,
+                "display": "147"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Recover More, Faster",
+                  "512",
+                  "19%",
+                  "$2,915,325"
+                ]
+              },
+              {
+                "cells": [
+                  "AI-Powered Revenue Cycle",
+                  "388",
+                  "26%",
+                  "$2,118,760"
+                ]
+              },
+              {
+                "cells": [
+                  "End-to-End RCM Confidence",
+                  "291",
+                  "31%",
+                  "$1,589,250"
+                ]
+              },
+              {
+                "cells": [
+                  "Zero-Denial Playbook",
+                  "214",
+                  "38%",
+                  "$1,324,375"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 300,
+            "axisTicks": [
+              0,
+              50,
+              100,
+              150,
+              200,
+              250,
+              300
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "revenue cycle management companies",
+                "value": 287,
+                "display": "287"
+              },
+              {
+                "name": "hospital RCM outsourcing",
+                "value": 214,
+                "display": "214"
+              },
+              {
+                "name": "denials management services",
+                "value": 168,
+                "display": "168"
+              },
+              {
+                "name": "medical coding outsourcing",
+                "value": 121,
+                "display": "121"
+              },
+              {
+                "name": "reduce hospital claim denials",
+                "value": 89,
+                "display": "89"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "revenue cycle management companies",
+                  "20%"
+                ]
+              },
+              {
+                "cells": [
+                  "hospital RCM outsourcing",
+                  "27%"
+                ]
+              },
+              {
+                "cells": [
+                  "denials management services",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "medical coding outsourcing",
+                  "42%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Clients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Clients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "End-to-End Revenue Cycle Management",
+              "842",
+              "18%",
+              "41%"
+            ]
+          },
+          {
+            "cells": [
+              "Patient Access & Financial Clearance",
+              "613",
+              "25%",
+              "38%"
+            ]
+          },
+          {
+            "cells": [
+              "Denials Management & Appeals",
+              "447",
+              "31%",
+              "33%"
+            ]
+          },
+          {
+            "cells": [
+              "Population Health / Value-Based Care",
+              "289",
+              "39%",
+              "29%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Frisco Operations Center",
+              "812",
+              "71",
+              "6%",
+              "19%"
+            ]
+          },
+          {
+            "cells": [
+              "Dallas Business Office",
+              "634",
+              "54",
+              "5%",
+              "24%"
+            ]
+          },
+          {
+            "cells": [
+              "Phoenix Service Center",
+              "512",
+              "41",
+              "4%",
+              "30%"
+            ]
+          },
+          {
+            "cells": [
+              "Boca Raton Client Hub",
+              "410",
+              "23",
+              "3%",
+              "37%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Budget Above Target",
+            "values": [
+              96,
+              102,
+              88,
+              94,
+              88
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              84,
+              79,
+              86,
+              81,
+              82
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              71,
+              68,
+              74,
+              73,
+              71
+            ]
+          },
+          {
+            "name": "Needs Board Approval",
+            "values": [
+              58,
+              61,
+              59,
+              62,
+              58
+            ]
+          },
+          {
+            "name": "Contract Terms Mismatch",
+            "values": [
+              52,
+              54,
+              51,
+              55,
+              53
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "947"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Contract Signed (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$14,355,117"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$847,392"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "27%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,623,814"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,106,475"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "21%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,235,681"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,372,908"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Contract Signed (Percent)",
+              "value": "39%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,168,847"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1097,
+          "rows": [
+            {
+              "name": "Google LSA",
+              "metrics": [
+                "286",
+                "58%",
+                "28%",
+                "$3,742,156"
+              ]
+            },
+            {
+              "name": "ChatGPT",
+              "metrics": [
+                "218",
+                "62%",
+                "35%",
+                "$3,895,427"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "174",
+                "51%",
+                "31%",
+                "$2,446,285"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "152",
+                "48%",
+                "29%",
+                "$1,987,934"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "117",
+                "54%",
+                "37%",
+                "$2,282,315"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1074,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "312",
+                "60%",
+                "29%",
+                "$4,156,892"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "219",
+                "54%",
+                "34%",
+                "$2,847,603"
+              ]
+            },
+            {
+              "name": "Email Nurture",
+              "metrics": [
+                "186",
+                "49%",
+                "30%",
+                "$2,134,751"
+              ]
+            },
+            {
+              "name": "LinkedIn ABM",
+              "metrics": [
+                "143",
+                "57%",
+                "36%",
+                "$2,178,426"
+              ]
+            },
+            {
+              "name": "Industry Events",
+              "metrics": [
+                "87",
+                "46%",
+                "38%",
+                "$1,037,445"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1058,
+          "rows": [
+            {
+              "name": "AI-Powered Revenue Cycle",
+              "metrics": [
+                "268",
+                "59%",
+                "31%",
+                "$3,521,847"
+              ]
+            },
+            {
+              "name": "Recover More, Faster",
+              "metrics": [
+                "187",
+                "53%",
+                "33%",
+                "$2,638,294"
+              ]
+            },
+            {
+              "name": "Cash Acceleration for Health Systems",
+              "metrics": [
+                "156",
+                "61%",
+                "28%",
+                "$2,104,836"
+              ]
+            },
+            {
+              "name": "End-to-End RCM Confidence",
+              "metrics": [
+                "129",
+                "48%",
+                "35%",
+                "$1,842,563"
+              ]
+            },
+            {
+              "name": "Value-Based Care, Simplified",
+              "metrics": [
+                "91",
+                "51%",
+                "37%",
+                "$1,247,577"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1089,
+          "rows": [
+            {
+              "name": "revenue cycle management companies",
+              "metrics": [
+                "203",
+                "57%",
+                "29%",
+                "$2,734,891"
+              ]
+            },
+            {
+              "name": "hospital RCM outsourcing",
+              "metrics": [
+                "168",
+                "55%",
+                "32%",
+                "$2,347,482"
+              ]
+            },
+            {
+              "name": "denials management services",
+              "metrics": [
+                "134",
+                "60%",
+                "34%",
+                "$1,856,743"
+              ]
+            },
+            {
+              "name": "medical coding outsourcing",
+              "metrics": [
+                "108",
+                "49%",
+                "31%",
+                "$1,486,295"
+              ]
+            },
+            {
+              "name": "patient access services vendor",
+              "metrics": [
+                "92",
+                "54%",
+                "36%",
+                "$1,329,706"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Contract Signed (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "End-to-End Revenue Cycle Management",
+              "metrics": [
+                "284",
+                "61%",
+                "36%",
+                "$4,298,736"
+              ]
+            },
+            {
+              "name": "Patient Access & Financial Clearance",
+              "metrics": [
+                "231",
+                "58%",
+                "31%",
+                "$3,127,847"
+              ]
+            },
+            {
+              "name": "Denials Management & Appeals",
+              "metrics": [
+                "196",
+                "52%",
+                "34%",
+                "$2,814,963"
+              ]
+            },
+            {
+              "name": "Clinical Documentation Improvement",
+              "metrics": [
+                "154",
+                "49%",
+                "29%",
+                "$2,087,541"
+              ]
+            },
+            {
+              "name": "Population Health Value-Based Care",
+              "metrics": [
+                "82",
+                "47%",
+                "28%",
+                "$1,026,030"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Contract Signed (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "End-to-End Revenue Cycle Management",
+            "values": [
+              38,
+              46,
+              41,
+              48,
+              43
+            ]
+          },
+          {
+            "name": "Patient Access & Financial Clearance",
+            "values": [
+              29,
+              33,
+              32,
+              37,
+              30
+            ]
+          },
+          {
+            "name": "Denials Management & Appeals",
+            "values": [
+              26,
+              31,
+              28,
+              34,
+              25
+            ]
+          },
+          {
+            "name": "Clinical Documentation Improvement",
+            "values": [
+              17,
+              24,
+              21,
+              19,
+              23
+            ]
+          },
+          {
+            "name": "Population Health Value-Based Care",
+            "values": [
+              12,
+              15,
+              10,
+              14,
+              11
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026–1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,427"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "389"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$18,945,632"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "834"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "29"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$142,891"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              72,
+              79,
+              76,
+              81,
+              74,
+              78,
+              75,
+              77,
+              80,
+              73,
+              76,
+              79,
+              74,
+              81,
+              77,
+              75,
+              78,
+              72,
+              76,
+              81,
+              79,
+              74,
+              77,
+              80,
+              75,
+              78,
+              76,
+              81,
+              73,
+              79,
+              77,
+              78,
+              174,
+              181,
+              168,
+              185,
+              172,
+              179,
+              176,
+              183,
+              170,
+              177,
+              181,
+              174,
+              179,
+              172,
+              175,
+              180,
+              176
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,218"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "712"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "689"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "96%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Insurance Eligibility & Benefits",
+            "values": [
+              8,
+              11,
+              9,
+              7,
+              12,
+              10
+            ]
+          },
+          {
+            "name": "Revenue Cycle Status Inquiry",
+            "values": [
+              6,
+              4,
+              5,
+              8,
+              3,
+              9
+            ]
+          },
+          {
+            "name": "Billing & Collections Question",
+            "values": [
+              11,
+              9,
+              10,
+              6,
+              8,
+              7
+            ]
+          },
+          {
+            "name": "Denials & Appeals Process",
+            "values": [
+              4,
+              2,
+              1,
+              9,
+              6,
+              5
+            ]
+          },
+          {
+            "name": "Clinical Documentation Support",
+            "values": [
+              7,
+              8,
+              6,
+              5,
+              10,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "2,179"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "1,374"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "568"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$25,184,415"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 247,
+              "display": "247"
+            },
+            {
+              "name": "Jennifer Okafor",
+              "value": 184,
+              "display": "184"
+            },
+            {
+              "name": "Douglas Chen",
+              "value": 219,
+              "display": "219"
+            },
+            {
+              "name": "Rachel Hoffmann",
+              "value": 156,
+              "display": "156"
+            },
+            {
+              "name": "Tyler Burnham",
+              "value": 203,
+              "display": "203"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Amanda Fischer",
+            "values": [
+              71,
+              89,
+              108,
+              122,
+              146
+            ]
+          },
+          {
+            "name": "Kevin Nadella",
+            "values": [
+              58,
+              74,
+              91,
+              117,
+              138
+            ]
+          },
+          {
+            "name": "Priya Mehta",
+            "values": [
+              47,
+              63,
+              82,
+              106,
+              129
+            ]
+          },
+          {
+            "name": "David Carmichael",
+            "values": [
+              53,
+              71,
+              94,
+              125,
+              151
+            ]
+          },
+          {
+            "name": "Lauren Su",
+            "values": [
+              44,
+              58,
+              76,
+              98,
+              124
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Jennifer Okafor",
+              "value": 55.6,
+              "display": "55.6%"
+            },
+            {
+              "name": "Douglas Chen",
+              "value": 56.1,
+              "display": "56.1%"
+            },
+            {
+              "name": "Rachel Hoffmann",
+              "value": 57.3,
+              "display": "57.3%"
+            },
+            {
+              "name": "Tyler Burnham",
+              "value": 58.8,
+              "display": "58.8%"
+            },
+            {
+              "name": "Patricia Valdez",
+              "value": 59.7,
+              "display": "59.7%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Webb",
+                "54.2%",
+                "28%",
+                "$8,453,287",
+                "1,447"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Okafor",
+                "55.6%",
+                "29%",
+                "$8,917,564",
+                "1,389"
+              ]
+            },
+            {
+              "cells": [
+                "Douglas Chen",
+                "56.1%",
+                "30%",
+                "$8,764,921",
+                "1,423"
+              ]
+            },
+            {
+              "cells": [
+                "Rachel Hoffmann",
+                "57.3%",
+                "31%",
+                "$8,652,738",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Tyler Burnham",
+                "58.8%",
+                "32%",
+                "$8,956,412",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Valdez",
+                "59.7%",
+                "33%",
+                "$8,889,504",
+                "1,368"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Amanda Fischer",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "Kevin Nadella",
+              "value": 91.4,
+              "display": "91.4%"
+            },
+            {
+              "name": "Priya Mehta",
+              "value": 89.8,
+              "display": "89.8%"
+            },
+            {
+              "name": "David Carmichael",
+              "value": 88.6,
+              "display": "88.6%"
+            },
+            {
+              "name": "Lauren Su",
+              "value": 87.3,
+              "display": "87.3%"
+            },
+            {
+              "name": "Nathan Brooks",
+              "value": 86.7,
+              "display": "86.7%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Scheduled (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Amanda Fischer",
+                "92.1%",
+                "67%",
+                "$5,437,821",
+                "1,547"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Nadella",
+                "91.4%",
+                "66%",
+                "$5,208,944",
+                "1,423"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Mehta",
+                "89.8%",
+                "64%",
+                "$4,987,356",
+                "1,389"
+              ]
+            },
+            {
+              "cells": [
+                "David Carmichael",
+                "88.6%",
+                "61%",
+                "$4,456,782",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Lauren Su",
+                "87.3%",
+                "59%",
+                "$4,238,467",
+                "1,456"
+              ]
+            },
+            {
+              "cells": [
+                "Nathan Brooks",
+                "86.7%",
+                "58%",
+                "$3,996,544",
+                "1,421"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Scheduled (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Scheduled (Count)",
+        "rightMax": 100,
+        "rightTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 20
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 20
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 18
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 18
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 16
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 16
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 18
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 18
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 20
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 20
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 18
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 17
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 16
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 16
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 18
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 19
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 20
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 20
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 18
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 17
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 16
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 16
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 18
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 19
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 20
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 20
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 17
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 17
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 16
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 16
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 30
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1200000,
+        "rightTicks": [
+          0,
+          400000,
+          800000,
+          1200000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 933563
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 894778
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 833221
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 795053
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 692240
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 726487
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 802529
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 834163
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 930096
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 901786
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 812208
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 785015
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 698531
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 720021
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 821636
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 846673
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 921436
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 907096
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 795425
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 770196
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 709016
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 716449
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 835798
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 863503
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 909731
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 908407
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 784044
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 751773
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 721310
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 717832
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 844399
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "2,368"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "189"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "142"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Michelle Garcia",
+                "412",
+                "89%",
+                "87%",
+                "88%"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "687",
+                "86%",
+                "84%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Whitmore",
+                "531",
+                "87%",
+                "85%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "2,368 calls",
+      "pagerLabel": "1 of 237",
+      "calls": [
+        {
+          "time": "1/6/26 9:12 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 11:47 am",
+          "id": "A2C4-19DE77B31A08"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "3E9F-4B0C7712A6D1"
+        },
+        {
+          "time": "1/14/26 1:23 pm",
+          "id": "7D18-9A2E4F60C315"
+        },
+        {
+          "time": "1/16/26 2:58 pm",
+          "id": "C4B0-8E71D30924FA"
+        },
+        {
+          "time": "1/20/26 8:34 am",
+          "id": "9F2A-6C13B845E0D7"
+        },
+        {
+          "time": "1/22/26 12:16 pm",
+          "id": "5E7C-2D90A413F86B"
+        },
+        {
+          "time": "1/26/26 3:41 pm",
+          "id": "1B8D-7F42C609A253"
+        },
+        {
+          "time": "1/28/26 4:19 pm",
+          "id": "6A3E-0D51B972C48F"
+        },
+        {
+          "time": "1/30/26 10:07 am",
+          "id": "8C5F-3B24E71906AD"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Conifer Health Solutions, this is Marcus. How can I help your organization today?",
+          "highlights": [
+            "Thank you for calling Conifer Health Solutions"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Marcus. My name is Diane Whitfield, I'm the VP of Revenue Cycle at a regional health system. We're getting hammered on claim denials and I wanted to understand what you all offer.",
+          "highlights": [
+            "VP of Revenue Cycle",
+            "claim denials"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:18",
+          "text": "Thanks Diane, and I appreciate you reaching out. Can you tell me a little about the size of the system and where you're seeing the most pressure?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:26",
+          "text": "We're four hospitals, roughly nine hundred beds combined. Our initial denial rate is sitting around twelve percent and our A/R days keep climbing. It's getting hard to manage.",
+          "highlights": [
+            "initial denial rate is sitting around twelve percent"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:37",
+          "text": "That's exactly the kind of problem our Denials Management and Appeals service is built for. We do root-cause analysis, handle the appeals, and put prevention workflows upstream so the same denials stop recurring.",
+          "highlights": [
+            "Denials Management and Appeals service"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:49",
+          "text": "Okay. And is that something you can do on its own, or do we have to hand over the whole revenue cycle to you?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:56",
+          "text": "Either way works. Many clients start with focused Denials Management, and some move to our End-to-End Revenue Cycle Management once they see the recovery. We can also layer in Clinical Documentation Improvement, since weak documentation drives a lot of denials.",
+          "highlights": [
+            "End-to-End Revenue Cycle Management",
+            "Clinical Documentation Improvement"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:10",
+          "text": "That CDI piece is interesting, honestly our documentation is part of the problem too. But before we go further, what does denials management typically run? I need to keep this manageable for my board.",
+          "highlights": [
+            "what does denials management typically run",
+            "keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:22",
+          "text": "Completely fair. Denials work is usually priced as a percentage of the dollars we actually recover for you, generally in the four to eight percent range, so it scales with results rather than a big fixed cost. CDI is typically an annual engagement per hospital.",
+          "highlights": [
+            "percentage of the dollars we actually recover"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:35",
+          "text": "That's reasonable. I'll be honest though, we're also talking to another vendor we've used for coding, and they're pitching us on the same thing. I'm getting a couple of proposals side by side.",
+          "highlights": [
+            "also talking to another vendor",
+            "getting a couple of proposals side by side"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:47",
+          "text": "That makes good sense, and I'd encourage you to compare closely. Where Conifer tends to stand apart is scale and the AI-driven prevention, we manage twenty five billion in net patient revenue annually, so our denial pattern data catches issues before claims go out.",
+          "highlights": [
+            "AI-driven prevention",
+            "twenty five billion in net patient revenue annually"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:01",
+          "text": "That's a strong point. One thing though, I don't want to get locked into some long multi-year commitment before we've seen it work.",
+          "highlights": [
+            "don't want to get locked into some long multi-year commitment"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:09",
+          "text": "Understood, and we can structure an initial scoped engagement so you can validate the recovery lift first. The best next step is a consultation where our revenue cycle team reviews your denial data and shows projected impact. Could I get that scheduled for you?",
+          "highlights": [
+            "scoped engagement",
+            "consultation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:22",
+          "text": "Yes, let's do that. I'll need to loop in our CFO as well, he'll want to be on the call.",
+          "highlights": [
+            "loop in our CFO"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:28",
+          "text": "Perfect, we'll include him. I have Thursday at 10 AM open. I'll send the invite to you and your CFO. What's the best email for you, Diane?",
+          "highlights": [
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:35",
+          "text": "It's d.whitfield at the health system, I'll reply with my CFO's address.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:41",
+          "text": "Wonderful, you're booked for Thursday at 10 AM and I'll get that invite out today. Thank you for calling Conifer, Diane, we look forward to helping you recover more, faster.",
+          "highlights": [
+            "booked for Thursday at 10 AM",
+            "Thank you for calling Conifer",
+            "recover more, faster"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Client",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Intent: Denials Management",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Intent: End-to-End RCM",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Product: Clinical Documentation Improvement",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Competitor Comparison Mentioned",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Pricing Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Diane Whitfield, VP of Revenue Cycle at a four-hospital regional health system, called Conifer Health Solutions about a rising twelve percent denial rate and climbing A/R days. The agent, Marcus, recommended the Denials Management and Appeals service with an option to add Clinical Documentation Improvement and scale into End-to-End Revenue Cycle Management. He addressed her cost concerns, a competing coding vendor, and her worry about a long-term commitment, then scheduled a data-review consultation. The consultation was booked for Thursday at 10 AM with her CFO included.",
+        "keyPoints": [
+          "New client: VP of Revenue Cycle at a four-hospital, 900-bed system",
+          "Primary need: reduce a twelve percent denial rate and lower A/R days",
+          "Recommended Denials Management and Appeals plus CDI, with End-to-End RCM as a path",
+          "Handled pricing, a competing coding vendor, and a no-lock-in concern",
+          "Consultation scheduled Thursday 10 AM with the CFO to join",
+          "Contact captured: d.whitfield email, CFO address to follow"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM with CFO"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "1,492 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 149",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. This is Sarah from Conifer Health Solutions. We help hospitals and health systems optimize their revenue cycle and reduce claim denials. Do you have a few minutes to chat?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:23 AM",
+              "text": "Yeah sure. I'm the billing director at a mid-size hospital in Colorado. We're drowning in denials right now."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:24 AM",
+              "text": "I hear that often. Denials are one of the biggest revenue leaks. Can you tell me roughly how much revenue you're losing to denials each quarter?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Probably around 3 to 5 million per quarter. It's frustrating because we don't have the staff to handle all the appeals."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:28 AM",
+              "text": "That's a significant amount. With the right denials management and appeals process, we typically help clients recover 60 to 75 percent of that. Are you currently outsourcing any of your RCM work?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "No we're handling it all in house but clearly that's not working. What does your service cost?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "Our denials management service runs about 4 to 8 percent of recovered dollars, so you only pay when we recover money. Plus we can handle your appeals workflow. Would a consultation with our RCM specialist make sense this week?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:34 AM",
+              "text": "Yeah that would be helpful. When could we set something up?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:36 AM",
+              "text": "Great. How about Thursday the 13th at 2 PM Mountain Time? I'll send you a calendar invite and our specialist will walk through your denial trends."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:38 AM",
+              "text": "Thursday at 2 works for me. What's the number to call if I need to reschedule?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:40 AM",
+              "text": "Perfect. You'll get a reminder tomorrow. If you need to reschedule call us at 877-936-2933. We're looking forward to showing you how we can improve your cash flow."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:42 AM",
+              "text": "Thanks Sarah. See you Thursday."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:43 AM",
+              "text": "Thanks so much. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Identified: Denials Management and Appeals",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Revenue Challenge Quantified",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Geographic Service Area: Colorado",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Organization Type: Hospital",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Budget Authority Confirmed",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "13",
+            "source": "720-555-0847",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "720-555-0847",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "Michael Hartley",
+            "firstName": "Michael",
+            "lastName": "Hartley",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A847-2C9D1F4B6E3A",
+          "time": "8/16/25 10:48 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A847-2C9D1F4B6E3A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B923-5A7C4D8E2F1B",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B923-5A7C4D8E2F1B",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D134-9E6F3A5B8C2D",
+          "time": "8/16/25 10:35 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D134-9E6F3A5B8C2D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "2,368 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 237",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/14/26 4:12 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thanks for calling Conifer Health Solutions. This is Marcus speaking. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Yeah, hi. I'm calling because we're a mid-sized health system in Tennessee and we're really struggling with our denials rate. It's been around eighteen percent for the last couple of quarters."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Got it. Eighteen percent is definitely higher than where most health systems want to be. Are you currently working with an outsourced revenue cycle partner, or are you managing most of this in-house?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "We've got an in-house team, but honestly we're just stretched too thin. We don't have the bandwidth to really dig into root cause analysis."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "That makes sense. And when you think about your claims, which payers give you the most trouble? Is it commercial insurers, Medicare, or a mix?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Definitely a mix, but Medicare denials have been our biggest headache. A lot of them are just documentation issues though."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Documentation issues are actually something we see all the time, and that's exactly where our clinical documentation improvement and denials management services can add real value. We help health systems like yours recover anywhere from four to eight percent of those contested dollars. Given your eighteen percent denial rate and your annual net patient revenue, we could probably identify some quick wins right away."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "That sounds promising. What would that process look like?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:20 PM",
+              "text": "Great question. We'd start with a consultation call where we'd review your specific denial patterns, your coding workflows, and your current staffing. From there we can scope out a tailored denials and CDI package. Do you have time for a brief thirty-minute consultation call next Tuesday, January twenty-first at two o'clock in the afternoon?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:21 PM",
+              "text": "Yeah, Tuesday works. Two PM should be fine."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:22 PM",
+              "text": "Perfect. So I've got you down for Tuesday, January twenty-first at two PM. We'll have one of our revenue cycle specialists walk through your denial data and talk through what a partnership might look like. Can I get a callback number in case we need to reschedule?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:23 PM",
+              "text": "Sure, it's six one five, five five five, eight eight four four."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:24 PM",
+              "text": "Excellent. That's six one five, five five five, eight eight four four. Thanks so much for your time today, and we look forward to speaking with you next Tuesday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Client",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Interest: Denials Management",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Service Interest: Clinical Documentation Improvement",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Organization Type: Health System",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Pain Point Identified: High Denial Rate",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/14/26 4:12 pm",
+            "duration": "5:47",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "615-555-8844",
+            "repeatCaller": "No",
+            "city": "Memphis",
+            "region": "TN",
+            "phoneType": "Mobile",
+            "displayName": "Dr. Robert Patterson",
+            "firstName": "Robert",
+            "lastName": "Patterson",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B521-7A3C4E6F9B2D",
+          "time": "1/22/26 3:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B521-7A3C4E6F9B2D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C634-8F1E2B5A7D9C",
+          "time": "1/28/26 2:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C634-8F1E2B5A7D9C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D745-6C9A1E3F4B8E",
+          "time": "1/09/26 11:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D745-6C9A1E3F4B8E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: I'm Tenet Business Services's AI agent, here to help you scope a personalized revenue cycle solution and, for a limited time, a complimentary revenue cycle assessment when you book this month. Would you like to get started?",
+        "Qualify one at a time: I'll ask a few quick questions, one at a time, about your organization type, your approximate annual net patient revenue, which services you need such as patient access, coding, denials management or population health, your target timeline to go live, and your location so I can confirm coverage.",
+        "Estimate then book: Once I confirm we serve your region and understand your volumes, I'll share a preliminary pricing framework such as a percentage of net collections or a per-transaction range, then recommend a consultation with a revenue cycle specialist for an exact proposal, propose a specific day and time, and confirm you'll get a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Tenet_Business_Services_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Revenue Cycle Management Services",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Value-Based Care Solutions",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Contact & Request a Consultation",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"denial recovery status\",\"question\":\"Can you tell me where my facility's denial appeals stand this month?\",\"answer\":\"Your dedicated revenue cycle team posts appeal status and recovered dollars to your analytics dashboard, and I can arrange a review call with your account manager to walk through the current figures.\"},{\"topic\":\"contract expansion\",\"question\":\"We want to add physician practice billing to our existing hospital RCM contract, how do we start?\",\"answer\":\"We can extend your current agreement to cover physician practice RCM, so I'll set up a scoping consultation with your specialist to confirm volumes and update your statement of work.\"}]}",
+          "qaPairs": [
+            {
+              "question": "What does Tenet Business Services actually do?",
+              "answer": "Through Conifer Health Solutions we provide end-to-end revenue cycle management, clinical revenue integrity, accounts receivable management, and value-based care services for healthcare organizations. I can book a consultation to map these to your needs."
+            },
+            {
+              "question": "What types of organizations do you work with?",
+              "answer": "We serve hospitals, health systems, physician practices, employers, and health plans. Let's schedule a consultation so a specialist can tailor a plan to your organization."
+            },
+            {
+              "question": "How much does revenue cycle management cost?",
+              "answer": "Pricing is contract-negotiated and depends on your volumes and the services you need, so I can't quote an exact figure over text. A specialist can build a precise proposal during your consultation."
+            },
+            {
+              "question": "Can you handle our entire revenue cycle?",
+              "answer": "Yes, our end-to-end model covers patient access, coding, billing, accounts receivable, and denials under one agreement. I'd recommend a consultation to scope the full engagement."
+            },
+            {
+              "question": "Do you offer denials management?",
+              "answer": "We provide denial root-cause analysis, appeals, and prevention workflows to help recover and protect revenue. Let's set up a consultation to review your current denial rates."
+            },
+            {
+              "question": "Can you help reduce our claim denials?",
+              "answer": "Our teams identify denial drivers and build prevention workflows to lower future denials while appealing existing ones. A specialist can quantify the opportunity in a consultation."
+            },
+            {
+              "question": "Do you provide medical coding services?",
+              "answer": "Yes, we offer professional and facility coding, compliance audits, and DRG validation. I can book a consultation to discuss your coding volumes and goals."
+            },
+            {
+              "question": "What is clinical documentation improvement?",
+              "answer": "CDI includes concurrent chart review, physician queries, and documentation accuracy work that supports appropriate reimbursement. Let's schedule a consultation to see how it fits your facility."
+            },
+            {
+              "question": "Do you offer patient access and eligibility verification?",
+              "answer": "We handle insurance and benefit verification, pre-certification, registration, and financial clearance. A consultation is the best way to align these with your front-end workflows."
+            },
+            {
+              "question": "Can you support value-based care and population health?",
+              "answer": "Yes, we provide care coordination, risk stratification, and quality-measure reporting for value-based programs. I can arrange a consultation with a population health specialist."
+            },
+            {
+              "question": "How do you handle patient collections and communications?",
+              "answer": "We manage self-pay outreach, statements, and contact-center support to improve collections while protecting the patient experience. Let's book a consultation to review your patient balance profile."
+            },
+            {
+              "question": "Do you work with physician group practices?",
+              "answer": "Yes, we offer group-practice billing, credentialing support, and denials management. A consultation will let a specialist scope your practice's needs."
+            },
+            {
+              "question": "Can you integrate with our current EHR and systems?",
+              "answer": "Our teams work across major health IT platforms and tailor integration to your environment. A specialist can confirm the technical details during your consultation."
+            },
+            {
+              "question": "How long does implementation take?",
+              "answer": "Timelines vary by scope and volumes, so we set a realistic go-live plan during onboarding. Let's book a consultation to outline a schedule for your organization."
+            },
+            {
+              "question": "Do you use AI and automation?",
+              "answer": "Yes, we are actively investing in AI and automation to accelerate cash and reduce manual work across the revenue cycle. I can schedule a consultation to show how it applies to you."
+            },
+            {
+              "question": "What kind of reporting will we get?",
+              "answer": "You get analytics dashboards for KPI monitoring, cash-flow, and yield performance. A consultation will let us tailor the reporting to your leadership team."
+            },
+            {
+              "question": "Can you provide references or case studies?",
+              "answer": "We support large health systems and can share relevant case examples during your evaluation. Let's set up a consultation to review results similar to your organization."
+            },
+            {
+              "question": "How do we get started?",
+              "answer": "The first step is a consultation with a revenue cycle specialist to understand your volumes and goals. I can propose a day and time right now."
+            },
+            {
+              "question": "Do you serve organizations nationwide?",
+              "answer": "Yes, we support clients across the United States. Share your location and I'll book a consultation with the right specialist."
+            },
+            {
+              "question": "Can we outsource just one part of our revenue cycle?",
+              "answer": "Absolutely, we offer focused point solutions as well as end-to-end services. A consultation will help us scope the specific area you want to address."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule a consultation\",\"follow_up_message\":\"Great, I have you down for a consultation with a revenue cycle specialist. Please confirm the day and time that works best and I'll lock it in and send a reminder text with a number to call.\"},{\"intent\":\"request a pricing proposal\",\"follow_up_message\":\"Since revenue cycle pricing is tailored to your volumes and services, the best next step is a consultation where a specialist builds an exact proposal. Would a morning or afternoon slot this week work for you?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Tenet Business Services's AI agent. I can help you scope a revenue cycle solution and connect you with a specialist. May I ask a few quick questions to get started?",
+        "goal": "Qualify the healthcare organization's needs and book a consultation with a revenue cycle specialist.",
+        "bookingType": "virtual consultation",
+        "offer": "Complimentary revenue cycle assessment when you book this month",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "What type of organization are you, for example a hospital, health system, physician practice, employer, or health plan?",
+          "Approximately what is your annual net patient revenue?",
+          "Which services are you most interested in, such as patient access, coding, denials management, accounts receivable, or population health?",
+          "What is your target timeline to improve or outsource these functions?",
+          "What city and ZIP code is your organization located in so I can confirm coverage and assign the right specialist?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:18 am"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "9/22/26 11:18 am"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "9/22/26 11:18 am"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Tenet Business Services",
+      "callerName": "Michael Chen",
+      "callerPhone": "(512) 555-0148",
+      "campaign": "End-to-End RCM Solutions, Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$18,750",
+      "googleSearch": "hospital revenue cycle management outsourcing Texas",
+      "websiteSearch": "denials management and appeals services",
+      "callingWebpage": "/revenue-cycle-management/accounts-receivable",
+      "products": "Accounts Receivable Management, Denials Management and Appeals",
+      "cartId": "TBS-7341K",
+      "serviceable": "Yes",
+      "email": "mchen@austinhealth.org",
+      "street": "2847 Medical Plaza Drive",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78741",
+      "digitalJourney": "/home › /services › /revenue-cycle-management › /accounts-receivable",
+      "intent": "Health system VP seeking to reduce claim denials and accelerate cash recovery on aged A/R accounts.",
+      "coverage": "ZIP 78741 confirmed, Austin serviceable",
+      "switchIntent": "High. Currently managing 28 percent denial rate. Wants proposal and case study review by end of week.",
+      "greeting": "Hi Michael, this is Sarah with Tenet Business Services. I see you were researching our denials management and accounts receivable solutions. We work with health systems across Texas to recover more revenue faster. Do you have 15 minutes this week for a consultation with one of our RCM specialists?"
+    },
+    "smsScreenpop": {
+      "brandName": "Tenet Business Services",
+      "callerName": "Patricia Valdez",
+      "callerPhone": "(720) 555-0167",
+      "campaign": "Patient Access Services, Denver Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$12,420",
+      "googleSearch": "insurance eligibility verification software healthcare",
+      "websiteSearch": "patient financial clearance services vendor",
+      "callingWebpage": "/revenue-cycle-management/patient-access",
+      "products": "Insurance Eligibility and Benefit Verification, Patient Access and Financial Clearance",
+      "cartId": "TBS-9625M",
+      "serviceable": "Yes",
+      "email": "pvaldez@denverhealth.net",
+      "street": "5124 Healthcare Boulevard",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80222",
+      "digitalJourney": "/home › /services › /revenue-cycle-management › /patient-access",
+      "intent": "Physician practice director looking to streamline patient registration and reduce insurance verification bottlenecks at check-in.",
+      "coverage": "ZIP 80222 confirmed, Denver serviceable",
+      "appointment": "Patient access workflow consultation w/ RCM specialist. Thu Jul 18, 2:30 PM",
+      "greeting": "Hi Patricia, this is Marcus from Tenet Business Services. Thanks for requesting a consultation on our patient access solutions. We help practices like yours cut verification time in half. Looking forward to our call tomorrow at 2:30 PM. Any questions before we connect?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Tenet Business Services",
+      "brandDomain": "www.tenethealth.com",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (214) 555-0847",
+      "callerLocation": "Houston, TX",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "AI-Powered Revenue Cycle",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "denials management services",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/services/revenue-cycle-management/denials-management",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Revenue Integrity Solutions, A/R Management",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Houston, TX",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "new_rcm_consultation",
+          "name": "Consultation, New RCM Project"
+        },
+        {
+          "id": "existing_support",
+          "name": "Existing Client Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Healthcare BPO Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Conifer Health Solutions. I'm Alex. I see you're interested in our denials management services. Are you calling on behalf of a hospital or health system today?",
+          "sigs": [],
+          "q": [
+            25,
+            40,
+            35
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, we're a mid-size hospital system in Houston. We're losing about 8 percent of claims to denials every month and our team is overwhelmed trying to track them all down.",
+          "sigs": [
+            {
+              "c": "orange",
+              "t": "<strong>Hospital system</strong> with high denial volume"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>8 percent denials rate</strong> - significant recovery opportunity"
+            },
+            {
+              "c": "green",
+              "t": "<strong>Process improvement need</strong> - capacity constraint"
+            }
+          ],
+          "q": [
+            45,
+            30,
+            25
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's actually a common challenge for systems your size, and there's definitely significant recovery opportunity. Just to clarify, are you looking to start with denials management specifically, or would you be open to exploring a broader end-to-end revenue cycle solution that covers patient access, coding, and collections all together?",
+          "sigs": [],
+          "q": [
+            60,
+            20,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We'd be interested in the full revenue cycle if it makes sense. Right now we're managing front-end verification, medical coding, and billing in-house. The denials piece is killing us though.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>End-to-end RCM interest</strong> - multi-service potential"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>In-house operations</strong> - outsourcing consideration"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Urgent priority</strong> - denials are critical bottleneck"
+            }
+          ],
+          "q": [
+            78,
+            12,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "When could we schedule time to talk through what a full engagement might look like for us?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Ready to consult</strong> - actively seeking proposal"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Multi-service scope</strong> - high contract potential"
+            }
+          ],
+          "q": [
+            95,
+            3,
+            2
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm connecting you now with our New Business Consultation team who specializes in revenue cycle transformations for hospital systems. They'll walk you through our end-to-end capabilities, typical timelines, and exactly how we'd approach your denial recovery challenge. You should expect a call within the next two hours. Thanks for choosing Conifer.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"get you scheduled with our revenue cycle team (Agent)\", \"book that consultation (Agent)\", \"set up a call with our RCM specialist (Agent)\", \"let's put a meeting on the calendar (Caller)\"])",
+          "createdAt": "11/12/24 9:15 am",
+          "updatedAt": "01/08/26 2:30 pm"
+        },
+        {
+          "name": "Competitor Named (Intent)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"we currently use R1 RCM (Caller)\", \"comparing you to Ensemble Health (Caller)\", \"Optum handles our billing now (Caller)\"])",
+          "createdAt": "02/03/25 10:20 am",
+          "updatedAt": "12/15/25 4:05 pm"
+        },
+        {
+          "name": "Compliance Disclosure Delivered",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[HIPAA Compliance Disclosure] < 60 and duration > 45 sec",
+          "createdAt": "12/01/24 8:45 am",
+          "updatedAt": "01/05/26 11:10 am"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"walk you through our services (Agent)\", \"tell me more about revenue cycle management (Caller)\", \"how does the engagement work (Caller)\"])",
+          "createdAt": "01/15/25 1:30 pm",
+          "updatedAt": "11/20/25 9:50 am"
+        },
+        {
+          "name": "Denials Management Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"reduce our claim denials (Caller)\", \"denials management services (Caller)\", \"our appeals process is a mess (Caller)\", \"too many denied claims (Caller)\"])",
+          "createdAt": "03/10/25 3:15 pm",
+          "updatedAt": "12/22/25 10:00 am"
+        },
+        {
+          "name": "Discovery Questions Completed",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Discovery Questions] < 60 and duration > 45 sec",
+          "createdAt": "11/28/24 7:30 am",
+          "updatedAt": "01/03/26 3:45 pm"
+        },
+        {
+          "name": "Population Health Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"value-based care support (Caller)\", \"population health management (Caller)\", \"care coordination for our members (Caller)\"])",
+          "createdAt": "04/05/25 2:00 pm",
+          "updatedAt": "12/10/25 8:20 am"
+        },
+        {
+          "name": "Pricing Sensitivity Raised",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"percent of collections is too high (Caller)\", \"that's out of our budget (Caller)\", \"can you lower the fee (Caller)\", \"what does this cost per account (Caller)\"])",
+          "createdAt": "02/18/25 11:45 am",
+          "updatedAt": "01/07/26 9:05 am"
+        },
+        {
+          "name": "Professional Rapport & Greeting",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Professional Greeting] < 60 and duration > 45 sec",
+          "createdAt": "12/05/24 10:00 am",
+          "updatedAt": "12/30/25 4:40 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"send over a proposal (Agent)\", \"our rate would be around three percent of net collections (Agent)\", \"email you a pricing estimate (Agent)\"])",
+          "createdAt": "03/22/25 9:00 am",
+          "updatedAt": "01/06/26 1:15 pm"
+        }
+      ]
+    }
+  }
+}
