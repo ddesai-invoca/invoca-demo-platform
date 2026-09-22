@@ -711,15 +711,50 @@ export function drawerFor(
       collect: COLLECT_FOR.inform,
     };
   }
-  /* A path node opens the Inform & Route action, which is what every captured path shows.
+  /* A path node opens its OWN action — Inform & Route only for the ones that carry it.
      ⚠️ IT REUSES THE LEAF BRANCH BELOW rather than repeating the body, so a change to the
      routing steps or the collected fields lands on both. */
   const pathId = nodeId.match(/^path-(\d+)-(\d+)-(\d+)$/);
   if (pathId) {
     const pth = tree.branches[Number(pathId[1])]?.leaves[Number(pathId[2])]?.paths?.[Number(pathId[3])];
     if (!pth) return null;
+    /* ⚠️⚠️ **THE NODE'S OWN KIND WINS, AND HARDCODING IT HERE WAS THE SMS BUG A THIRD TIME
+       (9/21/2026).** Reported against a use case switched to Qualify: the card drew **Qualify**
+       and its drawer REOPENED on **Inform & Route**, with inform's instruction, phone and
+       Consumer Zip / Consumer Name — the diagram and the drawer describing the same node
+       differently, which is the one failure this whole feature exists to prevent. Both returns
+       below said `action: "informRoute"` outright, so the picker could never show anything else
+       however the node was configured. `smsDrawerFor` was fixed exactly this way on 9/17 and the
+       LEAF branch above on 9/21; this is the same `kindOfNode` single source, three rows down. */
+    const action: ActionKind =
+      kindOfNode(pth as unknown as Record<string, unknown>) ?? "informRoute";
+    if (action === "qualify") {
+      /* ⚠️ ITS ANSWERS ARE ITS OWN CHILD NODES — the row the diagram already draws below a path
+         — and the question and fallback live in the per-node `extra__` keys, because the spec
+         has `qualifyQuestion` for the LEAF's question only and no slot for a use case an SE
+         turned into one. Writing them to the shared key would retitle the leaf's question. */
+      const kids = (pth.paths ?? []) as unknown as Record<string, unknown>[];
+      return {
+        kind: "action", title: "Action", action,
+        question: String(vx(tree, nodeId, "question") ?? ""),
+        segments: kids.map((k) => String(k?.title ?? "")),
+        segmentNodes: kids,
+        fallback: String(vx(tree, nodeId, "fallback") ?? ""),
+        channel: "voice",
+        edits: {
+          question: `agent.extra__${nodeId}__question`,
+          fallback: `agent.extra__${nodeId}__fallback`,
+          segments: `branches.${pathId[1]}.leaves.${pathId[2]}.paths.${pathId[3]}.paths`,
+          ...voiceExtraEdits(nodeId),
+        },
+        actionSlot: actionSlotFor(tree, nodeId),
+        signal: String(vx(tree, nodeId, "signal") ?? ""),
+        signalChoices: signalOptions(profile),
+        infoChoices: infoFieldOptions(profile),
+      };
+    }
     if (spec) {
-      return { kind: "action", title: "Action", action: "informRoute",
+      return { kind: "action", title: "Action", action,
         handling: spec.informSteps.join("\n"),
         /* ⚠️⚠️ **THIS USE CASE'S OWN FIELDS, NOT A GENERIC TABLE.** Reported directly against
            the last row: the node drew "Consumer Name, Service Address, Timeline" while its
@@ -727,12 +762,12 @@ export function drawerFor(
            and the drawer described the same node differently, which is the failure this file
            records for the pills already. The node's chips ARE its collect list, and they are
            what `treeToVoicePaths` hands the prompt, so reading them here makes all three agree. */
-        collect: nodeCollect(profile, pth as unknown as Record<string, unknown>, "informRoute"),
+        collect: nodeCollect(profile, pth as unknown as Record<string, unknown>, action),
         channel: "voice",
         ...voiceInformEdits(tree, nodeId, profile, pth as unknown as Record<string, unknown>) };
     }
     return {
-      kind: "action", title: "Action", action: "informRoute",
+      kind: "action", title: "Action", action,
       handling: [
         `1. Ask the caller for their zip code and capture it.`,
         area ? `2. Check the zip code against our current service area: ${area}.` : `2. Confirm the caller is in a serviceable area.`,
