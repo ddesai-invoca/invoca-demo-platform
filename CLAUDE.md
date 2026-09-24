@@ -11677,6 +11677,45 @@ dropped, unquoted `href=` is still extracted, and both twins serve the endpoint.
 ⚠️ Eight sabotages fire: slugifying labels, dropping escaping, dropping `target=_blank`, allowing
 off-site anchors, hardcoding the contents page, inventing a persona, rendering empty sections,
 and putting the template's blue back.
+
+#### Scope, measured: the Dallas roster and everything generated from here on (9/24/2026)
+Asked directly — *"i just need it for all in the 2026 Dallas Invoca summits, and all demos that
+were created yesterday, today and moving forward"*. Verified rather than assumed, by rendering
+the document for every profile on this machine:
+
+| | result |
+|---|---|
+| **2026 Dallas Invoca Summit — all 76** | 76 rendered, 0 threw, **every one a full 14 sections**, none missing knowledge sources |
+| **library demos created in the last two days — 17** | 17 rendered, 0 threw |
+| bundled + event seeds + local library — **179 total** | 0 threw, 0 suspiciously short |
+
+⚠️ **PRODUCTION HOLDS 431 DEMOS AND ONLY 179 ARE ON THIS MACHINE**, so the rest are covered by
+construction rather than by measurement: every library record was Zod-validated on save, and
+`audit:knowledge` proves the renderer is TOTAL by rendering a profile stripped of `smsPlaybook`
+and `aiRecommendations`. Say that rather than implying all 431 were checked.
+
+⚠️⚠️ **"MOVING FORWARD" IS ENFORCED BY THE NIGHTLY CANARY (7 new checks), not hoped for.** The
+document is derived at render time, so a prompt change that drops a slice would quietly shorten
+it — or empty the Knowledge Sources table — with nothing failing and the link still opening
+something plausible. `auditProfile` now checks a freshly generated prospect for the playbook
+document row, at least two web links, qualifying questions, a goal and booking type,
+conversation rules, a captured SMS transcript, and product categories. Each verified to fire by
+stripping the input. It is also structurally guaranteed upstream: `generateAgentConfig` uses
+`AgentConfigView` directly, and `sanitize()` marks every property required, so the model is
+FORCED to emit `knowledgeSources` on every generation.
+
+⚠️⚠️ **THE CANARY CHECKS THE INPUTS, NOT THE RENDERED DOCUMENT, AND THAT IS A DELIBERATE LIMIT.**
+The first version imported `renderSalesPlaybook` into `engine/canary.ts` and `npm run typecheck`
+went red with five errors — `renderSalesPlaybook` reaches `src/data/prospectPlace.ts` for the
+competitor card, which reads `import.meta.env`, a VITE builtin, and the engine project compiles
+with `module: nodenext` and no Vite types. Exactly what `server.ts` hit with `replicaPages.ts`
+(43 errors from one import) and what `replicaRegistry.ts` was extracted to fix. Not worth
+restructuring a signed-off shared module for a nightly check: the renderer's totality is already
+proven by `audit:knowledge`, and what only the canary can see is whether a fresh prospect still
+ARRIVES with the inputs.
+⚠️ The `.ts` import extensions added for that attempt were REVERTED with it. A comment
+justifying them by "engine/canary.ts imports this" would have been false the moment the import
+came back out.
 ⚠️⚠️ **AND ONE CHECK COULD NOT FAIL — THE TAUTOLOGICAL-CHECK TRAP THIS FILE RECORDS FOUR TIMES,
 HIT AGAIN.** "No weak match" was tested with a label sharing NOTHING with any anchor, so it
 passed whether the threshold was two tokens or one, and the sabotage that lowers it went

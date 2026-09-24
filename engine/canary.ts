@@ -216,6 +216,44 @@ export function auditProfile(p: any): { checks: number; failures: string[] } {
     check("Silver is the shorter library", (silver?.signals.length ?? 0) < (gold?.signals.length ?? 0));
   }
 
+  /* ⚠️⚠️ **THE AGENT PLAYBOOK'S INPUTS ARE CHECKED ON A FRESHLY GENERATED
+     PROSPECT, because "it works for every prospect moving forward" is otherwise
+     a hope.** The Knowledge Sources table and the playbook document behind it are
+     DERIVED at render time, so a prompt change that drops a slice would quietly
+     shorten the document — or empty the table — with nothing failing anywhere and
+     the link still opening something plausible. Same instruct-then-enforce pairing
+     the tier reports and the dash rule already use.
+
+     ⚠️⚠️ **IT CHECKS THE INPUTS RATHER THAN RENDERING THE DOCUMENT, AND THAT IS
+     A DELIBERATE LIMIT.** `renderSalesPlaybook` reaches `src/data/prospectPlace.ts`
+     for the competitor card, and that module reads `import.meta.env` — a Vite
+     builtin. Importing it here puts it in the ENGINE project, which compiles with
+     `module: nodenext` and no Vite types, and `npm run typecheck` goes red with
+     five errors that read as faults inside those files rather than as a
+     cross-project import. That is exactly what `server.ts` hit with
+     `replicaPages.ts` (43 errors from one import) and what `src/data/
+     replicaRegistry.ts` was extracted to fix. Not worth restructuring a
+     signed-off shared module for a nightly check — the RENDERER's totality is
+     already proven by `npm run audit:knowledge`, which renders all 91 profiles
+     plus a deliberately sparse one. What only the canary can see is whether a
+     freshly generated prospect still ARRIVES with the inputs. */
+  {
+    const ks: any[] = p?.reports?.agentConfig?.knowledgeSources ?? [];
+    check("Knowledge Sources: a playbook document to open",
+      ks.some((k) => k?.type === "Document" && /\.pdf$/i.test(String(k?.name ?? ""))));
+    check("Knowledge Sources: web links to open", ks.filter((k) => k?.type === "Web Link").length >= 2);
+    /* The playbook's own sections, by the slice each one needs. */
+    const pb = p?.reports?.agentConfig?.smsPlaybook;
+    check("Agent playbook input: qualifying questions (discovery section)", (pb?.qualifyingQuestions?.length ?? 0) > 0);
+    check("Agent playbook input: a goal and a booking type (overview + cheat sheet)", !!pb?.goal && !!pb?.bookingType);
+    check("Agent playbook input: conversation rules (flow-rules section)",
+      (p?.reports?.agentConfig?.brandConversationRules?.length ?? 0) > 0);
+    check("Agent playbook input: a captured SMS transcript (sample conversation)",
+      (p?.reports?.smsConversationIntelligence?.conversations?.[0]?.transcript?.length ?? 0) > 1);
+    check("Agent playbook input: product categories (quick reference)",
+      (byTitle(/product category/i)?.rows?.length ?? 0) > 0);
+  }
+
   return { checks, failures: fail };
 }
 
