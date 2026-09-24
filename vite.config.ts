@@ -60,6 +60,25 @@ function generateApi(apiKey: string | undefined): Plugin {
         res.setHeader('Content-Type', 'application/json')
         res.end(JSON.stringify({ enabled: driveConfigured(), connected: hasDriveToken(email) }))
       })
+      /* POST /api/site-links — mirror server.ts. Resolves a Knowledge Source
+         label to a real page by reading the site's own nav. */
+      server.middlewares.use('/api/site-links', async (req, res, next) => {
+        if (req.method !== 'POST') return next()
+        let raw = ''
+        for await (const chunk of req) raw += chunk
+        res.setHeader('Content-Type', 'application/json')
+        try {
+          const body = raw ? JSON.parse(raw) : {}
+          const labels = Array.isArray(body.labels) ? body.labels.slice(0, 40).map(String) : []
+          if (!body.url || !labels.length) return res.end(JSON.stringify({ links: {} }))
+          const { resolveLabels } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/siteLinks.ts')).href)
+          res.end(JSON.stringify({ links: await resolveLabels(String(body.url), labels) }))
+        } catch (e: any) {
+          console.warn('[site-links] failed:', e?.message || e)
+          res.end(JSON.stringify({ links: {} }))
+        }
+      })
+
       /* GET /api/gmail-status, POST /api/gmail/disconnect — mirror server.ts.
          ⚠️ Both twins or the feature works live and looks broken on every laptop,
          which is the trap the demo-library prefix guard already records. */

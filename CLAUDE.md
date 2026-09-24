@@ -11580,6 +11580,79 @@ a standby cannot see production's 219 demos. Failover needs the store moved off 
 `engine/demoStore.ts` — the same migration this file already names as the real fix for
 zero-downtime deploys. It needs a store provisioned, which is the user's to do.
 
+## Knowledge Sources are clickable, and the links are REAL pages (9/24/2026)
+
+Asked for against the Agent Studio table: *"can you make these Knowledge sources clickable, so
+for the weblinks it goes to the link, and for the PDF it opens the playbook pdf"*. Both rows had
+been `<a href="#">` since the screen was built.
+
+⚠️⚠️ **MEASURED FIRST, AND THE MEASUREMENT IS THE WHOLE STORY: NOT ONE ROW CARRIES A URL.**
+Across the 91 profiles on disk there are **453 knowledge rows and 453 of them are LABELS** —
+"Homepage", "Find Your Home", "Shop New & Used Cars", "Plans & Build-a-Plan". `KnowledgeSource`
+has only `name`, and the generator writes page TITLES. So "go to the link" had no link to go to.
+
+### The PDF: derived from the agent's own config, not written
+`src/artifacts/salesPlaybook.ts` renders the document the table has always claimed exists. Every
+line is something that prospect's agent actually uses — the greeting it opens with, its
+qualifying questions IN ORDER, the live offer, the brand conversation rules, its service area,
+and the Q&A pairs from its own call transcripts. So it re-skins across all 91 profiles with no
+engine phase and no schema change, and it is a true rendering rather than invented sales copy.
+⚠️ **A SECTION WITH NO DATA IS OMITTED, NEVER PADDED** — 5 of 15 healthcare profiles genuinely
+run no promotion, and a "Current offer" heading with nothing under it reads as a broken document.
+⚠️ **HTML IN A NEW TAB VIA A BLOB, NOT A GENERATED PDF, AND THAT IS A BUNDLE DECISION.** One
+chunk, no code splitting (load-bearing for the service worker), so a PDF library would land on
+every page load for a button most sessions never press. It reuses the mechanism the three
+Gumloop artifacts already use; `window.print()` is wired to the header for anyone who needs a file.
+⚠️ The config is AI-written text going into markup, so everything is escaped — asserted with a
+`<script>` in a customer name.
+
+### The web links: read the site's own navigation, never slugify a label
+⚠️⚠️ **THE FIRST VERSION SENT EVERY LINK TO THE HOMEPAGE AND THAT WAS REPORTED** (*"all the links
+are still going to the same home page"*). It was deliberate and it was not good enough. The fix
+is NOT to slugify: `/find-your-home` is a guess that 404s on the prospect's own website mid-demo,
+and this repo already settled that exact question for the LSA "Book online" button
+(`src/data/bookingPath.ts` uses a hand-RESOLVED table and falls back to "/" for precisely this
+reason). The profile's own `voiceScreenpop.callingWebpage` (`/pest-control/scorpions/`) is
+generated too, so it is the same guess wearing a costume.
+
+`engine/siteLinks.ts` fetches the prospect's homepage, extracts its anchors, and matches each
+label against the real link TEXT and the real URL slug. **A path is only ever returned because
+the site published it.** Measured live on Aptive: "Pest Control Services" -> `/pest-control/`,
+"Plans & Build-a-Plan" -> `/build-a-plan/`, "Our Locations" -> `/locations/`.
+⚠️ **IT REUSES `fetchReplica`, WHICH RENDERS FIRST** — a site whose nav is JS-injected serves no
+anchors to a plain fetch, the same finding that made the replica capture render-first — and
+inherits `assertPublicUrl`'s SSRF guard and the render breaker.
+⚠️ **TWO SIGNIFICANT WORDS MINIMUM**, the threshold this file already records from keyword-to-ad-
+group matching (one shared word once matched "continuing CARE" to "Memory Care"). A single-token
+label may match on its one token, since that token is the whole thing being named.
+⚠️ **NULL IS A LEGITIMATE ANSWER.** Anything unmatched falls back to the homepage, because a
+near-miss sends an SE to a page the label does not describe — worse than the front door.
+⚠️ **A BLOCKED SITE DEGRADES, IT DOES NOT BREAK.** AutoNation 403s a datacenter IP (already
+recorded for `ogImage`); measured, all four labels fall back in 170ms. The empty result is cached
+per domain so a blocked site is not re-fetched on every page view.
+⚠️ **ONE REQUEST PER PROSPECT, NOT PER ROW**, and the endpoint answers `{}` rather than an error —
+the caller's fallback is where every link already went, so a 500 would turn a cosmetic
+improvement into a broken screen.
+
+**`npm run audit:knowledge` is 36 checks**, over every profile plus the pure functions: no label
+is ever turned into a guessed path, every playbook names its own prospect and nothing else,
+hostile config text is escaped, empty sections are omitted, off-site/mailto/tel/#/root anchors are
+dropped, unquoted `href=` is still extracted, and both twins serve the endpoint.
+⚠️ Four sabotages fire: slugifying labels, dropping escaping, dropping `target=_blank`, allowing
+off-site anchors.
+⚠️⚠️ **AND ONE CHECK COULD NOT FAIL — THE TAUTOLOGICAL-CHECK TRAP THIS FILE RECORDS FOUR TIMES,
+HIT AGAIN.** "No weak match" was tested with a label sharing NOTHING with any anchor, so it
+passed whether the threshold was two tokens or one, and the sabotage that lowers it went
+undetected. Re-fixtured to a label overlapping on exactly one word ("Pest Stories" against
+"Pest Control Services") and verified to redden.
+⚠️⚠️ **THREE MORE PROBE FAULTS IN THE SAME PASS, all reporting failures that did not exist:**
+comparing the document against the RAW customer name when it is correctly HTML-escaped (five
+profiles whose names contain `&`); flagging cross-prospect "leakage" on four profiles whose own
+configs legitimately name another company (Crescent Hotels manages Marriott properties, Optimum
+IS CSC Holdings' brand, Vyve resells DIRECTV) — the fix is to fail only when the foreign name is
+absent from THIS profile's own config; and counting a pre-existing `href="#"` in the Refresh
+column, which is inert captured chrome and nothing to do with this.
+
 ## ⚠️ OPEN ITEMS as of 9/9/2026
 
 **0. THE STAGING SERVICE IS STILL MID-CREATION; `main` HAS SINCE MOVED PAST IT AND IS NOW TWO

@@ -46,6 +46,7 @@ import { fetchPublicGoogleDocText } from "./engine/driveLink.ts";
 import { fetchPrivateGoogleDocText, DriveReconnectError } from "./engine/driveApi.ts";
 import { hasDriveToken, removeDriveToken } from "./engine/driveTokens.ts";
 import { hasGmailToken, removeGmailToken } from "./engine/gmailTokens.ts";
+import { resolveLabels } from "./engine/siteLinks.ts";
 import { gongConfigured, slackConfigured, driveConfigured, salesforceConfigured } from "./engine/integrations.ts";
 import { renderConfigured } from "./engine/renderService.ts";
 import { gongLookup } from "./engine/gongApi.ts";
@@ -269,6 +270,26 @@ app.get("/api/drive-status", (req, res) => {
 app.post("/api/drive/disconnect", (req, res) => {
   removeDriveToken(currentUser(req).email);
   res.json({ ok: true });
+});
+
+/* POST /api/site-links { url, labels[] } → { links: { label: url } }.
+   Resolves a Knowledge Source LABEL to a real page by reading the site's own
+   navigation (engine/siteLinks.ts) — never by slugifying the label, which would
+   404 on the prospect's own site mid-demo. Unresolved labels are simply absent
+   and the screen falls back to the homepage. */
+app.post("/api/site-links", async (req, res) => {
+  try {
+    const url = String(req.body?.url || "");
+    const labels = Array.isArray(req.body?.labels) ? req.body.labels.slice(0, 40).map(String) : [];
+    if (!url || !labels.length) return res.json({ links: {} });
+    res.json({ links: await resolveLabels(url, labels) });
+  } catch (e: any) {
+    /* ⚠️ ANSWERS `{}` RATHER THAN AN ERROR. The caller's fallback is the
+       homepage, which is where every link went before this existed — a 500 here
+       would turn a cosmetic improvement into a broken screen. */
+    routeFailed("api:site-links", e, { level: "record" });
+    res.json({ links: {} });
+  }
 });
 
 /* GET /api/gmail-status → { connected, address }.

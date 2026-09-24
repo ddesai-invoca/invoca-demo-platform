@@ -66,6 +66,14 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 
 export const RELEASES: Release[] = [
   {
+    date: "2026-09-24",
+    title: "Knowledge Sources open the page they name",
+    changes: [
+      n("Every web link in Agent Studio's Knowledge Sources now opens the real page on the prospect's site, matched to their own navigation rather than a guessed address."),
+      n("The sales playbook opens too — a document built from that prospect's agent config: its opening message, qualifying questions, offer, brand rules and common questions."),
+    ],
+  },
+  {
     date: "2026-09-23",
     title: "Mark a demo as delivered, and a list of who you still owe",
     changes: [
