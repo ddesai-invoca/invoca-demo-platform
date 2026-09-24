@@ -11591,14 +11591,50 @@ Across the 91 profiles on disk there are **453 knowledge rows and 453 of them ar
 "Homepage", "Find Your Home", "Shop New & Used Cars", "Plans & Build-a-Plan". `KnowledgeSource`
 has only `name`, and the generator writes page TITLES. So "go to the link" had no link to go to.
 
-### The PDF: derived from the agent's own config, not written
-`src/artifacts/salesPlaybook.ts` renders the document the table has always claimed exists. Every
-line is something that prospect's agent actually uses — the greeting it opens with, its
-qualifying questions IN ORDER, the live offer, the brand conversation rules, its service area,
-and the Q&A pairs from its own call transcripts. So it re-skins across all 91 profiles with no
-engine phase and no schema change, and it is a true rendering rather than invented sales copy.
+### The PDF: a 14-section playbook on a supplied template, in Invoca white + green
+`src/artifacts/salesPlaybook.ts`. **Rebuilt 9/24/2026** against a template the user attached (a
+17-page Brookdale "AI Agent Training Playbook"), with two instructions: *"i dont like the black
+and blue, so lets just use the invoca white and green theme. and ofcourse customize it for all
+the prospect"*, and *"no need to have any logic in this playbook to connect to the actual voice
+agent. it is just for show"* — so it is a DOCUMENT, nothing reads it back.
+
+⚠️ **THE STRUCTURE IS THE TEMPLATE'S, THE PALETTE IS NOT.** Cover, a numbered 14-entry contents
+page, then numbered section bars with labelled sub-blocks and quoted script boxes, all as
+supplied. The template's black ground and blue accent are replaced with `#00b388` on white —
+colours this repo already ships (`#00b388` + `#f8faf1` is the pairing `engine/mailer.ts` uses,
+`#15243e` is the platform title ink), not a new palette invented for one document.
+
+⚠️⚠️ **THE READER HAD TO BE VIEWED BEFORE IT COULD BE COPIED, AND THAT TOOK A DETOUR WORTH
+RECORDING.** `pdftoppm` is not installed, so `Read` cannot rasterise a PDF, and a naive
+zlib/regex text extractor returned ASCII85 noise. Serving the file from the dev server made
+Chrome offer a DOWNLOAD rather than render it (which popped a save dialog on the user's machine
+— do not retry that URL). What works: copy the PDF into git-ignored `public/__m/`, wrap it in a
+one-line HTML page with an `<iframe>`, and screenshot Chrome's own viewer.
+
+⚠️⚠️ **EVERY SECTION IS DERIVED FROM THAT PROSPECT'S OWN DATA** — the qualifying questions in
+their real order, the sample conversation from its own captured SMS transcript, the products
+from its own Product Category rows, the competitors the same ones its Google Search screen
+shows, the number the same toll-free line its Preview Agent displays. So the playbook cannot
+disagree with any other screen. Verified re-skinning across verticals: section 03 reads "PEST
+CONTROL QUICK REFERENCE" / "HEALTH SYSTEMS…" / "HOTELS…", and 20 of 20 sampled profiles produce
+a distinct title.
+
+⚠️⚠️ **THE PERSONA NAME IS READ OUT OF THE AGENT'S OWN TRANSCRIPT, NEVER MINTED.** Aptive's SMS
+agent opens *"I'm Sarah"*, Marriott's *"Alex"*; Orlando Health's never introduces itself and
+gets "the agent". Two guards: the brand is not a person (*"This is Aptive"* is rejected), and a
+common opener is not a name (*"I'm happy to…"*).
+⚠️ **AND THE FIRST VERSION MATCHED NOTHING** — the pattern accepted a lowercase `i'm`, so
+"I'm Sarah" never hit and every prospect silently fell back to "the agent". The prefix is
+matched case-insensitively and the capital on the NAME is the part that carries signal.
+
+⚠️⚠️ **THE CONTENTS PAGE IS BUILT FROM THE SECTIONS THAT ACTUALLY RENDER.** Sections are omitted
+when a prospect has no data for them, so a hardcoded list would promise pages that are not
+there — the document lying about itself on the one page a reader navigates by. Asserted across
+all 91 profiles.
 ⚠️ **A SECTION WITH NO DATA IS OMITTED, NEVER PADDED** — 5 of 15 healthcare profiles genuinely
-run no promotion, and a "Current offer" heading with nothing under it reads as a broken document.
+run no promotion, and a heading with nothing under it reads as a broken document. Measured: a
+profile stripped of its offer and its conversation rules renders 13 sections instead of 14, and
+the contents page loses the entry too.
 ⚠️ **HTML IN A NEW TAB VIA A BLOB, NOT A GENERATED PDF, AND THAT IS A BUNDLE DECISION.** One
 chunk, no code splitting (load-bearing for the service worker), so a PDF library would land on
 every page load for a button most sessions never press. It reuses the mechanism the three
@@ -11638,8 +11674,9 @@ improvement into a broken screen.
 is ever turned into a guessed path, every playbook names its own prospect and nothing else,
 hostile config text is escaped, empty sections are omitted, off-site/mailto/tel/#/root anchors are
 dropped, unquoted `href=` is still extracted, and both twins serve the endpoint.
-⚠️ Four sabotages fire: slugifying labels, dropping escaping, dropping `target=_blank`, allowing
-off-site anchors.
+⚠️ Eight sabotages fire: slugifying labels, dropping escaping, dropping `target=_blank`, allowing
+off-site anchors, hardcoding the contents page, inventing a persona, rendering empty sections,
+and putting the template's blue back.
 ⚠️⚠️ **AND ONE CHECK COULD NOT FAIL — THE TAUTOLOGICAL-CHECK TRAP THIS FILE RECORDS FOUR TIMES,
 HIT AGAIN.** "No weak match" was tested with a label sharing NOTHING with any anchor, so it
 passed whether the threshold was two tokens or one, and the sabotage that lowers it went

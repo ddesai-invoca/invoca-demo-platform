@@ -70,7 +70,7 @@ export const RELEASES: Release[] = [
     title: "Knowledge Sources open the page they name",
     changes: [
       n("Every web link in Agent Studio's Knowledge Sources now opens the real page on the prospect's site, matched to their own navigation rather than a guessed address."),
-      n("The sales playbook opens too — a document built from that prospect's agent config: its opening message, qualifying questions, offer, brand rules and common questions."),
+      n("The sales playbook opens too — a 14-section AI Agent Training Playbook in Invoca's own colours, built from that prospect's agent: its opening messages, discovery questions, objection scripts, competitive card, a real sample conversation and a one-page cheat sheet."),
     ],
   },
   {

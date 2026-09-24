@@ -15,7 +15,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { knowledgeHref, looksLikeUrl, siteRoot } from "../src/data/knowledgeLinks.ts";
-import { renderSalesPlaybook, playbookFileName } from "../src/artifacts/salesPlaybook.ts";
+import { renderSalesPlaybook, playbookFileName, agentPersona } from "../src/artifacts/salesPlaybook.ts";
 import { extractAnchors, matchLabel } from "../engine/siteLinks.ts";
 
 let bad = 0;
@@ -57,6 +57,7 @@ for (const f of files) {
 }
 
 let rows = 0, guessed = 0, dead = 0, emptyDoc = 0, unescaped = 0, leaked = 0, noOwnData = 0;
+let tocMismatch = 0, noSections = 0, blueLeft = 0, noGreen = 0;
 for (const p of profiles) {
   const root = siteRoot(p);
   if (!/^https?:\/\/[^/\s]+$/.test(root)) no(`${p.customerName}: site root is not a bare origin (${root})`);
@@ -74,6 +75,18 @@ for (const p of profiles) {
 
   const doc = renderSalesPlaybook(p);
   if (doc.length < 800) emptyDoc++;
+  /* ⚠️⚠️ **THE CONTENTS PAGE MUST MATCH THE SECTIONS THAT ACTUALLY RENDER.**
+     Sections are omitted when a prospect has no data for them, so a hardcoded
+     contents list would promise pages that are not there — the document lying
+     about itself, on the one page a reader uses to navigate it. */
+  const secTitles = [...doc.matchAll(/<h2>([^<]+)<\/h2>/g)].map((m) => m[1]).slice(1);
+  const tocTitles = [...doc.matchAll(/class="tt">([^<]+)</g)].map((m) => m[1]);
+  if (JSON.stringify(secTitles) !== JSON.stringify(tocTitles)) tocMismatch++;
+  if (!secTitles.length) noSections++;
+  /* The template's black-and-blue was explicitly rejected in favour of Invoca
+     white + green. A stray blue would be that palette creeping back. */
+  if (/#2563eb|#1a73e8|#0b57d0/i.test(doc)) blueLeft++;
+  if (!/#00b388/i.test(doc)) noGreen++;
   /* ⚠️ COMPARED AGAINST THE ESCAPED NAME — the first version used the raw one and
      failed five profiles whose names contain "&" ("AT&T", "Krueger & Richard",
      "Crescent Hotels & Resorts"). The document was correct; the probe was
@@ -105,6 +118,10 @@ emptyDoc === 0 ? ok("every profile renders a non-empty playbook") : no(`${emptyD
 noOwnData === 0 ? ok("every playbook names its own prospect") : no(`${noOwnData} playbooks do not name their prospect`);
 unescaped === 0 ? ok("no script/iframe survives into the document body") : no(`${unescaped} playbooks contain executable markup`);
 leaked === 0 ? ok("no playbook names another prospect") : no(`${leaked} playbooks leak another prospect's name`);
+tocMismatch === 0 ? ok("every contents page matches the sections that actually render") : no(`${tocMismatch} playbooks have a contents page that lies`);
+noSections === 0 ? ok("every playbook renders at least one section") : no(`${noSections} playbooks have no sections`);
+blueLeft === 0 ? ok("the template's blue accent is gone") : no(`${blueLeft} playbooks still carry the old blue`);
+noGreen === 0 ? ok("every playbook uses Invoca's own #00b388") : no(`${noGreen} playbooks are missing the brand green`);
 
 /* ---- escaping and omission, exercised directly -------------------------------- */
 console.log("\nThe document itself\n");
@@ -121,16 +138,66 @@ console.log("\nThe document itself\n");
     : no("the document's name does not match the table row");
 }
 {
+  const full: any = JSON.parse(JSON.stringify(profiles[0]));
+  const before = (renderSalesPlaybook(full).match(/class="sec"/g) ?? []).length;
+  before === 14 ? ok("a complete profile renders all 14 sections") : no(`a complete profile rendered ${before} sections, expected 14`);
+
   const p: any = JSON.parse(JSON.stringify(profiles[0]));
   p.reports.agentConfig.smsPlaybook.offer = "";
   p.reports.agentConfig.brandConversationRules = [];
   const out = renderSalesPlaybook(p);
-  /* ⚠️ AN EMPTY SECTION IS OMITTED, NOT PADDED. A prospect with no promotion
-     genuinely runs none, and a "Current offer" heading with nothing under it
-     reads as a broken document. */
-  !out.includes("Current offer") && !out.includes("Brand conversation rules")
-    ? ok("sections with no data are omitted entirely")
-    : no("an empty section is still rendered");
+  const after = (out.match(/class="sec"/g) ?? []).length;
+  /* ⚠️⚠️ **AN EMPTY SECTION IS OMITTED, NOT PADDED** — a prospect with no
+     promotion genuinely runs none (5 of 15 healthcare profiles), and a heading
+     with nothing under it reads as a broken document.
+     ⚠️ ASSERTED AS A COUNT AND A DISAPPEARANCE, because the previous version
+     named a section that the rewrite had renamed — so half of it could never
+     fail. Here the whole Conversation Flow Rules section must go, and the
+     contents page must lose it too. */
+  !out.includes("Current offer") && !out.includes("CONVERSATION FLOW RULES") && after === before - 1
+    ? ok("a section with no data is dropped, from the body AND the contents")
+    : no(`empty sections are still rendered (${after} vs ${before}, offer=${out.includes("Current offer")}, rules=${out.includes("CONVERSATION FLOW RULES")})`);
+}
+
+/* ---- the persona is read, not minted ------------------------------------------- */
+{
+  const p: any = JSON.parse(JSON.stringify(profiles[0]));
+  const conv = p.reports?.smsConversationIntelligence?.conversations?.[0];
+  if (conv?.transcript) {
+    conv.transcript = [{ speaker: "agent", time: "0:00", text: "Hi there, I'm Priya. How can I help?" }];
+    delete p.reports.agentConfig.smsPlaybook.greeting;
+    agentPersona(p) === "Priya" ? ok("the persona is read out of the agent's own transcript") : no(`persona came back "${agentPersona(p)}"`);
+    /* ⚠️ AND IT MUST NOT INVENT ONE. A prospect whose agent never introduces
+       itself gets a role noun — this file does not mint a person. */
+    conv.transcript = [{ speaker: "agent", time: "0:00", text: "Thanks for texting. How can I help today?" }];
+    agentPersona(p) === "the agent" ? ok("an agent that never names itself gets no invented name") : no(`persona invented: "${agentPersona(p)}"`);
+    /* The brand is not a person: "This is Aptive" must not become a persona. */
+    conv.transcript = [{ speaker: "agent", time: "0:00", text: `This is ${p.customerName.split(" ")[0]}, how can I help?` }];
+    agentPersona(p) === "the agent" ? ok("the brand name is not mistaken for a persona") : no(`brand used as persona: "${agentPersona(p)}"`);
+  }
+}
+
+/* ---- the sample conversation is the prospect's OWN --------------------------- */
+{
+  const withConvo = profiles.find((x: any) => (x.reports?.smsConversationIntelligence?.conversations?.[0]?.transcript ?? []).length > 2);
+  if (withConvo) {
+    const turn = withConvo.reports.smsConversationIntelligence.conversations[0].transcript[1].text;
+    const out = renderSalesPlaybook(withConvo);
+    out.includes(turn.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"))
+      ? ok("the sample conversation is that prospect's own captured transcript")
+      : no("the sample conversation does not come from the profile");
+  }
+}
+
+/* ---- the quick-reference title re-skins ---------------------------------------- */
+{
+  const titles = new Set(profiles.slice(0, 20).map((x: any) => {
+    const m = /<h2>([^<]*QUICK REFERENCE[^<]*)<\/h2>/.exec(renderSalesPlaybook(x));
+    return m ? m[1] : "";
+  }));
+  titles.size > 1
+    ? ok(`the quick-reference section re-skins per vertical (${titles.size} distinct titles in 20)`)
+    : no("the quick-reference heading is the same for every prospect");
 }
 {
   const p: any = JSON.parse(JSON.stringify(profiles[0]));
