@@ -1,4 +1,4 @@
-# Context integrations: Gong, Google Drive, Slack
+# Context integrations: Gong, Google Drive, Slack, Salesforce
 
 The launch form's **Advanced settings** panel can pull context about a prospect
 from Gong, Google Drive and Slack, and feed it into the generation so the demo
@@ -219,6 +219,128 @@ feature request on record** — *"Slack notification when my demo finishes
 generating"* — closed with the note *"Nice idea, but it needs a Slack app and
 approval. Revisit if more people ask."* The same blocker applies here, so treat
 Slack as last and plan for it not to happen.
+
+---
+
+## 4. Salesforce — BUILT (9/23/2026)
+
+**What it powers:** the optional "tell the account exec" half of marking a demo.
+The platform resolves the prospect's Salesforce **Account** and emails its
+**Owner** with the status and the SE's note.
+
+### The fast path: a CLI refresh token (no admin, ~10 minutes)
+
+This is what to do first. It uses Salesforce's own pre-installed `PlatformCLI`
+connected app, so there is no app to create and nobody to ask.
+
+```bash
+npm i -g @salesforce/cli      # or: brew install salesforcedx
+sf org login web              # log into the PRODUCTION org, click Allow
+cat ~/.sfdx/<your-username>.json
+```
+
+Take `refreshToken` and `instanceUrl` from that file into the environment:
+
+```
+SALESFORCE_REFRESH_TOKEN=<refreshToken>
+SALESFORCE_INSTANCE_URL=<instanceUrl>     # optional, the token response wins
+```
+
+⚠️ **No `SALESFORCE_CLIENT_SECRET`.** `PlatformCLI` is a *public* client — the
+code defaults `SALESFORCE_CLIENT_ID` to it and sends no secret, because sending
+one makes the exchange fail.
+
+**What you are accepting by using it:** every lookup reads as *you*, so
+Salesforce's API audit log shows your user for everybody's marks. It is a
+read-only `SELECT` on Account — nothing is written, no record is touched — but
+it also **stops working if your account is deactivated**. Good bridge, not a
+destination.
+
+### The durable path: a Connected App
+
+**What to obtain** — a Salesforce admin does this once, and it then works for
+every SE (same shape as Gong; nobody consents to anything):
+
+1. Setup → App Manager → **New Connected App**.
+2. Enable OAuth Settings, scope **`api`** (`Manage user data via APIs`). A
+   callback URL is required by the form but unused by this flow — any https URL.
+3. On the connected app's **policies**: tick **Enable Client Credentials Flow**
+   and set a **Run As** user.
+   ⚠️ Without both, the token endpoint answers *"client credentials flow not
+   enabled for this connected app"* — which the platform surfaces verbatim
+   rather than swallowing.
+4. That run-as user needs **read** on Account and User. Nothing writes.
+5. Put the consumer key/secret in the environment:
+
+```
+SALESFORCE_CLIENT_ID=<consumer key>
+SALESFORCE_CLIENT_SECRET=<consumer secret>
+# only for a sandbox or a My Domain login host:
+# SALESFORCE_LOGIN_URL=https://test.salesforce.com
+```
+
+**Verify:** `GET /api/status` → `integrations.salesforceConfigured: true`, then
+tick "Tell the account exec" on any demo's flag — it names the owner before
+anything is sent.
+
+### ⚠️⚠️ The match is on the WEBSITE DOMAIN, and that was measured, not chosen
+
+Matching by NAME pings the wrong person. Against the real CRM, `Name LIKE`:
+
+| searched | also returned |
+|---|---|
+| `%PMG%` | KPMG, EPMG |
+| `%Aptive%` | Adaptive, Adaptive Biotechnologies, CaptiveAire, Captive Resources |
+| `%Riverbend%` | "Mednik Riverbend" — a medical group, not the pool company |
+| `%Moffitt%` | "Moffitt Fan Corporation" |
+
+So the key is `DemoRecord.websiteUrl`. **But `Website LIKE '%domain%'` bleeds
+too** — `%att.com%` also matched `allianceatt.com` plus two junk records whose
+Website field literally reads att.com, and `%optimum.com%` matched
+`solaroptimum.com` and `groupe-optimum.com`. The `LIKE` is only a coarse
+prefilter; `sameSite()` re-checks every candidate in code (equal, or a
+dot-suffix — never `includes`).
+
+### Who the notification comes from
+
+**The SE who marked the demo — automatically, with nothing to click.** Asked
+for directly: *"it should automatically just be sent as that user, they dont
+need to click anything"*.
+
+- **`gmail.send` is part of the SIGN-IN scope.** The grant rides the login
+  everyone already performs, and `/auth/callback` stores the refresh token when
+  Google returns one (first grant only — it never overwrites a stored token with
+  nothing on later sign-ins). By the time anyone marks a demo, their mailbox is
+  connected because they logged in.
+- `From` is their address, the message lands in **their** Sent folder, and a
+  reply reaches them naturally.
+- Tokens live per SE in `engine/gmailTokens.ts`, in their own directory —
+  **not** shared with Drive's, because the two are revoked independently.
+
+⚠️ **The consequence, stated plainly: the Google consent screen now says "Send
+email on your behalf."** It is all-or-nothing, so somebody who declines cannot
+use the platform at all. That is the price of removing the click, and it was
+the explicit trade.
+
+⚠️ **`/auth/gmail-connect` survives as a recovery path only.** Anyone whose
+session predates the widened scope has no token yet; it heals on their next
+sign-in, and the panel says so rather than demanding anything. Until then their
+notifications come from the platform mailbox with their name in the body.
+
+⚠️ **Workspace domain-wide delegation was still rejected.** It is the only
+*other* zero-click route, and it lets this server send as anyone at Invoca with
+no consent from anybody — a far larger grant than each person allowing it for
+themselves, and it needs a super-admin. CLAUDE.md already turned it down for
+Drive's read scope; send is strictly worse.
+
+### What it refuses to do
+
+- **Duplicate accounts with different owners** (`goaptive.com` → two "Aptive
+  Environmental" records, two AEs) come back as **candidates**; the SE picks.
+  Guessing would tell the wrong colleague about an account that is not theirs.
+- **Nothing is emailed unless the SE ticks the box**, per demo.
+- **The recipient is resolved server-side and must be `@invoca.com`.** The
+  browser only ever sends a flag and, when asked, which candidate.
 
 ---
 

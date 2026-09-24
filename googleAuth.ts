@@ -21,11 +21,16 @@ import crypto from "node:crypto";
    ones who may connect the sending account. A second list here would drift. */
 import { isAdmin } from "./engine/demoApi.ts";
 import { saveDriveToken } from "./engine/driveTokens.ts";
+import { saveGmailToken } from "./engine/gmailTokens.ts";
+import { orgEmailDomain } from "./engine/appEnv.ts";
 import type { Express, Request, Response, NextFunction } from "express";
 
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID || "";
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || "";
-const ALLOWED_DOMAIN = (process.env.ALLOWED_EMAIL_DOMAIN || "invoca.com").toLowerCase();
+/* ⚠️ ONE DEFINITION — `engine/appEnv.ts`. The follow-up-notice mailer reads the
+   same value as a SEND GUARD, and a second copy here is how the gate and the
+   guard come to disagree about who counts as staff. */
+const ALLOWED_DOMAIN = orgEmailDomain();
 const SESSION_SECRET = process.env.SESSION_SECRET || CLIENT_SECRET || "insecure-dev-secret";
 const BASE_URL = process.env.BASE_URL || "";
 const COOKIE = "invoca_demo_session";
@@ -121,11 +126,32 @@ export function installAuth(app: Express) {
       client_id: CLIENT_ID,
       redirect_uri: `${baseUrl(req)}/auth/callback`,
       response_type: "code",
-      scope: "openid email profile",
+      /* ⚠️⚠️ **`gmail.send` IS IN THE SIGN-IN SCOPE ON PURPOSE (9/24/2026), AND
+         THIS FILE PREVIOUSLY ARGUED THE OPPOSITE.** Asked for directly, about the
+         "tell the account exec" notification: *"it should automatically just be
+         sent as that user, they dont need to click anything"*. A separate Connect
+         button is a click, and a feature that needs one is a feature most people
+         never turn on — so the grant now rides the login they already perform.
+         The consequence is stated rather than buried: the Google consent screen
+         says "Send email on your behalf", it is all-or-nothing, and somebody who
+         declines cannot use the platform at all.
+         ⚠️ The only zero-click alternative is Workspace DOMAIN-WIDE DELEGATION,
+         which lets this server send as anyone at Invoca with no consent from
+         anybody — a far larger grant than each person allowing it for themselves,
+         and it needs a super-admin. Rejected for the same reason it was rejected
+         for Drive's READ scope. */
+      scope: "openid email profile https://www.googleapis.com/auth/gmail.send",
       hd: ALLOWED_DOMAIN, // hint Google to the org's accounts
       state,
       prompt: "select_account",
-      access_type: "online",
+      /* ⚠️⚠️ **`offline` IS WHAT RETURNS A REFRESH TOKEN, AND `prompt=consent` IS
+         DELIBERATELY *NOT* SET HERE** — unlike the two connect routes below. With
+         it, Google re-shows the consent screen on EVERY sign-in, which turns a
+         one-time grant into a permanent nag. Without it, Google returns a refresh
+         token on the FIRST grant of a newly-requested scope (which adding
+         gmail.send makes this) and nothing afterwards — so the callback stores it
+         when present and keeps the stored copy when not. */
+      access_type: "offline",
     });
     res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params}`);
   });
@@ -187,6 +213,39 @@ export function installAuth(app: Express) {
     res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params}`);
   });
 
+  /* ---- PER-SE GMAIL SEND CONSENT ---------------------------------------------
+     Asked for directly: the "tell the account exec" notification should come
+     FROM the SE who marked the demo, and land in THEIR Sent folder, because they
+     are the actual sender.
+
+     ⚠️⚠️ **THE SAME SCOPE AS /auth/gmail AND THE OPPOSITE POLICY.** That route is
+     ADMIN-ONLY and mints ONE credential for the shared sending account, shown
+     once to be pasted into Render. This one is open to any signed-in SE, mints
+     THEIRS, and stores it (engine/gmailTokens.ts) — the /auth/drive model applied
+     to a send scope. Both legs reuse the existing /auth/callback redirect URI,
+     distinguished by their state prefix, so nothing new is registered in the
+     Google Cloud Console.
+     ⚠️ **NOT FOLDED INTO THE SIGN-IN SCOPE, DELIBERATELY.** Adding gmail.send to
+     the gate would show "this app wants to send email as you" to everyone who
+     opens the platform, including the majority who only ever generate a demo.
+     A send capability should be consented to where it is used. */
+  app.get("/auth/gmail-connect", (req: Request, res: Response) => {
+    const state = "gmailc:" + crypto.randomBytes(16).toString("hex");
+    res.setHeader("Set-Cookie", `oauth_state=${state}; HttpOnly; Path=/; Max-Age=600; SameSite=Lax${secure(req) ? "; Secure" : ""}`);
+    const params = new URLSearchParams({
+      client_id: CLIENT_ID,
+      redirect_uri: `${baseUrl(req)}/auth/callback`,
+      response_type: "code",
+      scope: "openid email profile https://www.googleapis.com/auth/gmail.send",
+      hd: ALLOWED_DOMAIN,
+      state,
+      // offline + consent is what actually returns a refresh token, as above.
+      access_type: "offline",
+      prompt: "consent",
+    });
+    res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params}`);
+  });
+
   app.get("/auth/callback", async (req: Request, res: Response) => {
     try {
       const cookies = parseCookies(req.headers.cookie);
@@ -206,6 +265,30 @@ export function installAuth(app: Express) {
          into the host's environment, then stop. It is deliberately not written to
          disk — the environment is where every other credential in this app lives,
          and a token sitting in a data directory is a copy nobody remembers. */
+      /* ⚠️⚠️ **CHECKED BEFORE THE `gmail:` BRANCH, AND THE ORDER IS LOAD-BEARING
+         ONLY BECAUSE THE PREFIXES ARE DISTINCT** — `"gmailc:".startsWith("gmail:")`
+         is FALSE (the colon differs), so the two cannot actually collide. It is
+         tested first anyway, and named `gmailc:` rather than `gmail-connect:`
+         only after checking that: a prefix pair where one IS a prefix of the
+         other would send every per-SE consent down the admin path and display a
+         colleague's send credential on screen. */
+      if (state.startsWith("gmailc:")) {
+        const claims2: any = JSON.parse(Buffer.from(tok.id_token.split(".")[1], "base64url").toString());
+        const acct = String(claims2.email || "").toLowerCase();
+        res.setHeader("Set-Cookie", `oauth_state=; Path=/; Max-Age=0`);
+        if (!tok.refresh_token) {
+          return res.status(400).send(deniedPage(
+            "Google didn't return a new grant for sending — that usually means it was already connected. " +
+            "Disconnect it and try again to get a fresh one, or it may already be working: " +
+            "<a href=\"/\">go back and check</a>."));
+        }
+        /* ⚠️ STORED, NEVER DISPLAYED. The admin leg below prints its token
+           because a human pastes that one into Render; this is somebody's own
+           send credential and there is nothing for anyone to copy. */
+        saveGmailToken(acct, tok.refresh_token);
+        return res.redirect("/?gmail=connected");
+      }
+
       if (state.startsWith("gmail:")) {
         const claims2: any = JSON.parse(Buffer.from(tok.id_token.split(".")[1], "base64url").toString());
         const acct = String(claims2.email || "").toLowerCase();
@@ -243,6 +326,15 @@ export function installAuth(app: Express) {
       if (claims.aud !== CLIENT_ID || !claims.email_verified || domain !== ALLOWED_DOMAIN) {
         return res.status(403).send(deniedPage(`Access is limited to <b>@${ALLOWED_DOMAIN}</b> accounts. You signed in as ${email || "an account outside that domain"}.`));
       }
+
+      /* ⚠️⚠️ **THE SEND TOKEN IS CAPTURED HERE, ON AN ORDINARY SIGN-IN.** That is
+         what makes "sent as the SE" automatic: by the time anyone marks a demo,
+         their mailbox is already connected because they logged in.
+         ⚠️ **ONLY WHEN PRESENT, AND IT NEVER CLEARS A STORED ONE.** Google returns
+         a refresh token on the first grant of a scope and omits it on every later
+         sign-in, so overwriting unconditionally would wipe a good token on the
+         second login and leave sending permanently broken for that person. */
+      if (tok.refresh_token) saveGmailToken(email, tok.refresh_token);
 
       const name = String(claims.name || claims.given_name || email.split("@")[0]);
       const session = sign({ email, name, exp: Date.now() + MAX_AGE_MS });

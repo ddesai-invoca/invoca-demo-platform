@@ -19,7 +19,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { useDemoLibrary, type MarkStatus } from "../data/DemoLibraryContext";
+import { useDemoLibrary, type MarkStatus, type NotifyResult, type RepLookup } from "../data/DemoLibraryContext";
 
 const LABEL: Record<MarkStatus, string> = {
   demoed: "Demoed",
@@ -30,10 +30,25 @@ const LABEL: Record<MarkStatus, string> = {
 const ORDER: MarkStatus[] = ["demoed", "follow-up", "lead"];
 
 export default function DemoMarkButton({ demoId, name }: { demoId: string; name: string }) {
-  const { markFor, setMark } = useDemoLibrary();
+  const { markFor, setMark, lookupRep, gmailStatus } = useDemoLibrary();
   const mark = markFor(demoId);
   const [open, setOpen] = useState(false);
   const [note, setNote] = useState("");
+  /* ⚠️⚠️ **OFF BY DEFAULT, AND THAT IS THE FEATURE.** Marking happens ~25 times
+     in an afternoon; a notification on every one is a burst a colleague filters
+     away, and one stray click would tell them about an account that is not
+     theirs. So telling the AE is a second, deliberate action. */
+  const [notify, setNotify] = useState(false);
+  const [rep, setRep] = useState<RepLookup | null>(null);
+  const [repLoading, setRepLoading] = useState(false);
+  const [picked, setPicked] = useState<string | null>(null);
+  /* What actually happened to the email, shown in place after committing —
+     "the panel closed" is not evidence anybody was told. */
+  const [sent, setSent] = useState<NotifyResult | null>(null);
+  const [saving, setSaving] = useState(false);
+  /* Whether THIS SE has connected their own mailbox. Null while unknown, so the
+     row says nothing rather than flashing "not connected" and correcting itself. */
+  const [gmail, setGmail] = useState<{ connected: boolean; address: string } | null>(null);
   const [rect, setRect] = useState<{ top: number; left: number } | null>(null);
   const btnRef = useRef<HTMLButtonElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
@@ -58,7 +73,11 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
     const h = panelRef.current?.getBoundingClientRect().height ?? 210;
     const below = b.bottom + 6;
     const top = below + h <= window.innerHeight - 8 ? below : Math.max(8, b.top - 6 - h);
-    setRect({ top, left: Math.max(8, Math.min(b.right - W, window.innerWidth - W - 8)) });
+    const left = Math.max(8, Math.min(b.right - W, window.innerWidth - W - 8));
+    /* ⚠️ BAILS WHEN NOTHING MOVED, and that is load-bearing rather than tidiness:
+       a ResizeObserver fires once on `observe()`, so a `setRect` that always
+       produced a fresh object would re-render, re-subscribe and fire again. */
+    setRect((prev) => (prev && prev.top === top && prev.left === left ? prev : { top, left }));
   }, []);
 
   useEffect(() => {
@@ -78,6 +97,30 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
       window.removeEventListener("resize", onScroll);
     };
   }, [open, place]);
+
+  /* ⚠️⚠️ **THE PANEL GROWS AFTER IT IS PLACED, AND WITHOUT THIS IT FALLS BACK OFF
+     THE SCREEN — the very defect the flip above exists to prevent, arriving through
+     a later door.** Ticking "tell the account exec" resolves a rep a second later,
+     and an ambiguous answer adds a row per candidate. Measured before this
+     observer: a panel flipped above a trigger at y=889 sat at 715 while 168px
+     tall, then grew to 288 and hung **39px past a 964px viewport** — unreachable,
+     because it is `position: fixed`. The rAF pass above only covers the first
+     render; anything arriving later has to re-place too.
+
+     ⚠️ **ITS OWN EFFECT, KEYED ON THE PANEL BEING MOUNTED — and the first version
+     was wrong for exactly the reason this comment exists.** Put in the effect
+     above it observed nothing: on the render that sets `open`, `rect` is still
+     null, so the panel is not in the DOM and `panelRef.current` is null. The
+     effect does not re-run when `rect` arrives, so the observer was created,
+     attached to nothing, and the bug it was written for still reproduced. */
+  const placed = rect !== null;
+  useEffect(() => {
+    const el = panelRef.current;
+    if (!open || !placed || !el) return;
+    const ro = new ResizeObserver(() => place());
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [open, placed, place]);
 
   /* ⚠️ POINTERDOWN IN THE CAPTURE PHASE. On bubble, a click on the trigger while
      the panel is open closes it here and immediately reopens it in the button's
@@ -103,13 +146,50 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
     ev.stopPropagation();
     ev.preventDefault();
     setNote(mark?.note ?? "");
+    /* Every opening starts clean: an outcome left over from the last demo marked
+       would read as a report about THIS one. */
+    setNotify(false);
+    setRep(null);
+    setPicked(null);
+    setSent(null);
     setOpen((v) => !v);
+  }
+
+  /* ⚠️ THE LOOKUP FIRES ON THE TICK, NOT ON OPEN. It is a live SOQL query, and
+     opening a flag to read a note must not spend one — nor should scrolling a
+     76-row roster with a stray click in it. */
+  async function toggleNotify(on: boolean) {
+    setNotify(on);
+    if (!on || rep || repLoading) return;
+    setRepLoading(true);
+    /* Both questions at once — who to tell, and which mailbox it would leave
+       from. They are independent, and asking in sequence would show the panel
+       growing twice. */
+    const [r, g] = await Promise.all([lookupRep(demoId), gmailStatus()]);
+    setRepLoading(false);
+    setRep(r ?? { domain: "", rep: null, candidates: [], reason: "Could not reach the server." });
+    setGmail(g);
+  }
+
+  async function commit(status: MarkStatus) {
+    setSaving(true);
+    const r = await setMark(
+      demoId,
+      status,
+      note.trim() || undefined,
+      notify ? { accountId: picked ?? undefined } : undefined,
+    );
+    setSaving(false);
+    /* ⚠️ THE PANEL STAYS OPEN WHEN SOMETHING WAS MEANT TO BE SENT, because this is
+       the one moment the SE needs to know WHO was told — or why nobody was. With
+       notify off it closes immediately, exactly as before. */
+    if (r.ok && notify) setSent(r.notified ?? { sent: false, reason: "The server said nothing about the email." });
+    else setOpen(false);
   }
 
   async function choose(ev: React.MouseEvent, status: MarkStatus) {
     ev.stopPropagation();
-    setOpen(false);
-    await setMark(demoId, status, note.trim() || undefined);
+    await commit(status);
   }
 
   async function clear(ev: React.MouseEvent) {
@@ -117,6 +197,11 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
     setOpen(false);
     await setMark(demoId, null);
   }
+
+  /* Several owners matched the domain — ask, never guess. Choosing one only
+     names WHICH candidate; the server still resolves the address itself. */
+  const ambiguous = !!rep && !rep.rep && rep.candidates.length > 0;
+  const chosen = rep?.rep ?? rep?.candidates.find((c) => c.accountId === picked) ?? null;
 
   return (
     <>
@@ -148,6 +233,7 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
               <button
                 key={s}
                 className={"dmk-opt dmk-" + s + (mark?.status === s ? " dmk-opt--on" : "")}
+                disabled={saving}
                 onClick={(e) => void choose(e, s)}
               >
                 {LABEL[s]}
@@ -168,11 +254,97 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
               e.stopPropagation();
               if (e.key === "Enter") {
                 e.preventDefault();
-                setOpen(false);
-                void setMark(demoId, mark?.status ?? "demoed", note.trim() || undefined);
+                void commit(mark?.status ?? "demoed");
               }
             }}
           />
+
+          {/* ⚠️ THE NOTIFY ROW IS A SECOND, DELIBERATE ACTION — see the note on
+              `notify` above. It names the person BEFORE anything is sent, because
+              "email the rep" without saying which rep is a click nobody should
+              have to take on trust. */}
+          <label className="dmk-notify" onClick={(e) => e.stopPropagation()}>
+            <input
+              type="checkbox"
+              checked={notify}
+              onChange={(e) => { e.stopPropagation(); void toggleNotify(e.target.checked); }}
+            />
+            <span>Tell the account exec</span>
+          </label>
+
+          {notify && (
+            <div className="dmk-rep">
+              {repLoading && <span className="dmk-rep-msg">Looking up Salesforce…</span>}
+
+              {!repLoading && chosen && (
+                <span className="dmk-rep-msg dmk-rep-ok">
+                  <span className="material-icons">mail_outline</span>
+                  Emails <strong>{chosen.ownerName}</strong> — {chosen.accountName}
+                </span>
+              )}
+
+              {/* ⚠️ SEVERAL OWNERS MATCHED THE DOMAIN, SO IT ASKS. Duplicate accounts
+                  with different owners are real (measured: two "Aptive Environmental"
+                  records owned by two different AEs), and guessing there tells the
+                  wrong colleague about an account that is not theirs. */}
+              {!repLoading && ambiguous && !chosen && (
+                <>
+                  <span className="dmk-rep-msg">{rep?.reason} Pick one:</span>
+                  {rep?.candidates.map((c) => (
+                    <button
+                      key={c.accountId}
+                      className="dmk-rep-pick"
+                      onClick={(e) => { e.stopPropagation(); setPicked(c.accountId); }}
+                    >
+                      <strong>{c.ownerName}</strong> · {c.accountName}
+                    </button>
+                  ))}
+                </>
+              )}
+
+              {!repLoading && !chosen && !ambiguous && rep && (
+                <span className="dmk-rep-msg dmk-rep-no">{rep.reason}</span>
+              )}
+
+              {/* ⚠️⚠️ **NO CONNECT STEP — the grant rides the ordinary sign-in**
+                  (see googleAuth's /auth/login). Asked for directly: *"it should
+                  automatically just be sent as that user, they dont need to click
+                  anything"*. So the normal case simply STATES the sender rather
+                  than asking for anything.
+                  ⚠️ The second branch is TRANSITIONAL, not a gate: somebody whose
+                  session predates the widened scope has no token yet, and it
+                  heals itself the next time they sign in. It says so instead of
+                  demanding a click, and the link is a shortcut for anyone who
+                  wants it now. */}
+              {!repLoading && gmail && chosen && (
+                gmail.connected ? (
+                  <span className="dmk-rep-msg">Sends from you ({gmail.address}).</span>
+                ) : (
+                  <span className="dmk-rep-msg">
+                    Sends from the platform mailbox until your next sign-in.{" "}
+                    <a
+                      className="dmk-rep-link"
+                      href="/auth/gmail-connect"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Fix now
+                    </a>
+                  </span>
+                )
+              )}
+            </div>
+          )}
+
+          {/* What actually happened, reported in place. A closed panel is not
+              evidence a colleague was told, and `sendMail` legitimately declines
+              on a non-production server or with no mailer configured. */}
+          {sent && (
+            <div className={"dmk-sent" + (sent.sent ? " dmk-sent--ok" : " dmk-sent--no")}>
+              {sent.sent
+                ? `Emailed ${sent.name ?? sent.to}${sent.sentAs ? ` from ${sent.sentAs}` : ""}.`
+                : `Marked, but nothing was emailed — ${sent.reason ?? "the send did not go through."}`}
+            </div>
+          )}
           {mark && (
             <button className="dmk-clear" onClick={(e) => void clear(e)}>Remove mark</button>
           )}

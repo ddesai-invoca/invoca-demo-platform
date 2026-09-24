@@ -28,6 +28,13 @@
 export const gongConfigured = (): boolean =>
   !!(process.env.GONG_ACCESS_KEY && process.env.GONG_SECRET);
 
+/** Salesforce: a SERVICE credential (client-credentials on a Connected App), so
+ *  one setup covers every SE — the same shape as Gong, and for the same reason:
+ *  an account owner is not personal data living in somebody's own Drive.
+ *  ⚠️ Re-exported from `salesforceApi` rather than re-tested here, or the flag
+ *  `/api/status` publishes could say "connected" while the lookup disagrees. */
+export { salesforceConfigured } from "./salesforceApi.ts";
+
 /** Slack: a workspace app token. */
 export const slackConfigured = (): boolean => !!process.env.SLACK_BOT_TOKEN;
 

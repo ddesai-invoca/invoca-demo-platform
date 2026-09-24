@@ -69,6 +69,39 @@ export interface DemoMark {
   event?: string;
 }
 
+/** One Salesforce account owner — the AE on a prospect. Mirrors
+ *  `RepCandidate` in engine/salesforceApi.ts. */
+export interface Rep {
+  accountId: string;
+  accountName: string;
+  website: string;
+  ownerName: string;
+  ownerEmail: string;
+  ownerActive: boolean;
+}
+
+/** What the server found for one demo's website domain. `rep` is set only when
+ *  it resolved to exactly one person; several owners come back as `candidates`
+ *  for a human to choose between, and nothing is ever guessed. */
+export interface RepLookup {
+  domain: string;
+  rep: Rep | null;
+  candidates: Rep[];
+  reason?: string;
+}
+
+/** What happened to the optional "tell the rep" half of a mark. */
+export interface NotifyResult {
+  sent: boolean;
+  /** Which mailbox it left from — the SE's own when connected, the platform's
+   *  otherwise. Reported rather than assumed, because "sent" hides the fallback. */
+  sentAs?: string;
+  to?: string;
+  name?: string;
+  reason?: string;
+  candidates?: Rep[];
+}
+
 interface Ctx {
   me: DemoCreator | null;
   /** Project admin: may edit and delete every demo, not only their own. */
@@ -95,8 +128,21 @@ interface Ctx {
   marks: DemoMark[];
   /** This demo's status for me, or null. */
   markFor: (demoId: string) => DemoMark | null;
-  /** Set or replace my mark. Passing null removes it. */
-  setMark: (demoId: string, status: MarkStatus | null, note?: string) => Promise<boolean>;
+  /** Set or replace my mark. Passing null removes it.
+   *  `notify` opts into telling the prospect's Salesforce account owner — off
+   *  unless asked for, per demo (see engine/demoApi.notifyRep for why). */
+  setMark: (
+    demoId: string,
+    status: MarkStatus | null,
+    note?: string,
+    notify?: { accountId?: string },
+  ) => Promise<{ ok: boolean; notified?: NotifyResult }>;
+  /** Who owns this prospect's Salesforce account, so the panel can NAME them
+   *  before an SE commits to emailing them. */
+  lookupRep: (demoId: string) => Promise<RepLookup | null>;
+  /** Has this SE connected their own mailbox, so notifications come FROM them
+   *  and land in THEIR Sent folder? */
+  gmailStatus: () => Promise<{ connected: boolean; address: string } | null>;
 }
 
 const Ctx = createContext<Ctx | null>(null);
@@ -218,7 +264,22 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
      before the chip moves makes it feel broken and invites a second click, which
      would then be a second write. The local state moves first; a failed request
      rolls it back and reports false so the caller can say so. */
-  const setMark = useCallback(async (demoId: string, status: MarkStatus | null, note?: string) => {
+  const lookupRep = useCallback(
+    (demoId: string) => api<RepLookup>(`/api/demos/${demoId}/rep`),
+    [],
+  );
+
+  const gmailStatus = useCallback(
+    () => api<{ connected: boolean; address: string }>("/api/gmail-status"),
+    [],
+  );
+
+  const setMark = useCallback(async (
+    demoId: string,
+    status: MarkStatus | null,
+    note?: string,
+    notify?: { accountId?: string },
+  ) => {
     const before = marks;
     const optimistic: DemoMark[] = status
       ? [
@@ -228,13 +289,18 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
       : marks.filter((m) => m.demoId !== demoId);
     setMarks(optimistic);
     const r = status
-      ? await api<{ mark: DemoMark }>(`/api/demos/${demoId}/mark`, { method: "POST", body: JSON.stringify({ status, note }) })
+      ? await api<{ mark: DemoMark; notified?: NotifyResult }>(`/api/demos/${demoId}/mark`, {
+          method: "POST",
+          /* ⚠️ THE ADDRESS IS NEVER SENT — only whether to notify, and which of
+             the candidates the server itself resolved. See engine/demoApi.ts. */
+          body: JSON.stringify({ status, note, ...(notify ? { notify: true, accountId: notify.accountId } : {}) }),
+        })
       : await api<{ removed: boolean }>(`/api/demos/${demoId}/mark`, { method: "DELETE" });
-    if (!r) { setMarks(before); return false; }
+    if (!r) { setMarks(before); return { ok: false }; }
     /* Re-read so the row carries the SERVER's timestamp and its joined prospect
        name, rather than the placeholder the optimistic entry was built with. */
     void refreshMarks();
-    return true;
+    return { ok: true, notified: (r as { notified?: NotifyResult }).notified };
   }, [marks, me, refreshMarks]);
 
   /* ⚠️ CLEARED LOCALLY BEFORE THE REQUEST RESOLVES. The popup's own "Got it" click is
@@ -319,7 +385,7 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
   }, [demos, profiles, openDemo, addProfile]);
 
   return (
-    <Ctx.Provider value={{ me, admin, adminNotice, dismissAdminNotice, demos, loading, available, refresh, isMine, canManage, openDemo, createDemo, duplicateDemo, deleteDemo, saveCustomizations, marks, markFor, setMark }}>
+    <Ctx.Provider value={{ me, admin, adminNotice, dismissAdminNotice, demos, loading, available, refresh, isMine, canManage, openDemo, createDemo, duplicateDemo, deleteDemo, saveCustomizations, marks, markFor, setMark, lookupRep, gmailStatus }}>
       {children}
     </Ctx.Provider>
   );

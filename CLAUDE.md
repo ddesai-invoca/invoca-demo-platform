@@ -10464,7 +10464,234 @@ Demoed. The API refuses an unknown status and a non-GET on `/api/marks`.
 production — the trap that guard's own comment documents.
 
 **⚠ PHASE 2, DEFERRED AND NOT BUILT:** the admin view over everyone's marks (the server half is
-done), an in-demo top-bar control, and the Salesforce notification from the original request.
+done) and an in-demo top-bar control. The Salesforce notification, which was also on this list,
+is built — see below.
+
+### Telling the account exec: the match is a DOMAIN, and it refuses rather than guesses (9/23/2026)
+
+Asked for as the next step on the same feature: *"is there a way to see who the sales rep is on
+the salesforce account and ping them with status and comment"*. Answered by querying the REAL
+CRM before writing anything, which is what shaped every decision below. Both follow-up choices
+were the user's: **email** (it works today) and **only when you choose to** (opt-in per demo).
+
+⚠⚠ **`Account.Owner` IS THE REP — THAT PART IS FREE. FINDING THE RIGHT ACCOUNT IS THE WHOLE
+FEATURE.** Every Account exposes `Owner.Name` / `Owner.Email` / `Owner.IsActive`, so once the
+account is known there is nothing to derive. What is hard is getting there without emailing a
+colleague about somebody else's account, which is the one failure here that cannot be taken back.
+
+⚠⚠ **NAME MATCHING WOULD PING THE WRONG PERSON, MEASURED AGAINST THE LIVE CRM:** `%PMG%` returns
+KPMG and EPMG; `%Aptive%` returns Adaptive, Adaptive Biotechnologies, CaptiveAire and Captive
+Resources; `%Riverbend%` finds a medical GROUP rather than the pool company; `%Moffitt%` finds
+"Moffitt Fan Corporation". The same substring trap this file already records for "car" matching
+"care". So the key is `DemoRecord.websiteUrl`, which is on the record already.
+
+⚠⚠ **AND `Website LIKE '%domain%'` BLEEDS TOO — SO THE LIKE IS A PREFILTER, NEVER THE MATCHER.**
+Also measured: `%att.com%` matched `allianceatt.com` plus two junk records ("At Home", "eadys")
+whose Website field literally reads att.com; `%optimum.com%` matched `groupe-optimum.com` and
+`solaroptimum.com`. `sameSite()` re-checks every candidate in code and is **equal, or a
+dot-suffix, never `includes`** — which keeps `careers.moffitt.org` and drops all four above. A
+public-suffix list would be more correct and is not worth a dependency for a CRM Website field.
+
+⚠⚠ **IT RESOLVES OR IT REFUSES.** Duplicate accounts for one domain owned by DIFFERENT people
+are real (`goaptive.com` -> "Aptive Environmental"/Alyssa Croley AND "Aptive Environmental,
+LLC"/Alexander Burghardt), so ambiguity comes back as CANDIDATES and the SE picks. ⚠ De-duped by
+OWNER rather than by account, which is what makes most duplicates harmless: "AutoNation - Demo"
+and "AutoNation, Inc" share one owner, so there is one person to tell and nothing to ask.
+
+⚠ **A FILTER NEVER EMPTIES THE LIST.** Sandbox records ("Ai Media Group - Sandbox",
+"AutoNation - Demo") and inactive owners are narrowed away only while something survives —
+dropping the last candidate turns "we found it and it looks like a sandbox" into "nothing
+matches", which sends an SE hunting for a record that is right there. **Fail OPEN on filtering,
+fail CLOSED on sending.**
+
+#### The send guards, and why each exists
+⚠⚠ **THE RECIPIENT IS RESOLVED SERVER-SIDE AND NEVER READ OFF THE REQUEST BODY.** This app sends
+from the maintainer's own Gmail, so a `to` in the body would make any signed-in SE able to mail
+anywhere as them. The browser may only say WHETHER to notify and WHICH candidate (`accountId`),
+and even that is matched against the set this server just resolved for this demo's own domain.
+⚠ **AND THE ADDRESS MUST BE INSIDE THE ORG'S OWN EMAIL DOMAIN.** A CRM Account can be owned by an
+integration user or carry a partner's address. `orgEmailDomain()` moved to `engine/appEnv.ts` so
+the sign-in gate and this guard read ONE value — two copies is how they come to disagree about
+who counts as staff.
+⚠ **OPT-IN PER MARK, OFF BY DEFAULT.** 25 marks in an afternoon means 25 emails if it were
+automatic — a burst a colleague filters away — and one stray click would tell them about an
+account that is not theirs.
+⚠ **THE LOOKUP FIRES ON THE TICK, NOT ON OPENING THE PANEL.** It is a live SOQL query; opening a
+flag to read a note must not spend one, nor should a stray click while scrolling 76 rows.
+⚠ **REPLY-TO IS THE SE WHO GAVE THE DEMO**, not the sending account — the AE's obvious next
+action is asking them about the call. Same trap `newItemEmail` already records.
+⚠ **THE PANEL STAYS OPEN AFTER A NOTIFY AND REPORTS WHAT HAPPENED.** `sendMail` legitimately
+declines on a non-production server or with no mailer, so "the panel closed" is not evidence
+anybody was told. With notify off it closes immediately, exactly as before.
+
+#### ⚠⚠ The bug the browser found: the panel grows AFTER it is placed
+Verified live, per the standing rule, and it is the same defect the flip-above logic exists to
+prevent arriving through a later door. Ticking the box resolves a rep a second later, and an
+ambiguous answer adds a row per candidate. **Measured before the fix: a panel flipped above a
+trigger at y=889 sat at 715 while 168px tall, grew to 288, and hung 39px past a 964px viewport**
+— unreachable, because it is `position: fixed`. A `ResizeObserver` re-places it (595 after the
+fix, clearing the trigger).
+⚠⚠ **AND THE FIRST VERSION OF THAT FIX OBSERVED NOTHING.** Put in the existing placement effect,
+it ran on the render that sets `open` — when `rect` is still null, so the panel is not in the DOM
+and `panelRef.current` is null. The effect does not re-run when `rect` arrives, so the observer
+was created, attached to nothing, and the bug still reproduced identically. It is its own effect
+keyed on the panel being mounted, and `place()` now bails when nothing moved (a ResizeObserver
+fires once on `observe()`, so a always-fresh `setRect` would re-render, re-subscribe and fire
+again).
+
+⚠ **UNCONFIGURED IS A SUPPORTED STATE AND SAYS SO ON SCREEN** — "Salesforce isn't connected on
+this server", with the mark still saved. `/api/status` carries `salesforceConfigured` as a
+BOOLEAN (that endpoint is public; it reads no credential value). `docs/INTEGRATIONS.md` §4 is the
+runbook: a Connected App with the **client-credentials flow** enabled and a run-as user, which is
+a service credential like Gong's rather than per-user OAuth like Drive's.
+
+**`npm run audit:rep` is 38 checks**, run against a MOCKED `fetch` rather than the real
+Salesforce (an audit that depends on somebody else's service is flaky by construction, and cannot
+run on a machine with no credential — the rule `audit:advanced` already follows for Gong). It
+calls the REAL `lookupRep`: every bleed above is asserted dropped, duplicates with one owner
+resolve while two owners refuse, a sandbox twin loses but survives alone, an inactive owner loses
+but survives alone, and no credential / no match / a Salesforce error / a null Owner / no website
+each refuse with a readable reason. Plus the guards: no address off the body, the accountId
+checked against the resolved set, the org-domain test, opt-in, off by default, and the lookup not
+firing on open.
+⚠ Four were broken on purpose and each fired: trusting a client-supplied address (2 red),
+dropping the org-domain guard, making notify automatic, and defaulting the checkbox on.
+⚠ **ONE CHECK FAILED ON CORRECT CODE FIRST — the fifteenth probe fault in this file.** It matched
+`lookupRep(rec.websiteUrl)` within 200 characters of `notifyRep(`, a window the signature and the
+configured-guard already exceeded. It slices the function's own body now: a window is a guess
+about formatting, the body is the thing the invariant is about.
+
+**Verified in the browser end to end**, with the degraded path against the real server and the
+resolved/ambiguous paths against a stubbed `/rep` (the server-side branches are covered by the
+audit): unconfigured renders its reason and the mark still lands with its note; a resolved rep
+renders "Emails Jacob Burkhardt — Claffey Pools"; two owners render both candidates and picking
+one names them; the request body carries `{status, note, notify: true, accountId}` and **no
+address**; and with notify off the panel closes immediately and nothing changed. `/follow-ups`
+still reads 6 marked / 2 owing.
+⚠ Console errors naming `FollowUps`/`useDemoLibrary` were the stale session-level HMR buffer, not
+this work — the network log showed every request 200/304 on a clean load, which is the check this
+file already records for exactly that.
+
+#### Then: the email comes FROM the SE, and Salesforce connects without an admin (9/24/2026)
+
+Two follow-ups, both the user's own call after the options were laid out: *"yes build it that
+way so the email goes from the user and their inbox for sent, and then go with option 2"*.
+
+##### The notification is sent by the person who sent it
+Asked as a question first — *"can you use the person that signed in using the Gmail OAuth as the
+email that's actually sending, because that is the actual person sending the email"* — which is
+the right instinct, because the shared-mailbox alternative is cosmetic and this is true.
+
+⚠⚠ **THE SIGN-IN TOKEN CANNOT SEND, AND THAT IS THE WHOLE REASON THIS IS A SECOND CONSENT.** The
+gate asks for `openid email profile` — an identity token with no API capability. What was needed
+already existed in two halves: **`/auth/gmail` proves `gmail.send` works on this OAuth client**
+(which also means the restricted-scope verification question is already settled — it is an
+Internal Workspace app), and **`/auth/drive` proves the per-user token store**. `/auth/gmail-connect`
+is those two combined: gmail.send, per SE, STORED rather than displayed.
+❌ **SUPERSEDED WITHIN THE HOUR — this said the scope must NOT be folded into sign-in.** The
+argument was that a send capability should be consented to where it is used, as Drive's Connect
+row does. Overruled directly: *"it should automatically just be sent as that user, they dont need
+to click anything"* — and a Connect button IS a click, which is what makes a feature most people
+never switch on. `gmail.send` is in the sign-in scope now; see the correction below.
+⚠ **AND DOMAIN-WIDE DELEGATION WAS REJECTED** — it removes the per-SE click entirely and lets this
+server send as anyone at Invoca. This file already turned that down for Drive's READ scope; send
+is strictly worse.
+⚠ **`engine/gmailTokens.ts` IS ITS OWN DIRECTORY, NOT A FIELD ON THE DRIVE RECORD.** The two
+scopes are revoked independently, and disconnecting Drive must not silently stop an SE's
+notifications.
+⚠ **THE `gmailc:` / `gmail:` STATE PREFIXES WERE CHECKED FOR COLLISION BEFORE BEING NAMED.**
+`"gmailc:".startsWith("gmail:")` is false because the colon differs — but a pair where one IS a
+prefix of the other would send every per-SE consent down the ADMIN branch, which **displays the
+token on screen**. That is a colleague's send credential rendered in a browser. The audit asserts
+both the ordering and the non-collision.
+⚠ **IT FALLS BACK RATHER THAN REFUSING**, which was the one decision this needed: an SE who has
+not connected still gets their notification, from the platform mailbox, with their name in the
+body and Reply-To already pointing at them. `sentAs` reports which of the two happened, so the
+panel says "Emailed Jacob Burkhardt from bmccarty@invoca.com" rather than implying the nicer one.
+⚠ **A DEAD PERSONAL GRANT ALSO FALLS BACK.** A revoked token throws `invalid_grant`; the send
+drops through to the shared sender instead of losing a notification to somebody's Google security
+settings.
+⚠ **THE PER-USER ACCESS TOKEN IS DELIBERATELY NOT CACHED**, where the shared sender's is. That is
+one account sending constantly; these are N accounts sending rarely, so a cache would be a map of
+live send-credentials kept warm for mailboxes nobody is using.
+⚠ **FEEDBACK MAIL IS STILL FROM THE PLATFORM.** `sendAs` is per-call, not a global switch — a
+feedback notice is from the tool to the maintainer, and sending it as the submitter would be a
+different claim. The audit fails if a `sendMail` in `feedbackApi` grows a second argument.
+
+⚠⚠ **A REAL ORDERING BUG, FOUND WHILE VERIFYING: `mailConfigured()` RAN FIRST AND WOULD HAVE
+REFUSED A PER-USER-ONLY SERVER.** That guard asks whether the SHARED sender is set up. An org that
+never configures a platform mailbox — entirely reasonable now that each SE can connect their own —
+would have had every notification refuse with "not configured" while a perfectly good personal
+token sat on disk. The personal attempt now sits above it; the non-production guard stays on top
+of both, because nothing sends off production whoever the sender is. Pinned by index comparison in
+the audit and verified to fire.
+
+##### Salesforce: option 2, a CLI refresh token
+`sf org login web` mints a token against **`PlatformCLI`, Salesforce's own pre-installed connected
+app** — so there is no app to create and no admin to ask, which is the entire point. It sits beside
+the client-credentials path rather than replacing it; `salesforceConfigured()` is either, and the
+refresh token is checked first because it is the interim.
+⚠ **NO CLIENT SECRET ON THAT PATH.** `PlatformCLI` is a PUBLIC client — sending a secret does not
+merely add nothing, it fails the exchange.
+⚠ **THE TOKEN RESPONSE'S OWN `instance_url` WINS** over anything configured: a My Domain org
+answers from a host the login URL does not name, and querying the login host returns 404s that
+read as a broken credential.
+⚠⚠ **CONSEQUENCE, STATED RATHER THAN DISCOVERED LATER: every lookup reads as whoever ran that
+command**, so Salesforce's API audit shows one person for everybody's marks, and it stops working
+if that account is deactivated. It is a read-only `SELECT` on Account — nothing written, no record
+touched — and the per-user OAuth version (option 1) is what fixes the audit trail when that
+matters. The two halves are independent: this decides whose name is in the SALESFORCE log, the
+Gmail work above decides whose name is on the EMAIL.
+
+⚠⚠ **AND THE TOKEN CACHE IS NOW KEYED ON THE CREDENTIAL THAT MINTED IT — a correctness fix the
+audit found rather than bookkeeping.** A second test's mocked exchange was being answered from the
+first test's cached token. The same shape in production: an org that graduates from the CLI token
+to a Connected App would keep querying as the OLD identity until somebody restarted the process,
+with nothing on screen to say so. The fingerprint is a SHA-256 prefix, so no part of a secret is
+retained.
+
+**`npm run audit:rep` is 71 checks** (was 38). Eight sabotages were verified to fire across the
+two: trusting a client-supplied address, dropping the org-domain guard, making notify automatic,
+defaulting the checkbox on, dropping `sendAs`, admin-gating the per-SE consent route, displaying a
+colleague's token instead of storing it, removing the fallback, and restoring the bad guard order.
+**Verified in the browser**: the panel reads "Sends from the platform's mailbox · Send as you
+instead" (linking `/auth/gmail-connect`) and flips to "From your own mailbox (…)" once a token is
+on disk; a real send attempt with a planted token tried the personal mailbox, failed on the absent
+local OAuth client, logged the fallback and reported "not configured" honestly rather than
+claiming success.
+
+##### And then the Connect step was removed entirely: the grant rides sign-in (9/24/2026)
+*"it should automatically just be sent as that user, they dont need to click anything"*. Fair, and
+it invalidates the note two subsections up: an opt-in that each SE has to find is an opt-in most
+of them never take, so the feature would have quietly kept sending from the platform mailbox.
+
+⚠⚠ **`gmail.send` IS NOW PART OF THE SIGN-IN SCOPE, AND `/auth/callback` STORES THE TOKEN ON AN
+ORDINARY LOGIN.** By the time anyone marks a demo their mailbox is already connected, because they
+signed in. `/auth/gmail-connect` survives as a RECOVERY path for sessions that predate the change.
+⚠⚠ **THE CONSEQUENCE IS REAL AND IS NOT BURIED: the Google consent screen now says "Send email on
+your behalf", it is all-or-nothing, and anybody who declines cannot use the platform at all.** That
+is the price of removing the click. Stated to the user rather than discovered by them.
+⚠⚠ **`prompt=consent` IS DELIBERATELY *NOT* SET ON THE GATE**, unlike the two connect routes.
+With it Google re-shows the consent screen on EVERY sign-in — a one-time grant turned into a
+permanent nag. Without it Google returns a refresh token on the first grant of a newly-requested
+scope (which adding gmail.send makes this) and omits it afterwards.
+⚠⚠ **SO THE STORE IS GUARDED BY `if (tok.refresh_token)`, AND THAT GUARD IS LOAD-BEARING.**
+Overwriting unconditionally would write `undefined` over a good token on the SECOND sign-in and
+leave that person permanently unable to send, with nothing anywhere reporting it. `audit:rep`
+fails on the unguarded form — verified, and it is the same sabotage as "stores nothing".
+⚠ **DOMAIN-WIDE DELEGATION IS STILL REJECTED.** It is the only other zero-click route and it lets
+the server send as anyone at Invoca with no consent from anybody, needing a super-admin. Each
+person allowing it for themselves is a much smaller grant.
+⚠ **ONE EXISTING CHECK WAS RE-AIMED, NOT DELETED** — it asserted the gate stays identity-only,
+which is now backwards. The invariant it protects is the one that survives: the grant must ride
+sign-in AND actually be captured, since a widened scope nobody stores is all of the cost (the
+scary consent screen) and none of the benefit. Four sabotages fire on it: storing nothing,
+storing unguarded, forcing consent every time, and dropping the scope.
+**Verified in the browser:** the panel reads "Sends from you (local@dev)." with **no link and
+nothing to click**, and falls back to "Sends from the platform mailbox until your next sign-in ·
+Fix now" only when no token exists. ⚠ The sign-in leg itself cannot be exercised locally — the
+gate is off in dev (`local@dev`), so the scope and the store are covered by the audit and by
+planting/removing a real token file, not by a live Google round trip.
 
 ## Read.Me + the in-app docs
 - A **row in the launch menu** (`src/components/LaunchMenu.tsx`), not its own button — see the

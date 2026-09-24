@@ -34,6 +34,7 @@ import nodemailer from "nodemailer";
 const HOST = process.env.SMTP_HOST || "smtp.gmail.com";
 const PORT = Number(process.env.SMTP_PORT || 465);
 import { appEnv, isProduction } from "./appEnv.ts";
+import { getGmailToken } from "./gmailTokens.ts";
 
 const USER = process.env.SMTP_USER || "";              // e.g. ddesai@invoca.com
 const PASS = process.env.SMTP_APP_PASSWORD || "";      // Google app password
@@ -106,6 +107,36 @@ function rawMessage(from: string, mail: Mail): string {
   return Buffer.from([...headers, ...body].join("\r\n"), "utf8").toString("base64url");
 }
 
+/**
+ * An access token for ONE SE's own mailbox, from the refresh token they stored
+ * by consenting at /auth/gmail-connect.
+ *
+ * ⚠️ DELIBERATELY NOT CACHED, where the shared sender's IS. That one is a single
+ * account sending constantly; these are N accounts sending rarely, so a cache
+ * would be a map of live send-credentials kept warm in memory for mailboxes
+ * nobody is using. One extra round trip on a notification nobody is waiting on
+ * is the better trade.
+ */
+async function userAccessToken(refresh: string): Promise<string> {
+  const res = await fetch("https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      client_id: OAUTH_ID, client_secret: OAUTH_SECRET,
+      refresh_token: refresh, grant_type: "refresh_token",
+    }),
+  });
+  const j: any = await res.json().catch(() => ({}));
+  if (!j?.access_token) {
+    /* `invalid_grant` means they revoked it in their Google account, so the
+       caller clears the stored copy rather than failing the same way forever. */
+    const e: any = new Error(j?.error === "invalid_grant" ? "GMAIL_RECONNECT" : (j?.error_description || "Could not get a Gmail token."));
+    e.reconnect = j?.error === "invalid_grant";
+    throw e;
+  }
+  return j.access_token;
+}
+
 async function sendViaGmail(mail: Mail): Promise<void> {
   const token = await gmailAccessToken();
   const from = `"${FROM_NAME}" <${GMAIL_SENDER}>`;
@@ -151,7 +182,25 @@ export interface Mail {
  * status change that triggered it, or an admin's click reports an error while the
  * item is already updated on disk. Returns what happened so the caller can say so.
  */
-export async function sendMail(mail: Mail): Promise<{ sent: boolean; reason?: string }> {
+/**
+ * Send one message. NEVER throws (see below).
+ *
+ * `sendAs` is an SE's own address: when they have connected their mailbox, the
+ * message leaves FROM them and lands in THEIR Sent folder, which is the honest
+ * rendering of "Bill demoed this" — Bill really is the sender.
+ *
+ * ⚠️⚠️ **IT FALLS BACK TO THE PLATFORM MAILBOX RATHER THAN REFUSING**, which was
+ * the one decision this needed. An SE who has not connected still gets their
+ * notification sent; the body already names them and Reply-To already points at
+ * them, so the fallback degrades to exactly the behaviour that shipped before
+ * this existed instead of blocking the feature on a second setup step.
+ * `sentAs` in the result says which of the two actually happened, so the UI can
+ * report it rather than implying the nicer one.
+ */
+export async function sendMail(
+  mail: Mail,
+  sendAs?: string,
+): Promise<{ sent: boolean; reason?: string; sentAs?: string }> {
   /* ⚠️⚠️ **NON-PRODUCTION NEVER SENDS, IT LOGS.** Feedback completion mail goes to the
      SUBMITTER's real sign-in address. A staging service stood up by copying production's
      environment variables would therefore email real colleagues about test items from a
@@ -162,6 +211,31 @@ export async function sendMail(mail: Mail): Promise<{ sent: boolean; reason?: st
     console.log(`[mail] ${appEnv()}: not sending to ${mail.to} — "${mail.subject}"`);
     return { sent: false, reason: `${appEnv()} does not send email` };
   }
+  /* ⚠️⚠️ **ABOVE THE `mailConfigured()` GUARD, AND THAT ORDERING IS A REAL BUG
+     THIS FIXES RATHER THAN A STYLE CHOICE.** That guard asks whether the SHARED
+     sender is set up. An org that only ever uses per-user sending — no
+     GMAIL_REFRESH_TOKEN for a platform account at all — is a supported and
+     reasonable setup, and with the check first every notification would refuse
+     with "not configured" while a perfectly good personal token sat on disk.
+     The non-production guard stays above this: nothing sends off production
+     whoever the sender is.
+     ⚠️ THE SE'S OWN MAILBOX IS TRIED FIRST AND FAILS SOFT. A revoked or expired
+     personal grant must not swallow the notification — it drops through to the
+     shared sender, which is what the whole fallback above is for. */
+  if (sendAs) {
+    const refresh = getGmailToken(sendAs);
+    if (refresh) {
+      try {
+        const token = await userAccessToken(refresh);
+        await sendAsUser(token, sendAs, mail);
+        console.log(`[mail] sent as ${sendAs} to ${mail.to}: ${mail.subject}`);
+        return { sent: true, sentAs: sendAs };
+      } catch (e: any) {
+        console.warn(`[mail] could not send as ${sendAs}, falling back to the platform mailbox:`, e?.message || e);
+      }
+    }
+  }
+
   if (!mailConfigured()) {
     console.log(`[mail] not configured, would have sent to ${mail.to}: ${mail.subject}`);
     return { sent: false, reason: "not configured" };
@@ -177,7 +251,7 @@ export async function sendMail(mail: Mail): Promise<{ sent: boolean; reason?: st
       html: mail.html,
     });
     console.log(`[mail] sent via ${mailMode()} to ${mail.to}: ${mail.subject}`);
-    return { sent: true };
+    return { sent: true, ...(gmailReady() ? { sentAs: GMAIL_SENDER } : USER ? { sentAs: USER } : {}) };
   } catch (e: any) {
     /* Logged, not thrown. Most likely causes: a revoked app password, or a Gmail
        refresh token that was withdrawn in the Google account's security settings.
@@ -185,6 +259,28 @@ export async function sendMail(mail: Mail): Promise<{ sent: boolean; reason?: st
     console.error(`[mail] failed to ${mail.to}:`, e?.message || e);
     return { sent: false, reason: e?.message || "send failed" };
   }
+}
+
+/**
+ * Send through ONE SE's own mailbox.
+ *
+ * ⚠️ `From` IS THAT SE, AND THAT IS NOT A HEADER TRICK — Gmail sends as the
+ * account the access token belongs to, so this is the one way the address can
+ * genuinely be theirs. Setting `From` to somebody else's address is rejected by
+ * Gmail, which is exactly why the shared-mailbox version could never have shown
+ * the SE's own address.
+ * ⚠️ NO `Reply-To`: the caller sets one so that a notification sent by the
+ * PLATFORM still routes replies to the SE. Sending as the SE makes that
+ * redundant, and a Reply-To equal to From reads as a configuration mistake in
+ * some clients.
+ */
+async function sendAsUser(token: string, from: string, mail: Mail): Promise<void> {
+  const res = await fetch("https://gmail.googleapis.com/gmail/v1/users/me/messages/send", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ raw: rawMessage(from, { ...mail, replyTo: from }) }),
+  });
+  if (!res.ok) throw new Error(`Gmail refused the send (${res.status}): ${(await res.text()).slice(0, 200)}`);
 }
 
 /* ---- the two messages this app sends ---------------------------------------- */
@@ -276,4 +372,56 @@ export function completionEmail(opts: {
     `<p style="color:#626464">Thanks for taking the time to send it, it is genuinely useful.</p>` +
     `</div>`;
   return { to: opts.to, subject: `Done: ${opts.title}`, text: lines.join("\n"), html };
+}
+
+/** "Your prospect was demoed" — to the ACCOUNT EXECUTIVE, when an SE marks a demo
+ *  and chooses to tell them.
+ *
+ *  ⚠️⚠️ **REPLY GOES TO THE SE WHO GAVE THE DEMO.** This app sends FROM the
+ *  maintainer's own address, so without it the AE's Reply reaches somebody who
+ *  was not on the call and cannot answer — the same trap `newItemEmail` records.
+ *  The whole point of the ping is to start that conversation.
+ *
+ *  ⚠️ **THE STATUS IS IN THE SUBJECT, because that is what the AE triages on.**
+ *  "Lead" and "Demoed" imply completely different urgency and an inbox preview is
+ *  usually all this gets read at.
+ */
+export function markNoticeEmail(opts: {
+  to: string; repName: string; prospect: string; status: string;
+  note?: string; seName: string; seEmail: string; when: string; demoUrl: string;
+}): Mail {
+  const who = opts.seName || opts.seEmail;
+  const first = (opts.repName || "").trim().split(/\s+/)[0];
+  const lines = [
+    `${first ? `Hi ${first},` : "Hi,"}`,
+    ``,
+    `${who} demoed ${opts.prospect} and marked it ${opts.status}.`,
+    ``,
+    ...(opts.note ? [`Their note:`, ``, `  "${opts.note}"`, ``] : []),
+    `Marked ${opts.when}.`,
+    ``,
+    `Reply to this email to reach ${who} directly.`,
+    ``,
+    `Open the demo: ${opts.demoUrl}`,
+  ];
+  const html =
+    `<div style="font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:15px;line-height:1.6;color:#0a231e">` +
+    `<p>${first ? `Hi ${esc(first)},` : "Hi,"}</p>` +
+    `<p><strong>${esc(who)}</strong> demoed <strong>${esc(opts.prospect)}</strong> and marked it ` +
+    `<strong>${esc(opts.status)}</strong>.</p>` +
+    (opts.note
+      ? `<blockquote style="margin:16px 0;padding:12px 16px;background:#f8faf1;border-left:3px solid #00b388;border-radius:0 8px 8px 0">` +
+        `<span style="color:#3d4d48">${esc(opts.note).replace(/\n/g, "<br>")}</span></blockquote>`
+      : "") +
+    `<p style="color:#626464;font-size:13px">Marked ${esc(opts.when)}.</p>` +
+    `<p>Reply to this email to reach ${esc(who)} directly.</p>` +
+    `<p><a href="${esc(opts.demoUrl)}" style="color:#00a87f">Open the demo</a></p>` +
+    `</div>`;
+  return {
+    to: opts.to,
+    subject: `${opts.status}: ${opts.prospect} — demoed by ${who}`,
+    text: lines.join("\n"),
+    html,
+    replyTo: opts.seEmail,
+  };
 }

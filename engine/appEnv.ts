@@ -66,3 +66,15 @@ export function voiceAgentName(): string {
      worker pool, so only `staging` is renamed. */
   return appEnv() === "staging" ? "invoca-voice-staging" : "invoca-voice";
 }
+
+/**
+ * The email domain this deployment belongs to (`invoca.com`).
+ *
+ * ⚠️ ONE DEFINITION, TWO READERS, AND THE SECOND IS A SEND GUARD. The sign-in
+ * gate has always narrowed to this domain; the follow-up notice now refuses to
+ * mail anything outside it, so a Salesforce record carrying an external address
+ * can never turn this server into a relay. Two copies of the constant is how the
+ * gate and the guard come to disagree about who counts as staff.
+ */
+export const orgEmailDomain = (): string =>
+  (process.env.ALLOWED_EMAIL_DOMAIN || "invoca.com").toLowerCase();

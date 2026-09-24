@@ -45,7 +45,8 @@ import { extractDocText } from "./engine/docText.ts";
 import { fetchPublicGoogleDocText } from "./engine/driveLink.ts";
 import { fetchPrivateGoogleDocText, DriveReconnectError } from "./engine/driveApi.ts";
 import { hasDriveToken, removeDriveToken } from "./engine/driveTokens.ts";
-import { gongConfigured, slackConfigured, driveConfigured } from "./engine/integrations.ts";
+import { hasGmailToken, removeGmailToken } from "./engine/gmailTokens.ts";
+import { gongConfigured, slackConfigured, driveConfigured, salesforceConfigured } from "./engine/integrations.ts";
 import { renderConfigured } from "./engine/renderService.ts";
 import { gongLookup } from "./engine/gongApi.ts";
 import { runCanary, recordRun, toPublic as canaryPublic, BUDGET_SECONDS } from "./engine/canary.ts";
@@ -129,6 +130,7 @@ app.get("/api/status", (_req, res) => res.json(deployStatus({
   renderConfigured: renderConfigured(),
   slackConfigured: slackConfigured(),
   driveConfigured: driveConfigured(),
+  salesforceConfigured: salesforceConfigured(),
   /* What has been going wrong lately, as counts and signatures. Safe here because
      `alertSummary()` is built for this endpoint and carries no message text — see the
      note on StatusInput.alerts. */
@@ -218,7 +220,8 @@ app.use(async (req, res, next) => {
 app.use(async (req, res, next) => {
   if (!req.path.startsWith("/api/")) return next();
   try {
-    const result = await handleDemoApi(req.method, req.path, req.body, currentUser(req));
+    const base = process.env.BASE_URL || `${req.protocol}://${req.get("host")}`;
+    const result = await handleDemoApi(req.method, req.path, req.body, currentUser(req), base);
     if (!result) return next();
     res.status(result.status).json(result.body);
   } catch (e: any) {
@@ -265,6 +268,26 @@ app.get("/api/drive-status", (req, res) => {
    failure must never block the local disconnect from succeeding. */
 app.post("/api/drive/disconnect", (req, res) => {
   removeDriveToken(currentUser(req).email);
+  res.json({ ok: true });
+});
+
+/* GET /api/gmail-status → { connected, address }.
+   Whether THIS SE has connected their own mailbox for the "tell the account
+   exec" notification. Deliberately NOT paired with an `enabled` capability
+   boolean the way Drive's is: there is nothing to enable — the OAuth client
+   already carries the scope, so the only question is whether this person has
+   consented. `address` is just their own sign-in address, so the panel can say
+   which mailbox it would send from without a second round trip. */
+app.get("/api/gmail-status", (req, res) => {
+  const email = currentUser(req).email;
+  res.json({ connected: hasGmailToken(email), address: email });
+});
+
+/* POST /api/gmail/disconnect → removes this SE's stored send token. Same
+   courtesy-not-boundary reasoning as Drive's: a failed revoke with Google must
+   never stop the local disconnect from succeeding. */
+app.post("/api/gmail/disconnect", (req, res) => {
+  removeGmailToken(currentUser(req).email);
   res.json({ ok: true });
 });
 

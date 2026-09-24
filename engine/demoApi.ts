@@ -22,12 +22,18 @@
      PATCH  /api/demos/:id             → update customizations (owner or admin)
      DELETE /api/demos/:id             → delete (owner or admin)
      POST   /api/demos/:id/duplicate   → copy as mine
+     POST   /api/demos/:id/mark        → mark it Demoed / Follow-up / Lead (+ notify the AE)
+     GET    /api/demos/:id/rep         → who owns this prospect's Salesforce account
+     GET    /api/marks                 → my follow-up list (?all=1 for an admin)
    ============================================================================= */
 
 import { type DemoRecord, deleteDemo, getDemo, listDemos, saveDemo, uniqueId } from "./demoStore.ts";
 import { isAdminEmail } from "./admins.ts";
 import { pendingAdminNotice, ackAdminNotice } from "./adminNotices.ts";
 import { isMarkStatus, listMarks, markDemo, marksFor, unmarkDemo } from "./demoMarks.ts";
+import { lookupRep, salesforceConfigured, type RepCandidate } from "./salesforceApi.ts";
+import { markNoticeEmail, sendMail } from "./mailer.ts";
+import { orgEmailDomain } from "./appEnv.ts";
 
 export interface DemoUser { email: string; name: string }
 
@@ -100,6 +106,10 @@ export async function handleDemoApi(
   urlPath: string,
   body: any,
   user: DemoUser,
+  /* Only used to build the "open the demo" link in the AE notification. Optional
+     so a caller that never marks anything needs no change; both twins pass it,
+     deriving it exactly as they already do for the feedback board's mail. */
+  baseUrl = "",
 ): Promise<ApiResult | null> {
   const p = urlPath.split("?")[0].replace(/\/+$/, "");
 
@@ -147,7 +157,7 @@ export async function handleDemoApi(
     return ok({ marks, admin: isAdmin(user), scope: wantsAll ? "all" : "mine" });
   }
 
-  const match = /^\/api\/demos\/([^/]+)(\/duplicate|\/mark)?$/.exec(p);
+  const match = /^\/api\/demos\/([^/]+)(\/duplicate|\/mark|\/rep)?$/.exec(p);
   if (!match) return null; // not a demo route — let the caller fall through
 
   const [, id, sub] = match;
@@ -169,13 +179,22 @@ export async function handleDemoApi(
      the demo is the one who cannot record it. A mark is a fact about the SIGNED-IN
      USER, not an edit to the record, and it is stored outside the record so it
      changes nothing its owner is responsible for. */
+  /* Who owns this prospect's Salesforce account. Read-only and safe to call
+     before anything is marked, which is what lets the panel NAME the person
+     before an SE commits to telling them. */
+  if (sub === "/rep") {
+    if (method !== "GET") return err(405, "Method not allowed.");
+    return ok(await lookupRep(rec.websiteUrl));
+  }
+
   if (sub === "/mark") {
     if (method === "POST") {
       const status = body?.status;
       if (!isMarkStatus(status)) return err(400, "Status must be demoed, follow-up or lead.");
       const mark = markDemo(id, user, status, body?.note);
       if (!mark) return err(400, "Invalid demo id.");
-      return ok({ mark });
+      const notified = body?.notify ? await notifyRep(rec, user, mark, body?.accountId, baseUrl) : undefined;
+      return ok({ mark, ...(notified ? { notified } : {}) });
     }
     if (method === "DELETE") return ok({ removed: unmarkDemo(id, user.email) });
     if (method === "GET") {
@@ -211,4 +230,101 @@ export async function handleDemoApi(
   }
 
   return err(405, "Method not allowed.");
+}
+
+/* =============================================================================
+   Telling the account executive
+   -----------------------------------------------------------------------------
+   ⚠️⚠️ **OPT-IN PER MARK, NEVER AUTOMATIC — the SE's own call when this was
+   designed.** An SE marks ~25 demos in an afternoon at a conference; firing a
+   mail on every one of those turns a signal into a burst somebody sets a filter
+   for, and one mistaken click would tell a colleague something about an account
+   that is not theirs. So `notify` has to be asked for, per demo.
+
+   ⚠️⚠️ **THE ADDRESS IS RESOLVED HERE AND NEVER ACCEPTED FROM THE BROWSER.**
+   This app sends from the maintainer's own Gmail; taking a `to` off the request
+   body would make any signed-in SE able to send mail as them to anywhere. The
+   client may only say WHICH candidate (`accountId`), and even that is checked
+   against the set this server just resolved for this demo's own domain.
+
+   ⚠️ **AND THE RECIPIENT MUST BE INSIDE THE ORG'S OWN EMAIL DOMAIN.** A CRM
+   Account can legitimately be owned by an integration user or carry a partner's
+   address; the sign-in gate has always narrowed to staff, and so does this. One
+   definition of the domain (`engine/appEnv.ts`), read by both.
+   ============================================================================= */
+
+export interface NotifyResult {
+  sent: boolean;
+  /** Which mailbox it actually left from — the SE's own when they have
+   *  connected one, the platform's otherwise. The UI says which, because
+   *  "sent" alone would hide the fallback. */
+  sentAs?: string;
+  /** The rep we told, when we told one — so the UI names them rather than
+   *  claiming a vague success. */
+  to?: string;
+  name?: string;
+  /** Why not, in words an SE can act on. Never a stack trace. */
+  reason?: string;
+  /** More than one owner matched; the UI asks which. */
+  candidates?: RepCandidate[];
+}
+
+async function notifyRep(
+  rec: DemoRecord,
+  user: DemoUser,
+  mark: { status: string; note?: string; at: string },
+  accountId: unknown,
+  baseUrl: string,
+): Promise<NotifyResult> {
+  if (!salesforceConfigured()) return { sent: false, reason: "Salesforce isn't connected on this server." };
+
+  const found = await lookupRep(rec.websiteUrl);
+  let rep = found.rep;
+  if (!rep && found.candidates.length && typeof accountId === "string") {
+    /* ⚠️ PICKED FROM THE SET THIS SERVER JUST RESOLVED, not trusted as an id to
+       look up. A client naming an arbitrary account would otherwise choose the
+       recipient, which is the thing the paragraph above exists to prevent. */
+    rep = found.candidates.find((c) => c.accountId === accountId) ?? null;
+    if (!rep) return { sent: false, reason: "That account is no longer one of the matches.", candidates: found.candidates };
+  }
+  if (!rep) {
+    return {
+      sent: false,
+      reason: found.reason ?? `No Salesforce account matches ${found.domain}.`,
+      ...(found.candidates.length ? { candidates: found.candidates } : {}),
+    };
+  }
+
+  const domain = orgEmailDomain();
+  if (!rep.ownerEmail.endsWith(`@${domain}`)) {
+    return { sent: false, reason: `${rep.ownerName} isn't an @${domain} address, so nothing was sent.`, name: rep.ownerName };
+  }
+
+  const LABEL: Record<string, string> = { demoed: "Demoed", "follow-up": "Follow-up", lead: "Lead" };
+  const r = await sendMail(markNoticeEmail({
+    to: rep.ownerEmail,
+    repName: rep.ownerName,
+    prospect: rec.prospect,
+    status: LABEL[mark.status] ?? mark.status,
+    note: mark.note,
+    seName: user.name,
+    seEmail: user.email,
+    when: new Date(mark.at).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" }),
+    demoUrl: `${baseUrl.replace(/\/+$/, "")}/launch`,
+  /* ⚠️ SENT AS THE SE WHO MARKED IT, when they have connected their mailbox —
+     they are the actual sender, so the AE sees their address and the message
+     lands in their own Sent folder. Falls back to the platform mailbox rather
+     than refusing; `sentAs` in the result reports which happened. */
+  }), user.email);
+  /* ⚠️ `sendMail` NEVER THROWS and reports why — an unconfigured mailer or a
+     non-production service is a supported state, and the MARK is already saved
+     either way. Reporting "sent" when it was only logged is the lie this
+     carries `reason` to avoid. */
+  return {
+    sent: r.sent,
+    to: rep.ownerEmail,
+    name: rep.ownerName,
+    ...(r.sentAs ? { sentAs: r.sentAs } : {}),
+    ...(r.reason ? { reason: r.reason } : {}),
+  };
 }

@@ -60,6 +60,29 @@ function generateApi(apiKey: string | undefined): Plugin {
         res.setHeader('Content-Type', 'application/json')
         res.end(JSON.stringify({ enabled: driveConfigured(), connected: hasDriveToken(email) }))
       })
+      /* GET /api/gmail-status, POST /api/gmail/disconnect — mirror server.ts.
+         ⚠️ Both twins or the feature works live and looks broken on every laptop,
+         which is the trap the demo-library prefix guard already records. */
+      server.middlewares.use('/api/gmail-status', async (req, res, next) => {
+        if (req.method !== 'GET') return next()
+        const [{ currentUser }, { hasGmailToken }] = await Promise.all([
+          import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href),
+          import(pathToFileURL(path.resolve(process.cwd(), 'engine/gmailTokens.ts')).href),
+        ])
+        const email = currentUser(req).email
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify({ connected: hasGmailToken(email), address: email }))
+      })
+      server.middlewares.use('/api/gmail/disconnect', async (req, res, next) => {
+        if (req.method !== 'POST') return next()
+        const [{ currentUser }, { removeGmailToken }] = await Promise.all([
+          import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href),
+          import(pathToFileURL(path.resolve(process.cwd(), 'engine/gmailTokens.ts')).href),
+        ])
+        removeGmailToken(currentUser(req).email)
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify({ ok: true }))
+      })
       server.middlewares.use('/api/drive/disconnect', async (req, res, next) => {
         if (req.method !== 'POST') return next()
         const [{ currentUser }, { removeDriveToken }] = await Promise.all([
@@ -505,7 +528,7 @@ function statusApi(): Plugin {
              checks here — two definitions of "configured" is how the panel ends
              up offering a provider in dev that production cannot call. Safe
              because loadEnv's keys are copied into process.env at the top. */
-          const { gongConfigured, slackConfigured, driveConfigured } = await import(
+          const { gongConfigured, slackConfigured, driveConfigured, salesforceConfigured } = await import(
             pathToFileURL(path.resolve(process.cwd(), 'engine/integrations.ts')).href
           )
           const { authEnabled } = await import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href)
@@ -523,6 +546,7 @@ function statusApi(): Plugin {
             renderConfigured: Boolean(env.BROWSERLESS_TOKEN || process.env.BROWSERLESS_TOKEN),
             slackConfigured: slackConfigured(),
             driveConfigured: driveConfigured(),
+            salesforceConfigured: salesforceConfigured(),
             authGate: authEnabled,
             alerts: alertSummary(),
           })))
@@ -605,7 +629,8 @@ function demoLibraryApi(): Plugin {
             import(pathToFileURL(path.resolve(process.cwd(), 'engine/demoApi.ts')).href),
             import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href),
           ])
-          const result = await handleDemoApi(req.method || 'GET', url, raw ? JSON.parse(raw) : undefined, currentUser(req))
+          const base = process.env.BASE_URL || `http://${req.headers.host || 'localhost:5173'}`
+          const result = await handleDemoApi(req.method || 'GET', url, raw ? JSON.parse(raw) : undefined, currentUser(req), base)
           if (!result) return next()
           res.statusCode = result.status
           res.setHeader('Content-Type', 'application/json')

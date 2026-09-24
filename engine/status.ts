@@ -48,6 +48,7 @@ export interface StatusInput {
   gongConfigured: boolean;
   slackConfigured: boolean;
   driveConfigured: boolean;
+  salesforceConfigured: boolean;
   /* Is Replicate rendering pages in a real browser, or serving the fast copy? A boolean, so
      it stays safe on this PUBLIC endpoint — it names no token and no URL. */
   renderConfigured: boolean;
@@ -124,6 +125,7 @@ export function deployStatus(input: StatusInput) {
       renderConfigured: input.renderConfigured,
       slackConfigured: input.slackConfigured,
       driveConfigured: input.driveConfigured,
+      salesforceConfigured: input.salesforceConfigured,
       authGate: input.authGate,
     },
   };

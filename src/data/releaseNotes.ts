@@ -69,6 +69,8 @@ export const RELEASES: Release[] = [
     date: "2026-09-23",
     title: "Mark a demo as delivered, and a list of who you still owe",
     changes: [
+      n("Marking a demo can tell the prospect's account exec, with your status and note. Off unless you tick it, and it names the person before anything is sent."),
+      n("Those notifications come from you and land in your own Sent folder — nothing to set up, the permission comes with signing in."),
       n("A flag on every library row marks a demo Demoed, Follow-up or Lead, with an optional note \u2014 one click from the list, without opening the demo."),
       n("\u201cMy follow-ups\u201d in the menu: everything you have marked, grouped by event, with what still needs a follow-up first. The menu badge counts what is outstanding."),
     ],

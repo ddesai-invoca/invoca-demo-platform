@@ -6392,6 +6392,34 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 }
 .dmk-clear:hover { color: #e4131b; }
 
+/* The "tell the account exec" half. Off by default and visually quiet, because
+   the panel's job is still ONE CLICK to mark — this is the second, deliberate
+   action, not the headline. */
+.dmk-notify {
+  display: flex; align-items: center; gap: 6px; cursor: pointer;
+  font-size: 12px; color: #5b6577;
+}
+.dmk-notify input { margin: 0; accent-color: #2666f9; cursor: pointer; }
+.dmk-rep { display: flex; flex-direction: column; gap: 4px; }
+.dmk-rep-msg {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 11px; line-height: 1.4; color: #5b6577;
+}
+.dmk-rep-msg .material-icons { font-size: 14px; }
+.dmk-rep-ok { color: #0d5400; }
+.dmk-rep-no { color: #b33b00; }
+.dmk-rep-pick {
+  text-align: left; cursor: pointer; font: inherit; font-size: 11px;
+  padding: 5px 7px; border: 1px solid #e7e9eb; border-radius: 4px;
+  background: #fff; color: #15243e;
+}
+.dmk-rep-pick:hover { border-color: #2666f9; color: #2666f9; }
+.dmk-rep-link { color: #2666f9; }
+.dmk-sent { font-size: 11px; line-height: 1.4; }
+.dmk-sent--ok { color: #0d5400; }
+.dmk-sent--no { color: #b33b00; }
+.dmk-opt:disabled { opacity: .5; cursor: default; }
+
 /* ── My follow-ups (FollowUps screen) ────────────────────────────────────────
    Full-page, outside the app shell like /feedback and /release-notes: it is
    about OUR tool, not a prospect's demo. Own .fup- prefix. */
